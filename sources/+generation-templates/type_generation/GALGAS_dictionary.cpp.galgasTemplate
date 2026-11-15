@@ -107,7 +107,7 @@ void GGS_%!TYPE_IDENTIFIER%::writeSubcript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENTI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_set (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue%
+/* void GGS_%!TYPE_IDENTIFIER%::setter_set (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue%
      %,\n%!^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey,
      %!^%Compiler *
      %!^%COMMA_LOCATION_ARGS) {
@@ -115,7 +115,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_set (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER
     const Node_%!TYPE_IDENTIFIER% object (inKey, inValue) ;
     insertOrReplace (inKey, object COMMA_THERE) ;
   }
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 

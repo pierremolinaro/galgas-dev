@@ -69,59 +69,6 @@ final class @subExpressionNoOverflowAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <simple_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                !@semanticExpressionAST outExpression ) {
-//    <term_ggs3> (!?ioDeclarations, ? outExpression)
-//    repeat
-//    while
-//      let operatorLocation = @location.here
-//      $<<$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @leftShiftExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $>>$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @rightShiftExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $+$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @addExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $&+$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @addExpressionNoOverflowAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $-$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @subExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $&-$
-//      let leftOperand = outExpression
-//      <term_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @subExpressionNoOverflowAST (!operatorLocation, leftOperand, rightOperand)
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -196,8 +143,8 @@ override proc @rightShiftExpressionAST.analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
 //--- Left expression analysis
-  self.mLeftExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+  self.mLeftExpression.analyzeSemanticExpression (
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
     inAnalysisContext,

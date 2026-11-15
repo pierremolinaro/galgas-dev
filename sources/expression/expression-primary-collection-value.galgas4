@@ -42,8 +42,8 @@ syntax extension galgas4ExpressionSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type> (let @lstring inTypeName,
-                                   ?!@galgasDeclarationAST ioDeclarations,
-                                   !@semanticExpressionAST outExpression ) {
+                                    ?!@galgasDeclarationAST ioDeclarations,
+                                    !@semanticExpressionAST outExpression ) {
     $[$
     var [@collectionValueElementAST] expressionList = @()
     select
@@ -124,8 +124,8 @@ final class @collectionValueAST : @semanticExpressionAST {
       let elementType = targetType.definition.typeForEnumeratedElement
       var [@collectionValueElementForGeneration] expressionListForGeneration = @()
       for exp in self.mExpressionList do
-        exp.mExpression.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        exp.mExpression.analyzeSemanticExpression (
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: elementType,
           inAnalysisContext,

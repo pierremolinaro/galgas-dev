@@ -2597,6 +2597,181 @@ const GALGAS_TypeDescriptor * GGS_localVariableDeclarationForGeneration_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Enum assignmentSupplementAST
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST::GGS_assignmentSupplementAST (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST GGS_assignmentSupplementAST::class_func_none (UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementAST result ;
+  result.mEnum = Enumeration::enum_none ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST GGS_assignmentSupplementAST::class_func_property (const GGS_lstring & inAssociatedValue0
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementAST result ;
+  result.mEnum = Enumeration::enum_property ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_assignmentSupplementAST_2E_property (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST GGS_assignmentSupplementAST::class_func_subcript (const GGS__5B_actualOutputArgumentAST_5D_ & inAssociatedValue0,
+                                                                              const GGS_location & inAssociatedValue1
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementAST result ;
+  result.mEnum = Enumeration::enum_subcript ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_assignmentSupplementAST_2E_subcript (inAssociatedValue0, inAssociatedValue1)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementAST::method_extractProperty (GGS_lstring & outAssociatedValue_name,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_property) {
+    outAssociatedValue_name.drop () ;
+    String s ;
+    s.appendCString ("proc @assignmentSupplementAST.property invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_assignmentSupplementAST_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_name = ptr->mProperty_name ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementAST::method_extractSubcript (GGS__5B_actualOutputArgumentAST_5D_ & outAssociatedValue_subscriptArgs,
+                                                          GGS_location & outAssociatedValue_errorLocation,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_subcript) {
+    outAssociatedValue_subscriptArgs.drop () ;
+    outAssociatedValue_errorLocation.drop () ;
+    String s ;
+    s.appendCString ("proc @assignmentSupplementAST.subcript invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_assignmentSupplementAST_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_subscriptArgs = ptr->mProperty_subscriptArgs ;
+    outAssociatedValue_errorLocation = ptr->mProperty_errorLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST_2E_property_3F_ GGS_assignmentSupplementAST::getter_getProperty (UNUSED_LOCATION_ARGS) const {
+  GGS_assignmentSupplementAST_2E_property_3F_ result ;
+  if (mEnum == Enumeration::enum_property) {
+    const auto ptr = (const GGS_assignmentSupplementAST_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_assignmentSupplementAST_2E_property (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementAST::getAssociatedValuesFor_property (GGS_lstring & out_name) const {
+  const auto ptr = (const GGS_assignmentSupplementAST_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+  out_name = ptr->mProperty_name ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementAST_2E_subcript_3F_ GGS_assignmentSupplementAST::getter_getSubcript (UNUSED_LOCATION_ARGS) const {
+  GGS_assignmentSupplementAST_2E_subcript_3F_ result ;
+  if (mEnum == Enumeration::enum_subcript) {
+    const auto ptr = (const GGS_assignmentSupplementAST_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_assignmentSupplementAST_2E_subcript (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementAST::getAssociatedValuesFor_subcript (GGS__5B_actualOutputArgumentAST_5D_ & out_subscriptArgs,
+                                                                   GGS_location & out_errorLocation) const {
+  const auto ptr = (const GGS_assignmentSupplementAST_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+  out_subscriptArgs = ptr->mProperty_subscriptArgs ;
+  out_errorLocation = ptr->mProperty_errorLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_assignmentSupplementAST [4] = {
+  "(not built)",
+  "none",
+  "property",
+  "subcript"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_assignmentSupplementAST::getter_isNone (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_assignmentSupplementAST::getter_isProperty (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_property == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_assignmentSupplementAST::getter_isSubcript (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_subcript == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @assignmentSupplementAST: ") ;
+  ioString.appendCString (gEnumNameArrayFor_assignmentSupplementAST [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @assignmentSupplementAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementAST ("assignmentSupplementAST",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_assignmentSupplementAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentSupplementAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_actualOutputArgumentAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -3087,6 +3262,489 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualOutputArgumentAST ("act
 
 const GALGAS_TypeDescriptor * GGS_actualOutputArgumentAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_actualOutputArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_collectionValueElementForGeneration_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_::GGS__5B_collectionValueElementForGeneration_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_::GGS__5B_collectionValueElementForGeneration_5D_ (const GGS__5B_collectionValueElementForGeneration_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_ & GGS__5B_collectionValueElementForGeneration_5D_::operator = (const GGS__5B_collectionValueElementForGeneration_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_collectionValueElementForGeneration_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::plusPlusAssignOperation (const GGS_collectionValueElementForGeneration & inValue
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  mSharedArray.appendObject (inValue) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_collectionValueElementForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::add_operation (const GGS__5B_collectionValueElementForGeneration_5D_ & inOperand,
+                                                                                                                Compiler * /* inCompiler */
+                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_collectionValueElementForGeneration_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::description (String & ioString,
+                                                                   const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@collectionValueElementForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::plusAssignOperation (const GGS__5B_collectionValueElementForGeneration_5D_ inOperand,
+                                                                           Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_append (const GGS_collectionValueElementForGeneration inValue,
+                                                                     Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_set (const GGS_collectionValueElementForGeneration inValue,
+                                                                  const GGS_uint inIndex,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'set' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_insert (const GGS_collectionValueElementForGeneration inValue,
+                                                                     const GGS_uint inInsertionIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_remove (GGS_collectionValueElementForGeneration & outValue,
+                                                                     const GGS_uint inRemoveIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_removeFirst (GGS_collectionValueElementForGeneration & outValue,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_collectionValueElementForGeneration_5D_::setter_removeLast (GGS_collectionValueElementForGeneration & outValue,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                                                                       Compiler * inCompiler
+                                                                                                                       COMMA_LOCATION_ARGS) const {
+  GGS__5B_collectionValueElementForGeneration_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_collectionValueElementForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
+                                                                                                                 const GGS_uint & inLength,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) const {
+  GGS__5B_collectionValueElementForGeneration_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_collectionValueElementForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_collectionValueElementForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGeneration_5D_::getter_first (Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGeneration_5D_::getter_last (Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_collectionValueElementForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_collectionValueElementForGeneration_5D_::DownEnumerator__5B_collectionValueElementForGeneration_5D_ (const GGS__5B_collectionValueElementForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration DownEnumerator__5B_collectionValueElementForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration DownEnumerator__5B_collectionValueElementForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_collectionValueElementForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_collectionValueElementForGeneration_5D_::UpEnumerator__5B_collectionValueElementForGeneration_5D_ (const GGS__5B_collectionValueElementForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration UpEnumerator__5B_collectionValueElementForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration UpEnumerator__5B_collectionValueElementForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[collectionValueElementForGeneration] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_collectionValueElementForGeneration_5D_ ("[collectionValueElementForGeneration]",
+                                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_collectionValueElementForGeneration_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_collectionValueElementForGeneration_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration::GGS_collectionValueElementForGeneration (void) :
+mProperty_expression (),
+mProperty_location () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration::GGS_collectionValueElementForGeneration (const GGS_collectionValueElementForGeneration & inSource) :
+mProperty_expression (inSource.mProperty_expression),
+mProperty_location (inSource.mProperty_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration & GGS_collectionValueElementForGeneration::operator = (const GGS_collectionValueElementForGeneration & inSource) {
+  mProperty_expression = inSource.mProperty_expression ;
+  mProperty_location = inSource.mProperty_location ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration GGS_collectionValueElementForGeneration::init_21__21_ (const GGS_semanticExpressionForGeneration & in_expression,
+                                                                                               const GGS_location & in_location,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_collectionValueElementForGeneration result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_expression = in_expression ;
+  result.mProperty_location = in_location ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementForGeneration::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementForGeneration::GGS_collectionValueElementForGeneration (const GGS_semanticExpressionForGeneration & inOperand0,
+                                                                                  const GGS_location & inOperand1) :
+mProperty_expression (inOperand0),
+mProperty_location (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_collectionValueElementForGeneration::isValid (void) const {
+  return mProperty_expression.isValid () && mProperty_location.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementForGeneration::drop (void) {
+  mProperty_expression.drop () ;
+  mProperty_location.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementForGeneration::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @collectionValueElementForGeneration:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_expression.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_location.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @collectionValueElementForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueElementForGeneration ("collectionValueElementForGeneration",
+                                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_collectionValueElementForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueElementForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4064,10 +4722,10 @@ const GALGAS_TypeDescriptor * GGS_typeMethodCallInstructionForGeneration_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Enum assignmentSupplement
+//  Enum assignmentSupplementIR
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentSupplement::GGS_assignmentSupplement (void) :
+GGS_assignmentSupplementIR::GGS_assignmentSupplementIR (void) :
 mAssociatedValues (),
 mEnum (Enumeration::invalid) {
 }
@@ -4075,20 +4733,20 @@ mEnum (Enumeration::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentSupplement GGS_assignmentSupplement::class_func_none (UNUSED_LOCATION_ARGS) {
-  GGS_assignmentSupplement result ;
+GGS_assignmentSupplementIR GGS_assignmentSupplementIR::class_func_none (UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementIR result ;
   result.mEnum = Enumeration::enum_none ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentSupplement GGS_assignmentSupplement::class_func_property (const GGS_lstring & inAssociatedValue0
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_assignmentSupplement result ;
+GGS_assignmentSupplementIR GGS_assignmentSupplementIR::class_func_property (const GGS_string & inAssociatedValue0
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementIR result ;
   result.mEnum = Enumeration::enum_property ;
   AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_assignmentSupplement_2E_property (inAssociatedValue0)) ;
+  macroMyNew (p, GGS_assignmentSupplementIR_2E_property (inAssociatedValue0)) ;
   EnumerationAssociatedValues * eav = nullptr ;
   macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
   result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
@@ -4098,82 +4756,144 @@ GGS_assignmentSupplement GGS_assignmentSupplement::class_func_property (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_assignmentSupplement::method_extractProperty (GGS_lstring & outAssociatedValue_name,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+GGS_assignmentSupplementIR GGS_assignmentSupplementIR::class_func_subcript (const GGS__5B_collectionValueElementForGeneration_5D_ & inAssociatedValue0,
+                                                                            const GGS_string & inAssociatedValue1
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplementIR result ;
+  result.mEnum = Enumeration::enum_subcript ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_assignmentSupplementIR_2E_subcript (inAssociatedValue0, inAssociatedValue1)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementIR::method_extractProperty (GGS_string & outAssociatedValue_name,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   if (mEnum != Enumeration::enum_property) {
     outAssociatedValue_name.drop () ;
     String s ;
-    s.appendCString ("proc @assignmentSupplement.property invoked with an invalid enum value") ;
+    s.appendCString ("proc @assignmentSupplementIR.property invoked with an invalid enum value") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    const auto ptr = (GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    const auto ptr = (GGS_assignmentSupplementIR_2E_property *) mAssociatedValues.associatedValuesPointer () ;
     outAssociatedValue_name = ptr->mProperty_name ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_assignmentSupplementIR::method_extractSubcript (GGS__5B_collectionValueElementForGeneration_5D_ & outAssociatedValue_expressions,
+                                                         GGS_string & outAssociatedValue_subcriptSignature,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_subcript) {
+    outAssociatedValue_expressions.drop () ;
+    outAssociatedValue_subcriptSignature.drop () ;
+    String s ;
+    s.appendCString ("proc @assignmentSupplementIR.subcript invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_assignmentSupplementIR_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_expressions = ptr->mProperty_expressions ;
+    outAssociatedValue_subcriptSignature = ptr->mProperty_subcriptSignature ;
+  }
+}
+
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentSupplement_2E_property_3F_ GGS_assignmentSupplement::getter_getProperty (UNUSED_LOCATION_ARGS) const {
-  GGS_assignmentSupplement_2E_property_3F_ result ;
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplementIR_2E_property_3F_ GGS_assignmentSupplementIR::getter_getProperty (UNUSED_LOCATION_ARGS) const {
+  GGS_assignmentSupplementIR_2E_property_3F_ result ;
   if (mEnum == Enumeration::enum_property) {
-    const auto ptr = (const GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_assignmentSupplement_2E_property (*ptr) ;
+    const auto ptr = (const GGS_assignmentSupplementIR_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_assignmentSupplementIR_2E_property (*ptr) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_assignmentSupplement::getAssociatedValuesFor_property (GGS_lstring & out_name) const {
-  const auto ptr = (const GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+void GGS_assignmentSupplementIR::getAssociatedValuesFor_property (GGS_string & out_name) const {
+  const auto ptr = (const GGS_assignmentSupplementIR_2E_property *) mAssociatedValues.associatedValuesPointer () ;
   out_name = ptr->mProperty_name ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static const char * gEnumNameArrayFor_assignmentSupplement [3] = {
+GGS_assignmentSupplementIR_2E_subcript_3F_ GGS_assignmentSupplementIR::getter_getSubcript (UNUSED_LOCATION_ARGS) const {
+  GGS_assignmentSupplementIR_2E_subcript_3F_ result ;
+  if (mEnum == Enumeration::enum_subcript) {
+    const auto ptr = (const GGS_assignmentSupplementIR_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_assignmentSupplementIR_2E_subcript (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementIR::getAssociatedValuesFor_subcript (GGS__5B_collectionValueElementForGeneration_5D_ & out_expressions,
+                                                                  GGS_string & out_subcriptSignature) const {
+  const auto ptr = (const GGS_assignmentSupplementIR_2E_subcript *) mAssociatedValues.associatedValuesPointer () ;
+  out_expressions = ptr->mProperty_expressions ;
+  out_subcriptSignature = ptr->mProperty_subcriptSignature ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_assignmentSupplementIR [4] = {
   "(not built)",
   "none",
-  "property"
+  "property",
+  "subcript"
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_assignmentSupplement::getter_isNone (UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_assignmentSupplementIR::getter_isNone (UNUSED_LOCATION_ARGS) const {
   return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_assignmentSupplement::getter_isProperty (UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_assignmentSupplementIR::getter_isProperty (UNUSED_LOCATION_ARGS) const {
   return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_property == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_assignmentSupplement::description (String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @assignmentSupplement: ") ;
-  ioString.appendCString (gEnumNameArrayFor_assignmentSupplement [size_t (mEnum)]) ;
+GGS_bool GGS_assignmentSupplementIR::getter_isSubcript (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_subcript == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplementIR::description (String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @assignmentSupplementIR: ") ;
+  ioString.appendCString (gEnumNameArrayFor_assignmentSupplementIR [size_t (mEnum)]) ;
   mAssociatedValues.description (ioString, inIndentation) ;
   ioString.appendCString (">") ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
-//     @assignmentSupplement generic code implementation
+//     @assignmentSupplementIR generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplement ("assignmentSupplement",
-                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementIR ("assignmentSupplementIR",
+                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_assignmentSupplement::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_assignmentSupplement ;
+const GALGAS_TypeDescriptor * GGS_assignmentSupplementIR::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentSupplementIR ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4209,7 +4929,7 @@ init_21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mReceiverTy
                                   const GGS_unifiedTypeMapEntry & in_mTargetType,
                                   const GGS_string & in_mTargetCppName,
                                   const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                  const GGS_assignmentSupplement & in_mSupplement,
+                                  const GGS_assignmentSupplementIR & in_mSupplement,
                                   const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                   const GGS_location & in_mSourceLocation,
                                   Compiler * inCompiler
@@ -4229,7 +4949,7 @@ assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (const GGS_u
                                                                      const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                      const GGS_string & in_mTargetCppName,
                                                                      const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                     const GGS_assignmentSupplement & in_mSupplement,
+                                                                     const GGS_assignmentSupplementIR & in_mSupplement,
                                                                      const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                      const GGS_location & in_mSourceLocation,
                                                                      Compiler * /* inCompiler */) {
@@ -4298,9 +5018,9 @@ GGS_string GGS_assignmentInstructionForGeneration::readProperty_mNameForChecking
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_assignmentSupplement GGS_assignmentInstructionForGeneration::readProperty_mSupplement (void) const {
+GGS_assignmentSupplementIR GGS_assignmentInstructionForGeneration::readProperty_mSupplement (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_assignmentSupplement () ;
+    return GGS_assignmentSupplementIR () ;
   }else{
     cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
@@ -4353,7 +5073,7 @@ cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration
                                                                                   const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                                   const GGS_string & in_mTargetCppName,
                                                                                   const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                  const GGS_assignmentSupplement & in_mSupplement,
+                                                                                  const GGS_assignmentSupplementIR & in_mSupplement,
                                                                                   const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                                   const GGS_location & in_mSourceLocation,
                                                                                   Compiler * inCompiler
@@ -15994,902 +16714,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalTemplateInputParame
 
 const GALGAS_TypeDescriptor * GGS__5B_formalTemplateInputParameterAST_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_formalTemplateInputParameterAST_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalTemplateInputParameterAST::GGS_formalTemplateInputParameterAST (void) :
-mProperty_mFormalTemplateSelector (),
-mProperty_mFormalArgumentTypeName (),
-mProperty_mFormalArgumentName (),
-mProperty_mIsUnused () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalTemplateInputParameterAST::GGS_formalTemplateInputParameterAST (const GGS_formalTemplateInputParameterAST & inSource) :
-mProperty_mFormalTemplateSelector (inSource.mProperty_mFormalTemplateSelector),
-mProperty_mFormalArgumentTypeName (inSource.mProperty_mFormalArgumentTypeName),
-mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
-mProperty_mIsUnused (inSource.mProperty_mIsUnused) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalTemplateInputParameterAST & GGS_formalTemplateInputParameterAST::operator = (const GGS_formalTemplateInputParameterAST & inSource) {
-  mProperty_mFormalTemplateSelector = inSource.mProperty_mFormalTemplateSelector ;
-  mProperty_mFormalArgumentTypeName = inSource.mProperty_mFormalArgumentTypeName ;
-  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
-  mProperty_mIsUnused = inSource.mProperty_mIsUnused ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formalTemplateInputParameterAST GGS_formalTemplateInputParameterAST::init_21__21__21__21_ (const GGS_lstring & in_mFormalTemplateSelector,
-                                                                                               const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                                               const GGS_lstring & in_mFormalArgumentName,
-                                                                                               const GGS_bool & in_mIsUnused,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formalTemplateInputParameterAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mFormalTemplateSelector = in_mFormalTemplateSelector ;
-  result.mProperty_mFormalArgumentTypeName = in_mFormalArgumentTypeName ;
-  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
-  result.mProperty_mIsUnused = in_mIsUnused ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalTemplateInputParameterAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalTemplateInputParameterAST::GGS_formalTemplateInputParameterAST (const GGS_lstring & inOperand0,
-                                                                          const GGS_lstring & inOperand1,
-                                                                          const GGS_lstring & inOperand2,
-                                                                          const GGS_bool & inOperand3) :
-mProperty_mFormalTemplateSelector (inOperand0),
-mProperty_mFormalArgumentTypeName (inOperand1),
-mProperty_mFormalArgumentName (inOperand2),
-mProperty_mIsUnused (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formalTemplateInputParameterAST::isValid (void) const {
-  return mProperty_mFormalTemplateSelector.isValid () && mProperty_mFormalArgumentTypeName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsUnused.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalTemplateInputParameterAST::drop (void) {
-  mProperty_mFormalTemplateSelector.drop () ;
-  mProperty_mFormalArgumentTypeName.drop () ;
-  mProperty_mFormalArgumentName.drop () ;
-  mProperty_mIsUnused.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalTemplateInputParameterAST::description (String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formalTemplateInputParameterAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mFormalTemplateSelector.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIsUnused.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formalTemplateInputParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterAST ("formalTemplateInputParameterAST",
-                                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formalTemplateInputParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formalTemplateInputParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_typedProperty_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_::GGS__5B_typedProperty_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_::GGS__5B_typedProperty_5D_ (const GGS__5B_typedProperty_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ & GGS__5B_typedProperty_5D_::operator = (const GGS__5B_typedProperty_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_typedProperty_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::plusPlusAssignOperation (const GGS_typedProperty & inValue
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_typedProperty_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::add_operation (const GGS__5B_typedProperty_5D_ & inOperand,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_typedProperty_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::description (String & ioString,
-                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@typedProperty], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::plusAssignOperation (const GGS__5B_typedProperty_5D_ inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_append (const GGS_typedProperty inValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_set (const GGS_typedProperty inValue,
-                                            const GGS_uint inIndex,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_insert (const GGS_typedProperty inValue,
-                                               const GGS_uint inInsertionIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_remove (GGS_typedProperty & outValue,
-                                               const GGS_uint inRemoveIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_removeFirst (GGS_typedProperty & outValue,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_typedProperty_5D_::setter_removeLast (GGS_typedProperty & outValue,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GGS__5B_typedProperty_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_typedProperty_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                     const GGS_uint & inLength,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_typedProperty_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_typedProperty_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_typedProperty_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty GGS__5B_typedProperty_5D_::getter_first (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  GGS_typedProperty result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty GGS__5B_typedProperty_5D_::getter_last (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  GGS_typedProperty result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty GGS__5B_typedProperty_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_typedProperty result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_typedProperty_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_typedProperty_5D_::DownEnumerator__5B_typedProperty_5D_ (const GGS__5B_typedProperty_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty DownEnumerator__5B_typedProperty_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty DownEnumerator__5B_typedProperty_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_typedProperty_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_typedProperty_5D_::UpEnumerator__5B_typedProperty_5D_ (const GGS__5B_typedProperty_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty UpEnumerator__5B_typedProperty_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedProperty UpEnumerator__5B_typedProperty_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[typedProperty] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_typedProperty_5D_ ("[typedProperty]",
-                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_typedProperty_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_typedProperty_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_enumerationDescriptor_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_::GGS__5B_enumerationDescriptor_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_::GGS__5B_enumerationDescriptor_5D_ (const GGS__5B_enumerationDescriptor_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_ & GGS__5B_enumerationDescriptor_5D_::operator = (const GGS__5B_enumerationDescriptor_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_enumerationDescriptor_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::plusPlusAssignOperation (const GGS_enumerationDescriptor & inValue
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_enumerationDescriptor_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::add_operation (const GGS__5B_enumerationDescriptor_5D_ & inOperand,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_enumerationDescriptor_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::description (String & ioString,
-                                                     const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@enumerationDescriptor], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::plusAssignOperation (const GGS__5B_enumerationDescriptor_5D_ inOperand,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_append (const GGS_enumerationDescriptor inValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_set (const GGS_enumerationDescriptor inValue,
-                                                    const GGS_uint inIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_insert (const GGS_enumerationDescriptor inValue,
-                                                       const GGS_uint inInsertionIndex,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_remove (GGS_enumerationDescriptor & outValue,
-                                                       const GGS_uint inRemoveIndex,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_removeFirst (GGS_enumerationDescriptor & outValue,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_enumerationDescriptor_5D_::setter_removeLast (GGS_enumerationDescriptor & outValue,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const {
-  GGS__5B_enumerationDescriptor_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_enumerationDescriptor_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                     const GGS_uint & inLength,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_enumerationDescriptor_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_enumerationDescriptor_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_enumerationDescriptor_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor GGS__5B_enumerationDescriptor_5D_::getter_first (Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GGS_enumerationDescriptor result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor GGS__5B_enumerationDescriptor_5D_::getter_last (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_enumerationDescriptor result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor GGS__5B_enumerationDescriptor_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
-  GGS_enumerationDescriptor result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_enumerationDescriptor_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_enumerationDescriptor_5D_::DownEnumerator__5B_enumerationDescriptor_5D_ (const GGS__5B_enumerationDescriptor_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor DownEnumerator__5B_enumerationDescriptor_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor DownEnumerator__5B_enumerationDescriptor_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_enumerationDescriptor_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_enumerationDescriptor_5D_::UpEnumerator__5B_enumerationDescriptor_5D_ (const GGS__5B_enumerationDescriptor_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor UpEnumerator__5B_enumerationDescriptor_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_enumerationDescriptor UpEnumerator__5B_enumerationDescriptor_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[enumerationDescriptor] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_enumerationDescriptor_5D_ ("[enumerationDescriptor]",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_enumerationDescriptor_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_enumerationDescriptor_5D_ ;
 }
 

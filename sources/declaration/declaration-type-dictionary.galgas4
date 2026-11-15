@@ -116,16 +116,16 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !hasCompilerArgument:false
   )
 //--- Handle insert mutating proc
-  !?setterMap.insertOrReplace (
-    @("set", self.dictionaryTypeName.location),
-    @methodKind.definedAsMember,
-    [ @("".nowhere, valueType, .argumentConstantIn, "inValue"),
-      @("key".nowhere, keyType, .argumentConstantIn, "inKey")
-    ],
-    true,
-    @methodQualifier.isBasic,
-    ""
-  )
+//  !?setterMap.insertOrReplace (
+//    @("set", self.dictionaryTypeName.location),
+//    @methodKind.definedAsMember,
+//    [ @("".nowhere, valueType, .argumentConstantIn, "inValue"),
+//      @("key".nowhere, keyType, .argumentConstantIn, "inKey")
+//    ],
+//    true,
+//    @methodQualifier.isBasic,
+//    ""
+//  )
 //--- Handle remove mutating proc
   !?setterMap.insertOrReplace (
     @("remove", self.dictionaryTypeName.location),

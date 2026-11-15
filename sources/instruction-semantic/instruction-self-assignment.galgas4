@@ -20,6 +20,7 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @selfAssignmentInstructionAST : @semanticInstructionAST {
+  private let @assignmentSupplementAST mSupplement
   private let @semanticExpressionAST mSourceExpression
 }
 
@@ -35,10 +36,23 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $self$
     let instructionLocation = @location.here
+    let @assignmentSupplementAST supplement
+    select
+      supplement = .none
+    or
+      $[$
+      <non_empty_output_expression_list> (
+        !?ioDeclarations,
+        ?let [@actualOutputArgumentAST] subcriptsArguments
+      )
+      supplement = .subcript (!subscriptArgs: subcriptsArguments, !errorLocation: .here)
+      $]$
+    end
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @selfAssignmentInstructionAST (
       instructionLocation,
+      supplement,
       sourceExpression
     )
   }
@@ -70,25 +84,69 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
     if not selfAvailable.selfMutability.selfIsMutable then
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
+    var targetType = selfAvailable.type
+    let @assignmentSupplementIR supplementIR
+    switch self.mSupplement
+    case none :
+      supplementIR = .none
+    case property (propertyName) :
+      supplementIR = .property (!name: propertyName.string)
+      let propertyMap = targetType.definition.propertyMap
+      propertyMap.searchKey (propertyName, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, propertyName)
+      if isConstant then
+        error propertyName : "a constant property cannot be modified"
+      end
+    case subcript (subcriptArgs, errorLocation) :
+      let writeSubcriptMap = targetType.definition.writeSubscriptMap
+      let lkey = @lstring (subcriptArgs.subcriptSignature, errorLocation)
+      writeSubcriptMap.searchKey (lkey, ?let formalArgs, ?targetType)
+      var [@collectionValueElementForGeneration] expressionListForGeneration
+      if subcriptArgs.count != formalArgs.count then
+        error errorLocation : formalArgs.count.string + "arguments are required" spoil expressionListForGeneration
+      else
+        expressionListForGeneration = []
+        for expression in subcriptArgs, formal in formalArgs do
+          expression.mExpression.analyzeSemanticExpression (
+            !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+            !?ioUsefulEntitiesGraph,
+            !inferenceType: formal.mFormalArgumentType,
+            inAnalysisContext,
+            !?ioTypeMap,
+            !?ioVariableMap,
+            ?var expressionForGeneration
+          )
+        //--- Check assignment type compatibility
+          checkAssignmentTypeWithImplicitGetterCall (
+            formal.mFormalArgumentType,
+            expressionForGeneration.mResultType,
+            expression.mEndOfExpressionLocation,
+            !?expressionForGeneration
+          )
+          expressionListForGeneration ++= @(expressionForGeneration, expression.mEndOfExpressionLocation)
+        end
+      end
+      supplementIR = .subcript (!expressions: expressionListForGeneration, !subcriptSignature: subcriptArgs.subcriptSignature)
+    end
   //--- Analyze source expression
     self.mSourceExpression.analyzeSemanticExpression (
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inferenceType: selfAvailable.type,
+      !inferenceType: targetType,
       inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?@semanticExpressionForGeneration expression
     )
   //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (selfAvailable.type, expression.mResultType, self.mInstructionLocation, !?expression)
+    checkAssignmentTypeWithImplicitGetterCall (targetType, expression.mResultType, self.mInstructionLocation, !?expression)
   //--- Generate instruction
     ioInstructionListForGeneration ++= @assignmentInstructionForGeneration (
       selfAvailable.type,
       selfAvailable.type,
       inAnalysisContext.selfObjectCppName,
       inAnalysisContext.selfObjectCppName,
-      .none,
+      supplementIR,
       expression,
       self.mInstructionLocation
     )

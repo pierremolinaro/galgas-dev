@@ -27,17 +27,17 @@ syntax extension galgas4InstructionsSyntax {
   rule <semantic_instruction> (?!@galgasDeclarationAST ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $identifier$ (?let mTargetVariableName)
-    let @assignmentSupplement supplement
+    let @assignmentSupplementAST supplement
     select
       supplement = .none
     or
       $[$
       <non_empty_output_expression_list> (
         !?ioDeclarations,
-        ?let [@actualOutputArgumentAST] _outExpressionList
+        ?let [@actualOutputArgumentAST] subcriptsArguments
       )
+      supplement = .subcript (!subscriptArgs: subcriptsArguments, !errorLocation: .here)
       $]$
-      error .here : "not handled yet" spoil supplement
     or
       $.$
       $identifier$ (?let propertyName)
@@ -60,17 +60,17 @@ syntax extension galgas4InstructionsSyntax {
     $self$
     $.$
     $identifier$ (?let mTargetVariableName)
-    let @assignmentSupplement supplement
+    let @assignmentSupplementAST supplement
     select
       supplement = .none
     or
       $[$
       <non_empty_output_expression_list> (
         !?ioDeclarations,
-        ?let [@actualOutputArgumentAST] _outExpressionList
+        ?let [@actualOutputArgumentAST] subcriptsArguments
       )
+      supplement = .subcript (!subscriptArgs: subcriptsArguments, !errorLocation: .here)
       $]$
-      error .here : "not handled yet" spoil supplement
     or
       $.$
       $identifier$ (?let propertyName)
@@ -94,16 +94,17 @@ syntax extension galgas4InstructionsSyntax {
 //! @assignmentInstructionAST
 //--------------------------------------------------------------------------------------------------
 
-enum @assignmentSupplement {
+enum @assignmentSupplementAST {
   case none
   case property (@lstring name)
+  case subcript ([@actualOutputArgumentAST] subscriptArgs, @location errorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 final class @assignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetVariableName
-  private let @assignmentSupplement mSupplement
+  private let @assignmentSupplementAST mSupplement
   private let @semanticExpressionAST mSourceExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,15 +125,48 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
   //--- Get target variable type
     !?ioVariableMap.neutralAccess (self.mTargetVariableName, ?let receiverType, ?*, ?*)
     var targetType = receiverType
+    let @assignmentSupplementIR supplementIR
     switch self.mSupplement
     case none :
+      supplementIR = .none
     case property (propertyName) :
+      supplementIR = .property (!name: propertyName.string)
       let propertyMap = targetType.definition.propertyMap
       propertyMap.searchKey (propertyName, ?let accessControl, ?let isConstant, ?targetType)
       accessControl.checkSetAccess (inAnalysisContext.selfAvailability, propertyName)
       if isConstant then
         error propertyName : "a constant property cannot be modified"
       end
+    case subcript (subcriptArgs, errorLocation) :
+      let writeSubcriptMap = targetType.definition.writeSubscriptMap
+      let lkey = @lstring (subcriptArgs.subcriptSignature, errorLocation)
+      writeSubcriptMap.searchKey (lkey, ?let formalArgs, ?targetType)
+      var [@collectionValueElementForGeneration] expressionListForGeneration
+      if subcriptArgs.count != formalArgs.count then
+        error errorLocation : formalArgs.count.string + "arguments are required" spoil expressionListForGeneration
+      else
+        expressionListForGeneration = []
+        for expression in subcriptArgs, formal in formalArgs do
+          expression.mExpression.analyzeSemanticExpression (
+            !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+            !?ioUsefulEntitiesGraph,
+            !inferenceType: formal.mFormalArgumentType,
+            inAnalysisContext,
+            !?ioTypeMap,
+            !?ioVariableMap,
+            ?var expressionForGeneration
+          )
+        //--- Check assignment type compatibility
+          checkAssignmentTypeWithImplicitGetterCall (
+            formal.mFormalArgumentType,
+            expressionForGeneration.mResultType,
+            expression.mEndOfExpressionLocation,
+            !?expressionForGeneration
+          )
+          expressionListForGeneration ++= @(expressionForGeneration, expression.mEndOfExpressionLocation)
+        end
+      end
+      supplementIR = .subcript (!expressions: expressionListForGeneration, !subcriptSignature: subcriptArgs.subcriptSignature)
     end
   //--- Analyze source expression
     self.mSourceExpression.analyzeSemanticExpression (
@@ -169,6 +203,13 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
         ?targetVariableCppName,
         ?nameForCheckingFormalParameterUsing
       )
+    case subcript (*, *) :
+      !?ioVariableMap.searchForReadWriteAccess (
+        self.mTargetVariableName,
+        ?*,
+        ?targetVariableCppName,
+        ?nameForCheckingFormalParameterUsing
+      )
     end
   //--- Generate instruction
     ioInstructionListForGeneration ++= @assignmentInstructionForGeneration (
@@ -176,7 +217,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       targetType,
       targetVariableCppName,
       nameForCheckingFormalParameterUsing,
-      self.mSupplement,
+      supplementIR,
       expression,
       self.mTargetVariableName.location
     )
@@ -192,7 +233,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
 
 final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   private let @lstring mTargetSelfPropertyName
-  private let @assignmentSupplement mSupplement
+  private let @assignmentSupplementAST mSupplement
   private let @semanticExpressionAST mSourceExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -222,15 +263,48 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
       let targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
          + "mProperty_"+ self.mTargetSelfPropertyName.string.identifierRepresentation
     //--- Get target variable type
+      let @assignmentSupplementIR supplementIR
       switch self.mSupplement
       case none :
+        supplementIR = .none
       case property (propertyName) :
+        supplementIR = .property (!name: propertyName.string)
         let propertyMap = targetType.definition.propertyMap
         propertyMap.searchKey (propertyName, ?let accessControl, ?let isConstant, ?targetType)
         accessControl.checkSetAccess (inAnalysisContext.selfAvailability, propertyName.location)
         if isConstant then
           error propertyName : "a constant property cannot be modified"
         end
+      case subcript (subcriptArgs, errorLocation) :
+        let writeSubcriptMap = targetType.definition.writeSubscriptMap
+        let lkey = @lstring (subcriptArgs.subcriptSignature, errorLocation)
+        writeSubcriptMap.searchKey (lkey, ?let formalArgs, ?targetType)
+        var [@collectionValueElementForGeneration] expressionListForGeneration
+        if subcriptArgs.count != formalArgs.count then
+          error errorLocation : formalArgs.count.string + "arguments are required" spoil expressionListForGeneration
+        else
+          expressionListForGeneration = []
+          for expression in subcriptArgs, formal in formalArgs do
+            expression.mExpression.analyzeSemanticExpression (
+              !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+              !?ioUsefulEntitiesGraph,
+              !inferenceType: formal.mFormalArgumentType,
+              inAnalysisContext,
+              !?ioTypeMap,
+              !?ioVariableMap,
+              ?var expressionForGeneration
+            )
+          //--- Check assignment type compatibility
+            checkAssignmentTypeWithImplicitGetterCall (
+              formal.mFormalArgumentType,
+              expressionForGeneration.mResultType,
+              expression.mEndOfExpressionLocation,
+              !?expressionForGeneration
+            )
+            expressionListForGeneration ++= @(expressionForGeneration, expression.mEndOfExpressionLocation)
+          end
+        end
+        supplementIR = .subcript (!expressions: expressionListForGeneration, !subcriptSignature: subcriptArgs.subcriptSignature)
       end
     //--- Analyze source expression
       self.mSourceExpression.analyzeSemanticExpression
@@ -254,7 +328,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         targetType,
         targetVariableCppName,
         inAnalysisContext.selfObjectCppName,
-        self.mSupplement,
+        supplementIR,
         expression,
         self.mTargetSelfPropertyName.location
       )
@@ -271,12 +345,20 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
 //! @assignmentInstructionForGeneration
 //--------------------------------------------------------------------------------------------------
 
+enum @assignmentSupplementIR {
+  case none
+  case property (@string name)
+  case subcript ([@collectionValueElementForGeneration] expressions, @string subcriptSignature)
+}
+
+//--------------------------------------------------------------------------------------------------
+
 class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetCppName
   private let @string mNameForCheckingFormalParameterUsing
-  private let @assignmentSupplement mSupplement
+  private let @assignmentSupplementIR mSupplement
   private let @semanticExpressionForGeneration mSourceExpression
   private let @location mSourceLocation
 
@@ -302,14 +384,35 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
       ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
     case property (propertyName) :
       if self.mReceiverType.definition.typeKind.isClassType then
-          ioGeneratedCode += self.mTargetCppName + ".setProperty_"
-          ioGeneratedCode += propertyName.string.identifierRepresentation
-          ioGeneratedCode += " (" + sourceVar + ") ;\n"
+        ioGeneratedCode += self.mTargetCppName + ".setProperty_"
+        ioGeneratedCode += propertyName.identifierRepresentation
+        ioGeneratedCode += " (" + sourceVar + ") ;\n"
       else
         ioGeneratedCode += self.mTargetCppName + ".mProperty_"
-        ioGeneratedCode += propertyName.string.identifierRepresentation
+        ioGeneratedCode += propertyName.identifierRepresentation
         ioGeneratedCode += " = " + sourceVar + " ;\n"
       end
+    case subcript (expressions, subcriptSignature) :
+      var [@string] cppVarNameList = []
+      for exp in expressions do
+        exp.expression.generateExpression (
+          !?ioGeneratedCode,
+          !?ioInclusionSet,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
+          ?let cppVarName
+        )
+        cppVarNameList ++= cppVarName
+      end
+      cppVarNameList ++= sourceVar
+      ioGeneratedCode += self.mTargetCppName + ".writeSubcript_"
+      ioGeneratedCode += subcriptSignature.identifierRepresentation
+      ioGeneratedCode += " ("
+      for cppVar in cppVarNameList do
+        ioGeneratedCode += cppVar + ", "
+      end
+      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+      ioGeneratedCode += compilerCppName () + " COMMA_HERE) ; \n"
     end
     !?ioUnusedVariableCppNameSet.removeKey (self.mTargetCppName)
   }
