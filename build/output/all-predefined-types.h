@@ -28,12 +28,12 @@
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
 #include "GALGAS_GenericDictionary.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
-
-class Compiler ;
 class GGS_uint64 ;
 class GGS_string ;
+class GGS_u8 ;
 class GGS_bigint ;
 class GGS_binaryset ;
 class GGS_bool ;
@@ -609,8 +609,6 @@ class GGS_string : public AC_GALGAS_root {
   public: class GGS_string getter_popen (Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
   public: class GGS__5B_string_5D_ getter_regularFiles (const class GGS_bool & constinOperand0
                                                         COMMA_LOCATION_ARGS) const ;
 
@@ -692,6 +690,198 @@ class GGS_string : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
+
+//--------------------------------------------------------------------------------------------------
+//  @u8 type
+//--------------------------------------------------------------------------------------------------
+
+class GGS_u_38_ : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: uint8_t mU8Value ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: inline uint8_t u8Value (void) const { return mU8Value ; }
+
+//--------------------------------- Default constructor
+  public: GGS_u_38_ (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_u_38_ (const uint8_t inValue) ;
+  public: GGS_u_38_ (const bool inValid, const uint8_t inValue) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_u_38_ class_func_max (LOCATION_ARGS) ;
+
+//--------------------------------- << and >> shift operators
+  public: GGS_u_38_ left_shift_operation (const GGS_uint inShiftOperand,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_38_ left_shift_operation (const GGS_bigint inShiftOperand,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_38_ right_shift_operation (const GGS_uint inShiftOperand,
+                                           class Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_38_ right_shift_operation (const GGS_bigint inShiftOperand,
+                                           class Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_u_38_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator
+  public: void minusAssignOperation (const GGS_u_38_ inOperand,
+                                     class Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- *= operator
+  public: void mulAssignOperation (const GGS_u_38_ inOperand,
+                                   class Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- /= operator
+  public: void divAssignOperation (const GGS_u_38_ inOperand,
+                                   class Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public: GGS_u_38_ operator_and (const GGS_u_38_ & inOperand
+                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: GGS_u_38_ operator_or (const GGS_u_38_ & inOperand
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: GGS_u_38_ operator_xor (const GGS_u_38_ & inOperand
+                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: GGS_u_38_ operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public: GGS_u_38_ add_operation (const GGS_u_38_ & inOperand,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &+ operator
+  public: GGS_u_38_ add_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+
+//--------------------------------- &- operator
+  public: GGS_u_38_ subtract_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+
+//--------------------------------- - operator
+  public: GGS_u_38_ subtract_operation (const GGS_u_38_ & inOperand,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- * operator
+  public: GGS_u_38_ multiply_operation (const GGS_u_38_ & inOperand,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public: GGS_u_38_ multiply_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+
+//--------------------------------- / operator
+  public: GGS_u_38_ divide_operation (const GGS_u_38_ & inOperand,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &/ operator
+  public: GGS_u_38_ divide_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+
+//--------------------------------- mod operator
+  public: GGS_u_38_ modulo_operation (const GGS_u_38_ & inOperand,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ++, -- operators
+  public: void increment_operation (Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+  public: void decrement_operation (Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- &++, &-- operators
+  public: void increment_operation_no_overflow (void) ;
+
+  public: void decrement_operation_no_overflow (void) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_u_38_ & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canAdd (const class GGS_u_38_ & constinOperand0
+                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canDivide (const class GGS_u_38_ & constinOperand0
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canMultiply (const class GGS_u_38_ & constinOperand0
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canSubstract (const class GGS_u_38_ & constinOperand0
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
+
+  public: class GGS_u_38_ getter_lsbIndex (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_u_38_ getter_oneBitCount (LOCATION_ARGS) const ;
+
+  public: class GGS_u_38_ getter_significantBitCount (LOCATION_ARGS) const ;
+
+  public: class GGS_sint getter_sint (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_string (LOCATION_ARGS) const ;
+
+  public: class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_xString (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_ ;
 
 //--------------------------------------------------------------------------------------------------
 //   @bigint type
@@ -2562,9 +2752,6 @@ class GGS_uint : public AC_GALGAS_root {
                                                         const class GGS_uint & constinOperand1,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isInRange (const class GGS_range & constinOperand0
-                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isUnicodeValueAssigned (LOCATION_ARGS) const ;
 

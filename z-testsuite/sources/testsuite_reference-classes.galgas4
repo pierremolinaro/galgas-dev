@@ -62,7 +62,7 @@ final class @classeH : @classeA {
 
 final class @classeI : @classeC {
   public let @uint y
-  public weak var @classeH z = nil
+  public var @classeH? z = nil
   
   init (let @uint inY) {
     self.y = inY

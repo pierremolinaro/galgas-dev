@@ -6,7 +6,6 @@
 
 #include "all-predefined-types.h"
 #include "CollectionElementPtr.h"
-#include "Compiler.h"
 #include "galgas-input-output.h"
 #include "utf32.h"
 #include "C_galgas_CLI_Options.h"

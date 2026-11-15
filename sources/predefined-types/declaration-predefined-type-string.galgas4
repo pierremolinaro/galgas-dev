@@ -451,13 +451,13 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !returnedTypeName:"uint",
       !hasCompilerArgument: false
     )
-    enterBaseGetterWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !getterName: "range",
-      !returnedTypeName:"range",
-      !hasCompilerArgument:false
-    )
+//    enterBaseGetterWithoutArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !getterName: "range",
+//      !returnedTypeName:"range",
+//      !hasCompilerArgument:false
+//    )
     enterBaseGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,

@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "Compiler.h"
 #include "galgas-input-output.h"
 #include "utf32.h"
 #include "galgas-random.h"
@@ -210,19 +209,6 @@ ComparisonResult GGS_uint::objectCompare (const GGS_uint & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_isInRange (const GGS_range & inRange
-                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t start = inRange.mProperty_start.uintValue () ;
-    const uint32_t end = start + inRange.mProperty_length.uintValue () ;
-    result = GGS_bool ((mUIntValue >= start) && (mUIntValue < end)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_sint GGS_uint::getter_sint (Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
@@ -237,19 +223,31 @@ GGS_sint GGS_uint::getter_sint (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_sint_36__34_ GGS_uint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GGS_sint_36__34_ ((int64_t) mUIntValue) ;
+  GGS_sint_36__34_ result ;
+  if (isValid ()) {
+    result = GGS_sint_36__34_ (int64_t (mUIntValue)) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint_36__34_ GGS_uint::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GGS_uint_36__34_ (mUIntValue) ;
+  GGS_uint_36__34_ result ;
+  if (isValid ()) {
+    result = GGS_uint_36__34_ (mUIntValue) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_double GGS_uint::getter_double (UNUSED_LOCATION_ARGS) const {
-  return GGS_double (mUIntValue) ;
+  GGS_double result ;
+  if (isValid ()) {
+    result = GGS_double (double (mUIntValue)) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -329,9 +327,13 @@ GGS_string GGS_uint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
-  String s ;
-  s.appendUnsignedHex (mUIntValue) ;
-  return GGS_string (s) ;
+  GGS_string result ;
+  if (isValid ()) {
+    String s ;
+    s.appendUnsignedHex (mUIntValue) ;
+    result = GGS_string (s) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

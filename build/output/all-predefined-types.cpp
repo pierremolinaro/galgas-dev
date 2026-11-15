@@ -823,6 +823,19 @@ GGS_stringString UpEnumerator__5B_stringString_5D_::current_entry (LOCATION_ARGS
 }
 
 //--------------------------------------------------------------------------------------------------
+//     @u8 generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_ ("u8",
+                                                          nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_u_38_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_u_38_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //     @bigint generic code implementation
 //--------------------------------------------------------------------------------------------------
 

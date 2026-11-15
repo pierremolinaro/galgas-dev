@@ -6,8 +6,6 @@
 
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
-#include "CollectionElementPtr.h"
-#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
 //  GGS_stringset

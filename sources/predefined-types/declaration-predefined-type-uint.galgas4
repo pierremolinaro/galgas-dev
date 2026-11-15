@@ -202,14 +202,13 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
-    enterBaseFinalGetterWithArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !getterName:"isInRange", "range", "inRange",
-      !returnedTypeName:"bool",
-      !hasCompilerArgument:false
-    )
-
+//    enterBaseFinalGetterWithArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !getterName:"isInRange", "range", "inRange",
+//      !returnedTypeName:"bool",
+//      !hasCompilerArgument:false
+//    )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,

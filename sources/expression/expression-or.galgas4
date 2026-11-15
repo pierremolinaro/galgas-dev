@@ -61,53 +61,6 @@ final class @openedSliceExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <expression_or_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                            !@semanticExpressionAST outExpression ) {
-//    <expression_and_ggs3> (!?ioDeclarations, ? outExpression)
-//    repeat
-//    while
-//      let operatorLocation = @location.here
-//      $|$
-//      let leftOperand = outExpression
-//      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @orExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $||$
-//      let leftOperand = outExpression
-//      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @orShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $^$
-//      let leftOperand = outExpression
-//      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @xorExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $...$
-//      let leftOperand = outExpression
-//      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @closedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    while
-//      let operatorLocation = @location.here
-//      $..<$
-//      let leftOperand = outExpression
-//      <expression_and_ggs3> (!?ioDeclarations, ?let rightOperand)
-//      outExpression = @openedSliceExpressionAST (!operatorLocation, leftOperand, rightOperand)
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -354,8 +307,8 @@ override proc @closedSliceExpressionAST.analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
-  self.mRightExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+  self.mRightExpression.analyzeSemanticExpression (
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType:  inAnalysisContext.predefinedTypes.mUIntType,
     inAnalysisContext,

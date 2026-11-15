@@ -24,7 +24,6 @@
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
 #include "GALGAS_GenericDictionary.h"
+#include "Compiler.h"
 
 //--------------------------------------------------------------------------------------------------
-
-class Compiler ;

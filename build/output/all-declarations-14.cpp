@@ -7551,10 +7551,10 @@ const GALGAS_TypeDescriptor * GGS_terminalInstructionForGrammarAnalysis_2E_weak:
 }
 
 //--------------------------------------------------------------------------------------------------
-// @binarysetPredefinedTypeAST reference class
+// @u_38_PredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_binarysetPredefinedTypeAST::objectCompare (const GGS_binarysetPredefinedTypeAST & inOperand) const {
+ComparisonResult GGS_u_38_PredefinedTypeAST::objectCompare (const GGS_u_38_PredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -7572,55 +7572,55 @@ ComparisonResult GGS_binarysetPredefinedTypeAST::objectCompare (const GGS_binary
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST::GGS_binarysetPredefinedTypeAST (void) :
+GGS_u_38_PredefinedTypeAST::GGS_u_38_PredefinedTypeAST (void) :
 GGS_predefinedTypeAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST::
+GGS_u_38_PredefinedTypeAST GGS_u_38_PredefinedTypeAST::
 init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
                           const GGS_string & in_mPredefinedTypeName,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
-  cPtr_binarysetPredefinedTypeAST * object = nullptr ;
-  macroMyNew (object, cPtr_binarysetPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->binarysetPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
-  const GGS_binarysetPredefinedTypeAST result (object) ;
+  cPtr_u_38_PredefinedTypeAST * object = nullptr ;
+  macroMyNew (object, cPtr_u_38_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
+  object->u_38_PredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  const GGS_u_38_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_binarysetPredefinedTypeAST::
-binarysetPredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
-                                                     const GGS_string & in_mPredefinedTypeName,
-                                                     Compiler * /* inCompiler */) {
+void cPtr_u_38_PredefinedTypeAST::
+u_38_PredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                                                 const GGS_string & in_mPredefinedTypeName,
+                                                 Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST::GGS_binarysetPredefinedTypeAST (const cPtr_binarysetPredefinedTypeAST * inSourcePtr) :
+GGS_u_38_PredefinedTypeAST::GGS_u_38_PredefinedTypeAST (const cPtr_u_38_PredefinedTypeAST * inSourcePtr) :
 GGS_predefinedTypeAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_binarysetPredefinedTypeAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_u_38_PredefinedTypeAST) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @binarysetPredefinedTypeAST class
+//Pointer class for @u8PredefinedTypeAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_binarysetPredefinedTypeAST::cPtr_binarysetPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_u_38_PredefinedTypeAST::cPtr_u_38_PredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_binarysetPredefinedTypeAST::cPtr_binarysetPredefinedTypeAST (const GGS_bool & in_isPredefined,
-                                                                  const GGS_string & in_mPredefinedTypeName,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
+cPtr_u_38_PredefinedTypeAST::cPtr_u_38_PredefinedTypeAST (const GGS_bool & in_isPredefined,
+                                                          const GGS_string & in_mPredefinedTypeName,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
 cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMMA_THERE) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
@@ -7628,13 +7628,13 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_binarysetPredefinedTypeAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
+const GALGAS_TypeDescriptor * cPtr_u_38_PredefinedTypeAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST ;
 }
 
-void cPtr_binarysetPredefinedTypeAST::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@binarysetPredefinedTypeAST:") ;
+void cPtr_u_38_PredefinedTypeAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@u8PredefinedTypeAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
@@ -7643,9 +7643,9 @@ void cPtr_binarysetPredefinedTypeAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-AbstractPtrClass * cPtr_binarysetPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_u_38_PredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_binarysetPredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_u_38_PredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7653,27 +7653,27 @@ AbstractPtrClass * cPtr_binarysetPredefinedTypeAST::duplicate (Compiler * inComp
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_binarysetPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_u_38_PredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @binarysetPredefinedTypeAST generic code implementation
+//     @u8PredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ("binarysetPredefinedTypeAST",
-                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST ("u8PredefinedTypeAST",
+                                                                           & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_binarysetPredefinedTypeAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST ;
+const GALGAS_TypeDescriptor * GGS_u_38_PredefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_binarysetPredefinedTypeAST_2E_weak::objectCompare (const GGS_binarysetPredefinedTypeAST_2E_weak & inOperand) const {
+ComparisonResult GGS_u_38_PredefinedTypeAST_2E_weak::objectCompare (const GGS_u_38_PredefinedTypeAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -7693,13 +7693,13 @@ ComparisonResult GGS_binarysetPredefinedTypeAST_2E_weak::objectCompare (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST_2E_weak::GGS_binarysetPredefinedTypeAST_2E_weak (void) :
+GGS_u_38_PredefinedTypeAST_2E_weak::GGS_u_38_PredefinedTypeAST_2E_weak (void) :
 GGS_predefinedTypeAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST_2E_weak & GGS_binarysetPredefinedTypeAST_2E_weak::operator = (const GGS_binarysetPredefinedTypeAST & inSource) {
+GGS_u_38_PredefinedTypeAST_2E_weak & GGS_u_38_PredefinedTypeAST_2E_weak::operator = (const GGS_u_38_PredefinedTypeAST & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -7711,27 +7711,27 @@ GGS_binarysetPredefinedTypeAST_2E_weak & GGS_binarysetPredefinedTypeAST_2E_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST_2E_weak::GGS_binarysetPredefinedTypeAST_2E_weak (const GGS_binarysetPredefinedTypeAST & inSource) :
+GGS_u_38_PredefinedTypeAST_2E_weak::GGS_u_38_PredefinedTypeAST_2E_weak (const GGS_u_38_PredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST_2E_weak GGS_binarysetPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_binarysetPredefinedTypeAST_2E_weak result ;
+GGS_u_38_PredefinedTypeAST_2E_weak GGS_u_38_PredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_u_38_PredefinedTypeAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST_2E_weak::unwrappedValue (void) const {
-  GGS_binarysetPredefinedTypeAST result ;
+GGS_u_38_PredefinedTypeAST GGS_u_38_PredefinedTypeAST_2E_weak::unwrappedValue (void) const {
+  GGS_u_38_PredefinedTypeAST result ;
   if (isValid ()) {
-    const cPtr_binarysetPredefinedTypeAST * p = (cPtr_binarysetPredefinedTypeAST *) ptr () ;
+    const cPtr_u_38_PredefinedTypeAST * p = (cPtr_u_38_PredefinedTypeAST *) ptr () ;
     if (nullptr != p) {
-      result = GGS_binarysetPredefinedTypeAST (p) ;
+      result = GGS_u_38_PredefinedTypeAST (p) ;
     }
   }
   return result ;
@@ -7739,31 +7739,31 @@ GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST_2E_weak::unwrapped
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binarysetPredefinedTypeAST GGS_binarysetPredefinedTypeAST_2E_weak::bang_binarysetPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_binarysetPredefinedTypeAST result ;
+GGS_u_38_PredefinedTypeAST GGS_u_38_PredefinedTypeAST_2E_weak::bang_u_38_PredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_u_38_PredefinedTypeAST result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_binarysetPredefinedTypeAST) ;
-      result = GGS_binarysetPredefinedTypeAST ((cPtr_binarysetPredefinedTypeAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_u_38_PredefinedTypeAST) ;
+      result = GGS_u_38_PredefinedTypeAST ((cPtr_u_38_PredefinedTypeAST *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @binarysetPredefinedTypeAST.weak generic code implementation
+//     @u8PredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ("binarysetPredefinedTypeAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST_2E_weak ("u8PredefinedTypeAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_binarysetPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_binarysetPredefinedTypeAST_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_u_38_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------

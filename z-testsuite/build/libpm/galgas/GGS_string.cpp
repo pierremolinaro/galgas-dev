@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "Compiler.h"
 #include "galgas-input-output.h"
 #include "FileManager.h"
 #include "BinaryFileWrite.h"

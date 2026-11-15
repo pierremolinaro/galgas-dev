@@ -1,0 +1,23 @@
+//--------------------------------------------------------------------------------------------------
+//  @u8 type
+//--------------------------------------------------------------------------------------------------
+
+class GGS_u_38_ : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: uint8_t mU8Value ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: inline uint8_t u8Value (void) const { return mU8Value ; }
+
+//--------------------------------- Default constructor
+  public: GGS_u_38_ (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_u_38_ (const uint8_t inValue) ;
+  public: GGS_u_38_ (const bool inValid, const uint8_t inValue) ;
+
+%
+

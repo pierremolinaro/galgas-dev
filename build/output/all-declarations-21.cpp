@@ -8,6 +8,160 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@trueExpressionForGeneration generateExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument__5F_ioGeneratedCode */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioInclusionSet */,
+                                                                  GGS_uint & /* ioArgument__5F_ioTemporaryVariableIndex */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioUnusedVariableCppNameSet */,
+                                                                  GGS_string & outArgument_outCppExpression,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GGS_string ("GGS_bool (true)") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@falseExpressionForGeneration generateExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument__5F_ioGeneratedCode */,
+                                                                   GGS_stringset & /* ioArgument__5F_ioInclusionSet */,
+                                                                   GGS_uint & /* ioArgument__5F_ioTemporaryVariableIndex */,
+                                                                   GGS_stringset & /* ioArgument__5F_ioUnusedVariableCppNameSet */,
+                                                                   GGS_string & outArgument_outCppExpression,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GGS_string ("GGS_bool (false)") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension func '@trueExpressionForGeneration isTrueExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool cPtr_trueExpressionForGeneration::getter_isTrueExpression (Compiler */* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result_result ; // Returned variable
+  result_result = GGS_bool (true) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@unaryPlusExpressionAST enterExpressionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryPlusExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unaryPlusExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 72)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@unaryPlusExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unaryPlusExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                    const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
+                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                    GGS_localVarManager & ioArgument_ioVariableMap,
+                                                                    GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unaryPlusExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-unary-plus.galgas4", 89)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, outArgument_outExpression, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 86)) ;
+  GGS_unifiedTypeMapEntry var_type_4142 = outArgument_outExpression.readProperty_mResultType () ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = extensionGetter_definition (var_type_4142, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 97)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixPlusOperator (SOURCE_FILE ("expression-unary-plus.galgas4", 97)) COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 97)).operator_not (SOURCE_FILE ("expression-unary-plus.galgas4", 97)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_unaryPlusExpressionAST temp_2 = this ;
+      GenericArray <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOperatorLocation (), GGS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4142, inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 99)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 99)).add_operation (GGS_string ("' and does not support the prefix '+' operator"), inCompiler COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 99)), fixItArray3  COMMA_SOURCE_FILE ("expression-unary-plus.galgas4", 98)) ;
+      outArgument_outExpression.drop () ; // Release error dropped variable
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@bangExpressionAST enterExpressionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_bangExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_bangExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 73)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@bangExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_bangExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                               GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                               const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
+                                                               const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                               GGS_localVarManager & ioArgument_ioVariableMap,
+                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                               Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticExpressionForGeneration var_expression_4141 ;
+  const GGS_bangExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-primary-bang.galgas4", 91)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_4141, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 88)) ;
+  GGS_unifiedTypeMapEntry var_type_4217 = var_expression_4141.readProperty_mResultType () ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    const GGS_typeKindEnum_2E_weakReferenceType var_weakRef_4256 = extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 99)).readProperty_typeKind ().getter_getWeakReferenceType (SOURCE_FILE ("expression-primary-bang.galgas4", 99)).unwrappedValue () ;
+    if (!extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 99)).readProperty_typeKind ().getter_getWeakReferenceType (SOURCE_FILE ("expression-primary-bang.galgas4", 99)).isValuated ()) {
+      test_1 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_bangExpressionAST temp_2 = this ;
+      outArgument_outExpression = GGS_bangExpressionForGeneration::init_21__21__21__21_ (var_weakRef_4256.readProperty_referenceType (), temp_2.readProperty_mOperatorLocation (), var_expression_4141, extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 104)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_1) {
+    const GGS_bangExpressionAST temp_3 = this ;
+    GenericArray <FixItDescription> fixItArray4 ;
+    inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GGS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)).add_operation (GGS_string ("' and does not support the 'bang' operator"), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)), fixItArray4  COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 107)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@bangExpressionForGeneration generateExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_bangExpressionForGeneration::method_generateExpression (GGS_string & ioArgument_ioGeneratedCode,
+                                                                  GGS_stringset & ioArgument_ioInclusionSet,
+                                                                  GGS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                  GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                  GGS_string & outArgument_outCppExpression,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_bangExpressionForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 129)) ;
+  GGS_string var_operand_5892 ;
+  const GGS_bangExpressionForGeneration temp_1 = this ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_operand_5892, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 131)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 139)) COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 139)) ;
+  }
+  const GGS_bangExpressionForGeneration temp_2 = this ;
+  outArgument_outCppExpression = var_operand_5892.add_operation (GGS_string (".bang_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 140)).add_operation (temp_2.readProperty_mReceiverTypeName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-bang.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 140)) ;
+  const GGS_bangExpressionForGeneration temp_3 = this ;
+  outArgument_outCppExpression.plusAssignOperation(GGS_string (" (").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)), inCompiler  COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 141)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@testDynamicClassInExpressionAST enterExpressionInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 
@@ -766,9 +920,9 @@ void cPtr_orExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedT
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_orExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 163)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 116)) ;
   const GGS_orExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 164)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 117)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -784,18 +938,18 @@ void cPtr_orExpressionAST::method_analyzeSemanticExpression (const GGS_lstring c
                                                              GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                              Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_7978 ;
+  GGS_semanticExpressionForGeneration var_leftExpression_6013 ;
   const GGS_orExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_7978, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 178)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_8320 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_6013, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 131)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_6355 ;
   const GGS_orExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_7978.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_8320, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 188)) ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_6013.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_6355, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 141)) ;
   {
   const GGS_orExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_7978.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 199)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("expression-or.galgas4", 199)) COMMA_SOURCE_FILE ("expression-or.galgas4", 199)), GGS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_7978, var_rightExpression_8320, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 198)) ;
+  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_6013.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 152)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("expression-or.galgas4", 152)) COMMA_SOURCE_FILE ("expression-or.galgas4", 152)), GGS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_6013, var_rightExpression_6355, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 151)) ;
   }
   const GGS_orExpressionAST temp_3 = this ;
-  outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_7978.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_7978, GGS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("expression-or.galgas4", 209)), var_rightExpression_8320, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_6013.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_6013, GGS_binaryOperator::class_func_operator_5F_or (SOURCE_FILE ("expression-or.galgas4", 162)), var_rightExpression_6355, inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -806,9 +960,9 @@ void cPtr_orShortExpressionAST::method_enterExpressionInSemanticContext (GGS_uni
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_orShortExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 219)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 172)) ;
   const GGS_orShortExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 220)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 173)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -824,18 +978,18 @@ void cPtr_orShortExpressionAST::method_analyzeSemanticExpression (const GGS_lstr
                                                                   GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_9969 ;
+  GGS_semanticExpressionForGeneration var_leftExpression_8004 ;
   const GGS_orShortExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_9969, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 234)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_10311 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_8004, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 187)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_8346 ;
   const GGS_orShortExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_9969.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_10311, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 244)) ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_8004.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_8346, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 197)) ;
   {
   const GGS_orShortExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_9969.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 255)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("expression-or.galgas4", 255)) COMMA_SOURCE_FILE ("expression-or.galgas4", 255)), GGS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_9969, var_rightExpression_10311, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 254)) ;
+  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_8004.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 208)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("expression-or.galgas4", 208)) COMMA_SOURCE_FILE ("expression-or.galgas4", 208)), GGS_string ("|"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_8004, var_rightExpression_8346, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 207)) ;
   }
   const GGS_orShortExpressionAST temp_3 = this ;
-  outArgument_outExpression = GGS_orShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_9969.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_9969, var_rightExpression_10311, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_orShortExpressionForGeneration::init_21__21__21__21_ (var_leftExpression_8004.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_8004, var_rightExpression_8346, inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -846,9 +1000,9 @@ void cPtr_xorExpressionAST::method_enterExpressionInSemanticContext (GGS_unified
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_xorExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 274)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 227)) ;
   const GGS_xorExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 275)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 228)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -864,18 +1018,18 @@ void cPtr_xorExpressionAST::method_analyzeSemanticExpression (const GGS_lstring 
                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                               Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_11950 ;
+  GGS_semanticExpressionForGeneration var_leftExpression_9985 ;
   const GGS_xorExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_11950, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 289)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_12292 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_9985, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 242)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_10327 ;
   const GGS_xorExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_11950.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_12292, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 299)) ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_9985.readProperty_mResultType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_10327, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 252)) ;
   {
   const GGS_xorExpressionAST temp_2 = this ;
-  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_11950.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 310)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("expression-or.galgas4", 310)) COMMA_SOURCE_FILE ("expression-or.galgas4", 310)), GGS_string ("^"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_11950, var_rightExpression_12292, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 309)) ;
+  routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (extensionGetter_definition (var_leftExpression_9985.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 263)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("expression-or.galgas4", 263)) COMMA_SOURCE_FILE ("expression-or.galgas4", 263)), GGS_string ("^"), temp_2.readProperty_mOperatorLocation (), var_leftExpression_9985, var_rightExpression_10327, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 262)) ;
   }
   const GGS_xorExpressionAST temp_3 = this ;
-  outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_11950.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_11950, GGS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("expression-or.galgas4", 321)), var_rightExpression_12292, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_binaryOperatorExpressionForGeneration::init_21__21__21__21__21_ (var_leftExpression_9985.readProperty_mResultType (), temp_3.readProperty_mOperatorLocation (), var_leftExpression_9985, GGS_binaryOperator::class_func_operator_5F_xor (SOURCE_FILE ("expression-or.galgas4", 274)), var_rightExpression_10327, inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -886,9 +1040,9 @@ void cPtr_closedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_closedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 331)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 284)) ;
   const GGS_closedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 332)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 285)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -904,32 +1058,32 @@ void cPtr_closedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_
                                                                       GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_14006 ;
+  GGS_semanticExpressionForGeneration var_leftExpression_12041 ;
   const GGS_closedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_14006, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 347)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_14369 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_12041, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 300)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_12405 ;
   const GGS_closedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_14369, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 357)) ;
-  GGS_unifiedTypeMapEntry var_leftType_14450 = var_leftExpression_14006.readProperty_mResultType () ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_12405, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 310)) ;
+  GGS_unifiedTypeMapEntry var_leftType_12486 = var_leftExpression_12041.readProperty_mResultType () ;
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
-    test_2 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_leftType_14450, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 368)).readProperty_typeName ().readProperty_string ().objectCompare (GGS_string ("uint"))).boolEnum () ;
+    test_2 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_leftType_12486, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 321)).readProperty_typeName ().readProperty_string ().objectCompare (GGS_string ("uint"))).boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
       GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_leftExpression_14006.readProperty_mLocation (), GGS_string ("the left expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("expression-or.galgas4", 369)) ;
+      inCompiler->emitSemanticError (var_leftExpression_12041.readProperty_mLocation (), GGS_string ("the left expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("expression-or.galgas4", 322)) ;
     }
   }
-  GGS_unifiedTypeMapEntry var_rightType_14670 = var_rightExpression_14369.readProperty_mResultType () ;
+  GGS_unifiedTypeMapEntry var_rightType_12706 = var_rightExpression_12405.readProperty_mResultType () ;
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_rightType_14670, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 372)).readProperty_typeName ().readProperty_string ().objectCompare (GGS_string ("uint"))).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_rightType_12706, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 325)).readProperty_typeName ().readProperty_string ().objectCompare (GGS_string ("uint"))).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
       GenericArray <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (var_rightExpression_14369.readProperty_mLocation (), GGS_string ("the right expression or '...' operator should an @uint"), fixItArray5  COMMA_SOURCE_FILE ("expression-or.galgas4", 373)) ;
+      inCompiler->emitSemanticError (var_rightExpression_12405.readProperty_mLocation (), GGS_string ("the right expression or '...' operator should an @uint"), fixItArray5  COMMA_SOURCE_FILE ("expression-or.galgas4", 326)) ;
     }
   }
   const GGS_closedSliceExpressionAST temp_6 = this ;
-  outArgument_outExpression = GGS_closedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_14006.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 377)), temp_6.readProperty_mOperatorLocation (), var_leftExpression_14006, var_rightExpression_14369, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_closedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_12041.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 330)), temp_6.readProperty_mOperatorLocation (), var_leftExpression_12041, var_rightExpression_12405, inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -940,9 +1094,9 @@ void cPtr_openedSliceExpressionAST::method_enterExpressionInSemanticContext (GGS
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_openedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 389)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 342)) ;
   const GGS_openedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 390)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 343)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -958,20 +1112,20 @@ void cPtr_openedSliceExpressionAST::method_analyzeSemanticExpression (const GGS_
                                                                       GGS_semanticExpressionForGeneration & outArgument_outExpression,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_leftExpression_16602 ;
+  GGS_semanticExpressionForGeneration var_leftExpression_14638 ;
   const GGS_openedSliceExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_16602, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 404)) ;
-  GGS_semanticExpressionForGeneration var_rightExpression_16965 ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_leftExpression_14638, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 357)) ;
+  GGS_semanticExpressionForGeneration var_rightExpression_15001 ;
   const GGS_openedSliceExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_16965, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 414)) ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_rightExpression_15001, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 367)) ;
   {
-  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_leftExpression_16602.readProperty_mResultType (), var_leftExpression_16602.readProperty_mLocation (), var_leftExpression_16602, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 424)) ;
+  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_leftExpression_14638.readProperty_mResultType (), var_leftExpression_14638.readProperty_mLocation (), var_leftExpression_14638, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 377)) ;
   }
   {
-  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_rightExpression_16965.readProperty_mResultType (), var_rightExpression_16965.readProperty_mLocation (), var_rightExpression_16965, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 430)) ;
+  routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mUIntType (), var_rightExpression_15001.readProperty_mResultType (), var_rightExpression_15001.readProperty_mLocation (), var_rightExpression_15001, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 383)) ;
   }
   const GGS_openedSliceExpressionAST temp_2 = this ;
-  outArgument_outExpression = GGS_openedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_16602.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 438)), temp_2.readProperty_mOperatorLocation (), var_leftExpression_16602, var_rightExpression_16965, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_openedSliceExpressionForGeneration::init_21__21__21__21_ (extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, GGS_lstring::init_21__21_ (GGS_string ("range"), var_leftExpression_14638.readProperty_mLocation (), inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 391)), temp_2.readProperty_mOperatorLocation (), var_leftExpression_14638, var_rightExpression_15001, inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -986,26 +1140,26 @@ void cPtr_orShortExpressionForGeneration::method_generateExpression (GGS_string 
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_orShortExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 476)) ;
-  GGS_string var_leftTemporaryOperand_19280 ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 429)) ;
+  GGS_string var_leftTemporaryOperand_17316 ;
   const GGS_orShortExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_19280, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 478)) ;
-  GGS_string var_testVar_19337 = GGS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-or.galgas4", 486)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 487)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_bool ").add_operation (var_testVar_19337, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 488)).add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 488)).add_operation (var_leftTemporaryOperand_19280, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 488)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 488)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 488)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (GalgasBool::boolTrue != ").add_operation (var_testVar_19337, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 489)).add_operation (GGS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 489)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 489)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_17316, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 431)) ;
+  GGS_string var_testVar_17373 = GGS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-or.galgas4", 439)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 439)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 440)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_bool ").add_operation (var_testVar_17373, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 441)).add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 441)).add_operation (var_leftTemporaryOperand_17316, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 441)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 441)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 441)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (GalgasBool::boolTrue != ").add_operation (var_testVar_17373, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 442)).add_operation (GGS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 442)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 442)) ;
   {
-  ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 491)) ;
+  ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 444)) ;
   }
-  GGS_string var_rightTemporaryOperand_19819 ;
+  GGS_string var_rightTemporaryOperand_17855 ;
   const GGS_orShortExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_19819, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 492)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(var_testVar_19337.add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 499)).add_operation (var_rightTemporaryOperand_19819, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 499)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 499)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 499)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_17855, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 445)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(var_testVar_17373.add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 452)).add_operation (var_rightTemporaryOperand_17855, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 452)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 452)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 452)) ;
   {
-  ioArgument_ioGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 500)) ;
+  ioArgument_ioGeneratedCode.setter_decIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 453)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 501)) ;
-  outArgument_outCppExpression = var_testVar_19337 ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas4", 454)) ;
+  outArgument_outCppExpression = var_testVar_17373 ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1020,16 +1174,16 @@ void cPtr_closedSliceExpressionForGeneration::method_generateExpression (GGS_str
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_closedSliceExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 513)) ;
-  GGS_string var_leftTemporaryOperand_20608 ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 466)) ;
+  GGS_string var_leftTemporaryOperand_18644 ;
   const GGS_closedSliceExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_20608, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 515)) ;
-  GGS_string var_rightTemporaryOperand_20817 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_18644, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 468)) ;
+  GGS_string var_rightTemporaryOperand_18853 ;
   const GGS_closedSliceExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_20817, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 523)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_18853, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 476)) ;
   const GGS_closedSliceExpressionForGeneration temp_3 = this ;
   const GGS_closedSliceExpressionForGeneration temp_4 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_20608, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 532)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 532)).add_operation (var_rightTemporaryOperand_20817, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 532)).add_operation (GGS_string (".subtract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (var_leftTemporaryOperand_20608, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (GGS_string (").add_operation (GGS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 533)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_18644, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 485)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 485)).add_operation (var_rightTemporaryOperand_18853, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 485)).add_operation (GGS_string (".subtract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (var_leftTemporaryOperand_18644, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (GGS_string (").add_operation (GGS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (extensionGetter_commaSourceFile (temp_4.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 486)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1044,18 +1198,18 @@ void cPtr_openedSliceExpressionForGeneration::method_generateExpression (GGS_str
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_openedSliceExpressionForGeneration temp_0 = this ;
-  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 545)) ;
-  GGS_string var_leftTemporaryOperand_21770 ;
+  extensionMethod_addHeaderFileName (temp_0.readProperty_mLeftExpression ().readProperty_mResultType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 498)) ;
+  GGS_string var_leftTemporaryOperand_19806 ;
   const GGS_openedSliceExpressionForGeneration temp_1 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_21770, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 547)) ;
-  GGS_string var_rightTemporaryOperand_21979 ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_1.readProperty_mLeftExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_19806, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 500)) ;
+  GGS_string var_rightTemporaryOperand_20015 ;
   const GGS_openedSliceExpressionForGeneration temp_2 = this ;
-  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_21979, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 555)) ;
+  callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) temp_2.readProperty_mRightExpression ().ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_20015, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 508)) ;
   {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 563)) COMMA_SOURCE_FILE ("expression-or.galgas4", 563)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 516)) COMMA_SOURCE_FILE ("expression-or.galgas4", 516)) ;
   }
   const GGS_openedSliceExpressionForGeneration temp_3 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_21770, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 565)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 565)).add_operation (var_rightTemporaryOperand_21979, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 565)).add_operation (GGS_string (".subtract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)).add_operation (var_leftTemporaryOperand_21770, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 567)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 566)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 567)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_range (").add_operation (var_leftTemporaryOperand_19806, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 518)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 518)).add_operation (var_rightTemporaryOperand_20015, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 518)).add_operation (GGS_string (".subtract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)).add_operation (var_leftTemporaryOperand_19806, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)).add_operation (extensionGetter_commaSourceFile (temp_3.readProperty_mLocation (), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 520)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 519)).add_operation (GGS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas4", 520)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2952,7 +3106,7 @@ void routine_printPredefinedLexicalActions (Compiler * inCompiler
 
 //--- File 'bdd/BinaryDecisionDiagram-node.h'
 
-const char * gWrapperFileContent_245_libpmFileWrapper = 
+const char * gWrapperFileContent_246_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)                                                     \n"
@@ -3062,17 +3216,17 @@ const char * gWrapperFileContent_245_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_245_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_246_libpmFileWrapper (
   "BinaryDecisionDiagram-node.h",
   "h",
   true, // Text file
  4246, // Text length
-  gWrapperFileContent_245_libpmFileWrapper
+  gWrapperFileContent_246_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagram.cpp'
 
-const char * gWrapperFileContent_251_libpmFileWrapper = 
+const char * gWrapperFileContent_252_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)\n"
@@ -6811,17 +6965,17 @@ const char * gWrapperFileContent_251_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_251_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_252_libpmFileWrapper (
   "BinaryDecisionDiagram.cpp",
   "cpp",
   true, // Text file
  158133, // Text length
-  gWrapperFileContent_251_libpmFileWrapper
+  gWrapperFileContent_252_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagram.h'
 
-const char * gWrapperFileContent_247_libpmFileWrapper = 
+const char * gWrapperFileContent_248_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)                                                     \n"
@@ -7190,17 +7344,17 @@ const char * gWrapperFileContent_247_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_247_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_248_libpmFileWrapper (
   "BinaryDecisionDiagram.h",
   "h",
   true, // Text file
  17637, // Text length
-  gWrapperFileContent_247_libpmFileWrapper
+  gWrapperFileContent_248_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelation.cpp'
 
-const char * gWrapperFileContent_252_libpmFileWrapper = 
+const char * gWrapperFileContent_253_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.cpp\n"
   "//  galgas-developer\n"
@@ -7583,17 +7737,17 @@ const char * gWrapperFileContent_252_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_252_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_253_libpmFileWrapper (
   "BinaryDecisionDiagramRelation.cpp",
   "cpp",
   true, // Text file
  17960, // Text length
-  gWrapperFileContent_252_libpmFileWrapper
+  gWrapperFileContent_253_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelation.h'
 
-const char * gWrapperFileContent_253_libpmFileWrapper = 
+const char * gWrapperFileContent_254_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.h\n"
   "//  galgas-developer\n"
@@ -7720,17 +7874,17 @@ const char * gWrapperFileContent_253_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_253_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_254_libpmFileWrapper (
   "BinaryDecisionDiagramRelation.h",
   "h",
   true, // Text file
  5564, // Text length
-  gWrapperFileContent_253_libpmFileWrapper
+  gWrapperFileContent_254_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationConfiguration.cpp'
 
-const char * gWrapperFileContent_250_libpmFileWrapper = 
+const char * gWrapperFileContent_251_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.cpp\n"
   "//  galgas-developer\n"
@@ -8258,17 +8412,17 @@ const char * gWrapperFileContent_250_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_250_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_251_libpmFileWrapper (
   "BinaryDecisionDiagramRelationConfiguration.cpp",
   "cpp",
   true, // Text file
  24258, // Text length
-  gWrapperFileContent_250_libpmFileWrapper
+  gWrapperFileContent_251_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationConfiguration.h'
 
-const char * gWrapperFileContent_249_libpmFileWrapper = 
+const char * gWrapperFileContent_250_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.h\n"
   "//  galgas-developer\n"
@@ -8341,17 +8495,17 @@ const char * gWrapperFileContent_249_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_249_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_250_libpmFileWrapper (
   "BinaryDecisionDiagramRelationConfiguration.h",
   "h",
   true, // Text file
  3172, // Text length
-  gWrapperFileContent_249_libpmFileWrapper
+  gWrapperFileContent_250_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationSingleType.cpp'
 
-const char * gWrapperFileContent_246_libpmFileWrapper = 
+const char * gWrapperFileContent_247_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelationSingleType.cpp\n"
   "//  galgas-developer\n"
@@ -8609,17 +8763,17 @@ const char * gWrapperFileContent_246_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_246_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_247_libpmFileWrapper (
   "BinaryDecisionDiagramRelationSingleType.cpp",
   "cpp",
   true, // Text file
  9785, // Text length
-  gWrapperFileContent_246_libpmFileWrapper
+  gWrapperFileContent_247_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationSingleType.h'
 
-const char * gWrapperFileContent_248_libpmFileWrapper = 
+const char * gWrapperFileContent_249_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelationSingleType.h\n"
   "//  galgas-developer\n"
@@ -8678,26 +8832,26 @@ const char * gWrapperFileContent_248_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_248_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_249_libpmFileWrapper (
   "BinaryDecisionDiagramRelationSingleType.h",
   "h",
   true, // Text file
  2226, // Text length
-  gWrapperFileContent_248_libpmFileWrapper
+  gWrapperFileContent_249_libpmFileWrapper
 ) ;
 
 //--- All files of 'bdd' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_16 [10] = {
-  & gWrapperFile_245_libpmFileWrapper,
-  & gWrapperFile_251_libpmFileWrapper,
-  & gWrapperFile_247_libpmFileWrapper,
-  & gWrapperFile_252_libpmFileWrapper,
-  & gWrapperFile_253_libpmFileWrapper,
-  & gWrapperFile_250_libpmFileWrapper,
-  & gWrapperFile_249_libpmFileWrapper,
   & gWrapperFile_246_libpmFileWrapper,
+  & gWrapperFile_252_libpmFileWrapper,
   & gWrapperFile_248_libpmFileWrapper,
+  & gWrapperFile_253_libpmFileWrapper,
+  & gWrapperFile_254_libpmFileWrapper,
+  & gWrapperFile_251_libpmFileWrapper,
+  & gWrapperFile_250_libpmFileWrapper,
+  & gWrapperFile_247_libpmFileWrapper,
+  & gWrapperFile_249_libpmFileWrapper,
   nullptr
 } ;
 
@@ -8719,7 +8873,7 @@ const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper (
 
 //--- File 'big-integers/BigSigned-add.cpp'
 
-const char * gWrapperFileContent_236_libpmFileWrapper = 
+const char * gWrapperFileContent_237_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -8773,17 +8927,17 @@ const char * gWrapperFileContent_236_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_237_libpmFileWrapper (
   "BigSigned-add.cpp",
   "cpp",
   true, // Text file
  2358, // Text length
-  gWrapperFileContent_236_libpmFileWrapper
+  gWrapperFileContent_237_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-bit.cpp'
 
-const char * gWrapperFileContent_227_libpmFileWrapper = 
+const char * gWrapperFileContent_228_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -8846,17 +9000,17 @@ const char * gWrapperFileContent_227_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_227_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_228_libpmFileWrapper (
   "BigSigned-bit.cpp",
   "cpp",
   true, // Text file
  2774, // Text length
-  gWrapperFileContent_227_libpmFileWrapper
+  gWrapperFileContent_228_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-chunk-operations.cpp'
 
-const char * gWrapperFileContent_238_libpmFileWrapper = 
+const char * gWrapperFileContent_239_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -8995,17 +9149,17 @@ const char * gWrapperFileContent_238_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_238_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_239_libpmFileWrapper (
   "BigSigned-chunk-operations.cpp",
   "cpp",
   true, // Text file
  6048, // Text length
-  gWrapperFileContent_238_libpmFileWrapper
+  gWrapperFileContent_239_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-constructors.cpp'
 
-const char * gWrapperFileContent_239_libpmFileWrapper = 
+const char * gWrapperFileContent_240_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9144,17 +9298,17 @@ const char * gWrapperFileContent_239_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_239_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_240_libpmFileWrapper (
   "BigSigned-constructors.cpp",
   "cpp",
   true, // Text file
  4900, // Text length
-  gWrapperFileContent_239_libpmFileWrapper
+  gWrapperFileContent_240_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-conversions.cpp'
 
-const char * gWrapperFileContent_217_libpmFileWrapper = 
+const char * gWrapperFileContent_218_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9303,17 +9457,17 @@ const char * gWrapperFileContent_217_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_217_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper (
   "BigSigned-conversions.cpp",
   "cpp",
   true, // Text file
  5382, // Text length
-  gWrapperFileContent_217_libpmFileWrapper
+  gWrapperFileContent_218_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-divide.cpp'
 
-const char * gWrapperFileContent_228_libpmFileWrapper = 
+const char * gWrapperFileContent_229_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -9384,17 +9538,17 @@ const char * gWrapperFileContent_228_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_228_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_229_libpmFileWrapper (
   "BigSigned-divide.cpp",
   "cpp",
   true, // Text file
  3164, // Text length
-  gWrapperFileContent_228_libpmFileWrapper
+  gWrapperFileContent_229_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-logic-operations.cpp'
 
-const char * gWrapperFileContent_237_libpmFileWrapper = 
+const char * gWrapperFileContent_238_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9496,17 +9650,17 @@ const char * gWrapperFileContent_237_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_237_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_238_libpmFileWrapper (
   "BigSigned-logic-operations.cpp",
   "cpp",
   true, // Text file
  4867, // Text length
-  gWrapperFileContent_237_libpmFileWrapper
+  gWrapperFileContent_238_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-multiply.cpp'
 
-const char * gWrapperFileContent_216_libpmFileWrapper = 
+const char * gWrapperFileContent_217_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -9549,17 +9703,17 @@ const char * gWrapperFileContent_216_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_216_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_217_libpmFileWrapper (
   "BigSigned-multiply.cpp",
   "cpp",
   true, // Text file
  2011, // Text length
-  gWrapperFileContent_216_libpmFileWrapper
+  gWrapperFileContent_217_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-print.cpp'
 
-const char * gWrapperFileContent_221_libpmFileWrapper = 
+const char * gWrapperFileContent_222_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9657,17 +9811,17 @@ const char * gWrapperFileContent_221_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_221_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_222_libpmFileWrapper (
   "BigSigned-print.cpp",
   "cpp",
   true, // Text file
  3438, // Text length
-  gWrapperFileContent_221_libpmFileWrapper
+  gWrapperFileContent_222_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-shifts.cpp'
 
-const char * gWrapperFileContent_242_libpmFileWrapper = 
+const char * gWrapperFileContent_243_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -9740,17 +9894,17 @@ const char * gWrapperFileContent_242_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_242_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_243_libpmFileWrapper (
   "BigSigned-shifts.cpp",
   "cpp",
   true, // Text file
  2953, // Text length
-  gWrapperFileContent_242_libpmFileWrapper
+  gWrapperFileContent_243_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-subtract.cpp'
 
-const char * gWrapperFileContent_243_libpmFileWrapper = 
+const char * gWrapperFileContent_244_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9823,17 +9977,17 @@ const char * gWrapperFileContent_243_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_243_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_244_libpmFileWrapper (
   "BigSigned-subtract.cpp",
   "cpp",
   true, // Text file
  2853, // Text length
-  gWrapperFileContent_243_libpmFileWrapper
+  gWrapperFileContent_244_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-utilities.cpp'
 
-const char * gWrapperFileContent_232_libpmFileWrapper = 
+const char * gWrapperFileContent_233_libpmFileWrapper = 
   "//\n"
   "//  BigSigned-utilities.cpp\n"
   "//  BigSignedU8U64\n"
@@ -9874,17 +10028,17 @@ const char * gWrapperFileContent_232_libpmFileWrapper =
   "}\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_233_libpmFileWrapper (
   "BigSigned-utilities.cpp",
   "cpp",
   true, // Text file
  1690, // Text length
-  gWrapperFileContent_232_libpmFileWrapper
+  gWrapperFileContent_233_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned.cpp'
 
-const char * gWrapperFileContent_222_libpmFileWrapper = 
+const char * gWrapperFileContent_223_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -9935,17 +10089,17 @@ const char * gWrapperFileContent_222_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_222_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_223_libpmFileWrapper (
   "BigSigned.cpp",
   "cpp",
   true, // Text file
  2129, // Text length
-  gWrapperFileContent_222_libpmFileWrapper
+  gWrapperFileContent_223_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned.h'
 
-const char * gWrapperFileContent_230_libpmFileWrapper = 
+const char * gWrapperFileContent_231_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  BigSigned.h\n"
@@ -10148,17 +10302,17 @@ const char * gWrapperFileContent_230_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_230_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper (
   "BigSigned.h",
   "h",
   true, // Text file
  8703, // Text length
-  gWrapperFileContent_230_libpmFileWrapper
+  gWrapperFileContent_231_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-add.cpp'
 
-const char * gWrapperFileContent_224_libpmFileWrapper = 
+const char * gWrapperFileContent_225_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -10220,17 +10374,17 @@ const char * gWrapperFileContent_224_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_224_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_225_libpmFileWrapper (
   "BigUnsigned-add.cpp",
   "cpp",
   true, // Text file
  2367, // Text length
-  gWrapperFileContent_224_libpmFileWrapper
+  gWrapperFileContent_225_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-bit.cpp'
 
-const char * gWrapperFileContent_212_libpmFileWrapper = 
+const char * gWrapperFileContent_213_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -10319,17 +10473,17 @@ const char * gWrapperFileContent_212_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_212_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_213_libpmFileWrapper (
   "BigUnsigned-bit.cpp",
   "cpp",
   true, // Text file
  4245, // Text length
-  gWrapperFileContent_212_libpmFileWrapper
+  gWrapperFileContent_213_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-chunk-operations.cpp'
 
-const char * gWrapperFileContent_241_libpmFileWrapper = 
+const char * gWrapperFileContent_242_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -10509,17 +10663,17 @@ const char * gWrapperFileContent_241_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_241_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_242_libpmFileWrapper (
   "BigUnsigned-chunk-operations.cpp",
   "cpp",
   true, // Text file
  6380, // Text length
-  gWrapperFileContent_241_libpmFileWrapper
+  gWrapperFileContent_242_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-constructors.cpp'
 
-const char * gWrapperFileContent_219_libpmFileWrapper = 
+const char * gWrapperFileContent_220_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -10956,17 +11110,17 @@ const char * gWrapperFileContent_219_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_219_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_220_libpmFileWrapper (
   "BigUnsigned-constructors.cpp",
   "cpp",
   true, // Text file
  14859, // Text length
-  gWrapperFileContent_219_libpmFileWrapper
+  gWrapperFileContent_220_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-conversions.cpp'
 
-const char * gWrapperFileContent_235_libpmFileWrapper = 
+const char * gWrapperFileContent_236_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11041,17 +11195,17 @@ const char * gWrapperFileContent_235_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_235_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper (
   "BigUnsigned-conversions.cpp",
   "cpp",
   true, // Text file
  2719, // Text length
-  gWrapperFileContent_235_libpmFileWrapper
+  gWrapperFileContent_236_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-divide-naive.cpp'
 
-const char * gWrapperFileContent_225_libpmFileWrapper = 
+const char * gWrapperFileContent_226_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11160,17 +11314,17 @@ const char * gWrapperFileContent_225_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_225_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_226_libpmFileWrapper (
   "BigUnsigned-divide-naive.cpp",
   "cpp",
   true, // Text file
  6106, // Text length
-  gWrapperFileContent_225_libpmFileWrapper
+  gWrapperFileContent_226_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-divide.cpp'
 
-const char * gWrapperFileContent_220_libpmFileWrapper = 
+const char * gWrapperFileContent_221_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -11293,17 +11447,17 @@ const char * gWrapperFileContent_220_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_220_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_221_libpmFileWrapper (
   "BigUnsigned-divide.cpp",
   "cpp",
   true, // Text file
  6164, // Text length
-  gWrapperFileContent_220_libpmFileWrapper
+  gWrapperFileContent_221_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-logic-operations.cpp'
 
-const char * gWrapperFileContent_244_libpmFileWrapper = 
+const char * gWrapperFileContent_245_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11676,17 +11830,17 @@ const char * gWrapperFileContent_244_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_244_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_245_libpmFileWrapper (
   "BigUnsigned-logic-operations.cpp",
   "cpp",
   true, // Text file
  17234, // Text length
-  gWrapperFileContent_244_libpmFileWrapper
+  gWrapperFileContent_245_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-multiply.cpp'
 
-const char * gWrapperFileContent_226_libpmFileWrapper = 
+const char * gWrapperFileContent_227_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -11755,17 +11909,17 @@ const char * gWrapperFileContent_226_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_226_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_227_libpmFileWrapper (
   "BigUnsigned-multiply.cpp",
   "cpp",
   true, // Text file
  2803, // Text length
-  gWrapperFileContent_226_libpmFileWrapper
+  gWrapperFileContent_227_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-print.cpp'
 
-const char * gWrapperFileContent_215_libpmFileWrapper = 
+const char * gWrapperFileContent_216_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11928,17 +12082,17 @@ const char * gWrapperFileContent_215_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_215_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_216_libpmFileWrapper (
   "BigUnsigned-print.cpp",
   "cpp",
   true, // Text file
  5837, // Text length
-  gWrapperFileContent_215_libpmFileWrapper
+  gWrapperFileContent_216_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-shifts.cpp'
 
-const char * gWrapperFileContent_209_libpmFileWrapper = 
+const char * gWrapperFileContent_210_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -12040,17 +12194,17 @@ const char * gWrapperFileContent_209_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_209_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_210_libpmFileWrapper (
   "BigUnsigned-shifts.cpp",
   "cpp",
   true, // Text file
  3789, // Text length
-  gWrapperFileContent_209_libpmFileWrapper
+  gWrapperFileContent_210_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-subtract.cpp'
 
-const char * gWrapperFileContent_214_libpmFileWrapper = 
+const char * gWrapperFileContent_215_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -12109,17 +12263,17 @@ const char * gWrapperFileContent_214_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_214_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_215_libpmFileWrapper (
   "BigUnsigned-subtract.cpp",
   "cpp",
   true, // Text file
  2241, // Text length
-  gWrapperFileContent_214_libpmFileWrapper
+  gWrapperFileContent_215_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-utilities.cpp'
 
-const char * gWrapperFileContent_211_libpmFileWrapper = 
+const char * gWrapperFileContent_212_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12451,17 +12605,17 @@ const char * gWrapperFileContent_211_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_211_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_212_libpmFileWrapper (
   "BigUnsigned-utilities.cpp",
   "cpp",
   true, // Text file
  11173, // Text length
-  gWrapperFileContent_211_libpmFileWrapper
+  gWrapperFileContent_212_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned.h'
 
-const char * gWrapperFileContent_231_libpmFileWrapper = 
+const char * gWrapperFileContent_232_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12694,17 +12848,17 @@ const char * gWrapperFileContent_231_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper (
   "BigUnsigned.h",
   "h",
   true, // Text file
  10232, // Text length
-  gWrapperFileContent_231_libpmFileWrapper
+  gWrapperFileContent_232_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSelectSize.h'
 
-const char * gWrapperFileContent_234_libpmFileWrapper = 
+const char * gWrapperFileContent_235_libpmFileWrapper = 
   "#pragma once\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -12786,17 +12940,17 @@ const char * gWrapperFileContent_234_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_234_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_235_libpmFileWrapper (
   "ChunkSelectSize.h",
   "h",
   true, // Text file
  3095, // Text length
-  gWrapperFileContent_234_libpmFileWrapper
+  gWrapperFileContent_235_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSharedArray.cpp'
 
-const char * gWrapperFileContent_233_libpmFileWrapper = 
+const char * gWrapperFileContent_234_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12827,17 +12981,17 @@ const char * gWrapperFileContent_233_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_233_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_234_libpmFileWrapper (
   "ChunkSharedArray.cpp",
   "cpp",
   true, // Text file
  1690, // Text length
-  gWrapperFileContent_233_libpmFileWrapper
+  gWrapperFileContent_234_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSharedArray.h'
 
-const char * gWrapperFileContent_213_libpmFileWrapper = 
+const char * gWrapperFileContent_214_libpmFileWrapper = 
   "#pragma once\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -13065,17 +13219,17 @@ const char * gWrapperFileContent_213_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_213_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_214_libpmFileWrapper (
   "ChunkSharedArray.h",
   "h",
   true, // Text file
  8392, // Text length
-  gWrapperFileContent_213_libpmFileWrapper
+  gWrapperFileContent_214_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/UInt128.cpp'
 
-const char * gWrapperFileContent_208_libpmFileWrapper = 
+const char * gWrapperFileContent_209_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Handling 128-bits unsigned integer                                                   \n"
@@ -13330,17 +13484,17 @@ const char * gWrapperFileContent_208_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_208_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_209_libpmFileWrapper (
   "UInt128.cpp",
   "cpp",
   true, // Text file
  8610, // Text length
-  gWrapperFileContent_208_libpmFileWrapper
+  gWrapperFileContent_209_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/UInt128.h'
 
-const char * gWrapperFileContent_223_libpmFileWrapper = 
+const char * gWrapperFileContent_224_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Handling 128-bits unsigned integer                                                   \n"
@@ -13429,17 +13583,17 @@ const char * gWrapperFileContent_223_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_223_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_224_libpmFileWrapper (
   "UInt128.h",
   "h",
   true, // Text file
  3465, // Text length
-  gWrapperFileContent_223_libpmFileWrapper
+  gWrapperFileContent_224_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U16.h'
 
-const char * gWrapperFileContent_229_libpmFileWrapper = 
+const char * gWrapperFileContent_230_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -13545,17 +13699,17 @@ const char * gWrapperFileContent_229_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_229_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_230_libpmFileWrapper (
   "chunk-U16.h",
   "h",
   true, // Text file
  4704, // Text length
-  gWrapperFileContent_229_libpmFileWrapper
+  gWrapperFileContent_230_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U32.h'
 
-const char * gWrapperFileContent_218_libpmFileWrapper = 
+const char * gWrapperFileContent_219_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -13661,17 +13815,17 @@ const char * gWrapperFileContent_218_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_219_libpmFileWrapper (
   "chunk-U32.h",
   "h",
   true, // Text file
  4716, // Text length
-  gWrapperFileContent_218_libpmFileWrapper
+  gWrapperFileContent_219_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U64.h'
 
-const char * gWrapperFileContent_240_libpmFileWrapper = 
+const char * gWrapperFileContent_241_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -14003,17 +14157,17 @@ const char * gWrapperFileContent_240_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_240_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_241_libpmFileWrapper (
   "chunk-U64.h",
   "h",
   true, // Text file
  11001, // Text length
-  gWrapperFileContent_240_libpmFileWrapper
+  gWrapperFileContent_241_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U8.h'
 
-const char * gWrapperFileContent_210_libpmFileWrapper = 
+const char * gWrapperFileContent_211_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -14119,54 +14273,54 @@ const char * gWrapperFileContent_210_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_210_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_211_libpmFileWrapper (
   "chunk-U8.h",
   "h",
   true, // Text file
  4666, // Text length
-  gWrapperFileContent_210_libpmFileWrapper
+  gWrapperFileContent_211_libpmFileWrapper
 ) ;
 
 //--- All files of 'big-integers' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_15 [38] = {
-  & gWrapperFile_236_libpmFileWrapper,
-  & gWrapperFile_227_libpmFileWrapper,
-  & gWrapperFile_238_libpmFileWrapper,
-  & gWrapperFile_239_libpmFileWrapper,
-  & gWrapperFile_217_libpmFileWrapper,
-  & gWrapperFile_228_libpmFileWrapper,
   & gWrapperFile_237_libpmFileWrapper,
-  & gWrapperFile_216_libpmFileWrapper,
-  & gWrapperFile_221_libpmFileWrapper,
-  & gWrapperFile_242_libpmFileWrapper,
-  & gWrapperFile_243_libpmFileWrapper,
-  & gWrapperFile_232_libpmFileWrapper,
-  & gWrapperFile_222_libpmFileWrapper,
-  & gWrapperFile_230_libpmFileWrapper,
-  & gWrapperFile_224_libpmFileWrapper,
-  & gWrapperFile_212_libpmFileWrapper,
-  & gWrapperFile_241_libpmFileWrapper,
-  & gWrapperFile_219_libpmFileWrapper,
-  & gWrapperFile_235_libpmFileWrapper,
-  & gWrapperFile_225_libpmFileWrapper,
-  & gWrapperFile_220_libpmFileWrapper,
-  & gWrapperFile_244_libpmFileWrapper,
-  & gWrapperFile_226_libpmFileWrapper,
-  & gWrapperFile_215_libpmFileWrapper,
-  & gWrapperFile_209_libpmFileWrapper,
-  & gWrapperFile_214_libpmFileWrapper,
-  & gWrapperFile_211_libpmFileWrapper,
-  & gWrapperFile_231_libpmFileWrapper,
-  & gWrapperFile_234_libpmFileWrapper,
-  & gWrapperFile_233_libpmFileWrapper,
-  & gWrapperFile_213_libpmFileWrapper,
-  & gWrapperFile_208_libpmFileWrapper,
-  & gWrapperFile_223_libpmFileWrapper,
-  & gWrapperFile_229_libpmFileWrapper,
-  & gWrapperFile_218_libpmFileWrapper,
+  & gWrapperFile_228_libpmFileWrapper,
+  & gWrapperFile_239_libpmFileWrapper,
   & gWrapperFile_240_libpmFileWrapper,
+  & gWrapperFile_218_libpmFileWrapper,
+  & gWrapperFile_229_libpmFileWrapper,
+  & gWrapperFile_238_libpmFileWrapper,
+  & gWrapperFile_217_libpmFileWrapper,
+  & gWrapperFile_222_libpmFileWrapper,
+  & gWrapperFile_243_libpmFileWrapper,
+  & gWrapperFile_244_libpmFileWrapper,
+  & gWrapperFile_233_libpmFileWrapper,
+  & gWrapperFile_223_libpmFileWrapper,
+  & gWrapperFile_231_libpmFileWrapper,
+  & gWrapperFile_225_libpmFileWrapper,
+  & gWrapperFile_213_libpmFileWrapper,
+  & gWrapperFile_242_libpmFileWrapper,
+  & gWrapperFile_220_libpmFileWrapper,
+  & gWrapperFile_236_libpmFileWrapper,
+  & gWrapperFile_226_libpmFileWrapper,
+  & gWrapperFile_221_libpmFileWrapper,
+  & gWrapperFile_245_libpmFileWrapper,
+  & gWrapperFile_227_libpmFileWrapper,
+  & gWrapperFile_216_libpmFileWrapper,
   & gWrapperFile_210_libpmFileWrapper,
+  & gWrapperFile_215_libpmFileWrapper,
+  & gWrapperFile_212_libpmFileWrapper,
+  & gWrapperFile_232_libpmFileWrapper,
+  & gWrapperFile_235_libpmFileWrapper,
+  & gWrapperFile_234_libpmFileWrapper,
+  & gWrapperFile_214_libpmFileWrapper,
+  & gWrapperFile_209_libpmFileWrapper,
+  & gWrapperFile_224_libpmFileWrapper,
+  & gWrapperFile_230_libpmFileWrapper,
+  & gWrapperFile_219_libpmFileWrapper,
+  & gWrapperFile_241_libpmFileWrapper,
+  & gWrapperFile_211_libpmFileWrapper,
   nullptr
 } ;
 
@@ -14188,7 +14342,7 @@ const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper (
 
 //--- File 'command_line_interface/AbstractCommandLineOption.cpp'
 
-const char * gWrapperFileContent_199_libpmFileWrapper = 
+const char * gWrapperFileContent_200_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Option                                                        \n"
@@ -14233,17 +14387,17 @@ const char * gWrapperFileContent_199_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_199_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_200_libpmFileWrapper (
   "AbstractCommandLineOption.cpp",
   "cpp",
   true, // Text file
  1941, // Text length
-  gWrapperFileContent_199_libpmFileWrapper
+  gWrapperFileContent_200_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/AbstractCommandLineOption.h'
 
-const char * gWrapperFileContent_202_libpmFileWrapper = 
+const char * gWrapperFileContent_203_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Option                                                        \n"
@@ -14304,17 +14458,17 @@ const char * gWrapperFileContent_202_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_202_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_203_libpmFileWrapper (
   "AbstractCommandLineOption.h",
   "h",
   true, // Text file
  2516, // Text length
-  gWrapperFileContent_202_libpmFileWrapper
+  gWrapperFileContent_203_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/BoolCommandLineOption.cpp'
 
-const char * gWrapperFileContent_195_libpmFileWrapper = 
+const char * gWrapperFileContent_196_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Boolean Command Line Interface Option\n"
@@ -14527,17 +14681,17 @@ const char * gWrapperFileContent_195_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_195_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_196_libpmFileWrapper (
   "BoolCommandLineOption.cpp",
   "cpp",
   true, // Text file
  7992, // Text length
-  gWrapperFileContent_195_libpmFileWrapper
+  gWrapperFileContent_196_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/BoolCommandLineOption.h'
 
-const char * gWrapperFileContent_206_libpmFileWrapper = 
+const char * gWrapperFileContent_207_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Boolean Command Line Interface Option                                                \n"
@@ -14619,17 +14773,17 @@ const char * gWrapperFileContent_206_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_206_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_207_libpmFileWrapper (
   "BoolCommandLineOption.h",
   "h",
   true, // Text file
  3647, // Text length
-  gWrapperFileContent_206_libpmFileWrapper
+  gWrapperFileContent_207_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/F_mainForLIBPM.cpp'
 
-const char * gWrapperFileContent_201_libpmFileWrapper = 
+const char * gWrapperFileContent_202_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'main' (call user supplied 'mainForLIBPM' routine).                                  \n"
@@ -14739,17 +14893,17 @@ const char * gWrapperFileContent_201_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_201_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_202_libpmFileWrapper (
   "F_mainForLIBPM.cpp",
   "cpp",
   true, // Text file
  3955, // Text length
-  gWrapperFileContent_201_libpmFileWrapper
+  gWrapperFileContent_202_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/F_mainForLIBPM.h'
 
-const char * gWrapperFileContent_204_libpmFileWrapper = 
+const char * gWrapperFileContent_205_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Declaration of 'mainForLIBPM' routine prototype.                                             \n"
@@ -14779,17 +14933,17 @@ const char * gWrapperFileContent_204_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_204_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_205_libpmFileWrapper (
   "F_mainForLIBPM.h",
   "h",
   true, // Text file
  1274, // Text length
-  gWrapperFileContent_204_libpmFileWrapper
+  gWrapperFileContent_205_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/StringCommandLineOption.cpp'
 
-const char * gWrapperFileContent_196_libpmFileWrapper = 
+const char * gWrapperFileContent_197_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic String Command Line Interface Option\n"
@@ -15049,17 +15203,17 @@ const char * gWrapperFileContent_196_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_196_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_197_libpmFileWrapper (
   "StringCommandLineOption.cpp",
   "cpp",
   true, // Text file
  10269, // Text length
-  gWrapperFileContent_196_libpmFileWrapper
+  gWrapperFileContent_197_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/StringCommandLineOption.h'
 
-const char * gWrapperFileContent_203_libpmFileWrapper = 
+const char * gWrapperFileContent_204_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic String Command Line Interface Option                                                 \n"
@@ -15144,17 +15298,17 @@ const char * gWrapperFileContent_203_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_203_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_204_libpmFileWrapper (
   "StringCommandLineOption.h",
   "h",
   true, // Text file
  4003, // Text length
-  gWrapperFileContent_203_libpmFileWrapper
+  gWrapperFileContent_204_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/UIntCommandLineOption.cpp'
 
-const char * gWrapperFileContent_200_libpmFileWrapper = 
+const char * gWrapperFileContent_201_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Unsigned Command Line Interface Option\n"
@@ -15416,17 +15570,17 @@ const char * gWrapperFileContent_200_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_200_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_201_libpmFileWrapper (
   "UIntCommandLineOption.cpp",
   "cpp",
   true, // Text file
  10128, // Text length
-  gWrapperFileContent_200_libpmFileWrapper
+  gWrapperFileContent_201_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/UIntCommandLineOption.h'
 
-const char * gWrapperFileContent_197_libpmFileWrapper = 
+const char * gWrapperFileContent_198_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Unsigned Command Line Interface Option                                               \n"
@@ -15508,17 +15662,17 @@ const char * gWrapperFileContent_197_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_197_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_198_libpmFileWrapper (
   "UIntCommandLineOption.h",
   "h",
   true, // Text file
  3888, // Text length
-  gWrapperFileContent_197_libpmFileWrapper
+  gWrapperFileContent_198_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/analyzeCommandLineOptions.cpp'
 
-const char * gWrapperFileContent_205_libpmFileWrapper = 
+const char * gWrapperFileContent_206_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'analyzeCommandLineOptions' : a way for automatic command line options analysis for MacOS, Win32 and Unix.     *\n"
@@ -15939,17 +16093,17 @@ const char * gWrapperFileContent_205_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_205_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_206_libpmFileWrapper (
   "analyzeCommandLineOptions.cpp",
   "cpp",
   true, // Text file
  16135, // Text length
-  gWrapperFileContent_205_libpmFileWrapper
+  gWrapperFileContent_206_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/analyzeCommandLineOptions.h'
 
-const char * gWrapperFileContent_194_libpmFileWrapper = 
+const char * gWrapperFileContent_195_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'analyzeCommandLineOptions' : a way for automatic command                                \n"
@@ -16011,17 +16165,17 @@ const char * gWrapperFileContent_194_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_194_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_195_libpmFileWrapper (
   "analyzeCommandLineOptions.h",
   "h",
   true, // Text file
  2666, // Text length
-  gWrapperFileContent_194_libpmFileWrapper
+  gWrapperFileContent_195_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/builtin-command-line-options.cpp'
 
-const char * gWrapperFileContent_198_libpmFileWrapper = 
+const char * gWrapperFileContent_199_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Options                                                       \n"
@@ -16100,17 +16254,17 @@ const char * gWrapperFileContent_198_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_198_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_199_libpmFileWrapper (
   "builtin-command-line-options.cpp",
   "cpp",
   true, // Text file
  3994, // Text length
-  gWrapperFileContent_198_libpmFileWrapper
+  gWrapperFileContent_199_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/builtin-command-line-options.h'
 
-const char * gWrapperFileContent_207_libpmFileWrapper = 
+const char * gWrapperFileContent_208_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Options                                                       \n"
@@ -16174,31 +16328,31 @@ const char * gWrapperFileContent_207_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_207_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_208_libpmFileWrapper (
   "builtin-command-line-options.h",
   "h",
   true, // Text file
  2776, // Text length
-  gWrapperFileContent_207_libpmFileWrapper
+  gWrapperFileContent_208_libpmFileWrapper
 ) ;
 
 //--- All files of 'command_line_interface' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_14 [15] = {
-  & gWrapperFile_199_libpmFileWrapper,
-  & gWrapperFile_202_libpmFileWrapper,
-  & gWrapperFile_195_libpmFileWrapper,
-  & gWrapperFile_206_libpmFileWrapper,
-  & gWrapperFile_201_libpmFileWrapper,
-  & gWrapperFile_204_libpmFileWrapper,
-  & gWrapperFile_196_libpmFileWrapper,
-  & gWrapperFile_203_libpmFileWrapper,
   & gWrapperFile_200_libpmFileWrapper,
-  & gWrapperFile_197_libpmFileWrapper,
-  & gWrapperFile_205_libpmFileWrapper,
-  & gWrapperFile_194_libpmFileWrapper,
-  & gWrapperFile_198_libpmFileWrapper,
+  & gWrapperFile_203_libpmFileWrapper,
+  & gWrapperFile_196_libpmFileWrapper,
   & gWrapperFile_207_libpmFileWrapper,
+  & gWrapperFile_202_libpmFileWrapper,
+  & gWrapperFile_205_libpmFileWrapper,
+  & gWrapperFile_197_libpmFileWrapper,
+  & gWrapperFile_204_libpmFileWrapper,
+  & gWrapperFile_201_libpmFileWrapper,
+  & gWrapperFile_198_libpmFileWrapper,
+  & gWrapperFile_206_libpmFileWrapper,
+  & gWrapperFile_195_libpmFileWrapper,
+  & gWrapperFile_199_libpmFileWrapper,
+  & gWrapperFile_208_libpmFileWrapper,
   nullptr
 } ;
 
@@ -16220,7 +16374,7 @@ const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper (
 
 //--- File 'files/AbstractFileHandle.cpp'
 
-const char * gWrapperFileContent_185_libpmFileWrapper = 
+const char * gWrapperFileContent_186_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'AbstractFileHandle' : an abstract class for handling files handles                               \n"
@@ -16313,17 +16467,17 @@ const char * gWrapperFileContent_185_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_185_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_186_libpmFileWrapper (
   "AbstractFileHandle.cpp",
   "cpp",
   true, // Text file
  3613, // Text length
-  gWrapperFileContent_185_libpmFileWrapper
+  gWrapperFileContent_186_libpmFileWrapper
 ) ;
 
 //--- File 'files/AbstractFileHandle.h'
 
-const char * gWrapperFileContent_188_libpmFileWrapper = 
+const char * gWrapperFileContent_189_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'AbstractFileHandle' : an abstract class for handling files handles\n"
@@ -16384,17 +16538,17 @@ const char * gWrapperFileContent_188_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_188_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_189_libpmFileWrapper (
   "AbstractFileHandle.h",
   "h",
   true, // Text file
  2180, // Text length
-  gWrapperFileContent_188_libpmFileWrapper
+  gWrapperFileContent_189_libpmFileWrapper
 ) ;
 
 //--- File 'files/BinaryFileWrite.cpp'
 
-const char * gWrapperFileContent_190_libpmFileWrapper = 
+const char * gWrapperFileContent_191_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'BinaryFileWrite' : a class for stream writing text files\n"
@@ -16434,17 +16588,17 @@ const char * gWrapperFileContent_190_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_190_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_191_libpmFileWrapper (
   "BinaryFileWrite.cpp",
   "cpp",
   true, // Text file
  1538, // Text length
-  gWrapperFileContent_190_libpmFileWrapper
+  gWrapperFileContent_191_libpmFileWrapper
 ) ;
 
 //--- File 'files/BinaryFileWrite.h'
 
-const char * gWrapperFileContent_187_libpmFileWrapper = 
+const char * gWrapperFileContent_188_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'BinaryFileWrite' : a class for stream writing binary files                                \n"
@@ -16495,17 +16649,17 @@ const char * gWrapperFileContent_187_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_187_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_188_libpmFileWrapper (
   "BinaryFileWrite.h",
   "h",
   true, // Text file
  2025, // Text length
-  gWrapperFileContent_187_libpmFileWrapper
+  gWrapperFileContent_188_libpmFileWrapper
 ) ;
 
 //--- File 'files/FileManager.cpp'
 
-const char * gWrapperFileContent_189_libpmFileWrapper = 
+const char * gWrapperFileContent_190_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'FileManager' : a class for handling files, independantly from platform\n"
@@ -17321,17 +17475,17 @@ const char * gWrapperFileContent_189_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_189_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_190_libpmFileWrapper (
   "FileManager.cpp",
   "cpp",
   true, // Text file
  29491, // Text length
-  gWrapperFileContent_189_libpmFileWrapper
+  gWrapperFileContent_190_libpmFileWrapper
 ) ;
 
 //--- File 'files/FileManager.h'
 
-const char * gWrapperFileContent_184_libpmFileWrapper = 
+const char * gWrapperFileContent_185_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'FileManager' : a class for handling files, independantly from platform                    \n"
@@ -17456,17 +17610,17 @@ const char * gWrapperFileContent_184_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_184_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_185_libpmFileWrapper (
   "FileManager.h",
   "h",
   true, // Text file
  5802, // Text length
-  gWrapperFileContent_184_libpmFileWrapper
+  gWrapperFileContent_185_libpmFileWrapper
 ) ;
 
 //--- File 'files/HTMLFileWrite.cpp'
 
-const char * gWrapperFileContent_192_libpmFileWrapper = 
+const char * gWrapperFileContent_193_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'HTMLFileWrite' : a class for stream writing html text files                              \n"
@@ -17615,17 +17769,17 @@ const char * gWrapperFileContent_192_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_192_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_193_libpmFileWrapper (
   "HTMLFileWrite.cpp",
   "cpp",
   true, // Text file
  5844, // Text length
-  gWrapperFileContent_192_libpmFileWrapper
+  gWrapperFileContent_193_libpmFileWrapper
 ) ;
 
 //--- File 'files/HTMLFileWrite.h'
 
-const char * gWrapperFileContent_193_libpmFileWrapper = 
+const char * gWrapperFileContent_194_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'HTMLFileWrite' : a class for stream writing html text files                              \n"
@@ -17698,17 +17852,17 @@ const char * gWrapperFileContent_193_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_193_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_194_libpmFileWrapper (
   "HTMLFileWrite.h",
   "h",
   true, // Text file
  2936, // Text length
-  gWrapperFileContent_193_libpmFileWrapper
+  gWrapperFileContent_194_libpmFileWrapper
 ) ;
 
 //--- File 'files/TextFileWrite.cpp'
 
-const char * gWrapperFileContent_186_libpmFileWrapper = 
+const char * gWrapperFileContent_187_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'TextFileWrite' : a class for stream writing text files\n"
@@ -17768,17 +17922,17 @@ const char * gWrapperFileContent_186_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_186_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_187_libpmFileWrapper (
   "TextFileWrite.cpp",
   "cpp",
   true, // Text file
  2325, // Text length
-  gWrapperFileContent_186_libpmFileWrapper
+  gWrapperFileContent_187_libpmFileWrapper
 ) ;
 
 //--- File 'files/TextFileWrite.h'
 
-const char * gWrapperFileContent_191_libpmFileWrapper = 
+const char * gWrapperFileContent_192_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'TextFileWrite' : a class for stream writing text files                                    \n"
@@ -17833,27 +17987,27 @@ const char * gWrapperFileContent_191_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_191_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_192_libpmFileWrapper (
   "TextFileWrite.h",
   "h",
   true, // Text file
  2294, // Text length
-  gWrapperFileContent_191_libpmFileWrapper
+  gWrapperFileContent_192_libpmFileWrapper
 ) ;
 
 //--- All files of 'files' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_13 [11] = {
-  & gWrapperFile_185_libpmFileWrapper,
+  & gWrapperFile_186_libpmFileWrapper,
+  & gWrapperFile_189_libpmFileWrapper,
+  & gWrapperFile_191_libpmFileWrapper,
   & gWrapperFile_188_libpmFileWrapper,
   & gWrapperFile_190_libpmFileWrapper,
-  & gWrapperFile_187_libpmFileWrapper,
-  & gWrapperFile_189_libpmFileWrapper,
-  & gWrapperFile_184_libpmFileWrapper,
-  & gWrapperFile_192_libpmFileWrapper,
+  & gWrapperFile_185_libpmFileWrapper,
   & gWrapperFile_193_libpmFileWrapper,
-  & gWrapperFile_186_libpmFileWrapper,
-  & gWrapperFile_191_libpmFileWrapper,
+  & gWrapperFile_194_libpmFileWrapper,
+  & gWrapperFile_187_libpmFileWrapper,
+  & gWrapperFile_192_libpmFileWrapper,
   nullptr
 } ;
 
@@ -18546,7 +18700,7 @@ const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
 
 //--- File 'galgas/AbstractPtrClass.cpp'
 
-const char * gWrapperFileContent_178_libpmFileWrapper = 
+const char * gWrapperFileContent_179_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -18564,12 +18718,12 @@ const char * gWrapperFileContent_178_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "AbstractPtrClass.cpp",
   "cpp",
   true, // Text file
  573, // Text length
-  gWrapperFileContent_178_libpmFileWrapper
+  gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.h'
@@ -19127,7 +19281,7 @@ const cRegularFileWrapper gWrapperFile_119_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_class_inspector.h'
 
-const char * gWrapperFileContent_171_libpmFileWrapper = 
+const char * gWrapperFileContent_172_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
@@ -19165,12 +19319,12 @@ const char * gWrapperFileContent_171_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
   "C_galgas_class_inspector.h",
   "h",
   true, // Text file
  1352, // Text length
-  gWrapperFileContent_171_libpmFileWrapper
+  gWrapperFileContent_172_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_quiet_option.cpp'
@@ -19245,7 +19399,7 @@ const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_verbose_option.cpp'
 
-const char * gWrapperFileContent_173_libpmFileWrapper = 
+const char * gWrapperFileContent_174_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Built-in GALGAS Command Line Interface Options\n"
@@ -19287,12 +19441,12 @@ const char * gWrapperFileContent_173_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
   "C_galgas_verbose_option.cpp",
   "cpp",
   true, // Text file
  1933, // Text length
-  gWrapperFileContent_173_libpmFileWrapper
+  gWrapperFileContent_174_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_verbose_option.h'
@@ -20138,7 +20292,7 @@ const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
 
 //--- File 'galgas/CollectionElementPtr.h'
 
-const char * gWrapperFileContent_176_libpmFileWrapper = 
+const char * gWrapperFileContent_177_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
@@ -20176,12 +20330,12 @@ const char * gWrapperFileContent_176_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
   "CollectionElementPtr.h",
   "h",
   true, // Text file
  1294, // Text length
-  gWrapperFileContent_176_libpmFileWrapper
+  gWrapperFileContent_177_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ComparisonKind.h'
@@ -21339,7 +21493,7 @@ const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
 
 //--- File 'galgas/Enumerator_range.h'
 
-const char * gWrapperFileContent_172_libpmFileWrapper = 
+const char * gWrapperFileContent_173_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.\n"
@@ -21404,17 +21558,17 @@ const char * gWrapperFileContent_172_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
   "Enumerator_range.h",
   "h",
   true, // Text file
  1967, // Text length
-  gWrapperFileContent_172_libpmFileWrapper
+  gWrapperFileContent_173_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/F_verbose_output.h'
 
-const char * gWrapperFileContent_177_libpmFileWrapper = 
+const char * gWrapperFileContent_178_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
@@ -21430,12 +21584,12 @@ const char * gWrapperFileContent_177_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
   "F_verbose_output.h",
   "h",
   true, // Text file
  506, // Text length
-  gWrapperFileContent_177_libpmFileWrapper
+  gWrapperFileContent_178_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_GenericDictionary.h'
@@ -22926,7 +23080,6 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"BoolCommandLineOption.h\"\n"
   "#include \"UIntCommandLineOption.h\"\n"
   "#include \"StringCommandLineOption.h\"\n"
@@ -23282,7 +23435,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17405, // Text length
+ 17383, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
@@ -23296,7 +23449,6 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -24083,7 +24235,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
- 27932, // Text length
+ 27910, // Text length
   gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
@@ -24099,7 +24251,6 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -25192,7 +25343,7 @@ const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
- 51325, // Text length
+ 51303, // Text length
   gWrapperFileContent_139_libpmFileWrapper
 ) ;
 
@@ -25206,7 +25357,6 @@ const char * gWrapperFileContent_113_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -25422,7 +25572,7 @@ const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper (
   "GGS_bool.cpp",
   "cpp",
   true, // Text file
- 7658, // Text length
+ 7636, // Text length
   gWrapperFileContent_113_libpmFileWrapper
 ) ;
 
@@ -25436,7 +25586,6 @@ const char * gWrapperFileContent_165_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"utf32.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -25842,7 +25991,7 @@ const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
   "GGS_char.cpp",
   "cpp",
   true, // Text file
- 12868, // Text length
+ 12846, // Text length
   gWrapperFileContent_165_libpmFileWrapper
 ) ;
 
@@ -25857,7 +26006,6 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "\n"
   "#include \"all-predefined-types.h\"\n"
   "#include \"CollectionElementPtr.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"galgas-input-output.h\"\n"
   "#include \"utf32.h\"\n"
   "#include \"C_galgas_CLI_Options.h\"\n"
@@ -26330,13 +26478,13 @@ const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 18969, // Text length
+ 18947, // Text length
   gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_double.cpp'
 
-const char * gWrapperFileContent_183_libpmFileWrapper = 
+const char * gWrapperFileContent_184_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -26344,7 +26492,6 @@ const char * gWrapperFileContent_183_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -26795,12 +26942,12 @@ const char * gWrapperFileContent_183_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_184_libpmFileWrapper (
   "GGS_double.cpp",
   "cpp",
   true, // Text file
- 15829, // Text length
-  gWrapperFileContent_183_libpmFileWrapper
+ 15807, // Text length
+  gWrapperFileContent_184_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_filewrapper.cpp'
@@ -26815,7 +26962,6 @@ const char * gWrapperFileContent_108_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -27363,7 +27509,7 @@ const cRegularFileWrapper gWrapperFile_108_libpmFileWrapper (
   "GGS_filewrapper.cpp",
   "cpp",
   true, // Text file
- 22919, // Text length
+ 22897, // Text length
   gWrapperFileContent_108_libpmFileWrapper
 ) ;
 
@@ -27377,7 +27523,6 @@ const char * gWrapperFileContent_126_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"FileManager.h\"\n"
   "\n"
   "//----------------------------------------------------------------------------------------------------------------------\n"
@@ -27745,7 +27890,7 @@ const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
   "GGS_location.cpp",
   "cpp",
   true, // Text file
- 15448, // Text length
+ 15426, // Text length
   gWrapperFileContent_126_libpmFileWrapper
 ) ;
 
@@ -27759,7 +27904,6 @@ const char * gWrapperFileContent_112_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -28380,13 +28524,13 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
   "GGS_sint.cpp",
   "cpp",
   true, // Text file
- 21573, // Text length
+ 21551, // Text length
   gWrapperFileContent_112_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_sint64.cpp'
 
-const char * gWrapperFileContent_167_libpmFileWrapper = 
+const char * gWrapperFileContent_168_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2019 Pierre Molinaro.\n"
@@ -28394,7 +28538,6 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
@@ -29019,17 +29162,17 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "GGS_sint64.cpp",
   "cpp",
   true, // Text file
- 24340, // Text length
-  gWrapperFileContent_167_libpmFileWrapper
+ 24318, // Text length
+  gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string-getters.cpp'
 
-const char * gWrapperFileContent_179_libpmFileWrapper = 
+const char * gWrapperFileContent_180_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -29038,7 +29181,6 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "#include \"all-predefined-types.h\"\n"
   "#include \"C_galgas_CLI_Options.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"F_mainForLIBPM.h\"\n"
   "#include \"analyzeCommandLineOptions.h\"\n"
   "#include \"utf32.h\"\n"
@@ -29171,17 +29313,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "GGS_uint GGS_string::getter_count (UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_uint result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_uint ((uint32_t) mString.length ()) ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "GGS_range GGS_string::getter_range (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_range result ;\n"
-  "  if (isValid ()) {\n"
-  "    result = GGS_range (GGS_uint (0), GGS_uint ((uint32_t) mString.length ())) ;\n"
+  "    result = GGS_uint (uint32_t (mString.length ())) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -29257,7 +29389,8 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_string::getter_utf_38_RepresentationEnclosedWithin (const GGS_char & inCharacter COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "GGS_string GGS_string::getter_utf_38_RepresentationEnclosedWithin (const GGS_char & inCharacter\n"
+  "                                                                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_string result ;\n"
   "  if (isValid () && inCharacter.isValid ()) {\n"
   "    const bool escapeQuestionMark = true ;\n"
@@ -30449,12 +30582,12 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 51996, // Text length
-  gWrapperFileContent_179_libpmFileWrapper
+ 51726, // Text length
+  gWrapperFileContent_180_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string.cpp'
@@ -30467,7 +30600,6 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"galgas-input-output.h\"\n"
   "#include \"FileManager.h\"\n"
   "#include \"BinaryFileWrite.h\"\n"
@@ -31481,7 +31613,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
- 42289, // Text length
+ 42267, // Text length
   gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
@@ -31496,8 +31628,6 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "\n"
   "#include \"all-predefined-types.h\"\n"
   "#include \"MF_MemoryControl.h\"\n"
-  "#include \"CollectionElementPtr.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "//  GGS_stringset\n"
@@ -32337,7 +32467,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_stringset.cpp",
   "cpp",
   true, // Text file
- 32164, // Text length
+ 32108, // Text length
   gWrapperFileContent_116_libpmFileWrapper
 ) ;
 
@@ -32351,7 +32481,6 @@ const char * gWrapperFileContent_141_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -32443,8 +32572,646 @@ const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
   "GGS_timer.cpp",
   "cpp",
   true, // Text file
- 2770, // Text length
+ 2748, // Text length
   gWrapperFileContent_141_libpmFileWrapper
+) ;
+
+//--- File 'galgas/GGS_u8.cpp'
+
+const char * gWrapperFileContent_167_libpmFileWrapper = 
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//\n"
+  "//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.\n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include \"all-predefined-types.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark C++ constructors\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//\n"
+  "//       C++ Constructors                                                                        \n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_::GGS_u_38_ (void) :\n"
+  "AC_GALGAS_root (),\n"
+  "mIsValid (false),\n"
+  "mU8Value (0) {\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_::GGS_u_38_ (const uint8_t inValue) :\n"
+  "AC_GALGAS_root (),\n"
+  "mIsValid (true),\n"
+  "mU8Value (inValue) {\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_::GGS_u_38_ (const bool inValid, const uint8_t inValue) :\n"
+  "AC_GALGAS_root (),\n"
+  "mIsValid (inValid),\n"
+  "mU8Value (inValue) {\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark GALGAS Class methods\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark GALGAS constructors\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::class_func_max (UNUSED_LOCATION_ARGS) {\n"
+  "  return GGS_u_38_ (UINT8_MAX) ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark Operators\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//\n"
+  "//       Operators                                                                               \n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::operator_and (const GGS_u_38_ & inOperand\n"
+  "                                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value & inOperand.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::operator_or (const GGS_u_38_ & inOperand\n"
+  "                                COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value | inOperand.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::operator_xor (const GGS_u_38_ & inOperand\n"
+  "                                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value ^ inOperand.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::operator_tilde (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_u_38_ (~ mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "ComparisonResult GGS_u_38_::objectCompare (const GGS_u_38_ & inOperand) const {\n"
+  "  ComparisonResult result = ComparisonResult::invalid ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    if (mU8Value < inOperand.mU8Value) {\n"
+  "      result = ComparisonResult::firstOperandLowerThanSecond ;\n"
+  "    }else if (mU8Value > inOperand.mU8Value) {\n"
+  "      result = ComparisonResult::firstOperandGreaterThanSecond ;\n"
+  "    }else{\n"
+  "      result = ComparisonResult::operandEqual ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark Getters\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_sint GGS_u_38_::getter_sint (Compiler *\n"
+  "                                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_sint result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_sint (int32_t (mU8Value)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_sint_36__34_ GGS_u_38_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_sint_36__34_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_sint_36__34_ (int64_t (mU8Value)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_uint_36__34_ GGS_u_38_::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_uint_36__34_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_uint_36__34_ (mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_double GGS_u_38_::getter_double (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_double result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_double (double (mU8Value)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_bigint GGS_u_38_::getter_bigint (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_bigint result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_bigint (BigSigned (true, mU8Value)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_string GGS_u_38_::getter_string (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_string result ;\n"
+  "  if (isValid ()) {\n"
+  "    String s ;\n"
+  "    s.appendUnsigned (mU8Value) ;\n"
+  "    result = GGS_string (s) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_string GGS_u_38_::getter_hexString (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_string result ;\n"
+  "  if (isValid ()) {\n"
+  "    String s ;\n"
+  "    s.appendCString (\"0x\") ;\n"
+  "    s.appendUnsignedHex (mU8Value) ;\n"
+  "    result = GGS_string (s) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_string GGS_u_38_::getter_xString (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_string result ;\n"
+  "  if (isValid ()) {\n"
+  "    String s ;\n"
+  "    s.appendUnsignedHex (mU8Value) ;\n"
+  "    result = GGS_string (s) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::description (String & ioString,\n"
+  "                             const int32_t /* inIndentation */) const {\n"
+  "  ioString.appendCString (\"<@u8:\") ;\n"
+  "  if (isValid ()) {\n"
+  "    ioString.appendUnsigned (mU8Value) ;\n"
+  "  }else{\n"
+  "    ioString.appendCString (\"not built\") ;\n"
+  "  }\n"
+  "  ioString.appendCString (\">\") ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::getter_significantBitCount (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    uint8_t v = mU8Value ;\n"
+  "    uint8_t idx = 0 ;\n"
+  "    while (v != 0) {\n"
+  "      idx += 1 ;\n"
+  "      v >>= 1 ;\n"
+  "    }\n"
+  "    result = GGS_u_38_ (idx) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::getter_oneBitCount (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    uint8_t v = mU8Value ;\n"
+  "    uint8_t idx = 0 ;\n"
+  "    while (v != 0) {\n"
+  "      idx += v & 1 ;\n"
+  "      v >>= 1 ;\n"
+  "    }\n"
+  "    result = GGS_u_38_ (idx) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::getter_lsbIndex (Compiler * inCompiler\n"
+  "                                      COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    uint8_t v = mU8Value ;\n"
+  "    if (v == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"null receiver for lsbIndex reader\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      uint8_t idx = 0 ;\n"
+  "      while ((v != 0) && ((v & 1) == 0)) {\n"
+  "        idx += 1 ;\n"
+  "        v >>= 1 ;\n"
+  "      }\n"
+  "      result = GGS_u_38_ (idx) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#ifdef PRAGMA_MARK_ALLOWED\n"
+  "  #pragma mark Operations\n"
+  "#endif\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::increment_operation_no_overflow (void) {\n"
+  "  mU8Value += 1 ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::decrement_operation_no_overflow (void) {\n"
+  "  mU8Value -= 1 ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::increment_operation (Compiler * inCompiler\n"
+  "                                     COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid ()) {\n"
+  "    if (mU8Value == UINT8_MAX) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 ++ operation overflow\" COMMA_THERE) ;\n"
+  "      drop () ;\n"
+  "    }else{\n"
+  "      mU8Value += 1 ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::decrement_operation (Compiler * inCompiler\n"
+  "                                     COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid ()) {\n"
+  "  //--- Overflow \?\n"
+  "    if (mU8Value == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 -- operation underflow\" COMMA_THERE) ;\n"
+  "      drop () ;\n"
+  "    }else{\n"
+  "      mU8Value -= 1 ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::add_operation (const GGS_u_38_ & inOperand,\n"
+  "                                    Compiler * inCompiler\n"
+  "                                    COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    uint8_t r ;\n"
+  "    const bool ovf = __builtin_add_overflow (mU8Value, inOperand.mU8Value, &r) ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 + operation overflow\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (r) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_bool GGS_u_38_::getter_canAdd (const GGS_u_38_ & inOperand\n"
+  "                                  COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_bool result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    uint32_t r ;\n"
+  "    const bool ovf = __builtin_add_overflow (mU8Value, inOperand.mU8Value, &r) ;\n"
+  "    result = GGS_bool (!ovf) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::plusAssignOperation (const GGS_u_38_ inOperand,\n"
+  "                                    Compiler * inCompiler\n"
+  "                                    COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    const bool ovf = __builtin_add_overflow (mU8Value, inOperand.mU8Value, &mU8Value) ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 += operation overflow\" COMMA_THERE) ;\n"
+  "      mIsValid = false ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::minusAssignOperation (const GGS_u_38_ inOperand,\n"
+  "                                      Compiler * inCompiler\n"
+  "                                      COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    const bool ovf = __builtin_sub_overflow (mU8Value, inOperand.mU8Value, &mU8Value) ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 -= operation overflow\" COMMA_THERE) ;\n"
+  "      mIsValid = false ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::mulAssignOperation (const GGS_u_38_ inOperand,\n"
+  "                                    Compiler * inCompiler\n"
+  "                                    COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    const bool ovf = __builtin_mul_overflow (mU8Value, inOperand.mU8Value, &mU8Value) ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 *= operation overflow\" COMMA_THERE) ;\n"
+  "      mIsValid = false ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void GGS_u_38_::divAssignOperation (const GGS_u_38_ inOperand,\n"
+  "                                    Compiler * inCompiler\n"
+  "                                    COMMA_LOCATION_ARGS) {\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    if (inOperand.mU8Value == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 /= divide by zero\" COMMA_THERE) ;\n"
+  "      mIsValid = false ;\n"
+  "    }else{\n"
+  "      mU8Value /= inOperand.mU8Value ;\n"
+  "    }\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::add_operation_no_ovf (const GGS_u_38_ & inOperand) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value + inOperand.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::subtract_operation (const GGS_u_38_ & inOperand,\n"
+  "                                        Compiler * inCompiler\n"
+  "                                        COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    const uint8_t r = mU8Value - inOperand.mU8Value ;\n"
+  "    const bool ovf = mU8Value < inOperand.mU8Value ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 - operation overflow\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (r) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_bool GGS_u_38_::getter_canSubstract (const GGS_u_38_ & inOperand\n"
+  "                                        COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_bool result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_bool (mU8Value >= inOperand.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::subtract_operation_no_ovf (const GGS_u_38_ & inOperand2) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand2.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value - inOperand2.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::multiply_operation_no_ovf (const GGS_u_38_ & inOperand2) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand2.isValid ()) {\n"
+  "    result = GGS_u_38_ (mU8Value * inOperand2.mU8Value) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::multiply_operation (const GGS_u_38_ & inOperand,\n"
+  "                                         Compiler * inCompiler\n"
+  "                                         COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    uint8_t r ;\n"
+  "    const bool ovf = __builtin_mul_overflow (mU8Value, inOperand.mU8Value, &r) ;\n"
+  "    if (ovf) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 * operation overflow\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (r) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_bool GGS_u_38_::getter_canMultiply (const GGS_u_38_ & inOperand\n"
+  "                                        COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_bool result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    uint32_t r ;\n"
+  "    const bool ovf = __builtin_mul_overflow (mU8Value, inOperand.mU8Value, &r) ;\n"
+  "    result = GGS_bool (!ovf) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::divide_operation (const GGS_u_38_ & inOperand,\n"
+  "                                       Compiler * inCompiler\n"
+  "                                       COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    if (inOperand.mU8Value == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 divide by zero\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (mU8Value / inOperand.mU8Value) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_bool GGS_u_38_::getter_canDivide (const GGS_u_38_ & inOperand\n"
+  "                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_bool result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_bool (inOperand.mU8Value != 0) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::divide_operation_no_ovf (const GGS_u_38_ & inOperand) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ ((inOperand.mU8Value == 0) \? 0 : (mU8Value / inOperand.mU8Value)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::modulo_operation (const GGS_u_38_ & inOperand,\n"
+  "                                       Compiler * inCompiler\n"
+  "                                       COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    if (inOperand.mU8Value == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 divide by zero in modulo operation\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (mU8Value % inOperand.mU8Value) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::left_shift_operation (const GGS_uint inOperand,\n"
+  "                                           class Compiler * /* inCompiler*/\n"
+  "                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (uint8_t (mU8Value << (inOperand.uintValue () & 7))) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::left_shift_operation (const GGS_bigint inShiftOperand,\n"
+  "                                           Compiler * inCompiler\n"
+  "                                           COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inShiftOperand.isValid ()) {\n"
+  "    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 left shift by a negative amount\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (uint8_t (mU8Value << (inShiftOperand.bigintValue().uint32 () & 7))) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::right_shift_operation (const GGS_uint inOperand,\n"
+  "                                            Compiler * /* inCompiler*/\n"
+  "                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inOperand.isValid ()) {\n"
+  "    result = GGS_u_38_ (uint8_t (mU8Value >> (inOperand.uintValue () & 7))) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_u_38_ GGS_u_38_::right_shift_operation (const GGS_bigint inShiftOperand,\n"
+  "                                            Compiler * inCompiler\n"
+  "                                            COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid () && inShiftOperand.isValid ()) {\n"
+  "    if (inShiftOperand.bigintValue().isStrictlyNegative ()) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@u8 right shift by a negative amount\" COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      result = GGS_u_38_ (mU8Value >> (inShiftOperand.bigintValue().uint32 () & 31)) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+   ;
+
+const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
+  "GGS_u8.cpp",
+  "cpp",
+  true, // Text file
+ 20763, // Text length
+  gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_uint.cpp'
@@ -32457,7 +33224,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "#include \"galgas-input-output.h\"\n"
   "#include \"utf32.h\"\n"
   "#include \"galgas-random.h\"\n"
@@ -32662,19 +33428,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_bool GGS_uint::getter_isInRange (const GGS_range & inRange\n"
-  "                                     COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_bool result ;\n"
-  "  if (isValid () && inRange.isValid ()) {\n"
-  "    const uint32_t start = inRange.mProperty_start.uintValue () ;\n"
-  "    const uint32_t end = start + inRange.mProperty_length.uintValue () ;\n"
-  "    result = GGS_bool ((mUIntValue >= start) && (mUIntValue < end)) ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_sint GGS_uint::getter_sint (Compiler * inCompiler\n"
   "                                COMMA_LOCATION_ARGS) const {\n"
   "  GGS_sint result ;\n"
@@ -32689,19 +33442,31 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_sint_36__34_ GGS_uint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
-  "  return GGS_sint_36__34_ ((int64_t) mUIntValue) ;\n"
+  "  GGS_sint_36__34_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_sint_36__34_ (int64_t (mUIntValue)) ;\n"
+  "  }\n"
+  "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_uint_36__34_ GGS_uint::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
-  "  return GGS_uint_36__34_ (mUIntValue) ;\n"
+  "  GGS_uint_36__34_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_uint_36__34_ (mUIntValue) ;\n"
+  "  }\n"
+  "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_double GGS_uint::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  return GGS_double (mUIntValue) ;\n"
+  "  GGS_double result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS_double (double (mUIntValue)) ;\n"
+  "  }\n"
+  "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -32781,9 +33546,13 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_string GGS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {\n"
-  "  String s ;\n"
-  "  s.appendUnsignedHex (mUIntValue) ;\n"
-  "  return GGS_string (s) ;\n"
+  "  GGS_string result ;\n"
+  "  if (isValid ()) {\n"
+  "    String s ;\n"
+  "    s.appendUnsignedHex (mUIntValue) ;\n"
+  "    result = GGS_string (s) ;\n"
+  "  }\n"
+  "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -33198,7 +33967,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 25688, // Text length
+ 25429, // Text length
   gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
@@ -33212,7 +33981,6 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"Compiler.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -33913,13 +34681,13 @@ const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "GGS_uint64.cpp",
   "cpp",
   true, // Text file
- 26715, // Text length
+ 26693, // Text length
   gWrapperFileContent_149_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.cpp'
 
-const char * gWrapperFileContent_175_libpmFileWrapper = 
+const char * gWrapperFileContent_176_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -34150,12 +34918,12 @@ const char * gWrapperFileContent_175_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
   "IndexingDictionary.cpp",
   "cpp",
   true, // Text file
  8072, // Text length
-  gWrapperFileContent_175_libpmFileWrapper
+  gWrapperFileContent_176_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.h'
@@ -34227,7 +34995,7 @@ const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
 
 //--- File 'galgas/IssueDescriptor.cpp'
 
-const char * gWrapperFileContent_181_libpmFileWrapper = 
+const char * gWrapperFileContent_182_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34368,17 +35136,17 @@ const char * gWrapperFileContent_181_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
   "IssueDescriptor.cpp",
   "cpp",
   true, // Text file
  4989, // Text length
-  gWrapperFileContent_181_libpmFileWrapper
+  gWrapperFileContent_182_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.h'
 
-const char * gWrapperFileContent_180_libpmFileWrapper = 
+const char * gWrapperFileContent_181_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34428,12 +35196,12 @@ const char * gWrapperFileContent_180_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
   "IssueDescriptor.h",
   "h",
   true, // Text file
  1794, // Text length
-  gWrapperFileContent_180_libpmFileWrapper
+  gWrapperFileContent_181_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.cpp'
@@ -35594,7 +36362,7 @@ const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper (
 
 //--- File 'galgas/Lexique.cpp'
 
-const char * gWrapperFileContent_168_libpmFileWrapper = 
+const char * gWrapperFileContent_169_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
@@ -36467,12 +37235,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
  33735, // Text length
-  gWrapperFileContent_168_libpmFileWrapper
+  gWrapperFileContent_169_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique.h'
@@ -36733,7 +37501,7 @@ const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper (
 
 //--- File 'galgas/LexiqueIntrospection.cpp'
 
-const char * gWrapperFileContent_182_libpmFileWrapper = 
+const char * gWrapperFileContent_183_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.\n"
@@ -36867,12 +37635,12 @@ const char * gWrapperFileContent_182_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
   "LexiqueIntrospection.cpp",
   "cpp",
   true, // Text file
  5738, // Text length
-  gWrapperFileContent_182_libpmFileWrapper
+  gWrapperFileContent_183_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LexiqueIntrospection.h'
@@ -37253,7 +38021,7 @@ const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
 
 //--- File 'galgas/SharedGenericPtrWithValueSemantics.h'
 
-const char * gWrapperFileContent_170_libpmFileWrapper = 
+const char * gWrapperFileContent_171_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created by Pierre Molinaro on 15/03/2025, ..., 2025 Pierre Molinaro.\n"
@@ -37438,12 +38206,12 @@ const char * gWrapperFileContent_170_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
   "SharedGenericPtrWithValueSemantics.h",
   "h",
   true, // Text file
  8240, // Text length
-  gWrapperFileContent_170_libpmFileWrapper
+  gWrapperFileContent_171_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.cpp'
@@ -38615,7 +39383,7 @@ const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
 
 //--- File 'galgas/SourceTextInString.h'
 
-const char * gWrapperFileContent_169_libpmFileWrapper = 
+const char * gWrapperFileContent_170_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -38708,12 +39476,12 @@ const char * gWrapperFileContent_169_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
   "SourceTextInString.h",
   "h",
   true, // Text file
  3167, // Text length
-  gWrapperFileContent_169_libpmFileWrapper
+  gWrapperFileContent_170_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/TemplateDelimiter.h'
@@ -38775,7 +39543,7 @@ const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper (
 
 //--- File 'galgas/galgas-input-output.cpp'
 
-const char * gWrapperFileContent_174_libpmFileWrapper = 
+const char * gWrapperFileContent_175_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.\n"
@@ -39576,12 +40344,12 @@ const char * gWrapperFileContent_174_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
  31276, // Text length
-  gWrapperFileContent_174_libpmFileWrapper
+  gWrapperFileContent_175_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/galgas-input-output.h'
@@ -41047,7 +41815,7 @@ const cDirectoryWrapper gWrapperDirectory_10_libpmFileWrapper (
 
 //--- All files of 'galgas' directory
 
-static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [82] = {
+static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [83] = {
   & gWrapperFile_124_libpmFileWrapper,
   & gWrapperFile_150_libpmFileWrapper,
   & gWrapperFile_122_libpmFileWrapper,
@@ -41056,32 +41824,32 @@ static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [82] = {
   & gWrapperFile_147_libpmFileWrapper,
   & gWrapperFile_152_libpmFileWrapper,
   & gWrapperFile_163_libpmFileWrapper,
-  & gWrapperFile_178_libpmFileWrapper,
+  & gWrapperFile_179_libpmFileWrapper,
   & gWrapperFile_158_libpmFileWrapper,
   & gWrapperFile_154_libpmFileWrapper,
   & gWrapperFile_146_libpmFileWrapper,
   & gWrapperFile_162_libpmFileWrapper,
   & gWrapperFile_123_libpmFileWrapper,
   & gWrapperFile_119_libpmFileWrapper,
-  & gWrapperFile_171_libpmFileWrapper,
+  & gWrapperFile_172_libpmFileWrapper,
   & gWrapperFile_118_libpmFileWrapper,
   & gWrapperFile_143_libpmFileWrapper,
-  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_174_libpmFileWrapper,
   & gWrapperFile_137_libpmFileWrapper,
   & gWrapperFile_125_libpmFileWrapper,
   & gWrapperFile_129_libpmFileWrapper,
   & gWrapperFile_128_libpmFileWrapper,
   & gWrapperFile_131_libpmFileWrapper,
   & gWrapperFile_127_libpmFileWrapper,
-  & gWrapperFile_176_libpmFileWrapper,
+  & gWrapperFile_177_libpmFileWrapper,
   & gWrapperFile_140_libpmFileWrapper,
   & gWrapperFile_120_libpmFileWrapper,
   & gWrapperFile_121_libpmFileWrapper,
   & gWrapperFile_117_libpmFileWrapper,
   & gWrapperFile_148_libpmFileWrapper,
   & gWrapperFile_132_libpmFileWrapper,
-  & gWrapperFile_172_libpmFileWrapper,
-  & gWrapperFile_177_libpmFileWrapper,
+  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_178_libpmFileWrapper,
   & gWrapperFile_103_libpmFileWrapper,
   & gWrapperFile_144_libpmFileWrapper,
   & gWrapperFile_157_libpmFileWrapper,
@@ -41092,40 +41860,41 @@ static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [82] = {
   & gWrapperFile_113_libpmFileWrapper,
   & gWrapperFile_165_libpmFileWrapper,
   & gWrapperFile_151_libpmFileWrapper,
-  & gWrapperFile_183_libpmFileWrapper,
+  & gWrapperFile_184_libpmFileWrapper,
   & gWrapperFile_108_libpmFileWrapper,
   & gWrapperFile_126_libpmFileWrapper,
   & gWrapperFile_112_libpmFileWrapper,
-  & gWrapperFile_167_libpmFileWrapper,
-  & gWrapperFile_179_libpmFileWrapper,
+  & gWrapperFile_168_libpmFileWrapper,
+  & gWrapperFile_180_libpmFileWrapper,
   & gWrapperFile_136_libpmFileWrapper,
   & gWrapperFile_116_libpmFileWrapper,
   & gWrapperFile_141_libpmFileWrapper,
+  & gWrapperFile_167_libpmFileWrapper,
   & gWrapperFile_138_libpmFileWrapper,
   & gWrapperFile_149_libpmFileWrapper,
-  & gWrapperFile_175_libpmFileWrapper,
+  & gWrapperFile_176_libpmFileWrapper,
   & gWrapperFile_160_libpmFileWrapper,
+  & gWrapperFile_182_libpmFileWrapper,
   & gWrapperFile_181_libpmFileWrapper,
-  & gWrapperFile_180_libpmFileWrapper,
   & gWrapperFile_145_libpmFileWrapper,
   & gWrapperFile_106_libpmFileWrapper,
   & gWrapperFile_109_libpmFileWrapper,
-  & gWrapperFile_168_libpmFileWrapper,
+  & gWrapperFile_169_libpmFileWrapper,
   & gWrapperFile_130_libpmFileWrapper,
-  & gWrapperFile_182_libpmFileWrapper,
+  & gWrapperFile_183_libpmFileWrapper,
   & gWrapperFile_166_libpmFileWrapper,
   & gWrapperFile_107_libpmFileWrapper,
   & gWrapperFile_155_libpmFileWrapper,
   & gWrapperFile_115_libpmFileWrapper,
   & gWrapperFile_110_libpmFileWrapper,
   & gWrapperFile_135_libpmFileWrapper,
-  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_171_libpmFileWrapper,
   & gWrapperFile_153_libpmFileWrapper,
   & gWrapperFile_142_libpmFileWrapper,
   & gWrapperFile_159_libpmFileWrapper,
-  & gWrapperFile_169_libpmFileWrapper,
+  & gWrapperFile_170_libpmFileWrapper,
   & gWrapperFile_111_libpmFileWrapper,
-  & gWrapperFile_174_libpmFileWrapper,
+  & gWrapperFile_175_libpmFileWrapper,
   & gWrapperFile_133_libpmFileWrapper,
   & gWrapperFile_114_libpmFileWrapper,
   & gWrapperFile_164_libpmFileWrapper,
@@ -41143,7 +41912,7 @@ static const cDirectoryWrapper * gWrapperAllDirectories_libpmFileWrapper_9 [2] =
 
 const cDirectoryWrapper gWrapperDirectory_9_libpmFileWrapper (
   "galgas",
-  81,
+  82,
   gWrapperAllFiles_libpmFileWrapper_9,
   1,
   gWrapperAllDirectories_libpmFileWrapper_9

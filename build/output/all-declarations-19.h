@@ -307,6 +307,20 @@ void routine_commonGetterMapForAllTypes_26__21_ (class GGS_unifiedTypeMap & ioAr
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterClassFunctionWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
+                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                   const class GGS_string constinArgument2,
+                                                                                                   const class GGS_string constinArgument3,
+                                                                                                   const class GGS_bool constinArgument4,
+                                                                                                   class Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'enterClassFunctionWithArgument&&?name?argTypeName?argName?resultTypeName?hasLexiqueArg'
 //
 //--------------------------------------------------------------------------------------------------
@@ -340,20 +354,6 @@ void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_
                                                                                                                                                                                                            const class GGS_bool constinArgument10,
                                                                                                                                                                                                            class Compiler * inCompiler
                                                                                                                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassFunctionWithoutArgument&&?name?resultTypeName?hasLexiqueArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (class GGS_classFunctionMap & ioArgument0,
-                                                                                                   class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                   const class GGS_string constinArgument2,
-                                                                                                   const class GGS_string constinArgument3,
-                                                                                                   const class GGS_bool constinArgument4,
-                                                                                                   class Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
