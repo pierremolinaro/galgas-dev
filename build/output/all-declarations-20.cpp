@@ -9,38 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension func '@lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cPtr_lexicalAttributeInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler * inCompiler
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalAttributeInputArgumentAST temp_0 = this ;
-  result_result = GGS_string ("token.mLexicalAttribute_").add_operation (temp_0.readProperty_mAttributeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 107)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 107)) ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Overriding extension func '@lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cPtr_lexicalCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler */* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_string result_result ; // Returned variable
-  const GGS_lexicalCharacterInputArgumentAST temp_0 = this ;
-  result_result = temp_0.readProperty_mCharacter ().readProperty_char ().getter_utf_33__32_CharConstantRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 114)) ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension func '@lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -5763,7 +5731,7 @@ void cPtr_templateInstructionSwitchAST::method_templateInstructionAnalysis (cons
                       }
                       enumerator_7361.gotoNextObject () ;
                       enumerator_7432.gotoNextObject () ;
-                      index_7343.increment_operation (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas4", 167)) ;
+                      index_7343.plusAssignOperation (GGS_uint (1), inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas4", 167)) ;
                     }
                   }
                 }
@@ -8088,5 +8056,19 @@ void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstrin
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_falseExpressionAST temp_0 = this ;
   outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@trueExpressionForGeneration generateExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument__5F_ioGeneratedCode */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioInclusionSet */,
+                                                                  GGS_uint & /* ioArgument__5F_ioTemporaryVariableIndex */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioUnusedVariableCppNameSet */,
+                                                                  GGS_string & outArgument_outCppExpression,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GGS_string ("GGS_bool (true)") ;
 }
 

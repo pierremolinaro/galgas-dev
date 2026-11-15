@@ -10954,10 +10954,6 @@ class GGS_typeFeatures : public AC_GALGAS_root {
 
   public: static class GGS_typeFeatures class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
 
-  public: static class GGS_typeFeatures class_func_incDecOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_incDecOperatorNoOVF (LOCATION_ARGS) ;
-
   public: static class GGS_typeFeatures class_func_infixAddOperator (LOCATION_ARGS) ;
 
   public: static class GGS_typeFeatures class_func_infixAddOperatorNoOVF (LOCATION_ARGS) ;

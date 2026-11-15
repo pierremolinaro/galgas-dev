@@ -7480,164 +7480,152 @@ GGS_typeFeatures GGS_typeFeatures::class_func_prefixTildeOperator (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_incDecOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixAndOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 9) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixAndOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixOrOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 10) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixOrOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixXorOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 11) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixXorOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_prefixNotOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 12) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixNotOperator (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_equatable (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 13) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_equatable (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_comparable (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 14) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_comparable (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_referenceEquatable (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 15) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_referenceEquatable (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 16) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 17) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 18) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_divAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 19) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_divAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 20) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_orAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 21) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_orAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_andAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 22) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_andAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 23) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 24) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 25) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 26) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 27) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 28) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 29) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 30) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 31) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
+GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
   return GGS_typeFeatures (uint64_t (1) << 32) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 33) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 34) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typeFeatures GGS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 35) ;
+  return GGS_typeFeatures (uint64_t (1) << 33) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7747,7 +7735,7 @@ GGS_typeFeatures GGS_typeFeatures::subtract_operation (const GGS_typeFeatures & 
 GGS_typeFeatures GGS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result ;
   if (mIsValid) {
-    result = GGS_typeFeatures (uint64_t (0xFFFFFFFFF) ^ mFlags) ;
+    result = GGS_typeFeatures (uint64_t (0x3FFFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -7788,84 +7776,78 @@ void GGS_typeFeatures::description (String & ioString,
       ioString.appendCString (" prefixTildeOperator") ;
     }
     if ((mFlags & (uint64_t (1) << 9)) != 0) {
-      ioString.appendCString (" incDecOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 10)) != 0) {
       ioString.appendCString (" infixAndOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 11)) != 0) {
+    if ((mFlags & (uint64_t (1) << 10)) != 0) {
       ioString.appendCString (" infixOrOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 12)) != 0) {
+    if ((mFlags & (uint64_t (1) << 11)) != 0) {
       ioString.appendCString (" infixXorOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 13)) != 0) {
+    if ((mFlags & (uint64_t (1) << 12)) != 0) {
       ioString.appendCString (" prefixNotOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 14)) != 0) {
+    if ((mFlags & (uint64_t (1) << 13)) != 0) {
       ioString.appendCString (" equatable") ;
     }
-    if ((mFlags & (uint64_t (1) << 15)) != 0) {
+    if ((mFlags & (uint64_t (1) << 14)) != 0) {
       ioString.appendCString (" comparable") ;
     }
-    if ((mFlags & (uint64_t (1) << 16)) != 0) {
+    if ((mFlags & (uint64_t (1) << 15)) != 0) {
       ioString.appendCString (" referenceEquatable") ;
     }
-    if ((mFlags & (uint64_t (1) << 17)) != 0) {
+    if ((mFlags & (uint64_t (1) << 16)) != 0) {
       ioString.appendCString (" plusAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 18)) != 0) {
+    if ((mFlags & (uint64_t (1) << 17)) != 0) {
       ioString.appendCString (" minusAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 19)) != 0) {
+    if ((mFlags & (uint64_t (1) << 18)) != 0) {
       ioString.appendCString (" mulAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 20)) != 0) {
+    if ((mFlags & (uint64_t (1) << 19)) != 0) {
       ioString.appendCString (" divAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 21)) != 0) {
+    if ((mFlags & (uint64_t (1) << 20)) != 0) {
       ioString.appendCString (" xorAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 22)) != 0) {
+    if ((mFlags & (uint64_t (1) << 21)) != 0) {
       ioString.appendCString (" orAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 23)) != 0) {
+    if ((mFlags & (uint64_t (1) << 22)) != 0) {
       ioString.appendCString (" andAssignOperatorWithExpression") ;
     }
-    if ((mFlags & (uint64_t (1) << 24)) != 0) {
+    if ((mFlags & (uint64_t (1) << 23)) != 0) {
       ioString.appendCString (" infixAddOperatorNoOVF") ;
     }
-    if ((mFlags & (uint64_t (1) << 25)) != 0) {
+    if ((mFlags & (uint64_t (1) << 24)) != 0) {
       ioString.appendCString (" infixSubOperatorNoOVF") ;
     }
-    if ((mFlags & (uint64_t (1) << 26)) != 0) {
+    if ((mFlags & (uint64_t (1) << 25)) != 0) {
       ioString.appendCString (" infixMulOperatorNoOVF") ;
     }
-    if ((mFlags & (uint64_t (1) << 27)) != 0) {
+    if ((mFlags & (uint64_t (1) << 26)) != 0) {
       ioString.appendCString (" infixDivOperatorNoOVF") ;
     }
-    if ((mFlags & (uint64_t (1) << 28)) != 0) {
+    if ((mFlags & (uint64_t (1) << 27)) != 0) {
       ioString.appendCString (" prefixMinusOperatorNoOVF") ;
     }
-    if ((mFlags & (uint64_t (1) << 29)) != 0) {
-      ioString.appendCString (" incDecOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 30)) != 0) {
+    if ((mFlags & (uint64_t (1) << 28)) != 0) {
       ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
     }
-    if ((mFlags & (uint64_t (1) << 31)) != 0) {
+    if ((mFlags & (uint64_t (1) << 29)) != 0) {
       ioString.appendCString (" doNotGenererateObjectCompare") ;
     }
-    if ((mFlags & (uint64_t (1) << 32)) != 0) {
+    if ((mFlags & (uint64_t (1) << 30)) != 0) {
       ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
     }
-    if ((mFlags & (uint64_t (1) << 33)) != 0) {
+    if ((mFlags & (uint64_t (1) << 31)) != 0) {
       ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
     }
-    if ((mFlags & (uint64_t (1) << 34)) != 0) {
+    if ((mFlags & (uint64_t (1) << 32)) != 0) {
       ioString.appendCString (" generateSynthetizedInitializer") ;
     }
-    if ((mFlags & (uint64_t (1) << 35)) != 0) {
+    if ((mFlags & (uint64_t (1) << 33)) != 0) {
       ioString.appendCString (" clonable") ;
     }
   }

@@ -383,30 +383,6 @@ GGS_string GGS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Incrementation, decrementation
-#endif
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bigint::increment_operation (Compiler * /* inCompiler */
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mValue += 1 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_bigint::decrement_operation (Compiler * /* inCompiler */
-                                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mValue -= 1 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Bit manipulation
 #endif
 

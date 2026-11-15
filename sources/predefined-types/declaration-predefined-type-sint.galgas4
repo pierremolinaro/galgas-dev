@@ -37,7 +37,7 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
       | .infixModOperator | .infixShiftOperator | .prefixPlusOperator
       | .prefixMinusOperator | .prefixMinusOperatorNoOVF
       | .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
-      | .generateDescriptionGetterUtilityMethod  | .incDecOperator | .incDecOperatorNoOVF | .comparable | .equatable
+      | .generateDescriptionGetterUtilityMethod | .comparable | .equatable
       | .infixAddOperatorNoOVF | .infixSubOperatorNoOVF | .infixMulOperatorNoOVF | .infixDivOperatorNoOVF
       | .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression
       | .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression

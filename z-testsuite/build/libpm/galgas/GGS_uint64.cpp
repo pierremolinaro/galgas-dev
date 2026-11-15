@@ -309,46 +309,6 @@ GGS_uint_36__34_ GGS_uint_36__34_::divide_operation_no_ovf (const GGS_uint_36__3
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint_36__34_::increment_operation_no_overflow (void) {
-  mUInt64Value += 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint_36__34_::decrement_operation_no_overflow (void) {
-  mUInt64Value -= 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint_36__34_::increment_operation (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mUInt64Value == UINT64_MAX) {
-      inCompiler->onTheFlyRunTimeError ("@uint64 ++ operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mUInt64Value += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint_36__34_::decrement_operation (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mUInt64Value == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint64 -- operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mUInt64Value -= 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint_36__34_ GGS_uint_36__34_::add_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {

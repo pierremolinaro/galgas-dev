@@ -1053,7 +1053,7 @@ void cPtr_mapDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & ioAr
       }
     }
     enumerator_25510.gotoNextObject () ;
-    index_25463.increment_operation (inCompiler  COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 677)) ;
+    index_25463.plusAssignOperation (GGS_uint (1), inCompiler  COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 677)) ;
   }
   const GGS_mapDeclarationAST temp_16 = this ;
   GGS_bool var_hasInsertOrReplaceModifier_25717 = GGS_bool (ComparisonKind::greaterThan, temp_16.readProperty_mInsertOrReplaceDeclarationListAST ().getter_count (SOURCE_FILE ("declaration-type-map.galgas4", 682)).objectCompare (GGS_uint (uint32_t (0U)))) ;

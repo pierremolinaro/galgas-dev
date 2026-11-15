@@ -8,20 +8,6 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@trueExpressionForGeneration generateExpression'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument__5F_ioGeneratedCode */,
-                                                                  GGS_stringset & /* ioArgument__5F_ioInclusionSet */,
-                                                                  GGS_uint & /* ioArgument__5F_ioTemporaryVariableIndex */,
-                                                                  GGS_stringset & /* ioArgument__5F_ioUnusedVariableCppNameSet */,
-                                                                  GGS_string & outArgument_outCppExpression,
-                                                                  Compiler * /* inCompiler */
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outCppExpression = GGS_string ("GGS_bool (true)") ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@falseExpressionForGeneration generateExpression'
 //--------------------------------------------------------------------------------------------------
 
@@ -23827,30 +23813,6 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#ifdef PRAGMA_MARK_ALLOWED\n"
-  "  #pragma mark Incrementation, decrementation\n"
-  "#endif\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_bigint::increment_operation (Compiler * /* inCompiler */\n"
-  "                                         COMMA_UNUSED_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    mValue += 1 ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_bigint::decrement_operation (Compiler * /* inCompiler */\n"
-  "                                         COMMA_UNUSED_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    mValue -= 1 ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#ifdef PRAGMA_MARK_ALLOWED\n"
   "  #pragma mark Bit manipulation\n"
   "#endif\n"
   "\n"
@@ -24235,7 +24197,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
- 27910, // Text length
+ 27159, // Text length
   gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
@@ -28084,46 +28046,6 @@ const char * gWrapperFileContent_112_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_sint::increment_operation_no_overflow (void) {\n"
-  "  mSIntValue += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint::decrement_operation_no_overflow (void) {\n"
-  "  mSIntValue -= 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint::increment_operation (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mSIntValue == INT32_MAX) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@sint ++ operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mSIntValue += 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint::decrement_operation (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mSIntValue == INT32_MIN) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@sint -- operation underflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mSIntValue -= 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "void GGS_sint::plusAssignOperation (const GGS_sint inOperand,\n"
   "                                    Compiler * inCompiler\n"
   "                                    COMMA_LOCATION_ARGS) {\n"
@@ -28524,7 +28446,7 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
   "GGS_sint.cpp",
   "cpp",
   true, // Text file
- 21551, // Text length
+ 20342, // Text length
   gWrapperFileContent_112_libpmFileWrapper
 ) ;
 
@@ -28719,47 +28641,6 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "  ioString.appendCString (\"<@sint64:\") ;\n"
   "  ioString.appendSigned (mSInt64Value) ;\n"
   "  ioString.appendCString (\">\") ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint_36__34_::increment_operation (Compiler * inCompiler \n"
-  "                                            COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mSInt64Value == INT64_MAX) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@sint64 ++ operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mSInt64Value += 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint_36__34_::increment_operation_no_overflow (void) {\n"
-  "  mSInt64Value += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint_36__34_::decrement_operation_no_overflow (void) {\n"
-  "  mSInt64Value -- ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_sint_36__34_::decrement_operation (Compiler * inCompiler \n"
-  "                                            COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "  //--- Overflow \?\n"
-  "    if (mSInt64Value == INT64_MIN) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@sint64 -- operation underflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mSInt64Value -- ;\n"
-  "    }\n"
-  "  }\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -29166,7 +29047,7 @@ const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "GGS_sint64.cpp",
   "cpp",
   true, // Text file
- 24318, // Text length
+ 23028, // Text length
   gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
@@ -32876,47 +32757,6 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_u_38_::increment_operation_no_overflow (void) {\n"
-  "  mU8Value += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_u_38_::decrement_operation_no_overflow (void) {\n"
-  "  mU8Value -= 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_u_38_::increment_operation (Compiler * inCompiler\n"
-  "                                     COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mU8Value == UINT8_MAX) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@u8 ++ operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mU8Value += 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_u_38_::decrement_operation (Compiler * inCompiler\n"
-  "                                     COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "  //--- Overflow \?\n"
-  "    if (mU8Value == 0) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@u8 -- operation underflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mU8Value -= 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_u_38_ GGS_u_38_::add_operation (const GGS_u_38_ & inOperand,\n"
   "                                    Compiler * inCompiler\n"
   "                                    COMMA_LOCATION_ARGS) const {\n"
@@ -33210,7 +33050,7 @@ const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "GGS_u8.cpp",
   "cpp",
   true, // Text file
- 20763, // Text length
+ 19553, // Text length
   gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
@@ -33633,47 +33473,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_uint::increment_operation_no_overflow (void) {\n"
-  "  mUIntValue += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint::decrement_operation_no_overflow (void) {\n"
-  "  mUIntValue -= 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint::increment_operation (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mUIntValue == UINT32_MAX) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@uint ++ operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mUIntValue += 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint::decrement_operation (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "  //--- Overflow \?\n"
-  "    if (mUIntValue == 0) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@uint -- operation underflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mUIntValue -= 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_uint GGS_uint::add_operation (const GGS_uint & inOperand,\n"
   "                                  Compiler * inCompiler\n"
   "                                  COMMA_LOCATION_ARGS) const {\n"
@@ -33967,7 +33766,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 25429, // Text length
+ 24208, // Text length
   gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
@@ -34281,46 +34080,6 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "    result = GGS_uint_36__34_ ((inOperand.mUInt64Value == 0) \? 0 : (mUInt64Value / inOperand.mUInt64Value)) ;\n"
   "  }\n"
   "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint_36__34_::increment_operation_no_overflow (void) {\n"
-  "  mUInt64Value += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint_36__34_::decrement_operation_no_overflow (void) {\n"
-  "  mUInt64Value -= 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint_36__34_::increment_operation (Compiler * inCompiler\n"
-  "                                            COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mUInt64Value == UINT64_MAX) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@uint64 ++ operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mUInt64Value += 1 ;\n"
-  "    }\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void GGS_uint_36__34_::decrement_operation (Compiler * inCompiler\n"
-  "                                            COMMA_LOCATION_ARGS) {\n"
-  "  if (isValid ()) {\n"
-  "    if (mUInt64Value == 0) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@uint64 -- operation overflow\" COMMA_THERE) ;\n"
-  "      drop () ;\n"
-  "    }else{\n"
-  "      mUInt64Value -= 1 ;\n"
-  "    }\n"
-  "  }\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -34681,7 +34440,7 @@ const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "GGS_uint64.cpp",
   "cpp",
   true, // Text file
- 26693, // Text length
+ 25428, // Text length
   gWrapperFileContent_149_libpmFileWrapper
 ) ;
 

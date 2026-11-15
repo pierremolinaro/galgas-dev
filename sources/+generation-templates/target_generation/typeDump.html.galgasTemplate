@@ -151,10 +151,6 @@ end%
     if [[element definition].features contains ![@typeFeatures divAssignOperatorWithExpression]] then
       %/= instruction: %!linkForType (!type_lkey.string)% /= %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if [[element definition].features contains ![@typeFeatures incDecOperator]] then
-      %incrementation instruction: %!linkForType (!type_lkey.string)% ++<br><br>%
-      %decrementation instruction: %!linkForType (!type_lkey.string)% --<br><br>%
-    end
   %
 </td></tr>
 %

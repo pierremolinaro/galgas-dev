@@ -190,47 +190,6 @@ void GGS_sint_36__34_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::increment_operation (Compiler * inCompiler 
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mSInt64Value == INT64_MAX) {
-      inCompiler->onTheFlyRunTimeError ("@sint64 ++ operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mSInt64Value += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint_36__34_::increment_operation_no_overflow (void) {
-  mSInt64Value += 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint_36__34_::decrement_operation_no_overflow (void) {
-  mSInt64Value -- ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint_36__34_::decrement_operation (Compiler * inCompiler 
-                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-  //--- Overflow ?
-    if (mSInt64Value == INT64_MIN) {
-      inCompiler->onTheFlyRunTimeError ("@sint64 -- operation underflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mSInt64Value -- ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_sint_36__34_::plusAssignOperation (const GGS_sint_36__34_ inOperand,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {

@@ -101,7 +101,7 @@ boolset @typeFeatures {
   case prefixPlusOperator
   case prefixMinusOperator
   case prefixTildeOperator
-  case incDecOperator
+//  case incDecOperator
 
   case infixAndOperator
   case infixOrOperator
@@ -125,7 +125,7 @@ boolset @typeFeatures {
   case infixMulOperatorNoOVF
   case infixDivOperatorNoOVF
   case prefixMinusOperatorNoOVF
-  case incDecOperatorNoOVF
+//  case incDecOperatorNoOVF
 
   case plusEqualOperatorWithFieldListNeedsCompilerArg
   case doNotGenererateObjectCompare

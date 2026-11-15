@@ -176,18 +176,6 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: void increment_operation_no_overflow (void) ;
-
-  public: void decrement_operation_no_overflow (void) ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -807,18 +795,6 @@ class GGS_u_38_ : public AC_GALGAS_root {
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: void increment_operation_no_overflow (void) ;
-
-  public: void decrement_operation_no_overflow (void) ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -993,13 +969,6 @@ class GGS_bigint : public AC_GALGAS_root {
 //--------------------------------- prefix - operator
   public: GGS_bigint operator_unary_minus (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -2296,18 +2265,6 @@ class GGS_sint : public AC_GALGAS_root {
 //--------------------------------- prefix &- operator
   public: GGS_sint operator_unary_minus_no_ovf (void) const ;
 
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: void increment_operation_no_overflow (void) ;
-
-  public: void decrement_operation_no_overflow (void) ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -2494,18 +2451,6 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- prefix &- operator
   public: GGS_sint_36__34_ operator_unary_minus_no_ovf (void) const ;
-
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: void increment_operation_no_overflow (void) ;
-
-  public: void decrement_operation_no_overflow (void) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -2700,18 +2645,6 @@ class GGS_uint : public AC_GALGAS_root {
   public: GGS_uint modulo_operation (const GGS_uint & inOperand,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ++, -- operators
-  public: void increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-  public: void decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- &++, &-- operators
-  public: void increment_operation_no_overflow (void) ;
-
-  public: void decrement_operation_no_overflow (void) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,

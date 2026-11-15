@@ -8899,7 +8899,7 @@ void cPtr_forInstructionForGeneration::method_generateInstruction (GGS_stringset
         }
         const GGS_forInstructionForGeneration temp_39 = this ;
         const GGS_forInstructionForGeneration temp_40 = this ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (temp_39.readProperty_mIndexVariableCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (GGS_string (".increment_operation ("), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (extensionGetter_commaSourceFile (temp_40.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (temp_39.readProperty_mIndexVariableCppName (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (GGS_string (".plusAssignOperation (GGS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)).add_operation (extensionGetter_commaSourceFile (temp_40.readProperty_mInstructionLocation (), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 749)), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas4", 748)) ;
       }
     }
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas4", 751)) ;
@@ -9051,7 +9051,7 @@ void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
                       }
                       enumerator_8128.gotoNextObject () ;
                       enumerator_8174.gotoNextObject () ;
-                      index_8110.increment_operation (inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas4", 191)) ;
+                      index_8110.plusAssignOperation (GGS_uint (1), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas4", 191)) ;
                     }
                   }
                 }

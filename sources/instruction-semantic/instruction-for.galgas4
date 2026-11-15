@@ -745,7 +745,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   //--- Advance index ?
     if self.mIndexVariableCppName != "" then
       !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment_operation (" + compilerCppName ()
+      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_uint (1), " + compilerCppName ()
       + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     end
     ioGeneratedCode += "}\n"

@@ -295,47 +295,6 @@ GGS_u_38_ GGS_u_38_::getter_lsbIndex (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_u_38_::increment_operation_no_overflow (void) {
-  mU8Value += 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_u_38_::decrement_operation_no_overflow (void) {
-  mU8Value -= 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_u_38_::increment_operation (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mU8Value == UINT8_MAX) {
-      inCompiler->onTheFlyRunTimeError ("@u8 ++ operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mU8Value += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_u_38_::decrement_operation (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-  //--- Overflow ?
-    if (mU8Value == 0) {
-      inCompiler->onTheFlyRunTimeError ("@u8 -- operation underflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mU8Value -= 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_u_38_ GGS_u_38_::add_operation (const GGS_u_38_ & inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {

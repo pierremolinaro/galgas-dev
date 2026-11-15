@@ -414,47 +414,6 @@ GGS_bool GGS_uint::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::increment_operation_no_overflow (void) {
-  mUIntValue += 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint::decrement_operation_no_overflow (void) {
-  mUIntValue -= 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint::increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mUIntValue == UINT32_MAX) {
-      inCompiler->onTheFlyRunTimeError ("@uint ++ operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mUIntValue += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_uint::decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-  //--- Overflow ?
-    if (mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint -- operation underflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mUIntValue -= 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_uint::add_operation (const GGS_uint & inOperand,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {

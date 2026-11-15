@@ -291,7 +291,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
                .infixAddOperator | .infixSubOperator | .infixMulOperator | .infixDivOperator |
                .infixShiftOperator | .infixModOperator |
                .infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator |
-               .incDecOperator | .comparable | .equatable |
+               .comparable | .equatable |
                .plusAssignOperatorWithExpression | .minusAssignOperatorWithExpression |
                .mulAssignOperatorWithExpression | .divAssignOperatorWithExpression
   }

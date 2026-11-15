@@ -185,46 +185,6 @@ void GGS_sint::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint::increment_operation_no_overflow (void) {
-  mSIntValue += 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint::decrement_operation_no_overflow (void) {
-  mSIntValue -= 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint::increment_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mSIntValue == INT32_MAX) {
-      inCompiler->onTheFlyRunTimeError ("@sint ++ operation overflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mSIntValue += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sint::decrement_operation (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    if (mSIntValue == INT32_MIN) {
-      inCompiler->onTheFlyRunTimeError ("@sint -- operation underflow" COMMA_THERE) ;
-      drop () ;
-    }else{
-      mSIntValue -= 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_sint::plusAssignOperation (const GGS_sint inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
