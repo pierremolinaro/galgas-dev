@@ -97,7 +97,6 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   let enumerationDescriptor = [@enumerationDescriptor] [@(keyType, "key"), @(valueType, "value")]
 //---
   commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
-  var @setterMap setterMap = @()
   var @instanceMethodMap instanceMethodMap = @()
 //--- Getters
   enterBaseGetterWithArgument (
@@ -115,18 +114,8 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !returnedTypeName:"uint",
     !hasCompilerArgument:false
   )
-//--- Handle insert mutating proc
-//  !?setterMap.insertOrReplace (
-//    @("set", self.dictionaryTypeName.location),
-//    @methodKind.definedAsMember,
-//    [ @("".nowhere, valueType, .argumentConstantIn, "inValue"),
-//      @("key".nowhere, keyType, .argumentConstantIn, "inKey")
-//    ],
-//    true,
-//    @methodQualifier.isBasic,
-//    ""
-//  )
 //--- Handle remove mutating proc
+  var @setterMap setterMap = @()
   !?setterMap.insertOrReplace (
     @("remove", self.dictionaryTypeName.location),
     @methodKind.definedAsMember,
@@ -213,6 +202,14 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   !?writeSubcriptMap.insertKey (
     firstArgumentTypeList.subcriptSignature.nowhere,
     firstArgumentTypeList,
+    valueType
+  )
+  let [@functionSignatureElement] writeUnique_ArgumentTypeList = [
+     @("unique".nowhere, keyType, "inKey", true)
+  ]
+  !?writeSubcriptMap.insertKey (
+    writeUnique_ArgumentTypeList.subcriptSignature.nowhere,
+    writeUnique_ArgumentTypeList,
     valueType
   )
 //--- Enter in type map

@@ -185,11 +185,13 @@ template <typename KEY, typename VALUE> class GenericDictionaryRoot final : publ
   // Insert
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: void insertOrReplaceInfo (const KEY & inKey,
+  private: bool insertOrReplaceInfo (const KEY & inKey,
                                      const VALUE & inInfo
                                      COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
-    internalRecursiveInsert (mRootNode, inKey, inInfo) ;
+    bool overwrite = false ;
+    internalRecursiveInsert (mRootNode, inKey, inInfo, overwrite) ;
+    return overwrite ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -230,17 +232,19 @@ template <typename KEY, typename VALUE> class GenericDictionaryRoot final : publ
 
   private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr,
                                          const KEY & inKey,
-                                         const VALUE & inInfo) {
+                                         const VALUE & inInfo,
+                                         bool & outOverwrite) {
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
       ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inInfo COMMA_HERE) ;
       mCount += 1 ;
       extension = true ;
+      outOverwrite = true ;
     }else{
       const ComparisonResult comparaison = ioRootPtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
       case ComparisonResult::firstOperandGreaterThanSecond : // >
-        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo) ;
+        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo, outOverwrite) ;
         if (extension) {
           ioRootPtr->mBalance += 1 ;
           if (ioRootPtr->mBalance == 0) {
@@ -255,7 +259,7 @@ template <typename KEY, typename VALUE> class GenericDictionaryRoot final : publ
         }
         break ;
       case ComparisonResult::firstOperandLowerThanSecond: // <
-        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo) ;
+        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo, outOverwrite) ;
         if (extension) {
           ioRootPtr->mBalance -= 1 ;
           if (ioRootPtr->mBalance == 0) {
@@ -542,12 +546,14 @@ template <typename KEY, typename VALUE> class GenericDictionary : public AC_GALG
   //   Insert or replace
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void insertOrReplace (const KEY & inKey,
+  public: bool insertOrReplace (const KEY & inKey,
                                 const VALUE & inInfo
                                 COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil () && inKey.isValid ()) {
       insulate (THERE) ;
-      mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;
+      return mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;
+    }else{
+      return false ;
     }
   }
 
