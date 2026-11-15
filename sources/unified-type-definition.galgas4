@@ -58,12 +58,8 @@ enum @typeKindEnum #equatable {
   case classType
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
-  case listType
   case sortedListType
   case mapType
-  case sharedMapType
-  case sharedMapEntryType
-  case listMapType
   case boolsetType
   case structType
   case graphType
@@ -77,12 +73,8 @@ enum @typeKindEnum #equatable {
     switch self
       case classType : result = "class"
       case enumType (*) : result = "enumeration"
-      case listType : result = "list"
       case sortedListType : result = "sorted list"
       case mapType : result = "map"
-      case sharedMapType : result = "shared map"
-      case sharedMapEntryType : result = "shared map entry"
-      case listMapType : result = "list map"
       case structType : result = "struct"
       case boolsetType : result = "boolset"
       case graphType : result = "graph"

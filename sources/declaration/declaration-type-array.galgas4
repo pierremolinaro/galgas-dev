@@ -229,7 +229,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .listType,
+      !typeKind: .otherType,
       !supportArrayLiteral: true,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

@@ -6727,12 +6727,8 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
     enum_classType,
     enum_weakReferenceType,
     enum_enumType,
-    enum_listType,
     enum_sortedListType,
     enum_mapType,
-    enum_sharedMapType,
-    enum_sharedMapEntryType,
-    enum_listMapType,
     enum_boolsetType,
     enum_structType,
     enum_graphType,
@@ -6778,19 +6774,11 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 
   public: static class GGS_typeKindEnum class_func_graphType (LOCATION_ARGS) ;
 
-  public: static class GGS_typeKindEnum class_func_listMapType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_listType (LOCATION_ARGS) ;
-
   public: static class GGS_typeKindEnum class_func_mapType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_otherType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_packageType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_sharedMapEntryType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_sharedMapType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_sortedListType (LOCATION_ARGS) ;
 
@@ -6833,19 +6821,11 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
 
   public: class GGS_bool getter_isGraphType (LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_isListMapType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isListType (LOCATION_ARGS) const ;
-
   public: class GGS_bool getter_isMapType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isOtherType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isPackageType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isSharedMapEntryType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isSharedMapType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isSortedListType (LOCATION_ARGS) const ;
 

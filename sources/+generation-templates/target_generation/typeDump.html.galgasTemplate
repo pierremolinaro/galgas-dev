@@ -73,18 +73,14 @@ end
     switch [element definition].typeKind
     case classType : %class%
     case enumType (*) : %enum%
-    case listType : %list%
     case sortedListType : %sorted list%
     case mapType : %map%
-    case sharedMapType : %shared map%
-    case sharedMapEntryType : %shared map entry%
-    case listMapType : %list map%
     case boolsetType : %boolset%
     case structType : %struct%
     case graphType : %graph%
     case externType : %extern%
     case otherType : %other type%
-    case packageType : %package type%
+    case packageType : %package%
     case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
