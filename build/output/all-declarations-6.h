@@ -6076,107 +6076,29 @@ class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_galgas_33_SyntaxExtensionAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxExtensionsDictionary_2E_element struct
+// Phase 1: [galgas3SyntaxExtensionAST]? optional
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxExtensionsDictionary_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_string mProperty_key ;
-  public: inline GGS_string readProperty_key (void) const {
-    return mProperty_key ;
-  }
-
-  public: GGS__5B_galgas_33_SyntaxExtensionAST_5D_ mProperty_extensionList ;
-  public: inline GGS__5B_galgas_33_SyntaxExtensionAST_5D_ readProperty_extensionList (void) const {
-    return mProperty_extensionList ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setKey (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_key = inValue ;
-  }
-
-  public: inline void setter_setExtensionList (const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_extensionList = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element (const GGS_string & in_key,
-                                                     const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & in_extensionList) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element (const GGS_syntaxExtensionsDictionary_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_syntaxExtensionsDictionary_2E_element & operator = (const GGS_syntaxExtensionsDictionary_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_syntaxExtensionsDictionary_2E_element init_21__21_ (const class GGS_string & inOperand0,
-                                                                         const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inOperand1,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: syntaxExtensionsDictionary.element? optional
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxExtensionsDictionary_2E_element_3F_ : public AC_GALGAS_root {
+class GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: GGS_syntaxExtensionsDictionary_2E_element mValue ;
+  private: GGS__5B_galgas_33_SyntaxExtensionAST_5D_ mValue ;
   private: OptionalState mState ;
 
 //--------------------------------- Default constructor
-  public: GGS_syntaxExtensionsDictionary_2E_element_3F_ (void) ;
+  public: GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ (void) ;
 
 //--------------------------------- Constructor from unwrapped type
-  public: GGS_syntaxExtensionsDictionary_2E_element_3F_ (const GGS_syntaxExtensionsDictionary_2E_element & inSource) ;
+  public: GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ (const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inSource) ;
 
 //--------------------------------- Constructor from weak type
 
 //--------------------------------- nil initializer
-  public: static GGS_syntaxExtensionsDictionary_2E_element_3F_ init_nil (void) ;
+  public: static GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ init_nil (void) ;
 
   public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
 
   public: bool isValuated (void) const ;
-  public: inline GGS_syntaxExtensionsDictionary_2E_element unwrappedValue (void) const {
+  public: inline GGS__5B_galgas_33_SyntaxExtensionAST_5D_ unwrappedValue (void) const {
     return mValue ;
   }
 
@@ -6222,14 +6144,44 @@ class GGS_syntaxExtensionsDictionary_2E_element_3F_ : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary_2E_element_3F_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxExtensionsDictionary dictionary enumerator
+// Phase 1: @_5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ dictionary
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_syntaxExtensionsDictionary final {
-  public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand) ;
+class Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ final {
+  public : GGS_string mProperty_key ;
+  public : GGS__5B_galgas_33_SyntaxExtensionAST_5D_ mProperty_value ;
+
+  public: Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (void) :
+  mProperty_key (),
+  mProperty_value () {
+  }
+
+  public: Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const GGS_string & inKey,
+                                                                       const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inValue) :
+  mProperty_key (inKey),
+  mProperty_value (inValue) {
+  }
+
+  public: Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inSource) :
+  mProperty_key (inSource.mProperty_key),
+  mProperty_value (inSource.mProperty_value) {
+  }
+
+  public: Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & operator = (const Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inSource) {
+    mProperty_key = inSource.mProperty_key ;
+    mProperty_value = inSource.mProperty_value ;
+    return *this ;
+  }
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ final {
+  public: DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const class GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inOperand) ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
@@ -6237,55 +6189,47 @@ class DownEnumerator_syntaxExtensionsDictionary final {
 
   public: class GGS_string current_key (UNUSED_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ current_extensionList (UNUSED_LOCATION_ARGS) const ;
+  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ current_value (UNUSED_LOCATION_ARGS) const ;
 
-
-//--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const ;
 
 //--- Private properties
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_>> mArray ;
   private: int32_t mIndex ;
 
 //--- No copy
-  private: DownEnumerator_syntaxExtensionsDictionary (const DownEnumerator_syntaxExtensionsDictionary &) = delete ;
-  private: DownEnumerator_syntaxExtensionsDictionary & operator = (const DownEnumerator_syntaxExtensionsDictionary &) = delete ;
+  private: DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ &) = delete ;
+  private: DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & operator = (const DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_syntaxExtensionsDictionary final {
-  public: UpEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand)  ;
+class UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ final {
+  public: UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const class GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inOperand)  ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
 
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: class GGS_string current_key (UNUSED_LOCATION_ARGS) const ;
-  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ current_extensionList (UNUSED_LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_syntaxExtensionsDictionary_2E_element current (UNUSED_LOCATION_ARGS) const ;
-
+  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ current_value (UNUSED_LOCATION_ARGS) const ;
 //--- Private properties
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_>> mArray ;
   private: int32_t mIndex ;
 
 //--- No copy
-  private: UpEnumerator_syntaxExtensionsDictionary (const UpEnumerator_syntaxExtensionsDictionary &) = delete ;
-  private: UpEnumerator_syntaxExtensionsDictionary & operator = (const UpEnumerator_syntaxExtensionsDictionary &) = delete ;
+  private: UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ &) = delete ;
+  private: UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & operator = (const UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxExtensionsDictionary dict
-//--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxExtensionsDictionary final : public GenericDictionary <GGS_string, GGS_syntaxExtensionsDictionary_2E_element> {
+class GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ final : public GenericDictionary <GGS_string, Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_> {
 
 //--------------------------------- Virtual destructor
-  public: virtual ~ GGS_syntaxExtensionsDictionary (void) = default ;
+  public: virtual ~ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (void) = default ;
 
 //--------------------------------- Build
-  protected: static GGS_syntaxExtensionsDictionary builtDictionary (LOCATION_ARGS) ;
+  protected: static GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ buildEmptyDictionary (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public: VIRTUAL_IN_DEBUG void description (String & ioString,
@@ -6294,39 +6238,19 @@ class GGS_syntaxExtensionsDictionary final : public GenericDictionary <GGS_strin
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_syntaxExtensionsDictionary init (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_string & inOperand0,
-                                   const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inOperand1,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ init (Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
-  public: void setter_insert (class GGS_string constinArgument0,
-                              class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ constinArgument1,
+  public: void setter_remove (class GGS_string constinArgument0,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeKey (class GGS_string constinArgument0,
-                                 class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & outArgument1,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setExtensionListForKey (class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ constinArgument0,
-                                              class GGS_string constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
-  public: void method_searchKey (class GGS_string constinArgument0,
-                                 class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & outArgument1,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) const ;
+  public: void method_search (class GGS_string constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
@@ -6336,32 +6260,47 @@ class GGS_syntaxExtensionsDictionary final : public GenericDictionary <GGS_strin
 
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ getter_extensionListForKey (const class GGS_string & constinOperand0,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subcripts
-  public: class GGS_syntaxExtensionsDictionary_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ readSubcript__3F__3F_default (const class GGS_string & in0,
+                                                                                       const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & in1,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ readSubcript__3F_unwrap (const class GGS_string & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubcript__3F_ (const class GGS_string in0,
+                                   const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inValue,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void writeSubcript__3F_unique (const class GGS_string in0,
+                                         const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inValue,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_syntaxExtensionsDictionary ;
-  friend class DownEnumerator_syntaxExtensionsDictionary ;
+  friend class UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ ;
+  friend class DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxExtensions struct
@@ -6369,8 +6308,8 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictio
 
 class GGS_syntaxExtensions : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_syntaxExtensionsDictionary mProperty_dictionary ;
-  public: inline GGS_syntaxExtensionsDictionary readProperty_dictionary (void) const {
+  public: GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ mProperty_dictionary ;
+  public: inline GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ readProperty_dictionary (void) const {
     return mProperty_dictionary ;
   }
 
@@ -6382,7 +6321,7 @@ class GGS_syntaxExtensions : public AC_GALGAS_root {
   public: GGS_syntaxExtensions (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setDictionary (const GGS_syntaxExtensionsDictionary & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setDictionary (const GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_dictionary = inValue ;
   }
 
@@ -6390,7 +6329,7 @@ class GGS_syntaxExtensions : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_syntaxExtensions (const GGS_syntaxExtensionsDictionary & in_dictionary) ;
+  public: GGS_syntaxExtensions (const GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & in_dictionary) ;
 
 //--------------------------------- Copy constructor
   public: GGS_syntaxExtensions (const GGS_syntaxExtensions & inSource) ;

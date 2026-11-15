@@ -44,7 +44,6 @@ gui cocoa {
 
     label $before$, ${$
     label $after$, ${$
-    label $dict$, $@type$
     label $map$, $@type$
     label $boolset$, $@type$
     label $list$, $@type$

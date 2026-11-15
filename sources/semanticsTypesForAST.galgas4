@@ -22,14 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //----------------------------------------------------------------------------------------------
 
-dict @syntaxExtensionsDictionary : @string {
-  public var [@galgas3SyntaxExtensionAST] extensionList
-}
-
-//----------------------------------------------------------------------------------------------
-
 struct @syntaxExtensions {
-  private(set) var @syntaxExtensionsDictionary dictionary = @()
+  private(set) var [@string : [@galgas3SyntaxExtensionAST]] dictionary = @()
 
   //·····························································································
 
@@ -37,23 +31,27 @@ struct @syntaxExtensions {
                     let @lstring inSyntaxComponentName,
                     let [@nonterminalDeclarationAST] inNonterminalDeclarationList,
                     let [@syntaxRuleAST] inRuleList) {
-    if self.dictionary.contains (inKey) then
-      self.dictionary.searchKey (inKey, ?var aList)
-      aList ++= @(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
-      self.dictionary ++= @(inKey, aList)
-    else
-      self.dictionary ++= @(inKey, [@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
-    end
+//    if self.dictionary.contains (inKey) then
+//      self.dictionary.searchKey (inKey, ?var aList)
+//      aList ++= @(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
+//      self.dictionary ++= @(inKey, aList)
+//    else
+//      self.dictionary ++= @(inKey, [@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
+//    end
+    var array = self.dictionary [inKey, !default: []]
+    array ++= @(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
+    self.dictionary [inKey] = array
   }
 
   //·····························································································
 
   func listForKey (?let @string inKey) -> [@galgas3SyntaxExtensionAST] {
-    if self.dictionary.contains (inKey) then
-      self.dictionary.searchKey (inKey, ?result)
-   else
-      result = @()
-    end
+//    if self.dictionary.contains (inKey) then
+//      self.dictionary.searchKey (inKey, ?result)
+//    else
+//      result = @()
+//    end
+    result = self.dictionary [inKey, !default: []]
   }
 
   //·····························································································

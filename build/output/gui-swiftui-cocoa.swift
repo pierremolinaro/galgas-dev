@@ -103,10 +103,6 @@ let gPopUpData_galgasScanner4 : [[UInt16]] = [
     galgasScanner4_1__7B_, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner4_1_dict, 0,
-    galgasScanner4_1__40_type, 0
-  ],
-  [0, // Leading character count to strip
     galgasScanner4_1_map, 0,
     galgasScanner4_1__40_type, 0
   ],

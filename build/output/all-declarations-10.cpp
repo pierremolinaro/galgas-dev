@@ -8910,23 +8910,23 @@ const GALGAS_TypeDescriptor * GGS__5B_ruleLabelImplementationAST_5D_::staticType
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary GGS_genericExtensionMethodListMapDictionary::builtDictionary (LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary result ;
+GGS__5B_string_3A__5B_lstring_5D__5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::buildEmptyDictionary (LOCATION_ARGS) {
+  GGS__5B_string_3A__5B_lstring_5D__5D_ result ;
   result.build (THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary GGS_genericExtensionMethodListMapDictionary::init (Compiler * COMMA_LOCATION_ARGS) {
-  return GGS_genericExtensionMethodListMapDictionary::builtDictionary (THERE) ;
+GGS__5B_string_3A__5B_lstring_5D__5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS__5B_string_3A__5B_lstring_5D__5D_::buildEmptyDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::description (String & ioString,
+void GGS__5B_string_3A__5B_lstring_5D__5D_::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<dict @genericExtensionMethodListMapDictionary: ") ;
+  ioString.appendCString ("<dict @_5B_string_3A__5B_lstring_5D__5D_: ") ;
   if (isValid ()) {
     ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
@@ -8938,7 +8938,7 @@ void GGS_genericExtensionMethodListMapDictionary::description (String & ioString
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_genericExtensionMethodListMapDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_uint GGS__5B_string_3A__5B_lstring_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     result = GGS_uint (uint32_t (count ())) ;
@@ -8948,59 +8948,97 @@ GGS_uint GGS_genericExtensionMethodListMapDictionary::getter_count (UNUSED_LOCAT
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ GGS_genericExtensionMethodListMapDictionary::
-readSubcript__3F_ (const class GGS_string & inKey,
-                    Compiler * /* inCompiler */
-                    COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_lstring_5D__3F_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_ (const GGS_string & inKey,
+                                                                                  Compiler * /* inCompiler */
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D__3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
-      return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ (object.value ()) ;
+      result = GGS__5B_lstring_5D__3F_ (object->mProperty_value) ;
     }else{
-      return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_::init_nil () ;
+      result = GGS__5B_lstring_5D__3F_::init_nil () ;
     }
-  }else{
-    return GGS_genericExtensionMethodListMapDictionary_2E_element_3F_ () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F__3F_default (const GGS_string & inKey,
+                                                                                         const GGS__5B_lstring_5D_ & inDefaultValue,
+                                                                                         Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      result = GGS__5B_lstring_5D_ (object->mProperty_value) ;
+    }else{
+      result = inDefaultValue ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_unwrap (const GGS_string & inKey,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNil ()) {
+    //--- Build error message
+     String message = "dictionary does not contains the '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = object->mProperty_value ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubcript__3F_ (const GGS_string inKey,
+                                                                const GGS__5B_lstring_5D_ inValue,
+                                                                Compiler *
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node__5B_string_3A__5B_lstring_5D__5D_ object (inKey, inValue) ;
+    insertOrReplace (inKey, object COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::plusPlusAssignOperation (const GGS_genericExtensionMethodListMapDictionary_2E_element & inValue
-                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inValue.mProperty_key.isValid ()) {
-    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary::addAssignOperation (const GGS_string & inKey,
-                                                                      const GGS__5B_lstring_5D_ & inArgument0,
-                                                                      Compiler * /* inCompiler */
+void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubcript__3F_unique (const GGS_string inKey,
+                                                                      const GGS__5B_lstring_5D_ inValue,
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
   if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
+    const Node__5B_string_3A__5B_lstring_5D__5D_ object (inKey, inValue) ;
+    const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
+    if (overwrite) {
+    //--- Build error message
+     String message = "dictionary '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key overwrite") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    } 
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::setter_insert (const GGS_string inKey,
-                                                                 const GGS__5B_lstring_5D_ inArgument0,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) {
-  GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
-  if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_contains (const GGS_string & inKey
-                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS__5B_string_3A__5B_lstring_5D__5D_::getter_contains (const GGS_string & inKey
+                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (hasKey (inKey)) ;
@@ -9010,152 +9048,76 @@ GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_contains (const GGS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string inKey,
-                                                                    GGS__5B_lstring_5D_ & outArgument0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
+void GGS__5B_string_3A__5B_lstring_5D__5D_::setter_remove (GGS_string inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) {
-    //--- Build error message
-      const String message = "cannot search in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop out arguments
-      outArgument0.drop () ;
-    }else{
-      outArgument0 = object->mProperty_mList ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string inKey,
-                                                                    GGS__5B_lstring_5D_ & outArgument0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> removedObject
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> removedObject
                     = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop output arguments
-      outArgument0.drop () ;
-    }else{
-    //--- Assign output arguments
-      outArgument0 = removedObject->mProperty_mList ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_genericExtensionMethodListMapDictionary::getter_mListForKey (const GGS_string & inKey,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) { // Not found
-    //--- Build error message
-      const String message = "cannot get mList ForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = object->mProperty_mList ;
-    }
-  }
-  return result ;
-}
+// Up Enumerator for @_5B_string_3A__5B_lstring_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS__5B_lstring_5D_ inPropertyValue,
-                                                                         GGS_string inKey,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GenericDictionaryNode <GGS_string, GGS_genericExtensionMethodListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
-    if (modifiedNode.isNil ()) { // Not found
-    //--- Build error message
-     const String message = "cannot setMListForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      modifiedNode->mSharedInfo->mProperty_mList = inPropertyValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @genericExtensionMethodListMapDictionary
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_genericExtensionMethodListMapDictionary::UpEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+UpEnumerator__5B_string_3A__5B_lstring_5D__5D_::UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ (const GGS__5B_string_3A__5B_lstring_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_genericExtensionMethodListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string UpEnumerator__5B_string_3A__5B_lstring_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lstring_5D_ UpEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
+GGS__5B_lstring_5D_ UpEnumerator__5B_string_3A__5B_lstring_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element UpEnumerator_genericExtensionMethodListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @genericExtensionMethodListMapDictionary
+// Down Enumerator for @_5B_string_3A__5B_lstring_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_genericExtensionMethodListMapDictionary::DownEnumerator_genericExtensionMethodListMapDictionary (const GGS_genericExtensionMethodListMapDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+DownEnumerator__5B_string_3A__5B_lstring_5D__5D_::DownEnumerator__5B_string_3A__5B_lstring_5D__5D_ (const GGS__5B_string_3A__5B_lstring_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex () {
-  mIndex = mInfoArray.count () - 1 ;
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_genericExtensionMethodListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string DownEnumerator__5B_string_3A__5B_lstring_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lstring_5D_ DownEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
+GGS__5B_lstring_5D_ DownEnumerator__5B_string_3A__5B_lstring_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_genericExtensionMethodListMapDictionary_2E_element DownEnumerator_genericExtensionMethodListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-//--------------------------------------------------------------------------------------------------
-//     @genericExtensionMethodListMapDictionary generic code implementation
+//     @[string:[lstring]] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ("genericExtensionMethodListMapDictionary",
-                                                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_3A__5B_lstring_5D__5D_ ("[string:[lstring]]",
+                                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_genericExtensionMethodListMapDictionary::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_genericExtensionMethodListMapDictionary ;
+const GALGAS_TypeDescriptor * GGS__5B_string_3A__5B_lstring_5D__5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_string_3A__5B_lstring_5D__5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9189,12 +9151,12 @@ GGS_genericExtensionMethodListMap GGS_genericExtensionMethodListMap::init (Compi
 //--------------------------------------------------------------------------------------------------
 
 void GGS_genericExtensionMethodListMap::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_dictionary = GGS_genericExtensionMethodListMapDictionary::init (inCompiler COMMA_HERE) ;
+  mProperty_dictionary = GGS__5B_string_3A__5B_lstring_5D__5D_::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_genericExtensionMethodListMap::GGS_genericExtensionMethodListMap (const GGS_genericExtensionMethodListMapDictionary & inOperand0) :
+GGS_genericExtensionMethodListMap::GGS_genericExtensionMethodListMap (const GGS__5B_string_3A__5B_lstring_5D__5D_ & inOperand0) :
 mProperty_dictionary (inOperand0) {
 }
 
@@ -9245,18 +9207,9 @@ GGS__5B_lstring_5D_ extensionGetter_listForKey (const GGS_genericExtensionMethod
                                                 Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lstring_5D_ result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_genericExtensionMethodListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 54)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_genericExtensionMethodListMap temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 55)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    result_result = GGS__5B_lstring_5D_::init (inCompiler COMMA_HERE) ;
-  }
+  const GGS_genericExtensionMethodListMap temp_0 = inObject ;
+  GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 56)) ;
+  result_result = temp_0.readProperty_dictionary ().readSubcript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -9309,23 +9262,23 @@ void callExtensionMethod_buildExtensionListMaps (cPtr_semanticDeclarationAST * i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary GGS_descendantClassListMapDictionary::builtDictionary (LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary result ;
+GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::buildEmptyDictionary (LOCATION_ARGS) {
+  GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ result ;
   result.build (THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary GGS_descendantClassListMapDictionary::init (Compiler * COMMA_LOCATION_ARGS) {
-  return GGS_descendantClassListMapDictionary::builtDictionary (THERE) ;
+GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::buildEmptyDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::description (String & ioString,
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<dict @descendantClassListMapDictionary: ") ;
+  ioString.appendCString ("<dict @_5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_: ") ;
   if (isValid ()) {
     ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
@@ -9337,7 +9290,7 @@ void GGS_descendantClassListMapDictionary::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_descendantClassListMapDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_uint GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     result = GGS_uint (uint32_t (count ())) ;
@@ -9347,59 +9300,97 @@ GGS_uint GGS_descendantClassListMapDictionary::getter_count (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMapDictionary_2E_element_3F_ GGS_descendantClassListMapDictionary::
-readSubcript__3F_ (const class GGS_string & inKey,
-                    Compiler * /* inCompiler */
-                    COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_unifiedTypeMapEntry_5D__3F_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F_ (const GGS_string & inKey,
+                                                                                                          Compiler * /* inCompiler */
+                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_unifiedTypeMapEntry_5D__3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
-      return GGS_descendantClassListMapDictionary_2E_element_3F_ (object.value ()) ;
+      result = GGS__5B_unifiedTypeMapEntry_5D__3F_ (object->mProperty_value) ;
     }else{
-      return GGS_descendantClassListMapDictionary_2E_element_3F_::init_nil () ;
+      result = GGS__5B_unifiedTypeMapEntry_5D__3F_::init_nil () ;
     }
-  }else{
-    return GGS_descendantClassListMapDictionary_2E_element_3F_ () ;
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::plusPlusAssignOperation (const GGS_descendantClassListMapDictionary_2E_element & inValue
-                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inValue.mProperty_key.isValid ()) {
-    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary::addAssignOperation (const GGS_string & inKey,
-                                                               const GGS__5B_unifiedTypeMapEntry_5D_ & inArgument0,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary_2E_element newElement (inKey, inArgument0) ;
+GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F__3F_default (const GGS_string & inKey,
+                                                                                                                 const GGS__5B_unifiedTypeMapEntry_5D_ & inDefaultValue,
+                                                                                                                 Compiler * /* inCompiler */
+                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_unifiedTypeMapEntry_5D_ result ;
   if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      result = GGS__5B_unifiedTypeMapEntry_5D_ (object->mProperty_value) ;
+    }else{
+      result = inDefaultValue ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::setter_insert (const GGS_string inKey,
-                                                          const GGS__5B_unifiedTypeMapEntry_5D_ inArgument0,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  GGS_descendantClassListMapDictionary_2E_element newElement (inKey, inArgument0) ;
+GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F_unwrap (const GGS_string & inKey,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS__5B_unifiedTypeMapEntry_5D_ result ;
   if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNil ()) {
+    //--- Build error message
+     String message = "dictionary does not contains the '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = object->mProperty_value ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubcript__3F_ (const GGS_string inKey,
+                                                                            const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                                                            Compiler *
+                                                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ object (inKey, inValue) ;
+    insertOrReplace (inKey, object COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_descendantClassListMapDictionary::getter_contains (const GGS_string & inKey
-                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubcript__3F_unique (const GGS_string inKey,
+                                                                                  const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ object (inKey, inValue) ;
+    const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
+    if (overwrite) {
+    //--- Build error message
+     String message = "dictionary '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key overwrite") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    } 
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::getter_contains (const GGS_string & inKey
+                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (hasKey (inKey)) ;
@@ -9409,152 +9400,76 @@ GGS_bool GGS_descendantClassListMapDictionary::getter_contains (const GGS_string
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::method_searchKey (GGS_string inKey,
-                                                             GGS__5B_unifiedTypeMapEntry_5D_ & outArgument0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::setter_remove (GGS_string inKey,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) {
-    //--- Build error message
-      const String message = "cannot search in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop out arguments
-      outArgument0.drop () ;
-    }else{
-      outArgument0 = object->mProperty_typeList ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_descendantClassListMapDictionary::setter_removeKey (GGS_string inKey,
-                                                             GGS__5B_unifiedTypeMapEntry_5D_ & outArgument0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> removedObject
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> removedObject
                     = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop output arguments
-      outArgument0.drop () ;
-    }else{
-    //--- Assign output arguments
-      outArgument0 = removedObject->mProperty_typeList ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS__5B_unifiedTypeMapEntry_5D_ GGS_descendantClassListMapDictionary::getter_typeListForKey (const GGS_string & inKey,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_unifiedTypeMapEntry_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_descendantClassListMapDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) { // Not found
-    //--- Build error message
-      const String message = "cannot get typeList ForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = object->mProperty_typeList ;
-    }
-  }
-  return result ;
-}
+// Up Enumerator for @_5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-void GGS_descendantClassListMapDictionary::setter_setTypeListForKey (GGS__5B_unifiedTypeMapEntry_5D_ inPropertyValue,
-                                                                     GGS_string inKey,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GenericDictionaryNode <GGS_string, GGS_descendantClassListMapDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
-    if (modifiedNode.isNil ()) { // Not found
-    //--- Build error message
-     const String message = "cannot setTypeListForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      modifiedNode->mSharedInfo->mProperty_typeList = inPropertyValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @descendantClassListMapDictionary
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_descendantClassListMapDictionary::UpEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+UpEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::UpEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ (const GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_descendantClassListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string UpEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_unifiedTypeMapEntry_5D_ UpEnumerator_descendantClassListMapDictionary::current_typeList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_typeList ;
+GGS__5B_unifiedTypeMapEntry_5D_ UpEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element UpEnumerator_descendantClassListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @descendantClassListMapDictionary
+// Down Enumerator for @_5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_descendantClassListMapDictionary::DownEnumerator_descendantClassListMapDictionary (const GGS_descendantClassListMapDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+DownEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::DownEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ (const GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex () {
-  mIndex = mInfoArray.count () - 1 ;
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_descendantClassListMapDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string DownEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_unifiedTypeMapEntry_5D_ DownEnumerator_descendantClassListMapDictionary::current_typeList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_typeList ;
+GGS__5B_unifiedTypeMapEntry_5D_ DownEnumerator__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_descendantClassListMapDictionary_2E_element DownEnumerator_descendantClassListMapDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-//--------------------------------------------------------------------------------------------------
-//     @descendantClassListMapDictionary generic code implementation
+//     @[string:[unifiedTypeMapEntry]] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_descendantClassListMapDictionary ("descendantClassListMapDictionary",
-                                                                                     nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ ("[string:[unifiedTypeMapEntry]]",
+                                                                                                  nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_descendantClassListMapDictionary::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_descendantClassListMapDictionary ;
+const GALGAS_TypeDescriptor * GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9588,12 +9503,12 @@ GGS_descendantClassListMap GGS_descendantClassListMap::init (Compiler * inCompil
 //--------------------------------------------------------------------------------------------------
 
 void GGS_descendantClassListMap::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_dictionary = GGS_descendantClassListMapDictionary::init (inCompiler COMMA_HERE) ;
+  mProperty_dictionary = GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_descendantClassListMap::GGS_descendantClassListMap (const GGS_descendantClassListMapDictionary & inOperand0) :
+GGS_descendantClassListMap::GGS_descendantClassListMap (const GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ & inOperand0) :
 mProperty_dictionary (inOperand0) {
 }
 
@@ -9644,18 +9559,8 @@ GGS__5B_unifiedTypeMapEntry_5D_ extensionGetter_listForKey (const GGS_descendant
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_unifiedTypeMapEntry_5D_ result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_descendantClassListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 117)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_descendantClassListMap temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 118)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    result_result = GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE) ;
-  }
+  const GGS_descendantClassListMap temp_0 = inObject ;
+  result_result = temp_0.readProperty_dictionary ().readSubcript__3F__3F_default (constinArgument_inKey, GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -15670,5 +15575,399 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_weakReferenceTypeForGeneratio
 
 const GALGAS_TypeDescriptor * GGS_weakReferenceTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_weakReferenceTypeForGeneration_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_enumConstant_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_::GGS__5B_enumConstant_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_::GGS__5B_enumConstant_5D_ (const GGS__5B_enumConstant_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_ & GGS__5B_enumConstant_5D_::operator = (const GGS__5B_enumConstant_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_enumConstant_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::plusPlusAssignOperation (const GGS_enumConstant & inValue
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  mSharedArray.appendObject (inValue) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_enumConstant_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::add_operation (const GGS__5B_enumConstant_5D_ & inOperand,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_enumConstant_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::description (String & ioString,
+                                            const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@enumConstant], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::plusAssignOperation (const GGS__5B_enumConstant_5D_ inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_append (const GGS_enumConstant inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_set (const GGS_enumConstant inValue,
+                                           const GGS_uint inIndex,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'set' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_insert (const GGS_enumConstant inValue,
+                                              const GGS_uint inInsertionIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_remove (GGS_enumConstant & outValue,
+                                              const GGS_uint inRemoveIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_removeFirst (GGS_enumConstant & outValue,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::setter_removeLast (GGS_enumConstant & outValue,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_enumConstant_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_sublist (const GGS_uint & inStartIndex,
+                                                                   const GGS_uint & inLength,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_enumConstant_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant GGS__5B_enumConstant_5D_::getter_first (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_enumConstant result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant GGS__5B_enumConstant_5D_::getter_last (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_enumConstant result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant GGS__5B_enumConstant_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GGS_enumConstant result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_enumConstant_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_enumConstant_5D_::DownEnumerator__5B_enumConstant_5D_ (const GGS__5B_enumConstant_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant DownEnumerator__5B_enumConstant_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant DownEnumerator__5B_enumConstant_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_enumConstant_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_enumConstant_5D_::UpEnumerator__5B_enumConstant_5D_ (const GGS__5B_enumConstant_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant UpEnumerator__5B_enumConstant_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_enumConstant UpEnumerator__5B_enumConstant_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[enumConstant] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_enumConstant_5D_ ("[enumConstant]",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_enumConstant_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_enumConstant_5D_ ;
 }
 

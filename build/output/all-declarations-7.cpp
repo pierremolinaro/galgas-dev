@@ -2506,23 +2506,23 @@ const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxExtensionAST::staticTypeDescri
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::builtDictionary (LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary result ;
+GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::buildEmptyDictionary (LOCATION_ARGS) {
+  GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ result ;
   result.build (THERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::init (Compiler * COMMA_LOCATION_ARGS) {
-  return GGS_syntaxExtensionsDictionary::builtDictionary (THERE) ;
+GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::buildEmptyDictionary (THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::description (String & ioString,
+void GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<dict @syntaxExtensionsDictionary: ") ;
+  ioString.appendCString ("<dict @_5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_: ") ;
   if (isValid ()) {
     ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;
@@ -2534,7 +2534,7 @@ void GGS_syntaxExtensionsDictionary::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_syntaxExtensionsDictionary::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_uint GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     result = GGS_uint (uint32_t (count ())) ;
@@ -2544,59 +2544,97 @@ GGS_uint GGS_syntaxExtensionsDictionary::getter_count (UNUSED_LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensionsDictionary_2E_element_3F_ GGS_syntaxExtensionsDictionary::
-readSubcript__3F_ (const class GGS_string & inKey,
-                    Compiler * /* inCompiler */
-                    COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::readSubcript__3F_ (const GGS_string & inKey,
+                                                                                                                            Compiler * /* inCompiler */
+                                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ result ;
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_> object = infoForKey (inKey) ;
     if (object.isNotNil ()) {
-      return GGS_syntaxExtensionsDictionary_2E_element_3F_ (object.value ()) ;
+      result = GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_ (object->mProperty_value) ;
     }else{
-      return GGS_syntaxExtensionsDictionary_2E_element_3F_::init_nil () ;
+      result = GGS__5B_galgas_33_SyntaxExtensionAST_5D__3F_::init_nil () ;
     }
-  }else{
-    return GGS_syntaxExtensionsDictionary_2E_element_3F_ () ;
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inValue
-                                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inValue.mProperty_key.isValid ()) {
-    insertOrReplace (inValue.mProperty_key, inValue COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary::addAssignOperation (const GGS_string & inKey,
-                                                         const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inArgument0,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
+GGS__5B_galgas_33_SyntaxExtensionAST_5D_ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::readSubcript__3F__3F_default (const GGS_string & inKey,
+                                                                                                                                   const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inDefaultValue,
+                                                                                                                                   Compiler * /* inCompiler */
+                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_galgas_33_SyntaxExtensionAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      result = GGS__5B_galgas_33_SyntaxExtensionAST_5D_ (object->mProperty_value) ;
+    }else{
+      result = inDefaultValue ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::setter_insert (const GGS_string inKey,
-                                                    const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inArgument0,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) {
-  GGS_syntaxExtensionsDictionary_2E_element newElement (inKey, inArgument0) ;
+GGS__5B_galgas_33_SyntaxExtensionAST_5D_ GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::readSubcript__3F_unwrap (const GGS_string & inKey,
+                                                                                                                                    Compiler * inCompiler
+                                                                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS__5B_galgas_33_SyntaxExtensionAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
-    insertOrReplace (inKey, newElement COMMA_THERE) ;
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_> object = infoForKey (inKey) ;
+    if (object.isNil ()) {
+    //--- Build error message
+     String message = "dictionary does not contains the '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = object->mProperty_value ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::writeSubcript__3F_ (const GGS_string inKey,
+                                                                                     const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inValue,
+                                                                                     Compiler *
+                                                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ object (inKey, inValue) ;
+    insertOrReplace (inKey, object COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_syntaxExtensionsDictionary::getter_contains (const GGS_string & inKey
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+void GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::writeSubcript__3F_unique (const GGS_string inKey,
+                                                                                           const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inValue,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ object (inKey, inValue) ;
+    const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
+    if (overwrite) {
+    //--- Build error message
+     String message = "dictionary '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key overwrite") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    } 
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::getter_contains (const GGS_string & inKey
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (hasKey (inKey)) ;
@@ -2606,152 +2644,76 @@ GGS_bool GGS_syntaxExtensionsDictionary::getter_contains (const GGS_string & inK
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::method_searchKey (GGS_string inKey,
-                                                       GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & outArgument0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+void GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::setter_remove (GGS_string inKey,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) {
-    //--- Build error message
-      const String message = "cannot search in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop out arguments
-      outArgument0.drop () ;
-    }else{
-      outArgument0 = object->mProperty_extensionList ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxExtensionsDictionary::setter_removeKey (GGS_string inKey,
-                                                       GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & outArgument0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> removedObject
+    const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_> removedObject
                     = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
     if (removedObject.isNil ()) { // Not found
     //--- Build error message
       const String message = "cannot remove in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    //--- Drop output arguments
-      outArgument0.drop () ;
-    }else{
-    //--- Assign output arguments
-      outArgument0 = removedObject->mProperty_extensionList ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS__5B_galgas_33_SyntaxExtensionAST_5D_ GGS_syntaxExtensionsDictionary::getter_extensionListForKey (const GGS_string & inKey,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_galgas_33_SyntaxExtensionAST_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxExtensionsDictionary_2E_element> object = infoForKey (inKey) ;
-    if (object.isNil ()) { // Not found
-    //--- Build error message
-      const String message = "cannot get extensionList ForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = object->mProperty_extensionList ;
-    }
-  }
-  return result ;
-}
+// Up Enumerator for @_5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxExtensionsDictionary::setter_setExtensionListForKey (GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inPropertyValue,
-                                                                    GGS_string inKey,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    OptionalSharedRef <GenericDictionaryNode <GGS_string, GGS_syntaxExtensionsDictionary_2E_element>> modifiedNode = nodeForKey (inKey) ;
-    if (modifiedNode.isNil ()) { // Not found
-    //--- Build error message
-     const String message = "cannot setExtensionListForKey in dict: the key does not exist" ;
-    //--- Emit error message
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      modifiedNode->mSharedInfo->mProperty_extensionList = inPropertyValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @syntaxExtensionsDictionary
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_syntaxExtensionsDictionary::UpEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_syntaxExtensionsDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_galgas_33_SyntaxExtensionAST_5D_ UpEnumerator_syntaxExtensionsDictionary::current_extensionList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_extensionList ;
+GGS__5B_galgas_33_SyntaxExtensionAST_5D_ UpEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element UpEnumerator_syntaxExtensionsDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @syntaxExtensionsDictionary
+// Down Enumerator for @_5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_syntaxExtensionsDictionary::DownEnumerator_syntaxExtensionsDictionary (const GGS_syntaxExtensionsDictionary & inOperand) :
-mInfoArray (inOperand.sortedInfoArray ()),
+DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ (const GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
 mIndex () {
-  mIndex = mInfoArray.count () - 1 ;
+  mIndex = mArray.count () - 1 ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_syntaxExtensionsDictionary::current_key (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_key ;
+GGS_string DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::current_key (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_key ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_galgas_33_SyntaxExtensionAST_5D_ DownEnumerator_syntaxExtensionsDictionary::current_extensionList (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_extensionList ;
+GGS__5B_galgas_33_SyntaxExtensionAST_5D_ DownEnumerator__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::current_value (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_value ;
 }
 
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxExtensionsDictionary_2E_element DownEnumerator_syntaxExtensionsDictionary::current (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE).value () ;
-}
-//--------------------------------------------------------------------------------------------------
-//     @syntaxExtensionsDictionary generic code implementation
+//     @[string:[galgas3SyntaxExtensionAST]] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ("syntaxExtensionsDictionary",
-                                                                               nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ ("[string:[galgas3SyntaxExtensionAST]]",
+                                                                                                           nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_syntaxExtensionsDictionary::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxExtensionsDictionary ;
+const GALGAS_TypeDescriptor * GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2785,12 +2747,12 @@ GGS_syntaxExtensions GGS_syntaxExtensions::init (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_syntaxExtensions::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_dictionary = GGS_syntaxExtensionsDictionary::init (inCompiler COMMA_HERE) ;
+  mProperty_dictionary = GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxExtensions::GGS_syntaxExtensions (const GGS_syntaxExtensionsDictionary & inOperand0) :
+GGS_syntaxExtensions::GGS_syntaxExtensions (const GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ & inOperand0) :
 mProperty_dictionary (inOperand0) {
 }
 
@@ -2841,18 +2803,9 @@ GGS__5B_galgas_33_SyntaxExtensionAST_5D_ extensionGetter_listForKey (const GGS_s
                                                                      Compiler * inCompiler
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_galgas_33_SyntaxExtensionAST_5D_ result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_syntaxExtensions temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 52)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      const GGS_syntaxExtensions temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 53)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    result_result = GGS__5B_galgas_33_SyntaxExtensionAST_5D_::init (inCompiler COMMA_HERE) ;
-  }
+  const GGS_syntaxExtensions temp_0 = inObject ;
+  GGS__5B_galgas_33_SyntaxExtensionAST_5D_ temp_1 = GGS__5B_galgas_33_SyntaxExtensionAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 54)) ;
+  result_result = temp_0.readProperty_dictionary ().readSubcript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
 //---
   return result_result ;
 }
@@ -3086,35 +3039,35 @@ GGS_string extensionGetter_keyRepresentation (const GGS__5B_formalParameterAST_5
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS__5B_formalParameterAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_formalParameterAST_5D_ enumerator_5464 (temp_0) ;
-  while (enumerator_5464.hasCurrentObject ()) {
-    switch (enumerator_5464.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator__5B_formalParameterAST_5D_ enumerator_5522 (temp_0) ;
+  while (enumerator_5522.hasCurrentObject ()) {
+    switch (enumerator_5522.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
       {
-        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 135)) ;
+        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 133)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
       {
-        result_result.plusAssignOperation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 137)) ;
+        result_result.plusAssignOperation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 135)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
       {
-        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 139)) ;
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 137)) ;
       }
       break ;
     }
-    result_result.plusAssignOperation(enumerator_5464.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 141)) ;
-    enumerator_5464.gotoNextObject () ;
-    if (enumerator_5464.hasCurrentObject ()) {
-      result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 143)) ;
+    result_result.plusAssignOperation(enumerator_5522.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 139)) ;
+    enumerator_5522.gotoNextObject () ;
+    if (enumerator_5522.hasCurrentObject ()) {
+      result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 141)) ;
     }
   }
-  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 145)) ;
+  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 143)) ;
 //---
   return result_result ;
 }
@@ -3132,10 +3085,10 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_formalInputParame
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS__5B_formalInputParameterAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_formalInputParameterAST_5D_ enumerator_6374 (temp_0) ;
-  while (enumerator_6374.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_6374.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 165)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 165)) ;
-    enumerator_6374.gotoNextObject () ;
+  UpEnumerator__5B_formalInputParameterAST_5D_ enumerator_6432 (temp_0) ;
+  while (enumerator_6432.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_6432.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 163)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 163)) ;
+    enumerator_6432.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -7139,8 +7092,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
-    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 189)) {
+    static const char * syntaxErrorMessageArray [189] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -7172,7 +7125,6 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'case' keyword",
         "the 'class' keyword",
         "the 'default' keyword",
-        "the 'dict' keyword",
         "the 'do' keyword",
         "the 'drop' keyword",
         "the 'else' keyword",
@@ -7841,14 +7793,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__defa
   utf32 ('a'),
   utf32 ('u'),
   utf32 ('l'),
-  utf32 ('t'),
-} ;
-
-//--- Unicode string for '$dict$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__dict = {
-  utf32 ('d'),
-  utf32 ('i'),
-  utf32 ('c'),
   utf32 ('t'),
 } ;
 
@@ -9229,7 +9173,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 80 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 79 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -9249,7 +9193,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__tag, Lexique_galgasScanner_34_::kToken_tag),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__var, Lexique_galgasScanner_34_::kToken_var),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__case, Lexique_galgasScanner_34_::kToken_case),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__dict, Lexique_galgasScanner_34_::kToken_dict),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__drop, Lexique_galgasScanner_34_::kToken_drop),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__else, Lexique_galgasScanner_34_::kToken_else),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__enum, Lexique_galgasScanner_34_::kToken_enum),
@@ -9512,11 +9455,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_default:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("default") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_dict:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("dict") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_do:
@@ -11187,7 +11125,6 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("case") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("class") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("default") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("dict") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("do") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("drop") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("else") COMMA_HERE) ;
@@ -11476,7 +11413,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("tag") ;
     ioList.appendObject ("var") ;
     ioList.appendObject ("case") ;
-    ioList.appendObject ("dict") ;
     ioList.appendObject ("drop") ;
     ioList.appendObject ("else") ;
     ioList.appendObject ("enum") ;
@@ -11554,7 +11490,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [190] = {0,
+  static const uint32_t kTerminalSymbolStyles [189] = {0,
     0 /* galgasScanner4_1_identifier */,
     7 /* galgasScanner4_1_double_2E_xxx */,
     6 /* galgasScanner4_1_literalInt */,
@@ -11586,7 +11522,6 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_case */,
     1 /* galgasScanner4_1_class */,
     1 /* galgasScanner4_1_default */,
-    1 /* galgasScanner4_1_dict */,
     1 /* galgasScanner4_1_do */,
     1 /* galgasScanner4_1_drop */,
     1 /* galgasScanner4_1_else */,
