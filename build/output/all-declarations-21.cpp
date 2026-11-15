@@ -32568,7 +32568,7 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "GGS_u_38_ GGS_u_38_::operator_tilde (UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_u_38_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_u_38_ (~ mU8Value) ;\n"
+  "    result = GGS_u_38_ (uint8_t (~ mU8Value)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -33050,7 +33050,7 @@ const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "GGS_u8.cpp",
   "cpp",
   true, // Text file
- 19553, // Text length
+ 19563, // Text length
   gWrapperFileContent_167_libpmFileWrapper
 ) ;
 

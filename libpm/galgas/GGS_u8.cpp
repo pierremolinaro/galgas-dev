@@ -106,7 +106,7 @@ GGS_u_38_ GGS_u_38_::operator_xor (const GGS_u_38_ & inOperand
 GGS_u_38_ GGS_u_38_::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GGS_u_38_ result ;
   if (isValid ()) {
-    result = GGS_u_38_ (~ mU8Value) ;
+    result = GGS_u_38_ (uint8_t (~ mU8Value)) ;
   }
   return result ;
 }
