@@ -172,11 +172,13 @@ class BigUnsigned final {
   public: void printHex (const char * inName) const ;
 
 //--- Testing value
+  public: bool fitsInU8     (void) const ;
   public: bool fitsInUInt32 (void) const ;
   public: bool fitsInUInt64 (void) const ;
   public: uint32_t requiredBitCountForUnsignedRepresentation (void) const ;
 
 //--- Value access (returns invalid values if receiver does not fit)
+  public: uint8_t  u8     (void) const ;
   public: uint32_t uint32 (void) const ;
   public: uint64_t uint64 (void) const ;
   public: void extractBytesForUnsignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const ;

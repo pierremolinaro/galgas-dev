@@ -434,6 +434,21 @@ GGS_bigint GGS_bigint::getter_abs (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_u_38_ GGS_bigint::getter_u_38_ (Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const {
+  GGS_u_38_ result ;
+  if (isValid ()) {
+    if (mValue.fitsInU8 ()) {
+      result = GGS_u_38_ (mValue.u8 ()) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("@bigint to @u8 conversion overflow" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_uint GGS_bigint::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GGS_uint result ;

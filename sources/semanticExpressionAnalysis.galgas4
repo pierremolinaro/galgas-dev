@@ -73,31 +73,6 @@ struct @analysisContext {
 
 //--------------------------------------------------------------------------------------------------
 
-//proc checkAssignmentTypes (?let @unifiedTypeMapEntry inTargetType,
-//                          ?let @unifiedTypeMapEntry inSourceType,
-//                          ?let @location inErrorLocation ) {
-//  var @unifiedTypeMapEntry sourceType = inSourceType
-//  var @bool ok = inTargetType == sourceType
-//  loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
-//    sourceType = sourceType.definition.superType
-//    ok = inTargetType == sourceType
-//  end
-//  if not ok, let weakRefType = inTargetType.definition.typeKind.getWeakReferenceType then
-//    sourceType = inSourceType
-//    ok = weakRefType.referenceType == sourceType
-//    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
-//      sourceType = sourceType.definition.superType
-//      ok = weakRefType.referenceType == sourceType
-//    end
-//  end
-//  if not ok then
-//    error (inErrorLocation
-//     : "target object type is '@" + inTargetType.definition.typeName.string + "' and cannot be assigned from an '@" + inSourceType.definition.typeName.string + "' object")
-//  end
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTargetType,
                                                 let @unifiedTypeMapEntry inSourceType,
                                                 let @location inErrorLocation,
@@ -142,6 +117,17 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
         targetTypeForBigIntAssignment,
         ioExpression.mLocation,
         bigIntValue.uint64
+      )
+      handled = true
+    elsif "u8" == targetTypeForBigIntAssignment.typeName then
+      let bigIntValue = bigIntSource.mValue
+      if (bigIntValue < 0) | (bigIntValue >= 256) then
+        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u8"
+      end
+      ioExpression = @literalU8ExpressionForGeneration (
+        targetTypeForBigIntAssignment,
+        ioExpression.mLocation,
+        bigIntValue.u8
       )
       handled = true
     elsif "sint64" == targetTypeForBigIntAssignment.typeName then

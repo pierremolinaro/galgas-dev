@@ -126,16 +126,11 @@ GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendByte (GGS_uint inArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  if (inArgument0.isValid ()) {
-    if (inArgument0.uintValue () > 255) {
-      inCompiler->onTheFlyRunTimeError ("'@data appendByte' modifier invoked with value greater than 255" COMMA_THERE) ;
-    }else{
-      const uint8_t byte = (uint8_t) (inArgument0.uintValue () & UINT8_MAX) ;
-      mData.appendByte (byte) ;
-    }
+void GGS_data::setter_appendByte (GGS_u_38_ inByte,
+                                  Compiler *
+                                  COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inByte.isValid ()) {
+    mData.appendByte (inByte.u8Value()) ;
   }
 }
 

@@ -39,7 +39,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"emptyData",
-      !resultTypeName:"data",
+      !resultTypeName: "data",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
@@ -62,18 +62,17 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                      ![@enumerationDescriptor] outEnumerationList,
-                                      !@string outEnumeratedType) {
-    !?ioUnifiedTypeMap.makeEntryFromString ("uint", ?let uintTypeIndex)
-    outEnumerationList = @()
-    outEnumerationList ++= @(uintTypeIndex, "data")
-    outEnumeratedType = "uint"
+                                    ![@enumerationDescriptor] outEnumerationList,
+                                    !@string outEnumeratedType) {
+    !?ioUnifiedTypeMap.makeEntryFromString ("u8", ?let u8Type)
+    outEnumerationList = [@(u8Type, "byte")]
+    outEnumeratedType = "u8"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getInstanceMethodMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                        !@instanceMethodMap outInstanceMethodMap) {
+                                      !@instanceMethodMap outInstanceMethodMap) {
     outInstanceMethodMap = @()
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -96,13 +95,13 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
     argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentConstantIn, "inFilePath")
     !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?t)
     argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentOut, "outFileModified")
-    !?outInstanceMethodMap.insertKey
-      (@lstring ("writeToFileWhenDifferentContents", @location.here),
-      @methodKind. definedAsMember,
+    !?outInstanceMethodMap.insertKey (
+      "writeToFileWhenDifferentContents".here,
+      .definedAsMember,
       argList,
-      @location.here,
+      .here,
       true,
-      @methodQualifier. isBasic,
+      .isBasic,
       "" // No error message
     )
   }
@@ -115,28 +114,28 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"count",
-      !returnedTypeName:"uint",
+      !getterName: "count",
+      !returnedTypeName: "uint",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"cStringRepresentation",
-      !returnedTypeName:"string",
-      !hasCompilerArgument:false
+      !getterName: "cStringRepresentation",
+      !returnedTypeName: "string",
+      !hasCompilerArgument: false
     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getSetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                !@setterMap outSetterMap) {
+                              !@setterMap outSetterMap) {
     outSetterMap = @()
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName: "uint",
+      !argTypeName: "u8",
       !argName: "inValue",
       !setterName: "appendByte",
       !compilerArg:true

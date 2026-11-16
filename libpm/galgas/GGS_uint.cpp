@@ -252,21 +252,6 @@ GGS_double GGS_uint::getter_double (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {
-  String s = "aaaaaaa" ; // 2**32 values needs 7 characters (base 26) : n = 32 * log (2) / log (26)
-  uint32_t v = mUIntValue ;
-  int32_t idx = 6 ;
-  while (v > 0) {
-    const utf32 c = utf32 ((v % 26) + 'a') ;
-    s.setCharAtIndex (c, idx COMMA_HERE) ;
-    idx -= 1 ;
-    v /= 26 ;
-  }
-  return GGS_string (s) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bigint GGS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GGS_bigint result ;
   if (isValid ()) {

@@ -22,6 +22,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
+bool BigUnsigned::fitsInU8 (void) const {
+  return u8Count () <= 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 bool BigUnsigned::fitsInUInt32 (void) const {
   return u8Count () <= 4 ;
 }
@@ -46,6 +52,16 @@ uint32_t BigUnsigned::requiredBitCountForUnsignedRepresentation (void) const {
       last /= 2 ;
     }
     return n ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint8_t BigUnsigned::u8 (void) const {
+  if (isZero ()) {
+    return 0 ;
+  }else{
+    return uint8_t (u64AtIndex (0)) ;
   }
 }
 

@@ -186,6 +186,13 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
+      !getterName: "u8",
+      !returnedTypeName: "u8",
+      !hasCompilerArgument:true
+    )
+    enterBaseFinalGetterWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
       !getterName:"uint",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true

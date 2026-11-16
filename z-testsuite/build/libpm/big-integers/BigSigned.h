@@ -156,6 +156,7 @@ class BigSigned final {
   public: void printHex (const char * inName) const ;
 
 //--- Value access
+  public: uint8_t  u8     (void) const ;
   public: uint32_t uint32 (void) const ;
   public: uint64_t uint64 (void) const ;
   public:  int32_t int32  (void) const ;
@@ -164,6 +165,7 @@ class BigSigned final {
   public: void extractBytesForSignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const ;
 
 //--- Testing value
+  public: bool fitsInU8     (void) const ;
   public: bool fitsInUInt32 (void) const ;
   public: bool fitsInUInt64 (void) const ;
   public: bool fitsInSInt32 (void) const ;

@@ -166,13 +166,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"alphaString",
-      !returnedTypeName:"string",
-      !hasCompilerArgument:false
-    )
-    enterBaseFinalGetterWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
       !getterName:"hexString",
       !returnedTypeName:"string",
       !hasCompilerArgument:false

@@ -8,6 +8,46 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@falseExpressionAST enterExpressionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@falseExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument__5F_inUsefulnessCallerEntityName */,
+                                                                GGS_usefulEntitiesGraph & /* ioArgument__5F_ioUsefulEntitiesGraph */,
+                                                                const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
+                                                                const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
+                                                                GGS_localVarManager & /* ioArgument__5F_ioVariableMap */,
+                                                                GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_falseExpressionAST temp_0 = this ;
+  outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@trueExpressionForGeneration generateExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_trueExpressionForGeneration::method_generateExpression (GGS_string & /* ioArgument__5F_ioGeneratedCode */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioInclusionSet */,
+                                                                  GGS_uint & /* ioArgument__5F_ioTemporaryVariableIndex */,
+                                                                  GGS_stringset & /* ioArgument__5F_ioUnusedVariableCppNameSet */,
+                                                                  GGS_string & outArgument_outCppExpression,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outCppExpression = GGS_string ("GGS_bool (true)") ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@falseExpressionForGeneration generateExpression'
 //--------------------------------------------------------------------------------------------------
 
@@ -9324,6 +9364,12 @@ const char * gWrapperFileContent_218_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
+  "bool BigSigned::fitsInU8 (void) const {\n"
+  "  return mIsPositive && mUnsigned.fitsInU8 () ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
   "bool BigSigned::fitsInUInt32 (void) const {\n"
   "  return mIsPositive && mUnsigned.fitsInUInt32 () ;\n"
   "}\n"
@@ -9360,6 +9406,12 @@ const char * gWrapperFileContent_218_libpmFileWrapper =
   "    const uint64_t v = mUnsigned.u64AtIndex (0) ;\n"
   "    return v <= (uint64_t (INT64_MAX) + 1) ;\n"
   "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "uint8_t BigSigned::u8 (void) const {\n"
+  "  return mUnsigned.u8 () ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -9447,7 +9499,7 @@ const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper (
   "BigSigned-conversions.cpp",
   "cpp",
   true, // Text file
- 5382, // Text length
+ 5744, // Text length
   gWrapperFileContent_218_libpmFileWrapper
 ) ;
 
@@ -10244,6 +10296,7 @@ const char * gWrapperFileContent_231_libpmFileWrapper =
   "  public: void printHex (const char * inName) const ;\n"
   "\n"
   "//--- Value access\n"
+  "  public: uint8_t  u8     (void) const ;\n"
   "  public: uint32_t uint32 (void) const ;\n"
   "  public: uint64_t uint64 (void) const ;\n"
   "  public:  int32_t int32  (void) const ;\n"
@@ -10252,6 +10305,7 @@ const char * gWrapperFileContent_231_libpmFileWrapper =
   "  public: void extractBytesForSignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const ;\n"
   "\n"
   "//--- Testing value\n"
+  "  public: bool fitsInU8     (void) const ;\n"
   "  public: bool fitsInUInt32 (void) const ;\n"
   "  public: bool fitsInUInt64 (void) const ;\n"
   "  public: bool fitsInSInt32 (void) const ;\n"
@@ -10292,7 +10346,7 @@ const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper (
   "BigSigned.h",
   "h",
   true, // Text file
- 8703, // Text length
+ 8787, // Text length
   gWrapperFileContent_231_libpmFileWrapper
 ) ;
 
@@ -11131,6 +11185,12 @@ const char * gWrapperFileContent_236_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
+  "bool BigUnsigned::fitsInU8 (void) const {\n"
+  "  return u8Count () <= 1 ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
   "bool BigUnsigned::fitsInUInt32 (void) const {\n"
   "  return u8Count () <= 4 ;\n"
   "}\n"
@@ -11155,6 +11215,16 @@ const char * gWrapperFileContent_236_libpmFileWrapper =
   "      last /= 2 ;\n"
   "    }\n"
   "    return n ;\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "uint8_t BigUnsigned::u8 (void) const {\n"
+  "  if (isZero ()) {\n"
+  "    return 0 ;\n"
+  "  }else{\n"
+  "    return uint8_t (u64AtIndex (0)) ;\n"
   "  }\n"
   "}\n"
   "\n"
@@ -11185,7 +11255,7 @@ const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper (
   "BigUnsigned-conversions.cpp",
   "cpp",
   true, // Text file
- 2719, // Text length
+ 3122, // Text length
   gWrapperFileContent_236_libpmFileWrapper
 ) ;
 
@@ -12776,11 +12846,13 @@ const char * gWrapperFileContent_232_libpmFileWrapper =
   "  public: void printHex (const char * inName) const ;\n"
   "\n"
   "//--- Testing value\n"
+  "  public: bool fitsInU8     (void) const ;\n"
   "  public: bool fitsInUInt32 (void) const ;\n"
   "  public: bool fitsInUInt64 (void) const ;\n"
   "  public: uint32_t requiredBitCountForUnsignedRepresentation (void) const ;\n"
   "\n"
   "//--- Value access (returns invalid values if receiver does not fit)\n"
+  "  public: uint8_t  u8     (void) const ;\n"
   "  public: uint32_t uint32 (void) const ;\n"
   "  public: uint64_t uint64 (void) const ;\n"
   "  public: void extractBytesForUnsignedRepresentation (GenericUniqueArray <uint8_t> & outValue) const ;\n"
@@ -12838,7 +12910,7 @@ const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper (
   "BigUnsigned.h",
   "h",
   true, // Text file
- 10232, // Text length
+ 10316, // Text length
   gWrapperFileContent_232_libpmFileWrapper
 ) ;
 
@@ -23864,6 +23936,21 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
+  "GGS_u_38_ GGS_bigint::getter_u_38_ (Compiler * inCompiler\n"
+  "                                COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_u_38_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    if (mValue.fitsInU8 ()) {\n"
+  "      result = GGS_u_38_ (mValue.u8 ()) ;\n"
+  "    }else{\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@bigint to @u8 conversion overflow\" COMMA_THERE) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
   "GGS_uint GGS_bigint::getter_uint (Compiler * inCompiler\n"
   "                                        COMMA_LOCATION_ARGS) const {\n"
   "  GGS_uint result ;\n"
@@ -24197,7 +24284,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
- 27159, // Text length
+ 27627, // Text length
   gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
@@ -26088,16 +26175,11 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_data::setter_appendByte (GGS_uint inArgument0,\n"
-  "                                  Compiler * inCompiler\n"
-  "                                  COMMA_LOCATION_ARGS) {\n"
-  "  if (inArgument0.isValid ()) {\n"
-  "    if (inArgument0.uintValue () > 255) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"'@data appendByte' modifier invoked with value greater than 255\" COMMA_THERE) ;\n"
-  "    }else{\n"
-  "      const uint8_t byte = (uint8_t) (inArgument0.uintValue () & UINT8_MAX) ;\n"
-  "      mData.appendByte (byte) ;\n"
-  "    }\n"
+  "void GGS_data::setter_appendByte (GGS_u_38_ inByte,\n"
+  "                                  Compiler *\n"
+  "                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "  if (isValid () && inByte.isValid ()) {\n"
+  "    mData.appendByte (inByte.u8Value()) ;\n"
   "  }\n"
   "}\n"
   "\n"
@@ -26440,7 +26522,7 @@ const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 18947, // Text length
+ 18700, // Text length
   gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
@@ -33311,21 +33393,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_uint::getter_alphaString (UNUSED_LOCATION_ARGS) const {\n"
-  "  String s = \"aaaaaaa\" ; // 2**32 values needs 7 characters (base 26) : n = 32 * log (2) / log (26)\n"
-  "  uint32_t v = mUIntValue ;\n"
-  "  int32_t idx = 6 ;\n"
-  "  while (v > 0) {\n"
-  "    const utf32 c = utf32 ((v % 26) + 'a') ;\n"
-  "    s.setCharAtIndex (c, idx COMMA_HERE) ;\n"
-  "    idx -= 1 ;\n"
-  "    v /= 26 ;\n"
-  "  }\n"
-  "  return GGS_string (s) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_bigint GGS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_bigint result ;\n"
   "  if (isValid ()) {\n"
@@ -33766,7 +33833,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 24208, // Text length
+ 23719, // Text length
   gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
@@ -34321,25 +34388,6 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_string result ;\n"
-  "  if (isValid ()) {\n"
-  "    String s = \"aaaaaaaaaaaaaa\" ; // 2**64 values needs 14 characters (base 26) : n = 64 * log (2) / log (26)\n"
-  "    uint64_t v = mUInt64Value ;\n"
-  "    int32_t idx = 13 ;\n"
-  "    while (v > 0) {\n"
-  "      const utf32 c = utf32 (uint32_t ((v % 26) + 'a')) ;\n"
-  "      s.setCharAtIndex (c, idx COMMA_HERE) ;\n"
-  "      idx -= 1 ;\n"
-  "      v /= 26 ;\n"
-  "    }\n"
-  "    result = GGS_string (s) ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_string GGS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_string result ;\n"
   "  if (isValid ()) {\n"
@@ -34440,7 +34488,7 @@ const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "GGS_uint64.cpp",
   "cpp",
   true, // Text file
- 25428, // Text length
+ 24823, // Text length
   gWrapperFileContent_149_libpmFileWrapper
 ) ;
 

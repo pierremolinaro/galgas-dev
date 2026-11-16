@@ -27,6 +27,12 @@
 
 //--------------------------------------------------------------------------------------------------
 
+bool BigSigned::fitsInU8 (void) const {
+  return mIsPositive && mUnsigned.fitsInU8 () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 bool BigSigned::fitsInUInt32 (void) const {
   return mIsPositive && mUnsigned.fitsInUInt32 () ;
 }
@@ -63,6 +69,12 @@ bool BigSigned::fitsInSInt64 (void) const {
     const uint64_t v = mUnsigned.u64AtIndex (0) ;
     return v <= (uint64_t (INT64_MAX) + 1) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint8_t BigSigned::u8 (void) const {
+  return mUnsigned.u8 () ;
 }
 
 //--------------------------------------------------------------------------------------------------

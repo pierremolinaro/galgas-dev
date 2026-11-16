@@ -175,17 +175,28 @@ override proc @literalUIntExpressionForGeneration.generateExpression
 
 final class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
   private let @uint64 mValue
+  
+  override proc generateExpression (?!@string _ioGeneratedCode,
+                                    ?!@stringset _ioInclusionSet,
+                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@stringset _ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
+    outCppExpression = "GGS_uint_36__34_ (uint64_t (" + self.mValue.string + "ULL))"
+  }
 }
 
-//································································································
+//--------------------------------------------------------------------------------------------------
 
-override proc @literalUInt64ExpressionForGeneration.generateExpression
-                                                      (?!@string _ioGeneratedCode,
-                                                      ?!@stringset _ioInclusionSet,
-                                                      ?!@uint _ioTemporaryVariableIndex,
-                                                      ?!@stringset _ioUnusedVariableCppNameSet,
-                                                      !@string outCppExpression ) {
-  outCppExpression = "GGS_uint_36__34_ (uint64_t (" + self.mValue.string + "ULL))"
+final class @literalU8ExpressionForGeneration : @semanticExpressionForGeneration {
+  private let @u8 mValue
+  
+  override proc generateExpression (?!@string _ioGeneratedCode,
+                                    ?!@stringset _ioInclusionSet,
+                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@stringset _ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
+    outCppExpression = "GGS_u_38_ (" + self.mValue.string + ")"
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

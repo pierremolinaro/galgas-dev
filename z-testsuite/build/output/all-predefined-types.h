@@ -188,8 +188,6 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_string getter_alphaString (LOCATION_ARGS) const ;
-
   public: class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_canAdd (const class GGS_uint_36__34_ & constinOperand0
@@ -1046,6 +1044,9 @@ class GGS_bigint : public AC_GALGAS_root {
 
   public: class GGS_string getter_string (LOCATION_ARGS) const ;
 
+  public: class GGS_u_38_ getter_u_38_ (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const ;
+
   public: class GGS_uint getter_uint (Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const ;
 
@@ -1668,7 +1669,7 @@ class GGS_data : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const GGS_data & inOperand) const ;
 
 //--------------------------------- Setters
-  public: void setter_appendByte (class GGS_uint constinArgument0,
+  public: void setter_appendByte (class GGS_u_38_ constinArgument0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -2661,8 +2662,6 @@ class GGS_uint : public AC_GALGAS_root {
 
 
 //--------------------------------- Getters
-  public: class GGS_string getter_alphaString (LOCATION_ARGS) const ;
-
   public: class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_canAdd (const class GGS_uint & constinOperand0
