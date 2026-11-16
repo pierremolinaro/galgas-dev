@@ -1,14 +1,11 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2009, ..., 2026 Pierre Molinaro.
 //
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "CollectionElementPtr.h"
 #include "galgas-input-output.h"
-#include "utf32.h"
-#include "C_galgas_CLI_Options.h"
 #include "BinaryFileWrite.h"
 #include "F_verbose_output.h"
 
@@ -350,72 +347,6 @@ void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
       }
     }
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-//   cCollectionElement_data
-//--------------------------------------------------------------------------------------------------
-
-class cCollectionElement_data : public CollectionElementPtr {
-//--- Private member
-  protected: GGS_uint mProperty_data ;
-  public: inline GGS_uint attribute_data (void) const { return mProperty_data ; }
-
-//--- Default constructor
-  public: cCollectionElement_data (const GGS_uint & inData
-                                   COMMA_LOCATION_ARGS) ;
-
-//--- No copy
-  private: cCollectionElement_data (const cCollectionElement_data &) = delete ;
-  private: cCollectionElement_data & operator = (const cCollectionElement_data &) = delete ;
-
-//--- Virtual method that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual method for comparing elements
-  public: virtual ComparisonResult compare (const CollectionElementPtr * inOperand) const ;
-
-//--- Virtual method that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-
-//--- Description
- public: virtual void description (String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-cCollectionElement_data::cCollectionElement_data (const GGS_uint & inData
-                                                  COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mProperty_data (inData) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool cCollectionElement_data::isValid (void) const {
-  return mProperty_data.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult cCollectionElement_data::compare (const CollectionElementPtr * inOperand) const {
-  const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_data) ;
-  return mProperty_data.objectCompare (operand->mProperty_data) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * cCollectionElement_data::copy (void) {
-  cCollectionElement_data * p = nullptr ;
-  macroMyNew (p, cCollectionElement_data (mProperty_data COMMA_HERE)) ;
-  return p ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cCollectionElement_data::description (String & ioString, const int32_t inIndentation) const {
-  mProperty_data.description (ioString, inIndentation) ;
 }
 
 //--------------------------------------------------------------------------------------------------

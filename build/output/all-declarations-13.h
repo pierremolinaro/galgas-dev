@@ -278,7 +278,7 @@ void callExtensionMethod_generateCode (class cPtr_abstractGrammarInstructionSynt
                                        const class GGS_string constin_inAccessMethodName,
                                        class GGS_stringset & io_ioUnusedVariableCppNameSet,
                                        class GGS_string & io_ioGeneratedCode,
-                                       class Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1315,7 +1315,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifInstructionAST_2E_we
 
 void callExtensionMethod_enterInSemanticContext (class cPtr_abstractEnumeratedCollectionAST * inObject,
                                                  class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4603,7 +4603,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST_2E
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_cppTypeName (const class GGS_lexicalTypeEnum & inObject,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5206,10 +5206,6 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Extension func appendPrimitiveTypeDeclaration
   public: virtual class GGS_string getter_appendPrimitiveTypeDeclaration (Compiler * COMMA_LOCATION_ARGS) const override ;
 
-//--- Extension proc appendPrimitiveTypePreDeclaration
-  public: virtual void method_appendPrimitiveTypePreDeclaration (class GGS_string & arg__ioHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
 //--- Properties
   public: GGS_string mProperty_mPredefinedTypeName ;
   public: GGS_string mProperty_mCppDeclarationString ;
@@ -5321,7 +5317,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_primitiveTypeForGenera
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_correspondingEffectiveParameterString (const class GGS_formalArgumentPassingModeAST & inObject,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6100,7 +6096,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLex
                                                           class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
                                                           const class GGS_lexicalArgumentModeAST constin__5F_inLexicalRoutineFormalArgumentMode,
                                                           const class GGS_lexicalTypeEnum constin__5F_inLexicalRoutineFormalArgumentType,
-                                                          class Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6686,7 +6682,7 @@ class cParser_galgas_34_ExpressionSyntax {
 
 class GGS_lstring function_makeEmbeddedTypeLName (const class GGS_lstring & constinArgument0,
                                                   const class GGS_lstring & constinArgument1,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

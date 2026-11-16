@@ -2892,7 +2892,7 @@ class GGS__5B_row_5D_ final : public AC_GALGAS_root {
                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_row_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3070,7 +3070,7 @@ class GGS__5B__32_string_5D_ final : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__32_string_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3234,7 +3234,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_row ;
 void extensionMethod_displayRule (const class GGS_productionRuleForGrammarAnalysis inObject,
                                   const class GGS_string constin_inSyntaxComponentName,
                                   class GGS_string & io_ioGeneratedCode,
-                                  class Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3244,7 +3244,7 @@ void extensionMethod_displayRule (const class GGS_productionRuleForGrammarAnalys
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string function_escapeForTex (const class GGS_string & constinArgument0,
-                                        class Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3258,7 +3258,7 @@ void extensionSetter_appendRow (class GGS__5B_row_5D_ & ioObject,
                                 const class GGS_uint constin_inRow,
                                 const class GGS_uint constin_inColumn,
                                 class GGS_string & out_outNodeName,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3276,7 +3276,7 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (class cPtr_abstractSyntax
                                                        class GGS_string & io_ioArrows,
                                                        class GGS_uint & io_ioMaxUsedRowIndex,
                                                        const class GGS_bool constin_inDebug,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3366,7 +3366,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_string ;
 void extensionMethod_displayRuleVertically (const class GGS_productionRuleForGrammarAnalysis inObject,
                                             const class GGS_string constin_inSyntaxComponentName,
                                             class GGS_string & io_ioGeneratedCode,
-                                            class Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3384,7 +3384,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GGS__5B_abstractS
                                                    class GGS_string & io_ioArrows,
                                                    class GGS_uint & io_ioMaxUsedRowIndex,
                                                    const class GGS_bool constin_inDebug,
-                                                   class Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3394,7 +3394,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GGS__5B_abstractS
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool extensionGetter_displayVertically (const class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & inObject,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3404,7 +3404,7 @@ class GGS_bool extensionGetter_displayVertically (const class GGS__5B_abstractSy
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                             class Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3497,7 +3497,7 @@ class GGS__5B_lexicalSendSearchAST_5D_ final : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalSendSearchAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4428,7 +4428,7 @@ class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ final : public AC_GALG
                                                                            COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4712,7 +4712,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineCallInst
 
 class GGS_string callExtensionGetter_generateSwiftCocoaRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                                         const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6381,7 +6381,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueAnalysisContext
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_generateRoutineArgument (const class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                              class Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6650,7 +6650,7 @@ class GGS__5B_lexicalSelectBranchAST_5D_ final : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalSelectBranchAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -8521,7 +8521,7 @@ class GGS__5B_commandLineOptionAST_5D_ final : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_commandLineOptionAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -9935,7 +9935,7 @@ class GGS__5B_programRuleAST_5D_ final : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_programRuleAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -10651,7 +10651,7 @@ class GGS_tokenSortedlist final : public AC_GALGAS_root {
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_tokenSortedlist inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)

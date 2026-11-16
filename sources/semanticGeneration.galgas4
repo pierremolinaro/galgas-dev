@@ -1376,12 +1376,6 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
   //----------------------------------------------------------------------------------------------
 
-  override proc appendPrimitiveTypePreDeclaration (?!@string ioHeader) {
-    ioHeader += "class GGS_" + self.mPredefinedTypeName + " ;\n"
-  }
-
-  //----------------------------------------------------------------------------------------------
-
   override func appendPrimitiveTypeDeclaration () -> @string {
     result = self.mCppDeclarationString
     let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -1431,11 +1425,6 @@ proc generatePredefinedTypeFiles (
 ) {
 //----------------------------------------------------------------- Generate header file
   var generatedCode = filewrapper [predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue : ]
-  for declaration in inSemanticDeclarationListForGeneration do
-    if declaration.isPredefined then
-      declaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
-    end
-  end
   generatedCode += "\n"
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
@@ -1448,7 +1437,6 @@ proc generatePredefinedTypeFiles (
       generatedCode += code
     end
   end
-  generatedCode += filewrapper [predefinedTypeGenerationTemplate.predefinedTypeSeparation : ]
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
       declaration.appendDeclaration2 (inDirectory, !? #from @(), ?let @string headerString2)

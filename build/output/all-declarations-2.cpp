@@ -7648,7 +7648,7 @@ GGS_bool GGS_typeFeatures::getter_contains (const GGS_typeFeatures & inOperand
 //--------------------------------------------------------------------------------------------------
 
 void GGS_typeFeatures::andAssignOperation (const GGS_typeFeatures inOperand,
-                                           class Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= inOperand.mFlags ;
@@ -7658,7 +7658,7 @@ void GGS_typeFeatures::andAssignOperation (const GGS_typeFeatures inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_typeFeatures::orAssignOperation (const GGS_typeFeatures inOperand,
-                                          class Compiler * /* inCompiler */
+                                          Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
@@ -7668,7 +7668,7 @@ void GGS_typeFeatures::orAssignOperation (const GGS_typeFeatures inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_typeFeatures::xorAssignOperation (const GGS_typeFeatures inOperand,
-                                           class Compiler * /* inCompiler */
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags ^= inOperand.mFlags ;
@@ -7678,7 +7678,7 @@ void GGS_typeFeatures::xorAssignOperation (const GGS_typeFeatures inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_typeFeatures::minusAssignOperation (const GGS_typeFeatures inOperand,
-                                             class Compiler * /* inCompiler */
+                                             Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;

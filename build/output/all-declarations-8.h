@@ -98,7 +98,7 @@ class GGS__5B_templateInstructionSwitchBranchAST_5D_ final : public AC_GALGAS_ro
                                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionSwitchBranchAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -454,7 +454,7 @@ class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ final : public AC
                                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -832,7 +832,7 @@ void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstruc
                                                       const class GGS_templateAnalysisContext constin_inAnalysisContext,
                                                       class GGS_unifiedTypeMap & io_ioTypeMap,
                                                       class GGS__5B_templateInstructionForGeneration_5D_ & io_ioInstructionList,
-                                                      class Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -936,7 +936,7 @@ void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressi
                                                      const class GGS_templateAnalysisContext constin_inAnalysisContext,
                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
                                                      class GGS_semanticExpressionForGeneration & out_outExpression,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8466,7 +8466,7 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -9770,7 +9770,7 @@ class GGS__5B_collectionValueElementAST_5D_ final : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_collectionValueElementAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator

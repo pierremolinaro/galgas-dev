@@ -8,23 +8,6 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@falseExpressionAST analyzeSemanticExpression'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument__5F_inUsefulnessCallerEntityName */,
-                                                                GGS_usefulEntitiesGraph & /* ioArgument__5F_ioUsefulEntitiesGraph */,
-                                                                const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
-                                                                const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                                GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
-                                                                GGS_localVarManager & /* ioArgument__5F_ioVariableMap */,
-                                                                GGS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                Compiler * inCompiler
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_falseExpressionAST temp_0 = this ;
-  outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@trueExpressionForGeneration generateExpression'
 //--------------------------------------------------------------------------------------------------
 
@@ -3123,7 +3106,7 @@ void routine_printPredefinedLexicalActions (Compiler * inCompiler
 
 //--- File 'bdd/BinaryDecisionDiagram-node.h'
 
-const char * gWrapperFileContent_246_libpmFileWrapper = 
+const char * gWrapperFileContent_240_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)                                                     \n"
@@ -3233,17 +3216,17 @@ const char * gWrapperFileContent_246_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_246_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_240_libpmFileWrapper (
   "BinaryDecisionDiagram-node.h",
   "h",
   true, // Text file
  4246, // Text length
-  gWrapperFileContent_246_libpmFileWrapper
+  gWrapperFileContent_240_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagram.cpp'
 
-const char * gWrapperFileContent_252_libpmFileWrapper = 
+const char * gWrapperFileContent_246_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)\n"
@@ -6982,17 +6965,17 @@ const char * gWrapperFileContent_252_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_252_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_246_libpmFileWrapper (
   "BinaryDecisionDiagram.cpp",
   "cpp",
   true, // Text file
  158133, // Text length
-  gWrapperFileContent_252_libpmFileWrapper
+  gWrapperFileContent_246_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagram.h'
 
-const char * gWrapperFileContent_248_libpmFileWrapper = 
+const char * gWrapperFileContent_242_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     BDD package (implementation of ROBDD)                                                     \n"
@@ -7361,17 +7344,17 @@ const char * gWrapperFileContent_248_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_248_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_242_libpmFileWrapper (
   "BinaryDecisionDiagram.h",
   "h",
   true, // Text file
  17637, // Text length
-  gWrapperFileContent_248_libpmFileWrapper
+  gWrapperFileContent_242_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelation.cpp'
 
-const char * gWrapperFileContent_253_libpmFileWrapper = 
+const char * gWrapperFileContent_247_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.cpp\n"
   "//  galgas-developer\n"
@@ -7754,17 +7737,17 @@ const char * gWrapperFileContent_253_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_253_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_247_libpmFileWrapper (
   "BinaryDecisionDiagramRelation.cpp",
   "cpp",
   true, // Text file
  17960, // Text length
-  gWrapperFileContent_253_libpmFileWrapper
+  gWrapperFileContent_247_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelation.h'
 
-const char * gWrapperFileContent_254_libpmFileWrapper = 
+const char * gWrapperFileContent_248_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.h\n"
   "//  galgas-developer\n"
@@ -7891,17 +7874,17 @@ const char * gWrapperFileContent_254_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_254_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_248_libpmFileWrapper (
   "BinaryDecisionDiagramRelation.h",
   "h",
   true, // Text file
  5564, // Text length
-  gWrapperFileContent_254_libpmFileWrapper
+  gWrapperFileContent_248_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationConfiguration.cpp'
 
-const char * gWrapperFileContent_251_libpmFileWrapper = 
+const char * gWrapperFileContent_245_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.cpp\n"
   "//  galgas-developer\n"
@@ -8429,17 +8412,17 @@ const char * gWrapperFileContent_251_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_251_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_245_libpmFileWrapper (
   "BinaryDecisionDiagramRelationConfiguration.cpp",
   "cpp",
   true, // Text file
  24258, // Text length
-  gWrapperFileContent_251_libpmFileWrapper
+  gWrapperFileContent_245_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationConfiguration.h'
 
-const char * gWrapperFileContent_250_libpmFileWrapper = 
+const char * gWrapperFileContent_244_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelation.h\n"
   "//  galgas-developer\n"
@@ -8512,17 +8495,17 @@ const char * gWrapperFileContent_250_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_250_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_244_libpmFileWrapper (
   "BinaryDecisionDiagramRelationConfiguration.h",
   "h",
   true, // Text file
  3172, // Text length
-  gWrapperFileContent_250_libpmFileWrapper
+  gWrapperFileContent_244_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationSingleType.cpp'
 
-const char * gWrapperFileContent_247_libpmFileWrapper = 
+const char * gWrapperFileContent_241_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelationSingleType.cpp\n"
   "//  galgas-developer\n"
@@ -8780,17 +8763,17 @@ const char * gWrapperFileContent_247_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_247_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_241_libpmFileWrapper (
   "BinaryDecisionDiagramRelationSingleType.cpp",
   "cpp",
   true, // Text file
  9785, // Text length
-  gWrapperFileContent_247_libpmFileWrapper
+  gWrapperFileContent_241_libpmFileWrapper
 ) ;
 
 //--- File 'bdd/BinaryDecisionDiagramRelationSingleType.h'
 
-const char * gWrapperFileContent_249_libpmFileWrapper = 
+const char * gWrapperFileContent_243_libpmFileWrapper = 
   "//\n"
   "//  BinaryDecisionDiagramRelationSingleType.h\n"
   "//  galgas-developer\n"
@@ -8849,26 +8832,26 @@ const char * gWrapperFileContent_249_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_249_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_243_libpmFileWrapper (
   "BinaryDecisionDiagramRelationSingleType.h",
   "h",
   true, // Text file
  2226, // Text length
-  gWrapperFileContent_249_libpmFileWrapper
+  gWrapperFileContent_243_libpmFileWrapper
 ) ;
 
 //--- All files of 'bdd' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_16 [10] = {
+  & gWrapperFile_240_libpmFileWrapper,
   & gWrapperFile_246_libpmFileWrapper,
-  & gWrapperFile_252_libpmFileWrapper,
-  & gWrapperFile_248_libpmFileWrapper,
-  & gWrapperFile_253_libpmFileWrapper,
-  & gWrapperFile_254_libpmFileWrapper,
-  & gWrapperFile_251_libpmFileWrapper,
-  & gWrapperFile_250_libpmFileWrapper,
+  & gWrapperFile_242_libpmFileWrapper,
   & gWrapperFile_247_libpmFileWrapper,
-  & gWrapperFile_249_libpmFileWrapper,
+  & gWrapperFile_248_libpmFileWrapper,
+  & gWrapperFile_245_libpmFileWrapper,
+  & gWrapperFile_244_libpmFileWrapper,
+  & gWrapperFile_241_libpmFileWrapper,
+  & gWrapperFile_243_libpmFileWrapper,
   nullptr
 } ;
 
@@ -8890,7 +8873,7 @@ const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper (
 
 //--- File 'big-integers/BigSigned-add.cpp'
 
-const char * gWrapperFileContent_237_libpmFileWrapper = 
+const char * gWrapperFileContent_231_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -8944,17 +8927,17 @@ const char * gWrapperFileContent_237_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_237_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper (
   "BigSigned-add.cpp",
   "cpp",
   true, // Text file
  2358, // Text length
-  gWrapperFileContent_237_libpmFileWrapper
+  gWrapperFileContent_231_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-bit.cpp'
 
-const char * gWrapperFileContent_228_libpmFileWrapper = 
+const char * gWrapperFileContent_222_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -9017,17 +9000,17 @@ const char * gWrapperFileContent_228_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_228_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_222_libpmFileWrapper (
   "BigSigned-bit.cpp",
   "cpp",
   true, // Text file
  2774, // Text length
-  gWrapperFileContent_228_libpmFileWrapper
+  gWrapperFileContent_222_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-chunk-operations.cpp'
 
-const char * gWrapperFileContent_239_libpmFileWrapper = 
+const char * gWrapperFileContent_233_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -9166,17 +9149,17 @@ const char * gWrapperFileContent_239_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_239_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_233_libpmFileWrapper (
   "BigSigned-chunk-operations.cpp",
   "cpp",
   true, // Text file
  6048, // Text length
-  gWrapperFileContent_239_libpmFileWrapper
+  gWrapperFileContent_233_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-constructors.cpp'
 
-const char * gWrapperFileContent_240_libpmFileWrapper = 
+const char * gWrapperFileContent_234_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9315,17 +9298,17 @@ const char * gWrapperFileContent_240_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_240_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_234_libpmFileWrapper (
   "BigSigned-constructors.cpp",
   "cpp",
   true, // Text file
  4900, // Text length
-  gWrapperFileContent_240_libpmFileWrapper
+  gWrapperFileContent_234_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-conversions.cpp'
 
-const char * gWrapperFileContent_218_libpmFileWrapper = 
+const char * gWrapperFileContent_212_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9486,17 +9469,17 @@ const char * gWrapperFileContent_218_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_212_libpmFileWrapper (
   "BigSigned-conversions.cpp",
   "cpp",
   true, // Text file
  5744, // Text length
-  gWrapperFileContent_218_libpmFileWrapper
+  gWrapperFileContent_212_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-divide.cpp'
 
-const char * gWrapperFileContent_229_libpmFileWrapper = 
+const char * gWrapperFileContent_223_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -9567,17 +9550,17 @@ const char * gWrapperFileContent_229_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_229_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_223_libpmFileWrapper (
   "BigSigned-divide.cpp",
   "cpp",
   true, // Text file
  3164, // Text length
-  gWrapperFileContent_229_libpmFileWrapper
+  gWrapperFileContent_223_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-logic-operations.cpp'
 
-const char * gWrapperFileContent_238_libpmFileWrapper = 
+const char * gWrapperFileContent_232_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9679,17 +9662,17 @@ const char * gWrapperFileContent_238_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_238_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper (
   "BigSigned-logic-operations.cpp",
   "cpp",
   true, // Text file
  4867, // Text length
-  gWrapperFileContent_238_libpmFileWrapper
+  gWrapperFileContent_232_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-multiply.cpp'
 
-const char * gWrapperFileContent_217_libpmFileWrapper = 
+const char * gWrapperFileContent_211_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -9732,17 +9715,17 @@ const char * gWrapperFileContent_217_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_217_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_211_libpmFileWrapper (
   "BigSigned-multiply.cpp",
   "cpp",
   true, // Text file
  2011, // Text length
-  gWrapperFileContent_217_libpmFileWrapper
+  gWrapperFileContent_211_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-print.cpp'
 
-const char * gWrapperFileContent_222_libpmFileWrapper = 
+const char * gWrapperFileContent_216_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -9840,17 +9823,17 @@ const char * gWrapperFileContent_222_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_222_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_216_libpmFileWrapper (
   "BigSigned-print.cpp",
   "cpp",
   true, // Text file
  3438, // Text length
-  gWrapperFileContent_222_libpmFileWrapper
+  gWrapperFileContent_216_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-shifts.cpp'
 
-const char * gWrapperFileContent_243_libpmFileWrapper = 
+const char * gWrapperFileContent_237_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -9923,17 +9906,17 @@ const char * gWrapperFileContent_243_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_243_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_237_libpmFileWrapper (
   "BigSigned-shifts.cpp",
   "cpp",
   true, // Text file
  2953, // Text length
-  gWrapperFileContent_243_libpmFileWrapper
+  gWrapperFileContent_237_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-subtract.cpp'
 
-const char * gWrapperFileContent_244_libpmFileWrapper = 
+const char * gWrapperFileContent_238_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//  BigUnsigned\n"
@@ -10006,17 +9989,17 @@ const char * gWrapperFileContent_244_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_244_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_238_libpmFileWrapper (
   "BigSigned-subtract.cpp",
   "cpp",
   true, // Text file
  2853, // Text length
-  gWrapperFileContent_244_libpmFileWrapper
+  gWrapperFileContent_238_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned-utilities.cpp'
 
-const char * gWrapperFileContent_233_libpmFileWrapper = 
+const char * gWrapperFileContent_227_libpmFileWrapper = 
   "//\n"
   "//  BigSigned-utilities.cpp\n"
   "//  BigSignedU8U64\n"
@@ -10057,17 +10040,17 @@ const char * gWrapperFileContent_233_libpmFileWrapper =
   "}\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_233_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_227_libpmFileWrapper (
   "BigSigned-utilities.cpp",
   "cpp",
   true, // Text file
  1690, // Text length
-  gWrapperFileContent_233_libpmFileWrapper
+  gWrapperFileContent_227_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned.cpp'
 
-const char * gWrapperFileContent_223_libpmFileWrapper = 
+const char * gWrapperFileContent_217_libpmFileWrapper = 
   "//\n"
   "//  BigSigned.cpp\n"
   "//\n"
@@ -10118,17 +10101,17 @@ const char * gWrapperFileContent_223_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_223_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_217_libpmFileWrapper (
   "BigSigned.cpp",
   "cpp",
   true, // Text file
  2129, // Text length
-  gWrapperFileContent_223_libpmFileWrapper
+  gWrapperFileContent_217_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigSigned.h'
 
-const char * gWrapperFileContent_231_libpmFileWrapper = 
+const char * gWrapperFileContent_225_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  BigSigned.h\n"
@@ -10333,17 +10316,17 @@ const char * gWrapperFileContent_231_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_231_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_225_libpmFileWrapper (
   "BigSigned.h",
   "h",
   true, // Text file
  8787, // Text length
-  gWrapperFileContent_231_libpmFileWrapper
+  gWrapperFileContent_225_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-add.cpp'
 
-const char * gWrapperFileContent_225_libpmFileWrapper = 
+const char * gWrapperFileContent_219_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -10405,17 +10388,17 @@ const char * gWrapperFileContent_225_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_225_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_219_libpmFileWrapper (
   "BigUnsigned-add.cpp",
   "cpp",
   true, // Text file
  2367, // Text length
-  gWrapperFileContent_225_libpmFileWrapper
+  gWrapperFileContent_219_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-bit.cpp'
 
-const char * gWrapperFileContent_213_libpmFileWrapper = 
+const char * gWrapperFileContent_207_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -10504,17 +10487,17 @@ const char * gWrapperFileContent_213_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_213_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_207_libpmFileWrapper (
   "BigUnsigned-bit.cpp",
   "cpp",
   true, // Text file
  4245, // Text length
-  gWrapperFileContent_213_libpmFileWrapper
+  gWrapperFileContent_207_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-chunk-operations.cpp'
 
-const char * gWrapperFileContent_242_libpmFileWrapper = 
+const char * gWrapperFileContent_236_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -10694,17 +10677,17 @@ const char * gWrapperFileContent_242_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_242_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper (
   "BigUnsigned-chunk-operations.cpp",
   "cpp",
   true, // Text file
  6380, // Text length
-  gWrapperFileContent_242_libpmFileWrapper
+  gWrapperFileContent_236_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-constructors.cpp'
 
-const char * gWrapperFileContent_220_libpmFileWrapper = 
+const char * gWrapperFileContent_214_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11141,17 +11124,17 @@ const char * gWrapperFileContent_220_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_220_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_214_libpmFileWrapper (
   "BigUnsigned-constructors.cpp",
   "cpp",
   true, // Text file
  14859, // Text length
-  gWrapperFileContent_220_libpmFileWrapper
+  gWrapperFileContent_214_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-conversions.cpp'
 
-const char * gWrapperFileContent_236_libpmFileWrapper = 
+const char * gWrapperFileContent_230_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11242,17 +11225,17 @@ const char * gWrapperFileContent_236_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_236_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_230_libpmFileWrapper (
   "BigUnsigned-conversions.cpp",
   "cpp",
   true, // Text file
  3122, // Text length
-  gWrapperFileContent_236_libpmFileWrapper
+  gWrapperFileContent_230_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-divide-naive.cpp'
 
-const char * gWrapperFileContent_226_libpmFileWrapper = 
+const char * gWrapperFileContent_220_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11361,17 +11344,17 @@ const char * gWrapperFileContent_226_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_226_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_220_libpmFileWrapper (
   "BigUnsigned-divide-naive.cpp",
   "cpp",
   true, // Text file
  6106, // Text length
-  gWrapperFileContent_226_libpmFileWrapper
+  gWrapperFileContent_220_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-divide.cpp'
 
-const char * gWrapperFileContent_221_libpmFileWrapper = 
+const char * gWrapperFileContent_215_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -11494,17 +11477,17 @@ const char * gWrapperFileContent_221_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_221_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_215_libpmFileWrapper (
   "BigUnsigned-divide.cpp",
   "cpp",
   true, // Text file
  6164, // Text length
-  gWrapperFileContent_221_libpmFileWrapper
+  gWrapperFileContent_215_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-logic-operations.cpp'
 
-const char * gWrapperFileContent_245_libpmFileWrapper = 
+const char * gWrapperFileContent_239_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -11877,17 +11860,17 @@ const char * gWrapperFileContent_245_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_245_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_239_libpmFileWrapper (
   "BigUnsigned-logic-operations.cpp",
   "cpp",
   true, // Text file
  17234, // Text length
-  gWrapperFileContent_245_libpmFileWrapper
+  gWrapperFileContent_239_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-multiply.cpp'
 
-const char * gWrapperFileContent_227_libpmFileWrapper = 
+const char * gWrapperFileContent_221_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -11956,17 +11939,17 @@ const char * gWrapperFileContent_227_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_227_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_221_libpmFileWrapper (
   "BigUnsigned-multiply.cpp",
   "cpp",
   true, // Text file
  2803, // Text length
-  gWrapperFileContent_227_libpmFileWrapper
+  gWrapperFileContent_221_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-print.cpp'
 
-const char * gWrapperFileContent_216_libpmFileWrapper = 
+const char * gWrapperFileContent_210_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12129,17 +12112,17 @@ const char * gWrapperFileContent_216_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_216_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_210_libpmFileWrapper (
   "BigUnsigned-print.cpp",
   "cpp",
   true, // Text file
  5837, // Text length
-  gWrapperFileContent_216_libpmFileWrapper
+  gWrapperFileContent_210_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-shifts.cpp'
 
-const char * gWrapperFileContent_210_libpmFileWrapper = 
+const char * gWrapperFileContent_204_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -12241,17 +12224,17 @@ const char * gWrapperFileContent_210_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_210_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_204_libpmFileWrapper (
   "BigUnsigned-shifts.cpp",
   "cpp",
   true, // Text file
  3789, // Text length
-  gWrapperFileContent_210_libpmFileWrapper
+  gWrapperFileContent_204_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-subtract.cpp'
 
-const char * gWrapperFileContent_215_libpmFileWrapper = 
+const char * gWrapperFileContent_209_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"BigUnsigned.h\"\n"
@@ -12310,17 +12293,17 @@ const char * gWrapperFileContent_215_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_215_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_209_libpmFileWrapper (
   "BigUnsigned-subtract.cpp",
   "cpp",
   true, // Text file
  2241, // Text length
-  gWrapperFileContent_215_libpmFileWrapper
+  gWrapperFileContent_209_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned-utilities.cpp'
 
-const char * gWrapperFileContent_212_libpmFileWrapper = 
+const char * gWrapperFileContent_206_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12652,17 +12635,17 @@ const char * gWrapperFileContent_212_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_212_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_206_libpmFileWrapper (
   "BigUnsigned-utilities.cpp",
   "cpp",
   true, // Text file
  11173, // Text length
-  gWrapperFileContent_212_libpmFileWrapper
+  gWrapperFileContent_206_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/BigUnsigned.h'
 
-const char * gWrapperFileContent_232_libpmFileWrapper = 
+const char * gWrapperFileContent_226_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -12897,17 +12880,17 @@ const char * gWrapperFileContent_232_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_232_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_226_libpmFileWrapper (
   "BigUnsigned.h",
   "h",
   true, // Text file
  10316, // Text length
-  gWrapperFileContent_232_libpmFileWrapper
+  gWrapperFileContent_226_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSelectSize.h'
 
-const char * gWrapperFileContent_235_libpmFileWrapper = 
+const char * gWrapperFileContent_229_libpmFileWrapper = 
   "#pragma once\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -12989,17 +12972,17 @@ const char * gWrapperFileContent_235_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_235_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_229_libpmFileWrapper (
   "ChunkSelectSize.h",
   "h",
   true, // Text file
  3095, // Text length
-  gWrapperFileContent_235_libpmFileWrapper
+  gWrapperFileContent_229_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSharedArray.cpp'
 
-const char * gWrapperFileContent_234_libpmFileWrapper = 
+const char * gWrapperFileContent_228_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -13030,17 +13013,17 @@ const char * gWrapperFileContent_234_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_234_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_228_libpmFileWrapper (
   "ChunkSharedArray.cpp",
   "cpp",
   true, // Text file
  1690, // Text length
-  gWrapperFileContent_234_libpmFileWrapper
+  gWrapperFileContent_228_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/ChunkSharedArray.h'
 
-const char * gWrapperFileContent_214_libpmFileWrapper = 
+const char * gWrapperFileContent_208_libpmFileWrapper = 
   "#pragma once\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -13268,17 +13251,17 @@ const char * gWrapperFileContent_214_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_214_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_208_libpmFileWrapper (
   "ChunkSharedArray.h",
   "h",
   true, // Text file
  8392, // Text length
-  gWrapperFileContent_214_libpmFileWrapper
+  gWrapperFileContent_208_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/UInt128.cpp'
 
-const char * gWrapperFileContent_209_libpmFileWrapper = 
+const char * gWrapperFileContent_203_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Handling 128-bits unsigned integer                                                   \n"
@@ -13533,17 +13516,17 @@ const char * gWrapperFileContent_209_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_209_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_203_libpmFileWrapper (
   "UInt128.cpp",
   "cpp",
   true, // Text file
  8610, // Text length
-  gWrapperFileContent_209_libpmFileWrapper
+  gWrapperFileContent_203_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/UInt128.h'
 
-const char * gWrapperFileContent_224_libpmFileWrapper = 
+const char * gWrapperFileContent_218_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Handling 128-bits unsigned integer                                                   \n"
@@ -13632,17 +13615,17 @@ const char * gWrapperFileContent_224_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_224_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_218_libpmFileWrapper (
   "UInt128.h",
   "h",
   true, // Text file
  3465, // Text length
-  gWrapperFileContent_224_libpmFileWrapper
+  gWrapperFileContent_218_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U16.h'
 
-const char * gWrapperFileContent_230_libpmFileWrapper = 
+const char * gWrapperFileContent_224_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -13748,17 +13731,17 @@ const char * gWrapperFileContent_230_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_230_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_224_libpmFileWrapper (
   "chunk-U16.h",
   "h",
   true, // Text file
  4704, // Text length
-  gWrapperFileContent_230_libpmFileWrapper
+  gWrapperFileContent_224_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U32.h'
 
-const char * gWrapperFileContent_219_libpmFileWrapper = 
+const char * gWrapperFileContent_213_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -13864,17 +13847,17 @@ const char * gWrapperFileContent_219_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_219_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_213_libpmFileWrapper (
   "chunk-U32.h",
   "h",
   true, // Text file
  4716, // Text length
-  gWrapperFileContent_219_libpmFileWrapper
+  gWrapperFileContent_213_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U64.h'
 
-const char * gWrapperFileContent_241_libpmFileWrapper = 
+const char * gWrapperFileContent_235_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -14206,17 +14189,17 @@ const char * gWrapperFileContent_241_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_241_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_235_libpmFileWrapper (
   "chunk-U64.h",
   "h",
   true, // Text file
  11001, // Text length
-  gWrapperFileContent_241_libpmFileWrapper
+  gWrapperFileContent_235_libpmFileWrapper
 ) ;
 
 //--- File 'big-integers/chunk-U8.h'
 
-const char * gWrapperFileContent_211_libpmFileWrapper = 
+const char * gWrapperFileContent_205_libpmFileWrapper = 
   "//                                           \n"
   "//  MIT License\n"
   "//                                           \n"
@@ -14322,54 +14305,54 @@ const char * gWrapperFileContent_211_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_211_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_205_libpmFileWrapper (
   "chunk-U8.h",
   "h",
   true, // Text file
  4666, // Text length
-  gWrapperFileContent_211_libpmFileWrapper
+  gWrapperFileContent_205_libpmFileWrapper
 ) ;
 
 //--- All files of 'big-integers' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_15 [38] = {
-  & gWrapperFile_237_libpmFileWrapper,
-  & gWrapperFile_228_libpmFileWrapper,
-  & gWrapperFile_239_libpmFileWrapper,
-  & gWrapperFile_240_libpmFileWrapper,
-  & gWrapperFile_218_libpmFileWrapper,
-  & gWrapperFile_229_libpmFileWrapper,
-  & gWrapperFile_238_libpmFileWrapper,
-  & gWrapperFile_217_libpmFileWrapper,
-  & gWrapperFile_222_libpmFileWrapper,
-  & gWrapperFile_243_libpmFileWrapper,
-  & gWrapperFile_244_libpmFileWrapper,
-  & gWrapperFile_233_libpmFileWrapper,
-  & gWrapperFile_223_libpmFileWrapper,
   & gWrapperFile_231_libpmFileWrapper,
-  & gWrapperFile_225_libpmFileWrapper,
-  & gWrapperFile_213_libpmFileWrapper,
-  & gWrapperFile_242_libpmFileWrapper,
-  & gWrapperFile_220_libpmFileWrapper,
-  & gWrapperFile_236_libpmFileWrapper,
-  & gWrapperFile_226_libpmFileWrapper,
-  & gWrapperFile_221_libpmFileWrapper,
-  & gWrapperFile_245_libpmFileWrapper,
-  & gWrapperFile_227_libpmFileWrapper,
-  & gWrapperFile_216_libpmFileWrapper,
-  & gWrapperFile_210_libpmFileWrapper,
-  & gWrapperFile_215_libpmFileWrapper,
-  & gWrapperFile_212_libpmFileWrapper,
-  & gWrapperFile_232_libpmFileWrapper,
-  & gWrapperFile_235_libpmFileWrapper,
+  & gWrapperFile_222_libpmFileWrapper,
+  & gWrapperFile_233_libpmFileWrapper,
   & gWrapperFile_234_libpmFileWrapper,
-  & gWrapperFile_214_libpmFileWrapper,
-  & gWrapperFile_209_libpmFileWrapper,
-  & gWrapperFile_224_libpmFileWrapper,
-  & gWrapperFile_230_libpmFileWrapper,
-  & gWrapperFile_219_libpmFileWrapper,
-  & gWrapperFile_241_libpmFileWrapper,
+  & gWrapperFile_212_libpmFileWrapper,
+  & gWrapperFile_223_libpmFileWrapper,
+  & gWrapperFile_232_libpmFileWrapper,
   & gWrapperFile_211_libpmFileWrapper,
+  & gWrapperFile_216_libpmFileWrapper,
+  & gWrapperFile_237_libpmFileWrapper,
+  & gWrapperFile_238_libpmFileWrapper,
+  & gWrapperFile_227_libpmFileWrapper,
+  & gWrapperFile_217_libpmFileWrapper,
+  & gWrapperFile_225_libpmFileWrapper,
+  & gWrapperFile_219_libpmFileWrapper,
+  & gWrapperFile_207_libpmFileWrapper,
+  & gWrapperFile_236_libpmFileWrapper,
+  & gWrapperFile_214_libpmFileWrapper,
+  & gWrapperFile_230_libpmFileWrapper,
+  & gWrapperFile_220_libpmFileWrapper,
+  & gWrapperFile_215_libpmFileWrapper,
+  & gWrapperFile_239_libpmFileWrapper,
+  & gWrapperFile_221_libpmFileWrapper,
+  & gWrapperFile_210_libpmFileWrapper,
+  & gWrapperFile_204_libpmFileWrapper,
+  & gWrapperFile_209_libpmFileWrapper,
+  & gWrapperFile_206_libpmFileWrapper,
+  & gWrapperFile_226_libpmFileWrapper,
+  & gWrapperFile_229_libpmFileWrapper,
+  & gWrapperFile_228_libpmFileWrapper,
+  & gWrapperFile_208_libpmFileWrapper,
+  & gWrapperFile_203_libpmFileWrapper,
+  & gWrapperFile_218_libpmFileWrapper,
+  & gWrapperFile_224_libpmFileWrapper,
+  & gWrapperFile_213_libpmFileWrapper,
+  & gWrapperFile_235_libpmFileWrapper,
+  & gWrapperFile_205_libpmFileWrapper,
   nullptr
 } ;
 
@@ -14391,7 +14374,7 @@ const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper (
 
 //--- File 'command_line_interface/AbstractCommandLineOption.cpp'
 
-const char * gWrapperFileContent_200_libpmFileWrapper = 
+const char * gWrapperFileContent_194_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Option                                                        \n"
@@ -14436,17 +14419,17 @@ const char * gWrapperFileContent_200_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_200_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_194_libpmFileWrapper (
   "AbstractCommandLineOption.cpp",
   "cpp",
   true, // Text file
  1941, // Text length
-  gWrapperFileContent_200_libpmFileWrapper
+  gWrapperFileContent_194_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/AbstractCommandLineOption.h'
 
-const char * gWrapperFileContent_203_libpmFileWrapper = 
+const char * gWrapperFileContent_197_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Option                                                        \n"
@@ -14507,17 +14490,17 @@ const char * gWrapperFileContent_203_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_203_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_197_libpmFileWrapper (
   "AbstractCommandLineOption.h",
   "h",
   true, // Text file
  2516, // Text length
-  gWrapperFileContent_203_libpmFileWrapper
+  gWrapperFileContent_197_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/BoolCommandLineOption.cpp'
 
-const char * gWrapperFileContent_196_libpmFileWrapper = 
+const char * gWrapperFileContent_190_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Boolean Command Line Interface Option\n"
@@ -14730,17 +14713,17 @@ const char * gWrapperFileContent_196_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_196_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_190_libpmFileWrapper (
   "BoolCommandLineOption.cpp",
   "cpp",
   true, // Text file
  7992, // Text length
-  gWrapperFileContent_196_libpmFileWrapper
+  gWrapperFileContent_190_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/BoolCommandLineOption.h'
 
-const char * gWrapperFileContent_207_libpmFileWrapper = 
+const char * gWrapperFileContent_201_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Boolean Command Line Interface Option                                                \n"
@@ -14822,17 +14805,17 @@ const char * gWrapperFileContent_207_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_207_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_201_libpmFileWrapper (
   "BoolCommandLineOption.h",
   "h",
   true, // Text file
  3647, // Text length
-  gWrapperFileContent_207_libpmFileWrapper
+  gWrapperFileContent_201_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/F_mainForLIBPM.cpp'
 
-const char * gWrapperFileContent_202_libpmFileWrapper = 
+const char * gWrapperFileContent_196_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'main' (call user supplied 'mainForLIBPM' routine).                                  \n"
@@ -14942,17 +14925,17 @@ const char * gWrapperFileContent_202_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_202_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_196_libpmFileWrapper (
   "F_mainForLIBPM.cpp",
   "cpp",
   true, // Text file
  3955, // Text length
-  gWrapperFileContent_202_libpmFileWrapper
+  gWrapperFileContent_196_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/F_mainForLIBPM.h'
 
-const char * gWrapperFileContent_205_libpmFileWrapper = 
+const char * gWrapperFileContent_199_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Declaration of 'mainForLIBPM' routine prototype.                                             \n"
@@ -14982,17 +14965,17 @@ const char * gWrapperFileContent_205_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_205_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_199_libpmFileWrapper (
   "F_mainForLIBPM.h",
   "h",
   true, // Text file
  1274, // Text length
-  gWrapperFileContent_205_libpmFileWrapper
+  gWrapperFileContent_199_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/StringCommandLineOption.cpp'
 
-const char * gWrapperFileContent_197_libpmFileWrapper = 
+const char * gWrapperFileContent_191_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic String Command Line Interface Option\n"
@@ -15252,17 +15235,17 @@ const char * gWrapperFileContent_197_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_197_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_191_libpmFileWrapper (
   "StringCommandLineOption.cpp",
   "cpp",
   true, // Text file
  10269, // Text length
-  gWrapperFileContent_197_libpmFileWrapper
+  gWrapperFileContent_191_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/StringCommandLineOption.h'
 
-const char * gWrapperFileContent_204_libpmFileWrapper = 
+const char * gWrapperFileContent_198_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic String Command Line Interface Option                                                 \n"
@@ -15347,17 +15330,17 @@ const char * gWrapperFileContent_204_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_204_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_198_libpmFileWrapper (
   "StringCommandLineOption.h",
   "h",
   true, // Text file
  4003, // Text length
-  gWrapperFileContent_204_libpmFileWrapper
+  gWrapperFileContent_198_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/UIntCommandLineOption.cpp'
 
-const char * gWrapperFileContent_201_libpmFileWrapper = 
+const char * gWrapperFileContent_195_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Unsigned Command Line Interface Option\n"
@@ -15619,17 +15602,17 @@ const char * gWrapperFileContent_201_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_201_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_195_libpmFileWrapper (
   "UIntCommandLineOption.cpp",
   "cpp",
   true, // Text file
  10128, // Text length
-  gWrapperFileContent_201_libpmFileWrapper
+  gWrapperFileContent_195_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/UIntCommandLineOption.h'
 
-const char * gWrapperFileContent_198_libpmFileWrapper = 
+const char * gWrapperFileContent_192_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Unsigned Command Line Interface Option                                               \n"
@@ -15711,17 +15694,17 @@ const char * gWrapperFileContent_198_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_198_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_192_libpmFileWrapper (
   "UIntCommandLineOption.h",
   "h",
   true, // Text file
  3888, // Text length
-  gWrapperFileContent_198_libpmFileWrapper
+  gWrapperFileContent_192_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/analyzeCommandLineOptions.cpp'
 
-const char * gWrapperFileContent_206_libpmFileWrapper = 
+const char * gWrapperFileContent_200_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'analyzeCommandLineOptions' : a way for automatic command line options analysis for MacOS, Win32 and Unix.     *\n"
@@ -16142,17 +16125,17 @@ const char * gWrapperFileContent_206_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_206_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_200_libpmFileWrapper (
   "analyzeCommandLineOptions.cpp",
   "cpp",
   true, // Text file
  16135, // Text length
-  gWrapperFileContent_206_libpmFileWrapper
+  gWrapperFileContent_200_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/analyzeCommandLineOptions.h'
 
-const char * gWrapperFileContent_195_libpmFileWrapper = 
+const char * gWrapperFileContent_189_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Routine 'analyzeCommandLineOptions' : a way for automatic command                                \n"
@@ -16214,17 +16197,17 @@ const char * gWrapperFileContent_195_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_195_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_189_libpmFileWrapper (
   "analyzeCommandLineOptions.h",
   "h",
   true, // Text file
  2666, // Text length
-  gWrapperFileContent_195_libpmFileWrapper
+  gWrapperFileContent_189_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/builtin-command-line-options.cpp'
 
-const char * gWrapperFileContent_199_libpmFileWrapper = 
+const char * gWrapperFileContent_193_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Options                                                       \n"
@@ -16303,17 +16286,17 @@ const char * gWrapperFileContent_199_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_199_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_193_libpmFileWrapper (
   "builtin-command-line-options.cpp",
   "cpp",
   true, // Text file
  3994, // Text length
-  gWrapperFileContent_199_libpmFileWrapper
+  gWrapperFileContent_193_libpmFileWrapper
 ) ;
 
 //--- File 'command_line_interface/builtin-command-line-options.h'
 
-const char * gWrapperFileContent_208_libpmFileWrapper = 
+const char * gWrapperFileContent_202_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Generic Command Line Interface Options                                                       \n"
@@ -16377,31 +16360,31 @@ const char * gWrapperFileContent_208_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_208_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_202_libpmFileWrapper (
   "builtin-command-line-options.h",
   "h",
   true, // Text file
  2776, // Text length
-  gWrapperFileContent_208_libpmFileWrapper
+  gWrapperFileContent_202_libpmFileWrapper
 ) ;
 
 //--- All files of 'command_line_interface' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_14 [15] = {
-  & gWrapperFile_200_libpmFileWrapper,
-  & gWrapperFile_203_libpmFileWrapper,
-  & gWrapperFile_196_libpmFileWrapper,
-  & gWrapperFile_207_libpmFileWrapper,
-  & gWrapperFile_202_libpmFileWrapper,
-  & gWrapperFile_205_libpmFileWrapper,
+  & gWrapperFile_194_libpmFileWrapper,
   & gWrapperFile_197_libpmFileWrapper,
-  & gWrapperFile_204_libpmFileWrapper,
+  & gWrapperFile_190_libpmFileWrapper,
   & gWrapperFile_201_libpmFileWrapper,
-  & gWrapperFile_198_libpmFileWrapper,
-  & gWrapperFile_206_libpmFileWrapper,
-  & gWrapperFile_195_libpmFileWrapper,
+  & gWrapperFile_196_libpmFileWrapper,
   & gWrapperFile_199_libpmFileWrapper,
-  & gWrapperFile_208_libpmFileWrapper,
+  & gWrapperFile_191_libpmFileWrapper,
+  & gWrapperFile_198_libpmFileWrapper,
+  & gWrapperFile_195_libpmFileWrapper,
+  & gWrapperFile_192_libpmFileWrapper,
+  & gWrapperFile_200_libpmFileWrapper,
+  & gWrapperFile_189_libpmFileWrapper,
+  & gWrapperFile_193_libpmFileWrapper,
+  & gWrapperFile_202_libpmFileWrapper,
   nullptr
 } ;
 
@@ -16423,7 +16406,7 @@ const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper (
 
 //--- File 'files/AbstractFileHandle.cpp'
 
-const char * gWrapperFileContent_186_libpmFileWrapper = 
+const char * gWrapperFileContent_180_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'AbstractFileHandle' : an abstract class for handling files handles                               \n"
@@ -16516,17 +16499,17 @@ const char * gWrapperFileContent_186_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_186_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
   "AbstractFileHandle.cpp",
   "cpp",
   true, // Text file
  3613, // Text length
-  gWrapperFileContent_186_libpmFileWrapper
+  gWrapperFileContent_180_libpmFileWrapper
 ) ;
 
 //--- File 'files/AbstractFileHandle.h'
 
-const char * gWrapperFileContent_189_libpmFileWrapper = 
+const char * gWrapperFileContent_183_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'AbstractFileHandle' : an abstract class for handling files handles\n"
@@ -16587,17 +16570,17 @@ const char * gWrapperFileContent_189_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_189_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
   "AbstractFileHandle.h",
   "h",
   true, // Text file
  2180, // Text length
-  gWrapperFileContent_189_libpmFileWrapper
+  gWrapperFileContent_183_libpmFileWrapper
 ) ;
 
 //--- File 'files/BinaryFileWrite.cpp'
 
-const char * gWrapperFileContent_191_libpmFileWrapper = 
+const char * gWrapperFileContent_185_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'BinaryFileWrite' : a class for stream writing text files\n"
@@ -16637,17 +16620,17 @@ const char * gWrapperFileContent_191_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_191_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_185_libpmFileWrapper (
   "BinaryFileWrite.cpp",
   "cpp",
   true, // Text file
  1538, // Text length
-  gWrapperFileContent_191_libpmFileWrapper
+  gWrapperFileContent_185_libpmFileWrapper
 ) ;
 
 //--- File 'files/BinaryFileWrite.h'
 
-const char * gWrapperFileContent_188_libpmFileWrapper = 
+const char * gWrapperFileContent_182_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'BinaryFileWrite' : a class for stream writing binary files                                \n"
@@ -16698,17 +16681,17 @@ const char * gWrapperFileContent_188_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_188_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
   "BinaryFileWrite.h",
   "h",
   true, // Text file
  2025, // Text length
-  gWrapperFileContent_188_libpmFileWrapper
+  gWrapperFileContent_182_libpmFileWrapper
 ) ;
 
 //--- File 'files/FileManager.cpp'
 
-const char * gWrapperFileContent_190_libpmFileWrapper = 
+const char * gWrapperFileContent_184_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'FileManager' : a class for handling files, independantly from platform\n"
@@ -17524,17 +17507,17 @@ const char * gWrapperFileContent_190_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_190_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_184_libpmFileWrapper (
   "FileManager.cpp",
   "cpp",
   true, // Text file
  29491, // Text length
-  gWrapperFileContent_190_libpmFileWrapper
+  gWrapperFileContent_184_libpmFileWrapper
 ) ;
 
 //--- File 'files/FileManager.h'
 
-const char * gWrapperFileContent_185_libpmFileWrapper = 
+const char * gWrapperFileContent_179_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'FileManager' : a class for handling files, independantly from platform                    \n"
@@ -17659,17 +17642,17 @@ const char * gWrapperFileContent_185_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_185_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "FileManager.h",
   "h",
   true, // Text file
  5802, // Text length
-  gWrapperFileContent_185_libpmFileWrapper
+  gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
 //--- File 'files/HTMLFileWrite.cpp'
 
-const char * gWrapperFileContent_193_libpmFileWrapper = 
+const char * gWrapperFileContent_187_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'HTMLFileWrite' : a class for stream writing html text files                              \n"
@@ -17818,17 +17801,17 @@ const char * gWrapperFileContent_193_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_193_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_187_libpmFileWrapper (
   "HTMLFileWrite.cpp",
   "cpp",
   true, // Text file
  5844, // Text length
-  gWrapperFileContent_193_libpmFileWrapper
+  gWrapperFileContent_187_libpmFileWrapper
 ) ;
 
 //--- File 'files/HTMLFileWrite.h'
 
-const char * gWrapperFileContent_194_libpmFileWrapper = 
+const char * gWrapperFileContent_188_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'HTMLFileWrite' : a class for stream writing html text files                              \n"
@@ -17901,17 +17884,17 @@ const char * gWrapperFileContent_194_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_194_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_188_libpmFileWrapper (
   "HTMLFileWrite.h",
   "h",
   true, // Text file
  2936, // Text length
-  gWrapperFileContent_194_libpmFileWrapper
+  gWrapperFileContent_188_libpmFileWrapper
 ) ;
 
 //--- File 'files/TextFileWrite.cpp'
 
-const char * gWrapperFileContent_187_libpmFileWrapper = 
+const char * gWrapperFileContent_181_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'TextFileWrite' : a class for stream writing text files\n"
@@ -17971,17 +17954,17 @@ const char * gWrapperFileContent_187_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_187_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
   "TextFileWrite.cpp",
   "cpp",
   true, // Text file
  2325, // Text length
-  gWrapperFileContent_187_libpmFileWrapper
+  gWrapperFileContent_181_libpmFileWrapper
 ) ;
 
 //--- File 'files/TextFileWrite.h'
 
-const char * gWrapperFileContent_192_libpmFileWrapper = 
+const char * gWrapperFileContent_186_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  'TextFileWrite' : a class for stream writing text files                                    \n"
@@ -18036,27 +18019,27 @@ const char * gWrapperFileContent_192_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_192_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_186_libpmFileWrapper (
   "TextFileWrite.h",
   "h",
   true, // Text file
  2294, // Text length
-  gWrapperFileContent_192_libpmFileWrapper
+  gWrapperFileContent_186_libpmFileWrapper
 ) ;
 
 //--- All files of 'files' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_13 [11] = {
-  & gWrapperFile_186_libpmFileWrapper,
-  & gWrapperFile_189_libpmFileWrapper,
-  & gWrapperFile_191_libpmFileWrapper,
-  & gWrapperFile_188_libpmFileWrapper,
-  & gWrapperFile_190_libpmFileWrapper,
+  & gWrapperFile_180_libpmFileWrapper,
+  & gWrapperFile_183_libpmFileWrapper,
   & gWrapperFile_185_libpmFileWrapper,
-  & gWrapperFile_193_libpmFileWrapper,
-  & gWrapperFile_194_libpmFileWrapper,
+  & gWrapperFile_182_libpmFileWrapper,
+  & gWrapperFile_184_libpmFileWrapper,
+  & gWrapperFile_179_libpmFileWrapper,
   & gWrapperFile_187_libpmFileWrapper,
-  & gWrapperFile_192_libpmFileWrapper,
+  & gWrapperFile_188_libpmFileWrapper,
+  & gWrapperFile_181_libpmFileWrapper,
+  & gWrapperFile_186_libpmFileWrapper,
   nullptr
 } ;
 
@@ -18173,7 +18156,7 @@ const cRegularFileWrapper gWrapperFile_124_libpmFileWrapper (
 
 //--- File 'galgas/AC_GALGAS_enumAssociatedValues.h'
 
-const char * gWrapperFileContent_150_libpmFileWrapper = 
+const char * gWrapperFileContent_145_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.\n"
@@ -18237,12 +18220,12 @@ const char * gWrapperFileContent_150_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.h",
   "h",
   true, // Text file
  2304, // Text length
-  gWrapperFileContent_150_libpmFileWrapper
+  gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_reference_class.cpp'
@@ -18409,7 +18392,7 @@ const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper (
 
 //--- File 'galgas/AC_GALGAS_root.cpp'
 
-const char * gWrapperFileContent_156_libpmFileWrapper = 
+const char * gWrapperFileContent_151_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -18462,17 +18445,17 @@ const char * gWrapperFileContent_156_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
  1659, // Text length
-  gWrapperFileContent_156_libpmFileWrapper
+  gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_root.h'
 
-const char * gWrapperFileContent_147_libpmFileWrapper = 
+const char * gWrapperFileContent_142_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -18560,17 +18543,17 @@ const char * gWrapperFileContent_147_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper (
   "AC_GALGAS_root.h",
   "h",
   true, // Text file
  3106, // Text length
-  gWrapperFileContent_147_libpmFileWrapper
+  gWrapperFileContent_142_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_weak_reference.cpp'
 
-const char * gWrapperFileContent_152_libpmFileWrapper = 
+const char * gWrapperFileContent_147_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.\n"
@@ -18674,17 +18657,17 @@ const char * gWrapperFileContent_152_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
   "AC_GALGAS_weak_reference.cpp",
   "cpp",
   true, // Text file
  3972, // Text length
-  gWrapperFileContent_152_libpmFileWrapper
+  gWrapperFileContent_147_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_weak_reference.h'
 
-const char * gWrapperFileContent_163_libpmFileWrapper = 
+const char * gWrapperFileContent_158_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2024 Pierre Molinaro.\n"
@@ -18739,17 +18722,17 @@ const char * gWrapperFileContent_163_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
   "AC_GALGAS_weak_reference.h",
   "h",
   true, // Text file
  1929, // Text length
-  gWrapperFileContent_163_libpmFileWrapper
+  gWrapperFileContent_158_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.cpp'
 
-const char * gWrapperFileContent_179_libpmFileWrapper = 
+const char * gWrapperFileContent_173_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -18767,17 +18750,17 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
   "AbstractPtrClass.cpp",
   "cpp",
   true, // Text file
  573, // Text length
-  gWrapperFileContent_179_libpmFileWrapper
+  gWrapperFileContent_173_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.h'
 
-const char * gWrapperFileContent_158_libpmFileWrapper = 
+const char * gWrapperFileContent_153_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -18816,17 +18799,17 @@ const char * gWrapperFileContent_158_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
   "AbstractPtrClass.h",
   "h",
   true, // Text file
  1358, // Text length
-  gWrapperFileContent_158_libpmFileWrapper
+  gWrapperFileContent_153_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.cpp'
 
-const char * gWrapperFileContent_154_libpmFileWrapper = 
+const char * gWrapperFileContent_149_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -18925,17 +18908,17 @@ const char * gWrapperFileContent_154_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "AbstractStrongPtrClass.cpp",
   "cpp",
   true, // Text file
  3116, // Text length
-  gWrapperFileContent_154_libpmFileWrapper
+  gWrapperFileContent_149_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.h'
 
-const char * gWrapperFileContent_146_libpmFileWrapper = 
+const char * gWrapperFileContent_141_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -18990,17 +18973,17 @@ const char * gWrapperFileContent_146_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
   "AbstractStrongPtrClass.h",
   "h",
   true, // Text file
  1744, // Text length
-  gWrapperFileContent_146_libpmFileWrapper
+  gWrapperFileContent_141_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_CLI_Options.cpp'
 
-const char * gWrapperFileContent_162_libpmFileWrapper = 
+const char * gWrapperFileContent_157_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2023 Pierre Molinaro.\n"
@@ -19190,12 +19173,12 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
   "C_galgas_CLI_Options.cpp",
   "cpp",
   true, // Text file
  8842, // Text length
-  gWrapperFileContent_162_libpmFileWrapper
+  gWrapperFileContent_157_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_CLI_Options.h'
@@ -19330,7 +19313,7 @@ const cRegularFileWrapper gWrapperFile_119_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_class_inspector.h'
 
-const char * gWrapperFileContent_172_libpmFileWrapper = 
+const char * gWrapperFileContent_167_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
@@ -19368,12 +19351,12 @@ const char * gWrapperFileContent_172_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "C_galgas_class_inspector.h",
   "h",
   true, // Text file
  1352, // Text length
-  gWrapperFileContent_172_libpmFileWrapper
+  gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_quiet_option.cpp'
@@ -19418,7 +19401,7 @@ const cRegularFileWrapper gWrapperFile_118_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_quiet_option.h'
 
-const char * gWrapperFileContent_143_libpmFileWrapper = 
+const char * gWrapperFileContent_138_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
@@ -19438,17 +19421,17 @@ const char * gWrapperFileContent_143_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "C_galgas_quiet_option.h",
   "h",
   true, // Text file
  700, // Text length
-  gWrapperFileContent_143_libpmFileWrapper
+  gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_verbose_option.cpp'
 
-const char * gWrapperFileContent_174_libpmFileWrapper = 
+const char * gWrapperFileContent_169_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Built-in GALGAS Command Line Interface Options\n"
@@ -19490,17 +19473,17 @@ const char * gWrapperFileContent_174_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
   "C_galgas_verbose_option.cpp",
   "cpp",
   true, // Text file
  1933, // Text length
-  gWrapperFileContent_174_libpmFileWrapper
+  gWrapperFileContent_169_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_verbose_option.h'
 
-const char * gWrapperFileContent_137_libpmFileWrapper = 
+const char * gWrapperFileContent_132_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------\n"
   "//\n"
   "//  GALGAS Command Line Interface Options\n"
@@ -19534,862 +19517,17 @@ const char * gWrapperFileContent_137_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_137_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
   "C_galgas_verbose_option.h",
   "h",
   true, // Text file
  1283, // Text length
-  gWrapperFileContent_137_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElement.cpp'
-
-const char * gWrapperFileContent_125_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"CollectionElement.h\"\n"
-  "#include \"CollectionElementPtr.h\"\n"
-  "#include \"String-class.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement::CollectionElement (void) :\n"
-  "mPtr (nullptr) {\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElement::setPointer (CollectionElementPtr * inObjectPointer) {\n"
-  "  macroAssignSharedObject (mPtr, inObjectPointer) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement:: ~CollectionElement (void) {\n"
-  "  macroDetachSharedObject (mPtr) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement::CollectionElement (const CollectionElement & inSource) :\n"
-  "mPtr (nullptr) {\n"
-  "  macroAssignSharedObject (mPtr, inSource.mPtr) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement & CollectionElement::operator = (const CollectionElement & inSource) {\n"
-  "  macroAssignSharedObject (mPtr, inSource.mPtr) ;\n"
-  "  return * this ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "bool CollectionElement::isValid (void) const {\n"
-  "  bool result = nullptr != mPtr ;\n"
-  "  if (result) {\n"
-  "    result = mPtr->isValid () ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement CollectionElement::copy (void) {\n"
-  "  CollectionElement result ;\n"
-  "  CollectionElementPtr * p = mPtr->copy () ;\n"
-  "  result.setPointer (p) ;\n"
-  "  macroDetachSharedObject (p) ;\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElement::drop (void) {\n"
-  "  macroDetachSharedObject (mPtr) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElement::insulate (void) {\n"
-  "  if ((nullptr != mPtr) && !mPtr->isUniquelyReferenced ()) {\n"
-  "    CollectionElementPtr * p = mPtr->copy () ;\n"
-  "    macroAssignSharedObject (mPtr, p) ;\n"
-  "    macroDetachSharedObject (p) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper (
-  "CollectionElement.cpp",
-  "cpp",
-  true, // Text file
- 2627, // Text length
-  gWrapperFileContent_125_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElement.h'
-
-const char * gWrapperFileContent_129_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"SharedObject.h\"\n"
-  "#include \"ComparisonResult.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class String ;\n"
-  "class CollectionElementPtr ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class CollectionElement final {\n"
-  "//--- Private pointer\n"
-  "  private: CollectionElementPtr * mPtr ;\n"
-  "\n"
-  "//--- Default constructor\n"
-  "  public: CollectionElement (void) ;\n"
-  "\n"
-  "//--- Destructor\n"
-  "  public: ~ CollectionElement (void) ;\n"
-  "\n"
-  "//--- Handle copy\n"
-  "  public: CollectionElement (const CollectionElement & inSource) ;\n"
-  "  public: CollectionElement & operator = (const CollectionElement & inSource) ;\n"
-  "\n"
-  "//--- set pointer\n"
-  "  public: void setPointer (CollectionElementPtr * inObjectPointer) ;\n"
-  "\n"
-  "//--- Method that checks that all attributes are valid\n"
-  "  public: bool isValid (void) const ;\n"
-  "\n"
-  "//--- Method that ensures that pointer object is unique\n"
-  "  public: void insulate (void) ;\n"
-  "\n"
-  "//--- Method that release object\n"
-  "  public: void drop (void) ;\n"
-  "\n"
-  "//--- Get pointer (for temporary use)\n"
-  "  public: inline CollectionElementPtr * ptr (void) { return mPtr ; }\n"
-  "  public: inline const CollectionElementPtr * ptr (void) const { return mPtr ; }\n"
-  "\n"
-  "//--- Method that returns a copy of current object\n"
-  "  public: CollectionElement copy (void) ;\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper (
-  "CollectionElement.h",
-  "h",
-  true, // Text file
- 1788, // Text length
-  gWrapperFileContent_129_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElementArray.cpp'
-
-const char * gWrapperFileContent_128_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"CollectionElementArray.h\"\n"
-  "#include \"MF_MemoryControl.h\"\n"
-  "#include \"String-class.h\"\n"
-  "#include \"Compiler.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//   capCollectionRoot\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#ifdef PRAGMA_MARK_ALLOWED\n"
-  "  #pragma mark capCollectionRoot\n"
-  "#endif\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class capCollectionRoot : public SharedObject {\n"
-  "//--- Default constructor\n"
-  "  public: capCollectionRoot (void) ;\n"
-  "\n"
-  "//--- Special copy constructor\n"
-  "  public: capCollectionRoot (const capCollectionRoot * inSource) ;\n"
-  "\n"
-  "//--- Destructor\n"
-  "  public: virtual ~ capCollectionRoot (void) ;\n"
-  "\n"
-  "//--- No copy\n"
-  "  private: capCollectionRoot (const capCollectionRoot &) ;\n"
-  "  private: capCollectionRoot & operator = (const capCollectionRoot &) ;\n"
-  "\n"
-  "//--- Private properties\n"
-  "  private: CollectionElement * mArray ;\n"
-  "  private: uint32_t mCapacity ;\n"
-  "  private: uint32_t mCount ;\n"
-  "\n"
-  "//--- Friend\n"
-  "  friend class CollectionElementArray ;\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "capCollectionRoot::capCollectionRoot (void) :\n"
-  "SharedObject (HERE),\n"
-  "mArray (nullptr),\n"
-  "mCapacity (0),\n"
-  "mCount (0) {\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "capCollectionRoot::capCollectionRoot (const capCollectionRoot * inSource) :\n"
-  "SharedObject (HERE),\n"
-  "mArray (nullptr),\n"
-  "mCapacity (0),\n"
-  "mCount (0) {\n"
-  "  macroValidPointer (inSource) ;\n"
-  "  if (inSource->mCount > 0) {\n"
-  "    macroMyNewArray (mArray, CollectionElement, inSource->mCount) ;\n"
-  "    for (uint32_t i=0 ; i<inSource->mCount ; i++) {\n"
-  "      mArray [i] = inSource->mArray [i] ;\n"
-  "    }\n"
-  "    mCapacity = inSource->mCount ;\n"
-  "    mCount = inSource->mCount ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "capCollectionRoot::~ capCollectionRoot (void) {\n"
-  "  macroMyDeleteArray (mArray) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//   CollectionElementArray\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#ifdef PRAGMA_MARK_ALLOWED\n"
-  "  #pragma mark CollectionElementArray\n"
-  "#endif\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementArray::CollectionElementArray (void) :\n"
-  "mSharedRoot (nullptr) {\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementArray::CollectionElementArray (const uint32_t inCapacity) :\n"
-  "mSharedRoot (nullptr) {\n"
-  "  setCapacity (inCapacity) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementArray::CollectionElementArray (const CollectionElementArray & inSource) :\n"
-  "mSharedRoot (nullptr) {\n"
-  "  macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementArray & CollectionElementArray::operator = (const CollectionElementArray & inSource) {\n"
-  "  if (mSharedRoot != inSource.mSharedRoot) {\n"
-  "    macroAssignSharedObject (mSharedRoot, inSource.mSharedRoot) ;\n"
-  "  }\n"
-  "  return *this ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementArray::~CollectionElementArray (void) {\n"
-  "  macroDetachSharedObject (mSharedRoot) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "uint32_t CollectionElementArray::count (void) const {\n"
-  "  return (nullptr == mSharedRoot) \? 0 : mSharedRoot->mCount ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "uint32_t CollectionElementArray::capacity (void) const {\n"
-  "  return (nullptr == mSharedRoot) \? 0 : mSharedRoot->mCapacity ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::insulateOrCreate (void) {\n"
-  "  if (nullptr == mSharedRoot) {\n"
-  "    macroMyNew (mSharedRoot, capCollectionRoot) ;\n"
-  "  }else if (!mSharedRoot->isUniquelyReferenced()) { // Copy\n"
-  "    capCollectionRoot * newRoot = nullptr ;\n"
-  "    macroMyNew (newRoot, capCollectionRoot (mSharedRoot)) ;\n"
-  "    macroAssignSharedObject (mSharedRoot, newRoot) ;\n"
-  "    macroDetachSharedObject (newRoot) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::setCapacity (const uint32_t inNewCapacity) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  if (inNewCapacity > capacity ()) {\n"
-  "    uint32_t newCapacity = (capacity () > 8) \? capacity () : 8 ;\n"
-  "    while (newCapacity < inNewCapacity) {\n"
-  "      newCapacity <<= 1 ;\n"
-  "    }\n"
-  "    CollectionElement * newArray = nullptr ;\n"
-  "    macroMyNewArray (newArray, CollectionElement, newCapacity) ;\n"
-  "    for (uint32_t i=0 ; i<count () ; i++) {\n"
-  "      newArray [i] = mSharedRoot->mArray [i] ;\n"
-  "    }\n"
-  "    macroMyDeleteArray (mSharedRoot->mArray) ; mSharedRoot->mArray = newArray ;\n"
-  "    mSharedRoot->mCapacity = newCapacity ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::appendObject (const CollectionElement & inObject) {\n"
-  "  setCapacity (count () + 1) ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssert (count () < capacity (), \"mCount (%lld) >= mCapacity (%lld)\", count (), capacity ()) ;\n"
-  "  mSharedRoot->mArray [mSharedRoot->mCount] = inObject ;\n"
-  "  mSharedRoot->mCount += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::insertObjectAtIndex (const CollectionElement & inObject,\n"
-  "                                                     const uint32_t inInsertionIndex,\n"
-  "                                                     Compiler * inCompiler\n"
-  "                                                     COMMA_LOCATION_ARGS) {\n"
-  "  setCapacity (count () + 1) ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssert (count () < capacity (), \"mCount (%lld) >= mCapacity (%lld)\", count (), capacity ()) ;\n"
-  "  if (inInsertionIndex <= mSharedRoot->mCount) {\n"
-  "    for (uint32_t i=mSharedRoot->mCount ; i>inInsertionIndex ; i--) {\n"
-  "      mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;\n"
-  "    }\n"
-  "    mSharedRoot->mArray [inInsertionIndex] = inObject ;\n"
-  "    mSharedRoot->mCount += 1 ;\n"
-  "  }else{\n"
-  "    String s (\"insertAtIndex: insertion index (\") ;\n"
-  "    s.appendUnsigned (inInsertionIndex) ;\n"
-  "    s.appendCString (\") > length (\") ;\n"
-  "    s.appendUnsigned (count ()) ;\n"
-  "    s.appendCString (\")\") ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::removeObjectAtIndex (CollectionElement & outObject,\n"
-  "                                                     const uint32_t inIndex,\n"
-  "                                                     Compiler * inCompiler\n"
-  "                                                     COMMA_LOCATION_ARGS) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssert (count () > 0, \"empty array\", 0, 0) ;\n"
-  "  if (inIndex < mSharedRoot->mCount) {\n"
-  "    outObject = mSharedRoot->mArray [inIndex] ;\n"
-  "    for (uint32_t i=inIndex + 1 ; i<mSharedRoot->mCount ; i++) {\n"
-  "      mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;\n"
-  "    }\n"
-  "    mSharedRoot->mCount -= 1 ;\n"
-  "    mSharedRoot->mArray [mSharedRoot->mCount].drop () ;\n"
-  "  }else{\n"
-  "    String s (\"removeObjectAtIndex: index (\") ;\n"
-  "    s.appendUnsigned (inIndex) ;\n"
-  "    s.appendCString (\") >= length (\") ;\n"
-  "    s.appendUnsigned (count ()) ;\n"
-  "    s.appendCString (\")\") ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::removeFirstObject (CollectionElement & outObject,\n"
-  "                                                   Compiler * inCompiler\n"
-  "                                                   COMMA_LOCATION_ARGS) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  if (count () == 0) {\n"
-  "    String s = \"removeFirstObject: empty list\" ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    outObject = mSharedRoot->mArray [0] ;\n"
-  "    for (uint32_t i=1 ; i<mSharedRoot->mCount ; i++) {\n"
-  "      mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;\n"
-  "    }\n"
-  "    mSharedRoot->mCount -= 1 ;\n"
-  "    mSharedRoot->mArray [mSharedRoot->mCount].drop () ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::readFirstObject (CollectionElement & outObject,\n"
-  "                                                 Compiler * inCompiler\n"
-  "                                                 COMMA_LOCATION_ARGS) const {\n"
-  "  if (count () == 0) {\n"
-  "    String s = \"firstObject: empty list\" ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    outObject = mSharedRoot->mArray [0] ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::removeLastObject (CollectionElement & outObject,\n"
-  "                                                  Compiler * inCompiler\n"
-  "                                                  COMMA_LOCATION_ARGS) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  if (count () == 0) {\n"
-  "    String s = \"removeLastObject: empty list\" ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    mSharedRoot->mCount -= 1 ;\n"
-  "    outObject = mSharedRoot->mArray [mSharedRoot->mCount] ;\n"
-  "    mSharedRoot->mArray [mSharedRoot->mCount].drop () ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::readLastObject (CollectionElement & outObject,\n"
-  "                                                Compiler * inCompiler\n"
-  "                                                COMMA_LOCATION_ARGS) const {\n"
-  "  if (count () == 0) {\n"
-  "    String s = \"lastObject: empty list\" ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    outObject = mSharedRoot->mArray [mSharedRoot->mCount - 1] ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::replaceObjectAtIndex (const CollectionElement & inObject,\n"
-  "                                                      const uint32_t inIndex\n"
-  "                                                      COMMA_LOCATION_ARGS) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
-  "  mSharedRoot->mArray [inIndex] = inObject ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElement CollectionElementArray::objectAtIndex (const uint32_t inIndex\n"
-  "                                                               COMMA_LOCATION_ARGS) const {\n"
-  "  macroAssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
-  "  return mSharedRoot->mArray [inIndex] ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementPtr * CollectionElementArray::uniquelyReferencedPointerAtIndex (const uint32_t inIndex\n"
-  "                                                                                  COMMA_LOCATION_ARGS) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
-  "  mSharedRoot->mArray [inIndex].insulate () ;\n"
-  "  return mSharedRoot->mArray [inIndex].ptr () ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "const CollectionElementPtr * CollectionElementArray::pointerAtIndexForReadAccess (const uint32_t inIndex\n"
-  "                                                                                   COMMA_LOCATION_ARGS) const {\n"
-  "  macroAssertThere (inIndex < count (), \"inIndex (%ld) >= mCount (%ld)\", inIndex, count ()) ;\n"
-  "  return mSharedRoot->mArray [inIndex].ptr () ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::removeObjectAtIndex (const uint32_t inIndex) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssert (count () > inIndex, \"mCount (%ld) <= inIndex (%lld)\", count (), inIndex) ;\n"
-  "  for (uint32_t i=inIndex+1 ; i<mSharedRoot->mCount ; i++) {\n"
-  "    mSharedRoot->mArray [i - 1] = mSharedRoot->mArray [i] ;\n"
-  "  }\n"
-  "  mSharedRoot->mCount -= 1 ;\n"
-  "  mSharedRoot->mArray [mSharedRoot->mCount].drop () ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::predendObject (const CollectionElement & inObject) {\n"
-  "  setCapacity (count () + 1) ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  macroAssert (count () < capacity (), \"mCount (%lld) >= mCapacity (%lld)\", count (), capacity ()) ;\n"
-  "  for (uint32_t i=count () ; i>0 ; i--) {\n"
-  "    mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;\n"
-  "  }\n"
-  "  mSharedRoot->mArray [0] = inObject ;\n"
-  "  mSharedRoot->mCount += 1 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::removeAllObjects (void) {\n"
-  "  insulateOrCreate () ;\n"
-  "  macroUniqueSharedObject (mSharedRoot) ;\n"
-  "  for (uint32_t i=0 ; i<mSharedRoot->mCount ; i++) {\n"
-  "    mSharedRoot->mArray [i].drop () ;\n"
-  "  }\n"
-  "  mSharedRoot->mCount = 0 ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::appendObjects (const CollectionElementArray inObjects) {\n"
-  "  const uint32_t operandCount = inObjects.count () ;\n"
-  "  if (operandCount > 0) {\n"
-  "    const uint32_t receiverCount = count () ;\n"
-  "    setCapacity (receiverCount + operandCount) ;\n"
-  "    macroUniqueSharedObject (mSharedRoot) ;\n"
-  "    for (uint32_t i=0 ; i<operandCount ; i++) {\n"
-  "      mSharedRoot->mArray [receiverCount + i] = inObjects.mSharedRoot->mArray [i] ;\n"
-  "    }\n"
-  "    mSharedRoot->mCount += operandCount ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::subListToIndex (CollectionElementArray & outSubList,\n"
-  "                                                const uint32_t inIndex,\n"
-  "                                                bool & outOk,\n"
-  "                                                Compiler * inCompiler\n"
-  "                                                COMMA_LOCATION_ARGS) const {\n"
-  "  outSubList.removeAllObjects () ;\n"
-  "  outOk = false ;\n"
-  "  if (inIndex >= count ()) {\n"
-  "    String s ;\n"
-  "    s.appendCString (\"Cannot get a sub list from index \") ;\n"
-  "    s.appendUnsigned (inIndex) ;\n"
-  "    s.appendCString (\" with a list of length \") ;\n"
-  "    s.appendUnsigned (count ()) ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    const uint32_t length = inIndex + 1 ;\n"
-  "    outSubList.setCapacity (length) ;\n"
-  "    for (uint32_t i=0 ; i<length ; i++) {\n"
-  "      outSubList.appendObject (mSharedRoot->mArray [i]) ;\n"
-  "    }\n"
-  "    outOk = true ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::subListWithRange (CollectionElementArray & outSubList,\n"
-  "                                                  const uint32_t inStartIndex,\n"
-  "                                                  const uint32_t inLength,\n"
-  "                                                  bool & outOk,\n"
-  "                                                  Compiler * inCompiler\n"
-  "                                                  COMMA_LOCATION_ARGS) const {\n"
-  "  outOk = false ;\n"
-  "  outSubList.removeAllObjects () ;\n"
-  "  if ((inStartIndex + inLength) > count ()) {\n"
-  "    String s ;\n"
-  "    s.appendCString (\"Cannot get a sub list of range [\") ;\n"
-  "    s.appendUnsigned (inStartIndex) ;\n"
-  "    s.appendCString (\":\") ;\n"
-  "    s.appendUnsigned (inLength) ;\n"
-  "    s.appendCString (\"] from a list of length \") ;\n"
-  "    s.appendUnsigned (count ()) ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    outSubList.setCapacity (inLength) ;\n"
-  "    for (uint32_t i=0 ; i<inLength ; i++) {\n"
-  "      outSubList.appendObject (mSharedRoot->mArray [inStartIndex + i]) ;\n"
-  "    }\n"
-  "    outOk = true ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void CollectionElementArray::subListFromIndex (CollectionElementArray & outSubList,\n"
-  "                                                  const uint32_t inIndex,\n"
-  "                                                  bool & outOk,\n"
-  "                                                  Compiler * inCompiler\n"
-  "                                                  COMMA_LOCATION_ARGS) const {\n"
-  "  outOk = false ;\n"
-  "  outSubList.removeAllObjects () ;\n"
-  "  if (inIndex > count ()) {\n"
-  "    String s (\"Cannot get a sub list from index \") ;\n"
-  "    s.appendUnsigned (inIndex) ;\n"
-  "    s.appendCString (\" with a list of length \") ;\n"
-  "    s.appendUnsigned (count ()) ;\n"
-  "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
-  "  }else{\n"
-  "    const uint32_t length = count () - inIndex ;\n"
-  "    outSubList.setCapacity (length) ;\n"
-  "    for (uint32_t i=0 ; i<length ; i++) {\n"
-  "      outSubList.appendObject (mSharedRoot->mArray [inIndex + i]) ;\n"
-  "    }\n"
-  "    outOk = true ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper (
-  "CollectionElementArray.cpp",
-  "cpp",
-  true, // Text file
- 18076, // Text length
-  gWrapperFileContent_128_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElementArray.h'
-
-const char * gWrapperFileContent_131_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"CollectionElement.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class Compiler ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class CollectionElementArray final {\n"
-  "//--- Default constructor\n"
-  "  public: CollectionElementArray (void) ;\n"
-  "\n"
-  "//--- Default constructor\n"
-  "  public: CollectionElementArray (const uint32_t inCapacity) ;\n"
-  "\n"
-  "//--- Virtual destructor\n"
-  "  public: ~ CollectionElementArray (void) ;\n"
-  "\n"
-  "//--- Handle copy\n"
-  "  public: CollectionElementArray (const CollectionElementArray & inSource) ;\n"
-  "  public: CollectionElementArray & operator = (const CollectionElementArray & inSource) ;\n"
-  "\n"
-  "//--- Set capacity\n"
-  "  public: void setCapacity (const uint32_t inNewCapacity) ;\n"
-  "\n"
-  "//--- Append Object\n"
-  "  public: void appendObject (const CollectionElement & inObject) ;\n"
-  "\n"
-  "  public: void insertObjectAtIndex (const CollectionElement & inObject,\n"
-  "                                     const uint32_t inInsertionIndex,\n"
-  "                                     Compiler * inCompiler\n"
-  "                                     COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "  public: void removeObjectAtIndex (CollectionElement & outObject,\n"
-  "                                     const uint32_t inInsertionIndex,\n"
-  "                                     Compiler * inCompiler\n"
-  "                                     COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "  public: void removeFirstObject (CollectionElement & outObject,\n"
-  "                                   Compiler * inCompiler\n"
-  "                                   COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "  public: void readFirstObject (CollectionElement & outObject,\n"
-  "                                 Compiler * inCompiler\n"
-  "                                 COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "  public: void removeLastObject (CollectionElement & outObject,\n"
-  "                                  Compiler * inCompiler\n"
-  "                                  COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "  public: void readLastObject (CollectionElement & outObject,\n"
-  "                                Compiler * inCompiler\n"
-  "                                COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "  public: void replaceObjectAtIndex (const CollectionElement & inObject,\n"
-  "                                      const uint32_t inIndex\n"
-  "                                      COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "  public: void appendObjects (const CollectionElementArray inObjects) ; // Passing using copy constructor\n"
-  "\n"
-  "//--- Get object\n"
-  "  public: CollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "//--- Get object pointer for writing (perform implicitly an \"insulate\" action)\n"
-  "  public: CollectionElementPtr * uniquelyReferencedPointerAtIndex (const uint32_t inIndex\n"
-  "                                                                  COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "//--- Get object pointer for reading\n"
-  "  public: const CollectionElementPtr * pointerAtIndexForReadAccess (const uint32_t inIndex\n"
-  "                                                                   COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "//--- Get count\n"
-  "  public: uint32_t count (void) const ;\n"
-  "\n"
-  "//--- Get count\n"
-  "  public: uint32_t capacity (void) const ;\n"
-  "\n"
-  "//--- Remove an object\n"
-  "  public: void removeObjectAtIndex (const uint32_t inIndex) ;\n"
-  "\n"
-  "//--- Prepend object (insert them from index 0)\n"
-  "  public: void predendObject (const CollectionElement & inObject) ;\n"
-  "\n"
-  "//--- Remove all objects (without changing capacity)\n"
-  "  public: void removeAllObjects (void) ;\n"
-  "\n"
-  "//--- Sublists\n"
-  "  public: void subListToIndex (CollectionElementArray & outSubList,\n"
-  "                                const uint32_t inIndex,\n"
-  "                                bool & outOk,\n"
-  "                                Compiler * inCompiler\n"
-  "                                COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "  public: void subListWithRange (CollectionElementArray & ioSubList,\n"
-  "                                  const uint32_t inStartIndex,\n"
-  "                                  const uint32_t inLength,\n"
-  "                                  bool & outOk,\n"
-  "                                  Compiler * inCompiler\n"
-  "                                  COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "  public: void subListFromIndex (CollectionElementArray & ioSubList,\n"
-  "                                  const uint32_t inIndex,\n"
-  "                                  bool & outOk,\n"
-  "                                  Compiler * inCompiler\n"
-  "                                  COMMA_LOCATION_ARGS) const ;\n"
-  "\n"
-  "//--- Internal\n"
-  "  private: void insulateOrCreate (void) ;\n"
-  "\n"
-  "//--- Property\n"
-  "  private: class capCollectionRoot * mSharedRoot ;\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper (
-  "CollectionElementArray.h",
-  "h",
-  true, // Text file
- 4987, // Text length
-  gWrapperFileContent_131_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElementPtr.cpp'
-
-const char * gWrapperFileContent_127_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"CollectionElementPtr.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementPtr::CollectionElementPtr (LOCATION_ARGS) :\n"
-  "SharedObject (THERE) {\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
-  "CollectionElementPtr.cpp",
-  "cpp",
-  true, // Text file
- 585, // Text length
-  gWrapperFileContent_127_libpmFileWrapper
-) ;
-
-//--- File 'galgas/CollectionElementPtr.h'
-
-const char * gWrapperFileContent_177_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"SharedObject.h\"\n"
-  "#include \"ComparisonResult.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class String ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class CollectionElementPtr : public SharedObject {\n"
-  "//--- Default constructor\n"
-  "  public: CollectionElementPtr (LOCATION_ARGS) ;\n"
-  "\n"
-  "//--- No copy\n"
-  "  private: CollectionElementPtr (const CollectionElementPtr &) = delete ;\n"
-  "  private: CollectionElementPtr & operator = (const CollectionElementPtr &) = delete ;\n"
-  "\n"
-  "//--- Virtual method that checks that all attributes are valid\n"
-  "  public: virtual bool isValid (void) const = 0 ;\n"
-  "\n"
-  "//--- Virtual method that returns a copy of current object\n"
-  "  public: virtual CollectionElementPtr * copy (void) = 0 ;\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
-  "CollectionElementPtr.h",
-  "h",
-  true, // Text file
- 1294, // Text length
-  gWrapperFileContent_177_libpmFileWrapper
+  gWrapperFileContent_132_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ComparisonKind.h'
 
-const char * gWrapperFileContent_140_libpmFileWrapper = 
+const char * gWrapperFileContent_135_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
@@ -20414,12 +19552,12 @@ const char * gWrapperFileContent_140_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
   "ComparisonKind.h",
   "h",
   true, // Text file
  696, // Text length
-  gWrapperFileContent_140_libpmFileWrapper
+  gWrapperFileContent_135_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ComparisonResult.h'
@@ -21432,7 +20570,7 @@ const cRegularFileWrapper gWrapperFile_117_libpmFileWrapper (
 
 //--- File 'galgas/EnumerationOrder.h'
 
-const char * gWrapperFileContent_148_libpmFileWrapper = 
+const char * gWrapperFileContent_143_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -21450,17 +20588,17 @@ const char * gWrapperFileContent_148_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
   "EnumerationOrder.h",
   "h",
   true, // Text file
  716, // Text length
-  gWrapperFileContent_148_libpmFileWrapper
+  gWrapperFileContent_143_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Enumerator_range.cpp'
 
-const char * gWrapperFileContent_132_libpmFileWrapper = 
+const char * gWrapperFileContent_127_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.\n"
@@ -21532,17 +20670,17 @@ const char * gWrapperFileContent_132_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
   "Enumerator_range.cpp",
   "cpp",
   true, // Text file
  2687, // Text length
-  gWrapperFileContent_132_libpmFileWrapper
+  gWrapperFileContent_127_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Enumerator_range.h'
 
-const char * gWrapperFileContent_173_libpmFileWrapper = 
+const char * gWrapperFileContent_168_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.\n"
@@ -21607,17 +20745,17 @@ const char * gWrapperFileContent_173_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "Enumerator_range.h",
   "h",
   true, // Text file
  1967, // Text length
-  gWrapperFileContent_173_libpmFileWrapper
+  gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/F_verbose_output.h'
 
-const char * gWrapperFileContent_178_libpmFileWrapper = 
+const char * gWrapperFileContent_172_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
@@ -21633,12 +20771,12 @@ const char * gWrapperFileContent_178_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
   "F_verbose_output.h",
   "h",
   true, // Text file
  506, // Text length
-  gWrapperFileContent_178_libpmFileWrapper
+  gWrapperFileContent_172_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_GenericDictionary.h'
@@ -22295,7 +21433,7 @@ const cRegularFileWrapper gWrapperFile_103_libpmFileWrapper (
 
 //--- File 'galgas/GALGAS_GenericMapRoot.h'
 
-const char * gWrapperFileContent_144_libpmFileWrapper = 
+const char * gWrapperFileContent_139_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created by Pierre Molinaro on 1/07/2025, ..., 2025 Pierre Molinaro.\n"
@@ -22883,17 +22021,17 @@ const char * gWrapperFileContent_144_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
   "GALGAS_GenericMapRoot.h",
   "h",
   true, // Text file
  23646, // Text length
-  gWrapperFileContent_144_libpmFileWrapper
+  gWrapperFileContent_139_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_TypeDescriptor.cpp'
 
-const char * gWrapperFileContent_157_libpmFileWrapper = 
+const char * gWrapperFileContent_152_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
@@ -23046,17 +22184,17 @@ const char * gWrapperFileContent_157_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
   "GALGAS_TypeDescriptor.cpp",
   "cpp",
   true, // Text file
  5389, // Text length
-  gWrapperFileContent_157_libpmFileWrapper
+  gWrapperFileContent_152_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_TypeDescriptor.h'
 
-const char * gWrapperFileContent_134_libpmFileWrapper = 
+const char * gWrapperFileContent_129_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  This file is part of libpm library                                                           \n"
@@ -23111,17 +22249,17 @@ const char * gWrapperFileContent_134_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_134_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper (
   "GALGAS_TypeDescriptor.h",
   "h",
   true, // Text file
  2275, // Text length
-  gWrapperFileContent_134_libpmFileWrapper
+  gWrapperFileContent_129_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_application.cpp'
 
-const char * gWrapperFileContent_161_libpmFileWrapper = 
+const char * gWrapperFileContent_156_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -23503,12 +22641,12 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
  18152, // Text length
-  gWrapperFileContent_161_libpmFileWrapper
+  gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_bigint.cpp'
@@ -24304,7 +23442,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
 
 //--- File 'galgas/GGS_binaryset.cpp'
 
-const char * gWrapperFileContent_139_libpmFileWrapper = 
+const char * gWrapperFileContent_134_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created january 22, 2007.\n"
@@ -25402,12 +24540,12 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_134_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
  51303, // Text length
-  gWrapperFileContent_139_libpmFileWrapper
+  gWrapperFileContent_134_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_bool.cpp'
@@ -25641,7 +24779,7 @@ const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper (
 
 //--- File 'galgas/GGS_char.cpp'
 
-const char * gWrapperFileContent_165_libpmFileWrapper = 
+const char * gWrapperFileContent_160_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -26050,28 +25188,25 @@ const char * gWrapperFileContent_165_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
   "GGS_char.cpp",
   "cpp",
   true, // Text file
  12846, // Text length
-  gWrapperFileContent_165_libpmFileWrapper
+  gWrapperFileContent_160_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_data.cpp'
 
-const char * gWrapperFileContent_151_libpmFileWrapper = 
+const char * gWrapperFileContent_146_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
+  "//  Copyright (C) 2009, ..., 2026 Pierre Molinaro.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "#include \"all-predefined-types.h\"\n"
-  "#include \"CollectionElementPtr.h\"\n"
   "#include \"galgas-input-output.h\"\n"
-  "#include \"utf32.h\"\n"
-  "#include \"C_galgas_CLI_Options.h\"\n"
   "#include \"BinaryFileWrite.h\"\n"
   "#include \"F_verbose_output.h\"\n"
   "\n"
@@ -26416,72 +25551,6 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
-  "//   cCollectionElement_data\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "class cCollectionElement_data : public CollectionElementPtr {\n"
-  "//--- Private member\n"
-  "  protected: GGS_uint mProperty_data ;\n"
-  "  public: inline GGS_uint attribute_data (void) const { return mProperty_data ; }\n"
-  "\n"
-  "//--- Default constructor\n"
-  "  public: cCollectionElement_data (const GGS_uint & inData\n"
-  "                                   COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "//--- No copy\n"
-  "  private: cCollectionElement_data (const cCollectionElement_data &) = delete ;\n"
-  "  private: cCollectionElement_data & operator = (const cCollectionElement_data &) = delete ;\n"
-  "\n"
-  "//--- Virtual method that checks that all attributes are valid\n"
-  "  public: virtual bool isValid (void) const ;\n"
-  "\n"
-  "//--- Virtual method for comparing elements\n"
-  "  public: virtual ComparisonResult compare (const CollectionElementPtr * inOperand) const ;\n"
-  "\n"
-  "//--- Virtual method that returns a copy of current object\n"
-  "  public: virtual CollectionElementPtr * copy (void) ;\n"
-  "\n"
-  "//--- Description\n"
-  " public: virtual void description (String & ioString, const int32_t inIndentation) const ;\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "cCollectionElement_data::cCollectionElement_data (const GGS_uint & inData\n"
-  "                                                  COMMA_LOCATION_ARGS) :\n"
-  "CollectionElementPtr (THERE),\n"
-  "mProperty_data (inData) {\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "bool cCollectionElement_data::isValid (void) const {\n"
-  "  return mProperty_data.isValid () ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "ComparisonResult cCollectionElement_data::compare (const CollectionElementPtr * inOperand) const {\n"
-  "  const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;\n"
-  "  macroValidSharedObject (operand, cCollectionElement_data) ;\n"
-  "  return mProperty_data.objectCompare (operand->mProperty_data) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "CollectionElementPtr * cCollectionElement_data::copy (void) {\n"
-  "  cCollectionElement_data * p = nullptr ;\n"
-  "  macroMyNew (p, cCollectionElement_data (mProperty_data COMMA_HERE)) ;\n"
-  "  return p ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void cCollectionElement_data::description (String & ioString, const int32_t inIndentation) const {\n"
-  "  mProperty_data.description (ioString, inIndentation) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//     Enumerator_data class\n"
   "//\n"
@@ -26520,17 +25589,17 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 18362, // Text length
-  gWrapperFileContent_151_libpmFileWrapper
+ 15550, // Text length
+  gWrapperFileContent_146_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_double.cpp'
 
-const char * gWrapperFileContent_184_libpmFileWrapper = 
+const char * gWrapperFileContent_178_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -26988,12 +26057,12 @@ const char * gWrapperFileContent_184_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_184_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
   "GGS_double.cpp",
   "cpp",
   true, // Text file
  15807, // Text length
-  gWrapperFileContent_184_libpmFileWrapper
+  gWrapperFileContent_178_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_filewrapper.cpp'
@@ -27561,7 +26630,7 @@ const cRegularFileWrapper gWrapperFile_108_libpmFileWrapper (
 
 //--- File 'galgas/GGS_location.cpp'
 
-const char * gWrapperFileContent_126_libpmFileWrapper = 
+const char * gWrapperFileContent_125_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -27932,12 +27001,12 @@ const char * gWrapperFileContent_126_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper (
   "GGS_location.cpp",
   "cpp",
   true, // Text file
  15426, // Text length
-  gWrapperFileContent_126_libpmFileWrapper
+  gWrapperFileContent_125_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_sint.cpp'
@@ -28536,7 +27605,7 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
 
 //--- File 'galgas/GGS_sint64.cpp'
 
-const char * gWrapperFileContent_168_libpmFileWrapper = 
+const char * gWrapperFileContent_163_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2019 Pierre Molinaro.\n"
@@ -29127,17 +28196,17 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
   "GGS_sint64.cpp",
   "cpp",
   true, // Text file
  23028, // Text length
-  gWrapperFileContent_168_libpmFileWrapper
+  gWrapperFileContent_163_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string-getters.cpp'
 
-const char * gWrapperFileContent_180_libpmFileWrapper = 
+const char * gWrapperFileContent_174_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -30547,17 +29616,17 @@ const char * gWrapperFileContent_180_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
  51726, // Text length
-  gWrapperFileContent_180_libpmFileWrapper
+  gWrapperFileContent_174_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string.cpp'
 
-const char * gWrapperFileContent_136_libpmFileWrapper = 
+const char * gWrapperFileContent_131_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -31574,12 +30643,12 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
  42267, // Text length
-  gWrapperFileContent_136_libpmFileWrapper
+  gWrapperFileContent_131_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_stringset.cpp'
@@ -32438,7 +31507,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
 
 //--- File 'galgas/GGS_timer.cpp'
 
-const char * gWrapperFileContent_141_libpmFileWrapper = 
+const char * gWrapperFileContent_136_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2025 Pierre Molinaro.\n"
@@ -32533,17 +31602,17 @@ const char * gWrapperFileContent_141_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "GGS_timer.cpp",
   "cpp",
   true, // Text file
  2748, // Text length
-  gWrapperFileContent_141_libpmFileWrapper
+  gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u8.cpp'
 
-const char * gWrapperFileContent_167_libpmFileWrapper = 
+const char * gWrapperFileContent_162_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.\n"
@@ -33130,17 +32199,17 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
   "GGS_u8.cpp",
   "cpp",
   true, // Text file
  19563, // Text length
-  gWrapperFileContent_167_libpmFileWrapper
+  gWrapperFileContent_162_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_uint.cpp'
 
-const char * gWrapperFileContent_138_libpmFileWrapper = 
+const char * gWrapperFileContent_133_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
@@ -33809,17 +32878,17 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_133_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
  23004, // Text length
-  gWrapperFileContent_138_libpmFileWrapper
+  gWrapperFileContent_133_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_uint64.cpp'
 
-const char * gWrapperFileContent_149_libpmFileWrapper = 
+const char * gWrapperFileContent_144_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2024 Pierre Molinaro.\n"
@@ -34464,17 +33533,17 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
   "GGS_uint64.cpp",
   "cpp",
   true, // Text file
  24823, // Text length
-  gWrapperFileContent_149_libpmFileWrapper
+  gWrapperFileContent_144_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.cpp'
 
-const char * gWrapperFileContent_176_libpmFileWrapper = 
+const char * gWrapperFileContent_171_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -34705,17 +33774,17 @@ const char * gWrapperFileContent_176_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
   "IndexingDictionary.cpp",
   "cpp",
   true, // Text file
  8072, // Text length
-  gWrapperFileContent_176_libpmFileWrapper
+  gWrapperFileContent_171_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.h'
 
-const char * gWrapperFileContent_160_libpmFileWrapper = 
+const char * gWrapperFileContent_155_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -34772,17 +33841,17 @@ const char * gWrapperFileContent_160_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
   "IndexingDictionary.h",
   "h",
   true, // Text file
  2062, // Text length
-  gWrapperFileContent_160_libpmFileWrapper
+  gWrapperFileContent_155_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.cpp'
 
-const char * gWrapperFileContent_182_libpmFileWrapper = 
+const char * gWrapperFileContent_176_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34923,17 +33992,17 @@ const char * gWrapperFileContent_182_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
   "IssueDescriptor.cpp",
   "cpp",
   true, // Text file
  4989, // Text length
-  gWrapperFileContent_182_libpmFileWrapper
+  gWrapperFileContent_176_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.h'
 
-const char * gWrapperFileContent_181_libpmFileWrapper = 
+const char * gWrapperFileContent_175_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34983,17 +34052,17 @@ const char * gWrapperFileContent_181_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
   "IssueDescriptor.h",
   "h",
   true, // Text file
  1794, // Text length
-  gWrapperFileContent_181_libpmFileWrapper
+  gWrapperFileContent_175_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.cpp'
 
-const char * gWrapperFileContent_145_libpmFileWrapper = 
+const char * gWrapperFileContent_140_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2026 Pierre Molinaro.\n"
@@ -35087,12 +34156,12 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper (
   "IssueWithFixIt.cpp",
   "cpp",
   true, // Text file
  3585, // Text length
-  gWrapperFileContent_145_libpmFileWrapper
+  gWrapperFileContent_140_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.h'
@@ -36149,7 +35218,7 @@ const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper (
 
 //--- File 'galgas/Lexique.cpp'
 
-const char * gWrapperFileContent_169_libpmFileWrapper = 
+const char * gWrapperFileContent_164_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
@@ -37022,17 +36091,17 @@ const char * gWrapperFileContent_169_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
  33735, // Text length
-  gWrapperFileContent_169_libpmFileWrapper
+  gWrapperFileContent_164_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique.h'
 
-const char * gWrapperFileContent_130_libpmFileWrapper = 
+const char * gWrapperFileContent_126_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -37278,17 +36347,17 @@ const char * gWrapperFileContent_130_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
   "Lexique.h",
   "h",
   true, // Text file
  11359, // Text length
-  gWrapperFileContent_130_libpmFileWrapper
+  gWrapperFileContent_126_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LexiqueIntrospection.cpp'
 
-const char * gWrapperFileContent_183_libpmFileWrapper = 
+const char * gWrapperFileContent_177_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.\n"
@@ -37422,17 +36491,17 @@ const char * gWrapperFileContent_183_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
   "LexiqueIntrospection.cpp",
   "cpp",
   true, // Text file
  5738, // Text length
-  gWrapperFileContent_183_libpmFileWrapper
+  gWrapperFileContent_177_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LexiqueIntrospection.h'
 
-const char * gWrapperFileContent_166_libpmFileWrapper = 
+const char * gWrapperFileContent_161_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2023 Pierre Molinaro.\n"
@@ -37481,12 +36550,12 @@ const char * gWrapperFileContent_166_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "LexiqueIntrospection.h",
   "h",
   true, // Text file
  2054, // Text length
-  gWrapperFileContent_166_libpmFileWrapper
+  gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LocationInSource.cpp'
@@ -37585,7 +36654,7 @@ const cRegularFileWrapper gWrapperFile_107_libpmFileWrapper (
 
 //--- File 'galgas/LocationInSource.h'
 
-const char * gWrapperFileContent_155_libpmFileWrapper = 
+const char * gWrapperFileContent_150_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -37636,12 +36705,12 @@ const char * gWrapperFileContent_155_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
   "LocationInSource.h",
   "h",
   true, // Text file
  1578, // Text length
-  gWrapperFileContent_155_libpmFileWrapper
+  gWrapperFileContent_150_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ProductionNameDescriptor.h'
@@ -37745,7 +36814,7 @@ const cRegularFileWrapper gWrapperFile_110_libpmFileWrapper (
 
 //--- File 'galgas/PtrWeakReferenceProxy.h'
 
-const char * gWrapperFileContent_135_libpmFileWrapper = 
+const char * gWrapperFileContent_130_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -37798,17 +36867,17 @@ const char * gWrapperFileContent_135_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper (
   "PtrWeakReferenceProxy.h",
   "h",
   true, // Text file
  1894, // Text length
-  gWrapperFileContent_135_libpmFileWrapper
+  gWrapperFileContent_130_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedGenericPtrWithValueSemantics.h'
 
-const char * gWrapperFileContent_171_libpmFileWrapper = 
+const char * gWrapperFileContent_166_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created by Pierre Molinaro on 15/03/2025, ..., 2025 Pierre Molinaro.\n"
@@ -37993,17 +37062,17 @@ const char * gWrapperFileContent_171_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
   "SharedGenericPtrWithValueSemantics.h",
   "h",
   true, // Text file
  8240, // Text length
-  gWrapperFileContent_171_libpmFileWrapper
+  gWrapperFileContent_166_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.cpp'
 
-const char * gWrapperFileContent_153_libpmFileWrapper = 
+const char * gWrapperFileContent_148_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
@@ -38125,17 +37194,17 @@ const char * gWrapperFileContent_153_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
   "SharedObject.cpp",
   "cpp",
   true, // Text file
  4051, // Text length
-  gWrapperFileContent_153_libpmFileWrapper
+  gWrapperFileContent_148_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.h'
 
-const char * gWrapperFileContent_142_libpmFileWrapper = 
+const char * gWrapperFileContent_137_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
@@ -39075,17 +38144,17 @@ const char * gWrapperFileContent_142_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_137_libpmFileWrapper (
   "SharedObject.h",
   "h",
   true, // Text file
  40483, // Text length
-  gWrapperFileContent_142_libpmFileWrapper
+  gWrapperFileContent_137_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SourceTextInString.cpp'
 
-const char * gWrapperFileContent_159_libpmFileWrapper = 
+const char * gWrapperFileContent_154_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -39160,17 +38229,17 @@ const char * gWrapperFileContent_159_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
   "SourceTextInString.cpp",
   "cpp",
   true, // Text file
  2768, // Text length
-  gWrapperFileContent_159_libpmFileWrapper
+  gWrapperFileContent_154_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SourceTextInString.h'
 
-const char * gWrapperFileContent_170_libpmFileWrapper = 
+const char * gWrapperFileContent_165_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -39263,12 +38332,12 @@ const char * gWrapperFileContent_170_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
   "SourceTextInString.h",
   "h",
   true, // Text file
  3167, // Text length
-  gWrapperFileContent_170_libpmFileWrapper
+  gWrapperFileContent_165_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/TemplateDelimiter.h'
@@ -39330,7 +38399,7 @@ const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper (
 
 //--- File 'galgas/galgas-input-output.cpp'
 
-const char * gWrapperFileContent_175_libpmFileWrapper = 
+const char * gWrapperFileContent_170_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.\n"
@@ -40131,17 +39200,17 @@ const char * gWrapperFileContent_175_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
  31276, // Text length
-  gWrapperFileContent_175_libpmFileWrapper
+  gWrapperFileContent_170_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/galgas-input-output.h'
 
-const char * gWrapperFileContent_133_libpmFileWrapper = 
+const char * gWrapperFileContent_128_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -40374,12 +39443,12 @@ const char * gWrapperFileContent_133_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_133_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper (
   "galgas-input-output.h",
   "h",
   true, // Text file
  9607, // Text length
-  gWrapperFileContent_133_libpmFileWrapper
+  gWrapperFileContent_128_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/scanner_actions.cpp'
@@ -41270,7 +40339,7 @@ const cRegularFileWrapper gWrapperFile_114_libpmFileWrapper (
 
 //--- File 'galgas/scanner_actions.h'
 
-const char * gWrapperFileContent_164_libpmFileWrapper = 
+const char * gWrapperFileContent_159_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
@@ -41524,12 +40593,12 @@ const char * gWrapperFileContent_164_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
   "scanner_actions.h",
   "h",
   true, // Text file
  14250, // Text length
-  gWrapperFileContent_164_libpmFileWrapper
+  gWrapperFileContent_159_libpmFileWrapper
 ) ;
 
 //--- All files of 'AccentColor.colorset' directory
@@ -41602,89 +40671,83 @@ const cDirectoryWrapper gWrapperDirectory_10_libpmFileWrapper (
 
 //--- All files of 'galgas' directory
 
-static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [83] = {
+static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [77] = {
   & gWrapperFile_124_libpmFileWrapper,
-  & gWrapperFile_150_libpmFileWrapper,
+  & gWrapperFile_145_libpmFileWrapper,
   & gWrapperFile_122_libpmFileWrapper,
   & gWrapperFile_104_libpmFileWrapper,
-  & gWrapperFile_156_libpmFileWrapper,
+  & gWrapperFile_151_libpmFileWrapper,
+  & gWrapperFile_142_libpmFileWrapper,
   & gWrapperFile_147_libpmFileWrapper,
-  & gWrapperFile_152_libpmFileWrapper,
-  & gWrapperFile_163_libpmFileWrapper,
-  & gWrapperFile_179_libpmFileWrapper,
   & gWrapperFile_158_libpmFileWrapper,
-  & gWrapperFile_154_libpmFileWrapper,
-  & gWrapperFile_146_libpmFileWrapper,
-  & gWrapperFile_162_libpmFileWrapper,
+  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_153_libpmFileWrapper,
+  & gWrapperFile_149_libpmFileWrapper,
+  & gWrapperFile_141_libpmFileWrapper,
+  & gWrapperFile_157_libpmFileWrapper,
   & gWrapperFile_123_libpmFileWrapper,
   & gWrapperFile_119_libpmFileWrapper,
-  & gWrapperFile_172_libpmFileWrapper,
+  & gWrapperFile_167_libpmFileWrapper,
   & gWrapperFile_118_libpmFileWrapper,
-  & gWrapperFile_143_libpmFileWrapper,
-  & gWrapperFile_174_libpmFileWrapper,
-  & gWrapperFile_137_libpmFileWrapper,
-  & gWrapperFile_125_libpmFileWrapper,
-  & gWrapperFile_129_libpmFileWrapper,
-  & gWrapperFile_128_libpmFileWrapper,
-  & gWrapperFile_131_libpmFileWrapper,
-  & gWrapperFile_127_libpmFileWrapper,
-  & gWrapperFile_177_libpmFileWrapper,
-  & gWrapperFile_140_libpmFileWrapper,
+  & gWrapperFile_138_libpmFileWrapper,
+  & gWrapperFile_169_libpmFileWrapper,
+  & gWrapperFile_132_libpmFileWrapper,
+  & gWrapperFile_135_libpmFileWrapper,
   & gWrapperFile_120_libpmFileWrapper,
   & gWrapperFile_121_libpmFileWrapper,
   & gWrapperFile_117_libpmFileWrapper,
-  & gWrapperFile_148_libpmFileWrapper,
-  & gWrapperFile_132_libpmFileWrapper,
-  & gWrapperFile_173_libpmFileWrapper,
-  & gWrapperFile_178_libpmFileWrapper,
-  & gWrapperFile_103_libpmFileWrapper,
-  & gWrapperFile_144_libpmFileWrapper,
-  & gWrapperFile_157_libpmFileWrapper,
-  & gWrapperFile_134_libpmFileWrapper,
-  & gWrapperFile_161_libpmFileWrapper,
-  & gWrapperFile_105_libpmFileWrapper,
-  & gWrapperFile_139_libpmFileWrapper,
-  & gWrapperFile_113_libpmFileWrapper,
-  & gWrapperFile_165_libpmFileWrapper,
-  & gWrapperFile_151_libpmFileWrapper,
-  & gWrapperFile_184_libpmFileWrapper,
-  & gWrapperFile_108_libpmFileWrapper,
-  & gWrapperFile_126_libpmFileWrapper,
-  & gWrapperFile_112_libpmFileWrapper,
+  & gWrapperFile_143_libpmFileWrapper,
+  & gWrapperFile_127_libpmFileWrapper,
   & gWrapperFile_168_libpmFileWrapper,
-  & gWrapperFile_180_libpmFileWrapper,
-  & gWrapperFile_136_libpmFileWrapper,
-  & gWrapperFile_116_libpmFileWrapper,
-  & gWrapperFile_141_libpmFileWrapper,
-  & gWrapperFile_167_libpmFileWrapper,
-  & gWrapperFile_138_libpmFileWrapper,
-  & gWrapperFile_149_libpmFileWrapper,
-  & gWrapperFile_176_libpmFileWrapper,
+  & gWrapperFile_172_libpmFileWrapper,
+  & gWrapperFile_103_libpmFileWrapper,
+  & gWrapperFile_139_libpmFileWrapper,
+  & gWrapperFile_152_libpmFileWrapper,
+  & gWrapperFile_129_libpmFileWrapper,
+  & gWrapperFile_156_libpmFileWrapper,
+  & gWrapperFile_105_libpmFileWrapper,
+  & gWrapperFile_134_libpmFileWrapper,
+  & gWrapperFile_113_libpmFileWrapper,
   & gWrapperFile_160_libpmFileWrapper,
-  & gWrapperFile_182_libpmFileWrapper,
-  & gWrapperFile_181_libpmFileWrapper,
-  & gWrapperFile_145_libpmFileWrapper,
+  & gWrapperFile_146_libpmFileWrapper,
+  & gWrapperFile_178_libpmFileWrapper,
+  & gWrapperFile_108_libpmFileWrapper,
+  & gWrapperFile_125_libpmFileWrapper,
+  & gWrapperFile_112_libpmFileWrapper,
+  & gWrapperFile_163_libpmFileWrapper,
+  & gWrapperFile_174_libpmFileWrapper,
+  & gWrapperFile_131_libpmFileWrapper,
+  & gWrapperFile_116_libpmFileWrapper,
+  & gWrapperFile_136_libpmFileWrapper,
+  & gWrapperFile_162_libpmFileWrapper,
+  & gWrapperFile_133_libpmFileWrapper,
+  & gWrapperFile_144_libpmFileWrapper,
+  & gWrapperFile_171_libpmFileWrapper,
+  & gWrapperFile_155_libpmFileWrapper,
+  & gWrapperFile_176_libpmFileWrapper,
+  & gWrapperFile_175_libpmFileWrapper,
+  & gWrapperFile_140_libpmFileWrapper,
   & gWrapperFile_106_libpmFileWrapper,
   & gWrapperFile_109_libpmFileWrapper,
-  & gWrapperFile_169_libpmFileWrapper,
-  & gWrapperFile_130_libpmFileWrapper,
-  & gWrapperFile_183_libpmFileWrapper,
-  & gWrapperFile_166_libpmFileWrapper,
+  & gWrapperFile_164_libpmFileWrapper,
+  & gWrapperFile_126_libpmFileWrapper,
+  & gWrapperFile_177_libpmFileWrapper,
+  & gWrapperFile_161_libpmFileWrapper,
   & gWrapperFile_107_libpmFileWrapper,
-  & gWrapperFile_155_libpmFileWrapper,
+  & gWrapperFile_150_libpmFileWrapper,
   & gWrapperFile_115_libpmFileWrapper,
   & gWrapperFile_110_libpmFileWrapper,
-  & gWrapperFile_135_libpmFileWrapper,
-  & gWrapperFile_171_libpmFileWrapper,
-  & gWrapperFile_153_libpmFileWrapper,
-  & gWrapperFile_142_libpmFileWrapper,
-  & gWrapperFile_159_libpmFileWrapper,
-  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_130_libpmFileWrapper,
+  & gWrapperFile_166_libpmFileWrapper,
+  & gWrapperFile_148_libpmFileWrapper,
+  & gWrapperFile_137_libpmFileWrapper,
+  & gWrapperFile_154_libpmFileWrapper,
+  & gWrapperFile_165_libpmFileWrapper,
   & gWrapperFile_111_libpmFileWrapper,
-  & gWrapperFile_175_libpmFileWrapper,
-  & gWrapperFile_133_libpmFileWrapper,
+  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_128_libpmFileWrapper,
   & gWrapperFile_114_libpmFileWrapper,
-  & gWrapperFile_164_libpmFileWrapper,
+  & gWrapperFile_159_libpmFileWrapper,
   nullptr
 } ;
 
@@ -41699,7 +40762,7 @@ static const cDirectoryWrapper * gWrapperAllDirectories_libpmFileWrapper_9 [2] =
 
 const cDirectoryWrapper gWrapperDirectory_9_libpmFileWrapper (
   "galgas",
-  82,
+  76,
   gWrapperAllFiles_libpmFileWrapper_9,
   1,
   gWrapperAllDirectories_libpmFileWrapper_9

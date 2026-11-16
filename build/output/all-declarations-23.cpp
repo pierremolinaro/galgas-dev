@@ -1192,7 +1192,7 @@ static GGS_stringset gOnceFunctionResult_forbiddenKeysForMapAndDict ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset function_forbiddenKeysForMapAndDict (class Compiler * inCompiler
+GGS_stringset function_forbiddenKeysForMapAndDict (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_forbiddenKeysForMapAndDict) {
     gOnceFunctionResult_forbiddenKeysForMapAndDict = onceFunction_forbiddenKeysForMapAndDict (inCompiler COMMA_THERE) ;
@@ -2480,7 +2480,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" inOperand,\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("class Compiler * /* inCompiler */\n         ") ;
+  result.appendString ("Compiler * /* inCompiler */\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inOperand.isValid ()) {\n    mFlags &= inOperand.mFlags ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -2490,7 +2490,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" inOperand,\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("class Compiler * /* inCompiler */\n         ") ;
+  result.appendString ("Compiler * /* inCompiler */\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inOperand.isValid ()) {\n    mFlags |= inOperand.mFlags ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -2500,7 +2500,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" inOperand,\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("class Compiler * /* inCompiler */\n         ") ;
+  result.appendString ("Compiler * /* inCompiler */\n         ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inOperand.isValid ()) {\n    mFlags ^= inOperand.mFlags ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -2510,7 +2510,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" inOperand,\n          ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("class Compiler * /* inCompiler */\n          ") ;
+  result.appendString ("Compiler * /* inCompiler */\n          ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid () && inOperand.isValid ()) {\n    mFlags &= ~ inOperand.mFlags ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -2589,17 +2589,17 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
   result.appendString ("const int32_t /* inIndentation */) const {\n  ioString.appendCString (\"<boolset @") ;
   result.appendString (in_TYPE_5F_NAME.stringValue ()) ;
   result.appendString (":\") ;\n  if (! isValid ()) {\n    ioString.appendCString (\" not built\") ;\n  }else{\n") ;
-  GGS_uint index_6297_idx (0) ;
+  GGS_uint index_6273_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    UpEnumerator__5B_lstring_5D_ enumerator_6297 (in_SLOT_5F_LIST) ;
-    while (enumerator_6297.hasCurrentObject ()) {
+    UpEnumerator__5B_lstring_5D_ enumerator_6273 (in_SLOT_5F_LIST) ;
+    while (enumerator_6273.hasCurrentObject ()) {
       result.appendString ("    if ((mFlags & (uint64_t (1) << ") ;
-      result.appendString (index_6297_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 170)).stringValue ()) ;
+      result.appendString (index_6273_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 170)).stringValue ()) ;
       result.appendString (")) != 0) {\n      ioString.appendCString (\" ") ;
-      result.appendString (enumerator_6297.current_entry (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (enumerator_6273.current_entry (HERE).readProperty_string ().stringValue ()) ;
       result.appendString ("\") ;\n    }\n") ;
-      enumerator_6297.gotoNextObject () ;
-      index_6297_idx.increment () ;
+      enumerator_6273.gotoNextObject () ;
+      index_6273_idx.increment () ;
     }
   }
   result.appendString ("  }\n  ioString.appendCString (\">\") ;\n}\n\n") ;

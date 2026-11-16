@@ -12368,27 +12368,6 @@ GGS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semant
 }
 
 //--------------------------------------------------------------------------------------------------
-//Extension proc '@semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_semanticDeclarationForGeneration::method_appendPrimitiveTypePreDeclaration (GGS_string & /* ioArgument__5F_ioHeader */,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_appendPrimitiveTypePreDeclaration (cPtr_semanticDeclarationForGeneration * inObject,
-                                                            GGS_string & io__5F_ioHeader,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    inObject->method_appendPrimitiveTypePreDeclaration (io__5F_ioHeader, inCompiler COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 // @functionPrototypeDeclarationForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 

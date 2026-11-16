@@ -13,6 +13,6 @@ class GGS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTE
       %class GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% in_%![formalArg.mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%class Compiler * inCompiler%
+  %,\n%!^%Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

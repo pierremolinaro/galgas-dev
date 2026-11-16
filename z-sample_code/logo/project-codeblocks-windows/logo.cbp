@@ -158,9 +158,6 @@
    <Unit filename="../build/libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../build/libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../build/libpm/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="../build/libpm/galgas/CollectionElementPtr.cpp" />
-   <Unit filename="../build/libpm/galgas/CollectionElement.cpp" />
-   <Unit filename="../build/libpm/galgas/CollectionElementArray.cpp" />
    <Unit filename="../build/libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../build/libpm/galgas/IndexingDictionary.cpp" />
    <Unit filename="../build/libpm/galgas/IssueDescriptor.cpp" />

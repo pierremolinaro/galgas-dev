@@ -17,7 +17,7 @@
 void extensionSetter_makeEntryFromString (class GGS_unifiedTypeMap & ioObject,
                                           const class GGS_string constin_inKey,
                                           class GGS_unifiedTypeMapEntry & out_outEntry,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ void extensionSetter_makeEntryFromString (class GGS_unifiedTypeMap & ioObject,
 
 class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const class GGS_unifiedTypeMap & inObject,
                                                                          const class GGS_lstring & constinArgument0,
-                                                                         class Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const c
 void extensionSetter_insertType (class GGS_unifiedTypeMap & ioObject,
                                  const class GGS_lstring constin_inTypeName,
                                  const class GGS_unifiedTypeDefinition constin_inTypeDefinition,
-                                 class Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ void extensionSetter_insertType (class GGS_unifiedTypeMap & ioObject,
 
 class GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const class GGS_unifiedTypeMap & inObject,
                                                                 const class GGS_lstring & constinArgument0,
-                                                                class Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -199,7 +199,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solv
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry & inObject,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry &
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedTypeMapEntry & inObject,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedT
 
 void extensionMethod_addHeaderFileName_31_ (const class GGS_unifiedTypeMapEntry inObject,
                                             class GGS_stringset & io_ioInclusions,
-                                            class Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -313,7 +313,7 @@ class GGS__5B_acceptableParameter_5D_ final : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_acceptableParameter_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -1090,7 +1090,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtens
 
 class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ extensionGetter_listForKey (const class GGS_syntaxExtensions & inObject,
                                                                            const class GGS_string & constinArgument0,
-                                                                           class Compiler * inCompiler
+                                                                           Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1173,7 +1173,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionAST_
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_string (const class GGS_formalArgumentPassingModeAST & inObject,
-                                         class Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1183,7 +1183,7 @@ class GGS_string extensionGetter_string (const class GGS_formalArgumentPassingMo
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_formalArgumentMessage (const class GGS_formalArgumentPassingModeAST & inObject,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1193,7 +1193,7 @@ class GGS_string extensionGetter_formalArgumentMessage (const class GGS_formalAr
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_keyRepresentation (const class GGS__5B_formalParameterAST_5D_ & inObject,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1203,7 +1203,7 @@ class GGS_string extensionGetter_keyRepresentation (const class GGS__5B_formalPa
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_initializerSignature (const class GGS__5B_formalInputParameterAST_5D_ & inObject,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2012,7 +2012,7 @@ void callExtensionMethod_analyzeSyntaxInstruction (class cPtr_syntaxInstructionA
                                                    class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                                    class GGS_localVarManager & io_ioVariableMap,
                                                    class GGS_uint & io_ioSelectMethodCount,
-                                                   class Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2026,7 +2026,7 @@ void callExtensionMethod_transformInstructionForGrammarAnalysis (class cPtr_synt
                                                                  const class GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
                                                                  class GGS_uint & io_ioAddedNonTerminalIndex,
                                                                  class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & io_ioSyntaxInstructionList,
-                                                                 class Compiler * inCompiler
+                                                                 Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3666,7 +3666,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_GrammarCompo
 
 class GGS_string callExtensionGetter_generateSwiftCocoaConditionCode (const class cPtr_lexicalExpressionAST * inObject,
                                                                       const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
-                                                                      class Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3676,7 +3676,7 @@ class GGS_string callExtensionGetter_generateSwiftCocoaConditionCode (const clas
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                                  class Compiler * inCompiler
+                                                                                  Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3687,7 +3687,7 @@ class GGS_string callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument
 
 class GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
                                                                         const class GGS_string constin_inScannerClassName,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3699,7 +3699,7 @@ class GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const cl
 class GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
                                                                         const class GGS_string constin_inScannerClassName,
                                                                         const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3711,7 +3711,7 @@ class GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const cl
 class GGS_string callExtensionGetter_generateSwiftCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,
                                                              const class GGS_string constin_inScannerClassName,
                                                              const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
-                                                             class Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4152,7 +4152,7 @@ class GGS__5B_templateInstructionForGeneration_5D_ final : public AC_GALGAS_root
                                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionForGeneration_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4412,7 +4412,7 @@ class GGS__5B_templateInstructionAST_5D_ final : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -5035,7 +5035,7 @@ class GGS__5B_templateExpressionElementAST_5D_ final : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateExpressionElementAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -5302,7 +5302,7 @@ class GGS__5B_templateInstructionIfBranchAST_5D_ final : public AC_GALGAS_root {
                                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionIfBranchAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6462,7 +6462,7 @@ class GGS__5B_templateInstructionIfBranchForGeneration_5D_ final : public AC_GAL
                                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionIfBranchForGeneration_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator

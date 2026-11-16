@@ -12,6 +12,6 @@ class GGS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresen
       %class GGS_% ![formalArg.mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]%,\n%!^
     end
   end
-  %class Compiler * inCompiler\n%
+  %Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;
 

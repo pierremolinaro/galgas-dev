@@ -1699,7 +1699,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfMulEqualExpression
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeFeatures extensionGetter_features (const class GGS_opAssignmentOperator & inObject,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

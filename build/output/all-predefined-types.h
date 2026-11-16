@@ -12,7 +12,6 @@
 #include "ComparisonResult.h"
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
-#include "CollectionElementArray.h"
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
@@ -29,25 +28,6 @@
 #include "BigSigned.h"
 #include "GALGAS_GenericDictionary.h"
 #include "Compiler.h"
-
-//--------------------------------------------------------------------------------------------------
-class GGS_uint64 ;
-class GGS_string ;
-class GGS_u8 ;
-class GGS_bigint ;
-class GGS_binaryset ;
-class GGS_bool ;
-class GGS_char ;
-class GGS_data ;
-class GGS_double ;
-class GGS_filewrapper ;
-class GGS_location ;
-class GGS_sint ;
-class GGS_sint64 ;
-class GGS_uint ;
-class GGS_stringset ;
-class GGS_timer ;
-class GGS_application ;
 
 //--------------------------------------------------------------------------------------------------
 //  @uint64 type
@@ -76,52 +56,52 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
   public: static class GGS_uint_36__34_ class_func_max (LOCATION_ARGS) ;
 
   public: static class GGS_uint_36__34_ class_func_uint_36__34_BaseValueWithCompressedBitString (const class GGS_string & inOperand0,
-                                                                                                 class Compiler * inCompiler
+                                                                                                 Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_uint_36__34_ class_func_uint_36__34_MaskWithCompressedBitString (const class GGS_string & inOperand0,
-                                                                                            class Compiler * inCompiler
+                                                                                            Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_uint_36__34_ class_func_uint_36__34_WithBitString (const class GGS_string & inOperand0,
-                                                                              class Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_uint_36__34_ left_shift_operation (const GGS_uint inShiftOperand,
-                                                 class Compiler * inCompiler
+  public: GGS_uint_36__34_ left_shift_operation (const class GGS_uint inShiftOperand,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint_36__34_ left_shift_operation (const GGS_bigint inShiftOperand,
-                                                 class Compiler * inCompiler
+  public: GGS_uint_36__34_ left_shift_operation (const class GGS_bigint inShiftOperand,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint_36__34_ right_shift_operation (const GGS_uint inShiftOperand,
-                                                  class Compiler * inCompiler
+  public: GGS_uint_36__34_ right_shift_operation (const class GGS_uint inShiftOperand,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint_36__34_ right_shift_operation (const GGS_bigint inShiftOperand,
-                                                  class Compiler * inCompiler
+  public: GGS_uint_36__34_ right_shift_operation (const class GGS_bigint inShiftOperand,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_uint_36__34_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_uint_36__34_ inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_uint_36__34_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_uint_36__34_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -308,7 +288,7 @@ class GGS_string : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_stringWithContentsOfFile (const class GGS_string & inOperand0,
-                                                                       class Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_stringWithCurrentDateTime (LOCATION_ARGS) ;
@@ -316,7 +296,7 @@ class GGS_string : public AC_GALGAS_root {
   public: static class GGS_string class_func_stringWithCurrentDirectory (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_stringWithEnvironmentVariable (const class GGS_string & inOperand0,
-                                                                            class Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_stringWithEnvironmentVariableOrEmpty (const class GGS_string & inOperand0
@@ -330,12 +310,12 @@ class GGS_string : public AC_GALGAS_root {
                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_stringWithSymbolicLinkContents (const class GGS_string & inOperand0,
-                                                                             class Compiler * inCompiler
+                                                                             Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_string inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- + operator
@@ -705,40 +685,40 @@ class GGS_u_38_ : public AC_GALGAS_root {
   public: static class GGS_u_38_ class_func_max (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_u_38_ left_shift_operation (const GGS_uint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_u_38_ left_shift_operation (const class GGS_uint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_u_38_ left_shift_operation (const GGS_bigint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_u_38_ left_shift_operation (const class GGS_bigint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_u_38_ right_shift_operation (const GGS_uint inShiftOperand,
-                                           class Compiler * inCompiler
+  public: GGS_u_38_ right_shift_operation (const class GGS_uint inShiftOperand,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_u_38_ right_shift_operation (const GGS_bigint inShiftOperand,
-                                           class Compiler * inCompiler
+  public: GGS_u_38_ right_shift_operation (const class GGS_bigint inShiftOperand,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_u_38_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_u_38_ inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_u_38_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_u_38_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -888,40 +868,40 @@ class GGS_bigint : public AC_GALGAS_root {
   public: static class GGS_bigint class_func_zero (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_bigint left_shift_operation (const GGS_uint inShiftOperand,
-                                           class Compiler * inCompiler
+  public: GGS_bigint left_shift_operation (const class GGS_uint inShiftOperand,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_bigint left_shift_operation (const GGS_bigint inShiftOperand,
-                                           class Compiler * inCompiler
+  public: GGS_bigint left_shift_operation (const class GGS_bigint inShiftOperand,
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_bigint right_shift_operation (const GGS_uint inShiftOperand,
-                                            class Compiler * inCompiler
+  public: GGS_bigint right_shift_operation (const class GGS_uint inShiftOperand,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_bigint right_shift_operation (const GGS_bigint inShiftOperand,
-                                            class Compiler * inCompiler
+  public: GGS_bigint right_shift_operation (const class GGS_bigint inShiftOperand,
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_bigint inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_bigint inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_bigint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_bigint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -1102,83 +1082,83 @@ class GGS_binaryset : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- GALGAS class functions
   public: static class GGS_binaryset class_func_binarySetWithBit (const class GGS_uint & inOperand0,
-                                                                  class Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithEqualComparison (const class GGS_uint & inOperand0,
                                                                               const class GGS_uint & inOperand1,
                                                                               const class GGS_uint & inOperand2,
-                                                                              class Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithEqualToConstant (const class GGS_uint & inOperand0,
                                                                               const class GGS_uint & inOperand1,
                                                                               const class GGS_uint_36__34_ & inOperand2,
-                                                                              class Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualComparison (const class GGS_uint & inOperand0,
                                                                                        const class GGS_uint & inOperand1,
                                                                                        const class GGS_uint & inOperand2,
-                                                                                       class Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithGreaterOrEqualToConstant (const class GGS_uint & inOperand0,
                                                                                        const class GGS_uint & inOperand1,
                                                                                        const class GGS_uint_36__34_ & inOperand2,
-                                                                                       class Compiler * inCompiler
+                                                                                       Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualComparison (const class GGS_uint & inOperand0,
                                                                                      const class GGS_uint & inOperand1,
                                                                                      const class GGS_uint & inOperand2,
-                                                                                     class Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithLowerOrEqualToConstant (const class GGS_uint & inOperand0,
                                                                                      const class GGS_uint & inOperand1,
                                                                                      const class GGS_uint_36__34_ & inOperand2,
-                                                                                     class Compiler * inCompiler
+                                                                                     Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithNotEqualComparison (const class GGS_uint & inOperand0,
                                                                                  const class GGS_uint & inOperand1,
                                                                                  const class GGS_uint & inOperand2,
-                                                                                 class Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithNotEqualToConstant (const class GGS_uint & inOperand0,
                                                                                  const class GGS_uint & inOperand1,
                                                                                  const class GGS_uint_36__34_ & inOperand2,
-                                                                                 class Compiler * inCompiler
+                                                                                 Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithPredicateString (const class GGS_string & inOperand0,
-                                                                              class Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithStrictGreaterComparison (const class GGS_uint & inOperand0,
                                                                                       const class GGS_uint & inOperand1,
                                                                                       const class GGS_uint & inOperand2,
-                                                                                      class Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithStrictGreaterThanConstant (const class GGS_uint & inOperand0,
                                                                                         const class GGS_uint & inOperand1,
                                                                                         const class GGS_uint_36__34_ & inOperand2,
-                                                                                        class Compiler * inCompiler
+                                                                                        Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithStrictLowerComparison (const class GGS_uint & inOperand0,
                                                                                     const class GGS_uint & inOperand1,
                                                                                     const class GGS_uint & inOperand2,
-                                                                                    class Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_binarySetWithStrictLowerThanConstant (const class GGS_uint & inOperand0,
                                                                                       const class GGS_uint & inOperand1,
                                                                                       const class GGS_uint_36__34_ & inOperand2,
-                                                                                      class Compiler * inCompiler
+                                                                                      Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_binaryset class_func_emptyBinarySet (LOCATION_ARGS) ;
@@ -1186,20 +1166,20 @@ class GGS_binaryset : public AC_GALGAS_root {
   public: static class GGS_binaryset class_func_fullBinarySet (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_binaryset left_shift_operation (const GGS_uint inShiftOperand,
-                                              class Compiler * inCompiler
+  public: GGS_binaryset left_shift_operation (const class GGS_uint inShiftOperand,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_binaryset left_shift_operation (const GGS_bigint inShiftOperand,
-                                              class Compiler * inCompiler
+  public: GGS_binaryset left_shift_operation (const class GGS_bigint inShiftOperand,
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_binaryset right_shift_operation (const GGS_uint inShiftOperand,
-                                               class Compiler * inCompiler
+  public: GGS_binaryset right_shift_operation (const class GGS_uint inShiftOperand,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_binaryset right_shift_operation (const GGS_bigint inShiftOperand,
-                                               class Compiler * inCompiler
+  public: GGS_binaryset right_shift_operation (const class GGS_bigint inShiftOperand,
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- & operator
@@ -1660,7 +1640,7 @@ class GGS_data : public AC_GALGAS_root {
                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- GALGAS class functions
   public: static class GGS_data class_func_dataWithContentsOfFile (const class GGS_string & inOperand0,
-                                                                   class Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_data class_func_emptyData (LOCATION_ARGS) ;
@@ -1765,22 +1745,22 @@ class GGS_double : public AC_GALGAS_root {
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_double inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_double inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_double inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_double inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- + operator
@@ -2171,40 +2151,40 @@ class GGS_sint : public AC_GALGAS_root {
   public: static class GGS_sint class_func_min (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_sint left_shift_operation (const GGS_uint inShiftOperand,
-                                         class Compiler * inCompiler
+  public: GGS_sint left_shift_operation (const class GGS_uint inShiftOperand,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint left_shift_operation (const GGS_bigint inShiftOperand,
-                                         class Compiler * inCompiler
+  public: GGS_sint left_shift_operation (const class GGS_bigint inShiftOperand,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint right_shift_operation (const GGS_uint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_sint right_shift_operation (const class GGS_uint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint right_shift_operation (const GGS_bigint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_sint right_shift_operation (const class GGS_bigint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_sint inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_sint inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_sint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_sint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -2358,40 +2338,40 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
   public: static class GGS_sint_36__34_ class_func_min (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_sint_36__34_ left_shift_operation (const GGS_uint inShiftOperand,
-                                                 class Compiler * inCompiler
+  public: GGS_sint_36__34_ left_shift_operation (const class GGS_uint inShiftOperand,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint_36__34_ left_shift_operation (const GGS_bigint inShiftOperand,
-                                                 class Compiler * inCompiler
+  public: GGS_sint_36__34_ left_shift_operation (const class GGS_bigint inShiftOperand,
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint_36__34_ right_shift_operation (const GGS_uint inShiftOperand,
-                                                  class Compiler * inCompiler
+  public: GGS_sint_36__34_ right_shift_operation (const class GGS_uint inShiftOperand,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_sint_36__34_ right_shift_operation (const GGS_bigint inShiftOperand,
-                                                  class Compiler * inCompiler
+  public: GGS_sint_36__34_ right_shift_operation (const class GGS_bigint inShiftOperand,
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_sint_36__34_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_sint_36__34_ inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_sint_36__34_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_sint_36__34_ inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -2549,44 +2529,44 @@ class GGS_uint : public AC_GALGAS_root {
 
   public: static class GGS_uint class_func_valueWithMask (const class GGS_uint & inOperand0,
                                                           const class GGS_uint & inOperand1,
-                                                          class Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
-  public: GGS_uint left_shift_operation (const GGS_uint inShiftOperand,
-                                         class Compiler * inCompiler
+  public: GGS_uint left_shift_operation (const class GGS_uint inShiftOperand,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint left_shift_operation (const GGS_bigint inShiftOperand,
-                                         class Compiler * inCompiler
+  public: GGS_uint left_shift_operation (const class GGS_bigint inShiftOperand,
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint right_shift_operation (const GGS_uint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_uint right_shift_operation (const class GGS_uint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: GGS_uint right_shift_operation (const GGS_bigint inShiftOperand,
-                                          class Compiler * inCompiler
+  public: GGS_uint right_shift_operation (const class GGS_bigint inShiftOperand,
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_uint inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_uint inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_uint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
   public: void divAssignOperation (const GGS_uint inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -2911,7 +2891,7 @@ class GGS_stringset : public AC_GALGAS_root {
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_stringset inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3066,7 +3046,7 @@ class GGS_application final {
                                                             COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_commandLineArgumentAtIndex (const class GGS_uint & inOperand0,
-                                                                         class Compiler * inCompiler
+                                                                         Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_uint class_func_commandLineArgumentCount (LOCATION_ARGS) ;
@@ -3238,7 +3218,7 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_uint_36__34__5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3416,7 +3396,7 @@ class GGS__5B_stringString_5D_ final : public AC_GALGAS_root {
                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_stringString_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3594,7 +3574,7 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_string_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3852,7 +3832,7 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
                                            COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lstring_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4030,7 +4010,7 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_uint_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4990,13 +4970,6 @@ class GGS_stringString : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringString ;
-
-//--------------------------------------------------------------------------------------------------
-
-#include "CollectionElementPtr.h"
-
-//--------------------------------------------------------------------------------------------------
-
 
 //--- START OF USER ZONE 2
 

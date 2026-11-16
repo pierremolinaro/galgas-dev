@@ -3970,7 +3970,7 @@ class GGS__5B_galgasQualifiedFeature_5D_ final : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_galgasQualifiedFeature_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4273,7 +4273,7 @@ class cParser_galgas_34_ProjectSyntax {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_lexicalTypeBaseName (const class GGS_lexicalTypeEnum & inObject,
-                                                      class Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4560,7 +4560,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControlAST_2E_fi
 
 class GGS_AccessControl extensionGetter_accessControl (const class GGS_AccessControlAST & inObject,
                                                        const class GGS_unifiedTypeMapEntry & constinArgument0,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4572,7 +4572,7 @@ class GGS_AccessControl extensionGetter_accessControl (const class GGS_AccessCon
 void extensionMethod_checkSetAccess (const class GGS_AccessControl inObject,
                                      const class GGS_selfAvailability constin_inOptionalCurrentType,
                                      const class GGS_location constin_inErrorLocation,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4584,7 +4584,7 @@ void extensionMethod_checkSetAccess (const class GGS_AccessControl inObject,
 void extensionMethod_checkGetAccess (const class GGS_AccessControl inObject,
                                      const class GGS_selfAvailability constin_inOptionalCurrentType,
                                      const class GGS_location constin_inErrorLocation,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5229,7 +5229,7 @@ class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root
                                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_filewrapperTemplateForGeneration_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -5989,7 +5989,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_genericExtensionMethod
 
 class GGS__5B_lstring_5D_ extensionGetter_listForKey (const class GGS_genericExtensionMethodListMap & inObject,
                                                       const class GGS_string & constinArgument0,
-                                                      class Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6315,7 +6315,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_descendantClassListMap
 
 class GGS__5B_unifiedTypeMapEntry_5D_ extensionGetter_listForKey (const class GGS_descendantClassListMap & inObject,
                                                                   const class GGS_string & constinArgument0,
-                                                                  class Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7263,7 +7263,7 @@ void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionF
                                                  class GGS_uint & io__5F_ioTemporaryVariableIndex,
                                                  class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                  class GGS_bool & io__5F_ioUseColumnMarker,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8263,7 +8263,7 @@ void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForG
                                               class GGS_stringset & io_ioUnusedVariableCppNameSet,
                                               const class GGS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                               class GGS_string & io_ioGeneratedCode,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8439,7 +8439,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticBlockInstructi
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_getImplementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                   class Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8449,7 +8449,7 @@ class GGS_string callExtensionGetter_getImplementationCppFileName (const class c
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8459,7 +8459,7 @@ class GGS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDe
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8469,7 +8469,7 @@ class GGS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclar
 //--------------------------------------------------------------------------------------------------
 
 class GGS_headerKind callExtensionGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8479,19 +8479,8 @@ class GGS_headerKind callExtensionGetter_headerKind (const class cPtr_semanticDe
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                     class Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_appendPrimitiveTypePreDeclaration (class cPtr_semanticDeclarationForGeneration * inObject,
-                                                            class GGS_string & io__5F_ioHeader,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @functionPrototypeDeclarationForGeneration reference class
@@ -9121,7 +9110,7 @@ void callExtensionMethod_appendDeclaration_32_ (class cPtr_semanticDeclarationFo
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                      class Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10445,7 +10434,7 @@ void extensionMethod_buildPropertyInitializationCode (const class GGS__5B_proper
                                                       class GGS_unifiedTypeMap & io_ioTypeMap,
                                                       class GGS_stringset & out_outUnusedVariableCppNameSet,
                                                       class GGS_string & out_outInitializationCode,
-                                                      class Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10454,7 +10443,7 @@ void extensionMethod_buildPropertyInitializationCode (const class GGS__5B_proper
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string function_compilerCppName (class Compiler * inCompiler
+class GGS_string function_compilerCppName (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10467,7 +10456,7 @@ void routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (const cl
                                                                         const class GGS_unifiedTypeMapEntry constinArgument1,
                                                                         const class GGS_location constinArgument2,
                                                                         class GGS_semanticExpressionForGeneration & ioArgument3,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

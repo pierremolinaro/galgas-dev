@@ -88,7 +88,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_varInExpressionForGene
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_initializerSignature (const class GGS__5B_actualOutputArgumentAST_5D_ & inObject,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS__5B_actua
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_subcriptSignature (const class GGS__5B_actualOutputArgumentAST_5D_ & inObject,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ class GGS_string extensionGetter_subcriptSignature (const class GGS__5B_actualOu
 
 void extensionMethod_enterInSemanticContext (const class GGS__5B_actualOutputArgumentAST_5D_ inObject,
                                              class GGS_unifiedTypeMap & io_ioTypeMap,
-                                             class Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7372,7 +7372,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_falseExpressionForGene
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

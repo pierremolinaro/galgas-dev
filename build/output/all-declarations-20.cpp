@@ -9,21 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension func '@lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string cPtr_lexicalCurrentCharacterInputArgumentAST::getter_generateRoutineOrFunctionArgument (Compiler */* inCompiler */
-                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_string result_result ; // Returned variable
-  result_result = GGS_string ("previousChar ()") ;
-//---
-  return result_result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension func '@lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument'
 //
 //--------------------------------------------------------------------------------------------------
@@ -759,7 +744,7 @@ static GGS_bool gOnceFunctionResult_generateFewHeaderFiles ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
+GGS_bool function_generateFewHeaderFiles (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_generateFewHeaderFiles) {
     gOnceFunctionResult_generateFewHeaderFiles = onceFunction_generateFewHeaderFiles (inCompiler COMMA_THERE) ;
@@ -1497,7 +1482,7 @@ static GGS_lexicalTypeMap gOnceFunctionResult_buildLexicalTypeMap ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeMap function_buildLexicalTypeMap (class Compiler * inCompiler
+GGS_lexicalTypeMap function_buildLexicalTypeMap (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_buildLexicalTypeMap) {
     gOnceFunctionResult_buildLexicalTypeMap = onceFunction_buildLexicalTypeMap (inCompiler COMMA_THERE) ;
@@ -2192,7 +2177,7 @@ static GGS_string gOnceFunctionResult_compilerCppName ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string function_compilerCppName (class Compiler * inCompiler
+GGS_string function_compilerCppName (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_compilerCppName) {
     gOnceFunctionResult_compilerCppName = onceFunction_compilerCppName (inCompiler COMMA_THERE) ;
@@ -2237,7 +2222,7 @@ static GGS_string gOnceFunctionResult_syntaxDirectedTranslationResultVarName ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string function_syntaxDirectedTranslationResultVarName (class Compiler * inCompiler
+GGS_string function_syntaxDirectedTranslationResultVarName (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_syntaxDirectedTranslationResultVarName) {
     gOnceFunctionResult_syntaxDirectedTranslationResultVarName = onceFunction_syntaxDirectedTranslationResultVarName (inCompiler COMMA_THERE) ;
@@ -8057,5 +8042,22 @@ void cPtr_trueExpressionAST::method_analyzeSemanticExpression (const GGS_lstring
 void cPtr_falseExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
                                                                        Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@falseExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_falseExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument__5F_inUsefulnessCallerEntityName */,
+                                                                GGS_usefulEntitiesGraph & /* ioArgument__5F_ioUsefulEntitiesGraph */,
+                                                                const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
+                                                                const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                                GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
+                                                                GGS_localVarManager & /* ioArgument__5F_ioVariableMap */,
+                                                                GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                Compiler * inCompiler
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_falseExpressionAST temp_0 = this ;
+  outArgument_outExpression = GGS_falseExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
 }
 

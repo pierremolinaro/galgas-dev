@@ -409,8 +409,6 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
 
   template primitiveTypesHeaderPrologue : "predefined-types-file-header.h.galgasTemplate" ()
 
-  template predefinedTypeSeparation : "predefined-types-separation.h.galgasTemplate" ()
-
   template sint_type : "sint-type.h.galgasTemplate" ()
 
   template sint64_type : "sint64-type.h.galgasTemplate" ()

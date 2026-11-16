@@ -1460,7 +1460,7 @@ class cParser_galgas_34_DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lstring function_makeArrayTypeLName (const class GGS_lstring & constinArgument0,
-                                               class Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1470,7 +1470,7 @@ class GGS_lstring function_makeArrayTypeLName (const class GGS_lstring & constin
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string function_makeArrayTypeName (const class GGS_string & constinArgument0,
-                                             class Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1481,7 +1481,7 @@ class GGS_string function_makeArrayTypeName (const class GGS_string & constinArg
 
 class GGS_lstring function_makeDictionaryTypeLName (const class GGS_lstring & constinArgument0,
                                                     const class GGS_lstring & constinArgument1,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1491,7 +1491,7 @@ class GGS_lstring function_makeDictionaryTypeLName (const class GGS_lstring & co
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lstring function_makeWeakTypeLName (const class GGS_lstring & constinArgument0,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1504,7 +1504,7 @@ void extensionSetter_getOptionalTypeName (class GGS_galgasDeclarationAST & ioObj
                                           class GGS_lstring & out_outOptionalTypeName,
                                           const class GGS_lstring constin_inTypeName,
                                           const class GGS_bool constin_inPredefined,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1515,7 +1515,7 @@ void extensionSetter_getOptionalTypeName (class GGS_galgasDeclarationAST & ioObj
 
 void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST inObject,
                                                 const class GGS_location constin_inLocation,
-                                                class Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2296,7 +2296,7 @@ void extensionSetter_insertKey (class GGS_syntaxExtensions & ioObject,
                                 const class GGS_lstring constin_inSyntaxComponentName,
                                 const class GGS__5B_nonterminalDeclarationAST_5D_ constin_inNonterminalDeclarationList,
                                 const class GGS__5B_syntaxRuleAST_5D_ constin_inRuleList,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2805,7 +2805,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor
 void extensionSetter_addTIFF_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
                                       const class GGS_string constin_inFileName,
                                       class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2816,7 +2816,7 @@ void extensionSetter_addTIFF_5F_file (class GGS_XcodeProjectDescriptor & ioObjec
 
 void extensionSetter_getReferenceKey (class GGS_XcodeProjectDescriptor & ioObject,
                                       class GGS_string & out_outRef,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2828,7 +2828,7 @@ void extensionSetter_getReferenceKey (class GGS_XcodeProjectDescriptor & ioObjec
 void extensionSetter_addInfoPlistFile (class GGS_XcodeProjectDescriptor & ioObject,
                                        const class GGS_string constin_inFileName,
                                        class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2840,7 +2840,7 @@ void extensionSetter_addInfoPlistFile (class GGS_XcodeProjectDescriptor & ioObje
 void extensionSetter_addXIBFile (class GGS_XcodeProjectDescriptor & ioObject,
                                  const class GGS_string constin_inFileName,
                                  class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2852,7 +2852,7 @@ void extensionSetter_addXIBFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObject,
                                        const class GGS_string constin_inFileName,
                                        class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2864,7 +2864,7 @@ void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObje
 void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
                                    const class GGS_string constin_inFileName,
                                    class GGS_string & out_outFileRef,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2876,7 +2876,7 @@ void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addMFile (class GGS_XcodeProjectDescriptor & ioObject,
                                const class GGS_string constin_inFileName,
                                class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
+                               Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2888,7 +2888,7 @@ void extensionSetter_addMFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addMMFile (class GGS_XcodeProjectDescriptor & ioObject,
                                 const class GGS_string constin_inFileName,
                                 class GGS_string & out_outFileRef,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2900,7 +2900,7 @@ void extensionSetter_addMMFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addCppFile (class GGS_XcodeProjectDescriptor & ioObject,
                                  const class GGS_string constin_inFileName,
                                  class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2912,7 +2912,7 @@ void extensionSetter_addCppFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
                                const class GGS_string constin_inFileName,
                                class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
+                               Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2924,7 +2924,7 @@ void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
 void extensionSetter_addHeaderFile (class GGS_XcodeProjectDescriptor & ioObject,
                                     const class GGS_string constin_inFileName,
                                     class GGS_string & out_outFileRef,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2937,7 +2937,7 @@ void extensionSetter_addBuildFile (class GGS_XcodeProjectDescriptor & ioObject,
                                    const class GGS_string constin_inFileReference,
                                    const class GGS_string constin_inFileName,
                                    class GGS_string & out_outBuildRef,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2954,7 +2954,7 @@ void extensionSetter_addToolTarget (class GGS_XcodeProjectDescriptor & ioObject,
                                     const class GGS__5B_string_5D_ constin_inBuildConfigurationSettingList,
                                     class GGS_string & out_outTargetRef,
                                     class GGS_string & out_outProductFileRef,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2973,7 +2973,7 @@ void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
                                    const class GGS__5B_string_5D_ constin_inDependentTargetRefList,
                                    const class GGS__5B__32_string_5D_ constin_inProductCopyList,
                                    class GGS_string & out_outProductFileRef,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2987,7 +2987,7 @@ void extensionSetter_addGroup (class GGS_XcodeProjectDescriptor & ioObject,
                                const class GGS_string constin_inGroupPath,
                                const class GGS__5B_string_5D_ constin_inChildrenRefs,
                                class GGS_string & out_outGroupRef,
-                               class Compiler * inCompiler
+                               Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3006,7 +3006,7 @@ void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObj
                                         class GGS__5B_string_5D_ & io_ioFrameWorkFileBuildRefs,
                                         class GGS__5B_string_5D_ & io_ioResourceFileBuildRefs,
                                         class GGS_string & out_outGroupRef,
-                                        class Compiler * inCompiler
+                                        Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3018,7 +3018,7 @@ void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObj
 void extensionSetter_addICNS_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
                                       const class GGS_string constin_inFileName,
                                       class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3029,7 +3029,7 @@ void extensionSetter_addICNS_5F_file (class GGS_XcodeProjectDescriptor & ioObjec
 
 void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & ioObject,
                                             const class GGS_string constin_inGroupRef,
-                                            class Compiler * inCompiler
+                                            Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3040,7 +3040,7 @@ void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & i
 
 void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDescriptor & ioObject,
                                                         const class GGS__5B_string_5D_ constin_inSettingList,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3052,7 +3052,7 @@ void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDe
 void extensionMethod_generateAtPath (const class GGS_XcodeProjectDescriptor inObject,
                                      const class GGS_string constin_inPath,
                                      const class GGS_string constin_inCacheFilePath,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3079,7 +3079,7 @@ extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewra
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Compiler * inCompiler,
                                                                             const class GGS_string & in_PROJECT_5F_REF,
                                                                             const class GGS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                             const class GGS__5B_XCodeGroup_5D_ & in_GROUPS,
@@ -3365,7 +3365,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_PredefinedTypeAST
 
 class GGS_string callExtensionGetter_generateConditionCode (const class cPtr_lexicalExpressionAST * inObject,
                                                             const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
-                                                            class Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3375,7 +3375,7 @@ class GGS_string callExtensionGetter_generateConditionCode (const class cPtr_lex
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool extensionGetter_propertiesAreMutable (const class GGS_selfMutability & inObject,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3600,7 +3600,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentForGene
 
 void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_currentVarManager inObject,
                                                         const class GGS_location constin_inErrorLocation,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3614,7 +3614,7 @@ void extensionSetter_neutralAccess (class GGS_currentVarManager & ioObject,
                                     class GGS_unifiedTypeMapEntry & out_outType,
                                     class GGS_string & out_outCppName,
                                     class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3625,6 +3625,6 @@ void extensionSetter_neutralAccess (class GGS_currentVarManager & ioObject,
 
 void extensionSetter_searchForDropAccess (class GGS_currentVarManager & ioObject,
                                           const class GGS_lstring constin_inVarName,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 

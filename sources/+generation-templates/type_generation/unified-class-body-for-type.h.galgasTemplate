@@ -24,7 +24,7 @@ if [CLASS_FUNC_MAP count] > 0 then
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
-      %,\n%!^%class Compiler * inCompiler%
+      %,\n%!^%Compiler * inCompiler%
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
       %Compiler * inCompiler%
@@ -45,66 +45,66 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixShiftOperator]] then
   %//--------------------------------- << and >> shift operators\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GGS_uint inShiftOperand,\n%
-  !^%class Compiler * inCompiler\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const class GGS_uint inShiftOperand,\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GGS_bigint inShiftOperand,\n%
-  !^%class Compiler * inCompiler\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const class GGS_bigint inShiftOperand,\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GGS_uint inShiftOperand,\n%
-  !^%class Compiler * inCompiler\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const class GGS_uint inShiftOperand,\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GGS_bigint inShiftOperand,\n%
-  !^%class Compiler * inCompiler\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const class GGS_bigint inShiftOperand,\n%
+  !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures andAssignOperatorWithExpression]] then
   %//--------------------------------- &= operator\n%
   %  public: void andAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                   class Compiler * inCompiler\n%
+  %                                   Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures orAssignOperatorWithExpression]] then
   %//--------------------------------- |= operator\n%
   %  public: void orAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                  class Compiler * inCompiler\n%
+  %                                  Compiler * inCompiler\n%
   %                                  COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures xorAssignOperatorWithExpression]] then
   %//--------------------------------- ^= operator\n%
   %  public: void xorAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                   class Compiler * inCompiler\n%
+  %                                   Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures plusAssignOperatorWithExpression]] then
   %//--------------------------------- += operator\n%
   %  public: void plusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                    class Compiler * inCompiler\n%
+  %                                    Compiler * inCompiler\n%
   %                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures minusAssignOperatorWithExpression]] then
   %//--------------------------------- -= operator\n%
   %  public: void minusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                     class Compiler * inCompiler\n%
+  %                                     Compiler * inCompiler\n%
   %                                     COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures mulAssignOperatorWithExpression]] then
   %//--------------------------------- *= operator\n%
   %  public: void mulAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                   class Compiler * inCompiler\n%
+  %                                   Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures divAssignOperatorWithExpression]] then
   %//--------------------------------- /= operator\n%
   %  public: void divAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
-  %                                   class Compiler * inCompiler\n%
+  %                                   Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 

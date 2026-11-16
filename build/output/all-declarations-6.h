@@ -369,7 +369,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionInputAr
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_lexicalFormalModeName (const class GGS_lexicalArgumentModeAST & inObject,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -379,7 +379,7 @@ class GGS_string extensionGetter_lexicalFormalModeName (const class GGS_lexicalA
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_cppConstInFormalArgument (const class GGS_lexicalArgumentModeAST & inObject,
-                                                           class Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -389,7 +389,7 @@ class GGS_string extensionGetter_cppConstInFormalArgument (const class GGS_lexic
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_cppReferenceInFormalArgument (const class GGS_lexicalArgumentModeAST & inObject,
-                                                               class Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -399,7 +399,7 @@ class GGS_string extensionGetter_cppReferenceInFormalArgument (const class GGS_l
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_cocoaPointerInFormalArgument (const class GGS_lexicalArgumentModeAST & inObject,
-                                                               class Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -832,7 +832,7 @@ class GGS__5B_syntaxComponentAST_5D_ final : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_syntaxComponentAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -1051,7 +1051,7 @@ void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionFo
 
 class GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
                                                                       const class GGS_semanticInstructionForGeneration constin__5F_inTestedInstruction,
-                                                                      class Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1061,7 +1061,7 @@ class GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_sourceFile (const class GGS_location & inObject,
-                                             class Compiler * inCompiler
+                                             Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1071,7 +1071,7 @@ class GGS_string extensionGetter_sourceFile (const class GGS_location & inObject
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_commaSourceFile (const class GGS_location & inObject,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1082,7 +1082,7 @@ class GGS_string extensionGetter_commaSourceFile (const class GGS_location & inO
 
 void extensionMethod_enterInstructionListInSemanticContext (const class GGS__5B_semanticInstructionAST_5D_ inObject,
                                                             class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                            class Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1093,7 +1093,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const class GGS__5B_
 
 void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticInstructionAST * inObject,
                                                             class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                            class Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5746,7 +5746,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterMapForB
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_keyRepresentation (const class cPtr_semanticDeclarationAST * inObject,
-                                                        class Compiler * inCompiler
+                                                        Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6161,7 +6161,7 @@ class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ final : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6717,22 +6717,22 @@ class GGS_localVariableAttributes : public AC_GALGAS_root {
 
 //--------------------------------- &= operator
   public: void andAssignOperation (const GGS_localVariableAttributes inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- |= operator
   public: void orAssignOperation (const GGS_localVariableAttributes inOperand,
-                                  class Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ^= operator
   public: void xorAssignOperation (const GGS_localVariableAttributes inOperand,
-                                   class Compiler * inCompiler
+                                   Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_localVariableAttributes inOperand,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- & operator
@@ -7613,7 +7613,7 @@ void extensionSetter_neutralAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObjec
                                     class GGS_unifiedTypeMapEntry & out_outType,
                                     class GGS_string & out_outCppName,
                                     class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7628,7 +7628,7 @@ void extensionSetter_writeAccessInSubMap (class GGS__5B_scopeLocalVarMap_5D_ & i
                                           class GGS_unifiedTypeMapEntry & out_outType,
                                           class GGS_string & out_outCppName,
                                           class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7641,7 +7641,7 @@ void extensionSetter_writeTransition (class GGS_localVarValuation & ioObject,
                                       const class GGS_lstring constin_inVarName,
                                       const class GGS_bool constin_inOverridenMap,
                                       const class GGS_localVariableAttributes constin_inAttributes,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7656,7 +7656,7 @@ void extensionSetter_readAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
                                  class GGS_unifiedTypeMapEntry & out_outType,
                                  class GGS_string & out_outCppName,
                                  class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                 class Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7668,7 +7668,7 @@ void extensionSetter_readAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
 void extensionSetter_readTransition (class GGS_localVarValuation & ioObject,
                                      const class GGS_lstring constin_inVarName,
                                      const class GGS_localVariableAttributes constin_inAttributes,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7683,7 +7683,7 @@ void extensionSetter_readWriteAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObj
                                       class GGS_unifiedTypeMapEntry & out_outType,
                                       class GGS_string & out_outCppName,
                                       class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7696,7 +7696,7 @@ void extensionSetter_readWriteTransition (class GGS_localVarValuation & ioObject
                                           const class GGS_lstring constin_inVarName,
                                           const class GGS_bool constin_inOverridenMap,
                                           const class GGS_localVariableAttributes constin_inAttributes,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7708,7 +7708,7 @@ void extensionSetter_readWriteTransition (class GGS_localVarValuation & ioObject
 void extensionMethod_checkFinalState (const class GGS_localVarValuation inObject,
                                       const class GGS_lstring constin_inVarName,
                                       const class GGS_localVariableAttributes constin_inAttributes,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7719,7 +7719,7 @@ void extensionMethod_checkFinalState (const class GGS_localVarValuation inObject
 
 void extensionMethod_checkFinalStates (const class GGS_scopeLocalVarMap inObject,
                                        const class GGS_location constin__5F_inErrorLocation,
-                                       class Compiler * inCompiler
+                                       Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7732,7 +7732,7 @@ void extensionMethod_combineValuationWith (const class GGS_localVarValuation inO
                                            const class GGS_localVarValuation constin_inOther,
                                            class GGS_localVarValuation & out_outResult,
                                            class GGS_string & io__5F_ioErrorMessage,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7744,7 +7744,7 @@ void extensionMethod_combineValuationWith (const class GGS_localVarValuation inO
 void extensionSetter_combineMapWith (class GGS_scopeLocalVarMap & ioObject,
                                      const class GGS_scopeLocalVarMap constin_inOtherMap,
                                      class GGS_string & io_ioErrorMessage,
-                                     class Compiler * inCompiler
+                                     Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

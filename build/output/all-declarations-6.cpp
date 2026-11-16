@@ -13887,7 +13887,7 @@ GGS_bool GGS_localVariableAttributes::getter_contains (const GGS_localVariableAt
 //--------------------------------------------------------------------------------------------------
 
 void GGS_localVariableAttributes::andAssignOperation (const GGS_localVariableAttributes inOperand,
-                                                      class Compiler * /* inCompiler */
+                                                      Compiler * /* inCompiler */
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= inOperand.mFlags ;
@@ -13897,7 +13897,7 @@ void GGS_localVariableAttributes::andAssignOperation (const GGS_localVariableAtt
 //--------------------------------------------------------------------------------------------------
 
 void GGS_localVariableAttributes::orAssignOperation (const GGS_localVariableAttributes inOperand,
-                                                     class Compiler * /* inCompiler */
+                                                     Compiler * /* inCompiler */
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
@@ -13907,7 +13907,7 @@ void GGS_localVariableAttributes::orAssignOperation (const GGS_localVariableAttr
 //--------------------------------------------------------------------------------------------------
 
 void GGS_localVariableAttributes::xorAssignOperation (const GGS_localVariableAttributes inOperand,
-                                                      class Compiler * /* inCompiler */
+                                                      Compiler * /* inCompiler */
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags ^= inOperand.mFlags ;
@@ -13917,7 +13917,7 @@ void GGS_localVariableAttributes::xorAssignOperation (const GGS_localVariableAtt
 //--------------------------------------------------------------------------------------------------
 
 void GGS_localVariableAttributes::minusAssignOperation (const GGS_localVariableAttributes inOperand,
-                                                        class Compiler * /* inCompiler */
+                                                        Compiler * /* inCompiler */
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;

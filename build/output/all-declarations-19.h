@@ -17,7 +17,7 @@
 void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUIComponentAST constinArgument0,
                                                        const class GGS_semanticContext constinArgument1,
                                                        class GGS_optionComponentMapForGeneration & ioArgument2,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (Compiler * inCompiler,
                                                                                         const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                         const class GGS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                         COMMA_LOCATION_ARGS) ;
@@ -69,7 +69,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
                                                                                                        class GGS_localVarManager & ioArgument12,
                                                                                                        class GGS_uint & ioArgument13,
                                                                                                        class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument14,
-                                                                                                       class Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
 class GGS_bool function_compareSyntaxSignature (const class GGS__5B_semanticInstructionForGeneration_5D_ & constinArgument0,
                                                 const class GGS__5B_semanticInstructionForGeneration_5D_ & constinArgument1,
                                                 const class GGS_location & constinArgument2,
-                                                class Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ class GGS_bool function_compareSyntaxSignature (const class GGS__5B_semanticInst
 void routine_enterInstanceMethodWithoutArgument_26__3F_methodName_3F_ (class GGS_instanceMethodMap & ioArgument0,
                                                                        const class GGS_string constinArgument1,
                                                                        const class GGS_bool constinArgument2,
-                                                                       class Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ void routine_enterInstanceMethodWithInputArgument_26__26__3F_inputArgTypeName_3F
                                                                                                                  const class GGS_string constinArgument3,
                                                                                                                  const class GGS_string constinArgument4,
                                                                                                                  const class GGS_bool constinArgument5,
-                                                                                                                 class Compiler * inCompiler
+                                                                                                                 Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ void routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_return
                                                                                                                    const class GGS_string constinArgument2,
                                                                                                                    const class GGS_string constinArgument3,
                                                                                                                    const class GGS_bool constinArgument4,
-                                                                                                                   class Compiler * inCompiler
+                                                                                                                   Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ void routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_return
                                                                                                                    const class GGS_string constinArgument2,
                                                                                                                    const class GGS_string constinArgument3,
                                                                                                                    const class GGS_bool constinArgument4,
-                                                                                                                   class Compiler * inCompiler
+                                                                                                                   Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ void routine_enterInheritedGetterWithArgument_26__26__3F_getterName_3F_argumentT
                                                                                                                                                     const class GGS_string constinArgument4,
                                                                                                                                                     const class GGS_string constinArgument5,
                                                                                                                                                     const class GGS_bool constinArgument6,
-                                                                                                                                                    class Compiler * inCompiler
+                                                                                                                                                    Compiler * inCompiler
                                                                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argumentTypeNa
                                                                                                                                                const class GGS_string constinArgument4,
                                                                                                                                                const class GGS_string constinArgument5,
                                                                                                                                                const class GGS_bool constinArgument6,
-                                                                                                                                               class Compiler * inCompiler
+                                                                                                                                               Compiler * inCompiler
                                                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ void routine_enterBaseGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_ret
                                                                                                                       const class GGS_string constinArgument6,
                                                                                                                       const class GGS_string constinArgument7,
                                                                                                                       const class GGS_bool constinArgument8,
-                                                                                                                      class Compiler * inCompiler
+                                                                                                                      Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -200,7 +200,7 @@ void routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_returnedTyp
                                                                                                               const class GGS_string constinArgument2,
                                                                                                               const class GGS_string constinArgument3,
                                                                                                               const class GGS_bool constinArgument4,
-                                                                                                              class Compiler * inCompiler
+                                                                                                              Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ void routine_enterBaseGetterWithArgument_26__26__3F_getterName_3F_argSelector_3F
                                                                                                                                                 const class GGS_string constinArgument5,
                                                                                                                                                 const class GGS_string constinArgument6,
                                                                                                                                                 const class GGS_bool constinArgument7,
-                                                                                                                                                class Compiler * inCompiler
+                                                                                                                                                Compiler * inCompiler
                                                                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -233,7 +233,7 @@ void routine_enterBaseFinalGetterWithArgument_26__26__3F_getterName_3F__3F__3F_r
                                                                                                                         const class GGS_string constinArgument4,
                                                                                                                         const class GGS_string constinArgument5,
                                                                                                                         const class GGS_bool constinArgument6,
-                                                                                                                        class Compiler * inCompiler
+                                                                                                                        Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -253,7 +253,7 @@ void routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Se
                                                                                                                                                                                                                           const class GGS_string constinArgument8,
                                                                                                                                                                                                                           const class GGS_string constinArgument9,
                                                                                                                                                                                                                           const class GGS_bool constinArgument10,
-                                                                                                                                                                                                                          class Compiler * inCompiler
+                                                                                                                                                                                                                          Compiler * inCompiler
                                                                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ void routine_enterBaseFinalGetterWith_32_Arguments_26__26__3F_getterName_3F__3F_
                                                                                                                                      const class GGS_string constinArgument6,
                                                                                                                                      const class GGS_string constinArgument7,
                                                                                                                                      const class GGS_bool constinArgument8,
-                                                                                                                                     class Compiler * inCompiler
+                                                                                                                                     Compiler * inCompiler
                                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -291,7 +291,7 @@ void routine_enterBaseFinalGetterWith_33_Arguments_26__26__3F__3F__3F__3F__3F__3
                                                                                                                                    const class GGS_string constinArgument8,
                                                                                                                                    const class GGS_string constinArgument9,
                                                                                                                                    const class GGS_bool constinArgument10,
-                                                                                                                                   class Compiler * inCompiler
+                                                                                                                                   Compiler * inCompiler
                                                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ void routine_enterBaseFinalGetterWith_33_Arguments_26__26__3F__3F__3F__3F__3F__3
 
 void routine_commonGetterMapForAllTypes_26__21_ (class GGS_unifiedTypeMap & ioArgument0,
                                                  class GGS_getterMap & outArgument1,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -316,7 +316,7 @@ void routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName
                                                                                                    const class GGS_string constinArgument2,
                                                                                                    const class GGS_string constinArgument3,
                                                                                                    const class GGS_bool constinArgument4,
-                                                                                                   class Compiler * inCompiler
+                                                                                                   Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -332,7 +332,7 @@ void routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_ar
                                                                                                                           const class GGS_string constinArgument4,
                                                                                                                           const class GGS_string constinArgument5,
                                                                                                                           const class GGS_bool constinArgument6,
-                                                                                                                          class Compiler * inCompiler
+                                                                                                                          Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_
                                                                                                                                                                                                            const class GGS_string constinArgument8,
                                                                                                                                                                                                            const class GGS_string constinArgument9,
                                                                                                                                                                                                            const class GGS_bool constinArgument10,
-                                                                                                                                                                                                           class Compiler * inCompiler
+                                                                                                                                                                                                           Compiler * inCompiler
                                                                                                                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -364,7 +364,7 @@ void routine_enterClassFunctionWith_33_Arguments_26__26__3F_name_3F_argTypeName_
 void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GGS_setterMap & ioArgument0,
                                                                   const class GGS_string constinArgument1,
                                                                   const class GGS_bool constinArgument2,
-                                                                  class Compiler * inCompiler
+                                                                  Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -382,7 +382,7 @@ void routine_enterClassFunctionWith_32_Arguments_26__26__3F_name_3F_argTypeName_
                                                                                                                                                                          const class GGS_string constinArgument6,
                                                                                                                                                                          const class GGS_string constinArgument7,
                                                                                                                                                                          const class GGS_bool constinArgument8,
-                                                                                                                                                                         class Compiler * inCompiler
+                                                                                                                                                                         Compiler * inCompiler
                                                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -397,7 +397,7 @@ void routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F
                                                                                                             const class GGS_string constinArgument3,
                                                                                                             const class GGS_string constinArgument4,
                                                                                                             const class GGS_bool constinArgument5,
-                                                                                                            class Compiler * inCompiler
+                                                                                                            Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ void routine_enterModifierWithOutputAndInputArguments_26__26__3F_outputArgTypeNa
                                                                                                                                                                       const class GGS_string constinArgument5,
                                                                                                                                                                       const class GGS_string constinArgument6,
                                                                                                                                                                       const class GGS_bool constinArgument7,
-                                                                                                                                                                      class Compiler * inCompiler
+                                                                                                                                                                      Compiler * inCompiler
                                                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -431,7 +431,7 @@ void routine_enterModifierWith_32_InputArguments_26__26__3F_arg_31_TypeName_3F_a
                                                                                                                                                            const class GGS_string constinArgument5,
                                                                                                                                                            const class GGS_string constinArgument6,
                                                                                                                                                            const class GGS_bool constinArgument7,
-                                                                                                                                                           class Compiler * inCompiler
+                                                                                                                                                           Compiler * inCompiler
                                                                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -442,7 +442,7 @@ void routine_enterModifierWith_32_InputArguments_26__26__3F_arg_31_TypeName_3F_a
 
 void routine_appendPredefinedArrayTypeAST_26__3F_ (class GGS_galgasDeclarationAST & ioArgument0,
                                                    const class GGS_string constinArgument1,
-                                                   class Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -452,7 +452,7 @@ void routine_appendPredefinedArrayTypeAST_26__3F_ (class GGS_galgasDeclarationAS
 //--------------------------------------------------------------------------------------------------
 
 void routine_appendStructASTForRangeType_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -463,7 +463,7 @@ void routine_appendStructASTForRangeType_26_ (class GGS__5B_semanticDeclarationA
 
 void routine_appendStructASTForTypeWithLocation_26__3F_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
                                                          const class GGS_string constinArgument1,
-                                                         class Compiler * inCompiler
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -473,7 +473,7 @@ void routine_appendStructASTForTypeWithLocation_26__3F_ (class GGS__5B_semanticD
 //--------------------------------------------------------------------------------------------------
 
 void routine_append_5F_stringString_5F_StructAST_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                      class Compiler * inCompiler
+                                                      Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -495,7 +495,7 @@ void routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26
                                                                                                     class GGS_setterMap & ioArgument10,
                                                                                                     class GGS_instanceMethodMap & ioArgument11,
                                                                                                     const class GGS_bool constinArgument12,
-                                                                                                    class Compiler * inCompiler
+                                                                                                    Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -521,7 +521,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (Compiler * inCompiler,
                                                                                         const class GGS_string & in_COMPONENT_5F_NAME,
                                                                                         const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST,
                                                                                         const class GGS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
@@ -541,7 +541,7 @@ void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     class GGS_unifiedTypeMap & ioArgument3,
                                                                     const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
                                                                     class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                    class Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -556,7 +556,7 @@ void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     class GGS_unifiedTypeMap & ioArgument3,
                                                                     const class GGS__5B_programRuleAST_5D_ constinArgument4,
                                                                     class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                    class Compiler * inCompiler
+                                                                    Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -571,6 +571,6 @@ void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B
                                                                    class GGS_unifiedTypeMap & ioArgument3,
                                                                    const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                   class Compiler * inCompiler
+                                                                   Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 

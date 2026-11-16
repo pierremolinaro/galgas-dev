@@ -638,7 +638,7 @@ class GGS__5B_SyntaxInstructionListAST_5D_ final : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_SyntaxInstructionListAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -1084,7 +1084,7 @@ class GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ final : pu
                                                                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -1262,7 +1262,7 @@ class GGS__5B_semanticInstructionListForGeneration_5D_ final : public AC_GALGAS_
                                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_semanticInstructionListForGeneration_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -2036,7 +2036,7 @@ void callExtensionMethod_enterDeclarationInGraph (class cPtr_semanticDeclaration
                                                   class GGS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
                                                   class GGS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
                                                   class GGS__5B_semanticDeclarationAST_5D_ & io_ioExtensionOverrideDefinitionList,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3049,7 +3049,7 @@ void callExtensionMethod_enterDeclarationInSemanticContext (class cPtr_semanticD
                                                             const class GGS_extensionSetterMapForBuildingContext constin__5F_inExtensionSetterMapForBuildingContext,
                                                             class GGS_unifiedTypeMap & io_ioTypeMap,
                                                             class GGS_semanticContext & io__5F_ioSemanticContext,
-                                                            class Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3066,7 +3066,7 @@ void callExtensionMethod_semanticAnalysis (class cPtr_semanticDeclarationAST * i
                                            class GGS_unifiedTypeMap & io__5F_ioTypeMap,
                                            const class GGS_predefinedTypes constin__5F_inPredefinedTypes,
                                            class GGS__5B_semanticDeclarationForGeneration_5D_ & io__5F_ioSemanticDeclarationListForGeneration,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3401,7 +3401,7 @@ class GGS__5B__5B_formalInputParameterAST_5D__5D_ final : public AC_GALGAS_root 
                                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__5B_formalInputParameterAST_5D__5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -4585,7 +4585,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_Predefined
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAST * inObject,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4595,7 +4595,7 @@ class GGS_typeKindEnum callExtensionGetter_typeKind (const cPtr_predefinedTypeAS
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_cppDeclarationString (const class cPtr_predefinedTypeAST * inObject,
-                                                           class Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4605,7 +4605,7 @@ class GGS_string callExtensionGetter_cppDeclarationString (const class cPtr_pred
 //--------------------------------------------------------------------------------------------------
 
 class GGS__5B__5B_formalInputParameterAST_5D__5D_ callExtensionGetter_initializers (const cPtr_predefinedTypeAST * inObject,
-                                                                                    class Compiler * inCompiler
+                                                                                    Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4675,7 +4675,7 @@ void callExtensionMethod_getClassMethodMap (class cPtr_predefinedTypeAST * inObj
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
-                                                                      class Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4685,7 +4685,7 @@ class GGS_typeFeatures callExtensionGetter_getSupportedOperatorFlags (const cPtr
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefinedTypeAST * inObject,
-                                                            class Compiler * inCompiler
+                                                            Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4803,7 +4803,7 @@ class GGS__5B_propertyInCollectionAST_5D_ final : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_propertyInCollectionAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -7077,7 +7077,7 @@ class GGS__5B_prologueEpilogueAST_5D_ final : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_prologueEpilogueAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -7294,7 +7294,7 @@ class cPtr_lexicalExpressionAST : public AbstractStrongPtrClass {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string callExtensionGetter_generateRoutineOrFunctionArgument (const class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                        class Compiler * inCompiler
+                                                                        Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7305,7 +7305,7 @@ class GGS_string callExtensionGetter_generateRoutineOrFunctionArgument (const cl
 
 class GGS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
                                                               const class GGS_string constin_inScannerClassName,
-                                                              class Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7317,7 +7317,7 @@ class GGS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_l
 class GGS_string callExtensionGetter_generateLexicalInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
                                                                      const class GGS_string constin_inScannerClassName,
                                                                      const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                     class Compiler * inCompiler
+                                                                     Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7327,7 +7327,7 @@ class GGS_string callExtensionGetter_generateLexicalInstructionCode (const class
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const class cPtr_lexicalInstructionAST * inObject,
-                                                                            class Compiler * inCompiler
+                                                                            Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7339,7 +7339,7 @@ class GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (cons
 class GGS_string callExtensionGetter_generateLexicalRuleCode (const class cPtr_abstractLexicalRuleAST * inObject,
                                                               const class GGS_string constin_inScannerClassName,
                                                               const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
-                                                              class Compiler * inCompiler
+                                                              Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7349,7 +7349,7 @@ class GGS_string callExtensionGetter_generateLexicalRuleCode (const class cPtr_a
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_lexicalRuleUsesLoopLocalVar (const class cPtr_abstractLexicalRuleAST * inObject,
-                                                                class Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7442,7 +7442,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfMutability ;
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool extensionGetter_selfIsMutable (const class GGS_selfMutability & inObject,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7605,7 +7605,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAvailability_2E_av
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_initializerSignature (const class GGS__5B_functionSignatureElement_5D_ & inObject,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7615,7 +7615,7 @@ class GGS_string extensionGetter_initializerSignature (const class GGS__5B_funct
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_subcriptSignature (const class GGS__5B_functionSignatureElement_5D_ & inObject,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7867,7 +7867,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionIn
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string extensionGetter_initializerSignature (const class GGS__5B_typedProperty_5D_ & inObject,
-                                                       class Compiler * inCompiler
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -8868,7 +8868,7 @@ class GGS__5B_associatedValueDescriptor_5D_ final : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_associatedValueDescriptor_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -9433,7 +9433,7 @@ class GGS_commandLineOptionSortedList final : public AC_GALGAS_root {
 
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS_commandLineOptionSortedList inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -10048,7 +10048,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2
 
 void callExtensionMethod_checkLexicalExpression (class cPtr_lexicalExpressionAST * inObject,
                                                  class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
-                                                 class Compiler * inCompiler
+                                                 Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10133,7 +10133,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExpressionAST_2
 void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionAST * inObject,
                                                   class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
                                                   class GGS_lexicalTagMap & io__5F_ioTagMap,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10144,7 +10144,7 @@ void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionA
 
 void callExtensionMethod_checkLexicalRule (class cPtr_abstractLexicalRuleAST * inObject,
                                            class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10227,7 +10227,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractLexicalRuleAST
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool extensionGetter_useLoopLocalVar (const class GGS__5B_abstractLexicalRuleAST_5D_ & inObject,
-                                                class Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11632,7 +11632,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStringNotMatchA
 
 void callExtensionMethod_checkLexicalDefaultAction (class cPtr_lexicalSendDefaultActionAST * inObject,
                                                     class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12057,7 +12057,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalErrorByDefaultA
 void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
                                                           const class GGS_lexicalTypeEnum constin__5F_inLexicalRoutineFormalArgumentType,
-                                                          class Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -12069,7 +12069,7 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_lexicalRout
 void callExtensionMethod_checkLexicalFunctionCallArgument (class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                            class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
                                                            const class GGS_lexicalTypeEnum constin__5F_inLexicalRoutineFormalArgumentType,
-                                                           class Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

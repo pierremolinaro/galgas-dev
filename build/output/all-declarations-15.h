@@ -19,7 +19,7 @@ void extensionSetter_searchForWriteAccess (class GGS_currentVarManager & ioObjec
                                            class GGS_unifiedTypeMapEntry & out_outType,
                                            class GGS_string & out_outCppName,
                                            class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ void extensionSetter_searchForReadAccess (class GGS_currentVarManager & ioObject
                                           class GGS_unifiedTypeMapEntry & out_outType,
                                           class GGS_string & out_outCppName,
                                           class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                          class Compiler * inCompiler
+                                          Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioO
                                                class GGS_unifiedTypeMapEntry & out_outType,
                                                class GGS_string & out_outCppName,
                                                class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                               class Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioO
 //--------------------------------------------------------------------------------------------------
 
 void extensionSetter_openScope (class GGS_currentVarManager & ioObject,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ void extensionSetter_openScope (class GGS_currentVarManager & ioObject,
 
 void extensionSetter_closeScope (class GGS_currentVarManager & ioObject,
                                  const class GGS_location constin_inErrorLocation,
-                                 class Compiler * inCompiler
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ void extensionSetter_insertKey (class GGS_currentVarManager & ioObject,
                                 const class GGS_string constin_inNameForCheckingFormalParameterUsing,
                                 const class GGS_localVariableAttributes constin_inAttributes,
                                 const class GGS_localVarValuation constin_inState,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ void extensionSetter_insertKey (class GGS_currentVarManager & ioObject,
 
 void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inObject,
                                            const class GGS_location constin_inErrorLocation,
-                                           class Compiler * inCompiler
+                                           Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inO
 void extensionSetter_combineManagerWith (class GGS_currentVarManager & ioObject,
                                          const class GGS_currentVarManager constin_inOtherManager,
                                          const class GGS_location constin_inErrorLocation,
-                                         class Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ void extensionSetter_combineManagerWith (class GGS_currentVarManager & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 class GGS__5B_lstring_5D_ extensionGetter_unsolvedEntryList (const class GGS_unifiedTypeMap & inObject,
-                                                             class Compiler * inCompiler
+                                                             Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ class GGS__5B_lstring_5D_ extensionGetter_unsolvedEntryList (const class GGS_uni
 //--------------------------------------------------------------------------------------------------
 
 class GGS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                class Compiler * inCompiler
+                                                                Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ void extensionSetter_insertKey (class GGS_routineMap & ioObject,
                                 const class GGS_lstring constin_inRoutineName,
                                 const class GGS__5B_formalParameterSignatureElement_5D_ constin_inRoutineSignature,
                                 const class GGS_bool constin_inIsFilePrivate,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -150,7 +150,7 @@ void extensionSetter_insertKey (class GGS_routineMap & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string function_routineArgumentFromFormalParameters (const class GGS__5B_formalParameterSignatureElement_5D_ & constinArgument0,
-                                                               class Compiler * inCompiler
+                                                               Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ void extensionMethod_searchKey (const class GGS_routineMap inObject,
                                 class GGS__5B_formalParameterSignatureElement_5D_ & out_outRoutineSignature,
                                 class GGS_bool & out_outIsFilePrivate,
                                 class GGS_lstring & out_outRoutineMangledName,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ void extensionMethod_searchKey (const class GGS_routineMap inObject,
 
 class GGS_lstring function_routineMangledName (const class GGS_lstring & constinArgument0,
                                                const class GGS__5B_formalParameterSignatureElement_5D_ & constinArgument1,
-                                               class Compiler * inCompiler
+                                               Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ class GGS_lstring function_routineMangledName (const class GGS_lstring & constin
 
 class GGS_location extensionGetter_locationForKey (const class GGS_routineMap & inObject,
                                                    const class GGS_string & constinArgument0,
-                                                   class Compiler * inCompiler
+                                                   Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -203,7 +203,7 @@ void callExtensionMethod_analyzeInputParameter (class cPtr_abstractInputParamete
                                                 const class GGS_string constin_inLexicalAttributeName,
                                                 class GGS__5B_terminalCheckAssignement_5D_ & io_ioTerminalCheckAssignementList,
                                                 class GGS_localVarManager & io_ioVariableMap,
-                                                class Compiler * inCompiler
+                                                Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -219,7 +219,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
                                                      class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                                      class GGS_localVarManager & io_ioVariableMap,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -229,7 +229,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lstring function_makeOptionalTypeLName (const class GGS_lstring & constinArgument0,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1040,7 +1040,7 @@ class cParser_templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 void routine_enterTemplateString_26_ (class GGS__5B_templateInstructionAST_5D_ & ioArgument0,
-                                      class Compiler * inCompiler
+                                      Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1259,7 +1259,7 @@ class cGrammar_galgas_34_ProjectGrammar : public cParser_galgas_34_ProjectSyntax
 void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObject,
                                 const class GGS_string constin_inKey,
                                 const class GGS_lstring constin_inValue,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1271,7 +1271,7 @@ void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObje
 void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
                                 const class GGS_string constin_inKey,
                                 const class GGS_unifiedTypeMapEntry constin_inType,
-                                class Compiler * inCompiler
+                                Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1288,7 +1288,7 @@ void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForG
                                                   class GGS__5B_string_5D_ & io_ioOutputVariableList,
                                                   class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                   class GGS_string & out_outCppName,
-                                                  class Compiler * inCompiler
+                                                  Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1300,7 +1300,7 @@ void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForG
 void callExtensionMethod_generatePoisonedVariables (class cPtr_actualParameterForGeneration * inObject,
                                                     class GGS_string & io_ioImplementation,
                                                     class GGS_stringset & io_ioUnusedVariableCppNameSet,
-                                                    class Compiler * inCompiler
+                                                    Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

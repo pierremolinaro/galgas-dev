@@ -3659,7 +3659,7 @@ GGS_string cPtr_semanticTypeForGeneration::getter_getImplementationCppFileName (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result_result ; // Returned variable
   const GGS_semanticTypeForGeneration temp_0 = this ;
-  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 222)).readProperty_headerFileName () ;
+  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 217)).readProperty_headerFileName () ;
 //---
   return result_result ;
 }
@@ -3690,7 +3690,7 @@ GGS_bool cPtr_semanticTypeForGeneration::getter_isPredefined (Compiler * inCompi
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result_result ; // Returned variable
   const GGS_semanticTypeForGeneration temp_0 = this ;
-  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 234)).readProperty_isPredefined () ;
+  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 229)).readProperty_isPredefined () ;
 //---
   return result_result ;
 }
@@ -3706,7 +3706,7 @@ GGS_headerKind cPtr_semanticTypeForGeneration::getter_headerKind (Compiler * inC
                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_headerKind result_result ; // Returned variable
   const GGS_semanticTypeForGeneration temp_0 = this ;
-  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 240)).readProperty_headerKind () ;
+  result_result = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 235)).readProperty_headerKind () ;
 //---
   return result_result ;
 }
@@ -3753,7 +3753,7 @@ GGS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_hasCppHeaderFil
 GGS_headerKind cPtr_semanticDeclarationWithHeaderForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_headerKind result_result ; // Returned variable
-  result_result = GGS_headerKind::class_func_twoHeaders (SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 269)) ;
+  result_result = GGS_headerKind::class_func_twoHeaders (SOURCE_FILE ("semanticsDecoratedTypes.galgas4", 264)) ;
 //---
   return result_result ;
 }
@@ -5278,7 +5278,7 @@ static GGS_stringset gOnceFunctionResult_forbiddenKeysForStruct ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
+GGS_stringset function_forbiddenKeysForStruct (Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_forbiddenKeysForStruct) {
     gOnceFunctionResult_forbiddenKeysForStruct = onceFunction_forbiddenKeysForStruct (inCompiler COMMA_THERE) ;

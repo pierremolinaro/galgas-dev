@@ -202,11 +202,6 @@ func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration () -> @str
 }
 
 //--------------------------------------------------------------------------------------------------
-
-proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string _ioHeader) {
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //    T Y P E    D E C L A R A T I O N
 //

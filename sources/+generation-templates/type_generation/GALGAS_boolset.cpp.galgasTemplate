@@ -65,7 +65,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!TYPE_IDENTIFIE
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::andAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
-         %!^%class Compiler * /* inCompiler */
+         %!^%Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= inOperand.mFlags ;
@@ -75,7 +75,7 @@ void GGS_%!TYPE_IDENTIFIER%::andAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::orAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
-         %!^%class Compiler * /* inCompiler */
+         %!^%Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags |= inOperand.mFlags ;
@@ -85,7 +85,7 @@ void GGS_%!TYPE_IDENTIFIER%::orAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::xorAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
-         %!^%class Compiler * /* inCompiler */
+         %!^%Compiler * /* inCompiler */
          %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags ^= inOperand.mFlags ;
@@ -95,7 +95,7 @@ void GGS_%!TYPE_IDENTIFIER%::xorAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::minusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
-          %!^%class Compiler * /* inCompiler */
+          %!^%Compiler * /* inCompiler */
           %!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mFlags &= ~ inOperand.mFlags ;

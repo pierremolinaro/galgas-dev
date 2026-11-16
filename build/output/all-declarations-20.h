@@ -19,7 +19,7 @@ void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const cla
                                                                        const class GGS_location constinArgument2,
                                                                        class GGS_semanticExpressionForGeneration & ioArgument3,
                                                                        class GGS_semanticExpressionForGeneration & ioArgument4,
-                                                                       class Compiler * inCompiler
+                                                                       Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (Compiler * inCompiler,
                                                                                const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
                                                                                const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
@@ -58,7 +58,7 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (c
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (Compiler * inCompiler,
                                                                                          const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                          const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
                                                                                          const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
@@ -71,7 +71,7 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftUI (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftUI (Compiler * inCompiler,
                                                                                       const class GGS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                       const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
                                                                                       const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
@@ -104,7 +104,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper ;
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (Compiler * inCompiler,
                                                                               const class GGS_string & in_PROJECT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -114,7 +114,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_project (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (Compiler * inCompiler,
                                                                             const class GGS_string & in_PROJECT_5F_NAME
                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -124,7 +124,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_cocoa (clas
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (Compiler * inCompiler,
                                                                               const class GGS_string & in_PROJECT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -134,7 +134,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_grammar (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (Compiler * inCompiler,
                                                                               const class GGS_string & in_PROJECT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -144,7 +144,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (Compiler * inCompiler,
                                                                               const class GGS_string & in_PROJECT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -154,7 +154,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (Compiler * inCompiler,
                                                                               const class GGS_string & in_PROJECT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -164,7 +164,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_program (cl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (Compiler * inCompiler,
                                                                                 const class GGS_string & in_PROJECT_5F_NAME
                                                                                 COMMA_LOCATION_ARGS) ;
 
@@ -174,7 +174,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (class Compiler * inCompiler,
+GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (Compiler * inCompiler,
                                                                              const class GGS_string & in_PROJECT_5F_NAME
                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -185,7 +185,7 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (cla
 //--------------------------------------------------------------------------------------------------
 
 void routine_performProjectCreation_3F_ (const class GGS_string constinArgument0,
-                                         class Compiler * inCompiler
+                                         Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@ void routine_performProjectCreation_3F_ (const class GGS_string constinArgument0
 //--------------------------------------------------------------------------------------------------
 
 void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
-                                  class Compiler * inCompiler
+                                  Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (co
                                                                               class GGS_wrapperDirectoryMap & outArgument5,
                                                                               class GGS_uint & ioArgument6,
                                                                               class GGS_uint & ioArgument7,
-                                                                              class Compiler * inCompiler
+                                                                              Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -227,7 +227,7 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const clas
                                                                       class GGS_unifiedTypeMap & ioArgument3,
                                                                       const class GGS__5B_templateInstructionAST_5D_ constinArgument4,
                                                                       class GGS__5B_templateInstructionForGeneration_5D_ & ioArgument5,
-                                                                      class Compiler * inCompiler
+                                                                      Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -251,7 +251,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
                                                                                                        class GGS__5B_semanticExpressionForGeneration_5D_ & outArgument12,
                                                                                                        class GGS_bool & outArgument13,
                                                                                                        class GGS__5B_unifiedTypeMapEntry_5D_ & outArgument14,
-                                                                                                       class Compiler * inCompiler
+                                                                                                       Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -272,6 +272,6 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
                                                                                            class GGS_unifiedTypeMapEntry & outArgument9,
                                                                                            class GGS_lstring & outArgument10,
                                                                                            class GGS__5B_semanticExpressionForGeneration_5D_ & outArgument11,
-                                                                                           class Compiler * inCompiler
+                                                                                           Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 

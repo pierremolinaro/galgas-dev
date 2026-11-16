@@ -98,7 +98,7 @@ class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ final : public AC_GALGAS_root 
                                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -614,7 +614,7 @@ class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ final : public AC_GALGAS_root
                                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -2663,7 +2663,7 @@ class GGS__5B_XCodeGroup_5D_ final : public AC_GALGAS_root {
                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_XCodeGroup_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -2841,7 +2841,7 @@ class GGS__5B_XCodeToolTarget_5D_ final : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_XCodeToolTarget_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3019,7 +3019,7 @@ class GGS__5B_XCodeAppTarget_5D_ final : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_XCodeAppTarget_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3197,7 +3197,7 @@ class GGS__5B_BuildFile_5D_ final : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_BuildFile_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -3302,7 +3302,7 @@ void extensionMethod_analyzeRoutineArguments (const class GGS__5B_actualParamete
                                               class GGS_localVarManager & io_ioVariableMap,
                                               class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                               class GGS__5B_actualParameterForGeneration_5D_ & out_outActualParameterListForGeneration,
-                                              class Compiler * inCompiler
+                                              Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3323,7 +3323,7 @@ void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterA
                                                      class GGS__5B_actualParameterForGeneration_5D_ & io_ioActualParameterListForGeneration,
                                                      class GGS_stringset & io_ioExclusiveVariableSet,
                                                      class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3334,7 +3334,7 @@ void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterA
 
 void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParameterAST * inObject,
                                                           class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                          class Compiler * inCompiler
+                                                          Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3346,7 +3346,7 @@ void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParam
 class GGS_bool callExtensionGetter_isCompatibleWith (const class cPtr_actualParameterAST * inObject,
                                                      const class GGS_formalArgumentPassingModeAST constin__5F_inFormalPassingMode,
                                                      const class GGS_string constin__5F_inSelector,
-                                                     class Compiler * inCompiler
+                                                     Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3357,7 +3357,7 @@ class GGS_bool callExtensionGetter_isCompatibleWith (const class cPtr_actualPara
 
 void callExtensionMethod_enterInActualOutputParameterList (class cPtr_actualParameterAST * inObject,
                                                            class GGS__5B_actualOutputArgumentAST_5D_ & io_ioActualOutputArgumentList,
-                                                           class Compiler * inCompiler
+                                                           Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3720,7 +3720,7 @@ class GGS__5B_unifiedTypeMapEntry_5D_ final : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_unifiedTypeMapEntry_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6101,7 +6101,7 @@ class GGS__5B_terminalLabelAST_5D_ final : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_terminalLabelAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6368,7 +6368,7 @@ class GGS__5B_guiLabelAST_5D_ final : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_guiLabelAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6546,7 +6546,7 @@ class GGS__5B_guiSimpleAttributeAST_5D_ final : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_guiSimpleAttributeAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -6724,7 +6724,7 @@ class GGS__5B_guiCompoundAttributeAST_5D_ final : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_guiCompoundAttributeAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -7439,7 +7439,7 @@ class GGS__5B_textMacroAST_5D_ final : public AC_GALGAS_root {
                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_textMacroAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -7828,7 +7828,7 @@ class GGS__5B_withLexiqueAST_5D_ final : public AC_GALGAS_root {
                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_withLexiqueAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -8006,7 +8006,7 @@ class GGS__5B_projectIndexingDescriptorAST_5D_ final : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_projectIndexingDescriptorAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -8295,7 +8295,7 @@ class GGS__5B_importedLexiqueAST_5D_ final : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_importedLexiqueAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -8924,7 +8924,7 @@ class GGS__5B_galgasGUIComponentAST_5D_ final : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_galgasGUIComponentAST_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -9494,7 +9494,7 @@ class GGS__5B__32_lstring_5D_ final : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__32_lstring_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
@@ -9750,7 +9750,7 @@ class GGS__5B_terminalCheckAssignement_5D_ final : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_terminalCheckAssignement_5D_ inOperand,
-                                    class Compiler * inCompiler
+                                    Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator

@@ -8,7 +8,6 @@
 #include "ComparisonResult.h"
 #include "ComparisonKind.h"
 #include "EnumerationOrder.h"
-#include "CollectionElementArray.h"
 #include "Enumerator_range.h"
 #include "String-class.h"
 #include "Timer.h"
@@ -25,5 +24,3 @@
 #include "BigSigned.h"
 #include "GALGAS_GenericDictionary.h"
 #include "Compiler.h"
-
-//--------------------------------------------------------------------------------------------------

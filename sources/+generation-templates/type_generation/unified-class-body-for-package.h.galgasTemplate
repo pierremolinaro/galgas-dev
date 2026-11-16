@@ -10,7 +10,7 @@ if [CLASS_FUNC_MAP count] > 0 then
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
-      %,\n%!^%class Compiler * inCompiler%
+      %,\n%!^%Compiler * inCompiler%
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
       %Compiler * inCompiler%

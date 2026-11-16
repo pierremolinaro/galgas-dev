@@ -15,7 +15,7 @@ static GGS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME identi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%class Compiler * inCompiler
+GGS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%Compiler * inCompiler
               %!^%COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]%) {
     gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% = onceFunction_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE) ;
