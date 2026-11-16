@@ -299,7 +299,7 @@ GGS_bool GGS_uint_36__34_::getter_canDivide (const GGS_uint_36__34_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::divide_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const {
+GGS_uint_36__34_ GGS_uint_36__34_::wrapping_divide_operation (const GGS_uint_36__34_ & inOperand) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_uint_36__34_ ((inOperand.mUInt64Value == 0) ? 0 : (mUInt64Value / inOperand.mUInt64Value)) ;
@@ -309,7 +309,7 @@ GGS_uint_36__34_ GGS_uint_36__34_::divide_operation_no_ovf (const GGS_uint_36__3
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::add_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const {
+GGS_uint_36__34_ GGS_uint_36__34_::wrapping_add_operation (const GGS_uint_36__34_ & inOperand) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_uint_36__34_ (mUInt64Value + inOperand.mUInt64Value) ;
@@ -416,7 +416,7 @@ GGS_bool GGS_uint_36__34_::getter_canAdd (const GGS_uint_36__34_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::subtract_operation_no_ovf (const GGS_uint_36__34_ & inOperand2) const {
+GGS_uint_36__34_ GGS_uint_36__34_::wrapping_subtract_operation (const GGS_uint_36__34_ & inOperand2) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint_36__34_ (mUInt64Value - inOperand2.mUInt64Value) ;
@@ -426,7 +426,7 @@ GGS_uint_36__34_ GGS_uint_36__34_::subtract_operation_no_ovf (const GGS_uint_36_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::multiply_operation_no_ovf (const GGS_uint_36__34_ & inOperand2) const {
+GGS_uint_36__34_ GGS_uint_36__34_::wrapping_multiply_operation (const GGS_uint_36__34_ & inOperand2) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint_36__34_ (mUInt64Value * inOperand2.mUInt64Value) ;

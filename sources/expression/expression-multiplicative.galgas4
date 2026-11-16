@@ -207,7 +207,7 @@ override proc @multiplicationExpressionNoOverflowAST.analyzeSemanticExpression
     leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
-    .multiply_operation_no_ovf,
+    .wrappingMul,
     rightExpression
   )
 }
@@ -322,7 +322,7 @@ override proc @divisionExpressionNoOverflowAST.analyzeSemanticExpression
     leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
-    .divide_operation_no_ovf,
+    .wrappingDiv,
     rightExpression
   )
 }

@@ -327,7 +327,7 @@ override proc @addExpressionNoOverflowAST.analyzeSemanticExpression
       leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
-      .addNoOverflow,
+      .wrappingAdd,
       rightExpression
     )
   end
@@ -460,7 +460,7 @@ override proc @subExpressionNoOverflowAST.analyzeSemanticExpression
       leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
-      .subNoOverflow,
+      .wrappingSub,
       rightExpression
     )
   end
@@ -540,16 +540,16 @@ enum @binaryOperator {
   case rightShift
   case leftShift
   case add
-  case addNoOverflow
+  case wrappingAdd
   case sub
-  case subNoOverflow
+  case wrappingSub
   case operator_and
   case operator_or
   case operator_xor
-  case multiply_operation_no_ovf
+  case wrappingMul
   case multiply_operation
   case divide_operation
-  case divide_operation_no_ovf
+  case wrappingDiv
   case modulo_operation
 }
 
@@ -587,14 +587,14 @@ override proc @binaryOperatorExpressionForGeneration.generateExpression
   case add           :
     operatorString = "add_operation"
     hasCompilerOption = true
-  case addNoOverflow :
-    operatorString = "add_operation_no_ovf"
+  case wrappingAdd :
+    operatorString = "wrapping_add_operation"
     hasCompilerOption = true
   case sub           :
     operatorString = "subtract_operation"
     hasCompilerOption = true
-  case subNoOverflow :
-    operatorString = "subtract_operation_no_ovf"
+  case wrappingSub :
+    operatorString = "wrapping_subtract_operation"
     hasCompilerOption = true
   case operator_and :
     operatorString = "operator_and"
@@ -605,8 +605,8 @@ override proc @binaryOperatorExpressionForGeneration.generateExpression
   case operator_xor :
     operatorString = "operator_xor"
     hasCompilerOption = false
-  case multiply_operation_no_ovf :
-    operatorString = "multiply_operation_no_ovf"
+  case wrappingMul :
+    operatorString = "wrapping_multiply_operation"
     hasCompilerOption = true
   case multiply_operation :
     operatorString = "multiply_operation"
@@ -614,8 +614,8 @@ override proc @binaryOperatorExpressionForGeneration.generateExpression
   case divide_operation :
     operatorString = "divide_operation"
     hasCompilerOption = true
-  case divide_operation_no_ovf :
-    operatorString = "divide_operation_no_ovf"
+  case wrappingDiv :
+    operatorString = "wrapping_divide_operation"
     hasCompilerOption = true
   case modulo_operation :
     operatorString = "modulo_operation"

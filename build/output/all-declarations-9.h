@@ -9573,16 +9573,16 @@ class GGS_binaryOperator : public AC_GALGAS_root {
     enum_rightShift,
     enum_leftShift,
     enum_add,
-    enum_addNoOverflow,
+    enum_wrappingAdd,
     enum_sub,
-    enum_subNoOverflow,
+    enum_wrappingSub,
     enum_operator_5F_and,
     enum_operator_5F_or,
     enum_operator_5F_xor,
-    enum_multiply_5F_operation_5F_no_5F_ovf,
+    enum_wrappingMul,
     enum_multiply_5F_operation,
     enum_divide_5F_operation,
-    enum_divide_5F_operation_5F_no_5F_ovf,
+    enum_wrappingDiv,
     enum_modulo_5F_operation
   } ;
   
@@ -9610,19 +9610,13 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_binaryOperator class_func_add (LOCATION_ARGS) ;
 
-  public: static class GGS_binaryOperator class_func_addNoOverflow (LOCATION_ARGS) ;
-
   public: static class GGS_binaryOperator class_func_divide_5F_operation (LOCATION_ARGS) ;
-
-  public: static class GGS_binaryOperator class_func_divide_5F_operation_5F_no_5F_ovf (LOCATION_ARGS) ;
 
   public: static class GGS_binaryOperator class_func_leftShift (LOCATION_ARGS) ;
 
   public: static class GGS_binaryOperator class_func_modulo_5F_operation (LOCATION_ARGS) ;
 
   public: static class GGS_binaryOperator class_func_multiply_5F_operation (LOCATION_ARGS) ;
-
-  public: static class GGS_binaryOperator class_func_multiply_5F_operation_5F_no_5F_ovf (LOCATION_ARGS) ;
 
   public: static class GGS_binaryOperator class_func_operator_5F_and (LOCATION_ARGS) ;
 
@@ -9634,7 +9628,13 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 
   public: static class GGS_binaryOperator class_func_sub (LOCATION_ARGS) ;
 
-  public: static class GGS_binaryOperator class_func_subNoOverflow (LOCATION_ARGS) ;
+  public: static class GGS_binaryOperator class_func_wrappingAdd (LOCATION_ARGS) ;
+
+  public: static class GGS_binaryOperator class_func_wrappingDiv (LOCATION_ARGS) ;
+
+  public: static class GGS_binaryOperator class_func_wrappingMul (LOCATION_ARGS) ;
+
+  public: static class GGS_binaryOperator class_func_wrappingSub (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -9648,19 +9648,13 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_bool getter_isAdd (LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_isAddNoOverflow (LOCATION_ARGS) const ;
-
   public: class GGS_bool getter_isDivide_5F_operation (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDivide_5F_operation_5F_no_5F_ovf (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isLeftShift (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isModulo_5F_operation (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isMultiply_5F_operation (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isMultiply_5F_operation_5F_no_5F_ovf (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isOperator_5F_and (LOCATION_ARGS) const ;
 
@@ -9672,7 +9666,13 @@ class GGS_binaryOperator : public AC_GALGAS_root {
 
   public: class GGS_bool getter_isSub (LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_isSubNoOverflow (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_isWrappingAdd (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isWrappingDiv (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isWrappingMul (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isWrappingSub (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts

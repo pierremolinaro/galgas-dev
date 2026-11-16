@@ -264,7 +264,7 @@ void GGS_sint_36__34_::divAssignOperation (const GGS_sint_36__34_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::add_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const {
+GGS_sint_36__34_ GGS_sint_36__34_::wrapping_add_operation (const GGS_sint_36__34_ & inOperand) const {
   GGS_sint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_sint_36__34_ (mSInt64Value + inOperand.mSInt64Value) ;
@@ -345,7 +345,7 @@ GGS_bool GGS_sint_36__34_::getter_canSubstract (const GGS_sint_36__34_ & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation_no_ovf (const GGS_sint_36__34_ & inOperand2) const {
+GGS_sint_36__34_ GGS_sint_36__34_::wrapping_subtract_operation (const GGS_sint_36__34_ & inOperand2) const {
   GGS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     const int64_t r = mSInt64Value - inOperand2.mSInt64Value ;
@@ -356,7 +356,7 @@ GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation_no_ovf (const GGS_sint_36_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::multiply_operation_no_ovf (const GGS_sint_36__34_ & inOperand2) const {
+GGS_sint_36__34_ GGS_sint_36__34_::wrapping_multiply_operation (const GGS_sint_36__34_ & inOperand2) const {
   GGS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_sint_36__34_ (mSInt64Value * inOperand2.mSInt64Value) ;
@@ -437,7 +437,7 @@ GGS_bool GGS_sint_36__34_::getter_canDivide (const GGS_sint_36__34_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::divide_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const {
+GGS_sint_36__34_ GGS_sint_36__34_::wrapping_divide_operation (const GGS_sint_36__34_ & inOperand) const {
   GGS_sint_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_sint_36__34_ ((inOperand.mSInt64Value == 0) ? 0 : (mSInt64Value / inOperand.mSInt64Value)) ;

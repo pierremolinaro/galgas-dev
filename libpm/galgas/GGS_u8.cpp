@@ -384,7 +384,7 @@ void GGS_u_38_::divAssignOperation (const GGS_u_38_ inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_38_ GGS_u_38_::add_operation_no_ovf (const GGS_u_38_ & inOperand) const {
+GGS_u_38_ GGS_u_38_::wrapping_add_operation (const GGS_u_38_ & inOperand) const {
   GGS_u_38_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_u_38_ (mU8Value + inOperand.mU8Value) ;
@@ -423,7 +423,7 @@ GGS_bool GGS_u_38_::getter_canSubstract (const GGS_u_38_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_38_ GGS_u_38_::subtract_operation_no_ovf (const GGS_u_38_ & inOperand2) const {
+GGS_u_38_ GGS_u_38_::wrapping_subtract_operation (const GGS_u_38_ & inOperand2) const {
   GGS_u_38_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_u_38_ (mU8Value - inOperand2.mU8Value) ;
@@ -433,7 +433,7 @@ GGS_u_38_ GGS_u_38_::subtract_operation_no_ovf (const GGS_u_38_ & inOperand2) co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_38_ GGS_u_38_::multiply_operation_no_ovf (const GGS_u_38_ & inOperand2) const {
+GGS_u_38_ GGS_u_38_::wrapping_multiply_operation (const GGS_u_38_ & inOperand2) const {
   GGS_u_38_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_u_38_ (mU8Value * inOperand2.mU8Value) ;
@@ -501,7 +501,7 @@ GGS_bool GGS_u_38_::getter_canDivide (const GGS_u_38_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_38_ GGS_u_38_::divide_operation_no_ovf (const GGS_u_38_ & inOperand) const {
+GGS_u_38_ GGS_u_38_::wrapping_divide_operation (const GGS_u_38_ & inOperand) const {
   GGS_u_38_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_u_38_ ((inOperand.mU8Value == 0) ? 0 : (mU8Value / inOperand.mU8Value)) ;

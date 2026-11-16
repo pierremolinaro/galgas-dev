@@ -125,10 +125,10 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &+ operator
-  public: GGS_uint_36__34_ add_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
+  public: GGS_uint_36__34_ wrapping_add_operation (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_uint_36__34_ subtract_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
+  public: GGS_uint_36__34_ wrapping_subtract_operation (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- - operator
   public: GGS_uint_36__34_ subtract_operation (const GGS_uint_36__34_ & inOperand,
@@ -141,7 +141,7 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &* operator
-  public: GGS_uint_36__34_ multiply_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
+  public: GGS_uint_36__34_ wrapping_multiply_operation (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- / operator
   public: GGS_uint_36__34_ divide_operation (const GGS_uint_36__34_ & inOperand,
@@ -149,7 +149,7 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_uint_36__34_ divide_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
+  public: GGS_uint_36__34_ wrapping_divide_operation (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_uint_36__34_ modulo_operation (const GGS_uint_36__34_ & inOperand,
@@ -742,10 +742,10 @@ class GGS_u_38_ : public AC_GALGAS_root {
                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &+ operator
-  public: GGS_u_38_ add_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+  public: GGS_u_38_ wrapping_add_operation (const GGS_u_38_ & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_u_38_ subtract_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+  public: GGS_u_38_ wrapping_subtract_operation (const GGS_u_38_ & inOperand) const ;
 
 //--------------------------------- - operator
   public: GGS_u_38_ subtract_operation (const GGS_u_38_ & inOperand,
@@ -758,7 +758,7 @@ class GGS_u_38_ : public AC_GALGAS_root {
                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &* operator
-  public: GGS_u_38_ multiply_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+  public: GGS_u_38_ wrapping_multiply_operation (const GGS_u_38_ & inOperand) const ;
 
 //--------------------------------- / operator
   public: GGS_u_38_ divide_operation (const GGS_u_38_ & inOperand,
@@ -766,7 +766,7 @@ class GGS_u_38_ : public AC_GALGAS_root {
                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_u_38_ divide_operation_no_ovf (const GGS_u_38_ & inOperand) const ;
+  public: GGS_u_38_ wrapping_divide_operation (const GGS_u_38_ & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_u_38_ modulo_operation (const GGS_u_38_ & inOperand,
@@ -1784,7 +1784,7 @@ class GGS_double : public AC_GALGAS_root {
                                        COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_double divide_operation_no_ovf (const GGS_double & inOperand) const ;
+  public: GGS_double wrapping_divide_operation (const GGS_double & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_double modulo_operation (const GGS_double & inOperand,
@@ -2208,10 +2208,10 @@ class GGS_sint : public AC_GALGAS_root {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &+ operator
-  public: GGS_sint add_operation_no_ovf (const GGS_sint & inOperand) const ;
+  public: GGS_sint wrapping_add_operation (const GGS_sint & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_sint subtract_operation_no_ovf (const GGS_sint & inOperand) const ;
+  public: GGS_sint wrapping_subtract_operation (const GGS_sint & inOperand) const ;
 
 //--------------------------------- - operator
   public: GGS_sint subtract_operation (const GGS_sint & inOperand,
@@ -2224,7 +2224,7 @@ class GGS_sint : public AC_GALGAS_root {
                                        COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &* operator
-  public: GGS_sint multiply_operation_no_ovf (const GGS_sint & inOperand) const ;
+  public: GGS_sint wrapping_multiply_operation (const GGS_sint & inOperand) const ;
 
 //--------------------------------- / operator
   public: GGS_sint divide_operation (const GGS_sint & inOperand,
@@ -2232,7 +2232,7 @@ class GGS_sint : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_sint divide_operation_no_ovf (const GGS_sint & inOperand) const ;
+  public: GGS_sint wrapping_divide_operation (const GGS_sint & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_sint modulo_operation (const GGS_sint & inOperand,
@@ -2395,10 +2395,10 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &+ operator
-  public: GGS_sint_36__34_ add_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
+  public: GGS_sint_36__34_ wrapping_add_operation (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_sint_36__34_ subtract_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
+  public: GGS_sint_36__34_ wrapping_subtract_operation (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- - operator
   public: GGS_sint_36__34_ subtract_operation (const GGS_sint_36__34_ & inOperand,
@@ -2411,7 +2411,7 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &* operator
-  public: GGS_sint_36__34_ multiply_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
+  public: GGS_sint_36__34_ wrapping_multiply_operation (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- / operator
   public: GGS_sint_36__34_ divide_operation (const GGS_sint_36__34_ & inOperand,
@@ -2419,7 +2419,7 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_sint_36__34_ divide_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
+  public: GGS_sint_36__34_ wrapping_divide_operation (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_sint_36__34_ modulo_operation (const GGS_sint_36__34_ & inOperand,
@@ -2590,10 +2590,10 @@ class GGS_uint : public AC_GALGAS_root {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &+ operator
-  public: GGS_uint add_operation_no_ovf (const GGS_uint & inOperand) const ;
+  public: GGS_uint wrapping_add_operation (const GGS_uint & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_uint subtract_operation_no_ovf (const GGS_uint & inOperand) const ;
+  public: GGS_uint wrapping_subtract_operation (const GGS_uint & inOperand) const ;
 
 //--------------------------------- - operator
   public: GGS_uint subtract_operation (const GGS_uint & inOperand,
@@ -2606,7 +2606,7 @@ class GGS_uint : public AC_GALGAS_root {
                                        COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &* operator
-  public: GGS_uint multiply_operation_no_ovf (const GGS_uint & inOperand) const ;
+  public: GGS_uint wrapping_multiply_operation (const GGS_uint & inOperand) const ;
 
 //--------------------------------- / operator
   public: GGS_uint divide_operation (const GGS_uint & inOperand,
@@ -2614,7 +2614,7 @@ class GGS_uint : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_uint divide_operation_no_ovf (const GGS_uint & inOperand) const ;
+  public: GGS_uint wrapping_divide_operation (const GGS_uint & inOperand) const ;
 
 //--------------------------------- mod operator
   public: GGS_uint modulo_operation (const GGS_uint & inOperand,

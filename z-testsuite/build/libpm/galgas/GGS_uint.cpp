@@ -466,7 +466,7 @@ void GGS_uint::divAssignOperation (const GGS_uint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::add_operation_no_ovf (const GGS_uint & inOperand) const {
+GGS_uint GGS_uint::wrapping_add_operation (const GGS_uint & inOperand) const {
   GGS_uint result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_uint (mUIntValue + inOperand.mUIntValue) ;
@@ -505,7 +505,7 @@ GGS_bool GGS_uint::getter_canSubstract (const GGS_uint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::subtract_operation_no_ovf (const GGS_uint & inOperand2) const {
+GGS_uint GGS_uint::wrapping_subtract_operation (const GGS_uint & inOperand2) const {
   GGS_uint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint (mUIntValue - inOperand2.mUIntValue) ;
@@ -515,7 +515,7 @@ GGS_uint GGS_uint::subtract_operation_no_ovf (const GGS_uint & inOperand2) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::multiply_operation_no_ovf (const GGS_uint & inOperand2) const {
+GGS_uint GGS_uint::wrapping_multiply_operation (const GGS_uint & inOperand2) const {
   GGS_uint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint (mUIntValue * inOperand2.mUIntValue) ;
@@ -583,7 +583,7 @@ GGS_bool GGS_uint::getter_canDivide (const GGS_uint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::divide_operation_no_ovf (const GGS_uint & inOperand) const {
+GGS_uint GGS_uint::wrapping_divide_operation (const GGS_uint & inOperand) const {
   GGS_uint result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_uint ((inOperand.mUIntValue == 0) ? 0 : (mUIntValue / inOperand.mUIntValue)) ;

@@ -166,12 +166,12 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixAddOperatorNoOVF]] then
   %//--------------------------------- &+ operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% add_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% wrapping_add_operation (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixSubOperatorNoOVF]] then
   %//--------------------------------- &- operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% subtract_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% wrapping_subtract_operation (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixSubOperator]] then
@@ -190,7 +190,7 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixMulOperatorNoOVF]] then
   %//--------------------------------- &* operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% wrapping_multiply_operation (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixDivOperator]] then
@@ -202,7 +202,7 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixDivOperatorNoOVF]] then
   %//--------------------------------- &/ operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% wrapping_divide_operation (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixModOperator]] then

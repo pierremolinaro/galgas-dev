@@ -13602,9 +13602,9 @@ GGS_binaryOperator GGS_binaryOperator::class_func_add (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryOperator GGS_binaryOperator::class_func_addNoOverflow (UNUSED_LOCATION_ARGS) {
+GGS_binaryOperator GGS_binaryOperator::class_func_wrappingAdd (UNUSED_LOCATION_ARGS) {
   GGS_binaryOperator result ;
-  result.mEnum = Enumeration::enum_addNoOverflow ;
+  result.mEnum = Enumeration::enum_wrappingAdd ;
   return result ;
 }
 
@@ -13618,9 +13618,9 @@ GGS_binaryOperator GGS_binaryOperator::class_func_sub (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryOperator GGS_binaryOperator::class_func_subNoOverflow (UNUSED_LOCATION_ARGS) {
+GGS_binaryOperator GGS_binaryOperator::class_func_wrappingSub (UNUSED_LOCATION_ARGS) {
   GGS_binaryOperator result ;
-  result.mEnum = Enumeration::enum_subNoOverflow ;
+  result.mEnum = Enumeration::enum_wrappingSub ;
   return result ;
 }
 
@@ -13650,9 +13650,9 @@ GGS_binaryOperator GGS_binaryOperator::class_func_operator_5F_xor (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryOperator GGS_binaryOperator::class_func_multiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
+GGS_binaryOperator GGS_binaryOperator::class_func_wrappingMul (UNUSED_LOCATION_ARGS) {
   GGS_binaryOperator result ;
-  result.mEnum = Enumeration::enum_multiply_5F_operation_5F_no_5F_ovf ;
+  result.mEnum = Enumeration::enum_wrappingMul ;
   return result ;
 }
 
@@ -13674,9 +13674,9 @@ GGS_binaryOperator GGS_binaryOperator::class_func_divide_5F_operation (UNUSED_LO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryOperator GGS_binaryOperator::class_func_divide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) {
+GGS_binaryOperator GGS_binaryOperator::class_func_wrappingDiv (UNUSED_LOCATION_ARGS) {
   GGS_binaryOperator result ;
-  result.mEnum = Enumeration::enum_divide_5F_operation_5F_no_5F_ovf ;
+  result.mEnum = Enumeration::enum_wrappingDiv ;
   return result ;
 }
 
@@ -13723,16 +13723,16 @@ static const char * gEnumNameArrayFor_binaryOperator [15] = {
   "rightShift",
   "leftShift",
   "add",
-  "addNoOverflow",
+  "wrappingAdd",
   "sub",
-  "subNoOverflow",
+  "wrappingSub",
   "operator_and",
   "operator_or",
   "operator_xor",
-  "multiply_operation_no_ovf",
+  "wrappingMul",
   "multiply_operation",
   "divide_operation",
-  "divide_operation_no_ovf",
+  "wrappingDiv",
   "modulo_operation"
 } ;
 
@@ -13756,8 +13756,8 @@ GGS_bool GGS_binaryOperator::getter_isAdd (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_binaryOperator::getter_isAddNoOverflow (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_addNoOverflow == mEnum) ;
+GGS_bool GGS_binaryOperator::getter_isWrappingAdd (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_wrappingAdd == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13768,8 +13768,8 @@ GGS_bool GGS_binaryOperator::getter_isSub (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_binaryOperator::getter_isSubNoOverflow (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_subNoOverflow == mEnum) ;
+GGS_bool GGS_binaryOperator::getter_isWrappingSub (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_wrappingSub == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13792,8 +13792,8 @@ GGS_bool GGS_binaryOperator::getter_isOperator_5F_xor (UNUSED_LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_binaryOperator::getter_isMultiply_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_multiply_5F_operation_5F_no_5F_ovf == mEnum) ;
+GGS_bool GGS_binaryOperator::getter_isWrappingMul (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_wrappingMul == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13810,8 +13810,8 @@ GGS_bool GGS_binaryOperator::getter_isDivide_5F_operation (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_binaryOperator::getter_isDivide_5F_operation_5F_no_5F_ovf (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_divide_5F_operation_5F_no_5F_ovf == mEnum) ;
+GGS_bool GGS_binaryOperator::getter_isWrappingDiv (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_wrappingDiv == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------

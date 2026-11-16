@@ -420,7 +420,7 @@ GGS_double GGS_double::divide_operation (const GGS_double & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::divide_operation_no_ovf (const GGS_double & inOperand) const {
+GGS_double GGS_double::wrapping_divide_operation (const GGS_double & inOperand) const {
   GGS_double result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_double ((inOperand.mDoubleValue == 0.0) ? 0.0 : (mDoubleValue / inOperand.mDoubleValue)) ;

@@ -259,7 +259,7 @@ void GGS_sint::divAssignOperation (const GGS_sint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::add_operation_no_ovf (const GGS_sint & inOperand) const {
+GGS_sint GGS_sint::wrapping_add_operation (const GGS_sint & inOperand) const {
   GGS_sint result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_sint (mSIntValue + inOperand.mSIntValue) ;
@@ -337,7 +337,7 @@ GGS_bool GGS_sint::getter_canSubstract (const GGS_sint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::subtract_operation_no_ovf (const GGS_sint & inOperand2) const {
+GGS_sint GGS_sint::wrapping_subtract_operation (const GGS_sint & inOperand2) const {
   GGS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_sint (mSIntValue - inOperand2.mSIntValue) ;
@@ -347,7 +347,7 @@ GGS_sint GGS_sint::subtract_operation_no_ovf (const GGS_sint & inOperand2) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::multiply_operation_no_ovf (const GGS_sint & inOperand2) const {
+GGS_sint GGS_sint::wrapping_multiply_operation (const GGS_sint & inOperand2) const {
   GGS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_sint (mSIntValue * inOperand2.mSIntValue) ;
@@ -428,7 +428,7 @@ GGS_bool GGS_sint::getter_canDivide (const GGS_sint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::divide_operation_no_ovf (const GGS_sint & inOperand) const {
+GGS_sint GGS_sint::wrapping_divide_operation (const GGS_sint & inOperand) const {
   GGS_sint result ;
   if (isValid () && inOperand.isValid ()) {
     result = GGS_sint ((inOperand.mSIntValue == 0) ? 0 : (mSIntValue / inOperand.mSIntValue)) ;
