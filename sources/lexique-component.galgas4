@@ -605,7 +605,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
    // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
   //--- Header
     let headerContents = filewrapper [lexiqueGenerationTemplates.headerZone2 :
       self.mLexiqueComponentName.string.identifierRepresentation,

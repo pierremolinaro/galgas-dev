@@ -340,7 +340,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
                                      ?!@stringset ioAllProductFileSet,
                                      ?!swift: [@string] ioSwiftAppProductFileList) {
   //--- Generate Cocoa header
-    if @uint.errorCount == 0 && not self.mIsPredefined then
+    if @application.errorCount == 0 && not self.mIsPredefined then
     //--- Generate Swift Cocoa Implementation
       ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
       ioSwiftAppProductFileList ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"

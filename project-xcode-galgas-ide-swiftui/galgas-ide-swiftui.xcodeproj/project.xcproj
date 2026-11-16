@@ -1236,7 +1236,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "switch-fallthrough.h" },
             { "path": "TF_Swap.h" },
             { "path": "U8Data.h" },
             {

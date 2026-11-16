@@ -316,7 +316,7 @@ proc performGalgas3ProjectGlobalCheckings
     )
   end
 //----- Check Extension
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
   //--- A given abstract extension mutating proc is defined only once for a class
     for (*, setterList) in abstractExtensionSetterListMap.dictionary do
       var @extensionSetterMapForGlobalCheckings extensionSetterMap = @()

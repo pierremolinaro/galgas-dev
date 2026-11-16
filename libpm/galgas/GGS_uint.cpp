@@ -90,18 +90,6 @@ GGS_uint GGS_uint::class_func_max (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::class_func_errorCount (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (uint32_t (totalErrorCount ())) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_uint::class_func_warningCount (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (uint32_t (totalWarningCount ())) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_uint GGS_uint::class_func_valueWithMask (const GGS_uint & inLowerIndex,
                                              const GGS_uint & inUpperIndex,
                                              Compiler * inCompiler
@@ -120,16 +108,6 @@ GGS_uint GGS_uint::class_func_valueWithMask (const GGS_uint & inLowerIndex,
     }
   }
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_uint::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
-  #ifdef __LP64__
-    return GGS_uint (64) ;
-  #else
-    return GGS_uint (32) ;
-  #endif
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -83,7 +83,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
   //--- Search base type that declares the proc
     var baseType = receiverExpression.mResultType
     var searching = true
-    if @uint.errorCount == 0 then
+    if @application.errorCount == 0 then
       loop (@uint.max) while searching do
         if baseType.definition.superType.isNull then
           searching = false

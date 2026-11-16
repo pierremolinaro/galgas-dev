@@ -93,7 +93,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   end
 //----- Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @()
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
       declaration.semanticAnalysis (
@@ -218,7 +218,7 @@ proc generateSemanticDeclarationsGalgas3
     )
   end
 //---
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     if option galgas_cli_options [generateOneHeader.value] & option galgas_cli_options [generateManyFiles.value] then
        generateOneBigHeader (
         inProductDirectory,

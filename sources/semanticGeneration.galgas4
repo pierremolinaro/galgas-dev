@@ -1455,7 +1455,7 @@ proc generatePredefinedTypeFiles (
       generatedCode += headerString2
     end
   end
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     ioToolHeaderFileList ++= "all-predefined-types.h"
     ioAllProductFileSet ++= "all-predefined-types.h"
     @string.generateFileWithPattern (
@@ -1479,7 +1479,7 @@ proc generatePredefinedTypeFiles (
       generatedCode += code
     end
   end
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     ioToolCppFileList ++= "all-predefined-types.cpp"
     ioAllProductFileSet ++= "all-predefined-types.cpp"
     @string.generateFileWithPattern (

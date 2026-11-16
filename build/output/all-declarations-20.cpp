@@ -1053,7 +1053,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_st
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    GGS_bool test_1 = GGS_bool (ComparisonKind::equal, GGS_uint::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas4", 343)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+    GGS_bool test_1 = GGS_bool (ComparisonKind::equal, GGS_application::class_func_errorCount (SOURCE_FILE ("optionCompilation.galgas4", 343)).objectCompare (GGS_uint (uint32_t (0U)))) ;
     if (GalgasBool::boolTrue == test_1.boolEnum ()) {
       const GGS_optionComponentForGeneration temp_2 = this ;
       test_1 = temp_2.readProperty_mIsPredefined ().operator_not (SOURCE_FILE ("optionCompilation.galgas4", 343)) ;

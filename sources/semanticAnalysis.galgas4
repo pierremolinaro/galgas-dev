@@ -596,7 +596,7 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
   end
   let @bool hasIndexing = true // not [indexingDirectory isNowhere]
 //--- Build semantic context from rule headers and non terminal declaration
-  if @uint. errorCount == 0 then
+  if @application.errorCount == 0 then
     let lexiqueName = self.mLexiqueName.string
     semanticAnalysisOfSyntaxComponent (
       nameForUsefulness,

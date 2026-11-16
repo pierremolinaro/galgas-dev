@@ -50,6 +50,27 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
+      !name:"compilationMode",
+      !resultTypeName:"uint",
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"errorCount",
+      !resultTypeName:"uint",
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name:"warningCount",
+      !resultTypeName:"uint",
+      !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
       !name:"system",
       !resultTypeName:"string",
       !hasLexiqueArg:false

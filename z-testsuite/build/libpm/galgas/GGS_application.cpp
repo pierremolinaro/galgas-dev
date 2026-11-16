@@ -11,6 +11,7 @@
 #include "analyzeCommandLineOptions.h"
 #include "F_verbose_output.h"
 #include "LexiqueIntrospection.h"
+#include "galgas-input-output.h"
 
 //--------------------------------------------------------------------------------------------------
 //                     'GGS_application' class
@@ -27,6 +28,28 @@ GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {
     return GGS_string ("windows") ;
   #else
     return GGS_string ("unix") ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {
+  return GGS_uint (uint32_t (totalErrorCount ())) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {
+  return GGS_uint (uint32_t (totalWarningCount ())) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
+  #ifdef __LP64__
+    return GGS_uint (64) ;
+  #else
+    return GGS_uint (32) ;
   #endif
 }
 

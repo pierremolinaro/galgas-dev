@@ -130,7 +130,7 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
   if option [mode.value] == "" then
     compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectComponentAST)
   //--- C++ compilation
-    if 0 == @uint.errorCount then
+    if 0 == @application.errorCount then
       let cppCompilationTarget = option galgas_cli_options [cppCompile.value]
       if cppCompilationTarget != "" then
         if @application.verboseOutput then
@@ -188,7 +188,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
     end
   end
 //--------------------------------- Display result
-//  if @uint.errorCount == 0 then
+//  if @application.errorCount == 0 then
 //    message "  Declarations: " + declarationAST.mDeclarationList.count + "\n"
 //    message "  Syntax components: " + declarationAST.mSyntaxComponentList.count + "\n" ;
 //    message "  GUI components: " + declarationAST.mGUIComponentList.count + "\n"
@@ -212,7 +212,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
   var [@semanticDeclarationForGeneration] semanticDeclarationSortedListForGeneration
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities,
       !?usefulEntitiesGraph,
@@ -230,7 +230,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
   end
 //--------------------------------- Compile GUI components
   let @optionComponentMapForGeneration optionComponentMapForGeneration
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     compileAllGuiComponentFromASTGalgas3 (
       declarationAST.mGUIComponentList,
       semanticContext,
@@ -240,7 +240,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
     optionComponentMapForGeneration = @()
   end
 //--------------------------------- Compile program declarations
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     let projectVersionString = inProjectComponentAST.mMajorVersion.bigint.string
       + "." + inProjectComponentAST.mMinorVersion.bigint
       + "." + inProjectComponentAST.mRevisionVersion.bigint
@@ -287,14 +287,14 @@ private proc compileProject (let @lstring inProjectSourceFile,
     @string.deleteFileIfExists (typeDumpFilePath)
   end
 //--------------------------------- Perform global checkings
-  if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
+  if (0 == @application.errorCount) & (inSourceToAnalyze == "") then
     performGalgas3ProjectGlobalCheckings (
       !?typeMap,
       declarationAST.mDeclarationList
     )
   end
 //--------------------------------- File generation
-  if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
+  if (0 == @application.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
       typeMap,
       !absoluteBuildDir: absoluteBuildDirectory,
@@ -348,7 +348,7 @@ private proc projectGeneration
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
   var [@string] swiftAppProductFileList = @()
-  if @uint.errorCount == 0 then
+  if @application.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       inOptionComponentMapForGeneration,
       productDirectory,
@@ -378,7 +378,7 @@ private proc projectGeneration
   )
 //--------------------------------- Update targets
 //  message "*** update targets\n" ;
-  if 0 == @uint.errorCount then
+  if 0 == @application.errorCount then
     var @stringset handledExtensionSet = @()
     for aRule in inSourceRuleList do
       handledExtensionSet ++= aRule.mSourceFileExtension.string
@@ -419,7 +419,7 @@ private proc projectGeneration
     )
   end
 //--------------------------------- Remove useless files
-  if 0 == @uint.errorCount then
+  if 0 == @application.errorCount then
     var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
     for value in productDirectory.regularFiles (false) do
       allActualFileSet ++= value

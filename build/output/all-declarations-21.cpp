@@ -23135,6 +23135,7 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "#include \"analyzeCommandLineOptions.h\"\n"
   "#include \"F_verbose_output.h\"\n"
   "#include \"LexiqueIntrospection.h\"\n"
+  "#include \"galgas-input-output.h\"\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "//                     'GGS_application' class\n"
@@ -23151,6 +23152,28 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "    return GGS_string (\"windows\") ;\n"
   "  #else\n"
   "    return GGS_string (\"unix\") ;\n"
+  "  #endif\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_uint GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {\n"
+  "  return GGS_uint (uint32_t (totalErrorCount ())) ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_uint GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {\n"
+  "  return GGS_uint (uint32_t (totalWarningCount ())) ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {\n"
+  "  #ifdef __LP64__\n"
+  "    return GGS_uint (64) ;\n"
+  "  #else\n"
+  "    return GGS_uint (32) ;\n"
   "  #endif\n"
   "}\n"
   "\n"
@@ -23484,7 +23507,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17383, // Text length
+ 18152, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
@@ -33210,18 +33233,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint GGS_uint::class_func_errorCount (UNUSED_LOCATION_ARGS) {\n"
-  "  return GGS_uint (uint32_t (totalErrorCount ())) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "GGS_uint GGS_uint::class_func_warningCount (UNUSED_LOCATION_ARGS) {\n"
-  "  return GGS_uint (uint32_t (totalWarningCount ())) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_uint GGS_uint::class_func_valueWithMask (const GGS_uint & inLowerIndex,\n"
   "                                             const GGS_uint & inUpperIndex,\n"
   "                                             Compiler * inCompiler\n"
@@ -33240,16 +33251,6 @@ const char * gWrapperFileContent_138_libpmFileWrapper =
   "    }\n"
   "  }\n"
   "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "GGS_uint GGS_uint::class_func_compilationMode (UNUSED_LOCATION_ARGS) {\n"
-  "  #ifdef __LP64__\n"
-  "    return GGS_uint (64) ;\n"
-  "  #else\n"
-  "    return GGS_uint (32) ;\n"
-  "  #endif\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -33812,7 +33813,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 23719, // Text length
+ 23004, // Text length
   gWrapperFileContent_138_libpmFileWrapper
 ) ;
 

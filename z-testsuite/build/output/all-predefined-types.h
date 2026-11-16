@@ -2543,10 +2543,6 @@ class GGS_uint : public AC_GALGAS_root {
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_errorCount (LOCATION_ARGS) ;
-
   public: static class GGS_uint class_func_max (LOCATION_ARGS) ;
 
   public: static class GGS_uint class_func_random (LOCATION_ARGS) ;
@@ -2555,8 +2551,6 @@ class GGS_uint : public AC_GALGAS_root {
                                                           const class GGS_uint & inOperand1,
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
   public: GGS_uint left_shift_operation (const GGS_uint inShiftOperand,
@@ -3077,6 +3071,10 @@ class GGS_application final {
 
   public: static class GGS_uint class_func_commandLineArgumentCount (LOCATION_ARGS) ;
 
+  public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_errorCount (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_galgasVersionString (LOCATION_ARGS) ;
 
   public: static class GGS_stringset class_func_keywordIdentifierSet (LOCATION_ARGS) ;
@@ -3125,6 +3123,8 @@ class GGS_application final {
                                                             COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_bool class_func_verboseOutput (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
 
 //--------------------------------- Class Methods
   public: static void class_method_exit (class GGS_uint constinArgument0
