@@ -8,15 +8,6 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@falseExpressionAST enterExpressionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_falseExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
-                                                                       Compiler * /* inCompiler */
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@falseExpressionAST analyzeSemanticExpression'
 //--------------------------------------------------------------------------------------------------
 
@@ -26480,39 +26471,27 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "UpEnumerator_data::UpEnumerator_data (const GGS_data & inOperand) :\n"
-  "mArray (inOperand.mData),\n"
+  "mArray (inOperand.isValid () \? inOperand.mData : U8Data ()),\n"
   "mIndex (0) {\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint UpEnumerator_data::current_data (LOCATION_ARGS) const {\n"
-  "  return GGS_uint (mArray (mIndex COMMA_THERE)) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "GGS_uint UpEnumerator_data::current (LOCATION_ARGS) const {\n"
-  "  return GGS_uint (mArray (mIndex COMMA_THERE)) ;\n"
+  "GGS_u_38_ UpEnumerator_data::current (LOCATION_ARGS) const {\n"
+  "  return GGS_u_38_ (mArray (mIndex COMMA_THERE)) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "DownEnumerator_data::DownEnumerator_data (const GGS_data & inOperand) :\n"
-  "mArray (inOperand.mData),\n"
-  "mIndex (inOperand.mData.count () - 1) {\n"
+  "mArray (inOperand.isValid () \? inOperand.mData : U8Data ()),\n"
+  "mIndex (inOperand.isValid () \? (inOperand.mData.count () - 1) : -1) {\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint DownEnumerator_data::current_data (LOCATION_ARGS) const {\n"
-  "  return GGS_uint (mArray (mIndex COMMA_THERE)) ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "GGS_uint DownEnumerator_data::current (LOCATION_ARGS) const {\n"
-  "  return GGS_uint (mArray (mIndex COMMA_THERE)) ;\n"
+  "GGS_u_38_ DownEnumerator_data::current (LOCATION_ARGS) const {\n"
+  "  return GGS_u_38_ (mArray (mIndex COMMA_THERE)) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -26522,7 +26501,7 @@ const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 18700, // Text length
+ 18362, // Text length
   gWrapperFileContent_151_libpmFileWrapper
 ) ;
 

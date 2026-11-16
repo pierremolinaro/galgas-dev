@@ -99,9 +99,9 @@ proc testsuite_foreach_instruction() {
   !?myData.appendByte (6)
   !?myData.appendByte (7)
   !?myData.appendByte (8)
-  for (data) in myData
+  for byte in myData
   do (idx)
-    println ("  do '" + data + "' (idx: " + idx.string + ")")
+    println ("  do '" + byte + "' (idx: " + idx.string + ")")
   end
 }
 

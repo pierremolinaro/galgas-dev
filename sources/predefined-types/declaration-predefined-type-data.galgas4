@@ -61,12 +61,13 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
+  override proc getEnumerationList (?!@unifiedTypeMap _ioUnifiedTypeMap,
                                     ![@enumerationDescriptor] outEnumerationList,
-                                    !@string outEnumeratedType) {
-    !?ioUnifiedTypeMap.makeEntryFromString ("u8", ?let u8Type)
-    outEnumerationList = [@(u8Type, "byte")]
-    outEnumeratedType = "u8"
+                                    !@string outEnumeratedTypeName) {
+//    !?ioUnifiedTypeMap.makeEntryFromString ("u8", ?let u8Type)
+//    outEnumerationList = [@(u8Type, "byte")]
+    outEnumerationList = []
+    outEnumeratedTypeName = "u8"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

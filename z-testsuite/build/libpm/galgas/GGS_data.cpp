@@ -431,39 +431,27 @@ void cCollectionElement_data::description (String & ioString, const int32_t inIn
 //--------------------------------------------------------------------------------------------------
 
 UpEnumerator_data::UpEnumerator_data (const GGS_data & inOperand) :
-mArray (inOperand.mData),
+mArray (inOperand.isValid () ? inOperand.mData : U8Data ()),
 mIndex (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint UpEnumerator_data::current_data (LOCATION_ARGS) const {
-  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_data::current (LOCATION_ARGS) const {
-  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+GGS_u_38_ UpEnumerator_data::current (LOCATION_ARGS) const {
+  return GGS_u_38_ (mArray (mIndex COMMA_THERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 DownEnumerator_data::DownEnumerator_data (const GGS_data & inOperand) :
-mArray (inOperand.mData),
-mIndex (inOperand.mData.count () - 1) {
+mArray (inOperand.isValid () ? inOperand.mData : U8Data ()),
+mIndex (inOperand.isValid () ? (inOperand.mData.count () - 1) : -1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint DownEnumerator_data::current_data (LOCATION_ARGS) const {
-  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_data::current (LOCATION_ARGS) const {
-  return GGS_uint (mArray (mIndex COMMA_THERE)) ;
+GGS_u_38_ DownEnumerator_data::current (LOCATION_ARGS) const {
+  return GGS_u_38_ (mArray (mIndex COMMA_THERE)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

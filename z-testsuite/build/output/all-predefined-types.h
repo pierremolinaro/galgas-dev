@@ -1595,8 +1595,7 @@ class UpEnumerator_data final {
   public: void gotoNextObject (void) { mIndex += 1 ; }
 
 //--- Current element access
-  public: class GGS_uint current_data (LOCATION_ARGS) const ;
-  public: class GGS_uint current (LOCATION_ARGS) const ;
+  public: class GGS_u_38_ current (LOCATION_ARGS) const ;
 
 //--- Private properties
   private: U8Data mArray ;
@@ -1618,8 +1617,7 @@ class DownEnumerator_data final {
   public: void gotoNextObject (void) { mIndex -= 1 ; }
 
 //--- Current element access
-  public: class GGS_uint current_data (LOCATION_ARGS) const ;
-  public: class GGS_uint current (LOCATION_ARGS) const ;
+  public: class GGS_u_38_ current (LOCATION_ARGS) const ;
 
 //--- Private properties
   private: U8Data mArray ;
@@ -1635,6 +1633,11 @@ class DownEnumerator_data final {
 //--------------------------------------------------------------------------------------------------
 
 class GGS_data : public AC_GALGAS_root {
+
+//--------------------------------- Friends
+  friend class UpEnumerator_data ;
+  friend class DownEnumerator_data ;
+
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: U8Data mData ;
@@ -1724,9 +1727,6 @@ class GGS_data : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_data ;
-  friend class DownEnumerator_data ;
 
 } ;
 
