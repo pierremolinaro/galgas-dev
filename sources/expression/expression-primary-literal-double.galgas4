@@ -21,27 +21,11 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @literalDoubleExpressionAST : @semanticExpressionAST {
-  private let @ldouble mValue
+  private let @lf64 mValue
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//    $double.xxx$ (?let @ldouble literalDouble, ?*)
-//    outExpression = @literalDoubleExpressionAST (!literalDouble)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4ExpressionSyntax {
@@ -50,7 +34,7 @@ syntax extension galgas4ExpressionSyntax {
 
   rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
-    $double.xxx$ (?let @ldouble literalDouble, ?*)
+    $double.xxx$ (?let @lf64 literalDouble, ?*)
     outExpression = @literalDoubleExpressionAST (literalDouble)
   }
 
@@ -81,7 +65,7 @@ override proc @literalDoubleExpressionAST.analyzeSemanticExpression
   outExpression = @literalDoubleExpressionForGeneration (
     inAnalysisContext.predefinedTypes.mDoubleType,
     self.mValue.location,
-    self.mValue.double
+    self.mValue.f64
   )
 }
 
@@ -91,7 +75,7 @@ override proc @literalDoubleExpressionAST.analyzeSemanticExpression
 //--------------------------------------------------------------------------------------------------
 
 final class @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @double mValue
+  private let @f64 mValue
 }
 
 //································································································
@@ -102,7 +86,7 @@ override proc @literalDoubleExpressionForGeneration.generateExpression
   ?!@uint _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  outCppExpression = "GGS_double (" + self.mValue.string + ")"
+  outCppExpression = "GGS_@f_36__34_ (" + self.mValue.string + ")"
 }
 
 

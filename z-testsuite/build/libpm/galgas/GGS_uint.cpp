@@ -220,10 +220,10 @@ GGS_u_36__34_ GGS_uint::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_uint::getter_double (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_uint::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (double (mUIntValue)) ;
+    result = GGS_f_36__34_ (double (mUIntValue)) ;
   }
   return result ;
 }

@@ -166,10 +166,10 @@ GGS_u_36__34_ GGS_u_38_::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_u_38_::getter_double (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_u_38_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (double (mU8)) ;
+    result = GGS_f_36__34_ (double (mU8)) ;
   }
   return result ;
 }

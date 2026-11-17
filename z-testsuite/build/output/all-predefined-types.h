@@ -182,7 +182,7 @@ class GGS_u_36__34_ final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_u_36__34_ & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -503,8 +503,8 @@ class GGS_string final : public AC_GALGAS_root {
 
   public: class GGS_bool getter_doesEnvironmentVariableExist (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_doubleNumber (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_doubleNumber (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_fileExists (LOCATION_ARGS) const ;
 
@@ -799,7 +799,7 @@ class GGS_u_38_ final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_u_38_ & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -979,7 +979,7 @@ class GGS_u_31__36_ final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_u_31__36_ & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -1895,91 +1895,91 @@ class GGS_data final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_data ;
 
 //--------------------------------------------------------------------------------------------------
-//  @double type
+//  @f64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_double final : public AC_GALGAS_root {
+class GGS_f_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: double mDoubleValue ;
+  private: double mF64 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline double doubleValue (void) const { return mDoubleValue ; }
+  public: inline double f64 (void) const { return mF64 ; }
 
 //--------------------------------- Default constructor
-  public: GGS_double (void) ;
+  public: GGS_f_36__34_ (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_double (const double inValue) ;
+  public: GGS_f_36__34_ (const double inValue) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_double class_func_doubleWithBinaryImage (const class GGS_u_36__34_ & inOperand0
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GGS_f_36__34_ class_func_doubleWithBinaryImage (const class GGS_u_36__34_ & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_double class_func_pi (LOCATION_ARGS) ;
+  public: static class GGS_f_36__34_ class_func_pi (LOCATION_ARGS) ;
 
 //--------------------------------- += operator
-  public: void plusAssignOperation (const GGS_double inOperand,
+  public: void plusAssignOperation (const GGS_f_36__34_ inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- -= operator
-  public: void minusAssignOperation (const GGS_double inOperand,
+  public: void minusAssignOperation (const GGS_f_36__34_ inOperand,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- *= operator
-  public: void mulAssignOperation (const GGS_double inOperand,
+  public: void mulAssignOperation (const GGS_f_36__34_ inOperand,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- /= operator
-  public: void divAssignOperation (const GGS_double inOperand,
+  public: void divAssignOperation (const GGS_f_36__34_ inOperand,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- + operator
-  public: GGS_double add_operation (const GGS_double & inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ add_operation (const GGS_f_36__34_ & inOperand,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: GGS_double subtract_operation (const GGS_double & inOperand,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ subtract_operation (const GGS_f_36__34_ & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
-  public: GGS_double multiply_operation (const GGS_double & inOperand,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ multiply_operation (const GGS_f_36__34_ & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- / operator
-  public: GGS_double divide_operation (const GGS_double & inOperand,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ divide_operation (const GGS_f_36__34_ & inOperand,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- &/ operator
-  public: GGS_double wrapping_divide_operation (const GGS_double & inOperand) const ;
+  public: GGS_f_36__34_ wrapping_divide_operation (const GGS_f_36__34_ & inOperand) const ;
 
 //--------------------------------- mod operator
-  public: GGS_double modulo_operation (const GGS_double & inOperand,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ modulo_operation (const GGS_f_36__34_ & inOperand,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- prefix - operator
-  public: GGS_double operator_unary_minus (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const ;
+  public: GGS_f_36__34_ operator_unary_minus (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_double & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_f_36__34_ & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -1989,43 +1989,43 @@ class GGS_double final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_u_36__34_ getter_binaryImage (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_cos (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_cos (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_cosDegree (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_cosDegree (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_exp (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_exp (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_log_31__30_ (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_log_31__30_ (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_log_32_ (Compiler * inCompiler
+  public: class GGS_f_36__34_ getter_log_32_ (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_f_36__34_ getter_logn (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_logn (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_double getter_power (const class GGS_double & constinOperand0,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_power (const class GGS_f_36__34_ & constinOperand0,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_s_36__34_ getter_s_36__34_ (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_sin (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_sin (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_sinDegree (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_sinDegree (LOCATION_ARGS) const ;
 
   public: class GGS_sint getter_sint (Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_sqrt (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_sqrt (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_string getter_string (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_tan (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_tan (LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_tanDegree (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_tanDegree (LOCATION_ARGS) const ;
 
   public: class GGS_u_36__34_ getter_u_36__34_ (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const ;
@@ -2047,7 +2047,7 @@ class GGS_double final : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_f_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
 //   @filewrapper type
@@ -2452,7 +2452,7 @@ class GGS_sint final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_sint & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -2639,7 +2639,7 @@ class GGS_s_36__34_ final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_s_36__34_ & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -2830,7 +2830,7 @@ class GGS_uint final : public AC_GALGAS_root {
   public: class GGS_bool getter_canSubstract (const class GGS_uint & constinOperand0
                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+  public: class GGS_f_36__34_ getter_f_36__34_ (LOCATION_ARGS) const ;
 
   public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
 
@@ -4519,14 +4519,14 @@ class GGS_lchar final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @ldouble struct
+// Phase 1: @lf_36__34_ struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ldouble final : public AC_GALGAS_root {
+class GGS_lf_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_double mProperty_double ;
-  public: inline GGS_double readProperty_double (void) const {
-    return mProperty_double ;
+  public: GGS_f_36__34_ mProperty_f_36__34_ ;
+  public: inline GGS_f_36__34_ readProperty_f_36__34_ (void) const {
+    return mProperty_f_36__34_ ;
   }
 
   public: GGS_location mProperty_location ;
@@ -4539,11 +4539,11 @@ class GGS_ldouble final : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_ldouble (void) ;
+  public: GGS_lf_36__34_ (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setDouble (const GGS_double & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_double = inValue ;
+  public: inline void setter_setF_36__34_ (const GGS_f_36__34_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_f_36__34_ = inValue ;
   }
 
   public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -4554,27 +4554,27 @@ class GGS_ldouble final : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_ldouble (const GGS_double & in_double,
-                       const GGS_location & in_location) ;
+  public: GGS_lf_36__34_ (const GGS_f_36__34_ & in_f_36__34_,
+                          const GGS_location & in_location) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_ldouble (const GGS_ldouble & inSource) ;
+  public: GGS_lf_36__34_ (const GGS_lf_36__34_ & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_ldouble & operator = (const GGS_ldouble & inSource) ;
+  public: GGS_lf_36__34_ & operator = (const GGS_lf_36__34_ & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_ldouble init_21__21_ (const class GGS_double & inOperand0,
-                                           const class GGS_location & inOperand1,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_lf_36__34_ init_21__21_ (const class GGS_f_36__34_ & inOperand0,
+                                              const class GGS_location & inOperand1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_ldouble & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_lf_36__34_ & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4596,7 +4596,7 @@ class GGS_ldouble final : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lf_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lsint struct

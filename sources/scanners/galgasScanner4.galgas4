@@ -198,7 +198,7 @@ rule isUnicodeLetter | '_' {
 }
 
 //------------------------------ Integer, floating Point Constant ------------------
-@double floatValue
+@f64 floatValue
 @bigint bigintValue
 $double.xxx$ !floatValue !tokenString style floatStyle #errorMessage "a float number"
 $literalInt$ !bigintValue style integerStyle #errorMessage "a literal integer"

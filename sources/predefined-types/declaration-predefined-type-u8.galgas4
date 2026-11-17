@@ -46,8 +46,8 @@ final class @u8PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"double",
-      !returnedTypeName:"double",
+      !getterName: "f64",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

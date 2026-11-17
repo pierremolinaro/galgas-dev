@@ -1,22 +1,22 @@
 //--------------------------------------------------------------------------------------------------
-//  @double type
+//  @f64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_double final : public AC_GALGAS_root {
+class GGS_f_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: double mDoubleValue ;
+  private: double mF64 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline double doubleValue (void) const { return mDoubleValue ; }
+  public: inline double f64 (void) const { return mF64 ; }
 
 //--------------------------------- Default constructor
-  public: GGS_double (void) ;
+  public: GGS_f_36__34_ (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_double (const double inValue) ;
+  public: GGS_f_36__34_ (const double inValue) ;
 
 %
 

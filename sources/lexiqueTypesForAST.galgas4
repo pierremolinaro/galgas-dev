@@ -360,7 +360,7 @@ func #once buildLexicalTypeMap () -> @lexicalTypeMap {
   !?result.insertKey ("u64".here, .lexicalType_uint64)
   !?result.insertKey ("sint".here, .lexicalType_sint)
   !?result.insertKey ("s64".here, .lexicalType_sint64)
-  !?result.insertKey ("double".here, .lexicalType_double)
+  !?result.insertKey ("f64".here, .lexicalType_double)
   !?result.insertKey ("bigint".here, .lexicalType_bigint)
 }
 

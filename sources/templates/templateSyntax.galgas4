@@ -327,7 +327,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  let @ldouble literalDouble
+  let @lf64 literalDouble
   $double.xxx$ (? literalDouble, ?*)
   outExpression = @templateLiteralDoubleExpressionAST (literalDouble)
 }

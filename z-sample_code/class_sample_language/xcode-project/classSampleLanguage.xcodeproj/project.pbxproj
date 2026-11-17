@@ -649,7 +649,7 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  C6FCB220FFE637CDA29BB3F6 /* GGS_double.cpp */ = {
+  C6FCB220FFE637CDA29BB3F6 /* GGS_f64.cpp */ = {
     isa = PBXBuildFile;
     fileRef = CB3ACA1AE2D0018624204529 ;
     settings = {ATTRIBUTES = (); };
@@ -1532,12 +1532,12 @@
     sourceTree = "<group>";
   };
 
-  CB3ACA1AE2D0018624204529 /* GGS_double.cpp */ = {
+  CB3ACA1AE2D0018624204529 /* GGS_f64.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
-    name = "GGS_double.cpp";
-    path = "GGS_double.cpp";
+    name = "GGS_f64.cpp";
+    path = "GGS_f64.cpp";
     sourceTree = "<group>";
   };
 

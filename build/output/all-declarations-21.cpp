@@ -1851,7 +1851,7 @@ void cPtr_literalDoubleExpressionAST::method_analyzeSemanticExpression (const GG
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_literalDoubleExpressionAST temp_0 = this ;
   const GGS_literalDoubleExpressionAST temp_1 = this ;
-  outArgument_outExpression = GGS_literalDoubleExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mValue ().readProperty_location (), temp_1.readProperty_mValue ().readProperty_double (), inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_literalDoubleExpressionForGeneration::init_21__21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mDoubleType (), temp_0.readProperty_mValue ().readProperty_location (), temp_1.readProperty_mValue ().readProperty_f_36__34_ (), inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1866,7 +1866,7 @@ void cPtr_literalDoubleExpressionForGeneration::method_generateExpression (GGS_s
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_literalDoubleExpressionForGeneration temp_0 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_double (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-double.galgas4", 105)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 105)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 105)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_@f_36__34_ (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2803,321 +2803,321 @@ void routine_buildLexicalRoutineMap_21_ (GGS_lexicalRoutineMap & outArgument_out
                                          COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outLexicalRoutineMap.drop () ; // Release 'out' argument
   outArgument_outLexicalRoutineMap = GGS_lexicalRoutineMap::init (inCompiler COMMA_HERE) ;
-  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  GGS__5B_string_5D_ var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)), GGS_string ("ioASCIICharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inErrorCodeGreaterThan255")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 50)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inErrorNotHexDigitCharacter")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 51)) ;
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  GGS__5B_string_5D_ var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)), GGS_string ("ioASCIICharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 48)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 49)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inErrorCodeGreaterThan255")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 50)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inErrorNotHexDigitCharacter")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 51)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoASCIIcharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 53)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 52)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoASCIIcharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 53)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 52)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)), GGS_string ("ioASCIICharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inErrorCodeGreaterThan255")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 63)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inErrorNotDecimalDigitCharacter")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 64)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)), GGS_string ("ioASCIICharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 61)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 62)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inErrorCodeGreaterThan255")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 63)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inErrorNotDecimalDigitCharacter")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 64)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoASCIIcharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 66)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 65)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoASCIIcharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 66)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 65)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 73)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 74)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterCharacterIntoString"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 76)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 75)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterCharacterIntoString"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 76)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 75)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 83)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 84)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("prependCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 86)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 85)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("prependCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 86)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 85)) ;
   }
   {
   GGS__5B_lexicalRoutineFormalArgumentAST_5D_ temp_0 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 94)) ;
   temp_0.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 94)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 94)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 94)) ;
   outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("resetString"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 93)), inCompiler COMMA_HERE), temp_0, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 92)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_double (SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)), GGS_string ("ioDouble"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inConversionError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 103)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 101)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_double (SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)), GGS_string ("ioDouble"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 102)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inConversionError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 103)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertStringToDouble"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 105)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 104)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertStringToDouble"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 105)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 104)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)), GGS_string ("ioCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)), GGS_string ("ioCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 113)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 114)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterCharacterIntoCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 116)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 115)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterCharacterIntoCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 116)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 115)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)), GGS_string ("ioNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 125)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)), GGS_string ("ioNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 124)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 125)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 127)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 126)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 127)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 126)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)), GGS_string ("ioNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 136)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)), GGS_string ("ioNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 135)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 136)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 138)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 137)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 138)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 137)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 148)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 146)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 147)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 148)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUIntToSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 150)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 149)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUIntToSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 150)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 149)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 160)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 158)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 159)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 160)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUInt64ToSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 162)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 161)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUInt64ToSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 162)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 161)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 172)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 173)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 170)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 171)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 172)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 173)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 175)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 174)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 175)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 174)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 185)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 186)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 183)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 184)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 185)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 186)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 188)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 187)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 188)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 187)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)), GGS_string ("inDecimalDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 195)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 196)) ;
   {
   GGS__5B_string_5D_ temp_1 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 200)) ;
   temp_1.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 200)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDecimalDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 198)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_1, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 197)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterDecimalDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 198)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_1, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 197)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)), GGS_string ("inBinaryDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)), GGS_string ("inBinaryDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 205)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 206)) ;
   {
   GGS__5B_string_5D_ temp_2 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 210)) ;
   temp_2.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinaryDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 210)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinaryDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 208)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_2, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 207)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinaryDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 208)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_2, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 207)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 215)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 216)) ;
   {
   GGS__5B_string_5D_ temp_3 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 220)) ;
   temp_3.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 220)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 218)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_3, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 217)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 218)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_3, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 217)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 225)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 226)) ;
   {
   GGS__5B_string_5D_ temp_4 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 230)) ;
   temp_4.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 230)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 228)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_4, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 227)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 228)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_4, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 227)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)), GGS_string ("ioBigInt"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 235)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 237)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 236)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("negateBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 237)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, GGS__5B_string_5D_::init (inCompiler COMMA_HERE), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 236)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 244)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 245)) ;
   {
   GGS__5B_string_5D_ temp_5 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 249)) ;
   temp_5.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinaryDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 249)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertBinaryStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 247)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_5, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 246)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertBinaryStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 247)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_5, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 246)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 254)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 255)) ;
   {
   GGS__5B_string_5D_ temp_6 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 259)) ;
   temp_6.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 259)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 257)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_6, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 256)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoBigInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 257)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_6, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 256)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 267)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 268)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 265)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 266)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 267)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 268)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 270)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 269)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 270)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 269)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 280)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 281)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)), GGS_string ("inHexDigitCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 278)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 279)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 280)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 281)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 283)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 282)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterHexDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 283)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 282)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 293)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 294)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 291)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 292)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 293)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 294)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 296)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 295)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 296)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 295)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 306)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 307)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 304)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 305)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 306)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 307)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 309)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 308)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 309)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 308)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 316)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 317)) ;
   {
   GGS__5B_string_5D_ temp_7 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 321)) ;
   temp_7.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 321)) ;
   temp_7.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 321)) ;
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 319)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, temp_7, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 318)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 319)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, temp_7, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 318)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 329)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 330)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 327)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 328)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 329)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotDecimalDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 330)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 332)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 331)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertDecimalStringIntoSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 332)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 331)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 342)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 343)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 340)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 341)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 342)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 343)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 345)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 344)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 345)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 344)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 355)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 356)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 353)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 354)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 355)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotBinDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 356)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 358)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 357)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterBinDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 358)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 357)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 368)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotOctDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 369)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 366)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 367)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 368)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotOctDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 369)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterOctDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 371)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 370)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterOctDigitIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 371)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 370)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 381)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotOctDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 382)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 379)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 380)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 381)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotOctDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 382)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterOctDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 384)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 383)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("enterOctDigitIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 384)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 383)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inResultTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 394)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 392)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 393)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inResultTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 394)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("multiplyUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 396)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 395)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("multiplyUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 396)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 395)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inResultTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 406)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 404)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 405)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inResultTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 406)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("multiplyUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 408)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 407)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("multiplyUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 408)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 407)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 418)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 419)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 416)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 417)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 418)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 419)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 421)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 420)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoUInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 421)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 420)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 431)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 432)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 429)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)), GGS_string ("ioUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 430)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 431)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 432)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 434)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 433)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoUInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 434)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 433)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 444)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 445)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 442)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 443)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 444)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 445)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 447)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 446)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoSInt"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 447)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 446)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 457)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 458)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 455)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)), GGS_string ("ioSignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 456)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inNumberTooLargeError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 457)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inCharacterIsNotHexDigitError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 458)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 460)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 459)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHexStringIntoSInt64"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 460)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 459)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)), GGS_string ("ioUnicodeCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inUnassignedUnicodeValueError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 470)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)), GGS_string ("inUnsignedNumber"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 468)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)), GGS_string ("ioUnicodeCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 469)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inUnassignedUnicodeValueError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 470)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUnsignedNumberToUnicodeChar"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 472)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 471)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertUnsignedNumberToUnicodeChar"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 472)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 471)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)), GGS_string ("ioUnicodeCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)) ;
-  var_errorMessageList_2315.plusPlusAssignOperation (GGS_string ("inUnassignedHTMLSequenceError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 482)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)), GGS_string ("inString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 480)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)), GGS_string ("ioUnicodeCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 481)) ;
+  var_errorMessageList_2312.plusPlusAssignOperation (GGS_string ("inUnassignedHTMLSequenceError")  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 482)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHTMLSequenceToUnicodeCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 484)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 483)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("convertHTMLSequenceToUnicodeCharacter"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 484)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 483)) ;
   }
-  var_lexicalRoutineFormalArgumentList_2260 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_errorMessageList_2315 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)), GGS_string ("inCodePointString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)) ;
-  var_lexicalRoutineFormalArgumentList_2260.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)) ;
+  var_lexicalRoutineFormalArgumentList_2257 = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_errorMessageList_2312 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)), GGS_string ("inCodePointString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 492)) ;
+  var_lexicalRoutineFormalArgumentList_2257.plusPlusAssignOperation (GGS_lexicalRoutineFormalArgumentAST::init_21__21__21_ (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)), GGS_string ("ioString"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 493)) ;
   {
-  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("codePointToUnicode"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 495)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2260, var_errorMessageList_2315, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 494)) ;
+  outArgument_outLexicalRoutineMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("codePointToUnicode"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 495)), inCompiler COMMA_HERE), var_lexicalRoutineFormalArgumentList_2257, var_errorMessageList_2312, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 494)) ;
   }
 }
 
@@ -3133,15 +3133,15 @@ void routine_buildLexicalFunctionMap_21_ (GGS_lexicalFunctionMap & outArgument_o
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outLexicalFunctionMap.drop () ; // Release 'out' argument
   outArgument_outLexicalFunctionMap = GGS_lexicalFunctionMap::init (inCompiler COMMA_HERE) ;
-  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ var_lexicalTypeList_22504 = GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalTypeList_22504.plusPlusAssignOperation (GGS_lexicalFunctionFormalArgumentAST::init_21__21_ (GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 510)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 510)) ;
+  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ var_lexicalTypeList_22501 = GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalTypeList_22501.plusPlusAssignOperation (GGS_lexicalFunctionFormalArgumentAST::init_21__21_ (GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 510)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 510)) ;
   {
-  outArgument_outLexicalFunctionMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("toLower"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 512)), inCompiler COMMA_HERE), var_lexicalTypeList_22504, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 514)), GGS_string::makeEmptyString (), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 511)) ;
+  outArgument_outLexicalFunctionMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("toLower"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 512)), inCompiler COMMA_HERE), var_lexicalTypeList_22501, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 514)), GGS_string::makeEmptyString (), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 511)) ;
   }
-  var_lexicalTypeList_22504 = GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_lexicalTypeList_22504.plusPlusAssignOperation (GGS_lexicalFunctionFormalArgumentAST::init_21__21_ (GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 520)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 520)) ;
+  var_lexicalTypeList_22501 = GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_lexicalTypeList_22501.plusPlusAssignOperation (GGS_lexicalFunctionFormalArgumentAST::init_21__21_ (GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 520)), GGS_string ("inCharacter"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 520)) ;
   {
-  outArgument_outLexicalFunctionMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("toUpper"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 522)), inCompiler COMMA_HERE), var_lexicalTypeList_22504, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 524)), GGS_string::makeEmptyString (), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 521)) ;
+  outArgument_outLexicalFunctionMap.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("toUpper"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 522)), inCompiler COMMA_HERE), var_lexicalTypeList_22501, GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (SOURCE_FILE ("predefinedLexicalActions.galgas4", 524)), GGS_string::makeEmptyString (), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 521)) ;
   }
 }
 
@@ -3154,62 +3154,62 @@ void routine_buildLexicalFunctionMap_21_ (GGS_lexicalFunctionMap & outArgument_o
 
 void routine_printPredefinedLexicalActions (Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalRoutineMap var_lexicalRoutineMap_23452 ;
+  GGS_lexicalRoutineMap var_lexicalRoutineMap_23449 ;
   {
-  routine_buildLexicalRoutineMap_21_ (var_lexicalRoutineMap_23452, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 536)) ;
+  routine_buildLexicalRoutineMap_21_ (var_lexicalRoutineMap_23449, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 536)) ;
   }
-  GGS_string var_s_23551 = GGS_string::makeEmptyString () ;
-  var_s_23551.plusAssignOperation(GGS_string ("**************** Prefined lexical routines  ****************\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 539)) ;
-  UpEnumerator_lexicalRoutineMap enumerator_23654 (var_lexicalRoutineMap_23452) ;
-  while (enumerator_23654.hasCurrentObject ()) {
-    var_s_23551.plusAssignOperation(enumerator_23654.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 541)) ;
-    UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_23747 (enumerator_23654.current (HERE).readProperty_mLexicalRoutineFormalArgumentList ()) ;
-    while (enumerator_23747.hasCurrentObject ()) {
-      var_s_23551.plusAssignOperation(GGS_string (" ").add_operation (extensionGetter_lexicalFormalModeName (enumerator_23747.current (HERE).readProperty_mLexicalFormalArgumentMode (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (GGS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (extensionGetter_lexicalTypeBaseName (enumerator_23747.current (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (enumerator_23747.current (HERE).readProperty_mArgumentNameForComment (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)) ;
-      enumerator_23747.gotoNextObject () ;
+  GGS_string var_s_23548 = GGS_string::makeEmptyString () ;
+  var_s_23548.plusAssignOperation(GGS_string ("**************** Prefined lexical routines  ****************\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 539)) ;
+  UpEnumerator_lexicalRoutineMap enumerator_23651 (var_lexicalRoutineMap_23449) ;
+  while (enumerator_23651.hasCurrentObject ()) {
+    var_s_23548.plusAssignOperation(enumerator_23651.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 541)) ;
+    UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_23744 (enumerator_23651.current (HERE).readProperty_mLexicalRoutineFormalArgumentList ()) ;
+    while (enumerator_23744.hasCurrentObject ()) {
+      var_s_23548.plusAssignOperation(GGS_string (" ").add_operation (extensionGetter_lexicalFormalModeName (enumerator_23744.current (HERE).readProperty_mLexicalFormalArgumentMode (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (GGS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (extensionGetter_lexicalTypeBaseName (enumerator_23744.current (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)).add_operation (enumerator_23744.current (HERE).readProperty_mArgumentNameForComment (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 543)) ;
+      enumerator_23744.gotoNextObject () ;
     }
-    UpEnumerator__5B_string_5D_ enumerator_24007 (enumerator_23654.current (HERE).readProperty_mErrorMessageList ()) ;
+    UpEnumerator__5B_string_5D_ enumerator_24004 (enumerator_23651.current (HERE).readProperty_mErrorMessageList ()) ;
     const bool bool_0 = true ;
-    if (enumerator_24007.hasCurrentObject () && bool_0) {
-      var_s_23551.plusAssignOperation(GGS_string (" error"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 546)) ;
-      while (enumerator_24007.hasCurrentObject () && bool_0) {
-        var_s_23551.plusAssignOperation(GGS_string (" ").add_operation (enumerator_24007.current (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 547)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 547)) ;
-        enumerator_24007.gotoNextObject () ;
-        if (enumerator_24007.hasCurrentObject () && bool_0) {
-          var_s_23551.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 548)) ;
+    if (enumerator_24004.hasCurrentObject () && bool_0) {
+      var_s_23548.plusAssignOperation(GGS_string (" error"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 546)) ;
+      while (enumerator_24004.hasCurrentObject () && bool_0) {
+        var_s_23548.plusAssignOperation(GGS_string (" ").add_operation (enumerator_24004.current (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 547)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 547)) ;
+        enumerator_24004.gotoNextObject () ;
+        if (enumerator_24004.hasCurrentObject () && bool_0) {
+          var_s_23548.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 548)) ;
         }
       }
     }
-    var_s_23551.plusAssignOperation(GGS_string (" ;\n\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 550)) ;
-    enumerator_23654.gotoNextObject () ;
+    var_s_23548.plusAssignOperation(GGS_string (" ;\n\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 550)) ;
+    enumerator_23651.gotoNextObject () ;
   }
-  GGS_lexicalFunctionMap var_lexicalFunctionMap_24227 ;
+  GGS_lexicalFunctionMap var_lexicalFunctionMap_24224 ;
   {
-  routine_buildLexicalFunctionMap_21_ (var_lexicalFunctionMap_24227, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 553)) ;
+  routine_buildLexicalFunctionMap_21_ (var_lexicalFunctionMap_24224, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 553)) ;
   }
-  var_s_23551.plusAssignOperation(GGS_string ("**************** Prefined lexical functions ****************\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 555)) ;
-  UpEnumerator_lexicalFunctionMap enumerator_24412 (var_lexicalFunctionMap_24227) ;
-  while (enumerator_24412.hasCurrentObject ()) {
-    var_s_23551.plusAssignOperation(enumerator_24412.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 557)) ;
-    UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ enumerator_24510 (enumerator_24412.current (HERE).readProperty_mLexicalTypeList ()) ;
-    while (enumerator_24510.hasCurrentObject ()) {
-      var_s_23551.plusAssignOperation(GGS_string (" \?@").add_operation (extensionGetter_lexicalTypeBaseName (enumerator_24510.current (HERE).readProperty_mLexicalType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)).add_operation (enumerator_24510.current (HERE).readProperty_mArgumentNameForComment (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)) ;
-      enumerator_24510.gotoNextObject () ;
+  var_s_23548.plusAssignOperation(GGS_string ("**************** Prefined lexical functions ****************\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 555)) ;
+  UpEnumerator_lexicalFunctionMap enumerator_24409 (var_lexicalFunctionMap_24224) ;
+  while (enumerator_24409.hasCurrentObject ()) {
+    var_s_23548.plusAssignOperation(enumerator_24409.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 557)) ;
+    UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ enumerator_24507 (enumerator_24409.current (HERE).readProperty_mLexicalTypeList ()) ;
+    while (enumerator_24507.hasCurrentObject ()) {
+      var_s_23548.plusAssignOperation(GGS_string (" \?@").add_operation (extensionGetter_lexicalTypeBaseName (enumerator_24507.current (HERE).readProperty_mLexicalType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)).add_operation (enumerator_24507.current (HERE).readProperty_mArgumentNameForComment (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 559)) ;
+      enumerator_24507.gotoNextObject () ;
     }
-    var_s_23551.plusAssignOperation(GGS_string (" -> @").add_operation (extensionGetter_lexicalTypeBaseName (enumerator_24412.current (HERE).readProperty_mReturnedLexicalType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)) ;
+    var_s_23548.plusAssignOperation(GGS_string (" -> @").add_operation (extensionGetter_lexicalTypeBaseName (enumerator_24409.current (HERE).readProperty_mReturnedLexicalType (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 561)) ;
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::notEqual, enumerator_24412.current (HERE).readProperty_mReplacementFunctionName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::notEqual, enumerator_24409.current (HERE).readProperty_mReplacementFunctionName ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
-        var_s_23551.plusAssignOperation(GGS_string ("Note: the '").add_operation (enumerator_24412.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (GGS_string ("' function is obsolete: use '"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (enumerator_24412.current (HERE).readProperty_mReplacementFunctionName (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (GGS_string ("' function.\n"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)) ;
+        var_s_23548.plusAssignOperation(GGS_string ("Note: the '").add_operation (enumerator_24409.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (GGS_string ("' function is obsolete: use '"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (enumerator_24409.current (HERE).readProperty_mReplacementFunctionName (), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)).add_operation (GGS_string ("' function.\n"), inCompiler COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 563)) ;
       }
     }
-    var_s_23551.plusAssignOperation(GGS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 565)) ;
-    enumerator_24412.gotoNextObject () ;
+    var_s_23548.plusAssignOperation(GGS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 565)) ;
+    enumerator_24409.gotoNextObject () ;
   }
-  var_s_23551.plusAssignOperation(GGS_string ("************************************************************"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 568)) ;
+  var_s_23548.plusAssignOperation(GGS_string ("************************************************************"), inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 568)) ;
   {
-  routine_println_3F_ (var_s_23551, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 569)) ;
+  routine_println_3F_ (var_s_23548, inCompiler  COMMA_SOURCE_FILE ("predefinedLexicalActions.galgas4", 569)) ;
   }
 }
 
@@ -18272,7 +18272,7 @@ const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper (
 
 //--- File 'galgas/AC_GALGAS_enumAssociatedValues.h'
 
-const char * gWrapperFileContent_147_libpmFileWrapper = 
+const char * gWrapperFileContent_148_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.\n"
@@ -18336,12 +18336,12 @@ const char * gWrapperFileContent_147_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.h",
   "h",
   true, // Text file
  2304, // Text length
-  gWrapperFileContent_147_libpmFileWrapper
+  gWrapperFileContent_148_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_reference_class.cpp'
@@ -18508,7 +18508,7 @@ const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper (
 
 //--- File 'galgas/AC_GALGAS_root.cpp'
 
-const char * gWrapperFileContent_153_libpmFileWrapper = 
+const char * gWrapperFileContent_154_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -18561,17 +18561,17 @@ const char * gWrapperFileContent_153_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
  1659, // Text length
-  gWrapperFileContent_153_libpmFileWrapper
+  gWrapperFileContent_154_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_root.h'
 
-const char * gWrapperFileContent_145_libpmFileWrapper = 
+const char * gWrapperFileContent_146_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -18659,17 +18659,17 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
   "AC_GALGAS_root.h",
   "h",
   true, // Text file
  3106, // Text length
-  gWrapperFileContent_145_libpmFileWrapper
+  gWrapperFileContent_146_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_weak_reference.cpp'
 
-const char * gWrapperFileContent_149_libpmFileWrapper = 
+const char * gWrapperFileContent_150_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.\n"
@@ -18773,17 +18773,17 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
   "AC_GALGAS_weak_reference.cpp",
   "cpp",
   true, // Text file
  3972, // Text length
-  gWrapperFileContent_149_libpmFileWrapper
+  gWrapperFileContent_150_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_weak_reference.h'
 
-const char * gWrapperFileContent_160_libpmFileWrapper = 
+const char * gWrapperFileContent_161_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2024 Pierre Molinaro.\n"
@@ -18838,17 +18838,17 @@ const char * gWrapperFileContent_160_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "AC_GALGAS_weak_reference.h",
   "h",
   true, // Text file
  1929, // Text length
-  gWrapperFileContent_160_libpmFileWrapper
+  gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.cpp'
 
-const char * gWrapperFileContent_174_libpmFileWrapper = 
+const char * gWrapperFileContent_175_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -18866,17 +18866,17 @@ const char * gWrapperFileContent_174_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
   "AbstractPtrClass.cpp",
   "cpp",
   true, // Text file
  573, // Text length
-  gWrapperFileContent_174_libpmFileWrapper
+  gWrapperFileContent_175_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.h'
 
-const char * gWrapperFileContent_155_libpmFileWrapper = 
+const char * gWrapperFileContent_156_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -18915,17 +18915,17 @@ const char * gWrapperFileContent_155_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "AbstractPtrClass.h",
   "h",
   true, // Text file
  1358, // Text length
-  gWrapperFileContent_155_libpmFileWrapper
+  gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.cpp'
 
-const char * gWrapperFileContent_151_libpmFileWrapper = 
+const char * gWrapperFileContent_152_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -19024,17 +19024,17 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
   "AbstractStrongPtrClass.cpp",
   "cpp",
   true, // Text file
  3116, // Text length
-  gWrapperFileContent_151_libpmFileWrapper
+  gWrapperFileContent_152_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.h'
 
-const char * gWrapperFileContent_144_libpmFileWrapper = 
+const char * gWrapperFileContent_145_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -19089,17 +19089,17 @@ const char * gWrapperFileContent_144_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "AbstractStrongPtrClass.h",
   "h",
   true, // Text file
  1744, // Text length
-  gWrapperFileContent_144_libpmFileWrapper
+  gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_CLI_Options.cpp'
 
-const char * gWrapperFileContent_159_libpmFileWrapper = 
+const char * gWrapperFileContent_160_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2023 Pierre Molinaro.\n"
@@ -19289,12 +19289,12 @@ const char * gWrapperFileContent_159_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
   "C_galgas_CLI_Options.cpp",
   "cpp",
   true, // Text file
  8842, // Text length
-  gWrapperFileContent_159_libpmFileWrapper
+  gWrapperFileContent_160_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_CLI_Options.h'
@@ -19429,7 +19429,7 @@ const cRegularFileWrapper gWrapperFile_120_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_class_inspector.h'
 
-const char * gWrapperFileContent_168_libpmFileWrapper = 
+const char * gWrapperFileContent_169_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
@@ -19467,12 +19467,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
   "C_galgas_class_inspector.h",
   "h",
   true, // Text file
  1352, // Text length
-  gWrapperFileContent_168_libpmFileWrapper
+  gWrapperFileContent_169_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_quiet_option.cpp'
@@ -19547,7 +19547,7 @@ const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
 
 //--- File 'galgas/C_galgas_verbose_option.cpp'
 
-const char * gWrapperFileContent_170_libpmFileWrapper = 
+const char * gWrapperFileContent_171_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Built-in GALGAS Command Line Interface Options\n"
@@ -19589,12 +19589,12 @@ const char * gWrapperFileContent_170_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
   "C_galgas_verbose_option.cpp",
   "cpp",
   true, // Text file
  1933, // Text length
-  gWrapperFileContent_170_libpmFileWrapper
+  gWrapperFileContent_171_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_verbose_option.h'
@@ -20686,7 +20686,7 @@ const cRegularFileWrapper gWrapperFile_118_libpmFileWrapper (
 
 //--- File 'galgas/EnumerationOrder.h'
 
-const char * gWrapperFileContent_146_libpmFileWrapper = 
+const char * gWrapperFileContent_147_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -20704,12 +20704,12 @@ const char * gWrapperFileContent_146_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
   "EnumerationOrder.h",
   "h",
   true, // Text file
  716, // Text length
-  gWrapperFileContent_146_libpmFileWrapper
+  gWrapperFileContent_147_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Enumerator_range.cpp'
@@ -20796,7 +20796,7 @@ const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper (
 
 //--- File 'galgas/Enumerator_range.h'
 
-const char * gWrapperFileContent_169_libpmFileWrapper = 
+const char * gWrapperFileContent_170_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.\n"
@@ -20861,17 +20861,17 @@ const char * gWrapperFileContent_169_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
   "Enumerator_range.h",
   "h",
   true, // Text file
  1967, // Text length
-  gWrapperFileContent_169_libpmFileWrapper
+  gWrapperFileContent_170_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/F_verbose_output.h'
 
-const char * gWrapperFileContent_173_libpmFileWrapper = 
+const char * gWrapperFileContent_174_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
@@ -20887,12 +20887,12 @@ const char * gWrapperFileContent_173_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
   "F_verbose_output.h",
   "h",
   true, // Text file
  506, // Text length
-  gWrapperFileContent_173_libpmFileWrapper
+  gWrapperFileContent_174_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_GenericDictionary.h'
@@ -22147,7 +22147,7 @@ const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper (
 
 //--- File 'galgas/GALGAS_TypeDescriptor.cpp'
 
-const char * gWrapperFileContent_154_libpmFileWrapper = 
+const char * gWrapperFileContent_155_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
@@ -22300,12 +22300,12 @@ const char * gWrapperFileContent_154_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
   "GALGAS_TypeDescriptor.cpp",
   "cpp",
   true, // Text file
  5389, // Text length
-  gWrapperFileContent_154_libpmFileWrapper
+  gWrapperFileContent_155_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_TypeDescriptor.h'
@@ -22375,7 +22375,7 @@ const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper (
 
 //--- File 'galgas/GGS_application.cpp'
 
-const char * gWrapperFileContent_158_libpmFileWrapper = 
+const char * gWrapperFileContent_159_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -22757,12 +22757,12 @@ const char * gWrapperFileContent_158_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
  18152, // Text length
-  gWrapperFileContent_158_libpmFileWrapper
+  gWrapperFileContent_159_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_bigint.cpp'
@@ -24895,7 +24895,7 @@ const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper (
 
 //--- File 'galgas/GGS_char.cpp'
 
-const char * gWrapperFileContent_162_libpmFileWrapper = 
+const char * gWrapperFileContent_163_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -25304,17 +25304,17 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
   "GGS_char.cpp",
   "cpp",
   true, // Text file
  12846, // Text length
-  gWrapperFileContent_162_libpmFileWrapper
+  gWrapperFileContent_163_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_data.cpp'
 
-const char * gWrapperFileContent_148_libpmFileWrapper = 
+const char * gWrapperFileContent_149_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2026 Pierre Molinaro.\n"
@@ -25697,17 +25697,17 @@ const char * gWrapperFileContent_148_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
  15129, // Text length
-  gWrapperFileContent_148_libpmFileWrapper
+  gWrapperFileContent_149_libpmFileWrapper
 ) ;
 
-//--- File 'galgas/GGS_double.cpp'
+//--- File 'galgas/GGS_f64.cpp'
 
-const char * gWrapperFileContent_179_libpmFileWrapper = 
+const char * gWrapperFileContent_143_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -25726,52 +25726,52 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double::GGS_double (void) :\n"
+  "GGS_f_36__34_::GGS_f_36__34_ (void) :\n"
   "AC_GALGAS_root (),\n"
   "mIsValid (false),\n"
-  "mDoubleValue (0.0) {\n"
+  "mF64 (0.0) {\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double::GGS_double (const double inValue) :\n"
+  "GGS_f_36__34_::GGS_f_36__34_ (const double inValue) :\n"
   "AC_GALGAS_root (),\n"
   "mIsValid (true),\n"
-  "mDoubleValue (inValue) {\n"
+  "mF64 (inValue) {\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::class_func_pi (UNUSED_LOCATION_ARGS) {\n"
-  "  return GGS_double (PI_CONSTANT) ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::class_func_pi (UNUSED_LOCATION_ARGS) {\n"
+  "  return GGS_f_36__34_ (PI_CONSTANT) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_u_36__34_ & inImage\n"
+  "GGS_f_36__34_ GGS_f_36__34_::class_func_doubleWithBinaryImage (const GGS_u_36__34_ & inImage\n"
   "                                                         COMMA_UNUSED_LOCATION_ARGS) {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (inImage.isValid ()) {\n"
   "    union {\n"
   "      uint64_t unsignedIntegerValue ;\n"
   "      double   doubleValue ;\n"
   "    } ;\n"
   "    unsignedIntegerValue = inImage.u64 () ;\n"
-  "    result = GGS_double (doubleValue) ;\n"
+  "    result = GGS_f_36__34_ (doubleValue) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_u_36__34_ GGS_double::getter_binaryImage (UNUSED_LOCATION_ARGS) const {\n"
+  "GGS_u_36__34_ GGS_f_36__34_::getter_binaryImage (UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_u_36__34_ result ;\n"
   "  if (isValid ()) {\n"
   "    union {\n"
   "      uint64_t unsignedIntegerValue ;\n"
   "      double theDoubleValue ;\n"
   "    } ;\n"
-  "    theDoubleValue = mDoubleValue ;\n"
+  "    theDoubleValue = mF64 ;\n"
   "    result = GGS_u_36__34_ (unsignedIntegerValue) ;\n"
   "  }\n"
   "  return result ;\n"
@@ -25779,25 +25779,25 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_cos (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_cos (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (cos (mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ (cos (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_sqrt (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_sqrt (Compiler * inCompiler\n"
+  "                                          COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    if (mDoubleValue < 0.0) {\n"
-  "      String s = \"Cannot compute square root of a negative @double\" ;\n"
+  "    if (mF64 < 0.0) {\n"
+  "      String s = \"Cannot compute square root of a negative @f64\" ;\n"
   "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "    }else{\n"
-  "      result = GGS_double (sqrt (mDoubleValue)) ;\n"
+  "      result = GGS_f_36__34_ (sqrt (mF64)) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -25805,16 +25805,16 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_log_32_ (Compiler * inCompiler\n"
-  "                                       COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_log_32_ (Compiler * inCompiler\n"
+  "                                             COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    if (mDoubleValue <= 0.0) {\n"
+  "    if (mF64 <= 0.0) {\n"
   "      String s ;\n"
-  "      s.appendCString (\"Cannot compute log2 of a null or negative @double\") ;\n"
+  "      s.appendCString (\"Cannot compute log2 of a null or negative @f64\") ;\n"
   "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "    }else{\n"
-  "      result = GGS_double (log2 (mDoubleValue)) ;\n"
+  "      result = GGS_f_36__34_ (log2 (mF64)) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -25822,15 +25822,15 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_log_31__30_ (Compiler * inCompiler\n"
-  "                                           COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_log_31__30_ (Compiler * inCompiler\n"
+  "                                                 COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    if (mDoubleValue <= 0.0) {\n"
-  "      String s = \"Cannot compute log10 of a null or negative @double\" ;\n"
+  "    if (mF64 <= 0.0) {\n"
+  "      String s = \"Cannot compute log10 of a null or negative @f64\" ;\n"
   "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "    }else{\n"
-  "      result = GGS_double (log10 (mDoubleValue)) ;\n"
+  "      result = GGS_f_36__34_ (log10 (mF64)) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -25838,15 +25838,15 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_logn (Compiler * inCompiler\n"
-  "                                    COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_logn (Compiler * inCompiler\n"
+  "                                          COMMA_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    if (mDoubleValue <= 0.0) {\n"
-  "      String s = \"Cannot compute logn of a null or negative @double\" ;\n"
+  "    if (mF64 <= 0.0) {\n"
+  "      String s = \"Cannot compute logn of a null or negative @f64\" ;\n"
   "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "    }else{\n"
-  "      result = GGS_double (::log (mDoubleValue)) ;\n"
+  "      result = GGS_f_36__34_ (::log (mF64)) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -25854,148 +25854,148 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_exp (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_exp (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (::exp (mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ (::exp (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_cosDegree (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_cosDegree (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (cos (mDoubleValue * PI_CONSTANT / 180.0)) ;\n"
+  "    result = GGS_f_36__34_ (cos (mF64 * PI_CONSTANT / 180.0)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_sin (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_sin (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (sin (mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ (sin (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_sinDegree (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_sinDegree (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (sin (mDoubleValue * PI_CONSTANT / 180.0)) ;\n"
+  "    result = GGS_f_36__34_ (sin (mF64 * PI_CONSTANT / 180.0)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_tan (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_tan (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (tan (mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ (tan (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_tanDegree (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_tanDegree (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (tan (mDoubleValue * PI_CONSTANT / 180.0)) ;\n"
+  "    result = GGS_f_36__34_ (tan (mF64 * PI_CONSTANT / 180.0)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::getter_power (const GGS_double & inExponant,\n"
-  "                                     Compiler * /* inCompiler */\n"
-  "                                     COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::getter_power (const GGS_f_36__34_ & inExponant,\n"
+  "                                           Compiler * /* inCompiler */\n"
+  "                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inExponant.isValid ()) {\n"
-  "    result = GGS_double (pow (mDoubleValue, inExponant.mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ (pow (mF64, inExponant.mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint GGS_double::getter_uint (Compiler * inCompiler\n"
-  "                                  COMMA_LOCATION_ARGS) const {\n"
+  "GGS_uint GGS_f_36__34_::getter_uint (Compiler * inCompiler\n"
+  "                                     COMMA_LOCATION_ARGS) const {\n"
   "  GGS_uint result ;\n"
-  "  if ((mDoubleValue > double (UINT32_MAX)) || (mDoubleValue < 0.0)) {\n"
-  "    String s = \"Cannot convert @double (\" ;\n"
-  "    s.appendDouble (mDoubleValue) ;\n"
+  "  if ((mF64 > double (UINT32_MAX)) || (mF64 < 0.0)) {\n"
+  "    String s = \"Cannot convert @f64 (\" ;\n"
+  "    s.appendDouble (mF64) ;\n"
   "    s.appendCString (\") to @uint\") ;\n"
   "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "  }else{\n"
-  "    result = GGS_uint ((uint32_t) (lround (mDoubleValue) & INT32_MAX)) ;\n"
+  "    result = GGS_uint ((uint32_t) (lround (mF64) & INT32_MAX)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_u_36__34_ GGS_double::getter_u_36__34_ (Compiler * inCompiler\n"
+  "GGS_u_36__34_ GGS_f_36__34_::getter_u_36__34_ (Compiler * inCompiler\n"
   "                                            COMMA_LOCATION_ARGS) const {\n"
   "  GGS_u_36__34_ result ;\n"
-  "  if ((mDoubleValue > double (UINT64_MAX)) || (mDoubleValue < 0.0)) {\n"
-  "    String s = \"Cannot convert @double (\" ;\n"
-  "    s.appendDouble (mDoubleValue) ;\n"
-  "    s.appendCString (\") to @uint64\") ;\n"
+  "  if ((mF64 > double (UINT64_MAX)) || (mF64 < 0.0)) {\n"
+  "    String s = \"Cannot convert @f64 (\" ;\n"
+  "    s.appendDouble (mF64) ;\n"
+  "    s.appendCString (\") to @u64\") ;\n"
   "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "  }else{\n"
-  "    result = GGS_u_36__34_ ((uint64_t) lround (mDoubleValue)) ;\n"
+  "    result = GGS_u_36__34_ ((uint64_t) lround (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_sint GGS_double::getter_sint (Compiler * inCompiler\n"
+  "GGS_sint GGS_f_36__34_::getter_sint (Compiler * inCompiler\n"
   "                                  COMMA_LOCATION_ARGS) const {\n"
   "  GGS_sint result ;\n"
-  "  if ((mDoubleValue > double (INT32_MAX)) || (mDoubleValue < double (INT32_MIN))) {\n"
-  "    String s = \"Cannot convert @double (\" ;\n"
-  "    s.appendDouble (mDoubleValue) ;\n"
+  "  if ((mF64 > double (INT32_MAX)) || (mF64 < double (INT32_MIN))) {\n"
+  "    String s = \"Cannot convert @f64 (\" ;\n"
+  "    s.appendDouble (mF64) ;\n"
   "    s.appendCString (\") to @sint\") ;\n"
   "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "  }else{\n"
-  "    result = GGS_sint (int32_t (lround (mDoubleValue) & INT32_MAX)) ;\n"
+  "    result = GGS_sint (int32_t (lround (mF64) & INT32_MAX)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_s_36__34_ GGS_double::getter_s_36__34_ (Compiler * inCompiler\n"
+  "GGS_s_36__34_ GGS_f_36__34_::getter_s_36__34_ (Compiler * inCompiler\n"
   "                                                  COMMA_LOCATION_ARGS) const {\n"
   "  GGS_s_36__34_ result ;\n"
-  "  if ((mDoubleValue > double (INT64_MAX)) || (mDoubleValue < double (INT64_MIN))) {\n"
-  "    String s = \"Cannot convert @double (\" ;\n"
-  "    s.appendDouble (mDoubleValue) ;\n"
+  "  if ((mF64 > double (INT64_MAX)) || (mF64 < double (INT64_MIN))) {\n"
+  "    String s = \"Cannot convert @f64 (\" ;\n"
+  "    s.appendDouble (mF64) ;\n"
   "    s.appendCString (\") to @sint64\") ;\n"
   "    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
   "  }else{\n"
-  "    result = GGS_s_36__34_ (lround (mDoubleValue)) ;\n"
+  "    result = GGS_s_36__34_ (lround (mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "ComparisonResult GGS_double::objectCompare (const GGS_double & inOperand) const {\n"
+  "ComparisonResult GGS_f_36__34_::objectCompare (const GGS_f_36__34_ & inOperand) const {\n"
   "  ComparisonResult result = ComparisonResult::invalid ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    if (mDoubleValue < inOperand.mDoubleValue) {\n"
+  "    if (mF64 < inOperand.mF64) {\n"
   "      result = ComparisonResult::firstOperandLowerThanSecond ;\n"
-  "    }else if (mDoubleValue > inOperand.mDoubleValue) {\n"
+  "    }else if (mF64 > inOperand.mF64) {\n"
   "      result = ComparisonResult::firstOperandGreaterThanSecond ;\n"
   "    }else{\n"
   "      result = ComparisonResult::operandEqual ;\n"
@@ -26006,11 +26006,11 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_double::description (String & ioString,\n"
+  "void GGS_f_36__34_::description (String & ioString,\n"
   "                              const int32_t /* inIndentation */) const {\n"
-  "  ioString.appendCString (\"<@double:\") ;\n"
+  "  ioString.appendCString (\"<@f64:\") ;\n"
   "  if (isValid ()) {\n"
-  "    ioString.appendDouble (mDoubleValue) ;\n"
+  "    ioString.appendDouble (mF64) ;\n"
   "  }else{\n"
   "    ioString.appendCString (\"not built\") ;\n"
   "  }\n"
@@ -26019,43 +26019,43 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_double::getter_string (UNUSED_LOCATION_ARGS) const {\n"
+  "GGS_string GGS_f_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {\n"
   "  String s ;\n"
-  "  s.appendDouble (mDoubleValue) ;\n"
+  "  s.appendDouble (mF64) ;\n"
   "  return GGS_string (s) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::add_operation (const GGS_double & inOperand2,\n"
+  "GGS_f_36__34_ GGS_f_36__34_::add_operation (const GGS_f_36__34_ & inOperand2,\n"
   "                                      Compiler * /* inCompiler */\n"
   "                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
-  "    result = GGS_double (mDoubleValue + inOperand2.mDoubleValue) ;\n"
+  "    result = GGS_f_36__34_ (mF64 + inOperand2.mF64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::subtract_operation (const GGS_double & inOperand2,\n"
+  "GGS_f_36__34_ GGS_f_36__34_::subtract_operation (const GGS_f_36__34_ & inOperand2,\n"
   "                                            Compiler * /* inCompiler */\n"
   "                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
-  "    result = GGS_double (mDoubleValue - inOperand2.mDoubleValue) ;\n"
+  "    result = GGS_f_36__34_ (mF64 - inOperand2.mF64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_double::plusAssignOperation (const GGS_double inOperand,\n"
+  "void GGS_f_36__34_::plusAssignOperation (const GGS_f_36__34_ inOperand,\n"
   "                                      Compiler *\n"
   "                                      COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    mDoubleValue += inOperand.mDoubleValue ;\n"
+  "    mF64 += inOperand.mF64 ;\n"
   "  }else{\n"
   "    mIsValid = false ;\n"
   "  }\n"
@@ -26063,11 +26063,11 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_double::minusAssignOperation (const GGS_double inOperand,\n"
+  "void GGS_f_36__34_::minusAssignOperation (const GGS_f_36__34_ inOperand,\n"
   "                                        Compiler *\n"
   "                                        COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    mDoubleValue -= inOperand.mDoubleValue ;\n"
+  "    mF64 -= inOperand.mF64 ;\n"
   "  }else{\n"
   "    mIsValid = false ;\n"
   "  }\n"
@@ -26075,11 +26075,11 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_double::mulAssignOperation (const GGS_double inOperand,\n"
+  "void GGS_f_36__34_::mulAssignOperation (const GGS_f_36__34_ inOperand,\n"
   "                                      Compiler * /* inCompiler */\n"
   "                                      COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    mDoubleValue *= inOperand.mDoubleValue ;\n"
+  "    mF64 *= inOperand.mF64 ;\n"
   "  }else{\n"
   "    mIsValid = false ;\n"
   "  }\n"
@@ -26087,42 +26087,42 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void GGS_double::divAssignOperation (const GGS_double inOperand,\n"
+  "void GGS_f_36__34_::divAssignOperation (const GGS_f_36__34_ inOperand,\n"
   "                                      Compiler * inCompiler\n"
   "                                      COMMA_LOCATION_ARGS) {\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    if (inOperand.mDoubleValue == 0) {\n"
-  "      inCompiler->onTheFlyRunTimeError (\"@double /= divide by zero\" COMMA_THERE) ;\n"
+  "    if (inOperand.mF64 == 0) {\n"
+  "      inCompiler->onTheFlyRunTimeError (\"@f64 /= divide by zero\" COMMA_THERE) ;\n"
   "      mIsValid = false ;\n"
   "    }else{\n"
-  "      mDoubleValue /= inOperand.mDoubleValue ;\n"
+  "      mF64 /= inOperand.mF64 ;\n"
   "    }\n"
   "  }\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::multiply_operation (const GGS_double & inOperand2,\n"
+  "GGS_f_36__34_ GGS_f_36__34_::multiply_operation (const GGS_f_36__34_ & inOperand2,\n"
   "                                           Compiler * /* inCompiler */\n"
   "                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
-  "    result = GGS_double (mDoubleValue * inOperand2.mDoubleValue) ;\n"
+  "    result = GGS_f_36__34_ (mF64 * inOperand2.mF64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::divide_operation (const GGS_double & inOperand2,\n"
+  "GGS_f_36__34_ GGS_f_36__34_::divide_operation (const GGS_f_36__34_ & inOperand2,\n"
   "                                         Compiler * inCompiler\n"
   "                                         COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
-  "    if (inOperand2.mDoubleValue == 0.0) {\n"
+  "    if (inOperand2.mF64 == 0.0) {\n"
   "      inCompiler->onTheFlyRunTimeError (\"divide by zero\" COMMA_THERE) ;\n"
   "    }else{\n"
-  "      result = GGS_double (mDoubleValue / inOperand2.mDoubleValue) ;\n"
+  "      result = GGS_f_36__34_ (mF64 / inOperand2.mF64) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -26130,34 +26130,34 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::wrapping_divide_operation (const GGS_double & inOperand) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_f_36__34_::wrapping_divide_operation (const GGS_f_36__34_ & inOperand) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    result = GGS_double ((inOperand.mDoubleValue == 0.0) \? 0.0 : (mDoubleValue / inOperand.mDoubleValue)) ;\n"
+  "    result = GGS_f_36__34_ ((inOperand.mF64 == 0.0) \? 0.0 : (mF64 / inOperand.mF64)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::operator_unary_minus (Compiler * /* inCompiler */\n"
+  "GGS_f_36__34_ GGS_f_36__34_::operator_unary_minus (Compiler * /* inCompiler */\n"
   "                                             COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (- mDoubleValue) ;\n"
+  "    result = GGS_f_36__34_ (- mF64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_double::modulo_operation (const GGS_double & inOperand,\n"
+  "GGS_f_36__34_ GGS_f_36__34_::modulo_operation (const GGS_f_36__34_ & inOperand,\n"
   "                                         Compiler * /* inCompiler */\n"
   "                                         COMMA_UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
-  "    const uint64_t times = uint64_t (mDoubleValue / inOperand.mDoubleValue) ;\n"
-  "    result = GGS_double (mDoubleValue - double (times) * inOperand.mDoubleValue) ;\n"
+  "    const uint64_t times = uint64_t (mF64 / inOperand.mF64) ;\n"
+  "    result = GGS_f_36__34_ (mF64 - double (times) * inOperand.mF64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -26165,12 +26165,12 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
-  "GGS_double.cpp",
+const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
+  "GGS_f64.cpp",
   "cpp",
   true, // Text file
- 15759, // Text length
-  gWrapperFileContent_179_libpmFileWrapper
+ 15554, // Text length
+  gWrapperFileContent_143_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_filewrapper.cpp'
@@ -27231,10 +27231,10 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_s_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_s_36__34_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double ((double) mS64) ;\n"
+  "    result = GGS_f_36__34_ ((double) mS64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -27714,7 +27714,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "GGS_s64.cpp",
   "cpp",
   true, // Text file
- 21776, // Text length
+ 21788, // Text length
   gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
@@ -27815,10 +27815,10 @@ const char * gWrapperFileContent_112_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_sint::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_sint::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double ((double) mSIntValue) ;\n"
+  "    result = GGS_f_36__34_ ((double) mSIntValue) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -28308,13 +28308,13 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
   "GGS_sint.cpp",
   "cpp",
   true, // Text file
- 20326, // Text length
+ 20338, // Text length
   gWrapperFileContent_112_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string-getters.cpp'
 
-const char * gWrapperFileContent_175_libpmFileWrapper = 
+const char * gWrapperFileContent_176_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -29533,15 +29533,15 @@ const char * gWrapperFileContent_175_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_string::getter_doubleNumber (Compiler * inCompiler\n"
+  "GGS_f_36__34_ GGS_string::getter_doubleNumber (Compiler * inCompiler\n"
   "                                            COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
   "    double doubleValue = 0.0 ;\n"
   "    bool ok = true ;\n"
   "    mString.convertToDouble (doubleValue, ok) ;\n"
   "    if (ok) {\n"
-  "      result = GGS_double (doubleValue) ;\n"
+  "      result = GGS_f_36__34_ (doubleValue) ;\n"
   "    }else{\n"
   "      inCompiler->onTheFlyRunTimeError (\"cannot convert a string to a double number: it contains invalid character\" COMMA_THERE) ;\n"
   "    }\n"
@@ -29724,12 +29724,12 @@ const char * gWrapperFileContent_175_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 51708, // Text length
-  gWrapperFileContent_175_libpmFileWrapper
+ 51717, // Text length
+  gWrapperFileContent_176_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string.cpp'
@@ -31889,10 +31889,10 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_u_31__36_::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_u_31__36_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (double (mU16)) ;\n"
+  "    result = GGS_f_36__34_ (double (mU16)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -32311,7 +32311,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_u16.cpp",
   "cpp",
   true, // Text file
- 20046, // Text length
+ 20058, // Text length
   gWrapperFileContent_116_libpmFileWrapper
 ) ;
 
@@ -32856,10 +32856,10 @@ const char * gWrapperFileContent_128_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_u_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_u_36__34_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double ((double) mU64) ;\n"
+  "    result = GGS_f_36__34_ ((double) mU64) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -32966,13 +32966,13 @@ const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper (
   "GGS_u64.cpp",
   "cpp",
   true, // Text file
- 23684, // Text length
+ 23696, // Text length
   gWrapperFileContent_128_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u8.cpp'
 
-const char * gWrapperFileContent_164_libpmFileWrapper = 
+const char * gWrapperFileContent_165_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.\n"
@@ -33141,10 +33141,10 @@ const char * gWrapperFileContent_164_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_u_38_::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_u_38_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (double (mU8)) ;\n"
+  "    result = GGS_f_36__34_ (double (mU8)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -33559,12 +33559,12 @@ const char * gWrapperFileContent_164_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
   "GGS_u8.cpp",
   "cpp",
   true, // Text file
- 19186, // Text length
-  gWrapperFileContent_164_libpmFileWrapper
+ 19198, // Text length
+  gWrapperFileContent_165_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_uint.cpp'
@@ -33792,10 +33792,10 @@ const char * gWrapperFileContent_135_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_double GGS_uint::getter_double (UNUSED_LOCATION_ARGS) const {\n"
-  "  GGS_double result ;\n"
+  "GGS_f_36__34_ GGS_uint::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {\n"
+  "  GGS_f_36__34_ result ;\n"
   "  if (isValid ()) {\n"
-  "    result = GGS_double (double (mUIntValue)) ;\n"
+  "    result = GGS_f_36__34_ (double (mUIntValue)) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -34242,13 +34242,13 @@ const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 22988, // Text length
+ 23000, // Text length
   gWrapperFileContent_135_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.cpp'
 
-const char * gWrapperFileContent_172_libpmFileWrapper = 
+const char * gWrapperFileContent_173_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -34479,17 +34479,17 @@ const char * gWrapperFileContent_172_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_173_libpmFileWrapper (
   "IndexingDictionary.cpp",
   "cpp",
   true, // Text file
  8072, // Text length
-  gWrapperFileContent_172_libpmFileWrapper
+  gWrapperFileContent_173_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.h'
 
-const char * gWrapperFileContent_157_libpmFileWrapper = 
+const char * gWrapperFileContent_158_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -34546,17 +34546,17 @@ const char * gWrapperFileContent_157_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
   "IndexingDictionary.h",
   "h",
   true, // Text file
  2062, // Text length
-  gWrapperFileContent_157_libpmFileWrapper
+  gWrapperFileContent_158_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.cpp'
 
-const char * gWrapperFileContent_177_libpmFileWrapper = 
+const char * gWrapperFileContent_178_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34697,17 +34697,17 @@ const char * gWrapperFileContent_177_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
   "IssueDescriptor.cpp",
   "cpp",
   true, // Text file
  4989, // Text length
-  gWrapperFileContent_177_libpmFileWrapper
+  gWrapperFileContent_178_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.h'
 
-const char * gWrapperFileContent_176_libpmFileWrapper = 
+const char * gWrapperFileContent_177_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
@@ -34757,17 +34757,17 @@ const char * gWrapperFileContent_176_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
   "IssueDescriptor.h",
   "h",
   true, // Text file
  1794, // Text length
-  gWrapperFileContent_176_libpmFileWrapper
+  gWrapperFileContent_177_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.cpp'
 
-const char * gWrapperFileContent_143_libpmFileWrapper = 
+const char * gWrapperFileContent_144_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2026 Pierre Molinaro.\n"
@@ -34861,12 +34861,12 @@ const char * gWrapperFileContent_143_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
   "IssueWithFixIt.cpp",
   "cpp",
   true, // Text file
  3585, // Text length
-  gWrapperFileContent_143_libpmFileWrapper
+  gWrapperFileContent_144_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.h'
@@ -35923,7 +35923,7 @@ const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper (
 
 //--- File 'galgas/Lexique.cpp'
 
-const char * gWrapperFileContent_165_libpmFileWrapper = 
+const char * gWrapperFileContent_166_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
@@ -36796,12 +36796,12 @@ const char * gWrapperFileContent_165_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
  33735, // Text length
-  gWrapperFileContent_165_libpmFileWrapper
+  gWrapperFileContent_166_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique.h'
@@ -37062,7 +37062,7 @@ const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
 
 //--- File 'galgas/LexiqueIntrospection.cpp'
 
-const char * gWrapperFileContent_178_libpmFileWrapper = 
+const char * gWrapperFileContent_179_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.\n"
@@ -37196,17 +37196,17 @@ const char * gWrapperFileContent_178_libpmFileWrapper =
   "\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "LexiqueIntrospection.cpp",
   "cpp",
   true, // Text file
  5738, // Text length
-  gWrapperFileContent_178_libpmFileWrapper
+  gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LexiqueIntrospection.h'
 
-const char * gWrapperFileContent_163_libpmFileWrapper = 
+const char * gWrapperFileContent_164_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2023 Pierre Molinaro.\n"
@@ -37255,12 +37255,12 @@ const char * gWrapperFileContent_163_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper (
   "LexiqueIntrospection.h",
   "h",
   true, // Text file
  2054, // Text length
-  gWrapperFileContent_163_libpmFileWrapper
+  gWrapperFileContent_164_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LocationInSource.cpp'
@@ -37359,7 +37359,7 @@ const cRegularFileWrapper gWrapperFile_107_libpmFileWrapper (
 
 //--- File 'galgas/LocationInSource.h'
 
-const char * gWrapperFileContent_152_libpmFileWrapper = 
+const char * gWrapperFileContent_153_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -37410,12 +37410,12 @@ const char * gWrapperFileContent_152_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
   "LocationInSource.h",
   "h",
   true, // Text file
  1578, // Text length
-  gWrapperFileContent_152_libpmFileWrapper
+  gWrapperFileContent_153_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ProductionNameDescriptor.h'
@@ -37582,7 +37582,7 @@ const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
 
 //--- File 'galgas/SharedGenericPtrWithValueSemantics.h'
 
-const char * gWrapperFileContent_167_libpmFileWrapper = 
+const char * gWrapperFileContent_168_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created by Pierre Molinaro on 15/03/2025, ..., 2025 Pierre Molinaro.\n"
@@ -37767,17 +37767,17 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "SharedGenericPtrWithValueSemantics.h",
   "h",
   true, // Text file
  8240, // Text length
-  gWrapperFileContent_167_libpmFileWrapper
+  gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.cpp'
 
-const char * gWrapperFileContent_150_libpmFileWrapper = 
+const char * gWrapperFileContent_151_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
@@ -37899,12 +37899,12 @@ const char * gWrapperFileContent_150_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "SharedObject.cpp",
   "cpp",
   true, // Text file
  4051, // Text length
-  gWrapperFileContent_150_libpmFileWrapper
+  gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.h'
@@ -38859,7 +38859,7 @@ const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper (
 
 //--- File 'galgas/SourceTextInString.cpp'
 
-const char * gWrapperFileContent_156_libpmFileWrapper = 
+const char * gWrapperFileContent_157_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -38934,17 +38934,17 @@ const char * gWrapperFileContent_156_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
   "SourceTextInString.cpp",
   "cpp",
   true, // Text file
  2768, // Text length
-  gWrapperFileContent_156_libpmFileWrapper
+  gWrapperFileContent_157_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SourceTextInString.h'
 
-const char * gWrapperFileContent_166_libpmFileWrapper = 
+const char * gWrapperFileContent_167_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -39037,12 +39037,12 @@ const char * gWrapperFileContent_166_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "SourceTextInString.h",
   "h",
   true, // Text file
  3167, // Text length
-  gWrapperFileContent_166_libpmFileWrapper
+  gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/TemplateDelimiter.h'
@@ -39104,7 +39104,7 @@ const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper (
 
 //--- File 'galgas/galgas-input-output.cpp'
 
-const char * gWrapperFileContent_171_libpmFileWrapper = 
+const char * gWrapperFileContent_172_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.\n"
@@ -39905,12 +39905,12 @@ const char * gWrapperFileContent_171_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
  31276, // Text length
-  gWrapperFileContent_171_libpmFileWrapper
+  gWrapperFileContent_172_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/galgas-input-output.h'
@@ -41044,7 +41044,7 @@ const cRegularFileWrapper gWrapperFile_114_libpmFileWrapper (
 
 //--- File 'galgas/scanner_actions.h'
 
-const char * gWrapperFileContent_161_libpmFileWrapper = 
+const char * gWrapperFileContent_162_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
@@ -41298,12 +41298,12 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
+const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
   "scanner_actions.h",
   "h",
   true, // Text file
  14250, // Text length
-  gWrapperFileContent_161_libpmFileWrapper
+  gWrapperFileContent_162_libpmFileWrapper
 ) ;
 
 //--- All files of 'AccentColor.colorset' directory
@@ -41378,82 +41378,82 @@ const cDirectoryWrapper gWrapperDirectory_10_libpmFileWrapper (
 
 static const cRegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [78] = {
   & gWrapperFile_125_libpmFileWrapper,
-  & gWrapperFile_147_libpmFileWrapper,
+  & gWrapperFile_148_libpmFileWrapper,
   & gWrapperFile_123_libpmFileWrapper,
   & gWrapperFile_104_libpmFileWrapper,
-  & gWrapperFile_153_libpmFileWrapper,
+  & gWrapperFile_154_libpmFileWrapper,
+  & gWrapperFile_146_libpmFileWrapper,
+  & gWrapperFile_150_libpmFileWrapper,
+  & gWrapperFile_161_libpmFileWrapper,
+  & gWrapperFile_175_libpmFileWrapper,
+  & gWrapperFile_156_libpmFileWrapper,
+  & gWrapperFile_152_libpmFileWrapper,
   & gWrapperFile_145_libpmFileWrapper,
-  & gWrapperFile_149_libpmFileWrapper,
   & gWrapperFile_160_libpmFileWrapper,
-  & gWrapperFile_174_libpmFileWrapper,
-  & gWrapperFile_155_libpmFileWrapper,
-  & gWrapperFile_151_libpmFileWrapper,
-  & gWrapperFile_144_libpmFileWrapper,
-  & gWrapperFile_159_libpmFileWrapper,
   & gWrapperFile_124_libpmFileWrapper,
   & gWrapperFile_120_libpmFileWrapper,
-  & gWrapperFile_168_libpmFileWrapper,
+  & gWrapperFile_169_libpmFileWrapper,
   & gWrapperFile_119_libpmFileWrapper,
   & gWrapperFile_141_libpmFileWrapper,
-  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_171_libpmFileWrapper,
   & gWrapperFile_134_libpmFileWrapper,
   & gWrapperFile_138_libpmFileWrapper,
   & gWrapperFile_121_libpmFileWrapper,
   & gWrapperFile_122_libpmFileWrapper,
   & gWrapperFile_118_libpmFileWrapper,
-  & gWrapperFile_146_libpmFileWrapper,
+  & gWrapperFile_147_libpmFileWrapper,
   & gWrapperFile_129_libpmFileWrapper,
-  & gWrapperFile_169_libpmFileWrapper,
-  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_174_libpmFileWrapper,
   & gWrapperFile_103_libpmFileWrapper,
   & gWrapperFile_142_libpmFileWrapper,
-  & gWrapperFile_154_libpmFileWrapper,
+  & gWrapperFile_155_libpmFileWrapper,
   & gWrapperFile_131_libpmFileWrapper,
-  & gWrapperFile_158_libpmFileWrapper,
+  & gWrapperFile_159_libpmFileWrapper,
   & gWrapperFile_105_libpmFileWrapper,
   & gWrapperFile_137_libpmFileWrapper,
   & gWrapperFile_113_libpmFileWrapper,
-  & gWrapperFile_162_libpmFileWrapper,
-  & gWrapperFile_148_libpmFileWrapper,
-  & gWrapperFile_179_libpmFileWrapper,
+  & gWrapperFile_163_libpmFileWrapper,
+  & gWrapperFile_149_libpmFileWrapper,
+  & gWrapperFile_143_libpmFileWrapper,
   & gWrapperFile_108_libpmFileWrapper,
   & gWrapperFile_126_libpmFileWrapper,
   & gWrapperFile_136_libpmFileWrapper,
   & gWrapperFile_112_libpmFileWrapper,
-  & gWrapperFile_175_libpmFileWrapper,
+  & gWrapperFile_176_libpmFileWrapper,
   & gWrapperFile_133_libpmFileWrapper,
   & gWrapperFile_117_libpmFileWrapper,
   & gWrapperFile_139_libpmFileWrapper,
   & gWrapperFile_116_libpmFileWrapper,
   & gWrapperFile_128_libpmFileWrapper,
-  & gWrapperFile_164_libpmFileWrapper,
+  & gWrapperFile_165_libpmFileWrapper,
   & gWrapperFile_135_libpmFileWrapper,
-  & gWrapperFile_172_libpmFileWrapper,
-  & gWrapperFile_157_libpmFileWrapper,
+  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_158_libpmFileWrapper,
+  & gWrapperFile_178_libpmFileWrapper,
   & gWrapperFile_177_libpmFileWrapper,
-  & gWrapperFile_176_libpmFileWrapper,
-  & gWrapperFile_143_libpmFileWrapper,
+  & gWrapperFile_144_libpmFileWrapper,
   & gWrapperFile_106_libpmFileWrapper,
   & gWrapperFile_109_libpmFileWrapper,
-  & gWrapperFile_165_libpmFileWrapper,
+  & gWrapperFile_166_libpmFileWrapper,
   & gWrapperFile_127_libpmFileWrapper,
-  & gWrapperFile_178_libpmFileWrapper,
-  & gWrapperFile_163_libpmFileWrapper,
+  & gWrapperFile_179_libpmFileWrapper,
+  & gWrapperFile_164_libpmFileWrapper,
   & gWrapperFile_107_libpmFileWrapper,
-  & gWrapperFile_152_libpmFileWrapper,
+  & gWrapperFile_153_libpmFileWrapper,
   & gWrapperFile_115_libpmFileWrapper,
   & gWrapperFile_110_libpmFileWrapper,
   & gWrapperFile_132_libpmFileWrapper,
-  & gWrapperFile_167_libpmFileWrapper,
-  & gWrapperFile_150_libpmFileWrapper,
+  & gWrapperFile_168_libpmFileWrapper,
+  & gWrapperFile_151_libpmFileWrapper,
   & gWrapperFile_140_libpmFileWrapper,
-  & gWrapperFile_156_libpmFileWrapper,
-  & gWrapperFile_166_libpmFileWrapper,
+  & gWrapperFile_157_libpmFileWrapper,
+  & gWrapperFile_167_libpmFileWrapper,
   & gWrapperFile_111_libpmFileWrapper,
-  & gWrapperFile_171_libpmFileWrapper,
+  & gWrapperFile_172_libpmFileWrapper,
   & gWrapperFile_130_libpmFileWrapper,
   & gWrapperFile_114_libpmFileWrapper,
-  & gWrapperFile_161_libpmFileWrapper,
+  & gWrapperFile_162_libpmFileWrapper,
   nullptr
 } ;
 

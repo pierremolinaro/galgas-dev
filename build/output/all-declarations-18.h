@@ -203,12 +203,12 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type (Co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'predefinedTypeGenerationTemplate double_type'
+//Filewrapper template 'predefinedTypeGenerationTemplate f64_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_type (Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_f_36__34__5F_type (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -3870,7 +3870,7 @@ GGS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_templateLiteralDoubleExpressionAST GGS_templateLiteralDoubleExpressionAST::
-init_21_ (const GGS_ldouble & in_mLiteralDouble,
+init_21_ (const GGS_lf_36__34_ & in_mLiteralDouble,
           Compiler * inCompiler
           COMMA_LOCATION_ARGS) {
   cPtr_templateLiteralDoubleExpressionAST * object = nullptr ;
@@ -3884,7 +3884,7 @@ init_21_ (const GGS_ldouble & in_mLiteralDouble,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralDoubleExpressionAST::
-templateLiteralDoubleExpressionAST_init_21_ (const GGS_ldouble & in_mLiteralDouble,
+templateLiteralDoubleExpressionAST_init_21_ (const GGS_lf_36__34_ & in_mLiteralDouble,
                                              Compiler * /* inCompiler */) {
   mProperty_mLiteralDouble = in_mLiteralDouble ;
 }
@@ -3897,9 +3897,9 @@ GGS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble GGS_templateLiteralDoubleExpressionAST::readProperty_mLiteralDouble (void) const {
+GGS_lf_36__34_ GGS_templateLiteralDoubleExpressionAST::readProperty_mLiteralDouble (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_ldouble () ;
+    return GGS_lf_36__34_ () ;
   }else{
     cPtr_templateLiteralDoubleExpressionAST * p = (cPtr_templateLiteralDoubleExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLiteralDoubleExpressionAST) ;
@@ -3918,7 +3918,7 @@ mProperty_mLiteralDouble () {
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_templateLiteralDoubleExpressionAST::cPtr_templateLiteralDoubleExpressionAST (const GGS_ldouble & in_mLiteralDouble,
+cPtr_templateLiteralDoubleExpressionAST::cPtr_templateLiteralDoubleExpressionAST (const GGS_lf_36__34_ & in_mLiteralDouble,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (inCompiler COMMA_THERE),

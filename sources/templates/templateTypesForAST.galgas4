@@ -147,7 +147,7 @@ final class @templateLiteralCharExpressionAST : @templateExpressionAST {
 //--------------------------------------------------------------------------------------------------
 
 final class @templateLiteralDoubleExpressionAST : @templateExpressionAST {
-  private let @ldouble mLiteralDouble
+  private let @lf64 mLiteralDouble
 }
 
 //--------------------------------------------------------------------------------------------------

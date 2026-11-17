@@ -1548,7 +1548,7 @@ GGS_semanticExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_literalDoubleExpressionAST GGS_literalDoubleExpressionAST::
-init_21_ (const GGS_ldouble & in_mValue,
+init_21_ (const GGS_lf_36__34_ & in_mValue,
           Compiler * inCompiler
           COMMA_LOCATION_ARGS) {
   cPtr_literalDoubleExpressionAST * object = nullptr ;
@@ -1562,7 +1562,7 @@ init_21_ (const GGS_ldouble & in_mValue,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_literalDoubleExpressionAST::
-literalDoubleExpressionAST_init_21_ (const GGS_ldouble & in_mValue,
+literalDoubleExpressionAST_init_21_ (const GGS_lf_36__34_ & in_mValue,
                                      Compiler * /* inCompiler */) {
   mProperty_mValue = in_mValue ;
 }
@@ -1575,9 +1575,9 @@ GGS_semanticExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble GGS_literalDoubleExpressionAST::readProperty_mValue (void) const {
+GGS_lf_36__34_ GGS_literalDoubleExpressionAST::readProperty_mValue (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_ldouble () ;
+    return GGS_lf_36__34_ () ;
   }else{
     cPtr_literalDoubleExpressionAST * p = (cPtr_literalDoubleExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_literalDoubleExpressionAST) ;
@@ -1596,7 +1596,7 @@ mProperty_mValue () {
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_literalDoubleExpressionAST::cPtr_literalDoubleExpressionAST (const GGS_ldouble & in_mValue,
+cPtr_literalDoubleExpressionAST::cPtr_literalDoubleExpressionAST (const GGS_lf_36__34_ & in_mValue,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
@@ -1774,7 +1774,7 @@ GGS_semanticExpressionForGeneration () {
 GGS_literalDoubleExpressionForGeneration GGS_literalDoubleExpressionForGeneration::
 init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
                   const GGS_location & in_mLocation,
-                  const GGS_double & in_mValue,
+                  const GGS_f_36__34_ & in_mValue,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_literalDoubleExpressionForGeneration * object = nullptr ;
@@ -1790,7 +1790,7 @@ init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
 void cPtr_literalDoubleExpressionForGeneration::
 literalDoubleExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                        const GGS_location & in_mLocation,
-                                                       const GGS_double & in_mValue,
+                                                       const GGS_f_36__34_ & in_mValue,
                                                        Compiler * /* inCompiler */) {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
@@ -1805,9 +1805,9 @@ GGS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_literalDoubleExpressionForGeneration::readProperty_mValue (void) const {
+GGS_f_36__34_ GGS_literalDoubleExpressionForGeneration::readProperty_mValue (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_double () ;
+    return GGS_f_36__34_ () ;
   }else{
     cPtr_literalDoubleExpressionForGeneration * p = (cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_literalDoubleExpressionForGeneration) ;
@@ -1828,7 +1828,7 @@ mProperty_mValue () {
 
 cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                       const GGS_location & in_mLocation,
-                                                                                      const GGS_double & in_mValue,
+                                                                                      const GGS_f_36__34_ & in_mValue,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
@@ -5829,7 +5829,7 @@ GGS_string extensionGetter_lexicalTypeBaseName (const GGS_lexicalTypeEnum & inOb
     break ;
   case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
     {
-      result_result = GGS_string ("double") ;
+      result_result = GGS_string ("f64") ;
     }
     break ;
   case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:

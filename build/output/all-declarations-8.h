@@ -2677,12 +2677,12 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
   public: GGS_templateLiteralDoubleExpressionAST (const class cPtr_templateLiteralDoubleExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_ldouble readProperty_mLiteralDouble (void) const ;
+  public: class GGS_lf_36__34_ readProperty_mLiteralDouble (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_templateLiteralDoubleExpressionAST init_21_ (const class GGS_ldouble & inOperand0,
+  public: static GGS_templateLiteralDoubleExpressionAST init_21_ (const class GGS_lf_36__34_ & inOperand0,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -2721,7 +2721,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralDoubleExpressionAST_init_21_ (const class GGS_ldouble & inOperand0,
+  public: void templateLiteralDoubleExpressionAST_init_21_ (const class GGS_lf_36__34_ & inOperand0,
                                                             Compiler * inCompiler) ;
 
 
@@ -2734,14 +2734,14 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_ldouble mProperty_mLiteralDouble ;
+  public: GGS_lf_36__34_ mProperty_mLiteralDouble ;
 
 
 //--- Default constructor
   public: cPtr_templateLiteralDoubleExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateLiteralDoubleExpressionAST (const GGS_ldouble & in_mLiteralDouble,
+  public: cPtr_templateLiteralDoubleExpressionAST (const GGS_lf_36__34_ & in_mLiteralDouble,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 

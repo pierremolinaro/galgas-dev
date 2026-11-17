@@ -3929,7 +3929,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
 //--- Assign from attribute
   public: GGS_lbigint synthetizedAttribute_bigintValue (void) const ;
   public: GGS_lchar synthetizedAttribute_charValue (void) const ;
-  public: GGS_ldouble synthetizedAttribute_floatValue (void) const ;
+  public: GGS_lf_36__34_ synthetizedAttribute_floatValue (void) const ;
   public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
   public: GGS_luint synthetizedAttribute_uint_33__32_value (void) const ;
 

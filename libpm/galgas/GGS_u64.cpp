@@ -536,10 +536,10 @@ GGS_bigint GGS_u_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_u_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_u_36__34_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double ((double) mU64) ;
+    result = GGS_f_36__34_ ((double) mU64) ;
   }
   return result ;
 }

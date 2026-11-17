@@ -488,7 +488,7 @@ override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
   outExpression = @literalDoubleExpressionForGeneration (
     inAnalysisContext.mPredefinedTypes.mDoubleType,
     self.mLiteralDouble.location,
-    self.mLiteralDouble.double
+    self.mLiteralDouble.f64
   )
 }
 

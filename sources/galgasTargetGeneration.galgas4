@@ -990,7 +990,7 @@ proc updateGalgasTargets (
         "GGS_bool.cpp",
         "GGS_char.cpp",
         "GGS_data.cpp",
-        "GGS_double.cpp",
+        "GGS_f64.cpp",
         "GGS_filewrapper.cpp",
         "GGS_location.cpp",
         "GGS_s64.cpp",

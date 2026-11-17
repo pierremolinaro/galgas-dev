@@ -679,7 +679,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "doubleNumber",
-      !returnedTypeName: "double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (

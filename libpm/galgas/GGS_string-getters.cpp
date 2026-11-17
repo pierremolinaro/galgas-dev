@@ -1216,15 +1216,15 @@ GGS_bigint GGS_string::getter_decimalSignedBigInt (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_string::getter_doubleNumber (Compiler * inCompiler
+GGS_f_36__34_ GGS_string::getter_doubleNumber (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid ()) {
     double doubleValue = 0.0 ;
     bool ok = true ;
     mString.convertToDouble (doubleValue, ok) ;
     if (ok) {
-      result = GGS_double (doubleValue) ;
+      result = GGS_f_36__34_ (doubleValue) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("cannot convert a string to a double number: it contains invalid character" COMMA_THERE) ;
     }

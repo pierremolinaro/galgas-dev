@@ -916,16 +916,16 @@ const GALGAS_TypeDescriptor * GGS_data::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @double generic code implementation
+//     @f64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
-                                                           nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_f_36__34_ ("f64",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_double ;
+const GALGAS_TypeDescriptor * GGS_f_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_f_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2637,72 +2637,72 @@ void GGS_lchar::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @ldouble generic code implementation
+//     @lf64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
-                                                            nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lf_36__34_ ("lf64",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_ldouble::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ldouble ;
+const GALGAS_TypeDescriptor * GGS_lf_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lf_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble::GGS_ldouble (void) :
-mProperty_double (),
+GGS_lf_36__34_::GGS_lf_36__34_ (void) :
+mProperty_f_36__34_ (),
 mProperty_location () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble::GGS_ldouble (const GGS_ldouble & inSource) :
-mProperty_double (inSource.mProperty_double),
+GGS_lf_36__34_::GGS_lf_36__34_ (const GGS_lf_36__34_ & inSource) :
+mProperty_f_36__34_ (inSource.mProperty_f_36__34_),
 mProperty_location (inSource.mProperty_location) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble & GGS_ldouble::operator = (const GGS_ldouble & inSource) {
-  mProperty_double = inSource.mProperty_double ;
+GGS_lf_36__34_ & GGS_lf_36__34_::operator = (const GGS_lf_36__34_ & inSource) {
+  mProperty_f_36__34_ = inSource.mProperty_f_36__34_ ;
   mProperty_location = inSource.mProperty_location ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_ldouble GGS_ldouble::init_21__21_ (const GGS_double & in_double,
-                                       const GGS_location & in_location,
-                                       Compiler * inCompiler
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ldouble result ;
+GGS_lf_36__34_ GGS_lf_36__34_::init_21__21_ (const GGS_f_36__34_ & in_f_36__34_,
+                                             const GGS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lf_36__34_ result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_double = in_double ;
+  result.mProperty_f_36__34_ = in_f_36__34_ ;
   result.mProperty_location = in_location ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ldouble::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_lf_36__34_::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble::GGS_ldouble (const GGS_double & inOperand0,
-                          const GGS_location & inOperand1) :
-mProperty_double (inOperand0),
+GGS_lf_36__34_::GGS_lf_36__34_ (const GGS_f_36__34_ & inOperand0,
+                                const GGS_location & inOperand1) :
+mProperty_f_36__34_ (inOperand0),
 mProperty_location (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_ldouble::objectCompare (const GGS_ldouble & inOperand) const {
+ComparisonResult GGS_lf_36__34_::objectCompare (const GGS_lf_36__34_ & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_double.objectCompare (inOperand.mProperty_double) ;
+    result = mProperty_f_36__34_.objectCompare (inOperand.mProperty_f_36__34_) ;
   }
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
@@ -2712,26 +2712,26 @@ ComparisonResult GGS_ldouble::objectCompare (const GGS_ldouble & inOperand) cons
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_ldouble::isValid (void) const {
-  return mProperty_double.isValid () && mProperty_location.isValid () ;
+bool GGS_lf_36__34_::isValid (void) const {
+  return mProperty_f_36__34_.isValid () && mProperty_location.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ldouble::drop (void) {
-  mProperty_double.drop () ;
+void GGS_lf_36__34_::drop (void) {
+  mProperty_f_36__34_.drop () ;
   mProperty_location.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_ldouble::description (String & ioString,
-                               const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ldouble:") ;
+void GGS_lf_36__34_::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lf64:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_double.description (ioString, inIndentation+1) ;
+    mProperty_f_36__34_.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }

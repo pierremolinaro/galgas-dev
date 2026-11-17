@@ -10928,12 +10928,12 @@ GGS_lchar Lexique_galgasScanner_34_::synthetizedAttribute_charValue (void) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ldouble Lexique_galgasScanner_34_::synthetizedAttribute_floatValue (void) const {
+GGS_lf_36__34_ Lexique_galgasScanner_34_::synthetizedAttribute_floatValue (void) const {
   cTokenFor_galgasScanner_34_ * ptr = (cTokenFor_galgasScanner_34_ *) currentTokenPtr (HERE) ;
   macroValidSharedObject (ptr, cTokenFor_galgasScanner_34_) ;
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_double value (ptr->mLexicalAttribute_floatValue) ;
-  GGS_ldouble result (value, currentLocation) ;
+  GGS_f_36__34_ value (ptr->mLexicalAttribute_floatValue) ;
+  GGS_lf_36__34_ result (value, currentLocation) ;
   return result ;
 }
 

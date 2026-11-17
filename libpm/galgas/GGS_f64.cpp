@@ -16,52 +16,52 @@ static const double PI_CONSTANT = 3.14159265358979323846264338327950288 ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double::GGS_double (void) :
+GGS_f_36__34_::GGS_f_36__34_ (void) :
 AC_GALGAS_root (),
 mIsValid (false),
-mDoubleValue (0.0) {
+mF64 (0.0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double::GGS_double (const double inValue) :
+GGS_f_36__34_::GGS_f_36__34_ (const double inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
-mDoubleValue (inValue) {
+mF64 (inValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::class_func_pi (UNUSED_LOCATION_ARGS) {
-  return GGS_double (PI_CONSTANT) ;
+GGS_f_36__34_ GGS_f_36__34_::class_func_pi (UNUSED_LOCATION_ARGS) {
+  return GGS_f_36__34_ (PI_CONSTANT) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_u_36__34_ & inImage
+GGS_f_36__34_ GGS_f_36__34_::class_func_doubleWithBinaryImage (const GGS_u_36__34_ & inImage
                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (inImage.isValid ()) {
     union {
       uint64_t unsignedIntegerValue ;
       double   doubleValue ;
     } ;
     unsignedIntegerValue = inImage.u64 () ;
-    result = GGS_double (doubleValue) ;
+    result = GGS_f_36__34_ (doubleValue) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_double::getter_binaryImage (UNUSED_LOCATION_ARGS) const {
+GGS_u_36__34_ GGS_f_36__34_::getter_binaryImage (UNUSED_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
   if (isValid ()) {
     union {
       uint64_t unsignedIntegerValue ;
       double theDoubleValue ;
     } ;
-    theDoubleValue = mDoubleValue ;
+    theDoubleValue = mF64 ;
     result = GGS_u_36__34_ (unsignedIntegerValue) ;
   }
   return result ;
@@ -69,25 +69,25 @@ GGS_u_36__34_ GGS_double::getter_binaryImage (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_cos (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_cos (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (cos (mDoubleValue)) ;
+    result = GGS_f_36__34_ (cos (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_sqrt (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_sqrt (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    if (mDoubleValue < 0.0) {
-      String s = "Cannot compute square root of a negative @double" ;
+    if (mF64 < 0.0) {
+      String s = "Cannot compute square root of a negative @f64" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
-      result = GGS_double (sqrt (mDoubleValue)) ;
+      result = GGS_f_36__34_ (sqrt (mF64)) ;
     }
   }
   return result ;
@@ -95,16 +95,16 @@ GGS_double GGS_double::getter_sqrt (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_log_32_ (Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_log_32_ (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    if (mDoubleValue <= 0.0) {
+    if (mF64 <= 0.0) {
       String s ;
-      s.appendCString ("Cannot compute log2 of a null or negative @double") ;
+      s.appendCString ("Cannot compute log2 of a null or negative @f64") ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
-      result = GGS_double (log2 (mDoubleValue)) ;
+      result = GGS_f_36__34_ (log2 (mF64)) ;
     }
   }
   return result ;
@@ -112,15 +112,15 @@ GGS_double GGS_double::getter_log_32_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_log_31__30_ (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_log_31__30_ (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    if (mDoubleValue <= 0.0) {
-      String s = "Cannot compute log10 of a null or negative @double" ;
+    if (mF64 <= 0.0) {
+      String s = "Cannot compute log10 of a null or negative @f64" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
-      result = GGS_double (log10 (mDoubleValue)) ;
+      result = GGS_f_36__34_ (log10 (mF64)) ;
     }
   }
   return result ;
@@ -128,15 +128,15 @@ GGS_double GGS_double::getter_log_31__30_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_logn (Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_logn (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    if (mDoubleValue <= 0.0) {
-      String s = "Cannot compute logn of a null or negative @double" ;
+    if (mF64 <= 0.0) {
+      String s = "Cannot compute logn of a null or negative @f64" ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
-      result = GGS_double (::log (mDoubleValue)) ;
+      result = GGS_f_36__34_ (::log (mF64)) ;
     }
   }
   return result ;
@@ -144,148 +144,148 @@ GGS_double GGS_double::getter_logn (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_exp (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_exp (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (::exp (mDoubleValue)) ;
+    result = GGS_f_36__34_ (::exp (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_cosDegree (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_cosDegree (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (cos (mDoubleValue * PI_CONSTANT / 180.0)) ;
+    result = GGS_f_36__34_ (cos (mF64 * PI_CONSTANT / 180.0)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_sin (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_sin (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (sin (mDoubleValue)) ;
+    result = GGS_f_36__34_ (sin (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_sinDegree (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_sinDegree (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (sin (mDoubleValue * PI_CONSTANT / 180.0)) ;
+    result = GGS_f_36__34_ (sin (mF64 * PI_CONSTANT / 180.0)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_tan (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_tan (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (tan (mDoubleValue)) ;
+    result = GGS_f_36__34_ (tan (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_tanDegree (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_tanDegree (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (tan (mDoubleValue * PI_CONSTANT / 180.0)) ;
+    result = GGS_f_36__34_ (tan (mF64 * PI_CONSTANT / 180.0)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::getter_power (const GGS_double & inExponant,
-                                     Compiler * /* inCompiler */
-                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::getter_power (const GGS_f_36__34_ & inExponant,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid () && inExponant.isValid ()) {
-    result = GGS_double (pow (mDoubleValue, inExponant.mDoubleValue)) ;
+    result = GGS_f_36__34_ (pow (mF64, inExponant.mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_double::getter_uint (Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) const {
+GGS_uint GGS_f_36__34_::getter_uint (Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
-  if ((mDoubleValue > double (UINT32_MAX)) || (mDoubleValue < 0.0)) {
-    String s = "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
+  if ((mF64 > double (UINT32_MAX)) || (mF64 < 0.0)) {
+    String s = "Cannot convert @f64 (" ;
+    s.appendDouble (mF64) ;
     s.appendCString (") to @uint") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_uint ((uint32_t) (lround (mDoubleValue) & INT32_MAX)) ;
+    result = GGS_uint ((uint32_t) (lround (mF64) & INT32_MAX)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_double::getter_u_36__34_ (Compiler * inCompiler
+GGS_u_36__34_ GGS_f_36__34_::getter_u_36__34_ (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
-  if ((mDoubleValue > double (UINT64_MAX)) || (mDoubleValue < 0.0)) {
-    String s = "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
-    s.appendCString (") to @uint64") ;
+  if ((mF64 > double (UINT64_MAX)) || (mF64 < 0.0)) {
+    String s = "Cannot convert @f64 (" ;
+    s.appendDouble (mF64) ;
+    s.appendCString (") to @u64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_u_36__34_ ((uint64_t) lround (mDoubleValue)) ;
+    result = GGS_u_36__34_ ((uint64_t) lround (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_double::getter_sint (Compiler * inCompiler
+GGS_sint GGS_f_36__34_::getter_sint (Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
-  if ((mDoubleValue > double (INT32_MAX)) || (mDoubleValue < double (INT32_MIN))) {
-    String s = "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
+  if ((mF64 > double (INT32_MAX)) || (mF64 < double (INT32_MIN))) {
+    String s = "Cannot convert @f64 (" ;
+    s.appendDouble (mF64) ;
     s.appendCString (") to @sint") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_sint (int32_t (lround (mDoubleValue) & INT32_MAX)) ;
+    result = GGS_sint (int32_t (lround (mF64) & INT32_MAX)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_s_36__34_ GGS_double::getter_s_36__34_ (Compiler * inCompiler
+GGS_s_36__34_ GGS_f_36__34_::getter_s_36__34_ (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
-  if ((mDoubleValue > double (INT64_MAX)) || (mDoubleValue < double (INT64_MIN))) {
-    String s = "Cannot convert @double (" ;
-    s.appendDouble (mDoubleValue) ;
+  if ((mF64 > double (INT64_MAX)) || (mF64 < double (INT64_MIN))) {
+    String s = "Cannot convert @f64 (" ;
+    s.appendDouble (mF64) ;
     s.appendCString (") to @sint64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_s_36__34_ (lround (mDoubleValue)) ;
+    result = GGS_s_36__34_ (lround (mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_double::objectCompare (const GGS_double & inOperand) const {
+ComparisonResult GGS_f_36__34_::objectCompare (const GGS_f_36__34_ & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    if (mDoubleValue < inOperand.mDoubleValue) {
+    if (mF64 < inOperand.mF64) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mDoubleValue > inOperand.mDoubleValue) {
+    }else if (mF64 > inOperand.mF64) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
@@ -296,11 +296,11 @@ ComparisonResult GGS_double::objectCompare (const GGS_double & inOperand) const 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::description (String & ioString,
+void GGS_f_36__34_::description (String & ioString,
                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<@double:") ;
+  ioString.appendCString ("<@f64:") ;
   if (isValid ()) {
-    ioString.appendDouble (mDoubleValue) ;
+    ioString.appendDouble (mF64) ;
   }else{
     ioString.appendCString ("not built") ;
   }
@@ -309,43 +309,43 @@ void GGS_double::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_double::getter_string (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_f_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   String s ;
-  s.appendDouble (mDoubleValue) ;
+  s.appendDouble (mF64) ;
   return GGS_string (s) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::add_operation (const GGS_double & inOperand2,
+GGS_f_36__34_ GGS_f_36__34_::add_operation (const GGS_f_36__34_ & inOperand2,
                                       Compiler * /* inCompiler */
                                       COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_double (mDoubleValue + inOperand2.mDoubleValue) ;
+    result = GGS_f_36__34_ (mF64 + inOperand2.mF64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::subtract_operation (const GGS_double & inOperand2,
+GGS_f_36__34_ GGS_f_36__34_::subtract_operation (const GGS_f_36__34_ & inOperand2,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_double (mDoubleValue - inOperand2.mDoubleValue) ;
+    result = GGS_f_36__34_ (mF64 - inOperand2.mF64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::plusAssignOperation (const GGS_double inOperand,
+void GGS_f_36__34_::plusAssignOperation (const GGS_f_36__34_ inOperand,
                                       Compiler *
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    mDoubleValue += inOperand.mDoubleValue ;
+    mF64 += inOperand.mF64 ;
   }else{
     mIsValid = false ;
   }
@@ -353,11 +353,11 @@ void GGS_double::plusAssignOperation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::minusAssignOperation (const GGS_double inOperand,
+void GGS_f_36__34_::minusAssignOperation (const GGS_f_36__34_ inOperand,
                                         Compiler *
                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    mDoubleValue -= inOperand.mDoubleValue ;
+    mF64 -= inOperand.mF64 ;
   }else{
     mIsValid = false ;
   }
@@ -365,11 +365,11 @@ void GGS_double::minusAssignOperation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::mulAssignOperation (const GGS_double inOperand,
+void GGS_f_36__34_::mulAssignOperation (const GGS_f_36__34_ inOperand,
                                       Compiler * /* inCompiler */
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    mDoubleValue *= inOperand.mDoubleValue ;
+    mF64 *= inOperand.mF64 ;
   }else{
     mIsValid = false ;
   }
@@ -377,42 +377,42 @@ void GGS_double::mulAssignOperation (const GGS_double inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_double::divAssignOperation (const GGS_double inOperand,
+void GGS_f_36__34_::divAssignOperation (const GGS_f_36__34_ inOperand,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    if (inOperand.mDoubleValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("@double /= divide by zero" COMMA_THERE) ;
+    if (inOperand.mF64 == 0) {
+      inCompiler->onTheFlyRunTimeError ("@f64 /= divide by zero" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mDoubleValue /= inOperand.mDoubleValue ;
+      mF64 /= inOperand.mF64 ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::multiply_operation (const GGS_double & inOperand2,
+GGS_f_36__34_ GGS_f_36__34_::multiply_operation (const GGS_f_36__34_ & inOperand2,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_double (mDoubleValue * inOperand2.mDoubleValue) ;
+    result = GGS_f_36__34_ (mF64 * inOperand2.mF64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::divide_operation (const GGS_double & inOperand2,
+GGS_f_36__34_ GGS_f_36__34_::divide_operation (const GGS_f_36__34_ & inOperand2,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    if (inOperand2.mDoubleValue == 0.0) {
+    if (inOperand2.mF64 == 0.0) {
       inCompiler->onTheFlyRunTimeError ("divide by zero" COMMA_THERE) ;
     }else{
-      result = GGS_double (mDoubleValue / inOperand2.mDoubleValue) ;
+      result = GGS_f_36__34_ (mF64 / inOperand2.mF64) ;
     }
   }
   return result ;
@@ -420,34 +420,34 @@ GGS_double GGS_double::divide_operation (const GGS_double & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::wrapping_divide_operation (const GGS_double & inOperand) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_f_36__34_::wrapping_divide_operation (const GGS_f_36__34_ & inOperand) const {
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_double ((inOperand.mDoubleValue == 0.0) ? 0.0 : (mDoubleValue / inOperand.mDoubleValue)) ;
+    result = GGS_f_36__34_ ((inOperand.mF64 == 0.0) ? 0.0 : (mF64 / inOperand.mF64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::operator_unary_minus (Compiler * /* inCompiler */
+GGS_f_36__34_ GGS_f_36__34_::operator_unary_minus (Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (- mDoubleValue) ;
+    result = GGS_f_36__34_ (- mF64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::modulo_operation (const GGS_double & inOperand,
+GGS_f_36__34_ GGS_f_36__34_::modulo_operation (const GGS_f_36__34_ & inOperand,
                                          Compiler * /* inCompiler */
                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint64_t times = uint64_t (mDoubleValue / inOperand.mDoubleValue) ;
-    result = GGS_double (mDoubleValue - double (times) * inOperand.mDoubleValue) ;
+    const uint64_t times = uint64_t (mF64 / inOperand.mF64) ;
+    result = GGS_f_36__34_ (mF64 - double (times) * inOperand.mF64) ;
   }
   return result ;
 }

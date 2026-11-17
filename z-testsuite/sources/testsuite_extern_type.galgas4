@@ -9,9 +9,9 @@ extern @complex {
   "  private : double mReal ;\n"
   "  private : double mImaginary ;\n"
 }{
-  init (@double real, @double imaginary)
-  func real () -> @double
-  func imaginary () -> @double
+  init (@f64 real, @f64 imaginary)
+  func real () -> @f64
+  func imaginary () -> @f64
 }
 
 //--------------------------------------------------------------------------*
@@ -19,8 +19,8 @@ extern @complex {
 proc testsuite_extern_type() {
   println ("*************************************** begin of extern type test")
   let complex = @complex (1.0, -1.0)
-  println (complex.description) 
-  print ("real") ; println (complex.real.description) 
+  println (complex.description)
+  print ("real") ; println (complex.real.description)
   print ("imaginary") ; println (complex.imaginary.description)
 }
 

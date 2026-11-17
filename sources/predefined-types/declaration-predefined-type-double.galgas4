@@ -78,84 +78,84 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"cos",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sin",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"tan",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"log10",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"log2",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"logn",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"exp",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"cosDegree",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sinDegree",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"tanDegree",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sqrt",
-      !returnedTypeName:"double",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"power", "double", "inExponant",
-      !returnedTypeName:"double",
+      !getterName:"power", "f64", "inExponant",
+      !returnedTypeName: "f64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
@@ -176,7 +176,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"pi",
-      !resultTypeName:"double",
+      !resultTypeName: "f64",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
@@ -185,7 +185,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !name:"doubleWithBinaryImage",
       !argTypeName:"u64",
       !argName:"inBinaryImage",
-      !resultTypeName:"double",
+      !resultTypeName: "f64",
       !hasLexiqueArg:false
     )
   }
@@ -193,7 +193,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.double_type : ]
+    result = filewrapper [predefinedTypeGenerationTemplate.f64_type : ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

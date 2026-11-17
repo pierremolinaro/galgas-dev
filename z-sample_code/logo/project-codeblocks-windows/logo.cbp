@@ -177,7 +177,7 @@
    <Unit filename="../build/libpm/galgas/GGS_bool.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_char.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_data.cpp" />
-   <Unit filename="../build/libpm/galgas/GGS_double.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_f64.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_filewrapper.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_location.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_sint.cpp" />

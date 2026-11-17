@@ -1029,12 +1029,12 @@ class GGS_literalDoubleExpressionAST : public GGS_semanticExpressionAST {
   public: GGS_literalDoubleExpressionAST (const class cPtr_literalDoubleExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_ldouble readProperty_mValue (void) const ;
+  public: class GGS_lf_36__34_ readProperty_mValue (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_literalDoubleExpressionAST init_21_ (const class GGS_ldouble & inOperand0,
+  public: static GGS_literalDoubleExpressionAST init_21_ (const class GGS_lf_36__34_ & inOperand0,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -1073,7 +1073,7 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void literalDoubleExpressionAST_init_21_ (const class GGS_ldouble & inOperand0,
+  public: void literalDoubleExpressionAST_init_21_ (const class GGS_lf_36__34_ & inOperand0,
                                                     Compiler * inCompiler) ;
 
 
@@ -1092,14 +1092,14 @@ class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_ldouble mProperty_mValue ;
+  public: GGS_lf_36__34_ mProperty_mValue ;
 
 
 //--- Default constructor
   public: cPtr_literalDoubleExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_literalDoubleExpressionAST (const GGS_ldouble & in_mValue,
+  public: cPtr_literalDoubleExpressionAST (const GGS_lf_36__34_ & in_mValue,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -1201,14 +1201,14 @@ class GGS_literalDoubleExpressionForGeneration : public GGS_semanticExpressionFo
   public: GGS_literalDoubleExpressionForGeneration (const class cPtr_literalDoubleExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_double readProperty_mValue (void) const ;
+  public: class GGS_f_36__34_ readProperty_mValue (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_literalDoubleExpressionForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                             const class GGS_location & inOperand1,
-                                                                            const class GGS_double & inOperand2,
+                                                                            const class GGS_f_36__34_ & inOperand2,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -1249,7 +1249,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
 //--------------------------------- Initializers
   public: void literalDoubleExpressionForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                       const class GGS_location & inOperand1,
-                                                                      const class GGS_double & inOperand2,
+                                                                      const class GGS_f_36__34_ & inOperand2,
                                                                       Compiler * inCompiler) ;
 
 
@@ -1262,7 +1262,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_double mProperty_mValue ;
+  public: GGS_f_36__34_ mProperty_mValue ;
 
 
 //--- Default constructor
@@ -1271,7 +1271,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
 //--- Constructor
   public: cPtr_literalDoubleExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                      const GGS_location & in_mLocation,
-                                                     const GGS_double & in_mValue,
+                                                     const GGS_f_36__34_ & in_mValue,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 

@@ -21,9 +21,9 @@ map @routineMap {
 abstract class @instruction {
 
   abstract proc codeDisplay (?!@bool ioPenDown,
-                             ?!@double _ioX,
-                             ?!@double _ioY,
-                             ?!@double _ioAngle,
+                             ?!@f64 _ioX,
+                             ?!@f64 _ioY,
+                             ?!@f64 _ioAngle,
                              ?!@string _SVG)
 
 }
@@ -37,9 +37,9 @@ final class @penUp : @instruction {
 
 override proc @penUp.codeDisplay
   (?!@bool ioPenDown,
-  ?!@double _ioX,
-  ?!@double _ioY,
-  ?!@double _ioAngle,
+  ?!@f64 _ioX,
+  ?!@f64 _ioY,
+  ?!@f64 _ioAngle,
   ?!@string _SVG
 ) {
   ioPenDown = false
@@ -54,9 +54,9 @@ final class @penDown : @instruction {
 
 override proc @penDown.codeDisplay
   (?!@bool ioPenDown,
-  ?!@double _ioX,
-  ?!@double _ioY,
-  ?!@double _ioAngle,
+  ?!@f64 _ioX,
+  ?!@f64 _ioY,
+  ?!@f64 _ioAngle,
   ?!@string _SVG
 ) {
   ioPenDown = true
@@ -72,12 +72,12 @@ final class @rotate : @instruction {
 
 override proc @rotate.codeDisplay
   (?!@bool _ioPenDown,
-  ?!@double _ioX,
-  ?!@double _ioY,
-  ?!@double ioAngle,
+  ?!@f64 _ioX,
+  ?!@f64 _ioY,
+  ?!@f64 ioAngle,
   ?!@string _SVG
 ) {
-  ioAngle = ioAngle + self.mAngle.uint.double
+  ioAngle = ioAngle + self.mAngle.uint.f64
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -90,13 +90,13 @@ final class @forward : @instruction {
 
 override proc @forward.codeDisplay
   (?!@bool ioPenDown,
-  ?!@double ioX,
-  ?!@double ioY,
-  ?!@double ioAngle,
+  ?!@f64 ioX,
+  ?!@f64 ioY,
+  ?!@f64 ioAngle,
   ?!@string SVG
 ) {
-  let @double x = ioX + self.mLength.double () * ioAngle.cosDegree
-  let @double y = ioY + self.mLength.double () * ioAngle.sinDegree
+  let @f64 x = ioX + self.mLength.f64 () * ioAngle.cosDegree
+  let @f64 y = ioY + self.mLength.f64 () * ioAngle.sinDegree
   if ioPenDown then
     SVG += "<line x1=\"" + ioX + "\" y1=\"" + ioY + "\" x2=\"" + x + "\" y2=\""
         + y + "\" style=\"stroke:#1F56D2\" stroke-linecap=\"round\" />\n"

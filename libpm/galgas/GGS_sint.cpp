@@ -92,10 +92,10 @@ GGS_s_36__34_ GGS_sint::getter_s_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_sint::getter_double (UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+GGS_f_36__34_ GGS_sint::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double ((double) mSIntValue) ;
+    result = GGS_f_36__34_ ((double) mSIntValue) ;
   }
   return result ;
 }
