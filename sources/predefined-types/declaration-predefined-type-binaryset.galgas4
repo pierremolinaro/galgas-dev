@@ -167,7 +167,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -180,7 +180,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -193,7 +193,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -206,7 +206,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -219,7 +219,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -232,7 +232,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !argName1:"inBitIndex",
       !argTypeName2:"uint",
       !argName2:"inBitCount",
-      !argTypeName3:"uint64",
+      !argTypeName3:"u64",
       !argName3:"inConstant",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -255,7 +255,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"nodeCount",
-      !returnedTypeName:"uint64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -348,7 +348,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !getterName:"valueCount",
       "uint",
       "inBitCount",
-      !returnedTypeName:"uint64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:true
     )
    enterBaseFinalGetterWithArgument (
@@ -364,14 +364,14 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"compressedValueCount",
-      !returnedTypeName:"uint64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64ValueList", "uint", "inBitCount",
-      !returnedTypeName:"[uint64]",
+      !returnedTypeName:"[u64]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
@@ -524,7 +524,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "containsValue", "uint64", "inValue", "uint", "inFirstBit", "uint", "inBitCount",
+      "containsValue", "u64", "inValue", "uint", "inFirstBit", "uint", "inBitCount",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

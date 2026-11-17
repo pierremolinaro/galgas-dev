@@ -108,15 +108,15 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
         bigIntValue.sint
       )
       handled = true
-    elsif "uint64" == targetTypeForBigIntAssignment.typeName then
+    elsif "u64" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
-        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
+        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u64"
       end
       ioExpression = @literalUInt64ExpressionForGeneration (
         targetTypeForBigIntAssignment,
         ioExpression.mLocation,
-        bigIntValue.uint64
+        bigIntValue.u64
       )
       handled = true
     elsif "u8" == targetTypeForBigIntAssignment.typeName then
@@ -262,12 +262,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioRightExpression = @literalSIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.sint)
         ok = true
-      elsif "uint64" == leftResultType.definition.typeName then
+      elsif "u64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
-          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u64"
         end
-        ioRightExpression = @literalUInt64ExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.uint64)
+        ioRightExpression = @literalUInt64ExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.u64)
         ok = true
       elsif "sint64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
@@ -294,12 +294,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioLeftExpression = @literalSIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.sint)
         ok = true
-      elsif "uint64" == rightType.definition.typeName then
+      elsif "u64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 64)) then
-          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint64"
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u64"
         end
-        ioLeftExpression = @literalUInt64ExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.uint64)
+        ioLeftExpression = @literalUInt64ExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.u64)
         ok = true
       elsif "sint64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue

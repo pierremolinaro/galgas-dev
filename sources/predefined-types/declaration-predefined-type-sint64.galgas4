@@ -73,8 +73,8 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint64",
-      !returnedTypeName:"uint64",
+      !getterName:"u64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (

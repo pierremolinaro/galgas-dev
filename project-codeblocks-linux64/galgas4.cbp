@@ -232,9 +232,12 @@
    <Unit filename="../libpm/galgas/GGS_string.cpp" />
    <Unit filename="../libpm/galgas/GGS_string-getters.cpp" />
    <Unit filename="../libpm/galgas/GGS_stringset.cpp" />
+   <Unit filename="../libpm/galgas/GGS_timer.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u8.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u16.cpp" />
    <Unit filename="../libpm/galgas/GGS_uint.cpp" />
    <Unit filename="../libpm/galgas/GGS_timer.cpp" />
-   <Unit filename="../libpm/galgas/GGS_uint64.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u64.cpp" />
   <Extensions>
    <code_completion />
    <envvars />

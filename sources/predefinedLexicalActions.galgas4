@@ -28,7 +28,7 @@ func @lexicalTypeEnum.lexicalTypeBaseName () -> @string {
     case lexicalType_string : result = "string"
     case lexicalType_char   : result = "char"
     case lexicalType_uint   : result = "uint"
-    case lexicalType_uint64 : result = "uint64"
+    case lexicalType_uint64 : result = "u64"
     case lexicalType_sint   : result = "sint"
     case lexicalType_sint64 : result = "sint64"
     case lexicalType_double : result = "double"

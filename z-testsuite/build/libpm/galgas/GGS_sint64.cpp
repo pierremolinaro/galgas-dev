@@ -56,13 +56,13 @@ GGS_sint_36__34_ GGS_sint_36__34_::class_func_min (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_sint_36__34_::getter_uint_36__34_ (Compiler * inCompiler
+GGS_u_36__34_ GGS_sint_36__34_::getter_u_36__34_ (Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+  GGS_u_36__34_ result ;
   if (mSInt64Value < 0) {
     inCompiler->onTheFlyRunTimeError ("cannot convert a negative sint64 into an uint64" COMMA_THERE) ;
   }else{
-    result = GGS_uint_36__34_ ((uint64_t) mSInt64Value) ;
+    result = GGS_u_36__34_ ((uint64_t) mSInt64Value) ;
   }
   return result ;
 }

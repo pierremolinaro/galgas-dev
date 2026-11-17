@@ -61,74 +61,6 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-//override proc @literalUInt64ExpressionAST enterExpressionInSemanticContext
-//  ?!@unifiedTypeMap unused ioTypeMap
-//{
-//}
-
-//································································································
-
-//override proc @literalUInt64ExpressionAST analyzeSemanticExpression
-//  ?let @lstring unused inUsefulnessCallerEntityName
-//  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-//  ?inferenceType: let @unifiedTypeMapEntry unused inType
-//  ?let @analysisContext inAnalysisContext
-//  ?!@localVarManager unused ioVariableMap
-//  !@semanticExpressionForGeneration outExpression
-//{
-//  outExpression = @literalUInt64ExpressionForGeneration {
-//    !inAnalysisContext.predefinedTypes.mUInt64Type
-//    !self.mValue.location
-//    !self.mValue.uint64
-//  }
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//override proc @literalSIntExpressionAST enterExpressionInSemanticContext
-//  ?!@unifiedTypeMap unused ioTypeMap
-//{
-//}
-
-//································································································
-
-//override proc @literalSIntExpressionAST analyzeSemanticExpression
-//  ?let @lstring unused inUsefulnessCallerEntityName
-//  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-//  ?inferenceType: let @unifiedTypeMapEntry unused inType
-//  ?let @analysisContext inAnalysisContext
-//  ?!@localVarManager unused ioVariableMap
-//  !@semanticExpressionForGeneration outExpression
-//{
-//  outExpression = @literalSIntExpressionForGeneration {!inAnalysisContext.predefinedTypes.mSIntType !self.mValue.location !self.mValue.sint}
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-//override proc @literalSInt64ExpressionAST enterExpressionInSemanticContext
-//  ?!@unifiedTypeMap unused ioTypeMap
-//{
-//}
-
-//································································································
-
-//override proc @literalSInt64ExpressionAST analyzeSemanticExpression
-//  ?let @lstring unused inUsefulnessCallerEntityName
-//  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-//  ?inferenceType: let @unifiedTypeMapEntry unused inType
-//  ?let @analysisContext inAnalysisContext
-//  ?!@localVarManager unused ioVariableMap
-//  !@semanticExpressionForGeneration outExpression
-//{
-//  outExpression = @literalSInt64ExpressionForGeneration {
-//    !inAnalysisContext.predefinedTypes.mSInt64Type
-//    !self.mValue.location
-//    !self.mValue.sint64
-//  }
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @literalBigIntExpressionAST.enterExpressionInSemanticContext
   (?!@unifiedTypeMap _ioTypeMap
 ) {
@@ -174,14 +106,14 @@ override proc @literalUIntExpressionForGeneration.generateExpression
 //--------------------------------------------------------------------------------------------------
 
 final class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @uint64 mValue
+  private let @u64 mValue
   
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset _ioInclusionSet,
                                     ?!@uint _ioTemporaryVariableIndex,
                                     ?!@stringset _ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
-    outCppExpression = "GGS_uint_36__34_ (uint64_t (" + self.mValue.string + "ULL))"
+    outCppExpression = "GGS_u_36__34_ (uint64_t (" + self.mValue.string + "ULL))"
   }
 }
 

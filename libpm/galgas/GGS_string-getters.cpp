@@ -1095,15 +1095,15 @@ GGS_bool GGS_string::getter_isDecimalUnsigned_36__34_Number (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_string::getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
+GGS_u_36__34_ GGS_string::getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+  GGS_u_36__34_ result ;
   if (isValid ()) {
     uint64_t r = 0 ;
     bool ok = false ;
     mString.convertToUInt64 (r, ok) ;
     if (ok) {
-      result = GGS_uint_36__34_ (r) ;
+      result = GGS_u_36__34_ (r) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @uint64 number" COMMA_THERE) ;
     }

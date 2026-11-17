@@ -236,51 +236,6 @@ void cPtr_optionalTypeForGeneration::method_appendSpecificImplementation (const 
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_optionalTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_optionalTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_optionalTypeGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_optionalTypeGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_optionalTypeGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_optionalTypeGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_optionalTypeGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_optionalTypeGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_optionalTypeGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_optionalTypeGenerationTemplate_0 [1] = {
@@ -289,8 +244,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_optionalTypeGenerationTempla
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_optionalTypeGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_optionalTypeGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_optionalTypeGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -300,7 +254,7 @@ const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_optionalTypeGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_optionalTypeGenerationTemplate_0
 ) ;
 
@@ -1266,51 +1220,6 @@ void cPtr_mapTypeForGeneration::method_appendSpecificImplementation (const GGS_u
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_mapGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_mapGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_mapGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_mapGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_mapGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_mapGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_mapGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_mapGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_mapGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_mapGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_mapGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_mapGenerationTemplate_0 [1] = {
@@ -1319,8 +1228,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_mapGenerationTemplate_0 [1] 
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_mapGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_mapGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_mapGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -1330,7 +1238,7 @@ const cDirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_mapGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_mapGenerationTemplate_0
 ) ;
 
@@ -2306,51 +2214,6 @@ void cPtr_boolsetDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & 
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_structGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_structGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_structGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_structGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_structGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_structGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_structGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_structGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_structGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_structGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_structGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_structGenerationTemplate_0 [1] = {
@@ -2359,8 +2222,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_structGenerationTemplate_0 [
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_structGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_structGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_structGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -2370,7 +2232,7 @@ const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_structGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_structGenerationTemplate_0
 ) ;
 
@@ -2935,51 +2797,6 @@ void cPtr_sortedArrayTypeForGeneration::method_appendSpecificImplementation (con
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_sortedArrayTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_sortedArrayTypeGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_sortedArrayTypeGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_sortedArrayTypeGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_sortedArrayTypeGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_sortedArrayTypeGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_sortedArrayTypeGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_sortedArrayTypeGenerationTemplate_0 [1] = {
@@ -2988,8 +2805,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_sortedArrayTypeGenerationTem
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_sortedArrayTypeGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -2999,7 +2815,7 @@ const cDirectoryWrapper gWrapperDirectory_0_sortedArrayTypeGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_sortedArrayTypeGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_sortedArrayTypeGenerationTemplate_0
 ) ;
 
@@ -4246,51 +4062,6 @@ GGS_string function_generateClassInstanceMethodDeclaration (const GGS_lstring & 
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_classGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_classGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_classGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_classGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_classGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_classGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_classGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_classGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_classGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_classGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_classGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_classGenerationTemplate_0 [1] = {
@@ -4299,8 +4070,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_classGenerationTemplate_0 [1
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_classGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_classGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_classGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -4310,7 +4080,7 @@ const cDirectoryWrapper gWrapperDirectory_0_classGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_classGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_classGenerationTemplate_0
 ) ;
 

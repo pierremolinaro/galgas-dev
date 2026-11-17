@@ -156,10 +156,10 @@ GGS_sint_36__34_ GGS_u_38_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_u_38_::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_u_38_::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid ()) {
-    result = GGS_uint_36__34_ (mU8) ;
+    result = GGS_u_36__34_ (mU8) ;
   }
   return result ;
 }

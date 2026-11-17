@@ -20,12 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-final class @uint64PredefinedTypeAST : @predefinedTypeAST {
+final class @u64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.uint64_type : ]
+    result = filewrapper [predefinedTypeGenerationTemplate.u64_type : ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,7 +49,7 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"max",
-      !resultTypeName:"uint64",
+      !resultTypeName:"u64",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithArgument (
@@ -58,7 +58,7 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !name:"uint64MaskWithCompressedBitString",
       !argTypeName:"string",
       !argName:"inBitString",
-      !resultTypeName:"uint64",
+      !resultTypeName:"u64",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithArgument (
@@ -67,7 +67,7 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !name:"uint64BaseValueWithCompressedBitString",
       !argTypeName:"string",
       !argName:"inBitString",
-      !resultTypeName:"uint64",
+      !resultTypeName:"u64",
       !hasLexiqueArg:true
     )
     enterClassFunctionWithArgument (
@@ -76,7 +76,7 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !name:"uint64WithBitString",
       !argTypeName:"string",
       !argName:"inBitString",
-      !resultTypeName:"uint64",
+      !resultTypeName:"u64",
       !hasLexiqueArg:true
     )
   }
@@ -164,28 +164,28 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", "uint64", "inOperand",
+      !getterName:"canAdd", "u64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", "uint64", "inOperand",
+      !getterName:"canSubstract", "u64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", "uint64", "inOperand",
+      !getterName:"canMultiply", "u64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", "uint64", "inOperand",
+      !getterName:"canDivide", "u64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

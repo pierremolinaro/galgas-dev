@@ -24,8 +24,6 @@
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -119,8 +117,6 @@ void routine_check_5F_K_5F_escapeCharacters_3F_ (const class GGS_lstring constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_mapGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_mapGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -175,8 +171,6 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementati
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_structGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -220,8 +214,6 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_sortedArrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_sortedArrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_sortedArrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -265,8 +257,6 @@ GGS_string filewrapperTemplate_sortedArrayTypeGenerationTemplate_arrayTypeSpecif
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_classGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

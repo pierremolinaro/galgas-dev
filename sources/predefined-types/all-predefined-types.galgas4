@@ -23,8 +23,8 @@
 //--------------------------------------------------------------------------------------------------
 
 proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
-  ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
-  appendPredefinedArrayTypeAST (!?ioDeclarations, "uint64")
+  ioDeclarations.mDeclarationList ++= @u64PredefinedTypeAST (!isPredefined: true, "u64")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "u64")
 
   append_stringString_StructAST (!?ioDeclarations.mDeclarationList)
   appendPredefinedArrayTypeAST (!?ioDeclarations, "stringString")
@@ -59,9 +59,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint64")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint64")
-
-//  appendPredefined2StringListTypeAST (!?ioDeclarations.mDeclarationList)
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u64")
 
   appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
 }
@@ -411,7 +409,7 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
 
   template u16_type : "u16-type.h.galgasTemplate" ()
 
-  template uint64_type : "uint64-type.h.galgasTemplate" ()
+  template u64_type : "u64-type.h.galgasTemplate" ()
 
   template bool_type : "bool-type.h.galgasTemplate" ()
 

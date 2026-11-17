@@ -7,36 +7,36 @@
 #include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
-//     @uint64 generic code implementation
+//     @u64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_ ("uint64",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_36__34_ ("u64",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_uint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uint_36__34_ ;
+const GALGAS_TypeDescriptor * GGS_u_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_u_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @[uint64] generic code implementation
+//     @[u64] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_36__34__5D_ ("[uint64]",
-                                                                         nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_u_36__34__5D_ ("[u64]",
+                                                                      nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS__5B_uint_36__34__5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_uint_36__34__5D_ ;
+const GALGAS_TypeDescriptor * GGS__5B_u_36__34__5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_u_36__34__5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_uint_36__34__5D_' array
+//Class for element of '@_5B_u_36__34__5D_' array
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_::GGS__5B_uint_36__34__5D_ (void) :
+GGS__5B_u_36__34__5D_::GGS__5B_u_36__34__5D_ (void) :
 AC_GALGAS_root (),
 mSharedArray (),
 mIsValid (false) {
@@ -44,7 +44,7 @@ mIsValid (false) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_::GGS__5B_uint_36__34__5D_ (const GGS__5B_uint_36__34__5D_ & inSource) :
+GGS__5B_u_36__34__5D_::GGS__5B_u_36__34__5D_ (const GGS__5B_u_36__34__5D_ & inSource) :
 AC_GALGAS_root (),
 mSharedArray (inSource.mSharedArray),
 mIsValid (inSource.mIsValid) {
@@ -52,7 +52,7 @@ mIsValid (inSource.mIsValid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ & GGS__5B_uint_36__34__5D_::operator = (const GGS__5B_uint_36__34__5D_ & inSource)  {
+GGS__5B_u_36__34__5D_ & GGS__5B_u_36__34__5D_::operator = (const GGS__5B_u_36__34__5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
   mIsValid = inSource.mIsValid ;
   return *this ;
@@ -60,30 +60,30 @@ GGS__5B_uint_36__34__5D_ & GGS__5B_uint_36__34__5D_::operator = (const GGS__5B_u
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_u_36__34__5D_ result ;
   result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::drop (void) {
+void GGS__5B_u_36__34__5D_::drop (void) {
   mSharedArray.removeAll () ;
   mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::removeAll (void) {
+void GGS__5B_u_36__34__5D_::removeAll (void) {
   mSharedArray.removeAll () ;
   mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::plusPlusAssignOperation (const GGS_uint_36__34_ & inValue
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::plusPlusAssignOperation (const GGS_u_36__34_ & inValue
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
@@ -91,7 +91,7 @@ void GGS__5B_uint_36__34__5D_::plusPlusAssignOperation (const GGS_uint_36__34_ &
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_uint_36__34__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_uint GGS__5B_u_36__34__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     result = GGS_uint (uint32_t (mSharedArray.count ())) ;
@@ -101,10 +101,10 @@ GGS_uint GGS__5B_uint_36__34__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::add_operation (const GGS__5B_uint_36__34__5D_ & inOperand,
-                                                                  Compiler * /* inCompiler */
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::add_operation (const GGS__5B_u_36__34__5D_ & inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_u_36__34__5D_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.mSharedArray.appendDataFromPointer (
@@ -117,9 +117,9 @@ GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::add_operation (const GGS__5B_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::description (String & ioString,
-                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@uint_36__34_], ") ;
+void GGS__5B_u_36__34__5D_::description (String & ioString,
+                                         const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@u_36__34_], ") ;
   ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
@@ -128,9 +128,9 @@ void GGS__5B_uint_36__34__5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::plusAssignOperation (const GGS__5B_uint_36__34__5D_ inOperand,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::plusAssignOperation (const GGS__5B_u_36__34__5D_ inOperand,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -141,9 +141,9 @@ void GGS__5B_uint_36__34__5D_::plusAssignOperation (const GGS__5B_uint_36__34__5
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_append (const GGS_uint_36__34_ inValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_append (const GGS_u_36__34_ inValue,
+                                           Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
@@ -151,17 +151,17 @@ void GGS__5B_uint_36__34__5D_::setter_append (const GGS_uint_36__34_ inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_removeAll (Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
   removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_set (const GGS_uint_36__34_ inValue,
-                                           const GGS_uint inIndex,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_set (const GGS_u_36__34_ inValue,
+                                        const GGS_uint inIndex,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
     const int32_t idx = int32_t (inIndex.uintValue ()) ;
     if (idx >= mSharedArray.count ()) {
@@ -179,10 +179,10 @@ void GGS__5B_uint_36__34__5D_::setter_set (const GGS_uint_36__34_ inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_insert (const GGS_uint_36__34_ inValue,
-                                              const GGS_uint inInsertionIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_insert (const GGS_u_36__34_ inValue,
+                                           const GGS_uint inInsertionIndex,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     if (idx > mSharedArray.count ()) {
@@ -200,10 +200,10 @@ void GGS__5B_uint_36__34__5D_::setter_insert (const GGS_uint_36__34_ inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_remove (GGS_uint_36__34_ & outValue,
-                                              const GGS_uint inRemoveIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_remove (GGS_u_36__34_ & outValue,
+                                           const GGS_uint inRemoveIndex,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   outValue.drop () ;
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
@@ -223,9 +223,9 @@ void GGS__5B_uint_36__34__5D_::setter_remove (GGS_uint_36__34_ & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_removeFirst (GGS_uint_36__34_ & outValue,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_removeFirst (GGS_u_36__34_ & outValue,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -240,9 +240,9 @@ void GGS__5B_uint_36__34__5D_::setter_removeFirst (GGS_uint_36__34_ & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_uint_36__34__5D_::setter_removeLast (GGS_uint_36__34_ & outValue,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+void GGS__5B_u_36__34__5D_::setter_removeLast (GGS_u_36__34_ & outValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -257,10 +257,10 @@ void GGS__5B_uint_36__34__5D_::setter_removeLast (GGS_uint_36__34_ & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_u_36__34__5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
     if (startIndex >= int32_t (count ())) {
@@ -273,7 +273,7 @@ GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_removingFirst (const G
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
       const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_uint_36__34__5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
       result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
@@ -282,16 +282,16 @@ GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_removingFirst (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                   const GGS_uint & inLength,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::getter_sublist (const GGS_uint & inStartIndex,
+                                                             const GGS_uint & inLength,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_u_36__34__5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
     const int32_t length = int32_t (inLength.uintValue ()) ;
     if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_uint_36__34__5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
     }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
@@ -311,7 +311,7 @@ GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_sublist (const GGS_uin
         errorMessage.appendCString (")") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        result = GGS__5B_uint_36__34__5D_::init (inCompiler COMMA_THERE) ;
+        result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
         result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
       }
     }
@@ -321,9 +321,9 @@ GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_sublist (const GGS_uin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_first (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS__5B_u_36__34__5D_::getter_first (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'first' getter call on an empty array'" ;
@@ -336,9 +336,9 @@ GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_first (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_last (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS__5B_u_36__34__5D_::getter_last (Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'last' getter call on an empty array'" ;
@@ -351,10 +351,10 @@ GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS__5B_u_36__34__5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
@@ -374,44 +374,44 @@ GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::readSubcript__3F_ (const GGS_uint & i
 
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_uint_36__34__5D_
+// Down Enumerator for @_5B_u_36__34__5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator__5B_uint_36__34__5D_::DownEnumerator__5B_uint_36__34__5D_ (const GGS__5B_uint_36__34__5D_ & inOperand) :
+DownEnumerator__5B_u_36__34__5D_::DownEnumerator__5B_u_36__34__5D_ (const GGS__5B_u_36__34__5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (inOperand.mSharedArray.count () - 1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ DownEnumerator__5B_uint_36__34__5D_::current (LOCATION_ARGS) const {
+GGS_u_36__34_ DownEnumerator__5B_u_36__34__5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ DownEnumerator__5B_uint_36__34__5D_::current_entry (LOCATION_ARGS) const {
+GGS_u_36__34_ DownEnumerator__5B_u_36__34__5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_uint_36__34__5D_
+// Up Enumerator for @_5B_u_36__34__5D_
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator__5B_uint_36__34__5D_::UpEnumerator__5B_uint_36__34__5D_ (const GGS__5B_uint_36__34__5D_ & inOperand) :
+UpEnumerator__5B_u_36__34__5D_::UpEnumerator__5B_u_36__34__5D_ (const GGS__5B_u_36__34__5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ UpEnumerator__5B_uint_36__34__5D_::current (LOCATION_ARGS) const {
+GGS_u_36__34_ UpEnumerator__5B_u_36__34__5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ UpEnumerator__5B_uint_36__34__5D_::current_entry (LOCATION_ARGS) const {
+GGS_u_36__34_ UpEnumerator__5B_u_36__34__5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
@@ -3045,72 +3045,72 @@ void GGS_luint::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @luint64 generic code implementation
+//     @lu64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint_36__34_ ("luint64",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lu_36__34_ ("lu64",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_luint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_luint_36__34_ ;
+const GALGAS_TypeDescriptor * GGS_lu_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lu_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint_36__34_::GGS_luint_36__34_ (void) :
-mProperty_uint_36__34_ (),
+GGS_lu_36__34_::GGS_lu_36__34_ (void) :
+mProperty_u_36__34_ (),
 mProperty_location () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint_36__34_::GGS_luint_36__34_ (const GGS_luint_36__34_ & inSource) :
-mProperty_uint_36__34_ (inSource.mProperty_uint_36__34_),
+GGS_lu_36__34_::GGS_lu_36__34_ (const GGS_lu_36__34_ & inSource) :
+mProperty_u_36__34_ (inSource.mProperty_u_36__34_),
 mProperty_location (inSource.mProperty_location) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint_36__34_ & GGS_luint_36__34_::operator = (const GGS_luint_36__34_ & inSource) {
-  mProperty_uint_36__34_ = inSource.mProperty_uint_36__34_ ;
+GGS_lu_36__34_ & GGS_lu_36__34_::operator = (const GGS_lu_36__34_ & inSource) {
+  mProperty_u_36__34_ = inSource.mProperty_u_36__34_ ;
   mProperty_location = inSource.mProperty_location ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_luint_36__34_ GGS_luint_36__34_::init_21__21_ (const GGS_uint_36__34_ & in_uint_36__34_,
-                                                   const GGS_location & in_location,
-                                                   Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_luint_36__34_ result ;
+GGS_lu_36__34_ GGS_lu_36__34_::init_21__21_ (const GGS_u_36__34_ & in_u_36__34_,
+                                             const GGS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lu_36__34_ result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_uint_36__34_ = in_uint_36__34_ ;
+  result.mProperty_u_36__34_ = in_u_36__34_ ;
   result.mProperty_location = in_location ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_luint_36__34_::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_lu_36__34_::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint_36__34_::GGS_luint_36__34_ (const GGS_uint_36__34_ & inOperand0,
-                                      const GGS_location & inOperand1) :
-mProperty_uint_36__34_ (inOperand0),
+GGS_lu_36__34_::GGS_lu_36__34_ (const GGS_u_36__34_ & inOperand0,
+                                const GGS_location & inOperand1) :
+mProperty_u_36__34_ (inOperand0),
 mProperty_location (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_luint_36__34_::objectCompare (const GGS_luint_36__34_ & inOperand) const {
+ComparisonResult GGS_lu_36__34_::objectCompare (const GGS_lu_36__34_ & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_uint_36__34_.objectCompare (inOperand.mProperty_uint_36__34_) ;
+    result = mProperty_u_36__34_.objectCompare (inOperand.mProperty_u_36__34_) ;
   }
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
@@ -3120,26 +3120,26 @@ ComparisonResult GGS_luint_36__34_::objectCompare (const GGS_luint_36__34_ & inO
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_luint_36__34_::isValid (void) const {
-  return mProperty_uint_36__34_.isValid () && mProperty_location.isValid () ;
+bool GGS_lu_36__34_::isValid (void) const {
+  return mProperty_u_36__34_.isValid () && mProperty_location.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_luint_36__34_::drop (void) {
-  mProperty_uint_36__34_.drop () ;
+void GGS_lu_36__34_::drop (void) {
+  mProperty_u_36__34_.drop () ;
   mProperty_location.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_luint_36__34_::description (String & ioString,
-                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @luint64:") ;
+void GGS_lu_36__34_::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lu64:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_uint_36__34_.description (ioString, inIndentation+1) ;
+    mProperty_u_36__34_.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }

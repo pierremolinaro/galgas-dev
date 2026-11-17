@@ -269,21 +269,21 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_36__34__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_36__34__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -291,21 +291,21 @@ GGS__5B_uint_36__34__5D_ GGS_bigint::getter_extract_36__34_ForUnsignedRepresenta
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_36__34__5D_ GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_36__34__5D_ result ;
+GGS__5B_u_36__34__5D_ GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_36__34__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_36__34__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=8) {
       uint64_t v = 0 ;
       for (int32_t j=7 ; j>=0 ; j--) {
         v <<= 8 ;
         v |= valueArray (i+j COMMA_HERE) ;
       }
-      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -479,12 +479,12 @@ GGS_sint GGS_bigint::getter_sint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_bigint::getter_uint_36__34_ (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_bigint::getter_u_36__34_ (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid ()) {
     if (mValue.fitsInUInt64 ()) {
-      result = GGS_uint_36__34_ (mValue.uint64 ()) ;
+      result = GGS_u_36__34_ (mValue.uint64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @uint64 conversion overflow" COMMA_THERE) ;
     }

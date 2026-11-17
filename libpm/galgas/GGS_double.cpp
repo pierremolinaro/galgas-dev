@@ -38,7 +38,7 @@ GGS_double GGS_double::class_func_pi (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_uint_36__34_ & inImage
+GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_u_36__34_ & inImage
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_double result ;
   if (inImage.isValid ()) {
@@ -54,15 +54,15 @@ GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_uint_36__34_ 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_double::getter_binaryImage (UNUSED_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_double::getter_binaryImage (UNUSED_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid ()) {
     union {
       uint64_t unsignedIntegerValue ;
       double theDoubleValue ;
     } ;
     theDoubleValue = mDoubleValue ;
-    result = GGS_uint_36__34_ (unsignedIntegerValue) ;
+    result = GGS_u_36__34_ (unsignedIntegerValue) ;
   }
   return result ;
 }
@@ -232,16 +232,16 @@ GGS_uint GGS_double::getter_uint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_double::getter_uint_36__34_ (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_double::getter_u_36__34_ (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if ((mDoubleValue > double (UINT64_MAX)) || (mDoubleValue < 0.0)) {
     String s = "Cannot convert @double (" ;
     s.appendDouble (mDoubleValue) ;
     s.appendCString (") to @uint64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_uint_36__34_ ((uint64_t) lround (mDoubleValue)) ;
+    result = GGS_u_36__34_ ((uint64_t) lround (mDoubleValue)) ;
   }
   return result ;
 }

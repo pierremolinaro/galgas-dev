@@ -210,10 +210,10 @@ GGS_sint_36__34_ GGS_uint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_uint::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid ()) {
-    result = GGS_uint_36__34_ (mUIntValue) ;
+    result = GGS_u_36__34_ (mUIntValue) ;
   }
   return result ;
 }

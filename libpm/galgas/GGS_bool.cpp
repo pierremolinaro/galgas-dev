@@ -182,10 +182,10 @@ GGS_sint GGS_bool::getter_sint (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_bool::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+GGS_u_36__34_ GGS_bool::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_u_36__34_ result ;
   if (isValid ()) {
-    result = GGS_uint_36__34_ (mBoolValue ? 1 : 0) ;
+    result = GGS_u_36__34_ (mBoolValue ? 1 : 0) ;
   }
   return result ;
 }

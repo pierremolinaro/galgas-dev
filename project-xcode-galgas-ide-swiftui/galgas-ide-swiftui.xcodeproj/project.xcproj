@@ -926,7 +926,7 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_uint64.cpp",
+              "path": "GGS_u64.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",

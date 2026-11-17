@@ -63,8 +63,8 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint64",
-      !returnedTypeName:"uint64",
+      !getterName:"u64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
@@ -162,7 +162,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"binaryImage",
-      !returnedTypeName:"uint64",
+      !returnedTypeName:"u64",
       !hasCompilerArgument:false
     )
   }
@@ -183,7 +183,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"doubleWithBinaryImage",
-      !argTypeName:"uint64",
+      !argTypeName:"u64",
       !argName:"inBinaryImage",
       !resultTypeName:"double",
       !hasLexiqueArg:false

@@ -67,14 +67,14 @@ GGS_uint GGS_sint::getter_uint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_sint::getter_uint_36__34_ (Compiler * inCompiler
+GGS_u_36__34_ GGS_sint::getter_u_36__34_ (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_ result ;
+  GGS_u_36__34_ result ;
   if (isValid ()) {
     if (mSIntValue < 0) {
       inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
     }else{
-      result = GGS_uint_36__34_ ((uint64_t) mSIntValue) ;
+      result = GGS_u_36__34_ ((uint64_t) mSIntValue) ;
     }
   }
   return result ;

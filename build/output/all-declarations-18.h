@@ -83,8 +83,6 @@ void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_st
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -151,12 +149,12 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_u_31__36__5F_typ
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'predefinedTypeGenerationTemplate uint64_type'
+//Filewrapper template 'predefinedTypeGenerationTemplate u64_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__5F_type (Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_u_36__34__5F_type (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

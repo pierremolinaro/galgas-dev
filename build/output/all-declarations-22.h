@@ -215,8 +215,6 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -270,8 +268,6 @@ class GGS_string function_makeDictionaryTypeName (const class GGS_string & const
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_dictionaryGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_dictionaryGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -327,8 +323,6 @@ class GGS_stringset function_forbiddenKeysForStruct (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -375,8 +369,6 @@ GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImp
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_weakClassGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -441,8 +433,6 @@ class GGS_string function_makeOptionalTypeName (const class GGS_string & constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -497,8 +487,6 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GGS_lstring co
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

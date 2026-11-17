@@ -2,7 +2,7 @@
 
 proc testsuite_type_categories() {
   println ("*************************************** begin of type extension test")
-  print ("Square of 7") ; println (7 .uint64.square.description)
+  print ("Square of 7") ; println (7 .u64.square.description)
   var aList = [@uint] []
   !?aList.append (1)
   !?aList.append (2)
@@ -10,9 +10,9 @@ proc testsuite_type_categories() {
   !?aList.append (4)
   print ("Sum 1 + 2 + 3 + 4") ; println (aList.sum.description)
   print ("Hello !") ; println (@lstring ("Hello", .here).op.description)
-  let @uint64 v
+  let @u64 v
   let cst = 7
-  cst.uint64.square (?v)
+  cst.u64.square (?v)
   println (v.description)
   let @uint u
   aList.sum (?u)
@@ -25,12 +25,12 @@ proc testsuite_type_categories() {
   println (ls.description)
   !?aList.appendSquare (9)
   println (aList.description)
-  var aList64 = [@uint64] [7]
+  var aList64 = [@u64] [7]
   !?aList64.prependSquare (5)
 }
 
 //---------- Extension readers
-func @uint64.square() -> @uint64 {
+func @u64.square() -> @u64 {
   result = self * self
 }
 
@@ -46,7 +46,7 @@ func @lstring.op() -> @string {
 }
 
 //----------- Extension methods
-proc @uint64.square (!@uint64 outResult) {
+proc @u64.square (!@u64 outResult) {
   outResult = self * self
 }
 
@@ -70,7 +70,7 @@ mutating proc [@uint].appendSquare (let@uint inValue) {
   !?self.append (inValue * inValue)
 }
 
-mutating proc [@uint64].prependSquare (let @uint64 inValue) {
+mutating proc [@u64].prependSquare (let @u64 inValue) {
   !?self.insert (inValue.square, !at: 0)
 }
 
@@ -80,7 +80,7 @@ mutating proc @string.concatList (let [@string] inList) {
   end
 }
 
-mutating proc @uint64.increment() {
+mutating proc @u64.increment() {
   self += 1
 }
 

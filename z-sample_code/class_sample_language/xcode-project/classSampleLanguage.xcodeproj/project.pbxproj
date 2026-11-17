@@ -709,19 +709,19 @@
     settings = {ATTRIBUTES = (); };
   };
 
-  AD7F202F26C1A174C7357585 /* GGS_u8.cpp */ = {
+  AD7F202F26C1A174C7357585 /* GGS_u64.cpp */ = {
     isa = PBXBuildFile;
     fileRef = DAA88A51F6CA8CFC1AC79B50 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  A7B6C95BD2B32ED45989C61F /* GGS_uint.cpp */ = {
+  A7B6C95BD2B32ED45989C61F /* GGS_u8.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 3860DB1D11B6ACCA57D8EA88 ;
     settings = {ATTRIBUTES = (); };
   };
 
-  F378EFACC9B924EC161E7639 /* GGS_uint64.cpp */ = {
+  F378EFACC9B924EC161E7639 /* GGS_uint.cpp */ = {
     isa = PBXBuildFile;
     fileRef = 4A4D452035300F18B984988C ;
     settings = {ATTRIBUTES = (); };
@@ -1622,7 +1622,16 @@
     sourceTree = "<group>";
   };
 
-  DAA88A51F6CA8CFC1AC79B50 /* GGS_u8.cpp */ = {
+  DAA88A51F6CA8CFC1AC79B50 /* GGS_u64.cpp */ = {
+    isa = PBXFileReference;
+    fileEncoding = 4;
+    lastKnownFileType = sourcecode.cpp.cpp;
+    name = "GGS_u64.cpp";
+    path = "GGS_u64.cpp";
+    sourceTree = "<group>";
+  };
+
+  3860DB1D11B6ACCA57D8EA88 /* GGS_u8.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
@@ -1631,21 +1640,12 @@
     sourceTree = "<group>";
   };
 
-  3860DB1D11B6ACCA57D8EA88 /* GGS_uint.cpp */ = {
+  4A4D452035300F18B984988C /* GGS_uint.cpp */ = {
     isa = PBXFileReference;
     fileEncoding = 4;
     lastKnownFileType = sourcecode.cpp.cpp;
     name = "GGS_uint.cpp";
     path = "GGS_uint.cpp";
-    sourceTree = "<group>";
-  };
-
-  4A4D452035300F18B984988C /* GGS_uint64.cpp */ = {
-    isa = PBXFileReference;
-    fileEncoding = 4;
-    lastKnownFileType = sourcecode.cpp.cpp;
-    name = "GGS_uint64.cpp";
-    path = "GGS_uint64.cpp";
     sourceTree = "<group>";
   };
 
