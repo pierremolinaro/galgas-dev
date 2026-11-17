@@ -123,43 +123,35 @@ GGS_string GGS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendByte (GGS_u_38_ inByte,
-                                  Compiler *
-                                  COMMA_UNUSED_LOCATION_ARGS) {
+void GGS_data::setter_appendU_38_ (GGS_u_38_ inByte,
+                                   Compiler *
+                                   COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inByte.isValid ()) {
-    mData.appendByte (inByte.u8Value()) ;
+    mData.appendByte (inByte.u8 ()) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendShortBE (GGS_uint inArgument0,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
+void GGS_data::setter_appendU_31__36_BE (GGS_u_31__36_ inArgument0,
+                                         Compiler *
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
-    if (inArgument0.uintValue () > 0xFFFF) {
-      inCompiler->onTheFlyRunTimeError ("'@data appendShortBE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
-    }else{
-      const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
-      mData.appendByte ((uint8_t) (value & 255)) ;
-    }
+    const uint16_t value = inArgument0.u16 () ;
+    mData.appendByte (uint8_t ((value >> 8) & UINT8_MAX)) ;
+    mData.appendByte (uint8_t (value & 255)) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendShortLE (GGS_uint inArgument0,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
+void GGS_data::setter_appendU_31__36_LE (GGS_u_31__36_ inArgument0,
+                                         Compiler *
+                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
-    if (inArgument0.uintValue () > 0xFFFF) {
-      inCompiler->onTheFlyRunTimeError ("'@data appendShortLE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
-    }else{
-      const uint32_t value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.appendByte ((uint8_t) (value & 255)) ;
-      mData.appendByte ((uint8_t) ((value >> 8) & UINT8_MAX)) ;
-    }
+    const uint16_t value = inArgument0.u16 () ;
+    mData.appendByte (uint8_t (value & 255)) ;
+    mData.appendByte (uint8_t ((value >> 8) & UINT8_MAX)) ;
   }
 }
 
@@ -169,10 +161,10 @@ void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
-    mData.appendByte ((uint8_t) (value >> 24)) ;
-    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
-    mData.appendByte ((uint8_t) (value & 255)) ;
+    mData.appendByte (uint8_t (value >> 24)) ;
+    mData.appendByte (uint8_t ((value >> 16) & 255)) ;
+    mData.appendByte (uint8_t ((value >> 8) & 255)) ;
+    mData.appendByte (uint8_t (value & 255)) ;
   }
 }
 
@@ -182,10 +174,10 @@ void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
-    mData.appendByte ((uint8_t) (value & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 8) & 255)) ;
-    mData.appendByte ((uint8_t) ((value >> 16) & 255)) ;
-    mData.appendByte ((uint8_t) (value >> 24)) ;
+    mData.appendByte (uint8_t (value & 255)) ;
+    mData.appendByte (uint8_t ((value >> 8) & 255)) ;
+    mData.appendByte (uint8_t ((value >> 16) & 255)) ;
+    mData.appendByte (uint8_t (value >> 24)) ;
   }
 }
 

@@ -1001,6 +1001,7 @@ proc updateGalgasTargets (
         "GGS_timer.cpp",
         "GGS_uint64.cpp",
         "GGS_u8.cpp",
+        "GGS_u16.cpp",
         "GGS_uint.cpp",
         "scanner_actions.cpp",
         "scanner_actions.h",

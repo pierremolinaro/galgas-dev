@@ -142,6 +142,15 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_u_38__5F_type (C
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper template 'predefinedTypeGenerationTemplate u16_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_u_31__36__5F_type (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper template 'predefinedTypeGenerationTemplate uint64_type'
 //
 //--------------------------------------------------------------------------------------------------

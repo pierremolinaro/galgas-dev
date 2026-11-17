@@ -30,6 +30,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendPredefinedArrayTypeAST (!?ioDeclarations, "stringString")
 
   ioDeclarations.mDeclarationList ++= @u8PredefinedTypeAST (!isPredefined: true, "u8")
+  ioDeclarations.mDeclarationList ++= @u16PredefinedTypeAST (!isPredefined: true, "u16")
   ioDeclarations.mDeclarationList ++= @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
   ioDeclarations.mDeclarationList ++= @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
   ioDeclarations.mDeclarationList ++= @boolPredefinedTypeAST (!isPredefined: true, "bool")
@@ -407,6 +408,8 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
   template uint_type : "uint-type.h.galgasTemplate" ()
 
   template u8_type : "u8-type.h.galgasTemplate" ()
+
+  template u16_type : "u16-type.h.galgasTemplate" ()
 
   template uint64_type : "uint64-type.h.galgasTemplate" ()
 

@@ -920,6 +920,12 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
+              "path": "GGS_u16.cpp",
+              "target-membership": [
+                "galgas/compile-sources",
+                "galgas-debug/compile-sources",
+              ],
+            }, {
               "path": "GGS_uint64.cpp",
               "target-membership": [
                 "galgas/compile-sources",

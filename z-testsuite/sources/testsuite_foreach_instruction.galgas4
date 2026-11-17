@@ -91,14 +91,14 @@ proc testsuite_foreach_instruction() {
   end
   println ("--- begin of foreach instruction test 9")
   var myData = @data.emptyData
-  !?myData.appendByte (1)
-  !?myData.appendByte (2)
-  !?myData.appendByte (3)
-  !?myData.appendByte (4)
-  !?myData.appendByte (5)
-  !?myData.appendByte (6)
-  !?myData.appendByte (7)
-  !?myData.appendByte (8)
+  !?myData.appendU8 (1)
+  !?myData.appendU8 (2)
+  !?myData.appendU8 (3)
+  !?myData.appendU8 (4)
+  !?myData.appendU8 (5)
+  !?myData.appendU8 (6)
+  !?myData.appendU8 (7)
+  !?myData.appendU8 (8)
   for byte in myData
   do (idx)
     println ("  do '" + byte + "' (idx: " + idx.string + ")")

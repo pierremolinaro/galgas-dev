@@ -2,7 +2,7 @@
 //
 //  Generate predefined types
 //
-//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -64,8 +64,6 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
   override proc getEnumerationList (?!@unifiedTypeMap _ioUnifiedTypeMap,
                                     ![@enumerationDescriptor] outEnumerationList,
                                     !@string outEnumeratedTypeName) {
-//    !?ioUnifiedTypeMap.makeEntryFromString ("u8", ?let u8Type)
-//    outEnumerationList = [@(u8Type, "byte")]
     outEnumerationList = []
     outEnumeratedTypeName = "u8"
   }
@@ -138,23 +136,23 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !argTypeName: "u8",
       !argName: "inValue",
-      !setterName: "appendByte",
+      !setterName: "appendU8",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName: "uint",
+      !argTypeName: "u16",
       !argName: "inValue",
-      !setterName: "appendShortBE",
+      !setterName: "appendU16BE",
       !compilerArg:true
     )
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName: "uint",
+      !argTypeName: "u16",
       !argName: "inValue",
-      !setterName: "appendShortLE",
+      !setterName: "appendU16LE",
       !compilerArg:true
     )
     enterModifierWithInputArgument (

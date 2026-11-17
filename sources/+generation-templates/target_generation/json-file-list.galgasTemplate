@@ -128,6 +128,7 @@ end
        "GGS_string-getters.cpp",
        "GGS_stringset.cpp",
        "GGS_u8.cpp",
+       "GGS_u16.cpp",
        "GGS_uint.cpp",
        "GGS_timer.cpp",
        "GGS_uint64.cpp"

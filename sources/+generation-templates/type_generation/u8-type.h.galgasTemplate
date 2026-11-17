@@ -5,12 +5,12 @@
 class GGS_u_38_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: uint8_t mU8Value ;
+  private: uint8_t mU8 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline uint8_t u8Value (void) const { return mU8Value ; }
+  public: inline uint8_t u8 (void) const { return mU8 ; }
 
 //--------------------------------- Default constructor
   public: GGS_u_38_ (void) ;

@@ -664,12 +664,12 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
 class GGS_u_38_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: uint8_t mU8Value ;
+  private: uint8_t mU8 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline uint8_t u8Value (void) const { return mU8Value ; }
+  public: inline uint8_t u8 (void) const { return mU8 ; }
 
 //--------------------------------- Default constructor
   public: GGS_u_38_ (void) ;
@@ -836,6 +836,186 @@ class GGS_u_38_ final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_ ;
+
+//--------------------------------------------------------------------------------------------------
+//  @u16 type
+//--------------------------------------------------------------------------------------------------
+
+class GGS_u_31__36_ final : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: uint16_t mU16 ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
+  public: inline uint16_t u16 (void) const { return mU16 ; }
+
+//--------------------------------- Default constructor
+  public: GGS_u_31__36_ (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_u_31__36_ (const uint16_t inValue) ;
+  public: GGS_u_31__36_ (const bool inValid, const uint16_t inValue) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_u_31__36_ class_func_max (LOCATION_ARGS) ;
+
+//--------------------------------- << and >> shift operators
+  public: GGS_u_31__36_ left_shift_operation (const class GGS_uint inShiftOperand,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_31__36_ left_shift_operation (const class GGS_bigint inShiftOperand,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_31__36_ right_shift_operation (const class GGS_uint inShiftOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_u_31__36_ right_shift_operation (const class GGS_bigint inShiftOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_u_31__36_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator
+  public: void minusAssignOperation (const GGS_u_31__36_ inOperand,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- *= operator
+  public: void mulAssignOperation (const GGS_u_31__36_ inOperand,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- /= operator
+  public: void divAssignOperation (const GGS_u_31__36_ inOperand,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public: GGS_u_31__36_ operator_and (const GGS_u_31__36_ & inOperand
+                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: GGS_u_31__36_ operator_or (const GGS_u_31__36_ & inOperand
+                                     COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: GGS_u_31__36_ operator_xor (const GGS_u_31__36_ & inOperand
+                                      COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: GGS_u_31__36_ operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- + operator
+  public: GGS_u_31__36_ add_operation (const GGS_u_31__36_ & inOperand,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &+ operator
+  public: GGS_u_31__36_ wrapping_add_operation (const GGS_u_31__36_ & inOperand) const ;
+
+//--------------------------------- &- operator
+  public: GGS_u_31__36_ wrapping_subtract_operation (const GGS_u_31__36_ & inOperand) const ;
+
+//--------------------------------- - operator
+  public: GGS_u_31__36_ subtract_operation (const GGS_u_31__36_ & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- * operator
+  public: GGS_u_31__36_ multiply_operation (const GGS_u_31__36_ & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &* operator
+  public: GGS_u_31__36_ wrapping_multiply_operation (const GGS_u_31__36_ & inOperand) const ;
+
+//--------------------------------- / operator
+  public: GGS_u_31__36_ divide_operation (const GGS_u_31__36_ & inOperand,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- &/ operator
+  public: GGS_u_31__36_ wrapping_divide_operation (const GGS_u_31__36_ & inOperand) const ;
+
+//--------------------------------- mod operator
+  public: GGS_u_31__36_ modulo_operation (const GGS_u_31__36_ & inOperand,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_u_31__36_ & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bigint getter_bigint (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canAdd (const class GGS_u_31__36_ & constinOperand0
+                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canDivide (const class GGS_u_31__36_ & constinOperand0
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canMultiply (const class GGS_u_31__36_ & constinOperand0
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_canSubstract (const class GGS_u_31__36_ & constinOperand0
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_double getter_double (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_hexString (LOCATION_ARGS) const ;
+
+  public: class GGS_u_31__36_ getter_lsbIndex (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_u_31__36_ getter_oneBitCount (LOCATION_ARGS) const ;
+
+  public: class GGS_u_31__36_ getter_significantBitCount (LOCATION_ARGS) const ;
+
+  public: class GGS_sint getter_sint (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sint_36__34_ getter_sint_36__34_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_string (LOCATION_ARGS) const ;
+
+  public: class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_xString (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_31__36_ ;
 
 //--------------------------------------------------------------------------------------------------
 //   @bigint type
@@ -1652,20 +1832,20 @@ class GGS_data final : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const GGS_data & inOperand) const ;
 
 //--------------------------------- Setters
-  public: void setter_appendByte (class GGS_u_38_ constinArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
   public: void setter_appendData (class GGS_data constinArgument0
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_appendShortBE (class GGS_uint constinArgument0,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_appendU_31__36_BE (class GGS_u_31__36_ constinArgument0,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
-  public: void setter_appendShortLE (class GGS_uint constinArgument0,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_appendU_31__36_LE (class GGS_u_31__36_ constinArgument0,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+  public: void setter_appendU_38_ (class GGS_u_38_ constinArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 
   public: void setter_appendUIntBE (class GGS_uint constinArgument0
                                     COMMA_LOCATION_ARGS) ;

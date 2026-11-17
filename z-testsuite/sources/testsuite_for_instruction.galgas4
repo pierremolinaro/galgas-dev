@@ -97,14 +97,14 @@ proc testsuite_for_instruction() {
 
   println ("--- begin of for instruction test 9")
   var data = @data.emptyData
-  !?data.appendByte (1)
-  !?data.appendByte (2)
-  !?data.appendByte (3)
-  !?data.appendByte (4)
-  !?data.appendByte (5)
-  !?data.appendByte (6)
-  !?data.appendByte (7)
-  !?data.appendByte (8)
+  !?data.appendU8 (1)
+  !?data.appendU8 (2)
+  !?data.appendU8 (3)
+  !?data.appendU8 (4)
+  !?data.appendU8 (5)
+  !?data.appendU8 (6)
+  !?data.appendU8 (7)
+  !?data.appendU8 (8)
   for d in data do (idx)
     println ("  do '" + d + "' (idx: " + idx.string + ")")
   end
