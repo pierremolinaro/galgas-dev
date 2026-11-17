@@ -46,7 +46,7 @@ GGS_double GGS_double::class_func_doubleWithBinaryImage (const GGS_uint_36__34_ 
       uint64_t unsignedIntegerValue ;
       double   doubleValue ;
     } ;
-    unsignedIntegerValue = inImage.uint64Value () ;
+    unsignedIntegerValue = inImage.u64 () ;
     result = GGS_double (doubleValue) ;
   }
   return result ;

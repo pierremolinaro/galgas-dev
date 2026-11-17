@@ -9,6 +9,106 @@
 #include "all-declarations-7.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionSwitchBranchAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionSwitchBranchAST : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS__5B_lstring_5D_ mProperty_constantList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_constantList (void) const {
+    return mProperty_constantList ;
+  }
+
+  public: GGS__5B_switchExtractedValuesAST_5D_ mProperty_associatedValuesExtraction ;
+  public: inline GGS__5B_switchExtractedValuesAST_5D_ readProperty_associatedValuesExtraction (void) const {
+    return mProperty_associatedValuesExtraction ;
+  }
+
+  public: GGS__5B_templateInstructionAST_5D_ mProperty_instructionList ;
+  public: inline GGS__5B_templateInstructionAST_5D_ readProperty_instructionList (void) const {
+    return mProperty_instructionList ;
+  }
+
+  public: GGS_location mProperty_endOfBranch ;
+  public: inline GGS_location readProperty_endOfBranch (void) const {
+    return mProperty_endOfBranch ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionSwitchBranchAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setConstantList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_constantList = inValue ;
+  }
+
+  public: inline void setter_setAssociatedValuesExtraction (const GGS__5B_switchExtractedValuesAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_associatedValuesExtraction = inValue ;
+  }
+
+  public: inline void setter_setInstructionList (const GGS__5B_templateInstructionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_instructionList = inValue ;
+  }
+
+  public: inline void setter_setEndOfBranch (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_endOfBranch = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_templateInstructionSwitchBranchAST (const GGS__5B_lstring_5D_ & in_constantList,
+                                                  const GGS__5B_switchExtractedValuesAST_5D_ & in_associatedValuesExtraction,
+                                                  const GGS__5B_templateInstructionAST_5D_ & in_instructionList,
+                                                  const GGS_location & in_endOfBranch) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_templateInstructionSwitchBranchAST (const GGS_templateInstructionSwitchBranchAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionSwitchBranchAST & operator = (const GGS_templateInstructionSwitchBranchAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionSwitchBranchAST init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                                              const class GGS__5B_switchExtractedValuesAST_5D_ & inOperand1,
+                                                                              const class GGS__5B_templateInstructionAST_5D_ & inOperand2,
+                                                                              const class GGS_location & inOperand3,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchAST ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: [templateInstructionSwitchBranchAST] array
 //--------------------------------------------------------------------------------------------------
 

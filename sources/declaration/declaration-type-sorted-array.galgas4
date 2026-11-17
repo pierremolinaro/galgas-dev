@@ -1,0 +1,416 @@
+//--------------------------------------------------------------------------------------------------
+// SORTED ARRAY
+// 16th november 2026 ... 
+//--------------------------------------------------------------------------------------------------
+//   SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $sortedarray$
+    $@type$ (?let sortedArrayTypeName)
+    $:$
+    $@type$ (?let elementTypeName)
+    ${$
+    var [@sortedArraySortDescriptorAST] sortDescriptorList = @()
+    repeat
+      <sorted_array_sort_descriptor> (!? sortDescriptorList)
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList ++= @sortedArrayTypeDeclarationAST (
+      !isPredefined: false,
+      !sortedArrayTypeName: sortedArrayTypeName,
+      !elementTypeName: elementTypeName,
+      !sortDescriptorList: sortDescriptorList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <sorted_array_sort_descriptor> (?![@sortedArraySortDescriptorAST] ioSortedListSortDescriptorList) {
+    $identifier$ (?let @lstring propertyName)
+    let @bool ascending
+    select
+      $<$
+      ascending = true
+    or
+      $>$
+      ascending = false
+    end
+    ioSortedListSortDescriptorList ++= @(propertyName, ascending)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AST
+//--------------------------------------------------------------------------------------------------
+
+struct @sortedArraySortDescriptorAST {
+  public let @lstring mSortedAttributeName
+  public let @bool mAscending
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
+  private let @lstring sortedArrayTypeName #initArgLabel
+  private let @lstring elementTypeName #initArgLabel
+  private let [@sortedArraySortDescriptorAST] sortDescriptorList #initArgLabel
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () ->@string {
+    result = "sorted array [@" + self.sortedArrayTypeName + "]"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInGraph (
+                    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+                    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+                    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+                    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+                    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+                    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+                    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
+    let key = @lstring ("@" + self.sortedArrayTypeName, self.sortedArrayTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    let elementKey = @lstring ("@" + self.elementTypeName, self.elementTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.noteNode (@("@" + self.elementTypeName, self.elementTypeName))
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: elementKey)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext (
+      ?!@equatableExtensionMap ioEquatableExtensionMap,
+      let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+      let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+      let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+      let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+      ?!@unifiedTypeMap ioTypeMap,
+      ?!@semanticContext ioSemanticContext) {
+  //--- uint type
+    !?ioTypeMap.makeEntryFromString ("uint", ?let uintType)
+  //--- Element type
+    !?ioTypeMap.makeEntry (self.elementTypeName, ?let elementType)
+  //--- Getters
+    commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
+    enterBaseGetterWithoutArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "count",
+      !returnedTypeName: "uint",
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "first",
+      !returnedTypeName: self.elementTypeName,
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithoutArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "last",
+      !returnedTypeName: self.elementTypeName,
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWithArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "removingFirst",
+      !argSelector: "", !argType: "uint", !argName: "inIndex",
+      !returnedTypeName: self.sortedArrayTypeName.string,
+      !hasCompilerArgument: true
+    )
+    enterBaseGetterWith2Arguments (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "sublist",
+      !arg1Selector: "from", !arg1TypeName: "uint", !arg1Name: "inStartIndex",
+      !arg2Selector: "count", !arg2TypeName: "uint", !arg2Name: "inCount",
+      !returnedTypeName: self.sortedArrayTypeName.string,
+      !hasCompilerArgument: true
+    )
+  //------------------------ Instance methods
+    var @instanceMethodMap instanceMethodMap = @()
+  //---------------------------------------- Setters
+    var @setterMap setterMap = @()
+    !?setterMap.insertKey (
+      "removeAll".here,
+      .definedAsMember,
+      [],
+      true,
+      .isBasic,
+      ""
+    )
+    !?setterMap.insertKey (
+      "append".here,
+      .definedAsMember,
+      [@("".nowhere, elementType, .argumentConstantIn, "inElement")],
+      true,
+      .isBasic,
+      ""
+    )
+    !?setterMap.insertKey (
+      "removeFirst".here,
+      .definedAsMember,
+      [@("".nowhere, elementType, .argumentOut, "outElement")],
+      true,
+      .isBasic,
+      ""
+    )
+    !?setterMap.insertKey (
+      "removeLast".here,
+      .definedAsMember,
+      [@("".nowhere, elementType, .argumentOut, "outElement")],
+      true,
+      .isBasic,
+      ""
+    )
+    !?setterMap.insertKey (
+      "remove".here,
+      .definedAsMember,
+      [ @("".nowhere, elementType, .argumentOut, "outElement"),
+        @("at".nowhere, uintType, .argumentConstantIn, "inIndex")
+      ],
+      true,
+      .isBasic,
+      ""
+    )
+  //--- Add initializer without argument
+    var @initializerMap initializerMap = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
+    !?initializerMap.insertKey
+      (@(emptyArgumentList.initializerSignature, self.sortedArrayTypeName),
+      emptyArgumentList
+    )
+  //--- Read subcripts
+    var @readSubcriptMap readSubscriptMap = @()
+    let [@functionSignatureElement] argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
+    !?readSubscriptMap.insertKey (
+      argumentTypeList.subcriptSignature.nowhere,
+      argumentTypeList,
+      elementType
+    )
+  //--- Add extensions
+    addExtensions (
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
+      !?ioSemanticContext,
+      !?ioTypeMap,
+      self.sortedArrayTypeName,
+      !isClass: false,
+      !?initializerMap,
+      !?getterMap,
+      !?setterMap,
+      !?instanceMethodMap,
+      !acceptSetters: true
+    )
+  //--- features
+    var features = @typeFeatures.infixAddOperator | .plusAssignOperatorWithExpression
+    handleEquatableComparableExtension (
+      !?ioEquatableExtensionMap,
+      self.sortedArrayTypeName,
+      !?features,
+      !acceptEquatable: true,
+      !acceptComparable: false
+    )
+  //--- Enumeration descriptor
+    var [@enumerationDescriptor] enumerationDescriptor = @()
+    enumerationDescriptor ++= @(elementType, "entry")
+  //--- Enter in type map
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.sortedArrayTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .otherType,
+      !supportArrayLiteral: true,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: @(),
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: readSubscriptMap,
+      !writeSubscriptMap: @(),
+      !enumerationDescriptorList: enumerationDescriptor,
+      !features: features,
+      !addAssignOperatorArguments: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: elementType,
+      !headerFileName: "array-" + self.sortedArrayTypeName.string.fileNameRepresentation,
+      !headerKind: .oneHeader
+    )
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc addAssociatedElement (?!@galgasDeclarationAST _ioDeclarations) {
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext _inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
+  //--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.sortedArrayTypeName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+    if self.isPredefined then
+      ioUsefulnessRootEntities ++= nameForUsefulness
+    end
+    let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.elementTypeName)
+    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
+    if self.isPredefined then
+      ioUsefulnessRootEntities ++= elementTypeNameForUsefulness
+    end
+  //--- Useful entities graph for initializer without any argument
+    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+      self.sortedArrayTypeName,
+      [@formalInputParameterAST] ().initializerSignature
+    )
+    !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
+    if self.isPredefined then
+      ioUsefulnessRootEntities ++= initializerNameForUsefulness
+    end
+  //--- get element type
+    let elementType = ioTypeMap.typeMapEntryForLKey (self.elementTypeName)
+  //--- Check element type is a struct
+    if elementType.definition.typeKind != .structType then
+      error self.elementTypeName : "this type should be a struct"
+    end
+  //--- Enumeration description
+    var [@sortedArraySortProperty] typedSortPropertyList = @()
+    for property in self.sortDescriptorList do
+      elementType.definition.propertyMap.searchKey (property.mSortedAttributeName, ?*, ?*, ?let @unifiedTypeMapEntry propertyType)
+      if not propertyType.definition.features.contains (.comparable) then
+        error property.mSortedAttributeName : "this property should be comparable"
+      end   
+      typedSortPropertyList ++= @(property.mAscending, property.mSortedAttributeName, propertyType)
+    end
+  //---
+    let selfType = ioTypeMap.typeMapEntryForLKey (self.sortedArrayTypeName)
+    ioSemanticDeclarationListForGeneration ++= @sortedArrayTypeForGeneration (
+      !infoMessage: "sorted array type " + self.sortedArrayTypeName,
+      selfType,
+      elementType,
+      typedSortPropertyList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+struct @sortedArraySortProperty {
+  let @bool ascending
+  let @string name
+  let @unifiedTypeMapEntry type
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry elementType
+  private let [@sortedArraySortProperty] typedSortPropertyList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
+                                     !@string outHeader ) {
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outHeader = filewrapper [sortedArrayTypeGenerationTemplate.arrayTypeHeader1 :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
+    ]
+    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.isConcrete,
+      selfTypeDefinition.initializerMap,
+      selfTypeDefinition.classFunctionMap,
+      selfTypeDefinition.getterMap,
+      selfTypeDefinition.setterMap,
+      selfTypeDefinition.instanceMethodMap,
+      selfTypeDefinition.classMethodMap,
+      selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
+      selfTypeDefinition.enumerationDescriptorList,
+      selfTypeDefinition.features,
+      selfTypeDefinition.addAssignOperatorArguments,
+      selfTypeDefinition.typeForEnumeratedElement,
+      selfTypeDefinition.supportArrayLiteral
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation ) {
+    self.elementType.addHeaderFileName (!?ioInclusionSet)
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outImplementation = filewrapper [sortedArrayTypeGenerationTemplate.arrayTypeSpecificImplementation :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation,
+      selfTypeDefinition.features.contains (.equatable),
+      self.typedSortPropertyList
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+filewrapper sortedArrayTypeGenerationTemplate in "../+generation-templates/type_generation" {
+}{
+}{
+  template arrayTypeHeader1 : "GALGAS_sorted_array.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@string ELEMENT_TYPE_IDENTIFIER
+  )
+
+  template arrayTypeSpecificImplementation : "GALGAS_sorted_array.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@string ELEMENT_TYPE_IDENTIFIER,
+    ?@bool GENERATE_COMPARISON,
+    ?[@sortedArraySortProperty] SORT_PROPERTY_ARRAY
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
+

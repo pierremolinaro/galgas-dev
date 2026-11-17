@@ -1,0 +1,83 @@
+//--------------------------------------------------------------------------------------------------
+//%!" Phase 1: " + TYPE_NAME + " array"%
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_%!TYPE_IDENTIFIER% final {
+//--- Constructor
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_%!TYPE_IDENTIFIER% final {
+//--- Constructor
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+

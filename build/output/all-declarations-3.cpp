@@ -4252,7 +4252,9 @@ void GGS__5B_row_5D_::removeAll (void) {
 
 void GGS__5B_row_5D_::plusPlusAssignOperation (const GGS_row & inValue
                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4821,7 +4823,9 @@ void GGS__5B__32_string_5D_::removeAll (void) {
 
 void GGS__5B__32_string_5D_::plusPlusAssignOperation (const GGS__32_string & inValue
                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5397,7 +5401,9 @@ void GGS__5B_lexicalSendSearchAST_5D_::removeAll (void) {
 
 void GGS__5B_lexicalSendSearchAST_5D_::plusPlusAssignOperation (const GGS_lexicalSendSearchAST & inValue
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6696,7 +6702,9 @@ void GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::removeAll (void) {
 
 void GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::plusPlusAssignOperation (const GGS_abstractLexicalRoutineActualArgumentAST & inValue
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7615,7 +7623,9 @@ void GGS__5B_lexicalSelectBranchAST_5D_::removeAll (void) {
 
 void GGS__5B_lexicalSelectBranchAST_5D_::plusPlusAssignOperation (const GGS_lexicalSelectBranchAST & inValue
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11692,7 +11702,9 @@ void GGS__5B_commandLineOptionAST_5D_::removeAll (void) {
 
 void GGS__5B_commandLineOptionAST_5D_::plusPlusAssignOperation (const GGS_commandLineOptionAST & inValue
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13534,7 +13546,9 @@ void GGS__5B_programRuleAST_5D_::removeAll (void) {
 
 void GGS__5B_programRuleAST_5D_::plusPlusAssignOperation (const GGS_programRuleAST & inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14597,11 +14611,110 @@ const GALGAS_TypeDescriptor * GGS_lexicalExplicitTokenListMap::staticTypeDescrip
 }
 
 //--------------------------------------------------------------------------------------------------
-//@tokenSortedlist' sorted list
+
+GGS_sortedToken::GGS_sortedToken (void) :
+mProperty_mLength (),
+mProperty_mName (),
+mProperty_mTerminalName () {
+}
+
 //--------------------------------------------------------------------------------------------------
 
-static int32_t compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_element & inLeft,
-                                                  const GGS_tokenSortedlist_2E_element & inRight) {
+GGS_sortedToken::GGS_sortedToken (const GGS_sortedToken & inSource) :
+mProperty_mLength (inSource.mProperty_mLength),
+mProperty_mName (inSource.mProperty_mName),
+mProperty_mTerminalName (inSource.mProperty_mTerminalName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken & GGS_sortedToken::operator = (const GGS_sortedToken & inSource) {
+  mProperty_mLength = inSource.mProperty_mLength ;
+  mProperty_mName = inSource.mProperty_mName ;
+  mProperty_mTerminalName = inSource.mProperty_mTerminalName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_sortedToken GGS_sortedToken::init_21__21__21_ (const GGS_uint & in_mLength,
+                                                   const GGS_string & in_mName,
+                                                   const GGS_string & in_mTerminalName,
+                                                   Compiler * inCompiler
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_sortedToken result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLength = in_mLength ;
+  result.mProperty_mName = in_mName ;
+  result.mProperty_mTerminalName = in_mTerminalName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedToken::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken::GGS_sortedToken (const GGS_uint & inOperand0,
+                                  const GGS_string & inOperand1,
+                                  const GGS_string & inOperand2) :
+mProperty_mLength (inOperand0),
+mProperty_mName (inOperand1),
+mProperty_mTerminalName (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_sortedToken::isValid (void) const {
+  return mProperty_mLength.isValid () && mProperty_mName.isValid () && mProperty_mTerminalName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedToken::drop (void) {
+  mProperty_mLength.drop () ;
+  mProperty_mName.drop () ;
+  mProperty_mTerminalName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedToken::description (String & ioString,
+                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @sortedToken:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLength.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mTerminalName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @sortedToken generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedToken ("sortedToken",
+                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_sortedToken::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sortedToken ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@sortedTokenArray' array
+//--------------------------------------------------------------------------------------------------
+
+static int32_t compareForSorting_sortedTokenArray (const GGS_sortedToken & inLeft,
+                                                   const GGS_sortedToken & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
     result = inLeft.mProperty_mLength.objectCompare (inRight.mProperty_mLength) ;
@@ -14614,278 +14727,358 @@ static int32_t compareForSorting_tokenSortedlist (const GGS_tokenSortedlist_2E_e
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist::GGS_tokenSortedlist (void) :
-mSharedArray () {
+GGS_sortedTokenArray::GGS_sortedTokenArray (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_tokenSortedlist::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_sortedTokenArray::GGS_sortedTokenArray (const GGS_sortedTokenArray & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedTokenArray & GGS_sortedTokenArray::operator = (const GGS_sortedTokenArray & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedTokenArray GGS_sortedTokenArray::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_sortedTokenArray result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedTokenArray::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedTokenArray::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedTokenArray::plusPlusAssignOperation (const GGS_sortedToken & inValue
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedTokenArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_sortedTokenArray::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (count ())) ;
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_tokenSortedlist::plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inElement
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    mSharedArray.appendObject (inElement) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_tokenSortedlist) ;
+GGS_sortedTokenArray GGS_sortedTokenArray::add_operation (const GGS_sortedTokenArray & inOperand,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_sortedTokenArray result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    result.mSharedArray.quickSortUsingFunction (compareForSorting_sortedTokenArray) ;
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_tokenSortedlist GGS_tokenSortedlist::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_tokenSortedlist result ;
-  result.mSharedArray.setCapacity (16) ; // Build
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist GGS_tokenSortedlist::class_func_sortedListWithValue (const GGS_uint & inOperand0,
-                                                                         const GGS_string & inOperand1,
-                                                                         const GGS_string & inOperand2
-                                                                         COMMA_LOCATION_ARGS) {
-  GGS_tokenSortedlist result = init (nullptr COMMA_THERE) ;
-  const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  result.plusPlusAssignOperation (newElement COMMA_THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::addAssignOperation (const GGS_uint & inOperand0,
-                                              const GGS_string & inOperand1,
-                                              const GGS_string & inOperand2
-                                              COMMA_LOCATION_ARGS) {
-  const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::setter_insert (const GGS_uint inOperand0,
-                                         const GGS_string inOperand1,
-                                         const GGS_string inOperand2,
-                                         Compiler * /* inCompiler */
-                                         COMMA_LOCATION_ARGS) {
-  const GGS_tokenSortedlist_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::plusAssignOperation (const GGS_tokenSortedlist inSortedList,
-                                               Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inSortedList.isValid ()) {
-    mSharedArray.setCapacity (mSharedArray.capacity () + inSortedList.mSharedArray.capacity ()) ;
-    for (int32_t i=0 ; i<inSortedList.count () ; i++) {
-      mSharedArray.appendObject (inSortedList.mSharedArray (i COMMA_HERE)) ;
-    }
-    mSharedArray.quickSortUsingFunction (compareForSorting_tokenSortedlist) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::setter_popSmallest (GGS_uint & outOperand0,
-                                              GGS_string & outOperand1,
-                                              GGS_string & outOperand2,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  bool found = false ;
-  if (isValid ()) {
-    if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popSmallest' proc invoked on an empty list" COMMA_THERE) ;
-    }else{
-      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
-      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
-      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mTerminalName ;
-      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
-      found = true ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::setter_popGreatest (GGS_uint & outOperand0,
-                                              GGS_string & outOperand1,
-                                              GGS_string & outOperand2,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  bool found = false ;
-  if (isValid ()) {
-    if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'popGreatest' proc invoked on an empty list" COMMA_THERE) ;
-    }else{
-      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
-      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
-      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mTerminalName ;
-      mSharedArray.removeLastObject (HERE) ;
-      found = true ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::method_smallest (GGS_uint & outOperand0,
-                                           GGS_string & outOperand1,
-                                           GGS_string & outOperand2,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'smallest' proc invoked on an empty list" COMMA_THERE) ;
-    }else{
-      outOperand0 = mSharedArray (0 COMMA_HERE).mProperty_mLength ;
-      outOperand1 = mSharedArray (0 COMMA_HERE).mProperty_mName ;
-      outOperand2 = mSharedArray (0 COMMA_HERE).mProperty_mTerminalName ;
-      found = true ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::method_greatest (GGS_uint & outOperand0,
-                                           GGS_string & outOperand1,
-                                           GGS_string & outOperand2,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (count () == 0) {
-      inCompiler->onTheFlyRunTimeError ("'greatest' proc invoked on an empty list" COMMA_THERE) ;
-    }else{
-      outOperand0 = mSharedArray.lastObject (HERE).mProperty_mLength ;
-      outOperand1 = mSharedArray.lastObject (HERE).mProperty_mName ;
-      outOperand2 = mSharedArray.lastObject (HERE).mProperty_mTerminalName ;
-      found = true ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_tokenSortedlist::description (String & ioString,
-                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString (" (") ;
-  ioString.appendSigned (count ()) ;
+void GGS_sortedTokenArray::description (String & ioString,
+                                        const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@sortedToken], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((count () > 1) ? "s" : "") ;
-  ioString.appendCString (")>") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @tokenSortedlist
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_tokenSortedlist::DownEnumerator_tokenSortedlist (const GGS_tokenSortedlist & inEnumeratedObject) :
-mElementArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mElementArray.count () - 1 ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist_2E_element DownEnumerator_tokenSortedlist::current (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE) ;
+void GGS_sortedTokenArray::plusAssignOperation (const GGS_sortedTokenArray inOperand,
+                                                Compiler * /* inCompiler */
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedTokenArray) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint DownEnumerator_tokenSortedlist::current_mLength (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mLength ;
+void GGS_sortedTokenArray::setter_append (const GGS_sortedToken inValue,
+                                          Compiler * /* inCompiler */
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedTokenArray) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_tokenSortedlist::current_mName (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mName ;
+void GGS_sortedTokenArray::setter_removeAll (Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @tokenSortedlist
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_tokenSortedlist::UpEnumerator_tokenSortedlist (const GGS_tokenSortedlist & inEnumeratedObject) :
-mElementArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_tokenSortedlist_2E_element UpEnumerator_tokenSortedlist::current (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_tokenSortedlist::current_mLength (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mLength ;
+void GGS_sortedTokenArray::setter_remove (GGS_sortedToken & outValue,
+                                          const GGS_uint inRemoveIndex,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_tokenSortedlist::current_mName (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mName ;
+void GGS_sortedTokenArray::setter_removeFirst (GGS_sortedToken & outValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS) const {
-  return mElementArray (mIndex COMMA_THERE).mProperty_mTerminalName ;
+void GGS_sortedTokenArray::setter_removeLast (GGS_sortedToken & outValue,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedTokenArray GGS_sortedTokenArray::getter_removingFirst (const GGS_uint & inIndex,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  GGS_sortedTokenArray result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS_sortedTokenArray::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedTokenArray GGS_sortedTokenArray::getter_sublist (const GGS_uint & inStartIndex,
+                                                           const GGS_uint & inLength,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_sortedTokenArray result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS_sortedTokenArray::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS_sortedTokenArray::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken GGS_sortedTokenArray::getter_first (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  GGS_sortedToken result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken GGS_sortedTokenArray::getter_last (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  GGS_sortedToken result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken GGS_sortedTokenArray::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_sortedToken result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
 }
 
 
-
 //--------------------------------------------------------------------------------------------------
-//     @tokenSortedlist generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tokenSortedlist ("tokenSortedlist",
-                                                                    nullptr) ;
-
+// Down Enumerator for @sortedTokenArray
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_tokenSortedlist::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_tokenSortedlist ;
+DownEnumerator_sortedTokenArray::DownEnumerator_sortedTokenArray (const GGS_sortedTokenArray & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken DownEnumerator_sortedTokenArray::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken DownEnumerator_sortedTokenArray::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @sortedTokenArray
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_sortedTokenArray::UpEnumerator_sortedTokenArray (const GGS_sortedTokenArray & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken UpEnumerator_sortedTokenArray::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedToken UpEnumerator_sortedTokenArray::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @sortedTokenArray generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedTokenArray ("sortedTokenArray",
+                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_sortedTokenArray::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sortedTokenArray ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15153,7 +15346,7 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::getter_ov
 
 void GGS_lexicalExplicitTokenListMapMap::setter_insertKey (GGS_lstring inLKey,
                                                            GGS_lexicalExplicitTokenListMap inArgument0,
-                                                           GGS_tokenSortedlist inArgument1,
+                                                           GGS_sortedTokenArray inArgument1,
                                                            GGS_bool inArgument2,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
@@ -15167,7 +15360,7 @@ void GGS_lexicalExplicitTokenListMapMap::setter_insertKey (GGS_lstring inLKey,
 
 void GGS_lexicalExplicitTokenListMapMap::method_searchKey (GGS_lstring inLKey,
                                                            GGS_lexicalExplicitTokenListMap & outArgument0,
-                                                           GGS_tokenSortedlist & outArgument1,
+                                                           GGS_sortedTokenArray & outArgument1,
                                                            GGS_bool & outArgument2,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
@@ -15214,10 +15407,10 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMapMap::getter_mExpl
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist GGS_lexicalExplicitTokenListMapMap::getter_mTokenSortedListForKey (const GGS_string & inKey,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_tokenSortedlist result ;
+GGS_sortedTokenArray GGS_lexicalExplicitTokenListMapMap::getter_mTokenSortedListForKey (const GGS_string & inKey,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_sortedTokenArray result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> info = infoForKey (key) ;
@@ -15274,7 +15467,7 @@ void GGS_lexicalExplicitTokenListMapMap::setter_setMExplicitTokenListMapForKey (
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GGS_tokenSortedlist inValue,
+void GGS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GGS_sortedTokenArray inValue,
                                                                            GGS_string inKey,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
@@ -15406,7 +15599,7 @@ GGS_lexicalExplicitTokenListMap DownEnumerator_lexicalExplicitTokenListMapMap::c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist DownEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
+GGS_sortedTokenArray DownEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mTokenSortedList ;
 }
 
@@ -15445,7 +15638,7 @@ GGS_lexicalExplicitTokenListMap UpEnumerator_lexicalExplicitTokenListMapMap::cur
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_tokenSortedlist UpEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
+GGS_sortedTokenArray UpEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mTokenSortedList ;
 }
 
@@ -16033,92 +16226,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap ("lexicalMe
 
 const GALGAS_TypeDescriptor * GGS_lexicalMessageMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Enum lexicalArgumentModeAST
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST::GGS_lexicalArgumentModeAST (void) :
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalArgumentModeAST result ;
-  result.mEnum = Enumeration::enum_lexicalInputMode ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalArgumentModeAST result ;
-  result.mEnum = Enumeration::enum_lexicalInputOutputMode ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
-  "(not built)",
-  "lexicalInputMode",
-  "lexicalInputOutputMode"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalArgumentModeAST::getter_isLexicalInputMode (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputMode == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalArgumentModeAST::getter_isLexicalInputOutputMode (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputOutputMode == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalArgumentModeAST::description (String & ioString,
-                                              const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<enum @lexicalArgumentModeAST: ") ;
-  ioString.appendCString (gEnumNameArrayFor_lexicalArgumentModeAST [size_t (mEnum)]) ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalArgumentModeAST::objectCompare (const GGS_lexicalArgumentModeAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalArgumentModeAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ("lexicalArgumentModeAST",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalArgumentModeAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
 }
 

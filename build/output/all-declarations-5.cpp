@@ -1071,7 +1071,9 @@ void GGS__5B_SyntaxInstructionListAST_5D_::removeAll (void) {
 
 void GGS__5B_SyntaxInstructionListAST_5D_::plusPlusAssignOperation (const GGS_SyntaxInstructionListAST & inValue
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1807,7 +1809,9 @@ void GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_::removeAll 
 
 void GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_::plusPlusAssignOperation (const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & inValue
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2201,7 +2205,9 @@ void GGS__5B_semanticInstructionListForGeneration_5D_::removeAll (void) {
 
 void GGS__5B_semanticInstructionListForGeneration_5D_::plusPlusAssignOperation (const GGS_semanticInstructionListForGeneration & inValue
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3836,7 +3842,9 @@ void GGS__5B__5B_formalInputParameterAST_5D__5D_::removeAll (void) {
 
 void GGS__5B__5B_formalInputParameterAST_5D__5D_::plusPlusAssignOperation (const GGS__5B_formalInputParameterAST_5D_ & inValue
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5833,7 +5841,9 @@ void GGS__5B_propertyInCollectionAST_5D_::removeAll (void) {
 
 void GGS__5B_propertyInCollectionAST_5D_::plusPlusAssignOperation (const GGS_propertyInCollectionAST & inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8387,7 +8397,9 @@ void GGS__5B_prologueEpilogueAST_5D_::removeAll (void) {
 
 void GGS__5B_prologueEpilogueAST_5D_::plusPlusAssignOperation (const GGS_prologueEpilogueAST & inValue
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10619,7 +10631,9 @@ void GGS__5B_associatedValueDescriptor_5D_::removeAll (void) {
 
 void GGS__5B_associatedValueDescriptor_5D_::plusPlusAssignOperation (const GGS_associatedValueDescriptor & inValue
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

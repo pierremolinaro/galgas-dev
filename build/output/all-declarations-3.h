@@ -4930,7 +4930,7 @@ class DownEnumerator_lexicalExplicitTokenListMapMap final {
 
   public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
 
-  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
+  public: class GGS_sortedTokenArray current_mTokenSortedList (LOCATION_ARGS) const ;
 
   public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
 
@@ -4958,7 +4958,7 @@ class UpEnumerator_lexicalExplicitTokenListMapMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
-  public: class GGS_tokenSortedlist current_mTokenSortedList (LOCATION_ARGS) const ;
+  public: class GGS_sortedTokenArray current_mTokenSortedList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
   public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -5034,7 +5034,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
                                  class GGS_lexicalExplicitTokenListMap constinArgument1,
-                                 class GGS_tokenSortedlist constinArgument2,
+                                 class GGS_sortedTokenArray constinArgument2,
                                  class GGS_bool constinArgument3,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
@@ -5049,7 +5049,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_root {
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMTokenSortedListForKey (class GGS_tokenSortedlist constinArgument0,
+  public: void setter_setMTokenSortedListForKey (class GGS_sortedTokenArray constinArgument0,
                                                  class GGS_string constinArgument1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
@@ -5058,7 +5058,7 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
                                  class GGS_lexicalExplicitTokenListMap & outArgument1,
-                                 class GGS_tokenSortedlist & outArgument2,
+                                 class GGS_sortedTokenArray & outArgument2,
                                  class GGS_bool & outArgument3,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
@@ -5095,9 +5095,9 @@ class GGS_lexicalExplicitTokenListMapMap : public AC_GALGAS_root {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_tokenSortedlist getter_mTokenSortedListForKey (const class GGS_string & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_sortedTokenArray getter_mTokenSortedListForKey (const class GGS_string & constinOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_lexicalExplicitTokenListMapMap getter_overriddenMap (Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const ;
@@ -10547,184 +10547,10 @@ class GGS_lexicalExplicitTokenListMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @tokenSortedlist sorted list enumerator
+// Phase 1: @sortedToken struct
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_tokenSortedlist final {
-//--- Constructor
-  public: DownEnumerator_tokenSortedlist (const class GGS_tokenSortedlist & inEnumeratedObject) ;
-
-//--- Accessors
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-  public: class GGS_uint current_mLength (LOCATION_ARGS) const ;
-  public: class GGS_string current_mName (LOCATION_ARGS) const ;
-  public: class GGS_string current_mTerminalName (LOCATION_ARGS) const ;
-
-//--- Current element access
-  public: class GGS_tokenSortedlist_2E_element current (LOCATION_ARGS) const ;
-
-//--- Private properties
-  private: GenericArray <GGS_tokenSortedlist_2E_element> mElementArray ;
-  private: int32_t mIndex ;
-
-//--- No copy
-  private: DownEnumerator_tokenSortedlist (const DownEnumerator_tokenSortedlist &) = delete ;
-  private: DownEnumerator_tokenSortedlist & operator = (const DownEnumerator_tokenSortedlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_tokenSortedlist final {
-//--- Constructor
-  public: UpEnumerator_tokenSortedlist (const class GGS_tokenSortedlist & inEnumeratedObject) ;
-
-//--- Accessors
-  public: inline bool hasCurrentObject (void) const { return mIndex < mElementArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-  public: class GGS_uint current_mLength (LOCATION_ARGS) const ;
-  public: class GGS_string current_mName (LOCATION_ARGS) const ;
-  public: class GGS_string current_mTerminalName (LOCATION_ARGS) const ;
-
-//--- Current element access
-  public: class GGS_tokenSortedlist_2E_element current (LOCATION_ARGS) const ;
-
-//--- Private properties
-  private: GenericArray <GGS_tokenSortedlist_2E_element> mElementArray ;
-  private: int32_t mIndex ;
-
-//--- No copy
-  private: UpEnumerator_tokenSortedlist (const UpEnumerator_tokenSortedlist &) = delete ;
-  private: UpEnumerator_tokenSortedlist & operator = (const UpEnumerator_tokenSortedlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @tokenSortedlist sorted list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_tokenSortedlist final : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_tokenSortedlist_2E_element> mSharedArray ;
-
-//--- Default constructor
-  public: GGS_tokenSortedlist (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_tokenSortedlist (void) = default ;
-
-//--- Handle copy
-  public: GGS_tokenSortedlist (const GGS_tokenSortedlist &) = default ;
-  public: GGS_tokenSortedlist & operator = (const GGS_tokenSortedlist &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mSharedArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mSharedArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline int32_t count (void) const { return mSharedArray.count () ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_tokenSortedlist_2E_element> sortedElementArray (void) const {
-    return mSharedArray ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_tokenSortedlist init (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_tokenSortedlist class_func_sortedListWithValue (const class GGS_uint & inOperand0,
-                                                                           const class GGS_string & inOperand1,
-                                                                           const class GGS_string & inOperand2
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS_tokenSortedlist inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_uint & inOperand0,
-                                   const class GGS_string & inOperand1,
-                                   const class GGS_string & inOperand2
-                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public: void setter_insert (class GGS_uint inArgument0,
-                              class GGS_string inArgument1,
-                              class GGS_string inArgument2,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popGreatest (class GGS_uint & outArgument0,
-                                   class GGS_string & outArgument1,
-                                   class GGS_string & outArgument2,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popSmallest (class GGS_uint & outArgument0,
-                                   class GGS_string & outArgument1,
-                                   class GGS_string & outArgument2,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_greatest (class GGS_uint & outArgument0,
-                                class GGS_string & outArgument1,
-                                class GGS_string & outArgument2,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) const ;
-
-  public: void method_smallest (class GGS_uint & outArgument0,
-                                class GGS_string & outArgument1,
-                                class GGS_string & outArgument2,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_tokenSortedlist ;
-  friend class DownEnumerator_tokenSortedlist ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tokenSortedlist ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @tokenSortedlist_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
+class GGS_sortedToken : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_uint mProperty_mLength ;
   public: inline GGS_uint readProperty_mLength (void) const {
@@ -10746,7 +10572,7 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_tokenSortedlist_2E_element (void) ;
+  public: GGS_sortedToken (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMLength (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -10765,24 +10591,24 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_tokenSortedlist_2E_element (const GGS_uint & in_mLength,
-                                          const GGS_string & in_mName,
-                                          const GGS_string & in_mTerminalName) ;
+  public: GGS_sortedToken (const GGS_uint & in_mLength,
+                           const GGS_string & in_mName,
+                           const GGS_string & in_mTerminalName) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_tokenSortedlist_2E_element (const GGS_tokenSortedlist_2E_element & inSource) ;
+  public: GGS_sortedToken (const GGS_sortedToken & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_tokenSortedlist_2E_element & operator = (const GGS_tokenSortedlist_2E_element & inSource) ;
+  public: GGS_sortedToken & operator = (const GGS_sortedToken & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_tokenSortedlist_2E_element init_21__21__21_ (const class GGS_uint & inOperand0,
-                                                                  const class GGS_string & inOperand1,
-                                                                  const class GGS_string & inOperand2,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS_sortedToken init_21__21__21_ (const class GGS_uint & inOperand0,
+                                                   const class GGS_string & inOperand1,
+                                                   const class GGS_string & inOperand2,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -10807,7 +10633,175 @@ class GGS_tokenSortedlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_tokenSortedlist_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedToken ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: sortedTokenArray array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_sortedTokenArray final {
+//--- Constructor
+  public: DownEnumerator_sortedTokenArray (const class GGS_sortedTokenArray & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_sortedTokenArray (const DownEnumerator_sortedTokenArray &) = delete ;
+  private: DownEnumerator_sortedTokenArray & operator = (const DownEnumerator_sortedTokenArray &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedToken current (LOCATION_ARGS) const ;
+  public: class GGS_sortedToken current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_sortedToken> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_sortedTokenArray final {
+//--- Constructor
+  public: UpEnumerator_sortedTokenArray (const class GGS_sortedTokenArray & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_sortedTokenArray (const UpEnumerator_sortedTokenArray &) = delete ;
+  private: UpEnumerator_sortedTokenArray & operator = (const UpEnumerator_sortedTokenArray &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedToken current (LOCATION_ARGS) const ;
+  public: class GGS_sortedToken current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_sortedToken> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedTokenArray final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_sortedToken> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_sortedTokenArray (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_sortedTokenArray (const GGS_sortedTokenArray & inSource) ;
+  public: GGS_sortedTokenArray & operator = (const GGS_sortedTokenArray & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedTokenArray init (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_sortedTokenArray inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_sortedToken & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_sortedTokenArray add_operation (const GGS_sortedTokenArray & inOperand,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_sortedToken constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_sortedToken & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_sortedToken & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_sortedToken & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedToken getter_first (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedToken getter_last (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray getter_sublist (const class GGS_uint & constinOperand0,
+                                                     const class GGS_uint & constinOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_sortedToken readSubcript__3F_ (const class GGS_uint & in0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_sortedTokenArray ;
+  friend class DownEnumerator_sortedTokenArray ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedTokenArray ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMapMap_2E_element struct
@@ -10825,8 +10819,8 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
     return mProperty_mExplicitTokenListMap ;
   }
 
-  public: GGS_tokenSortedlist mProperty_mTokenSortedList ;
-  public: inline GGS_tokenSortedlist readProperty_mTokenSortedList (void) const {
+  public: GGS_sortedTokenArray mProperty_mTokenSortedList ;
+  public: inline GGS_sortedTokenArray readProperty_mTokenSortedList (void) const {
     return mProperty_mTokenSortedList ;
   }
 
@@ -10851,7 +10845,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
     mProperty_mExplicitTokenListMap = inValue ;
   }
 
-  public: inline void setter_setMTokenSortedList (const GGS_tokenSortedlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMTokenSortedList (const GGS_sortedTokenArray & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mTokenSortedList = inValue ;
   }
 
@@ -10865,7 +10859,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_lexicalExplicitTokenListMapMap_2E_element (const GGS_lstring & in_lkey,
                                                          const GGS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
-                                                         const GGS_tokenSortedlist & in_mTokenSortedList,
+                                                         const GGS_sortedTokenArray & in_mTokenSortedList,
                                                          const GGS_bool & in_mShouldBeGenerated) ;
 
 //--------------------------------- Copy constructor
@@ -10879,7 +10873,7 @@ class GGS_lexicalExplicitTokenListMapMap_2E_element : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_lexicalExplicitTokenListMapMap_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                                      const class GGS_lexicalExplicitTokenListMap & inOperand1,
-                                                                                     const class GGS_tokenSortedlist & inOperand2,
+                                                                                     const class GGS_sortedTokenArray & inOperand2,
                                                                                      const class GGS_bool & inOperand3,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) ;
@@ -11139,77 +11133,4 @@ class GGS_lexicalMessageMap_2E_element_3F_ : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
-//   enum lexicalArgumentModeAST
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalArgumentModeAST : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_lexicalArgumentModeAST (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_lexicalInputMode,
-    enum_lexicalInputOutputMode
-  } ;
-  
-//--------------------------------- Private properties
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputMode (LOCATION_ARGS) ;
-
-  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputOutputMode (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexicalArgumentModeAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_isLexicalInputMode (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isLexicalInputOutputMode (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
 

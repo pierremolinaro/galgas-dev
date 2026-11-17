@@ -244,7 +244,7 @@ static GGS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,
       result = GGS_binaryset (BinaryDecisionDiagram::varCompareConst (inBitIndex.uintValue (),
                                  inBitCount.uintValue (),
                                  inComparison,
-                                 inConstant.uint64Value ())) ;
+                                 inConstant.u64 ())) ;
     }
   }
   return result ;
@@ -423,7 +423,7 @@ GGS_bool GGS_binaryset::getter_containsValue (const GGS_uint_36__34_ & inValue,
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inValue.isValid () && inFirstBit.isValid () && inBitCount.isValid ()) {
-     const uint64_t value = inValue.uint64Value () ;
+     const uint64_t value = inValue.u64 () ;
      const uint32_t firstBit = inFirstBit.uintValue () ;
      const uint32_t bitCount = inBitCount.uintValue () ;
      result = GGS_bool (mBDD.containsValue64 (value, firstBit, bitCount)) ;

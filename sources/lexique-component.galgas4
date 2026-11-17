@@ -548,7 +548,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
       argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
     end
     var @lexicalExplicitTokenListMap lexicalTokenListMap = @()
-    var tokenSortedlist = @tokenSortedlist ()
+    var tokenSortedlist = @sortedTokenArray ()
     for entry in lexicalList.mEntryList do
       let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing ("%K", !by: entry.mTerminalSpelling.string)
       lexiqueAnalysisContext.mTerminalList ++= @(

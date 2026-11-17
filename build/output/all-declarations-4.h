@@ -9,6 +9,79 @@
 #include "all-declarations-3.h"
 
 //--------------------------------------------------------------------------------------------------
+//   enum lexicalArgumentModeAST
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalArgumentModeAST : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_lexicalArgumentModeAST (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_lexicalInputMode,
+    enum_lexicalInputOutputMode
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputMode (LOCATION_ARGS) ;
+
+  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputOutputMode (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalArgumentModeAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_isLexicalInputMode (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isLexicalInputOutputMode (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: [lexicalRoutineFormalArgumentAST] array
 //--------------------------------------------------------------------------------------------------
 

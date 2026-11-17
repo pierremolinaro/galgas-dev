@@ -8,6 +8,115 @@
 #include "all-declarations-8.h"
 
 //--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (void) :
+mProperty_constantList (),
+mProperty_associatedValuesExtraction (),
+mProperty_instructionList (),
+mProperty_endOfBranch () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (const GGS_templateInstructionSwitchBranchAST & inSource) :
+mProperty_constantList (inSource.mProperty_constantList),
+mProperty_associatedValuesExtraction (inSource.mProperty_associatedValuesExtraction),
+mProperty_instructionList (inSource.mProperty_instructionList),
+mProperty_endOfBranch (inSource.mProperty_endOfBranch) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchAST & GGS_templateInstructionSwitchBranchAST::operator = (const GGS_templateInstructionSwitchBranchAST & inSource) {
+  mProperty_constantList = inSource.mProperty_constantList ;
+  mProperty_associatedValuesExtraction = inSource.mProperty_associatedValuesExtraction ;
+  mProperty_instructionList = inSource.mProperty_instructionList ;
+  mProperty_endOfBranch = inSource.mProperty_endOfBranch ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchAST GGS_templateInstructionSwitchBranchAST::init_21__21__21__21_ (const GGS__5B_lstring_5D_ & in_constantList,
+                                                                                                     const GGS__5B_switchExtractedValuesAST_5D_ & in_associatedValuesExtraction,
+                                                                                                     const GGS__5B_templateInstructionAST_5D_ & in_instructionList,
+                                                                                                     const GGS_location & in_endOfBranch,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_templateInstructionSwitchBranchAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_constantList = in_constantList ;
+  result.mProperty_associatedValuesExtraction = in_associatedValuesExtraction ;
+  result.mProperty_instructionList = in_instructionList ;
+  result.mProperty_endOfBranch = in_endOfBranch ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionSwitchBranchAST::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (const GGS__5B_lstring_5D_ & inOperand0,
+                                                                                const GGS__5B_switchExtractedValuesAST_5D_ & inOperand1,
+                                                                                const GGS__5B_templateInstructionAST_5D_ & inOperand2,
+                                                                                const GGS_location & inOperand3) :
+mProperty_constantList (inOperand0),
+mProperty_associatedValuesExtraction (inOperand1),
+mProperty_instructionList (inOperand2),
+mProperty_endOfBranch (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_templateInstructionSwitchBranchAST::isValid (void) const {
+  return mProperty_constantList.isValid () && mProperty_associatedValuesExtraction.isValid () && mProperty_instructionList.isValid () && mProperty_endOfBranch.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionSwitchBranchAST::drop (void) {
+  mProperty_constantList.drop () ;
+  mProperty_associatedValuesExtraction.drop () ;
+  mProperty_instructionList.drop () ;
+  mProperty_endOfBranch.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionSwitchBranchAST::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @templateInstructionSwitchBranchAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_constantList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_associatedValuesExtraction.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_instructionList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_endOfBranch.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionSwitchBranchAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchAST ("templateInstructionSwitchBranchAST",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchBranchAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_templateInstructionSwitchBranchAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -59,7 +168,9 @@ void GGS__5B_templateInstructionSwitchBranchAST_5D_::removeAll (void) {
 
 void GGS__5B_templateInstructionSwitchBranchAST_5D_::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchAST & inValue
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -721,7 +832,9 @@ void GGS__5B_templateInstructionSwitchBranchForGeneration_5D_::removeAll (void) 
 
 void GGS__5B_templateInstructionSwitchBranchForGeneration_5D_::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchForGeneration & inValue
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14896,7 +15009,9 @@ void GGS__5B_collectionValueElementAST_5D_::removeAll (void) {
 
 void GGS__5B_collectionValueElementAST_5D_::plusPlusAssignOperation (const GGS_collectionValueElementAST & inValue
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

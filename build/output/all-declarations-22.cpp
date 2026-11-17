@@ -675,15 +675,15 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementat
       result.appendString ("  if (inIdentifier == ") ;
       result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 176)).add_operation (enumerator_8863.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 176)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 176)).stringValue ()) ;
       result.appendString (") {\n    ioFound = true ;\n") ;
-      GGS_uint index_9060_ (0) ;
+      GGS_uint index_9038_ (0) ;
       if (enumerator_8863.current_mTokenSortedList (HERE).isValid ()) {
-        UpEnumerator_tokenSortedlist enumerator_9060 (enumerator_8863.current_mTokenSortedList (HERE)) ;
-        while (enumerator_9060.hasCurrentObject ()) {
+        UpEnumerator_sortedTokenArray enumerator_9038 (enumerator_8863.current_mTokenSortedList (HERE)) ;
+        while (enumerator_9038.hasCurrentObject ()) {
           result.appendString ("    ioList.appendObject (") ;
-          result.appendString (enumerator_9060.current_mName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 179)).stringValue ()) ;
+          result.appendString (enumerator_9038.current_entry (HERE).readProperty_mName ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 179)).stringValue ()) ;
           result.appendString (") ;\n") ;
-          enumerator_9060.gotoNextObject () ;
-          index_9060_.increment () ;
+          enumerator_9038.gotoNextObject () ;
+          index_9038_.increment () ;
         }
       }
       result.appendString ("    ioList.sortArrayUsingCompareMethod() ;\n  }\n") ;
@@ -4281,7 +4281,7 @@ GGS_string filewrapperTemplate_arrayTypeGenerationTemplate_arrayTypeSpecificImpl
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & inValue\n      ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
-  result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  mSharedArray.appendObject (inValue) ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_uint GGS_") ;
+  result.appendString ("COMMA_UNUSED_LOCATION_ARGS) {\n  if (isValid ()) {\n    mSharedArray.appendObject (inValue) ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_uint GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::getter_count (UNUSED_LOCATION_ARGS) const {\n  GGS_uint result ;\n  if (isValid ()) {\n    result = GGS_uint (uint32_t (mSharedArray.count ())) ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;

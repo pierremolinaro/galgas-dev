@@ -171,6 +171,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "select",
   "self",
   "send",
+  "sortedarray",
   "sortedlist",
   "spoil",
   "super",

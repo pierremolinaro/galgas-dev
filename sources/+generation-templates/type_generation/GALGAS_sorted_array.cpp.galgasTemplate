@@ -1,0 +1,386 @@
+//--------------------------------------------------------------------------------------------------
+//%!"Class for element of '@" + TYPE_IDENTIFIER + "' array"%
+//--------------------------------------------------------------------------------------------------
+
+static int32_t compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inLeft,
+                            %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inRight) {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+% for (entry) in SORT_PROPERTY_ARRAY do
+    %  if (result == ComparisonResult::operandEqual) {\n%
+    %    result = %
+    if entry.ascending then
+      %inLeft.mProperty_%![entry.name identifierRepresentation]%.objectCompare (inRight.mProperty_%![entry.name identifierRepresentation]%)%
+    else
+      %inRight.mProperty_%![entry.name identifierRepresentation]%.objectCompare (inLeft.mProperty_%![entry.name identifierRepresentation]%)%
+    end
+    % ;\n%
+    %  }\n%
+  end
+%  return int32_t (result) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
+      %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    result.mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+     %!^%const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@%!ELEMENT_TYPE_IDENTIFIER%], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIER% inOperand,
+            %!^%Compiler * /* inCompiler */
+            %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+      %!^%Compiler * /* inCompiler */
+      %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_%!TYPE_IDENTIFIER%) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeAll (%?^%Compiler * /* inCompiler */
+                                               %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_remove (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%const GGS_uint inRemoveIndex,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeFirst (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const GGS_uint & inIndex,
+        %!^%Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_sublist (%?^%const GGS_uint & inStartIndex,
+        %!^%const GGS_uint & inLength,
+        %!^%Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_first (%?^%Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (%?^%Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_uint & inIndex,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_%!ELEMENT_TYPE_IDENTIFIER% left = mSharedArray (int32_t (i) COMMA_HERE) ;
+        const GGS_%!ELEMENT_TYPE_IDENTIFIER% right = inOperand.mSharedArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
+
+%end%
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+

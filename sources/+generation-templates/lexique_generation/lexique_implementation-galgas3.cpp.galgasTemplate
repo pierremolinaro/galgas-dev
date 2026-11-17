@@ -87,8 +87,8 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
     %//--------------------------------------------------------------------------------------------------\n%
     %\nstatic const int32_t ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string% [ktable_size_%!LEXIQUE_IDENTIFIER%_%!tokenList_lkey.string%] = {\n%
-      for (mLength mName mTerminalName) in tokenList_mTokenSortedList
-      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mName identifierRepresentation]%, Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
+      for (token) in tokenList_mTokenSortedList
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![token.mName identifierRepresentation]%, Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![token.mTerminalName identifierRepresentation]%)%
       between %,\n%
       end
     %\n} ;\n\n%
@@ -349,8 +349,8 @@ static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const String & %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
   %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) {\n%
   %    ioFound = true ;\n%
-  for (mLength mName mTerminalName) in mTokenSortedList do
-    %    ioList.appendObject (%![mName utf8RepresentationEscapingQuestionMark]%) ;\n%
+  for (token) in mTokenSortedList do
+    %    ioList.appendObject (%![token.mName utf8RepresentationEscapingQuestionMark]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%

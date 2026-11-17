@@ -8,6 +8,93 @@
 #include "all-declarations-4.h"
 
 //--------------------------------------------------------------------------------------------------
+//  Enum lexicalArgumentModeAST
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalArgumentModeAST::GGS_lexicalArgumentModeAST (void) :
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalArgumentModeAST GGS_lexicalArgumentModeAST::class_func_lexicalInputMode (UNUSED_LOCATION_ARGS) {
+  GGS_lexicalArgumentModeAST result ;
+  result.mEnum = Enumeration::enum_lexicalInputMode ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalArgumentModeAST GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (UNUSED_LOCATION_ARGS) {
+  GGS_lexicalArgumentModeAST result ;
+  result.mEnum = Enumeration::enum_lexicalInputOutputMode ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
+  "(not built)",
+  "lexicalInputMode",
+  "lexicalInputOutputMode"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalArgumentModeAST::getter_isLexicalInputMode (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputMode == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalArgumentModeAST::getter_isLexicalInputOutputMode (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalInputOutputMode == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalArgumentModeAST::description (String & ioString,
+                                              const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<enum @lexicalArgumentModeAST: ") ;
+  ioString.appendCString (gEnumNameArrayFor_lexicalArgumentModeAST [size_t (mEnum)]) ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalArgumentModeAST::objectCompare (const GGS_lexicalArgumentModeAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalArgumentModeAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ("lexicalArgumentModeAST",
+                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalArgumentModeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_lexicalRoutineFormalArgumentAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -59,7 +146,9 @@ void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::removeAll (void) {
 
 void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentAST & inValue
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1123,7 +1212,9 @@ void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::removeAll (void) {
 
 void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentAST & inValue
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5050,7 +5141,9 @@ void GGS__5B_XCodeGroup_5D_::removeAll (void) {
 
 void GGS__5B_XCodeGroup_5D_::plusPlusAssignOperation (const GGS_XCodeGroup & inValue
                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5444,7 +5537,9 @@ void GGS__5B_XCodeToolTarget_5D_::removeAll (void) {
 
 void GGS__5B_XCodeToolTarget_5D_::plusPlusAssignOperation (const GGS_XCodeToolTarget & inValue
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5838,7 +5933,9 @@ void GGS__5B_XCodeAppTarget_5D_::removeAll (void) {
 
 void GGS__5B_XCodeAppTarget_5D_::plusPlusAssignOperation (const GGS_XCodeAppTarget & inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6232,7 +6329,9 @@ void GGS__5B_BuildFile_5D_::removeAll (void) {
 
 void GGS__5B_BuildFile_5D_::plusPlusAssignOperation (const GGS_BuildFile & inValue
                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7129,7 +7228,9 @@ void GGS__5B_unifiedTypeMapEntry_5D_::removeAll (void) {
 
 void GGS__5B_unifiedTypeMapEntry_5D_::plusPlusAssignOperation (const GGS_unifiedTypeMapEntry & inValue
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10436,7 +10537,9 @@ void GGS__5B_terminalLabelAST_5D_::removeAll (void) {
 
 void GGS__5B_terminalLabelAST_5D_::plusPlusAssignOperation (const GGS_terminalLabelAST & inValue
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10929,7 +11032,9 @@ void GGS__5B_guiLabelAST_5D_::removeAll (void) {
 
 void GGS__5B_guiLabelAST_5D_::plusPlusAssignOperation (const GGS_guiLabelAST & inValue
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11323,7 +11428,9 @@ void GGS__5B_guiSimpleAttributeAST_5D_::removeAll (void) {
 
 void GGS__5B_guiSimpleAttributeAST_5D_::plusPlusAssignOperation (const GGS_guiSimpleAttributeAST & inValue
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11717,7 +11824,9 @@ void GGS__5B_guiCompoundAttributeAST_5D_::removeAll (void) {
 
 void GGS__5B_guiCompoundAttributeAST_5D_::plusPlusAssignOperation (const GGS_guiCompoundAttributeAST & inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12803,7 +12912,9 @@ void GGS__5B_textMacroAST_5D_::removeAll (void) {
 
 void GGS__5B_textMacroAST_5D_::plusPlusAssignOperation (const GGS_textMacroAST & inValue
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13425,7 +13536,9 @@ void GGS__5B_withLexiqueAST_5D_::removeAll (void) {
 
 void GGS__5B_withLexiqueAST_5D_::plusPlusAssignOperation (const GGS_withLexiqueAST & inValue
                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13819,7 +13932,9 @@ void GGS__5B_projectIndexingDescriptorAST_5D_::removeAll (void) {
 
 void GGS__5B_projectIndexingDescriptorAST_5D_::plusPlusAssignOperation (const GGS_projectIndexingDescriptorAST & inValue
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14332,7 +14447,9 @@ void GGS__5B_importedLexiqueAST_5D_::removeAll (void) {
 
 void GGS__5B_importedLexiqueAST_5D_::plusPlusAssignOperation (const GGS_importedLexiqueAST & inValue
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15285,7 +15402,9 @@ void GGS__5B_galgasGUIComponentAST_5D_::removeAll (void) {
 
 void GGS__5B_galgasGUIComponentAST_5D_::plusPlusAssignOperation (const GGS_galgasGUIComponentAST & inValue
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16251,7 +16370,9 @@ void GGS__5B__32_lstring_5D_::removeAll (void) {
 
 void GGS__5B__32_lstring_5D_::plusPlusAssignOperation (const GGS__32_lstring & inValue
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16734,7 +16855,9 @@ void GGS__5B_terminalCheckAssignement_5D_::removeAll (void) {
 
 void GGS__5B_terminalCheckAssignement_5D_::plusPlusAssignOperation (const GGS_terminalCheckAssignement & inValue
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

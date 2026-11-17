@@ -624,8 +624,8 @@ end
       %//             Key words table '%!tokenList_lkey.string%'      \n%
       %//--------------------------------------------------------------------------------------------------\n\n%
       %fileprivate let kDictionary_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%!tokenList_lkey.string% : [String : UInt16] = [\n%
-        for (* name terminalName) in tokenList_mTokenSortedList
-        do %  %![name utf8RepresentationEscapingQuestionMark]% : %!LEXIQUE_CLASS_NAME%_1_%![terminalName identifierRepresentation]
+        for (token) in tokenList_mTokenSortedList
+        do %  %![token.mName utf8RepresentationEscapingQuestionMark]% : %!LEXIQUE_CLASS_NAME%_1_%![token.mTerminalName identifierRepresentation]
         between %,\n%
         end
       %\n]\n\n%

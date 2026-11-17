@@ -1108,7 +1108,9 @@ void GGS__5B_syntaxComponentAST_5D_::removeAll (void) {
 
 void GGS__5B_syntaxComponentAST_5D_::plusPlusAssignOperation (const GGS_syntaxComponentAST & inValue
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15176,7 +15178,9 @@ void GGS__5B_overrideKind_5D_::removeAll (void) {
 
 void GGS__5B_overrideKind_5D_::plusPlusAssignOperation (const GGS_overrideKind & inValue
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15570,7 +15574,9 @@ void GGS__5B_scopeLocalVarMap_5D_::removeAll (void) {
 
 void GGS__5B_scopeLocalVarMap_5D_::plusPlusAssignOperation (const GGS_scopeLocalVarMap & inValue
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -75,13 +75,13 @@ GGS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const GG
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result_result ; // Returned variable
-  GGS_tokenSortedlist var_tokenSortedList_8828 ;
+  GGS_sortedTokenArray var_tokenSortedList_8828 ;
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
   GGS_lexicalExplicitTokenListMap joker_8819 ; // Joker input parameter
   GGS_bool joker_8845 ; // Joker input parameter
   constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8819, var_tokenSortedList_8828, joker_8845, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 196)) ;
   result_result = GGS_string::makeEmptyString () ;
-  DownEnumerator_tokenSortedlist enumerator_8880 (var_tokenSortedList_8828) ;
+  DownEnumerator_sortedTokenArray enumerator_8880 (var_tokenSortedList_8828) ;
   while (enumerator_8880.hasCurrentObject ()) {
     result_result.plusAssignOperation(GGS_string ("if (testForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)) ;
     result_result.plusAssignOperation(enumerator_8880.current (HERE).readProperty_mName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 200)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 200)) ;
@@ -3600,13 +3600,13 @@ GGS_string cPtr_lexicalImplicitRuleAST::getter_generateSwiftCocoaCode (const GGS
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result_outGeneratedCode ; // Returned variable
-  GGS_tokenSortedlist var_tokenSortedList_8355 ;
+  GGS_sortedTokenArray var_tokenSortedList_8355 ;
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
   GGS_lexicalExplicitTokenListMap joker_8346 ; // Joker input parameter
   GGS_bool joker_8372 ; // Joker input parameter
   constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8346, var_tokenSortedList_8355, joker_8372, inCompiler COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas4", 181)) ;
   result_outGeneratedCode = GGS_string::makeEmptyString () ;
-  DownEnumerator_tokenSortedlist enumerator_8417 (var_tokenSortedList_8355) ;
+  DownEnumerator_sortedTokenArray enumerator_8417 (var_tokenSortedList_8355) ;
   while (enumerator_8417.hasCurrentObject ()) {
     result_outGeneratedCode.plusAssignOperation(GGS_string ("if scanningOk && self.testForInputString ("), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas4", 184)) ;
     result_outGeneratedCode.plusAssignOperation(enumerator_8417.current (HERE).readProperty_mName ().getter_utf_38_Representation (SOURCE_FILE ("lexiqueCocoaGeneration.galgas4", 185)), inCompiler  COMMA_SOURCE_FILE ("lexiqueCocoaGeneration.galgas4", 185)) ;

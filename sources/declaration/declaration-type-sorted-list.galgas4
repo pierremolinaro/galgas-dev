@@ -26,6 +26,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $sortedlist$
     $@type$ (?let sortedListTypeName) indexing (sortedListDefinition, structDefinition ".element")
+    warning sortedListTypeName : "SORTED LIST!!!"
     let @bool isEquatable
     select
       isEquatable = false

@@ -5697,7 +5697,9 @@ void GGS__5B_galgasQualifiedFeature_5D_::removeAll (void) {
 
 void GGS__5B_galgasQualifiedFeature_5D_::plusPlusAssignOperation (const GGS_galgasQualifiedFeature & inValue
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7901,7 +7903,9 @@ void GGS__5B_filewrapperTemplateForGeneration_5D_::removeAll (void) {
 
 void GGS__5B_filewrapperTemplateForGeneration_5D_::plusPlusAssignOperation (const GGS_filewrapperTemplateForGeneration & inValue
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -9094,7 +9098,9 @@ void GGS__5B_ruleLabelImplementationAST_5D_::removeAll (void) {
 
 void GGS__5B_ruleLabelImplementationAST_5D_::plusPlusAssignOperation (const GGS_ruleLabelImplementationAST & inValue
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -714,7 +714,9 @@ void GGS__5B_acceptableParameter_5D_::removeAll (void) {
 
 void GGS__5B_acceptableParameter_5D_::plusPlusAssignOperation (const GGS_acceptableParameter & inValue
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2188,7 +2190,9 @@ void GGS__5B_galgas_33_SyntaxExtensionAST_5D_::removeAll (void) {
 
 void GGS__5B_galgas_33_SyntaxExtensionAST_5D_::plusPlusAssignOperation (const GGS_galgas_33_SyntaxExtensionAST & inValue
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5871,7 +5875,9 @@ void GGS__5B_syntaxRuleLabelAST_5D_::removeAll (void) {
 
 void GGS__5B_syntaxRuleLabelAST_5D_::plusPlusAssignOperation (const GGS_syntaxRuleLabelAST & inValue
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7217,8 +7223,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 189)) {
-    static const char * syntaxErrorMessageArray [189] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 190)) {
+    static const char * syntaxErrorMessageArray [190] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -7302,6 +7308,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'select' keyword",
         "the 'self' keyword",
         "the 'send' keyword",
+        "the 'sortedarray' keyword",
         "the 'sortedlist' keyword",
         "the 'spoil' keyword",
         "the 'super' keyword",
@@ -8910,6 +8917,21 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__send
   utf32 ('d'),
 } ;
 
+//--- Unicode string for '$sortedarray$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sortedarray = {
+  utf32 ('s'),
+  utf32 ('o'),
+  utf32 ('r'),
+  utf32 ('t'),
+  utf32 ('e'),
+  utf32 ('d'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('r'),
+  utf32 ('a'),
+  utf32 ('y'),
+} ;
+
 //--- Unicode string for '$sortedlist$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sortedlist = {
   utf32 ('s'),
@@ -9298,7 +9320,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 79 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 80 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -9379,7 +9401,8 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__typealias, Lexique_galgasScanner_34_::kToken_typealias),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__sortedlist, Lexique_galgasScanner_34_::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__fileprivate, Lexique_galgasScanner_34_::kToken_fileprivate),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__filewrapper, Lexique_galgasScanner_34_::kToken_filewrapper)
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__filewrapper, Lexique_galgasScanner_34_::kToken_filewrapper),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__sortedarray, Lexique_galgasScanner_34_::kToken_sortedarray)
 } ;
 
 int32_t Lexique_galgasScanner_34_::search_into_galgasKeyWordList (const String & inSearchedString) {
@@ -9840,6 +9863,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_send:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("send") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_sortedarray:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("sortedarray") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_sortedlist:
@@ -11302,6 +11330,7 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("select") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("self") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("send") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("sortedarray") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("sortedlist") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("spoil") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("super") COMMA_HERE) ;
@@ -11600,6 +11629,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("fileprivate") ;
     ioList.appendObject ("filewrapper") ;
+    ioList.appendObject ("sortedarray") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
 }
@@ -11615,7 +11645,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [189] = {0,
+  static const uint32_t kTerminalSymbolStyles [190] = {0,
     0 /* galgasScanner4_1_identifier */,
     7 /* galgasScanner4_1_double_2E_xxx */,
     6 /* galgasScanner4_1_literalInt */,
@@ -11699,6 +11729,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_select */,
     1 /* galgasScanner4_1_self */,
     1 /* galgasScanner4_1_send */,
+    1 /* galgasScanner4_1_sortedarray */,
     1 /* galgasScanner4_1_sortedlist */,
     1 /* galgasScanner4_1_spoil */,
     1 /* galgasScanner4_1_super */,
@@ -11887,7 +11918,9 @@ void GGS__5B_templateInstructionForGeneration_5D_::removeAll (void) {
 
 void GGS__5B_templateInstructionForGeneration_5D_::plusPlusAssignOperation (const GGS_templateInstructionForGeneration & inValue
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12352,7 +12385,9 @@ void GGS__5B_templateInstructionAST_5D_::removeAll (void) {
 
 void GGS__5B_templateInstructionAST_5D_::plusPlusAssignOperation (const GGS_templateInstructionAST & inValue
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13361,7 +13396,9 @@ void GGS__5B_templateExpressionElementAST_5D_::removeAll (void) {
 
 void GGS__5B_templateExpressionElementAST_5D_::plusPlusAssignOperation (const GGS_templateExpressionElementAST & inValue
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -13854,7 +13891,9 @@ void GGS__5B_templateInstructionIfBranchAST_5D_::removeAll (void) {
 
 void GGS__5B_templateInstructionIfBranchAST_5D_::plusPlusAssignOperation (const GGS_templateInstructionIfBranchAST & inValue
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15540,7 +15579,9 @@ void GGS__5B_templateInstructionIfBranchForGeneration_5D_::removeAll (void) {
 
 void GGS__5B_templateInstructionIfBranchForGeneration_5D_::plusPlusAssignOperation (const GGS_templateInstructionIfBranchForGeneration & inValue
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16936,114 +16977,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak
 
 const GALGAS_TypeDescriptor * GGS_templateExpressionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (void) :
-mProperty_constantList (),
-mProperty_associatedValuesExtraction (),
-mProperty_instructionList (),
-mProperty_endOfBranch () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (const GGS_templateInstructionSwitchBranchAST & inSource) :
-mProperty_constantList (inSource.mProperty_constantList),
-mProperty_associatedValuesExtraction (inSource.mProperty_associatedValuesExtraction),
-mProperty_instructionList (inSource.mProperty_instructionList),
-mProperty_endOfBranch (inSource.mProperty_endOfBranch) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchAST & GGS_templateInstructionSwitchBranchAST::operator = (const GGS_templateInstructionSwitchBranchAST & inSource) {
-  mProperty_constantList = inSource.mProperty_constantList ;
-  mProperty_associatedValuesExtraction = inSource.mProperty_associatedValuesExtraction ;
-  mProperty_instructionList = inSource.mProperty_instructionList ;
-  mProperty_endOfBranch = inSource.mProperty_endOfBranch ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchAST GGS_templateInstructionSwitchBranchAST::init_21__21__21__21_ (const GGS__5B_lstring_5D_ & in_constantList,
-                                                                                                     const GGS__5B_switchExtractedValuesAST_5D_ & in_associatedValuesExtraction,
-                                                                                                     const GGS__5B_templateInstructionAST_5D_ & in_instructionList,
-                                                                                                     const GGS_location & in_endOfBranch,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_templateInstructionSwitchBranchAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_constantList = in_constantList ;
-  result.mProperty_associatedValuesExtraction = in_associatedValuesExtraction ;
-  result.mProperty_instructionList = in_instructionList ;
-  result.mProperty_endOfBranch = in_endOfBranch ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (const GGS__5B_lstring_5D_ & inOperand0,
-                                                                                const GGS__5B_switchExtractedValuesAST_5D_ & inOperand1,
-                                                                                const GGS__5B_templateInstructionAST_5D_ & inOperand2,
-                                                                                const GGS_location & inOperand3) :
-mProperty_constantList (inOperand0),
-mProperty_associatedValuesExtraction (inOperand1),
-mProperty_instructionList (inOperand2),
-mProperty_endOfBranch (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_templateInstructionSwitchBranchAST::isValid (void) const {
-  return mProperty_constantList.isValid () && mProperty_associatedValuesExtraction.isValid () && mProperty_instructionList.isValid () && mProperty_endOfBranch.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchAST::drop (void) {
-  mProperty_constantList.drop () ;
-  mProperty_associatedValuesExtraction.drop () ;
-  mProperty_instructionList.drop () ;
-  mProperty_endOfBranch.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchAST::description (String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @templateInstructionSwitchBranchAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_constantList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_associatedValuesExtraction.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_instructionList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_endOfBranch.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionSwitchBranchAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchAST ("templateInstructionSwitchBranchAST",
-                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchBranchAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchAST ;
 }
 

@@ -175,8 +175,8 @@ static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const String & %
 for (lkey mExplicitTokenListMap mTokenSortedList mShouldBeGenerated) in LEXICAL_TOKEN_LIST_MAP do
   %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8RepresentationEscapingQuestionMark]%) {\n%
   %    ioFound = true ;\n%
-  for (mLength mName mTerminalName) in mTokenSortedList do
-    %    ioList.appendObject (%![mName utf8RepresentationEscapingQuestionMark]%) ;\n%
+  for (token) in mTokenSortedList do
+    %    ioList.appendObject (%![token.mName utf8RepresentationEscapingQuestionMark]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%
