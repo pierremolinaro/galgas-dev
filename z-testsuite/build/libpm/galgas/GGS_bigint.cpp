@@ -494,12 +494,12 @@ GGS_u_36__34_ GGS_bigint::getter_u_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_bigint::getter_sint_36__34_ (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_bigint::getter_s_36__34_ (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_s_36__34_ result ;
   if (isValid ()) {
     if (mValue.fitsInSInt64 ()) {
-      result = GGS_sint_36__34_ (mValue.int64 ()) ;
+      result = GGS_s_36__34_ (mValue.int64 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @sint64 conversion overflow" COMMA_THERE) ;
     }

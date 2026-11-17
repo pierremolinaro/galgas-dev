@@ -12,28 +12,28 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_::GGS_sint_36__34_ (void) :
+GGS_s_36__34_::GGS_s_36__34_ (void) :
 AC_GALGAS_root (),
 mIsValid (false),
-mSInt64Value (0) {
+mS64 (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_::GGS_sint_36__34_ (const int64_t inValue) :
+GGS_s_36__34_::GGS_s_36__34_ (const int64_t inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
-mSInt64Value (inValue) {
+mS64 (inValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_sint_36__34_::objectCompare (const GGS_sint_36__34_ & inOperand) const {
+ComparisonResult GGS_s_36__34_::objectCompare (const GGS_s_36__34_ & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    if (mSInt64Value < inOperand.mSInt64Value) {
+    if (mS64 < inOperand.mS64) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mSInt64Value > inOperand.mSInt64Value) {
+    }else if (mS64 > inOperand.mS64) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
@@ -44,86 +44,86 @@ ComparisonResult GGS_sint_36__34_::objectCompare (const GGS_sint_36__34_ & inOpe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::class_func_max (UNUSED_LOCATION_ARGS) {
-  return GGS_sint_36__34_ (INT64_MAX) ;
+GGS_s_36__34_ GGS_s_36__34_::class_func_max (UNUSED_LOCATION_ARGS) {
+  return GGS_s_36__34_ (INT64_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::class_func_min (UNUSED_LOCATION_ARGS) {
-  return GGS_sint_36__34_ (INT64_MIN) ;
+GGS_s_36__34_ GGS_s_36__34_::class_func_min (UNUSED_LOCATION_ARGS) {
+  return GGS_s_36__34_ (INT64_MIN) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_sint_36__34_::getter_u_36__34_ (Compiler * inCompiler
+GGS_u_36__34_ GGS_s_36__34_::getter_u_36__34_ (Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
-  if (mSInt64Value < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative sint64 into an uint64" COMMA_THERE) ;
+  if (mS64 < 0) {
+    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @s64 into an @u64" COMMA_THERE) ;
   }else{
-    result = GGS_u_36__34_ ((uint64_t) mSInt64Value) ;
+    result = GGS_u_36__34_ ((uint64_t) mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_sint_36__34_::getter_uint (Compiler * inCompiler
+GGS_uint GGS_s_36__34_::getter_uint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
-  if (mSInt64Value < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint64 into an uint" COMMA_THERE) ;
-  }else if (mSInt64Value > ((int64_t) UINT32_MAX)) {
-    inCompiler->onTheFlyRunTimeError ("@sint64 conversion to unsigned value overflow" COMMA_THERE) ;
+  if (mS64 < 0) {
+    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @s64 into an uint" COMMA_THERE) ;
+  }else if (mS64 > ((int64_t) UINT32_MAX)) {
+    inCompiler->onTheFlyRunTimeError ("@s64 conversion to unsigned value overflow" COMMA_THERE) ;
   }else{
-    result = GGS_uint ((uint32_t) (mSInt64Value & UINT32_MAX)) ;
+    result = GGS_uint ((uint32_t) (mS64 & UINT32_MAX)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint_36__34_::getter_sint (Compiler * inCompiler
+GGS_sint GGS_s_36__34_::getter_sint (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
-  if (mSInt64Value < INT32_MIN) {
+  if (mS64 < INT32_MIN) {
     inCompiler->onTheFlyRunTimeError ("conversion from 64-bit signed value to 32-bit signed value overflow" COMMA_THERE) ;
-  }else if (mSInt64Value > INT32_MAX) {
+  }else if (mS64 > INT32_MAX) {
     inCompiler->onTheFlyRunTimeError ("conversion from 64-bit signed value to 32-bit signed value overflow" COMMA_THERE) ;
   }else{
-    result = GGS_sint ((int32_t) (mSInt64Value & UINT32_MAX)) ;
+    result = GGS_sint ((int32_t) (mS64 & UINT32_MAX)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_sint_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
+GGS_bigint GGS_s_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GGS_bigint result ;
   if (isValid ()) {
-    result = GGS_bigint (BigSigned (mSInt64Value)) ;
+    result = GGS_bigint (BigSigned (mS64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_sint_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
+GGS_double GGS_s_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
   GGS_double result ;
   if (isValid ()) {
-    result = GGS_double ((double) mSInt64Value) ;
+    result = GGS_double ((double) mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_sint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_s_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendSigned (mSInt64Value) ;
+    s.appendSigned (mS64) ;
     result = GGS_string (s) ;
   }
   return result ;
@@ -131,10 +131,10 @@ GGS_string GGS_sint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_sint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_s_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
-    const uint64_t v = (uint64_t) mSInt64Value ;
+    const uint64_t v = (uint64_t) mS64 ;
     String s ;
     s.appendCString ("0x") ;
     s.appendUnsignedHex16 (v) ;
@@ -145,7 +145,7 @@ GGS_string GGS_sint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_sint_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
+GGS_string GGS_s_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
                                                           const GGS_uint & inGroup,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
@@ -156,7 +156,7 @@ GGS_string GGS_sint_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSep
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.appendUnsignedHex ((uint64_t) mSInt64Value) ;
+      s.appendUnsignedHex ((uint64_t) mS64) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -169,10 +169,10 @@ GGS_string GGS_sint_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSep
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_s_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
-    const uint64_t v = (uint64_t) mSInt64Value ;
+    const uint64_t v = (uint64_t) mS64 ;
     String s ; s.appendUnsignedHex16 (v) ;
     result = GGS_string (s) ;
   }
@@ -181,113 +181,113 @@ GGS_string GGS_sint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::description (String & ioString,
-                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<@sint64:") ;
-  ioString.appendSigned (mSInt64Value) ;
+void GGS_s_36__34_::description (String & ioString,
+                                 const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<@s64:") ;
+  ioString.appendSigned (mS64) ;
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::plusAssignOperation (const GGS_sint_36__34_ inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void GGS_s_36__34_::plusAssignOperation (const GGS_s_36__34_ inOperand,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
-    const bool signA = mSInt64Value >= 0 ;
-    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const int64_t r = mS64 + inOperand.mS64 ;
+    const bool signA = mS64 >= 0 ;
+    const bool signB = inOperand.mS64 >= 0 ;
     const bool signR = r >= 0 ;
     const bool ovf = (signA == signB) && (signA != signR) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 += operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mSInt64Value = r ;
+      mS64 = r ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::minusAssignOperation (const GGS_sint_36__34_ inOperand,
+void GGS_s_36__34_::minusAssignOperation (const GGS_s_36__34_ inOperand,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
-    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    const int64_t r = mS64 - inOperand.mS64 ;
+    const bool ovf = (mS64 >= inOperand.mS64) != (r >= 0) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 -= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mSInt64Value = r ;
+      mS64 = r ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::mulAssignOperation (const GGS_sint_36__34_ inOperand,
+void GGS_s_36__34_::mulAssignOperation (const GGS_s_36__34_ inOperand,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value * inOperand.mSInt64Value ;
+    const int64_t r = mS64 * inOperand.mS64 ;
     bool ovf = false ;
-    if (inOperand.mSInt64Value == -1) {
-      ovf = mSInt64Value == INT64_MIN ;
-    }else if (inOperand.mSInt64Value != 0) {
-      ovf = (r / inOperand.mSInt64Value) != mSInt64Value ;
+    if (inOperand.mS64 == -1) {
+      ovf = mS64 == INT64_MIN ;
+    }else if (inOperand.mS64 != 0) {
+      ovf = (r / inOperand.mS64) != mS64 ;
     }
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 *= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mSInt64Value = r ;
+      mS64 = r ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_sint_36__34_::divAssignOperation (const GGS_sint_36__34_ inOperand,
+void GGS_s_36__34_::divAssignOperation (const GGS_s_36__34_ inOperand,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    if (inOperand.mSInt64Value == 0) {
+    if (inOperand.mS64 == 0) {
       inCompiler->onTheFlyRunTimeError ("@sint64 /= divide by zero" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mSInt64Value /= inOperand.mSInt64Value ;
+      mS64 /= inOperand.mS64 ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::wrapping_add_operation (const GGS_sint_36__34_ & inOperand) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::wrapping_add_operation (const GGS_s_36__34_ & inOperand) const {
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value + inOperand.mSInt64Value) ;
+    result = GGS_s_36__34_ (mS64 + inOperand.mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::add_operation (const GGS_sint_36__34_ & inOperand,
+GGS_s_36__34_ GGS_s_36__34_::add_operation (const GGS_s_36__34_ & inOperand,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
-    const bool signA = mSInt64Value >= 0 ;
-    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const int64_t r = mS64 + inOperand.mS64 ;
+    const bool signA = mS64 >= 0 ;
+    const bool signB = inOperand.mS64 >= 0 ;
     const bool signR = r >= 0 ;
     const bool ovf = (signA == signB) && (signA != signR) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 + operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (r) ;
+      result = GGS_s_36__34_ (r) ;
     }
   }
   return result ;
@@ -295,13 +295,13 @@ GGS_sint_36__34_ GGS_sint_36__34_::add_operation (const GGS_sint_36__34_ & inOpe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_sint_36__34_::getter_canAdd (const GGS_sint_36__34_ & inOperand
+GGS_bool GGS_s_36__34_::getter_canAdd (const GGS_s_36__34_ & inOperand
                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value + inOperand.mSInt64Value ;
-    const bool signA = mSInt64Value >= 0 ;
-    const bool signB = inOperand.mSInt64Value >= 0 ;
+    const int64_t r = mS64 + inOperand.mS64 ;
+    const bool signA = mS64 >= 0 ;
+    const bool signB = inOperand.mS64 >= 0 ;
     const bool signR = r >= 0 ;
     const bool ovf = (signA == signB) && (signA != signR) ;
     result = GGS_bool (!ovf) ;
@@ -314,17 +314,17 @@ GGS_bool GGS_sint_36__34_::getter_canAdd (const GGS_sint_36__34_ & inOperand
 // For signed integers you can check the signs of the arguments and of the result. integers of different signs
 // can't overflow, and integers of same sign overflow only is the result is of different sign
 
-GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation (const GGS_sint_36__34_ & inOperand,
+GGS_s_36__34_ GGS_s_36__34_::subtract_operation (const GGS_s_36__34_ & inOperand,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
-    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    const int64_t r = mS64 - inOperand.mS64 ;
+    const bool ovf = (mS64 >= inOperand.mS64) != (r >= 0) ;
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 - operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (r) ;
+      result = GGS_s_36__34_ (r) ;
     }
   }
   return result ;
@@ -332,12 +332,12 @@ GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation (const GGS_sint_36__34_ & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_sint_36__34_::getter_canSubstract (const GGS_sint_36__34_ & inOperand
+GGS_bool GGS_s_36__34_::getter_canSubstract (const GGS_s_36__34_ & inOperand
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value - inOperand.mSInt64Value ;
-    const bool ovf = (mSInt64Value >= inOperand.mSInt64Value) != (r >= 0) ;
+    const int64_t r = mS64 - inOperand.mS64 ;
+    const bool ovf = (mS64 >= inOperand.mS64) != (r >= 0) ;
     result = GGS_bool (!ovf) ;
   }
   return result ;
@@ -345,43 +345,43 @@ GGS_bool GGS_sint_36__34_::getter_canSubstract (const GGS_sint_36__34_ & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::wrapping_subtract_operation (const GGS_sint_36__34_ & inOperand2) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::wrapping_subtract_operation (const GGS_s_36__34_ & inOperand2) const {
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    const int64_t r = mSInt64Value - inOperand2.mSInt64Value ;
-    result = GGS_sint_36__34_ (r) ;
+    const int64_t r = mS64 - inOperand2.mS64 ;
+    result = GGS_s_36__34_ (r) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::wrapping_multiply_operation (const GGS_sint_36__34_ & inOperand2) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::wrapping_multiply_operation (const GGS_s_36__34_ & inOperand2) const {
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value * inOperand2.mSInt64Value) ;
+    result = GGS_s_36__34_ (mS64 * inOperand2.mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::multiply_operation (const GGS_sint_36__34_ & inOperand,
+GGS_s_36__34_ GGS_s_36__34_::multiply_operation (const GGS_s_36__34_ & inOperand,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value * inOperand.mSInt64Value ;
+    const int64_t r = mS64 * inOperand.mS64 ;
     bool ovf = false ;
-    if (inOperand.mSInt64Value == -1) {
-      ovf = mSInt64Value == INT64_MIN ;
-    }else if (inOperand.mSInt64Value != 0) {
-      ovf = (r / inOperand.mSInt64Value) != mSInt64Value ;
+    if (inOperand.mS64 == -1) {
+      ovf = mS64 == INT64_MIN ;
+    }else if (inOperand.mS64 != 0) {
+      ovf = (r / inOperand.mS64) != mS64 ;
     }
     if (ovf) {
       inCompiler->onTheFlyRunTimeError ("@sint64 * operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (r) ;
+      result = GGS_s_36__34_ (r) ;
     }
   }
   return result ;
@@ -389,16 +389,16 @@ GGS_sint_36__34_ GGS_sint_36__34_::multiply_operation (const GGS_sint_36__34_ & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_sint_36__34_::getter_canMultiply (const GGS_sint_36__34_ & inOperand
+GGS_bool GGS_s_36__34_::getter_canMultiply (const GGS_s_36__34_ & inOperand
                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const int64_t r = mSInt64Value * inOperand.mSInt64Value ;
+    const int64_t r = mS64 * inOperand.mS64 ;
     bool ovf = false ;
-    if (inOperand.mSInt64Value == -1) {
-      ovf = mSInt64Value == INT64_MIN ;
-    }else if (inOperand.mSInt64Value != 0) {
-      ovf = (r / inOperand.mSInt64Value) != mSInt64Value ;
+    if (inOperand.mS64 == -1) {
+      ovf = mS64 == INT64_MIN ;
+    }else if (inOperand.mS64 != 0) {
+      ovf = (r / inOperand.mS64) != mS64 ;
     }
     result = GGS_bool (!ovf) ;
   }
@@ -407,17 +407,17 @@ GGS_bool GGS_sint_36__34_::getter_canMultiply (const GGS_sint_36__34_ & inOperan
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::divide_operation (const GGS_sint_36__34_ & inOperand2,
+GGS_s_36__34_ GGS_s_36__34_::divide_operation (const GGS_s_36__34_ & inOperand2,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    if (inOperand2.mSInt64Value == 0) {
+    if (inOperand2.mS64 == 0) {
       inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero" COMMA_THERE) ;
-    }else if ((mSInt64Value == INT32_MIN) && (inOperand2.mSInt64Value == -1)) {
+    }else if ((mS64 == INT32_MIN) && (inOperand2.mS64 == -1)) {
       inCompiler->onTheFlyRunTimeError ("@sint64 / operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (mSInt64Value / inOperand2.mSInt64Value) ;
+      result = GGS_s_36__34_ (mS64 / inOperand2.mS64) ;
     }
   }
   return result ;
@@ -425,11 +425,11 @@ GGS_sint_36__34_ GGS_sint_36__34_::divide_operation (const GGS_sint_36__34_ & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_sint_36__34_::getter_canDivide (const GGS_sint_36__34_ & inOperand
+GGS_bool GGS_s_36__34_::getter_canDivide (const GGS_s_36__34_ & inOperand
                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    const bool ok = (mSInt64Value != 0) && !((mSInt64Value == INT64_MIN) && (inOperand.mSInt64Value == -1)) ;
+    const bool ok = (mS64 != 0) && !((mS64 == INT64_MIN) && (inOperand.mS64 == -1)) ;
     result = GGS_bool (ok) ;
   }
   return result ;
@@ -437,25 +437,25 @@ GGS_bool GGS_sint_36__34_::getter_canDivide (const GGS_sint_36__34_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::wrapping_divide_operation (const GGS_sint_36__34_ & inOperand) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::wrapping_divide_operation (const GGS_s_36__34_ & inOperand) const {
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_sint_36__34_ ((inOperand.mSInt64Value == 0) ? 0 : (mSInt64Value / inOperand.mSInt64Value)) ;
+    result = GGS_s_36__34_ ((inOperand.mS64 == 0) ? 0 : (mS64 / inOperand.mS64)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::modulo_operation (const GGS_sint_36__34_ & inOperand2,
+GGS_s_36__34_ GGS_s_36__34_::modulo_operation (const GGS_s_36__34_ & inOperand2,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    if (inOperand2.mSInt64Value == 0) {
+    if (inOperand2.mS64 == 0) {
       inCompiler->onTheFlyRunTimeError ("@sint64 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (mSInt64Value % inOperand2.mSInt64Value) ;
+      result = GGS_s_36__34_ (mS64 % inOperand2.mS64) ;
     }
   }
   return result ;
@@ -463,14 +463,14 @@ GGS_sint_36__34_ GGS_sint_36__34_::modulo_operation (const GGS_sint_36__34_ & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_unary_minus (Compiler * inCompiler 
+GGS_s_36__34_ GGS_s_36__34_::operator_unary_minus (Compiler * inCompiler 
                                                          COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid ()) {
-    if (mSInt64Value == INT64_MIN) {
+    if (mS64 == INT64_MIN) {
       inCompiler->onTheFlyRunTimeError ("@sint64 unary '-' operation underflow" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (- mSInt64Value) ;
+      result = GGS_s_36__34_ (- mS64) ;
     }
   }
   return result ;
@@ -478,37 +478,37 @@ GGS_sint_36__34_ GGS_sint_36__34_::operator_unary_minus (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_unary_minus_no_ovf (void) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::operator_unary_minus_no_ovf (void) const {
+  GGS_s_36__34_ result ;
   if (isValid ()) {
-    result = GGS_sint_36__34_ (- mSInt64Value) ;
+    result = GGS_s_36__34_ (- mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::left_shift_operation (const GGS_uint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_uint inShiftOperand,
                                                          Compiler * /* inCompiler*/
                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value << (inShiftOperand.uintValue () & 63)) ;
+    result = GGS_s_36__34_ (mS64 << (inShiftOperand.uintValue () & 63)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::left_shift_operation (const GGS_bigint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_bigint inShiftOperand,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@sint64 left shift by a negative amount" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (mSInt64Value << (inShiftOperand.bigintValue().uint32() & 63)) ;
+      result = GGS_s_36__34_ (mS64 << (inShiftOperand.bigintValue().uint32() & 63)) ;
     }
   }
   return result ;
@@ -516,27 +516,27 @@ GGS_sint_36__34_ GGS_sint_36__34_::left_shift_operation (const GGS_bigint inShif
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::right_shift_operation (const GGS_uint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_uint inShiftOperand,
                                                           Compiler * /* inCompiler*/
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value >> (inShiftOperand.uintValue () & 63)) ;
+    result = GGS_s_36__34_ (mS64 >> (inShiftOperand.uintValue () & 63)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::right_shift_operation (const GGS_bigint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_bigint inShiftOperand,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
       inCompiler->onTheFlyRunTimeError ("@sint64 right shift by a negative amount" COMMA_THERE) ;
     }else{
-      result = GGS_sint_36__34_ (mSInt64Value >> (inShiftOperand.bigintValue().uint32() & 63)) ;
+      result = GGS_s_36__34_ (mS64 >> (inShiftOperand.bigintValue().uint32() & 63)) ;
     }
   }
   return result ;
@@ -544,43 +544,43 @@ GGS_sint_36__34_ GGS_sint_36__34_::right_shift_operation (const GGS_bigint inShi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_and (const GGS_sint_36__34_ & inOperand2
+GGS_s_36__34_ GGS_s_36__34_::operator_and (const GGS_s_36__34_ & inOperand2
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value & inOperand2.mSInt64Value) ;
+    result = GGS_s_36__34_ (mS64 & inOperand2.mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_or (const GGS_sint_36__34_ & inOperand2
+GGS_s_36__34_ GGS_s_36__34_::operator_or (const GGS_s_36__34_ & inOperand2
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value | inOperand2.mSInt64Value) ;
+    result = GGS_s_36__34_ (mS64 | inOperand2.mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_xor (const GGS_sint_36__34_ & inOperand2
+GGS_s_36__34_ GGS_s_36__34_::operator_xor (const GGS_s_36__34_ & inOperand2
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_sint_36__34_ (mSInt64Value ^ inOperand2.mSInt64Value) ;
+    result = GGS_s_36__34_ (mS64 ^ inOperand2.mS64) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_s_36__34_::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_s_36__34_ result ;
   if (isValid ()) {
-    result = GGS_sint_36__34_ (~ mSInt64Value) ;
+    result = GGS_s_36__34_ (~ mS64) ;
   }
   return result ;
 }

@@ -118,14 +118,14 @@
        "GGS_filewrapper.cpp",
        "GGS_location.cpp",
        "GGS_sint.cpp",
-       "GGS_sint64.cpp",
+       "GGS_s64.cpp",
        "GGS_string.cpp",
        "GGS_string-getters.cpp",
        "GGS_stringset.cpp",
+       "GGS_timer.cpp",
        "GGS_u8.cpp",
        "GGS_u16.cpp",
        "GGS_uint.cpp",
-       "GGS_timer.cpp",
        "GGS_u64.cpp"
     ],
     "USER_LINK_OPTIONS"  :  [

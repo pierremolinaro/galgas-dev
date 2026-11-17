@@ -354,14 +354,14 @@ map @lexicalTypeMap {
 
 func #once buildLexicalTypeMap () -> @lexicalTypeMap {
   result = @()
-  !?result.insertKey (@lstring ("string", @location.here), .lexicalType_string)
-  !?result.insertKey (@lstring ("char", @location.here), .lexicalType_char)
-  !?result.insertKey (@lstring ("uint", @location.here), .lexicalType_uint)
-  !?result.insertKey (@lstring ("u64", @location.here), .lexicalType_uint64)
-  !?result.insertKey (@lstring ("sint", @location.here), .lexicalType_sint)
-  !?result.insertKey (@lstring ("sint64", @location.here), .lexicalType_sint64)
-  !?result.insertKey (@lstring ("double", @location.here), .lexicalType_double)
-  !?result.insertKey (@lstring ("bigint", @location.here), .lexicalType_bigint)
+  !?result.insertKey ("string".here, .lexicalType_string)
+  !?result.insertKey ("char".here, .lexicalType_char)
+  !?result.insertKey ("uint".here, .lexicalType_uint)
+  !?result.insertKey ("u64".here, .lexicalType_uint64)
+  !?result.insertKey ("sint".here, .lexicalType_sint)
+  !?result.insertKey ("s64".here, .lexicalType_sint64)
+  !?result.insertKey ("double".here, .lexicalType_double)
+  !?result.insertKey ("bigint".here, .lexicalType_bigint)
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -5824,7 +5824,7 @@ GGS_string extensionGetter_lexicalTypeBaseName (const GGS_lexicalTypeEnum & inOb
     break ;
   case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
     {
-      result_result = GGS_string ("sint64") ;
+      result_result = GGS_string ("s64") ;
     }
     break ;
   case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:

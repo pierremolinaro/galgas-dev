@@ -2522,7 +2522,7 @@ GGS_semanticExpressionForGeneration () {
 GGS_literalSInt_36__34_ExpressionForGeneration GGS_literalSInt_36__34_ExpressionForGeneration::
 init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
                   const GGS_location & in_mLocation,
-                  const GGS_sint_36__34_ & in_mValue,
+                  const GGS_s_36__34_ & in_mValue,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_literalSInt_36__34_ExpressionForGeneration * object = nullptr ;
@@ -2538,7 +2538,7 @@ init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
 void cPtr_literalSInt_36__34_ExpressionForGeneration::
 literalSInt_36__34_ExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                              const GGS_location & in_mLocation,
-                                                             const GGS_sint_36__34_ & in_mValue,
+                                                             const GGS_s_36__34_ & in_mValue,
                                                              Compiler * /* inCompiler */) {
   mProperty_mResultType = in_mResultType ;
   mProperty_mLocation = in_mLocation ;
@@ -2553,9 +2553,9 @@ GGS_semanticExpressionForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_literalSInt_36__34_ExpressionForGeneration::readProperty_mValue (void) const {
+GGS_s_36__34_ GGS_literalSInt_36__34_ExpressionForGeneration::readProperty_mValue (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_sint_36__34_ () ;
+    return GGS_s_36__34_ () ;
   }else{
     cPtr_literalSInt_36__34_ExpressionForGeneration * p = (cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
@@ -2576,7 +2576,7 @@ mProperty_mValue () {
 
 cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                   const GGS_location & in_mLocation,
-                                                                                                  const GGS_sint_36__34_ & in_mValue,
+                                                                                                  const GGS_s_36__34_ & in_mValue,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),

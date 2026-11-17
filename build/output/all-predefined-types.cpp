@@ -968,16 +968,16 @@ const GALGAS_TypeDescriptor * GGS_sint::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @sint64 generic code implementation
+//     @s64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
-                                                                 nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_s_36__34_ ("s64",
+                                                              nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sint_36__34_ ;
+const GALGAS_TypeDescriptor * GGS_s_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_s_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2820,72 +2820,72 @@ void GGS_lsint::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @lsint64 generic code implementation
+//     @ls64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ls_36__34_ ("ls64",
+                                                               nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
+const GALGAS_TypeDescriptor * GGS_ls_36__34_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ls_36__34_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint_36__34_::GGS_lsint_36__34_ (void) :
-mProperty_sint_36__34_ (),
+GGS_ls_36__34_::GGS_ls_36__34_ (void) :
+mProperty_s_36__34_ (),
 mProperty_location () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint_36__34_::GGS_lsint_36__34_ (const GGS_lsint_36__34_ & inSource) :
-mProperty_sint_36__34_ (inSource.mProperty_sint_36__34_),
+GGS_ls_36__34_::GGS_ls_36__34_ (const GGS_ls_36__34_ & inSource) :
+mProperty_s_36__34_ (inSource.mProperty_s_36__34_),
 mProperty_location (inSource.mProperty_location) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint_36__34_ & GGS_lsint_36__34_::operator = (const GGS_lsint_36__34_ & inSource) {
-  mProperty_sint_36__34_ = inSource.mProperty_sint_36__34_ ;
+GGS_ls_36__34_ & GGS_ls_36__34_::operator = (const GGS_ls_36__34_ & inSource) {
+  mProperty_s_36__34_ = inSource.mProperty_s_36__34_ ;
   mProperty_location = inSource.mProperty_location ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_lsint_36__34_ GGS_lsint_36__34_::init_21__21_ (const GGS_sint_36__34_ & in_sint_36__34_,
-                                                   const GGS_location & in_location,
-                                                   Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lsint_36__34_ result ;
+GGS_ls_36__34_ GGS_ls_36__34_::init_21__21_ (const GGS_s_36__34_ & in_s_36__34_,
+                                             const GGS_location & in_location,
+                                             Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ls_36__34_ result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_sint_36__34_ = in_sint_36__34_ ;
+  result.mProperty_s_36__34_ = in_s_36__34_ ;
   result.mProperty_location = in_location ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lsint_36__34_::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_ls_36__34_::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint_36__34_::GGS_lsint_36__34_ (const GGS_sint_36__34_ & inOperand0,
-                                      const GGS_location & inOperand1) :
-mProperty_sint_36__34_ (inOperand0),
+GGS_ls_36__34_::GGS_ls_36__34_ (const GGS_s_36__34_ & inOperand0,
+                                const GGS_location & inOperand1) :
+mProperty_s_36__34_ (inOperand0),
 mProperty_location (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_lsint_36__34_::objectCompare (const GGS_lsint_36__34_ & inOperand) const {
+ComparisonResult GGS_ls_36__34_::objectCompare (const GGS_ls_36__34_ & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_sint_36__34_.objectCompare (inOperand.mProperty_sint_36__34_) ;
+    result = mProperty_s_36__34_.objectCompare (inOperand.mProperty_s_36__34_) ;
   }
   if (result == ComparisonResult::operandEqual) {
     result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
@@ -2895,26 +2895,26 @@ ComparisonResult GGS_lsint_36__34_::objectCompare (const GGS_lsint_36__34_ & inO
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_lsint_36__34_::isValid (void) const {
-  return mProperty_sint_36__34_.isValid () && mProperty_location.isValid () ;
+bool GGS_ls_36__34_::isValid (void) const {
+  return mProperty_s_36__34_.isValid () && mProperty_location.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lsint_36__34_::drop (void) {
-  mProperty_sint_36__34_.drop () ;
+void GGS_ls_36__34_::drop (void) {
+  mProperty_s_36__34_.drop () ;
   mProperty_location.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lsint_36__34_::description (String & ioString,
-                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @lsint64:") ;
+void GGS_ls_36__34_::description (String & ioString,
+                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ls64:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_sint_36__34_.description (ioString, inIndentation+1) ;
+    mProperty_s_36__34_.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_location.description (ioString, inIndentation+1) ;
   }

@@ -146,10 +146,10 @@ GGS_sint GGS_u_38_::getter_sint (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_u_38_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_u_38_::getter_s_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_s_36__34_ result ;
   if (isValid ()) {
-    result = GGS_sint_36__34_ (int64_t (mU8)) ;
+    result = GGS_s_36__34_ (int64_t (mU8)) ;
   }
   return result ;
 }

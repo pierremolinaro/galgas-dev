@@ -40,7 +40,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
   ioDeclarations.mDeclarationList ++= @locationPredefinedTypeAST (!isPredefined: true, "location")
   ioDeclarations.mDeclarationList ++= @sintPredefinedTypeAST (!isPredefined: true, "sint")
-  ioDeclarations.mDeclarationList ++= @sint64PredefinedTypeAST (!isPredefined: true, "sint64")
+  ioDeclarations.mDeclarationList ++= @s64PredefinedTypeAST (!isPredefined: true, "s64")
   ioDeclarations.mDeclarationList ++= @stringPredefinedTypeAST (!isPredefined: true, "string")
   appendPredefinedArrayTypeAST (!?ioDeclarations, "string")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "string")
@@ -57,7 +57,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "char")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "double")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint64")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "s64")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u64")
 
@@ -401,7 +401,7 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
 
   template sint_type : "sint-type.h.galgasTemplate" ()
 
-  template sint64_type : "sint64-type.h.galgasTemplate" ()
+  template s64_type : "s64-type.h.galgasTemplate" ()
 
   template uint_type : "uint-type.h.galgasTemplate" ()
 

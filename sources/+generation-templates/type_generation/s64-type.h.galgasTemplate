@@ -1,22 +1,22 @@
 //--------------------------------------------------------------------------------------------------
-//   @sint64 type
+//   @s64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sint_36__34_ final : public AC_GALGAS_root {
+class GGS_s_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: int64_t mSInt64Value ;
+  private: int64_t mS64 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline int64_t int64Value (void) const { return mSInt64Value ; }
+  public: inline int64_t s64 (void) const { return mS64 ; }
 
 //--------------------------------- Default constructor
-  public: GGS_sint_36__34_ (void) ;
+  public: GGS_s_36__34_ (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_sint_36__34_ (const int64_t inValue) ;
+  public: GGS_s_36__34_ (const int64_t inValue) ;
 
 %
 

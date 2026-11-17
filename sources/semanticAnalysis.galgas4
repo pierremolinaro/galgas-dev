@@ -811,9 +811,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 
 
 //--------------------------------------------------------------------------------------------------
-//
 //    P R E D E F I N E D    T Y P E S
-//
 //--------------------------------------------------------------------------------------------------
 
 func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
@@ -825,7 +823,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("uint".here),
     inTypeMap.typeMapEntryForLKey ("sint".here),
     inTypeMap.typeMapEntryForLKey ("u64".here),
-    inTypeMap.typeMapEntryForLKey ("sint64".here),
+    inTypeMap.typeMapEntryForLKey ("s64".here),
     inTypeMap.typeMapEntryForLKey ("double".here),
     inTypeMap.typeMapEntryForLKey ("lbool".here),
     inTypeMap.typeMapEntryForLKey ("lchar".here),
@@ -833,7 +831,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("luint".here),
     inTypeMap.typeMapEntryForLKey ("lsint".here),
     inTypeMap.typeMapEntryForLKey ("lu64".here),
-    inTypeMap.typeMapEntryForLKey ("lsint64".here),
+    inTypeMap.typeMapEntryForLKey ("ls64".here),
     inTypeMap.typeMapEntryForLKey ("ldouble".here),
     inTypeMap.typeMapEntryForLKey ("lbigint".here),
     inTypeMap.typeMapEntryForLKey ("bigint".here),

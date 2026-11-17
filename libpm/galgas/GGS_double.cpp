@@ -264,16 +264,16 @@ GGS_sint GGS_double::getter_sint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_double::getter_sint_36__34_ (Compiler * inCompiler
+GGS_s_36__34_ GGS_double::getter_s_36__34_ (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if ((mDoubleValue > double (INT64_MAX)) || (mDoubleValue < double (INT64_MIN))) {
     String s = "Cannot convert @double (" ;
     s.appendDouble (mDoubleValue) ;
     s.appendCString (") to @sint64") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_sint_36__34_ (lround (mDoubleValue)) ;
+    result = GGS_s_36__34_ (lround (mDoubleValue)) ;
   }
   return result ;
 }

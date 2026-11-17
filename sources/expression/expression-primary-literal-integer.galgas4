@@ -151,7 +151,7 @@ override proc @literalSIntExpressionForGeneration.generateExpression
 //--------------------------------------------------------------------------------------------------
 
 final class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @sint64 mValue
+  private let @s64 mValue
 }
 
 //································································································
@@ -162,7 +162,7 @@ override proc @literalSInt64ExpressionForGeneration.generateExpression
                                                           ?!@uint _ioTemporaryVariableIndex,
                                                           ?!@stringset _ioUnusedVariableCppNameSet,
                                                           !@string outCppExpression ) {
-  outCppExpression = "GGS_sint_36__34_ (int64_t (" + self.mValue.string + "LL))"
+  outCppExpression = "GGS_s_36__34_ (int64_t (" + self.mValue.string + "LL))"
 }
 
 //--------------------------------------------------------------------------------------------------

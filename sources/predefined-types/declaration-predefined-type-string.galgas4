@@ -637,7 +637,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalSigned64Number",
-      !returnedTypeName: "sint64",
+      !returnedTypeName: "s64",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (

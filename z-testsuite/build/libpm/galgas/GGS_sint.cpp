@@ -82,10 +82,10 @@ GGS_u_36__34_ GGS_sint::getter_u_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+GGS_s_36__34_ GGS_sint::getter_s_36__34_ (UNUSED_LOCATION_ARGS) const {
+  GGS_s_36__34_ result ;
   if (isValid ()) {
-    result = GGS_sint_36__34_ (mSIntValue) ;
+    result = GGS_s_36__34_ (mSIntValue) ;
   }
   return result ;
 }

@@ -181,7 +181,7 @@
    <Unit filename="../build/libpm/galgas/GGS_filewrapper.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_location.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_sint.cpp" />
-   <Unit filename="../build/libpm/galgas/GGS_sint64.cpp" />
+   <Unit filename="../build/libpm/galgas/GGS_s64.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_string.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_string-getters.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_stringset.cpp" />
@@ -189,7 +189,6 @@
    <Unit filename="../build/libpm/galgas/GGS_u8.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_u16.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_uint.cpp" />
-   <Unit filename="../build/libpm/galgas/GGS_timer.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_u64.cpp" />
   <Extensions>
    <code_completion />

@@ -1157,15 +1157,15 @@ GGS_bool GGS_string::getter_isDecimalSigned_36__34_Number (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_string::getter_decimalSigned_36__34_Number (Compiler * inCompiler
+GGS_s_36__34_ GGS_string::getter_decimalSigned_36__34_Number (Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_sint_36__34_ result ;
+  GGS_s_36__34_ result ;
   if (isValid ()) {
     int64_t r = 0 ;
     bool ok = false ;
     mString.convertToSInt64 (r, ok) ;
     if (ok) {
-      result = GGS_sint_36__34_ (r) ;
+      result = GGS_s_36__34_ (r) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @sint64 number" COMMA_THERE) ;
     }

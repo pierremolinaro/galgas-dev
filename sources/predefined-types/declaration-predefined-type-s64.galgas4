@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-final class @sint64PredefinedTypeAST : @predefinedTypeAST {
+final class @s64PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -46,14 +46,14 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"max",
-      !resultTypeName:"sint64",
+      !resultTypeName:"s64",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"min",
-      !resultTypeName:"sint64",
+      !resultTypeName:"s64",
       !hasLexiqueArg:false
     )
   }
@@ -134,28 +134,28 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", "sint64", "inOperand",
+      !getterName:"canAdd", "s64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", "sint64", "inOperand",
+      !getterName:"canSubstract", "s64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", "sint64", "inOperand",
+      !getterName:"canMultiply", "s64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", "sint64", "inOperand",
+      !getterName:"canDivide", "s64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -164,7 +164,7 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.sint64_type : ]
+    result = filewrapper [predefinedTypeGenerationTemplate.s64_type : ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

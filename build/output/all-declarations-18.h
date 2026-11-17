@@ -113,12 +113,12 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type (Co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'predefinedTypeGenerationTemplate sint64_type'
+//Filewrapper template 'predefinedTypeGenerationTemplate s64_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_type (Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_s_36__34__5F_type (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

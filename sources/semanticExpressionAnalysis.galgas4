@@ -130,15 +130,15 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
         bigIntValue.u8
       )
       handled = true
-    elsif "sint64" == targetTypeForBigIntAssignment.typeName then
+    elsif "s64" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
-        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
+        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s64"
       end
       ioExpression = @literalSInt64ExpressionForGeneration (
         targetTypeForBigIntAssignment,
         ioExpression.mLocation,
-        bigIntValue.sint64
+        bigIntValue.s64
       )
       handled = true
     end
@@ -269,12 +269,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioRightExpression = @literalUInt64ExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.u64)
         ok = true
-      elsif "sint64" == leftResultType.definition.typeName then
+      elsif "s64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
-          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s64"
         end
-        ioRightExpression = @literalSInt64ExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.sint64)
+        ioRightExpression = @literalSInt64ExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.s64)
         ok = true
       end
     end
@@ -301,12 +301,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioLeftExpression = @literalUInt64ExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.u64)
         ok = true
-      elsif "sint64" == rightType.definition.typeName then
+      elsif "s64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 63)) | (bigIntValue >= (1 << 63)) then
-          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint64"
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s64"
         end
-        ioLeftExpression = @literalSInt64ExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.sint64)
+        ioLeftExpression = @literalSInt64ExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.s64)
         ok = true
       end
     end

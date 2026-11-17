@@ -878,7 +878,7 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_sint64.cpp",
+              "path": "GGS_s64.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",
