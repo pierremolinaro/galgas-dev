@@ -1866,7 +1866,7 @@ void cPtr_literalDoubleExpressionForGeneration::method_generateExpression (GGS_s
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_literalDoubleExpressionForGeneration temp_0 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_@f_36__34_ (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_f_36__34_ (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-double.galgas4", 89)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -86,7 +86,7 @@ override proc @literalDoubleExpressionForGeneration.generateExpression
   ?!@uint _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  outCppExpression = "GGS_@f_36__34_ (" + self.mValue.string + ")"
+  outCppExpression = "GGS_f_36__34_ (" + self.mValue.string + ")"
 }
 
 
