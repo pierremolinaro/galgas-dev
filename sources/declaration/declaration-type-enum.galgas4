@@ -345,7 +345,6 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: .null,
       !headerFileName: "enum-" + self.enumTypeName.string.fileNameRepresentation,
@@ -472,7 +471,6 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

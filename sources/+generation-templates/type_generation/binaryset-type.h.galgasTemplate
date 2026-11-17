@@ -6,7 +6,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_binaryset : public AC_GALGAS_root {
+class GGS_binaryset final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: BinaryDecisionDiagram mBDD ;

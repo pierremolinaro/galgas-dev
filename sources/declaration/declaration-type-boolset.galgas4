@@ -201,7 +201,6 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     !writeSubscriptMap: @(),
     !enumerationDescriptorList: @(),
     !features: features,
-    !addAssignOperatorArguments: @(),
     !generateHeaderInSeparateFile: false,
     !typeForEnumeratedElement: .null,
     !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation,
@@ -308,7 +307,6 @@ override proc @boolsetTypeForGeneration.appendDeclaration1
     selfTypeDefinition.writeSubscriptMap,
     selfTypeDefinition.enumerationDescriptorList,
     selfTypeDefinition.features,
-    selfTypeDefinition.addAssignOperatorArguments,
     selfTypeDefinition.typeForEnumeratedElement,
     selfTypeDefinition.supportArrayLiteral
   ]

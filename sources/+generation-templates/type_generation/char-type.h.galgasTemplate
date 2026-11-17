@@ -2,7 +2,7 @@
 //   @char type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_char : public AC_GALGAS_root {
+class GGS_char final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: utf32 mCharValue ;

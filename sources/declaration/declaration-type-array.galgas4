@@ -245,7 +245,6 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: elementType,
       !headerFileName: "array-" + self.arrayTypeName.string.fileNameRepresentation,
@@ -332,7 +331,6 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

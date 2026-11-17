@@ -6,7 +6,7 @@ enum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_bool : public AC_GALGAS_root {
+class GGS_bool final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: bool mBoolValue ;

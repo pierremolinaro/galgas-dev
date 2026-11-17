@@ -63,7 +63,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> mSharedRoot ;

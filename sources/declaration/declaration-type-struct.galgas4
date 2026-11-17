@@ -218,7 +218,6 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: enumeratedType,
       !headerFileName: "struct-" + self.structTypeName.string.fileNameRepresentation,
@@ -386,7 +385,6 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

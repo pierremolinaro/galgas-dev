@@ -2,7 +2,7 @@
 //  @u8 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_u_38_ : public AC_GALGAS_root {
+class GGS_u_38_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint8_t mU8Value ;

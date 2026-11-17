@@ -73,7 +73,6 @@ end
     switch [element definition].typeKind
     case classType : %class%
     case enumType (*) : %enum%
-    case sortedListType : %sorted list%
     case mapType : %map%
     case boolsetType : %boolset%
     case structType : %struct%
@@ -154,14 +153,6 @@ end%
   %
 </td></tr>
 %
-if [[element definition].addAssignOperatorArguments count] > 0 then
-  %<tr class="result_line"><td>+= !... !...</td><td>%
-  for (formal) in [element definition].addAssignOperatorArguments do
-    %<span class="selecteur">?%if formal.mFormalSelector.string != "" then !formal.mFormalSelector.string + ":" end%</span>%
-    !linkForType (![formal.mFormalArgumentType definition].typeName.string)% % !formal.mFormalArgumentName %<br>%
-  end
-  %</td></tr>%
-end
 if [[element definition].enumerationDescriptorList count] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
   for (entry) in [element definition].enumerationDescriptorList do

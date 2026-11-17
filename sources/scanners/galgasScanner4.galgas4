@@ -28,7 +28,7 @@ indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"
 //indexing listDefinition : "List Definition"
-indexing sortedListDefinition : "Sorted List Definition"
+//indexing sortedListDefinition : "Sorted List Definition"
 indexing mapDefinition : "Map Definition"
 indexing dictionaryDefinition : "Dictionary Definition"
 indexing externTypeDefinition : "Extern Type Definition"
@@ -83,7 +83,6 @@ indexing indexingNameDefinition : "Indexing Name Definition"
 indexing indexingNameReference : "Indexing Name Reference"
 
 //--- Scanner attributes
-//@string identifierString
 @uint uint32value
 @char charValue
 @string tokenString
@@ -118,7 +117,6 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "case",
   "class",
   "default",
-//  "dict",
   "do",
   "drop",
   "else",
@@ -172,7 +170,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "self",
   "send",
   "sortedarray",
-  "sortedlist",
+//  "sortedlist",
   "spoil",
   "super",
   "struct",

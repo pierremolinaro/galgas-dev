@@ -117,7 +117,6 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     self.getSetterMap (!?ioTypeMap, ?var @setterMap setterMap)
     self.getInstanceMethodMap (!?ioTypeMap, ?var @instanceMethodMap instanceMethodMap)
     self.getClassMethodMap (!?ioTypeMap, ?let @classMethodMap classMethodMap)
-    self.getAddAssignArgumentList (!?ioTypeMap, ?let [@functionSignatureElement] addAssignArgumentList)
     self.getEnumerationList (
       !?ioTypeMap,
       ?let [@enumerationDescriptor] enumerationList,
@@ -183,7 +182,6 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationList,
       !features: self.getSupportedOperatorFlags,
-      !addAssignOperatorArguments: addAssignArgumentList,
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: enumeratedTypeEntry,
       !headerFileName: "predefined-types",
@@ -271,13 +269,6 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   func supportsCollectionValue () -> @bool {
     result = false // Does not support collection value
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  proc getAddAssignArgumentList (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                                  ![@functionSignatureElement] outAddAssignArgumentList ) {
-    outAddAssignArgumentList = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

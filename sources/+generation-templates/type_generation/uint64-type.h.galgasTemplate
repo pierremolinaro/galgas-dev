@@ -2,7 +2,7 @@
 //  @uint64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint_36__34_ : public AC_GALGAS_root {
+class GGS_uint_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint64_t mU64 ;

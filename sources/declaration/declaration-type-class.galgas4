@@ -350,7 +350,6 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: generateHeaderInSeparateFile,
       !typeForEnumeratedElement: .null,
       !headerFileName: "class-" + self.mClassTypeName.string.fileNameRepresentation,
@@ -540,7 +539,6 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

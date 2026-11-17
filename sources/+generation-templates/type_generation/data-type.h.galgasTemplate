@@ -47,7 +47,7 @@ class DownEnumerator_data final {
 //   @data type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_data : public AC_GALGAS_root {
+class GGS_data final : public AC_GALGAS_root {
 
 //--------------------------------- Friends
   friend class UpEnumerator_data ;

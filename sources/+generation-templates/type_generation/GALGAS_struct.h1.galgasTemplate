@@ -2,7 +2,7 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " struct"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
 for (property) in PROPERTY_LIST do

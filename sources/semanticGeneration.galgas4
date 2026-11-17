@@ -717,7 +717,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@writeSubcriptMap WRITE_SUBCRIPT_MAP,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST, // Empty List if cannot be enumerated
     ?@typeFeatures SUPPORTED_OPERATORS,
-    ?[@functionSignatureElement] ADD_ASSIGN_ARGUMENT_LIST, // Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@bool SUPPORT_ARRAY_LITERAL_VALUE
   )
@@ -1401,7 +1400,6 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
         selfTypeDefinition.writeSubscriptMap,
         selfTypeDefinition.enumerationDescriptorList,
         selfTypeDefinition.features,
-        selfTypeDefinition.addAssignOperatorArguments,
         selfTypeDefinition.typeForEnumeratedElement,
         selfTypeDefinition.supportArrayLiteral
       ]

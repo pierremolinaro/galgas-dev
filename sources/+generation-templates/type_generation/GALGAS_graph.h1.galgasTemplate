@@ -16,12 +16,12 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: uint32_t count (void) const ;
 
 //--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return mSharedGraph != nullptr ;
   }
 
 //--- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  public: void drop (void) override ;
 
 //--- Handle copy
   public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
@@ -66,8 +66,8 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
 
 //--- Internal methods for handling graph
   protected: void reversedGraphFromGraph (const GGS_%!TYPE_IDENTIFIER% & inGraph

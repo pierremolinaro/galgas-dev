@@ -782,7 +782,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualParameterForGene
 //   enum unifiedTypeMapEntry
 //--------------------------------------------------------------------------------------------------
 
-class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
+class GGS_unifiedTypeMapEntry final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_unifiedTypeMapEntry (void) ;
 
@@ -798,14 +798,14 @@ class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_element (class GGS_unifiedTypeMapElementClass_2E_weak & out_weakElement) const ;
+  public: void getAssociatedValuesFor_element (class GGS_unifiedTypeMapElementClass_2E_weak & out_weakElement) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -963,7 +963,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementC
 //   enum typeDefinition
 //--------------------------------------------------------------------------------------------------
 
-class GGS_typeDefinition : public AC_GALGAS_root {
+class GGS_typeDefinition final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_typeDefinition (void) ;
 
@@ -979,14 +979,14 @@ class GGS_typeDefinition : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_solved (class GGS_unifiedTypeDefinition & out_definition) const ;
+  public: void getAssociatedValuesFor_solved (class GGS_unifiedTypeDefinition & out_definition) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -1160,7 +1160,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementC
 // Phase 1: @unifiedTypeMapEntry_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_unifiedTypeMapEntry_2E_element : public AC_GALGAS_root {
+class GGS_unifiedTypeMapEntry_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_unifiedTypeMapElementClass_2E_weak mProperty_weakElement ;
   public: inline GGS_unifiedTypeMapElementClass_2E_weak readProperty_weakElement (void) const {
@@ -2120,7 +2120,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxInstructionForGe
 //   enum fixitElementAST
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementAST : public AC_GALGAS_root {
+class GGS_fixitElementAST final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_fixitElementAST (void) ;
 
@@ -2138,19 +2138,19 @@ class GGS_fixitElementAST : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItReplace (class GGS_semanticExpressionAST & out_exp,
-                                                                     class GGS_location & out_errorLocation) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertAfter (class GGS_semanticExpressionAST & out_exp,
-                                                                         class GGS_location & out_errorLocation) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertBefore (class GGS_semanticExpressionAST & out_exp,
-                                                                          class GGS_location & out_errorLocation) const ;
+  public: void getAssociatedValuesFor_fixItReplace (class GGS_semanticExpressionAST & out_exp,
+                                                    class GGS_location & out_errorLocation) const ;
+  public: void getAssociatedValuesFor_fixItInsertAfter (class GGS_semanticExpressionAST & out_exp,
+                                                        class GGS_location & out_errorLocation) const ;
+  public: void getAssociatedValuesFor_fixItInsertBefore (class GGS_semanticExpressionAST & out_exp,
+                                                         class GGS_location & out_errorLocation) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -2236,7 +2236,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementAST ;
 // Phase 1: @fixitElementAST_2E_fixItInsertAfter struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementAST_2E_fixItInsertAfter : public AC_GALGAS_root {
+class GGS_fixitElementAST_2E_fixItInsertAfter final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionAST mProperty_exp ;
   public: inline GGS_semanticExpressionAST readProperty_exp (void) const {
@@ -2385,7 +2385,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fix
 // Phase 1: @fixitElementAST_2E_fixItInsertBefore struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementAST_2E_fixItInsertBefore : public AC_GALGAS_root {
+class GGS_fixitElementAST_2E_fixItInsertBefore final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionAST mProperty_exp ;
   public: inline GGS_semanticExpressionAST readProperty_exp (void) const {
@@ -2534,7 +2534,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fix
 // Phase 1: @fixitElementAST_2E_fixItReplace struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementAST_2E_fixItReplace : public AC_GALGAS_root {
+class GGS_fixitElementAST_2E_fixItReplace final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionAST mProperty_exp ;
   public: inline GGS_semanticExpressionAST readProperty_exp (void) const {
@@ -2927,7 +2927,7 @@ class UpEnumerator_unifiedTypeMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_unifiedTypeMap : public AC_GALGAS_root {
+class GGS_unifiedTypeMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>> mSharedRoot ;
@@ -3069,7 +3069,7 @@ void callExtensionMethod_enterExpressionInSemanticContext (class cPtr_semanticEx
 //   enum fixitElementForGeneration
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementForGeneration : public AC_GALGAS_root {
+class GGS_fixitElementForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_fixitElementForGeneration (void) ;
 
@@ -3087,16 +3087,16 @@ class GGS_fixitElementForGeneration : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItReplace (class GGS_semanticExpressionForGeneration & out_exp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertBefore (class GGS_semanticExpressionForGeneration & out_exp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fixItInsertAfter (class GGS_semanticExpressionForGeneration & out_exp) const ;
+  public: void getAssociatedValuesFor_fixItReplace (class GGS_semanticExpressionForGeneration & out_exp) const ;
+  public: void getAssociatedValuesFor_fixItInsertBefore (class GGS_semanticExpressionForGeneration & out_exp) const ;
+  public: void getAssociatedValuesFor_fixItInsertAfter (class GGS_semanticExpressionForGeneration & out_exp) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -3176,7 +3176,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGenerat
 // Phase 1: @fixitElementForGeneration_2E_fixItInsertAfter struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementForGeneration_2E_fixItInsertAfter : public AC_GALGAS_root {
+class GGS_fixitElementForGeneration_2E_fixItInsertAfter final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_exp ;
   public: inline GGS_semanticExpressionForGeneration readProperty_exp (void) const {
@@ -3314,7 +3314,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGenerat
 // Phase 1: @fixitElementForGeneration_2E_fixItInsertBefore struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementForGeneration_2E_fixItInsertBefore : public AC_GALGAS_root {
+class GGS_fixitElementForGeneration_2E_fixItInsertBefore final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_exp ;
   public: inline GGS_semanticExpressionForGeneration readProperty_exp (void) const {
@@ -3452,7 +3452,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGenerat
 // Phase 1: @fixitElementForGeneration_2E_fixItReplace struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_fixitElementForGeneration_2E_fixItReplace : public AC_GALGAS_root {
+class GGS_fixitElementForGeneration_2E_fixItReplace final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_exp ;
   public: inline GGS_semanticExpressionForGeneration readProperty_exp (void) const {
@@ -4167,7 +4167,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalParameterSig
 //   enum formalArgumentPassingModeAST
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalArgumentPassingModeAST : public AC_GALGAS_root {
+class GGS_formalArgumentPassingModeAST final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_formalArgumentPassingModeAST (void) ;
 
@@ -4186,11 +4186,11 @@ class GGS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
   }
 
@@ -4250,7 +4250,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalArgumentPassingM
 // Phase 1: @formalParameterSignatureElement struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalParameterSignatureElement : public AC_GALGAS_root {
+class GGS_formalParameterSignatureElement final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFormalSelector ;
   public: inline GGS_lstring readProperty_mFormalSelector (void) const {
@@ -4522,7 +4522,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_procCallInstructionFor
 //   enum opAssignmentOperator
 //--------------------------------------------------------------------------------------------------
 
-class GGS_opAssignmentOperator : public AC_GALGAS_root {
+class GGS_opAssignmentOperator final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_opAssignmentOperator (void) ;
 
@@ -4544,11 +4544,11 @@ class GGS_opAssignmentOperator : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
   }
 
@@ -5398,7 +5398,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_CommaSeparatedExpr
 //   enum ifExpressionKind
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifExpressionKind : public AC_GALGAS_root {
+class GGS_ifExpressionKind final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifExpressionKind (void) ;
 
@@ -5414,20 +5414,20 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regularExp (class GGS_semanticExpressionAST & out_exp,
-                                                                   class GGS_location & out_endOfExp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letVarExp (class GGS_lstring & out_varName,
-                                                                  class GGS_bool & out_isConstant,
-                                                                  class GGS_semanticExpressionAST & out_exp,
-                                                                  class GGS_location & out_endOfExp,
-                                                                  class GGS_lstring & out_typeName) const ;
+  public: void getAssociatedValuesFor_regularExp (class GGS_semanticExpressionAST & out_exp,
+                                                  class GGS_location & out_endOfExp) const ;
+  public: void getAssociatedValuesFor_letVarExp (class GGS_lstring & out_varName,
+                                                 class GGS_bool & out_isConstant,
+                                                 class GGS_semanticExpressionAST & out_exp,
+                                                 class GGS_location & out_endOfExp,
+                                                 class GGS_lstring & out_typeName) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -5502,7 +5502,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionKind ;
 // Phase 1: @CommaSeparatedExpressionElement struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_CommaSeparatedExpressionElement : public AC_GALGAS_root {
+class GGS_CommaSeparatedExpressionElement final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_ifExpressionKind mProperty_mExpression ;
   public: inline GGS_ifExpressionKind readProperty_mExpression (void) const {
@@ -5569,7 +5569,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_CommaSeparatedExpressi
 // Phase 1: @ifExpressionKind_2E_letVarExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifExpressionKind_2E_letVarExp : public AC_GALGAS_root {
+class GGS_ifExpressionKind_2E_letVarExp final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_varName ;
   public: inline GGS_lstring readProperty_varName (void) const {
@@ -5751,7 +5751,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_le
 // Phase 1: @ifExpressionKind_2E_regularExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
+class GGS_ifExpressionKind_2E_regularExp final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionAST mProperty_exp ;
   public: inline GGS_semanticExpressionAST readProperty_exp (void) const {
@@ -6101,7 +6101,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_ifTestForGeneratio
 //   enum ifTestForGeneration
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration : public AC_GALGAS_root {
+class GGS_ifTestForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_ifTestForGeneration (void) ;
 
@@ -6118,22 +6118,22 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_regular (class GGS_semanticExpressionForGeneration & out_exp) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_letVarExp (class GGS_string & out_targetVarCppName,
-                                                                  class GGS_semanticExpressionForGeneration & out_exp,
-                                                                  class GGS_unifiedTypeMapEntry & out_targetType,
-                                                                  class GGS_unifiedTypeMapEntry & out_testType) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_optionalExp (class GGS_string & out_targetVarCppName,
-                                                                    class GGS_bool & out_isConstant,
-                                                                    class GGS_semanticExpressionForGeneration & out_exp,
-                                                                    class GGS_unifiedTypeMapEntry & out_targetType) const ;
+  public: void getAssociatedValuesFor_regular (class GGS_semanticExpressionForGeneration & out_exp) const ;
+  public: void getAssociatedValuesFor_letVarExp (class GGS_string & out_targetVarCppName,
+                                                 class GGS_semanticExpressionForGeneration & out_exp,
+                                                 class GGS_unifiedTypeMapEntry & out_targetType,
+                                                 class GGS_unifiedTypeMapEntry & out_testType) const ;
+  public: void getAssociatedValuesFor_optionalExp (class GGS_string & out_targetVarCppName,
+                                                   class GGS_bool & out_isConstant,
+                                                   class GGS_semanticExpressionForGeneration & out_exp,
+                                                   class GGS_unifiedTypeMapEntry & out_targetType) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -6221,7 +6221,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration ;
 // Phase 1: @ifTestForGeneration_2E_letVarExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration_2E_letVarExp : public AC_GALGAS_root {
+class GGS_ifTestForGeneration_2E_letVarExp final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_targetVarCppName ;
   public: inline GGS_string readProperty_targetVarCppName (void) const {
@@ -6392,7 +6392,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E
 // Phase 1: @ifTestForGeneration_2E_optionalExp struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
+class GGS_ifTestForGeneration_2E_optionalExp final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_targetVarCppName ;
   public: inline GGS_string readProperty_targetVarCppName (void) const {
@@ -6563,7 +6563,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestForGeneration_2E
 // Phase 1: @ifTestForGeneration_2E_regular struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ifTestForGeneration_2E_regular : public AC_GALGAS_root {
+class GGS_ifTestForGeneration_2E_regular final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_exp ;
   public: inline GGS_semanticExpressionForGeneration readProperty_exp (void) const {
@@ -6717,7 +6717,7 @@ void extensionMethod_analyzeSemanticExpressionList (const class GGS__5B_CommaSep
 //   enum typeKindEnum
 //--------------------------------------------------------------------------------------------------
 
-class GGS_typeKindEnum : public AC_GALGAS_root {
+class GGS_typeKindEnum final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_typeKindEnum (void) ;
 
@@ -6727,7 +6727,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
     enum_classType,
     enum_weakReferenceType,
     enum_enumType,
-    enum_sortedListType,
     enum_mapType,
     enum_boolsetType,
     enum_structType,
@@ -6742,15 +6741,15 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_weakReferenceType (class GGS_unifiedTypeMapEntry & out_referenceType) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_enumType (class GGS_constantIndexMap & out_constantMap) const ;
+  public: void getAssociatedValuesFor_weakReferenceType (class GGS_unifiedTypeMapEntry & out_referenceType) const ;
+  public: void getAssociatedValuesFor_enumType (class GGS_constantIndexMap & out_constantMap) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -6779,8 +6778,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
   public: static class GGS_typeKindEnum class_func_otherType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_packageType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_sortedListType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_structType (LOCATION_ARGS) ;
 
@@ -6826,8 +6823,6 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
   public: class GGS_bool getter_isOtherType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isPackageType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isSortedListType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isStructType (LOCATION_ARGS) const ;
 
@@ -6888,12 +6883,12 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
   public: uint32_t count (void) const ;
 
 //--- isValid
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return mSharedGraph != nullptr ;
   }
 
 //--- drop
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  public: void drop (void) override ;
 
 //--- Handle copy
   public: GGS_usefulEntitiesGraph (const GGS_usefulEntitiesGraph & inSource) ;
@@ -6938,8 +6933,8 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
   public: ComparisonResult objectCompare (const GGS_usefulEntitiesGraph & inOperand) const ;
 
 //--- Description
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
 
 //--- Internal methods for handling graph
   protected: void reversedGraphFromGraph (const GGS_usefulEntitiesGraph & inGraph
@@ -7123,7 +7118,7 @@ void extensionSetter_openOverrideForSelectBlock (class GGS_localVarManager & ioO
 // Phase 1: @typeKindEnum_2E_weakReferenceType struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_typeKindEnum_2E_weakReferenceType : public AC_GALGAS_root {
+class GGS_typeKindEnum_2E_weakReferenceType final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_unifiedTypeMapEntry mProperty_referenceType ;
   public: inline GGS_unifiedTypeMapEntry readProperty_referenceType (void) const {
@@ -7295,7 +7290,7 @@ void callExtensionMethod_analyzeSemanticExpression (class cPtr_semanticExpressio
 //   enum selfAvailability
 //--------------------------------------------------------------------------------------------------
 
-class GGS_selfAvailability : public AC_GALGAS_root {
+class GGS_selfAvailability final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_selfAvailability (void) ;
 
@@ -7311,15 +7306,15 @@ class GGS_selfAvailability : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_available (class GGS_unifiedTypeMapEntry & out_type,
-                                                                  class GGS_selfMutability & out_selfMutability) const ;
+  public: void getAssociatedValuesFor_available (class GGS_unifiedTypeMapEntry & out_type,
+                                                 class GGS_selfMutability & out_selfMutability) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -7381,7 +7376,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAvailability ;
 // Phase 1: @predefinedTypes struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_predefinedTypes : public AC_GALGAS_root {
+class GGS_predefinedTypes final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mLocationType ;
   public: inline GGS_unifiedTypeMapEntry readProperty_mLocationType (void) const {
@@ -7749,7 +7744,7 @@ class UpEnumerator_filewrapperMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_filewrapperMap : public AC_GALGAS_root {
+class GGS_filewrapperMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_filewrapperMap_2E_element>> mSharedRoot ;
@@ -8001,7 +7996,7 @@ class UpEnumerator_functionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_functionMap : public AC_GALGAS_root {
+class GGS_functionMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_functionMap_2E_element>> mSharedRoot ;
@@ -8220,7 +8215,7 @@ class UpEnumerator_grammarMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_grammarMap : public AC_GALGAS_root {
+class GGS_grammarMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_grammarMap_2E_element>> mSharedRoot ;
@@ -8451,7 +8446,7 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
+class GGS_lexiqueComponentMapForSemanticAnalysis final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> mSharedRoot ;
@@ -8717,7 +8712,7 @@ class UpEnumerator_optionComponentMapForSemanticAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
+class GGS_optionComponentMapForSemanticAnalysis final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_optionComponentMapForSemanticAnalysis_2E_element>> mSharedRoot ;
@@ -8950,7 +8945,7 @@ class UpEnumerator_syntaxComponentMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxComponentMap : public AC_GALGAS_root {
+class GGS_syntaxComponentMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_syntaxComponentMap_2E_element>> mSharedRoot ;
@@ -9174,7 +9169,7 @@ class UpEnumerator_internalRoutineMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_internalRoutineMap : public AC_GALGAS_root {
+class GGS_internalRoutineMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_internalRoutineMap_2E_element>> mSharedRoot ;
@@ -9314,7 +9309,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_internalRoutineMap ;
 // Phase 1: @routineMap struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_routineMap : public AC_GALGAS_root {
+class GGS_routineMap final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_internalRoutineMap mProperty_mInternalRoutineMap ;
   public: inline GGS_internalRoutineMap readProperty_mInternalRoutineMap (void) const {
@@ -9380,7 +9375,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineMap ;
 // Phase 1: @semanticContext struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_semanticContext : public AC_GALGAS_root {
+class GGS_semanticContext final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_routineMap mProperty_routineMap ;
   public: inline GGS_routineMap readProperty_routineMap (void) const {
@@ -9506,7 +9501,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticContext ;
 // Phase 1: @analysisContext struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_analysisContext : public AC_GALGAS_root {
+class GGS_analysisContext final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticContext mProperty_semanticContext ;
   public: inline GGS_semanticContext readProperty_semanticContext (void) const {
@@ -10040,7 +10035,7 @@ class UpEnumerator_scopeLocalVarMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_scopeLocalVarMap : public AC_GALGAS_root {
+class GGS_scopeLocalVarMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_scopeLocalVarMap_2E_element>> mSharedRoot ;
@@ -10229,7 +10224,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_scopeLocalVarMap ;
 // Phase 1: @currentVarManager struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_currentVarManager : public AC_GALGAS_root {
+class GGS_currentVarManager final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_scopeLocalVarMap mProperty_mLocalVarMap ;
   public: inline GGS_scopeLocalVarMap readProperty_mLocalVarMap (void) const {
@@ -10305,7 +10300,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_currentVarManager ;
 // Phase 1: @localVarManager struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_localVarManager : public AC_GALGAS_root {
+class GGS_localVarManager final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_currentVarManager mProperty_mCurrentManager ;
   public: inline GGS_currentVarManager readProperty_mCurrentManager (void) const {
@@ -10556,184 +10551,6 @@ class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_enumerationDescriptor_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: [functionSignatureElement] array
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator__5B_functionSignatureElement_5D_ final {
-//--- Constructor
-  public: DownEnumerator__5B_functionSignatureElement_5D_ (const class GGS__5B_functionSignatureElement_5D_ & inOperand) ;
-
-//--- No copy
-  private: DownEnumerator__5B_functionSignatureElement_5D_ (const DownEnumerator__5B_functionSignatureElement_5D_ &) = delete ;
-  private: DownEnumerator__5B_functionSignatureElement_5D_ & operator = (const DownEnumerator__5B_functionSignatureElement_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_functionSignatureElement current (LOCATION_ARGS) const ;
-  public: class GGS_functionSignatureElement current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
-
-//---- Properties
-  private: const GenericArray <GGS_functionSignatureElement> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator__5B_functionSignatureElement_5D_ final {
-//--- Constructor
-  public: UpEnumerator__5B_functionSignatureElement_5D_ (const class GGS__5B_functionSignatureElement_5D_ & inOperand) ;
-
-//--- No copy
-  private: UpEnumerator__5B_functionSignatureElement_5D_ (const UpEnumerator__5B_functionSignatureElement_5D_ &) = delete ;
-  private: UpEnumerator__5B_functionSignatureElement_5D_ & operator = (const UpEnumerator__5B_functionSignatureElement_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
-
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_functionSignatureElement current (LOCATION_ARGS) const ;
-  public: class GGS_functionSignatureElement current_entry (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const GenericArray <GGS_functionSignatureElement> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_functionSignatureElement> mSharedArray ;
-  private: bool mIsValid ;
-
-//--------------------------------- Default constructor
-  public: GGS__5B_functionSignatureElement_5D_ (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS__5B_functionSignatureElement_5D_ (const GGS__5B_functionSignatureElement_5D_ & inSource) ;
-  public: GGS__5B_functionSignatureElement_5D_ & operator = (const GGS__5B_functionSignatureElement_5D_ & inSource) ;
-
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
-
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
-
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS__5B_functionSignatureElement_5D_ init (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_functionSignatureElement_5D_ inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_functionSignatureElement & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__5B_functionSignatureElement_5D_ add_operation (const GGS__5B_functionSignatureElement_5D_ & inOperand,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_functionSignatureElement constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insert (class GGS_functionSignatureElement constinArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_functionSignatureElement & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeFirst (class GGS_functionSignatureElement & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeLast (class GGS_functionSignatureElement & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_set (class GGS_functionSignatureElement constinArgument0,
-                           class GGS_uint constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_functionSignatureElement getter_first (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_functionSignatureElement getter_last (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_functionSignatureElement_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_functionSignatureElement_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                     const class GGS_uint & constinOperand1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-  public: class GGS_functionSignatureElement readSubcript__3F_ (const class GGS_uint & in0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
-
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_functionSignatureElement_5D_ ;
-  friend class DownEnumerator__5B_functionSignatureElement_5D_ ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_functionSignatureElement_5D_ ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: [typedProperty] array
 //--------------------------------------------------------------------------------------------------
 
@@ -10915,7 +10732,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_typedProperty_5D_ 
 // Phase 1: @typeFeatures boolset
 //--------------------------------------------------------------------------------------------------
 
-class GGS_typeFeatures : public AC_GALGAS_root {
+class GGS_typeFeatures final : public AC_GALGAS_root {
 //--------------------------------- Properties
   private: uint64_t mFlags ;
   private: bool mIsValid ;
@@ -11077,7 +10894,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeFeatures ;
 //   enum headerKind
 //--------------------------------------------------------------------------------------------------
 
-class GGS_headerKind : public AC_GALGAS_root {
+class GGS_headerKind final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_headerKind (void) ;
 
@@ -11095,11 +10912,11 @@ class GGS_headerKind : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
   }
 
@@ -11216,7 +11033,7 @@ class UpEnumerator_classFunctionMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_classFunctionMap : public AC_GALGAS_root {
+class GGS_classFunctionMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_classFunctionMap_2E_element>> mSharedRoot ;
@@ -11438,7 +11255,7 @@ class UpEnumerator_classMethodMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_classMethodMap : public AC_GALGAS_root {
+class GGS_classMethodMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_classMethodMap_2E_element>> mSharedRoot ;
@@ -11663,7 +11480,7 @@ class UpEnumerator_getterMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_getterMap : public AC_GALGAS_root {
+class GGS_getterMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_getterMap_2E_element>> mSharedRoot ;
@@ -11930,7 +11747,7 @@ class UpEnumerator_initializerMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_initializerMap : public AC_GALGAS_root {
+class GGS_initializerMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_initializerMap_2E_element>> mSharedRoot ;
@@ -12136,7 +11953,7 @@ class UpEnumerator_instanceMethodMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_instanceMethodMap : public AC_GALGAS_root {
+class GGS_instanceMethodMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_instanceMethodMap_2E_element>> mSharedRoot ;
@@ -12398,7 +12215,7 @@ class UpEnumerator_propertyMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_propertyMap : public AC_GALGAS_root {
+class GGS_propertyMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_propertyMap_2E_element>> mSharedRoot ;
@@ -12614,7 +12431,7 @@ class UpEnumerator_readSubcriptMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_readSubcriptMap : public AC_GALGAS_root {
+class GGS_readSubcriptMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_readSubcriptMap_2E_element>> mSharedRoot ;
@@ -12828,7 +12645,7 @@ class UpEnumerator_setterMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_setterMap : public AC_GALGAS_root {
+class GGS_setterMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_setterMap_2E_element>> mSharedRoot ;
@@ -13074,7 +12891,7 @@ class UpEnumerator_writeSubcriptMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_writeSubcriptMap : public AC_GALGAS_root {
+class GGS_writeSubcriptMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_writeSubcriptMap_2E_element>> mSharedRoot ;
@@ -13221,7 +13038,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubcriptMap ;
 // Phase 1: @unifiedTypeDefinition struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
+class GGS_unifiedTypeDefinition final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_typeName ;
   public: inline GGS_lstring readProperty_typeName (void) const {
@@ -13326,11 +13143,6 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
   public: GGS_typeFeatures mProperty_features ;
   public: inline GGS_typeFeatures readProperty_features (void) const {
     return mProperty_features ;
-  }
-
-  public: GGS__5B_functionSignatureElement_5D_ mProperty_addAssignOperatorArguments ;
-  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_addAssignOperatorArguments (void) const {
-    return mProperty_addAssignOperatorArguments ;
   }
 
   public: GGS_bool mProperty_generateHeaderInSeparateFile ;
@@ -13445,10 +13257,6 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_features = inValue ;
   }
 
-  public: inline void setter_setAddAssignOperatorArguments (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_addAssignOperatorArguments = inValue ;
-  }
-
   public: inline void setter_setGenerateHeaderInSeparateFile (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_generateHeaderInSeparateFile = inValue ;
   }
@@ -13490,7 +13298,6 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                      const GGS_writeSubcriptMap & in_writeSubscriptMap,
                                      const GGS__5B_enumerationDescriptor_5D_ & in_enumerationDescriptorList,
                                      const GGS_typeFeatures & in_features,
-                                     const GGS__5B_functionSignatureElement_5D_ & in_addAssignOperatorArguments,
                                      const GGS_bool & in_generateHeaderInSeparateFile,
                                      const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
                                      const GGS_string & in_headerFileName,
@@ -13505,34 +13312,33 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GGS_lstring & inOperand0,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand1,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand2,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand3,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_typeKindEnum & inOperand5,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_typedProperty_5D_ & inOperand7,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_propertyMap & inOperand8,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_initializerMap & inOperand10,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_classFunctionMap & inOperand11,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_getterMap & inOperand12,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_setterMap & inOperand13,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_instanceMethodMap & inOperand14,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_classMethodMap & inOperand15,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand16,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_readSubcriptMap & inOperand17,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_writeSubcriptMap & inOperand18,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_enumerationDescriptor_5D_ & inOperand19,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_typeFeatures & inOperand20,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_functionSignatureElement_5D_ & inOperand21,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand22,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand23,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_string & inOperand24,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_headerKind & inOperand25,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GGS_lstring & inOperand0,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_bool & inOperand1,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_bool & inOperand2,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_bool & inOperand3,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_typeKindEnum & inOperand5,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_bool & inOperand6,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS__5B_typedProperty_5D_ & inOperand7,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_propertyMap & inOperand8,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS__5B_typedProperty_5D_ & inOperand9,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_initializerMap & inOperand10,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_classFunctionMap & inOperand11,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_getterMap & inOperand12,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_setterMap & inOperand13,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_instanceMethodMap & inOperand14,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_classMethodMap & inOperand15,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_unifiedTypeMapEntry & inOperand16,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_readSubcriptMap & inOperand17,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_writeSubcriptMap & inOperand18,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS__5B_enumerationDescriptor_5D_ & inOperand19,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_typeFeatures & inOperand20,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_bool & inOperand21,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_unifiedTypeMapEntry & inOperand22,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_string & inOperand23,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               const class GGS_headerKind & inOperand24,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -15613,7 +15419,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_loopInstructionWithVar
 //   enum methodKind
 //--------------------------------------------------------------------------------------------------
 
-class GGS_methodKind : public AC_GALGAS_root {
+class GGS_methodKind final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_methodKind (void) ;
 
@@ -15630,11 +15436,11 @@ class GGS_methodKind : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
   }
 
@@ -16078,7 +15884,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifInstructionForGenera
 // Phase 1: @forInstructionEnumeratedObjectElementAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_forInstructionEnumeratedObjectElementAST : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectElementAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mOptionalTypeName ;
   public: inline GGS_lstring readProperty_mOptionalTypeName (void) const {
@@ -16434,7 +16240,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_localConstant_5D_ 
 // Phase 1: @localConstant struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_localConstant : public AC_GALGAS_root {
+class GGS_localConstant final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mType ;
   public: inline GGS_unifiedTypeMapEntry readProperty_mType (void) const {
@@ -17179,7 +16985,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionCs
 // Phase 1: @forInstructionEnumeratedObjectAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_forInstructionEnumeratedObjectAST : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_bool mProperty_mAscending ;
   public: inline GGS_bool readProperty_mAscending (void) const {
@@ -17613,7 +17419,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_forInstructionEnum
 // Phase 1: @forInstructionEnumeratedObjectForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_forInstructionEnumeratedObjectForGeneration : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_mEnumerationOrder ;
   public: inline GGS_string readProperty_mEnumerationOrder (void) const {
@@ -18266,7 +18072,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchExtractedVal
 // Phase 1: @switchBranchAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_switchBranchAST : public AC_GALGAS_root {
+class GGS_switchBranchAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_lstring_5D_ mProperty_mSwitchConstantList ;
   public: inline GGS__5B_lstring_5D_ readProperty_mSwitchConstantList (void) const {
@@ -18366,7 +18172,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchAST ;
 // Phase 1: @switchExtractedValuesAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_switchExtractedValuesAST : public AC_GALGAS_root {
+class GGS_switchExtractedValuesAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mExtractedValueTypeName ;
   public: inline GGS_lstring readProperty_mExtractedValueTypeName (void) const {
@@ -18811,7 +18617,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_extractedAssociate
 // Phase 1: @switchBranchForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_switchBranchForGeneration : public AC_GALGAS_root {
+class GGS_switchBranchForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_lstring_5D_ mProperty_mSwitchConstantList ;
   public: inline GGS__5B_lstring_5D_ readProperty_mSwitchConstantList (void) const {

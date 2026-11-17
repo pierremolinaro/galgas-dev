@@ -2,7 +2,7 @@
 //   @sint type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sint : public AC_GALGAS_root {
+class GGS_sint final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: int32_t mSIntValue ;

@@ -373,7 +373,6 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: .null,
       !headerFileName: "externtype-" + self.mExternTypeName.string.fileNameRepresentation,
@@ -460,7 +459,6 @@ override proc @externTypeDeclarationForGeneration.appendDeclaration1
     selfTypeDefinition.writeSubscriptMap,
     selfTypeDefinition.enumerationDescriptorList,
     selfTypeDefinition.features,
-    selfTypeDefinition.addAssignOperatorArguments,
     selfTypeDefinition.typeForEnumeratedElement,
     selfTypeDefinition.supportArrayLiteral
   ]

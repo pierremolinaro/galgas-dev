@@ -2,7 +2,7 @@
 //   @timer type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_timer : public AC_GALGAS_root {
+class GGS_timer final : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: Timer mTimer ;

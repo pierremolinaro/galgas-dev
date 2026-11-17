@@ -33,7 +33,7 @@
 //  @uint64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint_36__34_ : public AC_GALGAS_root {
+class GGS_uint_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint64_t mU64 ;
@@ -229,7 +229,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_ ;
 //   @string type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string : public AC_GALGAS_root {
+class GGS_string final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: String mString ;
@@ -661,7 +661,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
 //  @u8 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_u_38_ : public AC_GALGAS_root {
+class GGS_u_38_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint8_t mU8Value ;
@@ -841,7 +841,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_38_ ;
 //   @bigint type
 //--------------------------------------------------------------------------------------------------
  
-class GGS_bigint : public AC_GALGAS_root {
+class GGS_bigint final : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: BigSigned mValue ;
@@ -1059,7 +1059,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_binaryset : public AC_GALGAS_root {
+class GGS_binaryset final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: BinaryDecisionDiagram mBDD ;
@@ -1376,7 +1376,7 @@ enum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_bool : public AC_GALGAS_root {
+class GGS_bool final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: bool mBoolValue ;
@@ -1465,7 +1465,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bool ;
 //   @char type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_char : public AC_GALGAS_root {
+class GGS_char final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: utf32 mCharValue ;
@@ -1612,7 +1612,7 @@ class DownEnumerator_data final {
 //   @data type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_data : public AC_GALGAS_root {
+class GGS_data final : public AC_GALGAS_root {
 
 //--------------------------------- Friends
   friend class UpEnumerator_data ;
@@ -1718,7 +1718,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_data ;
 //  @double type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_double : public AC_GALGAS_root {
+class GGS_double final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: double mDoubleValue ;
@@ -1873,7 +1873,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ;
 //   @filewrapper type
 //--------------------------------------------------------------------------------------------------
 
-class cRegularFileWrapper {
+class cRegularFileWrapper final {
   public: const char * mName ;
   public: const char * mExtension ;
   public: const bool mIsTextFile ; // True: text file, false: binary file
@@ -1894,7 +1894,7 @@ class cRegularFileWrapper {
 
 //--------------------------------------------------------------------------------------------------
 
-class cDirectoryWrapper {
+class cDirectoryWrapper final {
   public: const char * mDirectoryName ;
   public: const uint32_t mFileCount ;
   public: const cRegularFileWrapper * * const mFiles ;
@@ -1915,7 +1915,7 @@ class cDirectoryWrapper {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_filewrapper : public AC_GALGAS_root {
+class GGS_filewrapper final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: const cDirectoryWrapper * mRootDirectoryPtr ;
   private: String mCurrentDirectory ;
@@ -2126,7 +2126,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ;
 //   @sint type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sint : public AC_GALGAS_root {
+class GGS_sint final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: int32_t mSIntValue ;
@@ -2313,7 +2313,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint ;
 //   @sint64 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sint_36__34_ : public AC_GALGAS_root {
+class GGS_sint_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: int64_t mSInt64Value ;
@@ -2501,7 +2501,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ;
 //   @uint type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint : public AC_GALGAS_root {
+class GGS_uint final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint32_t mUIntValue ;
@@ -2698,8 +2698,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint ;
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @stringset
 //--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
 //  SharedStringMapNode
 //--------------------------------------------------------------------------------------------------
 
@@ -2847,7 +2845,7 @@ class DownEnumerator_stringset final {
 //   @stringset type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_stringset : public AC_GALGAS_root {
+class GGS_stringset final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: SharedStringMap mSharedMap ;
 
@@ -2962,7 +2960,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringset ;
 //   @timer type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_timer : public AC_GALGAS_root {
+class GGS_timer final : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: Timer mTimer ;
@@ -3668,7 +3666,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_5D_ ;
 // Phase 1: @lstring struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lstring : public AC_GALGAS_root {
+class GGS_lstring final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_string ;
   public: inline GGS_string readProperty_string (void) const {
@@ -4104,7 +4102,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_5D_ ;
 // Phase 1: @lbool struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lbool : public AC_GALGAS_root {
+class GGS_lbool final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_bool mProperty_bool ;
   public: inline GGS_bool readProperty_bool (void) const {
@@ -4184,7 +4182,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
 // Phase 1: @lbigint struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lbigint : public AC_GALGAS_root {
+class GGS_lbigint final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_bigint mProperty_bigint ;
   public: inline GGS_bigint readProperty_bigint (void) const {
@@ -4264,7 +4262,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigint ;
 // Phase 1: @lchar struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lchar : public AC_GALGAS_root {
+class GGS_lchar final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_char mProperty_char ;
   public: inline GGS_char readProperty_char (void) const {
@@ -4344,7 +4342,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lchar ;
 // Phase 1: @ldouble struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_ldouble : public AC_GALGAS_root {
+class GGS_ldouble final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_double mProperty_double ;
   public: inline GGS_double readProperty_double (void) const {
@@ -4424,7 +4422,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ;
 // Phase 1: @lsint struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lsint : public AC_GALGAS_root {
+class GGS_lsint final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_sint mProperty_sint ;
   public: inline GGS_sint readProperty_sint (void) const {
@@ -4504,7 +4502,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint ;
 // Phase 1: @lsint_36__34_ struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lsint_36__34_ : public AC_GALGAS_root {
+class GGS_lsint_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_sint_36__34_ mProperty_sint_36__34_ ;
   public: inline GGS_sint_36__34_ readProperty_sint_36__34_ (void) const {
@@ -4584,7 +4582,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint_36__34_ ;
 // Phase 1: @luint struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_luint : public AC_GALGAS_root {
+class GGS_luint final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_uint mProperty_uint ;
   public: inline GGS_uint readProperty_uint (void) const {
@@ -4664,7 +4662,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint ;
 // Phase 1: @luint_36__34_ struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_luint_36__34_ : public AC_GALGAS_root {
+class GGS_luint_36__34_ final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_uint_36__34_ mProperty_uint_36__34_ ;
   public: inline GGS_uint_36__34_ readProperty_uint_36__34_ (void) const {
@@ -4744,7 +4742,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint_36__34_ ;
 // Phase 1: @range struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_range : public AC_GALGAS_root {
+class GGS_range final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_uint mProperty_start ;
   public: inline GGS_uint readProperty_start (void) const {
@@ -4897,7 +4895,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ;
 // Phase 1: @stringString struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_stringString : public AC_GALGAS_root {
+class GGS_stringString final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_left ;
   public: inline GGS_string readProperty_left (void) const {

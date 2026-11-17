@@ -320,13 +320,6 @@ override func @predefinedTypeAST.keyRepresentation () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @sortedListDeclarationAST.keyRepresentation
-  () ->@string {
-  result = "sorted list @" + self.mSortedListTypeName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override func @filewrapperDeclarationAST.keyRepresentation
   () ->@string {
   result = "filewrapper @" + self.mFilewrapperName

@@ -2,7 +2,7 @@
 //   @uint type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint : public AC_GALGAS_root {
+class GGS_uint final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: uint32_t mUIntValue ;

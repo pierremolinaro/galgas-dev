@@ -253,7 +253,6 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
-      !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,
       !typeForEnumeratedElement: elementType,
       !headerFileName: "array-" + self.sortedArrayTypeName.string.fileNameRepresentation,
@@ -366,7 +365,6 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

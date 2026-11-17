@@ -2,7 +2,7 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " boolset"%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 //--------------------------------- Properties
   private: uint64_t mFlags ;
   private: bool mIsValid ;

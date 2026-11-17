@@ -7013,7 +7013,6 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
                                                                                const GGS_writeSubcriptMap & in_WRITE_5F_SUBCRIPT_5F_MAP,
                                                                                const GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                const GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
-                                                                               const GGS__5B_functionSignatureElement_5D_ & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
                                                                                const GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                const GGS_bool & in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
@@ -7289,55 +7288,13 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_14 = GGS_bool (ComparisonKind::greaterThan, in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 111)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_14 = in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE.boolEnum () ;
   switch (test_14) {
-  case GalgasBool::boolTrue : {
-    result.appendString ("//--------------------------------- += operator (with list of field expressions)\n  public: void addAssignOperation (") ;
-    columnMarker = result.currentColumn () ;
-    GGS_uint index_5412_IDX (0) ;
-    if (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.isValid ()) {
-      UpEnumerator__5B_functionSignatureElement_5D_ enumerator_5412 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST) ;
-      while (enumerator_5412.hasCurrentObject ()) {
-        result.appendString ("const class GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_5412.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 115)).stringValue ()) ;
-        result.appendString (" & inOperand") ;
-        result.appendString (index_5412_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 115)).stringValue ()) ;
-        enumerator_5412.gotoNextObject () ;
-        if (enumerator_5412.hasCurrentObject ()) {
-          result.appendString (",\n") ;
-          result.appendSpacesUntilColumn (columnMarker) ;
-        }
-        index_5412_IDX.increment () ;
-      }
-    }
-    const GalgasBool test_15 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)).boolEnum () ;
-    switch (test_15) {
-    case GalgasBool::boolTrue : {
-      result.appendString (",\n") ;
-      result.appendSpacesUntilColumn (columnMarker) ;
-      result.appendString ("Compiler * inCompiler") ;
-      } break ;
-    case GalgasBool::boolFalse : {
-      } break ;
-    case GalgasBool::boolNotValid :
-      break ;
-    }
-    result.appendString ("\n") ;
-    result.appendSpacesUntilColumn (columnMarker) ;
-    result.appendString ("COMMA_LOCATION_ARGS) ;\n") ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  const GalgasBool test_16 = in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE.boolEnum () ;
-  switch (test_16) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- ++= operator\n  public: void plusPlusAssignOperation (") ;
     columnMarker = result.currentColumn () ;
     result.appendString ("const GGS_") ;
-    result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 127)).stringValue ()) ;
+    result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 113)).stringValue ()) ;
     result.appendString (" & inOperand\n  ") ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result.appendString ("COMMA_LOCATION_ARGS) ;\n") ;
@@ -7347,8 +7304,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_17 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 132)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 132)).boolEnum () ;
-  switch (test_17) {
+  const GalgasBool test_15 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)).boolEnum () ;
+  switch (test_15) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- & operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7365,8 +7322,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_18 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 138)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 138)).boolEnum () ;
-  switch (test_18) {
+  const GalgasBool test_16 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 124)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 124)).boolEnum () ;
+  switch (test_16) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- | operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7383,8 +7340,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_19 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 144)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 144)).boolEnum () ;
-  switch (test_19) {
+  const GalgasBool test_17 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)).boolEnum () ;
+  switch (test_17) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- ^ operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7401,8 +7358,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_20 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixNotOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 150)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 150)).boolEnum () ;
-  switch (test_20) {
+  const GalgasBool test_18 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixNotOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 136)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 136)).boolEnum () ;
+  switch (test_18) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- not operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7413,8 +7370,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_21 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 155)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 155)).boolEnum () ;
-  switch (test_21) {
+  const GalgasBool test_19 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 141)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 141)).boolEnum () ;
+  switch (test_19) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- ~ operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7425,8 +7382,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_22 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 160)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 160)).boolEnum () ;
-  switch (test_22) {
+  const GalgasBool test_20 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 146)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 146)).boolEnum () ;
+  switch (test_20) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- + operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7445,8 +7402,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_23 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 167)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 167)).boolEnum () ;
-  switch (test_23) {
+  const GalgasBool test_21 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 153)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 153)).boolEnum () ;
+  switch (test_21) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- &+ operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7459,8 +7416,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_24 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 172)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 172)).boolEnum () ;
-  switch (test_24) {
+  const GalgasBool test_22 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 158)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 158)).boolEnum () ;
+  switch (test_22) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- &- operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7473,8 +7430,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_25 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)).boolEnum () ;
-  switch (test_25) {
+  const GalgasBool test_23 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 163)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 163)).boolEnum () ;
+  switch (test_23) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- - operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7493,8 +7450,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_26 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 184)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 184)).boolEnum () ;
-  switch (test_26) {
+  const GalgasBool test_24 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)).boolEnum () ;
+  switch (test_24) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- * operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7513,8 +7470,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_27 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 191)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 191)).boolEnum () ;
-  switch (test_27) {
+  const GalgasBool test_25 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)).boolEnum () ;
+  switch (test_25) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- &* operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7527,8 +7484,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_28 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 196)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 196)).boolEnum () ;
-  switch (test_28) {
+  const GalgasBool test_26 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)).boolEnum () ;
+  switch (test_26) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- / operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7547,8 +7504,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_29 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 203)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 203)).boolEnum () ;
-  switch (test_29) {
+  const GalgasBool test_27 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 189)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 189)).boolEnum () ;
+  switch (test_27) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- &/ operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7561,8 +7518,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_30 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixModOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 208)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 208)).boolEnum () ;
-  switch (test_30) {
+  const GalgasBool test_28 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixModOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 194)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 194)).boolEnum () ;
+  switch (test_28) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- mod operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7581,8 +7538,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_31 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 215)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 215)).boolEnum () ;
-  switch (test_31) {
+  const GalgasBool test_29 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 201)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 201)).boolEnum () ;
+  switch (test_29) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- prefix - operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7597,8 +7554,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_32 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 221)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 221)).boolEnum () ;
-  switch (test_32) {
+  const GalgasBool test_30 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)).boolEnum () ;
+  switch (test_30) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- prefix &- operator\n  public: GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7609,8 +7566,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_33 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 226)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 226)).boolEnum () ;
-  switch (test_33) {
+  const GalgasBool test_31 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 212)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 212)).boolEnum () ;
+  switch (test_31) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- Implementation of func 'description'\n  public: void description (String & ioString,\n                            const int32_t inIndentation) const override ;\n") ;
     } break ;
@@ -7619,8 +7576,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
   case GalgasBool::boolNotValid :
     break ;
   }
-  const GalgasBool test_34 = extensionGetter_generateCppObjectComparison (in_SUPPORTED_5F_OPERATORS, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 232)).operator_and (in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_doNotGenererateObjectCompare (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 232)).boolEnum () ;
-  switch (test_34) {
+  const GalgasBool test_32 = extensionGetter_generateCppObjectComparison (in_SUPPORTED_5F_OPERATORS, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 218)).operator_and (in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_doNotGenererateObjectCompare (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 218)).boolEnum () ;
+  switch (test_32) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- Comparison\n  public: ComparisonResult objectCompare (const GGS_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -7632,55 +7589,55 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
     break ;
   }
   result.appendString ("\n//--------------------------------- Setters\n") ;
-  GGS_uint index_10976_ (0) ;
+  GGS_uint index_10447_ (0) ;
   if (in_MODIFIER_5F_MAP.isValid ()) {
-    UpEnumerator_setterMap enumerator_10976 (in_MODIFIER_5F_MAP) ;
-    while (enumerator_10976.hasCurrentObject ()) {
-      const GalgasBool test_35 = GGS_bool (ComparisonKind::equal, enumerator_10976.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 243)))).boolEnum () ;
-      switch (test_35) {
+    UpEnumerator_setterMap enumerator_10447 (in_MODIFIER_5F_MAP) ;
+    while (enumerator_10447.hasCurrentObject ()) {
+      const GalgasBool test_33 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 229)))).boolEnum () ;
+      switch (test_33) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_10976.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_10976.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10976.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10976.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).boolEnum () ;
-        switch (test_36) {
+        const GalgasBool test_34 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).boolEnum () ;
+        switch (test_34) {
         case GalgasBool::boolTrue : {
           result.appendString ("  public: void setter_") ;
-          result.appendString (enumerator_10976.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 245)).stringValue ()) ;
+          result.appendString (enumerator_10447.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 231)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_11334_IDX (0) ;
-          if (enumerator_10976.current_mParameterList (HERE).isValid ()) {
-            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_11334 (enumerator_10976.current_mParameterList (HERE)) ;
-            while (enumerator_11334.hasCurrentObject ()) {
-              const GalgasBool test_37 = GGS_bool (ComparisonKind::equal, enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 247)))).boolEnum () ;
-              switch (test_37) {
+          GGS_uint index_10805_IDX (0) ;
+          if (enumerator_10447.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10805 (enumerator_10447.current_mParameterList (HERE)) ;
+            while (enumerator_10805.hasCurrentObject ()) {
+              const GalgasBool test_35 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)))).boolEnum () ;
+              switch (test_35) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 248)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
                 result.appendString (" constinArgument") ;
-                result.appendString (index_11334_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 248)).stringValue ()) ;
+                result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 249)))).boolEnum () ;
-                switch (test_38) {
+                const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 235)))).boolEnum () ;
+                switch (test_36) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 250)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
                   result.appendString (" & ioArgument") ;
-                  result.appendString (index_11334_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 250)).stringValue ()) ;
+                  result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_39 = GGS_bool (ComparisonKind::equal, enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)))).boolEnum () ;
-                  switch (test_39) {
+                  const GalgasBool test_37 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))).boolEnum () ;
+                  switch (test_37) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 252)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
                     result.appendString (" & outArgument") ;
-                    result.appendString (index_11334_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 252)).stringValue ()) ;
+                    result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_11334.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 254)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
                     result.appendString (" inArgument") ;
-                    result.appendString (index_11334_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 254)).stringValue ()) ;
+                    result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolNotValid :
                     break ;
@@ -7693,19 +7650,19 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
               case GalgasBool::boolNotValid :
                 break ;
               }
-              enumerator_11334.gotoNextObject () ;
-              if (enumerator_11334.hasCurrentObject ()) {
+              enumerator_10805.gotoNextObject () ;
+              if (enumerator_10805.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_11334_IDX.increment () ;
+              index_10805_IDX.increment () ;
             }
           }
-          const GalgasBool test_40 = GGS_bool (ComparisonKind::equal, enumerator_10976.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 258)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-          switch (test_40) {
+          const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          switch (test_38) {
           case GalgasBool::boolTrue : {
-            const GalgasBool test_41 = enumerator_10976.current_mHasCompilerArgument (HERE).boolEnum () ;
-            switch (test_41) {
+            const GalgasBool test_39 = enumerator_10447.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_39) {
             case GalgasBool::boolTrue : {
               result.appendString ("Compiler * inCompiler\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
@@ -7720,8 +7677,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
             }
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_42 = enumerator_10976.current_mHasCompilerArgument (HERE).boolEnum () ;
-            switch (test_42) {
+            const GalgasBool test_40 = enumerator_10447.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_40) {
             case GalgasBool::boolTrue : {
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
@@ -7754,60 +7711,60 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_10976.gotoNextObject () ;
-      index_10976_.increment () ;
+      enumerator_10447.gotoNextObject () ;
+      index_10447_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Instance Methods\n") ;
-  GGS_uint index_12784_ (0) ;
+  GGS_uint index_12255_ (0) ;
   if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
-    UpEnumerator_instanceMethodMap enumerator_12784 (in_INSTANCE_5F_METHOD_5F_MAP) ;
-    while (enumerator_12784.hasCurrentObject ()) {
-      const GalgasBool test_43 = GGS_bool (ComparisonKind::equal, enumerator_12784.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 281)))).boolEnum () ;
-      switch (test_43) {
+    UpEnumerator_instanceMethodMap enumerator_12255 (in_INSTANCE_5F_METHOD_5F_MAP) ;
+    while (enumerator_12255.hasCurrentObject ()) {
+      const GalgasBool test_41 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 267)))).boolEnum () ;
+      switch (test_41) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_12784.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_12784.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12784.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12784.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).boolEnum () ;
-        switch (test_44) {
+        const GalgasBool test_42 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).boolEnum () ;
+        switch (test_42) {
         case GalgasBool::boolTrue : {
           result.appendString ("  public: void method_") ;
-          result.appendString (enumerator_12784.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 283)).stringValue ()) ;
+          result.appendString (enumerator_12255.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 269)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_13142_IDX (0) ;
-          if (enumerator_12784.current_mParameterList (HERE).isValid ()) {
-            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_13142 (enumerator_12784.current_mParameterList (HERE)) ;
-            while (enumerator_13142.hasCurrentObject ()) {
-              const GalgasBool test_45 = GGS_bool (ComparisonKind::equal, enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 285)))).boolEnum () ;
-              switch (test_45) {
+          GGS_uint index_12613_IDX (0) ;
+          if (enumerator_12255.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12613 (enumerator_12255.current_mParameterList (HERE)) ;
+            while (enumerator_12613.hasCurrentObject ()) {
+              const GalgasBool test_43 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 271)))).boolEnum () ;
+              switch (test_43) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 286)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
                 result.appendString (" constinArgument") ;
-                result.appendString (index_13142_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 286)).stringValue ()) ;
+                result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 287)))).boolEnum () ;
-                switch (test_46) {
+                const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)))).boolEnum () ;
+                switch (test_44) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 288)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
                   result.appendString (" & ioArgument") ;
-                  result.appendString (index_13142_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 288)).stringValue ()) ;
+                  result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_47 = GGS_bool (ComparisonKind::equal, enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 289)))).boolEnum () ;
-                  switch (test_47) {
+                  const GalgasBool test_45 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 275)))).boolEnum () ;
+                  switch (test_45) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 290)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
                     result.appendString (" & outArgument") ;
-                    result.appendString (index_13142_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 290)).stringValue ()) ;
+                    result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_13142.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 292)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
                     result.appendString (" inArgument") ;
-                    result.appendString (index_13142_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 292)).stringValue ()) ;
+                    result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolNotValid :
                     break ;
@@ -7820,19 +7777,19 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
               case GalgasBool::boolNotValid :
                 break ;
               }
-              enumerator_13142.gotoNextObject () ;
-              if (enumerator_13142.hasCurrentObject ()) {
+              enumerator_12613.gotoNextObject () ;
+              if (enumerator_12613.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_13142_IDX.increment () ;
+              index_12613_IDX.increment () ;
             }
           }
-          const GalgasBool test_48 = GGS_bool (ComparisonKind::equal, enumerator_12784.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 296)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-          switch (test_48) {
+          const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          switch (test_46) {
           case GalgasBool::boolTrue : {
-            const GalgasBool test_49 = enumerator_12784.current_mHasCompilerArgument (HERE).boolEnum () ;
-            switch (test_49) {
+            const GalgasBool test_47 = enumerator_12255.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_47) {
             case GalgasBool::boolTrue : {
               result.appendString ("Compiler * inCompiler\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
@@ -7847,8 +7804,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
             }
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_50 = enumerator_12784.current_mHasCompilerArgument (HERE).boolEnum () ;
-            switch (test_50) {
+            const GalgasBool test_48 = enumerator_12255.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_48) {
             case GalgasBool::boolTrue : {
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
@@ -7881,54 +7838,54 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_12784.gotoNextObject () ;
-      index_12784_.increment () ;
+      enumerator_12255.gotoNextObject () ;
+      index_12255_.increment () ;
     }
   }
   result.appendString ("//--------------------------------- Class Methods\n") ;
-  GGS_uint index_14539_ (0) ;
+  GGS_uint index_14010_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
-    UpEnumerator_classMethodMap enumerator_14539 (in_CLASS_5F_METHOD_5F_MAP) ;
-    while (enumerator_14539.hasCurrentObject ()) {
+    UpEnumerator_classMethodMap enumerator_14010 (in_CLASS_5F_METHOD_5F_MAP) ;
+    while (enumerator_14010.hasCurrentObject ()) {
       result.appendString ("  public: static void class_method_") ;
-      result.appendString (enumerator_14539.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 318)).stringValue ()) ;
+      result.appendString (enumerator_14010.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 304)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_14667_IDX (0) ;
-      if (enumerator_14539.current_mParameterList (HERE).isValid ()) {
-        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_14667 (enumerator_14539.current_mParameterList (HERE)) ;
-        while (enumerator_14667.hasCurrentObject ()) {
-          const GalgasBool test_51 = GGS_bool (ComparisonKind::equal, enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 320)))).boolEnum () ;
-          switch (test_51) {
+      GGS_uint index_14138_IDX (0) ;
+      if (enumerator_14010.current_mParameterList (HERE).isValid ()) {
+        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_14138 (enumerator_14010.current_mParameterList (HERE)) ;
+        while (enumerator_14138.hasCurrentObject ()) {
+          const GalgasBool test_49 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 306)))).boolEnum () ;
+          switch (test_49) {
           case GalgasBool::boolTrue : {
             result.appendString ("class GGS_") ;
-            result.appendString (extensionGetter_identifierRepresentation (enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 321)).stringValue ()) ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
             result.appendString (" constinArgument") ;
-            result.appendString (index_14667_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 321)).stringValue ()) ;
+            result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)))).boolEnum () ;
-            switch (test_52) {
+            const GalgasBool test_50 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))).boolEnum () ;
+            switch (test_50) {
             case GalgasBool::boolTrue : {
               result.appendString ("class GGS_") ;
-              result.appendString (extensionGetter_identifierRepresentation (enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 323)).stringValue ()) ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
               result.appendString (" & ioArgument") ;
-              result.appendString (index_14667_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 323)).stringValue ()) ;
+              result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
               } break ;
             case GalgasBool::boolFalse : {
-              const GalgasBool test_53 = GGS_bool (ComparisonKind::equal, enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 324)))).boolEnum () ;
-              switch (test_53) {
+              const GalgasBool test_51 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 310)))).boolEnum () ;
+              switch (test_51) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 325)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
                 result.appendString (" & outArgument") ;
-                result.appendString (index_14667_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 325)).stringValue ()) ;
+                result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_14667.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 327)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
                 result.appendString (" inArgument") ;
-                result.appendString (index_14667_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 327)).stringValue ()) ;
+                result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolNotValid :
                 break ;
@@ -7941,19 +7898,19 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           case GalgasBool::boolNotValid :
             break ;
           }
-          enumerator_14667.gotoNextObject () ;
-          if (enumerator_14667.hasCurrentObject ()) {
+          enumerator_14138.gotoNextObject () ;
+          if (enumerator_14138.hasCurrentObject ()) {
             result.appendString (",\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
-          index_14667_IDX.increment () ;
+          index_14138_IDX.increment () ;
         }
       }
-      const GalgasBool test_54 = GGS_bool (ComparisonKind::equal, enumerator_14539.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 331)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      switch (test_54) {
+      const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_14010.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 317)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      switch (test_52) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_55 = enumerator_14539.current_mHasCompilerArgument (HERE).boolEnum () ;
-        switch (test_55) {
+        const GalgasBool test_53 = enumerator_14010.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_53) {
         case GalgasBool::boolTrue : {
           result.appendString ("Compiler * inCompiler\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
@@ -7968,8 +7925,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         }
         } break ;
       case GalgasBool::boolFalse : {
-        const GalgasBool test_56 = enumerator_14539.current_mHasCompilerArgument (HERE).boolEnum () ;
-        switch (test_56) {
+        const GalgasBool test_54 = enumerator_14010.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_54) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
@@ -7990,19 +7947,19 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
         break ;
       }
       result.appendString (") ;\n\n") ;
-      enumerator_14539.gotoNextObject () ;
-      index_14539_.increment () ;
+      enumerator_14010.gotoNextObject () ;
+      index_14010_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Getters\n") ;
-  GGS_uint index_15974_ (0) ;
+  GGS_uint index_15445_ (0) ;
   if (in_GETTER_5F_MAP.isValid ()) {
-    UpEnumerator_getterMap enumerator_15974 (in_GETTER_5F_MAP) ;
-    while (enumerator_15974.hasCurrentObject ()) {
-      const GalgasBool test_57 = GGS_bool (ComparisonKind::equal, enumerator_15974.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-      switch (test_57) {
+    UpEnumerator_getterMap enumerator_15445 (in_GETTER_5F_MAP) ;
+    while (enumerator_15445.hasCurrentObject ()) {
+      const GalgasBool test_55 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      switch (test_55) {
       case GalgasBool::boolTrue : {
-        switch (enumerator_15974.current_mKind (HERE).enumValue ()) {
+        switch (enumerator_15445.current_mKind (HERE).enumValue ()) {
         case GGS_methodKind::Enumeration::invalid :
           break ;
         case GGS_methodKind::Enumeration::enum_definedAsExtension :
@@ -8011,36 +7968,36 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
           break ;
         case GGS_methodKind::Enumeration::enum_definedAsMember :
           {
-            const GalgasBool test_58 = GGS_bool (ComparisonKind::equal, enumerator_15974.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15974.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15974.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)).boolEnum () ;
-            switch (test_58) {
+            const GalgasBool test_56 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).boolEnum () ;
+            switch (test_56) {
             case GalgasBool::boolTrue : {
               result.appendString ("  public: class GGS_") ;
-              result.appendString (extensionGetter_identifierRepresentation (enumerator_15974.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 357)).stringValue ()) ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_15445.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
               result.appendString (" getter_") ;
-              result.appendString (enumerator_15974.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 357)).stringValue ()) ;
+              result.appendString (enumerator_15445.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
               result.appendString (" (") ;
               columnMarker = result.currentColumn () ;
-              GGS_uint index_16428_IDX (0) ;
-              if (enumerator_15974.current_mArgumentTypeList (HERE).isValid ()) {
-                UpEnumerator__5B_functionSignatureElement_5D_ enumerator_16428 (enumerator_15974.current_mArgumentTypeList (HERE)) ;
-                while (enumerator_16428.hasCurrentObject ()) {
+              GGS_uint index_15899_IDX (0) ;
+              if (enumerator_15445.current_mArgumentTypeList (HERE).isValid ()) {
+                UpEnumerator__5B_functionSignatureElement_5D_ enumerator_15899 (enumerator_15445.current_mArgumentTypeList (HERE)) ;
+                while (enumerator_15899.hasCurrentObject ()) {
                   result.appendString ("const class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_16428.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 359)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_15899.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
                   result.appendString (" & constinOperand") ;
-                  result.appendString (index_16428_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 359)).stringValue ()) ;
-                  enumerator_16428.gotoNextObject () ;
-                  if (enumerator_16428.hasCurrentObject ()) {
+                  result.appendString (index_15899_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
+                  enumerator_15899.gotoNextObject () ;
+                  if (enumerator_15899.hasCurrentObject ()) {
                     result.appendString (",\n") ;
                     result.appendSpacesUntilColumn (columnMarker) ;
                   }
-                  index_16428_IDX.increment () ;
+                  index_15899_IDX.increment () ;
                 }
               }
-              const GalgasBool test_59 = GGS_bool (ComparisonKind::equal, enumerator_15974.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 362)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-              switch (test_59) {
+              const GalgasBool test_57 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 348)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+              switch (test_57) {
               case GalgasBool::boolTrue : {
-                const GalgasBool test_60 = enumerator_15974.current_mHasCompilerArgument (HERE).boolEnum () ;
-                switch (test_60) {
+                const GalgasBool test_58 = enumerator_15445.current_mHasCompilerArgument (HERE).boolEnum () ;
+                switch (test_58) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("Compiler * inCompiler\n") ;
                   result.appendSpacesUntilColumn (columnMarker) ;
@@ -8054,8 +8011,8 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
                 }
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_61 = enumerator_15974.current_mHasCompilerArgument (HERE).boolEnum () ;
-                switch (test_61) {
+                const GalgasBool test_59 = enumerator_15445.current_mHasCompilerArgument (HERE).boolEnum () ;
+                switch (test_59) {
                 case GalgasBool::boolTrue : {
                   result.appendString (",\n") ;
                   result.appendSpacesUntilColumn (columnMarker) ;
@@ -8091,79 +8048,79 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_15974.gotoNextObject () ;
-      index_15974_.increment () ;
+      enumerator_15445.gotoNextObject () ;
+      index_15445_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Read subcripts\n") ;
-  GGS_uint index_17151_ (0) ;
+  GGS_uint index_16622_ (0) ;
   if (in_READ_5F_SUBCRIPT_5F_MAP.isValid ()) {
-    UpEnumerator_readSubcriptMap enumerator_17151 (in_READ_5F_SUBCRIPT_5F_MAP) ;
-    while (enumerator_17151.hasCurrentObject ()) {
+    UpEnumerator_readSubcriptMap enumerator_16622 (in_READ_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_16622.hasCurrentObject ()) {
       result.appendString ("  public: class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_17151.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 385)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_16622.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).stringValue ()) ;
       result.appendString (" readSubcript_") ;
-      result.appendString (enumerator_17151.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
+      result.appendString (enumerator_16622.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_17307_IDX (0) ;
-      if (enumerator_17151.current_argumentTypeList (HERE).isValid ()) {
-        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17307 (enumerator_17151.current_argumentTypeList (HERE)) ;
-        while (enumerator_17307.hasCurrentObject ()) {
+      GGS_uint index_16778_IDX (0) ;
+      if (enumerator_16622.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_16778 (enumerator_16622.current_argumentTypeList (HERE)) ;
+        while (enumerator_16778.hasCurrentObject ()) {
           result.appendString ("const class GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_17307.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_16778.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
           result.appendString (" & in") ;
-          result.appendString (index_17307_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
+          result.appendString (index_16778_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
-          enumerator_17307.gotoNextObject () ;
-          index_17307_IDX.increment () ;
+          enumerator_16778.gotoNextObject () ;
+          index_16778_IDX.increment () ;
         }
       }
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
-      enumerator_17151.gotoNextObject () ;
-      index_17151_.increment () ;
+      enumerator_16622.gotoNextObject () ;
+      index_16622_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------- Write subcripts\n") ;
-  GGS_uint index_17606_ (0) ;
+  GGS_uint index_17077_ (0) ;
   if (in_WRITE_5F_SUBCRIPT_5F_MAP.isValid ()) {
-    UpEnumerator_writeSubcriptMap enumerator_17606 (in_WRITE_5F_SUBCRIPT_5F_MAP) ;
-    while (enumerator_17606.hasCurrentObject ()) {
+    UpEnumerator_writeSubcriptMap enumerator_17077 (in_WRITE_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_17077.hasCurrentObject ()) {
       result.appendString ("  public: void writeSubcript_") ;
-      result.appendString (enumerator_17606.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 398)).stringValue ()) ;
+      result.appendString (enumerator_17077.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 384)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_17717_IDX (0) ;
-      if (enumerator_17606.current_argumentTypeList (HERE).isValid ()) {
-        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17717 (enumerator_17606.current_argumentTypeList (HERE)) ;
-        while (enumerator_17717.hasCurrentObject ()) {
+      GGS_uint index_17188_IDX (0) ;
+      if (enumerator_17077.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17188 (enumerator_17077.current_argumentTypeList (HERE)) ;
+        while (enumerator_17188.hasCurrentObject ()) {
           result.appendString ("const class GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_17717.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 400)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_17188.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
           result.appendString (" in") ;
-          result.appendString (index_17717_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 400)).stringValue ()) ;
+          result.appendString (index_17188_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
-          enumerator_17717.gotoNextObject () ;
-          index_17717_IDX.increment () ;
+          enumerator_17188.gotoNextObject () ;
+          index_17188_IDX.increment () ;
         }
       }
       result.appendString ("const class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_17606.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 402)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_17077.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
       result.appendString (" inValue,\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
-      enumerator_17606.gotoNextObject () ;
-      index_17606_.increment () ;
+      enumerator_17077.gotoNextObject () ;
+      index_17077_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------- Introspection\n  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;\n") ;
-  const GalgasBool test_62 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 411)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-  switch (test_62) {
+  const GalgasBool test_60 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 397)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_60) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- Friend\n  friend class UpEnumerator_") ;
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;

@@ -44,8 +44,6 @@ struct @unifiedTypeDefinition {
   public let @writeSubcriptMap writeSubscriptMap #initArgLabel // Write access
   public let [@enumerationDescriptor] enumerationDescriptorList #initArgLabel // Empty List if cannot be enumerated
   public let @typeFeatures features #initArgLabel
-// addAssignOperatorArguments is empty list if += operator is not supported
-  public let [@functionSignatureElement] addAssignOperatorArguments #initArgLabel
   public let @bool generateHeaderInSeparateFile #initArgLabel // Significant only for classes
   public let @unifiedTypeMapEntry typeForEnumeratedElement #initArgLabel
   public let @string headerFileName #initArgLabel // Name of C++ header file that contains type declaration
@@ -58,7 +56,6 @@ enum @typeKindEnum #equatable {
   case classType
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
-  case sortedListType
   case mapType
   case boolsetType
   case structType
@@ -73,7 +70,6 @@ enum @typeKindEnum #equatable {
     switch self
       case classType : result = "class"
       case enumType (*) : result = "enumeration"
-      case sortedListType : result = "sorted list"
       case mapType : result = "map"
       case structType : result = "struct"
       case boolsetType : result = "boolset"

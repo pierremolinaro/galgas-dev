@@ -12,7 +12,7 @@
 // Phase 1: @extractedAssociatedValueForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_extractedAssociatedValueForGeneration : public AC_GALGAS_root {
+class GGS_extractedAssociatedValueForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mType ;
   public: inline GGS_unifiedTypeMapEntry readProperty_mType (void) const {
@@ -1407,7 +1407,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVariableDeclarati
 //   enum assignmentSupplementAST
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementAST : public AC_GALGAS_root {
+class GGS_assignmentSupplementAST final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_assignmentSupplementAST (void) ;
 
@@ -1424,16 +1424,16 @@ class GGS_assignmentSupplementAST : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_property (class GGS_lstring & out_name) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_subcript (class GGS__5B_actualOutputArgumentAST_5D_ & out_subscriptArgs,
-                                                                 class GGS_location & out_errorLocation) const ;
+  public: void getAssociatedValuesFor_property (class GGS_lstring & out_name) const ;
+  public: void getAssociatedValuesFor_subcript (class GGS__5B_actualOutputArgumentAST_5D_ & out_subscriptArgs,
+                                                class GGS_location & out_errorLocation) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -1504,7 +1504,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementAS
 // Phase 1: @assignmentSupplementAST_2E_property struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementAST_2E_property : public AC_GALGAS_root {
+class GGS_assignmentSupplementAST_2E_property final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_name ;
   public: inline GGS_lstring readProperty_name (void) const {
@@ -1820,7 +1820,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_actualOutputArgume
 // Phase 1: @assignmentSupplementAST_2E_subcript struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementAST_2E_subcript : public AC_GALGAS_root {
+class GGS_assignmentSupplementAST_2E_subcript final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_actualOutputArgumentAST_5D_ mProperty_subscriptArgs ;
   public: inline GGS__5B_actualOutputArgumentAST_5D_ readProperty_subscriptArgs (void) const {
@@ -1969,7 +1969,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementAS
 // Phase 1: @actualOutputArgumentAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_actualOutputArgumentAST : public AC_GALGAS_root {
+class GGS_actualOutputArgumentAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: inline GGS_lstring readProperty_mActualSelector (void) const {
@@ -2236,7 +2236,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_collectionValueEle
 // Phase 1: @collectionValueElementForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_collectionValueElementForGeneration : public AC_GALGAS_root {
+class GGS_collectionValueElementForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_expression ;
   public: inline GGS_semanticExpressionForGeneration readProperty_expression (void) const {
@@ -2860,7 +2860,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeMethodCallInstruct
 //   enum assignmentSupplementIR
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementIR : public AC_GALGAS_root {
+class GGS_assignmentSupplementIR final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_assignmentSupplementIR (void) ;
 
@@ -2877,16 +2877,16 @@ class GGS_assignmentSupplementIR : public AC_GALGAS_root {
   private: Enumeration mEnum ;
 
 //--------------------------------- Associated value extraction
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_property (class GGS_string & out_name) const ;
-  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_subcript (class GGS__5B_collectionValueElementForGeneration_5D_ & out_expressions,
-                                                                 class GGS_string & out_subcriptSignature) const ;
+  public: void getAssociatedValuesFor_property (class GGS_string & out_name) const ;
+  public: void getAssociatedValuesFor_subcript (class GGS__5B_collectionValueElementForGeneration_5D_ & out_expressions,
+                                                class GGS_string & out_subcriptSignature) const ;
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
     mAssociatedValues.drop () ;
   }
@@ -2957,7 +2957,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementIR
 // Phase 1: @assignmentSupplementIR_2E_property struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementIR_2E_property : public AC_GALGAS_root {
+class GGS_assignmentSupplementIR_2E_property final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_name ;
   public: inline GGS_string readProperty_name (void) const {
@@ -3095,7 +3095,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplementIR
 // Phase 1: @assignmentSupplementIR_2E_subcript struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_assignmentSupplementIR_2E_subcript : public AC_GALGAS_root {
+class GGS_assignmentSupplementIR_2E_subcript final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_collectionValueElementForGeneration_5D_ mProperty_expressions ;
   public: inline GGS__5B_collectionValueElementForGeneration_5D_ readProperty_expressions (void) const {
@@ -3624,7 +3624,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateDelimitor_
 // Phase 1: @templateDelimitor_32_AST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateDelimitor_32_AST : public AC_GALGAS_root {
+class GGS_templateDelimitor_32_AST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mStartString ;
   public: inline GGS_lstring readProperty_mStartString (void) const {
@@ -3913,7 +3913,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateReplacemen
 // Phase 1: @templateReplacementAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateReplacementAST : public AC_GALGAS_root {
+class GGS_templateReplacementAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mMatchString ;
   public: inline GGS_lstring readProperty_mMatchString (void) const {
@@ -4180,7 +4180,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalAttributeAS
 // Phase 1: @lexicalAttributeAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalAttributeAST : public AC_GALGAS_root {
+class GGS_lexicalAttributeAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mTypeName ;
   public: inline GGS_lstring readProperty_mTypeName (void) const {
@@ -4436,7 +4436,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalStyleAST_5D
 // Phase 1: @lexicalStyleAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalStyleAST : public AC_GALGAS_root {
+class GGS_lexicalStyleAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mName ;
   public: inline GGS_lstring readProperty_mName (void) const {
@@ -4870,7 +4870,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_sentLexicalAttribu
 // Phase 1: @terminalDeclarationAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_terminalDeclarationAST : public AC_GALGAS_root {
+class GGS_terminalDeclarationAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mName ;
   public: inline GGS_lstring readProperty_mName (void) const {
@@ -5170,7 +5170,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalMessageDecl
 // Phase 1: @lexicalMessageDeclarationAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalMessageDeclarationAST : public AC_GALGAS_root {
+class GGS_lexicalMessageDeclarationAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mMessageName ;
   public: inline GGS_lstring readProperty_mMessageName (void) const {
@@ -5604,7 +5604,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalListEntryAS
 // Phase 1: @lexicalListDeclarationAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalListDeclarationAST : public AC_GALGAS_root {
+class GGS_lexicalListDeclarationAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mName ;
   public: inline GGS_lstring readProperty_mName (void) const {
@@ -6162,7 +6162,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_indexingAST_5D_ ;
 // Phase 1: @indexingAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_indexingAST : public AC_GALGAS_root {
+class GGS_indexingAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mIndexName ;
   public: inline GGS_lstring readProperty_mIndexName (void) const {
@@ -6937,7 +6937,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExpressionAST ;
 // Phase 1: @lexicalWhileBranchAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalWhileBranchAST : public AC_GALGAS_root {
+class GGS_lexicalWhileBranchAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lexicalExpressionAST mProperty_mWhileExpression ;
   public: inline GGS_lexicalExpressionAST readProperty_mWhileExpression (void) const {
@@ -7283,7 +7283,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public AbstractStron
 // Phase 1: @sentLexicalAttributeAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sentLexicalAttributeAST : public AC_GALGAS_root {
+class GGS_sentLexicalAttributeAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFormalSelector ;
   public: inline GGS_lstring readProperty_mFormalSelector (void) const {
@@ -7361,7 +7361,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sentLexicalAttributeAS
 // Phase 1: @lexicalListEntryAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalListEntryAST : public AC_GALGAS_root {
+class GGS_lexicalListEntryAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mEntrySpelling ;
   public: inline GGS_lstring readProperty_mEntrySpelling (void) const {
@@ -7817,7 +7817,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalSentValue_5
 //   enum lexicalTypeEnum
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTypeEnum : public AC_GALGAS_root {
+class GGS_lexicalTypeEnum final : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public: GGS_lexicalTypeEnum (void) ;
 
@@ -7840,11 +7840,11 @@ class GGS_lexicalTypeEnum : public AC_GALGAS_root {
 //--------------------------------- Associated value extraction
 
 //--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+  public: inline bool isValid (void) const override {
     return Enumeration::invalid != mEnum ;
   }
 
-  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+  public: inline void drop (void) override {
     mEnum = Enumeration::invalid ;
   }
 
@@ -7920,7 +7920,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTypeEnum ;
 // Phase 1: @lexicalSentValue struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalSentValue : public AC_GALGAS_root {
+class GGS_lexicalSentValue final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mLexicalFormalSelector ;
   public: inline GGS_lstring readProperty_mLexicalFormalSelector (void) const {
@@ -8488,7 +8488,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_terminalAST_5D_ ;
 // Phase 1: @terminalAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_terminalAST : public AC_GALGAS_root {
+class GGS_terminalAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mTerminalName ;
   public: inline GGS_lstring readProperty_mTerminalName (void) const {
@@ -8788,7 +8788,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateDelimitorA
 // Phase 1: @templateDelimitorAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateDelimitorAST : public AC_GALGAS_root {
+class GGS_templateDelimitorAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mStartString ;
   public: inline GGS_lstring readProperty_mStartString (void) const {
@@ -9155,7 +9155,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalParameterAST
 // Phase 1: @formalParameterAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalParameterAST : public AC_GALGAS_root {
+class GGS_formalParameterAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFormalSelector ;
   public: inline GGS_lstring readProperty_mFormalSelector (void) const {
@@ -9444,7 +9444,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalInputParamet
 // Phase 1: @formalInputParameterAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalInputParameterAST : public AC_GALGAS_root {
+class GGS_formalInputParameterAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFormalSelector ;
   public: inline GGS_lstring readProperty_mFormalSelector (void) const {
@@ -9911,7 +9911,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalTemplateInpu
 // Phase 1: @filewrapperTemplateAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_filewrapperTemplateAST : public AC_GALGAS_root {
+class GGS_filewrapperTemplateAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFilewrapperTemplateName ;
   public: inline GGS_lstring readProperty_mFilewrapperTemplateName (void) const {
@@ -10000,7 +10000,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateAST
 // Phase 1: @formalTemplateInputParameterAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalTemplateInputParameterAST : public AC_GALGAS_root {
+class GGS_formalTemplateInputParameterAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mFormalTemplateSelector ;
   public: inline GGS_lstring readProperty_mFormalTemplateSelector (void) const {

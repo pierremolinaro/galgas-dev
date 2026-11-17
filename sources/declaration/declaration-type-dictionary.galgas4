@@ -235,7 +235,6 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !writeSubscriptMap: writeSubcriptMap,
     !enumerationDescriptorList: enumerationDescriptor,
     !features: features,
-    !addAssignOperatorArguments: [],
     !generateHeaderInSeparateFile: false,
     !typeForEnumeratedElement: .null,
     !headerFileName: "dictionary-" + self.dictionaryTypeName.string.fileNameRepresentation,
@@ -337,7 +336,6 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
-      selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
     ]

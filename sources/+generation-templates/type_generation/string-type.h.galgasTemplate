@@ -2,7 +2,7 @@
 //   @string type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string : public AC_GALGAS_root {
+class GGS_string final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
   private: String mString ;

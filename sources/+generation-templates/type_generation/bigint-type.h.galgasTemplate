@@ -2,7 +2,7 @@
 //   @bigint type
 //--------------------------------------------------------------------------------------------------
  
-class GGS_bigint : public AC_GALGAS_root {
+class GGS_bigint final : public AC_GALGAS_root {
 //--------------------------------- Private properties
   private: bool mIsValid ;
   private: BigSigned mValue ;

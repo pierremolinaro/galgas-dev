@@ -9,465 +9,6 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMap typeMapEntryOrNullForLKey' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const class GGS_unifiedTypeMap & inObject,
-                                                                         const class GGS_lstring & constinArgument0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@unifiedTypeMap insertType'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertType (class GGS_unifiedTypeMap & ioObject,
-                                 const class GGS_lstring constin_inTypeName,
-                                 const class GGS_unifiedTypeDefinition constin_inTypeDefinition,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMap typeDefinition' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const class GGS_unifiedTypeMap & inObject,
-                                                                const class GGS_lstring & constinArgument0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @typeDefinition_2E_solved struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_typeDefinition_2E_solved : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_unifiedTypeDefinition mProperty_definition ;
-  public: inline GGS_unifiedTypeDefinition readProperty_definition (void) const {
-    return mProperty_definition ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_typeDefinition_2E_solved (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setDefinition (const GGS_unifiedTypeDefinition & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_definition = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_typeDefinition_2E_solved (const GGS_unifiedTypeDefinition & in_definition) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_typeDefinition_2E_solved (const GGS_typeDefinition_2E_solved & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_typeDefinition_2E_solved & operator = (const GGS_typeDefinition_2E_solved & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_typeDefinition_2E_solved init_21_ (const class GGS_unifiedTypeDefinition & inOperand0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: typeDefinition.solved? optional
-//--------------------------------------------------------------------------------------------------
-
-class GGS_typeDefinition_2E_solved_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_typeDefinition_2E_solved mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_typeDefinition_2E_solved_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_typeDefinition_2E_solved_3F_ (const GGS_typeDefinition_2E_solved & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_typeDefinition_2E_solved_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_typeDefinition_2E_solved unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solved_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMapEntry typeName' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry & inObject,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMapEntry baseType' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedTypeMapEntry & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMapEntry addHeaderFileName1'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName_31_ (const class GGS_unifiedTypeMapEntry inObject,
-                                            class GGS_stringset & io_ioInclusions,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: [acceptableParameter] array
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator__5B_acceptableParameter_5D_ final {
-//--- Constructor
-  public: DownEnumerator__5B_acceptableParameter_5D_ (const class GGS__5B_acceptableParameter_5D_ & inOperand) ;
-
-//--- No copy
-  private: DownEnumerator__5B_acceptableParameter_5D_ (const DownEnumerator__5B_acceptableParameter_5D_ &) = delete ;
-  private: DownEnumerator__5B_acceptableParameter_5D_ & operator = (const DownEnumerator__5B_acceptableParameter_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_acceptableParameter current (LOCATION_ARGS) const ;
-  public: class GGS_acceptableParameter current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
-
-//---- Properties
-  private: const GenericArray <GGS_acceptableParameter> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator__5B_acceptableParameter_5D_ final {
-//--- Constructor
-  public: UpEnumerator__5B_acceptableParameter_5D_ (const class GGS__5B_acceptableParameter_5D_ & inOperand) ;
-
-//--- No copy
-  private: UpEnumerator__5B_acceptableParameter_5D_ (const UpEnumerator__5B_acceptableParameter_5D_ &) = delete ;
-  private: UpEnumerator__5B_acceptableParameter_5D_ & operator = (const UpEnumerator__5B_acceptableParameter_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
-
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_acceptableParameter current (LOCATION_ARGS) const ;
-  public: class GGS_acceptableParameter current_entry (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const GenericArray <GGS_acceptableParameter> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS__5B_acceptableParameter_5D_ final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_acceptableParameter> mSharedArray ;
-  private: bool mIsValid ;
-
-//--------------------------------- Default constructor
-  public: GGS__5B_acceptableParameter_5D_ (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS__5B_acceptableParameter_5D_ (const GGS__5B_acceptableParameter_5D_ & inSource) ;
-  public: GGS__5B_acceptableParameter_5D_ & operator = (const GGS__5B_acceptableParameter_5D_ & inSource) ;
-
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
-
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
-
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS__5B_acceptableParameter_5D_ init (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_acceptableParameter_5D_ inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_acceptableParameter & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__5B_acceptableParameter_5D_ add_operation (const GGS__5B_acceptableParameter_5D_ & inOperand,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_acceptableParameter constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insert (class GGS_acceptableParameter constinArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_acceptableParameter & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeFirst (class GGS_acceptableParameter & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeLast (class GGS_acceptableParameter & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_set (class GGS_acceptableParameter constinArgument0,
-                           class GGS_uint constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_acceptableParameter getter_first (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_acceptableParameter getter_last (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_acceptableParameter_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_acceptableParameter_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                const class GGS_uint & constinOperand1,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-  public: class GGS_acceptableParameter readSubcript__3F_ (const class GGS_uint & in0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
-
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_acceptableParameter_5D_ ;
-  friend class DownEnumerator__5B_acceptableParameter_5D_ ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_acceptableParameter_5D_ ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @acceptableParameter struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_acceptableParameter : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS__5B_formalParameterSignatureElement_5D_ mProperty_mRoutineSignature ;
-  public: inline GGS__5B_formalParameterSignatureElement_5D_ readProperty_mRoutineSignature (void) const {
-    return mProperty_mRoutineSignature ;
-  }
-
-  public: GGS_bool mProperty_mIsFilePrivate ;
-  public: inline GGS_bool readProperty_mIsFilePrivate (void) const {
-    return mProperty_mIsFilePrivate ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_acceptableParameter (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMRoutineSignature (const GGS__5B_formalParameterSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mRoutineSignature = inValue ;
-  }
-
-  public: inline void setter_setMIsFilePrivate (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsFilePrivate = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_acceptableParameter (const GGS__5B_formalParameterSignatureElement_5D_ & in_mRoutineSignature,
-                                   const GGS_bool & in_mIsFilePrivate) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_acceptableParameter (const GGS_acceptableParameter & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_acceptableParameter & operator = (const GGS_acceptableParameter & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_acceptableParameter init_21__21_ (const class GGS__5B_formalParameterSignatureElement_5D_ & inOperand0,
-                                                       const class GGS_bool & inOperand1,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_acceptableParameter ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @routineArgumentMap map
 //--------------------------------------------------------------------------------------------------
 
@@ -529,7 +70,7 @@ class UpEnumerator_routineArgumentMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_routineArgumentMap : public AC_GALGAS_root {
+class GGS_routineArgumentMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_routineArgumentMap_2E_element>> mSharedRoot ;
@@ -676,7 +217,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap ;
 // Phase 1: @internalRoutineMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_internalRoutineMap_2E_element : public AC_GALGAS_root {
+class GGS_internalRoutineMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_lkey ;
   public: inline GGS_lstring readProperty_lkey (void) const {
@@ -825,7 +366,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_internalRoutineMap_2E_
 // Phase 1: @routineArgumentMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_routineArgumentMap_2E_element : public AC_GALGAS_root {
+class GGS_routineArgumentMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_lkey ;
   public: inline GGS_lstring readProperty_lkey (void) const {
@@ -985,7 +526,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_
 // Phase 1: @galgas_33_SyntaxExtensionAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
+class GGS_galgas_33_SyntaxExtensionAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mSyntaxComponentName ;
   public: inline GGS_lstring readProperty_mSyntaxComponentName (void) const {
@@ -2076,7 +1617,7 @@ class UpEnumerator_terminalSymbolsMapForGrammarAnalysis final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_root {
+class GGS_terminalSymbolsMapForGrammarAnalysis final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> mSharedRoot ;
@@ -3085,7 +2626,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperDeclaration
 // Phase 1: @syntaxRuleLabelAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxRuleLabelAST : public AC_GALGAS_root {
+class GGS_syntaxRuleLabelAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mLabelName ;
   public: inline GGS_lstring readProperty_mLabelName (void) const {
@@ -3845,111 +3386,110 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static const int32_t kToken_self = 82 ;
   public: static const int32_t kToken_send = 83 ;
   public: static const int32_t kToken_sortedarray = 84 ;
-  public: static const int32_t kToken_sortedlist = 85 ;
-  public: static const int32_t kToken_spoil = 86 ;
-  public: static const int32_t kToken_super = 87 ;
-  public: static const int32_t kToken_struct = 88 ;
-  public: static const int32_t kToken_style = 89 ;
-  public: static const int32_t kToken_switch = 90 ;
-  public: static const int32_t kToken_syntax = 91 ;
-  public: static const int32_t kToken_tag = 92 ;
-  public: static const int32_t kToken_template = 93 ;
-  public: static const int32_t kToken_then = 94 ;
-  public: static const int32_t kToken_true = 95 ;
-  public: static const int32_t kToken_typealias = 96 ;
-  public: static const int32_t kToken_var = 97 ;
-  public: static const int32_t kToken_warning = 98 ;
-  public: static const int32_t kToken_weak = 99 ;
-  public: static const int32_t kToken_while = 100 ;
-  public: static const int32_t kToken_with = 101 ;
-  public: static const int32_t kToken__23_applicationBundleBase = 102 ;
-  public: static const int32_t kToken__23_clonable = 103 ;
-  public: static const int32_t kToken__23_codeblocks_2D_linux_33__32_ = 104 ;
-  public: static const int32_t kToken__23_codeblocks_2D_linux_36__34_ = 105 ;
-  public: static const int32_t kToken__23_codeblocks_2D_windows = 106 ;
-  public: static const int32_t kToken__23_comparable = 107 ;
-  public: static const int32_t kToken__23_equatable = 108 ;
-  public: static const int32_t kToken__23_errorMessage = 109 ;
-  public: static const int32_t kToken__23_from = 110 ;
-  public: static const int32_t kToken__23_generatedInSeparateFile = 111 ;
-  public: static const int32_t kToken__23_initArgLabel = 112 ;
-  public: static const int32_t kToken__23_insertAfter = 113 ;
-  public: static const int32_t kToken__23_insertBefore = 114 ;
-  public: static const int32_t kToken__23_insertOrReplaceSetter = 115 ;
-  public: static const int32_t kToken__23_insertSetter = 116 ;
-  public: static const int32_t kToken__23_libpmAtPath = 117 ;
-  public: static const int32_t kToken__23_macCodeSign = 118 ;
-  public: static const int32_t kToken__23_makefile_2D_macosx = 119 ;
-  public: static const int32_t kToken__23_makefile_2D_unix = 120 ;
-  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 121 ;
-  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 122 ;
-  public: static const int32_t kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 123 ;
-  public: static const int32_t kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx = 124 ;
-  public: static const int32_t kToken__23_MacSwiftApp = 125 ;
-  public: static const int32_t kToken__23_nonAtomicSelection = 126 ;
-  public: static const int32_t kToken__23_once = 127 ;
-  public: static const int32_t kToken__23_preserved = 128 ;
-  public: static const int32_t kToken__23_quietOutputByDefault = 129 ;
-  public: static const int32_t kToken__23_replaceBy = 130 ;
-  public: static const int32_t kToken__23_remove = 131 ;
-  public: static const int32_t kToken__23_removeSetter = 132 ;
-  public: static const int32_t kToken__23_replaceSetter = 133 ;
-  public: static const int32_t kToken__23_searchMethod = 134 ;
-  public: static const int32_t kToken__23_searchSubscript = 135 ;
-  public: static const int32_t kToken__23_searchString = 136 ;
-  public: static const int32_t kToken__23_templateEndMark = 137 ;
-  public: static const int32_t kToken__23_templateReplacement = 138 ;
-  public: static const int32_t kToken__23_translate = 139 ;
-  public: static const int32_t kToken__23_unused = 140 ;
-  public: static const int32_t kToken__23_usefull = 141 ;
-  public: static const int32_t kToken__2A_ = 142 ;
-  public: static const int32_t kToken__2C_ = 143 ;
-  public: static const int32_t kToken__2B_ = 144 ;
-  public: static const int32_t kToken__26__2B_ = 145 ;
-  public: static const int32_t kToken__26__2D_ = 146 ;
-  public: static const int32_t kToken__26__2A_ = 147 ;
-  public: static const int32_t kToken__26__2F_ = 148 ;
-  public: static const int32_t kToken__3E_ = 149 ;
-  public: static const int32_t kToken__3B_ = 150 ;
-  public: static const int32_t kToken__3A_ = 151 ;
-  public: static const int32_t kToken__3A__3E_ = 152 ;
-  public: static const int32_t kToken__2D_ = 153 ;
-  public: static const int32_t kToken__28_ = 154 ;
-  public: static const int32_t kToken__29_ = 155 ;
-  public: static const int32_t kToken__2D__3E_ = 156 ;
-  public: static const int32_t kToken__3D__3D_ = 157 ;
-  public: static const int32_t kToken__3D_ = 158 ;
-  public: static const int32_t kToken__26__26_ = 159 ;
-  public: static const int32_t kToken__25_ = 160 ;
-  public: static const int32_t kToken__5B_ = 161 ;
-  public: static const int32_t kToken__5D_ = 162 ;
-  public: static const int32_t kToken__2B__2B__3D_ = 163 ;
-  public: static const int32_t kToken__2E_ = 164 ;
-  public: static const int32_t kToken__40__28_ = 165 ;
-  public: static const int32_t kToken__2E__2E__2E_ = 166 ;
-  public: static const int32_t kToken__2E__2E__3C_ = 167 ;
-  public: static const int32_t kToken__2B__3D_ = 168 ;
-  public: static const int32_t kToken__2D__3D_ = 169 ;
-  public: static const int32_t kToken__2A__3D_ = 170 ;
-  public: static const int32_t kToken__2F__3D_ = 171 ;
-  public: static const int32_t kToken__26__3D_ = 172 ;
-  public: static const int32_t kToken__7C__3D_ = 173 ;
-  public: static const int32_t kToken__5E__3D_ = 174 ;
-  public: static const int32_t kToken__2F_ = 175 ;
-  public: static const int32_t kToken__21__3D_ = 176 ;
-  public: static const int32_t kToken__3E__3D_ = 177 ;
-  public: static const int32_t kToken__26_ = 178 ;
-  public: static const int32_t kToken__7B_ = 179 ;
-  public: static const int32_t kToken__7D_ = 180 ;
-  public: static const int32_t kToken__7C__7C_ = 181 ;
-  public: static const int32_t kToken__7C_ = 182 ;
-  public: static const int32_t kToken__5E_ = 183 ;
-  public: static const int32_t kToken__3E__3E_ = 184 ;
-  public: static const int32_t kToken__7E_ = 185 ;
-  public: static const int32_t kToken__3D__3D__3D_ = 186 ;
-  public: static const int32_t kToken__21__3D__3D_ = 187 ;
-  public: static const int32_t kToken__3F__5E_ = 188 ;
-  public: static const int32_t kToken__21__5E_ = 189 ;
+  public: static const int32_t kToken_spoil = 85 ;
+  public: static const int32_t kToken_super = 86 ;
+  public: static const int32_t kToken_struct = 87 ;
+  public: static const int32_t kToken_style = 88 ;
+  public: static const int32_t kToken_switch = 89 ;
+  public: static const int32_t kToken_syntax = 90 ;
+  public: static const int32_t kToken_tag = 91 ;
+  public: static const int32_t kToken_template = 92 ;
+  public: static const int32_t kToken_then = 93 ;
+  public: static const int32_t kToken_true = 94 ;
+  public: static const int32_t kToken_typealias = 95 ;
+  public: static const int32_t kToken_var = 96 ;
+  public: static const int32_t kToken_warning = 97 ;
+  public: static const int32_t kToken_weak = 98 ;
+  public: static const int32_t kToken_while = 99 ;
+  public: static const int32_t kToken_with = 100 ;
+  public: static const int32_t kToken__23_applicationBundleBase = 101 ;
+  public: static const int32_t kToken__23_clonable = 102 ;
+  public: static const int32_t kToken__23_codeblocks_2D_linux_33__32_ = 103 ;
+  public: static const int32_t kToken__23_codeblocks_2D_linux_36__34_ = 104 ;
+  public: static const int32_t kToken__23_codeblocks_2D_windows = 105 ;
+  public: static const int32_t kToken__23_comparable = 106 ;
+  public: static const int32_t kToken__23_equatable = 107 ;
+  public: static const int32_t kToken__23_errorMessage = 108 ;
+  public: static const int32_t kToken__23_from = 109 ;
+  public: static const int32_t kToken__23_generatedInSeparateFile = 110 ;
+  public: static const int32_t kToken__23_initArgLabel = 111 ;
+  public: static const int32_t kToken__23_insertAfter = 112 ;
+  public: static const int32_t kToken__23_insertBefore = 113 ;
+  public: static const int32_t kToken__23_insertOrReplaceSetter = 114 ;
+  public: static const int32_t kToken__23_insertSetter = 115 ;
+  public: static const int32_t kToken__23_libpmAtPath = 116 ;
+  public: static const int32_t kToken__23_macCodeSign = 117 ;
+  public: static const int32_t kToken__23_makefile_2D_macosx = 118 ;
+  public: static const int32_t kToken__23_makefile_2D_unix = 119 ;
+  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 120 ;
+  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 121 ;
+  public: static const int32_t kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 122 ;
+  public: static const int32_t kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx = 123 ;
+  public: static const int32_t kToken__23_MacSwiftApp = 124 ;
+  public: static const int32_t kToken__23_nonAtomicSelection = 125 ;
+  public: static const int32_t kToken__23_once = 126 ;
+  public: static const int32_t kToken__23_preserved = 127 ;
+  public: static const int32_t kToken__23_quietOutputByDefault = 128 ;
+  public: static const int32_t kToken__23_replaceBy = 129 ;
+  public: static const int32_t kToken__23_remove = 130 ;
+  public: static const int32_t kToken__23_removeSetter = 131 ;
+  public: static const int32_t kToken__23_replaceSetter = 132 ;
+  public: static const int32_t kToken__23_searchMethod = 133 ;
+  public: static const int32_t kToken__23_searchSubscript = 134 ;
+  public: static const int32_t kToken__23_searchString = 135 ;
+  public: static const int32_t kToken__23_templateEndMark = 136 ;
+  public: static const int32_t kToken__23_templateReplacement = 137 ;
+  public: static const int32_t kToken__23_translate = 138 ;
+  public: static const int32_t kToken__23_unused = 139 ;
+  public: static const int32_t kToken__23_usefull = 140 ;
+  public: static const int32_t kToken__2A_ = 141 ;
+  public: static const int32_t kToken__2C_ = 142 ;
+  public: static const int32_t kToken__2B_ = 143 ;
+  public: static const int32_t kToken__26__2B_ = 144 ;
+  public: static const int32_t kToken__26__2D_ = 145 ;
+  public: static const int32_t kToken__26__2A_ = 146 ;
+  public: static const int32_t kToken__26__2F_ = 147 ;
+  public: static const int32_t kToken__3E_ = 148 ;
+  public: static const int32_t kToken__3B_ = 149 ;
+  public: static const int32_t kToken__3A_ = 150 ;
+  public: static const int32_t kToken__3A__3E_ = 151 ;
+  public: static const int32_t kToken__2D_ = 152 ;
+  public: static const int32_t kToken__28_ = 153 ;
+  public: static const int32_t kToken__29_ = 154 ;
+  public: static const int32_t kToken__2D__3E_ = 155 ;
+  public: static const int32_t kToken__3D__3D_ = 156 ;
+  public: static const int32_t kToken__3D_ = 157 ;
+  public: static const int32_t kToken__26__26_ = 158 ;
+  public: static const int32_t kToken__25_ = 159 ;
+  public: static const int32_t kToken__5B_ = 160 ;
+  public: static const int32_t kToken__5D_ = 161 ;
+  public: static const int32_t kToken__2B__2B__3D_ = 162 ;
+  public: static const int32_t kToken__2E_ = 163 ;
+  public: static const int32_t kToken__40__28_ = 164 ;
+  public: static const int32_t kToken__2E__2E__2E_ = 165 ;
+  public: static const int32_t kToken__2E__2E__3C_ = 166 ;
+  public: static const int32_t kToken__2B__3D_ = 167 ;
+  public: static const int32_t kToken__2D__3D_ = 168 ;
+  public: static const int32_t kToken__2A__3D_ = 169 ;
+  public: static const int32_t kToken__2F__3D_ = 170 ;
+  public: static const int32_t kToken__26__3D_ = 171 ;
+  public: static const int32_t kToken__7C__3D_ = 172 ;
+  public: static const int32_t kToken__5E__3D_ = 173 ;
+  public: static const int32_t kToken__2F_ = 174 ;
+  public: static const int32_t kToken__21__3D_ = 175 ;
+  public: static const int32_t kToken__3E__3D_ = 176 ;
+  public: static const int32_t kToken__26_ = 177 ;
+  public: static const int32_t kToken__7B_ = 178 ;
+  public: static const int32_t kToken__7D_ = 179 ;
+  public: static const int32_t kToken__7C__7C_ = 180 ;
+  public: static const int32_t kToken__7C_ = 181 ;
+  public: static const int32_t kToken__5E_ = 182 ;
+  public: static const int32_t kToken__3E__3E_ = 183 ;
+  public: static const int32_t kToken__7E_ = 184 ;
+  public: static const int32_t kToken__3D__3D__3D_ = 185 ;
+  public: static const int32_t kToken__21__3D__3D_ = 186 ;
+  public: static const int32_t kToken__3F__5E_ = 187 ;
+  public: static const int32_t kToken__21__5E_ = 188 ;
 
 //--- Key words table 'galgasKeyWordList'
   public: static int32_t search_into_galgasKeyWordList (const String & inSearchedString) ;
@@ -3981,54 +3521,53 @@ class Lexique_galgasScanner_34_ : public Lexique {
 public: static const uint32_t kIndexing_classDefinition = 0 ;
 public: static const uint32_t kIndexing_enumDefinition = 1 ;
 public: static const uint32_t kIndexing_structDefinition = 2 ;
-public: static const uint32_t kIndexing_sortedListDefinition = 3 ;
-public: static const uint32_t kIndexing_mapDefinition = 4 ;
-public: static const uint32_t kIndexing_dictionaryDefinition = 5 ;
-public: static const uint32_t kIndexing_externTypeDefinition = 6 ;
-public: static const uint32_t kIndexing_filewrapperDefinition = 7 ;
-public: static const uint32_t kIndexing_filewrapperReference = 8 ;
-public: static const uint32_t kIndexing_graphDefinition = 9 ;
-public: static const uint32_t kIndexing_classReferencedAsSuperClass = 10 ;
-public: static const uint32_t kIndexing_typeReferenceInConstructor = 11 ;
-public: static const uint32_t kIndexing_typeReferenceInTypeMethod = 12 ;
-public: static const uint32_t kIndexing_routineDefinition = 13 ;
-public: static const uint32_t kIndexing_routineCall = 14 ;
-public: static const uint32_t kIndexing_functionDefinition = 15 ;
-public: static const uint32_t kIndexing_functionCall = 16 ;
-public: static const uint32_t kIndexing_terminalDeclaration = 17 ;
-public: static const uint32_t kIndexing_terminalReference = 18 ;
-public: static const uint32_t kIndexing_ruleDefinition = 19 ;
-public: static const uint32_t kIndexing_ruleReference = 20 ;
-public: static const uint32_t kIndexing_abstractExtensionSetterDefinition = 21 ;
-public: static const uint32_t kIndexing_typeReferenceAbstractExtensionSetter = 22 ;
-public: static const uint32_t kIndexing_overrideabstractExtensionSetterDefinition = 23 ;
-public: static const uint32_t kIndexing_extensionSetterDefinition = 24 ;
-public: static const uint32_t kIndexing_typeReferenceExtensionSetter = 25 ;
-public: static const uint32_t kIndexing_overrideExtensionSetterDefinition = 26 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideExtensionSetterDefinition = 27 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionSetter = 28 ;
-public: static const uint32_t kIndexing_abstractExtensionMethodDefinition = 29 ;
-public: static const uint32_t kIndexing_typeReferenceAbstractExtensionMethod = 30 ;
-public: static const uint32_t kIndexing_overrideAbstractExtensionMethodDefinition = 31 ;
-public: static const uint32_t kIndexing_extensionMethodDefinition = 32 ;
-public: static const uint32_t kIndexing_typeReferenceExtensionMethod = 33 ;
-public: static const uint32_t kIndexing_overrideExtensionMethodDefinition = 34 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideExtensionMethodDefinition = 35 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionMethod = 36 ;
-public: static const uint32_t kIndexing_abstractExtensionGetterDefinition = 37 ;
-public: static const uint32_t kIndexing_typeReferenceAbstractExtensionGetter = 38 ;
-public: static const uint32_t kIndexing_overrideAbstractExtensionGetterDefinition = 39 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionGetter = 40 ;
-public: static const uint32_t kIndexing_extensionGetterDefinition = 41 ;
-public: static const uint32_t kIndexing_typeReferenceExtensionGetter = 42 ;
-public: static const uint32_t kIndexing_overrideExtensionGetterDefinition = 43 ;
-public: static const uint32_t kIndexing_typeReferenceOverrideExtensionGetter = 44 ;
-public: static const uint32_t kIndexing_optionComponentDefinition = 45 ;
-public: static const uint32_t kIndexing_optionComponentReference = 46 ;
-public: static const uint32_t kIndexing_grammarComponentDefinition = 47 ;
-public: static const uint32_t kIndexing_grammarComponentReference = 48 ;
-public: static const uint32_t kIndexing_indexingNameDefinition = 49 ;
-public: static const uint32_t kIndexing_indexingNameReference = 50 ;
+public: static const uint32_t kIndexing_mapDefinition = 3 ;
+public: static const uint32_t kIndexing_dictionaryDefinition = 4 ;
+public: static const uint32_t kIndexing_externTypeDefinition = 5 ;
+public: static const uint32_t kIndexing_filewrapperDefinition = 6 ;
+public: static const uint32_t kIndexing_filewrapperReference = 7 ;
+public: static const uint32_t kIndexing_graphDefinition = 8 ;
+public: static const uint32_t kIndexing_classReferencedAsSuperClass = 9 ;
+public: static const uint32_t kIndexing_typeReferenceInConstructor = 10 ;
+public: static const uint32_t kIndexing_typeReferenceInTypeMethod = 11 ;
+public: static const uint32_t kIndexing_routineDefinition = 12 ;
+public: static const uint32_t kIndexing_routineCall = 13 ;
+public: static const uint32_t kIndexing_functionDefinition = 14 ;
+public: static const uint32_t kIndexing_functionCall = 15 ;
+public: static const uint32_t kIndexing_terminalDeclaration = 16 ;
+public: static const uint32_t kIndexing_terminalReference = 17 ;
+public: static const uint32_t kIndexing_ruleDefinition = 18 ;
+public: static const uint32_t kIndexing_ruleReference = 19 ;
+public: static const uint32_t kIndexing_abstractExtensionSetterDefinition = 20 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionSetter = 21 ;
+public: static const uint32_t kIndexing_overrideabstractExtensionSetterDefinition = 22 ;
+public: static const uint32_t kIndexing_extensionSetterDefinition = 23 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionSetter = 24 ;
+public: static const uint32_t kIndexing_overrideExtensionSetterDefinition = 25 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionSetterDefinition = 26 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionSetter = 27 ;
+public: static const uint32_t kIndexing_abstractExtensionMethodDefinition = 28 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionMethod = 29 ;
+public: static const uint32_t kIndexing_overrideAbstractExtensionMethodDefinition = 30 ;
+public: static const uint32_t kIndexing_extensionMethodDefinition = 31 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionMethod = 32 ;
+public: static const uint32_t kIndexing_overrideExtensionMethodDefinition = 33 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionMethodDefinition = 34 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionMethod = 35 ;
+public: static const uint32_t kIndexing_abstractExtensionGetterDefinition = 36 ;
+public: static const uint32_t kIndexing_typeReferenceAbstractExtensionGetter = 37 ;
+public: static const uint32_t kIndexing_overrideAbstractExtensionGetterDefinition = 38 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideAbstractExtensionGetter = 39 ;
+public: static const uint32_t kIndexing_extensionGetterDefinition = 40 ;
+public: static const uint32_t kIndexing_typeReferenceExtensionGetter = 41 ;
+public: static const uint32_t kIndexing_overrideExtensionGetterDefinition = 42 ;
+public: static const uint32_t kIndexing_typeReferenceOverrideExtensionGetter = 43 ;
+public: static const uint32_t kIndexing_optionComponentDefinition = 44 ;
+public: static const uint32_t kIndexing_optionComponentReference = 45 ;
+public: static const uint32_t kIndexing_grammarComponentDefinition = 46 ;
+public: static const uint32_t kIndexing_grammarComponentReference = 47 ;
+public: static const uint32_t kIndexing_indexingNameDefinition = 48 ;
+public: static const uint32_t kIndexing_indexingNameReference = 49 ;
 
 //--- Parse lexical token
   protected: void internalParseLexicalToken (cTokenFor_galgasScanner_34_ & token) ;
@@ -4038,7 +3577,7 @@ public: static const uint32_t kIndexing_indexingNameReference = 50 ;
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 189 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 188 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
@@ -5116,7 +4655,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateExpression
 // Phase 1: @templateExpressionElementAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateExpressionElementAST : public AC_GALGAS_root {
+class GGS_templateExpressionElementAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: inline GGS_lstring readProperty_mActualSelector (void) const {
@@ -5383,7 +4922,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateInstructio
 // Phase 1: @templateInstructionIfBranchAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateInstructionIfBranchAST : public AC_GALGAS_root {
+class GGS_templateInstructionIfBranchAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_templateExpressionAST mProperty_mExpression ;
   public: inline GGS_templateExpressionAST readProperty_mExpression (void) const {
@@ -6287,7 +5826,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionGot
 // Phase 1: @templateInstructionIfBranchForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateInstructionIfBranchForGeneration : public AC_GALGAS_root {
+class GGS_templateInstructionIfBranchForGeneration final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_semanticExpressionForGeneration mProperty_mExpression ;
   public: inline GGS_semanticExpressionForGeneration readProperty_mExpression (void) const {
@@ -6773,7 +6312,7 @@ class UpEnumerator_templateVariableMap final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateVariableMap : public AC_GALGAS_root {
+class GGS_templateVariableMap final : public AC_GALGAS_root {
 
 //--- Private property
   private: OptionalSharedRef <GenericMapRoot <GGS_templateVariableMap_2E_element>> mSharedRoot ;
@@ -6920,7 +6459,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateVariableMap ;
 // Phase 1: @templateVariableMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateVariableMap_2E_element : public AC_GALGAS_root {
+class GGS_templateVariableMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_lkey ;
   public: inline GGS_lstring readProperty_lkey (void) const {
@@ -7264,7 +6803,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateExpressionAST_
 // Phase 1: @templateInstructionSwitchBranchAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_templateInstructionSwitchBranchAST : public AC_GALGAS_root {
+class GGS_templateInstructionSwitchBranchAST final : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_lstring_5D_ mProperty_constantList ;
   public: inline GGS__5B_lstring_5D_ readProperty_constantList (void) const {
@@ -7537,4 +7076,460 @@ class GGS__5B_templateInstructionSwitchBranchAST_5D_ final : public AC_GALGAS_ro
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateInstructionSwitchBranchAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionSwitchAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionSwitchAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionSwitchAST (const class cPtr_templateInstructionSwitchAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_templateExpressionAST readProperty_mSwitchExpression (void) const ;
+
+  public: class GGS_location readProperty_switchExpressionEndLocation (void) const ;
+
+  public: class GGS__5B_templateInstructionSwitchBranchAST_5D_ readProperty_templateInstructionSwitchBranchList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionSwitchAST init_21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
+                                                                    const class GGS_location & inOperand1,
+                                                                    const class GGS__5B_templateInstructionSwitchBranchAST_5D_ & inOperand2,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionSwitchAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateInstructionSwitchAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionSwitchAST_init_21__21__21_ (const class GGS_templateExpressionAST & inOperand0,
+                                                              const class GGS_location & inOperand1,
+                                                              const class GGS__5B_templateInstructionSwitchBranchAST_5D_ & inOperand2,
+                                                              Compiler * inCompiler) ;
+
+
+//--- Extension proc templateInstructionAnalysis
+  public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS__5B_templateInstructionForGeneration_5D_ & arg_ioInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_templateExpressionAST mProperty_mSwitchExpression ;
+  public: GGS_location mProperty_switchExpressionEndLocation ;
+  public: GGS__5B_templateInstructionSwitchBranchAST_5D_ mProperty_templateInstructionSwitchBranchList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionSwitchAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateInstructionSwitchAST (const GGS_templateExpressionAST & in_mSwitchExpression,
+                                             const GGS_location & in_switchExpressionEndLocation,
+                                             const GGS__5B_templateInstructionSwitchBranchAST_5D_ & in_templateInstructionSwitchBranchList,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionSwitchAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionSwitchAST_2E_weak : public GGS_templateInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionSwitchAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_templateInstructionSwitchAST_2E_weak (const class GGS_templateInstructionSwitchAST & inSource) ;
+
+  public: GGS_templateInstructionSwitchAST_2E_weak & operator = (const class GGS_templateInstructionSwitchAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionSwitchAST_2E_weak init_nil (void) {
+    GGS_templateInstructionSwitchAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_templateInstructionSwitchAST bang_templateInstructionSwitchAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_templateInstructionSwitchAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateInstructionSwitchAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionSwitchAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [templateInstructionSwitchBranchForGeneration] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ (const class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ (const DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ & operator = (const DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_templateInstructionSwitchBranchForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_templateInstructionSwitchBranchForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_templateInstructionSwitchBranchForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ (const class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ (const UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ & operator = (const UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_templateInstructionSwitchBranchForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_templateInstructionSwitchBranchForGeneration current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_templateInstructionSwitchBranchForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_templateInstructionSwitchBranchForGeneration> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & inSource) ;
+  public: GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & operator = (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ init (Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchForGeneration & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ add_operation (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & inOperand,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_templateInstructionSwitchBranchForGeneration constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_templateInstructionSwitchBranchForGeneration constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_templateInstructionSwitchBranchForGeneration & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_templateInstructionSwitchBranchForGeneration & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_templateInstructionSwitchBranchForGeneration & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_templateInstructionSwitchBranchForGeneration constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_templateInstructionSwitchBranchForGeneration getter_first (Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_templateInstructionSwitchBranchForGeneration getter_last (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                                         const class GGS_uint & constinOperand1,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionSwitchBranchForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ ;
+  friend class DownEnumerator__5B_templateInstructionSwitchBranchForGeneration_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateInstructionSwitchBranchForGeneration_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionSwitchBranchForGeneration struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionSwitchBranchForGeneration final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS__5B_lstring_5D_ mProperty_mConstantList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_mConstantList (void) const {
+    return mProperty_mConstantList ;
+  }
+
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ mProperty_mExtractedAssociatedValuesForGeneration ;
+  public: inline GGS__5B_extractedAssociatedValueForGeneration_5D_ readProperty_mExtractedAssociatedValuesForGeneration (void) const {
+    return mProperty_mExtractedAssociatedValuesForGeneration ;
+  }
+
+  public: GGS_uint mProperty_mEndOfBranchLocationIndex ;
+  public: inline GGS_uint readProperty_mEndOfBranchLocationIndex (void) const {
+    return mProperty_mEndOfBranchLocationIndex ;
+  }
+
+  public: GGS__5B_templateInstructionForGeneration_5D_ mProperty_mInstructionList ;
+  public: inline GGS__5B_templateInstructionForGeneration_5D_ readProperty_mInstructionList (void) const {
+    return mProperty_mInstructionList ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionSwitchBranchForGeneration (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMConstantList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mConstantList = inValue ;
+  }
+
+  public: inline void setter_setMExtractedAssociatedValuesForGeneration (const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mExtractedAssociatedValuesForGeneration = inValue ;
+  }
+
+  public: inline void setter_setMEndOfBranchLocationIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfBranchLocationIndex = inValue ;
+  }
+
+  public: inline void setter_setMInstructionList (const GGS__5B_templateInstructionForGeneration_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mInstructionList = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_templateInstructionSwitchBranchForGeneration (const GGS__5B_lstring_5D_ & in_mConstantList,
+                                                            const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
+                                                            const GGS_uint & in_mEndOfBranchLocationIndex,
+                                                            const GGS__5B_templateInstructionForGeneration_5D_ & in_mInstructionList) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_templateInstructionSwitchBranchForGeneration (const GGS_templateInstructionSwitchBranchForGeneration & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_templateInstructionSwitchBranchForGeneration & operator = (const GGS_templateInstructionSwitchBranchForGeneration & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionSwitchBranchForGeneration init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                                                        const class GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand1,
+                                                                                        const class GGS_uint & inOperand2,
+                                                                                        const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand3,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchForGeneration ;
 
