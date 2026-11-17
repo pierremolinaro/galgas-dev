@@ -717,7 +717,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     !?unusedNonTerminalSymbolsForGrammar.insertKey (unusedNonterminal, nonterminalIndex)
   end
 //--------------------------------------------------------- Non terminal symbols, sorted by index
-  var @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
+  var @nonTerminalSymbolSortedArrayForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
   for nonTerminal in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
   end

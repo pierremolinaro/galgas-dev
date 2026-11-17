@@ -33,7 +33,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class GGS_terminalSymbolsMapForGrammarAnalysis ;
-class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -56,7 +56,7 @@ class GrammarVocabulary final {
 
 //--- Build vocabulary from original grammar
   public: void buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                                const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                 const uint32_t inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol

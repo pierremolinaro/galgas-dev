@@ -35,7 +35,7 @@ class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
 class String ;
-class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const GenericUniqueArray <GenericUniqueArray <uint64_t> > & inFOLLOWarray,
-                  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                  const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
                   String & ioCppFileContents,

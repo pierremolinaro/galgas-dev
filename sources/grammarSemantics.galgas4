@@ -66,13 +66,23 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 //
 //--------------------------------------------------------------------------------------------------
 
-sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
-  public let @lstring mNonTerminalSymbol
-  public let @uint mNonTerminalIndex
-  public let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
-}{
+struct @sortedNonTerminalSymbolForGrammarAnalysis {
+  let @lstring mNonTerminalSymbol
+  let @uint mNonTerminalIndex
+  let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+}
+
+sortedarray @nonTerminalSymbolSortedArrayForGrammarAnalysis : @sortedNonTerminalSymbolForGrammarAnalysis {
   mNonTerminalIndex <
 }
+
+//sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
+//  public let @lstring mNonTerminalSymbol
+//  public let @uint mNonTerminalIndex
+//  public let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+//}{
+//  mNonTerminalIndex <
+//}
 
 //--------------------------------------------------------------------------------------------------
 //

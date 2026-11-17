@@ -84,7 +84,9 @@ void GGS__5B_uint_36__34__5D_::removeAll (void) {
 
 void GGS__5B_uint_36__34__5D_::plusPlusAssignOperation (const GGS_uint_36__34_ & inValue
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -491,7 +493,9 @@ void GGS__5B_stringString_5D_::removeAll (void) {
 
 void GGS__5B_stringString_5D_::plusPlusAssignOperation (const GGS_stringString & inValue
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1028,7 +1032,9 @@ void GGS__5B_string_5D_::removeAll (void) {
 
 void GGS__5B_string_5D_::plusPlusAssignOperation (const GGS_string & inValue
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1545,7 +1551,9 @@ void GGS__5B_lstring_5D_::removeAll (void) {
 
 void GGS__5B_lstring_5D_::plusPlusAssignOperation (const GGS_lstring & inValue
                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1952,7 +1960,9 @@ void GGS__5B_uint_5D_::removeAll (void) {
 
 void GGS__5B_uint_5D_::plusPlusAssignOperation (const GGS_uint & inValue
                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

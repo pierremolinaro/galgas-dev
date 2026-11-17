@@ -362,7 +362,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset ioInclusionSet, !@string outHeader ) {
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet, !@string outHeader) {
     for property in self.mTypedPropertyList do
       property.typeEntry.addHeaderFileName1 (!?ioInclusionSet)
     end

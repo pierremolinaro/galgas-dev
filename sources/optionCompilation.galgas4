@@ -220,7 +220,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       ?let @commandLineOptionMap stringOptionMap
     )
   //--- Sort options
-    var @commandLineOptionSortedList boolOptionSortedList = @()
+    var @commandLineOptionSortedArray boolOptionSortedList = @()
     for anOption in boolOptionMap do
       boolOptionSortedList ++= @(
         anOption.lkey.string,
@@ -230,7 +230,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mDefaultValue
       )
     end
-    var @commandLineOptionSortedList uintOptionSortedList = @()
+    var @commandLineOptionSortedArray uintOptionSortedList = @()
     for anOption in uintOptionMap do
       uintOptionSortedList ++= @(
         anOption.lkey.string,
@@ -240,7 +240,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mDefaultValue
       )
     end
-    var @commandLineOptionSortedList stringOptionSortedList = @()
+    var @commandLineOptionSortedArray stringOptionSortedList = @()
     for anOption in stringOptionMap do
       stringOptionSortedList ++= @(
         anOption.lkey.string,
@@ -250,16 +250,6 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mDefaultValue
       )
     end
-//    var @commandLineOptionSortedList stringListOptionSortedList = @()
-//    for anOption in stringListOptionMap do
-//      stringListOptionSortedList ++= @(
-//        anOption.lkey.string,
-//        anOption.mOptionChar,
-//        anOption.mOptionString,
-//        anOption.mComment,
-//        anOption.mDefaultValue
-//      )
-//    end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration ++= @optionComponentForGeneration (
       !infoMessage: "option " + self.mOptionComponentName,
@@ -284,9 +274,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @bool mIsPredefined
   public let @string mOptionComponentName
-  public let @commandLineOptionSortedList mBoolOptionSortedList
-  public let @commandLineOptionSortedList mUIntOptionSortedList
-  public let @commandLineOptionSortedList mStringOptionSortedList
+  public let @commandLineOptionSortedArray mBoolOptionSortedList
+  public let @commandLineOptionSortedArray mUIntOptionSortedList
+  public let @commandLineOptionSortedArray mStringOptionSortedList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -381,15 +371,27 @@ map @commandLineOptionMap { // the key is the option identifier
 
 //--------------------------------------------------------------------------------------------------
 
-sortedlist @commandLineOptionSortedList {
-  public let @string mOptionIdentifier
-  public let @char mOptionChar
-  public let @string mOptionString
-  public let @string mComment
-  public let @string mDefaultValue
-}{
+struct @sortedCommandLineOption {
+  let @string mOptionIdentifier
+  let @char mOptionChar
+  let @string mOptionString
+  let @string mComment
+  let @string mDefaultValue
+}
+
+sortedarray @commandLineOptionSortedArray : @sortedCommandLineOption {
   mComment <
 }
+
+//sortedlist @commandLineOptionSortedList {
+//  let @string mOptionIdentifier
+//  let @char mOptionChar
+//  let @string mOptionString
+//  let @string mComment
+//  let @string mDefaultValue
+//}{
+//  mComment <
+//}
 
 //--------------------------------------------------------------------------------------------------
 //         G E N E R A T I O N    T E M P L A T E S
@@ -400,32 +402,24 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
 }{
   template optionHeaderZone3 : "option-header-zone3.galgasTemplate" (
     ?@string OPTION_COMPONENT_NAME,
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedArray BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
   )
 
   template optionImplementationGalgas3 : "option-implementation-galgas3.cpp.galgasTemplate" (
     ?@string OPTION_COMPONENT_NAME,
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedArray BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
   )
-
-//  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
-//    ?@string OPTION_HEADER_FILE_NAME
-//    ?@string OPTION_COMPONENT_NAME
-//    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
-//    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
   template optionImplementationSwiftUI : "option-implementation-swiftui.galgasTemplate" (
     ?@string OPTION_HEADER_FILE_NAME,
     ?@string OPTION_COMPONENT_NAME,
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedArray BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
   )
 }
 

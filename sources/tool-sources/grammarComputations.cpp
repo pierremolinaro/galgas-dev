@@ -308,7 +308,7 @@ analyzeGrammar (Compiler * inCompiler,
                 const GGS_location & inErrorLocation,
                 const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & inSyntaxComponentsList,
-                const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const String & inSyntaxDirectedTranslationVarName,
                 String & ioCppFileContents,
                 String & ioSwiftDescription,
@@ -655,7 +655,7 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
                                       const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ inSyntaxComponentsList,
                                       const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
                                       const GGS_string inHTMLFilePath,
-                                      const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+                                      const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
                                       const GGS_string inSyntaxDirectedTranslationVarName,
                                       GGS_string & outCppFileContents,
                                       GGS_string & outHTMLHelperFileContents,
@@ -704,7 +704,7 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
 //    swiftDescription.appendString (grammarName) ;
 //    swiftDescription.appendString ("_nonTerminal : NonTerminal_protocol {\n\n") ;
 //    swiftDescription.appendSecondaryLineComment ("//") ;
-//    UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis ntEnumerator (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
+//    UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ntEnumerator (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
 //    while (ntEnumerator.hasCurrentObject ()) {
 //      swiftDescription.appendString ("  case `") ;
 //      swiftDescription.appendString (ntEnumerator.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue()) ;

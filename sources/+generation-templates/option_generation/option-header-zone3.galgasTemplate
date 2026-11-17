@@ -5,8 +5,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
-  %extern BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
+  %extern BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -14,8 +14,8 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
-  %extern UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+%for (sortedOption) in UINT_OPTION_SORTED_LIST do
+  %extern UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -23,8 +23,8 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
-  %extern StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
+%for (sortedOption) in STRING_OPTION_SORTED_LIST do
+  %extern StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 

@@ -4,12 +4,12 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in BOOL_OPTION_SORTED_LIST do
-  %BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![[mOptionChar uint] string]%,\n%
-  %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%
+%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
+  %BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![[sortedOption.mOptionChar uint] string]%,\n%
+  %                                         %![sortedOption.mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%) ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -17,13 +17,13 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT_OPTION_SORTED_LIST do
-  %UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![[mOptionChar uint] string]%,\n%
-  %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %!mDefaultValue%) ;\n\n%
+%for (sortedOption) in UINT_OPTION_SORTED_LIST do
+  %UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![[sortedOption.mOptionChar uint] string]%,\n%
+  %                                         %![sortedOption.mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %!sortedOption.mDefaultValue%) ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
 //
@@ -31,12 +31,12 @@ end
 //
 //--------------------------------------------------------------------------------------------------
 
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
-  %StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
-  %                                         %![mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![[mOptionChar uint] string]%,\n%
-  %                                         %![mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![mComment utf8RepresentationEscapingQuestionMark]%,\n%
-  %                                         %![mDefaultValue utf8RepresentationEscapingQuestionMark]%) ;\n\n%
+%for (sortedOption) in STRING_OPTION_SORTED_LIST do
+  %StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![sortedOption.mOptionIdentifier identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
+  %                                         %![sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![[sortedOption.mOptionChar uint] string]%,\n%
+  %                                         %![sortedOption.mOptionString utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%,\n%
+  %                                         %![sortedOption.mDefaultValue utf8RepresentationEscapingQuestionMark]%) ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------

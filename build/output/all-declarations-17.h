@@ -873,7 +873,7 @@ void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F
                                                                                                const class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ constinArgument5,
                                                                                                const class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
                                                                                                const class GGS_string constinArgument7,
-                                                                                               const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
+                                                                                               const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis constinArgument8,
                                                                                                const class GGS_string constinArgument9,
                                                                                                class GGS_string & outArgument10,
                                                                                                class GGS_string & outArgument11,

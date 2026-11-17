@@ -47,9 +47,9 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 
 GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (Compiler * inCompiler,
                                                                                const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                               const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                               const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                               const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
+                                                                               const class GGS_commandLineOptionSortedArray & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                               const class GGS_commandLineOptionSortedArray & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                               const class GGS_commandLineOptionSortedArray & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -60,9 +60,9 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (C
 
 GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (Compiler * inCompiler,
                                                                                          const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                         const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                         const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                         const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                         const class GGS_commandLineOptionSortedArray & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                         const class GGS_commandLineOptionSortedArray & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                         const class GGS_commandLineOptionSortedArray & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -74,9 +74,9 @@ GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGal
 GGS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftUI (Compiler * inCompiler,
                                                                                       const class GGS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
                                                                                       const class GGS_string & in_OPTION_5F_COMPONENT_5F_NAME,
-                                                                                      const class GGS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                      const class GGS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
-                                                                                      const class GGS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                      const class GGS_commandLineOptionSortedArray & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                      const class GGS_commandLineOptionSortedArray & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                      const class GGS_commandLineOptionSortedArray & in_STRING_5F_OPTION_5F_SORTED_5F_LIST
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

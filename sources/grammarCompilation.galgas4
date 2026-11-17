@@ -248,7 +248,7 @@ extern proc grammarAnalysisAndGeneration (
   let [@syntaxComponentForGrammarAnalysis] ioSyntaxComponentsList,
   let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
   let @string inHTMLfileName,
-  let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+  let @nonTerminalSymbolSortedArrayForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
   let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
   !@string outGrammarCppFile,
   !@string outGrammarHTMLHelperContents,

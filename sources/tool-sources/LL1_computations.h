@@ -36,7 +36,7 @@ class HTMLString ;
 class GrammarVocabulary ;
 class String ;
 class Compiler ;
-class GGS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
 class BinaryDecisionDiagramRelation ;
 
 //--------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
                   const GenericUniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const BinaryDecisionDiagramRelation & inFIRSTsets,
                   const BinaryDecisionDiagramRelation & inFOLLOWsets,
-                  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                  const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
                   String & ioCppFileContents,

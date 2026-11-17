@@ -665,7 +665,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                                const GrammarVocabulary & inVocabulary,
                                const GenericUniqueMatrix <DecisionTableElement> & inSLRdecisionTable,
                                const GenericUniqueArray <c_LR0_automaton_transition> & inTransitionList,
-                               const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                               const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const String & inLexiqueName,
                                const String & inTargetFileName,
@@ -859,16 +859,16 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
   ioCppFileContents.appendCString ("\n} ;\n\n") ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
+  UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {
-    ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
-    const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
+    ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue () + "' non terminal implementation") ;
+    const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current (HERE).mProperty_mNonTerminalIndex.uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
   //--- Parse label
 //    ioCppFileContents.appendCString ("void cGrammar_") ;
 //    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
 //    ioCppFileContents.appendCString ("::nt_") ;
-//    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+//    ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
 //    ioCppFileContents.appendCString ("_parse (") ;
 //    if (inSyntaxDirectedTranslationVarName.length () > 0) {
 //      ioCppFileContents.appendCString ("String & ") ;
@@ -922,7 +922,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
     ioCppFileContents.appendCString ("void cGrammar_") ;
     ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
     ioCppFileContents.appendCString ("::nt_") ;
-    ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+    ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
     ioCppFileContents.appendCString ("_indexing (Lexique_") ;
     ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
     ioCppFileContents.appendCString (" * inLexique") ;
@@ -966,16 +966,16 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       }
     }
     ioCppFileContents.appendCString ("}\n\n") ;
-    UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE)) ;
+    UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current (HERE).mProperty_mNonterminalSymbolParametersMap) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.appendCString ("::nt_") ;
-      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString ("_") ;
-      ioCppFileContents.appendString (currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (currentAltForNonTerminal2.current (HERE).mProperty_lkey.mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
-      UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE)) ;
+      UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal2.current (HERE).mProperty_mFormalParametersList) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         if (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
@@ -1024,7 +1024,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendCString (") {\n") ;
           inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
+                                                                      currentAltForNonTerminal2.current (HERE).mProperty_lkey.mProperty_string.stringValue (),
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
           ioCppFileContents.appendCString ("  }else{\n"
@@ -1039,7 +1039,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
             ioCppFileContents.appendCString (" :\n    ") ;
             inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                         inVocabulary,
-                                                                        currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
+                                                                        currentAltForNonTerminal2.current (HERE).mProperty_lkey.mProperty_string.stringValue (),
                                                                         ioCppFileContents,
                                                                         inSyntaxDirectedTranslationVarName) ;
             ioCppFileContents.appendCString ("    break ;\n") ;
@@ -1054,7 +1054,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
+    if (nonTerminal.current (HERE).mProperty_mNonTerminalIndex.uintValue () == inOriginalGrammarStartSymbol) {
       ioCppFileContents.appendCString ("void cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.appendCString ("::performIndexing (Compiler * inCompiler,\n"
@@ -1084,7 +1084,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                            "      cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" grammar ;\n      grammar.nt_") ;
-      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString ("_indexing (scanner) ;\n"
                            "    }\n"
                            "    scanner->generateIndexFile () ;\n"
@@ -1133,14 +1133,14 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n") ;
-      UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE)) ;
+      UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current (HERE).mProperty_mNonterminalSymbolParametersMap) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static proc
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
         ioCppFileContents.appendCString ("::_performSourceFileParsing_") ;
-        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current (HERE).mProperty_lkey.mProperty_string.stringValue ().identifierRepresentation ()) ;
         ioCppFileContents.appendCString (" (Compiler * inCompiler"
                              ",\n                                ") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
@@ -1149,7 +1149,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
           ioCppFileContents.appendCString (",\n                                ") ;
         }
         ioCppFileContents.appendCString ("GGS_lstring inFilePath") ;
-        UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE)) ;
+        UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal.current (HERE).mProperty_mFormalParametersList) ;
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
@@ -1208,9 +1208,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                              "          cGrammar_") ;
       ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" grammar ;\n          grammar.nt_") ;
-      ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString ("_") ;
-      ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+      ioCppFileContents.appendString (currentAltForNonTerminal.current (HERE).mProperty_lkey.mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1251,7 +1251,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
         ioCppFileContents.appendCString ("void cGrammar_") ;
         ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
         ioCppFileContents.appendCString ("::_performSourceStringParsing_") ;
-        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current (HERE).mProperty_lkey.mProperty_string.stringValue ().identifierRepresentation ()) ;
         ioCppFileContents.appendCString (" (Compiler * inCompiler"
                                      ",\n                                ") ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
@@ -1319,9 +1319,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
         ioCppFileContents.appendCString (" grammar ;\n"
                                      "        ") ;
         ioCppFileContents.appendCString ("grammar.nt_") ;
-        ioCppFileContents.appendString (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
         ioCppFileContents.appendCString ("_") ;
-        ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
+        ioCppFileContents.appendString (currentAltForNonTerminal.current (HERE).mProperty_lkey.mProperty_string.stringValue ().identifierRepresentation ()) ;
         ioCppFileContents.appendCString (" (") ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1436,7 +1436,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
                   HTMLString & ioHTMLFileContents,
                   const bool inPopulateHTMLHelperString,
                   const GenericUniqueArray <GenericUniqueArray <uint64_t> > & inFOLLOWarray,
-                  const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                  const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
                   String & ioCppFileContents,

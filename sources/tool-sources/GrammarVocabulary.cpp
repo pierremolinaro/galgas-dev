@@ -50,7 +50,7 @@ GrammarVocabulary::~GrammarVocabulary (void) {
 
 void GrammarVocabulary::
 buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                 const GGS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
+                 const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                  const uint32_t inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
@@ -70,9 +70,9 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
   mStringsArray.appendObject ("") ; // Empty string symbol
   mTerminalSymbolsCount += 1 ;
 //--- Append non terminal symbols from original grammar
-  UpEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
+  UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ()) ;  
+    mStringsArray.appendObject (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
