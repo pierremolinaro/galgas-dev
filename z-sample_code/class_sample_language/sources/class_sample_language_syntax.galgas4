@@ -1,4 +1,4 @@
-syntax class_sample_language_syntax (class_sample_language_lexique) {
+syntax class_sample_language_syntax : class_sample_language_lexique {
 
 rule <start_symbol> (![@declarationAST] outDeclarationListAST
 

@@ -20,7 +20,7 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas4OptionComponentSyntax (galgasScanner4) {
+syntax galgas4OptionComponentSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

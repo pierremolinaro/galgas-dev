@@ -1,4 +1,4 @@
-syntax logo_syntax (logo_lexique) {
+syntax logo_syntax : logo_lexique {
 
   //----------------------------------------------------------------------------------------------
 

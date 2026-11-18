@@ -40,37 +40,37 @@ void GGS_complex::description (String & ioString,
 
 //----------------------------------------------------------------------------------------
 
-GGS_complex GGS_complex::init_21__21_ (const GGS_double & inReal,
-                                       const GGS_double & inImaginary,
+GGS_complex GGS_complex::init_21__21_ (const GGS_f_36__34_ & inReal,
+                                       const GGS_f_36__34_ & inImaginary,
                                        Compiler * /* inCompiler */
                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_complex result ;
   if (inReal.isValid () && inImaginary.isValid ()) {
     result.mIsValid = true ;
-    result.mReal = inReal.doubleValue () ;
-    result.mImaginary = inImaginary.doubleValue () ;
+    result.mReal = inReal.f64 () ;
+    result.mImaginary = inImaginary.f64 () ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------
 
-GGS_double GGS_complex::getter_real (Compiler * /* inCompiler */
+GGS_f_36__34_ GGS_complex::getter_real (Compiler * /* inCompiler */
                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (mReal) ;
+    result = GGS_f_36__34_ (mReal) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------
 
-GGS_double GGS_complex::getter_imaginary (Compiler * /* inCompiler */
+GGS_f_36__34_ GGS_complex::getter_imaginary (Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_double result ;
+  GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_double (mImaginary) ;
+    result = GGS_f_36__34_ (mImaginary) ;
   }
   return result ;
 }

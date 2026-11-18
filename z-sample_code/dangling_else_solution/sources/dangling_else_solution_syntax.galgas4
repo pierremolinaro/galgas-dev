@@ -1,4 +1,4 @@
-syntax dangling_else_solution_syntax (dangling_else_solution_lexique) {
+syntax dangling_else_solution_syntax : dangling_else_solution_lexique {
 
 rule <S> ()
 

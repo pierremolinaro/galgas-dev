@@ -7538,7 +7538,7 @@ GGS_bool extensionGetter_generateCppObjectComparison (const GGS_typeFeatures & i
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result_result ; // Returned variable
   const GGS_typeFeatures temp_0 = inObject ;
-  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas4", 136)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas4", 136)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 136)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas4", 136)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 136)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 136)) ;
+  result_result = temp_0.getter_contains (GGS_typeFeatures::class_func_equatable (SOURCE_FILE ("unified-type-definition.galgas4", 134)).operator_or (GGS_typeFeatures::class_func_referenceEquatable (SOURCE_FILE ("unified-type-definition.galgas4", 134)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 134)).operator_or (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("unified-type-definition.galgas4", 134)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 134)) COMMA_SOURCE_FILE ("unified-type-definition.galgas4", 134)) ;
 //---
   return result_result ;
 }

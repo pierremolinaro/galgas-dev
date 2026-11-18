@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-syntax templateSyntax (galgasTemplateScanner) {
+syntax templateSyntax : galgasTemplateScanner {
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -31,8 +31,7 @@ syntax templateSyntax (galgasTemplateScanner) {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <expression_template>
-  (!@templateExpressionAST outExpression ) {
+rule <expression_template> (!@templateExpressionAST outExpression ) {
   <relation_term_tpl> (?outExpression)
   repeat
   while
@@ -58,8 +57,7 @@ rule <expression_template>
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <relation_term_tpl>
-  (!@templateExpressionAST outExpression ) {
+rule <relation_term_tpl> (!@templateExpressionAST outExpression ) {
   <relation_factor_tpl> (?outExpression)
   repeat
   while
@@ -78,8 +76,7 @@ rule <relation_term_tpl>
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <relation_factor_tpl>
-  (!@templateExpressionAST outExpression ) {
+rule <relation_factor_tpl> (!@templateExpressionAST outExpression ) {
   <simple_expression_tpl> (?outExpression)
   select
   or
@@ -173,8 +170,7 @@ rule <simple_expression_tpl> (!@templateExpressionAST outExpression ) {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <term_tpl>
-  (!@templateExpressionAST outExpression ) {
+rule <term_tpl> (!@templateExpressionAST outExpression ) {
   <factor_tpl> (?outExpression)
   repeat
   while
@@ -255,8 +251,7 @@ rule <factor_tpl> (!@templateExpressionAST outExpression ) {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <factor_tpl>
-  (!@templateExpressionAST outExpression ) {
+rule <factor_tpl> (!@templateExpressionAST outExpression ) {
   let @location operatorLocation = @location.here
   $~$
   let @templateExpressionAST ifCondition

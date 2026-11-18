@@ -1,4 +1,4 @@
-syntax testsuite_syntax (testsuite_lexique) {
+syntax testsuite_syntax : testsuite_lexique {
 
 // ADD YOUR CODE HERE
 

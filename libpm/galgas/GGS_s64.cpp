@@ -57,7 +57,7 @@ GGS_s_36__34_ GGS_s_36__34_::class_func_min (UNUSED_LOCATION_ARGS) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_u_36__34_ GGS_s_36__34_::getter_u_36__34_ (Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+                                               COMMA_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
   if (mS64 < 0) {
     inCompiler->onTheFlyRunTimeError ("cannot convert a negative @s64 into an @u64" COMMA_THERE) ;
@@ -70,7 +70,7 @@ GGS_u_36__34_ GGS_s_36__34_::getter_u_36__34_ (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_uint GGS_s_36__34_::getter_uint (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
+                                     COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (mS64 < 0) {
     inCompiler->onTheFlyRunTimeError ("cannot convert a negative @s64 into an uint" COMMA_THERE) ;
@@ -85,7 +85,7 @@ GGS_uint GGS_s_36__34_::getter_uint (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 GGS_sint GGS_s_36__34_::getter_sint (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
+                                     COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
   if (mS64 < INT32_MIN) {
     inCompiler->onTheFlyRunTimeError ("conversion from 64-bit signed value to 32-bit signed value overflow" COMMA_THERE) ;
@@ -146,9 +146,9 @@ GGS_string GGS_s_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_s_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
-                                                          const GGS_uint & inGroup,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+                                                       const GGS_uint & inGroup,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
     const int group = (int) inGroup.uintValue () ;
@@ -211,8 +211,8 @@ void GGS_s_36__34_::plusAssignOperation (const GGS_s_36__34_ inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_s_36__34_::minusAssignOperation (const GGS_s_36__34_ inOperand,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 - inOperand.mS64 ;
     const bool ovf = (mS64 >= inOperand.mS64) != (r >= 0) ;
@@ -228,8 +228,8 @@ void GGS_s_36__34_::minusAssignOperation (const GGS_s_36__34_ inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_s_36__34_::mulAssignOperation (const GGS_s_36__34_ inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 * inOperand.mS64 ;
     bool ovf = false ;
@@ -250,8 +250,8 @@ void GGS_s_36__34_::mulAssignOperation (const GGS_s_36__34_ inOperand,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_s_36__34_::divAssignOperation (const GGS_s_36__34_ inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     if (inOperand.mS64 == 0) {
       inCompiler->onTheFlyRunTimeError ("@sint64 /= divide by zero" COMMA_THERE) ;
@@ -275,8 +275,8 @@ GGS_s_36__34_ GGS_s_36__34_::wrapping_add_operation (const GGS_s_36__34_ & inOpe
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::add_operation (const GGS_s_36__34_ & inOperand,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 + inOperand.mS64 ;
@@ -296,7 +296,7 @@ GGS_s_36__34_ GGS_s_36__34_::add_operation (const GGS_s_36__34_ & inOperand,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_s_36__34_::getter_canAdd (const GGS_s_36__34_ & inOperand
-                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 + inOperand.mS64 ;
@@ -315,8 +315,8 @@ GGS_bool GGS_s_36__34_::getter_canAdd (const GGS_s_36__34_ & inOperand
 // can't overflow, and integers of same sign overflow only is the result is of different sign
 
 GGS_s_36__34_ GGS_s_36__34_::subtract_operation (const GGS_s_36__34_ & inOperand,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 - inOperand.mS64 ;
@@ -333,7 +333,7 @@ GGS_s_36__34_ GGS_s_36__34_::subtract_operation (const GGS_s_36__34_ & inOperand
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_s_36__34_::getter_canSubstract (const GGS_s_36__34_ & inOperand
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 - inOperand.mS64 ;
@@ -367,8 +367,8 @@ GGS_s_36__34_ GGS_s_36__34_::wrapping_multiply_operation (const GGS_s_36__34_ & 
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::multiply_operation (const GGS_s_36__34_ & inOperand,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 * inOperand.mS64 ;
@@ -390,7 +390,7 @@ GGS_s_36__34_ GGS_s_36__34_::multiply_operation (const GGS_s_36__34_ & inOperand
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_s_36__34_::getter_canMultiply (const GGS_s_36__34_ & inOperand
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     const int64_t r = mS64 * inOperand.mS64 ;
@@ -408,8 +408,8 @@ GGS_bool GGS_s_36__34_::getter_canMultiply (const GGS_s_36__34_ & inOperand
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::divide_operation (const GGS_s_36__34_ & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mS64 == 0) {
@@ -426,7 +426,7 @@ GGS_s_36__34_ GGS_s_36__34_::divide_operation (const GGS_s_36__34_ & inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_s_36__34_::getter_canDivide (const GGS_s_36__34_ & inOperand
-                                             COMMA_UNUSED_LOCATION_ARGS) const {
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     const bool ok = (mS64 != 0) && !((mS64 == INT64_MIN) && (inOperand.mS64 == -1)) ;
@@ -448,8 +448,8 @@ GGS_s_36__34_ GGS_s_36__34_::wrapping_divide_operation (const GGS_s_36__34_ & in
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::modulo_operation (const GGS_s_36__34_ & inOperand2,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     if (inOperand2.mS64 == 0) {
@@ -464,7 +464,7 @@ GGS_s_36__34_ GGS_s_36__34_::modulo_operation (const GGS_s_36__34_ & inOperand2,
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::operator_unary_minus (Compiler * inCompiler 
-                                                         COMMA_LOCATION_ARGS) const {
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid ()) {
     if (mS64 == INT64_MIN) {
@@ -489,8 +489,8 @@ GGS_s_36__34_ GGS_s_36__34_::operator_unary_minus_no_ovf (void) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_uint inShiftOperand,
-                                                         Compiler * /* inCompiler*/
-                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+                                                   Compiler * /* inCompiler*/
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GGS_s_36__34_ (mS64 << (inShiftOperand.uintValue () & 63)) ;
@@ -501,8 +501,8 @@ GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_uint inShiftOperand
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_bigint inShiftOperand,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
@@ -517,8 +517,8 @@ GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_bigint inShiftOpera
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_uint inShiftOperand,
-                                                          Compiler * /* inCompiler*/
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                    Compiler * /* inCompiler*/
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     result = GGS_s_36__34_ (mS64 >> (inShiftOperand.uintValue () & 63)) ;
@@ -529,8 +529,8 @@ GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_uint inShiftOperan
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_bigint inShiftOperand,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
@@ -545,7 +545,7 @@ GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_bigint inShiftOper
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::operator_and (const GGS_s_36__34_ & inOperand2
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_s_36__34_ (mS64 & inOperand2.mS64) ;
@@ -556,7 +556,7 @@ GGS_s_36__34_ GGS_s_36__34_::operator_and (const GGS_s_36__34_ & inOperand2
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::operator_or (const GGS_s_36__34_ & inOperand2
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
+                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_s_36__34_ (mS64 | inOperand2.mS64) ;
@@ -567,7 +567,7 @@ GGS_s_36__34_ GGS_s_36__34_::operator_or (const GGS_s_36__34_ & inOperand2
 //--------------------------------------------------------------------------------------------------
 
 GGS_s_36__34_ GGS_s_36__34_::operator_xor (const GGS_s_36__34_ & inOperand2
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_s_36__34_ (mS64 ^ inOperand2.mS64) ;

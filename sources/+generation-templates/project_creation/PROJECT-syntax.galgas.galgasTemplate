@@ -1,4 +1,4 @@
-syntax %!PROJECT_NAME%_syntax (%!PROJECT_NAME%_lexique) {
+syntax %!PROJECT_NAME%_syntax : %!PROJECT_NAME%_lexique {
 
 rule <start_symbol> () {
   // ADD YOUR SYNTAX INSTRUCTIONS

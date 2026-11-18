@@ -83,10 +83,12 @@ indexing indexingNameDefinition : "Indexing Name Definition"
 indexing indexingNameReference : "Indexing Name Reference"
 
 //--- Scanner attributes
+// var @uint uint32value 
 @uint uint32value
 @char charValue
 @string tokenString
 
+// let keywordsStyle = .style ("Keywords")
 style keywordsStyle -> "Keywords"
 style delimitersStyle -> "Delimiters"
 style selectorStyle -> "Selectors"
@@ -101,11 +103,10 @@ style attributeStyle -> "Attributes (#...)"
 style commentStyle -> "Comments"
 
 // ------------------------- identifier or key word --------------------
-// keywords can be written in lower or upper case
-// for identifiers, case is significant
+// let $identifier$ (!@string) : syntaxErrorMessage "an identifier"
+$identifier$ !tokenString #errorMessage "an identifier"
 
-$identifier$ ! tokenString #errorMessage "an identifier"
-
+// let galgasKeyWordList = .array (!style: keywordsStyle, !syntaxErrorMessage: "the '%K' keyword", !contents: [xxx, xxx])
 list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "abstract",
   "after",
@@ -142,7 +143,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "indexing",
   "init",
   "is",
-  "json",
+//  "json",
   "label",
   "let",
   "lexique",
@@ -157,7 +158,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "or",
   "override",
   "package",
-  "parse",
+//  "parse",
   "public",
   "protected",
   "private",
@@ -181,7 +182,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "template",
   "then",
   "true",
-  "typealias",
+//  "typealias",
   "var",
   "warning",
   "weak",
@@ -293,7 +294,7 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "searchString" -> $#searchString$,
   "templateEndMark" -> $#templateEndMark$,
   "templateReplacement" -> $#templateReplacement$,
-  "translate" -> $#translate$,
+  "translatable" -> $#translatable$,
   "unused" -> $#unused$,
   "usefull" -> $#usefull$
 }
@@ -303,7 +304,7 @@ rule '#' {
   case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while isUnicodeLetter | '-' | '_' | '0'->'9' :
+    while isUnicodeLetter | '-' | '0'->'9' :
     end
   default
     error attributeError

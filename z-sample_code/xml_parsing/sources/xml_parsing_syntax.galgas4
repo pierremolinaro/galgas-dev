@@ -1,4 +1,4 @@
-syntax xml_parsing_syntax (xml_parsing_lexique) {
+syntax xml_parsing_syntax : xml_parsing_lexique {
 
 //---------------------------------------------------------------------------*
 

@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
+syntax galgas4SyntaxComponentSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          Rules prototypes
@@ -46,20 +46,15 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $syntax$
     $identifier$ (?let @lstring syntaxComponentName)
   //--- Imported lexique
-    let @lstring importedLexiqueReference
-    select
-      importedLexiqueReference = "".nowhere
-    or
-      $($
-      $identifier$ (?importedLexiqueReference)
-      $)$
-    end
+    $:$
+    $identifier$ (?let importedLexiqueReference)
   //--- Feature 'translate'
     let @bool hasTranslateFeature
     select
       hasTranslateFeature = false
     or
-      $#translate$
+      $,$
+      $#translatable$
       hasTranslateFeature = true
     end
     ${$
@@ -79,7 +74,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       importedLexiqueReference,
       nonterminalDeclarationList,
       ruleList,
-      hasTranslateFeature)
+      hasTranslateFeature
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,4 +1,4 @@
-syntax SLR_expression_syntax (SLR_expression_lexique) {
+syntax SLR_expression_syntax : SLR_expression_lexique {
 
 rule <StartSymbol> ()
 

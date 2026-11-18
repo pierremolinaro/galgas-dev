@@ -53,7 +53,7 @@ indexing grammar galgas4ProjectGrammar "LL1" {
 
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas4ProjectSyntax (galgasScanner4) {
+syntax galgas4ProjectSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

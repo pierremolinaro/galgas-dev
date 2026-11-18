@@ -249,12 +249,12 @@ v = 183
 v = 752
 *************************************** begin of type extension test
 Square of 7
-<@uint64:49>
+<@u64:49>
 Sum 1 + 2 + 3 + 4
 <@uint:10>
 Hello !
 <@string:"Hello !">
-<@uint64:49>
+<@u64:49>
 <@uint:10>
 <@string:"Hello !">
 <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
@@ -269,9 +269,9 @@ Hello !
 *************************************** begin of extern type test
 <@complex:1, -1>
 real
-<@double:1>
+<@f64:1>
 imaginary
-<@double:-1>
+<@f64:-1>
 *************************************** begin of @bigint test
 --- construction
 0

@@ -1,4 +1,4 @@
-syntax LR1_grammar_syntax (LR1_grammar_lexique) {
+syntax LR1_grammar_syntax : LR1_grammar_lexique {
 
 rule <S> ()
 
