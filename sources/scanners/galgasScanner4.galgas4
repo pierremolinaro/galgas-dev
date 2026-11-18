@@ -185,7 +185,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
 //  "typealias",
   "var",
   "warning",
-  "weak",
+//  "weak",
   "while",
   "with"
 }

@@ -60,16 +60,9 @@ syntax extension galgas4DeclarationsSyntax {
       or
         $($
         repeat
-          let @bool weakQualifier
-          select
-            weakQualifier = false
-          or
-            $weak$
-            weakQualifier = true
-          end
           <type_definition> (!?ioDeclarations, ?let associatedValueType)
           $identifier$ (?let associatedValueName)
-          !?associatedValueTypeList.append (@(weakQualifier, associatedValueType, associatedValueName))
+          !?associatedValueTypeList.append (@(associatedValueType, associatedValueName))
         while
           $,$
         end
@@ -100,7 +93,6 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 struct @associatedValue {
-  public let @bool weakQualifier
   public let @lstring typeName
   public let @lstring valueName
 }
@@ -136,10 +128,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         )
         var [@propertyInCollectionAST] propertyListAST = @()
         for associatedValue in constant.associatedValueTypeList do
-          let associatedValueTypeName = if associatedValue.weakQualifier
-            then makeWeakTypeLName (associatedValue.typeName)
-            else associatedValue.typeName
-          end
+          let associatedValueTypeName =  associatedValue.typeName
           propertyListAST ++= @(
             !mutability: .constantProperty,
             associatedValueTypeName,

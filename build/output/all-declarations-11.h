@@ -14,11 +14,6 @@
 
 class GGS_associatedValue final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_bool mProperty_weakQualifier ;
-  public: inline GGS_bool readProperty_weakQualifier (void) const {
-    return mProperty_weakQualifier ;
-  }
-
   public: GGS_lstring mProperty_typeName ;
   public: inline GGS_lstring readProperty_typeName (void) const {
     return mProperty_typeName ;
@@ -37,10 +32,6 @@ class GGS_associatedValue final : public AC_GALGAS_root {
   public: GGS_associatedValue (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setWeakQualifier (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_weakQualifier = inValue ;
-  }
-
   public: inline void setter_setTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_typeName = inValue ;
   }
@@ -53,8 +44,7 @@ class GGS_associatedValue final : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_associatedValue (const GGS_bool & in_weakQualifier,
-                               const GGS_lstring & in_typeName,
+  public: GGS_associatedValue (const GGS_lstring & in_typeName,
                                const GGS_lstring & in_valueName) ;
 
 //--------------------------------- Copy constructor
@@ -66,11 +56,10 @@ class GGS_associatedValue final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_associatedValue init_21__21__21_ (const class GGS_bool & inOperand0,
-                                                       const class GGS_lstring & inOperand1,
-                                                       const class GGS_lstring & inOperand2,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_associatedValue init_21__21_ (const class GGS_lstring & inOperand0,
+                                                   const class GGS_lstring & inOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

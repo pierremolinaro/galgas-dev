@@ -257,17 +257,17 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         m += "; theses names are reserved"
         error property.name : m
       end
-      if property.mutability.isWeakProperty then
-        switch t.definition.unwrappedType
-        case null :
-          error property.name : "the weak property type should be an optional class"
-        case element (aWeakType) :
-          if let aType = aWeakType, aType.definition.typeKind == .classType then
-          else
-            error property.name : "the weak property type should be an optional class"
-          end
-        end
-      end
+//      if property.mutability.isWeakProperty then
+//        switch t.definition.unwrappedType
+//        case null :
+//          error property.name : "the weak property type should be an optional class"
+//        case element (aWeakType) :
+//          if let aType = aWeakType, aType.definition.typeKind == .classType then
+//          else
+//            error property.name : "the weak property type should be an optional class"
+//          end
+//        end
+//      end
       !?propertyMap.insertKey (property.name, t)
       switch property.initialization
       case none :

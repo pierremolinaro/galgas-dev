@@ -406,7 +406,6 @@ const GALGAS_TypeDescriptor * GGS__5B_associatedValue_5D_::staticTypeDescriptor 
 //--------------------------------------------------------------------------------------------------
 
 GGS_associatedValue::GGS_associatedValue (void) :
-mProperty_weakQualifier (),
 mProperty_typeName (),
 mProperty_valueName () {
 }
@@ -414,7 +413,6 @@ mProperty_valueName () {
 //--------------------------------------------------------------------------------------------------
 
 GGS_associatedValue::GGS_associatedValue (const GGS_associatedValue & inSource) :
-mProperty_weakQualifier (inSource.mProperty_weakQualifier),
 mProperty_typeName (inSource.mProperty_typeName),
 mProperty_valueName (inSource.mProperty_valueName) {
 }
@@ -422,7 +420,6 @@ mProperty_valueName (inSource.mProperty_valueName) {
 //--------------------------------------------------------------------------------------------------
 
 GGS_associatedValue & GGS_associatedValue::operator = (const GGS_associatedValue & inSource) {
-  mProperty_weakQualifier = inSource.mProperty_weakQualifier ;
   mProperty_typeName = inSource.mProperty_typeName ;
   mProperty_valueName = inSource.mProperty_valueName ;
   return *this ;
@@ -430,14 +427,12 @@ GGS_associatedValue & GGS_associatedValue::operator = (const GGS_associatedValue
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_associatedValue GGS_associatedValue::init_21__21__21_ (const GGS_bool & in_weakQualifier,
-                                                           const GGS_lstring & in_typeName,
-                                                           const GGS_lstring & in_valueName,
-                                                           Compiler * inCompiler
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GGS_associatedValue GGS_associatedValue::init_21__21_ (const GGS_lstring & in_typeName,
+                                                       const GGS_lstring & in_valueName,
+                                                       Compiler * inCompiler
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_associatedValue result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_weakQualifier = in_weakQualifier ;
   result.mProperty_typeName = in_typeName ;
   result.mProperty_valueName = in_valueName ;
   return result ;
@@ -450,24 +445,21 @@ void GGS_associatedValue::setInitializedProperties (Compiler * /* inCompiler */)
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_associatedValue::GGS_associatedValue (const GGS_bool & inOperand0,
-                                          const GGS_lstring & inOperand1,
-                                          const GGS_lstring & inOperand2) :
-mProperty_weakQualifier (inOperand0),
-mProperty_typeName (inOperand1),
-mProperty_valueName (inOperand2) {
+GGS_associatedValue::GGS_associatedValue (const GGS_lstring & inOperand0,
+                                          const GGS_lstring & inOperand1) :
+mProperty_typeName (inOperand0),
+mProperty_valueName (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_associatedValue::isValid (void) const {
-  return mProperty_weakQualifier.isValid () && mProperty_typeName.isValid () && mProperty_valueName.isValid () ;
+  return mProperty_typeName.isValid () && mProperty_valueName.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_associatedValue::drop (void) {
-  mProperty_weakQualifier.drop () ;
   mProperty_typeName.drop () ;
   mProperty_valueName.drop () ;
 }
@@ -480,8 +472,6 @@ void GGS_associatedValue::description (String & ioString,
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_weakQualifier.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
     mProperty_typeName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_valueName.description (ioString, inIndentation+1) ;

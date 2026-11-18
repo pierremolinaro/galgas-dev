@@ -14748,25 +14748,14 @@ GGS_propertyMutability GGS_propertyMutability::class_func_mutableProperty (UNUSE
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_propertyMutability GGS_propertyMutability::class_func_weakProperty (UNUSED_LOCATION_ARGS) {
-  GGS_propertyMutability result ;
-  result.mEnum = Enumeration::enum_weakProperty ;
-  return result ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_propertyMutability [4] = {
+static const char * gEnumNameArrayFor_propertyMutability [3] = {
   "(not built)",
   "constantProperty",
-  "mutableProperty",
-  "weakProperty"
+  "mutableProperty"
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -14779,12 +14768,6 @@ GGS_bool GGS_propertyMutability::getter_isConstantProperty (UNUSED_LOCATION_ARGS
 
 GGS_bool GGS_propertyMutability::getter_isMutableProperty (UNUSED_LOCATION_ARGS) const {
   return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_mutableProperty == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_propertyMutability::getter_isWeakProperty (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_weakProperty == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14829,39 +14812,39 @@ void extensionMethod_buildPropertyInitializationCode (const GGS__5B_propertyInCo
   outArgument_outUnusedVariableCppNameSet.drop () ; // Release 'out' argument
   outArgument_outInitializationCode.drop () ; // Release 'out' argument
   outArgument_outInitializationCode = GGS_string::makeEmptyString () ;
-  GGS_stringset var_inclusionSet_5646 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_uint var_temporaryVariableIndex_5687 = GGS_uint (uint32_t (0U)) ;
-  GGS_stringset temp_0 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 148)) ;
-  temp_0.plusPlusAssignOperation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 148))  COMMA_SOURCE_FILE ("declaration-property.galgas4", 148)) ;
+  GGS_stringset var_inclusionSet_4258 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_uint var_temporaryVariableIndex_4299 = GGS_uint (uint32_t (0U)) ;
+  GGS_stringset temp_0 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 106)) ;
+  temp_0.plusPlusAssignOperation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 106))  COMMA_SOURCE_FILE ("declaration-property.galgas4", 106)) ;
   outArgument_outUnusedVariableCppNameSet = temp_0 ;
   const GGS__5B_propertyInCollectionAST_5D_ temp_1 = inObject ;
-  UpEnumerator__5B_propertyInCollectionAST_5D_ enumerator_5796 (temp_1) ;
-  while (enumerator_5796.hasCurrentObject ()) {
-    switch (enumerator_5796.current (HERE).readProperty_initialization ().enumValue ()) {
+  UpEnumerator__5B_propertyInCollectionAST_5D_ enumerator_4408 (temp_1) ;
+  while (enumerator_4408.hasCurrentObject ()) {
+    switch (enumerator_4408.current (HERE).readProperty_initialization ().enumValue ()) {
     case GGS_propertyInCollectionInitializationAST::Enumeration::invalid:
       break ;
     case GGS_propertyInCollectionInitializationAST::Enumeration::enum_none:
       break ;
     case GGS_propertyInCollectionInitializationAST::Enumeration::enum_some:
       {
-        GGS_semanticExpressionAST extractedValue_5869_expressionAST_0 ;
-        enumerator_5796.current (HERE).readProperty_initialization ().getAssociatedValuesFor_some (extractedValue_5869_expressionAST_0) ;
-        GGS_localVarManager var_variableMap_5896 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
-        GGS_analysisContext var_analysisContext_5957 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas4", 158)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
-        GGS_unifiedTypeMapEntry var_propertyType_6169 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_5796.current (HERE).readProperty_typeName (), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 161)) ;
-        GGS_semanticExpressionForGeneration var_expression_6529 ;
-        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_5869_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_6169, var_analysisContext_5957, ioArgument_ioTypeMap, var_variableMap_5896, var_expression_6529, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 162)) ;
+        GGS_semanticExpressionAST extractedValue_4481_expressionAST_0 ;
+        enumerator_4408.current (HERE).readProperty_initialization ().getAssociatedValuesFor_some (extractedValue_4481_expressionAST_0) ;
+        GGS_localVarManager var_variableMap_4508 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
+        GGS_analysisContext var_analysisContext_4569 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, constinArgument_inPredefinedTypes, GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("declaration-property.galgas4", 116)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
+        GGS_unifiedTypeMapEntry var_propertyType_4781 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_4408.current (HERE).readProperty_typeName (), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 119)) ;
+        GGS_semanticExpressionForGeneration var_expression_5141 ;
+        callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) extractedValue_4481_expressionAST_0.ptr (), constinArgument_inTypeNameForUsefulness, ioArgument_ioUsefulEntitiesGraph, var_propertyType_4781, var_analysisContext_4569, ioArgument_ioTypeMap, var_variableMap_4508, var_expression_5141, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 120)) ;
         {
-        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_6169, var_expression_6529.readProperty_mResultType (), enumerator_5796.current (HERE).readProperty_name ().readProperty_location (), var_expression_6529, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 172)) ;
+        routine_checkAssignmentTypeWithImplicitGetterCall_3F__3F__3F__26_ (var_propertyType_4781, var_expression_5141.readProperty_mResultType (), enumerator_4408.current (HERE).readProperty_name ().readProperty_location (), var_expression_5141, inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 130)) ;
         }
-        GGS_string var_sourceVar_6939 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_6529.ptr (), outArgument_outInitializationCode, var_inclusionSet_5646, var_temporaryVariableIndex_5687, outArgument_outUnusedVariableCppNameSet, var_sourceVar_6939, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 178)) ;
-        outArgument_outInitializationCode.plusAssignOperation(GGS_string ("  mProperty_").add_operation (enumerator_5796.current (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas4", 185)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 185)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 185)) ;
-        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_6939, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 186)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 186)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 186)) ;
+        GGS_string var_sourceVar_5551 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) var_expression_5141.ptr (), outArgument_outInitializationCode, var_inclusionSet_4258, var_temporaryVariableIndex_4299, outArgument_outUnusedVariableCppNameSet, var_sourceVar_5551, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 136)) ;
+        outArgument_outInitializationCode.plusAssignOperation(GGS_string ("  mProperty_").add_operation (enumerator_4408.current (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-property.galgas4", 143)), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 143)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 143)) ;
+        outArgument_outInitializationCode.plusAssignOperation(GGS_string (" = ").add_operation (var_sourceVar_5551, inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 144)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("declaration-property.galgas4", 144)), inCompiler  COMMA_SOURCE_FILE ("declaration-property.galgas4", 144)) ;
       }
       break ;
     }
-    enumerator_5796.gotoNextObject () ;
+    enumerator_4408.gotoNextObject () ;
   }
 }
 

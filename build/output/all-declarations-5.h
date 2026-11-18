@@ -5044,8 +5044,7 @@ class GGS_propertyMutability final : public AC_GALGAS_root {
   public: enum class Enumeration {
     invalid,
     enum_constantProperty,
-    enum_mutableProperty,
-    enum_weakProperty
+    enum_mutableProperty
   } ;
   
 //--------------------------------- Private properties
@@ -5074,8 +5073,6 @@ class GGS_propertyMutability final : public AC_GALGAS_root {
 
   public: static class GGS_propertyMutability class_func_mutableProperty (LOCATION_ARGS) ;
 
-  public: static class GGS_propertyMutability class_func_weakProperty (LOCATION_ARGS) ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5089,8 +5086,6 @@ class GGS_propertyMutability final : public AC_GALGAS_root {
   public: class GGS_bool getter_isConstantProperty (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isMutableProperty (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isWeakProperty (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts

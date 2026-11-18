@@ -122,7 +122,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* true */,
   false /* var */,
   false /* warning */,
-  false /* weak */,
   false /* while */,
   false /* with */,
   false /* #applicationBundleBase */,
