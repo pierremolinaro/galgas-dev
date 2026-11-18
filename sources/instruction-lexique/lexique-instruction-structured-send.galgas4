@@ -83,17 +83,17 @@ override proc @lexicalStructuredSendInstructionAST.checkLexicalInstruction (
 override func @lexicalStructuredSendInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
    ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = ""
+  -> @string {
+  result = ""
   for lexicalSendSearch in self.mLexicalSendSearchList do
-    outGeneratedCode += "if (tokenCode == 0) {\n"
-    outGeneratedCode += "  tokenCode = search_into_" + inScannerClassName.identifierRepresentation
-    outGeneratedCode += "_" + lexicalSendSearch.mSearchListName + " (mLexicalAttribute_" + lexicalSendSearch.mAttributeName + ") ;\n"
-    outGeneratedCode += "}\n"
+    result += "if (tokenCode == 0) {\n"
+    result += "  tokenCode = search_into_" + inScannerClassName.identifierRepresentation
+    result += "_" + lexicalSendSearch.mSearchListName + " (mLexicalAttribute_" + lexicalSendSearch.mAttributeName + ") ;\n"
+    result += "}\n"
   end
-  outGeneratedCode += "if tokenCode == 0 {\n"
-  outGeneratedCode += "  " + self.mLexicalSendDefaultAction.generateSwiftCocoaDefaultSendCode (inScannerClassName)
-  outGeneratedCode += "}\n"
+  result += "if tokenCode == 0 {\n"
+  result += "  " + self.mLexicalSendDefaultAction.generateSwiftCocoaDefaultSendCode (inScannerClassName)
+  result += "}\n"
 }
 
 //--------------------------------------------------------------------------------------------------

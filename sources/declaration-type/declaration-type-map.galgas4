@@ -189,7 +189,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation () ->@string result {
+  override func keyRepresentation () -> @string {
     result = "map @" + self.mMapTypeName
   }
 
@@ -644,9 +644,9 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         property.initialization,
         !hasSetter: true,
         !hasSelector: hasSelector)
-      if forbiddenKeysForMapAndDict ().contains (property.name.string) then
+      if forbiddenKeysForMap ().contains (property.name.string) then
         var @string m = "a property cannot be named:"
-        for s in forbiddenKeysForMapAndDict () do
+        for s in forbiddenKeysForMap () do
           m += " " + s
         end
         m += "; theses names are reserved"
@@ -746,9 +746,7 @@ proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape s
 
 //--------------------------------------------------------------------------------------------------
 
-func #once forbiddenKeysForMapAndDict () -> @stringset {
-  result = ["key", "description", "object"]
-}
+private let @stringset forbiddenKeysForMap = ["key", "description", "object"]
 
 //--------------------------------------------------------------------------------------------------
 //   CODE GENERATION

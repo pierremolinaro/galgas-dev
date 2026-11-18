@@ -59,9 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-private func #once forbiddenKeysForStruct () -> @stringset {
-  result = ["description", "object", "dynamicType"]
-}
+private let @stringset forbiddenKeysForStruct = ["description", "object", "dynamicType"]
 
 //--------------------------------------------------------------------------------------------------
 
@@ -101,7 +99,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation () -> @string result {
+  override func keyRepresentation () -> @string {
     result = "struct @" + self.structTypeName
   }
 

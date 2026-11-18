@@ -203,7 +203,7 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
                          let @location inEndOfMethodLocation,
                          ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration,
                          ![@formalParameterForGeneration] outRoutineSignature ) {
-  var variableMap = @localVarManager ()
+  var variableMap = @localVarManager (inAnalysisContext.semanticContext.mGlobalConstantMap)
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
@@ -282,22 +282,19 @@ override proc @externFunctionDeclarationAST.semanticAnalysis (?![@lstring] ioUse
 
 //--------------------------------------------------------------------------------------------------
 
-proc analyzeFunctionBody
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @analysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  let [@formalInputParameterAST] inFunctionSignature,
-  let [@semanticInstructionAST] inInstructionList,
-  let @lstring inReturnVariableName,
-  let @lstring inResultTypeName,
-  let @location inEndOfFunctionLocation,
-  ![@formalInputParameterForGeneration] outSignatureForGeneration,
-  !@unifiedTypeMapEntry outReturnedType,
-  !@string outResultVariableCppName,
-  ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration
-) {
-  var variableMap = @localVarManager ()
+proc analyzeFunctionBody (let @lstring inUsefulnessCallerEntityName,
+                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                          let @analysisContext inAnalysisContext,
+                          ?!@unifiedTypeMap ioTypeMap,
+                          let [@formalInputParameterAST] inFunctionSignature,
+                          let [@semanticInstructionAST] inInstructionList,
+                          let @lstring inResultTypeName,
+                          let @location inEndOfFunctionLocation,
+                          !signatureIR: [@formalInputParameterForGeneration] outSignatureForGeneration,
+                          !@unifiedTypeMapEntry outReturnedType,
+                          !@string outResultVariableCppName,
+                          ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration) {
+  var variableMap = @localVarManager (inAnalysisContext.semanticContext.mGlobalConstantMap)
 //--- Enter formal parameters
   outSignatureForGeneration = [@formalInputParameterForGeneration] ()
   for formalArg in inFunctionSignature do
@@ -332,8 +329,8 @@ proc analyzeFunctionBody
   end
 //--- Enter return variable
   outReturnedType = ioTypeMap.typeMapEntryForLKey (inResultTypeName)
-  outResultVariableCppName = "result_" + inReturnVariableName.string.identifierRepresentation
-  !?variableMap.insertOutputFormalArgument (inReturnVariableName, outReturnedType, outResultVariableCppName, outResultVariableCppName)
+  outResultVariableCppName = "result"
+  !?variableMap.insertOutputFormalArgument ("result".nowhere, outReturnedType, outResultVariableCppName, outResultVariableCppName)
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do
@@ -395,10 +392,9 @@ override proc @functionDeclarationAST.semanticAnalysis
     !?ioTypeMap,
     self.mFormalArgumentList,
     self.mFunctionInstructionList,
-    self.mResultVariableName,
     self.mResultTypeName,
     self.mEndOfFunctionInstructionList,
-    ?let formalInputParameterList,
+    ?signatureIR: let formalInputParameterList,
     ?let returnType,
     ?let resultVariableCppName,
     ?let semanticInstructionListForGeneration
@@ -410,58 +406,6 @@ override proc @functionDeclarationAST.semanticAnalysis
     !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
     self.mFunctionName.string,
     formalInputParameterList,
-    returnType,
-    resultVariableCppName,
-    semanticInstructionListForGeneration
-  )
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @onceFunctionDeclarationAST.semanticAnalysis
-  (?![@lstring] ioUsefulnessRootEntities,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string _inProductDirectory,
-  let @semanticContext inSemanticContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  let @predefinedTypes inPredefinedTypes,
-  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
-) {
-//--- Useful entities graph
-  let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mFunctionName)
-  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
-  if self.mIsUsefull then
-    ioUsefulnessRootEntities ++= nameForUsefulness
-  end
-//--- Analyse function body
-  let analysisContext = @analysisContext (
-    inSemanticContext,
-    inPredefinedTypes,
-    !selfObjectCppName: "",
-    !selfAvailability: .none,
-    !selfObjectCppPrefixForAccessingProperty: ""
-  )
-  analyzeFunctionBody (
-    nameForUsefulness,
-    !?ioUsefulEntitiesGraph,
-    analysisContext,
-    !?ioTypeMap,
-    [@formalInputParameterAST] (),
-    self.mFunctionInstructionList,
-    self.mResultVariableName,
-    self.mResultTypeName,
-    self.mEndOfFunctionInstructionList,
-    ?*,
-    ?let returnType,
-    ?let resultVariableCppName,
-    ?let semanticInstructionListForGeneration
-  )
-//---
-  ioSemanticDeclarationListForGeneration ++= @onceFunctionDeclarationForGeneration (
-    !infoMessage: "once function " + self.mFunctionName,
-    !generateHeader: true,
-    !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
-    self.mFunctionName.string,
     returnType,
     resultVariableCppName,
     semanticInstructionListForGeneration
@@ -772,7 +716,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     unusedNonTerminalSymbolsForGrammar,
     HTMLFilePath,
     nonTerminalSymbolSortedListForGrammarAnalysis,
-    if self.mHasTranslateFeature then syntaxDirectedTranslationResultVarName () else "" end,
+    if self.mHasTranslateFeature then gSyntaxDirectedTranslationResultVarName () else "" end,
     ?let @string grammarCppFile,
     ?let @string grammarHTMLHelperContents,
     ?let @string swiftGrammarDescription
@@ -1235,8 +1179,8 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone.generateCod
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode += syntaxDirectedTranslationResultVarName() + ".appendString (" + inAccessMethodName + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (syntaxDirectedTranslationResultVarName ())
+    ioGeneratedCode += gSyntaxDirectedTranslationResultVarName() + ".appendString (" + inAccessMethodName + ") ;\n"
+    !?ioUnusedVariableCppNameSet.removeKey (gSyntaxDirectedTranslationResultVarName ())
   end
 }
 
@@ -1350,7 +1294,7 @@ proc semanticAnalysisOfRuleLabel
   ![@formalParameterSignatureElement] outSignature,
   ![@semanticInstructionForGeneration] outInstructionListForGeneration
 ) {
-  var variableMap = @localVarManager ()
+  var variableMap = @localVarManager (inAnalysisContext.semanticContext.mGlobalConstantMap)
   buildLocalVariableMapAndSignature (
     inAnalysisContext.semanticContext,
     !?ioTypeMap,

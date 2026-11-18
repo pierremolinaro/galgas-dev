@@ -149,7 +149,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* #makefile-win32-on-macosx */,
   false /* #MacSwiftApp */,
   false /* #nonAtomicSelection */,
-  false /* #once */,
   false /* #preserved */,
   false /* #quietOutputByDefault */,
   false /* #replaceBy */,

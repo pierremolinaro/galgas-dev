@@ -73,7 +73,7 @@ proc analyzeSemanticInstructionListWithoutBranch (let @lstring inUsefulnessCalle
 //--- Declare local constants
   for localConstant in inLocalConstantList do
     if localConstant.mNoWarningIfUnused then
-      !?ioVariableMap.insertUsedLocalConstant (localConstant.mName, localConstant.mType, localConstant.mCppName, localConstant.mCppName)
+      !?ioVariableMap.insertUsedLocalConstant (localConstant.mName, localConstant.mType, !cppName: localConstant.mCppName, localConstant.mCppName)
     else
       !?ioVariableMap.insertInitializedLocalConstant (localConstant.mName, localConstant.mType, localConstant.mCppName, localConstant.mCppName)
     end

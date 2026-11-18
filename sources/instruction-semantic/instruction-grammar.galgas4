@@ -270,8 +270,8 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
   var assignementList = [@string] ()
-  self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
-    (inAnalysisContext,
+  self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT (
+    inAnalysisContext,
     !?ioTypeMap,
     hasTranslateFeature,
     syntaxDirectedTranslationResultVarName,

@@ -5,7 +5,7 @@ final class @TestExtensionMethod { }
 proc @TestExtensionMethod.method1() {
 }
 
-func @TestExtensionMethod.reader1() -> @uint result {
+func @TestExtensionMethod.reader1() -> @uint {
   result = 2
 }
 

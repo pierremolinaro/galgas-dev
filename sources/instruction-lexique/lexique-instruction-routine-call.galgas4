@@ -108,17 +108,17 @@ extension @abstractLexicalRoutineActualArgumentAST {
 
 override func @lexicalAttributeInputOutputArgumentAST.generateSwiftCocoaRoutineArgument (
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode
+  -> @string
 {
-  outGeneratedCode = "&self.mLexicalAttribute_" + self.mAttributeName
+  result = "&self.mLexicalAttribute_" + self.mAttributeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
+  -> @string {
+  result = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -214,12 +214,12 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
 override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string _inScannerClassName,
    ?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
+  -> @string {
+  result = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
   for actual in self.mActualArgumentList do
-    outGeneratedCode += ", " + actual.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
+    result += ", " + actual.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
   end
-  outGeneratedCode += ")\n"
+  result += ")\n"
 }
 
 //--------------------------------------------------------------------------------------------------

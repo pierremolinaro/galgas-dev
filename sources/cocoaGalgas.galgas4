@@ -53,10 +53,7 @@ gui cocoa {
     label $rule$, $<non_terminal>$
     label $proc$, $identifier$
     label $func$, $identifier$
-    label $func$, $#once$, $identifier$
-    label $func$, $#once$, $#usefull$, $identifier$
     label $func$, $#usefull$, $identifier$
-    label $func$, $#usefull$, $#once$, $identifier$
     label $filewrapper$, $identifier$, $in$
 
     label $abstract$, $proc$, $@type$, $identifier$

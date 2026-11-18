@@ -55,8 +55,8 @@ override proc @lexicalTagInstructionAST.checkLexicalInstruction (
 override func @lexicalTagInstructionAST.generateSwiftCocoaInstructionCode (
   ?let @string _inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
+  -> @string {
+  result = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -325,7 +325,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
        !?ioVariableMap.insertUsedLocalConstant (
          @lstring (property.mEnumerationName, self.mEndOfEnumerationExpression),
          property.mEnumeratedType,
-         outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
+         !cppName: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
          outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
        )
       end
@@ -487,7 +487,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
    !?ioVariableMap.insertUsedLocalConstant
      (localConstant.mName,
      localConstant.mType,
-     localConstant.mCppName,
+     !cppName: localConstant.mCppName,
      localConstant.mCppName
    )
   end

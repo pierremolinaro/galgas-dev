@@ -33,7 +33,7 @@ extension @lexicalExpressionAST {
 
 override func @lexicalOrExpressionAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string result {
+  ) -> @string {
   result = self.mLeftOperand.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
   result += " || "
   result += self.mRightOperand.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
@@ -43,49 +43,49 @@ override func @lexicalOrExpressionAST.generateSwiftCocoaConditionCode
 
 override func @lexicalCharacterIntervalMatchAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = ""
-  outGeneratedCode = "self.testForInputFromChar ("
-  outGeneratedCode += self.mLowerBound.char.uint.string
-  outGeneratedCode += ", toChar:"
-  outGeneratedCode += self.mUpperBound.char.uint.string
-  outGeneratedCode += ")"
+  ) -> @string {
+  result = ""
+  result = "self.testForInputFromChar ("
+  result += self.mLowerBound.char.uint.string
+  result += ", toChar:"
+  result += self.mUpperBound.char.uint.string
+  result += ")"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringMatchAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "self.testForInputString (" + self.mString.string.utf8Representation
-  outGeneratedCode += ", advance: true)"
+  ) -> @string {
+  result = "self.testForInputString (" + self.mString.string.utf8Representation
+  result += ", advance: true)"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringNotMatchAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "self.notTestForInputString ("
-  outGeneratedCode += self.mString.string.utf8RepresentationEscapingQuestionMark
-  outGeneratedCode += ", error: &scanningOk)"
+  ) -> @string {
+  result = "self.notTestForInputString ("
+  result += self.mString.string.utf8RepresentationEscapingQuestionMark
+  result += ", error: &scanningOk)"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterMatchAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "self.testForInputChar ("
-  outGeneratedCode += self.mCharacter.char.uint.string
-  outGeneratedCode += ")"
+  ) -> @string {
+  result = "self.testForInputChar ("
+  result += self.mCharacter.char.uint.string
+  result += ")"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterSetMatchAST.generateSwiftCocoaConditionCode
-            (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext ) -> @string outGeneratedCode {
-  outGeneratedCode = "self.testForChar_" +  self.mCharacterSetName.string + " ()"
+            (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext ) -> @string {
+  result = "self.testForChar_" +  self.mCharacterSetName.string + " ()"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -97,40 +97,40 @@ extension @lexicalRoutineOrFunctionFormalInputArgumentAST {
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalAttributeInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
-  () -> @string outGeneratedCode {
-  outGeneratedCode = "mLexicalAttribute_" + self.mAttributeName
+  () -> @string {
+  result = "mLexicalAttribute_" + self.mAttributeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
-  () -> @string outGeneratedCode {
-  outGeneratedCode = self.mCharacter.char.uint.string
+  () -> @string {
+  result = self.mCharacter.char.uint.string
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @lexicalUnsignedInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument () -> @string outGeneratedCode {
-  outGeneratedCode = self.mUnsigned.bigint.string
+override func @lexicalUnsignedInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument () -> @string {
+  result = self.mUnsigned.bigint.string
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCurrentCharacterInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
-  () -> @string outGeneratedCode {
-  outGeneratedCode = "self.previousChar"
+  () -> @string {
+  result = "self.previousChar"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalFunctionInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
-  () -> @string outGeneratedCode {
-  outGeneratedCode = "scanner_cocoa_function_" + self.mFunctionName + " ("
+  () -> @string {
+  result = "scanner_cocoa_function_" + self.mFunctionName + " ("
   for lexicalActualInputArgument in self.mFunctionActualArgumentList
-  do outGeneratedCode += lexicalActualInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
-  between outGeneratedCode += ", "
+  do result += lexicalActualInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
+  between result += ", "
   end
-  outGeneratedCode += ")"
+  result += ")"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -143,16 +143,16 @@ extension @lexicalSendDefaultActionAST {
 
 override func @lexicalSendTerminalByDefaultAST.generateSwiftCocoaDefaultSendCode
   (?let @string inScannerClassName
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mDefaultSentTerminal.string.identifierRepresentation + " ;\n"
+  ) -> @string {
+  result = "tokenCode = " + inScannerClassName + "_1_" + self.mDefaultSentTerminal.string.identifierRepresentation + " ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalErrorByDefaultAST.generateSwiftCocoaDefaultSendCode
   (?let @string _inScannerClassName
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "scanningOk = false\n"
+  ) -> @string {
+  result = "scanningOk = false\n"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -177,15 +177,15 @@ extension @abstractLexicalRuleAST {
 override func @lexicalImplicitRuleAST.generateSwiftCocoaCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
+  ) -> @string {
   inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (self.mListName, ?*, ?let tokenSortedList, ?*)
-  outGeneratedCode = ""
+  result = ""
   for > token in tokenSortedList do
-    outGeneratedCode += "if scanningOk && self.testForInputString ("
-    outGeneratedCode += token.mName.utf8Representation
-    outGeneratedCode += ", advance: true) {\n"
-    outGeneratedCode += "  tokenCode = " + inScannerClassName + "_1_" + token.mTerminalName.identifierRepresentation + "\n"
-    outGeneratedCode += "}else "
+    result += "if scanningOk && self.testForInputString ("
+    result += token.mName.utf8Representation
+    result += ", advance: true) {\n"
+    result += "  tokenCode = " + inScannerClassName + "_1_" + token.mTerminalName.identifierRepresentation + "\n"
+    result += "}else "
   end
 }
 
@@ -194,16 +194,16 @@ override func @lexicalImplicitRuleAST.generateSwiftCocoaCode
 override func @lexicalExplicitRuleAST.generateSwiftCocoaCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "if scanningOk && ("
-  outGeneratedCode += self.mLexicalRuleExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
-  outGeneratedCode += ") {\n"
-  !?outGeneratedCode.incIndentation (2)
+  ) -> @string {
+  result = "if scanningOk && ("
+  result += self.mLexicalRuleExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
+  result += ") {\n"
+  !?result.incIndentation (2)
   for instruction in self.mInstructionList do
-    outGeneratedCode += instruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+    result += instruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
   end
-  !?outGeneratedCode.decIndentation (2)
-  outGeneratedCode += "}else "
+  !?result.decIndentation (2)
+  result += "}else "
 }
 
 //--------------------------------------------------------------------------------------------------

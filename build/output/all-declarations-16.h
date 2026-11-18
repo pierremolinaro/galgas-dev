@@ -10,6 +10,20 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension mutating proc '@localVarManager insertDeclaredLocalVariable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertDeclaredLocalVariable (class GGS_localVarManager & ioObject,
+                                                  const class GGS_lstring constin_inVarName,
+                                                  const class GGS_unifiedTypeMapEntry constin_inType,
+                                                  const class GGS_string constin_inCppName,
+                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension mutating proc '@localVarManager insertUsedLocalConstant'
 //
 //--------------------------------------------------------------------------------------------------
@@ -546,20 +560,6 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager insertDeclaredLocalVariable'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDeclaredLocalVariable (class GGS_localVarManager & ioObject,
-                                                  const class GGS_lstring constin_inVarName,
-                                                  const class GGS_unifiedTypeMapEntry constin_inType,
-                                                  const class GGS_string constin_inCppName,
-                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'println?'
 //
 //--------------------------------------------------------------------------------------------------
@@ -580,12 +580,12 @@ void routine_print_3F_ (const class GGS_string constinArgument0,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'syntaxDirectedTranslationResultVarName'
+//Function 'gSyntaxDirectedTranslationResultVarName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string function_syntaxDirectedTranslationResultVarName (Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+class GGS_string function_gSyntaxDirectedTranslationResultVarName (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -423,8 +423,8 @@ proc @semanticDeclarationForGeneration.appendDeclaration2
 
 //--------------------------------------------------------------------------------------------------
 
-func @semanticDeclarationForGeneration.appendTypeGenericImplementation () ->@string outImplementation {
-  outImplementation = ""
+func @semanticDeclarationForGeneration.appendTypeGenericImplementation () ->@string {
+  result = ""
 }
 
 //--------------------------------------------------------------------------------------------------

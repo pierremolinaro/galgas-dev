@@ -494,9 +494,7 @@ private proc buildHeader
 
 //--------------------------------------------------------------------------------------------------
 
-private func #once definitionGroupAmount () -> @uint {
-  result = 50
-}
+private let @uint definitionGroupAmount = 50
 
 //--------------------------------------------------------------------------------------------------
 

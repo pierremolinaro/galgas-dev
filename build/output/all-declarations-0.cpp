@@ -5106,49 +5106,49 @@ const GALGAS_TypeDescriptor * GGS_opAssignmentOperator::staticTypeDescriptor (vo
 GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
                                    Compiler * /* inCompiler */
                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
+  GGS_string result ; // Returned variable
   const GGS_opAssignmentOperator temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GGS_opAssignmentOperator::Enumeration::invalid:
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_orAssign:
     {
-      result_result = GGS_string ("|=") ;
+      result = GGS_string ("|=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_xorAssign:
     {
-      result_result = GGS_string ("^=") ;
+      result = GGS_string ("^=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_andAssign:
     {
-      result_result = GGS_string ("&=") ;
+      result = GGS_string ("&=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_plusAssign:
     {
-      result_result = GGS_string ("+=") ;
+      result = GGS_string ("+=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_minusAssign:
     {
-      result_result = GGS_string ("-=") ;
+      result = GGS_string ("-=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_mulAssign:
     {
-      result_result = GGS_string ("*=") ;
+      result = GGS_string ("*=") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_divAssign:
     {
-      result_result = GGS_string ("/=") ;
+      result = GGS_string ("/=") ;
     }
     break ;
   }
 //---
-  return result_result ;
+  return result ;
 }
 
 
@@ -5161,49 +5161,49 @@ GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
 GGS_string extensionGetter_cppFunctionName (const GGS_opAssignmentOperator & inObject,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
+  GGS_string result ; // Returned variable
   const GGS_opAssignmentOperator temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GGS_opAssignmentOperator::Enumeration::invalid:
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_orAssign:
     {
-      result_result = GGS_string ("orAssignOperation") ;
+      result = GGS_string ("orAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_xorAssign:
     {
-      result_result = GGS_string ("xorAssignOperation") ;
+      result = GGS_string ("xorAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_andAssign:
     {
-      result_result = GGS_string ("andAssignOperation") ;
+      result = GGS_string ("andAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_plusAssign:
     {
-      result_result = GGS_string ("plusAssignOperation") ;
+      result = GGS_string ("plusAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_minusAssign:
     {
-      result_result = GGS_string ("minusAssignOperation") ;
+      result = GGS_string ("minusAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_mulAssign:
     {
-      result_result = GGS_string ("mulAssignOperation") ;
+      result = GGS_string ("mulAssignOperation") ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_divAssign:
     {
-      result_result = GGS_string ("divAssignOperation") ;
+      result = GGS_string ("divAssignOperation") ;
     }
     break ;
   }
 //---
-  return result_result ;
+  return result ;
 }
 
 

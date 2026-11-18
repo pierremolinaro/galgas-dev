@@ -325,28 +325,6 @@ class GGS_lstring function_typeNameForUsefulEntitiesGraph (const class GGS_lstri
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeFunctionBody?&?&?????!!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                      const class GGS_analysisContext constinArgument2,
-                                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                                      const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
-                                                                                      const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
-                                                                                      const class GGS_lstring constinArgument6,
-                                                                                      const class GGS_lstring constinArgument7,
-                                                                                      const class GGS_location constinArgument8,
-                                                                                      class GGS__5B_formalInputParameterForGeneration_5D_ & outArgument9,
-                                                                                      class GGS_unifiedTypeMapEntry & outArgument10,
-                                                                                      class GGS_string & outArgument11,
-                                                                                      class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument12,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'checkGetterSignatures??????'
 //
 //--------------------------------------------------------------------------------------------------
@@ -640,16 +618,6 @@ class GGS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const 
                                                                           const class GGS_lstring & constinArgument1,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'functionNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_functionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

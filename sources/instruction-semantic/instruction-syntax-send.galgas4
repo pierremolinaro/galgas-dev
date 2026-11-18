@@ -140,9 +140,9 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
       ?let @string sourceVar
     )
   //---
-    !?ioUnusedVariableCppNameSet.removeKey (syntaxDirectedTranslationResultVarName ())
+    !?ioUnusedVariableCppNameSet.removeKey (gSyntaxDirectedTranslationResultVarName ())
     ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
-    ioGeneratedCode += "  " + syntaxDirectedTranslationResultVarName ()
+    ioGeneratedCode += "  " + gSyntaxDirectedTranslationResultVarName ()
     ioGeneratedCode += ".appendString (" + sourceVar + ".stringValue ()) ;\n"
     ioGeneratedCode += "}\n"
   }

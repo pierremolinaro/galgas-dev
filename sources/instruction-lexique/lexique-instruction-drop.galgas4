@@ -55,8 +55,8 @@ override proc @lexicalDropInstructionAST.checkLexicalInstruction (
 override func @lexicalDropInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
+  ) -> @string {
+  result = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
 }
 
 //--------------------------------------------------------------------------------------------------

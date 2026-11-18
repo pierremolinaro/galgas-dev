@@ -1,0 +1,199 @@
+//--------------------------------------------------------------------------------------------------//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+
+syntax extension galgas4InstructionsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //    GLOBAL CONSTANT DECLARATION
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $let$
+    <type_definition> (!?ioDeclarations, ?let resultTypeName)
+    $identifier$ (?let functionName) indexing (functionDefinition)
+    $=$
+    let [@semanticInstructionAST] functionInstructionList
+    select
+      <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+      let assignment = @assignmentInstructionAST (
+        .here,
+        "result".here,
+        .none,
+        expression
+      )
+      functionInstructionList = [assignment]
+    or
+      ${$
+      <semantic_instruction_list> (!?ioDeclarations, ?functionInstructionList)
+      $}$
+    end
+    let endOfFunctionInstructionList = @location.here
+    ioDeclarations.mDeclarationList ++= @onceFunctionDeclarationAST (
+      !isPredefined: false,
+      functionName,
+      resultTypeName,
+      functionInstructionList,
+      endOfFunctionInstructionList,
+      false, // Private
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $private$
+    $let$
+    <type_definition> (!?ioDeclarations, ?let resultTypeName)
+    $identifier$ (?let functionName) indexing (functionDefinition)
+    $=$
+    let [@semanticInstructionAST] functionInstructionList
+    select
+      <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+      let assignment = @assignmentInstructionAST (
+        .here,
+        "result".here,
+        .none,
+        expression
+      )
+      functionInstructionList = [assignment]
+    or
+      ${$
+      <semantic_instruction_list> (!?ioDeclarations, ?functionInstructionList)
+      $}$
+    end
+    let endOfFunctionInstructionList = @location.here
+    ioDeclarations.mDeclarationList ++= @onceFunctionDeclarationAST (
+      !isPredefined: false,
+      functionName,
+      resultTypeName,
+      functionInstructionList,
+      endOfFunctionInstructionList,
+      true, // Private
+      false
+    )
+  }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// AST
+//--------------------------------------------------------------------------------------------------
+
+final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mGlobalConstanteName
+  private let @lstring mResultTypeName
+  private let [@semanticInstructionAST] mFunctionInstructionList
+  private let @location mEndOfFunctionInstructionList
+  private let @bool mIsPrivate
+  private let @bool mIsUsefull
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "once function " + self.mGlobalConstanteName
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override proc enterDeclarationInSemanticContext (?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?!@semanticContext ioSemanticContext) {
+  //--- Result type
+    !?ioTypeMap.makeEntry (self.mResultTypeName, ?let @unifiedTypeMapEntry resultType)
+  //--- Enter function in routine map
+    !?ioSemanticContext.mFunctionMap.insertKey (self.mGlobalConstanteName, @(), resultType, self.mIsPrivate)
+    !?ioSemanticContext.mGlobalConstantMap.insert (self.mGlobalConstanteName, resultType, self.mIsPrivate)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override proc enterDeclarationInGraph
+    (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
+    ioExtensionOverrideDefinitionList ++= self
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+    let @string _inProductDirectory,
+    let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    let @predefinedTypes inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
+) {
+  //--- Useful entities graph
+    let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mGlobalConstanteName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+    if self.mIsUsefull then
+      ioUsefulnessRootEntities ++= nameForUsefulness
+    end
+  //--- Analyse function body
+    let analysisContext = @analysisContext (
+      inSemanticContext,
+      inPredefinedTypes,
+      !selfObjectCppName: "",
+      !selfAvailability: .none,
+      !selfObjectCppPrefixForAccessingProperty: ""
+    )
+    analyzeFunctionBody (
+      nameForUsefulness,
+      !?ioUsefulEntitiesGraph,
+      analysisContext,
+      !?ioTypeMap,
+      [@formalInputParameterAST] (),
+      self.mFunctionInstructionList,
+      self.mResultTypeName,
+      self.mEndOfFunctionInstructionList,
+      ?signatureIR: *,
+      ?let returnType,
+      ?let resultVariableCppName,
+      ?let semanticInstructionListForGeneration
+    )
+  //---
+    ioSemanticDeclarationListForGeneration ++= @onceFunctionDeclarationForGeneration (
+      !infoMessage: "global constant " + self.mGlobalConstanteName,
+      !generateHeader: true,
+      !implementationCppFileName: "func-" + self.mGlobalConstanteName.string.fileNameRepresentation,
+      self.mGlobalConstanteName.string,
+      returnType,
+      resultVariableCppName,
+      semanticInstructionListForGeneration
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

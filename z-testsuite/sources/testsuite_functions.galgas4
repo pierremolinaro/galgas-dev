@@ -3,7 +3,7 @@
 func functionTest(
   ?@uint inArg1,
   ?let@uint inArg2)
--> @uint result {
+-> @uint {
   result = inArg1 + inArg2
 }
 

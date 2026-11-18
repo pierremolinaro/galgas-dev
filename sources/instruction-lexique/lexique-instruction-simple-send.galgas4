@@ -71,8 +71,8 @@ override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
 override func @lexicalSimpleSendInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
+  ) -> @string {
+  result = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
 }
 
 //--------------------------------------------------------------------------------------------------

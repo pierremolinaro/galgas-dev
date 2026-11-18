@@ -8151,6 +8151,205 @@ class GGS_functionMap final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionMap ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @globalConstantMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_globalConstantMap final {
+
+  public: DownEnumerator_globalConstantMap (const class GGS_globalConstantMap & inMap) ;
+
+  public: ~ DownEnumerator_globalConstantMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mIsPrivate (LOCATION_ARGS) const ;
+
+  public: class GGS_globalConstantMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_globalConstantMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_globalConstantMap (const DownEnumerator_globalConstantMap &) = delete ;
+  private: DownEnumerator_globalConstantMap & operator = (const DownEnumerator_globalConstantMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_globalConstantMap final {
+  public: UpEnumerator_globalConstantMap (const class GGS_globalConstantMap & inMap)  ;
+
+  public: ~ UpEnumerator_globalConstantMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_mType (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsPrivate (LOCATION_ARGS) const ;
+  public: class GGS_globalConstantMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_globalConstantMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_globalConstantMap (const UpEnumerator_globalConstantMap &) = delete ;
+  private: UpEnumerator_globalConstantMap & operator = (const UpEnumerator_globalConstantMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_globalConstantMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_globalConstantMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_globalConstantMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_globalConstantMap (void) ;
+
+//--- Handle copy
+  public: GGS_globalConstantMap (const GGS_globalConstantMap & inSource) ;
+  public: GGS_globalConstantMap & operator = (const GGS_globalConstantMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_globalConstantMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_globalConstantMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_globalConstantMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_globalConstantMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_globalConstantMap class_func_mapWithMapToOverride (const class GGS_globalConstantMap & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insert (class GGS_lstring constinArgument0,
+                              class GGS_unifiedTypeMapEntry constinArgument1,
+                              class GGS_bool constinArgument2,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMIsPrivateForKey (class GGS_bool constinArgument0,
+                                           class GGS_string constinArgument1,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMTypeForKey (class GGS_unifiedTypeMapEntry constinArgument0,
+                                      class GGS_string constinArgument1,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_mIsPrivateForKey (const class GGS_string & constinOperand0,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_unifiedTypeMapEntry getter_mTypeForKey (const class GGS_string & constinOperand0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_globalConstantMap getter_overriddenMap (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_globalConstantMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_globalConstantMap ;
+  friend class DownEnumerator_globalConstantMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_globalConstantMap ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarMap map
 //--------------------------------------------------------------------------------------------------
 
@@ -9387,6 +9586,11 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     return mProperty_mFunctionMap ;
   }
 
+  public: GGS_globalConstantMap mProperty_mGlobalConstantMap ;
+  public: inline GGS_globalConstantMap readProperty_mGlobalConstantMap (void) const {
+    return mProperty_mGlobalConstantMap ;
+  }
+
   public: GGS_filewrapperMap mProperty_mFilewrapperMap ;
   public: inline GGS_filewrapperMap readProperty_mFilewrapperMap (void) const {
     return mProperty_mFilewrapperMap ;
@@ -9428,6 +9632,10 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     mProperty_mFunctionMap = inValue ;
   }
 
+  public: inline void setter_setMGlobalConstantMap (const GGS_globalConstantMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mGlobalConstantMap = inValue ;
+  }
+
   public: inline void setter_setMFilewrapperMap (const GGS_filewrapperMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFilewrapperMap = inValue ;
   }
@@ -9454,6 +9662,7 @@ class GGS_semanticContext final : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_semanticContext (const GGS_routineMap & in_routineMap,
                                const GGS_functionMap & in_mFunctionMap,
+                               const GGS_globalConstantMap & in_mGlobalConstantMap,
                                const GGS_filewrapperMap & in_mFilewrapperMap,
                                const GGS_grammarMap & in_grammarMap,
                                const GGS_optionComponentMapForSemanticAnalysis & in_mOptionComponentMapForSemanticAnalysis,
@@ -10344,8 +10553,9 @@ class GGS_localVarManager final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_localVarManager init (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_localVarManager init_21_ (const class GGS_globalConstantMap & inOperand0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

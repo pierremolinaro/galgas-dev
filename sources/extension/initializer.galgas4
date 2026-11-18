@@ -179,7 +179,7 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
                         let @location inEndOfMethodLocation,
                         ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration,
                         ![@formalInputParameterForGeneration] outSignatureForGeneration) {
-  var variableMap = @localVarManager ()
+  var variableMap = @localVarManager (inAnalysisContext.semanticContext.mGlobalConstantMap)
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
     for property in selfAvailable.type.definition.allTypedPropertyList do

@@ -20,7 +20,7 @@ func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
   result = inB + inA + self.aReader (inA, inB) + self.aReader (inA, inB)
 }
 
-override func @B_B.location() -> @location outLocation { outLocation = .here}
+override func @B_B.location() -> @location { result = .here}
 
 func @uint.carré () -> @uint {
   result = self * self

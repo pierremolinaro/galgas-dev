@@ -54,11 +54,11 @@ override proc @lexicalErrorInstructionAST.checkLexicalInstruction (
 //! COCOA GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//override func exicalErrorInstructionAST generateObjcCocoaInstructionCode
+//override func lexicalErrorInstructionAST generateObjcCocoaInstructionCode
 //  ?let @string unused inScannerClassName
 //  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "scanningOk = NO ;\n"
+//  -> @string {
+//  result = "scanningOk = NO ;\n"
 //}
 
 //--------------------------------------------------------------------------------------------------
@@ -66,8 +66,8 @@ override proc @lexicalErrorInstructionAST.checkLexicalInstruction (
 override func @lexicalErrorInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string _inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = "scanningOk = false\n"
+  ) -> @string {
+  result = "scanningOk = false\n"
 }
 
 //--------------------------------------------------------------------------------------------------

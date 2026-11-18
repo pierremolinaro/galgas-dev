@@ -37,12 +37,6 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ (?resultVariableName)
-    or
-      resultVariableName = @("result", .here)
-    end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = @location.here
@@ -53,7 +47,6 @@ syntax extension galgas4DeclarationsSyntax {
       getterName,
       formalInputParameterList,
       returnedTypeName,
-      resultVariableName,
       routineInstructionList,
       endOfInstructionList
     )
@@ -75,10 +68,9 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    let @lstring resultVariableName = @("result", .here)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
-    let @location endOfInstructionList = @location.here
+    let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @extensionGetterAST (
       !isPredefined: false,
@@ -86,7 +78,6 @@ syntax extension galgas4DeclarationsSyntax {
       getterName,
       formalInputParameterList,
       returnedTypeName,
-      resultVariableName,
       routineInstructionList,
       endOfInstructionList
     )
@@ -105,7 +96,6 @@ final class @extensionGetterAST : @semanticDeclarationAST {
   private let @lstring mExtensionGetterName
   private let [@formalInputParameterAST] mExtensionGetterFormalInputParameterList
   private let @lstring mExtensionGetterReturnedTypeName
-  private let @lstring mExtensionGetterReturnedVariableName
   private let [@semanticInstructionAST] mExtensionGetterInstructionList
   private let @location mEndOfReaderLocation
 
@@ -216,10 +206,9 @@ override proc @extensionGetterAST.semanticAnalysis (
     !?ioTypeMap,
     self.mExtensionGetterFormalInputParameterList,
     self.mExtensionGetterInstructionList,
-    self.mExtensionGetterReturnedVariableName,
     self.mExtensionGetterReturnedTypeName,
     self.mEndOfReaderLocation,
-    ?let formalParameterListForGeneration,
+    ?signatureIR: let formalParameterListForGeneration,
     ?let returnType,
     ?let returnVariableCppName,
     ?let semanticInstructionListForGeneration

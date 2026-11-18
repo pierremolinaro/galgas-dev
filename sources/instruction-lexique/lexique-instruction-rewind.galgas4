@@ -61,9 +61,9 @@ override proc @lexicalRewindInstructionAST.checkLexicalInstruction (
 override func @lexicalRewindInstructionAST.generateSwiftCocoaInstructionCode (
   ?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
-  outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
+  -> @string {
+  result = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
+  result += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -108,7 +108,7 @@ proc [@propertyInCollectionAST].buildPropertyInitializationCode (let @lstring in
    switch property.initialization
     case none :
     case some (expressionAST) :
-      var variableMap = @localVarManager ()
+      var variableMap = @localVarManager (inSemanticContext.mGlobalConstantMap)
       let @analysisContext analysisContext = @(
         inSemanticContext,
         inPredefinedTypes,

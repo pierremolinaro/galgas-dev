@@ -25,7 +25,7 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
       %,\n%!^ 
     end
     if HAS_TRANSLATE_FEATURE then
-      %class String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %class String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %class Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
   end
@@ -51,13 +51,13 @@ end%
       %,\n%!^
     end
     if HAS_TRANSLATE_FEATURE then
-      %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end
   %/*  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_parse (%?^
   if HAS_TRANSLATE_FEATURE then
-    %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
+    %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
   end
   %Lexique_%!LEXIQUE_NAME% * inLexique) ; */\n\n%
   if HAS_INDEXING then

@@ -88,32 +88,32 @@ override proc @lexicalSelectInstructionAST.checkLexicalInstruction (
 override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string outGeneratedCode {
-  outGeneratedCode = ""
+  ) -> @string {
+  result = ""
 //---
   for lexicalSelectBranch in self.mLexicalSelectBranchList
   do
-    outGeneratedCode += "if scanningOk && ("
-    outGeneratedCode += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
-    outGeneratedCode += ") {\n"
-    !?outGeneratedCode.incIndentation (2)
+    result += "if scanningOk && ("
+    result += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
+    result += ") {\n"
+    !?result.incIndentation (2)
     for entry in lexicalSelectBranch.mSelectInstructionList do
-      outGeneratedCode += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?outGeneratedCode.decIndentation (2)
+    !?result.decIndentation (2)
   between
-    outGeneratedCode += "}else "
+    result += "}else "
   end
 //--- Default branch
   if self.mDefaultInstructionList.count > 0 then
-    outGeneratedCode += "}else{\n"
-    !?outGeneratedCode.incIndentation (2)
+    result += "}else{\n"
+    !?result.incIndentation (2)
     for entry in self.mDefaultInstructionList do
-      outGeneratedCode += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?outGeneratedCode.decIndentation (2)
+    !?result.decIndentation (2)
   end
-  outGeneratedCode += "}\n"
+  result += "}\n"
 }
 
 //--------------------------------------------------------------------------------------------------

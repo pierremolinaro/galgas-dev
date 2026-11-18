@@ -246,7 +246,7 @@ proc generateProcedure
 //--- Build unused variable set
   var @stringset unusedVariableCppNameSet = @()
   if inGenerateSyntaxDirectedTranslationString then
-    unusedVariableCppNameSet ++= syntaxDirectedTranslationResultVarName ()
+    unusedVariableCppNameSet ++= gSyntaxDirectedTranslationResultVarName ()
   end
   if not inGenerateResetTemplateString then
     unusedVariableCppNameSet ++= compilerCppName ()
@@ -303,10 +303,10 @@ proc generateProcedure
   end
 //--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
-    if unusedVariableCppNameSet.contains (syntaxDirectedTranslationResultVarName ()) then
-      outGeneratedCode += "String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
+    if unusedVariableCppNameSet.contains (gSyntaxDirectedTranslationResultVarName ()) then
+      outGeneratedCode += "String & /* " + gSyntaxDirectedTranslationResultVarName () + " */,\n"
     else
-      outGeneratedCode += "String & " + syntaxDirectedTranslationResultVarName () + ",\n"
+      outGeneratedCode += "String & " + gSyntaxDirectedTranslationResultVarName () + ",\n"
     end
     !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end

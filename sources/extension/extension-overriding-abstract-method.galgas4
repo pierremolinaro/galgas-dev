@@ -181,7 +181,7 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
     error self.mOverridingExtensionMethodName:"this func is not declared by a super class"
   end
 //--- Analyze formal argument list
-  var variableMap = @localVarManager ()
+  var variableMap = @localVarManager (inSemanticContext.mGlobalConstantMap)
   buildLocalVariableMapAndSignature (
     inSemanticContext,
     !?ioTypeMap,

@@ -97,17 +97,10 @@ syntax galgas4InstructionsSyntax : galgasScanner4 {
   //    F U N C T I O N    D E C L A R A T I O N
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $func$
-    var isOnce = false
     var isUsefull = false
     repeat
-    while
-      $#once$
-      if isOnce then
-        error .here : "duplicate attribute" fixit #remove
-      end
-      isOnce = true
     while
       $#usefull$
       if isUsefull then
@@ -117,45 +110,22 @@ syntax galgas4InstructionsSyntax : galgasScanner4 {
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
-    if isOnce, (formalInputParameterList.count > 0) then
-      error functionName: "an 'once' function should has no argument"
-    end
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ (?resultVariableName)
-    or
-      resultVariableName = @("result", .here)
-    end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
-    if isOnce then
-      ioDeclarations.mDeclarationList ++= @onceFunctionDeclarationAST (
-        !isPredefined: false,
-        functionName,
-        resultTypeName,
-        resultVariableName,
-        functionInstructionList,
-        endOfFunctionInstructionList,
-        false, // Private
-        isUsefull
-      )
-    else
-      ioDeclarations.mDeclarationList ++= @functionDeclarationAST (
-        !isPredefined: false,
-        functionName,
-        formalInputParameterList,
-        resultTypeName,
-        !usefullFunc: isUsefull,
-        resultVariableName,
-        functionInstructionList,
-        endOfFunctionInstructionList,
-        false // private
-      )
-    end
+    ioDeclarations.mDeclarationList ++= @functionDeclarationAST (
+      !isPredefined: false,
+      functionName,
+      formalInputParameterList,
+      resultTypeName,
+      !usefullFunc: isUsefull,
+      functionInstructionList,
+      endOfFunctionInstructionList,
+      false // private
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,15 +133,8 @@ syntax galgas4InstructionsSyntax : galgasScanner4 {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $func$
-    var isOnce = false
     var isUsefull = false
     repeat
-    while
-      $#once$
-      if isOnce then
-        error .here : "duplicate attribute" fixit #remove
-      end
-      isOnce = true
     while
       $#usefull$
       if isUsefull then
@@ -181,45 +144,22 @@ syntax galgas4InstructionsSyntax : galgasScanner4 {
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
-    if isOnce, (formalInputParameterList.count > 0) then
-      error functionName: "an 'once' function should has no argument"
-    end
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ (?resultVariableName)
-    or
-      resultVariableName = @("result", .here)
-    end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
-    if isOnce then
-      ioDeclarations.mDeclarationList ++= @onceFunctionDeclarationAST (
-        !isPredefined: false, // Is not predefined
-        functionName,
-        resultTypeName,
-        resultVariableName,
-        functionInstructionList,
-        endOfFunctionInstructionList,
-        true, // Private
-        isUsefull
-      )
-    else
-      ioDeclarations.mDeclarationList ++= @functionDeclarationAST (
-        !isPredefined: false,
-        functionName,
-        formalInputParameterList,
-        resultTypeName,
-        !usefullFunc: isUsefull,
-        resultVariableName,
-        functionInstructionList,
-        endOfFunctionInstructionList,
-        true // private
-      )
-    end
+    ioDeclarations.mDeclarationList ++= @functionDeclarationAST (
+      !isPredefined: false,
+      functionName,
+      formalInputParameterList,
+      resultTypeName,
+      !usefullFunc: isUsefull,
+      functionInstructionList,
+      endOfFunctionInstructionList,
+      true // private
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

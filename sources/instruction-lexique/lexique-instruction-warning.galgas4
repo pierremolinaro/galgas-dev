@@ -57,8 +57,8 @@ override proc @lexicalWarningInstructionAST.checkLexicalInstruction (
 override func @lexicalWarningInstructionAST.generateSwiftCocoaInstructionCode (
   ?let @string _inScannerClassName,
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string outGeneratedCode {
-  outGeneratedCode = "" // No generated code
+  -> @string {
+  result = "" // No generated code
 }
 
 //--------------------------------------------------------------------------------------------------

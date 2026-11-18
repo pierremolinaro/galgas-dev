@@ -145,6 +145,37 @@ void routine_lexicalUnicodeTestFunctionAnalysis_21_ (class GGS_stringset & outAr
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'functionNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_functionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'analyzeFunctionBody?&?&????!signatureIR!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__21_signatureIR_21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                             class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                             const class GGS_analysisContext constinArgument2,
+                                                                                             class GGS_unifiedTypeMap & ioArgument3,
+                                                                                             const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
+                                                                                             const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                                             const class GGS_lstring constinArgument6,
+                                                                                             const class GGS_location constinArgument7,
+                                                                                             class GGS__5B_formalInputParameterForGeneration_5D_ & outArgument8,
+                                                                                             class GGS_unifiedTypeMapEntry & outArgument9,
+                                                                                             class GGS_string & outArgument10,
+                                                                                             class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument11,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'targetGalgas3GenerationFileWrapper'
 //
 //--------------------------------------------------------------------------------------------------

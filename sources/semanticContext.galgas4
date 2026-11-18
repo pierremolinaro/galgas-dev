@@ -38,15 +38,11 @@ func @location.commaSourceFile () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func #once compilerCppName () ->@string {
-  result = "inCompiler"
-}
+let @string compilerCppName = "inCompiler"
 
 //--------------------------------------------------------------------------------------------------
 
-func #once syntaxDirectedTranslationResultVarName () ->@string {
-  result = "ioSyntaxDirectedTranslationResult"
-}
+let @string gSyntaxDirectedTranslationResultVarName = "ioSyntaxDirectedTranslationResult"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -200,11 +196,20 @@ map @syntaxComponentMap {
 struct @semanticContext {
   public var @routineMap routineMap = @()
   public var @functionMap mFunctionMap = @()
+  public var @globalConstantMap mGlobalConstantMap = @()
   public var @filewrapperMap mFilewrapperMap = @()
   public var @grammarMap grammarMap = @()
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
+}
+
+//--------------------------------------------------------------------------------------------------
+
+map @globalConstantMap {
+  let @unifiedTypeMapEntry mType
+  let @bool mIsPrivate
+  #insertSetter insert #errorMessage "the '%K' global constant has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -330,13 +335,6 @@ override func @filewrapperDeclarationAST.keyRepresentation
 override func @optionComponentDeclarationAST.keyRepresentation
   () ->@string {
   result = "option " + self.mOptionComponentName
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @onceFunctionDeclarationAST.keyRepresentation
-  () ->@string {
-  result = "once function " + self.mFunctionName
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -681,22 +679,6 @@ override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext //
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @onceFunctionDeclarationAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap _ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@semanticContext ioSemanticContext ) {
-//--- Result type
-  !?ioTypeMap.makeEntry  (self.mResultTypeName, ?let @unifiedTypeMapEntry resultTypeIndex)
-//--- Enter function in routine map
-  !?ioSemanticContext.mFunctionMap.insertKey (self.mFunctionName, @(), resultTypeIndex, self.mIsInternal)
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @galgas3SyntaxComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap _ioEquatableExtensionMap,
   let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
@@ -812,19 +794,6 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap _ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList ) {
-  ioExtensionOverrideDefinitionList ++= self
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @onceFunctionDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap _ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,

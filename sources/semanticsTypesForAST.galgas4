@@ -272,26 +272,9 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 final class @functionDeclarationAST : @externFunctionDeclarationAST {
-  public let @lstring mResultVariableName
   public let [@semanticInstructionAST] mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
   public let @bool mIsInternal
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//    O N C E    F U N C T I O N    D E C L A R A T I O N
-//
-//--------------------------------------------------------------------------------------------------
-
-final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
-  public let @lstring mFunctionName
-  public let @lstring mResultTypeName
-  public let @lstring mResultVariableName
-  public let [@semanticInstructionAST] mFunctionInstructionList
-  public let @location mEndOfFunctionInstructionList
-  public let @bool mIsInternal
-  public let @bool mIsUsefull
 }
 
 //--------------------------------------------------------------------------------------------------
