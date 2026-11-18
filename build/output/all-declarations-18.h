@@ -872,6 +872,8 @@ extern const cDirectoryWrapper gWrapperDirectory_5_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_6_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
 extern const cDirectoryWrapper gWrapperDirectory_8_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_9_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_10_typeDumpGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -961,25 +963,23 @@ void routine_performGalgas_33_ProjectGlobalCheckings_26__3F_ (class GGS_unifiedT
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'projectGeneration??absoluteBuildDir?buildDirName??????????'
+//Routine 'projectGeneration??absoluteBuildDir?buildDirName????????'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_ (const class GGS_unifiedTypeMap constinArgument0,
-                                                                                                                const class GGS_string constinArgument1,
-                                                                                                                const class GGS_string constinArgument2,
-                                                                                                                const class GGS_optionComponentMapForGeneration constinArgument3,
-                                                                                                                const class GGS__5B_string_5D_ constinArgument4,
-                                                                                                                const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument5,
-                                                                                                                const class GGS__5B_programRuleAST_5D_ constinArgument6,
-                                                                                                                const class GGS_galgas_33_ProjectComponentAST constinArgument7,
-                                                                                                                const class GGS_string constinArgument8,
-                                                                                                                const class GGS_string constinArgument9,
-                                                                                                                const class GGS__5B_string_5D_ constinArgument10,
-                                                                                                                const class GGS__5B_string_5D_ constinArgument11,
-                                                                                                                const class GGS__5B_string_5D_ constinArgument12,
-                                                                                                                Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
+void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                                                        const class GGS_string constinArgument1,
+                                                                                                        const class GGS_string constinArgument2,
+                                                                                                        const class GGS_optionComponentMapForGeneration constinArgument3,
+                                                                                                        const class GGS__5B_string_5D_ constinArgument4,
+                                                                                                        const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument5,
+                                                                                                        const class GGS__5B_programRuleAST_5D_ constinArgument6,
+                                                                                                        const class GGS_galgas_33_ProjectComponentAST constinArgument7,
+                                                                                                        const class GGS_string constinArgument8,
+                                                                                                        const class GGS_string constinArgument9,
+                                                                                                        const class GGS__5B_string_5D_ constinArgument10,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

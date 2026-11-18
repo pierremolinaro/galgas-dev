@@ -62,6 +62,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u64")
 
   appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
+//  appendProjectTargetTypes (!?ioDeclarations.mDeclarationList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -304,16 +305,16 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
   var propertyList = [@propertyInCollectionAST] ()
   propertyList ++= @(
     !mutability: .mutableProperty,
-    @lstring (inElementTypeName, @location.here),
-    @lstring (inElementTypeName, @location.here),
+    !typeName: @lstring (inElementTypeName, @location.here),
+    !name: @lstring (inElementTypeName, @location.here),
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   propertyList ++= @(
     !mutability: .mutableProperty,
-    @lstring ("location", @location.here),
-    @lstring ("location", @location.here),
+    !typeName: @lstring ("location", @location.here),
+    !name: @lstring ("location", @location.here),
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
@@ -335,16 +336,16 @@ private proc append_stringString_StructAST (?![@semanticDeclarationAST] ioDeclar
   var propertyList = [@propertyInCollectionAST] ()
   propertyList ++= @(
     !mutability: .mutableProperty,
-    "string".here,
-    "left".here,
+    !typeName: "string".here,
+    !name: "left".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   propertyList ++= @(
     !mutability: .mutableProperty,
-    "string".here,
-    "right".here,
+    !typeName: "string".here,
+    !name: "right".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
@@ -366,16 +367,16 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
   var [@propertyInCollectionAST] propertyList = @()
   propertyList ++= @(
     !mutability: .mutableProperty,
-    "uint".here,
-    "start".here,
+    !typeName: "uint".here,
+    !name: "start".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   propertyList ++= @(
     !mutability: .mutableProperty,
-    "uint".here,
-    "length".here,
+    !typeName: "uint".here,
+    !name: "length".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
@@ -389,6 +390,82 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
     !isUsefullStruct: true
   )
 }
+
+//--------------------------------------------------------------------------------------------------
+
+//private proc appendProjectTargetTypes (?![@semanticDeclarationAST] ioDeclarationListASTs) {
+//  let [@lstring] flagList = [
+//    "makefileUnix".nowhere,
+//    "makefileMacOS".nowhere,
+//    "makefileX86Linux32OnMacOS".nowhere,
+//    "makefileX86Linux64OnMacOS".nowhere,
+//    "makefileARM64LinuxOnMacOS".nowhere,
+//    "makefileWin32OnMacOS".nowhere,
+//    "macSwiftApp".nowhere,
+//    "codeblocksWindows".nowhere,
+//    "codeblocksLinux32".nowhere,
+//    "codeblocksLinux64".nowhere
+//  ]
+//  ioDeclarationListASTs ++= @optionSetDeclarationAST (
+//    !isPredefined: true,
+//    "projectTargets".here,
+//    flagList,
+//    !isEquatable: true
+//  )
+////---
+//  let [@propertyInCollectionAST] propertyList = [
+//    @(!mutability: .constantProperty,
+//      !typeName: "string".here,
+//      !name: "name".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    ),
+//    @(!mutability: .constantProperty,
+//      !typeName: "uint".here,
+//      !name: "majorVersion".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    ),
+//    @(!mutability: .constantProperty,
+//      !typeName: "uint".here,
+//      !name: "minorVersion".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    ),
+//    @(!mutability: .constantProperty,
+//      !typeName: "uint".here,
+//      !name: "revision".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    ),
+//    @(!mutability: .constantProperty,
+//      !typeName: "projectTargets".here,
+//      !name: "targets".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    ),
+//    @(!mutability: .constantProperty,
+//      !typeName: "string".here,
+//      !name: "libpmAtPath".here,
+//      .publicAccess,
+//      !hasSelector: true,
+//      !initialization: .none
+//    )
+//  ]
+//  ioDeclarationListASTs ++= @structDeclarationAST (
+//    !isPredefined: true,
+//    "project".here,
+//    propertyList,
+//    !enumeratedElementTypeName: "",
+//    !comparison: .equatable,
+//    !isUsefullStruct: true
+//  )
+//}
 
 //--------------------------------------------------------------------------------------------------
 

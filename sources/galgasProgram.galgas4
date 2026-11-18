@@ -109,7 +109,7 @@ grammar templateGrammar
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas4project"
-#errorMessage "a GALGAS project source file"
+#errorMessage "a GALGAS4 project source file"
 grammar galgas4ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (inProjectSourceFile, "" )
@@ -122,7 +122,7 @@ grammar galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
 private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
-                                    let @string inSourceToAnalyze ) {
+                                     let @string inSourceToAnalyze) {
   if @application.verboseOutput then
     println ("*** Parsing project files")
   end
@@ -153,34 +153,27 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
 
 //--------------------------------------------------------------------------------------------------
 
-private proc compileProject (let @lstring inProjectSourceFile,
-                            let @string inSourceToAnalyze,
-                            let @galgas3ProjectComponentAST inProjectComponentAST) {
+private proc compileProject (let @lstring inProjectSourceFilePath,
+                             let @string inSourceToAnalyze,
+                             let @galgas3ProjectComponentAST inProjectComponentAST) {
   var @galgasDeclarationAST declarationAST = @()
   appendPredefinedTypesASTs (!?declarationAST)
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
   filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
   : "GALGAS predefined types"
- //--- Parse source file
-  let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
-  for value in inProjectComponentAST.mProjectSourceList do
-    let absoluteSourcePath = value.absolutePathFromPath (sourcesDir)
+//--- Enumerate sources directory for getting all source files
+  let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"
+  let projectSourceList = sourceDirectory.regularFilesWithExtensions (!recursive: true, ["galgas4"])
+  for partialPath in projectSourceList do
+    let absoluteSourcePath = partialPath.absolutePathFromPath (sourceDirectory)
     grammar galgas4Grammar (!?declarationAST) in @lstring (absoluteSourcePath, .nowhere)
   end
-//-------------------------------- Hand coded source files
-  var [@string] handCodedLinkToolFileList = @()
-  let [@string] handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
-  var [@string] frameworkToolFileList = @()
-  var @stringset handCodedSourceDirectorySet = @()
+//--- Enumerate hand coded source files
+  let toolCppDirectory = sourceDirectory + "/tool-sources"
+  let [@string] handCodedSourceToolFileList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, ["cpp", "h"])
   for feature in inProjectComponentAST.mQualifiedFeatureList do
-    if feature.featureName.string == "tool-include" then
-      handCodedSourceDirectorySet ++= feature.featureValue
-    elsif feature.featureName.string == "tool-framework" then
-      frameworkToolFileList ++= feature.featureValue.string.lastPathComponent
-    elsif feature.featureName.string == "tool-link" then
-      handCodedLinkToolFileList ++= feature.featureValue.string
-    elsif feature.featureName.string == "libpmAtPath" then
+    if feature.featureName.string == "libpmAtPath" then
     elsif feature.featureName.string == "applicationBundleBase" then
     elsif feature.featureName.string == "macCodeSign" then
     else
@@ -205,7 +198,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
 //--------------------------------- Compile semantic declarations
   var usefulEntitiesGraph = @usefulEntitiesGraph ()
   let @string buildDirectoryName = "build"
-  let absoluteBuildDirectory = inProjectSourceFile.string.deletingLastPathComponent + "/" + buildDirectoryName
+  let absoluteBuildDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let [@string] appProductFileList = @()
   var [@lstring] usefulnessRootEntities = @()
@@ -260,7 +253,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
 //----------------------------------- Check entity usefulness
   checkUsefulEntities (usefulEntitiesGraph, usefulnessRootEntities, productDirectory)
 //----------------------------------- Build an HTML file that contains all declared types
-  let typeDumpFilePath = productDirectory + "/../helpers/" + inProjectSourceFile.string.lastPathComponent + ".html"
+  let typeDumpFilePath = productDirectory + "/../helpers/" + inProjectSourceFilePath.string.lastPathComponent + ".html"
   if option galgas_cli_options [outputHTMLTypeListFile.value] then
     var @stringset firstLetterSet = @()
     for entry in typeMap do
@@ -277,7 +270,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
       tableOfTypeString += linkForType (entry.lkey.string) + "<br>"
     end
     let typeDumpString = filewrapper [typeDumpGenerationTemplate.typeDump :
-      inProjectSourceFile.string.lastPathComponent,
+      inProjectSourceFilePath.string.lastPathComponent,
       typeMap,
       firstLetterSet,
       tableOfTypeString
@@ -304,11 +297,9 @@ private proc compileProject (let @lstring inProjectSourceFile,
       semanticDeclarationSortedListForGeneration,
       declarationAST.mSourceRuleList,
       inProjectComponentAST,
-      inProjectSourceFile.string,
+      inProjectSourceFilePath.string,
       "../sources/tool-sources",
-      handCodedSourceToolFileList,
-      frameworkToolFileList,
-      handCodedLinkToolFileList
+      handCodedSourceToolFileList
     )
   end
 }
@@ -328,12 +319,9 @@ private proc projectGeneration
               let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
               let [@programRuleAST] inSourceRuleList,
               let @galgas3ProjectComponentAST inProjectComponentAST,
-              let @string inProjectSourceFile,
+              let @string inProjectSourceFilePath,
               let @string inHandCodedSourceDirectory,
-              let [@string] inHandCodedSourceToolFileList,
-              let [@string] inFrameworkToolFileList,
-              let [@string] inHandCodedLinkAppFileList
-) {
+              let [@string] inHandCodedSourceToolFileList) {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
   if @application.verboseOutput then
@@ -397,7 +385,7 @@ private proc projectGeneration
     updateGalgasTargets (
       !absoluteBuildDir: inAbsoluteBuildDirectory,
       !buildDirName: inBuildDirectoryName,
-      inProjectSourceFile,
+      inProjectSourceFilePath,
       inProjectComponentAST.mTargetName.string,
       inProjectComponentAST.mEndOfSourceFile,
       inProjectComponentAST.mMajorVersion.bigint.string
@@ -411,16 +399,14 @@ private proc projectGeneration
       !appProductFileList: appProductFileList,
       !swiftAppProductFileList: swiftAppProductFileList,
       inHandCodedSourceToolFileList,
-      inFrameworkToolFileList,
       inHandCodedSourceDirectory,
       handledExtensionSet,
-      !?allProductFileSet,
-      inHandCodedLinkAppFileList
+      !?allProductFileSet
     )
   end
 //--------------------------------- Remove useless files
   if 0 == @application.errorCount then
-    var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
+    var @stringset allActualFileSet = @()
     for value in productDirectory.regularFiles (false) do
       allActualFileSet ++= value
     end

@@ -1283,7 +1283,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_pro
   default:
     break ;
   }
-  ioArgument_ioAttributeInCollectionList.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21__21__21__21_hasSelector_21_initialization (var_mutability_2253, var_propertyTypeName_2487, var_propertyName_2528, var_accessControl_2210, var_selectorAttribute_2550, var_initialization_2705, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-property.galgas4", 71)) ;
+  ioArgument_ioAttributeInCollectionList.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (var_mutability_2253, var_propertyTypeName_2487, var_propertyName_2528, var_accessControl_2210, var_selectorAttribute_2550, var_initialization_2705, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-property.galgas4", 71)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -7569,14 +7569,14 @@ GGS_propertyInCollectionAST & GGS_propertyInCollectionAST::operator = (const GGS
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_propertyInCollectionAST GGS_propertyInCollectionAST::init_21_mutability_21__21__21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
-                                                                                                                          const GGS_lstring & in_typeName,
-                                                                                                                          const GGS_lstring & in_name,
-                                                                                                                          const GGS_AccessControlAST & in_accessControl,
-                                                                                                                          const GGS_bool & in_hasSelector,
-                                                                                                                          const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                                                          Compiler * inCompiler
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GGS_propertyInCollectionAST GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
+                                                                                                                                      const GGS_lstring & in_typeName,
+                                                                                                                                      const GGS_lstring & in_name,
+                                                                                                                                      const GGS_AccessControlAST & in_accessControl,
+                                                                                                                                      const GGS_bool & in_hasSelector,
+                                                                                                                                      const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                                                                      Compiler * inCompiler
+                                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_propertyInCollectionAST result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mutability = in_mutability ;

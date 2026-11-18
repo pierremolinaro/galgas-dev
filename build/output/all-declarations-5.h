@@ -5326,14 +5326,14 @@ class GGS_propertyInCollectionAST final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_propertyInCollectionAST init_21_mutability_21__21__21__21_hasSelector_21_initialization (const class GGS_propertyMutability & inOperand0,
-                                                                                                              const class GGS_lstring & inOperand1,
-                                                                                                              const class GGS_lstring & inOperand2,
-                                                                                                              const class GGS_AccessControlAST & inOperand3,
-                                                                                                              const class GGS_bool & inOperand4,
-                                                                                                              const class GGS_propertyInCollectionInitializationAST & inOperand5,
-                                                                                                              Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GGS_propertyInCollectionAST init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (const class GGS_propertyMutability & inOperand0,
+                                                                                                                          const class GGS_lstring & inOperand1,
+                                                                                                                          const class GGS_lstring & inOperand2,
+                                                                                                                          const class GGS_AccessControlAST & inOperand3,
+                                                                                                                          const class GGS_bool & inOperand4,
+                                                                                                                          const class GGS_propertyInCollectionInitializationAST & inOperand5,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

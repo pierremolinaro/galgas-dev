@@ -3759,7 +3759,7 @@ static const char * kSourceFileExtensions [] = {
 static const char * kSourceFileHelpMessages [] = {
   "a GALGAS 4 source file",
   "a GALGAS Template source file",
-  "a GALGAS project source file",
+  "a GALGAS4 project source file",
   nullptr
 } ;    
 

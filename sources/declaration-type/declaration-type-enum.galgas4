@@ -131,8 +131,8 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           let associatedValueTypeName =  associatedValue.typeName
           propertyListAST ++= @(
             !mutability: .constantProperty,
-            associatedValueTypeName,
-            associatedValue.valueName,
+            !typeName: associatedValueTypeName,
+            !name: associatedValue.valueName,
             .publicAccess,
             !hasSelector: false,
             !initialization: .none)

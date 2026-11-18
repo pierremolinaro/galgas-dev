@@ -199,8 +199,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var structAttributeList = [@propertyInCollectionAST] ()
     structAttributeList ++= @(
       !mutability: .constantProperty,
-      "lstring".nowhere,
-      "lkey".nowhere,
+      !typeName: "lstring".nowhere,
+      !name: "lkey".nowhere,
       .publicAccess,
       !hasSelector: false,
       !initialization: .none
@@ -208,8 +208,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     for property in self.mPropertyList do
       structAttributeList ++= @(
         !mutability: .mutableProperty,
-        property.typeName,
-        property.name,
+        !typeName: property.typeName,
+        !name: property.name,
         .publicAccess,
         !hasSelector: property.hasSelector,
         !initialization: property.initialization

@@ -70,8 +70,8 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ioAttributeInCollectionList ++= @(
       !mutability: mutability,
-      propertyTypeName,
-      propertyName,
+      !typeName: propertyTypeName,
+      !name: propertyName,
       accessControl,
       !hasSelector: selectorAttribute,
       !initialization: initialization
@@ -86,8 +86,8 @@ syntax extension galgas4DeclarationsSyntax {
 
 struct @propertyInCollectionAST {
   public let @propertyMutability mutability #initArgLabel
-  public let @lstring typeName
-  public let @lstring name
+  public let @lstring typeName #initArgLabel
+  public let @lstring name #initArgLabel
   public let @AccessControlAST accessControl
   public let @bool hasSelector #initArgLabel
   public let @propertyInCollectionInitializationAST initialization #initArgLabel
@@ -117,8 +117,8 @@ proc [@propertyInCollectionAST].buildPropertyInitializationCode (let @lstring in
         !selfObjectCppPrefixForAccessingProperty: ""
       )
       let propertyType = ioTypeMap.typeMapEntryForLKey (property.typeName)
-      expressionAST.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inTypeNameForUsefulness,
+      expressionAST.analyzeSemanticExpression (
+        !usefulnessCallerEntityName: inTypeNameForUsefulness,
         !?ioUsefulEntitiesGraph,
         !inferenceType: propertyType,
         analysisContext,
