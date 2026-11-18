@@ -716,7 +716,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     unusedNonTerminalSymbolsForGrammar,
     HTMLFilePath,
     nonTerminalSymbolSortedListForGrammarAnalysis,
-    if self.mHasTranslateFeature then gSyntaxDirectedTranslationResultVarName () else "" end,
+    if self.mHasTranslateFeature then gSyntaxDirectedTranslationResultVarName else "" end,
     ?let @string grammarCppFile,
     ?let @string grammarHTMLHelperContents,
     ?let @string swiftGrammarDescription
@@ -1179,8 +1179,8 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone.generateCod
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@string ioGeneratedCode ) {
   if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode += gSyntaxDirectedTranslationResultVarName() + ".appendString (" + inAccessMethodName + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (gSyntaxDirectedTranslationResultVarName ())
+    ioGeneratedCode += gSyntaxDirectedTranslationResultVarName + ".appendString (" + inAccessMethodName + ") ;\n"
+    !?ioUnusedVariableCppNameSet.removeKey (gSyntaxDirectedTranslationResultVarName)
   end
 }
 

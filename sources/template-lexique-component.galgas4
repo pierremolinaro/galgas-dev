@@ -207,7 +207,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
      ?let lexicalListDeclarationListAST
   )
 //-------------------------------------- Lexical attribute type name map
-  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+  let @lexicalTypeMap lexicalTypeMap = gLexicalTypeMap
 //-------------------------------------- Build lexical routine map
   buildLexicalRoutineMap (?let lexicalRoutineMap)
 //-------------------------------------- Build lexical function map

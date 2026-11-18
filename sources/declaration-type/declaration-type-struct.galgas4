@@ -59,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-private let @stringset forbiddenKeysForStruct = ["description", "object", "dynamicType"]
+private let @stringset kForbiddenKeysForStruct = ["description", "object", "dynamicType"]
 
 //--------------------------------------------------------------------------------------------------
 
@@ -247,9 +247,9 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: structNameForUsefulness, !to: propertyTypeNameForUsefulness)
       let t = ioTypeMap.typeMapEntryForLKey (property.typeName)
-      if forbiddenKeysForStruct ().contains (property.name.string) then
+      if kForbiddenKeysForStruct.contains (property.name.string) then
         var @string m = "an property cannot be named:"
-        for s in forbiddenKeysForStruct () do
+        for s in kForbiddenKeysForStruct do
           m += " " + s
         end
         m += "; theses names are reserved"
@@ -313,7 +313,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       ?let initializationCode
     )
   //---
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (gCompilerCppName)
     ioSemanticDeclarationListForGeneration ++= @structTypeForGeneration (
       !infoMessage: "struct " + self.structTypeName,
       structType,

@@ -213,8 +213,8 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += sdtResultVarName + ", "
   end
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-  ioGeneratedCode +=  compilerCppName () + ") ;\n"
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+  ioGeneratedCode +=  gCompilerCppName + ") ;\n"
   self.mGrammarInstructionSyntaxDirectedTranslationResult.generateCode
     (inGenerateSyntaxDirectedTranslationString,
     sdtResultVarName,

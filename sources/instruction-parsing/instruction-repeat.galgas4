@@ -275,7 +275,7 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
   !?ioGeneratedCode.incIndentation (2)
   if self.mListOfSemanticInstructionListForGeneration.count == 1 then
     ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
-    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + gCompilerCppName + ") == 2) {\n"
     let instructionList = self.mListOfSemanticInstructionListForGeneration.first.mInstructionList
     generateInstructionList (
       !?ioInclusionSet,
@@ -290,7 +290,7 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
     ioGeneratedCode += "}\n"
   else
     ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation
-    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + gCompilerCppName + ")) {\n"
     for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
       ioGeneratedCode += "case " + (IDX + 2).string + ": {\n"
       generateInstructionList (

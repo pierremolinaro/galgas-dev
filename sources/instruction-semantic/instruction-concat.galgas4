@@ -481,9 +481,9 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
       ioGeneratedCode += ".mProperty_" + entry
     end
     ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
-    ioGeneratedCode += ", " + compilerCppName ()
+    ioGeneratedCode += ", " + gCompilerCppName
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
     !?ioUnusedVariableCppNameSet.removeKey (self.mTargetVariableCppName)
   }
 

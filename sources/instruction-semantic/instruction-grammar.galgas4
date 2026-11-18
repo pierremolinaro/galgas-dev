@@ -442,14 +442,14 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     ioGeneratedCode += "cGrammar_" + self.mGrammarName.identifierRepresentation
                     +  "::_performSourceFileParsing_" + self.mLabelName.identifierRepresentation
                     +  " ("
-                    + compilerCppName () + ", "
+                    + gCompilerCppName + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
     for entry in parameterCppNameList do
       ioGeneratedCode += ", " + entry
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
     for s in self.mAssignementList do
       ioGeneratedCode += s + "\n"
     end
@@ -519,7 +519,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     end
     ioGeneratedCode += "cGrammar_" + self.mGrammarName.identifierRepresentation
                     +  "::_performSourceStringParsing_" + self.mLabelName.identifierRepresentation
-                    +  " (" + compilerCppName () + ", "
+                    +  " (" + gCompilerCppName + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
                     + ", " + nameVar
@@ -527,7 +527,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
       ioGeneratedCode += ", " + entry
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
     for s in self.mAssignementList do
       ioGeneratedCode += s + "\n"
     end

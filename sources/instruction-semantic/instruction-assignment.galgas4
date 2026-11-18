@@ -411,8 +411,8 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
       for cppVar in cppVarNameList do
         ioGeneratedCode += cppVar + ", "
       end
-      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      ioGeneratedCode += compilerCppName () + " COMMA_HERE) ; \n"
+      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+      ioGeneratedCode += gCompilerCppName + " COMMA_HERE) ; \n"
     end
     !?ioUnusedVariableCppNameSet.removeKey (self.mTargetCppName)
   }

@@ -427,7 +427,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   ?!@unifiedTypeMap _ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Build lexical attribute map
-  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+  let @lexicalTypeMap lexicalTypeMap = gLexicalTypeMap
   var @lexicalAttributeMap lexicalAttributeMap = @()
   buildLexicalAttributeMap (
    lexicalTypeMap,
@@ -482,7 +482,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
 //-------------------------------------- Lexical attribute type name map
-  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+  let @lexicalTypeMap lexicalTypeMap = gLexicalTypeMap
 //-------------------------------------- Build lexical routine map
   buildLexicalRoutineMap (?let lexicalRoutineMap)
 //-------------------------------------- Build lexical function map

@@ -644,9 +644,9 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         property.initialization,
         !hasSetter: true,
         !hasSelector: hasSelector)
-      if forbiddenKeysForMap ().contains (property.name.string) then
+      if kForbiddenKeysForMap.contains (property.name.string) then
         var @string m = "a property cannot be named:"
-        for s in forbiddenKeysForMap () do
+        for s in kForbiddenKeysForMap do
           m += " " + s
         end
         m += "; theses names are reserved"
@@ -746,7 +746,7 @@ proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape s
 
 //--------------------------------------------------------------------------------------------------
 
-private let @stringset forbiddenKeysForMap = ["key", "description", "object"]
+private let @stringset kForbiddenKeysForMap = ["lkey", "description", "object"]
 
 //--------------------------------------------------------------------------------------------------
 //   CODE GENERATION

@@ -337,11 +337,11 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
     parameterList ++= parameter
   end
   outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
-                  + " (" + compilerCppName ()
+                  + " (" + gCompilerCppName
   for value in parameterList do
     outCppExpression += ", " + value
   end
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   outCppExpression += self.mLocation.commaSourceFile + "))"
 }
 

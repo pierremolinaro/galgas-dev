@@ -28,24 +28,6 @@ final class @unaryMinusExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                     !@semanticExpressionAST outExpression ) {
-//    let operatorLocation = @location.here
-//    $-$
-//    <factor_ggs3> (!?ioDeclarations, ?outExpression)
-//    outExpression = @unaryMinusExpressionAST (!operatorLocation, outExpression)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -140,8 +122,8 @@ override proc @unaryMinusExpressionForGeneration.generateExpression (?!@string i
     ?let operand
   )
 //--- Generate Comparison
-  outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  outCppExpression = operand + ".operator_unary_minus (" + gCompilerCppName + self.mLocation.commaSourceFile + ")"
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
 }
 
 //--------------------------------------------------------------------------------------------------

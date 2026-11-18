@@ -324,8 +324,8 @@ final class @subcriptReadAccessExpressionForGeneration : @semanticExpressionForG
     for operand in subcriptArgumentList do
       outCppExpression += operand + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    outCppExpression += compilerCppName () + " COMMA_HERE)"
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    outCppExpression += gCompilerCppName + " COMMA_HERE)"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

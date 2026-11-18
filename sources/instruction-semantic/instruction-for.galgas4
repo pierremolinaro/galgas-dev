@@ -326,7 +326,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
          @lstring (property.mEnumerationName, self.mEndOfEnumerationExpression),
          property.mEnumeratedType,
          !cppName: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
-         outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
+         !nameForCheckingVarUsing: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
        )
       end
     elsif self.mElementList.count != enumerationDescriptorList.count then
@@ -488,7 +488,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
      (localConstant.mName,
      localConstant.mType,
      !cppName: localConstant.mCppName,
-     localConstant.mCppName
+     !nameForCheckingVarUsing: localConstant.mCppName
    )
   end
 //---
@@ -744,8 +744,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
     end
   //--- Advance index ?
     if self.mIndexVariableCppName != "" then
-      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_uint (1), " + compilerCppName ()
+      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_uint (1), " + gCompilerCppName
       + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     end
     ioGeneratedCode += "}\n"

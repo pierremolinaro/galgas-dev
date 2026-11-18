@@ -400,8 +400,8 @@ override proc @errorInstructionForGeneration.generateInstruction (?!@stringset i
     ?let @string fixItArrayCppName
   )
 //--- Generate error instruction
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-  ioGeneratedCode += compilerCppName () + "->emitSemanticError ("
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+  ioGeneratedCode += gCompilerCppName + "->emitSemanticError ("
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "

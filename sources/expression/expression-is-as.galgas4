@@ -294,12 +294,12 @@ override proc @castInExpressionForGeneration.generateExpression
   + "}else{\n"
   !?ioGeneratedCode.incIndentation (2)
   ioGeneratedCode +=
-    compilerCppName () + "->castError (\""
+    gCompilerCppName + "->castError (\""
   + self.mTypeName.identifierRepresentation
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
   + self.mLocation.commaSourceFile + ") ;\n"
   !?ioGeneratedCode.decIndentation (2)
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   ioGeneratedCode += "}\n"
   !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"

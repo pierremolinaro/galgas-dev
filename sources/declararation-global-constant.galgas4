@@ -124,8 +124,8 @@ final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext ioSemanticContext) {
   //--- Result type
     !?ioTypeMap.makeEntry (self.mResultTypeName, ?let @unifiedTypeMapEntry resultType)
-  //--- Enter function in routine map
-    !?ioSemanticContext.mFunctionMap.insertKey (self.mGlobalConstanteName, @(), resultType, self.mIsPrivate)
+  //--- Enter constant in global constant map
+//    !?ioSemanticContext.mFunctionMap.insertKey (self.mGlobalConstanteName, @(), resultType, self.mIsPrivate)
     !?ioSemanticContext.mGlobalConstantMap.insert (self.mGlobalConstanteName, resultType, self.mIsPrivate)
   }
   

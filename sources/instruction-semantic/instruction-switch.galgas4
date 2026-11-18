@@ -206,15 +206,15 @@ final class @switchInstructionAST : @semanticInstructionAST {
                   descriptor.name)
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
-                    !?ioVariableMap.insertUsedLocalConstant
-                      (associatedValue.mExtractedValueName,
+                    !?ioVariableMap.insertUsedLocalConstant (
+                      associatedValue.mExtractedValueName,
                       descriptor.type,
                       !cppName: cppName,
-                      cppName
+                      !nameForCheckingVarUsing: cppName
                     )
                   else
-                    !?ioVariableMap.insertInitializedLocalConstant
-                      (associatedValue.mExtractedValueName,
+                    !?ioVariableMap.insertInitializedLocalConstant (
+                      associatedValue.mExtractedValueName,
                       descriptor.type,
                       cppName,
                       cppName

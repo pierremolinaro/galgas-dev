@@ -38,7 +38,7 @@ func @location.commaSourceFile () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-let @string compilerCppName = "inCompiler"
+let @string gCompilerCppName = "inCompiler"
 
 //--------------------------------------------------------------------------------------------------
 

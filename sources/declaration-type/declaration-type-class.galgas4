@@ -455,7 +455,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       ?let initializationCode
     )
   //-----
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (gCompilerCppName)
     ioSemanticDeclarationListForGeneration ++= @classTypeForGeneration (
       !infoMessage: "class " + self.mClassTypeName,
       selfType,

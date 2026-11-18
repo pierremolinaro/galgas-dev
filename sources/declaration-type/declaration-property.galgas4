@@ -103,7 +103,7 @@ proc [@propertyInCollectionAST].buildPropertyInitializationCode (let @lstring in
   outInitializationCode = ""
   var inclusionSet = @stringset ()
   var @uint temporaryVariableIndex = 0
-  outUnusedVariableCppNameSet = @stringset [compilerCppName ()]
+  outUnusedVariableCppNameSet = @stringset [gCompilerCppName]
   for property in self do
    switch property.initialization
     case none :

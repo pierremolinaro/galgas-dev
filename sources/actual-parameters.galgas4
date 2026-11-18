@@ -887,7 +887,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
         self.mInputActualParameterName,
         inFormalArgumentType,
         !cppName: targetVariableCppName,
-        targetVariableCppName
+        !nameForCheckingVarUsing: targetVariableCppName
       )
     else
       !?ioVariableMap.insertInitializedLocalConstant (

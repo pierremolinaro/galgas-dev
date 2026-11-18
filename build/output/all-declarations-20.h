@@ -123,12 +123,12 @@ GGS_string filewrapperTemplate_dictionaryGenerationTemplate_dictTypeSpecificImpl
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'forbiddenKeysForStruct'
+//Function 'kForbiddenKeysForStruct'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_stringset function_forbiddenKeysForStruct (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+class GGS_stringset function_kForbiddenKeysForStruct (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -418,12 +418,12 @@ class GGS_string function_makeWeakTypeName (const class GGS_string & constinArgu
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'forbiddenKeysForMap'
+//Function 'kForbiddenKeysForMap'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_stringset function_forbiddenKeysForMap (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
+class GGS_stringset function_kForbiddenKeysForMap (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

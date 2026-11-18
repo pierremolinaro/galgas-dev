@@ -158,8 +158,8 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
     for value in parameterList do
       outCppExpression += value + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    outCppExpression += compilerCppName ()
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    outCppExpression += gCompilerCppName
     outCppExpression += self.mLocation.commaSourceFile + ")"
   }
 

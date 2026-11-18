@@ -220,9 +220,9 @@ override proc @selectInstructionForGeneration.generateInstruction (?!@stringset 
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-  ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
+  ioGeneratedCode += self.mChoiceIndex.string + " (" + gCompilerCppName + ")) {\n"
   for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + (IDX + 1).string + ": {\n"
     generateInstructionList (

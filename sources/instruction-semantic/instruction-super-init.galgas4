@@ -194,8 +194,8 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
     for entry in getterArgumentCppNameList do
       ioGeneratedCode += entry + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    ioGeneratedCode += compilerCppName () + ") ; \n"
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    ioGeneratedCode += gCompilerCppName + ") ; \n"
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

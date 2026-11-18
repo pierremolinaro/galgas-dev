@@ -9473,12 +9473,12 @@ void extensionMethod_buildPropertyInitializationCode (const class GGS__5B_proper
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'compilerCppName'
+//Function 'gCompilerCppName'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string function_compilerCppName (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+class GGS_string function_gCompilerCppName (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

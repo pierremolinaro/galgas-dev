@@ -119,8 +119,8 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     for entry in parameterCppNameList do
       ioGeneratedCode += entry + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    ioGeneratedCode += gCompilerCppName + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
     for entry in self.mActualParameterList do

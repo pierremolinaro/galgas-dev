@@ -708,12 +708,12 @@ void routine_generateSemanticDeclarationsGalgas_33__3F__3F__3F__26_swift_26__26_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'generateFewHeaderFiles'
+//Function 'gGenerateFewHeaderFiles'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_bool function_generateFewHeaderFiles (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+class GGS_bool function_gGenerateFewHeaderFiles (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -800,12 +800,12 @@ void routine_buildHeader_3F__3F__3F__26__26_ (const class GGS_headerCompositionM
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'definitionGroupAmount'
+//Function 'gGroupAmount'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint function_definitionGroupAmount (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+class GGS_uint function_gGroupAmount (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

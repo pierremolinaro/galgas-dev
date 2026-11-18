@@ -32,12 +32,11 @@ struct @localVarManager {
 
   init (@globalConstantMap inGlobalConstantMap) {
     for entry in inGlobalConstantMap do
-      let cppName = "function_" + entry.lkey.string + " (inCompiler COMMA_HERE)"
       !?self.insertUsedLocalConstant (
         entry.lkey,
         entry.mType,
-        !cppName: cppName,
-        cppName
+        !cppName: entry.lkey.string,
+        !nameForCheckingVarUsing: gCompilerCppName
      )
    end
   }
@@ -83,7 +82,7 @@ struct @localVarManager {
   mutating proc insertUsedLocalConstant (let @lstring inVarName,
                                          let @unifiedTypeMapEntry inType,
                                          ?cppName: @string inCppName,
-                                         let @string inNameForCheckingFormalParameterUsing) {
+                                         ?nameForCheckingVarUsing: let @string inNameForCheckingFormalParameterUsing) {
     !?self.mCurrentManager.insertKey (
       inVarName,
       inType,

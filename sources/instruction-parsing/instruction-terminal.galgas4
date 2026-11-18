@@ -305,13 +305,13 @@ override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@str
       ioGeneratedCode += "GGS_" + terminalCheckAssignement.mTypeName.identifierRepresentation + " "
     else
     end
-    ioGeneratedCode += terminalCheckAssignement.mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
+    ioGeneratedCode += terminalCheckAssignement.mTargetVarCppName + " = " + gCompilerCppName + "->synthetizedAttribute_"
     ioGeneratedCode += terminalCheckAssignement.mSourceLexicalAttributeName.identifierRepresentation
     ioGeneratedCode += " () ;\n"
   end
 //--- Indexing
   for indexingKey in self.mIndexingKeyList do
-    ioGeneratedCode += compilerCppName ()
+    ioGeneratedCode += gCompilerCppName
     ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += indexingKey.mValue0.string.identifierRepresentation
     ioGeneratedCode += ", " + indexingKey.mValue1.string.utf8RepresentationEscapingQuestionMark + ") ;\n"
@@ -330,8 +330,8 @@ override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@str
     !?ioGeneratedCode
   )
 //--- Check terminal symbol
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-  ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+  ioGeneratedCode += gCompilerCppName + "->acceptTerminal (Lexique_"
   ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + self.mTerminalName.string.identifierRepresentation
   ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"
 }

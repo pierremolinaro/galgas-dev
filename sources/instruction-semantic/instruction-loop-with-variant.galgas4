@@ -219,10 +219,10 @@ override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@s
                    + "if (" + loopVar + ") {\n"
                    + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
                    + "}\n"
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
                      "  " + loopVar + " = false ;\n"
-                     "  " + compilerCppName () + "->loopRunTimeVariantError (" + self.mInstructionLocation.sourceFile + ") ;\n"
+                     "  " + gCompilerCppName + "->loopRunTimeVariantError (" + self.mInstructionLocation.sourceFile + ") ;\n"
                      "}\n"
                    + "if (" + loopVar + ") {\n"
   ioGeneratedCode += "  " + variantVar + " -= 1 ;\n"

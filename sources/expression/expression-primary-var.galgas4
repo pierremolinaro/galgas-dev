@@ -17,22 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//    $identifier$ (?let identifier)
-//    outExpression = @varInExpressionAST (!identifier)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -61,16 +45,16 @@ final class @varInExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticExpression
-        (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
-        ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  override proc analyzeSemanticExpression (
+        ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
         ?inferenceType: let @unifiedTypeMapEntry _inType,
         let @analysisContext _inAnalysisContext,
         ?!@unifiedTypeMap _ioTypeMap,
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {
-    !?ioVariableMap.searchForReadAccess
-      (self.mVarName,
+    !?ioVariableMap.searchForReadAccess (
+      self.mVarName,
       ?let @unifiedTypeMapEntry type,
       ?let @string sourceVariableCppName,
       ?let @string nameForCheckingFormalParameterUsing
@@ -81,6 +65,11 @@ final class @varInExpressionAST : @semanticExpressionAST {
       sourceVariableCppName,
       nameForCheckingFormalParameterUsing
     )
+  //--- Global constant ? Enter edge in useful entities graph
+    if nameForCheckingFormalParameterUsing == gCompilerCppName then
+      let usefulnessName = functionNameForUsefulEntitiesGraph (self.mVarName)
+      !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
+    end
   }
 
   //································································································
@@ -95,17 +84,22 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mCppVarName
   public let @string mNameForCheckingFormalParameterUsing
 
-
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateExpression (?!@string _ioGeneratedCode,
-                                      ?!@stringset ioInclusionSet,
-                                      ?!@uint _ioTemporaryVariableIndex,
-                                      ?!@stringset ioUnusedVariableCppNameSet,
-                                      !@string outCppExpression ) {
+                                    ?!@stringset ioInclusionSet,
+                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@stringset ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
-    outCppExpression = self.mCppVarName
     !?ioUnusedVariableCppNameSet.removeKey (self.mNameForCheckingFormalParameterUsing)
+  //--- Global constant ?
+    if self.mNameForCheckingFormalParameterUsing == gCompilerCppName then
+      ioInclusionSet ++= "func-" + self.mCppVarName.fileNameRepresentation
+      outCppExpression = "function_" + self.mCppVarName + " (inCompiler COMMA_HERE)"
+    else
+      outCppExpression = self.mCppVarName
+    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,4 +107,29 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+final class @globalConstantInExpressionForGeneration : @semanticExpressionForGeneration {
+  public let @string mGlobalConstantName
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc generateExpression (?!@string _ioGeneratedCode,
+                                    ?!@stringset ioInclusionSet,
+                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@stringset ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
+  //--- Add return type header
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
+  //--- Add function header
+    ioInclusionSet ++= "func-" + self.mGlobalConstantName.fileNameRepresentation
+  //---
+    outCppExpression = "function_" + self.mGlobalConstantName + " (inCompiler COMMA_HERE)"
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+
 //--------------------------------------------------------------------------------------------------

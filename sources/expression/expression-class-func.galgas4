@@ -274,8 +274,8 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
       if needsComma then
         outCppExpression += ", "
       end
-      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      outCppExpression += compilerCppName ()
+      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+      outCppExpression += gCompilerCppName
       needsComma = true
     end
     if needsComma then

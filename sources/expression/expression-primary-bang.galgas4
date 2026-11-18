@@ -136,9 +136,9 @@ override proc @bangExpressionForGeneration.generateExpression (?!@string ioGener
     ?let operand
   )
 //--- Generate
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   outCppExpression = operand + ".bang_" + self.mReceiverTypeName.identifierRepresentation
-  outCppExpression += " (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
+  outCppExpression += " (" + gCompilerCppName + self.mLocation.commaSourceFile + ")"
 }
 
 //--------------------------------------------------------------------------------------------------

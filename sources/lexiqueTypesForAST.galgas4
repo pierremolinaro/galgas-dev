@@ -352,7 +352,7 @@ map @lexicalTypeMap {
 
 //--------------------------------------------------------------------------------------------------
 
-let @lexicalTypeMap buildLexicalTypeMap = {
+let @lexicalTypeMap gLexicalTypeMap = {
   result = @()
   !?result.insertKey ("string".here, .lexicalType_string)
   !?result.insertKey ("char".here, .lexicalType_char)

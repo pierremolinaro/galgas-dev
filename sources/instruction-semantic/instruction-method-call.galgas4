@@ -167,13 +167,13 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   end
   if parameterCppNameList.count == 0 then
     if self.mHasCompilerArgument then
-      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      ioGeneratedCode += compilerCppName ()
+      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+      ioGeneratedCode += gCompilerCppName
       ioGeneratedCode += " COMMA_"
     end
   elsif self.mHasCompilerArgument then
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    ioGeneratedCode += ", " + compilerCppName ()
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    ioGeneratedCode += ", " + gCompilerCppName
     ioGeneratedCode += " COMMA_"
   else
     ioGeneratedCode += " COMMA_"

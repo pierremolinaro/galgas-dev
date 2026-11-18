@@ -10,12 +10,12 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'buildLexicalTypeMap'
+//Function 'gLexicalTypeMap'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTypeMap function_buildLexicalTypeMap (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+class GGS_lexicalTypeMap function_gLexicalTypeMap (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -332,8 +332,8 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
     ioInclusionSet ++= "mutating proc-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then
-        ioGeneratedCode += receiverCppName + ".insulate (" + compilerCppName () + " COMMA_HERE) ;\n"
-        !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+        ioGeneratedCode += receiverCppName + ".insulate (" + gCompilerCppName + " COMMA_HERE) ;\n"
+        !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
       end
       let pointerUniqueName = "ptr_" + self.mInstructionLocation.startLocationIndex
       ioGeneratedCode += "cPtr_" + self.mReceiverType.identifierRepresentation + " * " + pointerUniqueName
@@ -355,8 +355,8 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
     if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    ioGeneratedCode +=  compilerCppName ()
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    ioGeneratedCode +=  gCompilerCppName
     ioGeneratedCode += " COMMA_"
   elsif parameterCppNameList.count != 0 then
     ioGeneratedCode += " COMMA_"
@@ -413,8 +413,8 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
     if parameterCppNameList.count != 0 then
       ioGeneratedCode +=  ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-    ioGeneratedCode +=  compilerCppName ()
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+    ioGeneratedCode +=  gCompilerCppName
     ioGeneratedCode += " COMMA_"
   elsif parameterCppNameList.count != 0 then
     ioGeneratedCode += " COMMA_"

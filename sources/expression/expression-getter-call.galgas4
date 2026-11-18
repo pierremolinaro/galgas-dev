@@ -294,12 +294,12 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     end
     if getterArgumentCppNameList.count == 0 then
       if self.mHasCompilerArgument then
-        !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-        outCppExpression += compilerCppName () + " COMMA_"
+        !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+        outCppExpression += gCompilerCppName + " COMMA_"
       end
     elsif self.mHasCompilerArgument then
-      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
-      outCppExpression += ", " + compilerCppName () + " COMMA_"
+      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+      outCppExpression += ", " + gCompilerCppName + " COMMA_"
     else
       outCppExpression += " COMMA_"
     end

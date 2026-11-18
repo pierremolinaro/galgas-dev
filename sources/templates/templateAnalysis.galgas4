@@ -764,19 +764,27 @@ override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
 //   S I M P L E    V A R I A B L E
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateVarInExpressionAST.templateExpressionAnalysis
-  (let @lstring _inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
-  let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap _ioTypeMap,
-  !@semanticExpressionForGeneration outExpression
-) {
-  inAnalysisContext.mTemplateVariableMap.searchKey (self.mVarName, ?let type, ?let sourceVariableCppName)
-  outExpression = @varInExpressionForGeneration (
-    type,
-    self.mVarName.location,
-    sourceVariableCppName,
-    sourceVariableCppName)
+override proc @templateVarInExpressionAST.templateExpressionAnalysis (
+                let @lstring _inUsefulnessCallerEntityName,
+                ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                let @templateAnalysisContext inAnalysisContext,
+                ?!@unifiedTypeMap _ioTypeMap,
+                !@semanticExpressionForGeneration outExpression) {
+  if let globalConstant = inAnalysisContext.mSemanticContext.mGlobalConstantMap [self.mVarName.string] then
+    outExpression = @globalConstantInExpressionForGeneration (
+       globalConstant.mType,
+       self.mVarName.location,
+       self.mVarName.string
+     )
+  else
+    inAnalysisContext.mTemplateVariableMap.searchKey (self.mVarName, ?let type, ?let sourceVariableCppName)
+    outExpression = @varInExpressionForGeneration (
+      type,
+      self.mVarName.location,
+      sourceVariableCppName,
+      sourceVariableCppName
+    )
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1476,8 +1484,8 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   ?!@unifiedTypeMap ioTypeMap,
   ?![@templateInstructionForGeneration] ioInstructionList
 ) {
-  self.mExpression.templateExpressionAnalysis
-    (inUsefulnessCallerEntityName,
+  self.mExpression.templateExpressionAnalysis (
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
     !?ioTypeMap,

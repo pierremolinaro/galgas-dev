@@ -9936,10 +9936,10 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_functionSignature
   GGS_string result ; // Returned variable
   result = GGS_string ("init") ;
   const GGS__5B_functionSignatureElement_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_1846 (temp_0) ;
-  while (enumerator_1846.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1846.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 39)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 39)) ;
-    enumerator_1846.gotoNextObject () ;
+  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_1847 (temp_0) ;
+  while (enumerator_1847.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1847.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 39)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 39)) ;
+    enumerator_1847.gotoNextObject () ;
   }
 //---
   return result ;
@@ -9958,10 +9958,10 @@ GGS_string extensionGetter_subcriptSignature (const GGS__5B_functionSignatureEle
   GGS_string result ; // Returned variable
   result = GGS_string::makeEmptyString () ;
   const GGS__5B_functionSignatureElement_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_2009 (temp_0) ;
-  while (enumerator_2009.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_2009.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 46)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 46)) ;
-    enumerator_2009.gotoNextObject () ;
+  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_2010 (temp_0) ;
+  while (enumerator_2010.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_2010.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 46)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 46)) ;
+    enumerator_2010.gotoNextObject () ;
   }
 //---
   return result ;
@@ -10152,23 +10152,23 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_typedProperty_5D_
   GGS_string result ; // Returned variable
   result = GGS_string ("init") ;
   const GGS__5B_typedProperty_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_typedProperty_5D_ enumerator_8486 (temp_0) ;
-  while (enumerator_8486.hasCurrentObject ()) {
+  UpEnumerator__5B_typedProperty_5D_ enumerator_8487 (temp_0) ;
+  while (enumerator_8487.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8486.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 212)))).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8487.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 212)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 213)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8486.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8487.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result.plusAssignOperation(enumerator_8486.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 215)) ;
+            result.plusAssignOperation(enumerator_8487.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 215)) ;
           }
         }
       }
     }
-    enumerator_8486.gotoNextObject () ;
+    enumerator_8487.gotoNextObject () ;
   }
 //---
   return result ;

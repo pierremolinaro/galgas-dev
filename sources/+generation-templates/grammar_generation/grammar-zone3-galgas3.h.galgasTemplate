@@ -15,7 +15,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
     %//--- 'parse' label\n%
     % /*  public: virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
     if HAS_TRANSLATE_FEATURE then
-      %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %String & %!gSyntaxDirectedTranslationResultVarName%,\n%!^ 
     end
     %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ; */\n\n%
   //--- indexing
@@ -38,7 +38,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %,\n%!^
     end
     if HAS_TRANSLATE_FEATURE then
-      %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
+      %String & %!gSyntaxDirectedTranslationResultVarName%,\n%!^ 
     end
     %Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   //--- Start symbol ?
@@ -47,7 +47,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %  public: static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
       %Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
-        %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
+        %String & %!gSyntaxDirectedTranslationResultVarName%,\n%!^ 
       end
       %GGS_lstring inFileName%
       for (formal) in label_mFormalParametersList do (IDX)
@@ -66,7 +66,7 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
       %  public: static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
       %Compiler * inCompiler,\n%!^
       if HAS_TRANSLATE_FEATURE then
-        %String & %!gSyntaxDirectedTranslationResultVarName ()%,\n%!^ 
+        %String & %!gSyntaxDirectedTranslationResultVarName%,\n%!^ 
       end
       %GGS_string inSourceString,\n%!^
       %GGS_string inNameString%

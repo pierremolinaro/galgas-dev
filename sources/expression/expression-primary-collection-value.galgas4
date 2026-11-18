@@ -184,8 +184,8 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
   //--- Declare variable and apply default constructor
     ioGeneratedCode += "GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression
     ioGeneratedCode += " = GGS_" + self.mResultType.identifierRepresentation
-    ioGeneratedCode += "::init (" + compilerCppName () + self.mLocation.commaSourceFile + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
+    ioGeneratedCode += "::init (" + gCompilerCppName + self.mLocation.commaSourceFile + ") ;\n"
+    !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
   //--- Add Elements
     for exp in self.expressionList do
       exp.expression.generateExpression
