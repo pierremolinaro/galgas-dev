@@ -161,7 +161,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_A
 
 void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
                               %!^%const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<boolset @%!TYPE_NAME%:") ;
+  ioString.appendCString ("<optionset @%!TYPE_NAME%:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{

@@ -107,7 +107,7 @@ let gPopUpData_galgasScanner4 : [[UInt16]] = [
     galgasScanner4_1__40_type, 0
   ],
   [0, // Leading character count to strip
-    galgasScanner4_1_boolset, 0,
+    galgasScanner4_1_optionset, 0,
     galgasScanner4_1__40_type, 0
   ],
   [0, // Leading character count to strip

@@ -6200,7 +6200,7 @@ class GGS_overrideKind_2E_selectOverrideNextBranches_3F_ : public AC_GALGAS_root
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideKind_2E_selectOverrideNextBranches_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @localVariableAttributes boolset
+// Phase 1: optionset @localVariableAttributes
 //--------------------------------------------------------------------------------------------------
 
 class GGS_localVariableAttributes final : public AC_GALGAS_root {

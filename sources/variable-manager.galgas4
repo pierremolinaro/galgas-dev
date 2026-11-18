@@ -371,7 +371,7 @@ struct @localVarManager {
 //! TYPES
 //--------------------------------------------------------------------------------------------------
 
-boolset @localVariableAttributes {
+optionset @localVariableAttributes {
   case rejectWriteInInitializedAndReadStates
   case rejectDeclaredStateAsFinalState
   case acceptInitializedStateAsFinalState

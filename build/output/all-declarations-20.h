@@ -286,6 +286,49 @@ GGS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementa
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'structGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate optionSetTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_optionSetTypeHeader_31_ (Compiler * inCompiler,
+                                                                                 const class GGS_string & in_TYPE_5F_NAME,
+                                                                                 const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                 const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'structGenerationTemplate optionSetTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_structGenerationTemplate_optionSetTypeSpecificImplementation (Compiler * inCompiler,
+                                                                                             const class GGS_string & in_TYPE_5F_NAME,
+                                                                                             const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                             const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST,
+                                                                                             const class GGS_bigint & in_FULL_5F_SET,
+                                                                                             const class GGS_bool & in_EQUATABLE
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'check_K_L_escapeCharacters?'
 //
 //--------------------------------------------------------------------------------------------------
@@ -488,47 +531,4 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementati
                                                                                     const class GGS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
                                                                                     const class GGS_bool & in_GENERATE_5F_COMPARISON
                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'structGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (Compiler * inCompiler,
-                                                                               const class GGS_string & in_TYPE_5F_NAME,
-                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'structGenerationTemplate boolsetTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (Compiler * inCompiler,
-                                                                                           const class GGS_string & in_TYPE_5F_NAME,
-                                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                           const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST,
-                                                                                           const class GGS_bigint & in_FULL_5F_SET,
-                                                                                           const class GGS_bool & in_EQUATABLE
-                                                                                           COMMA_LOCATION_ARGS) ;
 

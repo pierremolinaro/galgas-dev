@@ -400,7 +400,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       1, // 25 : galgasScanner4_1_before
       1, // 26 : galgasScanner4_1_between
       1, // 27 : galgasScanner4_1_block
-      1, // 28 : galgasScanner4_1_boolset
+      1, // 28 : galgasScanner4_1_optionset
       1, // 29 : galgasScanner4_1_case
       1, // 30 : galgasScanner4_1_class
       1, // 31 : galgasScanner4_1_default
@@ -594,7 +594,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 25 : galgasScanner4_1_before
       true, // 26 : galgasScanner4_1_between
       true, // 27 : galgasScanner4_1_block
-      true, // 28 : galgasScanner4_1_boolset
+      true, // 28 : galgasScanner4_1_optionset
       true, // 29 : galgasScanner4_1_case
       true, // 30 : galgasScanner4_1_class
       true, // 31 : galgasScanner4_1_default
@@ -2263,7 +2263,6 @@ fileprivate let kDictionary_galgasScanner_34__galgasKeyWordList : [String : UInt
   "switch" : galgasScanner4_1_switch,
   "syntax" : galgasScanner4_1_syntax,
   "between" : galgasScanner4_1_between,
-  "boolset" : galgasScanner4_1_boolset,
   "default" : galgasScanner4_1_default,
   "grammar" : galgasScanner4_1_grammar,
   "lexique" : galgasScanner4_1_lexique,
@@ -2277,6 +2276,7 @@ fileprivate let kDictionary_galgasScanner_34__galgasKeyWordList : [String : UInt
   "override" : galgasScanner4_1_override,
   "template" : galgasScanner4_1_template,
   "extension" : galgasScanner4_1_extension,
+  "optionset" : galgasScanner4_1_optionset,
   "protected" : galgasScanner4_1_protected,
   "fileprivate" : galgasScanner4_1_fileprivate,
   "filewrapper" : galgasScanner4_1_filewrapper,
@@ -2385,7 +2385,7 @@ let galgasScanner4_1_as : UInt16 = 24
 let galgasScanner4_1_before : UInt16 = 25
 let galgasScanner4_1_between : UInt16 = 26
 let galgasScanner4_1_block : UInt16 = 27
-let galgasScanner4_1_boolset : UInt16 = 28
+let galgasScanner4_1_optionset : UInt16 = 28
 let galgasScanner4_1_case : UInt16 = 29
 let galgasScanner4_1_class : UInt16 = 30
 let galgasScanner4_1_default : UInt16 = 31

@@ -3093,7 +3093,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
   public: static const int32_t kToken_before = 25 ;
   public: static const int32_t kToken_between = 26 ;
   public: static const int32_t kToken_block = 27 ;
-  public: static const int32_t kToken_boolset = 28 ;
+  public: static const int32_t kToken_optionset = 28 ;
   public: static const int32_t kToken_case = 29 ;
   public: static const int32_t kToken_class = 30 ;
   public: static const int32_t kToken_default = 31 ;

@@ -57,7 +57,7 @@ enum @typeKindEnum #equatable {
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
   case mapType
-  case boolsetType
+  case optionsetType
   case structType
   case graphType
   case externType
@@ -72,7 +72,7 @@ enum @typeKindEnum #equatable {
       case enumType (*) : result = "enumeration"
       case mapType : result = "map"
       case structType : result = "struct"
-      case boolsetType : result = "boolset"
+      case optionsetType : result = "optionset"
       case graphType : result = "graph"
       case otherType : result = "other"
       case externType : result = "extern"
@@ -87,7 +87,7 @@ enum @typeKindEnum #equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-boolset @typeFeatures {
+optionset @typeFeatures {
   case infixAddOperator
   case infixSubOperator
   case infixMulOperator

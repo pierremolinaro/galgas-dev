@@ -1451,9 +1451,9 @@ GGS_typeKindEnum GGS_typeKindEnum::class_func_mapType (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeKindEnum GGS_typeKindEnum::class_func_boolsetType (UNUSED_LOCATION_ARGS) {
+GGS_typeKindEnum GGS_typeKindEnum::class_func_optionsetType (UNUSED_LOCATION_ARGS) {
   GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_boolsetType ;
+  result.mEnum = Enumeration::enum_optionsetType ;
   return result ;
 }
 
@@ -1589,7 +1589,7 @@ static const char * gEnumNameArrayFor_typeKindEnum [11] = {
   "weakReferenceType",
   "enumType",
   "mapType",
-  "boolsetType",
+  "optionsetType",
   "structType",
   "graphType",
   "externType",
@@ -1623,8 +1623,8 @@ GGS_bool GGS_typeKindEnum::getter_isMapType (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_typeKindEnum::getter_isBoolsetType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_boolsetType == mEnum) ;
+GGS_bool GGS_typeKindEnum::getter_isOptionsetType (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_optionsetType == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7624,7 +7624,7 @@ GGS_typeFeatures GGS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 void GGS_typeFeatures::description (String & ioString,
                                     const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<boolset @typeFeatures:") ;
+  ioString.appendCString ("<optionset @typeFeatures:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -7870,8 +7870,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3680__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3680__0) ;
+      GGS_constantIndexMap extractedValue_3682__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3682__0) ;
       result = GGS_string ("enumeration") ;
     }
     break ;
@@ -7885,9 +7885,9 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
       result = GGS_string ("struct") ;
     }
     break ;
-  case GGS_typeKindEnum::Enumeration::enum_boolsetType:
+  case GGS_typeKindEnum::Enumeration::enum_optionsetType:
     {
-      result = GGS_string ("boolset") ;
+      result = GGS_string ("optionset") ;
     }
     break ;
   case GGS_typeKindEnum::Enumeration::enum_graphType:
@@ -7912,8 +7912,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4026__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4026__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4032__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4032__0) ;
       result = GGS_string ("weak reference") ;
     }
     break ;

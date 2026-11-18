@@ -5816,7 +5816,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'before' keyword",
         "the 'between' keyword",
         "the 'block' keyword",
-        "the 'boolset' keyword",
+        "the 'optionset' keyword",
         "the 'case' keyword",
         "the 'class' keyword",
         "the 'default' keyword",
@@ -6353,17 +6353,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__bloc
   utf32 ('o'),
   utf32 ('c'),
   utf32 ('k'),
-} ;
-
-//--- Unicode string for '$boolset$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__boolset = {
-  utf32 ('b'),
-  utf32 ('o'),
-  utf32 ('o'),
-  utf32 ('l'),
-  utf32 ('s'),
-  utf32 ('e'),
-  utf32 ('t'),
 } ;
 
 //--- Unicode string for '$case$'
@@ -7170,6 +7159,19 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__opti
   utf32 ('n'),
 } ;
 
+//--- Unicode string for '$optionset$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__optionset = {
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('t'),
+} ;
+
 //--- Unicode string for '$or$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__or = {
   utf32 ('o'),
@@ -7880,7 +7882,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__switch, Lexique_galgasScanner_34_::kToken_switch),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__syntax, Lexique_galgasScanner_34_::kToken_syntax),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__between, Lexique_galgasScanner_34_::kToken_between),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__boolset, Lexique_galgasScanner_34_::kToken_boolset),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__default, Lexique_galgasScanner_34_::kToken_default),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__grammar, Lexique_galgasScanner_34_::kToken_grammar),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__lexique, Lexique_galgasScanner_34_::kToken_lexique),
@@ -7894,6 +7895,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__override, Lexique_galgasScanner_34_::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__template, Lexique_galgasScanner_34_::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__extension, Lexique_galgasScanner_34_::kToken_extension),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__optionset, Lexique_galgasScanner_34_::kToken_optionset),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__protected, Lexique_galgasScanner_34_::kToken_protected),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__fileprivate, Lexique_galgasScanner_34_::kToken_fileprivate),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__filewrapper, Lexique_galgasScanner_34_::kToken_filewrapper),
@@ -8080,9 +8082,9 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
       s.appendCString ("block") ;
       s.appendChar (utf32 ('$')) ;
       break ;
-    case kToken_boolset:
+    case kToken_optionset:
       s.appendChar (utf32 ('$')) ;
-      s.appendCString ("boolset") ;
+      s.appendCString ("optionset") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_case:
@@ -9739,7 +9741,7 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("before") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("between") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("block") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("boolset") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("optionset") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("case") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("class") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("default") COMMA_HERE) ;
@@ -10065,7 +10067,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("switch") ;
     ioList.appendObject ("syntax") ;
     ioList.appendObject ("between") ;
-    ioList.appendObject ("boolset") ;
     ioList.appendObject ("default") ;
     ioList.appendObject ("grammar") ;
     ioList.appendObject ("lexique") ;
@@ -10079,6 +10080,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("override") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
+    ioList.appendObject ("optionset") ;
     ioList.appendObject ("protected") ;
     ioList.appendObject ("fileprivate") ;
     ioList.appendObject ("filewrapper") ;
@@ -10126,7 +10128,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_before */,
     1 /* galgasScanner4_1_between */,
     1 /* galgasScanner4_1_block */,
-    1 /* galgasScanner4_1_boolset */,
+    1 /* galgasScanner4_1_optionset */,
     1 /* galgasScanner4_1_case */,
     1 /* galgasScanner4_1_class */,
     1 /* galgasScanner4_1_default */,

@@ -114,7 +114,7 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "before",
   "between",
   "block",
-  "boolset",
+  "optionset",
   "case",
   "class",
   "default",

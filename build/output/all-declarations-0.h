@@ -6728,7 +6728,7 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
     enum_weakReferenceType,
     enum_enumType,
     enum_mapType,
-    enum_boolsetType,
+    enum_optionsetType,
     enum_structType,
     enum_graphType,
     enum_externType,
@@ -6762,8 +6762,6 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_typeKindEnum class_func_boolsetType (LOCATION_ARGS) ;
-
   public: static class GGS_typeKindEnum class_func_classType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_enumType (const class GGS_constantIndexMap & inOperand0
@@ -6774,6 +6772,8 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
   public: static class GGS_typeKindEnum class_func_graphType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_mapType (LOCATION_ARGS) ;
+
+  public: static class GGS_typeKindEnum class_func_optionsetType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_otherType (LOCATION_ARGS) ;
 
@@ -6808,8 +6808,6 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
 
   public: class GGS_typeKindEnum_2E_weakReferenceType_3F_ getter_getWeakReferenceType (LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_isBoolsetType (LOCATION_ARGS) const ;
-
   public: class GGS_bool getter_isClassType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isEnumType (LOCATION_ARGS) const ;
@@ -6819,6 +6817,8 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
   public: class GGS_bool getter_isGraphType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isMapType (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isOptionsetType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isOtherType (LOCATION_ARGS) const ;
 
@@ -10939,168 +10939,6 @@ class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_typedProperty_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @typeFeatures boolset
-//--------------------------------------------------------------------------------------------------
-
-class GGS_typeFeatures final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: uint64_t mFlags ;
-  private: bool mIsValid ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
-
-//--------------------------------- Default constructor
-  public: GGS_typeFeatures (void) ;
-
-//--------------------------------- Private constructor
-  private: GGS_typeFeatures (const uint64_t inFlags) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_typeFeatures init (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_typeFeatures class_func_andAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_clonable (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_comparable (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_divAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_equatable (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixAddOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixAddOperatorNoOVF (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixAndOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixDivOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixDivOperatorNoOVF (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixModOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixMulOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixMulOperatorNoOVF (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixOrOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixShiftOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixSubOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixSubOperatorNoOVF (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_infixXorOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_minusAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_mulAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_orAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_plusAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_prefixMinusOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_prefixMinusOperatorNoOVF (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_prefixNotOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_prefixPlusOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_prefixTildeOperator (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_referenceEquatable (LOCATION_ARGS) ;
-
-  public: static class GGS_typeFeatures class_func_xorAssignOperatorWithExpression (LOCATION_ARGS) ;
-
-//--------------------------------- &= operator
-  public: void andAssignOperation (const GGS_typeFeatures inOperand,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- |= operator
-  public: void orAssignOperation (const GGS_typeFeatures inOperand,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ^= operator
-  public: void xorAssignOperation (const GGS_typeFeatures inOperand,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- -= operator
-  public: void minusAssignOperation (const GGS_typeFeatures inOperand,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- & operator
-  public: GGS_typeFeatures operator_and (const GGS_typeFeatures & inOperand
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- | operator
-  public: GGS_typeFeatures operator_or (const GGS_typeFeatures & inOperand
-                                        COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ^ operator
-  public: GGS_typeFeatures operator_xor (const GGS_typeFeatures & inOperand
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- ~ operator
-  public: GGS_typeFeatures operator_tilde (LOCATION_ARGS) const ;
-
-//--------------------------------- - operator
-  public: GGS_typeFeatures subtract_operation (const GGS_typeFeatures & inOperand,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_contains (const class GGS_typeFeatures & constinOperand0
-                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeFeatures ;
-
-//--------------------------------------------------------------------------------------------------
 //   enum headerKind
 //--------------------------------------------------------------------------------------------------
 
@@ -13243,6 +13081,168 @@ class GGS_writeSubcriptMap final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubcriptMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: optionset @typeFeatures
+//--------------------------------------------------------------------------------------------------
+
+class GGS_typeFeatures final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  private: uint64_t mFlags ;
+  private: bool mIsValid ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+
+//--------------------------------- Default constructor
+  public: GGS_typeFeatures (void) ;
+
+//--------------------------------- Private constructor
+  private: GGS_typeFeatures (const uint64_t inFlags) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_typeFeatures init (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_typeFeatures class_func_andAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_clonable (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_comparable (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_divAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_doNotGenererateObjectCompare (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_equatable (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_generateSynthetizedInitializer (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixAddOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixAddOperatorNoOVF (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixAndOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixDivOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixDivOperatorNoOVF (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixModOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixMulOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixMulOperatorNoOVF (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixOrOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixShiftOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixSubOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixSubOperatorNoOVF (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_infixXorOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_minusAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_mulAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_orAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_plusAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_prefixMinusOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_prefixMinusOperatorNoOVF (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_prefixNotOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_prefixPlusOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_prefixTildeOperator (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_referenceEquatable (LOCATION_ARGS) ;
+
+  public: static class GGS_typeFeatures class_func_xorAssignOperatorWithExpression (LOCATION_ARGS) ;
+
+//--------------------------------- &= operator
+  public: void andAssignOperation (const GGS_typeFeatures inOperand,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- |= operator
+  public: void orAssignOperation (const GGS_typeFeatures inOperand,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ^= operator
+  public: void xorAssignOperation (const GGS_typeFeatures inOperand,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- -= operator
+  public: void minusAssignOperation (const GGS_typeFeatures inOperand,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public: GGS_typeFeatures operator_and (const GGS_typeFeatures & inOperand
+                                         COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public: GGS_typeFeatures operator_or (const GGS_typeFeatures & inOperand
+                                        COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public: GGS_typeFeatures operator_xor (const GGS_typeFeatures & inOperand
+                                         COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public: GGS_typeFeatures operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- - operator
+  public: GGS_typeFeatures subtract_operation (const GGS_typeFeatures & inOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_typeFeatures & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeFeatures ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @unifiedTypeDefinition struct

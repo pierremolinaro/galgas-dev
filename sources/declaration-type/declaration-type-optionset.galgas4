@@ -1,0 +1,323 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//   SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+    $optionset$
+    $@type$ (?let @lstring optionSetTypeName) indexing (structDefinition)
+    let @bool isEquatable
+    select
+      isEquatable = false
+    or
+      $#equatable$
+      isEquatable = true
+    end
+    ${$
+    var [@lstring] slotList = @()
+    repeat
+    while
+      $case$
+      $identifier$ (?let slotName)
+      slotList ++= slotName
+    while
+      <method_declaration> (optionSetTypeName, !?ioDeclarations)
+    end
+    $}$
+    if slotList.count == 0 then
+      error optionSetTypeName : "an optionset type must define at least one case constant"
+    end
+    ioDeclarations.mDeclarationList ++= @optionSetDeclarationAST (
+      !isPredefined: false,
+      optionSetTypeName,
+      slotList,
+      !isEquatable: isEquatable
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   AST
+//--------------------------------------------------------------------------------------------------
+
+final class @optionSetDeclarationAST : @semanticDeclarationAST {
+  private let @lstring mOptionSetTypeName
+  private let [@lstring] mFlagList
+  private let @bool isEquatable #initArgLabel
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
+  ) {
+    let key = @lstring ("@" + self.mOptionSetTypeName, self.mOptionSetTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "optionset @" + self.mOptionSetTypeName
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext
+    (?!@equatableExtensionMap ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap ioTypeMap,
+    ?!@semanticContext ioSemanticContext ) {
+  //--- Check unicity of slot names
+    var @stringset slotNameSet = @()
+    for slotName in self.mFlagList do
+      if slotNameSet.contains (slotName) then
+        error slotName : "duplicated slot name"
+      end
+      slotNameSet ++= slotName
+    end
+  //--- optionset type
+    !?ioTypeMap.makeEntry (self.mOptionSetTypeName, ?let optionSetType)
+  //--- Getters
+    commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
+    enterBaseGetterWithArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "contains",
+      !argSelector: "",
+      !argType: self.mOptionSetTypeName,
+      !argName: "inOperand",
+      !returnedTypeName: "bool",
+      !hasCompilerArgument: false
+    )
+  //--- class functions
+    var @classFunctionMap classFunctionMap = @()
+    for slotName in self.mFlagList do
+      if not classFunctionMap.contains (slotName) then
+        !?classFunctionMap.insertKey (slotName, @(), false, optionSetType)
+      end
+    end
+  //--- Add initializer without argument
+    var @initializerMap initializerMap = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
+    !?initializerMap.insertKey
+      (@(emptyArgumentList.initializerSignature, self.mOptionSetTypeName),
+      emptyArgumentList
+    )
+  //--- Add extensions
+    var @setterMap setterMap = @()
+    var @instanceMethodMap instanceMethodMap = @()
+    addExtensions (
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
+      !?ioSemanticContext,
+      !?ioTypeMap,
+      self.mOptionSetTypeName,
+      !isClass: false,
+      !?initializerMap,
+      !?getterMap,
+      !?setterMap,
+      !?instanceMethodMap,
+      !acceptSetters: true
+    )
+  //--- Operators
+    var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
+      | .prefixTildeOperator
+      | .generateDescriptionGetterUtilityMethod | .infixSubOperator
+      | .andAssignOperatorWithExpression // var &= exp
+      | .orAssignOperatorWithExpression // var |= exp
+      | .xorAssignOperatorWithExpression // var ^= exp
+      | .minusAssignOperatorWithExpression // var -= exp
+    if self.isEquatable then
+      features |= .equatable
+    end
+    handleEquatableComparableExtension (
+      !?ioEquatableExtensionMap,
+      self.mOptionSetTypeName,
+      !?features,
+      !acceptEquatable: true,
+      !acceptComparable: true
+    )
+  //--- Enter in type map
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mOptionSetTypeName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .optionsetType,
+      !supportArrayLiteral: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "optionset-" + self.mOptionSetTypeName.string.fileNameRepresentation,
+      !headerKind: .oneHeader
+    )
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext _inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
+  //--- Check flags count
+    if self.mFlagList.count > 64 then
+      let @location s = self.mFlagList [64]
+      error s : "max flags count is 64 (here: " + self.mFlagList.count + ")"
+    end
+  //--- Useful entities graph
+    let optionSetNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mOptionSetTypeName)
+    !?ioUsefulEntitiesGraph.addNode (optionSetNameForUsefulness, optionSetNameForUsefulness)
+    if self.isPredefined  then
+      ioUsefulnessRootEntities ++= optionSetNameForUsefulness
+    end
+  //--- Useful entities graph for initializer without any argument
+    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+      self.mOptionSetTypeName,
+      [@formalInputParameterAST] ().initializerSignature
+    )
+    !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
+    if self.isPredefined  then
+      ioUsefulnessRootEntities ++= initializerNameForUsefulness
+    end
+  //---
+    ioSemanticDeclarationListForGeneration ++= @optionSetTypeForGeneration (
+      !infoMessage: "optionset " + self.mOptionSetTypeName,
+      ioTypeMap.typeMapEntryForLKey (self.mOptionSetTypeName),
+      self.mFlagList,
+      self.isEquatable
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
+  private let [@lstring] mFlagList
+  private let @bool equatable
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
+                                    !@string outHeader) {
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outHeader = filewrapper [structGenerationTemplate.optionSetTypeHeader1 :
+      selfTypeDefinition.typeName.string,
+      selfTypeDefinition.typeName.string.identifierRepresentation,
+      self.mFlagList
+    ]
+    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+      selfTypeDefinition.typeName.string,
+      selfTypeDefinition.typeName.string.identifierRepresentation,
+      selfTypeDefinition.isConcrete,
+      selfTypeDefinition.initializerMap,
+      selfTypeDefinition.classFunctionMap,
+      selfTypeDefinition.getterMap,
+      selfTypeDefinition.setterMap,
+      selfTypeDefinition.instanceMethodMap,
+      selfTypeDefinition.classMethodMap,
+      selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
+      selfTypeDefinition.enumerationDescriptorList,
+      selfTypeDefinition.features,
+      selfTypeDefinition.typeForEnumeratedElement,
+      selfTypeDefinition.supportArrayLiteral
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation) {
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    outImplementation = filewrapper [structGenerationTemplate.optionSetTypeSpecificImplementation :
+      self.mSelfTypeEntry.definition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      self.mFlagList,
+      (1 << self.mFlagList.count) - 1,
+      self.equatable
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+filewrapper structGenerationTemplate in "../+generation-templates/type_generation" {
+}{
+}{
+  template optionSetTypeHeader1 : "GALGAS_option_set.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?[@lstring] SLOT_LIST
+  )
+
+  template optionSetTypeSpecificImplementation : "GALGAS_option_set.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?[@lstring] SLOT_LIST,
+    ?@bigint FULL_SET,
+    ?@bool EQUATABLE
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
