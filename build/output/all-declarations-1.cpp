@@ -9470,194 +9470,6 @@ const GALGAS_TypeDescriptor * GGS_indexingAST::staticTypeDescriptor (void) const
 }
 
 //--------------------------------------------------------------------------------------------------
-// @semanticDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_semanticDeclarationAST::objectCompare (const GGS_semanticDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (void) :
-AC_GALGAS_reference_class () {
-}
-
-
-void cPtr_semanticDeclarationAST::
-semanticDeclarationAST_init_21_isPredefined (const GGS_bool & in_isPredefined,
-                                             Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (const cPtr_semanticDeclarationAST * inSourcePtr) :
-AC_GALGAS_reference_class (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_semanticDeclarationAST::readProperty_isPredefined (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_semanticDeclarationAST * p = (cPtr_semanticDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_semanticDeclarationAST) ;
-    return p->mProperty_isPredefined ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @semanticDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_semanticDeclarationAST::cPtr_semanticDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-AbstractStrongPtrClass (inCompiler COMMA_THERE),
-mProperty_isPredefined () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_semanticDeclarationAST::cPtr_semanticDeclarationAST (const GGS_bool & in_isPredefined,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) :
-AbstractStrongPtrClass (inCompiler COMMA_THERE),
-mProperty_isPredefined () {
-  mProperty_isPredefined = in_isPredefined ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
-    mProperty_isPredefined.printNonNullClassInstanceProperties ("isPredefined") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @semanticDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST ("semanticDeclarationAST",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_semanticDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_semanticDeclarationAST_2E_weak::objectCompare (const GGS_semanticDeclarationAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST_2E_weak::GGS_semanticDeclarationAST_2E_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST_2E_weak & GGS_semanticDeclarationAST_2E_weak::operator = (const GGS_semanticDeclarationAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST_2E_weak::GGS_semanticDeclarationAST_2E_weak (const GGS_semanticDeclarationAST & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST_2E_weak GGS_semanticDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_semanticDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST GGS_semanticDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_semanticDeclarationAST result ;
-  if (isValid ()) {
-    const cPtr_semanticDeclarationAST * p = (cPtr_semanticDeclarationAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_semanticDeclarationAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationAST GGS_semanticDeclarationAST_2E_weak::bang_semanticDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_semanticDeclarationAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_semanticDeclarationAST) ;
-      result = GGS_semanticDeclarationAST ((cPtr_semanticDeclarationAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @semanticDeclarationAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ("semanticDeclarationAST.weak",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_lexicalInstructionAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -12374,6 +12186,99 @@ const GALGAS_TypeDescriptor * GGS__5B_semanticDeclarationAST_5D_::staticTypeDesc
 }
 
 //--------------------------------------------------------------------------------------------------
+// @semanticDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_semanticDeclarationAST::objectCompare (const GGS_semanticDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (void) :
+AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_semanticDeclarationAST::
+semanticDeclarationAST_init_21_isPredefined (const GGS_bool & in_isPredefined,
+                                             Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST::GGS_semanticDeclarationAST (const cPtr_semanticDeclarationAST * inSourcePtr) :
+AC_GALGAS_reference_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_semanticDeclarationAST::readProperty_isPredefined (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_semanticDeclarationAST * p = (cPtr_semanticDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_semanticDeclarationAST) ;
+    return p->mProperty_isPredefined ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @semanticDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationAST::cPtr_semanticDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+AbstractStrongPtrClass (inCompiler COMMA_THERE),
+mProperty_isPredefined () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationAST::cPtr_semanticDeclarationAST (const GGS_bool & in_isPredefined,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+AbstractStrongPtrClass (inCompiler COMMA_THERE),
+mProperty_isPredefined () {
+  mProperty_isPredefined = in_isPredefined ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
+    mProperty_isPredefined.printNonNullClassInstanceProperties ("isPredefined") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST ("semanticDeclarationAST",
+                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_lexicalSentValue_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -14279,6 +14184,457 @@ const GALGAS_TypeDescriptor * GGS_templateDelimitorAST::staticTypeDescriptor (vo
 }
 
 //--------------------------------------------------------------------------------------------------
+// @lexiqueComponentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexiqueComponentAST::objectCompare (const GGS_lexiqueComponentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexiqueComponentAST GGS_lexiqueComponentAST::
+init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                  const GGS_lstring & in_mLexiqueComponentName,
+                                                                  const GGS_bool & in_mIsTemplate,
+                                                                  const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
+                                                                  const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
+                                                                  const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                                  const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
+                                                                  const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
+                                                                  const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
+                                                                  const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                                  const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
+                                                                  const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  cPtr_lexiqueComponentAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexiqueComponentAST (inCompiler COMMA_THERE)) ;
+  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
+  const GGS_lexiqueComponentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexiqueComponentAST::
+lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                      const GGS_lstring & in_mLexiqueComponentName,
+                                                                                      const GGS_bool & in_mIsTemplate,
+                                                                                      const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
+                                                                                      const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
+                                                                                      const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                                                      const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
+                                                                                      const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
+                                                                                      const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
+                                                                                      const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                                                      const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
+                                                                                      const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                                                      Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
+  mProperty_mIsTemplate = in_mIsTemplate ;
+  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
+  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
+  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
+  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
+  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
+  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
+  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
+  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
+  mProperty_mIndexingListAST = in_mIndexingListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentAST::GGS_lexiqueComponentAST (const cPtr_lexiqueComponentAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueComponentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexiqueComponentAST::readProperty_mLexiqueComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexiqueComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexiqueComponentAST::readProperty_mIsTemplate (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mIsTemplate ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_templateDelimitor_32_AST_5D_ GGS_lexiqueComponentAST::readProperty_mTemplateDelimitorListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_templateDelimitor_32_AST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateDelimitorListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_templateReplacementAST_5D_ GGS_lexiqueComponentAST::readProperty_mTemplateReplacementListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_templateReplacementAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTemplateReplacementListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalAttributeAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalAttributeListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lexicalAttributeAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalAttributeListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalStyleListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lexicalStyleAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalStyleListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_terminalDeclarationAST_5D_ GGS_lexiqueComponentAST::readProperty_mTerminalDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_terminalDeclarationAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mTerminalDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalMessageDeclarationAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalMessageDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lexicalMessageDeclarationAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalMessageDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalListDeclarationAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalListDeclarationListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lexicalListDeclarationAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalListDeclarationListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_abstractLexicalRuleAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalRuleListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_abstractLexicalRuleAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mLexicalRuleListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_indexingAST_5D_ GGS_lexiqueComponentAST::readProperty_mIndexingListAST (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_indexingAST_5D_ () ;
+  }else{
+    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    return p->mProperty_mIndexingListAST ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexiqueComponentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mLexiqueComponentName (),
+mProperty_mIsTemplate (),
+mProperty_mTemplateDelimitorListAST (),
+mProperty_mTemplateReplacementListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalStyleListAST (),
+mProperty_mTerminalDeclarationListAST (),
+mProperty_mLexicalMessageDeclarationListAST (),
+mProperty_mLexicalListDeclarationListAST (),
+mProperty_mLexicalRuleListAST (),
+mProperty_mIndexingListAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GGS_bool & in_isPredefined,
+                                                    const GGS_lstring & in_mLexiqueComponentName,
+                                                    const GGS_bool & in_mIsTemplate,
+                                                    const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
+                                                    const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
+                                                    const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                    const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
+                                                    const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
+                                                    const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
+                                                    const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                    const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
+                                                    const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mLexiqueComponentName (),
+mProperty_mIsTemplate (),
+mProperty_mTemplateDelimitorListAST (),
+mProperty_mTemplateReplacementListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalStyleListAST (),
+mProperty_mTerminalDeclarationListAST (),
+mProperty_mLexicalMessageDeclarationListAST (),
+mProperty_mLexicalListDeclarationListAST (),
+mProperty_mLexicalRuleListAST (),
+mProperty_mIndexingListAST () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
+  mProperty_mIsTemplate = in_mIsTemplate ;
+  mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
+  mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
+  mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
+  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
+  mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
+  mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
+  mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
+  mProperty_mLexicalRuleListAST = in_mLexicalRuleListAST ;
+  mProperty_mIndexingListAST = in_mIndexingListAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_lexiqueComponentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
+}
+
+void cPtr_lexiqueComponentAST::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexiqueComponentAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateDelimitorListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTemplateReplacementListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTerminalDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalMessageDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexicalRuleListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_lexiqueComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_isPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexiqueComponentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mLexiqueComponentName.printNonNullClassInstanceProperties ("mLexiqueComponentName") ;
+    mProperty_mIsTemplate.printNonNullClassInstanceProperties ("mIsTemplate") ;
+    mProperty_mTemplateDelimitorListAST.printNonNullClassInstanceProperties ("mTemplateDelimitorListAST") ;
+    mProperty_mTemplateReplacementListAST.printNonNullClassInstanceProperties ("mTemplateReplacementListAST") ;
+    mProperty_mLexicalAttributeListAST.printNonNullClassInstanceProperties ("mLexicalAttributeListAST") ;
+    mProperty_mLexicalStyleListAST.printNonNullClassInstanceProperties ("mLexicalStyleListAST") ;
+    mProperty_mTerminalDeclarationListAST.printNonNullClassInstanceProperties ("mTerminalDeclarationListAST") ;
+    mProperty_mLexicalMessageDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalMessageDeclarationListAST") ;
+    mProperty_mLexicalListDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalListDeclarationListAST") ;
+    mProperty_mLexicalRuleListAST.printNonNullClassInstanceProperties ("mLexicalRuleListAST") ;
+    mProperty_mIndexingListAST.printNonNullClassInstanceProperties ("mIndexingListAST") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexiqueComponentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexiqueComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_semanticDeclarationAST_2E_weak::objectCompare (const GGS_semanticDeclarationAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST_2E_weak::GGS_semanticDeclarationAST_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST_2E_weak & GGS_semanticDeclarationAST_2E_weak::operator = (const GGS_semanticDeclarationAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST_2E_weak::GGS_semanticDeclarationAST_2E_weak (const GGS_semanticDeclarationAST & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST_2E_weak GGS_semanticDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_semanticDeclarationAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST GGS_semanticDeclarationAST_2E_weak::unwrappedValue (void) const {
+  GGS_semanticDeclarationAST result ;
+  if (isValid ()) {
+    const cPtr_semanticDeclarationAST * p = (cPtr_semanticDeclarationAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_semanticDeclarationAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationAST GGS_semanticDeclarationAST_2E_weak::bang_semanticDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_semanticDeclarationAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_semanticDeclarationAST) ;
+      result = GGS_semanticDeclarationAST ((cPtr_semanticDeclarationAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticDeclarationAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ("semanticDeclarationAST.weak",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_formalInputParameterAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -15135,6 +15491,93 @@ const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST_2E_weak::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Enum xcodeProject
+//--------------------------------------------------------------------------------------------------
+
+GGS_xcodeProject::GGS_xcodeProject (void) :
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_xcodeProject GGS_xcodeProject::class_func_none (UNUSED_LOCATION_ARGS) {
+  GGS_xcodeProject result ;
+  result.mEnum = Enumeration::enum_none ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_xcodeProject GGS_xcodeProject::class_func_swiftApp (UNUSED_LOCATION_ARGS) {
+  GGS_xcodeProject result ;
+  result.mEnum = Enumeration::enum_swiftApp ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_xcodeProject [3] = {
+  "(not built)",
+  "none",
+  "swiftApp"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_xcodeProject::getter_isNone (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_xcodeProject::getter_isSwiftApp (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_swiftApp == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_xcodeProject::description (String & ioString,
+                                    const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<enum @xcodeProject: ") ;
+  ioString.appendCString (gEnumNameArrayFor_xcodeProject [size_t (mEnum)]) ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_xcodeProject::objectCompare (const GGS_xcodeProject & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mEnum < inOperand.mEnum) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (mEnum > inOperand.mEnum) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @xcodeProject generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProject ("xcodeProject",
+                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_xcodeProject::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_xcodeProject ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //     L E X I Q U E                                                                             
 //
@@ -15146,7 +15589,7 @@ const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST_2E_weak::staticType
 
 //--------------------------------------------------------------------------------------------------
 
-cTokenFor_projectScanner::cTokenFor_projectScanner (void) :
+cTokenFor_projectComponentScanner::cTokenFor_projectComponentScanner (void) :
 mLexicalAttribute_bigintValue (),
 mLexicalAttribute_charValue (),
 mLexicalAttribute_tokenString (),
@@ -15155,18 +15598,18 @@ mLexicalAttribute_uint_33__32_value () {
 
 //--------------------------------------------------------------------------------------------------
 
-Lexique_projectScanner::Lexique_projectScanner (Compiler * inCallerCompiler,
-                                                const String & inSourceFileName
-                                                COMMA_LOCATION_ARGS) :
+Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
+                                                                  const String & inSourceFileName
+                                                                  COMMA_LOCATION_ARGS) :
 Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-Lexique_projectScanner::Lexique_projectScanner (Compiler * inCallerCompiler,
-                                                const String & inSourceString,
-                                                const String & inStringForError
-                                                COMMA_LOCATION_ARGS) :
+Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
+                                                                  const String & inSourceString,
+                                                                  const String & inStringForError
+                                                                  COMMA_LOCATION_ARGS) :
 Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
@@ -15174,30 +15617,30 @@ Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 //                        Lexical error message list                                             
 //--------------------------------------------------------------------------------------------------
 
-static const char * gLexicalMessage_projectScanner_attributeError = "in an attribute name, a letter or a digit should follow the '#' character" ;
+static const char * gLexicalMessage_projectComponentScanner_attributeError = "in an attribute name, a letter or a digit should follow the '#' character" ;
 
-static const char * gLexicalMessage_projectScanner_incorrectCharConstant = "incorrect literal character" ;
+static const char * gLexicalMessage_projectComponentScanner_incorrectCharConstant = "incorrect literal character" ;
 
-static const char * gLexicalMessage_projectScanner_incorrectStringEnd = "string does not end with '\"'" ;
+static const char * gLexicalMessage_projectComponentScanner_incorrectStringEnd = "string does not end with '\"'" ;
 
-static const char * gLexicalMessage_projectScanner_internalError = "internal error" ;
+static const char * gLexicalMessage_projectComponentScanner_internalError = "internal error" ;
 
-static const char * gLexicalMessage_projectScanner_invalideUnicodeDefinition4 = "\\u should be followed by exactly four hexadecimal digits" ;
+static const char * gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 = "\\u should be followed by exactly four hexadecimal digits" ;
 
-static const char * gLexicalMessage_projectScanner_invalideUnicodeDefinition8 = "\\U should be followed by exactly eight hexadecimal digits" ;
+static const char * gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 = "\\U should be followed by exactly eight hexadecimal digits" ;
 
-static const char * gLexicalMessage_projectScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
+static const char * gLexicalMessage_projectComponentScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
 
-static const char * gLexicalMessage_projectScanner_undefinedAttribute = "undefined attribute" ;
+static const char * gLexicalMessage_projectComponentScanner_undefinedAttribute = "undefined attribute" ;
 
 //--------------------------------------------------------------------------------------------------
 //                getMessageForTerminal                                                          
 //--------------------------------------------------------------------------------------------------
 
-String Lexique_projectScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
+String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 24)) {
-    static const char * syntaxErrorMessageArray [24] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 26)) {
+    static const char * syntaxErrorMessageArray [26] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a literal integer",
         "a character constant",
@@ -15219,8 +15662,10 @@ String Lexique_projectScanner::getMessageForTerminal (const int32_t inTerminalIn
         "the '#makefile-arm64-linux-on-macosx' keyword",
         "the '#makefile-win32-on-macosx' keyword",
         "the '#macSwiftApp' keyword",
+        "the '#lexical-style' keyword",
         "the '.' delimitor",
-        "the ':' delimitor"
+        "the ':' delimitor",
+        "the '->' delimitor"
     } ;
     result = syntaxErrorMessageArray [inTerminalIndex] ;
   }
@@ -15231,24 +15676,30 @@ String Lexique_projectScanner::getMessageForTerminal (const int32_t inTerminalIn
 //                      U N I C O D E    S T R I N G S                                           
 //--------------------------------------------------------------------------------------------------
 
+//--- Unicode string for '$->$'
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
+  utf32 ('-'),
+  utf32 ('>'),
+} ;
+
 //--- Unicode string for '$.$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner__2E_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
   utf32 ('.'),
 } ;
 
 //--- Unicode string for '$//$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner__2F__2F_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
   utf32 ('/'),
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$:$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner__3A_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
   utf32 (':'),
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_linux_33__32_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -15270,7 +15721,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblo
 } ;
 
 //--- Unicode string for '$codeblocks-linux64$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_linux_36__34_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -15292,7 +15743,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblo
 } ;
 
 //--- Unicode string for '$codeblocks-windows$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_windows = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -15313,8 +15764,25 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblo
   utf32 ('s'),
 } ;
 
+//--- Unicode string for '$lexical-style$'
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('x'),
+  utf32 ('i'),
+  utf32 ('c'),
+  utf32 ('a'),
+  utf32 ('l'),
+  utf32 ('-'),
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('y'),
+  utf32 ('l'),
+  utf32 ('e'),
+} ;
+
 //--- Unicode string for '$libpmCustomPath$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_libpmCustomPath = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
   utf32 ('l'),
   utf32 ('i'),
   utf32 ('b'),
@@ -15333,7 +15801,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_libpmCu
 } ;
 
 //--- Unicode string for '$macAppBundleBaseName$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_macAppBundleBaseName = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -15357,7 +15825,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_macAppB
 } ;
 
 //--- Unicode string for '$macCodeSign$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_macCodeSign = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -15372,7 +15840,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_macCode
 } ;
 
 //--- Unicode string for '$macSwiftApp$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_macSwiftApp = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -15387,7 +15855,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_macSwif
 } ;
 
 //--- Unicode string for '$makefile-arm64-linux-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15421,7 +15889,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$makefile-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15440,7 +15908,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$makefile-unix$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_unix = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15457,7 +15925,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$makefile-win32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15485,7 +15953,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$makefile-x86linux32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15518,7 +15986,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$makefile-x86linux64-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -15551,7 +16019,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefil
 } ;
 
 //--- Unicode string for '$productName$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_productName = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -15566,7 +16034,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_product
 } ;
 
 //--- Unicode string for '$version$'
-static const std::initializer_list <utf32> kUnicodeString_projectScanner_version = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
   utf32 ('v'),
   utf32 ('e'),
   utf32 ('r'),
@@ -15580,43 +16048,45 @@ static const std::initializer_list <utf32> kUnicodeString_projectScanner_version
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_projectScanner_attributeKeyWordList = 15 ;
+static const int32_t ktable_size_projectComponentScanner_attributeKeyWordList = 16 ;
 
-static const C_unicode_lexique_table_entry ktable_for_projectScanner_attributeKeyWordList [ktable_size_projectScanner_attributeKeyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_version, Lexique_projectScanner::kToken__23_version),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macCodeSign, Lexique_projectScanner::kToken__23_macCodeSign),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macSwiftApp, Lexique_projectScanner::kToken__23_macSwiftApp),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_productName, Lexique_projectScanner::kToken__23_productName),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_unix, Lexique_projectScanner::kToken__23_makefile_2D_unix),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_libpmCustomPath, Lexique_projectScanner::kToken__23_libpmCustomPath),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_linux_33__32_, Lexique_projectScanner::kToken__23_codeblocks_2D_linux_33__32_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_linux_36__34_, Lexique_projectScanner::kToken__23_codeblocks_2D_linux_36__34_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_windows, Lexique_projectScanner::kToken__23_codeblocks_2D_windows),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macAppBundleBaseName, Lexique_projectScanner::kToken__23_macAppBundleBaseName),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx)
+static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_attributeKeyWordList [ktable_size_projectComponentScanner_attributeKeyWordList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_version, Lexique_projectComponentScanner::kToken__23_version),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macCodeSign, Lexique_projectComponentScanner::kToken__23_macCodeSign),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macSwiftApp, Lexique_projectComponentScanner::kToken__23_macSwiftApp),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_productName, Lexique_projectComponentScanner::kToken__23_productName),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_lexical_2D_style, Lexique_projectComponentScanner::kToken__23_lexical_2D_style),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_unix, Lexique_projectComponentScanner::kToken__23_makefile_2D_unix),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_libpmCustomPath, Lexique_projectComponentScanner::kToken__23_libpmCustomPath),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_windows, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macAppBundleBaseName, Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx)
 } ;
 
-int32_t Lexique_projectScanner::search_into_attributeKeyWordList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_projectScanner_attributeKeyWordList, ktable_size_projectScanner_attributeKeyWordList) ;
+int32_t Lexique_projectComponentScanner::search_into_attributeKeyWordList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_projectComponentScanner_attributeKeyWordList, ktable_size_projectComponentScanner_attributeKeyWordList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_projectScanner_galgasDelimitorsList = 2 ;
+static const int32_t ktable_size_projectComponentScanner_galgasDelimitorsList = 3 ;
 
-static const C_unicode_lexique_table_entry ktable_for_projectScanner_galgasDelimitorsList [ktable_size_projectScanner_galgasDelimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner__2E_, Lexique_projectScanner::kToken__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectScanner__3A_, Lexique_projectScanner::kToken__3A_)
+static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_galgasDelimitorsList [ktable_size_projectComponentScanner_galgasDelimitorsList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__2E_, Lexique_projectComponentScanner::kToken__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__3A_, Lexique_projectComponentScanner::kToken__3A_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__2D__3E_, Lexique_projectComponentScanner::kToken__2D__3E_)
 } ;
 
-int32_t Lexique_projectScanner::search_into_galgasDelimitorsList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_projectScanner_galgasDelimitorsList, ktable_size_projectScanner_galgasDelimitorsList) ;
+int32_t Lexique_projectComponentScanner::search_into_galgasDelimitorsList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_projectComponentScanner_galgasDelimitorsList, ktable_size_projectComponentScanner_galgasDelimitorsList) ;
 }
 
 
@@ -15624,8 +16094,8 @@ int32_t Lexique_projectScanner::search_into_galgasDelimitorsList (const String &
 //                          getCurrentTokenString                                                
 //--------------------------------------------------------------------------------------------------
 
-String Lexique_projectScanner::getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_projectScanner * ptr = (const cTokenFor_projectScanner *) inTokenPtr ;
+String Lexique_projectComponentScanner::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_projectComponentScanner * ptr = (const cTokenFor_projectComponentScanner *) inTokenPtr ;
   String s ;
   if (ptr == nullptr) {
     s.appendCString ("$$") ;
@@ -15747,6 +16217,11 @@ String Lexique_projectScanner::getCurrentTokenString (const cToken * inTokenPtr)
       s.appendCString ("#macSwiftApp") ;
       s.appendChar (utf32 ('$')) ;
       break ;
+    case kToken__23_lexical_2D_style:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#lexical-style") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
     case kToken__2E_:
       s.appendChar (utf32 ('$')) ;
       s.appendCString (".") ;
@@ -15755,6 +16230,11 @@ String Lexique_projectScanner::getCurrentTokenString (const cToken * inTokenPtr)
     case kToken__3A_:
       s.appendChar (utf32 ('$')) ;
       s.appendCString (":") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2D__3E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("->") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     default:
@@ -15783,7 +16263,7 @@ String Lexique_projectScanner::getCurrentTokenString (const cToken * inTokenPtr)
 //               INTERNAL PARSE LEXICAL TOKEN                                         
 //--------------------------------------------------------------------------------------------------
 
-void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner & token) {
+void Lexique_projectComponentScanner::internalParseLexicalToken (cTokenFor_projectComponentScanner & token) {
   bool loop = true ;
   token.mLexicalAttribute_bigintValue = BigSigned () ;
   token.mLexicalAttribute_charValue = utf32 (0) ;
@@ -15813,7 +16293,7 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
         }
       }while (loop) ;
       loop = true ;
-      ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_projectScanner_internalError) ;
+      ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_projectComponentScanner_internalError) ;
       token.mTokenCode = kToken_literalInt ;
       enterToken (token) ;
     }else if (testForInputUTF32Char (utf32 ('#'))) {
@@ -15827,13 +16307,13 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
         }while (loop) ;
         loop = true ;
       }else{
-        lexicalError (gLexicalMessage_projectScanner_attributeError COMMA_LINE_AND_SOURCE_FILE) ;
+        lexicalError (gLexicalMessage_projectComponentScanner_attributeError COMMA_LINE_AND_SOURCE_FILE) ;
       }
       if (token.mTokenCode == -1) {
         token.mTokenCode = search_into_attributeKeyWordList (token.mLexicalAttribute_tokenString) ;
       }
       if (token.mTokenCode == -1) {
-        lexicalError (gLexicalMessage_projectScanner_undefinedAttribute COMMA_LINE_AND_SOURCE_FILE) ;
+        lexicalError (gLexicalMessage_projectComponentScanner_undefinedAttribute COMMA_LINE_AND_SOURCE_FILE) ;
       }
       enterToken (token) ;
     }else if (testForInputUTF32Char (utf32 ('\''))) {
@@ -15856,83 +16336,83 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
           ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\'')) ;
         }else if (testForInputUTF32Char (utf32 ('u'))) {
           if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
             if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
               if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                 if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
-                  ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
+                  ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
                 }else{
-                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else{
-            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
           }
         }else if (testForInputUTF32Char (utf32 ('U'))) {
           if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
             if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
               if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                 if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                   if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                     if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                       if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                         if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
-                          ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
+                          ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
                         }else{
-                          lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                          lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                         }
                       }else{
-                        lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                       }
                     }else{
-                      lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                     }
                   }else{
-                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else{
-            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
           }
         }else{
-          lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+          lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
       }else if (testForInputUTF32CharRange (utf32 (' '), utf32 (65533))) {
         ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
       }else{
-        lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+        lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
       }
       if (testForInputUTF32Char (utf32 ('\''))) {
         token.mTokenCode = kToken__27_char_27_ ;
         enterToken (token) ;
       }else{
-        lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+        lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
       }
-    }else if (testForInputUTF32String (kUnicodeString_projectScanner__2F__2F_, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2F__2F_, true)) {
       if (testForInputUTF32Char (utf32 ('!'))) {
         do {
           if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
@@ -15952,10 +16432,13 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
         loop = true ;
         enterDroppedTerminal (kToken_comment) ;
       }
-    }else if (testForInputUTF32String (kUnicodeString_projectScanner__3A_, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2D__3E_, true)) {
+      token.mTokenCode = kToken__2D__3E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__3A_, true)) {
       token.mTokenCode = kToken__3A_ ;
       enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_projectScanner__2E_, true)) {
+    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2E_, true)) {
       token.mTokenCode = kToken__2E_ ;
       enterToken (token) ;
     }else if (testForInputUTF32Char (utf32 ('\"'))) {
@@ -15981,72 +16464,72 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\?')) ;
           }else if (testForInputUTF32Char (utf32 ('u'))) {
             if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
               if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                 if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                   if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
-                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
+                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
                     ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
                   }else{
-                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else if (testForInputUTF32Char (utf32 ('U'))) {
             if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
               if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                 if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                   if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                     if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                       if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                         if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
                           if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
-                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
+                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
                             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
                           }else{
-                            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                           }
                         }else{
-                          lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                          lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                         }
                       }else{
-                        lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                       }
                     }else{
-                      lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                     }
                   }else{
-                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                   }
                 }else{
-                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
                 }
               }else{
-                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
               }
             }else{
-              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
             }
           }else{
-            lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+            lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
           }
         }else if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
@@ -16059,7 +16542,7 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
         token.mTokenCode = kToken__22_string_22_ ;
         enterToken (token) ;
       }else{
-        lexicalError (gLexicalMessage_projectScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+        lexicalError (gLexicalMessage_projectComponentScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
       }
     }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
     }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
@@ -16079,8 +16562,8 @@ void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner
 //               P A R S E    L E X I C A L    T O K E N                                         
 //--------------------------------------------------------------------------------------------------
 
-bool Lexique_projectScanner::parseLexicalToken (void) {
-  cTokenFor_projectScanner token ;
+bool Lexique_projectComponentScanner::parseLexicalToken (void) {
+  cTokenFor_projectComponentScanner token ;
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     internalParseLexicalToken (token) ;
@@ -16096,9 +16579,9 @@ bool Lexique_projectScanner::parseLexicalToken (void) {
 //                         E N T E R    T O K E N                                                
 //--------------------------------------------------------------------------------------------------
 
-void Lexique_projectScanner::enterToken (cTokenFor_projectScanner & ioToken) {
-  cTokenFor_projectScanner * ptr = nullptr ;
-  macroMyNew (ptr, cTokenFor_projectScanner ()) ;
+void Lexique_projectComponentScanner::enterToken (cTokenFor_projectComponentScanner & ioToken) {
+  cTokenFor_projectComponentScanner * ptr = nullptr ;
+  macroMyNew (ptr, cTokenFor_projectComponentScanner ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
@@ -16115,29 +16598,29 @@ void Lexique_projectScanner::enterToken (cTokenFor_projectScanner & ioToken) {
 //               A T T R I B U T E   A C C E S S                                                 
 //--------------------------------------------------------------------------------------------------
 
-BigSigned Lexique_projectScanner::attributeValue_bigintValue (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+BigSigned Lexique_projectComponentScanner::attributeValue_bigintValue (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_bigintValue ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-utf32 Lexique_projectScanner::attributeValue_charValue (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+utf32 Lexique_projectComponentScanner::attributeValue_charValue (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_charValue ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-String Lexique_projectScanner::attributeValue_tokenString (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+String Lexique_projectComponentScanner::attributeValue_tokenString (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_tokenString ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-uint32_t Lexique_projectScanner::attributeValue_uint_33__32_value (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+uint32_t Lexique_projectComponentScanner::attributeValue_uint_33__32_value (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
   return ptr->mLexicalAttribute_uint_33__32_value ;
 }
 
@@ -16145,9 +16628,9 @@ uint32_t Lexique_projectScanner::attributeValue_uint_33__32_value (void) const {
 //         A S S I G N    F R O M    A T T R I B U T E                                           
 //--------------------------------------------------------------------------------------------------
 
-GGS_lbigint Lexique_projectScanner::synthetizedAttribute_bigintValue (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+GGS_lbigint Lexique_projectComponentScanner::synthetizedAttribute_bigintValue (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GGS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
   GGS_lbigint result (value, currentLocation) ;
@@ -16156,9 +16639,9 @@ GGS_lbigint Lexique_projectScanner::synthetizedAttribute_bigintValue (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lchar Lexique_projectScanner::synthetizedAttribute_charValue (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+GGS_lchar Lexique_projectComponentScanner::synthetizedAttribute_charValue (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GGS_char value (ptr->mLexicalAttribute_charValue) ;
   GGS_lchar result (value, currentLocation) ;
@@ -16167,9 +16650,9 @@ GGS_lchar Lexique_projectScanner::synthetizedAttribute_charValue (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring Lexique_projectScanner::synthetizedAttribute_tokenString (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+GGS_lstring Lexique_projectComponentScanner::synthetizedAttribute_tokenString (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GGS_string value (ptr->mLexicalAttribute_tokenString) ;
   GGS_lstring result (value, currentLocation) ;
@@ -16178,9 +16661,9 @@ GGS_lstring Lexique_projectScanner::synthetizedAttribute_tokenString (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint Lexique_projectScanner::synthetizedAttribute_uint_33__32_value (void) const {
-  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+GGS_luint Lexique_projectComponentScanner::synthetizedAttribute_uint_33__32_value (void) const {
+  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
   GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
   GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
   GGS_luint result (value, currentLocation) ;
@@ -16191,7 +16674,7 @@ GGS_luint Lexique_projectScanner::synthetizedAttribute_uint_33__32_value (void) 
 //                         I N T R O S P E C T I O N                                             
 //--------------------------------------------------------------------------------------------------
 
- GGS__5B_string_5D_ Lexique_projectScanner::symbols (LOCATION_ARGS) {
+ GGS__5B_string_5D_ Lexique_projectComponentScanner::symbols (LOCATION_ARGS) {
   GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
   result.plusPlusAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("literalInt") COMMA_HERE) ;
@@ -16214,29 +16697,32 @@ GGS_luint Lexique_projectScanner::synthetizedAttribute_uint_33__32_value (void) 
   result.plusPlusAssignOperation (GGS_string ("#makefile-arm64-linux-on-macosx") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("#makefile-win32-on-macosx") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("#macSwiftApp") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#lexical-style") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string (".") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("->") COMMA_HERE) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordLists_projectScanner (GenericUniqueArray <String> & ioList) {
-  ioList.appendObject ("projectScanner:attributeKeyWordList") ;
-  ioList.appendObject ("projectScanner:galgasDelimitorsList") ;
+static void getKeywordLists_projectComponentScanner (GenericUniqueArray <String> & ioList) {
+  ioList.appendObject ("projectComponentScanner:attributeKeyWordList") ;
+  ioList.appendObject ("projectComponentScanner:galgasDelimitorsList") ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static void getKeywordsForIdentifier_projectScanner (const String & inIdentifier,
-                                                     bool & ioFound,
-                                                     GenericUniqueArray <String> & ioList) {
-  if (inIdentifier == "projectScanner:attributeKeyWordList") {
+static void getKeywordsForIdentifier_projectComponentScanner (const String & inIdentifier,
+                                                              bool & ioFound,
+                                                              GenericUniqueArray <String> & ioList) {
+  if (inIdentifier == "projectComponentScanner:attributeKeyWordList") {
     ioFound = true ;
     ioList.appendObject ("version") ;
     ioList.appendObject ("macCodeSign") ;
     ioList.appendObject ("macSwiftApp") ;
     ioList.appendObject ("productName") ;
+    ioList.appendObject ("lexical-style") ;
     ioList.appendObject ("makefile-unix") ;
     ioList.appendObject ("libpmCustomPath") ;
     ioList.appendObject ("makefile-macosx") ;
@@ -16250,49 +16736,52 @@ static void getKeywordsForIdentifier_projectScanner (const String & inIdentifier
     ioList.appendObject ("makefile-arm64-linux-on-macosx") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
-  if (inIdentifier == "projectScanner:galgasDelimitorsList") {
+  if (inIdentifier == "projectComponentScanner:galgasDelimitorsList") {
     ioFound = true ;
     ioList.appendObject (".") ;
     ioList.appendObject (":") ;
+    ioList.appendObject ("->") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static LexiqueIntrospection lexiqueIntrospection_projectScanner
+static LexiqueIntrospection lexiqueIntrospection_projectComponentScanner
 __attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_projectScanner, getKeywordsForIdentifier_projectScanner) ;
+__attribute__ ((unused)) (getKeywordLists_projectComponentScanner, getKeywordsForIdentifier_projectComponentScanner) ;
 
 //--------------------------------------------------------------------------------------------------
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
 //--------------------------------------------------------------------------------------------------
 
-uint32_t Lexique_projectScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [24] = {0,
-    0 /* projectScanner_1_identifier */,
-    2 /* projectScanner_1_literalInt */,
-    3 /* projectScanner_1__27_char_27_ */,
-    6 /* projectScanner_1_comment */,
-    6 /* projectScanner_1_commentMark */,
-    4 /* projectScanner_1__22_string_22_ */,
-    5 /* projectScanner_1__23_macAppBundleBaseName */,
-    5 /* projectScanner_1__23_codeblocks_2D_linux_33__32_ */,
-    5 /* projectScanner_1__23_codeblocks_2D_linux_36__34_ */,
-    5 /* projectScanner_1__23_codeblocks_2D_windows */,
-    5 /* projectScanner_1__23_libpmCustomPath */,
-    5 /* projectScanner_1__23_productName */,
-    5 /* projectScanner_1__23_version */,
-    5 /* projectScanner_1__23_macCodeSign */,
-    5 /* projectScanner_1__23_makefile_2D_macosx */,
-    5 /* projectScanner_1__23_makefile_2D_unix */,
-    5 /* projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
-    5 /* projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
-    5 /* projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
-    5 /* projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
-    5 /* projectScanner_1__23_macSwiftApp */,
-    1 /* projectScanner_1__2E_ */,
-    1 /* projectScanner_1__3A_ */
+uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [26] = {0,
+    0 /* projectComponentScanner_1_identifier */,
+    2 /* projectComponentScanner_1_literalInt */,
+    3 /* projectComponentScanner_1__27_char_27_ */,
+    6 /* projectComponentScanner_1_comment */,
+    6 /* projectComponentScanner_1_commentMark */,
+    4 /* projectComponentScanner_1__22_string_22_ */,
+    5 /* projectComponentScanner_1__23_macAppBundleBaseName */,
+    5 /* projectComponentScanner_1__23_codeblocks_2D_linux_33__32_ */,
+    5 /* projectComponentScanner_1__23_codeblocks_2D_linux_36__34_ */,
+    5 /* projectComponentScanner_1__23_codeblocks_2D_windows */,
+    5 /* projectComponentScanner_1__23_libpmCustomPath */,
+    5 /* projectComponentScanner_1__23_productName */,
+    5 /* projectComponentScanner_1__23_version */,
+    5 /* projectComponentScanner_1__23_macCodeSign */,
+    5 /* projectComponentScanner_1__23_makefile_2D_macosx */,
+    5 /* projectComponentScanner_1__23_makefile_2D_unix */,
+    5 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
+    5 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
+    5 /* projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
+    5 /* projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
+    5 /* projectComponentScanner_1__23_macSwiftApp */,
+    5 /* projectComponentScanner_1__23_lexical_2D_style */,
+    1 /* projectComponentScanner_1__2E_ */,
+    1 /* projectComponentScanner_1__3A_ */,
+    1 /* projectComponentScanner_1__2D__3E_ */
   } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }
@@ -16301,7 +16790,7 @@ uint32_t Lexique_projectScanner::styleIndexForTerminal (const int32_t inTerminal
 //   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
 //--------------------------------------------------------------------------------------------------
 
-String Lexique_projectScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+String Lexique_projectComponentScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
   String result ;
   if (inStyleIndex < 7) {
     static const char * kStyleArray [7] = {
@@ -16316,254 +16805,5 @@ String Lexique_projectScanner::styleNameForIndex (const uint32_t inStyleIndex) c
     result = kStyleArray [inStyleIndex] ;
   }
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets::GGS_projectTargets (void) :
-AC_GALGAS_root (),
-mFlags (0),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets::GGS_projectTargets (const uint64_t inFlags) :
-AC_GALGAS_root (),
-mFlags (inFlags),
-mIsValid (true) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (0) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileUnix (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 0) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileMacOS (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 1) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 2) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 3) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 4) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_makefileWin_33__32_OnMac (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 5) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_macSwiftApp (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 6) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_codeblocksWindows (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 7) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_codeblocksLinux_33__32_ (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 8) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::class_func_codeblocksLinux_36__34_ (UNUSED_LOCATION_ARGS) {
-  return GGS_projectTargets (uint64_t (1) << 9) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_projectTargets::isValid (void) const {
-  return mIsValid ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_projectTargets::getter_contains (const GGS_projectTargets & inOperand
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = GGS_bool ((mFlags & inOperand.mFlags) != 0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectTargets::andAssignOperation (const GGS_projectTargets inOperand,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags &= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectTargets::orAssignOperation (const GGS_projectTargets inOperand,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags |= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectTargets::xorAssignOperation (const GGS_projectTargets inOperand,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags ^= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectTargets::minusAssignOperation (const GGS_projectTargets inOperand,
-                                               Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags &= ~ inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::operator_or (const GGS_projectTargets & inOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_projectTargets result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_projectTargets (mFlags | inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::operator_and (const GGS_projectTargets & inOperand
-                                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_projectTargets result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_projectTargets (mFlags & inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::operator_xor (const GGS_projectTargets & inOperand
-                                                     COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_projectTargets result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_projectTargets (mFlags ^ inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::subtract_operation (const GGS_projectTargets & inOperand,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_projectTargets result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_projectTargets (mFlags & ~ inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_projectTargets GGS_projectTargets::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GGS_projectTargets result ;
-  if (mIsValid) {
-    result = GGS_projectTargets (uint64_t (0x3FF) ^ mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_projectTargets::description (String & ioString,
-                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<optionset @projectTargets:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    if ((mFlags & (uint64_t (1) << 0)) != 0) {
-      ioString.appendCString (" makefileUnix") ;
-    }
-    if ((mFlags & (uint64_t (1) << 1)) != 0) {
-      ioString.appendCString (" makefileMacOS") ;
-    }
-    if ((mFlags & (uint64_t (1) << 2)) != 0) {
-      ioString.appendCString (" makefileX86Linux32OnMac") ;
-    }
-    if ((mFlags & (uint64_t (1) << 3)) != 0) {
-      ioString.appendCString (" makefileX86Linux64OnMac") ;
-    }
-    if ((mFlags & (uint64_t (1) << 4)) != 0) {
-      ioString.appendCString (" makefileARM64LinuxOnMac") ;
-    }
-    if ((mFlags & (uint64_t (1) << 5)) != 0) {
-      ioString.appendCString (" makefileWin32OnMac") ;
-    }
-    if ((mFlags & (uint64_t (1) << 6)) != 0) {
-      ioString.appendCString (" macSwiftApp") ;
-    }
-    if ((mFlags & (uint64_t (1) << 7)) != 0) {
-      ioString.appendCString (" codeblocksWindows") ;
-    }
-    if ((mFlags & (uint64_t (1) << 8)) != 0) {
-      ioString.appendCString (" codeblocksLinux32") ;
-    }
-    if ((mFlags & (uint64_t (1) << 9)) != 0) {
-      ioString.appendCString (" codeblocksLinux64") ;
-    }
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @projectTargets generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_projectTargets ("projectTargets",
-                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_projectTargets::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_projectTargets ;
 }
 

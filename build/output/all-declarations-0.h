@@ -9077,6 +9077,211 @@ class GGS_optionComponentMapForSemanticAnalysis final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentMapForSemanticAnalysis ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @styleMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_styleMap final {
+
+  public: DownEnumerator_styleMap (const class GGS_styleMap & inMap) ;
+
+  public: ~ DownEnumerator_styleMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
+
+  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
+
+  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_styleMap (const DownEnumerator_styleMap &) = delete ;
+  private: DownEnumerator_styleMap & operator = (const DownEnumerator_styleMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_styleMap final {
+  public: UpEnumerator_styleMap (const class GGS_styleMap & inMap)  ;
+
+  public: ~ UpEnumerator_styleMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mComment (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mStyleIndex (LOCATION_ARGS) const ;
+  public: class GGS_styleMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_styleMap (const UpEnumerator_styleMap &) = delete ;
+  private: UpEnumerator_styleMap & operator = (const UpEnumerator_styleMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_styleMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_styleMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_styleMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_styleMap (void) ;
+
+//--- Handle copy
+  public: GGS_styleMap (const GGS_styleMap & inSource) ;
+  public: GGS_styleMap & operator = (const GGS_styleMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_styleMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_styleMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_styleMap init (Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_styleMap class_func_mapWithMapToOverride (const class GGS_styleMap & inOperand0
+                                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insert (class GGS_lstring constinArgument0,
+                              class GGS_lstring constinArgument1,
+                              class GGS_uint constinArgument2,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMCommentForKey (class GGS_lstring constinArgument0,
+                                         class GGS_string constinArgument1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMStyleIndexForKey (class GGS_uint constinArgument0,
+                                            class GGS_string constinArgument1,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_search (class GGS_lstring constinArgument0,
+                              class GGS_lstring & outArgument1,
+                              class GGS_uint & outArgument2,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_mCommentForKey (const class GGS_string & constinOperand0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mStyleIndexForKey (const class GGS_string & constinOperand0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_styleMap getter_overriddenMap (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_styleMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_styleMap ;
+  friend class DownEnumerator_styleMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_styleMap ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxComponentMap map
 //--------------------------------------------------------------------------------------------------
 
@@ -9616,6 +9821,11 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     return mProperty_mSyntaxComponentMapForSemanticAnalysis ;
   }
 
+  public: GGS_styleMap mProperty_lexicalStyleMap ;
+  public: inline GGS_styleMap readProperty_lexicalStyleMap (void) const {
+    return mProperty_lexicalStyleMap ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -9656,6 +9866,10 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     mProperty_mSyntaxComponentMapForSemanticAnalysis = inValue ;
   }
 
+  public: inline void setter_setLexicalStyleMap (const GGS_styleMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lexicalStyleMap = inValue ;
+  }
+
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -9667,7 +9881,8 @@ class GGS_semanticContext final : public AC_GALGAS_root {
                                const GGS_grammarMap & in_grammarMap,
                                const GGS_optionComponentMapForSemanticAnalysis & in_mOptionComponentMapForSemanticAnalysis,
                                const GGS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis,
-                               const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis) ;
+                               const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis,
+                               const GGS_styleMap & in_lexicalStyleMap) ;
 
 //--------------------------------- Copy constructor
   public: GGS_semanticContext (const GGS_semanticContext & inSource) ;
@@ -9678,8 +9893,9 @@ class GGS_semanticContext final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_semanticContext init (Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_semanticContext init_21_ (const class GGS_styleMap & inOperand0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

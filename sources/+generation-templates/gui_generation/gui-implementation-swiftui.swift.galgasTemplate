@@ -59,6 +59,7 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
+    case editorSettings
 %for (aLexique) in GUI_CONTEXT.mWithLexiqueList
   do %    case %!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%\n%
 end
@@ -74,7 +75,8 @@ end
   @ViewBuilder var body : some View {
     NavigationSplitView {
       List(selection: self.$mSelection) {
-        Text ("Options").tag (SidebarItem.commandLineOptions)\n
+        Text ("Options").tag (SidebarItem.commandLineOptions)
+        Text ("Editor Settings").tag (SidebarItem.editorSettings)
 %for (aLexique) in GUI_CONTEXT.mWithLexiqueList
   do %        Text ("%!aLexique.mTitle%").tag (SidebarItem.%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%)\n%
 end
@@ -84,6 +86,7 @@ end
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
+        case .editorSettings : EditorSettingView ()
 %for (aLexique) in GUI_CONTEXT.mWithLexiqueList
   do %        case .%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]% : SettingViewFor_%!aLexique.mLexiqueClassName% ()\n%
 end

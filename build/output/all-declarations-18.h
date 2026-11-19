@@ -651,19 +651,20 @@ class GGS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GGS_l
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'compileSemanticDeclarationsGalgas&&??!!!'
+//Routine 'compileSemanticDeclarationsGalgas&&???!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_compileSemanticDeclarationsGalgas_26__26__3F__3F__21__21__21_ (class GGS__5B_lstring_5D_ & ioArgument0,
-                                                                            class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                            const class GGS_string constinArgument2,
-                                                                            const class GGS_galgasDeclarationAST constinArgument3,
-                                                                            class GGS_semanticContext & outArgument4,
-                                                                            class GGS_unifiedTypeMap & outArgument5,
-                                                                            class GGS__5B_semanticDeclarationForGeneration_5D_ & outArgument6,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+void routine_compileSemanticDeclarationsGalgas_26__26__3F__3F__3F__21__21__21_ (class GGS__5B_lstring_5D_ & ioArgument0,
+                                                                                class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                const class GGS_string constinArgument2,
+                                                                                const class GGS_galgasDeclarationAST constinArgument3,
+                                                                                const class GGS_project constinArgument4,
+                                                                                class GGS_semanticContext & outArgument5,
+                                                                                class GGS_unifiedTypeMap & outArgument6,
+                                                                                class GGS__5B_semanticDeclarationForGeneration_5D_ & outArgument7,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -677,16 +678,17 @@ class GGS_predefinedTypes function_buildPredefinedTypes (const class GGS_unified
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildGalgasSemanticContext?!!!'
+//Routine 'buildGalgasSemanticContext??!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildGalgasSemanticContext_3F__21__21__21_ (const class GGS_galgasDeclarationAST constinArgument0,
-                                                         class GGS_semanticContext & outArgument1,
-                                                         class GGS_unifiedTypeMap & outArgument2,
-                                                         class GGS__5B_semanticDeclarationAST_5D_ & outArgument3,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GGS_galgasDeclarationAST constinArgument0,
+                                                             const class GGS_styleMap constinArgument1,
+                                                             class GGS_semanticContext & outArgument2,
+                                                             class GGS_unifiedTypeMap & outArgument3,
+                                                             class GGS__5B_semanticDeclarationAST_5D_ & outArgument4,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

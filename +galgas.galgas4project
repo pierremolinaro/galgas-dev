@@ -7,6 +7,7 @@
 #productName : "galgas4"
 #version : 4.0.0
 #libpmCustomPath : "../libpm"
+
 #makefile-macosx
 #makefile-unix
 #makefile-x86linux32-on-macosx
@@ -16,3 +17,17 @@
 #codeblocks-windows
 #codeblocks-linux32
 #codeblocks-linux64
+
+#lexical-style : keywordsStyle -> "Keywords"
+#lexical-style : delimitersStyle -> "Delimiters"
+#lexical-style : selectorStyle -> "Selectors"
+#lexical-style : terminalStyle -> "Terminal Symbols"
+#lexical-style : nonTerminalStyle -> "Non Terminal Symbols"
+#lexical-style : integerStyle -> "Integer Constants"
+#lexical-style : floatStyle -> "Floating Point Constants"
+#lexical-style : characterStyle -> "Character Constants"
+#lexical-style : stringStyle -> "String Constants"
+#lexical-style : typeNameStyle -> "Type Names (@...)"
+#lexical-style : attributeStyle -> "Attributes (#...)"
+#lexical-style : commentStyle -> "Comments"
+

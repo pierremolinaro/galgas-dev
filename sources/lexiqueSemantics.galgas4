@@ -127,15 +127,6 @@ struct @templateDelimitorAST {
 //                       Styles map
 //-----------------------------------------------------------------*
 
-map @styleMap {
-  public let @lstring mComment
-  public let @uint mStyleIndex // Allways > 0
-  #insertSetter insertKey #errorMessage "the '%K' style is already declared in %L"
-  #searchMethod searchKey #errorMessage "the '%K' style is not declared"
-}
-
-//-----------------------------------------------------------------*
-
 map @lexicalTagMap {
   #insertSetter insertKey #errorMessage "the '%K' tag is already declared in %L",
                                  "the '%K' tag declaration shadows the tag declared in %L"

@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-lexique projectScanner {
+lexique projectComponentScanner {
 
 //--- Scanner attributes
 @char charValue
@@ -86,7 +86,8 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "makefile-x86linux64-on-macosx" -> $#makefile-x86linux64-on-macosx$,
   "makefile-arm64-linux-on-macosx" -> $#makefile-arm64-linux-on-macosx$,
   "makefile-win32-on-macosx" -> $#makefile-win32-on-macosx$,
-  "macSwiftApp" -> $#macSwiftApp$
+  "macSwiftApp" -> $#macSwiftApp$,
+  "lexical-style" -> $#lexical-style$
 }
 
 rule '#' {
@@ -248,7 +249,7 @@ rule "//" {
 
 // ---------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList style delimitersStyle #errorMessage "the '%K' delimitor" {
-  ".", ":"
+  ".", ":", "->"
 }
 
 rule list galgasDelimitorsList

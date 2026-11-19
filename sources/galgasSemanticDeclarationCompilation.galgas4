@@ -24,9 +24,10 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @string inProductDirectory,
                             let @galgasDeclarationAST inSemanticDeclarations,
+                            let @project inProject,
                             !@semanticContext outSemanticContext,
                             !@unifiedTypeMap outTypeMap,
-                            ![@semanticDeclarationForGeneration] outSemanticDeclarationSortedListForGeneration ) {
+                            ![@semanticDeclarationForGeneration] outSemanticDeclarationSortedListForGeneration) {
   println ("*** Building semantic context")
 //----- Add predefined types to semantics declarations
   var semanticDeclarations = inSemanticDeclarations
@@ -75,6 +76,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //----- Build semantic context
   buildGalgasSemanticContext (
     semanticDeclarations,
+    inProject.lexicalStyleMap,
     ?outSemanticContext,
     ?outTypeMap,
     ?let [@semanticDeclarationAST] sortedSemanticDeclarationListAST
@@ -110,6 +112,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //--------------------------------------------------------------------------------------------------
 
 private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclarations,
+                                         @styleMap inLexicalStyleMap,
                                          !@semanticContext outSemanticContext,
                                          !@unifiedTypeMap outTypeMap,
                                          ![@semanticDeclarationAST] outSortedSemanticDeclarationListAST) {
@@ -170,7 +173,7 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     //--- Build initial semantic context
       outTypeMap = @()
-      outSemanticContext = @semanticContext ()
+      outSemanticContext = @semanticContext (inLexicalStyleMap)
     //--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         declaration.enterDeclarationInSemanticContext

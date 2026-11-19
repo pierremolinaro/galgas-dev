@@ -3,99 +3,99 @@
 
 //--- END OF USER ZONE 1
 //--------------------------------------------------------------------------------------------------
-//   LEXIQUE projectScanner
+//   LEXIQUE projectComponentScanner
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-struct SettingViewFor_projectScanner : View {
+struct SettingViewFor_projectComponentScanner : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @State private var mUnused = false
 
-  @AppStorage("FontFor_projectScanner")
+  @AppStorage("FontFor_projectComponentScanner")
   private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
 
-  @AppStorage("LineHeightFor_projectScanner")
+  @AppStorage("LineHeightFor_projectComponentScanner")
   private var mLineHeight : Int = 12
 
-  @AppStorage("ColorFor_projectScanner")
+  @AppStorage("ColorFor_projectComponentScanner")
   private var mDefaultColor : Color = .black
 
-  @AppStorage("ColorFor_projectScanner-delimitersStyle")
+  @AppStorage("ColorFor_projectComponentScanner-delimitersStyle")
   private var mColorFor_delimitersStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-delimitersStyle")
+  @AppStorage("BoldFor_projectComponentScanner-delimitersStyle")
   private var mBoldFor_delimitersStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-delimitersStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-delimitersStyle")
   private var mItalicFor_delimitersStyle : Bool = false
 
-  @AppStorage("ColorFor_projectScanner-integerStyle")
+  @AppStorage("ColorFor_projectComponentScanner-integerStyle")
   private var mColorFor_integerStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-integerStyle")
+  @AppStorage("BoldFor_projectComponentScanner-integerStyle")
   private var mBoldFor_integerStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-integerStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-integerStyle")
   private var mItalicFor_integerStyle : Bool = false
 
-  @AppStorage("ColorFor_projectScanner-characterStyle")
+  @AppStorage("ColorFor_projectComponentScanner-characterStyle")
   private var mColorFor_characterStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-characterStyle")
+  @AppStorage("BoldFor_projectComponentScanner-characterStyle")
   private var mBoldFor_characterStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-characterStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-characterStyle")
   private var mItalicFor_characterStyle : Bool = false
 
-  @AppStorage("ColorFor_projectScanner-stringStyle")
+  @AppStorage("ColorFor_projectComponentScanner-stringStyle")
   private var mColorFor_stringStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-stringStyle")
+  @AppStorage("BoldFor_projectComponentScanner-stringStyle")
   private var mBoldFor_stringStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-stringStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-stringStyle")
   private var mItalicFor_stringStyle : Bool = false
 
-  @AppStorage("ColorFor_projectScanner-attributeStyle")
+  @AppStorage("ColorFor_projectComponentScanner-attributeStyle")
   private var mColorFor_attributeStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-attributeStyle")
+  @AppStorage("BoldFor_projectComponentScanner-attributeStyle")
   private var mBoldFor_attributeStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-attributeStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-attributeStyle")
   private var mItalicFor_attributeStyle : Bool = false
 
-  @AppStorage("ColorFor_projectScanner-commentStyle")
+  @AppStorage("ColorFor_projectComponentScanner-commentStyle")
   private var mColorFor_commentStyle : Color = .black
 
-  @AppStorage("BoldFor_projectScanner-commentStyle")
+  @AppStorage("BoldFor_projectComponentScanner-commentStyle")
   private var mBoldFor_commentStyle : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner-commentStyle")
+  @AppStorage("ItalicFor_projectComponentScanner-commentStyle")
   private var mItalicFor_commentStyle : Bool = false
 
 
-  @AppStorage("ColorFor_projectScanner_lexical_error")
+  @AppStorage("ColorFor_projectComponentScanner_lexical_error")
   private var mColorFor_lexical_error : Color = .red
 
-  @AppStorage("BoldFor_projectScanner_lexical_error")
+  @AppStorage("BoldFor_projectComponentScanner_lexical_error")
   private var mBoldFor_lexical_error : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner_lexical_error")
+  @AppStorage("ItalicFor_projectComponentScanner_lexical_error")
   private var mItalicFor_lexical_error : Bool = false
 
-  @AppStorage("ColorFor_projectScanner_template")
+  @AppStorage("ColorFor_projectComponentScanner_template")
   private var mColorFor_template : Color = .gray
 
-  @AppStorage("BoldFor_projectScanner_template")
+  @AppStorage("BoldFor_projectComponentScanner_template")
   private var mBoldFor_template : Bool = false
 
-  @AppStorage("ItalicFor_projectScanner_template")
+  @AppStorage("ItalicFor_projectComponentScanner_template")
   private var mItalicFor_template : Bool = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -183,7 +183,7 @@ struct SettingViewFor_projectScanner : View {
 
 //--------------------------------------------------------------------------------------------------
 
-class ScannerFor_projectScanner : AbstractScanner {
+class ScannerFor_projectComponentScanner : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -194,13 +194,13 @@ class ScannerFor_projectScanner : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func popUpDefinitionList () -> [[UInt16]] {
-    return gPopUpData_projectScanner
+    return gPopUpData_projectComponentScanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   final override func lineComment () -> String? {
-    return gLineComment_projectScanner
+    return gLineComment_projectComponentScanner
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -256,7 +256,7 @@ class ScannerFor_projectScanner : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func lexiqueIdentifier () -> String {
-    return projectScanner_lexiqueIdentifier ()
+    return projectComponentScanner_lexiqueIdentifier ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -268,7 +268,7 @@ class ScannerFor_projectScanner : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 23
+    return 25
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -276,31 +276,33 @@ class ScannerFor_projectScanner : AbstractScanner {
   func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {
     let kTerminalSymbolStyles : [UInt8] = [
       0, // Default
-      0, // 1 : projectScanner_1_identifier
-      2, // 2 : projectScanner_1_literalInt
-      3, // 3 : projectScanner_1__27_char_27_
-      6, // 4 : projectScanner_1_comment
-      6, // 5 : projectScanner_1_commentMark
-      4, // 6 : projectScanner_1__22_string_22_
-      5, // 7 : projectScanner_1__23_macAppBundleBaseName
-      5, // 8 : projectScanner_1__23_codeblocks_2D_linux_33__32_
-      5, // 9 : projectScanner_1__23_codeblocks_2D_linux_36__34_
-      5, // 10 : projectScanner_1__23_codeblocks_2D_windows
-      5, // 11 : projectScanner_1__23_libpmCustomPath
-      5, // 12 : projectScanner_1__23_productName
-      5, // 13 : projectScanner_1__23_version
-      5, // 14 : projectScanner_1__23_macCodeSign
-      5, // 15 : projectScanner_1__23_makefile_2D_macosx
-      5, // 16 : projectScanner_1__23_makefile_2D_unix
-      5, // 17 : projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      5, // 18 : projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      5, // 19 : projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
-      5, // 20 : projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
-      5, // 21 : projectScanner_1__23_macSwiftApp
-      1, // 22 : projectScanner_1__2E_
-      1, // 23 : projectScanner_1__3A_
-      7, // 24 : projectScanner_2_ERROR
-      8  // 25 : projectScanner_2_TEMPLATE
+      0, // 1 : projectComponentScanner_1_identifier
+      2, // 2 : projectComponentScanner_1_literalInt
+      3, // 3 : projectComponentScanner_1__27_char_27_
+      6, // 4 : projectComponentScanner_1_comment
+      6, // 5 : projectComponentScanner_1_commentMark
+      4, // 6 : projectComponentScanner_1__22_string_22_
+      5, // 7 : projectComponentScanner_1__23_macAppBundleBaseName
+      5, // 8 : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_
+      5, // 9 : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_
+      5, // 10 : projectComponentScanner_1__23_codeblocks_2D_windows
+      5, // 11 : projectComponentScanner_1__23_libpmCustomPath
+      5, // 12 : projectComponentScanner_1__23_productName
+      5, // 13 : projectComponentScanner_1__23_version
+      5, // 14 : projectComponentScanner_1__23_macCodeSign
+      5, // 15 : projectComponentScanner_1__23_makefile_2D_macosx
+      5, // 16 : projectComponentScanner_1__23_makefile_2D_unix
+      5, // 17 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      5, // 18 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      5, // 19 : projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
+      5, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
+      5, // 21 : projectComponentScanner_1__23_macSwiftApp
+      5, // 22 : projectComponentScanner_1__23_lexical_2D_style
+      1, // 23 : projectComponentScanner_1__2E_
+      1, // 24 : projectComponentScanner_1__3A_
+      1, // 25 : projectComponentScanner_1__2D__3E_
+      7, // 26 : projectComponentScanner_2_ERROR
+      8  // 27 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -310,31 +312,33 @@ class ScannerFor_projectScanner : AbstractScanner {
   func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {
     let kTerminalAtomicSelection : [Bool] = [
       false, // Default
-      true, // 1 : projectScanner_1_identifier
-      true, // 2 : projectScanner_1_literalInt
-      true, // 3 : projectScanner_1__27_char_27_
-      false, // 4 : projectScanner_1_comment
-      false, // 5 : projectScanner_1_commentMark
-      false, // 6 : projectScanner_1__22_string_22_
-      true, // 7 : projectScanner_1__23_macAppBundleBaseName
-      true, // 8 : projectScanner_1__23_codeblocks_2D_linux_33__32_
-      true, // 9 : projectScanner_1__23_codeblocks_2D_linux_36__34_
-      true, // 10 : projectScanner_1__23_codeblocks_2D_windows
-      true, // 11 : projectScanner_1__23_libpmCustomPath
-      true, // 12 : projectScanner_1__23_productName
-      true, // 13 : projectScanner_1__23_version
-      true, // 14 : projectScanner_1__23_macCodeSign
-      true, // 15 : projectScanner_1__23_makefile_2D_macosx
-      true, // 16 : projectScanner_1__23_makefile_2D_unix
-      true, // 17 : projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      true, // 18 : projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      true, // 19 : projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
-      true, // 20 : projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
-      true, // 21 : projectScanner_1__23_macSwiftApp
-      true, // 22 : projectScanner_1__2E_
-      true, // 23 : projectScanner_1__3A_
-      false, // 24 : projectScanner_2_ERROR
-      false  // 25 : projectScanner_2_TEMPLATE
+      true, // 1 : projectComponentScanner_1_identifier
+      true, // 2 : projectComponentScanner_1_literalInt
+      true, // 3 : projectComponentScanner_1__27_char_27_
+      false, // 4 : projectComponentScanner_1_comment
+      false, // 5 : projectComponentScanner_1_commentMark
+      false, // 6 : projectComponentScanner_1__22_string_22_
+      true, // 7 : projectComponentScanner_1__23_macAppBundleBaseName
+      true, // 8 : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_
+      true, // 9 : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_
+      true, // 10 : projectComponentScanner_1__23_codeblocks_2D_windows
+      true, // 11 : projectComponentScanner_1__23_libpmCustomPath
+      true, // 12 : projectComponentScanner_1__23_productName
+      true, // 13 : projectComponentScanner_1__23_version
+      true, // 14 : projectComponentScanner_1__23_macCodeSign
+      true, // 15 : projectComponentScanner_1__23_makefile_2D_macosx
+      true, // 16 : projectComponentScanner_1__23_makefile_2D_unix
+      true, // 17 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      true, // 18 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      true, // 19 : projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
+      true, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
+      true, // 21 : projectComponentScanner_1__23_macSwiftApp
+      true, // 22 : projectComponentScanner_1__23_lexical_2D_style
+      true, // 23 : projectComponentScanner_1__2E_
+      true, // 24 : projectComponentScanner_1__3A_
+      true, // 25 : projectComponentScanner_1__2D__3E_
+      false, // 26 : projectComponentScanner_2_ERROR
+      false  // 27 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -357,13 +361,13 @@ class ScannerFor_projectScanner : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleNameFor (styleIndex inIndex : UInt8) -> String {
-    return projectScanner_styleNameFor (styleIndex: inIndex)
+    return projectComponentScanner_styleNameFor (styleIndex: inIndex)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
-    return projectScanner_styleIdentifierFor (styleIndex: inIndex)
+    return projectComponentScanner_styleIdentifierFor (styleIndex: inIndex)
   }
 
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -402,179 +406,179 @@ class ScannerFor_projectScanner : AbstractScanner {
   func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
     ioStyleDidChange = false
     let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_projectScanner"), let v = CustomFont (rawValue: s) {
+    if let s = ud.string (forKey: "FontFor_projectComponentScanner"), let v = CustomFont (rawValue: s) {
       if self.mFont != v {
         self.mFont = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "LineHeightFor_projectScanner"), let v = Int (s) {
+    if let s = ud.string (forKey: "LineHeightFor_projectComponentScanner"), let v = Int (s) {
       if self.mLineHeight != v {
         self.mLineHeight = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner"), let v = Color (rawValue: s) {
       if self.mDefaultColor != v {
         self.mDefaultColor = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-delimitersStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-delimitersStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_delimitersStyle != v {
         self.mColorFor_delimitersStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-delimitersStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-delimitersStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-delimitersStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-delimitersStyle")
       if self.mBoldFor_delimitersStyle != v {
         self.mBoldFor_delimitersStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-delimitersStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-delimitersStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-delimitersStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-delimitersStyle")
       if self.mItalicFor_delimitersStyle != v {
         self.mItalicFor_delimitersStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-integerStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-integerStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_integerStyle != v {
         self.mColorFor_integerStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-integerStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-integerStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-integerStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-integerStyle")
       if self.mBoldFor_integerStyle != v {
         self.mBoldFor_integerStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-integerStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-integerStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-integerStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-integerStyle")
       if self.mItalicFor_integerStyle != v {
         self.mItalicFor_integerStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-characterStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-characterStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_characterStyle != v {
         self.mColorFor_characterStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-characterStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-characterStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-characterStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-characterStyle")
       if self.mBoldFor_characterStyle != v {
         self.mBoldFor_characterStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-characterStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-characterStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-characterStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-characterStyle")
       if self.mItalicFor_characterStyle != v {
         self.mItalicFor_characterStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-stringStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-stringStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_stringStyle != v {
         self.mColorFor_stringStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-stringStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-stringStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-stringStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-stringStyle")
       if self.mBoldFor_stringStyle != v {
         self.mBoldFor_stringStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-stringStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-stringStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-stringStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-stringStyle")
       if self.mItalicFor_stringStyle != v {
         self.mItalicFor_stringStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-attributeStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-attributeStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_attributeStyle != v {
         self.mColorFor_attributeStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-attributeStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-attributeStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-attributeStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-attributeStyle")
       if self.mBoldFor_attributeStyle != v {
         self.mBoldFor_attributeStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-attributeStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-attributeStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-attributeStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-attributeStyle")
       if self.mItalicFor_attributeStyle != v {
         self.mItalicFor_attributeStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner-commentStyle"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-commentStyle"), let v = Color (rawValue: s) {
       if self.mColorFor_commentStyle != v {
         self.mColorFor_commentStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner-commentStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner-commentStyle")
+    if ud.string (forKey: "BoldFor_projectComponentScanner-commentStyle") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-commentStyle")
       if self.mBoldFor_commentStyle != v {
         self.mBoldFor_commentStyle = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner-commentStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner-commentStyle")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner-commentStyle") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-commentStyle")
       if self.mItalicFor_commentStyle != v {
         self.mItalicFor_commentStyle = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner_lexical_error"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner_lexical_error"), let v = Color (rawValue: s) {
       if self.mColorFor_lexical_error != v {
         self.mColorFor_lexical_error = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner_lexical_error") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner_lexical_error")
+    if ud.string (forKey: "BoldFor_projectComponentScanner_lexical_error") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner_lexical_error")
       if self.mBoldFor_lexical_error != v {
         self.mBoldFor_lexical_error = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner_lexical_error") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner_lexical_error")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner_lexical_error") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner_lexical_error")
       if self.mItalicFor_lexical_error != v {
         self.mItalicFor_lexical_error = v
         ioStyleDidChange = true
       }
     }
-    if let s = ud.string (forKey: "ColorFor_projectScanner_template"), let v = Color (rawValue: s) {
+    if let s = ud.string (forKey: "ColorFor_projectComponentScanner_template"), let v = Color (rawValue: s) {
       if self.mColorFor_template != v {
         self.mColorFor_template = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_projectScanner_template") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectScanner_template")
+    if ud.string (forKey: "BoldFor_projectComponentScanner_template") != nil {
+      let v = ud.bool (forKey: "BoldFor_projectComponentScanner_template")
       if self.mBoldFor_template != v {
         self.mBoldFor_template = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_projectScanner_template") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectScanner_template")
+    if ud.string (forKey: "ItalicFor_projectComponentScanner_template") != nil {
+      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner_template")
       if self.mItalicFor_template != v {
         self.mItalicFor_template = v
         ioStyleDidChange = true
@@ -886,7 +890,7 @@ class ScannerFor_projectScanner : AbstractScanner {
         }
       }
       loop = true
-      tokenCode = projectScanner_1_identifier
+      tokenCode = projectComponentScanner_1_identifier
     }else if scanningOk && (self.testForInputFromChar (48, toChar:57)) {
       scanner_cocoa_routine_enterCharacterIntoString (&scanningOk, &self.mLexicalAttribute_tokenString, self.previousChar)
       while (loop && scanningOk) {
@@ -899,7 +903,7 @@ class ScannerFor_projectScanner : AbstractScanner {
       }
       loop = true
       scanner_cocoa_routine_convertDecimalStringIntoBigInt (&scanningOk, mLexicalAttribute_tokenString, &self.mLexicalAttribute_bigintValue)
-      tokenCode = projectScanner_1_literalInt
+      tokenCode = projectComponentScanner_1_literalInt
     }else if scanningOk && (self.testForInputChar (35)) {
       if scanningOk && (self.testForChar_isUnicodeLetter ()) {
         while (loop && scanningOk) {
@@ -914,7 +918,7 @@ class ScannerFor_projectScanner : AbstractScanner {
         scanningOk = false
       }
       if (tokenCode == 0) {
-        tokenCode = search_into_projectScanner_attributeKeyWordList (mLexicalAttribute_tokenString) ;
+        tokenCode = search_into_projectComponentScanner_attributeKeyWordList (mLexicalAttribute_tokenString) ;
       }
       if tokenCode == 0 {
         scanningOk = false
@@ -1010,7 +1014,7 @@ class ScannerFor_projectScanner : AbstractScanner {
         scanningOk = false
       }
       if scanningOk && (self.testForInputChar (39)) {
-        tokenCode = projectScanner_1__27_char_27_
+        tokenCode = projectComponentScanner_1__27_char_27_
       }else{
         scanningOk = false
       }
@@ -1023,7 +1027,7 @@ class ScannerFor_projectScanner : AbstractScanner {
           }
         }
         loop = true
-        tokenCode = projectScanner_1_commentMark
+        tokenCode = projectComponentScanner_1_commentMark
       }else{
         while (loop && scanningOk) {
           if scanningOk && (self.testForInputFromChar (1, toChar:9) || self.testForInputChar (11) || self.testForInputChar (12) || self.testForInputFromChar (14, toChar:1114111)) {
@@ -1032,12 +1036,14 @@ class ScannerFor_projectScanner : AbstractScanner {
           }
         }
         loop = true
-        tokenCode = projectScanner_1_comment
+        tokenCode = projectComponentScanner_1_comment
       }
+    }else if scanningOk && self.testForInputString ("->", advance: true) {
+      tokenCode = projectComponentScanner_1__2D__3E_
     }else if scanningOk && self.testForInputString (":", advance: true) {
-      tokenCode = projectScanner_1__3A_
+      tokenCode = projectComponentScanner_1__3A_
     }else if scanningOk && self.testForInputString (".", advance: true) {
-      tokenCode = projectScanner_1__2E_
+      tokenCode = projectComponentScanner_1__2E_
     }else if scanningOk && (self.testForInputChar (34)) {
       while (loop && scanningOk) {
         if scanningOk && (self.testForInputChar (92)) {
@@ -1136,15 +1142,15 @@ class ScannerFor_projectScanner : AbstractScanner {
       }
       loop = true
       if scanningOk && (self.testForInputChar (34)) {
-        tokenCode = projectScanner_1__22_string_22_
+        tokenCode = projectComponentScanner_1__22_string_22_
       }else{
         scanningOk = false
       }
     }else if scanningOk && (self.testForInputFromChar (1, toChar:32)) {
     }else if self.testForInputChar (0) { // End of source text ?
-      tokenCode = projectScanner_1_ ; // Empty string code
+      tokenCode = projectComponentScanner_1_ ; // Empty string code
     }else{ // Unknown input character
-      tokenCode = projectScanner_2_TEMPLATE
+      tokenCode = projectComponentScanner_2_TEMPLATE
       self.advance ()
     }
     return LexicalToken (
@@ -1162,39 +1168,40 @@ class ScannerFor_projectScanner : AbstractScanner {
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-fileprivate let kDictionary_projectScanner_attributeKeyWordList : [String : UInt16] = [
-  "version" : projectScanner_1__23_version,
-  "macCodeSign" : projectScanner_1__23_macCodeSign,
-  "macSwiftApp" : projectScanner_1__23_macSwiftApp,
-  "productName" : projectScanner_1__23_productName,
-  "makefile-unix" : projectScanner_1__23_makefile_2D_unix,
-  "libpmCustomPath" : projectScanner_1__23_libpmCustomPath,
-  "makefile-macosx" : projectScanner_1__23_makefile_2D_macosx,
-  "codeblocks-linux32" : projectScanner_1__23_codeblocks_2D_linux_33__32_,
-  "codeblocks-linux64" : projectScanner_1__23_codeblocks_2D_linux_36__34_,
-  "codeblocks-windows" : projectScanner_1__23_codeblocks_2D_windows,
-  "macAppBundleBaseName" : projectScanner_1__23_macAppBundleBaseName,
-  "makefile-win32-on-macosx" : projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx,
-  "makefile-x86linux32-on-macosx" : projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx,
-  "makefile-x86linux64-on-macosx" : projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx,
-  "makefile-arm64-linux-on-macosx" : projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
+fileprivate let kDictionary_projectComponentScanner_attributeKeyWordList : [String : UInt16] = [
+  "version" : projectComponentScanner_1__23_version,
+  "macCodeSign" : projectComponentScanner_1__23_macCodeSign,
+  "macSwiftApp" : projectComponentScanner_1__23_macSwiftApp,
+  "productName" : projectComponentScanner_1__23_productName,
+  "lexical-style" : projectComponentScanner_1__23_lexical_2D_style,
+  "makefile-unix" : projectComponentScanner_1__23_makefile_2D_unix,
+  "libpmCustomPath" : projectComponentScanner_1__23_libpmCustomPath,
+  "makefile-macosx" : projectComponentScanner_1__23_makefile_2D_macosx,
+  "codeblocks-linux32" : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_,
+  "codeblocks-linux64" : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_,
+  "codeblocks-windows" : projectComponentScanner_1__23_codeblocks_2D_windows,
+  "macAppBundleBaseName" : projectComponentScanner_1__23_macAppBundleBaseName,
+  "makefile-win32-on-macosx" : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx,
+  "makefile-x86linux32-on-macosx" : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx,
+  "makefile-x86linux64-on-macosx" : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx,
+  "makefile-arm64-linux-on-macosx" : projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
 ]
 
-fileprivate func search_into_projectScanner_attributeKeyWordList (_ inSearchedString : String) -> UInt16 {
-  return kDictionary_projectScanner_attributeKeyWordList [inSearchedString, default: projectScanner_1_]
+fileprivate func search_into_projectComponentScanner_attributeKeyWordList (_ inSearchedString : String) -> UInt16 {
+  return kDictionary_projectComponentScanner_attributeKeyWordList [inSearchedString, default: projectComponentScanner_1_]
 }
 
 
 
 //--------------------------------------------------------------------------------------------------
 
-func projectScanner_lexiqueIdentifier () -> String {
-  return "projectScanner"
+func projectComponentScanner_lexiqueIdentifier () -> String {
+  return "projectComponentScanner"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func projectScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
+func projectComponentScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
     "Delimiters", // 1
@@ -1211,17 +1218,17 @@ func projectScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
 
 //--------------------------------------------------------------------------------------------------
 
-func projectScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+func projectComponentScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "projectScanner", // 0
-    "projectScanner-delimitersStyle", // 1
-    "projectScanner-integerStyle", // 2
-    "projectScanner-characterStyle", // 3
-    "projectScanner-stringStyle", // 4
-    "projectScanner-attributeStyle", // 5
-    "projectScanner-commentStyle", // 6
-    "projectScanner.ERROR", // 7
-    "projectScanner.TEMPLATE" // 8
+    "projectComponentScanner", // 0
+    "projectComponentScanner-delimitersStyle", // 1
+    "projectComponentScanner-integerStyle", // 2
+    "projectComponentScanner-characterStyle", // 3
+    "projectComponentScanner-stringStyle", // 4
+    "projectComponentScanner-attributeStyle", // 5
+    "projectComponentScanner-commentStyle", // 6
+    "projectComponentScanner.ERROR", // 7
+    "projectComponentScanner.TEMPLATE" // 8
   ]
   return kStyleArray [Int (inIndex)]
 }
@@ -1242,32 +1249,34 @@ func projectScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
 //         T E R M I N A L    S Y M B O L    E N U M E R A T I O N
 //--------------------------------------------------------------------------------------------------
 
-let projectScanner_1_ : UInt16 = 0
-let projectScanner_1_identifier : UInt16 = 1
-let projectScanner_1_literalInt : UInt16 = 2
-let projectScanner_1__27_char_27_ : UInt16 = 3
-let projectScanner_1_comment : UInt16 = 4
-let projectScanner_1_commentMark : UInt16 = 5
-let projectScanner_1__22_string_22_ : UInt16 = 6
-let projectScanner_1__23_macAppBundleBaseName : UInt16 = 7
-let projectScanner_1__23_codeblocks_2D_linux_33__32_ : UInt16 = 8
-let projectScanner_1__23_codeblocks_2D_linux_36__34_ : UInt16 = 9
-let projectScanner_1__23_codeblocks_2D_windows : UInt16 = 10
-let projectScanner_1__23_libpmCustomPath : UInt16 = 11
-let projectScanner_1__23_productName : UInt16 = 12
-let projectScanner_1__23_version : UInt16 = 13
-let projectScanner_1__23_macCodeSign : UInt16 = 14
-let projectScanner_1__23_makefile_2D_macosx : UInt16 = 15
-let projectScanner_1__23_makefile_2D_unix : UInt16 = 16
-let projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx : UInt16 = 17
-let projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx : UInt16 = 18
-let projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx : UInt16 = 19
-let projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 20
-let projectScanner_1__23_macSwiftApp : UInt16 = 21
-let projectScanner_1__2E_ : UInt16 = 22
-let projectScanner_1__3A_ : UInt16 = 23
-let projectScanner_2_ERROR : UInt16 = 24
-let projectScanner_2_TEMPLATE : UInt16 = 25
+let projectComponentScanner_1_ : UInt16 = 0
+let projectComponentScanner_1_identifier : UInt16 = 1
+let projectComponentScanner_1_literalInt : UInt16 = 2
+let projectComponentScanner_1__27_char_27_ : UInt16 = 3
+let projectComponentScanner_1_comment : UInt16 = 4
+let projectComponentScanner_1_commentMark : UInt16 = 5
+let projectComponentScanner_1__22_string_22_ : UInt16 = 6
+let projectComponentScanner_1__23_macAppBundleBaseName : UInt16 = 7
+let projectComponentScanner_1__23_codeblocks_2D_linux_33__32_ : UInt16 = 8
+let projectComponentScanner_1__23_codeblocks_2D_linux_36__34_ : UInt16 = 9
+let projectComponentScanner_1__23_codeblocks_2D_windows : UInt16 = 10
+let projectComponentScanner_1__23_libpmCustomPath : UInt16 = 11
+let projectComponentScanner_1__23_productName : UInt16 = 12
+let projectComponentScanner_1__23_version : UInt16 = 13
+let projectComponentScanner_1__23_macCodeSign : UInt16 = 14
+let projectComponentScanner_1__23_makefile_2D_macosx : UInt16 = 15
+let projectComponentScanner_1__23_makefile_2D_unix : UInt16 = 16
+let projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx : UInt16 = 17
+let projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx : UInt16 = 18
+let projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx : UInt16 = 19
+let projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 20
+let projectComponentScanner_1__23_macSwiftApp : UInt16 = 21
+let projectComponentScanner_1__23_lexical_2D_style : UInt16 = 22
+let projectComponentScanner_1__2E_ : UInt16 = 23
+let projectComponentScanner_1__3A_ : UInt16 = 24
+let projectComponentScanner_1__2D__3E_ : UInt16 = 25
+let projectComponentScanner_2_ERROR : UInt16 = 26
+let projectComponentScanner_2_TEMPLATE : UInt16 = 27
 
 //--------------------------------------------------------------------------------------------------
 

@@ -176,6 +176,22 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__21_signatureIR_
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath??'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                     const class GGS_string constinArgument1,
+                                                                                                     const class GGS_string constinArgument2,
+                                                                                                     const class GGS__5B_string_5D_ constinArgument3,
+                                                                                                     const class GGS_string constinArgument4,
+                                                                                                     const class GGS__5B_string_5D_ constinArgument5,
+                                                                                                     const class GGS_string constinArgument6,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'targetGalgas3GenerationFileWrapper'
 //
 //--------------------------------------------------------------------------------------------------
@@ -623,22 +639,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath??'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                     const class GGS_string constinArgument1,
-                                                                                                     const class GGS_string constinArgument2,
-                                                                                                     const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                     const class GGS_string constinArgument4,
-                                                                                                     const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                     const class GGS_string constinArgument6,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName?????'
 //
 //--------------------------------------------------------------------------------------------------
@@ -761,6 +761,33 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
                                                                                                                                                        class GGS_stringset & ioArgument11,
                                                                                                                                                        Compiler * inCompiler
                                                                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'lexicalTemplates'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_lexicalTemplates ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'lexicalTemplates swiftUILexicalStyleView'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_lexicalTemplates_swiftUILexicalStyleView (Compiler * inCompiler,
+                                                                         const class GGS_styleMap & in_LEXICAL_5F_STYLE_5F_MAP
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -23,36 +23,8 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-optionset @projectTargets {
-  case makefileUnix
-  case makefileMacOS
-  case makefileX86Linux32OnMac
-  case makefileX86Linux64OnMac
-  case makefileARM64LinuxOnMac
-  case makefileWin32OnMac
-  case macSwiftApp
-  case codeblocksWindows
-  case codeblocksLinux32
-  case codeblocksLinux64
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct @project {
-  let @string productName #initArgLabel
-  let @uint majorVersion #initArgLabel
-  let @uint minorVersion #initArgLabel
-  let @uint revision #initArgLabel
-  let @projectTargets targets #initArgLabel
-  let @lstring libpmCustomPath #initArgLabel
-  let @lstring macAppBundleBaseName #initArgLabel
-  let @lstring macAppCodeSign #initArgLabel
-}
-
-//--------------------------------------------------------------------------------------------------
-
-grammar galgasProjectGrammar "LL1" {
-  syntax galgasProjectSyntax
+grammar projectComponentGrammar "LL1" {
+  syntax projectComponentSyntax
 
   <project_component_start_symbol> (!@project outProject)
 
@@ -60,7 +32,7 @@ grammar galgasProjectGrammar "LL1" {
 
 //--------------------------------------------------------------------------------------------------
 
-syntax galgasProjectSyntax : projectScanner {
+syntax projectComponentSyntax : projectComponentScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -78,10 +50,18 @@ syntax galgasProjectSyntax : projectScanner {
     var versionDefined = false
     var productName = "".nowhere
     var productNameDefined = false
+    var @styleMap lexicalStyleMap = @()
     repeat
 //    while
 //      $#quietOutputByDefault$
 //      generateFeatureList ++= "quietOutputByDefault".here
+    while
+      $#lexical-style$
+      $:$
+      $identifier$ (?let @lstring styleName)
+      $->$
+      $"string"$ (?let @lstring styleComment)
+      !?lexicalStyleMap.insert (styleName, styleComment, lexicalStyleMap.count + 1)
     while
       $#productName$
       $:$
@@ -202,7 +182,8 @@ syntax galgasProjectSyntax : projectScanner {
       !targets: targets,
       !libpmCustomPath: libpmCustomPath,
       !macAppBundleBaseName: macAppBundleBaseName,
-      !macAppCodeSign: macAppCodeSign
+      !macAppCodeSign: macAppCodeSign,
+      !lexicalStyleMap: lexicalStyleMap
     )
     if not versionDefined then
       error .here : "#version should be defined" spoil outProject

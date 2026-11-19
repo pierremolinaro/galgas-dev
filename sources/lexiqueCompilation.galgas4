@@ -279,7 +279,7 @@ override proc @lexicalCharacterInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
   @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
-  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
+  if @lexicalTypeEnum.lexicalType_char != inLexicalRoutineFormalArgumentType then
     error self.mCharacter:"type error, a literal character has @char"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName

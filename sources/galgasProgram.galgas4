@@ -110,7 +110,7 @@ grammar templateGrammar
 
 case . "galgas4project"
 #errorMessage "a GALGAS4 project source file"
-grammar galgasProjectGrammar
+grammar projectComponentGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (inProjectSourceFile, "")
 }
@@ -124,7 +124,7 @@ grammar galgasProjectGrammar
 private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
                                      let @string inSourceToAnalyze) {
   println ("*** Parsing project files")
-  grammar galgasProjectGrammar (?let @project projectComponentAST) in inProjectSourceFilePath
+  grammar projectComponentGrammar (?let @project projectComponentAST) in inProjectSourceFilePath
   if option [mode.value] == "" then
     compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectComponentAST)
   //--- C++ compilation
@@ -199,13 +199,14 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       !?usefulEntitiesGraph,
       productDirectory,
       declarationAST,
+      inProject,
       ?semanticContext,
       ?typeMap,
       ?semanticDeclarationSortedListForGeneration
     )
   else
     semanticDeclarationSortedListForGeneration = @()
-    semanticContext = @semanticContext ()
+    semanticContext = @semanticContext (inProject.lexicalStyleMap)
     typeMap = @()
   end
 //--------------------------------- Compile GUI components
@@ -352,17 +353,6 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
     for aRule in inSourceRuleList do
       handledExtensionSet ++= aRule.mSourceFileExtension.string
     end
-  //--- Build qualified feature map
-//    var @stringset ignoredFeatureSet = @()
-//    ignoredFeatureSet ++= "tool-framework"
-//    ignoredFeatureSet ++= "tool-source"
-//    ignoredFeatureSet ++= "tool-link"
-//    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
-//    for feature in inProjectComponentAST.mQualifiedFeatureList do
-//      if not ignoredFeatureSet.contains (feature.featureName.string) then
-//        !?projectQualifiedFeatureMap.insertKey (feature.featureName, feature.featureValue)
-//      end
-//    end
     updateGalgasTargets (
       !absoluteBuildDir: inAbsoluteBuildDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -392,9 +382,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //           G E N E R A T I O N    F I L E W R A P P E R S
-//
 //--------------------------------------------------------------------------------------------------
 
 filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {

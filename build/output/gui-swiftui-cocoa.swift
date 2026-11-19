@@ -53,6 +53,7 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
+    case editorSettings
     case galgasScanner4_0
     case galgasTemplateScanner_1
     case allocationDebugView
@@ -68,7 +69,7 @@ struct SettingsView : View {
     NavigationSplitView {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)
-
+        Text ("Editor Settings").tag (SidebarItem.editorSettings)
         Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4_0)
         Text ("Template").tag (SidebarItem.galgasTemplateScanner_1)
         Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
@@ -77,6 +78,7 @@ struct SettingsView : View {
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
+        case .editorSettings : EditorSettingView ()
         case .galgasScanner4_0 : SettingViewFor_galgasScanner4 ()
         case .galgasTemplateScanner_1 : SettingViewFor_galgasTemplateScanner ()
         case .allocationDebugView : AllocationDebugView ()

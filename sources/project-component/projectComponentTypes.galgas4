@@ -1,0 +1,62 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Galgas 3 'project' syntax
+//
+//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//--------------------------------------------------------------------------------------------------
+
+optionset @projectTargets {
+  case makefileUnix
+  case makefileMacOS
+  case makefileX86Linux32OnMac
+  case makefileX86Linux64OnMac
+  case makefileARM64LinuxOnMac
+  case makefileWin32OnMac
+  case macSwiftApp
+  case codeblocksWindows
+  case codeblocksLinux32
+  case codeblocksLinux64
+}
+
+//-----------------------------------------------------------------*
+
+map @styleMap {
+  public let @lstring mComment
+  public let @uint mStyleIndex // Always > 0
+  #insertSetter insert #errorMessage "the '%K' style is already declared in %L"
+  #searchMethod search #errorMessage "the '%K' style is not declared"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @project {
+  let @string productName #initArgLabel
+  let @uint majorVersion #initArgLabel
+  let @uint minorVersion #initArgLabel
+  let @uint revision #initArgLabel
+  let @projectTargets targets #initArgLabel
+  let @lstring libpmCustomPath #initArgLabel
+  let @lstring macAppBundleBaseName #initArgLabel
+  let @lstring macAppCodeSign #initArgLabel
+  let @styleMap lexicalStyleMap #initArgLabel
+}
+
+//--------------------------------------------------------------------------------------------------

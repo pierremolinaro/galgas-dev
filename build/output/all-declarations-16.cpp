@@ -36,7 +36,8 @@ mProperty_mFilewrapperMap (),
 mProperty_grammarMap (),
 mProperty_mOptionComponentMapForSemanticAnalysis (),
 mProperty_mLexiqueComponentMapForSemanticAnalysis (),
-mProperty_mSyntaxComponentMapForSemanticAnalysis () {
+mProperty_mSyntaxComponentMapForSemanticAnalysis (),
+mProperty_lexicalStyleMap () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -49,7 +50,8 @@ mProperty_mFilewrapperMap (inSource.mProperty_mFilewrapperMap),
 mProperty_grammarMap (inSource.mProperty_grammarMap),
 mProperty_mOptionComponentMapForSemanticAnalysis (inSource.mProperty_mOptionComponentMapForSemanticAnalysis),
 mProperty_mLexiqueComponentMapForSemanticAnalysis (inSource.mProperty_mLexiqueComponentMapForSemanticAnalysis),
-mProperty_mSyntaxComponentMapForSemanticAnalysis (inSource.mProperty_mSyntaxComponentMapForSemanticAnalysis) {
+mProperty_mSyntaxComponentMapForSemanticAnalysis (inSource.mProperty_mSyntaxComponentMapForSemanticAnalysis),
+mProperty_lexicalStyleMap (inSource.mProperty_lexicalStyleMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -63,15 +65,18 @@ GGS_semanticContext & GGS_semanticContext::operator = (const GGS_semanticContext
   mProperty_mOptionComponentMapForSemanticAnalysis = inSource.mProperty_mOptionComponentMapForSemanticAnalysis ;
   mProperty_mLexiqueComponentMapForSemanticAnalysis = inSource.mProperty_mLexiqueComponentMapForSemanticAnalysis ;
   mProperty_mSyntaxComponentMapForSemanticAnalysis = inSource.mProperty_mSyntaxComponentMapForSemanticAnalysis ;
+  mProperty_lexicalStyleMap = inSource.mProperty_lexicalStyleMap ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_semanticContext GGS_semanticContext::init (Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+GGS_semanticContext GGS_semanticContext::init_21_ (const GGS_styleMap & in_lexicalStyleMap,
+                                                   Compiler * inCompiler
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_semanticContext result ;
   result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lexicalStyleMap = in_lexicalStyleMap ;
   return result ;
 }
 
@@ -97,7 +102,8 @@ GGS_semanticContext::GGS_semanticContext (const GGS_routineMap & inOperand0,
                                           const GGS_grammarMap & inOperand4,
                                           const GGS_optionComponentMapForSemanticAnalysis & inOperand5,
                                           const GGS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
-                                          const GGS_syntaxComponentMap & inOperand7) :
+                                          const GGS_syntaxComponentMap & inOperand7,
+                                          const GGS_styleMap & inOperand8) :
 mProperty_routineMap (inOperand0),
 mProperty_mFunctionMap (inOperand1),
 mProperty_mGlobalConstantMap (inOperand2),
@@ -105,13 +111,14 @@ mProperty_mFilewrapperMap (inOperand3),
 mProperty_grammarMap (inOperand4),
 mProperty_mOptionComponentMapForSemanticAnalysis (inOperand5),
 mProperty_mLexiqueComponentMapForSemanticAnalysis (inOperand6),
-mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand7) {
+mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand7),
+mProperty_lexicalStyleMap (inOperand8) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_semanticContext::isValid (void) const {
-  return mProperty_routineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mGlobalConstantMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_grammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () ;
+  return mProperty_routineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mGlobalConstantMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_grammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () && mProperty_lexicalStyleMap.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -125,6 +132,7 @@ void GGS_semanticContext::drop (void) {
   mProperty_mOptionComponentMapForSemanticAnalysis.drop () ;
   mProperty_mLexiqueComponentMapForSemanticAnalysis.drop () ;
   mProperty_mSyntaxComponentMapForSemanticAnalysis.drop () ;
+  mProperty_lexicalStyleMap.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -150,6 +158,8 @@ void GGS_semanticContext::description (String & ioString,
     mProperty_mLexiqueComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mSyntaxComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_lexicalStyleMap.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
