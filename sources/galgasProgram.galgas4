@@ -293,9 +293,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //          projectGeneration
-//
 //--------------------------------------------------------------------------------------------------
 
 private proc projectGeneration (let @unifiedTypeMap inTypeMap,
@@ -326,6 +324,11 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
       !?swift: swiftAppProductFileList
     )
   end
+//--------------------------------- Lexical Style Name Sorted Array
+  var @sortedLexicalStyleArray sortedLexicalStyleArray = @()
+  for (name, comment, index) in inProject.lexicalStyleMap do
+    sortedLexicalStyleArray ++= @(name.string, comment.string, index)
+  end
 //--------------------------------- Generate semantic files
 //  message "*** Generate semantic\n" ;
   var [@string] toolCppFileList = @()
@@ -333,6 +336,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
   generatePredefinedTypeFiles (
     productDirectory,
     inSemanticDeclarationSortedListForGeneration,
+    sortedLexicalStyleArray,
     !?toolHeaderFileList,
     !?toolCppFileList,
     !?allProductFileSet

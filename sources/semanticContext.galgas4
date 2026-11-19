@@ -166,7 +166,6 @@ map @lexiqueComponentMapForSemanticAnalysis {
   public let [@indexingAST] mIndexingListAST
   public let [@terminalDeclarationAST] mTerminalListAST
   private let [@lexicalAttributeAST] mLexicalAttributeListAST
-//  private let [@lexicalStyleAST] mLexicalStyleListAST
   private let [@lexicalListDeclarationAST] mLexicalListDeclarationListAST
   #insertSetter insertKey #errorMessage "redefinition of the '%K' lexique component: it has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' lexique component is not imported"
@@ -179,10 +178,10 @@ map @lexiqueComponentMapForSemanticAnalysis {
 //--------------------------------------------------------------------------------------------------
 
 map @syntaxComponentMap {
-  public let @lstring mLexiqueName
-  public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
-  public let [@syntaxRuleAST] mRuleList
-  public let @bool mHasTranslateFeature
+  let @lstring mLexiqueName
+  let [@nonterminalDeclarationAST] mNonterminalDeclarationList
+  let [@syntaxRuleAST] mRuleList
+  let @bool mHasTranslateFeature
   #insertSetter insertKey #errorMessage "the '%K' syntax component has already been parsed"
   #searchMethod searchKey #errorMessage "the '%K' syntax component is not parsed"
 }
@@ -194,15 +193,15 @@ map @syntaxComponentMap {
 //--------------------------------------------------------------------------------------------------
 
 struct @semanticContext {
-  public var @routineMap routineMap = @()
-  public var @functionMap mFunctionMap = @()
-  public var @globalConstantMap mGlobalConstantMap = @()
-  public var @filewrapperMap mFilewrapperMap = @()
-  public var @grammarMap grammarMap = @()
-  public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
-  public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
-  public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
-  public let @styleMap lexicalStyleMap
+  var @routineMap routineMap = @()
+  var @functionMap mFunctionMap = @()
+  var @globalConstantMap mGlobalConstantMap = @()
+  var @filewrapperMap mFilewrapperMap = @()
+  var @grammarMap grammarMap = @()
+  var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
+  var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
+  var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
+  let @styleMap lexicalStyleMap
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -214,9 +213,7 @@ map @globalConstantMap {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    EXTENSION INITIALIZER MAP
-//
 //--------------------------------------------------------------------------------------------------
 
 map @extensionInitializerMapForType {
@@ -235,9 +232,7 @@ map @extensionInitializerForBuildingContext {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    EXTENSION    M E T H O D    M A P
-//
 //--------------------------------------------------------------------------------------------------
 
 map @extensionMethodMapForType {
@@ -257,9 +252,7 @@ map @extensionMethodMapForBuildingContext {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //    EXTENSION    M O D I F I E R    M A P
-//
 //--------------------------------------------------------------------------------------------------
 
 map @extensionSetterMapForType {
@@ -333,8 +326,7 @@ override func @filewrapperDeclarationAST.keyRepresentation
 
 //--------------------------------------------------------------------------------------------------
 
-override func @optionComponentDeclarationAST.keyRepresentation
-  () ->@string {
+override func @optionComponentDeclarationAST.keyRepresentation () -> @string {
   result = "option " + self.mOptionComponentName
 }
 
@@ -350,8 +342,7 @@ override func @externFunctionDeclarationAST.keyRepresentation () -> @string {
 //
 //--------------------------------------------------------------------------------------------------
 
-proc addExtensions
-     (let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+proc addExtensions (let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
      let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
      let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
      let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
@@ -508,15 +499,14 @@ map @wrapperExtensionMap {
 
 //--------------------------------------------------------------------------------------------------
 
-proc recursivelyEnumerateDirectories
-  (let @string inAbsoluteSourcePath,
-  let @string inPathInWrapper,
-  let @wrapperExtensionMap inTextFileExtensionMap,
-  let @wrapperExtensionMap inBinaryFileExtensionMap,
-  !@wrapperFileMap outWrapperFileMap,
-  !@wrapperDirectoryMap outWrapperDirectoryMap,
-  ?!@uint ioWrapperFileIndex,
-  ?!@uint ioWrapperDirectoryIndex ) {
+proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
+                                      let @string inPathInWrapper,
+                                      let @wrapperExtensionMap inTextFileExtensionMap,
+                                      let @wrapperExtensionMap inBinaryFileExtensionMap,
+                                      !@wrapperFileMap outWrapperFileMap,
+                                      !@wrapperDirectoryMap outWrapperDirectoryMap,
+                                      ?!@uint ioWrapperFileIndex,
+                                      ?!@uint ioWrapperDirectoryIndex) {
   let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex += 1
 //--- Enumerates regular files

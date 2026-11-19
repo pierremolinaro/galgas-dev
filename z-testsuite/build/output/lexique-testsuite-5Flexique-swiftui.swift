@@ -10,83 +10,6 @@ import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-struct SettingViewFor_testsuite_lexique : View {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @State private var mUnused = false
-
-  @AppStorage("FontFor_testsuite_lexique")
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-
-  @AppStorage("LineHeightFor_testsuite_lexique")
-  private var mLineHeight : Int = 12
-
-  @AppStorage("ColorFor_testsuite_lexique")
-  private var mDefaultColor : Color = .black
-
-
-  @AppStorage("ColorFor_testsuite_lexique_lexical_error")
-  private var mColorFor_lexical_error : Color = .red
-
-  @AppStorage("BoldFor_testsuite_lexique_lexical_error")
-  private var mBoldFor_lexical_error : Bool = false
-
-  @AppStorage("ItalicFor_testsuite_lexique_lexical_error")
-  private var mItalicFor_lexical_error : Bool = false
-
-  @AppStorage("ColorFor_testsuite_lexique_template")
-  private var mColorFor_template : Color = .gray
-
-  @AppStorage("BoldFor_testsuite_lexique_template")
-  private var mBoldFor_template : Bool = false
-
-  @AppStorage("ItalicFor_testsuite_lexique_template")
-  private var mItalicFor_template : Bool = false
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var body : some View {
-    Form {
-      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
-      Picker("Line Height", selection: self.$mLineHeight) {
-        Text("1.0").tag(10)
-        Text("1.1").tag(11)
-        Text("1.2").tag(12)
-        Text("1.5").tag(15)
-        Text("1.7").tag(17)
-        Text("2.0").tag(20)
-      }.pickerStyle(.automatic)
-      LabeledContent ("Default Color") {
-        HStack {
-          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
-          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
-        }
-      }
-      LabeledContent ("Lexical Error") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
-          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
-        }
-      }
-      LabeledContent ("Template") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_template)
-          Toggle ("Italic", isOn: self.$mItalicFor_template)
-        }
-      }
-    }.padding (20)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
 class ScannerFor_testsuite_lexique : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -201,165 +124,36 @@ class ScannerFor_testsuite_lexique : AbstractScanner {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  S T Y L E S
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func styleCount () -> UInt8 {
-    return 0
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func styleNameFor (styleIndex inIndex : UInt8) -> String {
-    return testsuite_lexique_styleNameFor (styleIndex: inIndex)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
-    return testsuite_lexique_styleIdentifierFor (styleIndex: inIndex)
-  }
-
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-  final var mLineHeight : Int = 12
-  final var mDefaultColor : Color = .black
-  final var mColorFor_lexical_error : Color = .red
-  final var mBoldFor_lexical_error : Bool = false
-  final var mItalicFor_lexical_error : Bool = false
-  final var mColorFor_template : Color = .gray
-  final var mBoldFor_template : Bool = false
-  final var mItalicFor_template : Bool = false
-  final var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
-    ioStyleDidChange = false
-    let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_testsuite_lexique"), let v = CustomFont (rawValue: s) {
-      if self.mFont != v {
-        self.mFont = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "LineHeightFor_testsuite_lexique"), let v = Int (s) {
-      if self.mLineHeight != v {
-        self.mLineHeight = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_testsuite_lexique"), let v = Color (rawValue: s) {
-      if self.mDefaultColor != v {
-        self.mDefaultColor = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_testsuite_lexique_lexical_error"), let v = Color (rawValue: s) {
-      if self.mColorFor_lexical_error != v {
-        self.mColorFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_testsuite_lexique_lexical_error") != nil {
-      let v = ud.bool (forKey: "BoldFor_testsuite_lexique_lexical_error")
-      if self.mBoldFor_lexical_error != v {
-        self.mBoldFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_testsuite_lexique_lexical_error") != nil {
-      let v = ud.bool (forKey: "ItalicFor_testsuite_lexique_lexical_error")
-      if self.mItalicFor_lexical_error != v {
-        self.mItalicFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_testsuite_lexique_template"), let v = Color (rawValue: s) {
-      if self.mColorFor_template != v {
-        self.mColorFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_testsuite_lexique_template") != nil {
-      let v = ud.bool (forKey: "BoldFor_testsuite_lexique_template")
-      if self.mBoldFor_template != v {
-        self.mBoldFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_testsuite_lexique_template") != nil {
-      let v = ud.bool (forKey: "ItalicFor_testsuite_lexique_template")
-      if self.mItalicFor_template != v {
-        self.mItalicFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-  //--- Build token attribute array
-    if ioStyleDidChange {
-      let fontManager = NSFontManager.shared
-      let boldFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .boldFontMask)
-      let italicFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .italicFontMask)
-      let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
-      self.mTokenAttributeArray.removeAll (keepingCapacity: true)
-      var attributes = [NSAttributedString.Key : Any] ()
-    //--- Lexical error
-      if self.mColorFor_lexical_error != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_lexical_error)
-      }
-      if self.mBoldFor_lexical_error && self.mItalicFor_lexical_error {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_lexical_error {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_lexical_error {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Template
-      if self.mColorFor_template != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_template)
-      }
-      if self.mBoldFor_template && self.mItalicFor_template {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_template {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_template {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-    }
-  }
+  final var mLexicalStyleSnapShot = LexicalStyleSnapShot ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {
     if self.mDebug { Swift.print ("performLexicalColoringAfterUserDefaultChange") }
     let start = Date ()
-    var styleDidChange = false
-    self.updateTokenStyleArrays (&styleDidChange)
-    if styleDidChange {
+    if stylesDidChange (&self.mLexicalStyleSnapShot) {
       let nsString = inTextStorage.string as NSString
       let fullRange = NSRange (location: 0, length: nsString.length)
     //---- Apply default attributes
       let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
-      let defaultFont = self.mFont.nsFont
+      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont
       inTextStorage.font = defaultFont
       let ps = NSMutableParagraphStyle ()
-      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0
       let defaultAttributes : [NSAttributedString.Key : Any] = [
         .font: defaultFont,
-        .foregroundColor: NSColor (self.mDefaultColor),
+        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),
         .paragraphStyle : ps
       ]
       inTextStorage.setAttributes (defaultAttributes, range: fullRange)
     //--- Apply styles
       for token in self.mTokenArray {
         let idx = Int (self.styleIndexFor (token: token.tokenCode))
-        if idx > 0, idx < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [idx - 1] {
+        if idx > 0, idx < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),
+           let attributes = self.mLexicalStyleSnapShot.mAttributeArray [idx - 1] {
           inTextStorage.addAttributes (attributes, range: token.range)
         }
       }
@@ -470,12 +264,12 @@ class ScannerFor_testsuite_lexique : AbstractScanner {
       let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
-      let defaultFont = self.mFont.nsFont
+      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont
       let ps = NSMutableParagraphStyle ()
-      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0
       let defaultAttributes : [NSAttributedString.Key : Any] = [
         .font: defaultFont,
-        .foregroundColor: NSColor (self.mDefaultColor),
+        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),
         .paragraphStyle : ps
       ]
       if self.mVerboseDebug { Swift.print ("Apply default attributes \(modifiedRange)") }
@@ -490,7 +284,8 @@ class ScannerFor_testsuite_lexique : AbstractScanner {
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0, styleIndex < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+          if styleIndex > 0, styleIndex < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),
+             let attributes = self.mLexicalStyleSnapShot.mAttributeArray [styleIndex - 1] {
             inTextStorage.addAttributes (attributes, range: token.range)
           }
         }
@@ -541,19 +336,14 @@ func testsuite_lexique_lexiqueIdentifier () -> String {
 func testsuite_lexique_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
-    "Lexical error", // 1
-    "Template" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func testsuite_lexique_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+func testsuite_lexique_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "testsuite_lexique", // 0
-    "testsuite_lexique.ERROR", // 1
-    "testsuite_lexique.TEMPLATE" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }

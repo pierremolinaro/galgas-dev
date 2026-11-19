@@ -78,8 +78,7 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_
                                                                                             const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
                                                                                             const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                             const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                            const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                            const class GGS__5B_lexicalStyleAST_5D_ & in_LEXICAL_5F_STYLE_5F_LIST
+                                                                                            const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -99,8 +98,8 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZ
                                                                                          const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
                                                                                          const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                                          const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
-                                                                                         const class GGS__5B_lexicalStyleAST_5D_ & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                         const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                         const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                         const class GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -173,6 +172,15 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__21_signatureIR_
                                                                                              class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument11,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'gSwiftLexicalStyleFileName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string function_gSwiftLexicalStyleFileName (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

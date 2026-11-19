@@ -24,21 +24,6 @@ template lexique xml_parsing_lexique : xml_parsing_base_lexique {
 
 lexique xml_parsing_base_lexique {
 
-//template "<"  %preserved ... ""
-//
-//replace "&amp;" -> "&"
-//replace "&lt;" -> "<"
-//replace "&gt;" -> ">"
-//replace "&quot;" -> "\""
-//replace "&apos;" -> "'"
-//replace "&#" ... ";" : codePointToUnicode
-
-style delimitersStyle -> "Delimiter"
-style nameStyle -> "Name"
-style attributeValue -> "Attribute value"
-style commentStyle -> "Comment"
-style textStyle -> "Text"
-
 @string tokenString
 
 //------------------------- comment  --------------------

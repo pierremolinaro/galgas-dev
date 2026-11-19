@@ -275,8 +275,8 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       2, // 169 : galgasScanner4_1__21__3D__3D_
       2, // 170 : galgasScanner4_1__3F__5E_
       2, // 171 : galgasScanner4_1__21__5E_
-      1, // 172 : galgasScanner4_2_ERROR
-      2  // 173 : galgasScanner4_2_TEMPLATE
+      13, // 172 : galgasScanner4_2_ERROR
+      14  // 173 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -1435,19 +1435,14 @@ func galgasScanner4_lexiqueIdentifier () -> String {
 func galgasScanner4_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
-    "Lexical error", // 1
-    "Template" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func galgasScanner4_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+func galgasScanner4_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "galgasScanner4", // 0
-    "galgasScanner4.ERROR", // 1
-    "galgasScanner4.TEMPLATE" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }

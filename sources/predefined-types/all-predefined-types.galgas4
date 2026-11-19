@@ -396,7 +396,9 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
 filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_generation" {
 }{
 }{
-  template predefinedTypesImplementation : "predefined_types.cpp.galgasTemplate" ()
+  template predefinedTypesImplementation : "predefined_types.cpp.galgasTemplate" (
+    ?@sortedLexicalStyleArray LEXICAL_STYLE_SORTED_ARRAY
+  )
 
   template primitiveTypesHeaderPrologue : "predefined-types-file-header.h.galgasTemplate" ()
 

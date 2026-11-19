@@ -103,8 +103,8 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
 for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
   %      %![terminal.mStyleIndex string]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![terminal.mTerminalName.string identifierRepresentation]%\n%
 end
-%      %![[LEXICAL_STYLE_LIST count]+1 string]%, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
-      %![[LEXICAL_STYLE_LIST count]+2 string]%  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
+%      %![LEXICAL_STYLE_COUNT+1 string]%, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
+      %![LEXICAL_STYLE_COUNT+2 string]%  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -382,26 +382,14 @@ func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
 func %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
-%
-for (lexicalStyle) in LEXICAL_STYLE_LIST do (idx)
-  %    %![lexicalStyle.mComment.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
-end
-%    "Lexical error", // %![[LEXICAL_STYLE_LIST count]+1 string]%
-    "Template" // %![[LEXICAL_STYLE_LIST count]+2 string]%
   ]
   return kStyleArray [Int (inIndex)]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func %!LEXIQUE_CLASS_NAME%_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+func %!LEXIQUE_CLASS_NAME%_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "%!LEXIQUE_CLASS_NAME%", // 0
-%for (lexicalStyle) in LEXICAL_STYLE_LIST do (idx)
-  %    %![LEXIQUE_CLASS_NAME + "-" + lexicalStyle.mName.string utf8RepresentationEscapingQuestionMark]%, // %![idx+1 string]%\n%
-end
-%    %![LEXIQUE_CLASS_NAME + ".ERROR" utf8RepresentationEscapingQuestionMark]%, // %![[LEXICAL_STYLE_LIST count]+1 string]%
-    %![LEXIQUE_CLASS_NAME + ".TEMPLATE" utf8RepresentationEscapingQuestionMark]% // %![[LEXICAL_STYLE_LIST count]+2 string]%
   ]
   return kStyleArray [Int (inIndex)]
 }

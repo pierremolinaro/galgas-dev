@@ -9,8 +9,6 @@ indexing routineCall : "Routine call"
 
 @string tokenString
 
-style keywordsStyle -> "Keywords"
-
 $identifier$ ! tokenString #errorMessage "an identifier"
 
 //--- This is the keyword list
@@ -31,7 +29,6 @@ rule 'a'->'z' |  'A'->'Z' {
 //   Literal decimal integers                
 //--------------------------------------------------------------------------------------------------
 
-style integerStyle -> "Integer Constants"
 @uint uint32value
 $integer$ !uint32value style integerStyle #errorMessage "a 32-bit unsigned decimal number"
 
@@ -53,7 +50,6 @@ rule '0'->'9' {
 //   Literal character strings               
 //--------------------------------------------------------------------------------------------------
 
-style stringStyle -> "String Constants"
 $"string"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage "a character string constant \"...\""
 
 
@@ -76,7 +72,6 @@ rule '"' {
 //   Delimiters                              
 //--------------------------------------------------------------------------------------------------
 
-style delimitersStyle -> "Delimiters"
 list delimitorsList style delimitersStyle #errorMessage "the '%K' delimitor" {
   ".", ";"
 }
@@ -87,7 +82,6 @@ rule list delimitorsList
 //   Comments                                
 //--------------------------------------------------------------------------------------------------
 
-style commentStyle -> "Comments"
 $comment$ style commentStyle #nonAtomicSelection #errorMessage "a comment"
 rule '#' {
   repeat

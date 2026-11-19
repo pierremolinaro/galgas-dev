@@ -2,8 +2,6 @@ lexique class_sample_language_lexique {
 
 @string tokenString
 
-style keywordsStyle -> "Keywords:"
-
 $identifier$ ! tokenString #errorMessage "an identifier"
 
 list keyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
@@ -19,7 +17,6 @@ rule 'a'->'z' | 'A'->'Z' {
 }
 
 // ---------------------------- Delimitors ---------------------------------------
-style delimitersStyle -> "Delimiters:"
 
 list delimitorsList style delimitersStyle #errorMessage "the '%K' delimitor"{
   ";",      ":"  }

@@ -21,9 +21,7 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//
 //           G E N E R A T I O N    F I L E W R A P P E R S
-//
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {

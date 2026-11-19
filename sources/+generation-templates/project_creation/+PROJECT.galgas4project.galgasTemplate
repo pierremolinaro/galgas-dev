@@ -1,14 +1,22 @@
-#version : 0.0.1
 #productName : %![PROJECT_NAME utf8RepresentationEscapingQuestionMark]%
+#version : 0.0.1
+
 #makefile-unix
 #makefile-macosx
 #makefile-x86linux32-on-macosx
 #makefile-x86linux64-on-macosx
 #makefile-arm64-linux-on-macosx
 #makefile-win32-on-macosx
-#macSwiftApp
-#macAppBundleBaseName : "fr.what"
+
 #codeblocks-windows
 #codeblocks-linux32
 #codeblocks-linux64
 
+#macSwiftApp
+#macAppBundleBaseName : "fr.what"
+
+#lexical-style : keywordsStyle -> "Keywords"
+#lexical-style : integerStyle -> "Integer Constants"
+#lexical-style : stringStyle -> "String Constants"
+#lexical-style : delimitersStyle -> "Delimiters"
+#lexical-style : commentStyle -> "Comments"

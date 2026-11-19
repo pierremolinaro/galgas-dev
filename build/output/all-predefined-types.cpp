@@ -7,6 +7,30 @@
 #include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
+// Lexical styles
+//--------------------------------------------------------------------------------------------------
+
+String styleNameForIndex (const uint32_t inStyleIndex) {
+  const char * array [15] = {
+    "Default Style", // 0
+    "keywordsStyle", // 1
+    "delimitersStyle", // 2
+    "selectorStyle", // 3
+    "terminalStyle", // 4
+    "nonTerminalStyle", // 5
+    "integerStyle", // 6
+    "floatStyle", // 7
+    "characterStyle", // 8
+    "stringStyle", // 9
+    "typeNameStyle", // 10
+    "attributeStyle", // 11
+    "commentStyle", // 12
+    "Lexical error", // 13
+    "Template" // 14
+  } ;
+  return (inStyleIndex < 15) ? array [inStyleIndex] : "" ;
+}
+//--------------------------------------------------------------------------------------------------
 //     @u64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 

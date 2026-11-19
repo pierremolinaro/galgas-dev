@@ -324,8 +324,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
       self.mLexiqueSuperComponentName.string,
       terminalList,
       templateDelimitorList,
-      self.mTemplateReplacementList,
-      @() // lexicalStyleListAST
+      self.mTemplateReplacementList
     ]
   //---
     ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (
@@ -370,8 +369,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?@string SUPER_LEXIQUE_CLASS_NAME,
     ?[@terminalAST] TERMINAL_LIST,
     ?[@templateDelimitorAST] TEMPLATE_DELIMITOR_LIST,
-    ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
-    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST
+    ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST
   )
 }
 

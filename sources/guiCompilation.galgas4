@@ -90,7 +90,6 @@ struct @importedLexiqueAST {
   public let @string mTitle
   public let [@textMacroAST] mTextMacroList
   public let [@guiLabelAST] mLabels
-//  public let [@lexicalStyleAST] mLexicalStyleList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -251,9 +250,6 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
 
 struct @guiAnalysisContext {
   public var [@string] mImportedOptionComponentList = @()
-//  public let [@guiCommandLineOptionAST] mBoolOptionList = @()
-//  public let [@guiCommandLineOptionAST] mUIntOptionList = @()
-//  public let [@guiCommandLineOptionAST] mStringOptionList = @()
   public var [@string] mNibAndClassList = @()
   public var @extensionMap mExtensionMap = @()
   public var [@importedLexiqueAST] mWithLexiqueList = @()
@@ -322,14 +318,12 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
   end
 //--- 'with lexique' construct analysis
   for withLexiqueEntry in inGUIComponentAST.mWithLexiqueList do (idx)
-//  for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   //--- Check lexique
     inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (
       withLexiqueEntry.mLexiqueFileName,
       ?*,
       ?let @terminalMap terminalMap,
       ?3*,
- //     ?let lexicalStyleListAST,
       ?*
     )
   //--- Build terminal symbol set
@@ -398,7 +392,6 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
       tabViewTitle,
       textMacroList,
       withLexiqueEntry.mLabels
-//      lexicalStyleListAST
     )
   end
 //--- Generation
@@ -415,19 +408,19 @@ proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOpt
   for anOption in inOptionComponentMapForGeneration do
     let swiftuiFileName = "SettingsView.swift"
     ioSwiftAllProductFileList ++= swiftuiFileName
-    let @string swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
+    let swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
       anOption.mGuiComponentContext
     ]
     @string.generateFileWithPattern (
-      !startPath:inOutputDirectory,
+      !startPath: inOutputDirectory,
       !fileName: swiftuiFileName,
-      !lineComment:"//",
-      !header:"",
-      !defaultUserZone1:"\n\n",
+      !lineComment: "//",
+      !header: "",
+      !defaultUserZone1: "\n\n",
       !generatedZone2: swiftui_string,
-      !defaultUserZone2:"\n\n",
-      !generatedZone3:"\n\n",
-      !makeExecutable:false
+      !defaultUserZone2: "\n\n",
+      !generatedZone3: "\n\n",
+      !makeExecutable: false
     )
   end
 }
@@ -441,7 +434,6 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
   template swiftui_gui_implementation : "gui-implementation-swiftui.swift.galgasTemplate" (
     ?@guiAnalysisContext GUI_CONTEXT
-
   )
 }
 

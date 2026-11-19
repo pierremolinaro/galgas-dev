@@ -367,28 +367,11 @@ __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForI
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
 //--------------------------------------------------------------------------------------------------
 
-uint32_t Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+uint32_t Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§
   static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST count] + 1 string]%] = {0%
 for (terminal) in TERMINAL_LIST do
   %,\n    %![terminal.mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![terminal.mTerminalName.string identifierRepresentation]% */%
 end%\n  } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleIndex) const {
-  String result ;
-  if (inStyleIndex < %![[LEXICAL_STYLE_LIST count] + 1 string]%) {
-    static const char * kStyleArray [%![[LEXICAL_STYLE_LIST count] + 1 string]%] = {
-      ""%
-for (lexicalStyle) in LEXICAL_STYLE_LIST do
-  %,\n      %![lexicalStyle.mName.string utf8RepresentationEscapingQuestionMark]
-end%\n    } ;
-    result = kStyleArray [inStyleIndex] ;
-  }
-  return result ;
 }
 

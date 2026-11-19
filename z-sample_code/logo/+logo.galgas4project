@@ -10,3 +10,9 @@
 #codeblocks-linux32
 #codeblocks-linux64
 
+#lexical-style : keywordsStyle -> "Keywords"
+#lexical-style : integerStyle -> "Integer Constants"
+#lexical-style : stringStyle -> "String Constants"
+#lexical-style : delimitersStyle -> "Delimiters"
+#lexical-style : commentStyle -> "Comments"
+

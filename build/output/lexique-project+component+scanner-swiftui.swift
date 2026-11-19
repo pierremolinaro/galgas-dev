@@ -128,8 +128,8 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
       2, // 23 : projectComponentScanner_1__2E_
       2, // 24 : projectComponentScanner_1__3A_
       2, // 25 : projectComponentScanner_1__2D__3E_
-      1, // 26 : projectComponentScanner_2_ERROR
-      2  // 27 : projectComponentScanner_2_TEMPLATE
+      13, // 26 : projectComponentScanner_2_ERROR
+      14  // 27 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -687,19 +687,14 @@ func projectComponentScanner_lexiqueIdentifier () -> String {
 func projectComponentScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
-    "Lexical error", // 1
-    "Template" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func projectComponentScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
+func projectComponentScanner_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "projectComponentScanner", // 0
-    "projectComponentScanner.ERROR", // 1
-    "projectComponentScanner.TEMPLATE" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }

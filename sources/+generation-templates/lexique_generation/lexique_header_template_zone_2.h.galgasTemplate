@@ -130,8 +130,7 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 //--- Enter Token
   protected: void enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) ;
 
-//--- Style name for Latex
-  protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const override ;
+//--- Style index
   protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
 } ;
 

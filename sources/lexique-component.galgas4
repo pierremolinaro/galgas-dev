@@ -34,7 +34,6 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
     var [@templateDelimitor2AST] templateDelimitorList = @()
     var [@templateReplacementAST] templateReplacementList = @()
     var [@lexicalAttributeAST] lexicalAttributeList = @()
-//    var [@lexicalStyleAST] lexicalStyleList = @()
     var [@terminalDeclarationAST] terminalDeclarationList = @()
     var [@lexicalMessageDeclarationAST] lexicalMessageDeclarationList = @()
     var [@lexicalListDeclarationAST] lexicalListDeclarationList = @()
@@ -362,22 +361,6 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  rule <style_declaration> (?![@lexicalStyleAST] ioLexicalStyleList) {
-//    $style$
-//    $identifier$ (?let @lstring styleIdentifier)
-//    if styleIdentifier.string.containsCharacter ('_') then
-//      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
-//    end
-//    if styleIdentifier.string.containsCharacterInRange ('0', '9') then
-//      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
-//    end
-//    $->$
-//    $"string"$ (?let @lstring comment)
-//    ioLexicalStyleList ++= @(styleIdentifier, comment)
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -388,7 +371,6 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
   private let [@templateDelimitor2AST] mTemplateDelimitorListAST
   private let [@templateReplacementAST] mTemplateReplacementListAST
   private let [@lexicalAttributeAST] mLexicalAttributeListAST
-//  private let [@lexicalStyleAST] mLexicalStyleListAST
   private let [@terminalDeclarationAST] mTerminalDeclarationListAST
   private let [@lexicalMessageDeclarationAST] mLexicalMessageDeclarationListAST
   private let [@lexicalListDeclarationAST] mLexicalListDeclarationListAST
@@ -500,15 +482,9 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
       @lexicalExplicitTokenListMapMap (),
       @(),
       [@templateDelimitorAST] (),
-//      @styleMap (),
+
       unicodeTestFunctions
     )
-  //-------------------------------------- Build style map
-//    var styleIndex = 1
-//    for styleEntry in self.mLexicalStyleListAST do
-//      !?lexiqueAnalysisContext.mStyleMap.insert (styleEntry.mName, styleEntry.mComment, styleIndex)
-//      styleIndex += 1
-//    end
   //-------------------------------------- Build lexical attribute map
     buildLexicalAttributeMap (
      lexicalTypeMap,
@@ -628,8 +604,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         lexiqueAnalysisContext,
         self.mTemplateDelimitorListAST,
         self.mLexiqueComponentName.string,
-        self.mTemplateReplacementListAST,
-        @() // self.mLexicalStyleListAST
+        self.mTemplateReplacementListAST
       ]
     //--- SwiftUI implementation
       let swiftUIImplementation = filewrapper [lexiqueGenerationTemplates.swiftUIImplementationZone2 :
@@ -643,8 +618,8 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         lexiqueAnalysisContext,
         self.mTemplateReplacementListAST,
         self.mIndexingListAST,
-        @(), //        self.mLexicalStyleListAST,
-        self.mTemplateDelimitorListAST
+        self.mTemplateDelimitorListAST,
+        inSemanticContext.lexicalStyleMap.count
       ]
     //---
       ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (
@@ -690,8 +665,7 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
     ?@string LEXIQUE_COMPONENT_NAME,
-    ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
-    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST
+    ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST
   )
 
   template swiftUIImplementationZone2 : "lexique_swiftui_implementation.swift.galgasTemplate" (
@@ -705,8 +679,8 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
     ?[@indexingAST] INDEXING_LIST,
-    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST,
-    ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST
+    ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
+    ?@uint LEXICAL_STYLE_COUNT
   )
 }
 

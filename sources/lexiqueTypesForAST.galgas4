@@ -101,13 +101,6 @@ struct @lexicalAttributeAST {
 
 //--------------------------------------------------------------------------------------------------
 
-struct @lexicalStyleAST {
-  public let @lstring mName
-  public let @lstring mComment
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct @terminalDeclarationAST {
   public let @lstring mName
   public let [@sentLexicalAttributeAST] mSentAttributeList

@@ -4,3 +4,8 @@
 #macSwiftApp
 #macAppBundleBaseName : "fr.what"
 
+#lexical-style : delimitersStyle -> "Delimiter"
+#lexical-style : nameStyle -> "Name"
+#lexical-style : attributeValue -> "Attribute value"
+#lexical-style : commentStyle -> "Comment"
+#lexical-style : textStyle -> "Text"

@@ -37337,9 +37337,9 @@ const char * gWrapperFileContent_126_libpmFileWrapper =
   "  private: void appendCharacterToLatexFile (const utf32 inUnicodeCharacter) ;\n"
   "  protected: void enterDroppedTerminal (const int32_t inTerminalIndex) ;\n"
   "  protected: void signalLexicalErrorInLatexOutput (void) ;\n"
-  "//--- Style name \n"
+  "\n"
+  "//--- Style index\n"
   "  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const = 0 ;\n"
-  "  protected: virtual String styleNameForIndex (const uint32_t inStyleIndex) const = 0 ;\n"
   "} ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -37349,7 +37349,7 @@ const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
   "Lexique.h",
   "h",
   true, // Text file
- 11359, // Text length
+ 11272, // Text length
   gWrapperFileContent_126_libpmFileWrapper
 ) ;
 

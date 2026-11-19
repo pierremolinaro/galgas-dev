@@ -55,17 +55,18 @@ void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (c
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generatePredefinedTypeFiles??&&&'
+//Routine 'generatePredefinedTypeFiles???&&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_string constinArgument0,
-                                                              const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
-                                                              class GGS__5B_string_5D_ & ioArgument2,
-                                                              class GGS__5B_string_5D_ & ioArgument3,
-                                                              class GGS_stringset & ioArgument4,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
+void routine_generatePredefinedTypeFiles_3F__3F__3F__26__26__26_ (const class GGS_string constinArgument0,
+                                                                  const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
+                                                                  const class GGS_sortedLexicalStyleArray constinArgument2,
+                                                                  class GGS__5B_string_5D_ & ioArgument3,
+                                                                  class GGS__5B_string_5D_ & ioArgument4,
+                                                                  class GGS_stringset & ioArgument5,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -90,7 +91,8 @@ extern const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTempl
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (Compiler * inCompiler
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (Compiler * inCompiler,
+                                                                                               const class GGS_sortedLexicalStyleArray & in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
