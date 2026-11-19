@@ -267,13 +267,9 @@ proc checkExtensionGetterDefinitionForClass
 
 //--------------------------------------------------------------------------------------------------
 
-proc performGalgas3ProjectGlobalCheckings
-  (?!@unifiedTypeMap ioTypeMap,
-  let [@semanticDeclarationAST] inSemanticDeclarationList
-) {
-  if @application.verboseOutput then
-    println ("*** Perform global checkings")
-  end
+proc performGalgas3ProjectGlobalCheckings (?!@unifiedTypeMap ioTypeMap,
+                                           let [@semanticDeclarationAST] inSemanticDeclarationList) {
+  println ("*** Perform global checkings")
 //----- Build descendant type list map
 // For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = @()

@@ -10,7 +10,6 @@
 #include "analyzeCommandLineOptions.h"
 #include "C_galgas_CLI_Options.h"
 #include "C_galgas_class_inspector.h"
-#include "F_verbose_output.h"
 #include "IssueDescriptor.h"
 #include "Compiler.h"
 
@@ -130,45 +129,43 @@ static String constructErrorOrWarningLocationMessage (const String & inMessage,
   //--- Construct message
     result.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
     result.appendString (inMessage) ;
-    if (verboseOutput ()) {
-      const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
-      result.appendString (textLine) ;
-      result.appendCString ("\n") ;
-    //--- Underline issue
-      for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
-        result.appendCString ("-") ;
-      }
-      for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
-        result.appendCString ("^") ;
-      }
-      result.appendCString ("\n") ;
-    //--- Add fix it suggestions
-      const String ZeroWidthSpace = stringWithUnicodeCharacter (utf32 (0x200B)) ;
-      for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
-        const FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
-        switch (d.kind()) {
-        case EnumFixItKind::fixItRemove :
-          result.appendCString ("Fix-it, remove\n") ;
-          break ;
-        case EnumFixItKind::fixItReplace :
-          result.appendCString ("Fix-it, replace with ") ;
-          result.appendString (ZeroWidthSpace) ;
-          result.appendString (d.actionString()) ;
-          result.appendCString ("\n") ;
-          break ;
-        case EnumFixItKind::fixItInsertBefore :
-          result.appendCString ("Fix-it, insert before: ") ;
-          result.appendString (ZeroWidthSpace) ;
-          result.appendString (d.actionString()) ;
-          result.appendCString ("\n") ;
-          break ;
-        case EnumFixItKind::fixItInsertAfter :
-          result.appendCString ("Fix-it, insert after: ") ;
-          result.appendString (ZeroWidthSpace) ;
-          result.appendString (d.actionString()) ;
-          result.appendCString ("\n") ;
-          break ;
-        }
+    const String textLine = inSourceText.getLineForLocation (inIssue.mStartLocation) ;
+    result.appendString (textLine) ;
+    result.appendCString ("\n") ;
+  //--- Underline issue
+    for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
+      result.appendCString ("-") ;
+    }
+    for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
+      result.appendCString ("^") ;
+    }
+    result.appendCString ("\n") ;
+  //--- Add fix it suggestions
+    const String ZeroWidthSpace = stringWithUnicodeCharacter (utf32 (0x200B)) ;
+    for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
+      const FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
+      switch (d.kind()) {
+      case EnumFixItKind::fixItRemove :
+        result.appendCString ("Fix-it, remove\n") ;
+        break ;
+      case EnumFixItKind::fixItReplace :
+        result.appendCString ("Fix-it, replace with ") ;
+        result.appendString (ZeroWidthSpace) ;
+        result.appendString (d.actionString()) ;
+        result.appendCString ("\n") ;
+        break ;
+      case EnumFixItKind::fixItInsertBefore :
+        result.appendCString ("Fix-it, insert before: ") ;
+        result.appendString (ZeroWidthSpace) ;
+        result.appendString (d.actionString()) ;
+        result.appendCString ("\n") ;
+        break ;
+      case EnumFixItKind::fixItInsertAfter :
+        result.appendCString ("Fix-it, insert after: ") ;
+        result.appendString (ZeroWidthSpace) ;
+        result.appendString (d.actionString()) ;
+        result.appendCString ("\n") ;
+        break ;
       }
     }
   }
@@ -189,8 +186,7 @@ void signalLexicalWarning (Compiler * inCompiler,
 //--- Construct location warning message
   String warningMessage ;
 //--- Add warning
-  warningMessage.appendString (verboseOutput () ? "lexical " : "") ;
-  warningMessage.appendCString ("warning #") ;
+  warningMessage.appendCString ("lexical warning #") ;
   warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage.appendCString (": ") ;
   warningMessage.appendString (inLexicalWarningMessage) ;
@@ -216,8 +212,7 @@ void signalLexicalError (Compiler * inCompiler,
   mErrorTotalCount += 1 ;
 //--- Construct parsing error message
   String errorMessage ;
-  errorMessage.appendString (verboseOutput () ? "lexical " : "") ;
-  errorMessage.appendCString ("error #") ;
+  errorMessage.appendCString ("lexical error #") ;
   errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
   errorMessage.appendString (inLexicalErrorMessage) ;
@@ -246,8 +241,7 @@ void signalParsingError (Compiler * inCompiler,
 //--- Construct location error message
   String errorMessage ;
 //--- Construct parsing error message
-  errorMessage.appendString (verboseOutput () ? "syntax " : "") ;
-  errorMessage.appendCString ("error #") ;
+  errorMessage.appendCString ("syntax error #") ;
   errorMessage.appendSigned (mErrorTotalCount) ;
   errorMessage.appendCString (": found ") ;
   errorMessage.appendString (inFoundTokenMessage) ;
@@ -286,32 +280,31 @@ void signalExtractError (Compiler * inCompiler,
 //--- Construct location error message
   String errorMessage ;
 //--- Print extract error
-  errorMessage.appendString (verboseOutput () ? "semantic " : "") ;
-  errorMessage.appendCString ("error: I have found:\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
+  errorMessage.appendCString ("semantic error: I have found:\n") ;
+//  if (! verboseOutput ()) {
+//    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+//    errorMessage.appendCString ("error: ") ;
+//  }
   errorMessage.appendCString ("  - ") ;
   errorMessage.appendString (inActualFoundClassErrorString) ;
   errorMessage.appendCString (";\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
+//  if (! verboseOutput ()) {
+//    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+//    errorMessage.appendCString ("error: ") ;
+//  }
   errorMessage.appendCString ("I was expected:\n") ;
-  if (! verboseOutput ()) {
-    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-    errorMessage.appendCString ("error: ") ;
-  }
+//  if (! verboseOutput ()) {
+//    errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+//    errorMessage.appendCString ("error: ") ;
+//  }
   errorMessage.appendCString ("  - ") ;
   errorMessage.appendString (inExpectedClassesErrorStringsArray (0 COMMA_HERE)) ;
   for (int32_t i=1 ; i<inExpectedClassesErrorStringsArray.count () ; i++) {
     errorMessage.appendCString (";\n") ;
-    if (! verboseOutput ()) {
-      errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
-      errorMessage.appendCString ("error: ") ;
-    }
+//    if (! verboseOutput ()) {
+//      errorMessage.appendString (errorOrWarningLocationString (inIssue, inSourceText)) ;
+//      errorMessage.appendCString ("error: ") ;
+//    }
     errorMessage.appendCString ("  - ") ;
     errorMessage.appendString (inExpectedClassesErrorStringsArray (i COMMA_HERE)) ;
   }
@@ -336,8 +329,7 @@ void signalSemanticWarning (Compiler * inCompiler,
 //--- Construct location error message
   String warningMessage ;
 //--- Add warning
-  warningMessage.appendString (verboseOutput () ? "semantic " : "") ;
-  warningMessage.appendCString ("warning #") ;
+  warningMessage.appendCString ("semantic warning #") ;
   warningMessage.appendSigned (mTotalWarningCount) ;
   warningMessage.appendCString (": ") ;
   warningMessage.appendString (inWarningMessage) ;
@@ -480,13 +472,13 @@ void ggs_printError (Compiler * inCompiler,
       break ;
     }
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
+//    if (verboseOutput ()) {
       gCout.appendCString ("[Error raised from file '") ;
       gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
       gCout.appendCString ("' at line ") ;
       gCout.appendSigned (IN_SOURCE_LINE) ;
       gCout.appendCString ("]\n") ;
-    }
+//    }
   #endif
   }
 }
@@ -536,13 +528,13 @@ void ggs_fatalError (const String & inErrorMessage,
     }
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
+//    if (verboseOutput ()) {
       gCout.appendCString ("[Error raised from file '") ;
       gCout.appendString (String (inSourceFile).lastPathComponent ()) ;
       gCout.appendCString ("' at line ") ;
       gCout.appendSigned (inSourceLine) ;
       gCout.appendCString ("]\n") ;
-    }
+//    }
   #endif
   exit (1) ;
 }
@@ -597,14 +589,14 @@ void ggs_printWarning (Compiler * inCompiler,
     }
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
+//    if (verboseOutput ()) {
       gCout.appendCString ("[Warning raised from file '") ;
       gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
       gCout.appendCString ("' at line ") ;
       gCout.appendSigned (IN_SOURCE_LINE) ;
       gCout.appendCString ("]\n") ;
       gCout.flush () ;
-    }
+//    }
   #endif
 }
 
@@ -721,14 +713,14 @@ void ggs_printMessage (const String & inMessage
       gCout.flush () ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      if (verboseOutput ()) {
+//      if (verboseOutput ()) {
         gCout.appendCString ("[Displayed from file '") ;
         gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
         gCout.appendCString ("' at line ") ;
         gCout.appendSigned (IN_SOURCE_LINE) ;
         gCout.appendCString ("]\n") ;
         gCout.flush () ;
-      }
+//      }
     #endif
   }
 }

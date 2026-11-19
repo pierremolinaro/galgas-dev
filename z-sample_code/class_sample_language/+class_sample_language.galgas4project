@@ -1,7 +1,7 @@
-project (1:0:0) -> "classSampleLanguage" {
+  #version : 1.0.0
+  #productName : "classSampleLanguage"
 //--- Targets
   #makefile-unix
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
+  #macSwiftApp
+  #macAppBundleBaseName : "fr.what"
 

@@ -74,14 +74,8 @@
    <Add directory="%!HAND_CODED_SOURCE_TOOL_DIRECTORY%" />
   </Compiler>
   <Linker>
-%if GENERATE_FOR_WINDOWS then !"   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n" else end
-%  </Linker>
-%if VERBOSE_OPTION then
-%  <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_verbose_option.cpp" />
-%else
-%  <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_quiet_option.cpp" />
+%if GENERATE_FOR_WINDOWS then !"   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n" else end%</Linker>
 %
-end
 for (mValue) in TOOL_CPP_FILE_LIST do
 %  <Unit filename="../%!BUILD_DIR_NAME%/output/%!mValue%" />\n%
 end

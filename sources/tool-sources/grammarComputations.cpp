@@ -32,7 +32,6 @@
 #include "galgas_cli_options.h"
 #include "galgas-input-output.h"
 #include "HTMLString.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -340,7 +339,7 @@ analyzeGrammar (Compiler * inCompiler,
   enumErrorKind errorFlag = kNoError ;
 
 //--- Verbose Output
-  const bool verboseOptionOn = verboseOutput () ;
+  const bool verboseOptionOn = true ;
 
 //--- Create output HTML file
   const String title = String ("'") + inTargetFileName.mProperty_string.stringValue () + "' grammar" ;

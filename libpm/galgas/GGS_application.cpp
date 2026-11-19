@@ -9,18 +9,11 @@
 #include "UIntCommandLineOption.h"
 #include "StringCommandLineOption.h"
 #include "analyzeCommandLineOptions.h"
-#include "F_verbose_output.h"
 #include "LexiqueIntrospection.h"
 #include "galgas-input-output.h"
 
 //--------------------------------------------------------------------------------------------------
 //                     'GGS_application' class
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_application::class_func_verboseOutput (UNUSED_LOCATION_ARGS) {
-  return GGS_bool (verboseOutput ()) ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {

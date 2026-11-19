@@ -15135,1583 +15135,1435 @@ const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST_2E_weak::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Enum lexicalTypeEnum
+//
+//     L E X I Q U E                                                                             
+//
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeEnum::GGS_lexicalTypeEnum (void) :
-mEnum (Enumeration::invalid) {
+#include "utf32.h"
+#include "scanner_actions.h"
+#include "LexiqueIntrospection.h"
+
+//--------------------------------------------------------------------------------------------------
+
+cTokenFor_projectScanner::cTokenFor_projectScanner (void) :
+mLexicalAttribute_bigintValue (),
+mLexicalAttribute_charValue (),
+mLexicalAttribute_tokenString (),
+mLexicalAttribute_uint_33__32_value () {
 }
 
+//--------------------------------------------------------------------------------------------------
+
+Lexique_projectScanner::Lexique_projectScanner (Compiler * inCallerCompiler,
+                                                const String & inSourceFileName
+                                                COMMA_LOCATION_ARGS) :
+Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
+}
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_string (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_string ;
+Lexique_projectScanner::Lexique_projectScanner (Compiler * inCallerCompiler,
+                                                const String & inSourceString,
+                                                const String & inStringForError
+                                                COMMA_LOCATION_ARGS) :
+Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//                        Lexical error message list                                             
+//--------------------------------------------------------------------------------------------------
+
+static const char * gLexicalMessage_projectScanner_attributeError = "in an attribute name, a letter or a digit should follow the '#' character" ;
+
+static const char * gLexicalMessage_projectScanner_incorrectCharConstant = "incorrect literal character" ;
+
+static const char * gLexicalMessage_projectScanner_incorrectStringEnd = "string does not end with '\"'" ;
+
+static const char * gLexicalMessage_projectScanner_internalError = "internal error" ;
+
+static const char * gLexicalMessage_projectScanner_invalideUnicodeDefinition4 = "\\u should be followed by exactly four hexadecimal digits" ;
+
+static const char * gLexicalMessage_projectScanner_invalideUnicodeDefinition8 = "\\U should be followed by exactly eight hexadecimal digits" ;
+
+static const char * gLexicalMessage_projectScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
+
+static const char * gLexicalMessage_projectScanner_undefinedAttribute = "undefined attribute" ;
+
+//--------------------------------------------------------------------------------------------------
+//                getMessageForTerminal                                                          
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_projectScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
+  String result = "<unknown>" ;
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 24)) {
+    static const char * syntaxErrorMessageArray [24] = {kEndOfSourceLexicalErrorMessage,
+        "an identifier",
+        "a literal integer",
+        "a character constant",
+        "a comment",
+        "a comment",
+        "a character string constant \"...\"",
+        "the '#macAppBundleBaseName' keyword",
+        "the '#codeblocks-linux32' keyword",
+        "the '#codeblocks-linux64' keyword",
+        "the '#codeblocks-windows' keyword",
+        "the '#libpmCustomPath' keyword",
+        "the '#productName' keyword",
+        "the '#version' keyword",
+        "the '#macCodeSign' keyword",
+        "the '#makefile-macosx' keyword",
+        "the '#makefile-unix' keyword",
+        "the '#makefile-x86linux32-on-macosx' keyword",
+        "the '#makefile-x86linux64-on-macosx' keyword",
+        "the '#makefile-arm64-linux-on-macosx' keyword",
+        "the '#makefile-win32-on-macosx' keyword",
+        "the '#macSwiftApp' keyword",
+        "the '.' delimitor",
+        "the ':' delimitor"
+    } ;
+    result = syntaxErrorMessageArray [inTerminalIndex] ;
+  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_char (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_char ;
-  return result ;
-}
-
+//                      U N I C O D E    S T R I N G S                                           
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_uint ;
-  return result ;
-}
+//--- Unicode string for '$.$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner__2E_ = {
+  utf32 ('.'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$//$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner__2F__2F_ = {
+  utf32 ('/'),
+  utf32 ('/'),
+} ;
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_uint_36__34_ ;
-  return result ;
-}
+//--- Unicode string for '$:$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner__3A_ = {
+  utf32 (':'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$codeblocks-linux32$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_linux_33__32_ = {
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('3'),
+  utf32 ('2'),
+} ;
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_sint ;
-  return result ;
-}
+//--- Unicode string for '$codeblocks-linux64$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_linux_36__34_ = {
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('6'),
+  utf32 ('4'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$codeblocks-windows$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_codeblocks_2D_windows = {
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('b'),
+  utf32 ('l'),
+  utf32 ('o'),
+  utf32 ('c'),
+  utf32 ('k'),
+  utf32 ('s'),
+  utf32 ('-'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('o'),
+  utf32 ('w'),
+  utf32 ('s'),
+} ;
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_sint_36__34_ ;
-  return result ;
-}
+//--- Unicode string for '$libpmCustomPath$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_libpmCustomPath = {
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('b'),
+  utf32 ('p'),
+  utf32 ('m'),
+  utf32 ('C'),
+  utf32 ('u'),
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('o'),
+  utf32 ('m'),
+  utf32 ('P'),
+  utf32 ('a'),
+  utf32 ('t'),
+  utf32 ('h'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$macAppBundleBaseName$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_macAppBundleBaseName = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('A'),
+  utf32 ('p'),
+  utf32 ('p'),
+  utf32 ('B'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('d'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('B'),
+  utf32 ('a'),
+  utf32 ('s'),
+  utf32 ('e'),
+  utf32 ('N'),
+  utf32 ('a'),
+  utf32 ('m'),
+  utf32 ('e'),
+} ;
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_double (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_double ;
-  return result ;
-}
+//--- Unicode string for '$macCodeSign$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_macCodeSign = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('C'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('e'),
+  utf32 ('S'),
+  utf32 ('i'),
+  utf32 ('g'),
+  utf32 ('n'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$macSwiftApp$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_macSwiftApp = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('S'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('f'),
+  utf32 ('t'),
+  utf32 ('A'),
+  utf32 ('p'),
+  utf32 ('p'),
+} ;
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::class_func_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum result ;
-  result.mEnum = Enumeration::enum_lexicalType_5F_bigint ;
-  return result ;
-}
+//--- Unicode string for '$makefile-arm64-linux-on-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('a'),
+  utf32 ('r'),
+  utf32 ('m'),
+  utf32 ('6'),
+  utf32 ('4'),
+  utf32 ('-'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$makefile-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_macosx = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$makefile-unix$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_unix = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('u'),
+  utf32 ('n'),
+  utf32 ('i'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$makefile-win32-on-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('w'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('3'),
+  utf32 ('2'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$makefile-x86linux32-on-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('x'),
+  utf32 ('8'),
+  utf32 ('6'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('3'),
+  utf32 ('2'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$makefile-x86linux64-on-macosx$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('k'),
+  utf32 ('e'),
+  utf32 ('f'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('e'),
+  utf32 ('-'),
+  utf32 ('x'),
+  utf32 ('8'),
+  utf32 ('6'),
+  utf32 ('l'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('u'),
+  utf32 ('x'),
+  utf32 ('6'),
+  utf32 ('4'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('n'),
+  utf32 ('-'),
+  utf32 ('m'),
+  utf32 ('a'),
+  utf32 ('c'),
+  utf32 ('o'),
+  utf32 ('s'),
+  utf32 ('x'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Unicode string for '$productName$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_productName = {
+  utf32 ('p'),
+  utf32 ('r'),
+  utf32 ('o'),
+  utf32 ('d'),
+  utf32 ('u'),
+  utf32 ('c'),
+  utf32 ('t'),
+  utf32 ('N'),
+  utf32 ('a'),
+  utf32 ('m'),
+  utf32 ('e'),
+} ;
 
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
-  "(not built)",
-  "lexicalType_string",
-  "lexicalType_char",
-  "lexicalType_uint",
-  "lexicalType_uint64",
-  "lexicalType_sint",
-  "lexicalType_sint64",
-  "lexicalType_double",
-  "lexicalType_bigint"
+//--- Unicode string for '$version$'
+static const std::initializer_list <utf32> kUnicodeString_projectScanner_version = {
+  utf32 ('v'),
+  utf32 ('e'),
+  utf32 ('r'),
+  utf32 ('s'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--------------------------------------------------------------------------------------------------
+//             Key words table 'attributeKeyWordList'      
+//--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_string (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_string == mEnum) ;
+static const int32_t ktable_size_projectScanner_attributeKeyWordList = 15 ;
+
+static const C_unicode_lexique_table_entry ktable_for_projectScanner_attributeKeyWordList [ktable_size_projectScanner_attributeKeyWordList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_version, Lexique_projectScanner::kToken__23_version),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macCodeSign, Lexique_projectScanner::kToken__23_macCodeSign),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macSwiftApp, Lexique_projectScanner::kToken__23_macSwiftApp),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_productName, Lexique_projectScanner::kToken__23_productName),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_unix, Lexique_projectScanner::kToken__23_makefile_2D_unix),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_libpmCustomPath, Lexique_projectScanner::kToken__23_libpmCustomPath),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_linux_33__32_, Lexique_projectScanner::kToken__23_codeblocks_2D_linux_33__32_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_linux_36__34_, Lexique_projectScanner::kToken__23_codeblocks_2D_linux_36__34_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_codeblocks_2D_windows, Lexique_projectScanner::kToken__23_codeblocks_2D_windows),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_macAppBundleBaseName, Lexique_projectScanner::kToken__23_macAppBundleBaseName),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx, Lexique_projectScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx)
+} ;
+
+int32_t Lexique_projectScanner::search_into_attributeKeyWordList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_projectScanner_attributeKeyWordList, ktable_size_projectScanner_attributeKeyWordList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_char (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_char == mEnum) ;
-}
-
+//             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_uint (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint == mEnum) ;
+static const int32_t ktable_size_projectScanner_galgasDelimitorsList = 2 ;
+
+static const C_unicode_lexique_table_entry ktable_for_projectScanner_galgasDelimitorsList [ktable_size_projectScanner_galgasDelimitorsList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner__2E_, Lexique_projectScanner::kToken__2E_),
+  C_unicode_lexique_table_entry (kUnicodeString_projectScanner__3A_, Lexique_projectScanner::kToken__3A_)
+} ;
+
+int32_t Lexique_projectScanner::search_into_galgasDelimitorsList (const String & inSearchedString) {
+  return searchInList (inSearchedString, ktable_for_projectScanner_galgasDelimitorsList, ktable_size_projectScanner_galgasDelimitorsList) ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_uint_36__34_ == mEnum) ;
-}
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_sint (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint == mEnum) ;
-}
-
+//                          getCurrentTokenString                                                
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_sint_36__34_ == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_double == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_lexicalTypeEnum::getter_isLexicalType_5F_bigint (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_lexicalType_5F_bigint == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalTypeEnum::description (String & ioString,
-                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<enum @lexicalTypeEnum: ") ;
-  ioString.appendCString (gEnumNameArrayFor_lexicalTypeEnum [size_t (mEnum)]) ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalTypeEnum::objectCompare (const GGS_lexicalTypeEnum & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
+String Lexique_projectScanner::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_projectScanner * ptr = (const cTokenFor_projectScanner *) inTokenPtr ;
+  String s ;
+  if (ptr == nullptr) {
+    s.appendCString ("$$") ;
+  }else{
+    switch (ptr->mTokenCode) {
+    case kToken_:
+      s.appendCString ("$$") ;
+      break ;
+    case kToken_identifier:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("identifier") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken_literalInt:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("literalInt") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
+      break ;
+    case kToken__27_char_27_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("'char'") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendChar (ptr->mLexicalAttribute_charValue) ;
+      break ;
+    case kToken_comment:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("comment") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken_commentMark:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("commentMark") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__22_string_22_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("\"string\"") ;
+      s.appendChar (utf32 ('$')) ;
+      s.appendChar (utf32 (' ')) ;
+      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
+      break ;
+    case kToken__23_macAppBundleBaseName:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#macAppBundleBaseName") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_codeblocks_2D_linux_33__32_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#codeblocks-linux32") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_codeblocks_2D_linux_36__34_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#codeblocks-linux64") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_codeblocks_2D_windows:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#codeblocks-windows") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_libpmCustomPath:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#libpmCustomPath") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_productName:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#productName") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_version:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#version") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_macCodeSign:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#macCodeSign") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_macosx:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-macosx") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_unix:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-unix") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-x86linux32-on-macosx") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-x86linux64-on-macosx") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-arm64-linux-on-macosx") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#makefile-win32-on-macosx") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_macSwiftApp:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#macSwiftApp") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__2E_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (".") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__3A_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString (":") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    default:
+      break ;
     }
+  }
+  return s ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Delimiters                                                 
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Replacements                                               
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//            Terminal Symbols as end of script in template mark                                 
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+//               INTERNAL PARSE LEXICAL TOKEN                                         
+//--------------------------------------------------------------------------------------------------
+
+void Lexique_projectScanner::internalParseLexicalToken (cTokenFor_projectScanner & token) {
+  bool loop = true ;
+  token.mLexicalAttribute_bigintValue = BigSigned () ;
+  token.mLexicalAttribute_charValue = utf32 (0) ;
+  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
+  token.mLexicalAttribute_uint_33__32_value = 0 ;
+  mTokenStartLocation = mCurrentLocation ;
+  try{
+    if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_'))) {
+      do {
+        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      token.mTokenCode = kToken_identifier ;
+      enterToken (token) ;
+    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+      ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+      do {
+        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        }else if (testForInputUTF32Char (utf32 ('_'))) {
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_projectScanner_internalError) ;
+      token.mTokenCode = kToken_literalInt ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (utf32 ('#'))) {
+      if (testForChar_isUnicodeLetter ()) {
+        do {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('-')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+      }else{
+        lexicalError (gLexicalMessage_projectScanner_attributeError COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      if (token.mTokenCode == -1) {
+        token.mTokenCode = search_into_attributeKeyWordList (token.mLexicalAttribute_tokenString) ;
+      }
+      if (token.mTokenCode == -1) {
+        lexicalError (gLexicalMessage_projectScanner_undefinedAttribute COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (utf32 ('\''))) {
+      if (testForInputUTF32Char (utf32 ('\\'))) {
+        if (testForInputUTF32Char (utf32 ('f'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\f')) ;
+        }else if (testForInputUTF32Char (utf32 ('n'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\n')) ;
+        }else if (testForInputUTF32Char (utf32 ('r'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\r')) ;
+        }else if (testForInputUTF32Char (utf32 ('t'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\t')) ;
+        }else if (testForInputUTF32Char (utf32 ('v'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\v')) ;
+        }else if (testForInputUTF32Char (utf32 ('\\'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\\')) ;
+        }else if (testForInputUTF32Char (utf32 ('0'))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\0')) ;
+        }else if (testForInputUTF32Char (utf32 ('\''))) {
+          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\'')) ;
+        }else if (testForInputUTF32Char (utf32 ('u'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                }else{
+                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                }
+              }else{
+                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+              }
+            }else{
+              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+            }
+          }else{
+            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+          }
+        }else if (testForInputUTF32Char (utf32 ('U'))) {
+          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                          ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                        }else{
+                          lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        }
+                      }else{
+                        lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      }
+                    }else{
+                      lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    }
+                  }else{
+                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  }
+                }else{
+                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                }
+              }else{
+                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+              }
+            }else{
+              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+            }
+          }else{
+            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+          }
+        }else{
+          lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+        }
+      }else if (testForInputUTF32CharRange (utf32 (' '), utf32 (65533))) {
+        ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
+      }else{
+        lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+      if (testForInputUTF32Char (utf32 ('\''))) {
+        token.mTokenCode = kToken__27_char_27_ ;
+        enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+    }else if (testForInputUTF32String (kUnicodeString_projectScanner__2F__2F_, true)) {
+      if (testForInputUTF32Char (utf32 ('!'))) {
+        do {
+          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_commentMark) ;
+      }else{
+        do {
+          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (1114111))) {
+          }else{
+            loop = false ;
+          }
+        }while (loop) ;
+        loop = true ;
+        enterDroppedTerminal (kToken_comment) ;
+      }
+    }else if (testForInputUTF32String (kUnicodeString_projectScanner__3A_, true)) {
+      token.mTokenCode = kToken__3A_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_projectScanner__2E_, true)) {
+      token.mTokenCode = kToken__2E_ ;
+      enterToken (token) ;
+    }else if (testForInputUTF32Char (utf32 ('\"'))) {
+      do {
+        if (testForInputUTF32Char (utf32 ('\\'))) {
+          if (testForInputUTF32Char (utf32 ('f'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\f')) ;
+          }else if (testForInputUTF32Char (utf32 ('n'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\n')) ;
+          }else if (testForInputUTF32Char (utf32 ('r'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\r')) ;
+          }else if (testForInputUTF32Char (utf32 ('t'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\t')) ;
+          }else if (testForInputUTF32Char (utf32 ('v'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\v')) ;
+          }else if (testForInputUTF32Char (utf32 ('\\'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
+          }else if (testForInputUTF32Char (utf32 ('\"'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\"')) ;
+          }else if (testForInputUTF32Char (utf32 ('\''))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\'')) ;
+          }else if (testForInputUTF32Char (utf32 ('\?'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\?')) ;
+          }else if (testForInputUTF32Char (utf32 ('u'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                    ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
+                  }else{
+                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                  }
+                }else{
+                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+                }
+              }else{
+                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+              }
+            }else{
+              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
+            }
+          }else if (testForInputUTF32Char (utf32 ('U'))) {
+            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
+                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectScanner_internalError, gLexicalMessage_projectScanner_internalError) ;
+                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectScanner_unassignedUnicodeValue) ;
+                            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
+                          }else{
+                            lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                          }
+                        }else{
+                          lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                        }
+                      }else{
+                        lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                      }
+                    }else{
+                      lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                    }
+                  }else{
+                    lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                  }
+                }else{
+                  lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+                }
+              }else{
+                lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+              }
+            }else{
+              lexicalError (gLexicalMessage_projectScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
+            }
+          }else{
+            lexicalError (gLexicalMessage_projectScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
+          }
+        }else if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
+          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+        }else{
+          loop = false ;
+        }
+      }while (loop) ;
+      loop = true ;
+      if (testForInputUTF32Char (utf32 ('\"'))) {
+        token.mTokenCode = kToken__22_string_22_ ;
+        enterToken (token) ;
+      }else{
+        lexicalError (gLexicalMessage_projectScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
+      }
+    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
+    }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
+      token.mTokenCode = kToken_ ; // Empty string code
+    }else{ // Unknown input character
+      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+      token.mTokenCode = -1 ; // No token
+      advance () ; // ... go throught unknown character
+    }
+  }catch (const C_lexicalErrorException &) {
+    token.mTokenCode = -1 ; // No token
+    advance () ; // ... go throught unknown character
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//               P A R S E    L E X I C A L    T O K E N                                         
+//--------------------------------------------------------------------------------------------------
+
+bool Lexique_projectScanner::parseLexicalToken (void) {
+  cTokenFor_projectScanner token ;
+  token.mTokenCode = -1 ;
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+    internalParseLexicalToken (token) ;
+  }
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = 0 ;
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                         E N T E R    T O K E N                                                
+//--------------------------------------------------------------------------------------------------
+
+void Lexique_projectScanner::enterToken (cTokenFor_projectScanner & ioToken) {
+  cTokenFor_projectScanner * ptr = nullptr ;
+  macroMyNew (ptr, cTokenFor_projectScanner ()) ;
+  ptr->mTokenCode = ioToken.mTokenCode ;
+  ptr->mStartLocation = mTokenStartLocation ;
+  ptr->mEndLocation = mTokenEndLocation ;
+  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
+  ioToken.mTemplateStringBeforeToken = "" ;
+  ptr->mLexicalAttribute_bigintValue = ioToken.mLexicalAttribute_bigintValue ;
+  ptr->mLexicalAttribute_charValue = ioToken.mLexicalAttribute_charValue ;
+  ptr->mLexicalAttribute_tokenString = ioToken.mLexicalAttribute_tokenString ;
+  ptr->mLexicalAttribute_uint_33__32_value = ioToken.mLexicalAttribute_uint_33__32_value ;
+  enterTokenFromPointer (ptr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//               A T T R I B U T E   A C C E S S                                                 
+//--------------------------------------------------------------------------------------------------
+
+BigSigned Lexique_projectScanner::attributeValue_bigintValue (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_bigintValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+utf32 Lexique_projectScanner::attributeValue_charValue (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_charValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_projectScanner::attributeValue_tokenString (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_tokenString ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint32_t Lexique_projectScanner::attributeValue_uint_33__32_value (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  return ptr->mLexicalAttribute_uint_33__32_value ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//         A S S I G N    F R O M    A T T R I B U T E                                           
+//--------------------------------------------------------------------------------------------------
+
+GGS_lbigint Lexique_projectScanner::synthetizedAttribute_bigintValue (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
+  GGS_lbigint result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lchar Lexique_projectScanner::synthetizedAttribute_charValue (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_char value (ptr->mLexicalAttribute_charValue) ;
+  GGS_lchar result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring Lexique_projectScanner::synthetizedAttribute_tokenString (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_string value (ptr->mLexicalAttribute_tokenString) ;
+  GGS_lstring result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_luint Lexique_projectScanner::synthetizedAttribute_uint_33__32_value (void) const {
+  cTokenFor_projectScanner * ptr = (cTokenFor_projectScanner *) currentTokenPtr (HERE) ;
+  macroValidSharedObject (ptr, cTokenFor_projectScanner) ;
+  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
+  GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
+  GGS_luint result (value, currentLocation) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                         I N T R O S P E C T I O N                                             
+//--------------------------------------------------------------------------------------------------
+
+ GGS__5B_string_5D_ Lexique_projectScanner::symbols (LOCATION_ARGS) {
+  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
+  result.plusPlusAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("literalInt") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("'char'") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("commentMark") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\"string\"") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#macAppBundleBaseName") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#codeblocks-linux32") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#codeblocks-linux64") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#codeblocks-windows") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#libpmCustomPath") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#productName") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#version") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#macCodeSign") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-macosx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-unix") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-x86linux32-on-macosx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-x86linux64-on-macosx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-arm64-linux-on-macosx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#makefile-win32-on-macosx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#macSwiftApp") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (".") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (":") COMMA_HERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordLists_projectScanner (GenericUniqueArray <String> & ioList) {
+  ioList.appendObject ("projectScanner:attributeKeyWordList") ;
+  ioList.appendObject ("projectScanner:galgasDelimitorsList") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordsForIdentifier_projectScanner (const String & inIdentifier,
+                                                     bool & ioFound,
+                                                     GenericUniqueArray <String> & ioList) {
+  if (inIdentifier == "projectScanner:attributeKeyWordList") {
+    ioFound = true ;
+    ioList.appendObject ("version") ;
+    ioList.appendObject ("macCodeSign") ;
+    ioList.appendObject ("macSwiftApp") ;
+    ioList.appendObject ("productName") ;
+    ioList.appendObject ("makefile-unix") ;
+    ioList.appendObject ("libpmCustomPath") ;
+    ioList.appendObject ("makefile-macosx") ;
+    ioList.appendObject ("codeblocks-linux32") ;
+    ioList.appendObject ("codeblocks-linux64") ;
+    ioList.appendObject ("codeblocks-windows") ;
+    ioList.appendObject ("macAppBundleBaseName") ;
+    ioList.appendObject ("makefile-win32-on-macosx") ;
+    ioList.appendObject ("makefile-x86linux32-on-macosx") ;
+    ioList.appendObject ("makefile-x86linux64-on-macosx") ;
+    ioList.appendObject ("makefile-arm64-linux-on-macosx") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+  if (inIdentifier == "projectScanner:galgasDelimitorsList") {
+    ioFound = true ;
+    ioList.appendObject (".") ;
+    ioList.appendObject (":") ;
+    ioList.sortArrayUsingCompareMethod() ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static LexiqueIntrospection lexiqueIntrospection_projectScanner
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_projectScanner, getKeywordsForIdentifier_projectScanner) ;
+
+//--------------------------------------------------------------------------------------------------
+//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//--------------------------------------------------------------------------------------------------
+
+uint32_t Lexique_projectScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
+  static const uint32_t kTerminalSymbolStyles [24] = {0,
+    0 /* projectScanner_1_identifier */,
+    2 /* projectScanner_1_literalInt */,
+    3 /* projectScanner_1__27_char_27_ */,
+    6 /* projectScanner_1_comment */,
+    6 /* projectScanner_1_commentMark */,
+    4 /* projectScanner_1__22_string_22_ */,
+    5 /* projectScanner_1__23_macAppBundleBaseName */,
+    5 /* projectScanner_1__23_codeblocks_2D_linux_33__32_ */,
+    5 /* projectScanner_1__23_codeblocks_2D_linux_36__34_ */,
+    5 /* projectScanner_1__23_codeblocks_2D_windows */,
+    5 /* projectScanner_1__23_libpmCustomPath */,
+    5 /* projectScanner_1__23_productName */,
+    5 /* projectScanner_1__23_version */,
+    5 /* projectScanner_1__23_macCodeSign */,
+    5 /* projectScanner_1__23_makefile_2D_macosx */,
+    5 /* projectScanner_1__23_makefile_2D_unix */,
+    5 /* projectScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
+    5 /* projectScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
+    5 /* projectScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
+    5 /* projectScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
+    5 /* projectScanner_1__23_macSwiftApp */,
+    1 /* projectScanner_1__2E_ */,
+    1 /* projectScanner_1__3A_ */
+  } ;
+  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//   S T Y L E   N A M E    F O R    S T Y L E    I N D E X                                      
+//--------------------------------------------------------------------------------------------------
+
+String Lexique_projectScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
+  String result ;
+  if (inStyleIndex < 7) {
+    static const char * kStyleArray [7] = {
+      "",
+      "delimitersStyle",
+      "integerStyle",
+      "characterStyle",
+      "stringStyle",
+      "attributeStyle",
+      "commentStyle"
+    } ;
+    result = kStyleArray [inStyleIndex] ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @lexicalTypeEnum generic code implementation
-//--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTypeEnum ("lexicalTypeEnum",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalTypeEnum::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalTypeEnum ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum appendMethodName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_appendMethodName (const GGS_lexicalTypeEnum & inObject,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("appendStringAsCLiteralStringConstant") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string ("appendChar") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string ("appendUnsigned") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string ("appendUnsigned") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string ("appendSigned") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string ("appendSigned") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string ("appendDouble") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("appendStringAsCLiteralStringConstant") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum appendArgumentOfMethod'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_appendArgumentOfMethod (const GGS_lexicalTypeEnum & inObject,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string (".decimalString ()") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum initialization'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_initialization (const GGS_lexicalTypeEnum & inObject,
-                                           Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string (".removeAllKeepingCapacity ()") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string (" = utf32 (0)") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string (" = 0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string (" = BigSigned ()") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaTypeName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaTypeName (const GGS_lexicalTypeEnum & inObject,
-                                          Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("NSMutableString *") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string ("UInt64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string ("SInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string ("SInt64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string ("double") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("NSMutableString *") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum swiftTypeName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
-                                          Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("String") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string ("UInt32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string ("UInt64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string ("Int32") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string ("Int64") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string ("Double") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("String") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTypeEnum & inObject,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_bool result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_bool (false) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_bool (true) ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_bool (false) ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaInitializationCode'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("[[NSMutableString alloc] init]") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string ("0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("[[NSMutableString alloc] init]") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum swiftInitializationCode'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_swiftInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("\"\"") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string ("0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string ("0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("\"\"") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaResetPrefix'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaResetPrefix (const GGS_lexicalTypeEnum & inObject,
-                                             Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string ("[") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string::makeEmptyString () ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string ("[") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@lexicalTypeEnum cocoaReset'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_cocoaReset (const GGS_lexicalTypeEnum & inObject,
-                                       Compiler * /* inCompiler */
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_lexicalTypeEnum temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_lexicalTypeEnum::Enumeration::invalid:
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_string:
-    {
-      result = GGS_string (" setString:@\"\"]") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_char:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_uint_36__34_:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_sint_36__34_:
-    {
-      result = GGS_string (" = 0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_double:
-    {
-      result = GGS_string (" = 0.0") ;
-    }
-    break ;
-  case GGS_lexicalTypeEnum::Enumeration::enum_lexicalType_5F_bigint:
-    {
-      result = GGS_string (" setString:@\"\"]") ;
-    }
-    break ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_formalParameterAST_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterAST_5D_::GGS__5B_formalParameterAST_5D_ (void) :
+GGS_projectTargets::GGS_projectTargets (void) :
 AC_GALGAS_root (),
-mSharedArray (),
+mFlags (0),
 mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterAST_5D_::GGS__5B_formalParameterAST_5D_ (const GGS__5B_formalParameterAST_5D_ & inSource) :
+GGS_projectTargets::GGS_projectTargets (const uint64_t inFlags) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
+mFlags (inFlags),
+mIsValid (true) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterAST_5D_ & GGS__5B_formalParameterAST_5D_::operator = (const GGS__5B_formalParameterAST_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
+GGS_projectTargets GGS_projectTargets::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (0) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_formalParameterAST_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
+GGS_projectTargets GGS_projectTargets::class_func_makefileUnix (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 0) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
+GGS_projectTargets GGS_projectTargets::class_func_makefileMacOS (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 1) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
+GGS_projectTargets GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 2) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::plusPlusAssignOperation (const GGS_formalParameterAST & inValue
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
+GGS_projectTargets GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 3) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_formalParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
+GGS_projectTargets GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 4) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::add_operation (const GGS__5B_formalParameterAST_5D_ & inOperand,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_formalParameterAST_5D_ result ;
+GGS_projectTargets GGS_projectTargets::class_func_makefileWin_33__32_OnMac (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 5) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::class_func_macSwiftApp (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 6) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::class_func_codeblocksWindows (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 7) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::class_func_codeblocksLinux_33__32_ (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 8) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::class_func_codeblocksLinux_36__34_ (UNUSED_LOCATION_ARGS) {
+  return GGS_projectTargets (uint64_t (1) << 9) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_projectTargets::isValid (void) const {
+  return mIsValid ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_projectTargets::getter_contains (const GGS_projectTargets & inOperand
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
+    result = GGS_bool ((mFlags & inOperand.mFlags) != 0) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::description (String & ioString,
-                                                  const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@formalParameterAST], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+void GGS_projectTargets::andAssignOperation (const GGS_projectTargets inOperand,
+                                             Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_projectTargets::orAssignOperation (const GGS_projectTargets inOperand,
+                                            Compiler * /* inCompiler */
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags |= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_projectTargets::xorAssignOperation (const GGS_projectTargets inOperand,
+                                             Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags ^= inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_projectTargets::minusAssignOperation (const GGS_projectTargets inOperand,
+                                               Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mFlags &= ~ inOperand.mFlags ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::operator_or (const GGS_projectTargets & inOperand
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_projectTargets result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_projectTargets (mFlags | inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::operator_and (const GGS_projectTargets & inOperand
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_projectTargets result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_projectTargets (mFlags & inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::operator_xor (const GGS_projectTargets & inOperand
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_projectTargets result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_projectTargets (mFlags ^ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::subtract_operation (const GGS_projectTargets & inOperand,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_projectTargets result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GGS_projectTargets (mFlags & ~ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_projectTargets GGS_projectTargets::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_projectTargets result ;
+  if (mIsValid) {
+    result = GGS_projectTargets (uint64_t (0x3FF) ^ mFlags) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_projectTargets::description (String & ioString,
+                                      const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<optionset @projectTargets:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    if ((mFlags & (uint64_t (1) << 0)) != 0) {
+      ioString.appendCString (" makefileUnix") ;
+    }
+    if ((mFlags & (uint64_t (1) << 1)) != 0) {
+      ioString.appendCString (" makefileMacOS") ;
+    }
+    if ((mFlags & (uint64_t (1) << 2)) != 0) {
+      ioString.appendCString (" makefileX86Linux32OnMac") ;
+    }
+    if ((mFlags & (uint64_t (1) << 3)) != 0) {
+      ioString.appendCString (" makefileX86Linux64OnMac") ;
+    }
+    if ((mFlags & (uint64_t (1) << 4)) != 0) {
+      ioString.appendCString (" makefileARM64LinuxOnMac") ;
+    }
+    if ((mFlags & (uint64_t (1) << 5)) != 0) {
+      ioString.appendCString (" makefileWin32OnMac") ;
+    }
+    if ((mFlags & (uint64_t (1) << 6)) != 0) {
+      ioString.appendCString (" macSwiftApp") ;
+    }
+    if ((mFlags & (uint64_t (1) << 7)) != 0) {
+      ioString.appendCString (" codeblocksWindows") ;
+    }
+    if ((mFlags & (uint64_t (1) << 8)) != 0) {
+      ioString.appendCString (" codeblocksLinux32") ;
+    }
+    if ((mFlags & (uint64_t (1) << 9)) != 0) {
+      ioString.appendCString (" codeblocksLinux64") ;
+    }
+  }
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
+//     @projectTargets generic code implementation
+//--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::plusAssignOperation (const GGS__5B_formalParameterAST_5D_ inOperand,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_projectTargets ("projectTargets",
+                                                                   nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::setter_append (const GGS_formalParameterAST inValue,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_set (const GGS_formalParameterAST inValue,
-                                                 const GGS_uint inIndex,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_insert (const GGS_formalParameterAST inValue,
-                                                    const GGS_uint inInsertionIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_remove (GGS_formalParameterAST & outValue,
-                                                    const GGS_uint inRemoveIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_removeFirst (GGS_formalParameterAST & outValue,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalParameterAST_5D_::setter_removeLast (GGS_formalParameterAST & outValue,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_formalParameterAST_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_formalParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                               const GGS_uint & inLength,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GGS__5B_formalParameterAST_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_formalParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_formalParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST GGS__5B_formalParameterAST_5D_::getter_first (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST GGS__5B_formalParameterAST_5D_::getter_last (Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST GGS__5B_formalParameterAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_formalParameterAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_formalParameterAST_5D_::DownEnumerator__5B_formalParameterAST_5D_ (const GGS__5B_formalParameterAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST DownEnumerator__5B_formalParameterAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST DownEnumerator__5B_formalParameterAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_formalParameterAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_formalParameterAST_5D_::UpEnumerator__5B_formalParameterAST_5D_ (const GGS__5B_formalParameterAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST UpEnumerator__5B_formalParameterAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalParameterAST UpEnumerator__5B_formalParameterAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[formalParameterAST] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalParameterAST_5D_ ("[formalParameterAST]",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_formalParameterAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_formalParameterAST_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_filewrapperTemplateAST_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_::GGS__5B_filewrapperTemplateAST_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_::GGS__5B_filewrapperTemplateAST_5D_ (const GGS__5B_filewrapperTemplateAST_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_ & GGS__5B_filewrapperTemplateAST_5D_::operator = (const GGS__5B_filewrapperTemplateAST_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_filewrapperTemplateAST_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::plusPlusAssignOperation (const GGS_filewrapperTemplateAST & inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_filewrapperTemplateAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::add_operation (const GGS__5B_filewrapperTemplateAST_5D_ & inOperand,
-                                                                                      Compiler * /* inCompiler */
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_filewrapperTemplateAST_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::description (String & ioString,
-                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@filewrapperTemplateAST], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::plusAssignOperation (const GGS__5B_filewrapperTemplateAST_5D_ inOperand,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_append (const GGS_filewrapperTemplateAST inValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_set (const GGS_filewrapperTemplateAST inValue,
-                                                     const GGS_uint inIndex,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_insert (const GGS_filewrapperTemplateAST inValue,
-                                                        const GGS_uint inInsertionIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_remove (GGS_filewrapperTemplateAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_removeFirst (GGS_filewrapperTemplateAST & outValue,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_filewrapperTemplateAST_5D_::setter_removeLast (GGS_filewrapperTemplateAST & outValue,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_filewrapperTemplateAST_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B_filewrapperTemplateAST_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::getter_first (Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const {
-  GGS_filewrapperTemplateAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::getter_last (Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_filewrapperTemplateAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_filewrapperTemplateAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_filewrapperTemplateAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_filewrapperTemplateAST_5D_::DownEnumerator__5B_filewrapperTemplateAST_5D_ (const GGS__5B_filewrapperTemplateAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST DownEnumerator__5B_filewrapperTemplateAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST DownEnumerator__5B_filewrapperTemplateAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_filewrapperTemplateAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_filewrapperTemplateAST_5D_::UpEnumerator__5B_filewrapperTemplateAST_5D_ (const GGS__5B_filewrapperTemplateAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST UpEnumerator__5B_filewrapperTemplateAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateAST UpEnumerator__5B_filewrapperTemplateAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[filewrapperTemplateAST] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_filewrapperTemplateAST_5D_ ("[filewrapperTemplateAST]",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_filewrapperTemplateAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_filewrapperTemplateAST_5D_ ;
+const GALGAS_TypeDescriptor * GGS_projectTargets::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_projectTargets ;
 }
 

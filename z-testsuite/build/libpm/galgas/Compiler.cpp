@@ -12,7 +12,6 @@
 #include "C_galgas_CLI_Options.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -541,7 +540,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
                                        const String & inFileName,
                                        const String & inContents) {
 //--- Verbose option ?
-  const bool verboseOptionOn = verboseOutput () ;
+  const bool verboseOptionOn = true ;
 //--- Start path : by default, use source file directory
   const String startPath = (inStartPath.length () == 0)
    ? sourceFilePath ().deletingLastPathComponent ()
@@ -610,7 +609,7 @@ void Compiler::generateFileWithPatternFromPathes (
   const bool inMakeExecutable
 ) {
 //--- Verbose option ?
-  const bool verboseOptionOn = verboseOutput () ;
+  const bool verboseOptionOn = true ;
 //--- User zones
   const String kSTART_OF_USER_ZONE_1 = String (inLineCommentPrefix) + START_OF_USER_ZONE_1 ;
   const String kEND_OF_USER_ZONE_1   = String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;

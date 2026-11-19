@@ -72,7 +72,6 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
     ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY,
     ?windows:@bool GENERATE_FOR_WINDOWS,
     ?platform:@string PLATFORM,
-    ?verboseOption:@bool VERBOSE_OPTION,
     ?buildDirName: @string BUILD_DIR_NAME
   )
 
@@ -110,8 +109,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
   let [@string] inToolCppFileList,
   ?libpmPath: let @string inLIBPMpath,
   let [@string] inHandCodedSourceToolFileList,
-  let @string inHandCodedSourceDirectory,
-  let @bool inVerboseOption
+  let @string inHandCodedSourceDirectory
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
   dir.makeDirectory ()
@@ -123,7 +121,6 @@ private proc generateGalgasCodeBlocksWindowsTarget
     inHandCodedSourceDirectory,
     !windows:true,
     !platform:"Windows",
-    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (dir + "/" + inProjectName + ".cbp", ?*)
@@ -138,8 +135,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target (
   let [@string] inToolCppFileList,
   let @string inLIBPMpath,
   let [@string] inHandCodedSourceToolFileList,
-  let @string inHandCodedSourceDirectory,
-  let @bool inVerboseOption
+  let @string inHandCodedSourceDirectory
  ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
   dir.makeDirectory ()
@@ -151,7 +147,6 @@ private proc generateGalgasCodeBlocksLinuxI686Target (
     inHandCodedSourceDirectory,
     !windows:false,
     !platform:"Unix",
-    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (dir + "/" + inProjectName + ".cbp", ?*)
@@ -166,8 +161,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target (
   let [@string] inToolCppFileList,
   let @string inLIBPMpath,
   let [@string] inHandCodedSourceToolFileList,
-  let @string inHandCodedSourceDirectory,
-  let @bool inVerboseOption
+  let @string inHandCodedSourceDirectory
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
   dir.makeDirectory ()
@@ -179,7 +173,6 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target (
     inHandCodedSourceDirectory,
     !windows:false,
     !platform:"Unix",
-    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (dir + "/" + inProjectName + ".cbp", ?*)
@@ -335,46 +328,39 @@ enum @xcodeProject #comparable {
 //--------------------------------------------------------------------------------------------------
 
 proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
-  ?buildDirName: let @string inBuildDirectoryName,
-  let @string inProjectSourceFilePath,
-  let @string inTargetName,
-  let @location _inEndOfProjectSourceFile,
-  let @string inProjectVersionString,
-  let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
-  let [@lstring] inTargetFeatureList,
-  let @bool inQuietOutputByDefault,
-  let [@string] inToolCppFileList,
-  let [@string] inToolHeaderFileList,
-  ?appProductFileList: let [@string] inAppProductFileList,
-  ?swiftAppProductFileList: let [@string] inSwiftAppProductFileList,
-  let [@string] inHandCodedSourceToolFileList,
-  let @string inHandCodedSourceDirectory,
-  let @stringset inHandledExtensionSet,
-  ?!@stringset ioAllProductFileSet) {
+                          ?buildDirName: let @string inBuildDirectoryName,
+                          let @string inProjectSourceFilePath,
+                          let @project inProject,
+                          let [@string] inToolCppFileList,
+                          let [@string] inToolHeaderFileList,
+                          ?appProductFileList: let [@string] inAppProductFileList,
+                          ?swiftAppProductFileList: let [@string] inSwiftAppProductFileList,
+                          let [@string] inHandCodedSourceToolFileList,
+                          let @string inHandCodedSourceDirectory,
+                          let @stringset inHandledExtensionSet,
+                          ?!@stringset ioAllProductFileSet) {
+  let versionString = inProject.majorVersion.bigint.string
+    + "." + inProject.minorVersion.bigint
+    + "." + inProject.revision.bigint
   ioAllProductFileSet += .setWithStringArray (inSwiftAppProductFileList)
   let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header
-  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.project_header : inProjectVersionString]
-  s1.writeToFileWhenDifferentContents
-    (inAbsoluteBuildDirectory + "/output/project_header.h",
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.project_header : versionString]
+  s1.writeToFileWhenDifferentContents (
+    inAbsoluteBuildDirectory + "/output/project_header.h",
     ?*
   )
   ioAllProductFileSet ++= "project_header.h"
-//---------------------------------------------------------- %quietOutputByDefault
-  var toolCppFileList = inToolCppFileList
-  if inQuietOutputByDefault then
-    toolCppFileList ++= "C_galgas_verbose_option.cpp"
-  else
-    toolCppFileList ++= "C_galgas_quiet_option.cpp"
-  end
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
-  if let entry = inProjectQualifiedFeatureMap ["macCodeSign"] then
-    if entry.mFeatureValue.string == "" then
-      error entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil macCodeSign
-    else
-      macCodeSign = entry.mFeatureValue
-    end
+  if inProject.macAppCodeSign.string != "" then
+    macCodeSign = inProject.macAppCodeSign
+//  if let entry = inProjectQualifiedFeatureMap ["macCodeSign"] then
+//    if entry.mFeatureValue.string == "" then
+//      error entry.mFeatureValue:"the #macCodeSign attribute should not be empty" spoil macCodeSign
+//    else
+//      macCodeSign = entry.mFeatureValue
+//    end
   else
     macCodeSign = "".nowhere
   end
@@ -382,85 +368,91 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
   let MACOSX_DEPLOYMENT_TARGET = "14.6"
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
-  if let entry = inProjectQualifiedFeatureMap ["libpmAtPath"] then
-    if entry.mFeatureValue.string == "" then
-      error entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath
-    else
-      libpmPath = entry.mFeatureValue.string
-    end
+  if inProject.libpmCustomPath.string != "" then
+    libpmPath = inProject.libpmCustomPath
+//  if let entry = inProjectQualifiedFeatureMap ["libpmAtPath"] then
+//    if entry.mFeatureValue.string == "" then
+//      error entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath
+//    else
+//      libpmPath = entry.mFeatureValue.string
+//    end
   else
-    updateLIBPMatPath (inAbsoluteBuildDirectory + "/libpm" )
+    updateLIBPMatPath (inAbsoluteBuildDirectory + "/libpm")
     libpmPath = "../" + inBuildDirectoryName + "/libpm"
   end
 //--------------------------------------- Check target names, file base name uniqueness, and build target file list
 //--- Parse features
-  var @stringset availableGenerationFeatures = @()
-  availableGenerationFeatures ++= "quietOutputByDefault"
-  availableGenerationFeatures ++= "codeblocks-windows"
-  availableGenerationFeatures ++= "codeblocks-linux32"
-  availableGenerationFeatures ++= "codeblocks-linux64"
-  availableGenerationFeatures ++= "makefile-macosx"
-  availableGenerationFeatures ++= "makefile-unix"
-  availableGenerationFeatures ++= "makefile-x86linux32-on-macosx"
-  availableGenerationFeatures ++= "makefile-x86linux64-on-macosx"
-  availableGenerationFeatures ++= "makefile-arm64-linux-on-macosx"
-  availableGenerationFeatures ++= "makefile-win32-on-macosx"
-  availableGenerationFeatures ++= "MacOS"
-  availableGenerationFeatures ++= "MacSwiftApp"
-  var @stringset generationFeatures = @()
+//  var @stringset availableGenerationFeatures = @()
+//  availableGenerationFeatures ++= "quietOutputByDefault"
+//  availableGenerationFeatures ++= "codeblocks-windows"
+//  availableGenerationFeatures ++= "codeblocks-linux32"
+//  availableGenerationFeatures ++= "codeblocks-linux64"
+//  availableGenerationFeatures ++= "makefile-macosx"
+//  availableGenerationFeatures ++= "makefile-unix"
+//  availableGenerationFeatures ++= "makefile-x86linux32-on-macosx"
+//  availableGenerationFeatures ++= "makefile-x86linux64-on-macosx"
+//  availableGenerationFeatures ++= "makefile-arm64-linux-on-macosx"
+//  availableGenerationFeatures ++= "makefile-win32-on-macosx"
+//  availableGenerationFeatures ++= "MacOS"
+//  availableGenerationFeatures ++= "MacSwiftApp"
+//  var @stringset generationFeatures = @()
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
-  for feature in inTargetFeatureList do
-    if availableGenerationFeatures.contains (feature.string) then
-      if generationFeatures.contains (feature.string) then
-        error feature: "duplicate '" + feature + "' feature"
-      end
-   //--- MacOS
-      if feature.string == "MacSwiftApp" then
-        if xcodeProject != .none then
-          error feature: "duplicated XCode setting"
-        end
-        xcodeProject = .swiftApp
-      else
-        generationFeatures ++= feature.string
-      end
-    else
-      var [@string] s = @()
-      for key in availableGenerationFeatures do
-        s ++= "%" + key
-      end
-      error feature: "unknown '" + feature + "' feature" fixit #replaceBy s 
-    end
+  if inProject.targets.contains (.macSwiftApp) then
+    xcodeProject = .swiftApp
   end
+//  for feature in inTargetFeatureList do
+//    if availableGenerationFeatures.contains (feature.string) then
+//      if generationFeatures.contains (feature.string) then
+//        error feature: "duplicate '" + feature + "' feature"
+//      end
+//   //--- MacOS
+//      if feature.string == "MacSwiftApp" then
+//        if xcodeProject != .none then
+//          error feature: "duplicated XCode setting"
+//        end
+//        xcodeProject = .swiftApp
+//      else
+//        generationFeatures ++= feature.string
+//      end
+//    else
+//      var [@string] s = @()
+//      for key in availableGenerationFeatures do
+//        s ++= "%" + key
+//      end
+//      error feature: "unknown '" + feature + "' feature" fixit #replaceBy s 
+//    end
+//  end
 //--- Codesign without selecting OSX ?
   if (macCodeSign.string != "") && (xcodeProject == .none) then
     error macCodeSign
-    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\""
+    : "the macCodeSign property implies the definition of an OS X target system: \"%MacSwiftApp\""
   end
 //--- Check Cocoa features
-  if xcodeProject != .none, not inProjectQualifiedFeatureMap.contains ("applicationBundleBase") then
-    warning @location.here: "For a MacOS target, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
+  if xcodeProject != .none, inProject.macAppBundleBaseName.string == "" then
+    warning inProject.macAppBundleBaseName: "For a MacOS target, the \"#macAppBundleBaseName\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 //--- Generation
-  if generationFeatures.contains ("makefile-macosx") then
-    generateMakefileMacTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
+  let inTargetName = inProject.productName
+  if inProject.targets.contains (.makefileMacOS) then
+    generateMakefileMacTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName)
   end
-  if generationFeatures.contains ("makefile-unix") then
+  if inProject.targets.contains (.makefileUnix) then
     generateMakefileUnixTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.contains ("makefile-x86linux32-on-macosx") then
+  if inProject.targets.contains (.makefileX86Linux32OnMac) then
     generateMakefileLinux32OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.contains ("makefile-x86linux64-on-macosx") then
+  if inProject.targets.contains (.makefileX86Linux64OnMac) then
     generateMakefileLinux64OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.contains ("makefile-arm64-linux-on-macosx") then
+  if inProject.targets.contains (.makefileARM64LinuxOnMac) then
     generateArm64LinuxMakefileTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.contains ("makefile-win32-on-macosx") then
+  if inProject.targets.contains (.makefileWin32OnMac) then
     generateMakefileMinGWOnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.contains ("codeblocks-windows") then
+  if inProject.targets.contains (.codeblocksWindows) then
     generateGalgasCodeBlocksWindowsTarget (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -468,11 +460,10 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
       inToolCppFileList,
       !libpmPath: libpmPath,
       inHandCodedSourceToolFileList,
-      inHandCodedSourceDirectory,
-      inQuietOutputByDefault
+      inHandCodedSourceDirectory
     )
   end
-  if generationFeatures.contains ("codeblocks-linux32") then
+  if inProject.targets.contains (.codeblocksLinux32) then
     generateGalgasCodeBlocksLinuxI686Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -480,11 +471,10 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
       inToolCppFileList,
       libpmPath,
       inHandCodedSourceToolFileList,
-      inHandCodedSourceDirectory,
-      inQuietOutputByDefault
+      inHandCodedSourceDirectory
     )
   end
-  if generationFeatures.contains ("codeblocks-linux64") then
+  if inProject.targets.contains (.codeblocksLinux64) then
     generateGalgasCodeBlocksLinuxX86_64Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -492,8 +482,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
       inToolCppFileList,
       libpmPath,
       inHandCodedSourceToolFileList,
-      inHandCodedSourceDirectory,
-      inQuietOutputByDefault
+      inHandCodedSourceDirectory
     )
   end
 //--- Update json file list
@@ -515,7 +504,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
   let jsonFileListContents = filewrapper [targetGalgas3GenerationFileWrapper.json_file_list :
     handCodedSourceDirectorySet,
     handCodedSourceToolFileList,
-    toolCppFileList,
+    inToolCppFileList,
     [],
     libpmPath,
     inBuildDirectoryName
@@ -531,15 +520,17 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
     dir.makeDirectory ()
   //--- Info.plist
     let @string applicationBundleBase
-    if let entry = inProjectQualifiedFeatureMap ["applicationBundleBase"] then
-      applicationBundleBase = entry.mFeatureValue.string
+    if inProject.macAppBundleBaseName.string != "" then
+      applicationBundleBase = inProject.macAppBundleBaseName.string
+//    if let entry = inProjectQualifiedFeatureMap ["applicationBundleBase"] then
+//      applicationBundleBase = entry.mFeatureValue.string
     else
       applicationBundleBase = "unknown.unknown"
     end
     let InfoPlistContents = filewrapper [targetGalgas3GenerationFileWrapper.makefile_info_plist :
       inTargetName,
       applicationBundleBase,
-      inProjectVersionString,
+      versionString,
       inHandledExtensionSet,
       MACOSX_DEPLOYMENT_TARGET,
       "$(PRODUCT_MODULE_NAME).ProjectDocument"
@@ -918,9 +909,6 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "C_galgas_class_inspector.h",
         "C_galgas_CLI_Options.cpp",
         "C_galgas_CLI_Options.h",
-        if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
-        if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
-        "F_verbose_output.h",
         "galgas-input-output.cpp",
         "galgas-input-output.h",
         "GALGAS_TypeDescriptor.cpp",

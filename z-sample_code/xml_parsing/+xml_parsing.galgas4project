@@ -1,5 +1,6 @@
-project (1:0:0) -> "XMLParsing" {
-  #makefile-unix
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
+#version : 1.0.0
+#productName : "XMLParsing"
+#makefile-unix
+#macSwiftApp
+#macAppBundleBaseName : "fr.what"
+

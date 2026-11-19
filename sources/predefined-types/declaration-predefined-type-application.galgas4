@@ -78,13 +78,6 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !name:"verboseOutput",
-      !resultTypeName:"bool",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
       !name:"projectVersionString",
       !resultTypeName:"string",
       !hasLexiqueArg:false

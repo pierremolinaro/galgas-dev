@@ -9,6 +9,1017 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @project struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_project final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_string mProperty_productName ;
+  public: inline GGS_string readProperty_productName (void) const {
+    return mProperty_productName ;
+  }
+
+  public: GGS_uint mProperty_majorVersion ;
+  public: inline GGS_uint readProperty_majorVersion (void) const {
+    return mProperty_majorVersion ;
+  }
+
+  public: GGS_uint mProperty_minorVersion ;
+  public: inline GGS_uint readProperty_minorVersion (void) const {
+    return mProperty_minorVersion ;
+  }
+
+  public: GGS_uint mProperty_revision ;
+  public: inline GGS_uint readProperty_revision (void) const {
+    return mProperty_revision ;
+  }
+
+  public: GGS_projectTargets mProperty_targets ;
+  public: inline GGS_projectTargets readProperty_targets (void) const {
+    return mProperty_targets ;
+  }
+
+  public: GGS_lstring mProperty_libpmCustomPath ;
+  public: inline GGS_lstring readProperty_libpmCustomPath (void) const {
+    return mProperty_libpmCustomPath ;
+  }
+
+  public: GGS_lstring mProperty_macAppBundleBaseName ;
+  public: inline GGS_lstring readProperty_macAppBundleBaseName (void) const {
+    return mProperty_macAppBundleBaseName ;
+  }
+
+  public: GGS_lstring mProperty_macAppCodeSign ;
+  public: inline GGS_lstring readProperty_macAppCodeSign (void) const {
+    return mProperty_macAppCodeSign ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_project (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setProductName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_productName = inValue ;
+  }
+
+  public: inline void setter_setMajorVersion (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_majorVersion = inValue ;
+  }
+
+  public: inline void setter_setMinorVersion (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_minorVersion = inValue ;
+  }
+
+  public: inline void setter_setRevision (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_revision = inValue ;
+  }
+
+  public: inline void setter_setTargets (const GGS_projectTargets & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_targets = inValue ;
+  }
+
+  public: inline void setter_setLibpmCustomPath (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_libpmCustomPath = inValue ;
+  }
+
+  public: inline void setter_setMacAppBundleBaseName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_macAppBundleBaseName = inValue ;
+  }
+
+  public: inline void setter_setMacAppCodeSign (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_macAppCodeSign = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_project (const GGS_string & in_productName,
+                       const GGS_uint & in_majorVersion,
+                       const GGS_uint & in_minorVersion,
+                       const GGS_uint & in_revision,
+                       const GGS_projectTargets & in_targets,
+                       const GGS_lstring & in_libpmCustomPath,
+                       const GGS_lstring & in_macAppBundleBaseName,
+                       const GGS_lstring & in_macAppCodeSign) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_project (const GGS_project & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_project & operator = (const GGS_project & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_project init_21_productName_21_majorVersion_21_minorVersion_21_revision_21_targets_21_libpmCustomPath_21_macAppBundleBaseName_21_macAppCodeSign (const class GGS_string & inOperand0,
+                                                                                                                                                                      const class GGS_uint & inOperand1,
+                                                                                                                                                                      const class GGS_uint & inOperand2,
+                                                                                                                                                                      const class GGS_uint & inOperand3,
+                                                                                                                                                                      const class GGS_projectTargets & inOperand4,
+                                                                                                                                                                      const class GGS_lstring & inOperand5,
+                                                                                                                                                                      const class GGS_lstring & inOperand6,
+                                                                                                                                                                      const class GGS_lstring & inOperand7,
+                                                                                                                                                                      Compiler * inCompiler
+                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_project ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Parser class 'galgasProjectSyntax' declaration
+//
+//--------------------------------------------------------------------------------------------------
+
+class cParser_galgasProjectSyntax {
+//--- Virtual destructor
+  public: virtual ~ cParser_galgasProjectSyntax (void) { }
+
+//--- Non terminal declarations
+  protected: virtual void nt_project_5F_component_5F_start_5F_symbol_ (class GGS_project & outArgument0,
+                                                                       class Lexique_projectScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (class Lexique_projectScanner * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_galgasProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_ (GGS_project & outArgument0,
+                                                                                        Lexique_projectScanner * inLexique) ;
+
+/*  protected: void rule_galgasProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_parse (Lexique_projectScanner * inLexique) ; */
+
+  protected: void rule_galgasProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_indexing (Lexique_projectScanner * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_galgasProjectSyntax_0 (Lexique_projectScanner *) = 0 ;
+
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum appendMethodName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_appendMethodName (const class GGS_lexicalTypeEnum & inObject,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum appendArgumentOfMethod' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_appendArgumentOfMethod (const class GGS_lexicalTypeEnum & inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum initialization' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_initialization (const class GGS_lexicalTypeEnum & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum cocoaTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum swiftTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum needsReferenceInInputOutputInCocoa' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const class GGS_lexicalTypeEnum & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum cocoaInitializationCode' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaInitializationCode (const class GGS_lexicalTypeEnum & inObject,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum swiftInitializationCode' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftInitializationCode (const class GGS_lexicalTypeEnum & inObject,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum cocoaResetPrefix' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaResetPrefix (const class GGS_lexicalTypeEnum & inObject,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum cocoaReset' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cocoaReset (const class GGS_lexicalTypeEnum & inObject,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [formalParameterAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_formalParameterAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_formalParameterAST_5D_ (const class GGS__5B_formalParameterAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_formalParameterAST_5D_ (const DownEnumerator__5B_formalParameterAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_formalParameterAST_5D_ & operator = (const DownEnumerator__5B_formalParameterAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_formalParameterAST current (LOCATION_ARGS) const ;
+  public: class GGS_formalParameterAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_formalParameterAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_formalParameterAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_formalParameterAST_5D_ (const class GGS__5B_formalParameterAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_formalParameterAST_5D_ (const UpEnumerator__5B_formalParameterAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_formalParameterAST_5D_ & operator = (const UpEnumerator__5B_formalParameterAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_formalParameterAST current (LOCATION_ARGS) const ;
+  public: class GGS_formalParameterAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_formalParameterAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_formalParameterAST> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_formalParameterAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_formalParameterAST_5D_ (const GGS__5B_formalParameterAST_5D_ & inSource) ;
+  public: GGS__5B_formalParameterAST_5D_ & operator = (const GGS__5B_formalParameterAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_formalParameterAST_5D_ init (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_formalParameterAST_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_formalParameterAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_formalParameterAST_5D_ add_operation (const GGS__5B_formalParameterAST_5D_ & inOperand,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_formalParameterAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_formalParameterAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_formalParameterAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_formalParameterAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_formalParameterAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_formalParameterAST constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_formalParameterAST getter_first (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_formalParameterAST getter_last (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_formalParameterAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_formalParameterAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                               const class GGS_uint & constinOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_formalParameterAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_formalParameterAST_5D_ ;
+  friend class DownEnumerator__5B_formalParameterAST_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalParameterAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @formalParameterAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_formalParameterAST final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mFormalSelector ;
+  public: inline GGS_lstring readProperty_mFormalSelector (void) const {
+    return mProperty_mFormalSelector ;
+  }
+
+  public: GGS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
+  public: inline GGS_formalArgumentPassingModeAST readProperty_mFormalArgumentPassingMode (void) const {
+    return mProperty_mFormalArgumentPassingMode ;
+  }
+
+  public: GGS_lstring mProperty_mFormalArgumentTypeName ;
+  public: inline GGS_lstring readProperty_mFormalArgumentTypeName (void) const {
+    return mProperty_mFormalArgumentTypeName ;
+  }
+
+  public: GGS_lstring mProperty_mFormalArgumentName ;
+  public: inline GGS_lstring readProperty_mFormalArgumentName (void) const {
+    return mProperty_mFormalArgumentName ;
+  }
+
+  public: GGS_bool mProperty_mIsUnused ;
+  public: inline GGS_bool readProperty_mIsUnused (void) const {
+    return mProperty_mIsUnused ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_formalParameterAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMFormalSelector (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalSelector = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentPassingMode (const GGS_formalArgumentPassingModeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentPassingMode = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentTypeName = inValue ;
+  }
+
+  public: inline void setter_setMFormalArgumentName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArgumentName = inValue ;
+  }
+
+  public: inline void setter_setMIsUnused (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mIsUnused = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_formalParameterAST (const GGS_lstring & in_mFormalSelector,
+                                  const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
+                                  const GGS_lstring & in_mFormalArgumentTypeName,
+                                  const GGS_lstring & in_mFormalArgumentName,
+                                  const GGS_bool & in_mIsUnused) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_formalParameterAST (const GGS_formalParameterAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_formalParameterAST & operator = (const GGS_formalParameterAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_formalParameterAST init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                  const class GGS_formalArgumentPassingModeAST & inOperand1,
+                                                                  const class GGS_lstring & inOperand2,
+                                                                  const class GGS_lstring & inOperand3,
+                                                                  const class GGS_bool & inOperand4,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [filewrapperTemplateAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_filewrapperTemplateAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_filewrapperTemplateAST_5D_ (const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_filewrapperTemplateAST_5D_ (const DownEnumerator__5B_filewrapperTemplateAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_filewrapperTemplateAST_5D_ & operator = (const DownEnumerator__5B_filewrapperTemplateAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_filewrapperTemplateAST current (LOCATION_ARGS) const ;
+  public: class GGS_filewrapperTemplateAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_filewrapperTemplateAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_filewrapperTemplateAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_filewrapperTemplateAST_5D_ (const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_filewrapperTemplateAST_5D_ (const UpEnumerator__5B_filewrapperTemplateAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_filewrapperTemplateAST_5D_ & operator = (const UpEnumerator__5B_filewrapperTemplateAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_filewrapperTemplateAST current (LOCATION_ARGS) const ;
+  public: class GGS_filewrapperTemplateAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_filewrapperTemplateAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_filewrapperTemplateAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_filewrapperTemplateAST> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_filewrapperTemplateAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_filewrapperTemplateAST_5D_ (const GGS__5B_filewrapperTemplateAST_5D_ & inSource) ;
+  public: GGS__5B_filewrapperTemplateAST_5D_ & operator = (const GGS__5B_filewrapperTemplateAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_filewrapperTemplateAST_5D_ init (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_filewrapperTemplateAST_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_filewrapperTemplateAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_filewrapperTemplateAST_5D_ add_operation (const GGS__5B_filewrapperTemplateAST_5D_ & inOperand,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_filewrapperTemplateAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_filewrapperTemplateAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_filewrapperTemplateAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_filewrapperTemplateAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_filewrapperTemplateAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_filewrapperTemplateAST constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_filewrapperTemplateAST getter_first (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_filewrapperTemplateAST getter_last (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_filewrapperTemplateAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_filewrapperTemplateAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                   const class GGS_uint & constinOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_filewrapperTemplateAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_filewrapperTemplateAST_5D_ ;
+  friend class DownEnumerator__5B_filewrapperTemplateAST_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_filewrapperTemplateAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [formalTemplateInputParameterAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_formalTemplateInputParameterAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_formalTemplateInputParameterAST_5D_ (const class GGS__5B_formalTemplateInputParameterAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_formalTemplateInputParameterAST_5D_ (const DownEnumerator__5B_formalTemplateInputParameterAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_formalTemplateInputParameterAST_5D_ & operator = (const DownEnumerator__5B_formalTemplateInputParameterAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_formalTemplateInputParameterAST current (LOCATION_ARGS) const ;
+  public: class GGS_formalTemplateInputParameterAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_formalTemplateInputParameterAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_formalTemplateInputParameterAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_formalTemplateInputParameterAST_5D_ (const class GGS__5B_formalTemplateInputParameterAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_formalTemplateInputParameterAST_5D_ (const UpEnumerator__5B_formalTemplateInputParameterAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_formalTemplateInputParameterAST_5D_ & operator = (const UpEnumerator__5B_formalTemplateInputParameterAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_formalTemplateInputParameterAST current (LOCATION_ARGS) const ;
+  public: class GGS_formalTemplateInputParameterAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_formalTemplateInputParameterAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_formalTemplateInputParameterAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_formalTemplateInputParameterAST> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_formalTemplateInputParameterAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_formalTemplateInputParameterAST_5D_ (const GGS__5B_formalTemplateInputParameterAST_5D_ & inSource) ;
+  public: GGS__5B_formalTemplateInputParameterAST_5D_ & operator = (const GGS__5B_formalTemplateInputParameterAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_formalTemplateInputParameterAST_5D_ init (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_formalTemplateInputParameterAST_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_formalTemplateInputParameterAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_formalTemplateInputParameterAST_5D_ add_operation (const GGS__5B_formalTemplateInputParameterAST_5D_ & inOperand,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_formalTemplateInputParameterAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_formalTemplateInputParameterAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_formalTemplateInputParameterAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_formalTemplateInputParameterAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_formalTemplateInputParameterAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_formalTemplateInputParameterAST constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_formalTemplateInputParameterAST getter_first (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_formalTemplateInputParameterAST getter_last (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_formalTemplateInputParameterAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_formalTemplateInputParameterAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                            const class GGS_uint & constinOperand1,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_formalTemplateInputParameterAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_formalTemplateInputParameterAST_5D_ ;
+  friend class DownEnumerator__5B_formalTemplateInputParameterAST_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalTemplateInputParameterAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @filewrapperTemplateAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_filewrapperTemplateAST final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mFilewrapperTemplateName ;
+  public: inline GGS_lstring readProperty_mFilewrapperTemplateName (void) const {
+    return mProperty_mFilewrapperTemplateName ;
+  }
+
+  public: GGS_lstring mProperty_mFilewrapperTemplatePath ;
+  public: inline GGS_lstring readProperty_mFilewrapperTemplatePath (void) const {
+    return mProperty_mFilewrapperTemplatePath ;
+  }
+
+  public: GGS__5B_formalTemplateInputParameterAST_5D_ mProperty_mFilewrapperTemplateFormalInputParameters ;
+  public: inline GGS__5B_formalTemplateInputParameterAST_5D_ readProperty_mFilewrapperTemplateFormalInputParameters (void) const {
+    return mProperty_mFilewrapperTemplateFormalInputParameters ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_filewrapperTemplateAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMFilewrapperTemplateName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFilewrapperTemplateName = inValue ;
+  }
+
+  public: inline void setter_setMFilewrapperTemplatePath (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFilewrapperTemplatePath = inValue ;
+  }
+
+  public: inline void setter_setMFilewrapperTemplateFormalInputParameters (const GGS__5B_formalTemplateInputParameterAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFilewrapperTemplateFormalInputParameters = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_filewrapperTemplateAST (const GGS_lstring & in_mFilewrapperTemplateName,
+                                      const GGS_lstring & in_mFilewrapperTemplatePath,
+                                      const GGS__5B_formalTemplateInputParameterAST_5D_ & in_mFilewrapperTemplateFormalInputParameters) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_filewrapperTemplateAST (const GGS_filewrapperTemplateAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_filewrapperTemplateAST & operator = (const GGS_filewrapperTemplateAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_filewrapperTemplateAST init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                              const class GGS_lstring & inOperand1,
+                                                              const class GGS__5B_formalTemplateInputParameterAST_5D_ & inOperand2,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateAST ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @formalTemplateInputParameterAST struct
 //--------------------------------------------------------------------------------------------------
 
@@ -8031,950 +9042,4 @@ class GGS_actualInputParameterAST final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualInputParameterAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overridingExtensionGetterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overridingExtensionGetterAST : public GGS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GGS_overridingExtensionGetterAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_overridingExtensionGetterAST (const class cPtr_overridingExtensionGetterAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mTypeName (void) const ;
-
-  public: class GGS_lstring readProperty_mOverridingExtensionGetterName (void) const ;
-
-  public: class GGS__5B_formalInputParameterAST_5D_ readProperty_mOverridingExtensionGetterFormalInputParameterList (void) const ;
-
-  public: class GGS_lstring readProperty_mOverridingExtensionGetterReturnedTypeName (void) const ;
-
-  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mOverridingExtensionGetterInstructionList (void) const ;
-
-  public: class GGS_location readProperty_mEndOfReaderLocation (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_overridingExtensionGetterAST init_21_isPredefined_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                const class GGS_lstring & inOperand1,
-                                                                                                const class GGS_lstring & inOperand2,
-                                                                                                const class GGS__5B_formalInputParameterAST_5D_ & inOperand3,
-                                                                                                const class GGS_lstring & inOperand4,
-                                                                                                const class GGS__5B_semanticInstructionAST_5D_ & inOperand5,
-                                                                                                const class GGS_location & inOperand6,
-                                                                                                Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overridingExtensionGetterAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @overridingExtensionGetterAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void overridingExtensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                          const class GGS_lstring & inOperand1,
-                                                                                          const class GGS_lstring & inOperand2,
-                                                                                          const class GGS__5B_formalInputParameterAST_5D_ & inOperand3,
-                                                                                          const class GGS_lstring & inOperand4,
-                                                                                          const class GGS__5B_semanticInstructionAST_5D_ & inOperand5,
-                                                                                          const class GGS_location & inOperand6,
-                                                                                          Compiler * inCompiler) ;
-
-
-//--- Extension func keyRepresentation
-  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc buildExtensionListMaps
-  public: virtual void method_buildExtensionListMaps (class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionMethodListMapAST,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionGetterListMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
-           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
-           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
-           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
-           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
-           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
-           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
-           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
-           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
-           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticContext & arg__ioSemanticContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GGS__5B_lstring_5D_ & arg_ioUsefulnessRootEntities,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_string arg_inProductDirectory,
-           const class GGS_semanticContext arg__inSemanticContext,
-           class GGS_unifiedTypeMap & arg__ioTypeMap,
-           const class GGS_predefinedTypes arg__inPredefinedTypes,
-           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mTypeName ;
-  public: GGS_lstring mProperty_mOverridingExtensionGetterName ;
-  public: GGS__5B_formalInputParameterAST_5D_ mProperty_mOverridingExtensionGetterFormalInputParameterList ;
-  public: GGS_lstring mProperty_mOverridingExtensionGetterReturnedTypeName ;
-  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mOverridingExtensionGetterInstructionList ;
-  public: GGS_location mProperty_mEndOfReaderLocation ;
-
-
-//--- Default constructor
-  public: cPtr_overridingExtensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_overridingExtensionGetterAST (const GGS_bool & in_isPredefined,
-                                             const GGS_lstring & in_mTypeName,
-                                             const GGS_lstring & in_mOverridingExtensionGetterName,
-                                             const GGS__5B_formalInputParameterAST_5D_ & in_mOverridingExtensionGetterFormalInputParameterList,
-                                             const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
-                                             const GGS__5B_semanticInstructionAST_5D_ & in_mOverridingExtensionGetterInstructionList,
-                                             const GGS_location & in_mEndOfReaderLocation,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overridingExtensionGetterAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overridingExtensionGetterAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_overridingExtensionGetterAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_overridingExtensionGetterAST_2E_weak (const class GGS_overridingExtensionGetterAST & inSource) ;
-
-  public: GGS_overridingExtensionGetterAST_2E_weak & operator = (const class GGS_overridingExtensionGetterAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_overridingExtensionGetterAST_2E_weak init_nil (void) {
-    GGS_overridingExtensionGetterAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_overridingExtensionGetterAST bang_overridingExtensionGetterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_overridingExtensionGetterAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_overridingExtensionGetterAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overridingExtensionGetterAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingExtensionGetterAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overrideExtensionGetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overrideExtensionGetterForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_overrideExtensionGetterForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_overrideExtensionGetterForGeneration (const class cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_mBaseTypeName (void) const ;
-
-  public: class GGS_string readProperty_mOverridingExtensionGetterName (void) const ;
-
-  public: class GGS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
-
-  public: class GGS_string readProperty_mResultVarCppName (void) const ;
-
-  public: class GGS__5B_formalInputParameterForGeneration_5D_ readProperty_mOverridingExtensionGetterFormalParameterList (void) const ;
-
-  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
-
-  public: class GGS__5B_semanticInstructionForGeneration_5D_ readProperty_mSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_overrideExtensionGetterForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                                                              const class GGS_string & inOperand2,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                              const class GGS_string & inOperand4,
-                                                                                                                                                              const class GGS_string & inOperand5,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                              const class GGS_string & inOperand7,
-                                                                                                                                                              const class GGS__5B_formalInputParameterForGeneration_5D_ & inOperand8,
-                                                                                                                                                              const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                              const class GGS__5B_semanticInstructionForGeneration_5D_ & inOperand10,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overrideExtensionGetterForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @overrideExtensionGetterForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void overrideExtensionGetterForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                                                        const class GGS_string & inOperand2,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                        const class GGS_string & inOperand4,
-                                                                                                                                                        const class GGS_string & inOperand5,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                        const class GGS_string & inOperand7,
-                                                                                                                                                        const class GGS__5B_formalInputParameterForGeneration_5D_ & inOperand8,
-                                                                                                                                                        const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                        const class GGS__5B_semanticInstructionForGeneration_5D_ & inOperand10,
-                                                                                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_mBaseTypeName ;
-  public: GGS_string mProperty_mOverridingExtensionGetterName ;
-  public: GGS_unifiedTypeMapEntry mProperty_mResultType ;
-  public: GGS_string mProperty_mResultVarCppName ;
-  public: GGS__5B_formalInputParameterForGeneration_5D_ mProperty_mOverridingExtensionGetterFormalParameterList ;
-  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
-  public: GGS__5B_semanticInstructionForGeneration_5D_ mProperty_mSemanticInstructionListForGeneration ;
-
-
-//--- Default constructor
-  public: cPtr_overrideExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_overrideExtensionGetterForGeneration (const GGS_string & in_infoMessage,
-                                                     const GGS_bool & in_generateHeader,
-                                                     const GGS_string & in_implementationCppFileName,
-                                                     const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                     const GGS_string & in_mBaseTypeName,
-                                                     const GGS_string & in_mOverridingExtensionGetterName,
-                                                     const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_string & in_mResultVarCppName,
-                                                     const GGS__5B_formalInputParameterForGeneration_5D_ & in_mOverridingExtensionGetterFormalParameterList,
-                                                     const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
-                                                     const GGS__5B_semanticInstructionForGeneration_5D_ & in_mSemanticInstructionListForGeneration,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @abstractExtensionMethodAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_abstractExtensionMethodAST : public GGS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GGS_abstractExtensionMethodAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_abstractExtensionMethodAST (const class cPtr_abstractExtensionMethodAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mTypeName (void) const ;
-
-  public: class GGS_lstring readProperty_mAbstractExtensionMethodName (void) const ;
-
-  public: class GGS__5B_formalParameterAST_5D_ readProperty_mAbstractExtensionMethodFormalParameterList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_abstractExtensionMethodAST init_21_isPredefined_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                  const class GGS_lstring & inOperand1,
-                                                                                  const class GGS_lstring & inOperand2,
-                                                                                  const class GGS__5B_formalParameterAST_5D_ & inOperand3,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_abstractExtensionMethodAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @abstractExtensionMethodAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void abstractExtensionMethodAST_init_21_isPredefined_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                            const class GGS_lstring & inOperand1,
-                                                                            const class GGS_lstring & inOperand2,
-                                                                            const class GGS__5B_formalParameterAST_5D_ & inOperand3,
-                                                                            Compiler * inCompiler) ;
-
-
-//--- Extension func keyRepresentation
-  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc buildExtensionListMaps
-  public: virtual void method_buildExtensionListMaps (class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionMethodListMapAST,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionGetterListMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
-           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
-           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
-           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
-           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
-           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
-           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
-           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
-           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
-           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticContext & arg__ioSemanticContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GGS__5B_lstring_5D_ & arg_ioUsefulnessRootEntities,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_string arg_inProductDirectory,
-           const class GGS_semanticContext arg__inSemanticContext,
-           class GGS_unifiedTypeMap & arg__ioTypeMap,
-           const class GGS_predefinedTypes arg__inPredefinedTypes,
-           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mTypeName ;
-  public: GGS_lstring mProperty_mAbstractExtensionMethodName ;
-  public: GGS__5B_formalParameterAST_5D_ mProperty_mAbstractExtensionMethodFormalParameterList ;
-
-
-//--- Default constructor
-  public: cPtr_abstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_abstractExtensionMethodAST (const GGS_bool & in_isPredefined,
-                                           const GGS_lstring & in_mTypeName,
-                                           const GGS_lstring & in_mAbstractExtensionMethodName,
-                                           const GGS__5B_formalParameterAST_5D_ & in_mAbstractExtensionMethodFormalParameterList,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @abstractExtensionMethodAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_abstractExtensionMethodAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_abstractExtensionMethodAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_abstractExtensionMethodAST_2E_weak (const class GGS_abstractExtensionMethodAST & inSource) ;
-
-  public: GGS_abstractExtensionMethodAST_2E_weak & operator = (const class GGS_abstractExtensionMethodAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_abstractExtensionMethodAST_2E_weak init_nil (void) {
-    GGS_abstractExtensionMethodAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_abstractExtensionMethodAST bang_abstractExtensionMethodAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_abstractExtensionMethodAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_abstractExtensionMethodAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_abstractExtensionMethodAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @abstractExtensionMethodForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_abstractExtensionMethodForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_abstractExtensionMethodForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_abstractExtensionMethodForGeneration (const class cPtr_abstractExtensionMethodForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_mAbstractExtensionMethodName (void) const ;
-
-  public: class GGS__5B_formalParameterForGeneration_5D_ readProperty_mAbstractExtensionMethodFormalParameterList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_abstractExtensionMethodForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                          const class GGS_bool & inOperand1,
-                                                                                                                                          const class GGS_string & inOperand2,
-                                                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                          const class GGS_string & inOperand4,
-                                                                                                                                          const class GGS__5B_formalParameterForGeneration_5D_ & inOperand5,
-                                                                                                                                          Compiler * inCompiler
-                                                                                                                                          COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_abstractExtensionMethodForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractExtensionMethodForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @abstractExtensionMethodForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void abstractExtensionMethodForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                    const class GGS_bool & inOperand1,
-                                                                                                                                    const class GGS_string & inOperand2,
-                                                                                                                                    const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                    const class GGS_string & inOperand4,
-                                                                                                                                    const class GGS__5B_formalParameterForGeneration_5D_ & inOperand5,
-                                                                                                                                    Compiler * inCompiler) ;
-
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_mAbstractExtensionMethodName ;
-  public: GGS__5B_formalParameterForGeneration_5D_ mProperty_mAbstractExtensionMethodFormalParameterList ;
-
-
-//--- Default constructor
-  public: cPtr_abstractExtensionMethodForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_abstractExtensionMethodForGeneration (const GGS_string & in_infoMessage,
-                                                     const GGS_bool & in_generateHeader,
-                                                     const GGS_string & in_implementationCppFileName,
-                                                     const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                     const GGS_string & in_mAbstractExtensionMethodName,
-                                                     const GGS__5B_formalParameterForGeneration_5D_ & in_mAbstractExtensionMethodFormalParameterList,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overridingAbstractExtensionMethodAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overridingAbstractExtensionMethodAST : public GGS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GGS_overridingAbstractExtensionMethodAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_overridingAbstractExtensionMethodAST (const class cPtr_overridingAbstractExtensionMethodAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mTypeName (void) const ;
-
-  public: class GGS_lstring readProperty_mOverridingExtensionMethodName (void) const ;
-
-  public: class GGS__5B_formalParameterAST_5D_ readProperty_mOverridingExtensionMethodFormalParameterList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_overridingAbstractExtensionMethodAST init_21_isPredefined_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                            const class GGS_lstring & inOperand1,
-                                                                                            const class GGS_lstring & inOperand2,
-                                                                                            const class GGS__5B_formalParameterAST_5D_ & inOperand3,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overridingAbstractExtensionMethodAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @overridingAbstractExtensionMethodAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void overridingAbstractExtensionMethodAST_init_21_isPredefined_21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                      const class GGS_lstring & inOperand1,
-                                                                                      const class GGS_lstring & inOperand2,
-                                                                                      const class GGS__5B_formalParameterAST_5D_ & inOperand3,
-                                                                                      Compiler * inCompiler) ;
-
-
-//--- Extension func keyRepresentation
-  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc buildExtensionListMaps
-  public: virtual void method_buildExtensionListMaps (class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionSetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionMethodListMapAST,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionMethodListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioAbstractExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingExtensionGetterListMap,
-           class GGS_genericExtensionMethodListMap & arg__ioOverridingAbstractExtensionGetterListMap,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
-           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
-           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
-           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
-           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
-           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
-           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
-           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
-           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
-           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticContext & arg__ioSemanticContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GGS__5B_lstring_5D_ & arg_ioUsefulnessRootEntities,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_string arg_inProductDirectory,
-           const class GGS_semanticContext arg__inSemanticContext,
-           class GGS_unifiedTypeMap & arg__ioTypeMap,
-           const class GGS_predefinedTypes arg__inPredefinedTypes,
-           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mTypeName ;
-  public: GGS_lstring mProperty_mOverridingExtensionMethodName ;
-  public: GGS__5B_formalParameterAST_5D_ mProperty_mOverridingExtensionMethodFormalParameterList ;
-
-
-//--- Default constructor
-  public: cPtr_overridingAbstractExtensionMethodAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_overridingAbstractExtensionMethodAST (const GGS_bool & in_isPredefined,
-                                                     const GGS_lstring & in_mTypeName,
-                                                     const GGS_lstring & in_mOverridingExtensionMethodName,
-                                                     const GGS__5B_formalParameterAST_5D_ & in_mOverridingExtensionMethodFormalParameterList,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overridingAbstractExtensionMethodAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overridingAbstractExtensionMethodAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_overridingAbstractExtensionMethodAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_overridingAbstractExtensionMethodAST_2E_weak (const class GGS_overridingAbstractExtensionMethodAST & inSource) ;
-
-  public: GGS_overridingAbstractExtensionMethodAST_2E_weak & operator = (const class GGS_overridingAbstractExtensionMethodAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_overridingAbstractExtensionMethodAST_2E_weak init_nil (void) {
-    GGS_overridingAbstractExtensionMethodAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_overridingAbstractExtensionMethodAST bang_overridingAbstractExtensionMethodAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_overridingAbstractExtensionMethodAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_overridingAbstractExtensionMethodAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overridingAbstractExtensionMethodAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST_2E_weak ;
 

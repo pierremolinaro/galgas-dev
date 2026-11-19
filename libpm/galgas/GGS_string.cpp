@@ -8,7 +8,6 @@
 #include "galgas-input-output.h"
 #include "FileManager.h"
 #include "BinaryFileWrite.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -468,7 +467,7 @@ void GGS_string::method_writeToFile (GGS_string inFilePath,
   if (isValid () && inFilePath.isValid ()) {
     if (Compiler::performGeneration ()) {
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
-      const bool verboseOptionOn = verboseOutput () ;
+      const bool verboseOptionOn = true ;
       const bool ok = FileManager::writeStringToFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
@@ -503,7 +502,7 @@ void GGS_string::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     outFileWritten = GGS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
-        const bool verboseOptionOn = verboseOutput () ;
+        const bool verboseOptionOn = true ;
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.deletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
@@ -540,7 +539,7 @@ void GGS_string::method_writeToExecutableFile (GGS_string inFilePath,
   if (isValid () && inFilePath.isValid ()) {
     const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (Compiler::performGeneration ()) {
-      const bool verboseOptionOn = verboseOutput () ;
+      const bool verboseOptionOn = true ;
       const bool ok = FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;
@@ -575,7 +574,7 @@ void GGS_string::method_writeToExecutableFileWhenDifferentContents (GGS_string i
     outFileWritten = GGS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
-        const bool verboseOptionOn = verboseOutput () ;
+        const bool verboseOptionOn = true ;
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.deletingLastPathComponent ()) ;
         if (! ok) {
           String message = "cannot create '" ;
@@ -868,7 +867,7 @@ static bool writeFile (const String & inMessage,
                        Compiler * inCompiler) {
   bool ok = true ;
   if (inCompiler->performGeneration ()) {
-    const bool verboseOptionOn = verboseOutput () ;
+    const bool verboseOptionOn = true ;
     const String directory = inFullPathName.deletingLastPathComponent () ;
     FileManager::makeDirectoryIfDoesNotExist (directory) ;
     BinaryFileWrite binaryFile (inFullPathName) ;

@@ -72,14 +72,7 @@
    <Add directory="../sources/tool-sources" />
   </Compiler>
   <Linker>
-  </Linker>
-  <Unit filename="../libpm/galgas/C_galgas_quiet_option.cpp" />
-  <Unit filename="../build/output/all-declarations-29.cpp" />
-  <Unit filename="../build/output/all-declarations-28.cpp" />
-  <Unit filename="../build/output/all-declarations-27.cpp" />
-  <Unit filename="../build/output/all-declarations-26.cpp" />
-  <Unit filename="../build/output/all-declarations-25.cpp" />
-  <Unit filename="../build/output/all-declarations-24.cpp" />
+</Linker>
   <Unit filename="../build/output/all-declarations-23.cpp" />
   <Unit filename="../build/output/all-declarations-22.cpp" />
   <Unit filename="../build/output/all-declarations-21.cpp" />
@@ -137,7 +130,6 @@
    <Unit filename="../libpm/command_line_interface/BoolCommandLineOption.cpp" />
    <Unit filename="../libpm/command_line_interface/UIntCommandLineOption.cpp" />
    <Unit filename="../libpm/command_line_interface/StringCommandLineOption.cpp" />
-   <Unit filename="../libpm/command_line_interface/StringListCommandLineOption.cpp" />
    <Unit filename="../libpm/command_line_interface/builtin-command-line-options.cpp" />
    <Unit filename="../libpm/command_line_interface/analyzeCommandLineOptions.cpp" />
    <Unit filename="../libpm/command_line_interface/F_mainForLIBPM.cpp" />
@@ -209,22 +201,15 @@
    <Unit filename="../libpm/galgas/LocationInSource.cpp" />
    <Unit filename="../libpm/galgas/SourceTextInString.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_TypeDescriptor.cpp" />
-   <Unit filename="../libpm/galgas/C_galgas_function_descriptor.cpp" />
    <Unit filename="../libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../libpm/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_ObjectArray.cpp" />
-   <Unit filename="../libpm/galgas/CollectionElementPtr.cpp" />
-   <Unit filename="../libpm/galgas/CollectionElement.cpp" />
-   <Unit filename="../libpm/galgas/CollectionElementArray.cpp" />
    <Unit filename="../libpm/galgas/Enumerator_range.cpp" />
    <Unit filename="../libpm/galgas/IndexingDictionary.cpp" />
    <Unit filename="../libpm/galgas/IssueDescriptor.cpp" />
    <Unit filename="../libpm/galgas/LexiqueIntrospection.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_root.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_reference_class.cpp" />
-   <Unit filename="../libpm/galgas/AC_GALGAS_value_class.cpp" />
-   <Unit filename="../libpm/galgas/AC_GALGAS_graph.cpp" />
    <Unit filename="../libpm/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
    <Unit filename="../libpm/galgas/AbstractPtrClass.cpp" />
    <Unit filename="../libpm/galgas/AbstractStrongPtrClass.cpp" />
@@ -238,20 +223,19 @@
    <Unit filename="../libpm/galgas/GGS_bool.cpp" />
    <Unit filename="../libpm/galgas/GGS_char.cpp" />
    <Unit filename="../libpm/galgas/GGS_data.cpp" />
-   <Unit filename="../libpm/galgas/GGS_double.cpp" />
+   <Unit filename="../libpm/galgas/GGS_f64.cpp" />
    <Unit filename="../libpm/galgas/GGS_filewrapper.cpp" />
-   <Unit filename="../libpm/galgas/GGS_function.cpp" />
    <Unit filename="../libpm/galgas/GGS_location.cpp" />
    <Unit filename="../libpm/galgas/GGS_sint.cpp" />
-   <Unit filename="../libpm/galgas/GGS_sint64.cpp" />
+   <Unit filename="../libpm/galgas/GGS_s64.cpp" />
    <Unit filename="../libpm/galgas/GGS_string.cpp" />
    <Unit filename="../libpm/galgas/GGS_string-getters.cpp" />
    <Unit filename="../libpm/galgas/GGS_stringset.cpp" />
-   <Unit filename="../libpm/galgas/GGS_type.cpp" />
-   <Unit filename="../libpm/galgas/GGS_object.cpp" />
-   <Unit filename="../libpm/galgas/GGS_uint.cpp" />
    <Unit filename="../libpm/galgas/GGS_timer.cpp" />
-   <Unit filename="../libpm/galgas/GGS_uint64.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u8.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u16.cpp" />
+   <Unit filename="../libpm/galgas/GGS_uint.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u64.cpp" />
   <Extensions>
    <code_completion />
    <envvars />

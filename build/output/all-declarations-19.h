@@ -44,8 +44,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 //--------------------------------------------------------------------------------------------------
 
 GGS_string filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (Compiler * inCompiler,
-                                                                                        const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT,
-                                                                                        const class GGS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                        const class GGS_guiAnalysisContext & in_GUI_5F_CONTEXT
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

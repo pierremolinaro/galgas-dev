@@ -12,7 +12,6 @@
 #include "galgas-input-output.h"
 #include "FileManager.h"
 #include "BinaryFileWrite.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

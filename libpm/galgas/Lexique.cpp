@@ -11,7 +11,6 @@
 #include "C_galgas_CLI_Options.h"
 #include "IndexingDictionary.h"
 #include "FileManager.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -120,7 +119,7 @@ mArrayForSecondPassParsing (),
 mIndexForSecondPassParsing (0),
 mLatexOutputString (),
 mLatexNextCharacterToEnterIndex (0) {
-  const SourceTextInString source (inSourceString, inStringForError, verboseOutput ()) ;
+  const SourceTextInString source (inSourceString, inStringForError, true) ;
   resetAndLoadSourceFromText (source) ;
   mTokenStartLocation.resetWithSourceText (source) ;
   mTokenEndLocation.resetWithSourceText (source) ;

@@ -401,10 +401,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
       lexicalStyleListAST)
   end
 //--- Generation
-  !?ioOptionComponentMapForGeneration.insertKey
-    (inGUIComponentAST.mGUIComponentName,
-    context
-  )
+  !?ioOptionComponentMapForGeneration.insertKey (inGUIComponentAST.mGUIComponentName, context)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -413,15 +410,13 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
 
 proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
                                       let @string inOutputDirectory,
-                                      let @bool inQuietOutputByDefault,
-                                      ?!swift: [@string] ioSwiftAllProductFileList ) {
+                                      ?!swift: [@string] ioSwiftAllProductFileList) {
   for anOption in inOptionComponentMapForGeneration do
 //  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftuiFileName = "gui-swiftui-" + anOption.lkey + ".swift"
     ioSwiftAllProductFileList ++= swiftuiFileName
     let @string swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
-      anOption.mGuiComponentContext,
-      inQuietOutputByDefault
+      anOption.mGuiComponentContext
     ]
     @string.generateFileWithPattern (
       !startPath:inOutputDirectory,
@@ -445,8 +440,8 @@ filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
 }{
   template swiftui_gui_implementation : "gui-implementation-swiftui.swift.galgasTemplate" (
-    ?@guiAnalysisContext GUI_CONTEXT,
-    ?@bool QUIET_OUTPUT_BY_DEFAULT
+    ?@guiAnalysisContext GUI_CONTEXT
+
   )
 }
 

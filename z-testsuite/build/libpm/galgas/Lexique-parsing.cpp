@@ -11,7 +11,6 @@
 #include "C_galgas_CLI_Options.h"
 #include "IndexingDictionary.h"
 #include "FileManager.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 

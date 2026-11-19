@@ -76,8 +76,7 @@
   <Linker>
    <Add option="-static" />
    <Add library="Comdlg32" />
-  </Linker>
-  <Unit filename="../libpm/galgas/C_galgas_quiet_option.cpp" />
+</Linker>
   <Unit filename="../build/output/all-declarations-23.cpp" />
   <Unit filename="../build/output/all-declarations-22.cpp" />
   <Unit filename="../build/output/all-declarations-21.cpp" />

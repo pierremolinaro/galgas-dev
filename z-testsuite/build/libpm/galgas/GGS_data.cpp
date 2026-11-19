@@ -7,7 +7,6 @@
 #include "all-predefined-types.h"
 #include "galgas-input-output.h"
 #include "BinaryFileWrite.h"
-#include "F_verbose_output.h"
 
 //--------------------------------------------------------------------------------------------------
 //   GGS_data
@@ -227,9 +226,9 @@ void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     outFileWritten = GGS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
-        const bool verboseOptionOn = verboseOutput () ;
+        const bool verboseOptionOn = true ;
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().deletingLastPathComponent ()) ;
-        if (! ok) {
+        if (!ok) {
           String message ;
           message.appendCString ("cannot create '") ;
           message.appendString (inFilePath.stringValue ()) ;
@@ -271,7 +270,7 @@ void GGS_data::method_writeToFile (GGS_string inFilePath,
       ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
-      const bool verboseOptionOn = verboseOutput () ;
+      const bool verboseOptionOn = true ;
       FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {
@@ -312,7 +311,7 @@ void GGS_data::method_writeToExecutableFile (GGS_string inFilePath,
       ggs_printWarning (inCompiler, SourceTextInString (), IssueWithFixIt (), String ("Need to write '") + filePath + "'." COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (filePath) ;
-      const bool verboseOptionOn = verboseOutput () ;
+      const bool verboseOptionOn = true ;
       FileManager::makeDirectoryIfDoesNotExist (filePath.deletingLastPathComponent()) ;
       BinaryFileWrite binaryFile (filePath) ;
       if (! binaryFile.isOpened ()) {

@@ -202,8 +202,6 @@ extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFil
 extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_9_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_10_targetGalgas_33_GenerationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -561,7 +559,6 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_
                                                                                             const class GGS_string & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY,
                                                                                             const class GGS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
                                                                                             const class GGS_string & in_PLATFORM,
-                                                                                            const class GGS_bool & in_VERBOSE_5F_OPTION,
                                                                                             const class GGS_string & in_BUILD_5F_DIR_5F_NAME
                                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -626,54 +623,51 @@ GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath???'
+//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath??'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                         const class GGS_string constinArgument1,
-                                                                                                         const class GGS_string constinArgument2,
-                                                                                                         const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                         const class GGS_string constinArgument4,
-                                                                                                         const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                         const class GGS_string constinArgument6,
-                                                                                                         const class GGS_bool constinArgument7,
-                                                                                                         Compiler * inCompiler
-                                                                                                         COMMA_LOCATION_ARGS) ;
+void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                     const class GGS_string constinArgument1,
+                                                                                                     const class GGS_string constinArgument2,
+                                                                                                     const class GGS__5B_string_5D_ constinArgument3,
+                                                                                                     const class GGS_string constinArgument4,
+                                                                                                     const class GGS__5B_string_5D_ constinArgument5,
+                                                                                                     const class GGS_string constinArgument6,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName??????'
+//Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName?????'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                           const class GGS_string constinArgument1,
-                                                                                                           const class GGS_string constinArgument2,
-                                                                                                           const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                           const class GGS_string constinArgument4,
-                                                                                                           const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                           const class GGS_string constinArgument6,
-                                                                                                           const class GGS_bool constinArgument7,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                       const class GGS_string constinArgument1,
+                                                                                                       const class GGS_string constinArgument2,
+                                                                                                       const class GGS__5B_string_5D_ constinArgument3,
+                                                                                                       const class GGS_string constinArgument4,
+                                                                                                       const class GGS__5B_string_5D_ constinArgument5,
+                                                                                                       const class GGS_string constinArgument6,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateGalgasCodeBlocksLinuxX86_64Target??buildDirName??????'
+//Routine 'generateGalgasCodeBlocksLinuxX86_64Target??buildDirName?????'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                                   const class GGS_string constinArgument1,
-                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                   const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                                   const class GGS_string constinArgument4,
-                                                                                                                   const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                                   const class GGS_string constinArgument6,
-                                                                                                                   const class GGS_bool constinArgument7,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
+void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                                                                               const class GGS_string constinArgument1,
+                                                                                                               const class GGS_string constinArgument2,
+                                                                                                               const class GGS__5B_string_5D_ constinArgument3,
+                                                                                                               const class GGS_string constinArgument4,
+                                                                                                               const class GGS__5B_string_5D_ constinArgument5,
+                                                                                                               const class GGS_string constinArgument6,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -749,29 +743,24 @@ void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (con
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName??????????appProductFileList?swiftAppProductFileList???&'
+//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName?????appProductFileList?swiftAppProductFileList???&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__26_ (const class GGS_string constinArgument0,
-                                                                                                                                                                           const class GGS_string constinArgument1,
-                                                                                                                                                                           const class GGS_string constinArgument2,
-                                                                                                                                                                           const class GGS_string constinArgument3,
-                                                                                                                                                                           const class GGS_location constinArgument4,
-                                                                                                                                                                           const class GGS_string constinArgument5,
-                                                                                                                                                                           const class GGS_projectQualifiedFeatureMap constinArgument6,
-                                                                                                                                                                           const class GGS__5B_lstring_5D_ constinArgument7,
-                                                                                                                                                                           const class GGS_bool constinArgument8,
-                                                                                                                                                                           const class GGS__5B_string_5D_ constinArgument9,
-                                                                                                                                                                           const class GGS__5B_string_5D_ constinArgument10,
-                                                                                                                                                                           const class GGS__5B_string_5D_ constinArgument11,
-                                                                                                                                                                           const class GGS__5B_string_5D_ constinArgument12,
-                                                                                                                                                                           const class GGS__5B_string_5D_ constinArgument13,
-                                                                                                                                                                           const class GGS_string constinArgument14,
-                                                                                                                                                                           const class GGS_stringset constinArgument15,
-                                                                                                                                                                           class GGS_stringset & ioArgument16,
-                                                                                                                                                                           Compiler * inCompiler
-                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__26_ (const class GGS_string constinArgument0,
+                                                                                                                                                       const class GGS_string constinArgument1,
+                                                                                                                                                       const class GGS_string constinArgument2,
+                                                                                                                                                       const class GGS_project constinArgument3,
+                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument4,
+                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument5,
+                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument6,
+                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument7,
+                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument8,
+                                                                                                                                                       const class GGS_string constinArgument9,
+                                                                                                                                                       const class GGS_stringset constinArgument10,
+                                                                                                                                                       class GGS_stringset & ioArgument11,
+                                                                                                                                                       Compiler * inCompiler
+                                                                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

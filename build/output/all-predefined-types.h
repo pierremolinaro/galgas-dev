@@ -3280,8 +3280,6 @@ class GGS_application final {
                                                             const class GGS_string & inOperand1
                                                             COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_bool class_func_verboseOutput (LOCATION_ARGS) ;
-
   public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
 
 //--------------------------------- Class Methods

@@ -1,8 +1,6 @@
-project (1:0:0) -> "allDanglingElseSolution" {
-//--- Targets
-  #makefile-unix
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
-
+#version : 1.0.0
+#productName : "allDanglingElseSolution"
+#makefile-unix
+#macSwiftApp
+#macAppBundleBaseName : "fr.what"
 

@@ -772,14 +772,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "C_galgas_quiet_option.h" },
-            {
-              "path": "C_galgas_quiet_option.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "ComparisonKind.h" },
             { "path": "ComparisonResult.h" },
             { "path": "Compiler.h" },
@@ -799,7 +791,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "F_verbose_output.h" },
             { "path": "GALGAS_GenericDictionary.h" },
             { "path": "GALGAS_GenericMapRoot.h" },
             { "path": "GALGAS_TypeDescriptor.h" },
@@ -872,13 +863,13 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_sint.cpp",
+              "path": "GGS_s64.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_s64.cpp",
+              "path": "GGS_sint.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",
@@ -908,12 +899,6 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_uint.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            }, {
               "path": "GGS_u8.cpp",
               "target-membership": [
                 "galgas/compile-sources",
@@ -927,6 +912,12 @@
               ],
             }, {
               "path": "GGS_u64.cpp",
+              "target-membership": [
+                "galgas/compile-sources",
+                "galgas-debug/compile-sources",
+              ],
+            }, {
+              "path": "GGS_uint.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",

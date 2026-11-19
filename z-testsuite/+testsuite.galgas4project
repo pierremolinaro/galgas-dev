@@ -1,6 +1,5 @@
-project (1:0:0) -> "testsuite" {
-  #makefile-unix
-  #makefile-win32-on-macosx
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
+#version : 1.0.0
+#productName : "testsuite"
+#makefile-unix
+#macSwiftApp
+#macAppBundleBaseName : "fr.what"

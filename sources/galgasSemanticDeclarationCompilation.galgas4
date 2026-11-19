@@ -23,14 +23,11 @@
 proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @string inProductDirectory,
-                            let @location inEndOfProjectSourceFile,
                             let @galgasDeclarationAST inSemanticDeclarations,
                             !@semanticContext outSemanticContext,
                             !@unifiedTypeMap outTypeMap,
                             ![@semanticDeclarationForGeneration] outSemanticDeclarationSortedListForGeneration ) {
-  if @application.verboseOutput then
-    println ("*** Building semantic context")
-  end
+  println ("*** Building semantic context")
 //----- Add predefined types to semantics declarations
   var semanticDeclarations = inSemanticDeclarations
 //--- Add predefined option component
@@ -78,15 +75,12 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //----- Build semantic context
   buildGalgasSemanticContext (
     semanticDeclarations,
-    inEndOfProjectSourceFile,
     ?outSemanticContext,
     ?outTypeMap,
     ?let [@semanticDeclarationAST] sortedSemanticDeclarationListAST
   )
 //---
-  if @application.verboseOutput then
-    println ("*** Semantic analysis")
-  end
+  println ("*** Semantic analysis")
 //----- Check there is no undefined types
   for entry in outTypeMap.unsolvedEntryList do
     error entry : "the '@" + entry + "' type is undefined"
@@ -116,10 +110,9 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //--------------------------------------------------------------------------------------------------
 
 private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclarations,
-                                        let @location inEndOfProjectSourceFile,
-                                        !@semanticContext outSemanticContext,
-                                        !@unifiedTypeMap outTypeMap,
-                                        ![@semanticDeclarationAST] outSortedSemanticDeclarationListAST) {
+                                         !@semanticContext outSemanticContext,
+                                         !@unifiedTypeMap outTypeMap,
+                                         ![@semanticDeclarationAST] outSortedSemanticDeclarationListAST) {
 //----- Create associated types for lists, maps, ...
   var @galgasDeclarationAST semanticDeclarations = inDeclarations
   for declaration in inDeclarations.mDeclarationList do
@@ -157,13 +150,11 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
   if semanticTypePrecedenceGraph.undefinedNodeCount > 0 then
     for nodeName in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
       error nodeName : "the '" + nodeName + "' type is not defined"
-    end
-    error inEndOfProjectSourceFile
-      : "semantic analysis not performed, due to undefined type error(s)"
       spoil outSemanticContext, outSortedSemanticDeclarationListAST, outTypeMap
+    end
   else
-    semanticTypePrecedenceGraph.topologicalSort
-      (?outSortedSemanticDeclarationListAST,
+    semanticTypePrecedenceGraph.topologicalSort (
+      ?outSortedSemanticDeclarationListAST,
       ?*,
       ?let [@semanticDeclarationAST] unsortedSemanticDeclarationListAST,
       ?*
@@ -173,7 +164,7 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
       for declaration in unsortedSemanticDeclarationListAST do
         s += "\n-  " + declaration.keyRepresentation
       end
-      error inEndOfProjectSourceFile : s spoil outSemanticContext, outTypeMap
+      error .nowhere : s spoil outSemanticContext, outTypeMap
     else
     //--- Add extension override
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList

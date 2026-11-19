@@ -110,9 +110,9 @@ grammar templateGrammar
 
 case . "galgas4project"
 #errorMessage "a GALGAS4 project source file"
-grammar galgas4ProjectGrammar
+grammar galgasProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
-  parseAndAnalyzeProject (inProjectSourceFile, "" )
+  parseAndAnalyzeProject (inProjectSourceFile, "")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -123,19 +123,15 @@ grammar galgas4ProjectGrammar
 
 private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
                                      let @string inSourceToAnalyze) {
-  if @application.verboseOutput then
-    println ("*** Parsing project files")
-  end
-  grammar galgas4ProjectGrammar (inProjectSourceFilePath, ?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFilePath
+  println ("*** Parsing project files")
+  grammar galgasProjectGrammar (?let @project projectComponentAST) in inProjectSourceFilePath
   if option [mode.value] == "" then
     compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectComponentAST)
   //--- C++ compilation
     if 0 == @application.errorCount then
       let cppCompilationTarget = option galgas_cli_options [cppCompile.value]
       if cppCompilationTarget != "" then
-        if @application.verboseOutput then
-          println ("*** Perform C++ compilation")
-        end
+        println ("*** Perform C++ compilation")
         let buildFile = inProjectSourceFilePath.string.deletingLastPathComponent + "/" + cppCompilationTarget + "/build.py"
         if buildFile.fileExists then
           let resultCode = ("python " + buildFile).system
@@ -155,7 +151,7 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
 
 private proc compileProject (let @lstring inProjectSourceFilePath,
                              let @string inSourceToAnalyze,
-                             let @galgas3ProjectComponentAST inProjectComponentAST) {
+                             let @project inProject) {
   var @galgasDeclarationAST declarationAST = @()
   appendPredefinedTypesASTs (!?declarationAST)
 //--- Parse predefined type definitions
@@ -172,14 +168,6 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
 //--- Enumerate hand coded source files
   let toolCppDirectory = sourceDirectory + "/tool-sources"
   let [@string] handCodedSourceToolFileList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, ["cpp", "h"])
-  for feature in inProjectComponentAST.mQualifiedFeatureList do
-    if feature.featureName.string == "libpmAtPath" then
-    elsif feature.featureName.string == "applicationBundleBase" then
-    elsif feature.featureName.string == "macCodeSign" then
-    else
-      error feature.featureName : "unknown feature"
-    end
-  end
 //--------------------------------- Display result
 //  if @application.errorCount == 0 then
 //    message "  Declarations: " + declarationAST.mDeclarationList.count + "\n"
@@ -210,7 +198,6 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       !?usefulnessRootEntities,
       !?usefulEntitiesGraph,
       productDirectory,
-      inProjectComponentAST.mEndOfSourceFile,
       declarationAST,
       ?semanticContext,
       ?typeMap,
@@ -234,9 +221,9 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   end
 //--------------------------------- Compile program declarations
   if @application.errorCount == 0 then
-    let projectVersionString = inProjectComponentAST.mMajorVersion.bigint.string
-      + "." + inProjectComponentAST.mMinorVersion.bigint
-      + "." + inProjectComponentAST.mRevisionVersion.bigint
+    let projectVersionString = inProject.majorVersion.bigint.string
+      + "." + inProject.minorVersion.bigint
+      + "." + inProject.revision.bigint
     compileProgramComponentGalgas3 (
       !?usefulnessRootEntities,
       !?usefulEntitiesGraph,
@@ -296,7 +283,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       appProductFileList,
       semanticDeclarationSortedListForGeneration,
       declarationAST.mSourceRuleList,
-      inProjectComponentAST,
+      inProject,
       inProjectSourceFilePath.string,
       "../sources/tool-sources",
       handCodedSourceToolFileList
@@ -310,29 +297,24 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
 //
 //--------------------------------------------------------------------------------------------------
 
-private proc projectGeneration
-              (let @unifiedTypeMap inTypeMap,
-              ?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
-              ?buildDirName: let @string inBuildDirectoryName,
-              let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
-              let [@string] inAppProductFileList,
-              let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-              let [@programRuleAST] inSourceRuleList,
-              let @galgas3ProjectComponentAST inProjectComponentAST,
-              let @string inProjectSourceFilePath,
-              let @string inHandCodedSourceDirectory,
-              let [@string] inHandCodedSourceToolFileList) {
+private proc projectGeneration (let @unifiedTypeMap inTypeMap,
+                                ?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
+                                ?buildDirName: let @string inBuildDirectoryName,
+                                let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
+                                let [@string] inAppProductFileList,
+                                let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
+                                let [@programRuleAST] inSourceRuleList,
+                                let @project inProject,
+                                let @string inProjectSourceFilePath,
+                                let @string inHandCodedSourceDirectory,
+                                let [@string] inHandCodedSourceToolFileList) {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
-  if @application.verboseOutput then
-    println ("*** Generating files")
-  end
+  println ("*** Generating files")
   var @stringset allProductFileSet = @()
 //--------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   userHeadersDir.makeDirectory ()
-//--------------------------------- %quietOutputByDefault
-  let quietOutputByDefault = @stringset.setWithLStringArray (inProjectComponentAST.mGenerationFeatureList).contains ("quietOutputByDefault")
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
   var [@string] swiftAppProductFileList = @()
@@ -340,7 +322,6 @@ private proc projectGeneration
     generateAllGuiComponentsGalgas3 (
       inOptionComponentMapForGeneration,
       productDirectory,
-      quietOutputByDefault,
       !?swift: swiftAppProductFileList
     )
   end
@@ -372,28 +353,21 @@ private proc projectGeneration
       handledExtensionSet ++= aRule.mSourceFileExtension.string
     end
   //--- Build qualified feature map
-    var @stringset ignoredFeatureSet = @()
-    ignoredFeatureSet ++= "tool-framework"
-    ignoredFeatureSet ++= "tool-source"
-    ignoredFeatureSet ++= "tool-link"
-    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
-    for feature in inProjectComponentAST.mQualifiedFeatureList do
-      if not ignoredFeatureSet.contains (feature.featureName.string) then
-        !?projectQualifiedFeatureMap.insertKey (feature.featureName, feature.featureValue)
-      end
-    end
+//    var @stringset ignoredFeatureSet = @()
+//    ignoredFeatureSet ++= "tool-framework"
+//    ignoredFeatureSet ++= "tool-source"
+//    ignoredFeatureSet ++= "tool-link"
+//    var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
+//    for feature in inProjectComponentAST.mQualifiedFeatureList do
+//      if not ignoredFeatureSet.contains (feature.featureName.string) then
+//        !?projectQualifiedFeatureMap.insertKey (feature.featureName, feature.featureValue)
+//      end
+//    end
     updateGalgasTargets (
       !absoluteBuildDir: inAbsoluteBuildDirectory,
       !buildDirName: inBuildDirectoryName,
       inProjectSourceFilePath,
-      inProjectComponentAST.mTargetName.string,
-      inProjectComponentAST.mEndOfSourceFile,
-      inProjectComponentAST.mMajorVersion.bigint.string
-         + "." + inProjectComponentAST.mMinorVersion.bigint
-         + "." + inProjectComponentAST.mRevisionVersion.bigint,
-      projectQualifiedFeatureMap,
-      inProjectComponentAST.mGenerationFeatureList,
-      quietOutputByDefault,
+      inProject,  
       toolCppFileList,
       toolHeaderFileList,
       !appProductFileList: appProductFileList,

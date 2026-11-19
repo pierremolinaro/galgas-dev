@@ -40,7 +40,6 @@
     "all-declarations-1.cpp",
     "all-declarations-0.cpp",
     "all-predefined-types.cpp",
-    "C_galgas_quiet_option.cpp",
     "printOriginalGrammar.cpp",
     "check-big-integer.cpp",
     "FOLLOW_computations.cpp",

@@ -1,0 +1,219 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Galgas 3 'project' syntax
+//
+//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//--------------------------------------------------------------------------------------------------
+
+optionset @projectTargets {
+  case makefileUnix
+  case makefileMacOS
+  case makefileX86Linux32OnMac
+  case makefileX86Linux64OnMac
+  case makefileARM64LinuxOnMac
+  case makefileWin32OnMac
+  case macSwiftApp
+  case codeblocksWindows
+  case codeblocksLinux32
+  case codeblocksLinux64
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @project {
+  let @string productName #initArgLabel
+  let @uint majorVersion #initArgLabel
+  let @uint minorVersion #initArgLabel
+  let @uint revision #initArgLabel
+  let @projectTargets targets #initArgLabel
+  let @lstring libpmCustomPath #initArgLabel
+  let @lstring macAppBundleBaseName #initArgLabel
+  let @lstring macAppCodeSign #initArgLabel
+}
+
+//--------------------------------------------------------------------------------------------------
+
+grammar galgasProjectGrammar "LL1" {
+  syntax galgasProjectSyntax
+
+  <project_component_start_symbol> (!@project outProject)
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+syntax galgasProjectSyntax : projectScanner {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <project_component_start_symbol> (!@project outProject) {
+    var targets = @projectTargets ()
+    var macAppBundleBaseName = "".nowhere
+    var macAppBundleBaseNameDefined = false
+    var libpmCustomPath = "".nowhere
+    var libpmCustomPathDefined = false
+    var macAppCodeSign = "".nowhere
+    var macAppCodeSignDefined = false
+    var majorVersion = 0
+    var minorVersion = 0
+    var revision = 0
+    var versionDefined = false
+    var productName = "".nowhere
+    var productNameDefined = false
+    repeat
+//    while
+//      $#quietOutputByDefault$
+//      generateFeatureList ++= "quietOutputByDefault".here
+    while
+      $#productName$
+      $:$
+      $"string"$ (?let @lstring featureValue)
+      if productNameDefined then
+        error featureValue : "duplicated attribute"
+      end
+      productName = featureValue
+      productNameDefined = true    
+    while
+      $#version$
+      $:$
+      $literalInt$ (?let major)
+      $.$
+      $literalInt$ (?let minor)
+      $.$
+      $literalInt$ (?let rev)
+      if versionDefined then
+        error rev.location.union (major.location) : "duplicated attribute"
+      end
+      majorVersion = major.bigint.uint
+      minorVersion = minor.bigint.uint
+      revision = rev.bigint.uint
+      versionDefined = true
+    while
+      $#macSwiftApp$
+      if targets.contains (.macSwiftApp) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .macSwiftApp
+    while
+      $#makefile-macosx$
+      if targets.contains (.makefileMacOS) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileMacOS
+    while
+      $#makefile-unix$
+      if targets.contains (.makefileUnix) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileUnix
+    while
+      $#makefile-x86linux32-on-macosx$
+      if targets.contains (.makefileX86Linux32OnMac) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileX86Linux32OnMac
+    while
+      $#makefile-x86linux64-on-macosx$
+      if targets.contains (.makefileX86Linux64OnMac) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileX86Linux64OnMac
+    while
+      $#makefile-arm64-linux-on-macosx$
+      if targets.contains (.makefileARM64LinuxOnMac) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileARM64LinuxOnMac
+    while
+      $#makefile-win32-on-macosx$
+      if targets.contains (.makefileWin32OnMac) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .makefileWin32OnMac
+    while
+      $#codeblocks-windows$
+      if targets.contains (.codeblocksWindows) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .codeblocksWindows
+    while
+      $#codeblocks-linux32$
+      if targets.contains (.codeblocksLinux32) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .codeblocksLinux32
+    while
+      $#codeblocks-linux64$
+      if targets.contains (.codeblocksLinux64) then
+        error .here : "duplicated attribute"
+      end
+      targets |= .codeblocksLinux64
+    while
+      $#macAppBundleBaseName$
+      $:$
+      $"string"$ (?let @lstring featureValue)
+      if macAppBundleBaseNameDefined then
+        error featureValue : "duplicated attribute"
+      end
+      macAppBundleBaseName = featureValue
+      macAppBundleBaseNameDefined = true    
+    while
+      $#libpmCustomPath$
+      $:$
+      $"string"$ (?let @lstring featureValue)
+      if libpmCustomPathDefined then
+        error featureValue : "duplicated attribute"
+      end
+      libpmCustomPath = featureValue
+      libpmCustomPathDefined = true    
+    while
+      $#macCodeSign$
+      $:$
+      $"string"$ (?let @lstring featureValue)
+      if macAppCodeSignDefined then
+        error featureValue : "duplicated attribute"
+      end
+      macAppCodeSign = featureValue
+      macAppCodeSignDefined = true    
+    end
+    outProject = @(
+      !productName: productName,
+      !majorVersion: majorVersion,
+      !minorVersion: minorVersion,
+      !revision: revision,
+      !targets: targets,
+      !libpmCustomPath: libpmCustomPath,
+      !macAppBundleBaseName: macAppBundleBaseName,
+      !macAppCodeSign: macAppCodeSign
+    )
+    if not versionDefined then
+      error .here : "#version should be defined" spoil outProject
+    end
+    if not productNameDefined then
+      error .here : "#productName should be defined" spoil outProject
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

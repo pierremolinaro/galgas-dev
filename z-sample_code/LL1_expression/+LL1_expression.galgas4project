@@ -1,7 +1,6 @@
-project (1:0:0) -> "LL1Expression" {
-//--- Targets
-  #makefile-unix
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
+#version : 0.0.1
+#productName : "LL1Expression"
+#makefile-unix
+#macSwiftApp
+#macAppBundleBaseName : "fr.irccyn"
 

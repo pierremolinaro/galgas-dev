@@ -1,6 +1,6 @@
-project (1:0:0) -> "SLRExpression" {
-  #makefile-unix
-  #MacSwiftApp
-  #applicationBundleBase : "fr.what"
-}
+#version : 1.0.0
+#productName : "SLRExpression"
+#makefile-unix
+#macSwiftApp
+#macAppBundleBaseName : "fr.what"
 

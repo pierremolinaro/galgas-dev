@@ -23,147 +23,147 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-struct @galgasQualifiedFeature {
-  public let @lstring featureName
-  public let @lstring featureValue
-}
+//struct @galgasQualifiedFeature {
+//  public let @lstring featureName
+//  public let @lstring featureValue
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-struct @galgas3ProjectComponentAST {
-  public let [@string] mProjectSourceList
-  public let [@string] mToolCppSourceList
-  public let @lbigint mMajorVersion
-  public let @lbigint mMinorVersion
-  public let @lbigint mRevisionVersion
-  public let [@lstring] mGenerationFeatureList
-  public let [@galgasQualifiedFeature] mQualifiedFeatureList
-  public let @lstring mTargetName
-  public let @location mEndOfSourceFile
-}
+//struct @galgas3ProjectComponentAST {
+//  public let [@string] mProjectSourceList
+//  public let [@string] mToolCppSourceList
+//  public let @lbigint mMajorVersion
+//  public let @lbigint mMinorVersion
+//  public let @lbigint mRevisionVersion
+//  public let [@lstring] mGenerationFeatureList
+//  public let [@galgasQualifiedFeature] mQualifiedFeatureList
+//  public let @lstring mTargetName
+//  public let @location mEndOfSourceFile
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-indexing grammar galgas4ProjectGrammar "LL1" {
-  syntax galgas4ProjectSyntax
-
-  <project_component_start_symbol> (?let @lstring inProjectSourceFilePath, !@galgas3ProjectComponentAST outComponent)
-
-}
+//indexing grammar galgas4ProjectGrammar "LL1" {
+//  syntax galgas4ProjectSyntax
+//
+//  <project_component_start_symbol> (?let @lstring inProjectSourceFilePath, !@galgas3ProjectComponentAST outComponent)
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas4ProjectSyntax : galgasScanner4 {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <project_header> (!@lbigint majorVersion,
-                        !@lbigint minorVersion,
-                        !@lbigint revisionVersion,
-                        !@lstring targetName) {
-    $project$
-    $($
-    $literalInt$ (?majorVersion)
-    $:$
-    $literalInt$ (?minorVersion)
-    $:$
-    $literalInt$ (?revisionVersion)
-    $)$
-    $->$
-    $"string"$ (?targetName)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <project_component_start_symbol> (let @lstring inProjectSourceFilePath,
-                                        !@galgas3ProjectComponentAST outProjectComponentAST) {
-    <project_header> (
-      ?let @lbigint majorVersion,
-      ?let @lbigint minorVersion,
-      ?let @lbigint revisionVersion,
-      ?let @lstring targetName
-    )
-    ${$
-    var [@lstring] generateFeatureList = @()
-    var [@galgasQualifiedFeature] qualifiedFeatureList = @()
-    repeat
-    while
-      $#quietOutputByDefault$
-      generateFeatureList ++= "quietOutputByDefault".here
-    while
-      $#MacSwiftApp$
-      generateFeatureList ++= "MacSwiftApp".here
-    while
-      $#makefile-macosx$
-      generateFeatureList ++= "makefile-macosx".here
-    while
-      $#makefile-unix$
-      generateFeatureList ++= "makefile-unix".here
-    while
-      $#makefile-x86linux32-on-macosx$
-      generateFeatureList ++= "makefile-x86linux32-on-macosx".here
-    while
-      $#makefile-x86linux64-on-macosx$
-      generateFeatureList ++= "makefile-x86linux64-on-macosx".here
-    while
-      $#makefile-arm64-linux-on-macosx$
-      generateFeatureList ++= "makefile-arm64-linux-on-macosx".here
-    while
-      $#makefile-win32-on-macosx$
-      generateFeatureList ++= "makefile-win32-on-macosx".here
-    while
-      $#codeblocks-windows$
-      generateFeatureList ++= "codeblocks-windows".here
-    while
-      $#codeblocks-linux32$
-      generateFeatureList ++= "codeblocks-linux32".here
-    while
-      $#codeblocks-linux64$
-      generateFeatureList ++= "codeblocks-linux64".here
-    while
-      $#applicationBundleBase$
-      $:$
-      $"string"$ (?let @lstring featureValue)
-      qualifiedFeatureList ++= @("applicationBundleBase".here, featureValue)
-    while
-      $#libpmAtPath$
-      $:$
-      $"string"$ (?let @lstring featureValue)
-      qualifiedFeatureList ++= @("libpmAtPath".here, featureValue)
-    while
-      $#macCodeSign$
-      $:$
-      $"string"$ (?let @lstring featureValue)
-      qualifiedFeatureList ++= @("macCodeSign".here, featureValue)
-    end
-    $}$
-  //--- Enumerate sources directory for getting all source files
-     let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"
-     var extensionList = [@string] ()
-     extensionList ++= "galgas4"
-     let projectSourceList = sourceDirectory.regularFilesWithExtensions (!recursive: true, extensionList)
-  //--- Enumerate tool C++ sources directory
-     let toolCppDirectory = sourceDirectory + "/tool-sources"
-     var cppExtensionList = [@string] ()
-     cppExtensionList ++= "cpp"
-     cppExtensionList ++= "h"
-     let toolCppSourceList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, cppExtensionList)
-  //---
-    outProjectComponentAST = @galgas3ProjectComponentAST (
-      projectSourceList,
-      toolCppSourceList,
-      majorVersion,
-      minorVersion,
-      revisionVersion,
-      generateFeatureList,
-      qualifiedFeatureList,
-      targetName,
-      .here
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax galgas4ProjectSyntax : galgasScanner4 {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <project_header> (!@lbigint majorVersion,
+//                        !@lbigint minorVersion,
+//                        !@lbigint revisionVersion,
+//                        !@lstring targetName) {
+//    $project$
+//    $($
+//    $literalInt$ (?majorVersion)
+//    $:$
+//    $literalInt$ (?minorVersion)
+//    $:$
+//    $literalInt$ (?revisionVersion)
+//    $)$
+//    $->$
+//    $"string"$ (?targetName)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <project_component_start_symbol> (let @lstring inProjectSourceFilePath,
+//                                        !@galgas3ProjectComponentAST outProjectComponentAST) {
+//    <project_header> (
+//      ?let @lbigint majorVersion,
+//      ?let @lbigint minorVersion,
+//      ?let @lbigint revisionVersion,
+//      ?let @lstring targetName
+//    )
+//    ${$
+//    var [@lstring] generateFeatureList = @()
+//    var [@galgasQualifiedFeature] qualifiedFeatureList = @()
+//    repeat
+//    while
+//      $#quietOutputByDefault$
+//      generateFeatureList ++= "quietOutputByDefault".here
+//    while
+//      $#MacSwiftApp$
+//      generateFeatureList ++= "MacSwiftApp".here
+//    while
+//      $#makefile-macosx$
+//      generateFeatureList ++= "makefile-macosx".here
+//    while
+//      $#makefile-unix$
+//      generateFeatureList ++= "makefile-unix".here
+//    while
+//      $#makefile-x86linux32-on-macosx$
+//      generateFeatureList ++= "makefile-x86linux32-on-macosx".here
+//    while
+//      $#makefile-x86linux64-on-macosx$
+//      generateFeatureList ++= "makefile-x86linux64-on-macosx".here
+//    while
+//      $#makefile-arm64-linux-on-macosx$
+//      generateFeatureList ++= "makefile-arm64-linux-on-macosx".here
+//    while
+//      $#makefile-win32-on-macosx$
+//      generateFeatureList ++= "makefile-win32-on-macosx".here
+//    while
+//      $#codeblocks-windows$
+//      generateFeatureList ++= "codeblocks-windows".here
+//    while
+//      $#codeblocks-linux32$
+//      generateFeatureList ++= "codeblocks-linux32".here
+//    while
+//      $#codeblocks-linux64$
+//      generateFeatureList ++= "codeblocks-linux64".here
+//    while
+//      $#applicationBundleBase$
+//      $:$
+//      $"string"$ (?let @lstring featureValue)
+//      qualifiedFeatureList ++= @("applicationBundleBase".here, featureValue)
+//    while
+//      $#libpmAtPath$
+//      $:$
+//      $"string"$ (?let @lstring featureValue)
+//      qualifiedFeatureList ++= @("libpmAtPath".here, featureValue)
+//    while
+//      $#macCodeSign$
+//      $:$
+//      $"string"$ (?let @lstring featureValue)
+//      qualifiedFeatureList ++= @("macCodeSign".here, featureValue)
+//    end
+//    $}$
+//  //--- Enumerate sources directory for getting all source files
+//     let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"
+//     var extensionList = [@string] ()
+//     extensionList ++= "galgas4"
+//     let projectSourceList = sourceDirectory.regularFilesWithExtensions (!recursive: true, extensionList)
+//  //--- Enumerate tool C++ sources directory
+//     let toolCppDirectory = sourceDirectory + "/tool-sources"
+//     var cppExtensionList = [@string] ()
+//     cppExtensionList ++= "cpp"
+//     cppExtensionList ++= "h"
+//     let toolCppSourceList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, cppExtensionList)
+//  //---
+//    outProjectComponentAST = @galgas3ProjectComponentAST (
+//      projectSourceList,
+//      toolCppSourceList,
+//      majorVersion,
+//      minorVersion,
+//      revisionVersion,
+//      generateFeatureList,
+//      qualifiedFeatureList,
+//      targetName,
+//      .here
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------

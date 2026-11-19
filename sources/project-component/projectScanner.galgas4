@@ -1,0 +1,379 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  GALGAS scanner definition
+//
+//  Copyright (C) 1997, ..., 2026 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+lexique projectScanner {
+
+//--- Scanner attributes
+@char charValue
+@string tokenString
+
+style delimitersStyle -> "Delimiters"
+style integerStyle -> "Integer Constants"
+style characterStyle -> "Character Constants"
+style stringStyle -> "String Constants"
+style attributeStyle -> "Attributes (#...)"
+style commentStyle -> "Comments"
+
+// ------------------------- identifier or key word --------------------
+// let $identifier$ (!@string) : syntaxErrorMessage "an identifier"
+$identifier$ !tokenString #errorMessage "an identifier"
+
+
+rule isUnicodeLetter | '_' {
+  repeat
+    enterCharacterIntoString (!?tokenString !*)
+  while isUnicodeLetter | '_' | '0'->'9' :
+  end
+  send $identifier$
+}
+
+//------------------------------ Integer, floating Point Constant ------------------
+@bigint bigintValue
+$literalInt$ !bigintValue style integerStyle #errorMessage "a literal integer"
+
+#errorMessage internalError : "internal error"
+
+rule '0'->'9' {
+  enterCharacterIntoString (!?tokenString !* )
+  repeat
+  while '0'->'9' :
+    enterCharacterIntoString (!?tokenString !* )
+  while '_' :
+  end
+  convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
+  send $literalInt$
+}
+
+// ------------------------- Attribute -----------------------------
+
+#errorMessage attributeError : "in an attribute name, a letter or a digit should follow the '#' character"
+
+#errorMessage undefinedAttribute : "undefined attribute"
+
+list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" {
+  "macAppBundleBaseName" -> $#macAppBundleBaseName$,
+  "codeblocks-linux32" -> $#codeblocks-linux32$,
+  "codeblocks-linux64" -> $#codeblocks-linux64$,
+  "codeblocks-windows" -> $#codeblocks-windows$,
+  "libpmCustomPath" -> $#libpmCustomPath$,
+  "productName" -> $#productName$,
+  "version" -> $#version$,
+  "macCodeSign" -> $#macCodeSign$,
+  "makefile-macosx" -> $#makefile-macosx$,
+  "makefile-unix" -> $#makefile-unix$,
+  "makefile-x86linux32-on-macosx" -> $#makefile-x86linux32-on-macosx$,
+  "makefile-x86linux64-on-macosx" -> $#makefile-x86linux64-on-macosx$,
+  "makefile-arm64-linux-on-macosx" -> $#makefile-arm64-linux-on-macosx$,
+  "makefile-win32-on-macosx" -> $#makefile-win32-on-macosx$,
+  "macSwiftApp" -> $#macSwiftApp$
+}
+
+rule '#' {
+  select
+  case isUnicodeLetter :
+    repeat
+      enterCharacterIntoString (!?tokenString !* )
+    while isUnicodeLetter | '-' | '0'->'9' :
+    end
+  default
+    error attributeError
+  end
+  send #searchString tokenString in attributeKeyWordList default error undefinedAttribute
+}
+
+//-------------------------------- Character constant ------------------------------------
+$'char'$ ! charValue style characterStyle #errorMessage "a character constant"
+
+#errorMessage incorrectCharConstant : "incorrect literal character"
+
+#errorMessage invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits"
+
+#errorMessage invalideUnicodeDefinition8 : "\\U should be followed by exactly eight hexadecimal digits"
+
+#errorMessage unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
+
+@uint uint32value
+
+rule '\'' {
+  select
+  case '\\' :
+    select
+    case 'f' :
+      enterCharacterIntoCharacter (!?charValue !'\f')
+    case 'n' :
+      enterCharacterIntoCharacter (!?charValue !'\n')
+    case 'r' :
+      enterCharacterIntoCharacter (!?charValue !'\r')
+    case 't' :
+      enterCharacterIntoCharacter (!?charValue !'\t')
+    case 'v' :
+      enterCharacterIntoCharacter (!?charValue !'\v')
+    case '\\' :
+      enterCharacterIntoCharacter (!?charValue !'\\')
+    case '0' :
+      enterCharacterIntoCharacter (!?charValue !'\0')
+    case '\'' :
+      enterCharacterIntoCharacter (!?charValue !'\'')
+    case 'u' :
+      select
+      case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+        select
+        case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+          select
+          case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+           enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+            select
+            case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+              convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
+            default
+              error invalideUnicodeDefinition4
+            end
+          default
+            error invalideUnicodeDefinition4
+          end
+        default
+          error invalideUnicodeDefinition4
+        end
+      default
+        error invalideUnicodeDefinition4
+      end
+    case 'U' :
+      select
+      case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+        select
+        case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+          select
+          case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+            enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+            select
+            case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+              select
+              case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                select
+                case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                  enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                  select
+                  case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                   enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                    select
+                    case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                      enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                      convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
+                    default
+                      error invalideUnicodeDefinition8
+                    end
+                  default
+                    error invalideUnicodeDefinition8
+                  end
+                default
+                  error invalideUnicodeDefinition8
+                end
+              default
+                error invalideUnicodeDefinition8
+              end
+            default
+              error invalideUnicodeDefinition8
+            end
+          default
+            error invalideUnicodeDefinition8
+          end
+        default
+          error invalideUnicodeDefinition8
+        end
+      default
+        error invalideUnicodeDefinition8
+      end
+    default
+      error incorrectCharConstant
+    end
+  case ' ' -> '\uFFFD' :
+     enterCharacterIntoCharacter (!?charValue !* )
+  default
+    error incorrectCharConstant
+  end
+  select
+  case '\'' :
+    send $'char'$
+  default
+    error incorrectCharConstant
+  end
+}
+
+// ----------------------------------- Comment ----------------------------
+$comment$ style commentStyle #nonAtomicSelection #errorMessage "a comment"
+$commentMark$ style commentStyle #nonAtomicSelection #errorMessage "a comment"
+
+rule "//" {
+  select
+  case '!' :
+    repeat
+    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+    end
+    drop $commentMark$
+  default
+    repeat
+    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\U0010FFFF' :
+    end
+    drop $comment$
+  end
+}
+
+// ---------------------------- Delimitors ---------------------------------------
+list galgasDelimitorsList style delimitersStyle #errorMessage "the '%K' delimitor" {
+  ".", ":"
+}
+
+rule list galgasDelimitorsList
+
+// ------------------- Characters string --------------------------------------
+$"string"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage "a character string constant \"...\""
+
+#errorMessage incorrectStringEnd : "string does not end with '\"'"
+
+rule '"' {
+  repeat
+  while '\\' :
+    select
+    case 'f' :
+      enterCharacterIntoString (!?tokenString !'\f')
+    case 'n' :
+      enterCharacterIntoString (!?tokenString !'\n')
+    case 'r' :
+      enterCharacterIntoString (!?tokenString !'\r')
+    case 't' :
+      enterCharacterIntoString (!?tokenString !'\t')
+    case 'v' :
+      enterCharacterIntoString (!?tokenString !'\v')
+    case '\\' :
+      enterCharacterIntoString (!?tokenString !'\\')
+    case '"' :
+      enterCharacterIntoString (!?tokenString !'"')
+    case '\'' :
+      enterCharacterIntoString (!?tokenString !'\'')
+    case '?' :
+      enterCharacterIntoString (!?tokenString !'?')
+    case 'u' :
+      select
+      case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+        select
+        case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+          select
+          case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+           enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+            select
+            case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+              convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
+              enterCharacterIntoString (!?tokenString !charValue )
+            default
+              error invalideUnicodeDefinition4
+            end
+          default
+            error invalideUnicodeDefinition4
+          end
+        default
+          error invalideUnicodeDefinition4
+        end
+      default
+        error invalideUnicodeDefinition4
+      end
+    case 'U' :
+      select
+      case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+        enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+        select
+        case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+          select
+          case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+            enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+            select
+            case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+              enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+              select
+              case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                select
+                case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                  enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                  select
+                  case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                   enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                    select
+                    case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                      enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError )
+                      convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue )
+                      enterCharacterIntoString (!?tokenString !charValue )
+                    default
+                      error invalideUnicodeDefinition8
+                    end
+                  default
+                    error invalideUnicodeDefinition8
+                  end
+                default
+                  error invalideUnicodeDefinition8
+                end
+              default
+                error invalideUnicodeDefinition8
+              end
+            default
+              error invalideUnicodeDefinition8
+            end
+          default
+            error invalideUnicodeDefinition8
+          end
+        default
+          error invalideUnicodeDefinition8
+        end
+      default
+        error invalideUnicodeDefinition8
+      end
+    default
+      error incorrectCharConstant
+    end
+   while ' ' | '!' | '#'-> '\uFFFD' :
+    enterCharacterIntoString (!?tokenString !* )
+  end
+  select
+  case '"' :
+    send $"string"$
+  default
+    error incorrectStringEnd
+  end
+}
+
+// -------------------- separators -----------------------------------------
+rule '\u0001' -> ' ' {
+}
+
+}
