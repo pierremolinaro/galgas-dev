@@ -3892,11 +3892,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element final : public AC_GA
     return mProperty_mLexicalAttributeListAST ;
   }
 
-  public: GGS__5B_lexicalStyleAST_5D_ mProperty_mLexicalStyleListAST ;
-  public: inline GGS__5B_lexicalStyleAST_5D_ readProperty_mLexicalStyleListAST (void) const {
-    return mProperty_mLexicalStyleListAST ;
-  }
-
   public: GGS__5B_lexicalListDeclarationAST_5D_ mProperty_mLexicalListDeclarationListAST ;
   public: inline GGS__5B_lexicalListDeclarationAST_5D_ readProperty_mLexicalListDeclarationListAST (void) const {
     return mProperty_mLexicalListDeclarationListAST ;
@@ -3934,10 +3929,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element final : public AC_GA
     mProperty_mLexicalAttributeListAST = inValue ;
   }
 
-  public: inline void setter_setMLexicalStyleListAST (const GGS__5B_lexicalStyleAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLexicalStyleListAST = inValue ;
-  }
-
   public: inline void setter_setMLexicalListDeclarationListAST (const GGS__5B_lexicalListDeclarationAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mLexicalListDeclarationListAST = inValue ;
   }
@@ -3952,7 +3943,6 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element final : public AC_GA
                                                                  const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
                                                                  const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalListAST,
                                                                  const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
-                                                                 const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
                                                                  const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST) ;
 
 //--------------------------------- Copy constructor
@@ -3964,16 +3954,15 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element final : public AC_GA
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_lexiqueComponentMapForSemanticAnalysis_2E_element init_21__21__21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                                                             const class GGS_bool & inOperand1,
-                                                                                                             const class GGS_terminalMap & inOperand2,
-                                                                                                             const class GGS__5B_indexingAST_5D_ & inOperand3,
-                                                                                                             const class GGS__5B_terminalDeclarationAST_5D_ & inOperand4,
-                                                                                                             const class GGS__5B_lexicalAttributeAST_5D_ & inOperand5,
-                                                                                                             const class GGS__5B_lexicalStyleAST_5D_ & inOperand6,
-                                                                                                             const class GGS__5B_lexicalListDeclarationAST_5D_ & inOperand7,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_lexiqueComponentMapForSemanticAnalysis_2E_element init_21__21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                                         const class GGS_bool & inOperand1,
+                                                                                                         const class GGS_terminalMap & inOperand2,
+                                                                                                         const class GGS__5B_indexingAST_5D_ & inOperand3,
+                                                                                                         const class GGS__5B_terminalDeclarationAST_5D_ & inOperand4,
+                                                                                                         const class GGS__5B_lexicalAttributeAST_5D_ & inOperand5,
+                                                                                                         const class GGS__5B_lexicalListDeclarationAST_5D_ & inOperand6,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

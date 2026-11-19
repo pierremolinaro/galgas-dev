@@ -28,12 +28,12 @@ lexique projectComponentScanner {
 @char charValue
 @string tokenString
 
-style delimitersStyle -> "Delimiters"
-style integerStyle -> "Integer Constants"
-style characterStyle -> "Character Constants"
-style stringStyle -> "String Constants"
-style attributeStyle -> "Attributes (#...)"
-style commentStyle -> "Comments"
+//style delimitersStyle -> "Delimiters"
+//style integerStyle -> "Integer Constants"
+//style characterStyle -> "Character Constants"
+//style stringStyle -> "String Constants"
+//style attributeStyle -> "Attributes (#...)"
+//style commentStyle -> "Comments"
 
 // ------------------------- identifier or key word --------------------
 // let $identifier$ (!@string) : syntaxErrorMessage "an identifier"

@@ -36,8 +36,15 @@ gui cocoa {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  with lexique galgasScanner4 {
+  with lexique projectComponentScanner {
     fileExtension : "galgas4project"
+    blockComment : "//"
+    title: "Project"
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  with lexique galgasScanner4 {
     fileExtension : "galgas4"
     blockComment : "//"
     title: "Source GALGAS 4"

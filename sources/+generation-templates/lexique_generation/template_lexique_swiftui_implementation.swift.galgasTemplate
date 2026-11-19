@@ -54,101 +54,6 @@ end%
 } */
 
 //--------------------------------------------------------------------------------------------------
-
-struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @State private var mUnused = false
-
-  @AppStorage("FontFor_%!LEXIQUE_CLASS_NAME%")
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-
-  @AppStorage("LineHeightFor_%!LEXIQUE_CLASS_NAME%")
-  private var mLineHeight : Int = 12
-
-  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%")
-  private var mDefaultColor : Color = .black
-
-%for (lexicalStyle) in LEXICAL_STYLE_LIST do
-%  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
-  private var mColorFor_%!lexicalStyle.mName.string% : Color = .black
-
-  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
-  private var mBoldFor_%!lexicalStyle.mName.string% : Bool = false
-
-  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
-  private var mItalicFor_%!lexicalStyle.mName.string% : Bool = false
-
-%end%
-  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
-  private var mColorFor_lexical_error : Color = .red
-
-  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
-  private var mBoldFor_lexical_error : Bool = false
-
-  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
-  private var mItalicFor_lexical_error : Bool = false
-
-  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_template")
-  private var mColorFor_template : Color = .gray
-
-  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%_template")
-  private var mBoldFor_template : Bool = false
-
-  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%_template")
-  private var mItalicFor_template : Bool = false
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var body : some View {
-    Form {
-      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
-      Picker("Line Height", selection: self.$mLineHeight) {
-        Text("1.0").tag(10)
-        Text("1.1").tag(11)
-        Text("1.2").tag(12)
-        Text("1.5").tag(15)
-        Text("1.7").tag(17)
-        Text("2.0").tag(20)
-      }.pickerStyle(.automatic)
-      LabeledContent ("Default Color") {
-        HStack {
-          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
-          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
-        }
-      }
-%for (lexicalStyle) in LEXICAL_STYLE_LIST do
-%      LabeledContent (%![lexicalStyle.mComment.string utf8RepresentationEscapingQuestionMark]%) {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_%!lexicalStyle.mName.string%).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_%!lexicalStyle.mName.string%)
-          Toggle ("Italic", isOn: self.$mItalicFor_%!lexicalStyle.mName.string%)
-        }
-      }
-%end%      LabeledContent ("Lexical Error") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
-          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
-        }
-      }
-      LabeledContent ("Template") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_template)
-          Toggle ("Italic", isOn: self.$mItalicFor_template)
-        }
-      }
-    }.padding (20)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 //   Template Scanner Class
 //--------------------------------------------------------------------------------------------------
 
@@ -160,7 +65,7 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
+/*  override func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
     ioStyleDidChange = false
     let ud = UserDefaults.standard
     if let s = ud.string (forKey: "FontFor_%!LEXIQUE_CLASS_NAME%"), let v = CustomFont (rawValue: s) {
@@ -292,7 +197,7 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
       }
       self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
     }
-  }
+  } */
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Lexical analysis

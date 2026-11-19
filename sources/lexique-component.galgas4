@@ -34,7 +34,7 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
     var [@templateDelimitor2AST] templateDelimitorList = @()
     var [@templateReplacementAST] templateReplacementList = @()
     var [@lexicalAttributeAST] lexicalAttributeList = @()
-    var [@lexicalStyleAST] lexicalStyleList = @()
+//    var [@lexicalStyleAST] lexicalStyleList = @()
     var [@terminalDeclarationAST] terminalDeclarationList = @()
     var [@lexicalMessageDeclarationAST] lexicalMessageDeclarationList = @()
     var [@lexicalListDeclarationAST] lexicalListDeclarationList = @()
@@ -47,8 +47,8 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
       <template_replacement> (!? templateReplacementList)
     while
       <lexical_attribute_declaration> (!? lexicalAttributeList)
-    while
-      <style_declaration> (!? lexicalStyleList)
+//    while
+//      <style_declaration> (!? lexicalStyleList)
     while
       <terminal_declaration> (!? terminalDeclarationList)
     while
@@ -70,7 +70,7 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
       templateDelimitorList,
       templateReplacementList,
       lexicalAttributeList,
-      lexicalStyleList,
+//      lexicalStyleList,
       terminalDeclarationList,
       lexicalMessageDeclarationList,
       lexicalListDeclarationList,
@@ -362,19 +362,19 @@ syntax galgas4LexiqueComponentSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <style_declaration> (?![@lexicalStyleAST] ioLexicalStyleList) {
-    $style$
-    $identifier$ (?let @lstring styleIdentifier)
-    if styleIdentifier.string.containsCharacter ('_') then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
-    end
-    if styleIdentifier.string.containsCharacterInRange ('0', '9') then
-      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
-    end
-    $->$
-    $"string"$ (?let @lstring comment)
-    ioLexicalStyleList ++= @(styleIdentifier, comment)
-  }
+//  rule <style_declaration> (?![@lexicalStyleAST] ioLexicalStyleList) {
+//    $style$
+//    $identifier$ (?let @lstring styleIdentifier)
+//    if styleIdentifier.string.containsCharacter ('_') then
+//      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character"
+//    end
+//    if styleIdentifier.string.containsCharacterInRange ('0', '9') then
+//      error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
+//    end
+//    $->$
+//    $"string"$ (?let @lstring comment)
+//    ioLexicalStyleList ++= @(styleIdentifier, comment)
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -388,7 +388,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
   private let [@templateDelimitor2AST] mTemplateDelimitorListAST
   private let [@templateReplacementAST] mTemplateReplacementListAST
   private let [@lexicalAttributeAST] mLexicalAttributeListAST
-  private let [@lexicalStyleAST] mLexicalStyleListAST
+//  private let [@lexicalStyleAST] mLexicalStyleListAST
   private let [@terminalDeclarationAST] mTerminalDeclarationListAST
   private let [@lexicalMessageDeclarationAST] mLexicalMessageDeclarationListAST
   private let [@lexicalListDeclarationAST] mLexicalListDeclarationListAST
@@ -462,7 +462,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
        self.mIndexingListAST,
        self.mTerminalDeclarationListAST,
        self.mLexicalAttributeListAST,
-       self.mLexicalStyleListAST,
+//       self.mLexicalStyleListAST,
        self.mLexicalListDeclarationListAST
     )
   }
@@ -500,15 +500,15 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
       @lexicalExplicitTokenListMapMap (),
       @(),
       [@templateDelimitorAST] (),
-      @styleMap (),
+//      @styleMap (),
       unicodeTestFunctions
     )
   //-------------------------------------- Build style map
-    var styleIndex = 1
-    for styleEntry in self.mLexicalStyleListAST do
-      !?lexiqueAnalysisContext.mStyleMap.insert (styleEntry.mName, styleEntry.mComment, styleIndex)
-      styleIndex += 1
-    end
+//    var styleIndex = 1
+//    for styleEntry in self.mLexicalStyleListAST do
+//      !?lexiqueAnalysisContext.mStyleMap.insert (styleEntry.mName, styleEntry.mComment, styleIndex)
+//      styleIndex += 1
+//    end
   //-------------------------------------- Build lexical attribute map
     buildLexicalAttributeMap (
      lexicalTypeMap,
@@ -520,7 +520,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
       var @uint terminalStyleIndex = 0
       if terminal.mStyle.string.count > 0 then
         inSemanticContext.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
-        lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
+//        lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
       end
       var argumentTypeList = [@lexicalSentValue] ()
       for attribute in terminal.mSentAttributeList do
@@ -541,7 +541,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
       var @uint terminalStyleIndex = 0
       if property.mStyle.string.count > 0 then
         inSemanticContext.lexicalStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
-        lexiqueAnalysisContext.mStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
+//        lexiqueAnalysisContext.mStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
       end
       var argumentTypeList = [@lexicalSentValue] ()
       for attribute in property.mSentAttributeList do
@@ -629,7 +629,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         self.mTemplateDelimitorListAST,
         self.mLexiqueComponentName.string,
         self.mTemplateReplacementListAST,
-        self.mLexicalStyleListAST
+        @() // self.mLexicalStyleListAST
       ]
     //--- SwiftUI implementation
       let swiftUIImplementation = filewrapper [lexiqueGenerationTemplates.swiftUIImplementationZone2 :
@@ -643,7 +643,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         lexiqueAnalysisContext,
         self.mTemplateReplacementListAST,
         self.mIndexingListAST,
-        self.mLexicalStyleListAST,
+        @(), //        self.mLexicalStyleListAST,
         self.mTemplateDelimitorListAST
       ]
     //---

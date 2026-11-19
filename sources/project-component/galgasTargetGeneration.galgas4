@@ -1057,11 +1057,25 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
     )
   end
 //--- Generate lexical style view
-  let contents = filewrapper [lexicalTemplates.swiftUILexicalStyleView : inProject.lexicalStyleMap]
-  let filePath = inAbsoluteBuildDirectory + "/output/swiftuiLexicalStyleView.swift"
+  var @sortedLexicalStyleArray sortedLexicalStyleArray = @()
+  for (name, comment, index) in inProject.lexicalStyleMap do
+    sortedLexicalStyleArray ++= @(name.string, comment.string, index)
+  end
+  let contents = filewrapper [lexicalTemplates.swiftUILexicalStyles : sortedLexicalStyleArray]
+  let filePath = inAbsoluteBuildDirectory + "/output/LexicalStyles.swift"
   contents.writeToFileWhenDifferentContents (filePath, ?*)
-  ioAllProductFileSet ++= "swiftuiLexicalStyleView.swift"
+  ioAllProductFileSet ++= "LexicalStyles.swift"
 }
+
+//--------------------------------------------------------------------------------------------------
+
+struct @sortedLexicalStyle {
+  let @string name
+  let @string comment
+  let @uint index
+}
+
+sortedarray @sortedLexicalStyleArray : @sortedLexicalStyle { index < }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1069,8 +1083,8 @@ filewrapper lexicalTemplates in "../+generation-templates/lexique_generation" {
 }{
 }{
 
-  template swiftUILexicalStyleView : "swiftui-lexical-style-view.swift.galgasTemplate" (
-    ?@styleMap LEXICAL_STYLE_MAP
+  template swiftUILexicalStyles : "lexicalStyles.swift.galgasTemplate" (
+    ?@sortedLexicalStyleArray LEXICAL_STYLE_SORTED_ARRAY
   )
 }
 

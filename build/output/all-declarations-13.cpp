@@ -16956,51 +16956,51 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
 
 void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_declaration_i43_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 28)) ;
-  GGS_lstring var_resultTypeName_1693 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_resultTypeName_1693, inCompiler) ;
-  GGS_lstring var_functionName_1732 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 27)) ;
+  GGS_lstring var_resultTypeName_1692 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_resultTypeName_1692, inCompiler) ;
+  GGS_lstring var_functionName_1731 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_functionDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 30)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 31)) ;
-  GGS__5B_semanticInstructionAST_5D_ var_functionInstructionList_1818 ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 29)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 30)) ;
+  GGS__5B_semanticInstructionAST_5D_ var_functionInstructionList_1817 ;
   switch (select_galgas_34_InstructionsSyntax_58 (inCompiler)) {
   case 1: {
-    GGS_semanticExpressionAST var_expression_1919 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_1919, inCompiler) ;
-    GGS_assignmentInstructionAST var_assignment_1941 = GGS_assignmentInstructionAST::init_21__21__21__21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 36)), GGS_string ("result").getter_here (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 37)), GGS_assignmentSupplementAST::class_func_none (SOURCE_FILE ("declararation-global-constant.galgas4", 38)), var_expression_1919, inCompiler COMMA_HERE) ;
-    GGS__5B_semanticInstructionAST_5D_ temp_0 = GGS__5B_semanticInstructionAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 41)) ;
-    temp_0.plusPlusAssignOperation (var_assignment_1941  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 41)) ;
-    var_functionInstructionList_1818 = temp_0 ;
+    GGS_semanticExpressionAST var_expression_1918 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_1918, inCompiler) ;
+    GGS_assignmentInstructionAST var_assignment_1940 = GGS_assignmentInstructionAST::init_21__21__21__21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 35)), GGS_string ("result").getter_here (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 36)), GGS_assignmentSupplementAST::class_func_none (SOURCE_FILE ("declararation-global-constant.galgas4", 37)), var_expression_1918, inCompiler COMMA_HERE) ;
+    GGS__5B_semanticInstructionAST_5D_ temp_0 = GGS__5B_semanticInstructionAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 40)) ;
+    temp_0.plusPlusAssignOperation (var_assignment_1940  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 40)) ;
+    var_functionInstructionList_1817 = temp_0 ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 43)) ;
-    nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_functionInstructionList_1818, inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 45)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 42)) ;
+    nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_functionInstructionList_1817, inCompiler) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 44)) ;
   } break ;
   default:
     break ;
   }
-  GGS_location var_endOfFunctionInstructionList_2229 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 47)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_onceFunctionDeclarationAST::init_21_isPredefined_21__21__21__21__21__21_ (GGS_bool (false), var_functionName_1732, var_resultTypeName_1693, var_functionInstructionList_1818, var_endOfFunctionInstructionList_2229, GGS_bool (false), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 48)) ;
+  GGS_location var_endOfFunctionInstructionList_2228 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 46)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_onceFunctionDeclarationAST::init_21_isPredefined_21__21__21__21__21__21_ (GGS_bool (false), var_functionName_1731, var_resultTypeName_1692, var_functionInstructionList_1817, var_endOfFunctionInstructionList_2228, GGS_bool (false), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 47)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_declaration_i43_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 28)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 27)) ;
   nt_type_5F_definition_indexing (inCompiler) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_functionDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 30)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 31)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 29)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 30)) ;
   switch (select_galgas_34_InstructionsSyntax_58 (inCompiler)) {
   case 1: {
     nt_expression_indexing (inCompiler) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 43)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 42)) ;
     nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 45)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 44)) ;
   } break ;
   default:
     break ;
@@ -17011,53 +17011,53 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_dec
 
 void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_declaration_i44_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 62)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 63)) ;
-  GGS_lstring var_resultTypeName_2765 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_resultTypeName_2765, inCompiler) ;
-  GGS_lstring var_functionName_2804 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 61)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 62)) ;
+  GGS_lstring var_resultTypeName_2764 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_resultTypeName_2764, inCompiler) ;
+  GGS_lstring var_functionName_2803 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_functionDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 65)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 66)) ;
-  GGS__5B_semanticInstructionAST_5D_ var_functionInstructionList_2890 ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 64)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 65)) ;
+  GGS__5B_semanticInstructionAST_5D_ var_functionInstructionList_2889 ;
   switch (select_galgas_34_InstructionsSyntax_59 (inCompiler)) {
   case 1: {
-    GGS_semanticExpressionAST var_expression_2991 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_2991, inCompiler) ;
-    GGS_assignmentInstructionAST var_assignment_3013 = GGS_assignmentInstructionAST::init_21__21__21__21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 71)), GGS_string ("result").getter_here (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 72)), GGS_assignmentSupplementAST::class_func_none (SOURCE_FILE ("declararation-global-constant.galgas4", 73)), var_expression_2991, inCompiler COMMA_HERE) ;
-    GGS__5B_semanticInstructionAST_5D_ temp_0 = GGS__5B_semanticInstructionAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 76)) ;
-    temp_0.plusPlusAssignOperation (var_assignment_3013  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 76)) ;
-    var_functionInstructionList_2890 = temp_0 ;
+    GGS_semanticExpressionAST var_expression_2990 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_2990, inCompiler) ;
+    GGS_assignmentInstructionAST var_assignment_3012 = GGS_assignmentInstructionAST::init_21__21__21__21_ (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 70)), GGS_string ("result").getter_here (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 71)), GGS_assignmentSupplementAST::class_func_none (SOURCE_FILE ("declararation-global-constant.galgas4", 72)), var_expression_2990, inCompiler COMMA_HERE) ;
+    GGS__5B_semanticInstructionAST_5D_ temp_0 = GGS__5B_semanticInstructionAST_5D_::init (inCompiler COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 75)) ;
+    temp_0.plusPlusAssignOperation (var_assignment_3012  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 75)) ;
+    var_functionInstructionList_2889 = temp_0 ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 78)) ;
-    nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_functionInstructionList_2890, inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 80)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 77)) ;
+    nt_semantic_5F_instruction_5F_list_ (ioArgument_ioDeclarations, var_functionInstructionList_2889, inCompiler) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 79)) ;
   } break ;
   default:
     break ;
   }
-  GGS_location var_endOfFunctionInstructionList_3301 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 82)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_onceFunctionDeclarationAST::init_21_isPredefined_21__21__21__21__21__21_ (GGS_bool (false), var_functionName_2804, var_resultTypeName_2765, var_functionInstructionList_2890, var_endOfFunctionInstructionList_3301, GGS_bool (true), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 83)) ;
+  GGS_location var_endOfFunctionInstructionList_3300 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 81)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_onceFunctionDeclarationAST::init_21_isPredefined_21__21__21__21__21__21_ (GGS_bool (false), var_functionName_2803, var_resultTypeName_2764, var_functionInstructionList_2889, var_endOfFunctionInstructionList_3300, GGS_bool (true), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 82)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_declaration_i44_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 62)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 63)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 61)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 62)) ;
   nt_type_5F_definition_indexing (inCompiler) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_functionDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 65)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 66)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 64)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 65)) ;
   switch (select_galgas_34_InstructionsSyntax_59 (inCompiler)) {
   case 1: {
     nt_expression_indexing (inCompiler) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 78)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 77)) ;
     nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 80)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declararation-global-constant.galgas4", 79)) ;
   } break ;
   default:
     break ;

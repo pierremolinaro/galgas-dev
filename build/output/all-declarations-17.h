@@ -781,13 +781,13 @@ extern const cDirectoryWrapper gWrapperDirectory_0_lexicalTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'lexicalTemplates swiftUILexicalStyleView'
+//Filewrapper template 'lexicalTemplates swiftUILexicalStyles'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexicalTemplates_swiftUILexicalStyleView (Compiler * inCompiler,
-                                                                         const class GGS_styleMap & in_LEXICAL_5F_STYLE_5F_MAP
-                                                                         COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_lexicalTemplates_swiftUILexicalStyles (Compiler * inCompiler,
+                                                                      const class GGS_sortedLexicalStyleArray & in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

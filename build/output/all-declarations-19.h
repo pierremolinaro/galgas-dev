@@ -36,6 +36,8 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUI
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
+extern const cDirectoryWrapper gWrapperDirectory_1_guiGenerationTemplates ;
+extern const cDirectoryWrapper gWrapperDirectory_2_guiGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -1513,17 +1513,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
                                                  const String & inSourceFilePath) ;
 
-//------------------------------------- 'style_declaration' non terminal
-//--- 'parse' label
- /*  public: virtual void nt_style_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
-
-//--- indexing
-  public: virtual void nt_style_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_style_5F_declaration_ (GGS__5B_lexicalStyleAST_5D_ & ioArgument0,
-                                                 Lexique_galgasScanner_34_ * inCompiler) ;
-
 //------------------------------------- 'switch_case' non terminal
 //--- 'parse' label
  /*  public: virtual void nt_switch_5F_case_parse (Lexique_galgasScanner_34_ * inCompiler) ; */

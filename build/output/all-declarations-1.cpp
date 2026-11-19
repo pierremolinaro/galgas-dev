@@ -6756,491 +6756,6 @@ const GALGAS_TypeDescriptor * GGS_lexicalAttributeAST::staticTypeDescriptor (voi
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_lexicalStyleAST_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ & GGS__5B_lexicalStyleAST_5D_::operator = (const GGS__5B_lexicalStyleAST_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_lexicalStyleAST_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::plusPlusAssignOperation (const GGS_lexicalStyleAST & inValue
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_lexicalStyleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::add_operation (const GGS__5B_lexicalStyleAST_5D_ & inOperand,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_lexicalStyleAST_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::description (String & ioString,
-                                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@lexicalStyleAST], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::plusAssignOperation (const GGS__5B_lexicalStyleAST_5D_ inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_append (const GGS_lexicalStyleAST inValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_set (const GGS_lexicalStyleAST inValue,
-                                              const GGS_uint inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_insert (const GGS_lexicalStyleAST inValue,
-                                                 const GGS_uint inInsertionIndex,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_remove (GGS_lexicalStyleAST & outValue,
-                                                 const GGS_uint inRemoveIndex,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_removeFirst (GGS_lexicalStyleAST & outValue,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_lexicalStyleAST_5D_::setter_removeLast (GGS_lexicalStyleAST & outValue,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GGS__5B_lexicalStyleAST_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                         const GGS_uint & inLength,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS__5B_lexicalStyleAST_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::getter_first (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lexicalStyleAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::getter_last (Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_lexicalStyleAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalStyleAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_lexicalStyleAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_lexicalStyleAST_5D_::DownEnumerator__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST DownEnumerator__5B_lexicalStyleAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST DownEnumerator__5B_lexicalStyleAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_lexicalStyleAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_lexicalStyleAST_5D_::UpEnumerator__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST UpEnumerator__5B_lexicalStyleAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST UpEnumerator__5B_lexicalStyleAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[lexicalStyleAST] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalStyleAST_5D_ ("[lexicalStyleAST]",
-                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_lexicalStyleAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_lexicalStyleAST_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST::GGS_lexicalStyleAST (void) :
-mProperty_mName (),
-mProperty_mComment () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST::GGS_lexicalStyleAST (const GGS_lexicalStyleAST & inSource) :
-mProperty_mName (inSource.mProperty_mName),
-mProperty_mComment (inSource.mProperty_mComment) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST & GGS_lexicalStyleAST::operator = (const GGS_lexicalStyleAST & inSource) {
-  mProperty_mName = inSource.mProperty_mName ;
-  mProperty_mComment = inSource.mProperty_mComment ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_lexicalStyleAST GGS_lexicalStyleAST::init_21__21_ (const GGS_lstring & in_mName,
-                                                       const GGS_lstring & in_mComment,
-                                                       Compiler * inCompiler
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalStyleAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mName = in_mName ;
-  result.mProperty_mComment = in_mComment ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalStyleAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalStyleAST::GGS_lexicalStyleAST (const GGS_lstring & inOperand0,
-                                          const GGS_lstring & inOperand1) :
-mProperty_mName (inOperand0),
-mProperty_mComment (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lexicalStyleAST::isValid (void) const {
-  return mProperty_mName.isValid () && mProperty_mComment.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalStyleAST::drop (void) {
-  mProperty_mName.drop () ;
-  mProperty_mComment.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalStyleAST::description (String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @lexicalStyleAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mComment.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalStyleAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStyleAST ("lexicalStyleAST",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalStyleAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalStyleAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_terminalDeclarationAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -14212,23 +13727,22 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_lexiqueComponentAST GGS_lexiqueComponentAST::
-init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                  const GGS_lstring & in_mLexiqueComponentName,
-                                                                  const GGS_bool & in_mIsTemplate,
-                                                                  const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
-                                                                  const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
-                                                                  const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
-                                                                  const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
-                                                                  const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
-                                                                  const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
-                                                                  const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
-                                                                  const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
-                                                                  const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                              const GGS_lstring & in_mLexiqueComponentName,
+                                                              const GGS_bool & in_mIsTemplate,
+                                                              const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
+                                                              const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
+                                                              const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                              const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
+                                                              const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
+                                                              const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                              const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
+                                                              const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   cPtr_lexiqueComponentAST * object = nullptr ;
   macroMyNew (object, cPtr_lexiqueComponentAST (inCompiler COMMA_THERE)) ;
-  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mLexicalStyleListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
+  object->lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21_ (in_isPredefined, in_mLexiqueComponentName, in_mIsTemplate, in_mTemplateDelimitorListAST, in_mTemplateReplacementListAST, in_mLexicalAttributeListAST, in_mTerminalDeclarationListAST, in_mLexicalMessageDeclarationListAST, in_mLexicalListDeclarationListAST, in_mLexicalRuleListAST, in_mIndexingListAST, inCompiler) ;
   const GGS_lexiqueComponentAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -14237,26 +13751,24 @@ init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_lexiqueComponentAST::
-lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                                      const GGS_lstring & in_mLexiqueComponentName,
-                                                                                      const GGS_bool & in_mIsTemplate,
-                                                                                      const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
-                                                                                      const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
-                                                                                      const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
-                                                                                      const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
-                                                                                      const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
-                                                                                      const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
-                                                                                      const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
-                                                                                      const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
-                                                                                      const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
-                                                                                      Compiler * /* inCompiler */) {
+lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                  const GGS_lstring & in_mLexiqueComponentName,
+                                                                                  const GGS_bool & in_mIsTemplate,
+                                                                                  const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
+                                                                                  const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
+                                                                                  const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                                                  const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
+                                                                                  const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
+                                                                                  const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                                                  const GGS__5B_abstractLexicalRuleAST_5D_ & in_mLexicalRuleListAST,
+                                                                                  const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                                                  Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mLexiqueComponentName = in_mLexiqueComponentName ;
   mProperty_mIsTemplate = in_mIsTemplate ;
   mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
   mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
   mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
-  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
   mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
   mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
   mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
@@ -14332,18 +13844,6 @@ GGS__5B_lexicalAttributeAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalAt
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalStyleAST_5D_ GGS_lexiqueComponentAST::readProperty_mLexicalStyleListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_lexicalStyleAST_5D_ () ;
-  }else{
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    return p->mProperty_mLexicalStyleListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS__5B_terminalDeclarationAST_5D_ GGS_lexiqueComponentAST::readProperty_mTerminalDeclarationListAST (void) const {
   if (nullptr == mObjectPtr) {
     return GGS__5B_terminalDeclarationAST_5D_ () ;
@@ -14413,7 +13913,6 @@ mProperty_mIsTemplate (),
 mProperty_mTemplateDelimitorListAST (),
 mProperty_mTemplateReplacementListAST (),
 mProperty_mLexicalAttributeListAST (),
-mProperty_mLexicalStyleListAST (),
 mProperty_mTerminalDeclarationListAST (),
 mProperty_mLexicalMessageDeclarationListAST (),
 mProperty_mLexicalListDeclarationListAST (),
@@ -14429,7 +13928,6 @@ cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GGS_bool & in_isPredef
                                                     const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorListAST,
                                                     const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementListAST,
                                                     const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
-                                                    const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
                                                     const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalDeclarationListAST,
                                                     const GGS__5B_lexicalMessageDeclarationAST_5D_ & in_mLexicalMessageDeclarationListAST,
                                                     const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
@@ -14443,7 +13941,6 @@ mProperty_mIsTemplate (),
 mProperty_mTemplateDelimitorListAST (),
 mProperty_mTemplateReplacementListAST (),
 mProperty_mLexicalAttributeListAST (),
-mProperty_mLexicalStyleListAST (),
 mProperty_mTerminalDeclarationListAST (),
 mProperty_mLexicalMessageDeclarationListAST (),
 mProperty_mLexicalListDeclarationListAST (),
@@ -14455,7 +13952,6 @@ mProperty_mIndexingListAST () {
   mProperty_mTemplateDelimitorListAST = in_mTemplateDelimitorListAST ;
   mProperty_mTemplateReplacementListAST = in_mTemplateReplacementListAST ;
   mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
-  mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
   mProperty_mTerminalDeclarationListAST = in_mTerminalDeclarationListAST ;
   mProperty_mLexicalMessageDeclarationListAST = in_mLexicalMessageDeclarationListAST ;
   mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
@@ -14484,8 +13980,6 @@ void cPtr_lexiqueComponentAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
   mProperty_mTerminalDeclarationListAST.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mLexicalMessageDeclarationListAST.description (ioString, inIndentation+1) ;
@@ -14502,7 +13996,7 @@ void cPtr_lexiqueComponentAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_lexiqueComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_isPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mLexicalStyleListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_isPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorListAST, mProperty_mTemplateReplacementListAST, mProperty_mLexicalAttributeListAST, mProperty_mTerminalDeclarationListAST, mProperty_mLexicalMessageDeclarationListAST, mProperty_mLexicalListDeclarationListAST, mProperty_mLexicalRuleListAST, mProperty_mIndexingListAST, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14517,7 +14011,6 @@ AbstractPtrClass * cPtr_lexiqueComponentAST::duplicate (Compiler * inCompiler CO
     mProperty_mTemplateDelimitorListAST.printNonNullClassInstanceProperties ("mTemplateDelimitorListAST") ;
     mProperty_mTemplateReplacementListAST.printNonNullClassInstanceProperties ("mTemplateReplacementListAST") ;
     mProperty_mLexicalAttributeListAST.printNonNullClassInstanceProperties ("mLexicalAttributeListAST") ;
-    mProperty_mLexicalStyleListAST.printNonNullClassInstanceProperties ("mLexicalStyleListAST") ;
     mProperty_mTerminalDeclarationListAST.printNonNullClassInstanceProperties ("mTerminalDeclarationListAST") ;
     mProperty_mLexicalMessageDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalMessageDeclarationListAST") ;
     mProperty_mLexicalListDeclarationListAST.printNonNullClassInstanceProperties ("mLexicalListDeclarationListAST") ;
@@ -14632,6 +14125,491 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_wea
 
 const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_lexicalStyleAST_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ & GGS__5B_lexicalStyleAST_5D_::operator = (const GGS__5B_lexicalStyleAST_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_lexicalStyleAST_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::plusPlusAssignOperation (const GGS_lexicalStyleAST & inValue
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_lexicalStyleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::add_operation (const GGS__5B_lexicalStyleAST_5D_ & inOperand,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lexicalStyleAST_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::description (String & ioString,
+                                               const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@lexicalStyleAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::plusAssignOperation (const GGS__5B_lexicalStyleAST_5D_ inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_append (const GGS_lexicalStyleAST inValue,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_set (const GGS_lexicalStyleAST inValue,
+                                              const GGS_uint inIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'set' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_insert (const GGS_lexicalStyleAST inValue,
+                                                 const GGS_uint inInsertionIndex,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_remove (GGS_lexicalStyleAST & outValue,
+                                                 const GGS_uint inRemoveIndex,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_removeFirst (GGS_lexicalStyleAST & outValue,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalStyleAST_5D_::setter_removeLast (GGS_lexicalStyleAST & outValue,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalStyleAST_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
+                                                                         const GGS_uint & inLength,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalStyleAST_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_lexicalStyleAST_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::getter_first (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalStyleAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::getter_last (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  GGS_lexicalStyleAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lexicalStyleAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_lexicalStyleAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_lexicalStyleAST_5D_::DownEnumerator__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST DownEnumerator__5B_lexicalStyleAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST DownEnumerator__5B_lexicalStyleAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_lexicalStyleAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_lexicalStyleAST_5D_::UpEnumerator__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST UpEnumerator__5B_lexicalStyleAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST UpEnumerator__5B_lexicalStyleAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[lexicalStyleAST] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalStyleAST_5D_ ("[lexicalStyleAST]",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_lexicalStyleAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_lexicalStyleAST_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST::GGS_lexicalStyleAST (void) :
+mProperty_mName (),
+mProperty_mComment () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST::GGS_lexicalStyleAST (const GGS_lexicalStyleAST & inSource) :
+mProperty_mName (inSource.mProperty_mName),
+mProperty_mComment (inSource.mProperty_mComment) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST & GGS_lexicalStyleAST::operator = (const GGS_lexicalStyleAST & inSource) {
+  mProperty_mName = inSource.mProperty_mName ;
+  mProperty_mComment = inSource.mProperty_mComment ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_lexicalStyleAST GGS_lexicalStyleAST::init_21__21_ (const GGS_lstring & in_mName,
+                                                       const GGS_lstring & in_mComment,
+                                                       Compiler * inCompiler
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexicalStyleAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mName = in_mName ;
+  result.mProperty_mComment = in_mComment ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalStyleAST::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalStyleAST::GGS_lexicalStyleAST (const GGS_lstring & inOperand0,
+                                          const GGS_lstring & inOperand1) :
+mProperty_mName (inOperand0),
+mProperty_mComment (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexicalStyleAST::isValid (void) const {
+  return mProperty_mName.isValid () && mProperty_mComment.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalStyleAST::drop (void) {
+  mProperty_mName.drop () ;
+  mProperty_mComment.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalStyleAST::description (String & ioString,
+                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lexicalStyleAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mComment.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalStyleAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStyleAST ("lexicalStyleAST",
+                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalStyleAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalStyleAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15575,6 +15553,474 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProject ("xcodeProject",
 
 const GALGAS_TypeDescriptor * GGS_xcodeProject::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_xcodeProject ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (void) :
+mProperty_name (),
+mProperty_comment (),
+mProperty_index () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (const GGS_sortedLexicalStyle & inSource) :
+mProperty_name (inSource.mProperty_name),
+mProperty_comment (inSource.mProperty_comment),
+mProperty_index (inSource.mProperty_index) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle & GGS_sortedLexicalStyle::operator = (const GGS_sortedLexicalStyle & inSource) {
+  mProperty_name = inSource.mProperty_name ;
+  mProperty_comment = inSource.mProperty_comment ;
+  mProperty_index = inSource.mProperty_index ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_sortedLexicalStyle GGS_sortedLexicalStyle::init_21__21__21_ (const GGS_string & in_name,
+                                                                 const GGS_string & in_comment,
+                                                                 const GGS_uint & in_index,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_sortedLexicalStyle result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_name = in_name ;
+  result.mProperty_comment = in_comment ;
+  result.mProperty_index = in_index ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyle::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (const GGS_string & inOperand0,
+                                                const GGS_string & inOperand1,
+                                                const GGS_uint & inOperand2) :
+mProperty_name (inOperand0),
+mProperty_comment (inOperand1),
+mProperty_index (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_sortedLexicalStyle::isValid (void) const {
+  return mProperty_name.isValid () && mProperty_comment.isValid () && mProperty_index.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyle::drop (void) {
+  mProperty_name.drop () ;
+  mProperty_comment.drop () ;
+  mProperty_index.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyle::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @sortedLexicalStyle:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_name.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_comment.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_index.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @sortedLexicalStyle generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyle ("sortedLexicalStyle",
+                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_sortedLexicalStyle::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sortedLexicalStyle ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@sortedLexicalStyleArray' array
+//--------------------------------------------------------------------------------------------------
+
+static int32_t compareForSorting_sortedLexicalStyleArray (const GGS_sortedLexicalStyle & inLeft,
+                                                          const GGS_sortedLexicalStyle & inRight) {
+  ComparisonResult result = ComparisonResult::operandEqual ;
+  if (result == ComparisonResult::operandEqual) {
+    result = inLeft.mProperty_index.objectCompare (inRight.mProperty_index) ;
+  }
+  return int32_t (result) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray::GGS_sortedLexicalStyleArray (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray::GGS_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray & GGS_sortedLexicalStyleArray::operator = (const GGS_sortedLexicalStyleArray & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_sortedLexicalStyleArray result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::plusPlusAssignOperation (const GGS_sortedLexicalStyle & inValue
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_sortedLexicalStyleArray::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::add_operation (const GGS_sortedLexicalStyleArray & inOperand,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyleArray result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    result.mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::description (String & ioString,
+                                               const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@sortedLexicalStyle], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::plusAssignOperation (const GGS_sortedLexicalStyleArray inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::setter_append (const GGS_sortedLexicalStyle inValue,
+                                                 Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::setter_removeAll (Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::setter_remove (GGS_sortedLexicalStyle & outValue,
+                                                 const GGS_uint inRemoveIndex,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::setter_removeFirst (GGS_sortedLexicalStyle & outValue,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_sortedLexicalStyleArray::setter_removeLast (GGS_sortedLexicalStyle & outValue,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::getter_removingFirst (const GGS_uint & inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyleArray result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::getter_sublist (const GGS_uint & inStartIndex,
+                                                                         const GGS_uint & inLength,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyleArray result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::getter_first (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyle result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::getter_last (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyle result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
+  GGS_sortedLexicalStyle result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @sortedLexicalStyleArray
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_sortedLexicalStyleArray::DownEnumerator_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle DownEnumerator_sortedLexicalStyleArray::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle DownEnumerator_sortedLexicalStyleArray::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @sortedLexicalStyleArray
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_sortedLexicalStyleArray::UpEnumerator_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle UpEnumerator_sortedLexicalStyleArray::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_sortedLexicalStyle UpEnumerator_sortedLexicalStyleArray::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @sortedLexicalStyleArray generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyleArray ("sortedLexicalStyleArray",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_sortedLexicalStyleArray::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_sortedLexicalStyleArray ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16758,30 +17204,30 @@ __attribute__ ((unused)) (getKeywordLists_projectComponentScanner, getKeywordsFo
 uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
   static const uint32_t kTerminalSymbolStyles [26] = {0,
     0 /* projectComponentScanner_1_identifier */,
-    2 /* projectComponentScanner_1_literalInt */,
-    3 /* projectComponentScanner_1__27_char_27_ */,
-    6 /* projectComponentScanner_1_comment */,
-    6 /* projectComponentScanner_1_commentMark */,
-    4 /* projectComponentScanner_1__22_string_22_ */,
-    5 /* projectComponentScanner_1__23_macAppBundleBaseName */,
-    5 /* projectComponentScanner_1__23_codeblocks_2D_linux_33__32_ */,
-    5 /* projectComponentScanner_1__23_codeblocks_2D_linux_36__34_ */,
-    5 /* projectComponentScanner_1__23_codeblocks_2D_windows */,
-    5 /* projectComponentScanner_1__23_libpmCustomPath */,
-    5 /* projectComponentScanner_1__23_productName */,
-    5 /* projectComponentScanner_1__23_version */,
-    5 /* projectComponentScanner_1__23_macCodeSign */,
-    5 /* projectComponentScanner_1__23_makefile_2D_macosx */,
-    5 /* projectComponentScanner_1__23_makefile_2D_unix */,
-    5 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
-    5 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
-    5 /* projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
-    5 /* projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
-    5 /* projectComponentScanner_1__23_macSwiftApp */,
-    5 /* projectComponentScanner_1__23_lexical_2D_style */,
-    1 /* projectComponentScanner_1__2E_ */,
-    1 /* projectComponentScanner_1__3A_ */,
-    1 /* projectComponentScanner_1__2D__3E_ */
+    6 /* projectComponentScanner_1_literalInt */,
+    8 /* projectComponentScanner_1__27_char_27_ */,
+    12 /* projectComponentScanner_1_comment */,
+    12 /* projectComponentScanner_1_commentMark */,
+    9 /* projectComponentScanner_1__22_string_22_ */,
+    11 /* projectComponentScanner_1__23_macAppBundleBaseName */,
+    11 /* projectComponentScanner_1__23_codeblocks_2D_linux_33__32_ */,
+    11 /* projectComponentScanner_1__23_codeblocks_2D_linux_36__34_ */,
+    11 /* projectComponentScanner_1__23_codeblocks_2D_windows */,
+    11 /* projectComponentScanner_1__23_libpmCustomPath */,
+    11 /* projectComponentScanner_1__23_productName */,
+    11 /* projectComponentScanner_1__23_version */,
+    11 /* projectComponentScanner_1__23_macCodeSign */,
+    11 /* projectComponentScanner_1__23_makefile_2D_macosx */,
+    11 /* projectComponentScanner_1__23_makefile_2D_unix */,
+    11 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
+    11 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
+    11 /* projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
+    11 /* projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
+    11 /* projectComponentScanner_1__23_macSwiftApp */,
+    11 /* projectComponentScanner_1__23_lexical_2D_style */,
+    2 /* projectComponentScanner_1__2E_ */,
+    2 /* projectComponentScanner_1__3A_ */,
+    2 /* projectComponentScanner_1__2D__3E_ */
   } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }
@@ -16792,15 +17238,9 @@ uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t i
 
 String Lexique_projectComponentScanner::styleNameForIndex (const uint32_t inStyleIndex) const {
   String result ;
-  if (inStyleIndex < 7) {
-    static const char * kStyleArray [7] = {
-      "",
-      "delimitersStyle",
-      "integerStyle",
-      "characterStyle",
-      "stringStyle",
-      "attributeStyle",
-      "commentStyle"
+  if (inStyleIndex < 1) {
+    static const char * kStyleArray [1] = {
+      ""
     } ;
     result = kStyleArray [inStyleIndex] ;
   }

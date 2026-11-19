@@ -10,179 +10,6 @@ import SwiftUI
 
 //--------------------------------------------------------------------------------------------------
 
-struct SettingViewFor_projectComponentScanner : View {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @State private var mUnused = false
-
-  @AppStorage("FontFor_projectComponentScanner")
-  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-
-  @AppStorage("LineHeightFor_projectComponentScanner")
-  private var mLineHeight : Int = 12
-
-  @AppStorage("ColorFor_projectComponentScanner")
-  private var mDefaultColor : Color = .black
-
-  @AppStorage("ColorFor_projectComponentScanner-delimitersStyle")
-  private var mColorFor_delimitersStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-delimitersStyle")
-  private var mBoldFor_delimitersStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-delimitersStyle")
-  private var mItalicFor_delimitersStyle : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner-integerStyle")
-  private var mColorFor_integerStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-integerStyle")
-  private var mBoldFor_integerStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-integerStyle")
-  private var mItalicFor_integerStyle : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner-characterStyle")
-  private var mColorFor_characterStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-characterStyle")
-  private var mBoldFor_characterStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-characterStyle")
-  private var mItalicFor_characterStyle : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner-stringStyle")
-  private var mColorFor_stringStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-stringStyle")
-  private var mBoldFor_stringStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-stringStyle")
-  private var mItalicFor_stringStyle : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner-attributeStyle")
-  private var mColorFor_attributeStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-attributeStyle")
-  private var mBoldFor_attributeStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-attributeStyle")
-  private var mItalicFor_attributeStyle : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner-commentStyle")
-  private var mColorFor_commentStyle : Color = .black
-
-  @AppStorage("BoldFor_projectComponentScanner-commentStyle")
-  private var mBoldFor_commentStyle : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner-commentStyle")
-  private var mItalicFor_commentStyle : Bool = false
-
-
-  @AppStorage("ColorFor_projectComponentScanner_lexical_error")
-  private var mColorFor_lexical_error : Color = .red
-
-  @AppStorage("BoldFor_projectComponentScanner_lexical_error")
-  private var mBoldFor_lexical_error : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner_lexical_error")
-  private var mItalicFor_lexical_error : Bool = false
-
-  @AppStorage("ColorFor_projectComponentScanner_template")
-  private var mColorFor_template : Color = .gray
-
-  @AppStorage("BoldFor_projectComponentScanner_template")
-  private var mBoldFor_template : Bool = false
-
-  @AppStorage("ItalicFor_projectComponentScanner_template")
-  private var mItalicFor_template : Bool = false
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  var body : some View {
-    Form {
-      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
-      Picker("Line Height", selection: self.$mLineHeight) {
-        Text("1.0").tag(10)
-        Text("1.1").tag(11)
-        Text("1.2").tag(12)
-        Text("1.5").tag(15)
-        Text("1.7").tag(17)
-        Text("2.0").tag(20)
-      }.pickerStyle(.automatic)
-      LabeledContent ("Default Color") {
-        HStack {
-          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
-          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
-        }
-      }
-      LabeledContent ("Delimiters") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_delimitersStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_delimitersStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_delimitersStyle)
-        }
-      }
-      LabeledContent ("Integer Constants") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_integerStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_integerStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_integerStyle)
-        }
-      }
-      LabeledContent ("Character Constants") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_characterStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_characterStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_characterStyle)
-        }
-      }
-      LabeledContent ("String Constants") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_stringStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_stringStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_stringStyle)
-        }
-      }
-      LabeledContent ("Attributes (#...)") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_attributeStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_attributeStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_attributeStyle)
-        }
-      }
-      LabeledContent ("Comments") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_commentStyle).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_commentStyle)
-          Toggle ("Italic", isOn: self.$mItalicFor_commentStyle)
-        }
-      }
-      LabeledContent ("Lexical Error") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
-          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
-        }
-      }
-      LabeledContent ("Template") {
-        HStack {
-          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_template)
-          Toggle ("Italic", isOn: self.$mItalicFor_template)
-        }
-      }
-    }.padding (20)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
 class ScannerFor_projectComponentScanner : AbstractScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -277,32 +104,32 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
     let kTerminalSymbolStyles : [UInt8] = [
       0, // Default
       0, // 1 : projectComponentScanner_1_identifier
-      2, // 2 : projectComponentScanner_1_literalInt
-      3, // 3 : projectComponentScanner_1__27_char_27_
-      6, // 4 : projectComponentScanner_1_comment
-      6, // 5 : projectComponentScanner_1_commentMark
-      4, // 6 : projectComponentScanner_1__22_string_22_
-      5, // 7 : projectComponentScanner_1__23_macAppBundleBaseName
-      5, // 8 : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_
-      5, // 9 : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_
-      5, // 10 : projectComponentScanner_1__23_codeblocks_2D_windows
-      5, // 11 : projectComponentScanner_1__23_libpmCustomPath
-      5, // 12 : projectComponentScanner_1__23_productName
-      5, // 13 : projectComponentScanner_1__23_version
-      5, // 14 : projectComponentScanner_1__23_macCodeSign
-      5, // 15 : projectComponentScanner_1__23_makefile_2D_macosx
-      5, // 16 : projectComponentScanner_1__23_makefile_2D_unix
-      5, // 17 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
-      5, // 18 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
-      5, // 19 : projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
-      5, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
-      5, // 21 : projectComponentScanner_1__23_macSwiftApp
-      5, // 22 : projectComponentScanner_1__23_lexical_2D_style
-      1, // 23 : projectComponentScanner_1__2E_
-      1, // 24 : projectComponentScanner_1__3A_
-      1, // 25 : projectComponentScanner_1__2D__3E_
-      7, // 26 : projectComponentScanner_2_ERROR
-      8  // 27 : projectComponentScanner_2_TEMPLATE
+      6, // 2 : projectComponentScanner_1_literalInt
+      8, // 3 : projectComponentScanner_1__27_char_27_
+      12, // 4 : projectComponentScanner_1_comment
+      12, // 5 : projectComponentScanner_1_commentMark
+      9, // 6 : projectComponentScanner_1__22_string_22_
+      11, // 7 : projectComponentScanner_1__23_macAppBundleBaseName
+      11, // 8 : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_
+      11, // 9 : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_
+      11, // 10 : projectComponentScanner_1__23_codeblocks_2D_windows
+      11, // 11 : projectComponentScanner_1__23_libpmCustomPath
+      11, // 12 : projectComponentScanner_1__23_productName
+      11, // 13 : projectComponentScanner_1__23_version
+      11, // 14 : projectComponentScanner_1__23_macCodeSign
+      11, // 15 : projectComponentScanner_1__23_makefile_2D_macosx
+      11, // 16 : projectComponentScanner_1__23_makefile_2D_unix
+      11, // 17 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx
+      11, // 18 : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx
+      11, // 19 : projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx
+      11, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
+      11, // 21 : projectComponentScanner_1__23_macSwiftApp
+      11, // 22 : projectComponentScanner_1__23_lexical_2D_style
+      2, // 23 : projectComponentScanner_1__2E_
+      2, // 24 : projectComponentScanner_1__3A_
+      2, // 25 : projectComponentScanner_1__2D__3E_
+      1, // 26 : projectComponentScanner_2_ERROR
+      2  // 27 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -351,381 +178,36 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //  S T Y L E S
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func styleCount () -> UInt8 {
-    return 6
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func styleNameFor (styleIndex inIndex : UInt8) -> String {
-    return projectComponentScanner_styleNameFor (styleIndex: inIndex)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
-    return projectComponentScanner_styleIdentifierFor (styleIndex: inIndex)
-  }
-
- // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  final var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
-  final var mLineHeight : Int = 12
-  final var mDefaultColor : Color = .black
-  final var mColorFor_delimitersStyle : Color = .black
-  final var mBoldFor_delimitersStyle : Bool = false
-  final var mItalicFor_delimitersStyle : Bool = false
-  final var mColorFor_integerStyle : Color = .black
-  final var mBoldFor_integerStyle : Bool = false
-  final var mItalicFor_integerStyle : Bool = false
-  final var mColorFor_characterStyle : Color = .black
-  final var mBoldFor_characterStyle : Bool = false
-  final var mItalicFor_characterStyle : Bool = false
-  final var mColorFor_stringStyle : Color = .black
-  final var mBoldFor_stringStyle : Bool = false
-  final var mItalicFor_stringStyle : Bool = false
-  final var mColorFor_attributeStyle : Color = .black
-  final var mBoldFor_attributeStyle : Bool = false
-  final var mItalicFor_attributeStyle : Bool = false
-  final var mColorFor_commentStyle : Color = .black
-  final var mBoldFor_commentStyle : Bool = false
-  final var mItalicFor_commentStyle : Bool = false
-  final var mColorFor_lexical_error : Color = .red
-  final var mBoldFor_lexical_error : Bool = false
-  final var mItalicFor_lexical_error : Bool = false
-  final var mColorFor_template : Color = .gray
-  final var mBoldFor_template : Bool = false
-  final var mItalicFor_template : Bool = false
-  final var mTokenAttributeArray = [[NSAttributedString.Key : Any]?] ()
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  func updateTokenStyleArrays (_ ioStyleDidChange : inout Bool) {
-    ioStyleDidChange = false
-    let ud = UserDefaults.standard
-    if let s = ud.string (forKey: "FontFor_projectComponentScanner"), let v = CustomFont (rawValue: s) {
-      if self.mFont != v {
-        self.mFont = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "LineHeightFor_projectComponentScanner"), let v = Int (s) {
-      if self.mLineHeight != v {
-        self.mLineHeight = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner"), let v = Color (rawValue: s) {
-      if self.mDefaultColor != v {
-        self.mDefaultColor = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-delimitersStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_delimitersStyle != v {
-        self.mColorFor_delimitersStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-delimitersStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-delimitersStyle")
-      if self.mBoldFor_delimitersStyle != v {
-        self.mBoldFor_delimitersStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-delimitersStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-delimitersStyle")
-      if self.mItalicFor_delimitersStyle != v {
-        self.mItalicFor_delimitersStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-integerStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_integerStyle != v {
-        self.mColorFor_integerStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-integerStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-integerStyle")
-      if self.mBoldFor_integerStyle != v {
-        self.mBoldFor_integerStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-integerStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-integerStyle")
-      if self.mItalicFor_integerStyle != v {
-        self.mItalicFor_integerStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-characterStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_characterStyle != v {
-        self.mColorFor_characterStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-characterStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-characterStyle")
-      if self.mBoldFor_characterStyle != v {
-        self.mBoldFor_characterStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-characterStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-characterStyle")
-      if self.mItalicFor_characterStyle != v {
-        self.mItalicFor_characterStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-stringStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_stringStyle != v {
-        self.mColorFor_stringStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-stringStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-stringStyle")
-      if self.mBoldFor_stringStyle != v {
-        self.mBoldFor_stringStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-stringStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-stringStyle")
-      if self.mItalicFor_stringStyle != v {
-        self.mItalicFor_stringStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-attributeStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_attributeStyle != v {
-        self.mColorFor_attributeStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-attributeStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-attributeStyle")
-      if self.mBoldFor_attributeStyle != v {
-        self.mBoldFor_attributeStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-attributeStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-attributeStyle")
-      if self.mItalicFor_attributeStyle != v {
-        self.mItalicFor_attributeStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner-commentStyle"), let v = Color (rawValue: s) {
-      if self.mColorFor_commentStyle != v {
-        self.mColorFor_commentStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner-commentStyle") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner-commentStyle")
-      if self.mBoldFor_commentStyle != v {
-        self.mBoldFor_commentStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner-commentStyle") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner-commentStyle")
-      if self.mItalicFor_commentStyle != v {
-        self.mItalicFor_commentStyle = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner_lexical_error"), let v = Color (rawValue: s) {
-      if self.mColorFor_lexical_error != v {
-        self.mColorFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner_lexical_error") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner_lexical_error")
-      if self.mBoldFor_lexical_error != v {
-        self.mBoldFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner_lexical_error") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner_lexical_error")
-      if self.mItalicFor_lexical_error != v {
-        self.mItalicFor_lexical_error = v
-        ioStyleDidChange = true
-      }
-    }
-    if let s = ud.string (forKey: "ColorFor_projectComponentScanner_template"), let v = Color (rawValue: s) {
-      if self.mColorFor_template != v {
-        self.mColorFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "BoldFor_projectComponentScanner_template") != nil {
-      let v = ud.bool (forKey: "BoldFor_projectComponentScanner_template")
-      if self.mBoldFor_template != v {
-        self.mBoldFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-    if ud.string (forKey: "ItalicFor_projectComponentScanner_template") != nil {
-      let v = ud.bool (forKey: "ItalicFor_projectComponentScanner_template")
-      if self.mItalicFor_template != v {
-        self.mItalicFor_template = v
-        ioStyleDidChange = true
-      }
-    }
-  //--- Build token attribute array
-    if ioStyleDidChange {
-      let fontManager = NSFontManager.shared
-      let boldFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .boldFontMask)
-      let italicFont = fontManager.convert (self.mFont.nsFont, toHaveTrait: .italicFontMask)
-      let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
-      self.mTokenAttributeArray.removeAll (keepingCapacity: true)
-      var attributes = [NSAttributedString.Key : Any] ()
-    //--- Attributes for delimitersStyle
-      if self.mColorFor_delimitersStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_delimitersStyle)
-      }
-      if self.mBoldFor_delimitersStyle && self.mItalicFor_delimitersStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_delimitersStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_delimitersStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Attributes for integerStyle
-      if self.mColorFor_integerStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_integerStyle)
-      }
-      if self.mBoldFor_integerStyle && self.mItalicFor_integerStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_integerStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_integerStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Attributes for characterStyle
-      if self.mColorFor_characterStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_characterStyle)
-      }
-      if self.mBoldFor_characterStyle && self.mItalicFor_characterStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_characterStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_characterStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Attributes for stringStyle
-      if self.mColorFor_stringStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_stringStyle)
-      }
-      if self.mBoldFor_stringStyle && self.mItalicFor_stringStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_stringStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_stringStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Attributes for attributeStyle
-      if self.mColorFor_attributeStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_attributeStyle)
-      }
-      if self.mBoldFor_attributeStyle && self.mItalicFor_attributeStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_attributeStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_attributeStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Attributes for commentStyle
-      if self.mColorFor_commentStyle != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_commentStyle)
-      }
-      if self.mBoldFor_commentStyle && self.mItalicFor_commentStyle {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_commentStyle {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_commentStyle {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Lexical error
-      if self.mColorFor_lexical_error != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_lexical_error)
-      }
-      if self.mBoldFor_lexical_error && self.mItalicFor_lexical_error {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_lexical_error {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_lexical_error {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-      attributes.removeAll (keepingCapacity: true)
-    //--- Template
-      if self.mColorFor_template != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_template)
-      }
-      if self.mBoldFor_template && self.mItalicFor_template {
-        attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_template {
-        attributes [.font] = boldFont
-      }else if self.mItalicFor_template {
-        attributes [.font] = italicFont
-      }
-      self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)
-    }
-  }
+  final var mLexicalStyleSnapShot = LexicalStyleSnapShot ()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {
     if self.mDebug { Swift.print ("performLexicalColoringAfterUserDefaultChange") }
     let start = Date ()
-    var styleDidChange = false
-    self.updateTokenStyleArrays (&styleDidChange)
-    if styleDidChange {
+    if stylesDidChange (&self.mLexicalStyleSnapShot) {
       let nsString = inTextStorage.string as NSString
       let fullRange = NSRange (location: 0, length: nsString.length)
     //---- Apply default attributes
       let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
-      let defaultFont = self.mFont.nsFont
+      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont
       inTextStorage.font = defaultFont
       let ps = NSMutableParagraphStyle ()
-      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0
       let defaultAttributes : [NSAttributedString.Key : Any] = [
         .font: defaultFont,
-        .foregroundColor: NSColor (self.mDefaultColor),
+        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),
         .paragraphStyle : ps
       ]
       inTextStorage.setAttributes (defaultAttributes, range: fullRange)
     //--- Apply styles
       for token in self.mTokenArray {
         let idx = Int (self.styleIndexFor (token: token.tokenCode))
-        if idx > 0, idx < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [idx - 1] {
+        if idx > 0, idx < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),
+           let attributes = self.mLexicalStyleSnapShot.mAttributeArray [idx - 1] {
           inTextStorage.addAttributes (attributes, range: token.range)
         }
       }
@@ -836,12 +318,12 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
       let tsDelegate : (any NSTextStorageDelegate)? = inTextStorage.delegate
       inTextStorage.delegate = nil // NSTextStorageDelegate
       inTextStorage.beginEditing ()
-      let defaultFont = self.mFont.nsFont
+      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont
       let ps = NSMutableParagraphStyle ()
-      ps.lineHeightMultiple = CGFloat (self.mLineHeight) / 10.0
+      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0
       let defaultAttributes : [NSAttributedString.Key : Any] = [
         .font: defaultFont,
-        .foregroundColor: NSColor (self.mDefaultColor),
+        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),
         .paragraphStyle : ps
       ]
       if self.mVerboseDebug { Swift.print ("Apply default attributes \(modifiedRange)") }
@@ -856,7 +338,8 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
           stop = true
         }else if token.range.upperBound > modifiedRange.lowerBound {
           let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))
-          if styleIndex > 0, styleIndex < (self.mTokenAttributeArray.count - 1), let attributes = self.mTokenAttributeArray [styleIndex - 1] {
+          if styleIndex > 0, styleIndex < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),
+             let attributes = self.mLexicalStyleSnapShot.mAttributeArray [styleIndex - 1] {
             inTextStorage.addAttributes (attributes, range: token.range)
           }
         }
@@ -1204,14 +687,8 @@ func projectComponentScanner_lexiqueIdentifier () -> String {
 func projectComponentScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "Default Style", // 0
-    "Delimiters", // 1
-    "Integer Constants", // 2
-    "Character Constants", // 3
-    "String Constants", // 4
-    "Attributes (#...)", // 5
-    "Comments", // 6
-    "Lexical error", // 7
-    "Template" // 8
+    "Lexical error", // 1
+    "Template" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }
@@ -1221,14 +698,8 @@ func projectComponentScanner_styleNameFor (styleIndex inIndex : UInt8) -> String
 func projectComponentScanner_styleIdentifierFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
     "projectComponentScanner", // 0
-    "projectComponentScanner-delimitersStyle", // 1
-    "projectComponentScanner-integerStyle", // 2
-    "projectComponentScanner-characterStyle", // 3
-    "projectComponentScanner-stringStyle", // 4
-    "projectComponentScanner-attributeStyle", // 5
-    "projectComponentScanner-commentStyle", // 6
-    "projectComponentScanner.ERROR", // 7
-    "projectComponentScanner.TEMPLATE" // 8
+    "projectComponentScanner.ERROR", // 1
+    "projectComponentScanner.TEMPLATE" // 2
   ]
   return kStyleArray [Int (inIndex)]
 }

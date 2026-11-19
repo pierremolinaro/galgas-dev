@@ -60,10 +60,7 @@ struct SettingsView : View {
   enum SidebarItem {
     case commandLineOptions
     case editorSettings
-%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
-  do %    case %!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%\n%
-end
-%    case allocationDebugView
+    case allocationDebugView
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -77,20 +74,14 @@ end
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)
         Text ("Editor Settings").tag (SidebarItem.editorSettings)
-%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
-  do %        Text ("%!aLexique.mTitle%").tag (SidebarItem.%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%)\n%
-end
-%        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
+        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
       }
       .toolbar (removing: .sidebarToggle)
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
         case .editorSettings : EditorSettingView ()
-%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
-  do %        case .%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]% : SettingViewFor_%!aLexique.mLexiqueClassName% ()\n%
-end
-%        case .allocationDebugView : AllocationDebugView ()
+        case .allocationDebugView : AllocationDebugView ()
       }
     }
   }

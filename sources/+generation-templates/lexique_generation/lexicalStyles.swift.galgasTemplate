@@ -1,0 +1,260 @@
+//--------------------------------------------------------------------------------------------------
+//   EDITOR SETTING VIEW
+//--------------------------------------------------------------------------------------------------
+
+import SwiftUI
+
+//--------------------------------------------------------------------------------------------------
+
+struct EditorSettingView : View {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mUnused = false
+
+  @AppStorage("FontForSource")
+  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+
+  @AppStorage("LineHeightForSource")
+  private var mLineHeight : Int = 12
+
+  @AppStorage("ColorForSource")
+  private var mDefaultColor : Color = .black
+
+%for (entry) in LEXICAL_STYLE_SORTED_ARRAY do
+%  @AppStorage("ColorForSource-%!entry.name%")
+  private var mColorFor_%!entry.name% : Color = .black
+
+  @AppStorage("BoldForSource-%!entry.name%")
+  private var mBoldFor_%!entry.name% : Bool = false
+
+  @AppStorage("ItalicForSource-%!entry.name%")
+  private var mItalicFor_%!entry.name% : Bool = false
+
+%end%
+  @AppStorage("ColorForSource_lexical_error")
+  private var mColorFor_lexical_error : Color = .red
+
+  @AppStorage("BoldForSource_lexical_error")
+  private var mBoldFor_lexical_error : Bool = false
+
+  @AppStorage("ItalicForSource_lexical_error")
+  private var mItalicFor_lexical_error : Bool = false
+
+  @AppStorage("ColorForSourceForSource_template")
+  private var mColorFor_template : Color = .gray
+
+  @AppStorage("BoldForSource_template")
+  private var mBoldFor_template : Bool = false
+
+  @AppStorage("ItalicForSource_template")
+  private var mItalicFor_template : Bool = false
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  var body : some View {
+    Form {
+      LabeledContent ("Font") { CustomFontPicker (fontBinding: self.$mFont) }
+      Picker("Line Height", selection: self.$mLineHeight) {
+        Text("1.0").tag(10)
+        Text("1.1").tag(11)
+        Text("1.2").tag(12)
+        Text("1.5").tag(15)
+        Text("1.7").tag(17)
+        Text("2.0").tag(20)
+      }.pickerStyle(.automatic)
+      LabeledContent ("Default Color") {
+        HStack {
+          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
+          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
+        }
+      }
+%for (entry) in LEXICAL_STYLE_SORTED_ARRAY do
+%      LabeledContent (%![entry.comment utf8RepresentationEscapingQuestionMark]%) {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_%!entry.name%).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_%!entry.name%)
+          Toggle ("Italic", isOn: self.$mItalicFor_%!entry.name%)
+        }
+      }
+%end%      LabeledContent ("Lexical Error") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_lexical_error).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_lexical_error)
+          Toggle ("Italic", isOn: self.$mItalicFor_lexical_error)
+        }
+      }
+      LabeledContent ("Template") {
+        HStack {
+          ColorPicker ("", selection: self.$mColorFor_template).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_template)
+          Toggle ("Italic", isOn: self.$mItalicFor_template)
+        }
+      }
+    }.padding (20)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct LexicalStyleSnapShot {
+  fileprivate(set) var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
+  fileprivate(set) var mLineHeight : Int = 12
+  fileprivate(set) var mDefaultColor : Color = .black
+%for (entry) in LEXICAL_STYLE_SORTED_ARRAY do
+%  fileprivate var mColorFor_%!entry.name% : Color = .black
+  fileprivate var mBoldFor_%!entry.name% : Bool = false
+  fileprivate var mItalicFor_%!entry.name% : Bool = false
+%end
+%  fileprivate var mColorFor_lexical_error : Color = .red
+  fileprivate var mBoldFor_lexical_error : Bool = false
+  fileprivate var mItalicFor_lexical_error : Bool = false
+  fileprivate var mColorFor_template : Color = .gray
+  fileprivate var mBoldFor_template : Bool = false
+  fileprivate var mItalicFor_template : Bool = false
+  fileprivate(set) var mAttributeArray = [[NSAttributedString.Key : Any]?] ()
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func stylesDidChange (_ ioLexicalStyleSnapShot : inout LexicalStyleSnapShot) -> Bool {
+  var didChange = false
+  let ud = UserDefaults.standard
+  if let s = ud.string (forKey: "FontForSource"), let v = CustomFont (rawValue: s) {
+    if ioLexicalStyleSnapShot.mFont != v {
+      ioLexicalStyleSnapShot.mFont = v
+      didChange = true
+    }
+  }
+  if let s = ud.string (forKey: "LineHeightForSource"), let v = Int (s) {
+    if ioLexicalStyleSnapShot.mLineHeight != v {
+      ioLexicalStyleSnapShot.mLineHeight = v
+      didChange = true
+    }
+  }
+  if let s = ud.string (forKey: "ColorForSource"), let v = Color (rawValue: s) {
+    if ioLexicalStyleSnapShot.mDefaultColor != v {
+      ioLexicalStyleSnapShot.mDefaultColor = v
+      didChange = true
+    }
+  }
+%for (entry) in LEXICAL_STYLE_SORTED_ARRAY do
+%  if let s = ud.string (forKey: "ColorForSource-%!entry.name%"), let v = Color (rawValue: s) {
+    if ioLexicalStyleSnapShot.mColorFor_%!entry.name% != v {
+      ioLexicalStyleSnapShot.mColorFor_%!entry.name% = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "BoldForSource-%!entry.name%") != nil {
+    let v = ud.bool (forKey: "BoldForSource-%!entry.name%")
+    if ioLexicalStyleSnapShot.mBoldFor_%!entry.name% != v {
+      ioLexicalStyleSnapShot.mBoldFor_%!entry.name% = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "ItalicForSource-%!entry.name%") != nil {
+    let v = ud.bool (forKey: "ItalicForSource-%!entry.name%")
+    if ioLexicalStyleSnapShot.mItalicFor_%!entry.name% != v {
+      ioLexicalStyleSnapShot.mItalicFor_%!entry.name% = v
+      didChange = true
+    }
+  }
+%end
+%    if let s = ud.string (forKey: "ColorFor_lexical_error"), let v = Color (rawValue: s) {
+    if ioLexicalStyleSnapShot.mColorFor_lexical_error != v {
+      ioLexicalStyleSnapShot.mColorFor_lexical_error = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "BoldFor_lexical_error") != nil {
+    let v = ud.bool (forKey: "BoldFor_lexical_error")
+    if ioLexicalStyleSnapShot.mBoldFor_lexical_error != v {
+      ioLexicalStyleSnapShot.mBoldFor_lexical_error = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "ItalicFor_lexical_error") != nil {
+    let v = ud.bool (forKey: "ItalicFor_lexical_error")
+    if ioLexicalStyleSnapShot.mItalicFor_lexical_error != v {
+      ioLexicalStyleSnapShot.mItalicFor_lexical_error = v
+      didChange = true
+    }
+  }
+  if let s = ud.string (forKey: "ColorFor_template"), let v = Color (rawValue: s) {
+    if ioLexicalStyleSnapShot.mColorFor_template != v {
+      ioLexicalStyleSnapShot.mColorFor_template = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "BoldFor_template") != nil {
+    let v = ud.bool (forKey: "BoldFor_template")
+    if ioLexicalStyleSnapShot.mBoldFor_template != v {
+      ioLexicalStyleSnapShot.mBoldFor_template = v
+      didChange = true
+    }
+  }
+  if ud.string (forKey: "ItalicFor_template") != nil {
+    let v = ud.bool (forKey: "ItalicFor_template")
+    if ioLexicalStyleSnapShot.mItalicFor_template != v {
+      ioLexicalStyleSnapShot.mItalicFor_template = v
+      didChange = true
+    }
+  }
+//--- Update mAttributeArray ?
+  if didChange {
+    let fontManager = NSFontManager.shared
+    let boldFont = fontManager.convert (ioLexicalStyleSnapShot.mFont.nsFont, toHaveTrait: .boldFontMask)
+    let italicFont = fontManager.convert (ioLexicalStyleSnapShot.mFont.nsFont, toHaveTrait: .italicFontMask)
+    let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
+    ioLexicalStyleSnapShot.mAttributeArray.removeAll (keepingCapacity: true)
+    var attributes = [NSAttributedString.Key : Any] ()
+%for (entry) in LEXICAL_STYLE_SORTED_ARRAY do
+%  //--- Attributes for %!entry.name%
+    if ioLexicalStyleSnapShot.mColorFor_%!entry.name% != ioLexicalStyleSnapShot.mDefaultColor {
+      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_%!entry.name%)
+    }
+    if ioLexicalStyleSnapShot.mBoldFor_%!entry.name% && ioLexicalStyleSnapShot.mItalicFor_%!entry.name% {
+      attributes [.font] = boldItalicFont
+    }else if ioLexicalStyleSnapShot.mBoldFor_%!entry.name% {
+      attributes [.font] = boldFont
+    }else if ioLexicalStyleSnapShot.mItalicFor_%!entry.name% {
+      attributes [.font] = italicFont
+    }
+    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty ? nil : attributes)
+    attributes.removeAll (keepingCapacity: true)
+%end
+%  //--- Lexical error
+    if ioLexicalStyleSnapShot.mColorFor_lexical_error != ioLexicalStyleSnapShot.mDefaultColor {
+      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_lexical_error)
+    }
+    if ioLexicalStyleSnapShot.mBoldFor_lexical_error && ioLexicalStyleSnapShot.mItalicFor_lexical_error {
+      attributes [.font] = boldItalicFont
+    }else if ioLexicalStyleSnapShot.mBoldFor_lexical_error {
+      attributes [.font] = boldFont
+    }else if ioLexicalStyleSnapShot.mItalicFor_lexical_error {
+      attributes [.font] = italicFont
+    }
+    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty ? nil : attributes)
+    attributes.removeAll (keepingCapacity: true)
+  //--- Template
+    if ioLexicalStyleSnapShot.mColorFor_template != ioLexicalStyleSnapShot.mDefaultColor {
+      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_template)
+    }
+    if ioLexicalStyleSnapShot.mBoldFor_template && ioLexicalStyleSnapShot.mItalicFor_template {
+      attributes [.font] = boldItalicFont
+    }else if ioLexicalStyleSnapShot.mBoldFor_template {
+      attributes [.font] = boldFont
+    }else if ioLexicalStyleSnapShot.mItalicFor_template {
+      attributes [.font] = italicFont
+    }
+    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty ? nil : attributes)
+  }
+//---
+  return didChange
+}
+
+//--------------------------------------------------------------------------------------------------

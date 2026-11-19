@@ -8606,11 +8606,6 @@ class GGS_importedLexiqueAST final : public AC_GALGAS_root {
     return mProperty_mLabels ;
   }
 
-  public: GGS__5B_lexicalStyleAST_5D_ mProperty_mLexicalStyleList ;
-  public: inline GGS__5B_lexicalStyleAST_5D_ readProperty_mLexicalStyleList (void) const {
-    return mProperty_mLexicalStyleList ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -8643,10 +8638,6 @@ class GGS_importedLexiqueAST final : public AC_GALGAS_root {
     mProperty_mLabels = inValue ;
   }
 
-  public: inline void setter_setMLexicalStyleList (const GGS__5B_lexicalStyleAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLexicalStyleList = inValue ;
-  }
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -8656,8 +8647,7 @@ class GGS_importedLexiqueAST final : public AC_GALGAS_root {
                                   const GGS_string & in_mBlockComment,
                                   const GGS_string & in_mTitle,
                                   const GGS__5B_textMacroAST_5D_ & in_mTextMacroList,
-                                  const GGS__5B_guiLabelAST_5D_ & in_mLabels,
-                                  const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleList) ;
+                                  const GGS__5B_guiLabelAST_5D_ & in_mLabels) ;
 
 //--------------------------------- Copy constructor
   public: GGS_importedLexiqueAST (const GGS_importedLexiqueAST & inSource) ;
@@ -8668,15 +8658,14 @@ class GGS_importedLexiqueAST final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_importedLexiqueAST init_21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                          const class GGS_uint & inOperand1,
-                                                                          const class GGS_string & inOperand2,
-                                                                          const class GGS_string & inOperand3,
-                                                                          const class GGS__5B_textMacroAST_5D_ & inOperand4,
-                                                                          const class GGS__5B_guiLabelAST_5D_ & inOperand5,
-                                                                          const class GGS__5B_lexicalStyleAST_5D_ & inOperand6,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_importedLexiqueAST init_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                      const class GGS_uint & inOperand1,
+                                                                      const class GGS_string & inOperand2,
+                                                                      const class GGS_string & inOperand3,
+                                                                      const class GGS__5B_textMacroAST_5D_ & inOperand4,
+                                                                      const class GGS__5B_guiLabelAST_5D_ & inOperand5,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

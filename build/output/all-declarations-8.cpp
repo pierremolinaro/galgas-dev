@@ -9,91 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@localVarValuation writeTransition'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
-                                      const GGS_lstring constinArgument_inVarName,
-                                      const GGS_bool constinArgument_inOverridenMap,
-                                      const GGS_localVariableAttributes constinArgument_inAttributes,
-                                      Compiler * inCompiler
-                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_localVarValuation temp_0 = ioObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_localVarValuation::Enumeration::invalid:
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_invalid:
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_declared:
-    {
-      GGS_bool extractedValue_26480__0 ;
-      temp_0.getAssociatedValuesFor_declared (extractedValue_26480__0) ;
-      ioObject = GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas4", 602)) ;
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_initialized:
-    {
-      GalgasBool test_1 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_1) {
-        test_1 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas4", 604)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 604)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_1) {
-          GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas4", 605)) ;
-        }
-      }
-      GalgasBool test_3 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_3) {
-        test_3 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas4", 607)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 607)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_3) {
-          GenericArray <FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)) ;
-          ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas4", 609)) ;
-        }
-      }
-      if (GalgasBool::boolFalse == test_3) {
-        GalgasBool test_5 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_5) {
-          GGS_bool test_6 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas4", 610)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 610)).operator_not (SOURCE_FILE ("variable-manager.galgas4", 610)) ;
-          if (GalgasBool::boolTrue == test_6.boolEnum ()) {
-            test_6 = constinArgument_inOverridenMap.operator_not (SOURCE_FILE ("variable-manager.galgas4", 610)) ;
-          }
-          test_5 = test_6.boolEnum () ;
-          if (GalgasBool::boolTrue == test_5) {
-            GenericArray <FixItDescription> fixItArray7 ;
-            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)).add_operation (GGS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)) ;
-          }
-        }
-        if (GalgasBool::boolFalse == test_5) {
-          ioObject = GGS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas4", 613)) ;
-        }
-      }
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_read:
-    {
-      GalgasBool test_8 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_8) {
-        test_8 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas4", 616)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 616)).boolEnum () ;
-        if (GalgasBool::boolTrue == test_8) {
-          GenericArray <FixItDescription> fixItArray9 ;
-          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)) ;
-          ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas4", 618)) ;
-        }
-      }
-      if (GalgasBool::boolFalse == test_8) {
-        ioObject = GGS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas4", 620)) ;
-      }
-    }
-    break ;
-  case GGS_localVarValuation::Enumeration::enum_mutated:
-    break ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension proc '@[scopeLocalVarMap] readAccess'
 //
 //--------------------------------------------------------------------------------------------------
@@ -12007,21 +11922,9 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
 
 String Lexique_galgasScanner_34_::styleNameForIndex (const uint32_t inStyleIndex) const {
   String result ;
-  if (inStyleIndex < 13) {
-    static const char * kStyleArray [13] = {
-      "",
-      "keywordsStyle",
-      "delimitersStyle",
-      "selectorStyle",
-      "terminalStyle",
-      "nonTerminalStyle",
-      "integerStyle",
-      "floatStyle",
-      "characterStyle",
-      "stringStyle",
-      "typeNameStyle",
-      "attributeStyle",
-      "commentStyle"
+  if (inStyleIndex < 1) {
+    static const char * kStyleArray [1] = {
+      ""
     } ;
     result = kStyleArray [inStyleIndex] ;
   }

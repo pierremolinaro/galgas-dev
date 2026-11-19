@@ -86,19 +86,18 @@ indexing indexingNameReference : "Indexing Name Reference"
 @char charValue
 @string tokenString
 
-// let keywordsStyle = .style ("Keywords")
-style keywordsStyle -> "Keywords"
-style delimitersStyle -> "Delimiters"
-style selectorStyle -> "Selectors"
-style terminalStyle -> "Terminal Symbols"
-style nonTerminalStyle -> "Non Terminal Symbols"
-style integerStyle -> "Integer Constants"
-style floatStyle -> "Floating Point Constants"
-style characterStyle -> "Character Constants"
-style stringStyle -> "String Constants"
-style typeNameStyle -> "Type Names (@...)"
-style attributeStyle -> "Attributes (#...)"
-style commentStyle -> "Comments"
+//style keywordsStyle -> "Keywords"
+//style delimitersStyle -> "Delimiters"
+//style selectorStyle -> "Selectors"
+//style terminalStyle -> "Terminal Symbols"
+//style nonTerminalStyle -> "Non Terminal Symbols"
+//style integerStyle -> "Integer Constants"
+//style floatStyle -> "Floating Point Constants"
+//style characterStyle -> "Character Constants"
+//style stringStyle -> "String Constants"
+//style typeNameStyle -> "Type Names (@...)"
+//style attributeStyle -> "Attributes (#...)"
+//style commentStyle -> "Comments"
 
 // ------------------------- identifier or key word --------------------
 // let $identifier$ (!@string) : syntaxErrorMessage "an identifier"

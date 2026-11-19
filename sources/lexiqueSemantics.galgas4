@@ -146,7 +146,7 @@ struct @lexiqueAnalysisContext {
   public var @lexicalExplicitTokenListMapMap mLexicalTokenListMap
   public var @stringset mUnicodeStringToGenerate
   public var [@templateDelimitorAST] mTemplateDelimitorList
-  public var @styleMap mStyleMap
+//  public var @styleMap mStyleMap
   public let @stringset mUnicodeTestFunctions
 }
 

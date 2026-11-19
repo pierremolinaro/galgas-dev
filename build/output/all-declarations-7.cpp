@@ -7362,7 +7362,6 @@ GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ GGS_lexiqueComponentMa
       element.mProperty_mIndexingListAST = info->mProperty_mIndexingListAST ;
       element.mProperty_mTerminalListAST = info->mProperty_mTerminalListAST ;
       element.mProperty_mLexicalAttributeListAST = info->mProperty_mLexicalAttributeListAST ;
-      element.mProperty_mLexicalStyleListAST = info->mProperty_mLexicalStyleListAST ;
       element.mProperty_mLexicalListDeclarationListAST = info->mProperty_mLexicalListDeclarationListAST ;
       result = element ;
     }
@@ -7403,11 +7402,10 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::setter_insertKey (GGS_lstring i
                                                                    GGS__5B_indexingAST_5D_ inArgument2,
                                                                    GGS__5B_terminalDeclarationAST_5D_ inArgument3,
                                                                    GGS__5B_lexicalAttributeAST_5D_ inArgument4,
-                                                                   GGS__5B_lexicalStyleAST_5D_ inArgument5,
-                                                                   GGS__5B_lexicalListDeclarationAST_5D_ inArgument6,
+                                                                   GGS__5B_lexicalListDeclarationAST_5D_ inArgument5,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
-  const GGS_lexiqueComponentMapForSemanticAnalysis_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5, inArgument6) ;
+  const GGS_lexiqueComponentMapForSemanticAnalysis_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5) ;
   const char * kInsertErrorMessage = "redefinition of the '%K' lexique component: it has been already declared in %L" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
@@ -7421,8 +7419,7 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GGS_lstring i
                                                                    GGS__5B_indexingAST_5D_ & outArgument2,
                                                                    GGS__5B_terminalDeclarationAST_5D_ & outArgument3,
                                                                    GGS__5B_lexicalAttributeAST_5D_ & outArgument4,
-                                                                   GGS__5B_lexicalStyleAST_5D_ & outArgument5,
-                                                                   GGS__5B_lexicalListDeclarationAST_5D_ & outArgument6,
+                                                                   GGS__5B_lexicalListDeclarationAST_5D_ & outArgument5,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> info ;
@@ -7443,15 +7440,13 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GGS_lstring i
     outArgument3.drop () ;
     outArgument4.drop () ;
     outArgument5.drop () ;
-    outArgument6.drop () ;
   }else{
     outArgument0 = info->mProperty_mIsTemplate ;
     outArgument1 = info->mProperty_mTerminalMap ;
     outArgument2 = info->mProperty_mIndexingListAST ;
     outArgument3 = info->mProperty_mTerminalListAST ;
     outArgument4 = info->mProperty_mLexicalAttributeListAST ;
-    outArgument5 = info->mProperty_mLexicalStyleListAST ;
-    outArgument6 = info->mProperty_mLexicalListDeclarationListAST ;
+    outArgument5 = info->mProperty_mLexicalListDeclarationListAST ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -7550,26 +7545,6 @@ GGS__5B_lexicalAttributeAST_5D_ GGS_lexiqueComponentMapForSemanticAnalysis::gett
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
       result = info->mProperty_mLexicalAttributeListAST ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ GGS_lexiqueComponentMapForSemanticAnalysis::getter_mLexicalStyleListASTForKey (const GGS_string & inKey,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) const {
-  GGS__5B_lexicalStyleAST_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mLexicalStyleListAST ;
     }
   }
   return result ;
@@ -7696,26 +7671,6 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMLexicalAttributeList
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMLexicalStyleListASTForKey (GGS__5B_lexicalStyleAST_5D_ inValue,
-                                                                                       GGS_string inKey,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mLexicalStyleListAST = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
 void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMLexicalListDeclarationListASTForKey (GGS__5B_lexicalListDeclarationAST_5D_ inValue,
                                                                                                  GGS_string inKey,
                                                                                                  Compiler * inCompiler
@@ -7775,10 +7730,6 @@ static void GGS_lexiqueComponentMapForSemanticAnalysis_internalDescription (cons
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
     ioString.appendString ("mLexicalAttributeListAST:") ;
     inArray (i COMMA_HERE)->mProperty_mLexicalAttributeListAST.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mLexicalStyleListAST:") ;
-    inArray (i COMMA_HERE)->mProperty_mLexicalStyleListAST.description (ioString, inIndentation + 1) ;
     ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
     ioString.appendString ("mLexicalListDeclarationListAST:") ;
@@ -7868,12 +7819,6 @@ GGS__5B_lexicalAttributeAST_5D_ DownEnumerator_lexiqueComponentMapForSemanticAna
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalStyleAST_5D_ DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalStyleListAST (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalStyleListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS__5B_lexicalListDeclarationAST_5D_ DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalListDeclarationListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalListDeclarationListAST ;
 }
@@ -7927,12 +7872,6 @@ GGS__5B_terminalDeclarationAST_5D_ UpEnumerator_lexiqueComponentMapForSemanticAn
 
 GGS__5B_lexicalAttributeAST_5D_ UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalAttributeListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalAttributeListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lexicalStyleAST_5D_ UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalStyleListAST (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalStyleListAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17202,6 +17141,91 @@ void extensionSetter_writeAccessInSubMap (GGS__5B_scopeLocalVarMap_5D_ & ioObjec
       extensionSetter_writeAccessInSubMap (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 589)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 589)) ;
       }
     }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@localVarValuation writeTransition'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_writeTransition (GGS_localVarValuation & ioObject,
+                                      const GGS_lstring constinArgument_inVarName,
+                                      const GGS_bool constinArgument_inOverridenMap,
+                                      const GGS_localVariableAttributes constinArgument_inAttributes,
+                                      Compiler * inCompiler
+                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_localVarValuation temp_0 = ioObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_localVarValuation::Enumeration::invalid:
+    break ;
+  case GGS_localVarValuation::Enumeration::enum_invalid:
+    break ;
+  case GGS_localVarValuation::Enumeration::enum_declared:
+    {
+      GGS_bool extractedValue_26480__0 ;
+      temp_0.getAssociatedValuesFor_declared (extractedValue_26480__0) ;
+      ioObject = GGS_localVarValuation::class_func_initialized (SOURCE_FILE ("variable-manager.galgas4", 602)) ;
+    }
+    break ;
+  case GGS_localVarValuation::Enumeration::enum_initialized:
+    {
+      GalgasBool test_1 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_1) {
+        test_1 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_warnsOnAnyAcces (SOURCE_FILE ("variable-manager.galgas4", 604)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 604)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_1) {
+          GenericArray <FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("formal parameter has been declared as unused"), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas4", 605)) ;
+        }
+      }
+      GalgasBool test_3 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_3) {
+        test_3 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas4", 607)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 607)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_3) {
+          GenericArray <FixItDescription> fixItArray4 ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)), fixItArray4  COMMA_SOURCE_FILE ("variable-manager.galgas4", 608)) ;
+          ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas4", 609)) ;
+        }
+      }
+      if (GalgasBool::boolFalse == test_3) {
+        GalgasBool test_5 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_5) {
+          GGS_bool test_6 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_acceptInitializedStateAsFinalState (SOURCE_FILE ("variable-manager.galgas4", 610)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 610)).operator_not (SOURCE_FILE ("variable-manager.galgas4", 610)) ;
+          if (GalgasBool::boolTrue == test_6.boolEnum ()) {
+            test_6 = constinArgument_inOverridenMap.operator_not (SOURCE_FILE ("variable-manager.galgas4", 610)) ;
+          }
+          test_5 = test_6.boolEnum () ;
+          if (GalgasBool::boolTrue == test_5) {
+            GenericArray <FixItDescription> fixItArray7 ;
+            inCompiler->emitSemanticWarning (constinArgument_inVarName.readProperty_location (), GGS_string ("variable '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)).add_operation (GGS_string ("' was written to, but never read"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)), fixItArray7  COMMA_SOURCE_FILE ("variable-manager.galgas4", 611)) ;
+          }
+        }
+        if (GalgasBool::boolFalse == test_5) {
+          ioObject = GGS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas4", 613)) ;
+        }
+      }
+    }
+    break ;
+  case GGS_localVarValuation::Enumeration::enum_read:
+    {
+      GalgasBool test_8 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_8) {
+        test_8 = constinArgument_inAttributes.getter_contains (GGS_localVariableAttributes::class_func_rejectWriteInInitializedAndReadStates (SOURCE_FILE ("variable-manager.galgas4", 616)) COMMA_SOURCE_FILE ("variable-manager.galgas4", 616)).boolEnum () ;
+        if (GalgasBool::boolTrue == test_8) {
+          GenericArray <FixItDescription> fixItArray9 ;
+          inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("constant '").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)).add_operation (GGS_string ("' cannot be mutated"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)), fixItArray9  COMMA_SOURCE_FILE ("variable-manager.galgas4", 617)) ;
+          ioObject = GGS_localVarValuation::class_func_invalid (SOURCE_FILE ("variable-manager.galgas4", 618)) ;
+        }
+      }
+      if (GalgasBool::boolFalse == test_8) {
+        ioObject = GGS_localVarValuation::class_func_mutated (SOURCE_FILE ("variable-manager.galgas4", 620)) ;
+      }
+    }
+    break ;
+  case GGS_localVarValuation::Enumeration::enum_mutated:
+    break ;
   }
 }
 

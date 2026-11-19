@@ -7819,11 +7819,6 @@ class GGS_lexiqueAnalysisContext final : public AC_GALGAS_root {
     return mProperty_mTemplateDelimitorList ;
   }
 
-  public: GGS_styleMap mProperty_mStyleMap ;
-  public: inline GGS_styleMap readProperty_mStyleMap (void) const {
-    return mProperty_mStyleMap ;
-  }
-
   public: GGS_stringset mProperty_mUnicodeTestFunctions ;
   public: inline GGS_stringset readProperty_mUnicodeTestFunctions (void) const {
     return mProperty_mUnicodeTestFunctions ;
@@ -7877,10 +7872,6 @@ class GGS_lexiqueAnalysisContext final : public AC_GALGAS_root {
     mProperty_mTemplateDelimitorList = inValue ;
   }
 
-  public: inline void setter_setMStyleMap (const GGS_styleMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mStyleMap = inValue ;
-  }
-
   public: inline void setter_setMUnicodeTestFunctions (const GGS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mUnicodeTestFunctions = inValue ;
   }
@@ -7899,7 +7890,6 @@ class GGS_lexiqueAnalysisContext final : public AC_GALGAS_root {
                                       const GGS_lexicalExplicitTokenListMapMap & in_mLexicalTokenListMap,
                                       const GGS_stringset & in_mUnicodeStringToGenerate,
                                       const GGS__5B_templateDelimitorAST_5D_ & in_mTemplateDelimitorList,
-                                      const GGS_styleMap & in_mStyleMap,
                                       const GGS_stringset & in_mUnicodeTestFunctions) ;
 
 //--------------------------------- Copy constructor
@@ -7911,20 +7901,19 @@ class GGS_lexiqueAnalysisContext final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_lexiqueAnalysisContext init_21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                  const class GGS_lexicalRoutineMap & inOperand1,
-                                                                                                  const class GGS_lexicalFunctionMap & inOperand2,
-                                                                                                  const class GGS_lexicalMessageMap & inOperand3,
-                                                                                                  const class GGS_terminalMap & inOperand4,
-                                                                                                  const class GGS__5B_terminalAST_5D_ & inOperand5,
-                                                                                                  const class GGS_lexicalAttributeMap & inOperand6,
-                                                                                                  const class GGS_lexicalExplicitTokenListMapMap & inOperand7,
-                                                                                                  const class GGS_stringset & inOperand8,
-                                                                                                  const class GGS__5B_templateDelimitorAST_5D_ & inOperand9,
-                                                                                                  const class GGS_styleMap & inOperand10,
-                                                                                                  const class GGS_stringset & inOperand11,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS_lexiqueAnalysisContext init_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                              const class GGS_lexicalRoutineMap & inOperand1,
+                                                                                              const class GGS_lexicalFunctionMap & inOperand2,
+                                                                                              const class GGS_lexicalMessageMap & inOperand3,
+                                                                                              const class GGS_terminalMap & inOperand4,
+                                                                                              const class GGS__5B_terminalAST_5D_ & inOperand5,
+                                                                                              const class GGS_lexicalAttributeMap & inOperand6,
+                                                                                              const class GGS_lexicalExplicitTokenListMapMap & inOperand7,
+                                                                                              const class GGS_stringset & inOperand8,
+                                                                                              const class GGS__5B_templateDelimitorAST_5D_ & inOperand9,
+                                                                                              const class GGS_stringset & inOperand10,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

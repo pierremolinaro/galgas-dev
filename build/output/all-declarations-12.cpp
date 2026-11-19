@@ -7187,7 +7187,6 @@ mProperty_mTerminalMap (),
 mProperty_mIndexingListAST (),
 mProperty_mTerminalListAST (),
 mProperty_mLexicalAttributeListAST (),
-mProperty_mLexicalStyleListAST (),
 mProperty_mLexicalListDeclarationListAST () {
 }
 
@@ -7200,7 +7199,6 @@ mProperty_mTerminalMap (inSource.mProperty_mTerminalMap),
 mProperty_mIndexingListAST (inSource.mProperty_mIndexingListAST),
 mProperty_mTerminalListAST (inSource.mProperty_mTerminalListAST),
 mProperty_mLexicalAttributeListAST (inSource.mProperty_mLexicalAttributeListAST),
-mProperty_mLexicalStyleListAST (inSource.mProperty_mLexicalStyleListAST),
 mProperty_mLexicalListDeclarationListAST (inSource.mProperty_mLexicalListDeclarationListAST) {
 }
 
@@ -7213,23 +7211,21 @@ GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & GGS_lexiqueComponentMapF
   mProperty_mIndexingListAST = inSource.mProperty_mIndexingListAST ;
   mProperty_mTerminalListAST = inSource.mProperty_mTerminalListAST ;
   mProperty_mLexicalAttributeListAST = inSource.mProperty_mLexicalAttributeListAST ;
-  mProperty_mLexicalStyleListAST = inSource.mProperty_mLexicalStyleListAST ;
   mProperty_mLexicalListDeclarationListAST = inSource.mProperty_mLexicalListDeclarationListAST ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_lexiqueComponentMapForSemanticAnalysis_2E_element GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::init_21__21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                                                                                   const GGS_bool & in_mIsTemplate,
-                                                                                                                                                   const GGS_terminalMap & in_mTerminalMap,
-                                                                                                                                                   const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
-                                                                                                                                                   const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalListAST,
-                                                                                                                                                   const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
-                                                                                                                                                   const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleListAST,
-                                                                                                                                                   const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
-                                                                                                                                                   Compiler * inCompiler
-                                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::init_21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                                                                               const GGS_bool & in_mIsTemplate,
+                                                                                                                                               const GGS_terminalMap & in_mTerminalMap,
+                                                                                                                                               const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                                                                                                               const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalListAST,
+                                                                                                                                               const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                                                                                                               const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                                                                                                               Compiler * inCompiler
+                                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexiqueComponentMapForSemanticAnalysis_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
@@ -7238,7 +7234,6 @@ GGS_lexiqueComponentMapForSemanticAnalysis_2E_element GGS_lexiqueComponentMapFor
   result.mProperty_mIndexingListAST = in_mIndexingListAST ;
   result.mProperty_mTerminalListAST = in_mTerminalListAST ;
   result.mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
-  result.mProperty_mLexicalStyleListAST = in_mLexicalStyleListAST ;
   result.mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
   return result ;
 }
@@ -7256,22 +7251,20 @@ GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::GGS_lexiqueComponentMapFo
                                                                                                               const GGS__5B_indexingAST_5D_ & inOperand3,
                                                                                                               const GGS__5B_terminalDeclarationAST_5D_ & inOperand4,
                                                                                                               const GGS__5B_lexicalAttributeAST_5D_ & inOperand5,
-                                                                                                              const GGS__5B_lexicalStyleAST_5D_ & inOperand6,
-                                                                                                              const GGS__5B_lexicalListDeclarationAST_5D_ & inOperand7) :
+                                                                                                              const GGS__5B_lexicalListDeclarationAST_5D_ & inOperand6) :
 mProperty_lkey (inOperand0),
 mProperty_mIsTemplate (inOperand1),
 mProperty_mTerminalMap (inOperand2),
 mProperty_mIndexingListAST (inOperand3),
 mProperty_mTerminalListAST (inOperand4),
 mProperty_mLexicalAttributeListAST (inOperand5),
-mProperty_mLexicalStyleListAST (inOperand6),
-mProperty_mLexicalListDeclarationListAST (inOperand7) {
+mProperty_mLexicalListDeclarationListAST (inOperand6) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalStyleListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7283,7 +7276,6 @@ void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::drop (void) {
   mProperty_mIndexingListAST.drop () ;
   mProperty_mTerminalListAST.drop () ;
   mProperty_mLexicalAttributeListAST.drop () ;
-  mProperty_mLexicalStyleListAST.drop () ;
   mProperty_mLexicalListDeclarationListAST.drop () ;
 }
 
@@ -7306,8 +7298,6 @@ void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::description (String 
     mProperty_mTerminalListAST.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalStyleListAST.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
   }

@@ -163,21 +163,21 @@ override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
      ?let indexingListAST,
      ?let terminalListAST,
      ?let lexicalAttributeListAST,
-     ?let lexicalStyleListAST,
+//     ?let lexicalStyleListAST,
      ?let lexicalListDeclarationListAST
   )
   if superLexiqueIsTemplate then
     error self.mLexiqueSuperComponentName : "cannot inherit from a template lexique"
   end
 //---
-  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
-     (self.mLexiqueComponentName,
+  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey (
+     self.mLexiqueComponentName,
      true,
      terminalMap,
      indexingListAST,
      terminalListAST,
      lexicalAttributeListAST,
-     lexicalStyleListAST,
+//     lexicalStyleListAST,
      lexicalListDeclarationListAST
   )
 }
@@ -196,14 +196,14 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
 //-------------------------------------- Get super lexique features
-  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-     (self.mLexiqueSuperComponentName,
+  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (
+     self.mLexiqueSuperComponentName,
      ?*, //let superLexiqueIsTemplate
      ?*, //let terminalMap
      ?*, //let indexingDirectory
      ?let terminalListAST,
      ?let lexicalAttributeListAST,
-     ?let lexicalStyleListAST,
+//     ?let lexicalStyleListAST,
      ?let lexicalListDeclarationListAST
   )
 //-------------------------------------- Lexical attribute type name map
@@ -226,15 +226,15 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     @lexicalExplicitTokenListMapMap (),
     @(),
     [@templateDelimitorAST] (),
-    @styleMap (),
+//    @styleMap (),
     unicodeTestFunctions
   )
 //-------------------------------------- Build style map
-  var styleIndex = 1
-  for lexicalStyle in lexicalStyleListAST do
-    !?lexiqueAnalysisContext.mStyleMap.insert (lexicalStyle.mName, lexicalStyle.mComment, styleIndex)
-    styleIndex += 1
-  end
+//  var styleIndex = 1
+//  for lexicalStyle in lexicalStyleListAST do
+//    !?lexiqueAnalysisContext.mStyleMap.insert (lexicalStyle.mName, lexicalStyle.mComment, styleIndex)
+//    styleIndex += 1
+//  end
 //-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
    lexicalTypeMap,
@@ -247,7 +247,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var @uint terminalStyleIndex = 0
     if terminal.mStyle.string.count > 0 then
       inSemanticContext.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
-      lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
+//      lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = [@lexicalSentValue] ()
     for attribute in terminal.mSentAttributeList do
@@ -267,7 +267,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var @uint terminalStyleIndex = 0
     if lexicalList.mStyle.string.count > 0 then
       inSemanticContext.lexicalStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
-      lexiqueAnalysisContext.mStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
+//      lexiqueAnalysisContext.mStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = [@lexicalSentValue] ()
     for attribute in lexicalList.mSentAttributeList do
@@ -325,7 +325,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
       terminalList,
       templateDelimitorList,
       self.mTemplateReplacementList,
-      lexicalStyleListAST
+      @() // lexicalStyleListAST
     ]
   //---
     ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (

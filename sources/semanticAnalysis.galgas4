@@ -526,12 +526,12 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
   let nameForUsefulness = syntaxNameForUsefulEntitiesGraph (self.mSyntaxComponentName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
 //-------------------------------------- Build terminal map
-  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-    (self.mLexiqueName,
+  inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (
+    self.mLexiqueName,
     ?*,
     ?let @terminalMap terminalMap,
     ?let [@indexingAST] indexingListAST,
-    ?4*
+    ?3*
   )
 //-------------------------------------- Build "indexing" set
   var @stringset indexNameSet = @()

@@ -15286,8 +15286,7 @@ mProperty_mIndex (),
 mProperty_mBlockComment (),
 mProperty_mTitle (),
 mProperty_mTextMacroList (),
-mProperty_mLabels (),
-mProperty_mLexicalStyleList () {
+mProperty_mLabels () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15298,8 +15297,7 @@ mProperty_mIndex (inSource.mProperty_mIndex),
 mProperty_mBlockComment (inSource.mProperty_mBlockComment),
 mProperty_mTitle (inSource.mProperty_mTitle),
 mProperty_mTextMacroList (inSource.mProperty_mTextMacroList),
-mProperty_mLabels (inSource.mProperty_mLabels),
-mProperty_mLexicalStyleList (inSource.mProperty_mLexicalStyleList) {
+mProperty_mLabels (inSource.mProperty_mLabels) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15311,21 +15309,19 @@ GGS_importedLexiqueAST & GGS_importedLexiqueAST::operator = (const GGS_importedL
   mProperty_mTitle = inSource.mProperty_mTitle ;
   mProperty_mTextMacroList = inSource.mProperty_mTextMacroList ;
   mProperty_mLabels = inSource.mProperty_mLabels ;
-  mProperty_mLexicalStyleList = inSource.mProperty_mLexicalStyleList ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_importedLexiqueAST GGS_importedLexiqueAST::init_21__21__21__21__21__21__21_ (const GGS_string & in_mLexiqueClassName,
-                                                                                 const GGS_uint & in_mIndex,
-                                                                                 const GGS_string & in_mBlockComment,
-                                                                                 const GGS_string & in_mTitle,
-                                                                                 const GGS__5B_textMacroAST_5D_ & in_mTextMacroList,
-                                                                                 const GGS__5B_guiLabelAST_5D_ & in_mLabels,
-                                                                                 const GGS__5B_lexicalStyleAST_5D_ & in_mLexicalStyleList,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+GGS_importedLexiqueAST GGS_importedLexiqueAST::init_21__21__21__21__21__21_ (const GGS_string & in_mLexiqueClassName,
+                                                                             const GGS_uint & in_mIndex,
+                                                                             const GGS_string & in_mBlockComment,
+                                                                             const GGS_string & in_mTitle,
+                                                                             const GGS__5B_textMacroAST_5D_ & in_mTextMacroList,
+                                                                             const GGS__5B_guiLabelAST_5D_ & in_mLabels,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_importedLexiqueAST result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLexiqueClassName = in_mLexiqueClassName ;
@@ -15334,7 +15330,6 @@ GGS_importedLexiqueAST GGS_importedLexiqueAST::init_21__21__21__21__21__21__21_ 
   result.mProperty_mTitle = in_mTitle ;
   result.mProperty_mTextMacroList = in_mTextMacroList ;
   result.mProperty_mLabels = in_mLabels ;
-  result.mProperty_mLexicalStyleList = in_mLexicalStyleList ;
   return result ;
 }
 
@@ -15350,21 +15345,19 @@ GGS_importedLexiqueAST::GGS_importedLexiqueAST (const GGS_string & inOperand0,
                                                 const GGS_string & inOperand2,
                                                 const GGS_string & inOperand3,
                                                 const GGS__5B_textMacroAST_5D_ & inOperand4,
-                                                const GGS__5B_guiLabelAST_5D_ & inOperand5,
-                                                const GGS__5B_lexicalStyleAST_5D_ & inOperand6) :
+                                                const GGS__5B_guiLabelAST_5D_ & inOperand5) :
 mProperty_mLexiqueClassName (inOperand0),
 mProperty_mIndex (inOperand1),
 mProperty_mBlockComment (inOperand2),
 mProperty_mTitle (inOperand3),
 mProperty_mTextMacroList (inOperand4),
-mProperty_mLabels (inOperand5),
-mProperty_mLexicalStyleList (inOperand6) {
+mProperty_mLabels (inOperand5) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_importedLexiqueAST::isValid (void) const {
-  return mProperty_mLexiqueClassName.isValid () && mProperty_mIndex.isValid () && mProperty_mBlockComment.isValid () && mProperty_mTitle.isValid () && mProperty_mTextMacroList.isValid () && mProperty_mLabels.isValid () && mProperty_mLexicalStyleList.isValid () ;
+  return mProperty_mLexiqueClassName.isValid () && mProperty_mIndex.isValid () && mProperty_mBlockComment.isValid () && mProperty_mTitle.isValid () && mProperty_mTextMacroList.isValid () && mProperty_mLabels.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15376,7 +15369,6 @@ void GGS_importedLexiqueAST::drop (void) {
   mProperty_mTitle.drop () ;
   mProperty_mTextMacroList.drop () ;
   mProperty_mLabels.drop () ;
-  mProperty_mLexicalStyleList.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15398,8 +15390,6 @@ void GGS_importedLexiqueAST::description (String & ioString,
     mProperty_mTextMacroList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLabels.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalStyleList.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }

@@ -36,7 +36,7 @@ let projectFileExtensions = Set (["galgas4", "galgas4project", "galgastemplate"]
   if fileExtension == "galgas4" {
     result = ScannerFor_galgasScanner4 ()
   }else if fileExtension == "galgas4project" {
-    result = ScannerFor_galgasScanner4 ()
+    result = ScannerFor_projectComponentScanner ()
   }else if fileExtension == "galgastemplate" {
     result = ScannerFor_galgasTemplateScanner ()
   }
@@ -54,8 +54,6 @@ struct SettingsView : View {
   enum SidebarItem {
     case commandLineOptions
     case editorSettings
-    case galgasScanner4_0
-    case galgasTemplateScanner_1
     case allocationDebugView
   }
 
@@ -70,8 +68,6 @@ struct SettingsView : View {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)
         Text ("Editor Settings").tag (SidebarItem.editorSettings)
-        Text ("Source GALGAS 4").tag (SidebarItem.galgasScanner4_0)
-        Text ("Template").tag (SidebarItem.galgasTemplateScanner_1)
         Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
       }
       .toolbar (removing: .sidebarToggle)
@@ -79,8 +75,6 @@ struct SettingsView : View {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
         case .editorSettings : EditorSettingView ()
-        case .galgasScanner4_0 : SettingViewFor_galgasScanner4 ()
-        case .galgasTemplateScanner_1 : SettingViewFor_galgasTemplateScanner ()
         case .allocationDebugView : AllocationDebugView ()
       }
     }
@@ -90,6 +84,20 @@ struct SettingsView : View {
 
 }
 
+
+//--------------------------------------------------------------------------------------------------
+//   Popup list data for 'projectComponentScanner' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gPopUpData_projectComponentScanner : [[UInt16]] = [
+
+]
+
+//--------------------------------------------------------------------------------------------------
+//   Block Comment for 'projectComponentScanner' lexique
+//--------------------------------------------------------------------------------------------------
+
+let gLineComment_projectComponentScanner : String? = "//"
 
 //--------------------------------------------------------------------------------------------------
 //   Popup list data for 'galgasScanner4' lexique
