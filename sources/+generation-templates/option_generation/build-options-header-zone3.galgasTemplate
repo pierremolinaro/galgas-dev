@@ -1,0 +1,30 @@
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+  %extern BoolCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in UINT_OPTION_ARRAY do
+  %extern UIntCommandLineOption gBuildOption__%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in STRING_OPTION_ARRAY do
+  %extern StringCommandLineOption gBuildOption__%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
+

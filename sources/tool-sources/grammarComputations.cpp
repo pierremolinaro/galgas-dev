@@ -741,23 +741,25 @@ routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21_
     const GGS_location inErrorLocation = inTargetFileName.mProperty_location ;
     HTMLString HTMLHelperFileContents ;
     String CppFileContents ;
-    const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
-    analyzeGrammar (inCompiler,
-                    inHTMLFilePath.stringValue (),
-                    inUnusedNonTerminalSymbolsForGrammar,
-                    inTargetFileName,
-                    inGrammarClass,
-                    inOriginalGrammarStartSymbol,
-                    inLexiqueName.stringValue (),
-                    inErrorLocation,
-                    inTerminalSymbolMap,
-                    inSyntaxComponentsList,
-                    inNonTerminalSymbolSortedListForGrammarAnalysis,
-                    inSyntaxDirectedTranslationVarName.stringValue (),
-                    CppFileContents,
-                    swiftDescription,
-                    HTMLHelperFileContents,
-                    populateHTMLHelperString) ;
+    const bool populateHTMLHelperString = gBuildOption_outputHTMLgrammarFile.mValue ;
+    analyzeGrammar (
+      inCompiler,
+      inHTMLFilePath.stringValue (),
+      inUnusedNonTerminalSymbolsForGrammar,
+      inTargetFileName,
+      inGrammarClass,
+      inOriginalGrammarStartSymbol,
+      inLexiqueName.stringValue (),
+      inErrorLocation,
+      inTerminalSymbolMap,
+      inSyntaxComponentsList,
+      inNonTerminalSymbolSortedListForGrammarAnalysis,
+      inSyntaxDirectedTranslationVarName.stringValue (),
+      CppFileContents,
+      swiftDescription,
+      HTMLHelperFileContents,
+      populateHTMLHelperString
+    ) ;
     outHTMLHelperFileContents = GGS_string (HTMLHelperFileContents) ;
     outCppFileContents = GGS_string (CppFileContents) ;
     outSwiftGrammarDescription = GGS_string (swiftDescription) ;

@@ -31,6 +31,105 @@ String styleNameForIndex (const uint32_t inStyleIndex) {
   return (inStyleIndex < 15) ? array [inStyleIndex] : "" ;
 }
 //--------------------------------------------------------------------------------------------------
+//                               Bool options
+//--------------------------------------------------------------------------------------------------
+
+/* BoolCommandLineOption gBuildOption_outputHTMLgrammarFile ("",
+                                         "outputHTMLgrammarFile",
+                                         0,
+                                         "output-html-grammar-file",
+                                         "Output a HTML file for every grammar component") ; */
+
+/* BoolCommandLineOption gBuildOption_outputGrammarSwiftDescriptionFile ("",
+                                         "outputGrammarSwiftDescriptionFile",
+                                         0,
+                                         "output-swift-description-grammar-file",
+                                         "Output a Swift description file for every grammar component") ; */
+
+/* BoolCommandLineOption gBuildOption_outputHTMLTypeListFile ("",
+                                         "outputHTMLTypeListFile",
+                                         84,
+                                         "output-html-type-dump-file",
+                                         "Output a HTML file that contains all defined types") ; */
+
+/* BoolCommandLineOption gBuildOption_printPredefinedLexicalActions ("",
+                                         "printPredefinedLexicalActions",
+                                         0,
+                                         "print-predefined-lexical-actions",
+                                         "Print the list of predefined lexical routines and functions") ; */
+
+/* BoolCommandLineOption gBuildOption_generateOneHeader ("",
+                                         "generateOneHeader",
+                                         0,
+                                         "generate-one-cpp-header",
+                                         "Generate one C++ header file for all declarations") ; */
+
+/* BoolCommandLineOption gBuildOption_generateManyFiles ("",
+                                         "generateManyFiles",
+                                         0,
+                                         "generate-many-cpp-files",
+                                         "Generate many C++ implementation files") ; */
+
+/* BoolCommandLineOption gBuildOption_check_5F_big_5F_int ("",
+                                         "check_big_int",
+                                         0,
+                                         "check-big-int",
+                                         "Run bit integers checks") ; */
+
+/* BoolCommandLineOption gBuildOption_emitSyntaxDiagrams ("",
+                                         "emitSyntaxDiagrams",
+                                         0,
+                                         "emit-syntax-diagrams",
+                                         "Emit grammar syntax diagrams in TEX files") ; */
+
+/* BoolCommandLineOption gBuildOption_emitClassGraph ("",
+                                         "emitClassGraph",
+                                         0,
+                                         "emit-class-graph",
+                                         "Emit class graph in dot file") ; */
+
+/* BoolCommandLineOption gBuildOption_displayUnicodeLexicalTestFunctions ("",
+                                         "displayUnicodeLexicalTestFunctions",
+                                         0,
+                                         "display-lexical-test-functions",
+                                         "Display Unicode Lexical Test Functions") ; */
+
+/* BoolCommandLineOption gBuildOption_checkEntityUsefulness ("",
+                                         "checkEntityUsefulness",
+                                         0,
+                                         "check-usefulness",
+                                         "Check Entity Usefulness") ; */
+
+/* BoolCommandLineOption gBuildOption_warnsOnOldStyleEnumeration ("",
+                                         "warnsOnOldStyleEnumeration",
+                                         0,
+                                         "warns-on-old-style-enumeration",
+                                         "Warns on old style enumeration") ; */
+
+//--------------------------------------------------------------------------------------------------
+//                               U32 options
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//                              String options
+//--------------------------------------------------------------------------------------------------
+
+/* StringCommandLineOption gBuildOption_create_5F_project ("",
+                                         "create_project",
+                                         0,
+                                         "create-project",
+                                         "Create a new GALGAS Project",
+                                         "") ; */
+
+/* StringCommandLineOption gBuildOption_extractLIBPMOption ("",
+                                         "extractLIBPMOption",
+                                         0,
+                                         "extract-libpm",
+                                         "Extract embedded LIBPM at given path",
+                                         "") ; */
+
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 //     @u64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -3249,6 +3348,328 @@ void GGS_range::description (String & ioString,
     mProperty_length.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                               Bool options
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_outputHTMLgrammarFile (
+  "build",
+  "z""outputHTMLgrammarFile",
+  0,
+  "output-html-grammar-file",
+  "Output a HTML file for every grammar component"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_outputHTMLgrammarFile (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_outputHTMLgrammarFile.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_outputGrammarSwiftDescriptionFile (
+  "build",
+  "z""outputGrammarSwiftDescriptionFile",
+  0,
+  "output-swift-description-grammar-file",
+  "Output a Swift description file for every grammar component"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_outputGrammarSwiftDescriptionFile (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_outputGrammarSwiftDescriptionFile.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_outputHTMLTypeListFile (
+  "build",
+  "z""outputHTMLTypeListFile",
+  84,
+  "output-html-type-dump-file",
+  "Output a HTML file that contains all defined types"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_outputHTMLTypeListFile (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_outputHTMLTypeListFile.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_printPredefinedLexicalActions (
+  "build",
+  "z""printPredefinedLexicalActions",
+  0,
+  "print-predefined-lexical-actions",
+  "Print the list of predefined lexical routines and functions"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_printPredefinedLexicalActions (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_printPredefinedLexicalActions.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_generateOneHeader (
+  "build",
+  "z""generateOneHeader",
+  0,
+  "generate-one-cpp-header",
+  "Generate one C++ header file for all declarations"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_generateOneHeader (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_generateOneHeader.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_generateManyFiles (
+  "build",
+  "z""generateManyFiles",
+  0,
+  "generate-many-cpp-files",
+  "Generate many C++ implementation files"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_generateManyFiles (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_generateManyFiles.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_check_5F_big_5F_int (
+  "build",
+  "z""check_big_int",
+  0,
+  "check-big-int",
+  "Run bit integers checks"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_check_5F_big_5F_int (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_check_5F_big_5F_int.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_emitSyntaxDiagrams (
+  "build",
+  "z""emitSyntaxDiagrams",
+  0,
+  "emit-syntax-diagrams",
+  "Emit grammar syntax diagrams in TEX files"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_emitSyntaxDiagrams (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_emitSyntaxDiagrams.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_emitClassGraph (
+  "build",
+  "z""emitClassGraph",
+  0,
+  "emit-class-graph",
+  "Emit class graph in dot file"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_emitClassGraph (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_emitClassGraph.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_displayUnicodeLexicalTestFunctions (
+  "build",
+  "z""displayUnicodeLexicalTestFunctions",
+  0,
+  "display-lexical-test-functions",
+  "Display Unicode Lexical Test Functions"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_displayUnicodeLexicalTestFunctions (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_displayUnicodeLexicalTestFunctions.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_checkEntityUsefulness (
+  "build",
+  "z""checkEntityUsefulness",
+  0,
+  "check-usefulness",
+  "Check Entity Usefulness"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_checkEntityUsefulness (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_checkEntityUsefulness.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_warnsOnOldStyleEnumeration (
+  "build",
+  "z""warnsOnOldStyleEnumeration",
+  0,
+  "warns-on-old-style-enumeration",
+  "Warns on old style enumeration"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_warnsOnOldStyleEnumeration (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_warnsOnOldStyleEnumeration.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                               U32 options
+//--------------------------------------------------------------------------------------------------
+//                              String options
+//--------------------------------------------------------------------------------------------------
+
+StringCommandLineOption gBuildOption_create_5F_project (
+  "build",
+  "z""create_project",
+  0,
+  "create-project",
+  "Create a new GALGAS Project",
+  ""
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionValue::class_func_create_5F_project (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_create_5F_project.readProperty_value ()) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+StringCommandLineOption gBuildOption_extractLIBPMOption (
+  "build",
+  "z""extractLIBPMOption",
+  0,
+  "extract-libpm",
+  "Extract embedded LIBPM at given path",
+  ""
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionValue::class_func_extractLIBPMOption (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_extractLIBPMOption.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                               Bool options
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_outputHTMLgrammarFile (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_outputHTMLgrammarFile.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_outputGrammarSwiftDescriptionFile (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_outputGrammarSwiftDescriptionFile.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_outputHTMLTypeListFile (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_outputHTMLTypeListFile.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_printPredefinedLexicalActions (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_printPredefinedLexicalActions.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_generateOneHeader (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_generateOneHeader.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_generateManyFiles (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_generateManyFiles.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_check_5F_big_5F_int (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_check_5F_big_5F_int.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_emitSyntaxDiagrams (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_emitSyntaxDiagrams.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_emitClassGraph (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_emitClassGraph.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_displayUnicodeLexicalTestFunctions (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_displayUnicodeLexicalTestFunctions.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_checkEntityUsefulness (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_checkEntityUsefulness.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionString::class_func_warnsOnOldStyleEnumeration (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_warnsOnOldStyleEnumeration.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                               U32 options
+//--------------------------------------------------------------------------------------------------
+//                              String options
+//--------------------------------------------------------------------------------------------------
+
+
+GGS_string GGS_buildOptionString::class_func_create_5F_project (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_create_5F_project.readProperty_string ()) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+
+GGS_string GGS_buildOptionString::class_func_extractLIBPMOption (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_extractLIBPMOption.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

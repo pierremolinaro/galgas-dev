@@ -23,14 +23,14 @@
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Generate project
-  let creationProjectName = option galgas_cli_options [create_project.value]
+  let creationProjectName = @buildOptionValue.create_project
   projectCreation (creationProjectName)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Print predefined lexical action
-  if option galgas_cli_options [printPredefinedLexicalActions.value] then
+  if @buildOptionValue.printPredefinedLexicalActions then
     printPredefinedLexicalActions ()
   end
 }
@@ -38,8 +38,8 @@ before { //--- Print predefined lexical action
 //--------------------------------------------------------------------------------------------------
 
 before { //--- Extract LIBPM
-  if option galgas_cli_options [extractLIBPMOption.value] != "" then
-    updateLIBPMatPath (option galgas_cli_options [extractLIBPMOption.value] )
+  if @buildOptionValue.extractLIBPMOption != "" then
+    updateLIBPMatPath (@buildOptionValue.extractLIBPMOption)
   end
 }
 
@@ -48,7 +48,7 @@ before { //--- Extract LIBPM
 extern proc checkBigInteger ()
 
 before { //--- Extract LIBPM
-  if option galgas_cli_options [check_big_int.value] then
+  if @buildOptionValue.check_big_int then
     checkBigInteger ()
   end
 }
@@ -58,7 +58,7 @@ before { //--- Extract LIBPM
 extern proc displayUnicodeLexicalTestFunctions ()
 
 before {
-  if option galgas_cli_options [displayUnicodeLexicalTestFunctions.value] then
+  if @buildOptionValue.displayUnicodeLexicalTestFunctions then
     displayUnicodeLexicalTestFunctions ()
   end
 }
@@ -124,26 +124,26 @@ grammar projectComponentGrammar
 private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
                                      let @string inSourceToAnalyze) {
   println ("*** Parsing project files")
-  grammar projectComponentGrammar (?let @project projectComponentAST) in inProjectSourceFilePath
+  grammar projectComponentGrammar (?let @projectSettings projectSettings) in inProjectSourceFilePath
   if option [mode.value] == "" then
-    compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectComponentAST)
+    compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectSettings)
   //--- C++ compilation
-    if 0 == @application.errorCount then
-      let cppCompilationTarget = option galgas_cli_options [cppCompile.value]
-      if cppCompilationTarget != "" then
-        println ("*** Perform C++ compilation")
-        let buildFile = inProjectSourceFilePath.string.deletingLastPathComponent + "/" + cppCompilationTarget + "/build.py"
-        if buildFile.fileExists then
-          let resultCode = ("python " + buildFile).system
-          if resultCode != 0 then
-          error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
-          end
-        else
-          error "".nowhere : "Cannot perform C++ compilation of '" + cppCompilationTarget
-              + "' : the '" + buildFile + "' file does not exist"
-        end
-      end
-    end
+//    if 0 == @application.errorCount then
+//      let cppCompilationTarget = option galgas_cli_options [cppCompile.value]
+//      if cppCompilationTarget != "" then
+//        println ("*** Perform C++ compilation")
+//        let buildFile = inProjectSourceFilePath.string.deletingLastPathComponent + "/" + cppCompilationTarget + "/build.py"
+//        if buildFile.fileExists then
+//          let resultCode = ("python " + buildFile).system
+//          if resultCode != 0 then
+//          error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
+//          end
+//        else
+//          error "".nowhere : "Cannot perform C++ compilation of '" + cppCompilationTarget
+//              + "' : the '" + buildFile + "' file does not exist"
+//        end
+//      end
+//    end
   end
 }
 
@@ -151,9 +151,15 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
 
 private proc compileProject (let @lstring inProjectSourceFilePath,
                              let @string inSourceToAnalyze,
-                             let @project inProject) {
+                             let @projectSettings inProjectSettings) {
   var @galgasDeclarationAST declarationAST = @()
   appendPredefinedTypesASTs (!?declarationAST)
+  declarationAST.mDeclarationList ++= @buildOptionValueDeclarationAST (!isPredefined: true, "buildOptionValue".nowhere)
+  declarationAST.mDeclarationList ++= @buildOptionStringDeclarationAST (
+    !isPredefined: true,
+    !buildOptionStringName: "buildOptionString".nowhere,
+    !buildOptionValueName: "buildOptionValue"
+  )
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
   filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
@@ -199,14 +205,14 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       !?usefulEntitiesGraph,
       productDirectory,
       declarationAST,
-      inProject,
+      inProjectSettings,
       ?semanticContext,
       ?typeMap,
       ?semanticDeclarationSortedListForGeneration
     )
   else
     semanticDeclarationSortedListForGeneration = @()
-    semanticContext = @semanticContext (inProject.lexicalStyleMap)
+    semanticContext = @semanticContext (inProjectSettings)
     typeMap = @()
   end
 //--------------------------------- Compile GUI components
@@ -222,9 +228,9 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   end
 //--------------------------------- Compile program declarations
   if @application.errorCount == 0 then
-    let projectVersionString = inProject.majorVersion.bigint.string
-      + "." + inProject.minorVersion.bigint
-      + "." + inProject.revision.bigint
+    let projectVersionString = inProjectSettings.majorVersion.bigint.string
+      + "." + inProjectSettings.minorVersion.bigint
+      + "." + inProjectSettings.revision.bigint
     compileProgramComponentGalgas3 (
       !?usefulnessRootEntities,
       !?usefulEntitiesGraph,
@@ -242,7 +248,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   checkUsefulEntities (usefulEntitiesGraph, usefulnessRootEntities, productDirectory)
 //----------------------------------- Build an HTML file that contains all declared types
   let typeDumpFilePath = productDirectory + "/../helpers/" + inProjectSourceFilePath.string.lastPathComponent + ".html"
-  if option galgas_cli_options [outputHTMLTypeListFile.value] then
+  if @buildOptionValue.outputHTMLTypeListFile then
     var @stringset firstLetterSet = @()
     for entry in typeMap do
       firstLetterSet ++= entry.lkey.string.characterAtIndex(0).string
@@ -284,7 +290,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       appProductFileList,
       semanticDeclarationSortedListForGeneration,
       declarationAST.mSourceRuleList,
-      inProject,
+      inProjectSettings,
       inProjectSourceFilePath.string,
       "../sources/tool-sources",
       handCodedSourceToolFileList
@@ -303,7 +309,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
                                 let [@string] inAppProductFileList,
                                 let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
                                 let [@programRuleAST] inSourceRuleList,
-                                let @project inProject,
+                                let @projectSettings inProjectSettings,
                                 let @string inProjectSourceFilePath,
                                 let @string inHandCodedSourceDirectory,
                                 let [@string] inHandCodedSourceToolFileList) {
@@ -326,7 +332,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
   end
 //--------------------------------- Lexical Style Name Sorted Array
   var @sortedLexicalStyleArray sortedLexicalStyleArray = @()
-  for (name, comment, index) in inProject.lexicalStyleMap do
+  for (name, comment, index) in inProjectSettings.lexicalStyleMap do
     sortedLexicalStyleArray ++= @(name.string, comment.string, index)
   end
 //--------------------------------- Generate semantic files
@@ -361,7 +367,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
       !absoluteBuildDir: inAbsoluteBuildDirectory,
       !buildDirName: inBuildDirectoryName,
       inProjectSourceFilePath,
-      inProject,  
+      inProjectSettings,  
       toolCppFileList,
       toolHeaderFileList,
       !appProductFileList: appProductFileList,

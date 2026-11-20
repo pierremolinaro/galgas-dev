@@ -33,7 +33,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.application_type : ]
+    result = filewrapper [predefinedTypeGenerationTemplate.application_package : ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

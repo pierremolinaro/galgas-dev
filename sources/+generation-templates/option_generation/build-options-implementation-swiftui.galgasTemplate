@@ -1,4 +1,3 @@
-
 //--------------------------------------------------------------------------------------------------
 
 import SwiftUI
@@ -6,14 +5,14 @@ import SwiftUI
 //--------------------------------------------------------------------------------------------------
 
 fileprivate let SELECTED_COMPILER_TOOL_INDEX_PREFKEY = "selected.compiler.tool.index"
-%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
-  %fileprivate let %!sortedOption.mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+  %fileprivate let %!sortedOption.mIdentifier.string%_PREFKEY = %!["build-option:" + sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%\n%
 end
-for (sortedOption) in UINT_OPTION_SORTED_LIST do
-  %fileprivate let %!sortedOption.mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+for (sortedOption) in UINT_OPTION_ARRAY do
+  %fileprivate let %!sortedOption.mIdentifier.string%_PREFKEY = %!["build-option:" + sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%\n%
 end
-for (sortedOption) in STRING_OPTION_SORTED_LIST do
-  %fileprivate let %!sortedOption.mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + sortedOption.mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
+for (sortedOption) in STRING_OPTION_ARRAY do
+  %fileprivate let %!sortedOption.mIdentifier.string%_PREFKEY = %!["build-option:" + sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%\n%
 end%
 //--------------------------------------------------------------------------------------------------
 //   Options View
@@ -31,22 +30,22 @@ struct OptionView : View {
   // Bool options
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
-  %  @AppStorage(%!sortedOption.mOptionIdentifier%_PREFKEY) private var %!sortedOption.mOptionIdentifier% : Bool = %!sortedOption.mDefaultValue%\n%
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+  %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : Bool = false\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // UInt options
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-%for (sortedOption) in UINT_OPTION_SORTED_LIST do
-  %  @AppStorage(%!sortedOption.mOptionIdentifier%_PREFKEY) private var %!sortedOption.mOptionIdentifier% : UInt = %!sortedOption.mDefaultValue%\n%
+%for (sortedOption) in UINT_OPTION_ARRAY do
+  %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : UInt = 0\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // String options
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-%for (sortedOption) in STRING_OPTION_SORTED_LIST do
-  %  @AppStorage(%!sortedOption.mOptionIdentifier%_PREFKEY) private var %!sortedOption.mOptionIdentifier% : String = %![sortedOption.mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
+%for (sortedOption) in STRING_OPTION_ARRAY do
+  %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : String = ""\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Body
@@ -64,14 +63,14 @@ end%
       }
       ScrollView {
         VStack (alignment: .leading) {
-%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
-  %          Toggle (%![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%, isOn: self.$%!sortedOption.mOptionIdentifier%)\n%
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+  %          Toggle (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%, isOn: self.$%!sortedOption.mIdentifier.string%)\n%
 end
-for (sortedOption) in UINT_OPTION_SORTED_LIST do
-  %          HStack { Text (%![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", value: self.$%!sortedOption.mOptionIdentifier%, format: .number.precision (.fractionLength (0)))\n%
+for (sortedOption) in UINT_OPTION_ARRAY do
+  %          HStack { Text (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%) ; TextField ("", value: self.$%!sortedOption.mIdentifier.string%, format: .number.precision (.fractionLength (0)))\n%
 end
-for (sortedOption) in STRING_OPTION_SORTED_LIST do
-  %          HStack { Text (%![sortedOption.mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!sortedOption.mOptionIdentifier%) }\n%
+for (sortedOption) in STRING_OPTION_ARRAY do
+  %          HStack { Text (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!sortedOption.mIdentifier.string%) }\n%
 end
 %        }.padding ()
       }.background (.white)
@@ -115,24 +114,24 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   let selectedCompilerIndex : Int = ud.integer (forKey: SELECTED_COMPILER_TOOL_INDEX_PREFKEY)
   let tool = compilerTools [selectedCompilerIndex].url
   var arguments = [String] ()
-%for (sortedOption) in BOOL_OPTION_SORTED_LIST do
-    %  if ud.bool (forKey: %!sortedOption.mOptionIdentifier%_PREFKEY) {\n%
-    %    arguments.append (%!["--" + sortedOption.mOptionString utf8RepresentationEscapingQuestionMark]%)\n%
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+    %  if ud.bool (forKey: %!sortedOption.mIdentifier.string%_PREFKEY) {\n%
+    %    arguments.append (%!["--" + sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%)\n%
     %  }\n%
 end
-for (sortedOption) in UINT_OPTION_SORTED_LIST do
+for (sortedOption) in UINT_OPTION_ARRAY do
     %  do{\n%
-    %    let v : Int = ud.integer (forKey: %!sortedOption.mOptionIdentifier%_PREFKEY)\n%
-    %    if v != %!sortedOption.mDefaultValue% {\n%
-    %      arguments.append (%!["--" + sortedOption.mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + String (v))\n%
+    %    let v : Int = ud.integer (forKey: %!sortedOption.mIdentifier.string%_PREFKEY)\n%
+    %    if v != 0 {\n%
+    %      arguments.append (%!["--" + sortedOption.mInvocationString + "=" utf8RepresentationEscapingQuestionMark]% + String (v))\n%
     %    }\n%
     %  }\n%
 end
-for (sortedOption) in STRING_OPTION_SORTED_LIST do
+for (sortedOption) in STRING_OPTION_ARRAY do
     %  do{\n%
-    %    let v : String = ud.string (forKey: %!sortedOption.mOptionIdentifier%_PREFKEY) ?? ""\n%
-    %    if v != %![sortedOption.mDefaultValue utf8RepresentationEscapingQuestionMark]% {\n%
-    %      arguments.append (%!["--" + sortedOption.mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + v)\n%
+    %    let v : String = ud.string (forKey: %!sortedOption.mIdentifier.string%_PREFKEY) ?? ""\n%
+    %    if v != "" {\n%
+    %      arguments.append (%!["--" + sortedOption.mInvocationString + "=" utf8RepresentationEscapingQuestionMark]% + v)\n%
     %    }\n%
     %  }\n%
 end

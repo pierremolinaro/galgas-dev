@@ -432,7 +432,7 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
 
   template filewrapper_type : "filewrapper-type.h.galgasTemplate" ()
 
-  template application_type : "application-type.h.galgasTemplate" ()
+  template application_package : "application-package.h.galgasTemplate" ()
 
   template bigint_type : "bigint-type.h.galgasTemplate" ()
 

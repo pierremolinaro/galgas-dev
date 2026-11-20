@@ -28,13 +28,6 @@ lexique projectComponentScanner {
 @char charValue
 @string tokenString
 
-//style delimitersStyle -> "Delimiters"
-//style integerStyle -> "Integer Constants"
-//style characterStyle -> "Character Constants"
-//style stringStyle -> "String Constants"
-//style attributeStyle -> "Attributes (#...)"
-//style commentStyle -> "Comments"
-
 // ------------------------- identifier or key word --------------------
 // let $identifier$ (!@string) : syntaxErrorMessage "an identifier"
 $identifier$ !tokenString #errorMessage "an identifier"
@@ -87,7 +80,10 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "makefile-arm64-linux-on-macosx" -> $#makefile-arm64-linux-on-macosx$,
   "makefile-win32-on-macosx" -> $#makefile-win32-on-macosx$,
   "macSwiftApp" -> $#macSwiftApp$,
-  "lexical-style" -> $#lexical-style$
+  "lexical-style" -> $#lexical-style$,
+  "bool-build-option" -> $#bool-build-option$,
+  "string-build-option" -> $#string-build-option$,
+  "u32-build-option" -> $#u32-build-option$
 }
 
 rule '#' {

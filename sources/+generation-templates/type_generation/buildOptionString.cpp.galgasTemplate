@@ -1,0 +1,30 @@
+//--------------------------------------------------------------------------------------------------
+//                               Bool options
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_string ()) ;
+}
+
+%end
+%//--------------------------------------------------------------------------------------------------
+//                               U32 options
+%for (sortedOption) in UINT_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_string ()) ;
+}
+
+%end
+%//--------------------------------------------------------------------------------------------------
+//                              String options
+%for (sortedOption) in STRING_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+
+GGS_string GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_string ()) ;
+}
+%end%

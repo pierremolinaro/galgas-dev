@@ -23,50 +23,50 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-option galgas_cli_options {
-  @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file"
-    -> "Output a HTML file for every grammar component"
-  @bool outputGrammarSwiftDescriptionFile: '\0', "output-swift-description-grammar-file"
-    -> "Output a Swift description file for every grammar component"
-
-  @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file"
-    -> "Output a HTML file that contains all defined types"
-
-  @string create_project : '\0', "create-project"
-    -> "Create a new GALGAS Project"
-
-  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions"
-  -> "Print the list of predefined lexical routines and functions"
-
-  @string extractLIBPMOption: '\0', "extract-libpm"
-    -> "Extract embedded LIBPM at given path"
-
-  @bool generateOneHeader : '\0', "generate-one-cpp-header"
-    -> "Generate one C++ header file for all declarations"
-
-  @bool generateManyFiles : '\0', "generate-many-cpp-files"
-    -> "Generate many C++ implementation files"
-
-  @string cppCompile : '\0', "compile"
-    -> "Perform C++ compilation on 'string' target"
-
-  @bool check_big_int : '\0', "check-big-int"
-    -> "Run bit integers checks"
-
-  @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams"
-    -> "Emit grammar syntax diagrams in TEX files"
-
-  @bool emitClassGraph : '\0', "emit-class-graph"
-    -> "Emit class graph in dot file"
-
-  @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions"
-    -> "Display Unicode Lexical Test Functions"
-
-  @bool checkEntityUsefulness : '\0', "check-usefulness"
-    -> "Check Entity Usefulness"
-
-  @bool warnsOnOldStyleEnumeration : '\0', "warns-on-old-style-enumeration"
-    -> "Warns on old style enumeration"
-}
+//option galgas_cli_options {
+//  @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file"
+//    -> "Output a HTML file for every grammar component"
+//  @bool outputGrammarSwiftDescriptionFile: '\0', "output-swift-description-grammar-file"
+//    -> "Output a Swift description file for every grammar component"
+//
+//  @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file"
+//    -> "Output a HTML file that contains all defined types"
+//
+//  @string create_project : '\0', "create-project"
+//    -> "Create a new GALGAS Project"
+//
+//  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions"
+//  -> "Print the list of predefined lexical routines and functions"
+//
+//  @string extractLIBPMOption: '\0', "extract-libpm"
+//    -> "Extract embedded LIBPM at given path"
+//
+//  @bool generateOneHeader : '\0', "generate-one-cpp-header"
+//    -> "Generate one C++ header file for all declarations"
+//
+//  @bool generateManyFiles : '\0', "generate-many-cpp-files"
+//    -> "Generate many C++ implementation files"
+//
+//  @string cppCompile : '\0', "compile"
+//    -> "Perform C++ compilation on 'string' target"
+//
+//  @bool check_big_int : '\0', "check-big-int"
+//    -> "Run bit integers checks"
+//
+//  @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams"
+//    -> "Emit grammar syntax diagrams in TEX files"
+//
+//  @bool emitClassGraph : '\0', "emit-class-graph"
+//    -> "Emit class graph in dot file"
+//
+//  @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions"
+//    -> "Display Unicode Lexical Test Functions"
+//
+//  @bool checkEntityUsefulness : '\0', "check-usefulness"
+//    -> "Check Entity Usefulness"
+//
+//  @bool warnsOnOldStyleEnumeration : '\0', "warns-on-old-style-enumeration"
+//    -> "Warns on old style enumeration"
+//}
 
 //--------------------------------------------------------------------------------------------------

@@ -38,6 +38,7 @@ syntax extension galgas4ExpressionSyntax {
                   !@semanticExpressionAST outExpression ) {
     $option$
     $identifier$ (?let optionComponentName) indexing (optionComponentReference)
+    warning .here : "option !!!"
     $[$
     $identifier$ (?let optionName)
     $.$

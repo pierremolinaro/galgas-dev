@@ -138,12 +138,13 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionMap stringOptionMap = @()
     var optionNameSet = @stringset ()
     for anOption in self.mOptions do
-      if optionNameSet.contains (anOption.mOptionInternalName.string) then
-        error anOption.mOptionInternalName
-        : "the '" + anOption.mOptionInternalName.string
-        + "' command line option has been already declared"
-        
-      elsif anOption.mOptionTypeName.string == "bool" then
+//      if optionNameSet.contains (anOption.mOptionInternalName.string) then
+//        error anOption.mOptionInternalName
+//        : "the '" + anOption.mOptionInternalName.string
+//        + "' command line option has been already declared"
+//        
+//      els
+      if anOption.mOptionTypeName.string == "bool" then
         !?boolOptionMap.insertKey (
           anOption.mOptionInternalName,
           anOption.mOptionInvocationLetter.char,
@@ -326,33 +327,33 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificFiles (let @string inProductDirectory,
-                                     ?!@stringset ioAllProductFileSet,
-                                     ?!swift: [@string] ioSwiftAppProductFileList) {
-  //--- Generate Cocoa header
-    if @application.errorCount == 0, not self.mIsPredefined then
-    //--- Generate Swift Cocoa Implementation
-      ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
-      ioSwiftAppProductFileList ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
-      @string.generateFileWithPattern (
-        !startPath: inProductDirectory,
-        !fileName: "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift",
-        !lineComment: "//",
-        !header: "",
-        !defaultUserZone1: "\n\n",
-        !generatedZone2: filewrapper [optionGenerationTemplates.optionImplementationSwiftUI :
-          "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui",
-          self.mOptionComponentName,
-          self.mBoolOptionSortedList,
-          self.mUIntOptionSortedList,
-          self.mStringOptionSortedList
-        ],
-        !defaultUserZone2: "\n\n",
-        !generatedZone3: "\n\n",
-        !makeExecutable: false
-      )
-   end
-  }
+//  override proc appendSpecificFiles (let @string inProductDirectory,
+//                                     ?!@stringset ioAllProductFileSet,
+//                                     ?!swift: [@string] ioSwiftAppProductFileList) {
+//  //--- Generate Cocoa header
+//    if @application.errorCount == 0, not self.mIsPredefined then
+//    //--- Generate Swift Cocoa Implementation
+//      ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
+//      ioSwiftAppProductFileList ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
+//      @string.generateFileWithPattern (
+//        !startPath: inProductDirectory,
+//        !fileName: "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift",
+//        !lineComment: "//",
+//        !header: "",
+//        !defaultUserZone1: "\n\n",
+//        !generatedZone2: filewrapper [optionGenerationTemplates.optionImplementationSwiftUI :
+//          "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui",
+//          self.mOptionComponentName,
+//          self.mBoolOptionSortedList,
+//          self.mUIntOptionSortedList,
+//          self.mStringOptionSortedList
+//        ],
+//        !defaultUserZone2: "\n\n",
+//        !generatedZone3: "\n\n",
+//        !makeExecutable: false
+//      )
+//   end
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -406,13 +407,13 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
   )
 
-  template optionImplementationSwiftUI : "option-implementation-swiftui.galgasTemplate" (
-    ?@string OPTION_HEADER_FILE_NAME,
-    ?@string OPTION_COMPONENT_NAME,
-    ?@commandLineOptionSortedArray BOOL_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedArray UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
-  )
+//  template optionImplementationSwiftUI : "option-implementation-swiftui.galgasTemplate" (
+//    ?@string OPTION_HEADER_FILE_NAME,
+//    ?@string OPTION_COMPONENT_NAME,
+//    ?@commandLineOptionSortedArray BOOL_OPTION_SORTED_LIST,
+//    ?@commandLineOptionSortedArray UINT_OPTION_SORTED_LIST,
+//    ?@commandLineOptionSortedArray STRING_OPTION_SORTED_LIST
+//  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,0 +1,61 @@
+//--------------------------------------------------------------------------------------------------
+//                               Bool options
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+BoolCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
+  "build",
+  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![[sortedOption.mInvocationChar uint] string]%,
+  %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_value ()) ;
+}
+
+%end
+%//--------------------------------------------------------------------------------------------------
+//                               U32 options
+%for (sortedOption) in UINT_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+UIntCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
+  "build",
+  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![[sortedOption.mInvocationChar uint] string]%,
+  %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,
+  0
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_uint (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_value ()) ;
+}
+
+%end
+%//--------------------------------------------------------------------------------------------------
+//                              String options
+%for (sortedOption) in STRING_OPTION_ARRAY do
+%//--------------------------------------------------------------------------------------------------
+
+StringCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
+  "build",
+  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![[sortedOption.mInvocationChar uint] string]%,
+  %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,
+  ""
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_value ()) ;
+}
+%end%

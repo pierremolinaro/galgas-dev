@@ -17,14 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//map @projectQualifiedFeatureMap {
-//  public let @lstring mFeatureValue
-//  #insertSetter insertKey #errorMessage "the '%K' attribute is already declared"
-//  #searchMethod searchKey #errorMessage "the '%K' attribute is not declared"
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 mutating proc @XcodeProjectDescriptor.addICNS_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef

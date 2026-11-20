@@ -9715,9 +9715,12 @@ class Lexique_projectComponentScanner : public Lexique {
   public: static const int32_t kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx = 20 ;
   public: static const int32_t kToken__23_macSwiftApp = 21 ;
   public: static const int32_t kToken__23_lexical_2D_style = 22 ;
-  public: static const int32_t kToken__2E_ = 23 ;
-  public: static const int32_t kToken__3A_ = 24 ;
-  public: static const int32_t kToken__2D__3E_ = 25 ;
+  public: static const int32_t kToken__23_bool_2D_build_2D_option = 23 ;
+  public: static const int32_t kToken__23_string_2D_build_2D_option = 24 ;
+  public: static const int32_t kToken__23_u_33__32__2D_build_2D_option = 25 ;
+  public: static const int32_t kToken__2E_ = 26 ;
+  public: static const int32_t kToken__3A_ = 27 ;
+  public: static const int32_t kToken__2D__3E_ = 28 ;
 
 //--- Key words table 'attributeKeyWordList'
   public: static int32_t search_into_attributeKeyWordList (const String & inSearchedString) ;
@@ -9750,7 +9753,7 @@ class Lexique_projectComponentScanner : public Lexique {
   protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
 
 //--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 25 ; }
+  public: virtual int32_t terminalVocabularyCount (void) const override { return 28 ; }
 
 //--- Get Token String
   public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;

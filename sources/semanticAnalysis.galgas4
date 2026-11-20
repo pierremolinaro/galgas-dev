@@ -664,7 +664,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
   end
 //--------------------------------------------------------- Print an tex file for grammar rule list
-  if option galgas_cli_options [emitSyntaxDiagrams.value] then
+  if @buildOptionValue.emitSyntaxDiagrams then
     emitProductionRulesInTexFile (
       inProductDirectory,
       self.mGrammarComponentName,
@@ -675,7 +675,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   end
 //--------------------------------------------------------- Emit class graph
   let dotDocumentFilePath = inProductDirectory + "/../graph-class/graph-class.dot"
-  if option galgas_cli_options [emitClassGraph.value] then
+  if @buildOptionValue.emitClassGraph then
     emitClassGraphFile (
       dotDocumentFilePath,
       ioTypeMap
@@ -699,7 +699,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
       end
     end
   end
-  if option galgas_cli_options [generateOneHeader.value] then
+  if @buildOptionValue.generateOneHeader then
     implementationFileHeader = @()
   end
 //--------------------------------------------------------- Analyze grammar
@@ -720,7 +720,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     ?let @string swiftGrammarDescription
   )
 //--------------------------------------------------------- Generate HTML grammar helper file
-  if option galgas_cli_options [outputHTMLgrammarFile.value] then
+  if @buildOptionValue.outputHTMLgrammarFile then
     HTMLFilePath.deletingLastPathComponent.makeDirectory ()
     grammarHTMLHelperContents.writeToFileWhenDifferentContents (HTMLFilePath, ?*)
   else
@@ -728,7 +728,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   end
 //--------------------------------------------------------- Generate Swift description file
   let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
-  if option galgas_cli_options [outputGrammarSwiftDescriptionFile.value] then
+  if @buildOptionValue.outputGrammarSwiftDescriptionFile then
     swiftFilePath.deletingLastPathComponent.makeDirectory ()
     swiftGrammarDescription.writeToFileWhenDifferentContents (swiftFilePath, ?*)
   else

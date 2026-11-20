@@ -26,7 +26,7 @@
 grammar projectComponentGrammar "LL1" {
   syntax projectComponentSyntax
 
-  <project_component_start_symbol> (!@project outProject)
+  <project_component_start_symbol> (!@projectSettings outProject)
 
 }
 
@@ -36,7 +36,7 @@ syntax projectComponentSyntax : projectComponentScanner {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <project_component_start_symbol> (!@project outProject) {
+  rule <project_component_start_symbol> (!@projectSettings outProject) {
     var targets = @projectTargets ()
     var macAppBundleBaseName = "".nowhere
     var macAppBundleBaseNameDefined = false
@@ -50,16 +50,135 @@ syntax projectComponentSyntax : projectComponentScanner {
     var versionDefined = false
     var productName = "".nowhere
     var productNameDefined = false
-    var @styleMap lexicalStyleMap = @()
+    var @lexicalStyleMap lexicalStyleMap = @()
+    var [@projectBuildOption] boolBuildOptionArray = @()
+    var [@projectBuildOption] stringBuildOptionArray = @()
+    var [@projectBuildOption] u32BuildOptionArray = @()
+    var @stringset optionInvocationStringSet = @()
+    var @stringset optionInvocationCharSet = @()
+    var @stringset optionIdentifierSet = @()
     repeat
 //    while
 //      $#quietOutputByDefault$
 //      generateFeatureList ++= "quietOutputByDefault".here
     while
-      $#lexical-style$
+      $#u32-build-option$
+      $identifier$ (?let @lstring optionIdentifier)
+      if optionIdentifierSet.contains (optionIdentifier.string) then
+        error optionIdentifier : "duplicated option identifier"
+      end 
+      optionIdentifierSet ++= optionIdentifier.string
       $:$
-      $identifier$ (?let @lstring styleName)
+      let @lchar invocationChar
+      select
+        $'char'$ (?invocationChar)
+      or
+        invocationChar = @lchar ('\0', .here)
+      end
+      let @lstring invocationString
+      select
+        $"string"$ (?invocationString)
+      or
+        invocationString = "".here
+      end
       $->$
+      $"string"$ (?let @lstring explanationString)
+      u32BuildOptionArray ++= @(optionIdentifier, invocationChar, invocationString, explanationString)
+      if invocationString.string != "" then
+        if optionInvocationStringSet.contains (invocationString.string) then
+          error invocationString : "Duplicated invocation string"
+        end
+      end
+      optionInvocationStringSet ++= invocationString.string
+      if invocationChar.char != '\0' then
+        if optionInvocationCharSet.contains (invocationChar.char.string) then
+          error invocationChar : "Duplicated invocation character"
+        end
+        optionInvocationCharSet ++= invocationChar.char.string
+      end
+      if invocationString.string == "", invocationChar.char == '\0' then
+        error optionIdentifier : "both the invocation character and the invocation string must not be empty"
+      end
+    while
+      $#string-build-option$
+      $identifier$ (?let @lstring optionIdentifier)
+      if optionIdentifierSet.contains (optionIdentifier.string) then
+        error optionIdentifier : "duplicated option identifier"
+      end 
+      optionIdentifierSet ++= optionIdentifier.string
+      $:$
+      let @lchar invocationChar
+      select
+        $'char'$ (?invocationChar)
+      or
+        invocationChar = @lchar ('\0', .here)
+      end
+      let @lstring invocationString
+      select
+        $"string"$ (?invocationString)
+      or
+        invocationString = "".here
+      end
+      $->$
+      $"string"$ (?let @lstring explanationString)
+      stringBuildOptionArray ++= @(optionIdentifier, invocationChar, invocationString, explanationString)
+      if invocationString.string != "" then
+        if optionInvocationStringSet.contains (invocationString.string) then
+          error invocationString : "Duplicated invocation string"
+        end
+      end
+      optionInvocationStringSet ++= invocationString.string
+      if invocationChar.char != '\0' then
+        if optionInvocationCharSet.contains (invocationChar.char.string) then
+          error invocationChar : "Duplicated invocation character"
+        end
+        optionInvocationCharSet ++= invocationChar.char.string
+      end
+      if invocationString.string == "", invocationChar.char == '\0' then
+        error optionIdentifier : "both the invocation character and the invocation string must not be empty"
+      end
+    while
+      $#bool-build-option$
+      $identifier$ (?let @lstring optionIdentifier)
+      if optionIdentifierSet.contains (optionIdentifier.string) then
+        error optionIdentifier : "duplicated option identifier"
+      end 
+      optionIdentifierSet ++= optionIdentifier.string
+      $:$
+      let @lchar invocationChar
+      select
+        $'char'$ (?invocationChar)
+      or
+        invocationChar = @lchar ('\0', .here)
+      end
+      let @lstring invocationString
+      select
+        $"string"$ (?invocationString)
+      or
+        invocationString = "".here
+      end
+      $->$
+      $"string"$ (?let @lstring explanationString)
+      boolBuildOptionArray ++= @(optionIdentifier, invocationChar, invocationString, explanationString)
+      if invocationString.string != "" then
+        if optionInvocationStringSet.contains (invocationString.string) then
+          error invocationString : "Duplicated invocation string"
+        end
+      end
+      optionInvocationStringSet ++= invocationString.string
+      if invocationChar.char != '\0' then
+        if optionInvocationCharSet.contains (invocationChar.char.string) then
+          error invocationChar : "Duplicated invocation character"
+        end
+        optionInvocationCharSet ++= invocationChar.char.string
+      end
+      if invocationString.string == "", invocationChar.char == '\0' then
+        error optionIdentifier : "both the invocation character and the invocation string must not be empty"
+      end
+    while
+      $#lexical-style$
+      $identifier$ (?let @lstring styleName)
+      $:$
       $"string"$ (?let @lstring styleComment)
       !?lexicalStyleMap.insert (styleName, styleComment, lexicalStyleMap.count + 1)
     while
@@ -183,7 +302,10 @@ syntax projectComponentSyntax : projectComponentScanner {
       !libpmCustomPath: libpmCustomPath,
       !macAppBundleBaseName: macAppBundleBaseName,
       !macAppCodeSign: macAppCodeSign,
-      !lexicalStyleMap: lexicalStyleMap
+      !lexicalStyleMap: lexicalStyleMap,
+      !boolBuildOptionArray: boolBuildOptionArray,
+      !stringBuildOptionArray: stringBuildOptionArray,
+      !u32BuildOptionArray: u32BuildOptionArray
     )
     if not versionDefined then
       error .here : "#version should be defined" spoil outProject

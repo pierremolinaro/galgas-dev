@@ -24,7 +24,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @string inProductDirectory,
                             let @galgasDeclarationAST inSemanticDeclarations,
-                            let @project inProject,
+                            let @projectSettings inProjectSettings,
                             !@semanticContext outSemanticContext,
                             !@unifiedTypeMap outTypeMap,
                             ![@semanticDeclarationForGeneration] outSemanticDeclarationSortedListForGeneration) {
@@ -76,7 +76,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //----- Build semantic context
   buildGalgasSemanticContext (
     semanticDeclarations,
-    inProject.lexicalStyleMap,
+    inProjectSettings,
     ?outSemanticContext,
     ?outTypeMap,
     ?let [@semanticDeclarationAST] sortedSemanticDeclarationListAST
@@ -87,8 +87,17 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   for entry in outTypeMap.unsolvedEntryList do
     error entry : "the '@" + entry + "' type is undefined"
   end
+//----- Build option generation
+  outSemanticDeclarationSortedListForGeneration = []
+  outSemanticDeclarationSortedListForGeneration ++= @buildOptionForGeneration (
+    !infoMessage: "build option value",
+    !generateHeader: true,
+    !implementationCppFileName: "build-option-value",
+    !boolBuildOptionArray: inProjectSettings.boolBuildOptionArray,
+    !u32BuildOptionArray: inProjectSettings.u32BuildOptionArray,
+    !stringBuildOptionArray: inProjectSettings.stringBuildOptionArray
+  )
 //----- Semantic Analysis
-  outSemanticDeclarationSortedListForGeneration = @()
   if @application.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
@@ -112,7 +121,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //--------------------------------------------------------------------------------------------------
 
 private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclarations,
-                                         @styleMap inLexicalStyleMap,
+                                         @projectSettings inProjectSettings,
                                          !@semanticContext outSemanticContext,
                                          !@unifiedTypeMap outTypeMap,
                                          ![@semanticDeclarationAST] outSortedSemanticDeclarationListAST) {
@@ -173,7 +182,7 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
       outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     //--- Build initial semantic context
       outTypeMap = @()
-      outSemanticContext = @semanticContext (inLexicalStyleMap)
+      outSemanticContext = @semanticContext (inProjectSettings)
     //--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
         declaration.enterDeclarationInSemanticContext
@@ -213,7 +222,7 @@ proc generateSemanticDeclarationsGalgas3
   end
 //---
   if @application.errorCount == 0 then
-    if option galgas_cli_options [generateOneHeader.value] & option galgas_cli_options [generateManyFiles.value] then
+    if @buildOptionValue.generateOneHeader & @buildOptionValue.generateManyFiles then
        generateOneBigHeader (
         inProductDirectory,
         inSemanticDeclarationSortedListForGeneration,
@@ -227,7 +236,7 @@ proc generateSemanticDeclarationsGalgas3
         !?ioToolProductFileList,
         !?ioAllProductFileSet
       )
-    elsif option galgas_cli_options [generateOneHeader.value] & not option galgas_cli_options [generateManyFiles.value] then
+    elsif @buildOptionValue.generateOneHeader & not @buildOptionValue.generateManyFiles then
        generateOneBigHeader (
         inProductDirectory,
         inSemanticDeclarationSortedListForGeneration,
@@ -241,7 +250,7 @@ proc generateSemanticDeclarationsGalgas3
         !?ioToolProductFileList,
         !?ioAllProductFileSet
       )
-    elsif (not option galgas_cli_options [generateOneHeader.value]) & option galgas_cli_options [generateManyFiles.value] then
+    elsif (not @buildOptionValue.generateOneHeader) & @buildOptionValue.generateManyFiles then
       generateManyHeaders (
         inProductDirectory,
         inSemanticDeclarationSortedListForGeneration,
@@ -499,7 +508,7 @@ private proc generateFewImplementationFiles
   ?![@string] ioToolProductFileList,
   ?!@stringset ioAllProductFileSet
 ) {
-  let useOneHugeHeader = option galgas_cli_options [generateOneHeader.value]
+  let useOneHugeHeader = @buildOptionValue.generateOneHeader
 //------------ all-declarations.cpp
   var n = 0
   var fileIdx = 0
@@ -695,7 +704,7 @@ private proc generateManyImplementationFiles
   ?![@string] ioToolProductFileList,
   ?!@stringset ioAllProductFileSet
 ) {
-  let useOneHugeHeader = option galgas_cli_options [generateOneHeader.value]
+  let useOneHugeHeader = @buildOptionValue.generateOneHeader
 //--- Generation
   for declaration in inSemanticDeclarationSortedListForGeneration do
     var @stringset inclusionSet = @()

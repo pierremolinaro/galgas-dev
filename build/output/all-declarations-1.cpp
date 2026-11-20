@@ -15600,8 +15600,8 @@ static const char * gLexicalMessage_projectComponentScanner_undefinedAttribute =
 
 String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 26)) {
-    static const char * syntaxErrorMessageArray [26] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 29)) {
+    static const char * syntaxErrorMessageArray [29] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a literal integer",
         "a character constant",
@@ -15624,6 +15624,9 @@ String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inT
         "the '#makefile-win32-on-macosx' keyword",
         "the '#macSwiftApp' keyword",
         "the '#lexical-style' keyword",
+        "the '#bool-build-option' keyword",
+        "the '#string-build-option' keyword",
+        "the '#u32-build-option' keyword",
         "the '.' delimitor",
         "the ':' delimitor",
         "the '->' delimitor"
@@ -15657,6 +15660,27 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 //--- Unicode string for '$:$'
 static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
   utf32 (':'),
+} ;
+
+//--- Unicode string for '$bool-build-option$'
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
+  utf32 ('b'),
+  utf32 ('o'),
+  utf32 ('o'),
+  utf32 ('l'),
+  utf32 ('-'),
+  utf32 ('b'),
+  utf32 ('u'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('d'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
@@ -15994,6 +16018,49 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
   utf32 ('e'),
 } ;
 
+//--- Unicode string for '$string-build-option$'
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
+  utf32 ('s'),
+  utf32 ('t'),
+  utf32 ('r'),
+  utf32 ('i'),
+  utf32 ('n'),
+  utf32 ('g'),
+  utf32 ('-'),
+  utf32 ('b'),
+  utf32 ('u'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('d'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
+} ;
+
+//--- Unicode string for '$u32-build-option$'
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
+  utf32 ('u'),
+  utf32 ('3'),
+  utf32 ('2'),
+  utf32 ('-'),
+  utf32 ('b'),
+  utf32 ('u'),
+  utf32 ('i'),
+  utf32 ('l'),
+  utf32 ('d'),
+  utf32 ('-'),
+  utf32 ('o'),
+  utf32 ('p'),
+  utf32 ('t'),
+  utf32 ('i'),
+  utf32 ('o'),
+  utf32 ('n'),
+} ;
+
 //--- Unicode string for '$version$'
 static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
   utf32 ('v'),
@@ -16009,7 +16076,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 //             Key words table 'attributeKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_projectComponentScanner_attributeKeyWordList = 16 ;
+static const int32_t ktable_size_projectComponentScanner_attributeKeyWordList = 19 ;
 
 static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_attributeKeyWordList [ktable_size_projectComponentScanner_attributeKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_version, Lexique_projectComponentScanner::kToken__23_version),
@@ -16020,9 +16087,12 @@ static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_at
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_unix, Lexique_projectComponentScanner::kToken__23_makefile_2D_unix),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_libpmCustomPath, Lexique_projectComponentScanner::kToken__23_libpmCustomPath),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_bool_2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_windows, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows),
+  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_string_2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macAppBundleBaseName, Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx),
   C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
@@ -16181,6 +16251,21 @@ String Lexique_projectComponentScanner::getCurrentTokenString (const cToken * in
     case kToken__23_lexical_2D_style:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("#lexical-style") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_bool_2D_build_2D_option:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#bool-build-option") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_string_2D_build_2D_option:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#string-build-option") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__23_u_33__32__2D_build_2D_option:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("#u32-build-option") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__2E_:
@@ -16659,6 +16744,9 @@ GGS_luint Lexique_projectComponentScanner::synthetizedAttribute_uint_33__32_valu
   result.plusPlusAssignOperation (GGS_string ("#makefile-win32-on-macosx") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("#macSwiftApp") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("#lexical-style") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#bool-build-option") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#string-build-option") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#u32-build-option") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string (".") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string (":") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("->") COMMA_HERE) ;
@@ -16687,9 +16775,12 @@ static void getKeywordsForIdentifier_projectComponentScanner (const String & inI
     ioList.appendObject ("makefile-unix") ;
     ioList.appendObject ("libpmCustomPath") ;
     ioList.appendObject ("makefile-macosx") ;
+    ioList.appendObject ("u32-build-option") ;
+    ioList.appendObject ("bool-build-option") ;
     ioList.appendObject ("codeblocks-linux32") ;
     ioList.appendObject ("codeblocks-linux64") ;
     ioList.appendObject ("codeblocks-windows") ;
+    ioList.appendObject ("string-build-option") ;
     ioList.appendObject ("macAppBundleBaseName") ;
     ioList.appendObject ("makefile-win32-on-macosx") ;
     ioList.appendObject ("makefile-x86linux32-on-macosx") ;
@@ -16717,7 +16808,7 @@ __attribute__ ((unused)) (getKeywordLists_projectComponentScanner, getKeywordsFo
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§
-  static const uint32_t kTerminalSymbolStyles [26] = {0,
+  static const uint32_t kTerminalSymbolStyles [29] = {0,
     0 /* projectComponentScanner_1_identifier */,
     6 /* projectComponentScanner_1_literalInt */,
     8 /* projectComponentScanner_1__27_char_27_ */,
@@ -16740,6 +16831,9 @@ uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t i
     11 /* projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
     11 /* projectComponentScanner_1__23_macSwiftApp */,
     11 /* projectComponentScanner_1__23_lexical_2D_style */,
+    11 /* projectComponentScanner_1__23_bool_2D_build_2D_option */,
+    11 /* projectComponentScanner_1__23_string_2D_build_2D_option */,
+    11 /* projectComponentScanner_1__23_u_33__32__2D_build_2D_option */,
     2 /* projectComponentScanner_1__2E_ */,
     2 /* projectComponentScanner_1__3A_ */,
     2 /* projectComponentScanner_1__2D__3E_ */

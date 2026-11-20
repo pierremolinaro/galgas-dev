@@ -1,0 +1,203 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+final class @buildOptionValueDeclarationAST : @semanticDeclarationAST {
+  private let @lstring buildOptionValueName
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "build option @" + self.buildOptionValueName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInGraph (
+        ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+        ?!@equatableExtensionMap _ioEquatableExtensionMap,
+        ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+        ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+        ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+        ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+        ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+    let key = @lstring ("@" + self.buildOptionValueName, self.buildOptionValueName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext (
+        ?!@equatableExtensionMap _ioEquatableExtensionMap,
+        let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+        let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+        let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+        let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+        ?!@unifiedTypeMap ioTypeMap,
+        ?!@semanticContext ioSemanticContext) {
+  //---
+    var @classFunctionMap classFunctionMap = @()
+    !?ioTypeMap.makeEntry ("bool".nowhere, ?let boolType)
+    for boolOption in ioSemanticContext.projectSettings.boolBuildOptionArray do
+      !?classFunctionMap.insertKey (boolOption.mIdentifier, [], false, boolType)
+    end  
+    !?ioTypeMap.makeEntry ("string".nowhere, ?let stringType)
+    for stringOption in ioSemanticContext.projectSettings.stringBuildOptionArray do
+      !?classFunctionMap.insertKey (stringOption.mIdentifier, [], false, stringType)
+    end  
+    !?ioTypeMap.makeEntry ("uint".nowhere, ?let u32Type)
+    for u32Option in ioSemanticContext.projectSettings.u32BuildOptionArray do
+      !?classFunctionMap.insertKey (u32Option.mIdentifier, [], false, u32Type)
+    end  
+  //---
+    let @setterMap setterMap = @()
+    let @instanceMethodMap instanceMethodMap = @()
+    let @getterMap getterMap = @()
+    let @initializerMap initializerMap = @()
+    let features = @typeFeatures ()
+  //--- Enter type in type map
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.buildOptionValueName,
+      !isPredefined: self.isPredefined,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .packageType,
+      !supportArrayLiteral: false,
+      !allTypedPropertyList: @(),
+      !propertyMap: @(),
+      !currentTypedPropertyList: @(),
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: features,
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "build-option-" + self.buildOptionValueName.string.fileNameRepresentation,
+      !headerKind: .oneHeader
+    )
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
+  //--- Useful entities graph
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.buildOptionValueName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+    if self.isPredefined  then
+      ioUsefulnessRootEntities ++= nameForUsefulness
+    end
+  //---
+    let selfType = ioTypeMap.typeMapEntryForLKey (self.buildOptionValueName)
+    ioSemanticDeclarationListForGeneration ++= @buildOptionTypeForGeneration (
+      !infoMessage: "build option " + self.buildOptionValueName,
+      selfType,
+      !boolBuildOptionArray: inSemanticContext.projectSettings.boolBuildOptionArray,
+      !u32BuildOptionArray: inSemanticContext.projectSettings.u32BuildOptionArray,
+      !stringBuildOptionArray: inSemanticContext.projectSettings.stringBuildOptionArray
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//!  CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
+  public let [@projectBuildOption] boolBuildOptionArray #initArgLabel
+  public let [@projectBuildOption] u32BuildOptionArray #initArgLabel
+  public let [@projectBuildOption] stringBuildOptionArray #initArgLabel
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
+                                    !@string outHeader) {
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outHeader = filewrapper [buildOptionGenerationTemplate.buildOptionTypeHeader1 :
+      selfTypeDefinition.typeName.string,
+      selfTypeDefinition.typeName.string.identifierRepresentation
+    ]
+    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.classFunctionMap,
+      selfTypeDefinition.classMethodMap
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation) {
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outImplementation = filewrapper [buildOptionGenerationTemplate.buildOptionTypeSpecificImplementation :
+      selfTypeDefinition.typeName.string,
+      selfTypeDefinition.typeName.string.identifierRepresentation,
+      self.boolBuildOptionArray,
+      self.u32BuildOptionArray,
+      self.stringBuildOptionArray
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+filewrapper buildOptionGenerationTemplate in "../+generation-templates/type_generation" {
+}{
+}{
+  template buildOptionTypeHeader1 : "buildOptionValue.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER
+  )
+
+  template buildOptionTypeSpecificImplementation : "buildOptionValue.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?[@projectBuildOption] BOOL_OPTION_ARRAY,
+    ?[@projectBuildOption] UINT_OPTION_ARRAY,
+    ?[@projectBuildOption] STRING_OPTION_ARRAY
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
+

@@ -38,7 +38,7 @@ optionset @projectTargets {
 
 //-----------------------------------------------------------------*
 
-map @styleMap {
+map @lexicalStyleMap {
   public let @lstring mComment
   public let @uint mStyleIndex // Always > 0
   #insertSetter insert #errorMessage "the '%K' style is already declared in %L"
@@ -47,7 +47,16 @@ map @styleMap {
 
 //--------------------------------------------------------------------------------------------------
 
-struct @project {
+struct @projectBuildOption {
+  let @lstring mIdentifier
+  let @lchar mInvocationChar
+  let @lstring mInvocationString
+  let @lstring mExplanationString
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @projectSettings {
   let @string productName #initArgLabel
   let @uint majorVersion #initArgLabel
   let @uint minorVersion #initArgLabel
@@ -56,7 +65,10 @@ struct @project {
   let @lstring libpmCustomPath #initArgLabel
   let @lstring macAppBundleBaseName #initArgLabel
   let @lstring macAppCodeSign #initArgLabel
-  let @styleMap lexicalStyleMap #initArgLabel
+  let @lexicalStyleMap lexicalStyleMap #initArgLabel
+  let [@projectBuildOption] boolBuildOptionArray #initArgLabel
+  let [@projectBuildOption] stringBuildOptionArray #initArgLabel
+  let [@projectBuildOption] u32BuildOptionArray #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------

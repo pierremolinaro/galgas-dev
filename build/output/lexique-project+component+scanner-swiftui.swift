@@ -95,7 +95,7 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 25
+    return 28
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -125,11 +125,14 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
       11, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
       11, // 21 : projectComponentScanner_1__23_macSwiftApp
       11, // 22 : projectComponentScanner_1__23_lexical_2D_style
-      2, // 23 : projectComponentScanner_1__2E_
-      2, // 24 : projectComponentScanner_1__3A_
-      2, // 25 : projectComponentScanner_1__2D__3E_
-      13, // 26 : projectComponentScanner_2_ERROR
-      14  // 27 : projectComponentScanner_2_TEMPLATE
+      11, // 23 : projectComponentScanner_1__23_bool_2D_build_2D_option
+      11, // 24 : projectComponentScanner_1__23_string_2D_build_2D_option
+      11, // 25 : projectComponentScanner_1__23_u_33__32__2D_build_2D_option
+      2, // 26 : projectComponentScanner_1__2E_
+      2, // 27 : projectComponentScanner_1__3A_
+      2, // 28 : projectComponentScanner_1__2D__3E_
+      13, // 29 : projectComponentScanner_2_ERROR
+      14  // 30 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -161,11 +164,14 @@ class ScannerFor_projectComponentScanner : AbstractScanner {
       true, // 20 : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx
       true, // 21 : projectComponentScanner_1__23_macSwiftApp
       true, // 22 : projectComponentScanner_1__23_lexical_2D_style
-      true, // 23 : projectComponentScanner_1__2E_
-      true, // 24 : projectComponentScanner_1__3A_
-      true, // 25 : projectComponentScanner_1__2D__3E_
-      false, // 26 : projectComponentScanner_2_ERROR
-      false  // 27 : projectComponentScanner_2_TEMPLATE
+      true, // 23 : projectComponentScanner_1__23_bool_2D_build_2D_option
+      true, // 24 : projectComponentScanner_1__23_string_2D_build_2D_option
+      true, // 25 : projectComponentScanner_1__23_u_33__32__2D_build_2D_option
+      true, // 26 : projectComponentScanner_1__2E_
+      true, // 27 : projectComponentScanner_1__3A_
+      true, // 28 : projectComponentScanner_1__2D__3E_
+      false, // 29 : projectComponentScanner_2_ERROR
+      false  // 30 : projectComponentScanner_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -660,9 +666,12 @@ fileprivate let kDictionary_projectComponentScanner_attributeKeyWordList : [Stri
   "makefile-unix" : projectComponentScanner_1__23_makefile_2D_unix,
   "libpmCustomPath" : projectComponentScanner_1__23_libpmCustomPath,
   "makefile-macosx" : projectComponentScanner_1__23_makefile_2D_macosx,
+  "u32-build-option" : projectComponentScanner_1__23_u_33__32__2D_build_2D_option,
+  "bool-build-option" : projectComponentScanner_1__23_bool_2D_build_2D_option,
   "codeblocks-linux32" : projectComponentScanner_1__23_codeblocks_2D_linux_33__32_,
   "codeblocks-linux64" : projectComponentScanner_1__23_codeblocks_2D_linux_36__34_,
   "codeblocks-windows" : projectComponentScanner_1__23_codeblocks_2D_windows,
+  "string-build-option" : projectComponentScanner_1__23_string_2D_build_2D_option,
   "macAppBundleBaseName" : projectComponentScanner_1__23_macAppBundleBaseName,
   "makefile-win32-on-macosx" : projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx,
   "makefile-x86linux32-on-macosx" : projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx,
@@ -738,11 +747,14 @@ let projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_maco
 let projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx : UInt16 = 20
 let projectComponentScanner_1__23_macSwiftApp : UInt16 = 21
 let projectComponentScanner_1__23_lexical_2D_style : UInt16 = 22
-let projectComponentScanner_1__2E_ : UInt16 = 23
-let projectComponentScanner_1__3A_ : UInt16 = 24
-let projectComponentScanner_1__2D__3E_ : UInt16 = 25
-let projectComponentScanner_2_ERROR : UInt16 = 26
-let projectComponentScanner_2_TEMPLATE : UInt16 = 27
+let projectComponentScanner_1__23_bool_2D_build_2D_option : UInt16 = 23
+let projectComponentScanner_1__23_string_2D_build_2D_option : UInt16 = 24
+let projectComponentScanner_1__23_u_33__32__2D_build_2D_option : UInt16 = 25
+let projectComponentScanner_1__2E_ : UInt16 = 26
+let projectComponentScanner_1__3A_ : UInt16 = 27
+let projectComponentScanner_1__2D__3E_ : UInt16 = 28
+let projectComponentScanner_2_ERROR : UInt16 = 29
+let projectComponentScanner_2_TEMPLATE : UInt16 = 30
 
 //--------------------------------------------------------------------------------------------------
 

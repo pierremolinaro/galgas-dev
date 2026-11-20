@@ -247,7 +247,7 @@ enum @xcodeProject #comparable {
 proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
                           ?buildDirName: let @string inBuildDirectoryName,
                           let @string inProjectSourceFilePath,
-                          let @project inProject,
+                          let @projectSettings inProjectSettings,
                           let [@string] inToolCppFileList,
                           let [@string] inToolHeaderFileList,
                           ?appProductFileList: let [@string] inAppProductFileList,
@@ -256,9 +256,9 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
                           let @string inHandCodedSourceDirectory,
                           let @stringset inHandledExtensionSet,
                           ?!@stringset ioAllProductFileSet) {
-  let versionString = inProject.majorVersion.bigint.string
-    + "." + inProject.minorVersion.bigint
-    + "." + inProject.revision.bigint
+  let versionString = inProjectSettings.majorVersion.bigint.string
+    + "." + inProjectSettings.minorVersion.bigint
+    + "." + inProjectSettings.revision.bigint
   ioAllProductFileSet += .setWithStringArray (inSwiftAppProductFileList)
   let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header
@@ -270,8 +270,8 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
   ioAllProductFileSet ++= "project_header.h"
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
-  if inProject.macAppCodeSign.string != "" then
-    macCodeSign = inProject.macAppCodeSign
+  if inProjectSettings.macAppCodeSign.string != "" then
+    macCodeSign = inProjectSettings.macAppCodeSign
   else
     macCodeSign = "".nowhere
   end
@@ -279,15 +279,15 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
   let MACOSX_DEPLOYMENT_TARGET = "14.6"
 //---------------------------------------------------------- LIBPM path
   let @string libpmPath
-  if inProject.libpmCustomPath.string != "" then
-    libpmPath = inProject.libpmCustomPath
+  if inProjectSettings.libpmCustomPath.string != "" then
+    libpmPath = inProjectSettings.libpmCustomPath
   else
     updateLIBPMatPath (inAbsoluteBuildDirectory + "/libpm")
     libpmPath = "../" + inBuildDirectoryName + "/libpm"
   end
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
-  if inProject.targets.contains (.macSwiftApp) then
+  if inProjectSettings.targets.contains (.macSwiftApp) then
     xcodeProject = .swiftApp
   end
 //--- Codesign without selecting OSX ?
@@ -296,30 +296,30 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
     : "the macCodeSign property implies the definition of an OS X target system: \"%MacSwiftApp\""
   end
 //--- Check Cocoa features
-  if xcodeProject != .none, inProject.macAppBundleBaseName.string == "" then
-    warning inProject.macAppBundleBaseName: "For a MacOS target, the \"#macAppBundleBaseName\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
+  if xcodeProject != .none, inProjectSettings.macAppBundleBaseName.string == "" then
+    warning inProjectSettings.macAppBundleBaseName: "For a MacOS target, the \"#macAppBundleBaseName\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 //--- Generation
-  let inTargetName = inProject.productName
-  if inProject.targets.contains (.makefileMacOS) then
+  let inTargetName = inProjectSettings.productName
+  if inProjectSettings.targets.contains (.makefileMacOS) then
     generateMakefileMacTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName)
   end
-  if inProject.targets.contains (.makefileUnix) then
+  if inProjectSettings.targets.contains (.makefileUnix) then
     generateMakefileUnixTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if inProject.targets.contains (.makefileX86Linux32OnMac) then
+  if inProjectSettings.targets.contains (.makefileX86Linux32OnMac) then
     generateMakefileLinux32OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if inProject.targets.contains (.makefileX86Linux64OnMac) then
+  if inProjectSettings.targets.contains (.makefileX86Linux64OnMac) then
     generateMakefileLinux64OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if inProject.targets.contains (.makefileARM64LinuxOnMac) then
+  if inProjectSettings.targets.contains (.makefileARM64LinuxOnMac) then
     generateArm64LinuxMakefileTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if inProject.targets.contains (.makefileWin32OnMac) then
+  if inProjectSettings.targets.contains (.makefileWin32OnMac) then
     generateMakefileMinGWOnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if inProject.targets.contains (.codeblocksWindows) then
+  if inProjectSettings.targets.contains (.codeblocksWindows) then
     generateGalgasCodeBlocksWindowsTarget (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -330,7 +330,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
       inHandCodedSourceDirectory
     )
   end
-  if inProject.targets.contains (.codeblocksLinux32) then
+  if inProjectSettings.targets.contains (.codeblocksLinux32) then
     generateGalgasCodeBlocksLinuxI686Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -341,7 +341,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
       inHandCodedSourceDirectory
     )
   end
-  if inProject.targets.contains (.codeblocksLinux64) then
+  if inProjectSettings.targets.contains (.codeblocksLinux64) then
     generateGalgasCodeBlocksLinuxX86_64Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -381,7 +381,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
   ioAllProductFileSet ++= "file-list.json"
 //--- Generate Swift lexical styles file
   var @sortedLexicalStyleArray sortedLexicalStyleArray = @()
-  for (name, comment, index) in inProject.lexicalStyleMap do
+  for (name, comment, index) in inProjectSettings.lexicalStyleMap do
     sortedLexicalStyleArray ++= @(name.string, comment.string, index)
   end
   let contents = filewrapper [lexicalTemplates.swiftUILexicalStyles : sortedLexicalStyleArray]
@@ -396,8 +396,8 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
     dir.makeDirectory ()
   //--- Info.plist
     let @string applicationBundleBase
-    if inProject.macAppBundleBaseName.string != "" then
-      applicationBundleBase = inProject.macAppBundleBaseName.string
+    if inProjectSettings.macAppBundleBaseName.string != "" then
+      applicationBundleBase = inProjectSettings.macAppBundleBaseName.string
     else
       applicationBundleBase = "unknown.unknown"
     end

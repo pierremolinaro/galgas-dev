@@ -201,7 +201,7 @@ struct @semanticContext {
   var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
   var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
-  let @styleMap lexicalStyleMap
+  let @projectSettings projectSettings
 }
 
 //--------------------------------------------------------------------------------------------------

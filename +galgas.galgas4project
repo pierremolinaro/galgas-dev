@@ -18,16 +18,59 @@
 #codeblocks-linux32
 #codeblocks-linux64
 
-#lexical-style : keywordsStyle -> "Keywords"
-#lexical-style : delimitersStyle -> "Delimiters"
-#lexical-style : selectorStyle -> "Selectors"
-#lexical-style : terminalStyle -> "Terminal Symbols"
-#lexical-style : nonTerminalStyle -> "Non Terminal Symbols"
-#lexical-style : integerStyle -> "Integer Constants"
-#lexical-style : floatStyle -> "Floating Point Constants"
-#lexical-style : characterStyle -> "Character Constants"
-#lexical-style : stringStyle -> "String Constants"
-#lexical-style : typeNameStyle -> "Type Names (@...)"
-#lexical-style : attributeStyle -> "Attributes (#...)"
-#lexical-style : commentStyle -> "Comments"
+#lexical-style keywordsStyle    : "Keywords"
+#lexical-style delimitersStyle  : "Delimiters"
+#lexical-style selectorStyle    : "Selectors"
+#lexical-style terminalStyle    : "Terminal Symbols"
+#lexical-style nonTerminalStyle : "Non Terminal Symbols"
+#lexical-style integerStyle     : "Integer Constants"
+#lexical-style floatStyle       : "Floating Point Constants"
+#lexical-style characterStyle   : "Character Constants"
+#lexical-style stringStyle      : "String Constants"
+#lexical-style typeNameStyle    : "Type Names (@...)"
+#lexical-style attributeStyle   : "Attributes (#...)"
+#lexical-style commentStyle     : "Comments"
+
+#bool-build-option outputHTMLgrammarFile : "output-html-grammar-file"
+        -> "Output a HTML file for every grammar component"
+
+#bool-build-option outputGrammarSwiftDescriptionFile: "output-swift-description-grammar-file"
+        -> "Output a Swift description file for every grammar component"
+
+#bool-build-option outputHTMLTypeListFile: 'T' "output-html-type-dump-file"
+        -> "Output a HTML file that contains all defined types"
+
+#string-build-option create_project : "create-project" -> "Create a new GALGAS Project"
+
+#bool-build-option printPredefinedLexicalActions: "print-predefined-lexical-actions"
+      -> "Print the list of predefined lexical routines and functions"
+
+#string-build-option extractLIBPMOption: "extract-libpm" -> "Extract embedded LIBPM at given path"
+
+#bool-build-option generateOneHeader : "generate-one-cpp-header"
+    -> "Generate one C++ header file for all declarations"
+
+#bool-build-option generateManyFiles : "generate-many-cpp-files"
+    -> "Generate many C++ implementation files"
+
+//  @string cppCompile : '\0', "compile"
+//    -> "Perform C++ compilation on 'string' target"
+
+#bool-build-option check_big_int : "check-big-int"
+    -> "Run bit integers checks"
+
+#bool-build-option emitSyntaxDiagrams : "emit-syntax-diagrams"
+    -> "Emit grammar syntax diagrams in TEX files"
+
+#bool-build-option emitClassGraph : "emit-class-graph"
+    -> "Emit class graph in dot file"
+
+#bool-build-option displayUnicodeLexicalTestFunctions : "display-lexical-test-functions"
+    -> "Display Unicode Lexical Test Functions"
+
+#bool-build-option checkEntityUsefulness : "check-usefulness"
+    -> "Check Entity Usefulness"
+
+#bool-build-option warnsOnOldStyleEnumeration : "warns-on-old-style-enumeration"
+    -> "Warns on old style enumeration"
 

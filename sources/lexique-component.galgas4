@@ -495,8 +495,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
     for terminal in self.mTerminalDeclarationListAST do
       var @uint terminalStyleIndex = 0
       if terminal.mStyle.string.count > 0 then
-        inSemanticContext.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
-//        lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
+        inSemanticContext.projectSettings.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
       end
       var argumentTypeList = [@lexicalSentValue] ()
       for attribute in terminal.mSentAttributeList do
@@ -516,8 +515,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
     for property in self.mLexicalListDeclarationListAST do
       var @uint terminalStyleIndex = 0
       if property.mStyle.string.count > 0 then
-        inSemanticContext.lexicalStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
-//        lexiqueAnalysisContext.mStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
+        inSemanticContext.projectSettings.lexicalStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
       end
       var argumentTypeList = [@lexicalSentValue] ()
       for attribute in property.mSentAttributeList do
@@ -619,7 +617,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         self.mTemplateReplacementListAST,
         self.mIndexingListAST,
         self.mTemplateDelimitorListAST,
-        inSemanticContext.lexicalStyleMap.count
+        inSemanticContext.projectSettings.lexicalStyleMap.count
       ]
     //---
       ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (

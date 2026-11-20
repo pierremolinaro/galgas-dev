@@ -226,15 +226,8 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     @lexicalExplicitTokenListMapMap (),
     @(),
     [@templateDelimitorAST] (),
-//    @styleMap (),
     unicodeTestFunctions
   )
-//-------------------------------------- Build style map
-//  var styleIndex = 1
-//  for lexicalStyle in lexicalStyleListAST do
-//    !?lexiqueAnalysisContext.mStyleMap.insert (lexicalStyle.mName, lexicalStyle.mComment, styleIndex)
-//    styleIndex += 1
-//  end
 //-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
    lexicalTypeMap,
@@ -246,8 +239,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   for terminal in terminalListAST do
     var @uint terminalStyleIndex = 0
     if terminal.mStyle.string.count > 0 then
-      inSemanticContext.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
-//      lexiqueAnalysisContext.mStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
+      inSemanticContext.projectSettings.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = [@lexicalSentValue] ()
     for attribute in terminal.mSentAttributeList do
@@ -266,8 +258,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   for lexicalList in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
     if lexicalList.mStyle.string.count > 0 then
-      inSemanticContext.lexicalStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
-//      lexiqueAnalysisContext.mStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
+      inSemanticContext.projectSettings.lexicalStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = [@lexicalSentValue] ()
     for attribute in lexicalList.mSentAttributeList do

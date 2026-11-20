@@ -3309,6 +3309,55 @@ class GGS_application final {
 
 } ;
 
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+extern BoolCommandLineOption gBuildOption_outputHTMLgrammarFile ;
+
+extern BoolCommandLineOption gBuildOption_outputGrammarSwiftDescriptionFile ;
+
+extern BoolCommandLineOption gBuildOption_outputHTMLTypeListFile ;
+
+extern BoolCommandLineOption gBuildOption_printPredefinedLexicalActions ;
+
+extern BoolCommandLineOption gBuildOption_generateOneHeader ;
+
+extern BoolCommandLineOption gBuildOption_generateManyFiles ;
+
+extern BoolCommandLineOption gBuildOption_check_5F_big_5F_int ;
+
+extern BoolCommandLineOption gBuildOption_emitSyntaxDiagrams ;
+
+extern BoolCommandLineOption gBuildOption_emitClassGraph ;
+
+extern BoolCommandLineOption gBuildOption_displayUnicodeLexicalTestFunctions ;
+
+extern BoolCommandLineOption gBuildOption_checkEntityUsefulness ;
+
+extern BoolCommandLineOption gBuildOption_warnsOnOldStyleEnumeration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//--------------------------------------------------------------------------------------------------
+
+extern StringCommandLineOption gBuildOption__create_5F_project ;
+
+extern StringCommandLineOption gBuildOption__extractLIBPMOption ;
+
+//--------------------------------------------------------------------------------------------------
+
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [u64] array
 //--------------------------------------------------------------------------------------------------
@@ -4998,6 +5047,88 @@ class GGS_range final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_range ;
+
+//--------------------------------------------------------------------------------------------------
+//   Package buildOptionValue
+//--------------------------------------------------------------------------------------------------
+
+class GGS_buildOptionValue  {
+
+//-- Start of package generic part
+
+//--------------------------------- GALGAS class getters
+  public: static class GGS_bool class_func_checkEntityUsefulness (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_check_5F_big_5F_int (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_create_5F_project (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_displayUnicodeLexicalTestFunctions (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_emitClassGraph (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_emitSyntaxDiagrams (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_extractLIBPMOption (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_generateManyFiles (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_generateOneHeader (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_outputGrammarSwiftDescriptionFile (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_outputHTMLTypeListFile (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_outputHTMLgrammarFile (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_printPredefinedLexicalActions (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_warnsOnOldStyleEnumeration (LOCATION_ARGS) ;
+
+//--------------------------------- Class Methods
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//   Package buildOptionString
+//--------------------------------------------------------------------------------------------------
+
+class GGS_buildOptionString  {
+
+//-- Start of package generic part
+
+//--------------------------------- GALGAS class getters
+  public: static class GGS_string class_func_checkEntityUsefulness (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_check_5F_big_5F_int (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_create_5F_project (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_displayUnicodeLexicalTestFunctions (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_emitClassGraph (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_emitSyntaxDiagrams (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_extractLIBPMOption (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_generateManyFiles (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_generateOneHeader (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_outputGrammarSwiftDescriptionFile (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_outputHTMLTypeListFile (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_outputHTMLgrammarFile (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_printPredefinedLexicalActions (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_warnsOnOldStyleEnumeration (LOCATION_ARGS) ;
+
+//--------------------------------- Class Methods
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: bigint? optional
