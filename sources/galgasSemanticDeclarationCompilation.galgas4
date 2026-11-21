@@ -469,9 +469,13 @@ private proc generateFewImplementationFiles
         if useOneHugeHeader then
           inclusionSet = ["all-declarations"]
         end
-        let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-          inclusionSet.stringArray
-        ]
+//        let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
+//          inclusionSet.stringArray
+//        ]
+        var header = ""
+        for str in inclusionSet do
+          header += "#include \"" + str + ".h\"\n"
+        end
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = [@string] [fileName] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
@@ -492,9 +496,13 @@ private proc generateFewImplementationFiles
     if useOneHugeHeader then
       inclusionSet = ["all-declarations"]
     end
-    let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-      inclusionSet.stringArray
-    ]
+//    let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
+//      inclusionSet.stringArray
+//    ]
+    var header = ""
+    for str in inclusionSet do
+      header += "#include \"" + str + ".h\"\n"
+    end
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = [fileName] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
@@ -563,9 +571,13 @@ private proc generateFewImplementationFilesWithFewHeaders
       implementationString += declaration.appendTypeGenericImplementation
       if implementationString.count > 786432 then
         inclusionSet = ["all-declarations-" + fileIdx]
-        let cppHeader = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-          inclusionSet.stringArray
-        ]
+        var cppHeader = ""
+        for str in inclusionSet do
+          cppHeader += "#include \"" + str + ".h\"\n"
+        end
+//        let cppHeader = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
+//          inclusionSet.stringArray
+//        ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = [fileName] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
@@ -599,9 +611,10 @@ private proc generateFewImplementationFilesWithFewHeaders
   if implementationString == "" then
     fileIdx -= 1
   else
-    let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-      ["all-declarations-" + fileIdx]
-    ]
+//    let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
+//      ["all-declarations-" + fileIdx]
+//    ]
+    let header = "#include \"all-declarations-" + fileIdx + ".h\"\n\n"
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = [fileName] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
@@ -658,9 +671,13 @@ private proc generateManyImplementationFiles
       if useOneHugeHeader then
         inclusionSet = ["all-declarations"]
       end
-      let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-        inclusionSet.stringArray
-      ]
+//      let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
+//        inclusionSet.stringArray
+//      ]
+      var header = ""
+      for str in inclusionSet do
+        header += "#include \"" + str + ".h\"\n"
+      end
       implementationString += declaration.appendTypeGenericImplementation
       let fileName = declaration.getImplementationCppFileName + ".cpp"
       ioAllProductFileSet ++= fileName

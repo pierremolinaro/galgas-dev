@@ -1,5 +1,4 @@
 #include "all-declarations-6.h"
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_weakReferenceDeclarationAST_2E_weak::objectCompare (const GGS_weakReferenceDeclarationAST_2E_weak & inOperand) const {

@@ -1,3 +1,0 @@
-% for (mValue) in IMPORTED_COMPONENT_LIST do
-    %#include "%!mValue%.h"\n%
-  end%

@@ -13,10 +13,10 @@
 #codeblocks-linux64
 
 #macSwiftApp
-#macAppBundleBaseName : "fr.what"
+#macAppBundleBaseName : "fr.unknown"
 
-#lexical-style : keywordsStyle -> "Keywords"
-#lexical-style : integerStyle -> "Integer Constants"
-#lexical-style : stringStyle -> "String Constants"
-#lexical-style : delimitersStyle -> "Delimiters"
-#lexical-style : commentStyle -> "Comments"
+#lexical-style keywordsStyle : "Keywords"
+#lexical-style integerStyle : "Integer Constants"
+#lexical-style stringStyle : "String Constants"
+#lexical-style delimitersStyle : "Delimiters"
+#lexical-style commentStyle : "Comments"

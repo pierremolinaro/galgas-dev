@@ -1,5 +1,4 @@
 #include "all-declarations-10.h"
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_globalConstantInExpressionForGeneration_2E_weak::objectCompare (const GGS_globalConstantInExpressionForGeneration_2E_weak & inOperand) const {

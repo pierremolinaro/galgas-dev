@@ -1,5 +1,4 @@
 #include "all-declarations-16.h"
-
 //--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@XcodeProjectDescriptor addICNS_file'

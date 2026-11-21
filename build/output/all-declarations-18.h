@@ -296,16 +296,6 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticFileGenerationTemplate semanticFileImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (Compiler * inCompiler,
-                                                                                          const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'getterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

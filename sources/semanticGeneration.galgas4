@@ -1397,9 +1397,6 @@ filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_ge
     ?[@string] IMPORTED_COMPONENT_LIST
   )
 
-  template semanticFileImplementation : "semantic-file.cpp.galgasTemplate" (
-    ?[@string] IMPORTED_COMPONENT_LIST
-  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,5 +1,4 @@
 #include "all-declarations-2.h"
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_projectTargets::GGS_projectTargets (void) :

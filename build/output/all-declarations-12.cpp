@@ -1,5 +1,4 @@
 #include "all-declarations-12.h"
-
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalTagMap_2E_element::GGS_lexicalTagMap_2E_element (void) :

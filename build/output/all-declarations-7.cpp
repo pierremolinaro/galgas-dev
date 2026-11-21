@@ -1,5 +1,4 @@
 #include "all-declarations-7.h"
-
 //--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_lexicalStringMatchAST_2E_weak::objectCompare (const GGS_lexicalStringMatchAST_2E_weak & inOperand) const {

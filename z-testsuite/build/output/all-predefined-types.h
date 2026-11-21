@@ -27,6 +27,8 @@
 #include "BigSigned.h"
 #include "GALGAS_GenericDictionary.h"
 #include "Compiler.h"
+#include "FileManager.h"
+#include "execution-mode.h"
 
 //--------------------------------------------------------------------------------------------------
 // Lexical styles

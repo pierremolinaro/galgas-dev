@@ -1,5 +1,4 @@
 #include "all-declarations-8.h"
-
 //--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@[scopeLocalVarMap] neutralAccess'

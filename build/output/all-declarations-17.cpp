@@ -1,5 +1,4 @@
 #include "all-declarations-17.h"
-
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@assignmentInstructionAST enterInstructionInSemanticContext'
 //--------------------------------------------------------------------------------------------------

@@ -1,5 +1,4 @@
 #include "all-declarations-19.h"
-
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@outputActualParameterAST enterParameterInSemanticContext'
 //--------------------------------------------------------------------------------------------------
