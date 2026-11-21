@@ -363,28 +363,6 @@ abstract class @syntaxInstructionForGeneration : @semanticInstructionForGenerati
 
 //--------------------------------------------------------------------------------------------------
 //
-//    F I L E W R A P P E R    D E C L A R A T I O N
-//
-//--------------------------------------------------------------------------------------------------
-
-struct @filewrapperTemplateForGeneration {
-  public let @string mFilewrapperTemplateName
-  public let [@formalInputParameterForGeneration] mFilewrapperTemplateFormalInputParameters
-  public let [@templateInstructionForGeneration] mTemplateInstructionListForGeneration
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public let @string mFilewrapperName
-  public let @string mFilewrapperAbsolutePath
-  public let @wrapperFileMap mFilewrapperFileMap
-  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-  public let [@filewrapperTemplateForGeneration] mFilewrapperTemplateListForGeneration
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //    P R O G R A M    D E C L A R A T I O N
 //
 //--------------------------------------------------------------------------------------------------

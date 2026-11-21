@@ -98,36 +98,6 @@ map @functionMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-map @wrapperFileMap { // Key is file name
-  public let @string mAbsoluteFilePath
-  public let @bool mIsTextFile // true: text file, false: binary file
-  public let @uint mWrapperDirectoryIndex
-  public let @uint mWrapperFileIndex
-  #insertSetter insertKey #errorMessage "INTERNAL ERROR"
-  #searchMethod searchKey #errorMessage "INTERNAL ERROR"
-}
-
-//--------------------------------------------------------------------------------------------------
-
-map @wrapperDirectoryMap { // Key is directory name
-  public let @wrapperFileMap mRegularFileMap
-  public let @wrapperDirectoryMap mDirectoryMap
-  public let @uint mWrapperDirectoryIndex
-  #insertSetter insertKey #errorMessage "INTERNAL ERROR"
-  #searchMethod searchKey #errorMessage "INTERNAL ERROR"
-}
-
-//--------------------------------------------------------------------------------------------------
-
-map @filewrapperTemplateMap {
-  public let [@functionSignatureElement] mTemplateSignature
-  public let @lstring mFilewrapperTemplatePath
-  #insertSetter insertKey #errorMessage "the '%K' filewrapper template has been already declared in %L"
-  #searchMethod searchKey #errorMessage "the '%K' filewrapper template is not declared"
-}
-
-//--------------------------------------------------------------------------------------------------
-
 map @filewrapperMap {
   public let @lstring mFilewrapperPath
   public let [@lstring] mFilewrapperExtensionList
@@ -138,21 +108,6 @@ map @filewrapperMap {
   #insertSetter insertKey #errorMessage "the '%K' filewrapper has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' filewrapper is not declared"
 }
-
-//--------------------------------------------------------------------------------------------------
-//
-//  O P T I O N   M A P
-//
-//--------------------------------------------------------------------------------------------------
-
-//map @optionComponentMapForSemanticAnalysis {
-//  public let @bool mIsPredefined
-//  public let @commandLineOptionMap mBoolOptionMap
-//  public let @commandLineOptionMap mUIntOptionMap
-//  public let @commandLineOptionMap mStringOptionMap
-//  #insertSetter insertKey #errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
-//  #searchMethod searchKey #errorMessage "the '%K' option component is not imported"
-//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -198,7 +153,6 @@ struct @semanticContext {
   var @globalConstantMap mGlobalConstantMap = @()
   var @filewrapperMap mFilewrapperMap = @()
   var @grammarMap grammarMap = @()
-//  var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
   var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
   let @projectSettings projectSettings

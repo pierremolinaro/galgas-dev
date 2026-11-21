@@ -102,8 +102,8 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Search for filewrapper name in filewrapper map
-  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-    (self.mFilewrapperName,
+  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey (
+    self.mFilewrapperName,
     ?let @lstring filewrapperPath,
     ?4*,
     ?let @bool isInternal

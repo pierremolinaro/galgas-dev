@@ -1,0 +1,31 @@
+//--------------------------------------------------------------------------------------------------
+//%!"Filewrapper template @" + TYPE_NAME + " " + TEMPLATE_NAME%
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_%![TYPE_NAME identifierRepresentation]%::class_func_%![TEMPLATE_NAME identifierRepresentation]% (%?^
+  for (formalArg) in FORMAL_ARGUMENT_LIST do
+    %const GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% & %
+    if [UNUSED_VAR_SET contains !formalArg.mFormalArgumentCppName] then
+      %/* %!formalArg.mFormalArgumentCppName% */%
+    else
+      !formalArg.mFormalArgumentCppName
+    end
+    %,\n%!^
+  end
+  %Compiler * %
+  if [UNUSED_VAR_SET contains !gCompilerCppName] then
+    %/* %!gCompilerCppName% */%
+  else
+    !gCompilerCppName
+  end
+  %\n%!^%COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+%
+ if USES_COLUMN_MARKER then
+   %  uint32_t columnMarker = 0 ;\n%
+ end
+ block 2 :
+ !GENERATED_INSTRUCTION_STRING
+ end
+%  return GGS_string (result) ;
+}

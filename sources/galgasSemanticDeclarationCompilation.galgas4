@@ -134,15 +134,13 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
 //! Generation
 //--------------------------------------------------------------------------------------------------
 
-proc generateSemanticDeclarationsGalgas3
-  (let @unifiedTypeMap inUnifiedTypeMap,
-  let @string inProductDirectory,
-  let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-  ?!swift: [@string] ioSwiftAppProductFileList,
-  ?![@string] ioToolProductFileList,
-  ?![@string] ioToolHeaderFileList,
-  ?!@stringset ioAllProductFileSet
-) {
+proc generateSemanticDeclarationsGalgas3 (let @unifiedTypeMap inUnifiedTypeMap,
+                                          let @string inProductDirectory,
+                                   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
+                                          ?!swift: [@string] ioSwiftAppProductFileList,
+                                          ?![@string] ioToolProductFileList,
+                                          ?![@string] ioToolHeaderFileList,
+                                          ?!@stringset ioAllProductFileSet) {
 //--- Generate specific files
   for declaration in inSemanticDeclarationSortedListForGeneration do
     declaration.appendSpecificFiles (
@@ -151,8 +149,6 @@ proc generateSemanticDeclarationsGalgas3
       !?swift: ioSwiftAppProductFileList
     )
   end
-//--- Generate SwiftUI option file
-
 //---
   if @application.errorCount == 0 then
     if @buildOptionValue.generateOneHeader & @buildOptionValue.generateManyFiles then

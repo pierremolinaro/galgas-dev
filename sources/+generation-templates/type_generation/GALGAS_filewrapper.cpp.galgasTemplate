@@ -1,0 +1,26 @@
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_root (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result = GGS_%!TYPE_IDENTIFIER% () ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
+                              %!^%const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<filewrapper @%!TYPE_NAME%:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    ioString.appendCString (">") ;
+  }
+}
