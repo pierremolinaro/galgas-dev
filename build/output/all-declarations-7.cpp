@@ -1,10 +1,3 @@
-#include "Compiler.h"
-#include "galgas-input-output.h"
-#include "execution-mode.h"
-#include "PrologueEpilogue.h"
-
-//--------------------------------------------------------------------------------------------------
-
 #include "all-declarations-7.h"
 
 //--------------------------------------------------------------------------------------------------

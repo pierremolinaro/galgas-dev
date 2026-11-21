@@ -35,7 +35,6 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
   template PROJECT_cocoa : "PROJECT-cocoa.galgas.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_grammar : "PROJECT-grammar.galgas.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_lexique : "PROJECT-lexique.galgas.galgasTemplate" (?@string PROJECT_NAME)
-  template PROJECT_options : "PROJECT-options.galgas.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_program : "PROJECT-program.galgas.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_semantics : "PROJECT-semantics.galgas.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_syntax : "PROJECT-syntax.galgas.galgasTemplate" (?@string PROJECT_NAME)
@@ -56,8 +55,6 @@ proc performProjectCreation (let @string inProjectPath ) {
   s3.writeToFile (galgas_sources_DIR +"/" +projectName +"-grammar.galgas4")
   let s4 = filewrapper [projectCreationFileWrapper.PROJECT_lexique : projectName]
   s4.writeToFile (galgas_sources_DIR +"/" +projectName +"-lexique.galgas4")
-  let s5 = filewrapper [projectCreationFileWrapper.PROJECT_options : projectName]
-  s5.writeToFile (galgas_sources_DIR +"/" +projectName +"-options.galgas4")
   let s6 = filewrapper [projectCreationFileWrapper.PROJECT_program : projectName]
   s6.writeToFile (galgas_sources_DIR +"/" +projectName +"-program.galgas")
   let s7 = filewrapper [projectCreationFileWrapper.PROJECT_semantics : projectName]

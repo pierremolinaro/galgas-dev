@@ -1,10 +1,3 @@
-#include "Compiler.h"
-#include "galgas-input-output.h"
-#include "execution-mode.h"
-#include "PrologueEpilogue.h"
-
-//--------------------------------------------------------------------------------------------------
-
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -1848,13 +1841,9 @@ const GALGAS_TypeDescriptor * GGS_grammarForGeneration_2E_weak::staticTypeDescri
 
 //--------------------------------------------------------------------------------------------------
 
-#include "MF_MemoryControl.h"
-#include "execution-mode.h"
-
-#include "FileManager.h"
-
-//--------------------------------------------------------------------------------------------------
-
+// #include "MF_MemoryControl.h"
+// #include "execution-mode.h"
+// #include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 //

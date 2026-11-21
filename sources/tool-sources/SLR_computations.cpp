@@ -673,12 +673,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                                const String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
-  ioCppFileContents.appendCString ("#include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.appendCString ("#include \"execution-mode.h\"\n\n") ;
-  ioCppFileContents.appendCString ("#include \"FileManager.h\"\n\n") ;
-
-  ioCppFileContents.appendCppHyphenLineComment () ;
-  ioCppFileContents.appendNewLine () ;
+  ioCppFileContents.appendCString ("// #include \"MF_MemoryControl.h\"\n") ;
+  ioCppFileContents.appendCString ("// #include \"execution-mode.h\"\n") ;
+  ioCppFileContents.appendCString ("// #include \"FileManager.h\"\n\n") ;
 
 //--- Print non-terminal symbols --------------------------------------
   ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;

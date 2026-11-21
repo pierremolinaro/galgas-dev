@@ -1,10 +1,3 @@
-#include "Compiler.h"
-#include "galgas-input-output.h"
-#include "execution-mode.h"
-#include "PrologueEpilogue.h"
-
-//--------------------------------------------------------------------------------------------------
-
 #include "all-declarations-18.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -664,16 +657,15 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplem
                                                                                           const GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("#include \"Compiler.h\"\n#include \"galgas-input-output.h\"\n#include \"execution-mode.h\"\n#include \"PrologueEpilogue.h\"\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_258_ (0) ;
+  GGS_uint index_42_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_258 (in_IMPORTED_5F_COMPONENT_5F_LIST) ;
-    while (enumerator_258.hasCurrentObject ()) {
+    UpEnumerator__5B_string_5D_ enumerator_42 (in_IMPORTED_5F_COMPONENT_5F_LIST) ;
+    while (enumerator_42.hasCurrentObject ()) {
       result.appendString ("#include \"") ;
-      result.appendString (enumerator_258.current_entry (HERE).stringValue ()) ;
+      result.appendString (enumerator_42.current_entry (HERE).stringValue ()) ;
       result.appendString (".h\"\n") ;
-      enumerator_258.gotoNextObject () ;
-      index_258_.increment () ;
+      enumerator_42.gotoNextObject () ;
+      index_42_.increment () ;
     }
   }
   result.appendString ("\n") ;

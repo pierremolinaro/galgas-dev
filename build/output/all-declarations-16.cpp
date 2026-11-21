@@ -1,10 +1,3 @@
-#include "Compiler.h"
-#include "galgas-input-output.h"
-#include "execution-mode.h"
-#include "PrologueEpilogue.h"
-
-//--------------------------------------------------------------------------------------------------
-
 #include "all-declarations-16.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -925,13 +918,9 @@ const GALGAS_TypeDescriptor * GGS_templateAnalysisContext::staticTypeDescriptor 
 
 //--------------------------------------------------------------------------------------------------
 
-#include "MF_MemoryControl.h"
-#include "execution-mode.h"
-
-#include "FileManager.h"
-
-//--------------------------------------------------------------------------------------------------
-
+// #include "MF_MemoryControl.h"
+// #include "execution-mode.h"
+// #include "FileManager.h"
 
 //--------------------------------------------------------------------------------------------------
 //

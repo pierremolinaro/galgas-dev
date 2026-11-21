@@ -227,16 +227,6 @@ GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique (Co
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'projectCreationFileWrapper PROJECT_options'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_options (Compiler * inCompiler,
-                                                                              const class GGS_string & in_PROJECT_5F_NAME
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'projectCreationFileWrapper PROJECT_program'
 //
 //--------------------------------------------------------------------------------------------------

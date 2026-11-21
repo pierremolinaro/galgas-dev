@@ -1,5 +1,4 @@
 gui cocoa {
-  with option %!PROJECT_NAME%_options
 
   with lexique %!PROJECT_NAME%_lexique {
     fileExtension: "%!PROJECT_NAME%"
