@@ -8,7 +8,7 @@
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "utf32.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "IndexingDictionary.h"
 #include "FileManager.h"
 

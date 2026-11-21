@@ -5,9 +5,9 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "LexiqueIntrospection.h"
-#include "C_galgas_CLI_Options.h"
-#include "Compiler.h"
+#include "execution-mode.h"
 #include "FileManager.h"
+#include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -53,11 +53,11 @@ void LexiqueIntrospection::getKeywordListForIdentifier (const String & inIdentif
 //--------------------------------------------------------------------------------------------------
 
 void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
-  const String option = gOption_galgas_5F_builtin_5F_options_outputKeywordList.readProperty_value () ;
+  const String option = gBuildOption_outputKeywordList.readProperty_value () ;
   if (option != "") {
     const String optionFormat = "lexique_name:list_name:columns:prefix:postfix:path" ;
     gCout.appendCString ("Option \"--") ;
-    gCout.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+    gCout.appendString (gBuildOption_outputKeywordList.mCommandString) ;
     gCout.appendCString ("=") ;
     gCout.appendString (option) ;
     gCout.appendCString ("\":\n") ;
@@ -65,13 +65,13 @@ void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
     option.componentsSeparatedByString (":", components) ;
     if (components.count () != 6) {
       String message = "invalid option ; should be \"--" ;
-      message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+      message.appendString (gBuildOption_outputKeywordList.mCommandString) ;
       message.appendCString ("=") ;
       message.appendString (optionFormat + "\"") ;
       inCompiler->onTheFlyRunTimeError (message COMMA_HERE) ;
     }else if (!components (2 COMMA_HERE).isUnsignedInteger ()) {
       String message = "invalid option ; in \"--" ;
-      message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+      message.appendString (gBuildOption_outputKeywordList.mCommandString) ;
       message.appendCString ("=") ;
       message.appendString (optionFormat + "\", ") ;
       message.appendCString ("\"columns\" should be an decimal unsigned number") ;
@@ -86,7 +86,7 @@ void LexiqueIntrospection::handleGetKeywordListOption (Compiler * inCompiler) {
       getKeywordListForIdentifier (identifier, found, nameList) ;
       if (!found) {
         String message = "invalid option ; in \"--" ;
-        message.appendString (gOption_galgas_5F_builtin_5F_options_outputKeywordList.mCommandString) ;
+        message.appendString (gBuildOption_outputKeywordList.mCommandString) ;
         message.appendCString ("=") ;
         message.appendString (optionFormat + "\", ") ;
         message.appendCString ("available values for \"lexique_name:list_name\" are:") ;

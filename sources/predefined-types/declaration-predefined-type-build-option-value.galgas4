@@ -150,7 +150,10 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [buildOptionGenerationTemplate.buildOptionTypeHeader1 :
       selfTypeDefinition.typeName.string,
-      selfTypeDefinition.typeName.string.identifierRepresentation
+      selfTypeDefinition.typeName.string.identifierRepresentation,
+      self.boolBuildOptionArray,
+      self.u32BuildOptionArray,
+      self.stringBuildOptionArray
     ]
     outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
       selfTypeDefinition.typeName.string,
@@ -178,6 +181,34 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  override proc appendSpecificFiles (let @string inProductDirectory,
+                                     ?!@stringset ioAllProductFileSet,
+                                     ?!swift: [@string] ioSwiftAppProductFileList) {
+  //--- Generate Cocoa header
+    if @application.errorCount == 0 then // , not self.mIsPredefined then
+    //--- Generate Swift Cocoa Implementation
+      ioAllProductFileSet ++= "build-options-swiftui.swift"
+      ioSwiftAppProductFileList ++= "build-options-swiftui.swift"
+      @string.generateFileWithPattern (
+        !startPath: inProductDirectory,
+        !fileName: "build-options-swiftui.swift",
+        !lineComment: "//",
+        !header: "",
+        !defaultUserZone1: "\n\n",
+        !generatedZone2: filewrapper [buildOptionGenerationTemplate.optionImplementationSwiftUI :
+          self.boolBuildOptionArray,
+          self.u32BuildOptionArray,
+          self.stringBuildOptionArray
+        ],
+        !defaultUserZone2: "\n\n",
+        !generatedZone3: "\n\n",
+        !makeExecutable: false
+      )
+   end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -187,12 +218,21 @@ filewrapper buildOptionGenerationTemplate in "../+generation-templates/type_gene
 }{
   template buildOptionTypeHeader1 : "buildOptionValue.h1.galgasTemplate" (
     ?@string TYPE_NAME,
-    ?@string TYPE_IDENTIFIER
+    ?@string TYPE_IDENTIFIER,
+    ?[@projectBuildOption] BOOL_OPTION_ARRAY,
+    ?[@projectBuildOption] UINT_OPTION_ARRAY,
+    ?[@projectBuildOption] STRING_OPTION_ARRAY
   )
 
   template buildOptionTypeSpecificImplementation : "buildOptionValue.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
+    ?[@projectBuildOption] BOOL_OPTION_ARRAY,
+    ?[@projectBuildOption] UINT_OPTION_ARRAY,
+    ?[@projectBuildOption] STRING_OPTION_ARRAY
+  )
+
+  template optionImplementationSwiftUI : "build-options-implementation-swiftui.galgasTemplate" (
     ?[@projectBuildOption] BOOL_OPTION_ARRAY,
     ?[@projectBuildOption] UINT_OPTION_ARRAY,
     ?[@projectBuildOption] STRING_OPTION_ARRAY

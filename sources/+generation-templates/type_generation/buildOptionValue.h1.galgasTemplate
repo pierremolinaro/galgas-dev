@@ -1,4 +1,25 @@
 //--------------------------------------------------------------------------------------------------
+//                               Bool options
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in BOOL_OPTION_ARRAY do
+  %extern BoolCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
+//                               UInt options
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in UINT_OPTION_ARRAY do
+  %extern UIntCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
+//                              String options
+//--------------------------------------------------------------------------------------------------
+
+%for (sortedOption) in STRING_OPTION_ARRAY do
+  %extern StringCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% ;\n\n%
+end
+%//--------------------------------------------------------------------------------------------------
 //   Package %!TYPE_NAME%
 //--------------------------------------------------------------------------------------------------
 

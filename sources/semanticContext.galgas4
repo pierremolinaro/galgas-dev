@@ -145,14 +145,14 @@ map @filewrapperMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-map @optionComponentMapForSemanticAnalysis {
-  public let @bool mIsPredefined
-  public let @commandLineOptionMap mBoolOptionMap
-  public let @commandLineOptionMap mUIntOptionMap
-  public let @commandLineOptionMap mStringOptionMap
-  #insertSetter insertKey #errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
-  #searchMethod searchKey #errorMessage "the '%K' option component is not imported"
-}
+//map @optionComponentMapForSemanticAnalysis {
+//  public let @bool mIsPredefined
+//  public let @commandLineOptionMap mBoolOptionMap
+//  public let @commandLineOptionMap mUIntOptionMap
+//  public let @commandLineOptionMap mStringOptionMap
+//  #insertSetter insertKey #errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
+//  #searchMethod searchKey #errorMessage "the '%K' option component is not imported"
+//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -198,7 +198,7 @@ struct @semanticContext {
   var @globalConstantMap mGlobalConstantMap = @()
   var @filewrapperMap mFilewrapperMap = @()
   var @grammarMap grammarMap = @()
-  var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
+//  var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
   var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
   let @projectSettings projectSettings
@@ -322,12 +322,6 @@ override func @predefinedTypeAST.keyRepresentation () -> @string {
 override func @filewrapperDeclarationAST.keyRepresentation
   () ->@string {
   result = "filewrapper @" + self.mFilewrapperName
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @optionComponentDeclarationAST.keyRepresentation () -> @string {
-  result = "option " + self.mOptionComponentName
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -27,7 +27,6 @@
 #include "BinaryDecisionDiagramRelation.h"
 #include "MF_MemoryControl.h"
 #include "ConsoleOut.h"
-#include "C_galgas_CLI_Options.h"
 #include "Compiler.h"
 #include "galgas_cli_options.h"
 #include "galgas-input-output.h"

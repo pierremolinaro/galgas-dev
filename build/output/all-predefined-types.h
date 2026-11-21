@@ -3247,6 +3247,10 @@ class GGS_application final {
 
   public: static class GGS_string class_func_projectVersionString (LOCATION_ARGS) ;
 
+  public: static class GGS_bool class_func_runningOnUnix (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_runningOnWindows (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_stringOptionCommentString (const class GGS_string & inOperand0,
                                                                         const class GGS_string & inOperand1
                                                                         COMMA_LOCATION_ARGS) ;
@@ -3308,55 +3312,6 @@ class GGS_application final {
 
 
 } ;
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               Bool options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-extern BoolCommandLineOption gBuildOption_outputHTMLgrammarFile ;
-
-extern BoolCommandLineOption gBuildOption_outputGrammarSwiftDescriptionFile ;
-
-extern BoolCommandLineOption gBuildOption_outputHTMLTypeListFile ;
-
-extern BoolCommandLineOption gBuildOption_printPredefinedLexicalActions ;
-
-extern BoolCommandLineOption gBuildOption_generateOneHeader ;
-
-extern BoolCommandLineOption gBuildOption_generateManyFiles ;
-
-extern BoolCommandLineOption gBuildOption_check_5F_big_5F_int ;
-
-extern BoolCommandLineOption gBuildOption_emitSyntaxDiagrams ;
-
-extern BoolCommandLineOption gBuildOption_emitClassGraph ;
-
-extern BoolCommandLineOption gBuildOption_displayUnicodeLexicalTestFunctions ;
-
-extern BoolCommandLineOption gBuildOption_checkEntityUsefulness ;
-
-extern BoolCommandLineOption gBuildOption_warnsOnOldStyleEnumeration ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//                               UInt options                                                    
-//
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-//
-//                              String options                                                   
-//
-//--------------------------------------------------------------------------------------------------
-
-extern StringCommandLineOption gBuildOption__create_5F_project ;
-
-extern StringCommandLineOption gBuildOption__extractLIBPMOption ;
-
-//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [u64] array
@@ -5049,6 +5004,70 @@ class GGS_range final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_range ;
 
 //--------------------------------------------------------------------------------------------------
+//                               Bool options
+//--------------------------------------------------------------------------------------------------
+
+extern BoolCommandLineOption gBuildOption_display_5F_version ;
+
+extern BoolCommandLineOption gBuildOption_display_5F_help ;
+
+extern BoolCommandLineOption gBuildOption_outputConcreteSyntaxTree ;
+
+extern BoolCommandLineOption gBuildOption_log_5F_file_5F_read ;
+
+extern BoolCommandLineOption gBuildOption_do_5F_not_5F_generate_5F_any_5F_file ;
+
+extern BoolCommandLineOption gBuildOption_treat_5F_warnings_5F_as_5F_error ;
+
+extern BoolCommandLineOption gBuildOption_no_5F_color ;
+
+extern BoolCommandLineOption gBuildOption_outputHTMLgrammarFile ;
+
+extern BoolCommandLineOption gBuildOption_outputGrammarSwiftDescriptionFile ;
+
+extern BoolCommandLineOption gBuildOption_outputHTMLTypeListFile ;
+
+extern BoolCommandLineOption gBuildOption_printPredefinedLexicalActions ;
+
+extern BoolCommandLineOption gBuildOption_generateOneHeader ;
+
+extern BoolCommandLineOption gBuildOption_generateManyFiles ;
+
+extern BoolCommandLineOption gBuildOption_check_5F_big_5F_int ;
+
+extern BoolCommandLineOption gBuildOption_emitSyntaxDiagrams ;
+
+extern BoolCommandLineOption gBuildOption_emitClassGraph ;
+
+extern BoolCommandLineOption gBuildOption_displayUnicodeLexicalTestFunctions ;
+
+extern BoolCommandLineOption gBuildOption_checkEntityUsefulness ;
+
+extern BoolCommandLineOption gBuildOption_warnsOnOldStyleEnumeration ;
+
+//--------------------------------------------------------------------------------------------------
+//                               UInt options
+//--------------------------------------------------------------------------------------------------
+
+extern UIntCommandLineOption gBuildOption_max_5F_errors ;
+
+extern UIntCommandLineOption gBuildOption_max_5F_warnings ;
+
+//--------------------------------------------------------------------------------------------------
+//                              String options
+//--------------------------------------------------------------------------------------------------
+
+extern StringCommandLineOption gBuildOption_emit_5F_issue_5F_json_5F_file ;
+
+extern StringCommandLineOption gBuildOption_outputKeywordList ;
+
+extern StringCommandLineOption gBuildOption_mode ;
+
+extern StringCommandLineOption gBuildOption_create_5F_project ;
+
+extern StringCommandLineOption gBuildOption_extractLIBPMOption ;
+
+//--------------------------------------------------------------------------------------------------
 //   Package buildOptionValue
 //--------------------------------------------------------------------------------------------------
 
@@ -5065,9 +5084,17 @@ class GGS_buildOptionValue  {
 
   public: static class GGS_bool class_func_displayUnicodeLexicalTestFunctions (LOCATION_ARGS) ;
 
+  public: static class GGS_bool class_func_display_5F_help (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_display_5F_version (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_do_5F_not_5F_generate_5F_any_5F_file (LOCATION_ARGS) ;
+
   public: static class GGS_bool class_func_emitClassGraph (LOCATION_ARGS) ;
 
   public: static class GGS_bool class_func_emitSyntaxDiagrams (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_emit_5F_issue_5F_json_5F_file (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_extractLIBPMOption (LOCATION_ARGS) ;
 
@@ -5075,13 +5102,29 @@ class GGS_buildOptionValue  {
 
   public: static class GGS_bool class_func_generateOneHeader (LOCATION_ARGS) ;
 
+  public: static class GGS_bool class_func_log_5F_file_5F_read (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_max_5F_errors (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_max_5F_warnings (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_mode (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_no_5F_color (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_outputConcreteSyntaxTree (LOCATION_ARGS) ;
+
   public: static class GGS_bool class_func_outputGrammarSwiftDescriptionFile (LOCATION_ARGS) ;
 
   public: static class GGS_bool class_func_outputHTMLTypeListFile (LOCATION_ARGS) ;
 
   public: static class GGS_bool class_func_outputHTMLgrammarFile (LOCATION_ARGS) ;
 
+  public: static class GGS_string class_func_outputKeywordList (LOCATION_ARGS) ;
+
   public: static class GGS_bool class_func_printPredefinedLexicalActions (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_treat_5F_warnings_5F_as_5F_error (LOCATION_ARGS) ;
 
   public: static class GGS_bool class_func_warnsOnOldStyleEnumeration (LOCATION_ARGS) ;
 
@@ -5106,9 +5149,17 @@ class GGS_buildOptionString  {
 
   public: static class GGS_string class_func_displayUnicodeLexicalTestFunctions (LOCATION_ARGS) ;
 
+  public: static class GGS_string class_func_display_5F_help (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_display_5F_version (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_do_5F_not_5F_generate_5F_any_5F_file (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_emitClassGraph (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_emitSyntaxDiagrams (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_emit_5F_issue_5F_json_5F_file (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_extractLIBPMOption (LOCATION_ARGS) ;
 
@@ -5116,13 +5167,29 @@ class GGS_buildOptionString  {
 
   public: static class GGS_string class_func_generateOneHeader (LOCATION_ARGS) ;
 
+  public: static class GGS_string class_func_log_5F_file_5F_read (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_max_5F_errors (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_max_5F_warnings (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_mode (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_no_5F_color (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_outputConcreteSyntaxTree (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_outputGrammarSwiftDescriptionFile (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_outputHTMLTypeListFile (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_outputHTMLgrammarFile (LOCATION_ARGS) ;
 
+  public: static class GGS_string class_func_outputKeywordList (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_printPredefinedLexicalActions (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_treat_5F_warnings_5F_as_5F_error (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_warnsOnOldStyleEnumeration (LOCATION_ARGS) ;
 

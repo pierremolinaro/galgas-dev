@@ -605,85 +605,85 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateOptionAccessAST.templateExpressionAnalysis
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap _ioTypeMap,
-  !@semanticExpressionForGeneration outExpression
-) {
-  let usefulnessName = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
-  inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-    (self.mOptionComponentName,
-    ?let @bool optionComponentIsPredefined,
-    ?let @commandLineOptionMap boolOptionMap,
-    ?let @commandLineOptionMap uintOptionMap,
-    ?let @commandLineOptionMap stringOptionMap
-  )
-  var found = boolOptionMap.contains (self.mOptionName.string)
-  var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
-  if not found then
-    found = uintOptionMap.contains (self.mOptionName.string)
-    returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
-  end
-  if not found then
-    found = stringOptionMap.contains (self.mOptionName.string)
-    returnedType = inAnalysisContext.mPredefinedTypes.mStringType
-  end
-  if found then
-    if self.mGetterName.string == "value" then
-      outExpression = @optionValueExpressionForGeneration (
-        returnedType,
-        self.mOptionComponentName.location,
-        optionComponentIsPredefined,
-        self.mOptionComponentName.string,
-        self.mOptionName.string
-      )
-    elsif self.mGetterName.string == "char" then
-      outExpression = @optionCharExpressionForGeneration (
-        inAnalysisContext.mPredefinedTypes.mCharType,
-        self.mOptionComponentName.location,
-        optionComponentIsPredefined,
-        self.mOptionComponentName.string,
-        self.mOptionName.string
-      )
-    elsif self.mGetterName.string == "string" then
-      outExpression = @optionStringExpressionForGeneration (
-        inAnalysisContext.mPredefinedTypes.mStringType,
-        self.mOptionComponentName.location,
-        optionComponentIsPredefined,
-        self.mOptionComponentName.string,
-        self.mOptionName.string
-      )
-    elsif self.mGetterName.string == "comment" then
-      outExpression = @optionCommentExpressionForGeneration (
-        inAnalysisContext.mPredefinedTypes.mStringType,
-        self.mOptionComponentName.location,
-        optionComponentIsPredefined,
-        self.mOptionComponentName.string,
-        self.mOptionName.string
-      )
-    else
-      error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression
-    end
-  else
-    var @stringset s = @()
-    for entry in boolOptionMap do
-      s ++= entry.lkey
-    end
-    for entry in uintOptionMap do
-      s ++= entry.lkey
-    end
-    for entry in stringOptionMap do
-      s ++= entry.lkey
-    end
-    error self.mOptionName
-    : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
-    spoil outExpression
-    fixit #replaceBy s
-  end
-}
+//override proc @templateOptionAccessAST.templateExpressionAnalysis
+//  (let @lstring inUsefulnessCallerEntityName,
+//  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+//  let @templateAnalysisContext inAnalysisContext,
+//  ?!@unifiedTypeMap _ioTypeMap,
+//  !@semanticExpressionForGeneration outExpression
+//) {
+//  let usefulnessName = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
+//  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
+//  inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
+//    (self.mOptionComponentName,
+//    ?let @bool optionComponentIsPredefined,
+//    ?let @commandLineOptionMap boolOptionMap,
+//    ?let @commandLineOptionMap uintOptionMap,
+//    ?let @commandLineOptionMap stringOptionMap
+//  )
+//  var found = boolOptionMap.contains (self.mOptionName.string)
+//  var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+//  if not found then
+//    found = uintOptionMap.contains (self.mOptionName.string)
+//    returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
+//  end
+//  if not found then
+//    found = stringOptionMap.contains (self.mOptionName.string)
+//    returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+//  end
+//  if found then
+//    if self.mGetterName.string == "value" then
+//      outExpression = @optionValueExpressionForGeneration (
+//        returnedType,
+//        self.mOptionComponentName.location,
+//        optionComponentIsPredefined,
+//        self.mOptionComponentName.string,
+//        self.mOptionName.string
+//      )
+//    elsif self.mGetterName.string == "char" then
+//      outExpression = @optionCharExpressionForGeneration (
+//        inAnalysisContext.mPredefinedTypes.mCharType,
+//        self.mOptionComponentName.location,
+//        optionComponentIsPredefined,
+//        self.mOptionComponentName.string,
+//        self.mOptionName.string
+//      )
+//    elsif self.mGetterName.string == "string" then
+//      outExpression = @optionStringExpressionForGeneration (
+//        inAnalysisContext.mPredefinedTypes.mStringType,
+//        self.mOptionComponentName.location,
+//        optionComponentIsPredefined,
+//        self.mOptionComponentName.string,
+//        self.mOptionName.string
+//      )
+//    elsif self.mGetterName.string == "comment" then
+//      outExpression = @optionCommentExpressionForGeneration (
+//        inAnalysisContext.mPredefinedTypes.mStringType,
+//        self.mOptionComponentName.location,
+//        optionComponentIsPredefined,
+//        self.mOptionComponentName.string,
+//        self.mOptionName.string
+//      )
+//    else
+//      error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression
+//    end
+//  else
+//    var @stringset s = @()
+//    for entry in boolOptionMap do
+//      s ++= entry.lkey
+//    end
+//    for entry in uintOptionMap do
+//      s ++= entry.lkey
+//    end
+//    for entry in stringOptionMap do
+//      s ++= entry.lkey
+//    end
+//    error self.mOptionName
+//    : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
+//    spoil outExpression
+//    fixit #replaceBy s
+//  end
+//}
 
 //--------------------------------------------------------------------------------------------------
 //   F U N C T I O N    C A L L

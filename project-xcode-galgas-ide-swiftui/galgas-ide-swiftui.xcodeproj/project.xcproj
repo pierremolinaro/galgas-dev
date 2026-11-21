@@ -628,14 +628,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "builtin-command-line-options.h" },
-            {
-              "path": "builtin-command-line-options.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "F_mainForLIBPM.h" },
             {
               "path": "F_mainForLIBPM.cpp",
@@ -766,14 +758,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "C_galgas_CLI_Options.h" },
-            {
-              "path": "C_galgas_CLI_Options.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "ComparisonKind.h" },
             { "path": "ComparisonResult.h" },
             { "path": "Compiler.h" },
@@ -788,6 +772,14 @@
             { "path": "Enumerator_range.h" },
             {
               "path": "Enumerator_range.cpp",
+              "target-membership": [
+                "galgas/compile-sources",
+                "galgas-debug/compile-sources",
+              ],
+            },
+            { "path": "execution-mode.h" },
+            {
+              "path": "execution-mode.cpp",
               "target-membership": [
                 "galgas/compile-sources",
                 "galgas-debug/compile-sources",

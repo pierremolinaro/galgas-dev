@@ -10919,165 +10919,192 @@ class GGS_uselessEntityLocationMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: [commandLineOptionAST] array
+// Phase 1: @headerCompositionMap map
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator__5B_commandLineOptionAST_5D_ final {
-//--- Constructor
-  public: DownEnumerator__5B_commandLineOptionAST_5D_ (const class GGS__5B_commandLineOptionAST_5D_ & inOperand) ;
+#include "SharedGenericPtrWithValueSemantics.h"
 
-//--- No copy
-  private: DownEnumerator__5B_commandLineOptionAST_5D_ (const DownEnumerator__5B_commandLineOptionAST_5D_ &) = delete ;
-  private: DownEnumerator__5B_commandLineOptionAST_5D_ & operator = (const DownEnumerator__5B_commandLineOptionAST_5D_ &) = delete ;
+template <typename INFO> class GenericMapRoot ;
 
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+//--------------------------------------------------------------------------------------------------
 
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
+class DownEnumerator_headerCompositionMap final {
 
-//--- Current element access
-  public: class GGS_commandLineOptionAST current (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+  public: DownEnumerator_headerCompositionMap (const class GGS_headerCompositionMap & inMap) ;
 
-//---- Properties
-  private: const GenericArray <GGS_commandLineOptionAST> mSharedArray ;
-  private: int32_t mCurrent ;
+  public: ~ DownEnumerator_headerCompositionMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_stringset current_mInclusion (LOCATION_ARGS) const ;
+
+  public: class GGS_string current_mHeaderString (LOCATION_ARGS) const ;
+
+  public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_headerCompositionMap (const DownEnumerator_headerCompositionMap &) = delete ;
+  private: DownEnumerator_headerCompositionMap & operator = (const DownEnumerator_headerCompositionMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator__5B_commandLineOptionAST_5D_ final {
-//--- Constructor
-  public: UpEnumerator__5B_commandLineOptionAST_5D_ (const class GGS__5B_commandLineOptionAST_5D_ & inOperand) ;
+class UpEnumerator_headerCompositionMap final {
+  public: UpEnumerator_headerCompositionMap (const class GGS_headerCompositionMap & inMap)  ;
 
-//--- No copy
-  private: UpEnumerator__5B_commandLineOptionAST_5D_ (const UpEnumerator__5B_commandLineOptionAST_5D_ &) = delete ;
-  private: UpEnumerator__5B_commandLineOptionAST_5D_ & operator = (const UpEnumerator__5B_commandLineOptionAST_5D_ &) = delete ;
+  public: ~ UpEnumerator_headerCompositionMap (void) = default ;
 
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//--- Current element access
-  public: class GGS_commandLineOptionAST current (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionAST current_entry (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_stringset current_mInclusion (LOCATION_ARGS) const ;
+  public: class GGS_string current_mHeaderString (LOCATION_ARGS) const ;
+  public: class GGS_headerCompositionMap_2E_element current (LOCATION_ARGS) const ;
 
-//---- Properties
-  private: const GenericArray <GGS_commandLineOptionAST> mSharedArray ;
-  private: int32_t mCurrent ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_headerCompositionMap (const UpEnumerator_headerCompositionMap &) = delete ;
+  private: UpEnumerator_headerCompositionMap & operator = (const UpEnumerator_headerCompositionMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS__5B_commandLineOptionAST_5D_ final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_commandLineOptionAST> mSharedArray ;
-  private: bool mIsValid ;
+class GGS_headerCompositionMap final : public AC_GALGAS_root {
 
-//--------------------------------- Default constructor
-  public: GGS__5B_commandLineOptionAST_5D_ (void) ;
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_headerCompositionMap_2E_element>> mSharedRoot ;
 
-//--------------------------------- Handle copy
-  public: GGS__5B_commandLineOptionAST_5D_ (const GGS__5B_commandLineOptionAST_5D_ & inSource) ;
-  public: GGS__5B_commandLineOptionAST_5D_ & operator = (const GGS__5B_commandLineOptionAST_5D_ & inSource) ;
+//--- Default constructor
+  public: GGS_headerCompositionMap (void) ;
 
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+//--- Virtual destructor
+  public: virtual ~ GGS_headerCompositionMap (void) ;
 
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
+//--- Handle copy
+  public: GGS_headerCompositionMap (const GGS_headerCompositionMap & inSource) ;
+  public: GGS_headerCompositionMap & operator = (const GGS_headerCompositionMap & inSource) ;
 
-  public: virtual void drop (void) override ;
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
 
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_headerCompositionMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_headerCompositionMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS__5B_commandLineOptionAST_5D_ init (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_commandLineOptionAST_5D_ inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_commandLineOptionAST & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__5B_commandLineOptionAST_5D_ add_operation (const GGS__5B_commandLineOptionAST_5D_ & inOperand,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: static GGS_headerCompositionMap init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_headerCompositionMap class_func_mapWithMapToOverride (const class GGS_headerCompositionMap & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_commandLineOptionAST constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insert (class GGS_commandLineOptionAST constinArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_commandLineOptionAST & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_stringset constinArgument1,
+                                 class GGS_string constinArgument2,
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeFirst (class GGS_commandLineOptionAST & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+  public: void setter_setMHeaderStringForKey (class GGS_string constinArgument0,
+                                              class GGS_string constinArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeLast (class GGS_commandLineOptionAST & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_set (class GGS_commandLineOptionAST constinArgument0,
-                           class GGS_uint constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
+  public: void setter_setMInclusionForKey (class GGS_stringset constinArgument0,
+                                           class GGS_string constinArgument1,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_stringset & outArgument1,
+                                 class GGS_string & outArgument2,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_commandLineOptionAST getter_first (Compiler * inCompiler
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_mHeaderStringForKey (const class GGS_string & constinOperand0,
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_commandLineOptionAST getter_last (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+  public: class GGS_stringset getter_mInclusionForKey (const class GGS_string & constinOperand0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_commandLineOptionAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_commandLineOptionAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                 const class GGS_uint & constinOperand1,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS_headerCompositionMap getter_overriddenMap (Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_commandLineOptionAST readSubcript__3F_ (const class GGS_uint & in0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public: class GGS_headerCompositionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -11087,132 +11114,34 @@ class GGS__5B_commandLineOptionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator__5B_commandLineOptionAST_5D_ ;
-  friend class DownEnumerator__5B_commandLineOptionAST_5D_ ;
+  friend class UpEnumerator_headerCompositionMap ;
+  friend class DownEnumerator_headerCompositionMap ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_commandLineOptionAST_5D_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerCompositionMap ;
 
 //--------------------------------------------------------------------------------------------------
-//   enum optionDefaultValueEnumAST
+// Phase 1: @headerCompositionMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_optionDefaultValueEnumAST final : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_optionDefaultValueEnumAST (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_noDefaultValue,
-    enum_unsignedDefaultValue,
-    enum_stringDefaultValue
-  } ;
-  
-//--------------------------------- Private properties
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-
-//--------------------------------- Accessors
-  public: inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_optionDefaultValueEnumAST class_func_noDefaultValue (LOCATION_ARGS) ;
-
-  public: static class GGS_optionDefaultValueEnumAST class_func_stringDefaultValue (LOCATION_ARGS) ;
-
-  public: static class GGS_optionDefaultValueEnumAST class_func_unsignedDefaultValue (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_optionDefaultValueEnumAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_isNoDefaultValue (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isStringDefaultValue (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isUnsignedDefaultValue (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @commandLineOptionAST struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_commandLineOptionAST final : public AC_GALGAS_root {
+class GGS_headerCompositionMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_lstring mProperty_mOptionTypeName ;
-  public: inline GGS_lstring readProperty_mOptionTypeName (void) const {
-    return mProperty_mOptionTypeName ;
+  public: GGS_lstring mProperty_lkey ;
+  public: inline GGS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
   }
 
-  public: GGS_lstring mProperty_mOptionInternalName ;
-  public: inline GGS_lstring readProperty_mOptionInternalName (void) const {
-    return mProperty_mOptionInternalName ;
+  public: GGS_stringset mProperty_mInclusion ;
+  public: inline GGS_stringset readProperty_mInclusion (void) const {
+    return mProperty_mInclusion ;
   }
 
-  public: GGS_lchar mProperty_mOptionInvocationLetter ;
-  public: inline GGS_lchar readProperty_mOptionInvocationLetter (void) const {
-    return mProperty_mOptionInvocationLetter ;
-  }
-
-  public: GGS_lstring mProperty_mOptionInvocationString ;
-  public: inline GGS_lstring readProperty_mOptionInvocationString (void) const {
-    return mProperty_mOptionInvocationString ;
-  }
-
-  public: GGS_lstring mProperty_mOptionComment ;
-  public: inline GGS_lstring readProperty_mOptionComment (void) const {
-    return mProperty_mOptionComment ;
-  }
-
-  public: GGS_lstring mProperty_mOptionDefaultValue ;
-  public: inline GGS_lstring readProperty_mOptionDefaultValue (void) const {
-    return mProperty_mOptionDefaultValue ;
-  }
-
-  public: GGS_optionDefaultValueEnumAST mProperty_mOptionDefaultValueKind ;
-  public: inline GGS_optionDefaultValueEnumAST readProperty_mOptionDefaultValueKind (void) const {
-    return mProperty_mOptionDefaultValueKind ;
+  public: GGS_string mProperty_mHeaderString ;
+  public: inline GGS_string readProperty_mHeaderString (void) const {
+    return mProperty_mHeaderString ;
   }
 
 //--------------------------------- Accessors
@@ -11220,67 +11149,43 @@ class GGS_commandLineOptionAST final : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_commandLineOptionAST (void) ;
+  public: GGS_headerCompositionMap_2E_element (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMOptionTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionTypeName = inValue ;
+  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
   }
 
-  public: inline void setter_setMOptionInternalName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionInternalName = inValue ;
+  public: inline void setter_setMInclusion (const GGS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mInclusion = inValue ;
   }
 
-  public: inline void setter_setMOptionInvocationLetter (const GGS_lchar & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionInvocationLetter = inValue ;
-  }
-
-  public: inline void setter_setMOptionInvocationString (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionInvocationString = inValue ;
-  }
-
-  public: inline void setter_setMOptionComment (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionComment = inValue ;
-  }
-
-  public: inline void setter_setMOptionDefaultValue (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionDefaultValue = inValue ;
-  }
-
-  public: inline void setter_setMOptionDefaultValueKind (const GGS_optionDefaultValueEnumAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mOptionDefaultValueKind = inValue ;
+  public: inline void setter_setMHeaderString (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mHeaderString = inValue ;
   }
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_commandLineOptionAST (const GGS_lstring & in_mOptionTypeName,
-                                    const GGS_lstring & in_mOptionInternalName,
-                                    const GGS_lchar & in_mOptionInvocationLetter,
-                                    const GGS_lstring & in_mOptionInvocationString,
-                                    const GGS_lstring & in_mOptionComment,
-                                    const GGS_lstring & in_mOptionDefaultValue,
-                                    const GGS_optionDefaultValueEnumAST & in_mOptionDefaultValueKind) ;
+  public: GGS_headerCompositionMap_2E_element (const GGS_lstring & in_lkey,
+                                               const GGS_stringset & in_mInclusion,
+                                               const GGS_string & in_mHeaderString) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_commandLineOptionAST (const GGS_commandLineOptionAST & inSource) ;
+  public: GGS_headerCompositionMap_2E_element (const GGS_headerCompositionMap_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_commandLineOptionAST & operator = (const GGS_commandLineOptionAST & inSource) ;
+  public: GGS_headerCompositionMap_2E_element & operator = (const GGS_headerCompositionMap_2E_element & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_commandLineOptionAST init_21__21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                            const class GGS_lstring & inOperand1,
-                                                                            const class GGS_lchar & inOperand2,
-                                                                            const class GGS_lstring & inOperand3,
-                                                                            const class GGS_lstring & inOperand4,
-                                                                            const class GGS_lstring & inOperand5,
-                                                                            const class GGS_optionDefaultValueEnumAST & inOperand6,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS_headerCompositionMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                       const class GGS_stringset & inOperand1,
+                                                                       const class GGS_string & inOperand2,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -11305,5 +11210,76 @@ class GGS_commandLineOptionAST final : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_commandLineOptionAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerCompositionMap_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: headerCompositionMap.element? optional
+//--------------------------------------------------------------------------------------------------
+
+class GGS_headerCompositionMap_2E_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GGS_headerCompositionMap_2E_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GGS_headerCompositionMap_2E_element_3F_ (void) ;
+
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_headerCompositionMap_2E_element_3F_ (const GGS_headerCompositionMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
+  public: static GGS_headerCompositionMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
+
+  public: bool isValuated (void) const ;
+  public: inline GGS_headerCompositionMap_2E_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerCompositionMap_2E_element_3F_ ;
 

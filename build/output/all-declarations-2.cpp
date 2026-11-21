@@ -1,6 +1,6 @@
 #include "Compiler.h"
 #include "galgas-input-output.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -1494,481 +1494,511 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
   GGS__5B_projectBuildOption_5D_ var_boolBuildOptionArray_2375 = GGS__5B_projectBuildOption_5D_::init (inCompiler COMMA_HERE) ;
   GGS__5B_projectBuildOption_5D_ var_stringBuildOptionArray_2432 = GGS__5B_projectBuildOption_5D_::init (inCompiler COMMA_HERE) ;
   GGS__5B_projectBuildOption_5D_ var_u_33__32_BuildOptionArray_2491 = GGS__5B_projectBuildOption_5D_::init (inCompiler COMMA_HERE) ;
-  GGS_stringset var_optionInvocationStringSet_2536 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_stringset var_optionInvocationCharSet_2587 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_stringset var_optionIdentifierSet_2636 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("display_version").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 58)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 58)), inCompiler COMMA_HERE), GGS_string ("version").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 58)), GGS_string ("Display version").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 58)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 58)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("display_help").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 60)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 60)), inCompiler COMMA_HERE), GGS_string ("help").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 60)), GGS_string ("Display help").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 60)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 60)) ;
+  var_stringBuildOptionArray_2432.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("emit_issue_json_file").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 63)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 64)), inCompiler COMMA_HERE), GGS_string ("emit-issue-json-file").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 65)), GGS_string ("Emit a JSON file that contains all compilation issues").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 66)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 62)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("outputConcreteSyntaxTree").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 70)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 71)), inCompiler COMMA_HERE), GGS_string ("output-concrete-syntax-tree").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 72)), GGS_string ("Generate the concrete syntax tree, in .dot format (suitable for Graphviz)").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 73)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 69)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("log_file_read").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 77)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 78)), inCompiler COMMA_HERE), GGS_string ("log-file-read").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 79)), GGS_string ("Log every file read").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 80)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 76)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("do_not_generate_any_file").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 84)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 85)), inCompiler COMMA_HERE), GGS_string ("no-file-generation").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 86)), GGS_string ("Do not generate any file").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 87)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 83)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("treat_warnings_as_error").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 91)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 92)), inCompiler COMMA_HERE), GGS_string ("Werror").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 93)), GGS_string ("Treat warnings as errors").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 94)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 90)) ;
+  var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("no_color").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 98)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 99)), inCompiler COMMA_HERE), GGS_string ("no-color").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 100)), GGS_string ("Do not issue colored messages (Unix Only)").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 101)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 97)) ;
+  var_u_33__32_BuildOptionArray_2491.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("max_errors").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 114)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 115)), inCompiler COMMA_HERE), GGS_string ("max-errors").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 116)), GGS_string ("Stop after the given number of errors has been reached").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 117)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 113)) ;
+  var_u_33__32_BuildOptionArray_2491.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("max_warnings").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 121)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 122)), inCompiler COMMA_HERE), GGS_string ("max-warnings").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 123)), GGS_string ("Stop after the given number of warnings has been reached").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 124)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 120)) ;
+  var_stringBuildOptionArray_2432.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("outputKeywordList").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 128)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 129)), inCompiler COMMA_HERE), GGS_string ("output-keyword-list-file").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 130)), GGS_string ("Output a Latex file containing keyword list").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 131)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 127)) ;
+  var_stringBuildOptionArray_2432.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (GGS_string ("mode").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 135)), GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 136)), inCompiler COMMA_HERE), GGS_string ("mode").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 137)), GGS_string ("'lexical-only', 'syntax-only' or 'latex'").getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 138)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 134)) ;
+  GGS_stringset var_optionInvocationStringSet_4995 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_stringset var_optionInvocationCharSet_5046 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_stringset var_optionIdentifierSet_5095 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_5143 (var_boolBuildOptionArray_2375) ;
+  while (enumerator_5143.hasCurrentObject ()) {
+    var_optionIdentifierSet_5095.plusPlusAssignOperation (enumerator_5143.current (HERE).readProperty_mIdentifier ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 145)) ;
+    var_optionInvocationStringSet_4995.plusPlusAssignOperation (enumerator_5143.current (HERE).readProperty_mInvocationString ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 146)) ;
+    enumerator_5143.gotoNextObject () ;
+  }
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_5314 (var_stringBuildOptionArray_2432) ;
+  while (enumerator_5314.hasCurrentObject ()) {
+    var_optionIdentifierSet_5095.plusPlusAssignOperation (enumerator_5314.current (HERE).readProperty_mIdentifier ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 149)) ;
+    var_optionInvocationStringSet_4995.plusPlusAssignOperation (enumerator_5314.current (HERE).readProperty_mInvocationString ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 150)) ;
+    enumerator_5314.gotoNextObject () ;
+  }
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_5488 (var_stringBuildOptionArray_2432) ;
+  while (enumerator_5488.hasCurrentObject ()) {
+    var_optionIdentifierSet_5095.plusPlusAssignOperation (enumerator_5488.current (HERE).readProperty_mIdentifier ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 153)) ;
+    var_optionInvocationStringSet_4995.plusPlusAssignOperation (enumerator_5488.current (HERE).readProperty_mInvocationString ().readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 154)) ;
+    enumerator_5488.gotoNextObject () ;
+  }
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_projectComponentSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 65)) ;
-      GGS_lstring var_optionIdentifier_2847 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 66)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 162)) ;
+      GGS_lstring var_optionIdentifier_5837 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 163)) ;
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = var_optionIdentifierSet_2636.getter_contains (var_optionIdentifier_2847.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 67)).boolEnum () ;
+        test_1 = var_optionIdentifierSet_5095.getter_contains (var_optionIdentifier_5837.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 164)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
           GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (var_optionIdentifier_2847.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray2  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 68)) ;
+          inCompiler->emitSemanticError (var_optionIdentifier_5837.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray2  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 165)) ;
         }
       }
-      var_optionIdentifierSet_2636.plusPlusAssignOperation (var_optionIdentifier_2847.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 70)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 71)) ;
-      GGS_lchar var_invocationChar_3090 ;
+      var_optionIdentifierSet_5095.plusPlusAssignOperation (var_optionIdentifier_5837.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 167)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 168)) ;
+      GGS_lchar var_invocationChar_6080 ;
       switch (select_projectComponentSyntax_1 (inCompiler)) {
       case 1: {
-        var_invocationChar_3090 = inCompiler->synthetizedAttribute_charValue () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 74)) ;
+        var_invocationChar_6080 = inCompiler->synthetizedAttribute_charValue () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 171)) ;
       } break ;
       case 2: {
-        var_invocationChar_3090 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 76)), inCompiler COMMA_HERE) ;
+        var_invocationChar_6080 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 173)), inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;
       }
-      GGS_lstring var_invocationString_3237 ;
+      GGS_lstring var_invocationString_6227 ;
       switch (select_projectComponentSyntax_2 (inCompiler)) {
       case 1: {
-        var_invocationString_3237 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 80)) ;
+        var_invocationString_6227 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 177)) ;
       } break ;
       case 2: {
-        var_invocationString_3237 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 82)) ;
+        var_invocationString_6227 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 179)) ;
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 84)) ;
-      GGS_lstring var_explanationString_3403 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 85)) ;
-      var_u_33__32_BuildOptionArray_2491.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_2847, var_invocationChar_3090, var_invocationString_3237, var_explanationString_3403, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 86)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 181)) ;
+      GGS_lstring var_explanationString_6393 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 182)) ;
+      var_u_33__32_BuildOptionArray_2491.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_5837, var_invocationChar_6080, var_invocationString_6227, var_explanationString_6393, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 183)) ;
       GalgasBool test_3 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_3) {
-        test_3 = GGS_bool (ComparisonKind::notEqual, var_invocationString_3237.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_3 = GGS_bool (ComparisonKind::notEqual, var_invocationString_6227.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_3) {
           GalgasBool test_4 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_4) {
-            test_4 = var_optionInvocationStringSet_2536.getter_contains (var_invocationString_3237.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 88)).boolEnum () ;
+            test_4 = var_optionInvocationStringSet_4995.getter_contains (var_invocationString_6227.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 185)).boolEnum () ;
             if (GalgasBool::boolTrue == test_4) {
               GenericArray <FixItDescription> fixItArray5 ;
-              inCompiler->emitSemanticError (var_invocationString_3237.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray5  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 89)) ;
+              inCompiler->emitSemanticError (var_invocationString_6227.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray5  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 186)) ;
             }
           }
         }
       }
-      var_optionInvocationStringSet_2536.plusPlusAssignOperation (var_invocationString_3237.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 92)) ;
+      var_optionInvocationStringSet_4995.plusPlusAssignOperation (var_invocationString_6227.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 189)) ;
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {
-        test_6 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_3090.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+        test_6 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_6080.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_6) {
           GalgasBool test_7 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_7) {
-            test_7 = var_optionInvocationCharSet_2587.getter_contains (var_invocationChar_3090.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 94)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 94)).boolEnum () ;
+            test_7 = var_optionInvocationCharSet_5046.getter_contains (var_invocationChar_6080.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 191)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 191)).boolEnum () ;
             if (GalgasBool::boolTrue == test_7) {
               GenericArray <FixItDescription> fixItArray8 ;
-              inCompiler->emitSemanticError (var_invocationChar_3090.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray8  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 95)) ;
+              inCompiler->emitSemanticError (var_invocationChar_6080.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray8  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 192)) ;
             }
           }
-          var_optionInvocationCharSet_2587.plusPlusAssignOperation (var_invocationChar_3090.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 97))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 97)) ;
+          var_optionInvocationCharSet_5046.plusPlusAssignOperation (var_invocationChar_6080.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 194))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 194)) ;
         }
       }
       GalgasBool test_9 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_9) {
-        test_9 = GGS_bool (ComparisonKind::equal, var_invocationString_3237.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_9 = GGS_bool (ComparisonKind::equal, var_invocationString_6227.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_9) {
-          test_9 = GGS_bool (ComparisonKind::equal, var_invocationChar_3090.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+          test_9 = GGS_bool (ComparisonKind::equal, var_invocationChar_6080.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_9) {
             GenericArray <FixItDescription> fixItArray10 ;
-            inCompiler->emitSemanticError (var_optionIdentifier_2847.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray10  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 100)) ;
+            inCompiler->emitSemanticError (var_optionIdentifier_5837.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray10  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 197)) ;
           }
         }
       }
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 103)) ;
-      GGS_lstring var_optionIdentifier_4331 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 104)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 200)) ;
+      GGS_lstring var_optionIdentifier_7321 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 201)) ;
       GalgasBool test_11 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_11) {
-        test_11 = var_optionIdentifierSet_2636.getter_contains (var_optionIdentifier_4331.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 105)).boolEnum () ;
+        test_11 = var_optionIdentifierSet_5095.getter_contains (var_optionIdentifier_7321.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 202)).boolEnum () ;
         if (GalgasBool::boolTrue == test_11) {
           GenericArray <FixItDescription> fixItArray12 ;
-          inCompiler->emitSemanticError (var_optionIdentifier_4331.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray12  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 106)) ;
+          inCompiler->emitSemanticError (var_optionIdentifier_7321.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray12  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 203)) ;
         }
       }
-      var_optionIdentifierSet_2636.plusPlusAssignOperation (var_optionIdentifier_4331.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 108)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 109)) ;
-      GGS_lchar var_invocationChar_4574 ;
+      var_optionIdentifierSet_5095.plusPlusAssignOperation (var_optionIdentifier_7321.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 205)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 206)) ;
+      GGS_lchar var_invocationChar_7564 ;
       switch (select_projectComponentSyntax_3 (inCompiler)) {
       case 1: {
-        var_invocationChar_4574 = inCompiler->synthetizedAttribute_charValue () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 112)) ;
+        var_invocationChar_7564 = inCompiler->synthetizedAttribute_charValue () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 209)) ;
       } break ;
       case 2: {
-        var_invocationChar_4574 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 114)), inCompiler COMMA_HERE) ;
+        var_invocationChar_7564 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 211)), inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;
       }
-      GGS_lstring var_invocationString_4721 ;
+      GGS_lstring var_invocationString_7711 ;
       switch (select_projectComponentSyntax_4 (inCompiler)) {
       case 1: {
-        var_invocationString_4721 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 118)) ;
+        var_invocationString_7711 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 215)) ;
       } break ;
       case 2: {
-        var_invocationString_4721 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 120)) ;
+        var_invocationString_7711 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 217)) ;
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 122)) ;
-      GGS_lstring var_explanationString_4887 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 123)) ;
-      var_stringBuildOptionArray_2432.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_4331, var_invocationChar_4574, var_invocationString_4721, var_explanationString_4887, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 124)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 219)) ;
+      GGS_lstring var_explanationString_7877 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 220)) ;
+      var_stringBuildOptionArray_2432.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_7321, var_invocationChar_7564, var_invocationString_7711, var_explanationString_7877, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 221)) ;
       GalgasBool test_13 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_13) {
-        test_13 = GGS_bool (ComparisonKind::notEqual, var_invocationString_4721.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_13 = GGS_bool (ComparisonKind::notEqual, var_invocationString_7711.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_13) {
           GalgasBool test_14 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_14) {
-            test_14 = var_optionInvocationStringSet_2536.getter_contains (var_invocationString_4721.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 126)).boolEnum () ;
+            test_14 = var_optionInvocationStringSet_4995.getter_contains (var_invocationString_7711.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 223)).boolEnum () ;
             if (GalgasBool::boolTrue == test_14) {
               GenericArray <FixItDescription> fixItArray15 ;
-              inCompiler->emitSemanticError (var_invocationString_4721.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray15  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 127)) ;
+              inCompiler->emitSemanticError (var_invocationString_7711.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray15  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 224)) ;
             }
           }
         }
       }
-      var_optionInvocationStringSet_2536.plusPlusAssignOperation (var_invocationString_4721.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 130)) ;
+      var_optionInvocationStringSet_4995.plusPlusAssignOperation (var_invocationString_7711.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 227)) ;
       GalgasBool test_16 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_16) {
-        test_16 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_4574.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+        test_16 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_7564.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_16) {
           GalgasBool test_17 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_17) {
-            test_17 = var_optionInvocationCharSet_2587.getter_contains (var_invocationChar_4574.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 132)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 132)).boolEnum () ;
+            test_17 = var_optionInvocationCharSet_5046.getter_contains (var_invocationChar_7564.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 229)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 229)).boolEnum () ;
             if (GalgasBool::boolTrue == test_17) {
               GenericArray <FixItDescription> fixItArray18 ;
-              inCompiler->emitSemanticError (var_invocationChar_4574.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray18  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 133)) ;
+              inCompiler->emitSemanticError (var_invocationChar_7564.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray18  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 230)) ;
             }
           }
-          var_optionInvocationCharSet_2587.plusPlusAssignOperation (var_invocationChar_4574.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 135))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 135)) ;
+          var_optionInvocationCharSet_5046.plusPlusAssignOperation (var_invocationChar_7564.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 232))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 232)) ;
         }
       }
       GalgasBool test_19 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_19) {
-        test_19 = GGS_bool (ComparisonKind::equal, var_invocationString_4721.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_19 = GGS_bool (ComparisonKind::equal, var_invocationString_7711.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_19) {
-          test_19 = GGS_bool (ComparisonKind::equal, var_invocationChar_4574.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+          test_19 = GGS_bool (ComparisonKind::equal, var_invocationChar_7564.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_19) {
             GenericArray <FixItDescription> fixItArray20 ;
-            inCompiler->emitSemanticError (var_optionIdentifier_4331.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray20  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 138)) ;
+            inCompiler->emitSemanticError (var_optionIdentifier_7321.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray20  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 235)) ;
           }
         }
       }
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 141)) ;
-      GGS_lstring var_optionIdentifier_5816 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 142)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 238)) ;
+      GGS_lstring var_optionIdentifier_8806 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 239)) ;
       GalgasBool test_21 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_21) {
-        test_21 = var_optionIdentifierSet_2636.getter_contains (var_optionIdentifier_5816.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 143)).boolEnum () ;
+        test_21 = var_optionIdentifierSet_5095.getter_contains (var_optionIdentifier_8806.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 240)).boolEnum () ;
         if (GalgasBool::boolTrue == test_21) {
           GenericArray <FixItDescription> fixItArray22 ;
-          inCompiler->emitSemanticError (var_optionIdentifier_5816.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray22  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 144)) ;
+          inCompiler->emitSemanticError (var_optionIdentifier_8806.readProperty_location (), GGS_string ("duplicated option identifier"), fixItArray22  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 241)) ;
         }
       }
-      var_optionIdentifierSet_2636.plusPlusAssignOperation (var_optionIdentifier_5816.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 146)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 147)) ;
-      GGS_lchar var_invocationChar_6059 ;
+      var_optionIdentifierSet_5095.plusPlusAssignOperation (var_optionIdentifier_8806.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 243)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 244)) ;
+      GGS_lchar var_invocationChar_9049 ;
       switch (select_projectComponentSyntax_5 (inCompiler)) {
       case 1: {
-        var_invocationChar_6059 = inCompiler->synthetizedAttribute_charValue () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 150)) ;
+        var_invocationChar_9049 = inCompiler->synthetizedAttribute_charValue () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 247)) ;
       } break ;
       case 2: {
-        var_invocationChar_6059 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 152)), inCompiler COMMA_HERE) ;
+        var_invocationChar_9049 = GGS_lchar::init_21__21_ (GGS_char (utf32 (0)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 249)), inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;
       }
-      GGS_lstring var_invocationString_6206 ;
+      GGS_lstring var_invocationString_9196 ;
       switch (select_projectComponentSyntax_6 (inCompiler)) {
       case 1: {
-        var_invocationString_6206 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 156)) ;
+        var_invocationString_9196 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 253)) ;
       } break ;
       case 2: {
-        var_invocationString_6206 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 158)) ;
+        var_invocationString_9196 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 255)) ;
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 160)) ;
-      GGS_lstring var_explanationString_6372 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 161)) ;
-      var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_5816, var_invocationChar_6059, var_invocationString_6206, var_explanationString_6372, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 162)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 257)) ;
+      GGS_lstring var_explanationString_9362 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 258)) ;
+      var_boolBuildOptionArray_2375.plusPlusAssignOperation (GGS_projectBuildOption::init_21__21__21__21_ (var_optionIdentifier_8806, var_invocationChar_9049, var_invocationString_9196, var_explanationString_9362, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 259)) ;
       GalgasBool test_23 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_23) {
-        test_23 = GGS_bool (ComparisonKind::notEqual, var_invocationString_6206.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_23 = GGS_bool (ComparisonKind::notEqual, var_invocationString_9196.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_23) {
           GalgasBool test_24 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_24) {
-            test_24 = var_optionInvocationStringSet_2536.getter_contains (var_invocationString_6206.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 164)).boolEnum () ;
+            test_24 = var_optionInvocationStringSet_4995.getter_contains (var_invocationString_9196.readProperty_string () COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 261)).boolEnum () ;
             if (GalgasBool::boolTrue == test_24) {
               GenericArray <FixItDescription> fixItArray25 ;
-              inCompiler->emitSemanticError (var_invocationString_6206.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray25  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 165)) ;
+              inCompiler->emitSemanticError (var_invocationString_9196.readProperty_location (), GGS_string ("Duplicated invocation string"), fixItArray25  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 262)) ;
             }
           }
         }
       }
-      var_optionInvocationStringSet_2536.plusPlusAssignOperation (var_invocationString_6206.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 168)) ;
+      var_optionInvocationStringSet_4995.plusPlusAssignOperation (var_invocationString_9196.readProperty_string ()  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 265)) ;
       GalgasBool test_26 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_26) {
-        test_26 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_6059.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+        test_26 = GGS_bool (ComparisonKind::notEqual, var_invocationChar_9049.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_26) {
           GalgasBool test_27 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_27) {
-            test_27 = var_optionInvocationCharSet_2587.getter_contains (var_invocationChar_6059.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 170)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 170)).boolEnum () ;
+            test_27 = var_optionInvocationCharSet_5046.getter_contains (var_invocationChar_9049.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 267)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 267)).boolEnum () ;
             if (GalgasBool::boolTrue == test_27) {
               GenericArray <FixItDescription> fixItArray28 ;
-              inCompiler->emitSemanticError (var_invocationChar_6059.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray28  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 171)) ;
+              inCompiler->emitSemanticError (var_invocationChar_9049.readProperty_location (), GGS_string ("Duplicated invocation character"), fixItArray28  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 268)) ;
             }
           }
-          var_optionInvocationCharSet_2587.plusPlusAssignOperation (var_invocationChar_6059.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 173))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 173)) ;
+          var_optionInvocationCharSet_5046.plusPlusAssignOperation (var_invocationChar_9049.readProperty_char ().getter_string (SOURCE_FILE ("projectComponentGrammar.galgas4", 270))  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 270)) ;
         }
       }
       GalgasBool test_29 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_29) {
-        test_29 = GGS_bool (ComparisonKind::equal, var_invocationString_6206.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_29 = GGS_bool (ComparisonKind::equal, var_invocationString_9196.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_29) {
-          test_29 = GGS_bool (ComparisonKind::equal, var_invocationChar_6059.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
+          test_29 = GGS_bool (ComparisonKind::equal, var_invocationChar_9049.readProperty_char ().objectCompare (GGS_char (utf32 (0)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_29) {
             GenericArray <FixItDescription> fixItArray30 ;
-            inCompiler->emitSemanticError (var_optionIdentifier_5816.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray30  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 176)) ;
+            inCompiler->emitSemanticError (var_optionIdentifier_8806.readProperty_location (), GGS_string ("both the invocation character and the invocation string must not be empty"), fixItArray30  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 273)) ;
           }
         }
       }
     } break ;
     case 5: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_lexical_2D_style COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 179)) ;
-      GGS_lstring var_styleName_7295 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 180)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 181)) ;
-      GGS_lstring var_styleComment_7348 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 182)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_lexical_2D_style COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 276)) ;
+      GGS_lstring var_styleName_10285 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 277)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 278)) ;
+      GGS_lstring var_styleComment_10338 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 279)) ;
       {
-      var_lexicalStyleMap_2323.setter_insert (var_styleName_7295, var_styleComment_7348, var_lexicalStyleMap_2323.getter_count (SOURCE_FILE ("projectComponentGrammar.galgas4", 183)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 183)), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 183)) ;
+      var_lexicalStyleMap_2323.setter_insert (var_styleName_10285, var_styleComment_10338, var_lexicalStyleMap_2323.getter_count (SOURCE_FILE ("projectComponentGrammar.galgas4", 280)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 280)), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 280)) ;
       }
     } break ;
     case 6: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_productName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 185)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 186)) ;
-      GGS_lstring var_featureValue_7519 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 187)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_productName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 282)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 283)) ;
+      GGS_lstring var_featureValue_10509 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 284)) ;
       GalgasBool test_31 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_31) {
         test_31 = var_productNameDefined_2271.boolEnum () ;
         if (GalgasBool::boolTrue == test_31) {
           GenericArray <FixItDescription> fixItArray32 ;
-          inCompiler->emitSemanticError (var_featureValue_7519.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray32  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 189)) ;
+          inCompiler->emitSemanticError (var_featureValue_10509.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray32  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 286)) ;
         }
       }
-      var_productName_2238 = var_featureValue_7519 ;
+      var_productName_2238 = var_featureValue_10509 ;
       var_productNameDefined_2271 = GGS_bool (true) ;
     } break ;
     case 7: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_version COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 194)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 195)) ;
-      GGS_lbigint var_major_7759 = inCompiler->synthetizedAttribute_bigintValue () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 196)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 197)) ;
-      GGS_lbigint var_minor_7801 = inCompiler->synthetizedAttribute_bigintValue () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 198)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 199)) ;
-      GGS_lbigint var_rev_7843 = inCompiler->synthetizedAttribute_bigintValue () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 200)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_version COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 291)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 292)) ;
+      GGS_lbigint var_major_10749 = inCompiler->synthetizedAttribute_bigintValue () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 293)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 294)) ;
+      GGS_lbigint var_minor_10791 = inCompiler->synthetizedAttribute_bigintValue () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 295)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 296)) ;
+      GGS_lbigint var_rev_10833 = inCompiler->synthetizedAttribute_bigintValue () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 297)) ;
       GalgasBool test_33 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_33) {
         test_33 = var_versionDefined_2207.boolEnum () ;
         if (GalgasBool::boolTrue == test_33) {
           GenericArray <FixItDescription> fixItArray34 ;
-          inCompiler->emitSemanticError (var_rev_7843.readProperty_location ().getter_union (var_major_7759.readProperty_location (), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 202)), GGS_string ("duplicated attribute"), fixItArray34  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 202)) ;
+          inCompiler->emitSemanticError (var_rev_10833.readProperty_location ().getter_union (var_major_10749.readProperty_location (), inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 299)), GGS_string ("duplicated attribute"), fixItArray34  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 299)) ;
         }
       }
-      var_majorVersion_2136 = var_major_7759.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 204)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 204)) ;
-      var_minorVersion_2161 = var_minor_7801.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 205)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 205)) ;
-      var_revision_2186 = var_rev_7843.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 206)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 206)) ;
+      var_majorVersion_2136 = var_major_10749.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 301)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 301)) ;
+      var_minorVersion_2161 = var_minor_10791.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 302)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 302)) ;
+      var_revision_2186 = var_rev_10833.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 303)).getter_bigint (SOURCE_FILE ("projectComponentGrammar.galgas4", 303)) ;
       var_versionDefined_2207 = GGS_bool (true) ;
     } break ;
     case 8: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macSwiftApp COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 209)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macSwiftApp COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 306)) ;
       GalgasBool test_35 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_35) {
-        test_35 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_macSwiftApp (SOURCE_FILE ("projectComponentGrammar.galgas4", 210)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 210)).boolEnum () ;
+        test_35 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_macSwiftApp (SOURCE_FILE ("projectComponentGrammar.galgas4", 307)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 307)).boolEnum () ;
         if (GalgasBool::boolTrue == test_35) {
           GenericArray <FixItDescription> fixItArray36 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 211)), GGS_string ("duplicated attribute"), fixItArray36  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 211)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 308)), GGS_string ("duplicated attribute"), fixItArray36  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 308)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_macSwiftApp (SOURCE_FILE ("projectComponentGrammar.galgas4", 213)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 213)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_macSwiftApp (SOURCE_FILE ("projectComponentGrammar.galgas4", 310)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 310)) ;
     } break ;
     case 9: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 215)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 312)) ;
       GalgasBool test_37 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_37) {
-        test_37 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileMacOS (SOURCE_FILE ("projectComponentGrammar.galgas4", 216)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 216)).boolEnum () ;
+        test_37 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileMacOS (SOURCE_FILE ("projectComponentGrammar.galgas4", 313)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 313)).boolEnum () ;
         if (GalgasBool::boolTrue == test_37) {
           GenericArray <FixItDescription> fixItArray38 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 217)), GGS_string ("duplicated attribute"), fixItArray38  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 217)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 314)), GGS_string ("duplicated attribute"), fixItArray38  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 314)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileMacOS (SOURCE_FILE ("projectComponentGrammar.galgas4", 219)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 219)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileMacOS (SOURCE_FILE ("projectComponentGrammar.galgas4", 316)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 316)) ;
     } break ;
     case 10: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_unix COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 221)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_unix COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 318)) ;
       GalgasBool test_39 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_39) {
-        test_39 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileUnix (SOURCE_FILE ("projectComponentGrammar.galgas4", 222)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 222)).boolEnum () ;
+        test_39 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileUnix (SOURCE_FILE ("projectComponentGrammar.galgas4", 319)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 319)).boolEnum () ;
         if (GalgasBool::boolTrue == test_39) {
           GenericArray <FixItDescription> fixItArray40 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 223)), GGS_string ("duplicated attribute"), fixItArray40  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 223)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 320)), GGS_string ("duplicated attribute"), fixItArray40  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 320)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileUnix (SOURCE_FILE ("projectComponentGrammar.galgas4", 225)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 225)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileUnix (SOURCE_FILE ("projectComponentGrammar.galgas4", 322)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 322)) ;
     } break ;
     case 11: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 227)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 324)) ;
       GalgasBool test_41 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_41) {
-        test_41 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 228)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 228)).boolEnum () ;
+        test_41 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 325)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 325)).boolEnum () ;
         if (GalgasBool::boolTrue == test_41) {
           GenericArray <FixItDescription> fixItArray42 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 229)), GGS_string ("duplicated attribute"), fixItArray42  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 229)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 326)), GGS_string ("duplicated attribute"), fixItArray42  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 326)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 231)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 231)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileX_38__36_Linux_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 328)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 328)) ;
     } break ;
     case 12: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 233)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 330)) ;
       GalgasBool test_43 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_43) {
-        test_43 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 234)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 234)).boolEnum () ;
+        test_43 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 331)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 331)).boolEnum () ;
         if (GalgasBool::boolTrue == test_43) {
           GenericArray <FixItDescription> fixItArray44 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 235)), GGS_string ("duplicated attribute"), fixItArray44  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 235)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 332)), GGS_string ("duplicated attribute"), fixItArray44  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 332)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 237)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 237)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileX_38__36_Linux_36__34_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 334)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 334)) ;
     } break ;
     case 13: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 239)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 336)) ;
       GalgasBool test_45 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_45) {
-        test_45 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 240)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 240)).boolEnum () ;
+        test_45 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 337)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 337)).boolEnum () ;
         if (GalgasBool::boolTrue == test_45) {
           GenericArray <FixItDescription> fixItArray46 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 241)), GGS_string ("duplicated attribute"), fixItArray46  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 241)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 338)), GGS_string ("duplicated attribute"), fixItArray46  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 338)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 243)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 243)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileARM_36__34_LinuxOnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 340)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 340)) ;
     } break ;
     case 14: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 245)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 342)) ;
       GalgasBool test_47 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_47) {
-        test_47 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileWin_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 246)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 246)).boolEnum () ;
+        test_47 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_makefileWin_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 343)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 343)).boolEnum () ;
         if (GalgasBool::boolTrue == test_47) {
           GenericArray <FixItDescription> fixItArray48 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 247)), GGS_string ("duplicated attribute"), fixItArray48  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 247)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 344)), GGS_string ("duplicated attribute"), fixItArray48  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 344)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileWin_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 249)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 249)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_makefileWin_33__32_OnMac (SOURCE_FILE ("projectComponentGrammar.galgas4", 346)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 346)) ;
     } break ;
     case 15: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 251)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 348)) ;
       GalgasBool test_49 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_49) {
-        test_49 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksWindows (SOURCE_FILE ("projectComponentGrammar.galgas4", 252)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 252)).boolEnum () ;
+        test_49 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksWindows (SOURCE_FILE ("projectComponentGrammar.galgas4", 349)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 349)).boolEnum () ;
         if (GalgasBool::boolTrue == test_49) {
           GenericArray <FixItDescription> fixItArray50 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 253)), GGS_string ("duplicated attribute"), fixItArray50  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 253)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 350)), GGS_string ("duplicated attribute"), fixItArray50  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 350)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksWindows (SOURCE_FILE ("projectComponentGrammar.galgas4", 255)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 255)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksWindows (SOURCE_FILE ("projectComponentGrammar.galgas4", 352)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 352)) ;
     } break ;
     case 16: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 257)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 354)) ;
       GalgasBool test_51 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_51) {
-        test_51 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksLinux_33__32_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 258)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 258)).boolEnum () ;
+        test_51 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksLinux_33__32_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 355)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 355)).boolEnum () ;
         if (GalgasBool::boolTrue == test_51) {
           GenericArray <FixItDescription> fixItArray52 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 259)), GGS_string ("duplicated attribute"), fixItArray52  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 259)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 356)), GGS_string ("duplicated attribute"), fixItArray52  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 356)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksLinux_33__32_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 261)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 261)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksLinux_33__32_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 358)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 358)) ;
     } break ;
     case 17: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 263)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 360)) ;
       GalgasBool test_53 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_53) {
-        test_53 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksLinux_36__34_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 264)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 264)).boolEnum () ;
+        test_53 = var_targets_1863.getter_contains (GGS_projectTargets::class_func_codeblocksLinux_36__34_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 361)) COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 361)).boolEnum () ;
         if (GalgasBool::boolTrue == test_53) {
           GenericArray <FixItDescription> fixItArray54 ;
-          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 265)), GGS_string ("duplicated attribute"), fixItArray54  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 265)) ;
+          inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 362)), GGS_string ("duplicated attribute"), fixItArray54  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 362)) ;
         }
       }
-      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksLinux_36__34_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 267)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 267)) ;
+      var_targets_1863.orAssignOperation(GGS_projectTargets::class_func_codeblocksLinux_36__34_ (SOURCE_FILE ("projectComponentGrammar.galgas4", 364)), inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 364)) ;
     } break ;
     case 18: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 269)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 270)) ;
-      GGS_lstring var_featureValue_10026 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 271)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 366)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 367)) ;
+      GGS_lstring var_featureValue_13016 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 368)) ;
       GalgasBool test_55 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_55) {
         test_55 = var_macAppBundleBaseNameDefined_1942.boolEnum () ;
         if (GalgasBool::boolTrue == test_55) {
           GenericArray <FixItDescription> fixItArray56 ;
-          inCompiler->emitSemanticError (var_featureValue_10026.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray56  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 273)) ;
+          inCompiler->emitSemanticError (var_featureValue_13016.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray56  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 370)) ;
         }
       }
-      var_macAppBundleBaseName_1900 = var_featureValue_10026 ;
+      var_macAppBundleBaseName_1900 = var_featureValue_13016 ;
       var_macAppBundleBaseNameDefined_1942 = GGS_bool (true) ;
     } break ;
     case 19: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_libpmCustomPath COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 278)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 279)) ;
-      GGS_lstring var_featureValue_10308 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 280)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_libpmCustomPath COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 375)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 376)) ;
+      GGS_lstring var_featureValue_13298 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 377)) ;
       GalgasBool test_57 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_57) {
         test_57 = var_libpmCustomPathDefined_2023.boolEnum () ;
         if (GalgasBool::boolTrue == test_57) {
           GenericArray <FixItDescription> fixItArray58 ;
-          inCompiler->emitSemanticError (var_featureValue_10308.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray58  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 282)) ;
+          inCompiler->emitSemanticError (var_featureValue_13298.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray58  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 379)) ;
         }
       }
-      var_libpmCustomPath_1986 = var_featureValue_10308 ;
+      var_libpmCustomPath_1986 = var_featureValue_13298 ;
       var_libpmCustomPathDefined_2023 = GGS_bool (true) ;
     } break ;
     case 20: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macCodeSign COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 287)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 288)) ;
-      GGS_lstring var_featureValue_10571 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 289)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macCodeSign COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 384)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 385)) ;
+      GGS_lstring var_featureValue_13561 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 386)) ;
       GalgasBool test_59 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_59) {
         test_59 = var_macAppCodeSignDefined_2098.boolEnum () ;
         if (GalgasBool::boolTrue == test_59) {
           GenericArray <FixItDescription> fixItArray60 ;
-          inCompiler->emitSemanticError (var_featureValue_10571.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray60  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 291)) ;
+          inCompiler->emitSemanticError (var_featureValue_13561.readProperty_location (), GGS_string ("duplicated attribute"), fixItArray60  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 388)) ;
         }
       }
-      var_macAppCodeSign_2062 = var_featureValue_10571 ;
+      var_macAppCodeSign_2062 = var_featureValue_13561 ;
       var_macAppCodeSignDefined_2098 = GGS_bool (true) ;
     } break ;
     default:
@@ -1976,22 +2006,22 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
       break ;
     }
   }
-  outArgument_outProject = GGS_projectSettings::init_21_productName_21_majorVersion_21_minorVersion_21_revision_21_targets_21_libpmCustomPath_21_macAppBundleBaseName_21_macAppCodeSign_21_lexicalStyleMap_21_boolBuildOptionArray_21_stringBuildOptionArray_21_u_33__32_BuildOptionArray (var_productName_2238.readProperty_string (), var_majorVersion_2136.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 298)), var_minorVersion_2161.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 299)), var_revision_2186.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 300)), var_targets_1863, var_libpmCustomPath_1986, var_macAppBundleBaseName_1900, var_macAppCodeSign_2062, var_lexicalStyleMap_2323, var_boolBuildOptionArray_2375, var_stringBuildOptionArray_2432, var_u_33__32_BuildOptionArray_2491, inCompiler COMMA_HERE) ;
+  outArgument_outProject = GGS_projectSettings::init_21_productName_21_majorVersion_21_minorVersion_21_revision_21_targets_21_libpmCustomPath_21_macAppBundleBaseName_21_macAppCodeSign_21_lexicalStyleMap_21_boolBuildOptionArray_21_stringBuildOptionArray_21_u_33__32_BuildOptionArray (var_productName_2238.readProperty_string (), var_majorVersion_2136.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 395)), var_minorVersion_2161.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 396)), var_revision_2186.getter_uint (inCompiler COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 397)), var_targets_1863, var_libpmCustomPath_1986, var_macAppBundleBaseName_1900, var_macAppCodeSign_2062, var_lexicalStyleMap_2323, var_boolBuildOptionArray_2375, var_stringBuildOptionArray_2432, var_u_33__32_BuildOptionArray_2491, inCompiler COMMA_HERE) ;
   GalgasBool test_61 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_61) {
-    test_61 = var_versionDefined_2207.operator_not (SOURCE_FILE ("projectComponentGrammar.galgas4", 310)).boolEnum () ;
+    test_61 = var_versionDefined_2207.operator_not (SOURCE_FILE ("projectComponentGrammar.galgas4", 407)).boolEnum () ;
     if (GalgasBool::boolTrue == test_61) {
       GenericArray <FixItDescription> fixItArray62 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 311)), GGS_string ("#version should be defined"), fixItArray62  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 311)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 408)), GGS_string ("#version should be defined"), fixItArray62  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 408)) ;
       outArgument_outProject.drop () ; // Release error dropped variable
     }
   }
   GalgasBool test_63 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_63) {
-    test_63 = var_productNameDefined_2271.operator_not (SOURCE_FILE ("projectComponentGrammar.galgas4", 313)).boolEnum () ;
+    test_63 = var_productNameDefined_2271.operator_not (SOURCE_FILE ("projectComponentGrammar.galgas4", 410)).boolEnum () ;
     if (GalgasBool::boolTrue == test_63) {
       GenericArray <FixItDescription> fixItArray64 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 314)), GGS_string ("#productName should be defined"), fixItArray64  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 314)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 411)), GGS_string ("#productName should be defined"), fixItArray64  COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 411)) ;
       outArgument_outProject.drop () ; // Release error dropped variable
     }
   }
@@ -2004,12 +2034,12 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
   while (repeatFlag_0) {
     switch (select_projectComponentSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 65)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 66)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 71)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 162)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 163)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 168)) ;
       switch (select_projectComponentSyntax_1 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 74)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 171)) ;
       } break ;
       case 2: {
       } break ;
@@ -2018,23 +2048,23 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
       }
       switch (select_projectComponentSyntax_2 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 80)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 177)) ;
       } break ;
       case 2: {
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 84)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 85)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 181)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 182)) ;
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 103)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 104)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 109)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 200)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 201)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 206)) ;
       switch (select_projectComponentSyntax_3 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 112)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 209)) ;
       } break ;
       case 2: {
       } break ;
@@ -2043,23 +2073,23 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
       }
       switch (select_projectComponentSyntax_4 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 118)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 215)) ;
       } break ;
       case 2: {
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 122)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 123)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 219)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 220)) ;
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 141)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 142)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 147)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 238)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 239)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 244)) ;
       switch (select_projectComponentSyntax_5 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 150)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 247)) ;
       } break ;
       case 2: {
       } break ;
@@ -2068,202 +2098,86 @@ void cParser_projectComponentSyntax::rule_projectComponentSyntax_project_5F_comp
       }
       switch (select_projectComponentSyntax_6 (inCompiler)) {
       case 1: {
-        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 156)) ;
+        inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 253)) ;
       } break ;
       case 2: {
       } break ;
       default:
         break ;
       }
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 160)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 161)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2D__3E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 257)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 258)) ;
     } break ;
     case 5: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_lexical_2D_style COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 179)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 180)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 181)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 182)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_lexical_2D_style COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 276)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_identifier COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 277)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 278)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 279)) ;
     } break ;
     case 6: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_productName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 185)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 186)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 187)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_productName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 282)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 283)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 284)) ;
     } break ;
     case 7: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_version COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 194)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 195)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 196)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 197)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 198)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 199)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 200)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_version COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 291)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 292)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 293)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 294)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 295)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__2E_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 296)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken_literalInt COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 297)) ;
     } break ;
     case 8: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macSwiftApp COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 209)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macSwiftApp COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 306)) ;
     } break ;
     case 9: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 215)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 312)) ;
     } break ;
     case 10: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_unix COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 221)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_unix COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 318)) ;
     } break ;
     case 11: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 227)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 324)) ;
     } break ;
     case 12: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 233)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 330)) ;
     } break ;
     case 13: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 239)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 336)) ;
     } break ;
     case 14: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 245)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 342)) ;
     } break ;
     case 15: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 251)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 348)) ;
     } break ;
     case 16: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 257)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 354)) ;
     } break ;
     case 17: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 263)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 360)) ;
     } break ;
     case 18: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 269)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 270)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 271)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 366)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 367)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 368)) ;
     } break ;
     case 19: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_libpmCustomPath COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 278)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 279)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 280)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_libpmCustomPath COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 375)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 376)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 377)) ;
     } break ;
     case 20: {
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macCodeSign COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 287)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 288)) ;
-      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 289)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__23_macCodeSign COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 384)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__3A_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 385)) ;
+      inCompiler->acceptTerminal (Lexique_projectComponentScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("projectComponentGrammar.galgas4", 386)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-// @semanticDeclarationWithHeaderForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_semanticDeclarationWithHeaderForGeneration::objectCompare (const GGS_semanticDeclarationWithHeaderForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeaderForGeneration (void) :
-GGS_semanticDeclarationForGeneration () {
-}
-
-
-void cPtr_semanticDeclarationWithHeaderForGeneration::
-semanticDeclarationWithHeaderForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName (const GGS_string & in_infoMessage,
-                                                                                                               const GGS_bool & in_generateHeader,
-                                                                                                               const GGS_string & in_implementationCppFileName,
-                                                                                                               Compiler * /* inCompiler */) {
-  mProperty_infoMessage = in_infoMessage ;
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeaderForGeneration (const cPtr_semanticDeclarationWithHeaderForGeneration * inSourcePtr) :
-GGS_semanticDeclarationForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationWithHeaderForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_semanticDeclarationWithHeaderForGeneration::readProperty_generateHeader (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_semanticDeclarationWithHeaderForGeneration) ;
-    return p->mProperty_generateHeader ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_semanticDeclarationWithHeaderForGeneration::readProperty_implementationCppFileName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_semanticDeclarationWithHeaderForGeneration) ;
-    return p->mProperty_implementationCppFileName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @semanticDeclarationWithHeaderForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
-mProperty_generateHeader (),
-mProperty_implementationCppFileName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (const GGS_string & in_infoMessage,
-                                                                                                  const GGS_bool & in_generateHeader,
-                                                                                                  const GGS_string & in_implementationCppFileName,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationForGeneration (in_infoMessage, inCompiler COMMA_THERE),
-mProperty_generateHeader (),
-mProperty_implementationCppFileName () {
-  mProperty_infoMessage = in_infoMessage ;
-  mProperty_generateHeader = in_generateHeader ;
-  mProperty_implementationCppFileName = in_implementationCppFileName ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_generateHeader.printNonNullClassInstanceProperties ("generateHeader") ;
-    mProperty_implementationCppFileName.printNonNullClassInstanceProperties ("implementationCppFileName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @semanticDeclarationWithHeaderForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ("semanticDeclarationWithHeaderForGeneration",
-                                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_semanticDeclarationWithHeaderForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -15839,6 +15753,122 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalToAdd ("nonTermina
 
 const GALGAS_TypeDescriptor * GGS_nonTerminalToAdd::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_nonTerminalToAdd ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @semanticDeclarationWithHeaderForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_semanticDeclarationWithHeaderForGeneration::objectCompare (const GGS_semanticDeclarationWithHeaderForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeaderForGeneration (void) :
+GGS_semanticDeclarationForGeneration () {
+}
+
+
+void cPtr_semanticDeclarationWithHeaderForGeneration::
+semanticDeclarationWithHeaderForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName (const GGS_string & in_infoMessage,
+                                                                                                               const GGS_bool & in_generateHeader,
+                                                                                                               const GGS_string & in_implementationCppFileName,
+                                                                                                               Compiler * /* inCompiler */) {
+  mProperty_infoMessage = in_infoMessage ;
+  mProperty_generateHeader = in_generateHeader ;
+  mProperty_implementationCppFileName = in_implementationCppFileName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticDeclarationWithHeaderForGeneration::GGS_semanticDeclarationWithHeaderForGeneration (const cPtr_semanticDeclarationWithHeaderForGeneration * inSourcePtr) :
+GGS_semanticDeclarationForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationWithHeaderForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_semanticDeclarationWithHeaderForGeneration::readProperty_generateHeader (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_semanticDeclarationWithHeaderForGeneration) ;
+    return p->mProperty_generateHeader ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_semanticDeclarationWithHeaderForGeneration::readProperty_implementationCppFileName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_semanticDeclarationWithHeaderForGeneration * p = (cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_semanticDeclarationWithHeaderForGeneration) ;
+    return p->mProperty_implementationCppFileName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @semanticDeclarationWithHeaderForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationForGeneration (inCompiler COMMA_THERE),
+mProperty_generateHeader (),
+mProperty_implementationCppFileName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (const GGS_string & in_infoMessage,
+                                                                                                  const GGS_bool & in_generateHeader,
+                                                                                                  const GGS_string & in_implementationCppFileName,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationForGeneration (in_infoMessage, inCompiler COMMA_THERE),
+mProperty_generateHeader (),
+mProperty_implementationCppFileName () {
+  mProperty_infoMessage = in_infoMessage ;
+  mProperty_generateHeader = in_generateHeader ;
+  mProperty_implementationCppFileName = in_implementationCppFileName ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_semanticDeclarationWithHeaderForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_generateHeader.printNonNullClassInstanceProperties ("generateHeader") ;
+    mProperty_implementationCppFileName.printNonNullClassInstanceProperties ("implementationCppFileName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticDeclarationWithHeaderForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ("semanticDeclarationWithHeaderForGeneration",
+                                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_semanticDeclarationWithHeaderForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------

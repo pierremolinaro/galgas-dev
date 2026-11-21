@@ -50,9 +50,23 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !name:"compilationMode",
-      !resultTypeName:"uint",
+      !name: "compilationMode",
+      !resultTypeName: "uint",
       !hasLexiqueArg:false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name: "runningOnWindows",
+      !resultTypeName: "bool",
+      !hasLexiqueArg: false
+    )
+    enterClassFunctionWithoutArgument (
+      !?outMap,
+      !?ioUnifiedTypeMap,
+      !name: "runningOnUnix",
+      !resultTypeName: "bool",
+      !hasLexiqueArg: false
     )
     enterClassFunctionWithoutArgument (
       !?outMap,

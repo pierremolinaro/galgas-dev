@@ -54,9 +54,106 @@ syntax projectComponentSyntax : projectComponentScanner {
     var [@projectBuildOption] boolBuildOptionArray = @()
     var [@projectBuildOption] stringBuildOptionArray = @()
     var [@projectBuildOption] u32BuildOptionArray = @()
+  //--- Predefined options
+    boolBuildOptionArray ++= @("display_version".here, @lchar ('\0', .here), "version".here, "Display version".here)
+  //---
+    boolBuildOptionArray ++= @("display_help".here, @lchar ('\0', .here), "help".here, "Display help".here)
+  //---
+    stringBuildOptionArray ++= @(
+      "emit_issue_json_file".here,
+      @lchar ('\0', .here),
+      "emit-issue-json-file".here,
+      "Emit a JSON file that contains all compilation issues".here
+    )
+  //---
+    boolBuildOptionArray ++= @(
+      "outputConcreteSyntaxTree".here,
+       @lchar ('\0', .here),
+      "output-concrete-syntax-tree".here,
+      "Generate the concrete syntax tree, in .dot format (suitable for Graphviz)".here
+    )
+  //---
+    boolBuildOptionArray ++= @(
+      "log_file_read".here,
+       @lchar ('\0', .here),
+      "log-file-read".here,
+      "Log every file read".here
+    )
+  //---
+    boolBuildOptionArray ++= @(
+      "do_not_generate_any_file".here,
+       @lchar ('\0', .here),
+      "no-file-generation".here,
+      "Do not generate any file".here
+    )
+  //---
+    boolBuildOptionArray ++= @(
+      "treat_warnings_as_error".here,
+       @lchar ('\0', .here),
+      "Werror".here,
+      "Treat warnings as errors".here
+    )
+  //---
+    boolBuildOptionArray ++= @(
+      "no_color".here,
+       @lchar ('\0', .here),
+      "no-color".here,
+      "Do not issue colored messages (Unix Only)".here
+    )
+  //---
+//    if @application.runningOnWindows then
+//      boolBuildOptionArray ++= @(
+//        "no_dialog".here,
+//         @lchar ('\0', .here),
+//        "no-dialog".here,
+//        "Do Not Display any dialog when no input file (Windows only)".here
+//      )
+//    end
+  //---
+    u32BuildOptionArray ++= @(
+      "max_errors".here,
+       @lchar ('\0', .here),
+      "max-errors".here,
+      "Stop after the given number of errors has been reached".here
+    )
+  //---
+    u32BuildOptionArray ++= @(
+      "max_warnings".here,
+       @lchar ('\0', .here),
+      "max-warnings".here,
+      "Stop after the given number of warnings has been reached".here
+    )
+  //---
+    stringBuildOptionArray ++= @(
+      "outputKeywordList".here,
+       @lchar ('\0', .here),
+      "output-keyword-list-file".here,
+      "Output a Latex file containing keyword list".here
+    )
+  //---
+    stringBuildOptionArray ++= @(
+      "mode".here,
+       @lchar ('\0', .here),
+      "mode".here,
+      "'lexical-only', 'syntax-only' or 'latex'".here
+    )
+  //---
     var @stringset optionInvocationStringSet = @()
     var @stringset optionInvocationCharSet = @()
     var @stringset optionIdentifierSet = @()
+    for boolOption in boolBuildOptionArray do
+      optionIdentifierSet ++= boolOption.mIdentifier
+      optionInvocationStringSet ++= boolOption.mInvocationString
+    end
+    for u32Option in stringBuildOptionArray do
+      optionIdentifierSet ++= u32Option.mIdentifier
+      optionInvocationStringSet ++= u32Option.mInvocationString
+    end
+    for stringOption in stringBuildOptionArray do
+      optionIdentifierSet ++= stringOption.mIdentifier
+      optionInvocationStringSet ++= stringOption.mInvocationString
+    end
+  //---
     repeat
 //    while
 //      $#quietOutputByDefault$

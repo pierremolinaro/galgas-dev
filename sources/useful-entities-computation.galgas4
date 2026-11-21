@@ -123,9 +123,9 @@ func syntaxNameForUsefulEntitiesGraph (?let @lstring inSyntaxName ) -> @lstring 
 
 //--------------------------------------------------------------------------------------------------
 
-func optionNameForUsefulEntitiesGraph (?let @lstring inOptionName ) -> @lstring {
-  result = @("option " + inOptionName, inOptionName.location)
-}
+//func optionNameForUsefulEntitiesGraph (?let @lstring inOptionName ) -> @lstring {
+//  result = @("option " + inOptionName, inOptionName.location)
+//}
 
 //--------------------------------------------------------------------------------------------------
 

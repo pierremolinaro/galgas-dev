@@ -125,7 +125,7 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
                                      let @string inSourceToAnalyze) {
   println ("*** Parsing project files")
   grammar projectComponentGrammar (?let @projectSettings projectSettings) in inProjectSourceFilePath
-  if option [mode.value] == "" then
+//  if option [mode.value] == "" then
     compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectSettings)
   //--- C++ compilation
 //    if 0 == @application.errorCount then
@@ -144,7 +144,7 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
 //        end
 //      end
 //    end
-  end
+//  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -393,6 +393,18 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
 
 //--------------------------------------------------------------------------------------------------
 //           G E N E R A T I O N    F I L E W R A P P E R S
+//--------------------------------------------------------------------------------------------------
+
+//filewrapper targetGenerationTemplate in "+generation-templates/option_generation" {
+//}{
+//}{
+//  template optionImplementationSwiftUI : "build-options-implementation-swiftui.galgasTemplate" (
+//    ?[@projectBuildOption] BOOL_OPTION_ARRAY,
+//    ?[@projectBuildOption] UINT_OPTION_ARRAY,
+//    ?[@projectBuildOption] STRING_OPTION_ARRAY
+//  )
+//}
+
 //--------------------------------------------------------------------------------------------------
 
 filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {

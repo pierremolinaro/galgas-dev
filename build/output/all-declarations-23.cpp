@@ -1,6 +1,6 @@
 #include "Compiler.h"
 #include "galgas-input-output.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "PrologueEpilogue.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -3548,8 +3548,7 @@ GGS_bool cPtr_semanticDeclarationWithHeaderForGeneration::getter_isPredefined (C
 #include "project_header.h"
 #include "F_mainForLIBPM.h"
 #include "analyzeCommandLineOptions.h"
-#include "builtin-command-line-options.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "LexiqueIntrospection.h"
 #include "F_DisplayException.h"
 
@@ -3834,7 +3833,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (totalErrorCount () > 0) {
         returnCode = 1 ; // Error code
       }else if (totalWarningCount () > 0) {
-        if (gOption_galgas_5F_builtin_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
+        if (gBuildOption_treat_5F_warnings_5F_as_5F_error.mValue) {
           returnCode = 1 ; // Error code
           if (verboseOptionOn) {
             printf ("** Note: warnings are treated as errors. **\n") ;
@@ -3844,8 +3843,8 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     //--- Epilogue
       routine_after (commonCompiler COMMA_HERE) ;
     //--- Emit JSON issue file ?
-      if (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue != "") {
-        commonCompiler->writeIssueJSONFile (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue) ;
+      if (gBuildOption_emit_5F_issue_5F_json_5F_file.readProperty_value () != "") {
+        commonCompiler->writeIssueJSONFile (gBuildOption_emit_5F_issue_5F_json_5F_file.readProperty_value ()) ;
       }
     //--- Display error and warnings count
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {

@@ -34,11 +34,11 @@ struct OptionView : View {
   %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : Bool = false\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // UInt options
+  // UInt options (ATTENTION UINT ---> Int)
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 %for (sortedOption) in UINT_OPTION_ARRAY do
-  %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : UInt = 0\n%
+  %  @AppStorage(%!sortedOption.mIdentifier.string%_PREFKEY) private var %!sortedOption.mIdentifier.string% : Int = 0\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // String options
@@ -67,7 +67,7 @@ end%
   %          Toggle (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%, isOn: self.$%!sortedOption.mIdentifier.string%)\n%
 end
 for (sortedOption) in UINT_OPTION_ARRAY do
-  %          HStack { Text (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%) ; TextField ("", value: self.$%!sortedOption.mIdentifier.string%, format: .number.precision (.fractionLength (0)))\n%
+  %          HStack { Text (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%) ; TextField ("", value: self.$%!sortedOption.mIdentifier.string%, format: .number.precision (.fractionLength (0))) }\n%
 end
 for (sortedOption) in STRING_OPTION_ARRAY do
   %          HStack { Text (%![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!sortedOption.mIdentifier.string%) }\n%

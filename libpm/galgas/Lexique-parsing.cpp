@@ -8,7 +8,7 @@
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "utf32.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "IndexingDictionary.h"
 #include "FileManager.h"
 
@@ -327,7 +327,7 @@ bool Lexique::performTopDownParsing (const int32_t * inProductionArray,
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
   //--- Variables for generating syntax tree in a form suitable for graphviz
-    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
+    const bool produceSyntaxTree = gBuildOption_outputConcreteSyntaxTree.readProperty_value()
        && (sourceFilePath ().deletingPathExtension ().length () > 0) ;
     String syntaxTreeDescriptionString ;
     GenericArray <uint32_t> productionUniqueNameStack ;
@@ -698,7 +698,7 @@ bool Lexique::performBottomUpParsing (const int32_t * inActionTableArray,
                           "  Initial State: S0\n") ;
     }
   //--- Variables for generating syntax tree in a form suitable for graphviz
-    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
+    const bool produceSyntaxTree = gBuildOption_outputConcreteSyntaxTree.readProperty_value()
        && (sourceFilePath ().deletingPathExtension () != "") ;
     String syntaxTreeDescriptionString ;
     GenericArray <String> shiftedElementStack ;

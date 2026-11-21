@@ -86,7 +86,6 @@ end
    <Unit filename="%!LIBPM_PATH%/command_line_interface/BoolCommandLineOption.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/UIntCommandLineOption.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/StringCommandLineOption.cpp" />
-   <Unit filename="%!LIBPM_PATH%/command_line_interface/builtin-command-line-options.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/analyzeCommandLineOptions.cpp" />
    <Unit filename="%!LIBPM_PATH%/command_line_interface/F_mainForLIBPM.cpp" />
    <Unit filename="%!LIBPM_PATH%/big-integers/BigSigned-add.cpp" />
@@ -150,7 +149,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/md5.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/SHA256.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_CLI_Options.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/execution-mode.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Lexique-parsing.cpp" />

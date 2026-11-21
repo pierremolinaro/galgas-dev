@@ -103,7 +103,6 @@ struct @projectIndexingDescriptorAST {
 
 struct @galgasGUIComponentAST {
   public let @lstring mGUIComponentName
-  public let [@lstring] mImportedOptionList
   public let [@guiSimpleAttributeAST] mGlobalSimpleAttributeList
   public let [@withLexiqueAST] mWithLexiqueList
   public let [@projectIndexingDescriptorAST] mProjectIndexingDescriptorList
@@ -119,7 +118,6 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
     $gui$
     $identifier$ (?let @lstring mGUIName)
     ${$
-    var [@lstring] importedOptionList = @()
     var [@guiSimpleAttributeAST] simpleGlobalAttributes = @()
     var [@withLexiqueAST] withLexiqueList = @()
     var [@projectIndexingDescriptorAST] projectExtensionList = @()
@@ -134,18 +132,16 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
     while
       <gui_attributes> (!?simpleGlobalAttributes)
     while
-      <gui_with_option_declaration> (!?importedOptionList)
-    while
       <gui_with_lexique_declaration> (!?withLexiqueList)
     end
   //---
     $}$
     ioDeclarations.mGUIComponentList ++= @(
       mGUIName,
-      importedOptionList,
       simpleGlobalAttributes,
       withLexiqueList,
-      projectExtensionList)
+      projectExtensionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -219,15 +215,6 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_option_declaration> (?![@lstring] ioImportedOptionList ) {
-    $with$
-    $option$
-    $identifier$ (?let @lstring optionReference)
-    ioImportedOptionList ++= optionReference
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <gui_attributes> (?![@guiSimpleAttributeAST] ioSimpleGlobalAttributes ) {
     $identifier$ (?let @lstring mKey)
     $:$
@@ -292,10 +279,10 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
   var @guiAnalysisContext context = @()
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 //--- Check imported options components
-  for value in inGUIComponentAST.mImportedOptionList do
-    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey (value, ?4*)
-    context.mImportedOptionComponentList ++= value.string
-  end
+//  for value in inGUIComponentAST.mImportedOptionList do
+//    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey (value, ?4*)
+//    context.mImportedOptionComponentList ++= value.string
+//  end
 //--- Nib and main classes
   var runOptionDefined = false
   for entry in inGUIComponentAST.mGlobalSimpleAttributeList do

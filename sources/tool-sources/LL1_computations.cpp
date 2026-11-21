@@ -452,7 +452,7 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
 //--- Generate header file inclusion --------------------------------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
   ioCppFileContents.appendCString ("#include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.appendCString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
+  ioCppFileContents.appendCString ("#include \"execution-mode.h\"\n\n") ;
   ioCppFileContents.appendCString ("#include \"FileManager.h\"\n\n") ;
 
   ioCppFileContents.appendCppHyphenLineComment () ;

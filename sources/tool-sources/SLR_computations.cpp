@@ -674,7 +674,7 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
 //--- Generate header file inclusion -----------------------------------------
   ioCppFileContents.appendCppHyphenLineComment () ;
   ioCppFileContents.appendCString ("#include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.appendCString ("#include \"C_galgas_CLI_Options.h\"\n\n") ;
+  ioCppFileContents.appendCString ("#include \"execution-mode.h\"\n\n") ;
   ioCppFileContents.appendCString ("#include \"FileManager.h\"\n\n") ;
 
   ioCppFileContents.appendCppHyphenLineComment () ;

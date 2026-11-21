@@ -416,21 +416,6 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
       expressionList,
       startLocation.union (endLocation)
     )
-  or
-    $option$
-    select
-      $.$
-      $identifier$ (?let @lstring optionName)
-      $identifier$ (?let @lstring getterName)
-      outExpression = @templateOptionAccessAST (@lstring ("galgas_builtin_options", @location.here), optionName, getterName)
-    or
-      $identifier$ (?let @lstring optionComponentName)
-      $.$
-      $identifier$ (?let @lstring optionName)
-      $identifier$ (?let @lstring getterName)
-      outExpression = @templateOptionAccessAST (optionComponentName, optionName, getterName)
-    end
-    $]$
   end
 }
 

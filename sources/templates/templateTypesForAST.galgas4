@@ -174,11 +174,11 @@ final class @templateLogicalNegateAST : @templateExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateOptionAccessAST : @templateExpressionAST {
-  private let @lstring mOptionComponentName
-  private let @lstring mOptionName
-  private let @lstring mGetterName
-}
+//final class @templateOptionAccessAST : @templateExpressionAST {
+//  private let @lstring mOptionComponentName
+//  private let @lstring mOptionName
+//  private let @lstring mGetterName
+//}
 
 //--------------------------------------------------------------------------------------------------
 
