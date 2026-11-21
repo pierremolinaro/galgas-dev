@@ -8792,10 +8792,10 @@ const GALGAS_TypeDescriptor * GGS_u_31__36_PredefinedTypeAST_2E_weak::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
-// @buildOptionStringDeclarationAST reference class
+// @buildOptionInvocationStringDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_buildOptionStringDeclarationAST::objectCompare (const GGS_buildOptionStringDeclarationAST & inOperand) const {
+ComparisonResult GGS_buildOptionInvocationStringDeclarationAST::objectCompare (const GGS_buildOptionInvocationStringDeclarationAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -8813,33 +8813,33 @@ ComparisonResult GGS_buildOptionStringDeclarationAST::objectCompare (const GGS_b
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST::GGS_buildOptionStringDeclarationAST (void) :
+GGS_buildOptionInvocationStringDeclarationAST::GGS_buildOptionInvocationStringDeclarationAST (void) :
 GGS_semanticDeclarationAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST GGS_buildOptionStringDeclarationAST::
+GGS_buildOptionInvocationStringDeclarationAST GGS_buildOptionInvocationStringDeclarationAST::
 init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const GGS_bool & in_isPredefined,
                                                                        const GGS_lstring & in_buildOptionStringName,
                                                                        const GGS_string & in_buildOptionValueName,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
-  cPtr_buildOptionStringDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_buildOptionStringDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->buildOptionStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (in_isPredefined, in_buildOptionStringName, in_buildOptionValueName, inCompiler) ;
-  const GGS_buildOptionStringDeclarationAST result (object) ;
+  cPtr_buildOptionInvocationStringDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_buildOptionInvocationStringDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->buildOptionInvocationStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (in_isPredefined, in_buildOptionStringName, in_buildOptionValueName, inCompiler) ;
+  const GGS_buildOptionInvocationStringDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_buildOptionStringDeclarationAST::
-buildOptionStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const GGS_bool & in_isPredefined,
-                                                                                                       const GGS_lstring & in_buildOptionStringName,
-                                                                                                       const GGS_string & in_buildOptionValueName,
-                                                                                                       Compiler * /* inCompiler */) {
+void cPtr_buildOptionInvocationStringDeclarationAST::
+buildOptionInvocationStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const GGS_bool & in_isPredefined,
+                                                                                                                 const GGS_lstring & in_buildOptionStringName,
+                                                                                                                 const GGS_string & in_buildOptionValueName,
+                                                                                                                 Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_buildOptionStringName = in_buildOptionStringName ;
   mProperty_buildOptionValueName = in_buildOptionValueName ;
@@ -8847,39 +8847,39 @@ buildOptionStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST::GGS_buildOptionStringDeclarationAST (const cPtr_buildOptionStringDeclarationAST * inSourcePtr) :
+GGS_buildOptionInvocationStringDeclarationAST::GGS_buildOptionInvocationStringDeclarationAST (const cPtr_buildOptionInvocationStringDeclarationAST * inSourcePtr) :
 GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_buildOptionStringDeclarationAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_buildOptionInvocationStringDeclarationAST) ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_buildOptionStringDeclarationAST::readProperty_buildOptionStringName (void) const {
+GGS_lstring GGS_buildOptionInvocationStringDeclarationAST::readProperty_buildOptionStringName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_lstring () ;
   }else{
-    cPtr_buildOptionStringDeclarationAST * p = (cPtr_buildOptionStringDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_buildOptionStringDeclarationAST) ;
+    cPtr_buildOptionInvocationStringDeclarationAST * p = (cPtr_buildOptionInvocationStringDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_buildOptionInvocationStringDeclarationAST) ;
     return p->mProperty_buildOptionStringName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionStringDeclarationAST::readProperty_buildOptionValueName (void) const {
+GGS_string GGS_buildOptionInvocationStringDeclarationAST::readProperty_buildOptionValueName (void) const {
   if (nullptr == mObjectPtr) {
     return GGS_string () ;
   }else{
-    cPtr_buildOptionStringDeclarationAST * p = (cPtr_buildOptionStringDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_buildOptionStringDeclarationAST) ;
+    cPtr_buildOptionInvocationStringDeclarationAST * p = (cPtr_buildOptionInvocationStringDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_buildOptionInvocationStringDeclarationAST) ;
     return p->mProperty_buildOptionValueName ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @buildOptionStringDeclarationAST class
+//Pointer class for @buildOptionInvocationStringDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_buildOptionStringDeclarationAST::cPtr_buildOptionStringDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_buildOptionInvocationStringDeclarationAST::cPtr_buildOptionInvocationStringDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
 mProperty_buildOptionStringName (),
 mProperty_buildOptionValueName () {
@@ -8887,11 +8887,11 @@ mProperty_buildOptionValueName () {
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_buildOptionStringDeclarationAST::cPtr_buildOptionStringDeclarationAST (const GGS_bool & in_isPredefined,
-                                                                            const GGS_lstring & in_buildOptionStringName,
-                                                                            const GGS_string & in_buildOptionValueName,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) :
+cPtr_buildOptionInvocationStringDeclarationAST::cPtr_buildOptionInvocationStringDeclarationAST (const GGS_bool & in_isPredefined,
+                                                                                                const GGS_lstring & in_buildOptionStringName,
+                                                                                                const GGS_string & in_buildOptionValueName,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
 mProperty_buildOptionStringName (),
 mProperty_buildOptionValueName () {
@@ -8902,13 +8902,13 @@ mProperty_buildOptionValueName () {
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_buildOptionStringDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST ;
+const GALGAS_TypeDescriptor * cPtr_buildOptionInvocationStringDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST ;
 }
 
-void cPtr_buildOptionStringDeclarationAST::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("[@buildOptionStringDeclarationAST:") ;
+void cPtr_buildOptionInvocationStringDeclarationAST::description (String & ioString,
+                                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@buildOptionInvocationStringDeclarationAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_buildOptionStringName.description (ioString, inIndentation+1) ;
@@ -8919,9 +8919,9 @@ void cPtr_buildOptionStringDeclarationAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-AbstractPtrClass * cPtr_buildOptionStringDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_buildOptionInvocationStringDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_buildOptionStringDeclarationAST (mProperty_isPredefined, mProperty_buildOptionStringName, mProperty_buildOptionValueName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_buildOptionInvocationStringDeclarationAST (mProperty_isPredefined, mProperty_buildOptionStringName, mProperty_buildOptionValueName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8929,7 +8929,7 @@ AbstractPtrClass * cPtr_buildOptionStringDeclarationAST::duplicate (Compiler * i
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_buildOptionStringDeclarationAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_buildOptionInvocationStringDeclarationAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
     mProperty_buildOptionStringName.printNonNullClassInstanceProperties ("buildOptionStringName") ;
     mProperty_buildOptionValueName.printNonNullClassInstanceProperties ("buildOptionValueName") ;
@@ -8937,21 +8937,21 @@ AbstractPtrClass * cPtr_buildOptionStringDeclarationAST::duplicate (Compiler * i
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @buildOptionStringDeclarationAST generic code implementation
+//     @buildOptionInvocationStringDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST ("buildOptionStringDeclarationAST",
-                                                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST ("buildOptionInvocationStringDeclarationAST",
+                                                                                              & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_buildOptionStringDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST ;
+const GALGAS_TypeDescriptor * GGS_buildOptionInvocationStringDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_buildOptionStringDeclarationAST_2E_weak::objectCompare (const GGS_buildOptionStringDeclarationAST_2E_weak & inOperand) const {
+ComparisonResult GGS_buildOptionInvocationStringDeclarationAST_2E_weak::objectCompare (const GGS_buildOptionInvocationStringDeclarationAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -8971,13 +8971,13 @@ ComparisonResult GGS_buildOptionStringDeclarationAST_2E_weak::objectCompare (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST_2E_weak::GGS_buildOptionStringDeclarationAST_2E_weak (void) :
+GGS_buildOptionInvocationStringDeclarationAST_2E_weak::GGS_buildOptionInvocationStringDeclarationAST_2E_weak (void) :
 GGS_semanticDeclarationAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST_2E_weak & GGS_buildOptionStringDeclarationAST_2E_weak::operator = (const GGS_buildOptionStringDeclarationAST & inSource) {
+GGS_buildOptionInvocationStringDeclarationAST_2E_weak & GGS_buildOptionInvocationStringDeclarationAST_2E_weak::operator = (const GGS_buildOptionInvocationStringDeclarationAST & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -8989,27 +8989,27 @@ GGS_buildOptionStringDeclarationAST_2E_weak & GGS_buildOptionStringDeclarationAS
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST_2E_weak::GGS_buildOptionStringDeclarationAST_2E_weak (const GGS_buildOptionStringDeclarationAST & inSource) :
+GGS_buildOptionInvocationStringDeclarationAST_2E_weak::GGS_buildOptionInvocationStringDeclarationAST_2E_weak (const GGS_buildOptionInvocationStringDeclarationAST & inSource) :
 GGS_semanticDeclarationAST_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST_2E_weak GGS_buildOptionStringDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_buildOptionStringDeclarationAST_2E_weak result ;
+GGS_buildOptionInvocationStringDeclarationAST_2E_weak GGS_buildOptionInvocationStringDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_buildOptionInvocationStringDeclarationAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST GGS_buildOptionStringDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_buildOptionStringDeclarationAST result ;
+GGS_buildOptionInvocationStringDeclarationAST GGS_buildOptionInvocationStringDeclarationAST_2E_weak::unwrappedValue (void) const {
+  GGS_buildOptionInvocationStringDeclarationAST result ;
   if (isValid ()) {
-    const cPtr_buildOptionStringDeclarationAST * p = (cPtr_buildOptionStringDeclarationAST *) ptr () ;
+    const cPtr_buildOptionInvocationStringDeclarationAST * p = (cPtr_buildOptionInvocationStringDeclarationAST *) ptr () ;
     if (nullptr != p) {
-      result = GGS_buildOptionStringDeclarationAST (p) ;
+      result = GGS_buildOptionInvocationStringDeclarationAST (p) ;
     }
   }
   return result ;
@@ -9017,31 +9017,31 @@ GGS_buildOptionStringDeclarationAST GGS_buildOptionStringDeclarationAST_2E_weak:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringDeclarationAST GGS_buildOptionStringDeclarationAST_2E_weak::bang_buildOptionStringDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_buildOptionStringDeclarationAST result ;
+GGS_buildOptionInvocationStringDeclarationAST GGS_buildOptionInvocationStringDeclarationAST_2E_weak::bang_buildOptionInvocationStringDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_buildOptionInvocationStringDeclarationAST result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_buildOptionStringDeclarationAST) ;
-      result = GGS_buildOptionStringDeclarationAST ((cPtr_buildOptionStringDeclarationAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_buildOptionInvocationStringDeclarationAST) ;
+      result = GGS_buildOptionInvocationStringDeclarationAST ((cPtr_buildOptionInvocationStringDeclarationAST *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @buildOptionStringDeclarationAST.weak generic code implementation
+//     @buildOptionInvocationStringDeclarationAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST_2E_weak ("buildOptionStringDeclarationAST.weak",
-                                                                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST_2E_weak ("buildOptionInvocationStringDeclarationAST.weak",
+                                                                                                      & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_buildOptionStringDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_buildOptionInvocationStringDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------

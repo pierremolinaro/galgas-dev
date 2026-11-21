@@ -155,9 +155,9 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   var @galgasDeclarationAST declarationAST = @()
   appendPredefinedTypesASTs (!?declarationAST)
   declarationAST.mDeclarationList ++= @buildOptionValueDeclarationAST (!isPredefined: true, "buildOptionValue".nowhere)
-  declarationAST.mDeclarationList ++= @buildOptionStringDeclarationAST (
+  declarationAST.mDeclarationList ++= @buildOptionInvocationStringDeclarationAST (
     !isPredefined: true,
-    !buildOptionStringName: "buildOptionString".nowhere,
+    !buildOptionStringName: "buildOptionInvocationString".nowhere,
     !buildOptionValueName: "buildOptionValue"
   )
 //--- Parse predefined type definitions

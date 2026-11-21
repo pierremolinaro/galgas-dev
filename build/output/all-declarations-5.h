@@ -6688,15 +6688,15 @@ class GGS_u_31__36_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_w
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_u_31__36_PredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @buildOptionStringDeclarationAST reference class
+// Phase 1: @buildOptionInvocationStringDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_buildOptionStringDeclarationAST : public GGS_semanticDeclarationAST {
+class GGS_buildOptionInvocationStringDeclarationAST : public GGS_semanticDeclarationAST {
 //--------------------------------- Default constructor
-  public: GGS_buildOptionStringDeclarationAST (void) ;
+  public: GGS_buildOptionInvocationStringDeclarationAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GGS_buildOptionStringDeclarationAST (const class cPtr_buildOptionStringDeclarationAST * inSourcePtr) ;
+  public: GGS_buildOptionInvocationStringDeclarationAST (const class cPtr_buildOptionInvocationStringDeclarationAST * inSourcePtr) ;
 
 //--------------------------------- Property access
   public: class GGS_lstring readProperty_buildOptionStringName (void) const ;
@@ -6706,13 +6706,13 @@ class GGS_buildOptionStringDeclarationAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_buildOptionStringDeclarationAST init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const class GGS_bool & inOperand0,
-                                                                                                                            const class GGS_lstring & inOperand1,
-                                                                                                                            const class GGS_string & inOperand2,
-                                                                                                                            Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS_buildOptionInvocationStringDeclarationAST init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const class GGS_bool & inOperand0,
+                                                                                                                                      const class GGS_lstring & inOperand1,
+                                                                                                                                      const class GGS_string & inOperand2,
+                                                                                                                                      Compiler * inCompiler
+                                                                                                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_buildOptionStringDeclarationAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_buildOptionInvocationStringDeclarationAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6734,23 +6734,23 @@ class GGS_buildOptionStringDeclarationAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @buildOptionStringDeclarationAST class
+// Phase 2: pointer class for @buildOptionInvocationStringDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_buildOptionStringDeclarationAST : public cPtr_semanticDeclarationAST {
+class cPtr_buildOptionInvocationStringDeclarationAST : public cPtr_semanticDeclarationAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void buildOptionStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const class GGS_bool & inOperand0,
-                                                                                                                      const class GGS_lstring & inOperand1,
-                                                                                                                      const class GGS_string & inOperand2,
-                                                                                                                      Compiler * inCompiler) ;
+  public: void buildOptionInvocationStringDeclarationAST_init_21_isPredefined_21_buildOptionStringName_21_buildOptionValueName (const class GGS_bool & inOperand0,
+                                                                                                                                const class GGS_lstring & inOperand1,
+                                                                                                                                const class GGS_string & inOperand2,
+                                                                                                                                Compiler * inCompiler) ;
 
 
 //--- Extension func keyRepresentation
@@ -6792,14 +6792,14 @@ class cPtr_buildOptionStringDeclarationAST : public cPtr_semanticDeclarationAST 
 
 
 //--- Default constructor
-  public: cPtr_buildOptionStringDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_buildOptionInvocationStringDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_buildOptionStringDeclarationAST (const GGS_bool & in_isPredefined,
-                                                const GGS_lstring & in_buildOptionStringName,
-                                                const GGS_string & in_buildOptionValueName,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+  public: cPtr_buildOptionInvocationStringDeclarationAST (const GGS_bool & in_isPredefined,
+                                                          const GGS_lstring & in_buildOptionStringName,
+                                                          const GGS_string & in_buildOptionValueName,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
@@ -6815,29 +6815,29 @@ class cPtr_buildOptionStringDeclarationAST : public cPtr_semanticDeclarationAST 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @buildOptionStringDeclarationAST_2E_weak weak reference class
+// Phase 1: @buildOptionInvocationStringDeclarationAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_buildOptionStringDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
+class GGS_buildOptionInvocationStringDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
 //--------------------------------- Default constructor
-  public: GGS_buildOptionStringDeclarationAST_2E_weak (void) ;
+  public: GGS_buildOptionInvocationStringDeclarationAST_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GGS_buildOptionStringDeclarationAST_2E_weak (const class GGS_buildOptionStringDeclarationAST & inSource) ;
+  public: GGS_buildOptionInvocationStringDeclarationAST_2E_weak (const class GGS_buildOptionInvocationStringDeclarationAST & inSource) ;
 
-  public: GGS_buildOptionStringDeclarationAST_2E_weak & operator = (const class GGS_buildOptionStringDeclarationAST & inSource) ;
+  public: GGS_buildOptionInvocationStringDeclarationAST_2E_weak & operator = (const class GGS_buildOptionInvocationStringDeclarationAST & inSource) ;
 
 //--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
-  public: inline static GGS_buildOptionStringDeclarationAST_2E_weak init_nil (void) {
-    GGS_buildOptionStringDeclarationAST_2E_weak result ;
+  public: inline static GGS_buildOptionInvocationStringDeclarationAST_2E_weak init_nil (void) {
+    GGS_buildOptionInvocationStringDeclarationAST_2E_weak result ;
     macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
 //--------------------------------- Bang operator
-  public: GGS_buildOptionStringDeclarationAST bang_buildOptionStringDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_buildOptionInvocationStringDeclarationAST bang_buildOptionInvocationStringDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- isValuated
   public: inline bool isValuated (void) const {
@@ -6845,7 +6845,7 @@ class GGS_buildOptionStringDeclarationAST_2E_weak : public GGS_semanticDeclarati
   }
 
 //--------------------------------- Unwrapped value
-  public: GGS_buildOptionStringDeclarationAST unwrappedValue (void) const ;
+  public: GGS_buildOptionInvocationStringDeclarationAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6860,10 +6860,10 @@ class GGS_buildOptionStringDeclarationAST_2E_weak : public GGS_semanticDeclarati
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_buildOptionStringDeclarationAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GGS_buildOptionInvocationStringDeclarationAST_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_buildOptionStringDeclarationAST_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_buildOptionInvocationStringDeclarationAST_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6885,7 +6885,7 @@ class GGS_buildOptionStringDeclarationAST_2E_weak : public GGS_semanticDeclarati
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringDeclarationAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionInvocationStringDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @buildOptionStringTypeForGeneration reference class

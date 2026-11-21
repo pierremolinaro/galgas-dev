@@ -5135,10 +5135,10 @@ class GGS_buildOptionValue  {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//   Package buildOptionString
+//   Package buildOptionInvocationString
 //--------------------------------------------------------------------------------------------------
 
-class GGS_buildOptionString  {
+class GGS_buildOptionInvocationString  {
 
 //-- Start of package generic part
 

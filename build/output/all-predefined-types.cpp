@@ -3680,115 +3680,115 @@ GGS_string GGS_buildOptionValue::class_func_extractLIBPMOption (UNUSED_LOCATION_
 //                               Bool options
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_display_5F_version (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_display_5F_version (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_display_5F_version.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_display_5F_help (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_display_5F_help (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_display_5F_help.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_outputConcreteSyntaxTree (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_outputConcreteSyntaxTree (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_outputConcreteSyntaxTree.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_log_5F_file_5F_read (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_log_5F_file_5F_read (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_log_5F_file_5F_read.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_do_5F_not_5F_generate_5F_any_5F_file (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_do_5F_not_5F_generate_5F_any_5F_file (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_do_5F_not_5F_generate_5F_any_5F_file.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_treat_5F_warnings_5F_as_5F_error (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_treat_5F_warnings_5F_as_5F_error (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_treat_5F_warnings_5F_as_5F_error.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_no_5F_color (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_no_5F_color (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_no_5F_color.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_outputHTMLgrammarFile (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_outputHTMLgrammarFile (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_outputHTMLgrammarFile.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_outputGrammarSwiftDescriptionFile (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_outputGrammarSwiftDescriptionFile (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_outputGrammarSwiftDescriptionFile.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_outputHTMLTypeListFile (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_outputHTMLTypeListFile (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_outputHTMLTypeListFile.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_printPredefinedLexicalActions (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_printPredefinedLexicalActions (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_printPredefinedLexicalActions.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_generateOneHeader (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_generateOneHeader (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_generateOneHeader.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_generateManyFiles (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_generateManyFiles (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_generateManyFiles.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_check_5F_big_5F_int (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_check_5F_big_5F_int (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_check_5F_big_5F_int.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_emitSyntaxDiagrams (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_emitSyntaxDiagrams (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_emitSyntaxDiagrams.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_emitClassGraph (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_emitClassGraph (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_emitClassGraph.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_displayUnicodeLexicalTestFunctions (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_displayUnicodeLexicalTestFunctions (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_displayUnicodeLexicalTestFunctions.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_checkEntityUsefulness (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_checkEntityUsefulness (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_checkEntityUsefulness.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_warnsOnOldStyleEnumeration (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_warnsOnOldStyleEnumeration (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_warnsOnOldStyleEnumeration.readProperty_string ()) ;
 }
 
@@ -3796,13 +3796,13 @@ GGS_string GGS_buildOptionString::class_func_warnsOnOldStyleEnumeration (UNUSED_
 //                               U32 options
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_max_5F_errors (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_max_5F_errors (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_max_5F_errors.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_buildOptionString::class_func_max_5F_warnings (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_max_5F_warnings (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_max_5F_warnings.readProperty_string ()) ;
 }
 
@@ -3811,31 +3811,31 @@ GGS_string GGS_buildOptionString::class_func_max_5F_warnings (UNUSED_LOCATION_AR
 //--------------------------------------------------------------------------------------------------
 
 
-GGS_string GGS_buildOptionString::class_func_emit_5F_issue_5F_json_5F_file (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_emit_5F_issue_5F_json_5F_file (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_emit_5F_issue_5F_json_5F_file.readProperty_string ()) ;
 }
 //--------------------------------------------------------------------------------------------------
 
 
-GGS_string GGS_buildOptionString::class_func_outputKeywordList (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_outputKeywordList (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_outputKeywordList.readProperty_string ()) ;
 }
 //--------------------------------------------------------------------------------------------------
 
 
-GGS_string GGS_buildOptionString::class_func_mode (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_mode (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_mode.readProperty_string ()) ;
 }
 //--------------------------------------------------------------------------------------------------
 
 
-GGS_string GGS_buildOptionString::class_func_create_5F_project (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_create_5F_project (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_create_5F_project.readProperty_string ()) ;
 }
 //--------------------------------------------------------------------------------------------------
 
 
-GGS_string GGS_buildOptionString::class_func_extractLIBPMOption (UNUSED_LOCATION_ARGS) {
+GGS_string GGS_buildOptionInvocationString::class_func_extractLIBPMOption (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_extractLIBPMOption.readProperty_string ()) ;
 }
 

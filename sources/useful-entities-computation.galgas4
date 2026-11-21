@@ -59,14 +59,14 @@ proc checkUsefulEntities (let @usefulEntitiesGraph inUsefulEntitiesGraph,
         let loc = inUsefulEntitiesGraph.locationForKey (key)
         if loc == .nowhere then
           warning .nowhere : "unused entity, '" + key
-            + "' (due to option --" + @buildOptionString.checkEntityUsefulness + ")"
+            + "' (due to option --" + @buildOptionInvocationString.checkEntityUsefulness + ")"
         elsif not uselessEntityLocationMap.contains (loc.startLocationString) then
           !?uselessEntityLocationMap.insertKey (loc.startLocationString.nowhere, key, loc)
         end
       end
       for uselessEntity in uselessEntityLocationMap do
         warning uselessEntity.mLocation : "unused '" + uselessEntity.mUnusedEntityName + "' entity, due to option --"
-         + @buildOptionString.checkEntityUsefulness + ")"
+         + @buildOptionInvocationString.checkEntityUsefulness + ")"
       end
     end
   end

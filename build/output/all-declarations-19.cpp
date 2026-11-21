@@ -5306,14 +5306,14 @@ void cPtr_u_31__36_PredefinedTypeAST::method_getClassMethodMap (GGS_unifiedTypeM
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension func '@buildOptionStringDeclarationAST keyRepresentation'
+//Overriding extension func '@buildOptionInvocationStringDeclarationAST keyRepresentation'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string cPtr_buildOptionStringDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string cPtr_buildOptionInvocationStringDeclarationAST::getter_keyRepresentation (Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ; // Returned variable
-  const GGS_buildOptionStringDeclarationAST temp_0 = this ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_0 = this ;
   result = GGS_string ("build option @").add_operation (temp_0.readProperty_buildOptionStringName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 30)) ;
 //---
   return result ;
@@ -5321,119 +5321,119 @@ GGS_string cPtr_buildOptionStringDeclarationAST::getter_keyRepresentation (Compi
 
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@buildOptionStringDeclarationAST enterDeclarationInGraph'
+//Overriding extension proc '@buildOptionInvocationStringDeclarationAST enterDeclarationInGraph'
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_buildOptionStringDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
-                                                                           GGS_equatableExtensionMap & /* ioArgument__5F_ioEquatableExtensionMap */,
-                                                                           GGS_extensionInitializerForBuildingContext & /* ioArgument__5F_ioExtensionInitializerForBuildingContext */,
-                                                                           GGS_extensionMethodMapForBuildingContext & /* ioArgument__5F_ioExtensionMethodMapForBuildingContext */,
-                                                                           GGS_extensionGetterMapForBuildingContext & /* ioArgument__5F_ioExtensionGetterMapForBuildingContext */,
-                                                                           GGS_extensionSetterMapForBuildingContext & /* ioArgument__5F_ioExtensionSetterMapForBuildingContext */,
-                                                                           GGS__5B_semanticDeclarationAST_5D_ & /* ioArgument__5F_ioExtensionOverrideDefinitionList */,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_buildOptionStringDeclarationAST temp_0 = this ;
-  const GGS_buildOptionStringDeclarationAST temp_1 = this ;
-  GGS_lstring var_key_2464 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_buildOptionStringName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 43)), temp_1.readProperty_buildOptionStringName ().readProperty_location (), inCompiler COMMA_HERE) ;
-  {
-  const GGS_buildOptionStringDeclarationAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_2464, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 44)) ;
-  }
-  const GGS_buildOptionStringDeclarationAST temp_3 = this ;
-  const GGS_buildOptionStringDeclarationAST temp_4 = this ;
-  GGS_lstring var_dep_2615 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_3.readProperty_buildOptionValueName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 45)), temp_4.readProperty_buildOptionStringName ().readProperty_location (), inCompiler COMMA_HERE) ;
-  {
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_2464, var_dep_2615 COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 46)) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@buildOptionStringDeclarationAST enterDeclarationInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_buildOptionStringDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument__5F_ioEquatableExtensionMap */,
-                                                                                     const GGS_extensionInitializerForBuildingContext /* constinArgument__5F_inExtensionInitializerMapForBuildingContext */,
-                                                                                     const GGS_extensionMethodMapForBuildingContext /* constinArgument__5F_inExtensionMethodMapForBuildingContext */,
-                                                                                     const GGS_extensionGetterMapForBuildingContext /* constinArgument__5F_inExtensionGetterMapForBuildingContext */,
-                                                                                     const GGS_extensionSetterMapForBuildingContext /* constinArgument__5F_inExtensionSetterMapForBuildingContext */,
-                                                                                     GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                     GGS_semanticContext & ioArgument_ioSemanticContext,
+void cPtr_buildOptionInvocationStringDeclarationAST::method_enterDeclarationInGraph (GGS_semanticTypePrecedenceGraph & ioArgument_ioSemanticTypePrecedenceGraph,
+                                                                                     GGS_equatableExtensionMap & /* ioArgument__5F_ioEquatableExtensionMap */,
+                                                                                     GGS_extensionInitializerForBuildingContext & /* ioArgument__5F_ioExtensionInitializerForBuildingContext */,
+                                                                                     GGS_extensionMethodMapForBuildingContext & /* ioArgument__5F_ioExtensionMethodMapForBuildingContext */,
+                                                                                     GGS_extensionGetterMapForBuildingContext & /* ioArgument__5F_ioExtensionGetterMapForBuildingContext */,
+                                                                                     GGS_extensionSetterMapForBuildingContext & /* ioArgument__5F_ioExtensionSetterMapForBuildingContext */,
+                                                                                     GGS__5B_semanticDeclarationAST_5D_ & /* ioArgument__5F_ioExtensionOverrideDefinitionList */,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringType_3500 ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_0 = this ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_1 = this ;
+  GGS_lstring var_key_2474 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_0.readProperty_buildOptionStringName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 43)), temp_1.readProperty_buildOptionStringName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_makeEntry (ioArgument_ioTypeMap, GGS_string ("string").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 60)), var_stringType_3500, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 60)) ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_2 = this ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_2474, temp_2, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 44)) ;
   }
-  GGS_classFunctionMap var_classFunctionMap_3538 = GGS_classFunctionMap::init (inCompiler COMMA_HERE) ;
-  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3617 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_boolBuildOptionArray ()) ;
-  while (enumerator_3617.hasCurrentObject ()) {
-    {
-    GGS__5B_functionSignatureElement_5D_ temp_0 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 63)) ;
-    var_classFunctionMap_3538.setter_insertKey (enumerator_3617.current (HERE).readProperty_mIdentifier (), temp_0, GGS_bool (false), var_stringType_3500, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 63)) ;
-    }
-    enumerator_3617.gotoNextObject () ;
-  }
-  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3792 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_stringBuildOptionArray ()) ;
-  while (enumerator_3792.hasCurrentObject ()) {
-    {
-    GGS__5B_functionSignatureElement_5D_ temp_1 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 66)) ;
-    var_classFunctionMap_3538.setter_insertKey (enumerator_3792.current (HERE).readProperty_mIdentifier (), temp_1, GGS_bool (false), var_stringType_3500, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 66)) ;
-    }
-    enumerator_3792.gotoNextObject () ;
-  }
-  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3968 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_u_33__32_BuildOptionArray ()) ;
-  while (enumerator_3968.hasCurrentObject ()) {
-    {
-    GGS__5B_functionSignatureElement_5D_ temp_2 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 69)) ;
-    var_classFunctionMap_3538.setter_insertKey (enumerator_3968.current (HERE).readProperty_mIdentifier (), temp_2, GGS_bool (false), var_stringType_3500, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 69)) ;
-    }
-    enumerator_3968.gotoNextObject () ;
-  }
-  GGS_setterMap var_setterMap_4110 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
-  GGS_instanceMethodMap var_instanceMethodMap_4153 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
-  GGS_getterMap var_getterMap_4196 = GGS_getterMap::init (inCompiler COMMA_HERE) ;
-  GGS_initializerMap var_initializerMap_4236 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
-  GGS_typeFeatures var_features_4265 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
-  const GGS_buildOptionStringDeclarationAST temp_3 = this ;
-  const GGS_buildOptionStringDeclarationAST temp_4 = this ;
-  const GGS_buildOptionStringDeclarationAST temp_5 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_4332 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_3.readProperty_buildOptionStringName (), temp_4.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 83)), GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 84)), GGS_bool (false), GGS__5B_typedProperty_5D_::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS__5B_typedProperty_5D_::init (inCompiler COMMA_HERE), var_initializerMap_4236, var_classFunctionMap_3538, var_getterMap_4196, var_setterMap_4110, var_instanceMethodMap_4153, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 95)), GGS_readSubcriptMap::init (inCompiler COMMA_HERE), GGS_writeSubcriptMap::init (inCompiler COMMA_HERE), GGS__5B_enumerationDescriptor_5D_::init (inCompiler COMMA_HERE), var_features_4265, GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 101)), GGS_string ("option-").add_operation (temp_5.readProperty_buildOptionStringName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 102)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 102)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 103)), inCompiler COMMA_HERE) ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_3 = this ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_4 = this ;
+  GGS_lstring var_dep_2625 = GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (temp_3.readProperty_buildOptionValueName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 45)), temp_4.readProperty_buildOptionStringName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_4332.readProperty_typeName (), var_typeDefinition_4332, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 105)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_2474, var_dep_2625 COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 46)) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@buildOptionStringDeclarationAST semanticAnalysis'
+//Overriding extension proc '@buildOptionInvocationStringDeclarationAST enterDeclarationInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_buildOptionStringDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & ioArgument_ioUsefulnessRootEntities,
-                                                                    GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                    const GGS_string /* constinArgument__5F_inProductDirectory */,
-                                                                    const GGS_semanticContext constinArgument_inSemanticContext,
-                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                    const GGS_predefinedTypes /* constinArgument__5F_inPredefinedTypes */,
-                                                                    GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioSemanticDeclarationListForGeneration,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_buildOptionStringDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_6036 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_buildOptionStringName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 118)) ;
+void cPtr_buildOptionInvocationStringDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument__5F_ioEquatableExtensionMap */,
+                                                                                               const GGS_extensionInitializerForBuildingContext /* constinArgument__5F_inExtensionInitializerMapForBuildingContext */,
+                                                                                               const GGS_extensionMethodMapForBuildingContext /* constinArgument__5F_inExtensionMethodMapForBuildingContext */,
+                                                                                               const GGS_extensionGetterMapForBuildingContext /* constinArgument__5F_inExtensionGetterMapForBuildingContext */,
+                                                                                               const GGS_extensionSetterMapForBuildingContext /* constinArgument__5F_inExtensionSetterMapForBuildingContext */,
+                                                                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                               GGS_semanticContext & ioArgument_ioSemanticContext,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry var_stringType_3510 ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_6036, var_nameForUsefulness_6036, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 119)) ;
+  extensionSetter_makeEntry (ioArgument_ioTypeMap, GGS_string ("string").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 60)), var_stringType_3510, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 60)) ;
+  }
+  GGS_classFunctionMap var_classFunctionMap_3548 = GGS_classFunctionMap::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3627 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_boolBuildOptionArray ()) ;
+  while (enumerator_3627.hasCurrentObject ()) {
+    {
+    GGS__5B_functionSignatureElement_5D_ temp_0 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 63)) ;
+    var_classFunctionMap_3548.setter_insertKey (enumerator_3627.current (HERE).readProperty_mIdentifier (), temp_0, GGS_bool (false), var_stringType_3510, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 63)) ;
+    }
+    enumerator_3627.gotoNextObject () ;
+  }
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3802 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_stringBuildOptionArray ()) ;
+  while (enumerator_3802.hasCurrentObject ()) {
+    {
+    GGS__5B_functionSignatureElement_5D_ temp_1 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 66)) ;
+    var_classFunctionMap_3548.setter_insertKey (enumerator_3802.current (HERE).readProperty_mIdentifier (), temp_1, GGS_bool (false), var_stringType_3510, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 66)) ;
+    }
+    enumerator_3802.gotoNextObject () ;
+  }
+  UpEnumerator__5B_projectBuildOption_5D_ enumerator_3978 (ioArgument_ioSemanticContext.readProperty_projectSettings ().readProperty_u_33__32_BuildOptionArray ()) ;
+  while (enumerator_3978.hasCurrentObject ()) {
+    {
+    GGS__5B_functionSignatureElement_5D_ temp_2 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 69)) ;
+    var_classFunctionMap_3548.setter_insertKey (enumerator_3978.current (HERE).readProperty_mIdentifier (), temp_2, GGS_bool (false), var_stringType_3510, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 69)) ;
+    }
+    enumerator_3978.gotoNextObject () ;
+  }
+  GGS_setterMap var_setterMap_4120 = GGS_setterMap::init (inCompiler COMMA_HERE) ;
+  GGS_instanceMethodMap var_instanceMethodMap_4163 = GGS_instanceMethodMap::init (inCompiler COMMA_HERE) ;
+  GGS_getterMap var_getterMap_4206 = GGS_getterMap::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_4246 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_typeFeatures var_features_4275 = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_3 = this ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_4 = this ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_5 = this ;
+  GGS_unifiedTypeDefinition var_typeDefinition_4342 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_3.readProperty_buildOptionStringName (), temp_4.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 83)), GGS_typeKindEnum::class_func_packageType (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 84)), GGS_bool (false), GGS__5B_typedProperty_5D_::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS__5B_typedProperty_5D_::init (inCompiler COMMA_HERE), var_initializerMap_4246, var_classFunctionMap_3548, var_getterMap_4206, var_setterMap_4120, var_instanceMethodMap_4163, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 95)), GGS_readSubcriptMap::init (inCompiler COMMA_HERE), GGS_writeSubcriptMap::init (inCompiler COMMA_HERE), GGS__5B_enumerationDescriptor_5D_::init (inCompiler COMMA_HERE), var_features_4275, GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 101)), GGS_string ("option-").add_operation (temp_5.readProperty_buildOptionStringName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 102)), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 102)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 103)), inCompiler COMMA_HERE) ;
+  {
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_4342.readProperty_typeName (), var_typeDefinition_4342, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 105)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@buildOptionInvocationStringDeclarationAST semanticAnalysis'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_buildOptionInvocationStringDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & ioArgument_ioUsefulnessRootEntities,
+                                                                              GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                              const GGS_string /* constinArgument__5F_inProductDirectory */,
+                                                                              const GGS_semanticContext constinArgument_inSemanticContext,
+                                                                              GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                              const GGS_predefinedTypes /* constinArgument__5F_inPredefinedTypes */,
+                                                                              GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioSemanticDeclarationListForGeneration,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_buildOptionInvocationStringDeclarationAST temp_0 = this ;
+  GGS_lstring var_nameForUsefulness_6046 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_buildOptionStringName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 118)) ;
+  {
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_6046, var_nameForUsefulness_6046, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 119)) ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    const GGS_buildOptionStringDeclarationAST temp_2 = this ;
+    const GGS_buildOptionInvocationStringDeclarationAST temp_2 = this ;
     test_1 = temp_2.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_nameForUsefulness_6036  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 121)) ;
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_nameForUsefulness_6046  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 121)) ;
     }
   }
-  const GGS_buildOptionStringDeclarationAST temp_3 = this ;
-  GGS_unifiedTypeMapEntry var_selfType_6299 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_3.readProperty_buildOptionStringName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 124)) ;
-  const GGS_buildOptionStringDeclarationAST temp_4 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_buildOptionStringTypeForGeneration::init_21_infoMessage_21__21_boolBuildOptionArray_21_u_33__32_BuildOptionArray_21_stringBuildOptionArray (GGS_string ("build option string ").add_operation (temp_4.readProperty_buildOptionStringName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 126)), var_selfType_6299, constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_boolBuildOptionArray (), constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_u_33__32_BuildOptionArray (), constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_stringBuildOptionArray (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 125)) ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_3 = this ;
+  GGS_unifiedTypeMapEntry var_selfType_6309 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_3.readProperty_buildOptionStringName (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 124)) ;
+  const GGS_buildOptionInvocationStringDeclarationAST temp_4 = this ;
+  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_buildOptionStringTypeForGeneration::init_21_infoMessage_21__21_boolBuildOptionArray_21_u_33__32_BuildOptionArray_21_stringBuildOptionArray (GGS_string ("build option string ").add_operation (temp_4.readProperty_buildOptionStringName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 126)), var_selfType_6309, constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_boolBuildOptionArray (), constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_u_33__32_BuildOptionArray (), constinArgument_inSemanticContext.readProperty_projectSettings ().readProperty_stringBuildOptionArray (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 125)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5445,10 +5445,10 @@ void cPtr_buildOptionStringTypeForGeneration::method_appendDeclaration_31_ (GGS_
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_buildOptionStringTypeForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_7664 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 151)) ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_buildOptionStringGenerationTemplate_buildOptionTypeHeader_31_ (inCompiler, var_selfTypeDefinition_7664.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_7664.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 154)) COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 152))) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_7674 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 151)) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_buildOptionStringGenerationTemplate_buildOptionTypeHeader_31_ (inCompiler, var_selfTypeDefinition_7674.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_7674.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 154)) COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 152))) ;
   const GGS_buildOptionStringTypeForGeneration temp_1 = this ;
-  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (inCompiler, var_selfTypeDefinition_7664.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 158)), var_selfTypeDefinition_7664.readProperty_classFunctionMap (), var_selfTypeDefinition_7664.readProperty_classMethodMap () COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 156))), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 156)) ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (inCompiler, var_selfTypeDefinition_7674.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 158)), var_selfTypeDefinition_7674.readProperty_classFunctionMap (), var_selfTypeDefinition_7674.readProperty_classMethodMap () COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 156))), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 156)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5463,11 +5463,11 @@ void cPtr_buildOptionStringTypeForGeneration::method_appendSpecificImplementatio
   const GGS_buildOptionStringTypeForGeneration temp_0 = this ;
   extensionMethod_addHeaderFileName (temp_0.readProperty_mSelfTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 169)) ;
   const GGS_buildOptionStringTypeForGeneration temp_1 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_8590 = extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 170)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_8600 = extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 170)) ;
   const GGS_buildOptionStringTypeForGeneration temp_2 = this ;
   const GGS_buildOptionStringTypeForGeneration temp_3 = this ;
   const GGS_buildOptionStringTypeForGeneration temp_4 = this ;
-  outArgument_outImplementation = GGS_string (filewrapperTemplate_buildOptionStringGenerationTemplate_buildOptionTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_8590.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_8590.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 173)), temp_2.readProperty_boolBuildOptionArray (), temp_3.readProperty_u_33__32_BuildOptionArray (), temp_4.readProperty_stringBuildOptionArray () COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 171))) ;
+  outArgument_outImplementation = GGS_string (filewrapperTemplate_buildOptionStringGenerationTemplate_buildOptionTypeSpecificImplementation (inCompiler, var_selfTypeDefinition_8600.readProperty_typeName ().readProperty_string (), var_selfTypeDefinition_8600.readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 173)), temp_2.readProperty_boolBuildOptionArray (), temp_3.readProperty_u_33__32_BuildOptionArray (), temp_4.readProperty_stringBuildOptionArray () COMMA_SOURCE_FILE ("declaration-predefined-type-build-option-string.galgas4", 171))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
