@@ -103,178 +103,178 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !resultTypeName:"string",
       !hasLexiqueArg:false
     )
-    enterClassFunctionWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"commandLineArgumentCount",
-      !resultTypeName:"uint",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWithArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"commandLineArgumentAtIndex",
-      !argTypeName:"uint",
-      !argName:"inIndex",
-      !resultTypeName:"string",
-      !hasLexiqueArg:true
-    )
+//    enterClassFunctionWithoutArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"commandLineArgumentCount",
+//      !resultTypeName:"uint",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWithArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"commandLineArgumentAtIndex",
+//      !argTypeName:"uint",
+//      !argName:"inIndex",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:true
+//    )
   //--- Class functions for "bool" options
-    enterClassFunctionWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"boolOptionNameList",
-      !resultTypeName: "[stringString]",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"boolOptionInvocationCharacter",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"char",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"boolOptionInvocationString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"boolOptionCommentString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"boolOptionValue",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"bool",
-      !hasLexiqueArg:false
-    )
-  //--- Class functions for "uint" options
-    enterClassFunctionWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"uintOptionNameList",
-      !resultTypeName:"[stringString]",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"uintOptionInvocationCharacter",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"char",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"uintOptionInvocationString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"uintOptionCommentString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"uintOptionValue",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"uint",
-      !hasLexiqueArg:false
-    )
-  //--- Class functions for "string" options
-    enterClassFunctionWithoutArgument (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"stringOptionNameList",
-      !resultTypeName:"[stringString]",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"stringOptionInvocationCharacter",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"char",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"stringOptionInvocationString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"stringOptionCommentString",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
-    enterClassFunctionWith2Arguments (
-      !?outMap,
-      !?ioUnifiedTypeMap,
-      !name:"stringOptionValue",
-      !argTypeName1:"string",
-      !argName1:"inOptionComponentName",
-      !argTypeName2:"string",
-      !argName2:"inOptionName",
-      !resultTypeName:"string",
-      !hasLexiqueArg:false
-    )
+//    enterClassFunctionWithoutArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"boolOptionNameList",
+//      !resultTypeName: "[stringString]",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"boolOptionInvocationCharacter",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"char",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"boolOptionInvocationString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"boolOptionCommentString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"boolOptionValue",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"bool",
+//      !hasLexiqueArg:false
+//    )
+//  //--- Class functions for "uint" options
+//    enterClassFunctionWithoutArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"uintOptionNameList",
+//      !resultTypeName:"[stringString]",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"uintOptionInvocationCharacter",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"char",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"uintOptionInvocationString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"uintOptionCommentString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"uintOptionValue",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"uint",
+//      !hasLexiqueArg:false
+//    )
+//  //--- Class functions for "string" options
+//    enterClassFunctionWithoutArgument (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"stringOptionNameList",
+//      !resultTypeName:"[stringString]",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"stringOptionInvocationCharacter",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"char",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"stringOptionInvocationString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"stringOptionCommentString",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
+//    enterClassFunctionWith2Arguments (
+//      !?outMap,
+//      !?ioUnifiedTypeMap,
+//      !name:"stringOptionValue",
+//      !argTypeName1:"string",
+//      !argName1:"inOptionComponentName",
+//      !argTypeName2:"string",
+//      !argName2:"inOptionName",
+//      !resultTypeName:"string",
+//      !hasLexiqueArg:false
+//    )
   //--- Class functions for lexical keyword lists
     enterClassFunctionWithoutArgument (
       !?outMap,
@@ -307,42 +307,42 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !argName: "inErrorCode",
       !compilerArgument:false
     )
-    enterClassMethodWith3InputArguments (
-      !?outClassMethodMap,
-      !?ioUnifiedTypeMap,
-      !methodName:"setBoolOptionValue",
-      !argType1:"string",
-      !argName1:"inDomain",
-      !argType2:"string",
-      !argName2:"inIdentifier",
-      !argType3:"bool",
-      !argName3:"inValue",
-      !compilerArgument:false
-    )
-    enterClassMethodWith3InputArguments (
-      !?outClassMethodMap,
-      !?ioUnifiedTypeMap,
-      !methodName:"setUIntOptionValue",
-      !argType1:"string",
-      !argName1:"inDomain",
-      !argType2:"string",
-      !argName2:"inIdentifier",
-      !argType3:"uint",
-      !argName3:"inValue",
-      !compilerArgument:false
-    )
-    enterClassMethodWith3InputArguments (
-      !?outClassMethodMap,
-      !?ioUnifiedTypeMap,
-      !methodName:"setStringOptionValue",
-      !argType1:"string",
-      !argName1:"inDomain",
-      !argType2:"string",
-      !argName2:"inIdentifier",
-      !argType3:"string",
-      !argName3:"inValue",
-      !compilerArgument:false
-    )
+//    enterClassMethodWith3InputArguments (
+//      !?outClassMethodMap,
+//      !?ioUnifiedTypeMap,
+//      !methodName:"setBoolOptionValue",
+//      !argType1:"string",
+//      !argName1:"inDomain",
+//      !argType2:"string",
+//      !argName2:"inIdentifier",
+//      !argType3:"bool",
+//      !argName3:"inValue",
+//      !compilerArgument:false
+//    )
+//    enterClassMethodWith3InputArguments (
+//      !?outClassMethodMap,
+//      !?ioUnifiedTypeMap,
+//      !methodName:"setUIntOptionValue",
+//      !argType1:"string",
+//      !argName1:"inDomain",
+//      !argType2:"string",
+//      !argName2:"inIdentifier",
+//      !argType3:"uint",
+//      !argName3:"inValue",
+//      !compilerArgument:false
+//    )
+//    enterClassMethodWith3InputArguments (
+//      !?outClassMethodMap,
+//      !?ioUnifiedTypeMap,
+//      !methodName:"setStringOptionValue",
+//      !argType1:"string",
+//      !argName1:"inDomain",
+//      !argType2:"string",
+//      !argName2:"inIdentifier",
+//      !argType3:"string",
+//      !argName3:"inValue",
+//      !compilerArgument:false
+//    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -3212,30 +3212,6 @@ class GGS_application final {
 //-- Start of package generic part
 
 //--------------------------------- GALGAS class getters
-  public: static class GGS_string class_func_boolOptionCommentString (const class GGS_string & inOperand0,
-                                                                      const class GGS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_char class_func_boolOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                          const class GGS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_boolOptionInvocationString (const class GGS_string & inOperand0,
-                                                                         const class GGS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS__5B_stringString_5D_ class_func_boolOptionNameList (LOCATION_ARGS) ;
-
-  public: static class GGS_bool class_func_boolOptionValue (const class GGS_string & inOperand0,
-                                                            const class GGS_string & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_commandLineArgumentAtIndex (const class GGS_uint & inOperand0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_commandLineArgumentCount (LOCATION_ARGS) ;
-
   public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
 
   public: static class GGS_uint class_func_errorCount (LOCATION_ARGS) ;
@@ -3253,64 +3229,13 @@ class GGS_application final {
 
   public: static class GGS_bool class_func_runningOnWindows (LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_stringOptionCommentString (const class GGS_string & inOperand0,
-                                                                        const class GGS_string & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_char class_func_stringOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                            const class GGS_string & inOperand1
-                                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringOptionInvocationString (const class GGS_string & inOperand0,
-                                                                           const class GGS_string & inOperand1
-                                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS__5B_stringString_5D_ class_func_stringOptionNameList (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringOptionValue (const class GGS_string & inOperand0,
-                                                                const class GGS_string & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
-
   public: static class GGS_string class_func_system (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_uintOptionCommentString (const class GGS_string & inOperand0,
-                                                                      const class GGS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_char class_func_uintOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                          const class GGS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_uintOptionInvocationString (const class GGS_string & inOperand0,
-                                                                         const class GGS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS__5B_stringString_5D_ class_func_uintOptionNameList (LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_uintOptionValue (const class GGS_string & inOperand0,
-                                                            const class GGS_string & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_uint class_func_warningCount (LOCATION_ARGS) ;
 
 //--------------------------------- Class Methods
   public: static void class_method_exit (class GGS_uint constinArgument0
                                          COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_setBoolOptionValue (class GGS_string constinArgument0,
-                                                       class GGS_string constinArgument1,
-                                                       class GGS_bool constinArgument2
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_setStringOptionValue (class GGS_string constinArgument0,
-                                                         class GGS_string constinArgument1,
-                                                         class GGS_string constinArgument2
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_setUIntOptionValue (class GGS_string constinArgument0,
-                                                       class GGS_string constinArgument1,
-                                                       class GGS_uint constinArgument2
-                                                       COMMA_LOCATION_ARGS) ;
 
 
 } ;

@@ -953,25 +953,6 @@ void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
-                                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                         const class GGS_string constinArgument2,
-                                                                                                                                                                                         const class GGS_string constinArgument3,
-                                                                                                                                                                                         const class GGS_string constinArgument4,
-                                                                                                                                                                                         const class GGS_string constinArgument5,
-                                                                                                                                                                                         const class GGS_string constinArgument6,
-                                                                                                                                                                                         const class GGS_string constinArgument7,
-                                                                                                                                                                                         const class GGS_string constinArgument8,
-                                                                                                                                                                                         const class GGS_bool constinArgument9,
-                                                                                                                                                                                         Compiler * inCompiler
-                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
 //
 //--------------------------------------------------------------------------------------------------
