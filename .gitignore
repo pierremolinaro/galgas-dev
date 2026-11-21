@@ -291,10 +291,10 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 TEST_GALGAS/**
-z-testsuite/xcode-project/build/*
-z-testsuite/xcode-project/testsuite.xcodeproj/project.xcworkspace/*
-z-testsuite/makefile-unix/testsuite
-z-testsuite/makefile-unix/testsuite-debug
+z-test-suite/xcode-project/build/*
+z-test-suite/xcode-project/testsuite.xcodeproj/project.xcworkspace/*
+z-test-suite/makefile-unix/testsuite
+z-test-suite/makefile-unix/testsuite-debug
 galgas-sources/+generation-templates/build/*
 project-xcode-galgas/*
 
@@ -304,8 +304,11 @@ project-xcode-galgas/*
 *.exe
 *.dot
 
-build/helpers/*.html
-build/indexes-new
+**/build/cli-objects/**
+**/build/helpers/**
+**/build/indexes/**
+**/build/libpm/**
+**/build/output/**
 
 galgas-3-documentation-latex-sources/temp.galgas.tex
 
@@ -336,20 +339,20 @@ makefile-x86linux32-on-macosx/galgas4-debug
 makefile-x86linux64-on-macosx/galgas4
 makefile-x86linux64-on-macosx/galgas4-debug
 
-z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution
-z-sample_code/dangling_else_solution/makefile-unix/allDanglingElseSolution-debug
-z-sample_code/class_sample_language/makefile-unix/classSampleLanguage
-z-sample_code/class_sample_language/makefile-unix/classSampleLanguage-debug
-z-sample_code/LL1_expression/makefile-unix/LL1Expression
-z-sample_code/LL1_expression/makefile-unix/LL1Expression-debug
-z-sample_code/logo/makefile-unix/logo
-z-sample_code/logo/makefile-unix/logo-debug
-z-sample_code/LR1_grammar/makefile-unix/LR1Grammar
-z-sample_code/LR1_grammar/makefile-unix/LR1Grammar-debug
-z-sample_code/SLR_expression/makefile-unix/SLRExpression
-z-sample_code/SLR_expression/makefile-unix/SLRExpression-debug
-z-sample_code/xml_parsing/makefile-unix/XMLParsing
-z-sample_code/xml_parsing/makefile-unix/XMLParsing-debug
+z-sample-code/dangling_else_solution/makefile-unix/allDanglingElseSolution
+z-sample-code/dangling_else_solution/makefile-unix/allDanglingElseSolution-debug
+z-sample-code/class_sample_language/makefile-unix/classSampleLanguage
+z-sample-code/class_sample_language/makefile-unix/classSampleLanguage-debug
+z-sample-code/LL1_expression/makefile-unix/LL1Expression
+z-sample-code/LL1_expression/makefile-unix/LL1Expression-debug
+z-sample-code/logo/makefile-unix/logo
+z-sample-code/logo/makefile-unix/logo-debug
+z-sample-code/LR1_grammar/makefile-unix/LR1Grammar
+z-sample-code/LR1_grammar/makefile-unix/LR1Grammar-debug
+z-sample-code/SLR_expression/makefile-unix/SLRExpression
+z-sample-code/SLR_expression/makefile-unix/SLRExpression-debug
+z-sample-code/xml_parsing/makefile-unix/XMLParsing
+z-sample-code/xml_parsing/makefile-unix/XMLParsing-debug
 
-z-testsuite/makefile-unix/testsuite
-z-testsuite/makefile-unix/testsuite-debug
+z-test-suite/makefile-unix/testsuite
+z-test-suite/makefile-unix/testsuite-debug
