@@ -27,7 +27,7 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.sint_type : ]
+    result = @predefinedTypeGenerationTemplate.sint_type ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -315,14 +315,14 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
     self.valueType.addHeaderFileName1 (!?ioInclusionSet)
     self.optionalValueType.addHeaderFileName1 (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [dictionaryGenerationTemplate.dictTypeHeader1 :
+    outHeader = @dictionaryGenerationTemplate.dictTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.enumerationDescriptorList,
       self.keyType.identifierRepresentation,
       self.valueType.identifierRepresentation
-   ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+   )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -338,7 +338,7 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -348,14 +348,14 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
                                               !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [dictionaryGenerationTemplate.dictTypeSpecificImplementation :
+    outImplementation = @dictionaryGenerationTemplate.dictTypeSpecificImplementation (
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.enumerationDescriptorList,
       self.keyType.identifierRepresentation,
       selfTypeDefinition.features.generateCppObjectComparison,
       self.valueType.identifierRepresentation,
       self.optionalValueType.identifierRepresentation
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

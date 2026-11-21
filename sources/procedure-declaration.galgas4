@@ -219,10 +219,10 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
       false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.routineImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.routineImplementation (
       self.routineMangledName,
       code
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

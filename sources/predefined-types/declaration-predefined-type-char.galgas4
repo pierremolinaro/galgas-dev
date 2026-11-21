@@ -217,7 +217,7 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = filewrapper [predefinedTypeGenerationTemplate.char_type : ]
+    result = @predefinedTypeGenerationTemplate.char_type ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

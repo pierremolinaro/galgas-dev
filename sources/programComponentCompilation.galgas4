@@ -240,13 +240,13 @@ proc compileProgramComponentGalgas3
       inclusionSet ++= "grammar-" + prgmRule.mReferenceGrammar.string.fileNameRepresentation
     end
   end
-  let cppContents = filewrapper [programFileGenerationTemplate.programFileImplementation :
+  let cppContents = @programFileGenerationTemplate.programFileImplementation (
     "program",
     @(),
     beforeAfterRulesString,
     inProgramRules,
     inProjectVersionString
-  ]
+  )
 //---
   outProgramComponentForGeneration = @programComponentForGeneration (
     !infoMessage: "zprogram",

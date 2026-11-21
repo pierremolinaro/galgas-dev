@@ -185,11 +185,11 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                       !@string outHeader) {
-    outHeader = filewrapper [semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration :
+    outHeader = @semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration (
       self.mReceiverType.definition.typeName.string,
       self.mAbstractExtensionMethodName,
       self.mAbstractExtensionMethodFormalParameterList
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,11 +210,11 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
     for entry in self.mAbstractExtensionMethodFormalParameterList do
       entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.abstractExtensionMethodImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.abstractExtensionMethodImplementation (
       self.mReceiverType,
       self.mAbstractExtensionMethodName,
       self.mAbstractExtensionMethodFormalParameterList
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

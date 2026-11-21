@@ -50,6 +50,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $filewrapper$
     $[$
+    let pt = @location.here
     $identifier$ (?let filewrapperName) indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST (filewrapperName)
@@ -63,6 +64,7 @@ syntax extension galgas4ExpressionSyntax {
         )
       or
         $identifier$ (?let @lstring filewrapperTemplateName)
+        error pt : "FILEWRAPPER!!!!"
         $:$
         <output_expression_list> (!?ioDeclarations, ?let [@actualOutputArgumentAST] expressionList)
         outExpression = @filewrapperTemplateInExpressionAST (

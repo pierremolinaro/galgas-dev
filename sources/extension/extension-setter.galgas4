@@ -254,11 +254,11 @@ override func @extensionSetterForGeneration.headerKind () -> @headerKind {
 
 override proc @extensionSetterForGeneration.appendDeclaration1 (?!@stringset _ioInclusionSet,
                                                                 !@string outHeader) {
-  outHeader = filewrapper [semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration :
+  outHeader = @semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration (
     self.mReceiverType.definition.typeName.string,
     self.mExtensionSetterName,
     self.mExtensionSetterFormalParameterList
-  ]
+  )
 }
 
 //································································································
@@ -289,11 +289,11 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
     false, // Do not generate syntaxDirectedTranslationString argument
     ?let @string code
   )
-  outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation :
+  outImplementation = @semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation (
     self.mReceiverType.definition.typeName.string,
     self.mExtensionSetterName,
     code
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

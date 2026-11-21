@@ -250,17 +250,17 @@ override func @extensionMethodForGeneration.headerKind () ->@headerKind {
 override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset _ioInclusionSet,
                                                                   !@string outHeader) {
   if self.mImplementedAsFunction then
-    outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration :
+    outHeader = @semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration (
       self.mReceiverType.definition.typeName.string,
       self.mExtensionMethodName,
       self.mExtensionMethodFormalParameterList
-    ]
+    )
   else
-    outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodDeclaration :
+    outHeader = @semanticComponentGenerationTemplate.extensionMethodDeclaration (
       self.mReceiverType.definition.typeName.string,
       self.mExtensionMethodName,
       self.mExtensionMethodFormalParameterList
-    ]
+    )
   end
 }
 
@@ -293,11 +293,11 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
       false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation (
       self.mReceiverType.definition.typeName.string,
       self.mExtensionMethodName,
       code
-    ]
+    )
   else
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
     for entry in self.mExtensionMethodFormalParameterList do
@@ -327,12 +327,12 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
       self.mSemanticInstructionListForGeneration,
       ?let @string methodImplementation
     )
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.extensionMethodImplementation (
       self.mReceiverType.definition.typeName.string,
       self.mExtensionMethodName,
       self.mExtensionMethodFormalParameterList,
       methodImplementation
-    ]
+    )
   end
 }
 

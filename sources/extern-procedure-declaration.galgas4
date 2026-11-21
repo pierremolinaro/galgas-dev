@@ -179,10 +179,10 @@ class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeader
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
-    outHeader = filewrapper [semanticComponentGenerationTemplate.routineDeclaration:
+    outHeader = @semanticComponentGenerationTemplate.routineDeclaration(
       self.routineMangledName,
       self.mFormalArgumentList
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

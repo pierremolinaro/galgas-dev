@@ -77,10 +77,10 @@ proc emitProductionRulesInTexFile
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   texDocumentFilePath.deletingLastPathComponent.makeDirectory ()
-  let document = filewrapper [grammarRulesInTexDocumentTemplate.document :
+  let document = @grammarRulesInTexDocumentTemplate.document (
     inGrammarComponentName,
     escapeForTex (inGrammarComponentName)
-  ]
+  )
   document.writeToFileWhenDifferentContents (texDocumentFilePath, ?*)
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""

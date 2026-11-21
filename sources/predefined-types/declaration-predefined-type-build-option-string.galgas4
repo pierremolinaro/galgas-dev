@@ -149,16 +149,16 @@ final class @buildOptionStringTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [buildOptionStringGenerationTemplate.buildOptionTypeHeader1 :
+    outHeader = @buildOptionStringGenerationTemplate.buildOptionTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForPackage (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.classFunctionMap,
       selfTypeDefinition.classMethodMap
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,13 +168,13 @@ final class @buildOptionStringTypeForGeneration : @semanticTypeForGeneration {
                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [buildOptionStringGenerationTemplate.buildOptionTypeSpecificImplementation :
+    outImplementation = @buildOptionStringGenerationTemplate.buildOptionTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.boolBuildOptionArray,
       self.u32BuildOptionArray,
       self.stringBuildOptionArray
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

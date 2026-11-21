@@ -293,12 +293,12 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Build header and Cpp contents
   if @application.errorCount == 0 then
   //--- Header
-    let headerContents = filewrapper [templateLexiqueGenerationTemplates.cppHeader :
+    let headerContents = @templateLexiqueGenerationTemplates.cppHeader (
        self.mLexiqueComponentName.string.identifierRepresentation,
        self.mLexiqueSuperComponentName.string.identifierRepresentation
-    ]
+    )
   //--- Cpp
-    let cppContents = filewrapper [templateLexiqueGenerationTemplates.cppImplementation :
+    let cppContents = @templateLexiqueGenerationTemplates.cppImplementation (
       self.mLexiqueComponentName.string.identifierRepresentation,
       self.mLexiqueSuperComponentName.string.identifierRepresentation,
       lexiqueAnalysisContext.mLexicalTokenListMap,
@@ -307,16 +307,16 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
       terminalList,
       self.mLexiqueComponentName.string,
       self.mTemplateReplacementList
-    ]
+    )
   //--- SwiftUI implementation
-    let swiftuiImplementation = filewrapper [templateLexiqueGenerationTemplates.swiftuiImplementationZone :
+    let swiftuiImplementation = @templateLexiqueGenerationTemplates.swiftuiImplementationZone (
       "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui",
       self.mLexiqueComponentName.string,
       self.mLexiqueSuperComponentName.string,
       terminalList,
       templateDelimitorList,
       self.mTemplateReplacementList
-    ]
+    )
   //---
     ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (
       !infoMessage: "",

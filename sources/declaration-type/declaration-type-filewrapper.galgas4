@@ -385,8 +385,10 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
                                   let @predefinedTypes inPredefinedTypes,
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
-    let filewrapperNameForUsefulness = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
+    let filewrapperNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mFilewrapperName)
     !?ioUsefulEntitiesGraph.addNode (filewrapperNameForUsefulness, filewrapperNameForUsefulness)
+    let filewrapperNameForUsefulnessEX = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
+    !?ioUsefulEntitiesGraph.addNode (filewrapperNameForUsefulnessEX, filewrapperNameForUsefulnessEX)
   //--- Get filewrapper features
     inSemanticContext.mFilewrapperMap.searchKey (
       self.mFilewrapperName,
@@ -490,11 +492,11 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [filewrapperGenerationTemplate.filewrapperTypeHeader1 :
+    outHeader = @filewrapperGenerationTemplate.filewrapperTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -510,7 +512,7 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -519,10 +521,10 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    outImplementation = filewrapper [filewrapperGenerationTemplate.filewrapperTypeSpecificImplementation :
+    outImplementation = @filewrapperGenerationTemplate.filewrapperTypeSpecificImplementation (
       self.mSelfTypeEntry.definition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation
-    ]
+    )
   //--- template generation
     for filewrapperTemplate in self.filewrapperTemplateListForGeneration do
     //--- Build generated code for instruction list
@@ -543,14 +545,14 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
         !?useColumnMarker
       )
     //---
-      outImplementation += filewrapper [filewrapperGenerationTemplate.filewrapperTemplateImplementation :
+      outImplementation += @filewrapperGenerationTemplate.filewrapperTemplateImplementation (
         self.mSelfTypeEntry.definition.typeName.string,
         filewrapperTemplate.mFilewrapperTemplateName,
         filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
         unusedVariableCppNameSet,
         useColumnMarker,
         generatedCodeForInstructionList
-      ]
+      )
     end
   }
 
@@ -624,20 +626,20 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
       !?regularTextContentIndexStringList,
       !?regularBinaryContentIndexStringList
     )
-    outHeader = filewrapper [semanticComponentGenerationTemplate.filewrapperDeclaration :
+    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
       regularFileIndexStringList,
       directoryIndexStringList,
       regularTextContentIndexStringList,
       regularBinaryContentIndexStringList,
       self.mFilewrapperName
-    ]
+    )
   //--- template generation
     for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
-      outHeader += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateDeclaration :
+      outHeader += @semanticComponentGenerationTemplate.filewrapperTemplateDeclaration (
         self.mFilewrapperName,
         filewrapperTemplate.mFilewrapperTemplateName,
         filewrapperTemplate.mFilewrapperTemplateFormalInputParameters
-      ]
+      )
     end
   }
 
@@ -656,10 +658,10 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
       self.mFilewrapperDirectoryMap,
       !?filewrapperImplementation
     )
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.filewrapperImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.filewrapperImplementation (
       self.mFilewrapperName,
       filewrapperImplementation
-    ]
+    )
   //--- template generation
     for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
     //--- Build generated code for instruction list
@@ -680,14 +682,14 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
         !?useColumnMarker
       )
     //---
-      outImplementation += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateImplementation :
+      outImplementation += @semanticComponentGenerationTemplate.filewrapperTemplateImplementation (
         self.mFilewrapperName,
         filewrapperTemplate.mFilewrapperTemplateName,
         filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
         unusedVariableCppNameSet,
         useColumnMarker,
         generatedCodeForInstructionList
-      ]
+      )
     end
   }
 

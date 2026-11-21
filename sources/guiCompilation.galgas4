@@ -395,9 +395,9 @@ proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOpt
   for anOption in inOptionComponentMapForGeneration do
     let swiftuiFileName = "SettingsView.swift"
     ioSwiftAllProductFileList ++= swiftuiFileName
-    let swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
+    let swiftui_string = @guiGenerationTemplates.swiftui_gui_implementation (
       anOption.mGuiComponentContext
-    ]
+    )
     @string.generateFileWithPattern (
       !startPath: inOutputDirectory,
       !fileName: swiftuiFileName,

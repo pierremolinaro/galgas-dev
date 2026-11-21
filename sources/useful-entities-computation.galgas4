@@ -123,12 +123,6 @@ func syntaxNameForUsefulEntitiesGraph (?let @lstring inSyntaxName ) -> @lstring 
 
 //--------------------------------------------------------------------------------------------------
 
-//func optionNameForUsefulEntitiesGraph (?let @lstring inOptionName ) -> @lstring {
-//  result = @("option " + inOptionName, inOptionName.location)
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 func filewrapperNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName ) -> @lstring {
   result = @("filewrapper " + inFilewrapperName, inFilewrapperName.location)
 }

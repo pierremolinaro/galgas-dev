@@ -439,13 +439,13 @@ override proc @externTypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
-  outHeader = filewrapper [typeGenerationTemplate.externTypeHeader1 :
+  outHeader = @typeGenerationTemplate.externTypeHeader1 (
     selfTypeDefinition.typeName.string,
     self.mSelfTypeEntry.identifierRepresentation,
     self.mCppPreDeclarationCode,
     self.mCppClassCode
-  ]
-  outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+  )
+  outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
     selfTypeDefinition.typeName.string,
     self.mSelfTypeEntry.identifierRepresentation,
     selfTypeDefinition.isConcrete,
@@ -461,7 +461,7 @@ override proc @externTypeDeclarationForGeneration.appendDeclaration1
     selfTypeDefinition.features,
     selfTypeDefinition.typeForEnumeratedElement,
     selfTypeDefinition.supportArrayLiteral
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

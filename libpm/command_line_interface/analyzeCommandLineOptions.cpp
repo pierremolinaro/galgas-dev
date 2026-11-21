@@ -387,9 +387,9 @@ void analyzeCommandLineOptions (const int argv,
   }
 //--- No colored output ?
   #if COMPILE_FOR_WINDOWS == 0
-//    if (gBuildOption_no_5F_color.mValue) { // §
-//      ColoredConsole::setUseTextAttributes (false) ;
-//    }
+    if (gBuildOption_no_5F_color.mValue) { // §
+      ColoredConsole::setUseTextAttributes (false) ;
+    }
   #endif
 //--- Print version ?
   if (gBuildOption_display_5F_version.readProperty_value ()) {

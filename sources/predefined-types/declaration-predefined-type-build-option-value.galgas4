@@ -148,19 +148,19 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [buildOptionGenerationTemplate.buildOptionTypeHeader1 :
+    outHeader = @buildOptionGenerationTemplate.buildOptionTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.boolBuildOptionArray,
       self.u32BuildOptionArray,
       self.stringBuildOptionArray
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForPackage (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.classFunctionMap,
       selfTypeDefinition.classMethodMap
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,13 +170,13 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [buildOptionGenerationTemplate.buildOptionTypeSpecificImplementation :
+    outImplementation = @buildOptionGenerationTemplate.buildOptionTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.boolBuildOptionArray,
       self.u32BuildOptionArray,
       self.stringBuildOptionArray
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -195,11 +195,11 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
         !lineComment: "//",
         !header: "",
         !defaultUserZone1: "\n\n",
-        !generatedZone2: filewrapper [buildOptionGenerationTemplate.optionImplementationSwiftUI :
+        !generatedZone2: @buildOptionGenerationTemplate.optionImplementationSwiftUI (
           self.boolBuildOptionArray,
           self.u32BuildOptionArray,
           self.stringBuildOptionArray
-        ],
+        ),
         !defaultUserZone2: "\n\n",
         !generatedZone3: "\n\n",
         !makeExecutable: false

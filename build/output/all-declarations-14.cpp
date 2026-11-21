@@ -16245,9 +16245,9 @@ const char * gWrapperFileContent_197_libpmFileWrapper =
   "  }\n"
   "//--- No colored output \?\n"
   "  #if COMPILE_FOR_WINDOWS == 0\n"
-  "//    if (gBuildOption_no_5F_color.mValue) { // §\n"
-  "//      ColoredConsole::setUseTextAttributes (false) ;\n"
-  "//    }\n"
+  "    if (gBuildOption_no_5F_color.mValue) { // §\n"
+  "      ColoredConsole::setUseTextAttributes (false) ;\n"
+  "    }\n"
   "  #endif\n"
   "//--- Print version \?\n"
   "  if (gBuildOption_display_5F_version.readProperty_value ()) {\n"
@@ -16280,7 +16280,7 @@ const RegularFileWrapper gWrapperFile_197_libpmFileWrapper (
   "analyzeCommandLineOptions.cpp",
   "cpp",
   true, // Text file
- 16210, // Text length
+ 16204, // Text length
   gWrapperFileContent_197_libpmFileWrapper
 ) ;
 

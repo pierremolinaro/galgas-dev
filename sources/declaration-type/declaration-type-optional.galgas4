@@ -190,13 +190,13 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
                                      !@string outHeader ) {
     self.unwrappedType.addHeaderFileName1 (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [optionalTypeGenerationTemplate.optionalTypeHeader1 :
+    outHeader = @optionalTypeGenerationTemplate.optionalTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.unwrappedType.identifierRepresentation,
       if self.weakType.isNull then "" else self.weakType.identifierRepresentation end
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -212,7 +212,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -226,13 +226,13 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
       self.weakType.addHeaderFileName (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [optionalTypeGenerationTemplate.optionalTypeSpecificImplementation :
+    outImplementation = @optionalTypeGenerationTemplate.optionalTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.unwrappedType.identifierRepresentation,
       selfTypeDefinition.features.generateCppObjectComparison,
       if self.weakType.isNull then "" else self.weakType.identifierRepresentation end
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

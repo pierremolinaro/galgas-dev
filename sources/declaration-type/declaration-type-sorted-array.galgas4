@@ -346,12 +346,12 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     self.elementType.addHeaderFileName1 (!?ioInclusionSet)
-    outHeader = filewrapper [sortedArrayTypeGenerationTemplate.arrayTypeHeader1 :
+    outHeader = @sortedArrayTypeGenerationTemplate.arrayTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -367,7 +367,7 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -378,13 +378,13 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
     self.elementType.addHeaderFileName (!?ioInclusionSet)
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [sortedArrayTypeGenerationTemplate.arrayTypeSpecificImplementation :
+    outImplementation = @sortedArrayTypeGenerationTemplate.arrayTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation,
       selfTypeDefinition.features.contains (.equatable),
       self.typedSortPropertyList
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

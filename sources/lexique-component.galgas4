@@ -582,15 +582,15 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
   //-------------------------------------- Build header and Cpp contents
     if @application.errorCount == 0 then
     //--- Header
-      let headerContents = filewrapper [lexiqueGenerationTemplates.headerZone2 :
+      let headerContents = @lexiqueGenerationTemplates.headerZone2 (
         self.mLexiqueComponentName.string.identifierRepresentation,
         self.mLexicalListDeclarationListAST,
         lexiqueAnalysisContext,
         self.mTemplateDelimitorListAST,
         self.mIndexingListAST
-      ]
+      )
     //--- Cpp
-      let cppContents = filewrapper [lexiqueGenerationTemplates.implementationZone2Galgas3 :
+      let cppContents = @lexiqueGenerationTemplates.implementationZone2Galgas3 (
         self.mLexiqueComponentName.string.identifierRepresentation,
         self.mLexicalRuleListAST.useLoopLocalVar,
         lexiqueAnalysisContext.mLexicalAttributeMap,
@@ -603,9 +603,9 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         self.mTemplateDelimitorListAST,
         self.mLexiqueComponentName.string,
         self.mTemplateReplacementListAST
-      ]
+      )
     //--- SwiftUI implementation
-      let swiftUIImplementation = filewrapper [lexiqueGenerationTemplates.swiftUIImplementationZone2 :
+      let swiftUIImplementation = @lexiqueGenerationTemplates.swiftUIImplementationZone2 (
         "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui",
         self.mLexiqueComponentName.string,
         lexiqueAnalysisContext.mLexicalAttributeMap,
@@ -618,7 +618,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         self.mIndexingListAST,
         self.mTemplateDelimitorListAST,
         inSemanticContext.projectSettings.lexicalStyleMap.count
-      ]
+      )
     //---
       ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (
         !infoMessage: "",

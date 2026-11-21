@@ -41,7 +41,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
     for entry in self.mSyntaxComponents do
       ioInclusionSet ++= "syntax-" + entry.string.fileNameRepresentation
     end
-    outHeader = filewrapper [grammarGenerationTemplate.grammarZone3HeaderGalgas3 :
+    outHeader = @grammarGenerationTemplate.grammarZone3HeaderGalgas3 (
       self.mLexiqueName.identifierRepresentation,
       self.mNonTerminalMapForGrammarAnalysis,
       self.mNonTerminalToAddList,
@@ -49,7 +49,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
       self.mHasTranslateFeature,
       self.mGrammarName,
       self.mSyntaxComponents
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -148,7 +148,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
       selectMethodList ++= idx
       idx += 1
     end
-    outHeader = filewrapper [syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration :
+    outHeader = @syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration (
       self.mSyntaxComponentName,
       self.mLexiqueName.identifierRepresentation,
       self.mNonterminalDeclarationMap,
@@ -156,7 +156,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
       selectMethodList,
       self.mHasIndexing,
       self.mHasTranslateFeature
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -165,9 +165,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation ) {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
-    outImplementation = filewrapper [syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3 :
-      @()
-    ]
+    outImplementation = @syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3 (@())
   //---
     let lexiqueCppName = "Lexique_" + self.mLexiqueName.identifierRepresentation
     for ruleDeclaration in self.mRuleDeclarationList do
@@ -852,11 +850,11 @@ override func @functionPrototypeDeclarationForGeneration.headerKind () ->@header
 override proc @functionPrototypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
-  outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
+  outHeader = @semanticComponentGenerationTemplate.functionDeclaration (
     self.mFunctionName,
     self.mFormalArgumentList,
     self.mReturnType.identifierRepresentation
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -870,11 +868,11 @@ override func @onceFunctionDeclarationForGeneration.headerKind () ->@headerKind 
 override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
   (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
-  outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
+  outHeader = @semanticComponentGenerationTemplate.functionDeclaration (
     self.mFunctionName,
     [@formalInputParameterForGeneration] (),
     self.mReturnType.identifierRepresentation
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -886,11 +884,11 @@ override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @
   if selfTypeDefinition.typeKind == .packageType then
     result = ""
   else
-    result = filewrapper [typeGenerationTemplate.genericTypeImplementation :
+    result = @typeGenerationTemplate.genericTypeImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.superType
-    ]
+    )
   end
 }
 
@@ -915,12 +913,12 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
     !const: false,
     ?let @string code
   )
-  outImplementation = filewrapper [semanticComponentGenerationTemplate.functionImplementation :
+  outImplementation = @semanticComponentGenerationTemplate.functionImplementation (
     self.mFunctionName,
     code
 //    self.mFormalArgumentList,
 //    self.mReturnType.identifierRepresentation
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -943,12 +941,12 @@ override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
     !const: false,
     ?let @string code
   )
-  outImplementation = filewrapper [semanticComponentGenerationTemplate.onceFunctionImplementation :
+  outImplementation = @semanticComponentGenerationTemplate.onceFunctionImplementation (
     self.mFunctionName,
     code,
     [@formalInputParameterForGeneration] (),
     self.mReturnType.identifierRepresentation
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1082,14 +1080,14 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
     result = self.mCppDeclarationString
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.isPackage then
-      result += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
+      result += @typeGenerationTemplate.unifiedClassBodyForPackage (
         selfTypeDefinition.typeName.string,
         self.mSelfTypeEntry.identifierRepresentation,
         selfTypeDefinition.classFunctionMap,
         selfTypeDefinition.classMethodMap
-      ]
+      )
     else
-      result += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+      result += @typeGenerationTemplate.unifiedClassBodyForType (
         selfTypeDefinition.typeName.string,
         self.mSelfTypeEntry.identifierRepresentation,
         selfTypeDefinition.isConcrete,
@@ -1105,7 +1103,7 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
         selfTypeDefinition.features,
         selfTypeDefinition.typeForEnumeratedElement,
         selfTypeDefinition.supportArrayLiteral
-      ]
+      )
     end
   }
 
@@ -1124,7 +1122,7 @@ proc generatePredefinedTypeFiles (let @string inDirectory,
                                   ?![@string] ioToolCppFileList,
                                   ?!@stringset ioAllProductFileSet) {
 //----------------------------------------------------------------- Generate header file
-  var generatedCode = filewrapper [predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue : ]
+  var generatedCode = @predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue ()
   generatedCode += "\n"
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
@@ -1159,7 +1157,7 @@ proc generatePredefinedTypeFiles (let @string inDirectory,
     )
   end
 //----------------------------------------------------------------- Generate implementation file
-  generatedCode = filewrapper [predefinedTypeGenerationTemplate.predefinedTypesImplementation : inLexicalStyleNameSortedArray ]
+  generatedCode = @predefinedTypeGenerationTemplate.predefinedTypesImplementation (inLexicalStyleNameSortedArray )
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
       generatedCode += declaration.appendTypeGenericImplementation

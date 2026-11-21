@@ -312,12 +312,12 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                      !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [arrayTypeGenerationTemplate.arrayTypeHeader1 :
+    outHeader = @arrayTypeGenerationTemplate.arrayTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -333,7 +333,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -344,12 +344,12 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
     self.elementType.addHeaderFileName (!?ioInclusionSet)
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [arrayTypeGenerationTemplate.arrayTypeSpecificImplementation :
+    outImplementation = @arrayTypeGenerationTemplate.arrayTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation,
       selfTypeDefinition.features.contains (.equatable)
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

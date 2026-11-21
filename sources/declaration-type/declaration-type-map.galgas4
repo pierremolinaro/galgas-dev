@@ -769,7 +769,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [mapGenerationTemplate.mapTypeHeader1 :
+    outHeader = @mapGenerationTemplate.mapTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mTypedAttributeList,
@@ -778,8 +778,8 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.typeForEnumeratedElement,
       self.mElementTypeEntry.identifierRepresentation,
       selfTypeDefinition.features.generateCppObjectComparison
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -795,7 +795,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -807,7 +807,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
     self.mOptionalElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [mapGenerationTemplate.mapTypeSpecificImplementation :
+    outImplementation = @mapGenerationTemplate.mapTypeSpecificImplementation (
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.mTypedAttributeList,
       self.mElementTypeEntry.identifierRepresentation,
@@ -819,7 +819,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
       !replaceSetters: self.mReplaceSetterList,
       self.mHasInsertOrReplaceModifier,
       selfTypeDefinition.features.generateCppObjectComparison
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

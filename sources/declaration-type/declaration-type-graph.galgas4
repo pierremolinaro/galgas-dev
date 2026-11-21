@@ -554,15 +554,15 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
     self.mAssociatedArrayTypeEntry.addHeaderFileName1 (!?ioInclusionSet)
     self.mLStringArrayType.addHeaderFileName1 (!?ioInclusionSet)
     self.mStringArrayType.addHeaderFileName1 (!?ioInclusionSet)
-    outHeader = filewrapper [graphGenerationTemplate.graphTypeHeader1 :
+    outHeader = @graphGenerationTemplate.graphTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mAssociatedArrayTypeEntry,
       self.mAssociatedElementTypeEntry,
       self.mLStringArrayType,
       self.mStringArrayType
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -578,7 +578,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -589,7 +589,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     self.mAssociatedArrayTypeEntry.addHeaderFileName (!?ioInclusionSet)
     self.mAssociatedElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    outImplementation = filewrapper [graphGenerationTemplate.graphTypeSpecificImplementation :
+    outImplementation = @graphGenerationTemplate.graphTypeSpecificImplementation (
       self.mSelfTypeEntry,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mAssociatedArrayTypeEntry,
@@ -597,7 +597,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
       self.mInsertModifierList,
       self.mLStringArrayType,
       self.mStringArrayType
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

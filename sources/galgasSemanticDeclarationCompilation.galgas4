@@ -326,10 +326,10 @@ private proc generateManyHeaders
     end
   end
 //------------------------------------- all-declarations.h
-  let headerString = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
+  let headerString = @semanticFileGenerationTemplate.semanticFileHeader (
     "all-declarations",
     headerInclusionList1 + headerInclusionList2
-  ]
+  )
   ioAllProductFileSet ++= "all-declarations.h"
   ioToolHeaderFileList ++= "all-declarations.h"
   @string.generateFile (
@@ -346,10 +346,10 @@ private proc generateOneBigHeader
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
   ?!@stringset ioAllProductFileSet,
   ?![@string] ioToolHeaderFileList ) {
-  var headerString = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
+  var headerString = @semanticFileGenerationTemplate.semanticFileHeader (
     "all-declarations",
     @()
-  ]
+  )
 //--- Declaration 1
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
@@ -576,10 +576,10 @@ private proc generateFewImplementationFilesWithFewHeaders
       //---
         ioAllProductFileSet ++= headerFileName + ".h"
         ioToolHeaderFileList ++= headerFileName + ".h"
-        let startOfHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
+        let startOfHeader = @semanticFileGenerationTemplate.semanticFileHeader (
           headerFileName,
           if fileIdx == 0 then @() else ["all-declarations-" + (fileIdx-1)] end
-        ]
+        )
         @string.generateFile (
           inProductDirectory,
           headerFileName + ".h",
@@ -613,10 +613,10 @@ private proc generateFewImplementationFilesWithFewHeaders
   //---
     ioAllProductFileSet ++= headerFileName + ".h"
     ioToolHeaderFileList ++= headerFileName + ".h"
-    let startOfHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
+    let startOfHeader = @semanticFileGenerationTemplate.semanticFileHeader (
       headerFileName,
       if fileIdx == 0 then @() else ["all-declarations-" + (fileIdx-1)] end
-    ]
+    )
     @string.generateFile (
       inProductDirectory,
       headerFileName + ".h",
@@ -626,10 +626,10 @@ private proc generateFewImplementationFilesWithFewHeaders
 //--- all declarations header
   ioAllProductFileSet ++= "all-declarations.h"
   ioToolHeaderFileList ++= "all-declarations.h"
-  let startOfAllDeclarationsHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
+  let startOfAllDeclarationsHeader = @semanticFileGenerationTemplate.semanticFileHeader (
     "all-declarations",
     ["all-declarations-" + fileIdx]
-  ]
+  )
   @string.generateFile (
     inProductDirectory,
     "all-declarations.h",

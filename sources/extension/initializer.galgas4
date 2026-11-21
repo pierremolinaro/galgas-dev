@@ -278,12 +278,12 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
       self.semanticInstructionListForGeneration,
       ?let @string methodImplementation
     )
-    outImplementation = filewrapper [semanticComponentGenerationTemplate.initializerImplementation :
+    outImplementation = @semanticComponentGenerationTemplate.initializerImplementation (
       self.mReceiverType.definition.typeName.string,
       self.initializerName,
       self.formalParameterList,
       methodImplementation
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

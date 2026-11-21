@@ -263,12 +263,12 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       end
       tableOfTypeString += linkForType (entry.lkey.string) + "<br>"
     end
-    let typeDumpString = filewrapper [typeDumpGenerationTemplate.typeDump :
+    let typeDumpString = @typeDumpGenerationTemplate.typeDump (
       inProjectSourceFilePath.string.lastPathComponent,
       typeMap,
       firstLetterSet,
       tableOfTypeString
-    ]
+    )
     typeDumpString.writeToFileWhenDifferentContents (typeDumpFilePath, ?*)
   else
     @string.deleteFileIfExists (typeDumpFilePath)

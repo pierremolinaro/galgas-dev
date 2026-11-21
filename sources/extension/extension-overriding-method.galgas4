@@ -293,11 +293,11 @@ override proc @overridingExtensionMethodForGeneration.appendSpecificImplementati
     self.mSemanticInstructionListForGeneration,
     ?let @string methodImplementation
   )
-  outImplementation = filewrapper [semanticComponentGenerationTemplate.overridingExtensionMethodImplementation :
+  outImplementation = @semanticComponentGenerationTemplate.overridingExtensionMethodImplementation (
     self.mReceiverType.definition.typeName.string,
     self.mExtensionMethodName,
     methodImplementation
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

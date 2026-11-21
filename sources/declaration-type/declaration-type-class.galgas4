@@ -518,14 +518,14 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       self.mSuperClass.addHeaderFileName (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [classGenerationTemplate.referenceClassTypeHeader1 :
+    outHeader = @classGenerationTemplate.referenceClassTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
       self.mIsAbstract,
       self.mCurrentTypedAttributeList
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -541,7 +541,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -554,7 +554,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
       if self.generateHeaderInSeparateFile then
-        let @string part1 = filewrapper [classGenerationTemplate.referenceClassTypeHeader2part1 :
+        let @string part1 = @classGenerationTemplate.referenceClassTypeHeader2part1 (
           selfTypeDefinition.typeName.string,
           self.mSelfTypeEntry.identifierRepresentation,
           if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
@@ -564,8 +564,8 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           self.mSelfTypeEntry.definition.getterMap,
           self.mSelfTypeEntry.definition.instanceMethodMap,
           self.initializerMap
-        ]
-        let @string part2 = filewrapper [classGenerationTemplate.referenceClassTypeHeader2part2 :
+        )
+        let @string part2 = @classGenerationTemplate.referenceClassTypeHeader2part2 (
           selfTypeDefinition.typeName.string,
           self.mSelfTypeEntry.identifierRepresentation,
           if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
@@ -573,7 +573,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           self.mAllTypedAttributeList,
           self.mIsAbstract,
           self.synthetizedInitializerArgumentList
-        ]
+        )
         let @string headerFileName = "separateHeaderFor_" + self.mSelfTypeEntry.identifierRepresentation + ".h"
         @string.generateFileWithPattern (
           !startPath:inOutputDirectory + "/../user-headers",
@@ -588,7 +588,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
         )
         outHeader = "#include \"" + headerFileName + "\"\n\n"
       else
-        outHeader = filewrapper [classGenerationTemplate.referenceClassTypeHeader2part1 :
+        outHeader = @classGenerationTemplate.referenceClassTypeHeader2part1 (
           selfTypeDefinition.typeName.string,
           self.mSelfTypeEntry.identifierRepresentation,
           if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
@@ -598,8 +598,8 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           self.mSelfTypeEntry.definition.getterMap,
           self.mSelfTypeEntry.definition.instanceMethodMap,
           self.initializerMap
-        ]
-        outHeader += filewrapper [classGenerationTemplate.referenceClassTypeHeader2part2 :
+        )
+        outHeader += @classGenerationTemplate.referenceClassTypeHeader2part2 (
           selfTypeDefinition.typeName.string,
           self.mSelfTypeEntry.identifierRepresentation,
           if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
@@ -607,7 +607,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
           self.mAllTypedAttributeList,
           self.mIsAbstract,
           self.synthetizedInitializerArgumentList
-        ]
+        )
       end
   }
 
@@ -625,7 +625,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       !from: 0,
       !count: self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count
     )
-    outImplementation = filewrapper [classGenerationTemplate.referenceClassTypeSpecificImplementation :
+    outImplementation = @classGenerationTemplate.referenceClassTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
@@ -640,7 +640,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       self.inheritedSynthetizedInitializerArgumentList,
       selfTypeDefinition.initializerMap,
       self.clonable
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

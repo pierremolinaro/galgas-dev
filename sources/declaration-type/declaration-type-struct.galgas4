@@ -362,12 +362,12 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       property.typeEntry.addHeaderFileName1 (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [structureGenerationTemplate.structTypeHeader1 :
+    outHeader = @structureGenerationTemplate.structTypeHeader1 (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mTypedPropertyList
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -383,7 +383,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -395,7 +395,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
   ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [structureGenerationTemplate.structTypeSpecificImplementation :
+    outImplementation = @structureGenerationTemplate.structTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mTypedPropertyList,
@@ -404,7 +404,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       self.mConstructorNeedsCompilerVar,
       self.synthetizeAnInitializer,
       selfTypeDefinition.features.generateCppObjectComparison
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

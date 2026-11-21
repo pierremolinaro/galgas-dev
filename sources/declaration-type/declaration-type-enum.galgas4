@@ -440,13 +440,13 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
       hasAssociatedValues = constant.associatedValueTypeList.count > 0
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [enumGenerationTemplate.enumTypeHeader1 :
+    outHeader = @enumGenerationTemplate.enumTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.constantList,
       hasAssociatedValues
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -462,7 +462,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -479,13 +479,13 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
     end
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outImplementation = filewrapper [enumGenerationTemplate.enumTypeSpecificImplementation :
+    outImplementation = @enumGenerationTemplate.enumTypeSpecificImplementation (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.constantList,
       hasAssociatedValues,
       selfTypeDefinition.features.generateCppObjectComparison
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

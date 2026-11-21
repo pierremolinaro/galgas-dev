@@ -266,19 +266,19 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                       !@string outHeader) {
     if self.mImplementedAsFunction then
-      outHeader = filewrapper [semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration :
+      outHeader = @semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration (
         self.mReceiverType.definition.typeName.string,
         self.mExtensionGetterName,
         self.mExtensionGetterFormalParameterList,
         self.mResultType.identifierRepresentation
-      ]
+      )
     else
-      outHeader = filewrapper [semanticComponentGenerationTemplate.extensionGetterDeclaration :
+      outHeader = @semanticComponentGenerationTemplate.extensionGetterDeclaration (
         self.mReceiverType.definition.typeName.string,
         self.mExtensionGetterName,
         self.mExtensionGetterFormalParameterList,
         self.mResultType
-      ]
+      )
     end
   }
 
@@ -312,11 +312,11 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         !const: false,
         ?let @string code
       )
-      outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation :
+      outImplementation = @semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation (
         self.mReceiverType.definition.typeName.string,
         self.mExtensionGetterName,
         code
-      ]
+      )
     else
       self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
       var @unifiedTypeMapEntry baseType = self.mReceiverType
@@ -345,13 +345,13 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         self.mResultVarCppName,
         ?let @string extensionGetterCode
       )
-      outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionGetterImplementation :
+      outImplementation = @semanticComponentGenerationTemplate.extensionGetterImplementation (
         self.mReceiverType.definition.typeName.string,
         self.mExtensionGetterName,
         self.mExtensionGetterFormalParameterList,
         extensionGetterCode,
         self.mResultType
-      ]
+      )
     end
   }
 

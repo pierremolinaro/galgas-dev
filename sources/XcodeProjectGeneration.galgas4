@@ -442,7 +442,7 @@ private filewrapper @xcodeProjectGenerationFilewrapper : "+generation-templates/
 proc @XcodeProjectDescriptor.generateAtPath (
   ?xcodeprojPath:let @string inPath,
   ?cacheFilePath:let @string inCacheFilePath ) {
-  let contents = filewrapper [xcodeProjectGenerationFilewrapper.xcodeproj :
+  let contents = @xcodeProjectGenerationFilewrapper.xcodeproj (
     self.mProjectObjectReference,
     self.mMainGroupReference,
     self.mGroupList,
@@ -466,7 +466,7 @@ proc @XcodeProjectDescriptor.generateAtPath (
     self.mProjectBuildConfigurationRef,
     self.mApplicationBundleName,
     self.mProjectName
-  ]
+  )
   let projectCoreFile = inPath + "/project.pbxproj"
   if (not projectCoreFile.fileExists) || (not inCacheFilePath.fileExists) || (@string. stringWithContentsOfFile (inCacheFilePath) != contents) then
     contents.writeToFileWhenDifferentContents (inCacheFilePath, ?*)

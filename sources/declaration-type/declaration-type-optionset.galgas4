@@ -257,12 +257,12 @@ final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = filewrapper [structGenerationTemplate.optionSetTypeHeader1 :
+    outHeader = @structGenerationTemplate.optionSetTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       self.mFlagList
-    ]
-    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+    )
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
       selfTypeDefinition.isConcrete,
@@ -278,7 +278,7 @@ final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.features,
       selfTypeDefinition.typeForEnumeratedElement,
       selfTypeDefinition.supportArrayLiteral
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -287,13 +287,13 @@ final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    outImplementation = filewrapper [structGenerationTemplate.optionSetTypeSpecificImplementation :
+    outImplementation = @structGenerationTemplate.optionSetTypeSpecificImplementation (
       self.mSelfTypeEntry.definition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mFlagList,
       (1 << self.mFlagList.count) - 1,
       self.equatable
-    ]
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

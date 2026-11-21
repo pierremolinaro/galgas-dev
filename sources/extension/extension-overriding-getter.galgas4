@@ -308,12 +308,12 @@ override proc @overrideExtensionGetterForGeneration.appendSpecificImplementation
     self.mResultVarCppName,
     ?let @string extensionGetterCode
   )
-  outImplementation = filewrapper [semanticComponentGenerationTemplate.overridingExtensionGetterImplementation :
+  outImplementation = @semanticComponentGenerationTemplate.overridingExtensionGetterImplementation (
     self.mReceiverType.definition.typeName.string,
     self.mOverridingExtensionGetterName,
     extensionGetterCode,
     self.mResultType
-  ]
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
