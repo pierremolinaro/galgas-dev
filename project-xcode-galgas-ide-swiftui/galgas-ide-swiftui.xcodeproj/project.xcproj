@@ -33,98 +33,98 @@
         {
           "path": "buildPureBNFgrammar.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         }, {
           "path": "check-big-integer.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "DecisionTableElement.h" },
         {
           "path": "DecisionTableElement.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         }, {
           "path": "displayUnicodeLexicalTestFunctions.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "empty_strings_computations.h" },
         {
           "path": "empty_strings_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "FIRST_computations.h" },
         {
           "path": "FIRST_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "follow_by_empty_computation.h" },
         {
           "path": "follow_by_empty_computation.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "FOLLOW_computations.h" },
         {
           "path": "FOLLOW_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         }, {
           "path": "grammarComputations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "GrammarVocabulary.h" },
         {
           "path": "GrammarVocabulary.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "LL1_computations.h" },
         {
           "path": "LL1_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "LR1_computations.h" },
         {
           "path": "LR1_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "printOriginalGrammar.h" },
         {
           "path": "printOriginalGrammar.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "PureBNFproductionsList.h" },
@@ -132,16 +132,16 @@
         {
           "path": "SLR_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "useful_symbols_computations.h" },
         {
           "path": "useful_symbols_computations.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
       ],
@@ -155,200 +155,200 @@
         {
           "path": "all-declarations-0.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-1.h" },
         {
           "path": "all-declarations-1.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-2.h" },
         {
           "path": "all-declarations-2.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-3.h" },
         {
           "path": "all-declarations-3.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-4.h" },
         {
           "path": "all-declarations-4.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-5.h" },
         {
           "path": "all-declarations-5.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-6.h" },
         {
           "path": "all-declarations-6.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-7.h" },
         {
           "path": "all-declarations-7.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-8.h" },
         {
           "path": "all-declarations-8.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-9.h" },
         {
           "path": "all-declarations-9.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-10.h" },
         {
           "path": "all-declarations-10.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-11.h" },
         {
           "path": "all-declarations-11.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-12.h" },
         {
           "path": "all-declarations-12.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-13.h" },
         {
           "path": "all-declarations-13.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-14.h" },
         {
           "path": "all-declarations-14.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-15.h" },
         {
           "path": "all-declarations-15.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-16.h" },
         {
           "path": "all-declarations-16.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-17.h" },
         {
           "path": "all-declarations-17.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-18.h" },
         {
           "path": "all-declarations-18.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-19.h" },
         {
           "path": "all-declarations-19.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-20.h" },
         {
           "path": "all-declarations-20.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-21.h" },
         {
           "path": "all-declarations-21.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-22.h" },
         {
           "path": "all-declarations-22.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-declarations-23.h" },
         {
           "path": "all-declarations-23.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "all-predefined-types.h" },
         {
           "path": "all-predefined-types.cpp",
           "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
+            "galgas4/compile-sources",
+            "galgas4-debug/compile-sources",
           ],
         },
         { "path": "build-options-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
@@ -384,8 +384,8 @@
             {
               "path": "BinaryDecisionDiagram.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BinaryDecisionDiagram-node.h" },
@@ -393,24 +393,24 @@
             {
               "path": "BinaryDecisionDiagramRelation.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BinaryDecisionDiagramRelationConfiguration.h" },
             {
               "path": "BinaryDecisionDiagramRelationConfiguration.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BinaryDecisionDiagramRelationSingleType.h" },
             {
               "path": "BinaryDecisionDiagramRelationSingleType.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -422,160 +422,160 @@
             {
               "path": "BigSigned.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-add.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-bit.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-chunk-operations.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-constructors.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-conversions.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-divide.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-logic-operations.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-multiply.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-print.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-shifts.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-subtract.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigSigned-utilities.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BigUnsigned.h" },
             {
               "path": "BigUnsigned-add.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-bit.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-chunk-operations.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-constructors.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-conversions.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-divide.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-divide-naive.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-logic-operations.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-multiply.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-print.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-shifts.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-subtract.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "BigUnsigned-utilities.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "chunk-U8.h" },
@@ -587,16 +587,16 @@
             {
               "path": "ChunkSharedArray.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "UInt128.h" },
             {
               "path": "UInt128.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -608,48 +608,48 @@
             {
               "path": "AbstractCommandLineOption.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "analyzeCommandLineOptions.h" },
             {
               "path": "analyzeCommandLineOptions.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BoolCommandLineOption.h" },
             {
               "path": "BoolCommandLineOption.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "F_mainForLIBPM.h" },
             {
               "path": "F_mainForLIBPM.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "StringCommandLineOption.h" },
             {
               "path": "StringCommandLineOption.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "UIntCommandLineOption.h" },
             {
               "path": "UIntCommandLineOption.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -661,40 +661,40 @@
             {
               "path": "AbstractFileHandle.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "BinaryFileWrite.h" },
             {
               "path": "BinaryFileWrite.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "FileManager.h" },
             {
               "path": "FileManager.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "HTMLFileWrite.h" },
             {
               "path": "HTMLFileWrite.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "TextFileWrite.h" },
             {
               "path": "TextFileWrite.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -706,56 +706,56 @@
             {
               "path": "AbstractPtrClass.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "AbstractStrongPtrClass.h" },
             {
               "path": "AbstractStrongPtrClass.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "AC_GALGAS_enumAssociatedValues.h" },
             {
               "path": "AC_GALGAS_enumAssociatedValues.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "AC_GALGAS_reference_class.h" },
             {
               "path": "AC_GALGAS_reference_class.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "AC_GALGAS_root.h" },
             {
               "path": "AC_GALGAS_root.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "AC_GALGAS_weak_reference.h" },
             {
               "path": "AC_GALGAS_weak_reference.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "C_galgas_class_inspector.h" },
             {
               "path": "C_galgas_class_inspector.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "ComparisonKind.h" },
@@ -764,8 +764,8 @@
             {
               "path": "Compiler.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "EnumerationOrder.h" },
@@ -773,16 +773,16 @@
             {
               "path": "Enumerator_range.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "execution-mode.h" },
             {
               "path": "execution-mode.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "GALGAS_GenericDictionary.h" },
@@ -791,182 +791,182 @@
             {
               "path": "GALGAS_TypeDescriptor.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "galgas-input-output.h" },
             {
               "path": "galgas-input-output.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_application.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_bigint.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_binaryset.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_bool.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_char.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_data.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_f64.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_filewrapper.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_location.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_s64.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_sint.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_string.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_string-getters.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_stringset.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_timer.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_u8.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_u16.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_u64.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "GGS_uint.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "IndexingDictionary.h" },
             {
               "path": "IndexingDictionary.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "IssueDescriptor.h" },
             {
               "path": "IssueDescriptor.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "IssueWithFixIt.h" },
             {
               "path": "IssueWithFixIt.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "Lexique.h" },
             {
               "path": "Lexique.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "Lexique-parsing.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "LexiqueIntrospection.h" },
             {
               "path": "LexiqueIntrospection.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "LocationInSource.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "ProductionNameDescriptor.h" },
@@ -974,16 +974,16 @@
             {
               "path": "PtrWeakReferenceProxy.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "scanner_actions.h" },
             {
               "path": "scanner_actions.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "SharedGenericPtrWithValueSemantics.h" },
@@ -991,16 +991,16 @@
             {
               "path": "SharedObject.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "SourceTextInString.h" },
             {
               "path": "SourceTextInString.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "TemplateDelimiter.h" },
@@ -1022,24 +1022,24 @@
             {
               "path": "AbstractOutputStream.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "ColoredConsole.h" },
             {
               "path": "ColoredConsole.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "ConsoleOut.h" },
             {
               "path": "ConsoleOut.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -1051,16 +1051,16 @@
             {
               "path": "HTMLString.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "print.h" },
             {
               "path": "print.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "string_encodings.h" },
@@ -1068,14 +1068,14 @@
             {
               "path": "String-class.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             }, {
               "path": "String-class-getters.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "unicode-data.h" },
@@ -1083,8 +1083,8 @@
             {
               "path": "utf32.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -1096,16 +1096,16 @@
             {
               "path": "DateTime.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "Timer.h" },
             {
               "path": "Timer.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -1117,48 +1117,48 @@
             {
               "path": "basic-allocation.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "cpp-allocation.h" },
             {
               "path": "cpp-allocation.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "DirectedGraph.h" },
             {
               "path": "DirectedGraph.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "F_DisplayException.h" },
             {
               "path": "F_DisplayException.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "F_GetPrime.h" },
             {
               "path": "F_GetPrime.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "galgas-random.h" },
             {
               "path": "galgas-random.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "M_machine.h" },
@@ -1167,40 +1167,40 @@
             {
               "path": "macroAssert.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "md5.h" },
             {
               "path": "md5.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "MF_MemoryControl.h" },
             {
               "path": "MF_MemoryControl.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "PrologueEpilogue.h" },
             {
               "path": "PrologueEpilogue.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "SHA256.h" },
             {
               "path": "SHA256.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "TF_Swap.h" },
@@ -1208,16 +1208,16 @@
             {
               "path": "U8Data.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
             { "path": "UInt32Set.h" },
             {
               "path": "UInt32Set.cpp",
               "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
               ],
             },
           ],
@@ -1274,8 +1274,8 @@
       "name": "Products",
       "children": [
         { "path": "<PRODUCTS>/GalgasIDE.app", "id": "CFDF0C9C2D0A0EEF0014CD68", "type": "wrapper.application", "index": false },
-        { "path": "<PRODUCTS>/galgas", "id": "CFF8ED3C2D0D81C1006B2A3C", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ "GalgasIDE/resources" ] },
-        { "path": "<PRODUCTS>/galgas-debug", "id": "CF8F81972D0D91490095170B", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ "GalgasIDE/resources" ] },
+        { "path": "<PRODUCTS>/galgas4", "id": "CFF8ED3C2D0D81C1006B2A3C", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ "GalgasIDE/resources" ] },
+        { "path": "<PRODUCTS>/galgas4-debug", "id": "CF8F81972D0D91490095170B", "type": "compiled.mach-o.executable", "index": false, "target-membership": [ "GalgasIDE/resources" ] },
       ],
     },
   ],
@@ -1286,8 +1286,8 @@
       "product": "Products/GalgasIDE.app",
       "product-type": "application",
       "dependencies": [
-        "galgas",
-        "galgas-debug",
+        "galgas4",
+        "galgas4-debug",
       ],
       "build-phases": [
         "compile-sources",
@@ -1318,9 +1318,9 @@
         "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY": "YES",
       },
     }, {
-      "name": "galgas",
+      "name": "galgas4",
       "id": "CFF8ED3B2D0D81C1006B2A3C",
-      "product": "Products/galgas",
+      "product": "Products/galgas4",
       "product-type": "tool",
       "last-swift-migration": "26.0",
       "build-phases": [
@@ -1346,9 +1346,9 @@
         "SWIFT_VERSION": "6.0",
       },
     }, {
-      "name": "galgas-debug",
+      "name": "galgas4-debug",
       "id": "CF8F80E22D0D91490095170B",
-      "product": "Products/galgas-debug",
+      "product": "Products/galgas4-debug",
       "product-type": "tool",
       "last-swift-migration": "26.0",
       "build-phases": [

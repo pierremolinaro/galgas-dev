@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFF8ED3B2D0D81C1006B2A3C"
-               BuildableName = "galgas"
-               BlueprintName = "galgas"
+               BuildableName = "galgas4"
+               BlueprintName = "galgas4"
                ReferencedContainer = "container:galgas-ide-swiftui.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -71,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CFF8ED3B2D0D81C1006B2A3C"
-            BuildableName = "galgas"
-            BlueprintName = "galgas"
+            BuildableName = "galgas4"
+            BlueprintName = "galgas4"
             ReferencedContainer = "container:galgas-ide-swiftui.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
