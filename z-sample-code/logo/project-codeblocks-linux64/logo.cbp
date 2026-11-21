@@ -143,6 +143,7 @@
    <Unit filename="../build/libpm/utilities/SHA256.cpp" />
    <Unit filename="../build/libpm/utilities/galgas-random.cpp" />
    <Unit filename="../build/libpm/galgas/execution-mode.cpp" />
+   <Unit filename="../build/libpm/galgas/filewrapper-utilities.cpp" />
    <Unit filename="../build/libpm/galgas/Compiler.cpp" />
    <Unit filename="../build/libpm/galgas/Lexique.cpp" />
    <Unit filename="../build/libpm/galgas/Lexique-parsing.cpp" />

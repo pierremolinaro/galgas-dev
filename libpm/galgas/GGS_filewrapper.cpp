@@ -10,35 +10,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-cRegularFileWrapper::cRegularFileWrapper (const char * inName,
-                                          const char * inExtension,
-                                          const bool inIsTextFile,
-                                          const uint32_t inFileLength,
-                                          const char * inContents) :
-mName (inName),
-mExtension (inExtension),
-mIsTextFile (inIsTextFile),
-mFileLength (inFileLength),
-mContents (inContents) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cDirectoryWrapper::cDirectoryWrapper (const char * inDirectoryName,
-                                      const uint32_t inFileCount,
-                                      const cRegularFileWrapper * * const inFiles,
-                                      const uint32_t inDirectoryCount,
-                                      const cDirectoryWrapper * * inDirectories) :
-mDirectoryName (inDirectoryName),
-mFileCount (inFileCount),
-mFiles (inFiles),
-mDirectoryCount (inDirectoryCount),
-mDirectories (inDirectories) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper::GGS_filewrapper (const cDirectoryWrapper & inRootDirectory) :
+GGS_filewrapper::GGS_filewrapper (const DirectoryWrapper & inRootDirectory) :
 AC_GALGAS_root (),
 mRootDirectoryPtr (& inRootDirectory),
 mCurrentDirectory ("/") {
@@ -69,12 +41,12 @@ GGS_filewrapper & GGS_filewrapper::operator = (const GGS_filewrapper & inSource)
 
 //--------------------------------------------------------------------------------------------------
 
-static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
+static void internalEnumerateFiles (const DirectoryWrapper & inDirectory,
                                     const String & inWrapperPath,
                                     const bool inEnumerateTextFile,
                                     GGS__5B_string_5D_ & ioList) {
 //--- Enumerate regular files
-  const cRegularFileWrapper * * mFiles = inDirectory.mFiles ;
+  const RegularFileWrapper * * mFiles = inDirectory.mFiles ;
   while ((* mFiles) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mFiles)->mName) ;
@@ -84,7 +56,7 @@ static void internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
     mFiles += 1 ;
   }
 //--- Walk throught directories
-  const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
+  const DirectoryWrapper * * mDirs = inDirectory.mDirectories ;
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
@@ -118,13 +90,13 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_allBinaryFilePaths (LOCATION_ARGS) co
 
 //--------------------------------------------------------------------------------------------------
 
-static void internalEnumerateDirectories (const cDirectoryWrapper & inDirectory,
+static void internalEnumerateDirectories (const DirectoryWrapper & inDirectory,
                                           const String & inWrapperPath,
                                           GGS__5B_string_5D_ & ioList) {
 //--- Enumerate regular files
   ioList.plusPlusAssignOperation (GGS_string (inWrapperPath) COMMA_HERE) ;
 //--- Walk throught directories
-  const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
+  const DirectoryWrapper * * mDirs = inDirectory.mDirectories ;
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
@@ -147,12 +119,12 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_allDirectoryPaths (LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDirectory,
+static void internalEnumerateFilesWithExtension (const DirectoryWrapper & inDirectory,
                                                  const String & inWrapperPath,
                                                  GGS__5B_string_5D_ & ioList,
                                                  const String & inExtension) {
 //--- Enumerate regular files
-  const cRegularFileWrapper * * mFiles = inDirectory.mFiles ;
+  const RegularFileWrapper * * mFiles = inDirectory.mFiles ;
   while ((* mFiles) != nullptr) {
     String path = inWrapperPath ;
     if (inExtension.compare ((* mFiles)->mExtension) == 0) {
@@ -162,7 +134,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
     mFiles += 1 ;
   }
 //--- Walk throught directories
-  const cDirectoryWrapper * * mDirs = inDirectory.mDirectories ;
+  const DirectoryWrapper * * mDirs = inDirectory.mDirectories ;
   while ((* mDirs) != nullptr) {
     String path = inWrapperPath ;
     path.appendString ((* mDirs)->mDirectoryName) ;
@@ -175,7 +147,7 @@ static void internalEnumerateFilesWithExtension (const cDirectoryWrapper & inDir
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_string_5D_ GGS_filewrapper::getter_allFilePathsWithExtension (const GGS_string & inExtension
-                                                                  COMMA_LOCATION_ARGS) const {
+                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_string_5D_ result ;
   if ((mRootDirectoryPtr != nullptr) && inExtension.isValid ()) {
     result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
@@ -187,7 +159,7 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_allFilePathsWithExtension (const GGS_
 //--------------------------------------------------------------------------------------------------
 
 static void enumerateWrapper (String & ioString,
-                              const cDirectoryWrapper * inDir,
+                              const DirectoryWrapper * inDir,
                               const String & inPath,
                               const int32_t inIndentation) {
   const String currentPath = inPath + inDir->mDirectoryName + "/" ;
@@ -237,9 +209,9 @@ GGS_string GGS_filewrapper::getter_currentDirectory (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-static const cDirectoryWrapper * findDirectoryInDirectory (const cDirectoryWrapper * inDir,
+static const DirectoryWrapper * findDirectoryInDirectory (const DirectoryWrapper * inDir,
                                                            const String & inSearchedDir) {
-  const cDirectoryWrapper * result = nullptr ;
+  const DirectoryWrapper * result = nullptr ;
   if (inDir != nullptr) {
     int32_t first = 0 ;
     int32_t last = (int32_t) inDir->mDirectoryCount - 1 ;
@@ -262,9 +234,9 @@ static const cDirectoryWrapper * findDirectoryInDirectory (const cDirectoryWrapp
 
 //--------------------------------------------------------------------------------------------------
 
-static const cRegularFileWrapper * findFileInDirectory (const cDirectoryWrapper * inDir,
-                                                        const String & inSearchedFile) {
-  const cRegularFileWrapper * result = nullptr ;
+static const RegularFileWrapper * findFileInDirectory (const DirectoryWrapper * inDir,
+                                                       const String & inSearchedFile) {
+  const RegularFileWrapper * result = nullptr ;
   if (inDir != nullptr) {
     int32_t first = 0 ;
     int32_t last = (int32_t) inDir->mFileCount - 1 ;
@@ -287,11 +259,11 @@ static const cRegularFileWrapper * findFileInDirectory (const cDirectoryWrapper 
 
 //--------------------------------------------------------------------------------------------------
 
-static const cDirectoryWrapper * getDirectory (const String & inDirectory,
-                                               const cDirectoryWrapper * inRootDirectoryPtr) {
+static const DirectoryWrapper * getDirectory (const String & inDirectory,
+                                               const DirectoryWrapper * inRootDirectoryPtr) {
   GenericUniqueArray <String> componentArray ;
   inDirectory.componentsSeparatedByString ("/", componentArray) ;
-  const cDirectoryWrapper * dir = inRootDirectoryPtr ;
+  const DirectoryWrapper * dir = inRootDirectoryPtr ;
   for (int32_t i=1 ; i<componentArray.count () ; i++) {
     dir = findDirectoryInDirectory (dir, componentArray (i COMMA_HERE)) ;
   }
@@ -323,8 +295,8 @@ GGS_bool GGS_filewrapper::getter_fileExistsAtPath (const GGS_string & inPath,
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
       const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
-      const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
-      const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
+      const DirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
+      const RegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       result = GGS_bool (file != nullptr) ;
     }
   }
@@ -341,8 +313,8 @@ GGS_string GGS_filewrapper::getter_textFileContentsAtPath (const GGS_string & in
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
       const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
-      const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
-      const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
+      const DirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
+      const RegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == nullptr) {
         String errorMessage ;
         errorMessage.appendCString ("textFileContentsAtPath: the '") ;
@@ -373,8 +345,8 @@ GGS_data GGS_filewrapper::getter_binaryFileContentsAtPath (const GGS_string & in
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
       const String directoryPath = path.stringValue ().deletingLastPathComponent () ;
-      const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
-      const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
+      const DirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
+      const RegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == nullptr) {
         String errorMessage = "binaryFileContentsAtPath: the '" ;
         errorMessage.appendString (inPath.stringValue ()) ;
@@ -483,10 +455,10 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_directoriesAtPath (const GGS_string &
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      const DirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
         result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-        const cDirectoryWrapper * * dirs = dir->mDirectories ;
+        const DirectoryWrapper * * dirs = dir->mDirectories ;
         while ((*dirs) != nullptr) {
           result.plusPlusAssignOperation (GGS_string ((*dirs)->mDirectoryName) COMMA_HERE) ;
           dirs += 1 ;
@@ -506,10 +478,10 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_textFilesAtPath (const GGS_string & i
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      const DirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
         result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-        const cRegularFileWrapper * * files = dir->mFiles ;
+        const RegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if ((*files)->mIsTextFile) {
             result.plusPlusAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;
@@ -531,10 +503,10 @@ GGS__5B_string_5D_ GGS_filewrapper::getter_binaryFilesAtPath (const GGS_string &
   if ((mRootDirectoryPtr != nullptr) && inPath.isValid ()) {
     const GGS_string path = getter_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
     if (path.isValid ()) {
-      const cDirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
+      const DirectoryWrapper * dir = getDirectory (path.stringValue (), mRootDirectoryPtr) ;
       if (nullptr != dir) {
         result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-        const cRegularFileWrapper * * files = dir->mFiles ;
+        const RegularFileWrapper * * files = dir->mFiles ;
         while ((*files) != nullptr) {
           if (! (*files)->mIsTextFile) {
             result.plusPlusAssignOperation (GGS_string ((*files)->mName) COMMA_HERE) ;

@@ -283,35 +283,6 @@ final class @functionDeclarationAST : @externFunctionDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-struct @formalTemplateInputParameterAST {
-  public let @lstring mFormalTemplateSelector
-  public let @lstring mFormalArgumentTypeName
-  public let @lstring mFormalArgumentName
-  public let @bool mIsUnused
-}
-
-//--------------------------------------------------------------------------------------------------
-
-struct @filewrapperTemplateAST {
-  public let @lstring mFilewrapperTemplateName
-  public let @lstring mFilewrapperTemplatePath
-  public let [@formalTemplateInputParameterAST] mFilewrapperTemplateFormalInputParameters
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @filewrapperDeclarationAST : @semanticDeclarationAST {
-  public let @bool mIsInternal
-  public let @string mSourceFileAbsolutePath
-  public let @lstring mFilewrapperName
-  public let @lstring mFilewrapperPath
-  public let [@lstring] mFilewrapperTextFileExtensionList
-  public let [@lstring] mFilewrapperBinaryFileExtensionList
-  public let [@filewrapperTemplateAST] mFilewrapperTemplateList
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct @nonTerminalLabelAST {
   public let @lstring mLabelName
   public let [@formalParameterAST] mFormalArgumentList

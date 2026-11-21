@@ -150,6 +150,7 @@ end
    <Unit filename="%!LIBPM_PATH%/utilities/SHA256.cpp" />
    <Unit filename="%!LIBPM_PATH%/utilities/galgas-random.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/execution-mode.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/filewrapper-utilities.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Compiler.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Lexique.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/Lexique-parsing.cpp" />

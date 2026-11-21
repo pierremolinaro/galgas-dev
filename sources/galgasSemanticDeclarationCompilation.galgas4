@@ -24,20 +24,11 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
 //---
   println ("*** Semantic analysis")
 //----- Check there is no undefined types
-  for entry in outTypeMap.unsolvedEntryList do
-    error entry : "the '@" + entry + "' type is undefined"
+  for unsolvedtypeName in outTypeMap.unsolvedEntryList do
+    error unsolvedtypeName : "the '@" + unsolvedtypeName + "' type is undefined"
   end
-//----- Build option generation
-  outSemanticDeclarationSortedListForGeneration = []
-//  outSemanticDeclarationSortedListForGeneration ++= @buildOptionForGeneration (
-//    !infoMessage: "build option value",
-//    !generateHeader: true,
-//    !implementationCppFileName: "build-option-value",
-//    !boolBuildOptionArray: inProjectSettings.boolBuildOptionArray,
-//    !u32BuildOptionArray: inProjectSettings.u32BuildOptionArray,
-//    !stringBuildOptionArray: inProjectSettings.stringBuildOptionArray
-//  )
 //----- Semantic Analysis
+  outSemanticDeclarationSortedListForGeneration = []
   if @application.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
@@ -82,8 +73,8 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
   var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = @()
   var [@semanticDeclarationAST] extensionOverrideDefinitionList = @()
   for declaration in semanticDeclarations.mDeclarationList do
-    declaration.enterDeclarationInGraph
-      (!?semanticTypePrecedenceGraph,
+    declaration.enterDeclarationInGraph (
+      !?semanticTypePrecedenceGraph,
       !?equatableExtensionMap,
       !?extensionInitializerForBuildingContext,
       !?extensionMethodMapForBuildingContext,
@@ -94,7 +85,7 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
   end
 //--- Add optional declarations
   for nodeName in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
-    if nodeName.lastCharacter() == '?' then
+    if nodeName.lastCharacter () == '?' then
       println ("Optional '" + nodeName + "'")
     end
   end
@@ -125,8 +116,8 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
       outSemanticContext = @semanticContext (inProjectSettings)
     //--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
-        declaration.enterDeclarationInSemanticContext
-          (!?equatableExtensionMap,
+        declaration.enterDeclarationInSemanticContext (
+          !?equatableExtensionMap,
           extensionInitializerForBuildingContext,
           extensionMethodMapForBuildingContext,
           extensionGetterMapForBuildingContext,

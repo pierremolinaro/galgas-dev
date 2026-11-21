@@ -211,7 +211,7 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
     !?ioUsefulEntitiesGraph,
     analysisContext,
     !?ioTypeMap,
-     self.mOverridingExtensionGetterFormalInputParameterList,
+    self.mOverridingExtensionGetterFormalInputParameterList,
     self.mOverridingExtensionGetterInstructionList,
     self.mOverridingExtensionGetterReturnedTypeName,
     self.mEndOfReaderLocation,

@@ -39,7 +39,7 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getSetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                               !@setterMap outSetterMap ) {
+                              !@setterMap outSetterMap ) {
     outSetterMap = @()
     enterModifierWithInputArgument (
       !?outSetterMap,
@@ -54,47 +54,47 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getGetterMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                               !@getterMap outMap ) {
+                              !@getterMap outMap) {
     commonGetterMapForAllTypes (!?ioUnifiedTypeMap, ?outMap)
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"allTextFilePaths",
-      !returnedTypeName:"[string]",
-      !hasCompilerArgument:false
+      !getterName: "allTextFilePaths",
+      !returnedTypeName: "[string]",
+      !hasCompilerArgument: false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"allBinaryFilePaths",
-      !returnedTypeName:"[string]",
+      !returnedTypeName: "[string]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"allDirectoryPaths",
-      !returnedTypeName:"[string]",
+      !returnedTypeName: "[string]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"currentDirectory",
+      !getterName: "currentDirectory",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"allFilePathsWithExtension", "string", "inExtension",
+      !getterName: "allFilePathsWithExtension", "string", "inExtension",
       !returnedTypeName:"[string]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"directoryExistsAtPath", "string", "inPath",
+      !getterName: "directoryExistsAtPath", "string", "inPath",
       !returnedTypeName:"bool",
       !hasCompilerArgument:true
     )

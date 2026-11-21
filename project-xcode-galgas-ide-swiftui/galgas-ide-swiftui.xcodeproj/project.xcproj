@@ -335,14 +335,6 @@
             "galgas4-debug/compile-sources",
           ],
         },
-        { "path": "all-declarations-23.h" },
-        {
-          "path": "all-declarations-23.cpp",
-          "target-membership": [
-            "galgas4/compile-sources",
-            "galgas4-debug/compile-sources",
-          ],
-        },
         { "path": "all-predefined-types.h" },
         {
           "path": "all-predefined-types.cpp",
@@ -780,6 +772,14 @@
             { "path": "execution-mode.h" },
             {
               "path": "execution-mode.cpp",
+              "target-membership": [
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
+              ],
+            },
+            { "path": "filewrapper-utilities.h" },
+            {
+              "path": "filewrapper-utilities.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",

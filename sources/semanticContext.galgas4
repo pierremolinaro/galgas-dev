@@ -319,13 +319,6 @@ override func @predefinedTypeAST.keyRepresentation () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @filewrapperDeclarationAST.keyRepresentation
-  () ->@string {
-  result = "filewrapper @" + self.mFilewrapperName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override func @externFunctionDeclarationAST.keyRepresentation () -> @string {
   result = "extern function " + self.mFunctionName
 }
@@ -555,88 +548,6 @@ proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap _ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@semanticContext ioSemanticContext
-) {
-//--- Templates
-  var @filewrapperTemplateMap filewrapperTemplateMap = @()
-  for filewrapperTemplate in self.mFilewrapperTemplateList do
-    var [@functionSignatureElement] templateSignature = @()
-    for parameter in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
-      !?ioTypeMap.makeEntry (parameter.mFormalArgumentTypeName, ?let parameterTypeIndex)
-      templateSignature ++= @(
-        parameter.mFormalTemplateSelector,
-        parameterTypeIndex,
-        parameter.mFormalArgumentName.string,
-        parameter.mIsUnused)
-    end
-    !?filewrapperTemplateMap.insertKey (
-      filewrapperTemplate.mFilewrapperTemplateName,
-      templateSignature,
-      filewrapperTemplate.mFilewrapperTemplatePath
-    )
-  end
-//--- Build text file extension map
-  var @wrapperExtensionMap textExtensionMap = @()
-  for value in self.mFilewrapperTextFileExtensionList do
-    !?textExtensionMap.insertKey (value)
-  end
-//--- Build binary file extension map
-  var @wrapperExtensionMap binaryFileExtensionMap = @()
-  for value in self.mFilewrapperBinaryFileExtensionList do
-    if textExtensionMap.contains (value.string) then
-      error value:"the '" + value + "' extension is already used for text files"
-    else
-    !?binaryFileExtensionMap.insertKey (value)
-    end
-  end
-//--- Enumerate filewrapper files
-  let @wrapperFileMap regularRootFileMap
-  let @wrapperDirectoryMap wrapperDirectoryMap
-  let @string absoluteSourcePath
-  if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
-    absoluteSourcePath = self.mFilewrapperPath.string
-  else
-    absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
-  end
-  if not absoluteSourcePath.directoryExists then
-    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
-    spoil regularRootFileMap, wrapperDirectoryMap
-  else
-  //--- Enumerate paths
-    var @uint wrapperFileIndex = 0
-    var @uint wrapperDirectoryIndex = 0
-    recursivelyEnumerateDirectories (
-     absoluteSourcePath,
-     "/",
-     textExtensionMap,
-     binaryFileExtensionMap,
-     ?regularRootFileMap,
-     ?wrapperDirectoryMap,
-     !?wrapperFileIndex,
-     !?wrapperDirectoryIndex
-   )
-  end
-//--- Insert filewrapper
-  !?ioSemanticContext.mFilewrapperMap.insertKey (
-    self.mFilewrapperName,
-    self.mFilewrapperPath,
-    self.mFilewrapperTextFileExtensionList,
-    regularRootFileMap,
-    wrapperDirectoryMap,
-    filewrapperTemplateMap,
-    self.mIsInternal
-  )
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext // Handles also function declaration
   (?!@equatableExtensionMap _ioEquatableExtensionMap,
   let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
@@ -779,19 +690,6 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap _ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList ) {
-  ioExtensionOverrideDefinitionList ++= self
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @filewrapperDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap _ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,

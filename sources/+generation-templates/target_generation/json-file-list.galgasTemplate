@@ -93,6 +93,7 @@ end
     "SHA256.cpp",
     "galgas-random.cpp",
     "execution-mode.cpp",
+    "filewrapper-utilities.cpp",
     "Compiler.cpp",
     "Lexique.cpp",
     "Lexique-parsing.cpp",

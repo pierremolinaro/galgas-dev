@@ -14120,2716 +14120,1235 @@ const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDesc
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_formalInputParameterAST_5D_' array
+//
+//Filewrapper 'lexiqueGenerationTemplates'
+//
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalInputParameterAST_5D_::GGS__5B_formalInputParameterAST_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
+//--- All files of '' directory
 
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_::GGS__5B_formalInputParameterAST_5D_ (const GGS__5B_formalInputParameterAST_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ & GGS__5B_formalInputParameterAST_5D_::operator = (const GGS__5B_formalInputParameterAST_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_formalInputParameterAST_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::plusPlusAssignOperation (const GGS_formalInputParameterAST & inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_formalInputParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::add_operation (const GGS__5B_formalInputParameterAST_5D_ & inOperand,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_formalInputParameterAST_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::description (String & ioString,
-                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@formalInputParameterAST], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::plusAssignOperation (const GGS__5B_formalInputParameterAST_5D_ inOperand,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_append (const GGS_formalInputParameterAST inValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_set (const GGS_formalInputParameterAST inValue,
-                                                      const GGS_uint inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_insert (const GGS_formalInputParameterAST inValue,
-                                                         const GGS_uint inInsertionIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_remove (GGS_formalInputParameterAST & outValue,
-                                                         const GGS_uint inRemoveIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_removeFirst (GGS_formalInputParameterAST & outValue,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_formalInputParameterAST_5D_::setter_removeLast (GGS_formalInputParameterAST & outValue,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS__5B_formalInputParameterAST_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_formalInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                         const GGS_uint & inLength,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const {
-  GGS__5B_formalInputParameterAST_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_formalInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_formalInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST GGS__5B_formalInputParameterAST_5D_::getter_first (Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_formalInputParameterAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST GGS__5B_formalInputParameterAST_5D_::getter_last (Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_formalInputParameterAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST GGS__5B_formalInputParameterAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_formalInputParameterAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_formalInputParameterAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_formalInputParameterAST_5D_::DownEnumerator__5B_formalInputParameterAST_5D_ (const GGS__5B_formalInputParameterAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST DownEnumerator__5B_formalInputParameterAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST DownEnumerator__5B_formalInputParameterAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_formalInputParameterAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_formalInputParameterAST_5D_::UpEnumerator__5B_formalInputParameterAST_5D_ (const GGS__5B_formalInputParameterAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST UpEnumerator__5B_formalInputParameterAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST UpEnumerator__5B_formalInputParameterAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[formalInputParameterAST] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalInputParameterAST_5D_ ("[formalInputParameterAST]",
-                                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_formalInputParameterAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_formalInputParameterAST_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST::GGS_formalInputParameterAST (void) :
-mProperty_mFormalSelector (),
-mProperty_mFormalArgumentTypeName (),
-mProperty_mFormalArgumentName (),
-mProperty_mIsUnused (),
-mProperty_mIsConstant () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST::GGS_formalInputParameterAST (const GGS_formalInputParameterAST & inSource) :
-mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
-mProperty_mFormalArgumentTypeName (inSource.mProperty_mFormalArgumentTypeName),
-mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
-mProperty_mIsUnused (inSource.mProperty_mIsUnused),
-mProperty_mIsConstant (inSource.mProperty_mIsConstant) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST & GGS_formalInputParameterAST::operator = (const GGS_formalInputParameterAST & inSource) {
-  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
-  mProperty_mFormalArgumentTypeName = inSource.mProperty_mFormalArgumentTypeName ;
-  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
-  mProperty_mIsUnused = inSource.mProperty_mIsUnused ;
-  mProperty_mIsConstant = inSource.mProperty_mIsConstant ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_formalInputParameterAST GGS_formalInputParameterAST::init_21__21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
-                                                                                   const GGS_lstring & in_mFormalArgumentTypeName,
-                                                                                   const GGS_lstring & in_mFormalArgumentName,
-                                                                                   const GGS_bool & in_mIsUnused,
-                                                                                   const GGS_bool & in_mIsConstant,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formalInputParameterAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mFormalSelector = in_mFormalSelector ;
-  result.mProperty_mFormalArgumentTypeName = in_mFormalArgumentTypeName ;
-  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
-  result.mProperty_mIsUnused = in_mIsUnused ;
-  result.mProperty_mIsConstant = in_mIsConstant ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalInputParameterAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_formalInputParameterAST::GGS_formalInputParameterAST (const GGS_lstring & inOperand0,
-                                                          const GGS_lstring & inOperand1,
-                                                          const GGS_lstring & inOperand2,
-                                                          const GGS_bool & inOperand3,
-                                                          const GGS_bool & inOperand4) :
-mProperty_mFormalSelector (inOperand0),
-mProperty_mFormalArgumentTypeName (inOperand1),
-mProperty_mFormalArgumentName (inOperand2),
-mProperty_mIsUnused (inOperand3),
-mProperty_mIsConstant (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_formalInputParameterAST::isValid (void) const {
-  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentTypeName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsUnused.isValid () && mProperty_mIsConstant.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalInputParameterAST::drop (void) {
-  mProperty_mFormalSelector.drop () ;
-  mProperty_mFormalArgumentTypeName.drop () ;
-  mProperty_mFormalArgumentName.drop () ;
-  mProperty_mIsUnused.drop () ;
-  mProperty_mIsConstant.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_formalInputParameterAST::description (String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @formalInputParameterAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalArgumentTypeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIsUnused.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIsConstant.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @formalInputParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterAST ("formalInputParameterAST",
-                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_formalInputParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_formalInputParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @onceFunctionDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_onceFunctionDeclarationAST::objectCompare (const GGS_onceFunctionDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST::GGS_onceFunctionDeclarationAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                              const GGS_lstring & in_mGlobalConstanteName,
-                                              const GGS_lstring & in_mResultTypeName,
-                                              const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
-                                              const GGS_location & in_mEndOfFunctionInstructionList,
-                                              const GGS_bool & in_mIsPrivate,
-                                              const GGS_bool & in_mIsUsefull,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cPtr_onceFunctionDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_onceFunctionDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (in_isPredefined, in_mGlobalConstanteName, in_mResultTypeName, in_mFunctionInstructionList, in_mEndOfFunctionInstructionList, in_mIsPrivate, in_mIsUsefull, inCompiler) ;
-  const GGS_onceFunctionDeclarationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_onceFunctionDeclarationAST::
-onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                         const GGS_lstring & in_mGlobalConstanteName,
-                                                                         const GGS_lstring & in_mResultTypeName,
-                                                                         const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
-                                                                         const GGS_location & in_mEndOfFunctionInstructionList,
-                                                                         const GGS_bool & in_mIsPrivate,
-                                                                         const GGS_bool & in_mIsUsefull,
-                                                                         Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mGlobalConstanteName = in_mGlobalConstanteName ;
-  mProperty_mResultTypeName = in_mResultTypeName ;
-  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
-  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
-  mProperty_mIsPrivate = in_mIsPrivate ;
-  mProperty_mIsUsefull = in_mIsUsefull ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST::GGS_onceFunctionDeclarationAST (const cPtr_onceFunctionDeclarationAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_onceFunctionDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mGlobalConstanteName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mGlobalConstanteName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mResultTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_semanticInstructionAST_5D_ GGS_onceFunctionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_semanticInstructionAST_5D_ () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mFunctionInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_onceFunctionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mEndOfFunctionInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_onceFunctionDeclarationAST::readProperty_mIsPrivate (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mIsPrivate ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_onceFunctionDeclarationAST::readProperty_mIsUsefull (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    return p->mProperty_mIsUsefull ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @onceFunctionDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mGlobalConstanteName (),
-mProperty_mResultTypeName (),
-mProperty_mFunctionInstructionList (),
-mProperty_mEndOfFunctionInstructionList (),
-mProperty_mIsPrivate (),
-mProperty_mIsUsefull () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (const GGS_bool & in_isPredefined,
-                                                                  const GGS_lstring & in_mGlobalConstanteName,
-                                                                  const GGS_lstring & in_mResultTypeName,
-                                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
-                                                                  const GGS_location & in_mEndOfFunctionInstructionList,
-                                                                  const GGS_bool & in_mIsPrivate,
-                                                                  const GGS_bool & in_mIsUsefull,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mGlobalConstanteName (),
-mProperty_mResultTypeName (),
-mProperty_mFunctionInstructionList (),
-mProperty_mEndOfFunctionInstructionList (),
-mProperty_mIsPrivate (),
-mProperty_mIsUsefull () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mGlobalConstanteName = in_mGlobalConstanteName ;
-  mProperty_mResultTypeName = in_mResultTypeName ;
-  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
-  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
-  mProperty_mIsPrivate = in_mIsPrivate ;
-  mProperty_mIsUsefull = in_mIsUsefull ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_onceFunctionDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
-}
-
-void cPtr_onceFunctionDeclarationAST::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("[@onceFunctionDeclarationAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mGlobalConstanteName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIsPrivate.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mIsUsefull.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_onceFunctionDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_onceFunctionDeclarationAST (mProperty_isPredefined, mProperty_mGlobalConstanteName, mProperty_mResultTypeName, mProperty_mFunctionInstructionList, mProperty_mEndOfFunctionInstructionList, mProperty_mIsPrivate, mProperty_mIsUsefull, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_onceFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mGlobalConstanteName.printNonNullClassInstanceProperties ("mGlobalConstanteName") ;
-    mProperty_mResultTypeName.printNonNullClassInstanceProperties ("mResultTypeName") ;
-    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
-    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
-    mProperty_mIsPrivate.printNonNullClassInstanceProperties ("mIsPrivate") ;
-    mProperty_mIsUsefull.printNonNullClassInstanceProperties ("mIsUsefull") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @onceFunctionDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ("onceFunctionDeclarationAST",
-                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_onceFunctionDeclarationAST_2E_weak::objectCompare (const GGS_onceFunctionDeclarationAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST_2E_weak::GGS_onceFunctionDeclarationAST_2E_weak (void) :
-GGS_semanticDeclarationAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST_2E_weak & GGS_onceFunctionDeclarationAST_2E_weak::operator = (const GGS_onceFunctionDeclarationAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST_2E_weak::GGS_onceFunctionDeclarationAST_2E_weak (const GGS_onceFunctionDeclarationAST & inSource) :
-GGS_semanticDeclarationAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST_2E_weak GGS_onceFunctionDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_onceFunctionDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_onceFunctionDeclarationAST result ;
-  if (isValid ()) {
-    const cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_onceFunctionDeclarationAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST_2E_weak::bang_onceFunctionDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_onceFunctionDeclarationAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_onceFunctionDeclarationAST) ;
-      result = GGS_onceFunctionDeclarationAST ((cPtr_onceFunctionDeclarationAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @onceFunctionDeclarationAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2E_weak ("onceFunctionDeclarationAST.weak",
-                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Enum xcodeProject
-//--------------------------------------------------------------------------------------------------
-
-GGS_xcodeProject::GGS_xcodeProject (void) :
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_xcodeProject GGS_xcodeProject::class_func_none (UNUSED_LOCATION_ARGS) {
-  GGS_xcodeProject result ;
-  result.mEnum = Enumeration::enum_none ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_xcodeProject GGS_xcodeProject::class_func_swiftApp (UNUSED_LOCATION_ARGS) {
-  GGS_xcodeProject result ;
-  result.mEnum = Enumeration::enum_swiftApp ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_xcodeProject [3] = {
-  "(not built)",
-  "none",
-  "swiftApp"
+static const RegularFileWrapper * gWrapperAllFiles_lexiqueGenerationTemplates_0 [1] = {
+  nullptr
 } ;
 
-//--------------------------------------------------------------------------------------------------
+//--- All sub-directories of '' directory
 
-GGS_bool GGS_xcodeProject::getter_isNone (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
-}
+static const DirectoryWrapper * gWrapperAllDirectories_lexiqueGenerationTemplates_0 [1] = {
+  nullptr
+} ;
 
-//--------------------------------------------------------------------------------------------------
+//--- Directory ''
 
-GGS_bool GGS_xcodeProject::getter_isSwiftApp (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_swiftApp == mEnum) ;
-}
+const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates (
+  "",
+  0,
+  gWrapperAllFiles_lexiqueGenerationTemplates_0,
+  0,
+  gWrapperAllDirectories_lexiqueGenerationTemplates_0
+) ;
 
-//--------------------------------------------------------------------------------------------------
-
-void GGS_xcodeProject::description (String & ioString,
-                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<enum @xcodeProject: ") ;
-  ioString.appendCString (gEnumNameArrayFor_xcodeProject [size_t (mEnum)]) ;
-  ioString.appendCString (">") ;
-}
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_xcodeProject::objectCompare (const GGS_xcodeProject & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @xcodeProject generic code implementation
+//
+//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
+//
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProject ("xcodeProject",
-                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_xcodeProject::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_xcodeProject ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (void) :
-mProperty_name (),
-mProperty_comment (),
-mProperty_index () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (const GGS_sortedLexicalStyle & inSource) :
-mProperty_name (inSource.mProperty_name),
-mProperty_comment (inSource.mProperty_comment),
-mProperty_index (inSource.mProperty_index) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle & GGS_sortedLexicalStyle::operator = (const GGS_sortedLexicalStyle & inSource) {
-  mProperty_name = inSource.mProperty_name ;
-  mProperty_comment = inSource.mProperty_comment ;
-  mProperty_index = inSource.mProperty_index ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_sortedLexicalStyle GGS_sortedLexicalStyle::init_21__21__21_ (const GGS_string & in_name,
-                                                                 const GGS_string & in_comment,
-                                                                 const GGS_uint & in_index,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_sortedLexicalStyle result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_name = in_name ;
-  result.mProperty_comment = in_comment ;
-  result.mProperty_index = in_index ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyle::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle::GGS_sortedLexicalStyle (const GGS_string & inOperand0,
-                                                const GGS_string & inOperand1,
-                                                const GGS_uint & inOperand2) :
-mProperty_name (inOperand0),
-mProperty_comment (inOperand1),
-mProperty_index (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_sortedLexicalStyle::isValid (void) const {
-  return mProperty_name.isValid () && mProperty_comment.isValid () && mProperty_index.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyle::drop (void) {
-  mProperty_name.drop () ;
-  mProperty_comment.drop () ;
-  mProperty_index.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyle::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @sortedLexicalStyle:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_name.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_comment.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_index.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @sortedLexicalStyle generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyle ("sortedLexicalStyle",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_sortedLexicalStyle::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sortedLexicalStyle ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@sortedLexicalStyleArray' array
-//--------------------------------------------------------------------------------------------------
-
-static int32_t compareForSorting_sortedLexicalStyleArray (const GGS_sortedLexicalStyle & inLeft,
-                                                          const GGS_sortedLexicalStyle & inRight) {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = inLeft.mProperty_index.objectCompare (inRight.mProperty_index) ;
-  }
-  return int32_t (result) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray::GGS_sortedLexicalStyleArray (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray::GGS_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray & GGS_sortedLexicalStyleArray::operator = (const GGS_sortedLexicalStyleArray & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_sortedLexicalStyleArray result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::plusPlusAssignOperation (const GGS_sortedLexicalStyle & inValue
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_sortedLexicalStyleArray::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::add_operation (const GGS_sortedLexicalStyleArray & inOperand,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyleArray result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-    result.mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::description (String & ioString,
-                                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@sortedLexicalStyle], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::plusAssignOperation (const GGS_sortedLexicalStyleArray inOperand,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::setter_append (const GGS_sortedLexicalStyle inValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_sortedLexicalStyleArray) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::setter_removeAll (Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::setter_remove (GGS_sortedLexicalStyle & outValue,
-                                                 const GGS_uint inRemoveIndex,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::setter_removeFirst (GGS_sortedLexicalStyle & outValue,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedLexicalStyleArray::setter_removeLast (GGS_sortedLexicalStyle & outValue,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::getter_removingFirst (const GGS_uint & inIndex,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyleArray result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyleArray GGS_sortedLexicalStyleArray::getter_sublist (const GGS_uint & inStartIndex,
-                                                                         const GGS_uint & inLength,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyleArray result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS_sortedLexicalStyleArray::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compiler * inCompiler,
+                                                                          const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                          const GGS__5B_lexicalListDeclarationAST_5D_ & in_DELIMITOR_5F_LIST_5F_LIST,
+                                                                          const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                          const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                          const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
+  result.appendString (GGS_string ("LEXIQUE ").add_operation (in_LEXIQUE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 3)).stringValue ()) ;
+  result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n#include \"Lexique.h\"\n\n//--------------------------------------------------------------------------------------------------\n//                    E X T E R N    R O U T I N E S\n//--------------------------------------------------------------------------------------------------\n") ;
+  GGS_uint index_654_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalRoutineMessageMap ().isValid ()) {
+    UpEnumerator_lexicalRoutineMap enumerator_654 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalRoutineMessageMap ()) ;
+    while (enumerator_654.hasCurrentObject ()) {
+      const GalgasBool test_0 = enumerator_654.current_mIsExtern (HERE).boolEnum () ;
+      switch (test_0) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("\nvoid scanner_routine_") ;
+        result.appendString (enumerator_654.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (" (Lexique & inLexique") ;
+        GGS_uint index_804_ (0) ;
+        if (enumerator_654.current_mLexicalRoutineFormalArgumentList (HERE).isValid ()) {
+          UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_804 (enumerator_654.current_mLexicalRoutineFormalArgumentList (HERE)) ;
+          while (enumerator_804.hasCurrentObject ()) {
+            result.appendString (",\n                ") ;
+            result.appendString (extensionGetter_cppConstInFormalArgument (enumerator_804.current_entry (HERE).readProperty_mLexicalFormalArgumentMode (), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 17)).stringValue ()) ;
+            result.appendString (extensionGetter_cppTypeName (enumerator_804.current_entry (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 18)).stringValue ()) ;
+            result.appendString (extensionGetter_cppReferenceInFormalArgument (enumerator_804.current_entry (HERE).readProperty_mLexicalFormalArgumentMode (), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 19)).stringValue ()) ;
+            result.appendString (" ") ;
+            result.appendString (enumerator_804.current_entry (HERE).readProperty_mArgumentNameForComment ().stringValue ()) ;
+            enumerator_804.gotoNextObject () ;
+            index_804_.increment () ;
+          }
+        }
+        GGS_uint index_1193_ (0) ;
+        if (enumerator_654.current_mErrorMessageList (HERE).isValid ()) {
+          UpEnumerator__5B_string_5D_ enumerator_1193 (enumerator_654.current_mErrorMessageList (HERE)) ;
+          while (enumerator_1193.hasCurrentObject ()) {
+            result.appendString (",\n                const char * ") ;
+            result.appendString (enumerator_1193.current_entry (HERE).stringValue ()) ;
+            enumerator_1193.gotoNextObject () ;
+            index_1193_.increment () ;
+          }
+        }
+        result.appendString (") ;\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
       }
+      enumerator_654.gotoNextObject () ;
+      index_654_.increment () ;
     }
   }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::getter_first (Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyle result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::getter_last (Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyle result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle GGS_sortedLexicalStyleArray::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_sortedLexicalStyle result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                    E X T E R N    F U N C T I O N S\n//--------------------------------------------------------------------------------------------------\n") ;
+  GGS_uint index_1679_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalFunctionMap ().isValid ()) {
+    UpEnumerator_lexicalFunctionMap enumerator_1679 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalFunctionMap ()) ;
+    while (enumerator_1679.hasCurrentObject ()) {
+      const GalgasBool test_1 = enumerator_1679.current_mIsExtern (HERE).boolEnum () ;
+      switch (test_1) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("\n") ;
+        result.appendString (extensionGetter_cppTypeName (enumerator_1679.current_mReturnedLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 35)).stringValue ()) ;
+        result.appendString (" scanner_function_") ;
+        result.appendString (enumerator_1679.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (" (Lexique & inLexique") ;
+        GGS_uint index_1846_ (0) ;
+        if (enumerator_1679.current_mLexicalTypeList (HERE).isValid ()) {
+          UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ enumerator_1846 (enumerator_1679.current_mLexicalTypeList (HERE)) ;
+          while (enumerator_1846.hasCurrentObject ()) {
+            result.appendString (",\n                const ") ;
+            result.appendString (extensionGetter_cppTypeName (enumerator_1846.current_entry (HERE).readProperty_mLexicalType (), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 37)).stringValue ()) ;
+            result.appendString (" ") ;
+            result.appendString (enumerator_1846.current_entry (HERE).readProperty_mArgumentNameForComment ().stringValue ()) ;
+            enumerator_1846.gotoNextObject () ;
+            index_1846_.increment () ;
+          }
+        }
+        result.appendString (") ;\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_1679.gotoNextObject () ;
+      index_1679_.increment () ;
     }
   }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @sortedLexicalStyleArray
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_sortedLexicalStyleArray::DownEnumerator_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle DownEnumerator_sortedLexicalStyleArray::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle DownEnumerator_sortedLexicalStyleArray::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @sortedLexicalStyleArray
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_sortedLexicalStyleArray::UpEnumerator_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle UpEnumerator_sortedLexicalStyleArray::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedLexicalStyle UpEnumerator_sortedLexicalStyleArray::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @sortedLexicalStyleArray generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyleArray ("sortedLexicalStyleArray",
-                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_sortedLexicalStyleArray::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sortedLexicalStyleArray ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                       T O K E N    C L A S S\n//--------------------------------------------------------------------------------------------------\n\nclass cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" : public cToken {\n") ;
+  GGS_uint index_2381_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_2381 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
+    while (enumerator_2381.hasCurrentObject ()) {
+      result.appendString ("  public: ") ;
+      result.appendString (extensionGetter_cppTypeName (enumerator_2381.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 50)).stringValue ()) ;
+      result.appendString (" mLexicalAttribute_") ;
+      result.appendString (enumerator_2381.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 50)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_2381.gotoNextObject () ;
+      index_2381_.increment () ;
+    }
+  }
+  result.appendString ("\n  public: cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void) ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//                     S C A N N E R    C L A S S\n//--------------------------------------------------------------------------------------------------\n\nclass Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" : public Lexique {\n//--- Constructors\n  public: Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (Compiler * inCallerCompiler,\n                       const String & inSourceFileName\n                       COMMA_LOCATION_ARGS) ;\n\n  public: Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (Compiler * inCallerCompiler,\n                       const String & inSourceString,\n                       const String & inStringForError\n                       COMMA_LOCATION_ARGS) ;\n\n//--- Instrospection\n  public: static GGS__5B_string_5D_ symbols (LOCATION_ARGS) ;\n\n//--- Declaring a protected virtual destructor enables the compiler to raise\n//    an error if a direct delete is performed; only the static proc\n//    SharedObject::detachPointer may invoke delete.\n  #ifndef DO_NOT_GENERATE_CHECKINGS\n    protected: virtual ~ Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void) { }\n  #endif\n") ;
+  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 80)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_2) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("\n//--- Scanner mode for template scanner\n  private: int32_t mMatchedTemplateDelimiterIndex ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n\n\n//--- Terminal symbols enumeration\n  public: const static int32_t kToken_ = 0 ;\n") ;
+  GGS_uint index_3962_idx (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_3962 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_3962.hasCurrentObject ()) {
+      result.appendString ("  public: static const int32_t kToken_") ;
+      result.appendString (enumerator_3962.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (index_3962_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_3962.gotoNextObject () ;
+      index_3962_idx.increment () ;
+    }
+  }
+  GGS_uint index_4148_ (0) ;
+  if (in_DELIMITOR_5F_LIST_5F_LIST.isValid ()) {
+    UpEnumerator__5B_lexicalListDeclarationAST_5D_ enumerator_4148 (in_DELIMITOR_5F_LIST_5F_LIST) ;
+    while (enumerator_4148.hasCurrentObject ()) {
+      result.appendString ("\n//--- Key words table '") ;
+      result.appendString (enumerator_4148.current_entry (HERE).readProperty_mName ().readProperty_string ().stringValue ()) ;
+      result.appendString ("'\n  public: static int32_t search_into_") ;
+      result.appendString (enumerator_4148.current_entry (HERE).readProperty_mName ().readProperty_string ().stringValue ()) ;
+      result.appendString (" (const String & inSearchedString) ;\n") ;
+      enumerator_4148.gotoNextObject () ;
+      index_4148_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--- Assign from attribute\n") ;
+  GGS_uint index_4440_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_4440 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
+    while (enumerator_4440.hasCurrentObject ()) {
+      result.appendString ("  public: GGS_l") ;
+      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_4440.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 100)).getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 100)).stringValue ()) ;
+      result.appendString (" synthetizedAttribute_") ;
+      result.appendString (enumerator_4440.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 100)).stringValue ()) ;
+      result.appendString (" (void) const ;\n") ;
+      enumerator_4440.gotoNextObject () ;
+      index_4440_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--- Attribute access\n") ;
+  GGS_uint index_4711_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_4711 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
+    while (enumerator_4711.hasCurrentObject ()) {
+      result.appendString ("  public: ") ;
+      result.appendString (extensionGetter_cppTypeName (enumerator_4711.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 107)).stringValue ()) ;
+      result.appendString (" attributeValue_") ;
+      result.appendString (enumerator_4711.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 107)).stringValue ()) ;
+      result.appendString (" (void) const ;\n") ;
+      enumerator_4711.gotoNextObject () ;
+      index_4711_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--- indexing keys\n") ;
+  GGS_uint index_4893_idx (0) ;
+  if (in_INDEXING_5F_LIST.isValid ()) {
+    UpEnumerator__5B_indexingAST_5D_ enumerator_4893 (in_INDEXING_5F_LIST) ;
+    while (enumerator_4893.hasCurrentObject ()) {
+      result.appendString ("public: static const uint32_t kIndexing_") ;
+      result.appendString (enumerator_4893.current_entry (HERE).readProperty_mIndexName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 114)).stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (index_4893_idx.getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 114)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_4893.gotoNextObject () ;
+      index_4893_idx.increment () ;
+    }
+  }
+  result.appendString ("\n//--- Parse lexical token\n  protected: void internalParseLexicalToken (cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & token) ;\n  protected: virtual bool parseLexicalToken (void) override ;\n\n//--- Get terminal message\n  protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;\n\n//--- Get terminal count\n  public: virtual int32_t terminalVocabularyCount (void) const override { return ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 125)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 125)).stringValue ()) ;
+  result.appendString (" ; }\n\n//--- Get Token String\n  public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;\n\n//--- Enter Token\n  protected: void enterToken (cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & ioToken) ;\n\n//--- Style index\n  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;\n} ;\n\n") ;
+  return GGS_string (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 //
-//     L E X I Q U E                                                                             
+//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
 //
 //--------------------------------------------------------------------------------------------------
 
-#include "utf32.h"
-#include "scanner_actions.h"
-#include "LexiqueIntrospection.h"
-
-//--------------------------------------------------------------------------------------------------
-
-cTokenFor_projectComponentScanner::cTokenFor_projectComponentScanner (void) :
-mLexicalAttribute_bigintValue (),
-mLexicalAttribute_charValue (),
-mLexicalAttribute_tokenString (),
-mLexicalAttribute_uint_33__32_value () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
-                                                                  const String & inSourceFileName
-                                                                  COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceFileName COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
-                                                                  const String & inSourceString,
-                                                                  const String & inStringForError
-                                                                  COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
-}
-
-//--------------------------------------------------------------------------------------------------
-//                        Lexical error message list                                             
-//--------------------------------------------------------------------------------------------------
-
-static const char * gLexicalMessage_projectComponentScanner_attributeError = "in an attribute name, a letter or a digit should follow the '#' character" ;
-
-static const char * gLexicalMessage_projectComponentScanner_incorrectCharConstant = "incorrect literal character" ;
-
-static const char * gLexicalMessage_projectComponentScanner_incorrectStringEnd = "string does not end with '\"'" ;
-
-static const char * gLexicalMessage_projectComponentScanner_internalError = "internal error" ;
-
-static const char * gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 = "\\u should be followed by exactly four hexadecimal digits" ;
-
-static const char * gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 = "\\U should be followed by exactly eight hexadecimal digits" ;
-
-static const char * gLexicalMessage_projectComponentScanner_unassignedUnicodeValue = "this value does not correspond to an assigned Unicode point" ;
-
-static const char * gLexicalMessage_projectComponentScanner_undefinedAttribute = "undefined attribute" ;
-
-//--------------------------------------------------------------------------------------------------
-//                getMessageForTerminal                                                          
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inTerminalIndex) const {
-  String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 29)) {
-    static const char * syntaxErrorMessageArray [29] = {kEndOfSourceLexicalErrorMessage,
-        "an identifier",
-        "a literal integer",
-        "a character constant",
-        "a comment",
-        "a comment",
-        "a character string constant \"...\"",
-        "the '#macAppBundleBaseName' keyword",
-        "the '#codeblocks-linux32' keyword",
-        "the '#codeblocks-linux64' keyword",
-        "the '#codeblocks-windows' keyword",
-        "the '#libpmCustomPath' keyword",
-        "the '#productName' keyword",
-        "the '#version' keyword",
-        "the '#macCodeSign' keyword",
-        "the '#makefile-macosx' keyword",
-        "the '#makefile-unix' keyword",
-        "the '#makefile-x86linux32-on-macosx' keyword",
-        "the '#makefile-x86linux64-on-macosx' keyword",
-        "the '#makefile-arm64-linux-on-macosx' keyword",
-        "the '#makefile-win32-on-macosx' keyword",
-        "the '#macSwiftApp' keyword",
-        "the '#lexical-style' keyword",
-        "the '#bool-build-option' keyword",
-        "the '#string-build-option' keyword",
-        "the '#u32-build-option' keyword",
-        "the '.' delimitor",
-        "the ':' delimitor",
-        "the '->' delimitor"
-    } ;
-    result = syntaxErrorMessageArray [inTerminalIndex] ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                      U N I C O D E    S T R I N G S                                           
-//--------------------------------------------------------------------------------------------------
-
-//--- Unicode string for '$->$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
-  utf32 ('-'),
-  utf32 ('>'),
-} ;
-
-//--- Unicode string for '$.$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
-  utf32 ('.'),
-} ;
-
-//--- Unicode string for '$//$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
-  utf32 ('/'),
-  utf32 ('/'),
-} ;
-
-//--- Unicode string for '$:$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
-  utf32 (':'),
-} ;
-
-//--- Unicode string for '$bool-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
-  utf32 ('b'),
-  utf32 ('o'),
-  utf32 ('o'),
-  utf32 ('l'),
-  utf32 ('-'),
-  utf32 ('b'),
-  utf32 ('u'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('d'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('p'),
-  utf32 ('t'),
-  utf32 ('i'),
-  utf32 ('o'),
-  utf32 ('n'),
-} ;
-
-//--- Unicode string for '$codeblocks-linux32$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('e'),
-  utf32 ('b'),
-  utf32 ('l'),
-  utf32 ('o'),
-  utf32 ('c'),
-  utf32 ('k'),
-  utf32 ('s'),
-  utf32 ('-'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('u'),
-  utf32 ('x'),
-  utf32 ('3'),
-  utf32 ('2'),
-} ;
-
-//--- Unicode string for '$codeblocks-linux64$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('e'),
-  utf32 ('b'),
-  utf32 ('l'),
-  utf32 ('o'),
-  utf32 ('c'),
-  utf32 ('k'),
-  utf32 ('s'),
-  utf32 ('-'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('u'),
-  utf32 ('x'),
-  utf32 ('6'),
-  utf32 ('4'),
-} ;
-
-//--- Unicode string for '$codeblocks-windows$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('e'),
-  utf32 ('b'),
-  utf32 ('l'),
-  utf32 ('o'),
-  utf32 ('c'),
-  utf32 ('k'),
-  utf32 ('s'),
-  utf32 ('-'),
-  utf32 ('w'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('d'),
-  utf32 ('o'),
-  utf32 ('w'),
-  utf32 ('s'),
-} ;
-
-//--- Unicode string for '$lexical-style$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('x'),
-  utf32 ('i'),
-  utf32 ('c'),
-  utf32 ('a'),
-  utf32 ('l'),
-  utf32 ('-'),
-  utf32 ('s'),
-  utf32 ('t'),
-  utf32 ('y'),
-  utf32 ('l'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$libpmCustomPath$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('b'),
-  utf32 ('p'),
-  utf32 ('m'),
-  utf32 ('C'),
-  utf32 ('u'),
-  utf32 ('s'),
-  utf32 ('t'),
-  utf32 ('o'),
-  utf32 ('m'),
-  utf32 ('P'),
-  utf32 ('a'),
-  utf32 ('t'),
-  utf32 ('h'),
-} ;
-
-//--- Unicode string for '$macAppBundleBaseName$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('A'),
-  utf32 ('p'),
-  utf32 ('p'),
-  utf32 ('B'),
-  utf32 ('u'),
-  utf32 ('n'),
-  utf32 ('d'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('B'),
-  utf32 ('a'),
-  utf32 ('s'),
-  utf32 ('e'),
-  utf32 ('N'),
-  utf32 ('a'),
-  utf32 ('m'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$macCodeSign$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('C'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('e'),
-  utf32 ('S'),
-  utf32 ('i'),
-  utf32 ('g'),
-  utf32 ('n'),
-} ;
-
-//--- Unicode string for '$macSwiftApp$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('S'),
-  utf32 ('w'),
-  utf32 ('i'),
-  utf32 ('f'),
-  utf32 ('t'),
-  utf32 ('A'),
-  utf32 ('p'),
-  utf32 ('p'),
-} ;
-
-//--- Unicode string for '$makefile-arm64-linux-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('a'),
-  utf32 ('r'),
-  utf32 ('m'),
-  utf32 ('6'),
-  utf32 ('4'),
-  utf32 ('-'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('u'),
-  utf32 ('x'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('n'),
-  utf32 ('-'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('s'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$makefile-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('s'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$makefile-unix$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('u'),
-  utf32 ('n'),
-  utf32 ('i'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$makefile-win32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('w'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('3'),
-  utf32 ('2'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('n'),
-  utf32 ('-'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('s'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$makefile-x86linux32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('x'),
-  utf32 ('8'),
-  utf32 ('6'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('u'),
-  utf32 ('x'),
-  utf32 ('3'),
-  utf32 ('2'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('n'),
-  utf32 ('-'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('s'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$makefile-x86linux64-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('k'),
-  utf32 ('e'),
-  utf32 ('f'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('e'),
-  utf32 ('-'),
-  utf32 ('x'),
-  utf32 ('8'),
-  utf32 ('6'),
-  utf32 ('l'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('u'),
-  utf32 ('x'),
-  utf32 ('6'),
-  utf32 ('4'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('n'),
-  utf32 ('-'),
-  utf32 ('m'),
-  utf32 ('a'),
-  utf32 ('c'),
-  utf32 ('o'),
-  utf32 ('s'),
-  utf32 ('x'),
-} ;
-
-//--- Unicode string for '$productName$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
-  utf32 ('p'),
-  utf32 ('r'),
-  utf32 ('o'),
-  utf32 ('d'),
-  utf32 ('u'),
-  utf32 ('c'),
-  utf32 ('t'),
-  utf32 ('N'),
-  utf32 ('a'),
-  utf32 ('m'),
-  utf32 ('e'),
-} ;
-
-//--- Unicode string for '$string-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
-  utf32 ('s'),
-  utf32 ('t'),
-  utf32 ('r'),
-  utf32 ('i'),
-  utf32 ('n'),
-  utf32 ('g'),
-  utf32 ('-'),
-  utf32 ('b'),
-  utf32 ('u'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('d'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('p'),
-  utf32 ('t'),
-  utf32 ('i'),
-  utf32 ('o'),
-  utf32 ('n'),
-} ;
-
-//--- Unicode string for '$u32-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
-  utf32 ('u'),
-  utf32 ('3'),
-  utf32 ('2'),
-  utf32 ('-'),
-  utf32 ('b'),
-  utf32 ('u'),
-  utf32 ('i'),
-  utf32 ('l'),
-  utf32 ('d'),
-  utf32 ('-'),
-  utf32 ('o'),
-  utf32 ('p'),
-  utf32 ('t'),
-  utf32 ('i'),
-  utf32 ('o'),
-  utf32 ('n'),
-} ;
-
-//--- Unicode string for '$version$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
-  utf32 ('v'),
-  utf32 ('e'),
-  utf32 ('r'),
-  utf32 ('s'),
-  utf32 ('i'),
-  utf32 ('o'),
-  utf32 ('n'),
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//             Key words table 'attributeKeyWordList'      
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t ktable_size_projectComponentScanner_attributeKeyWordList = 19 ;
-
-static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_attributeKeyWordList [ktable_size_projectComponentScanner_attributeKeyWordList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_version, Lexique_projectComponentScanner::kToken__23_version),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macCodeSign, Lexique_projectComponentScanner::kToken__23_macCodeSign),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macSwiftApp, Lexique_projectComponentScanner::kToken__23_macSwiftApp),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_productName, Lexique_projectComponentScanner::kToken__23_productName),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_lexical_2D_style, Lexique_projectComponentScanner::kToken__23_lexical_2D_style),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_unix, Lexique_projectComponentScanner::kToken__23_makefile_2D_unix),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_libpmCustomPath, Lexique_projectComponentScanner::kToken__23_libpmCustomPath),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_u_33__32__2D_build_2D_option),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_bool_2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_bool_2D_build_2D_option),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_33__32_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_linux_36__34_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_codeblocks_2D_windows, Lexique_projectComponentScanner::kToken__23_codeblocks_2D_windows),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_string_2D_build_2D_option, Lexique_projectComponentScanner::kToken__23_string_2D_build_2D_option),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_macAppBundleBaseName, Lexique_projectComponentScanner::kToken__23_macAppBundleBaseName),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx, Lexique_projectComponentScanner::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx)
-} ;
-
-int32_t Lexique_projectComponentScanner::search_into_attributeKeyWordList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_projectComponentScanner_attributeKeyWordList, ktable_size_projectComponentScanner_attributeKeyWordList) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//             Key words table 'galgasDelimitorsList'      
-//--------------------------------------------------------------------------------------------------
-
-static const int32_t ktable_size_projectComponentScanner_galgasDelimitorsList = 3 ;
-
-static const C_unicode_lexique_table_entry ktable_for_projectComponentScanner_galgasDelimitorsList [ktable_size_projectComponentScanner_galgasDelimitorsList] = {
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__2E_, Lexique_projectComponentScanner::kToken__2E_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__3A_, Lexique_projectComponentScanner::kToken__3A_),
-  C_unicode_lexique_table_entry (kUnicodeString_projectComponentScanner__2D__3E_, Lexique_projectComponentScanner::kToken__2D__3E_)
-} ;
-
-int32_t Lexique_projectComponentScanner::search_into_galgasDelimitorsList (const String & inSearchedString) {
-  return searchInList (inSearchedString, ktable_for_projectComponentScanner_galgasDelimitorsList, ktable_size_projectComponentScanner_galgasDelimitorsList) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//                          getCurrentTokenString                                                
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_projectComponentScanner::getCurrentTokenString (const cToken * inTokenPtr) const {
-  const cTokenFor_projectComponentScanner * ptr = (const cTokenFor_projectComponentScanner *) inTokenPtr ;
-  String s ;
-  if (ptr == nullptr) {
-    s.appendCString ("$$") ;
-  }else{
-    switch (ptr->mTokenCode) {
-    case kToken_:
-      s.appendCString ("$$") ;
-      break ;
-    case kToken_identifier:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("identifier") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken_literalInt:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("literalInt") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_bigintValue.decimalString ()) ;
-      break ;
-    case kToken__27_char_27_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("'char'") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendChar (ptr->mLexicalAttribute_charValue) ;
-      break ;
-    case kToken_comment:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("comment") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_commentMark:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("commentMark") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__22_string_22_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("\"string\"") ;
-      s.appendChar (utf32 ('$')) ;
-      s.appendChar (utf32 (' ')) ;
-      s.appendStringAsCLiteralStringConstant (ptr->mLexicalAttribute_tokenString) ;
-      break ;
-    case kToken__23_macAppBundleBaseName:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#macAppBundleBaseName") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_codeblocks_2D_linux_33__32_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#codeblocks-linux32") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_codeblocks_2D_linux_36__34_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#codeblocks-linux64") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_codeblocks_2D_windows:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#codeblocks-windows") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_libpmCustomPath:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#libpmCustomPath") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_productName:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#productName") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_version:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#version") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_macCodeSign:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#macCodeSign") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_macosx:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-macosx") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_unix:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-unix") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-x86linux32-on-macosx") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-x86linux64-on-macosx") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-arm64-linux-on-macosx") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#makefile-win32-on-macosx") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_macSwiftApp:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#macSwiftApp") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_lexical_2D_style:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#lexical-style") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_bool_2D_build_2D_option:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#bool-build-option") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_string_2D_build_2D_option:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#string-build-option") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__23_u_33__32__2D_build_2D_option:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("#u32-build-option") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (".") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__3A_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString (":") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken__2D__3E_:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("->") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    default:
-      break ;
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (Compiler * inCompiler,
+                                                                                            const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                            const GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
+                                                                                            const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                            const GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                            const GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
+                                                                                            const GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                            const GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                            const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                            const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                            const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                            const GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                            const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//     L E X I Q U E                                                                             \n//\n//--------------------------------------------------------------------------------------------------\n\n#include \"utf32.h\"\n#include \"scanner_actions.h\"\n#include \"LexiqueIntrospection.h\"\n\n//--------------------------------------------------------------------------------------------------\n\ncTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void)") ;
+  GGS_uint index_634_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_634 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    const bool nonEmpty_enumerator_634 = enumerator_634.hasCurrentObject () ;
+    if (nonEmpty_enumerator_634) {
+      result.appendString (" :\n") ;
+    }
+    while (enumerator_634.hasCurrentObject ()) {
+      result.appendString ("mLexicalAttribute_") ;
+      result.appendString (enumerator_634.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 16)).stringValue ()) ;
+      result.appendString (" ()") ;
+      enumerator_634.gotoNextObject () ;
+      if (enumerator_634.hasCurrentObject ()) {
+        result.appendString (",\n") ;
+      }
+      index_634_.increment () ;
     }
   }
-  return s ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                           Template Delimiters                                                 
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//                           Template Replacements                                               
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//            Terminal Symbols as end of script in template mark                                 
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-//               INTERNAL PARSE LEXICAL TOKEN                                         
-//--------------------------------------------------------------------------------------------------
-
-void Lexique_projectComponentScanner::internalParseLexicalToken (cTokenFor_projectComponentScanner & token) {
-  bool loop = true ;
-  token.mLexicalAttribute_bigintValue = BigSigned () ;
-  token.mLexicalAttribute_charValue = utf32 (0) ;
-  token.mLexicalAttribute_tokenString.removeAllKeepingCapacity () ;
-  token.mLexicalAttribute_uint_33__32_value = 0 ;
-  mTokenStartLocation = mCurrentLocation ;
-  try{
-    if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_'))) {
-      do {
-        ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      token.mTokenCode = kToken_identifier ;
-      enterToken (token) ;
-    }else if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-      ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-      do {
-        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else if (testForInputUTF32Char (utf32 ('_'))) {
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      ::scanner_routine_convertDecimalStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_projectComponentScanner_internalError) ;
-      token.mTokenCode = kToken_literalInt ;
-      enterToken (token) ;
-    }else if (testForInputUTF32Char (utf32 ('#'))) {
-      if (testForChar_isUnicodeLetter ()) {
-        do {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForChar_isUnicodeLetter () || testForInputUTF32Char (utf32 ('-')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-      }else{
-        lexicalError (gLexicalMessage_projectComponentScanner_attributeError COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-      if (token.mTokenCode == -1) {
-        token.mTokenCode = search_into_attributeKeyWordList (token.mLexicalAttribute_tokenString) ;
-      }
-      if (token.mTokenCode == -1) {
-        lexicalError (gLexicalMessage_projectComponentScanner_undefinedAttribute COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-      enterToken (token) ;
-    }else if (testForInputUTF32Char (utf32 ('\''))) {
-      if (testForInputUTF32Char (utf32 ('\\'))) {
-        if (testForInputUTF32Char (utf32 ('f'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\f')) ;
-        }else if (testForInputUTF32Char (utf32 ('n'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\n')) ;
-        }else if (testForInputUTF32Char (utf32 ('r'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\r')) ;
-        }else if (testForInputUTF32Char (utf32 ('t'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\t')) ;
-        }else if (testForInputUTF32Char (utf32 ('v'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\v')) ;
-        }else if (testForInputUTF32Char (utf32 ('\\'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\\')) ;
-        }else if (testForInputUTF32Char (utf32 ('0'))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\0')) ;
-        }else if (testForInputUTF32Char (utf32 ('\''))) {
-          ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, utf32 ('\'')) ;
-        }else if (testForInputUTF32Char (utf32 ('u'))) {
-          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                  ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
-                }else{
-                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else{
-            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-          }
-        }else if (testForInputUTF32Char (utf32 ('U'))) {
-          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                          ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
-                        }else{
-                          lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                        }
-                      }else{
-                        lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                      }
-                    }else{
-                      lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                    }
-                  }else{
-                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else{
-            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-          }
-        }else{
-          lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-        }
-      }else if (testForInputUTF32CharRange (utf32 (' '), utf32 (65533))) {
-        ::scanner_routine_enterCharacterIntoCharacter (*this, token.mLexicalAttribute_charValue, previousChar ()) ;
-      }else{
-        lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-      if (testForInputUTF32Char (utf32 ('\''))) {
-        token.mTokenCode = kToken__27_char_27_ ;
-        enterToken (token) ;
-      }else{
-        lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2F__2F_, true)) {
-      if (testForInputUTF32Char (utf32 ('!'))) {
-        do {
-          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (65533))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_commentMark) ;
-      }else{
-        do {
-          if (testForInputUTF32CharRange (utf32 (1), utf32 ('\t')) || testForInputUTF32Char (utf32 ('\v')) || testForInputUTF32Char (utf32 ('\f')) || testForInputUTF32CharRange (utf32 (14), utf32 (1114111))) {
-          }else{
-            loop = false ;
-          }
-        }while (loop) ;
-        loop = true ;
-        enterDroppedTerminal (kToken_comment) ;
-      }
-    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2D__3E_, true)) {
-      token.mTokenCode = kToken__2D__3E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__3A_, true)) {
-      token.mTokenCode = kToken__3A_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32String (kUnicodeString_projectComponentScanner__2E_, true)) {
-      token.mTokenCode = kToken__2E_ ;
-      enterToken (token) ;
-    }else if (testForInputUTF32Char (utf32 ('\"'))) {
-      do {
-        if (testForInputUTF32Char (utf32 ('\\'))) {
-          if (testForInputUTF32Char (utf32 ('f'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\f')) ;
-          }else if (testForInputUTF32Char (utf32 ('n'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\n')) ;
-          }else if (testForInputUTF32Char (utf32 ('r'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\r')) ;
-          }else if (testForInputUTF32Char (utf32 ('t'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\t')) ;
-          }else if (testForInputUTF32Char (utf32 ('v'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\v')) ;
-          }else if (testForInputUTF32Char (utf32 ('\\'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\\')) ;
-          }else if (testForInputUTF32Char (utf32 ('\"'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\"')) ;
-          }else if (testForInputUTF32Char (utf32 ('\''))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\'')) ;
-          }else if (testForInputUTF32Char (utf32 ('\?'))) {
-            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, utf32 ('\?')) ;
-          }else if (testForInputUTF32Char (utf32 ('u'))) {
-            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                    ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
-                    ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-                  }else{
-                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition4 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else if (testForInputUTF32Char (utf32 ('U'))) {
-            if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-              ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-              if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                  ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                  if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                    ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                    if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                      ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                      if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                        ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                        if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                          ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                          if (testForInputUTF32CharRange (utf32 ('0'), utf32 ('9')) || testForInputUTF32CharRange (utf32 ('a'), utf32 ('f')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('F'))) {
-                            ::scanner_routine_enterHexDigitIntoUInt (*this, previousChar (), token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_projectComponentScanner_internalError, gLexicalMessage_projectComponentScanner_internalError) ;
-                            ::scanner_routine_convertUnsignedNumberToUnicodeChar (*this, token.mLexicalAttribute_uint_33__32_value, token.mLexicalAttribute_charValue, gLexicalMessage_projectComponentScanner_unassignedUnicodeValue) ;
-                            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_charValue) ;
-                          }else{
-                            lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                          }
-                        }else{
-                          lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                        }
-                      }else{
-                        lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                      }
-                    }else{
-                      lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                    }
-                  }else{
-                    lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                  }
-                }else{
-                  lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-                }
-              }else{
-                lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-              }
-            }else{
-              lexicalError (gLexicalMessage_projectComponentScanner_invalideUnicodeDefinition8 COMMA_LINE_AND_SOURCE_FILE) ;
-            }
-          }else{
-            lexicalError (gLexicalMessage_projectComponentScanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
-          }
-        }else if (testForInputUTF32Char (utf32 (' ')) || testForInputUTF32Char (utf32 ('!')) || testForInputUTF32CharRange (utf32 ('#'), utf32 (65533))) {
-          ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-        }else{
-          loop = false ;
-        }
-      }while (loop) ;
-      loop = true ;
-      if (testForInputUTF32Char (utf32 ('\"'))) {
-        token.mTokenCode = kToken__22_string_22_ ;
-        enterToken (token) ;
-      }else{
-        lexicalError (gLexicalMessage_projectComponentScanner_incorrectStringEnd COMMA_LINE_AND_SOURCE_FILE) ;
-      }
-    }else if (testForInputUTF32CharRange (utf32 (1), utf32 (' '))) {
-    }else if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
-      token.mTokenCode = kToken_ ; // Empty string code
-    }else{ // Unknown input character
-      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
-      token.mTokenCode = -1 ; // No token
-      advance () ; // ... go throught unknown character
+  result.appendString (" {\n}\n\n//--------------------------------------------------------------------------------------------------\n\nLexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (") ;
+  columnMarker = result.currentColumn () ;
+  result.appendString ("Compiler * inCallerCompiler,\n                ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("const String & inSourceFileName\n                ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("COMMA_LOCATION_ARGS) :\nLexique (inCallerCompiler, inSourceFileName COMMA_THERE)") ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 28)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString (",\nmMatchedTemplateDelimiterIndex (-1)") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (" {\n}\n\n//--------------------------------------------------------------------------------------------------\n\nLexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (") ;
+  columnMarker = result.currentColumn () ;
+  result.appendString ("Compiler * inCallerCompiler,\n                ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("const String & inSourceString,\n                ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("const String & inStringForError\n                ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("COMMA_LOCATION_ARGS) :\nLexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)") ;
+  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 41)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_1) {
+  case GalgasBool::boolTrue : {
+    result.appendString (",\nmMatchedTemplateDelimiterIndex (-1)") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (" {\n}\n\n//--------------------------------------------------------------------------------------------------\n//                        Lexical error message list                                             \n//--------------------------------------------------------------------------------------------------\n") ;
+  GGS_uint index_2068_ (0) ;
+  if (in_LEXICAL_5F_MESSAGE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalMessageMap enumerator_2068 (in_LEXICAL_5F_MESSAGE_5F_MAP) ;
+    while (enumerator_2068.hasCurrentObject ()) {
+      result.appendString ("\nstatic const char * gLexicalMessage_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_2068.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (enumerator_2068.current_mLexicalMessage (HERE).readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 52)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_2068.gotoNextObject () ;
+      index_2068_.increment () ;
     }
-  }catch (const C_lexicalErrorException &) {
-    token.mTokenCode = -1 ; // No token
-    advance () ; // ... go throught unknown character
   }
-}
-
-//--------------------------------------------------------------------------------------------------
-//               P A R S E    L E X I C A L    T O K E N                                         
-//--------------------------------------------------------------------------------------------------
-
-bool Lexique_projectComponentScanner::parseLexicalToken (void) {
-  cTokenFor_projectComponentScanner token ;
-  token.mTokenCode = -1 ;
-  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
-    internalParseLexicalToken (token) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                getMessageForTerminal                                                          \n//--------------------------------------------------------------------------------------------------\n\nString Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::getMessageForTerminal (const int32_t inTerminalIndex) const {\n  String result = \"<unknown>\" ;\n  if ((inTerminalIndex >= 0) && (inTerminalIndex < ") ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).stringValue ()) ;
+  result.appendString (")) {\n    static const char * syntaxErrorMessageArray [") ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).stringValue ()) ;
+  result.appendString ("] = {kEndOfSourceLexicalErrorMessage") ;
+  GGS_uint index_2910_ (0) ;
+  if (in_TERMINAL_5F_LIST.isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_2910 (in_TERMINAL_5F_LIST) ;
+    while (enumerator_2910.hasCurrentObject ()) {
+      result.appendString (",\n        ") ;
+      result.appendString (enumerator_2910.current_entry (HERE).readProperty_mSyntaxErrorMessage ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 64)).stringValue ()) ;
+      enumerator_2910.gotoNextObject () ;
+      index_2910_.increment () ;
+    }
   }
-  if (mCurrentChar.u32 () == '\0') {
-    token.mTokenCode = 0 ;
-    enterToken (token) ;
+  result.appendString ("\n    } ;\n    result = syntaxErrorMessageArray [inTerminalIndex] ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                      U N I C O D E    S T R I N G S                                           \n//--------------------------------------------------------------------------------------------------\n") ;
+  GGS_uint index_3442_ (0) ;
+  if (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES.isValid ()) {
+    UpEnumerator_stringset enumerator_3442 (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES) ;
+    while (enumerator_3442.hasCurrentObject ()) {
+      const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, enumerator_3442.current_key (HERE).getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 77)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      switch (test_2) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("\n//--- Unicode string for '$") ;
+        result.appendString (enumerator_3442.current_key (HERE).getter_utf_38_RepresentationWithoutDelimiters (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 78)).stringValue ()) ;
+        result.appendString ("$'\nstatic const std::initializer_list <utf32> kUnicodeString_") ;
+        result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_3442.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 79)).stringValue ()) ;
+        result.appendString (" = ") ;
+        result.appendString (enumerator_3442.current_key (HERE).getter_utf_33__32_Representation (GGS_bool (false) COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 79)).stringValue ()) ;
+        result.appendString (" ;\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_3442.gotoNextObject () ;
+      index_3442_.increment () ;
+    }
   }
-  return token.mTokenCode > 0 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                         E N T E R    T O K E N                                                
-//--------------------------------------------------------------------------------------------------
-
-void Lexique_projectComponentScanner::enterToken (cTokenFor_projectComponentScanner & ioToken) {
-  cTokenFor_projectComponentScanner * ptr = nullptr ;
-  macroMyNew (ptr, cTokenFor_projectComponentScanner ()) ;
-  ptr->mTokenCode = ioToken.mTokenCode ;
-  ptr->mStartLocation = mTokenStartLocation ;
-  ptr->mEndLocation = mTokenEndLocation ;
-  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
-  ioToken.mTemplateStringBeforeToken = "" ;
-  ptr->mLexicalAttribute_bigintValue = ioToken.mLexicalAttribute_bigintValue ;
-  ptr->mLexicalAttribute_charValue = ioToken.mLexicalAttribute_charValue ;
-  ptr->mLexicalAttribute_tokenString = ioToken.mLexicalAttribute_tokenString ;
-  ptr->mLexicalAttribute_uint_33__32_value = ioToken.mLexicalAttribute_uint_33__32_value ;
-  enterTokenFromPointer (ptr) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//               A T T R I B U T E   A C C E S S                                                 
-//--------------------------------------------------------------------------------------------------
-
-BigSigned Lexique_projectComponentScanner::attributeValue_bigintValue (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_bigintValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-utf32 Lexique_projectComponentScanner::attributeValue_charValue (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_charValue ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-String Lexique_projectComponentScanner::attributeValue_tokenString (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_tokenString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-uint32_t Lexique_projectComponentScanner::attributeValue_uint_33__32_value (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  return ptr->mLexicalAttribute_uint_33__32_value ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//         A S S I G N    F R O M    A T T R I B U T E                                           
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigint Lexique_projectComponentScanner::synthetizedAttribute_bigintValue (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_bigint value (ptr->mLexicalAttribute_bigintValue) ;
-  GGS_lbigint result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lchar Lexique_projectComponentScanner::synthetizedAttribute_charValue (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_char value (ptr->mLexicalAttribute_charValue) ;
-  GGS_lchar result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring Lexique_projectComponentScanner::synthetizedAttribute_tokenString (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_string value (ptr->mLexicalAttribute_tokenString) ;
-  GGS_lstring result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luint Lexique_projectComponentScanner::synthetizedAttribute_uint_33__32_value (void) const {
-  cTokenFor_projectComponentScanner * ptr = (cTokenFor_projectComponentScanner *) currentTokenPtr (HERE) ;
-  macroValidSharedObject (ptr, cTokenFor_projectComponentScanner) ;
-  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;
-  GGS_uint value (ptr->mLexicalAttribute_uint_33__32_value) ;
-  GGS_luint result (value, currentLocation) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//                         I N T R O S P E C T I O N                                             
-//--------------------------------------------------------------------------------------------------
-
- GGS__5B_string_5D_ Lexique_projectComponentScanner::symbols (LOCATION_ARGS) {
-  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-  result.plusPlusAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("literalInt") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("'char'") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("comment") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("commentMark") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("\"string\"") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#macAppBundleBaseName") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#codeblocks-linux32") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#codeblocks-linux64") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#codeblocks-windows") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#libpmCustomPath") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#productName") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#version") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#macCodeSign") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-macosx") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-unix") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-x86linux32-on-macosx") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-x86linux64-on-macosx") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-arm64-linux-on-macosx") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#makefile-win32-on-macosx") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#macSwiftApp") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#lexical-style") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#bool-build-option") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#string-build-option") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("#u32-build-option") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string (".") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string (":") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("->") COMMA_HERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void getKeywordLists_projectComponentScanner (GenericUniqueArray <String> & ioList) {
-  ioList.appendObject ("projectComponentScanner:attributeKeyWordList") ;
-  ioList.appendObject ("projectComponentScanner:galgasDelimitorsList") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static void getKeywordsForIdentifier_projectComponentScanner (const String & inIdentifier,
-                                                              bool & ioFound,
-                                                              GenericUniqueArray <String> & ioList) {
-  if (inIdentifier == "projectComponentScanner:attributeKeyWordList") {
-    ioFound = true ;
-    ioList.appendObject ("version") ;
-    ioList.appendObject ("macCodeSign") ;
-    ioList.appendObject ("macSwiftApp") ;
-    ioList.appendObject ("productName") ;
-    ioList.appendObject ("lexical-style") ;
-    ioList.appendObject ("makefile-unix") ;
-    ioList.appendObject ("libpmCustomPath") ;
-    ioList.appendObject ("makefile-macosx") ;
-    ioList.appendObject ("u32-build-option") ;
-    ioList.appendObject ("bool-build-option") ;
-    ioList.appendObject ("codeblocks-linux32") ;
-    ioList.appendObject ("codeblocks-linux64") ;
-    ioList.appendObject ("codeblocks-windows") ;
-    ioList.appendObject ("string-build-option") ;
-    ioList.appendObject ("macAppBundleBaseName") ;
-    ioList.appendObject ("makefile-win32-on-macosx") ;
-    ioList.appendObject ("makefile-x86linux32-on-macosx") ;
-    ioList.appendObject ("makefile-x86linux64-on-macosx") ;
-    ioList.appendObject ("makefile-arm64-linux-on-macosx") ;
-    ioList.sortArrayUsingCompareMethod() ;
+  result.appendString ("\n") ;
+  GGS_uint index_3891_ (0) ;
+  if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_3891 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
+    while (enumerator_3891.hasCurrentObject ()) {
+      result.appendString ("//--------------------------------------------------------------------------------------------------\n//             Key words table '") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString ("'      \n//--------------------------------------------------------------------------------------------------\n\nstatic const int32_t ktable_size_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (enumerator_3891.current_mExplicitTokenListMap (HERE).getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 88)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 88)).stringValue ()) ;
+      result.appendString (" ;\n\nstatic const C_unicode_lexique_table_entry ktable_for_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" [ktable_size_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString ("] = {\n") ;
+      GGS_uint index_4560_ (0) ;
+      if (enumerator_3891.current_mTokenSortedList (HERE).isValid ()) {
+        UpEnumerator_sortedTokenArray enumerator_4560 (enumerator_3891.current_mTokenSortedList (HERE)) ;
+        while (enumerator_4560.hasCurrentObject ()) {
+          result.appendString ("  C_unicode_lexique_table_entry (kUnicodeString_") ;
+          result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+          result.appendString ("_") ;
+          result.appendString (enumerator_4560.current_entry (HERE).readProperty_mName ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 91)).stringValue ()) ;
+          result.appendString (", Lexique_") ;
+          result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+          result.appendString ("::kToken_") ;
+          result.appendString (enumerator_4560.current_entry (HERE).readProperty_mTerminalName ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 91)).stringValue ()) ;
+          result.appendString (")") ;
+          enumerator_4560.gotoNextObject () ;
+          if (enumerator_4560.hasCurrentObject ()) {
+            result.appendString (",\n") ;
+          }
+          index_4560_.increment () ;
+        }
+      }
+      result.appendString ("\n} ;\n\nint32_t Lexique_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("::search_into_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" (const String & inSearchedString) {\n  return searchInList (inSearchedString, ktable_for_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (", ktable_size_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (") ;\n}\n\n") ;
+      enumerator_3891.gotoNextObject () ;
+      index_3891_.increment () ;
+    }
   }
-  if (inIdentifier == "projectComponentScanner:galgasDelimitorsList") {
-    ioFound = true ;
-    ioList.appendObject (".") ;
-    ioList.appendObject (":") ;
-    ioList.appendObject ("->") ;
-    ioList.sortArrayUsingCompareMethod() ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                          getCurrentTokenString                                                \n//--------------------------------------------------------------------------------------------------\n\nString Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::getCurrentTokenString (const cToken * inTokenPtr) const {\n  const cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" * ptr = (const cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" *) inTokenPtr ;\n  String s ;\n  if (ptr == nullptr) {\n    s.appendCString (\"$$\") ;\n  }else{\n    switch (ptr->mTokenCode) {\n    case kToken_:\n      s.appendCString (\"$$\") ;\n      break ;\n") ;
+  GGS_uint index_5825_ (0) ;
+  if (in_TERMINAL_5F_LIST.isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_5825 (in_TERMINAL_5F_LIST) ;
+    while (enumerator_5825.hasCurrentObject ()) {
+      result.appendString ("    case kToken_") ;
+      result.appendString (enumerator_5825.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 115)).stringValue ()) ;
+      result.appendString (":\n      s.appendChar (utf32 ('$')) ;\n      s.appendCString (") ;
+      result.appendString (enumerator_5825.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 117)).stringValue ()) ;
+      result.appendString (") ;\n      s.appendChar (utf32 ('$')) ;\n") ;
+      GGS_uint index_6150_ (0) ;
+      if (enumerator_5825.current_entry (HERE).readProperty_mSentAttributeList ().isValid ()) {
+        UpEnumerator__5B_lexicalSentValue_5D_ enumerator_6150 (enumerator_5825.current_entry (HERE).readProperty_mSentAttributeList ()) ;
+        while (enumerator_6150.hasCurrentObject ()) {
+          result.appendString ("      s.appendChar (utf32 (' ')) ;\n      s.") ;
+          result.appendString (extensionGetter_appendMethodName (enumerator_6150.current_entry (HERE).readProperty_mLexicalType (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 121)).stringValue ()) ;
+          result.appendString (" (ptr->mLexicalAttribute_") ;
+          result.appendString (enumerator_6150.current_entry (HERE).readProperty_mLexicalAttributeName ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 121)).stringValue ()) ;
+          result.appendString (extensionGetter_appendArgumentOfMethod (enumerator_6150.current_entry (HERE).readProperty_mLexicalType (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 121)).stringValue ()) ;
+          result.appendString (") ;\n") ;
+          enumerator_6150.gotoNextObject () ;
+          index_6150_.increment () ;
+        }
+      }
+      result.appendString ("      break ;\n") ;
+      enumerator_5825.gotoNextObject () ;
+      index_5825_.increment () ;
+    }
   }
+  result.appendString ("    default:\n      break ;\n    }\n  }\n  return s ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters                                                 \n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_6991_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
+    UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_6991 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
+    const bool nonEmpty_enumerator_6991 = enumerator_6991.hasCurrentObject () ;
+    if (nonEmpty_enumerator_6991) {
+      result.appendString ("static const TemplateDelimiter ") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_kTemplateDefinitionArray [") ;
+      result.appendString (in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 137)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 137)).stringValue ()) ;
+      result.appendString ("] = {\n") ;
+    }
+    while (enumerator_6991.hasCurrentObject ()) {
+      result.appendString ("  TemplateDelimiter (kUnicodeString_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_6991.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 138)).stringValue ()) ;
+      result.appendString (", ") ;
+      result.appendString (enumerator_6991.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 138)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 138)).stringValue ()) ;
+      result.appendString (", ") ;
+      const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_6991.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 139)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      switch (test_3) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("{}, 0,") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        result.appendString ("kUnicodeString_") ;
+        result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_6991.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 142)).stringValue ()) ;
+        result.appendString (", ") ;
+        result.appendString (enumerator_6991.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 142)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 142)).stringValue ()) ;
+        result.appendString (",") ;
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      result.appendString (" nullptr, ") ;
+      result.appendString (enumerator_6991.current_entry (HERE).readProperty_mPreservesStartDelimiter ().operator_not (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 145)).getter_cString (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 145)).stringValue ()) ;
+      result.appendString (")") ;
+      enumerator_6991.gotoNextObject () ;
+      if (enumerator_6991.hasCurrentObject ()) {
+        result.appendString (",\n") ;
+      }
+      index_6991_.increment () ;
+    }
+    if (nonEmpty_enumerator_6991) {
+      result.appendString ("\n} ;\n") ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements                                               \n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_8003_ (0) ;
+  if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
+    UpEnumerator__5B_templateReplacementAST_5D_ enumerator_8003 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+    const bool nonEmpty_enumerator_8003 = enumerator_8003.hasCurrentObject () ;
+    if (nonEmpty_enumerator_8003) {
+      result.appendString ("static const TemplateDelimiter ") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_kTemplateReplacementArray [") ;
+      result.appendString (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 156)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 156)).stringValue ()) ;
+      result.appendString ("] = {\n") ;
+    }
+    while (enumerator_8003.hasCurrentObject ()) {
+      result.appendString ("  TemplateDelimiter (kUnicodeString_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_8003.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 158)).stringValue ()) ;
+      result.appendString (", ") ;
+      result.appendString (enumerator_8003.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 158)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 158)).stringValue ()) ;
+      result.appendString (", kUnicodeString_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_8003.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 159)).stringValue ()) ;
+      result.appendString (", ") ;
+      result.appendString (enumerator_8003.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 159)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 159)).stringValue ()) ;
+      result.appendString (", ") ;
+      const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_8003.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 160)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      switch (test_4) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("nullptr") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        result.appendString ("scanner_routine_") ;
+        result.appendString (enumerator_8003.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().stringValue ()) ;
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      result.appendString (", true)") ;
+      enumerator_8003.gotoNextObject () ;
+      if (enumerator_8003.hasCurrentObject ()) {
+        result.appendString (",\n") ;
+      }
+      index_8003_.increment () ;
+    }
+    if (nonEmpty_enumerator_8003) {
+      result.appendString ("\n} ;\n") ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark                                 \n//--------------------------------------------------------------------------------------------------\n\n") ;
+  const GalgasBool test_5 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 174)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_5) {
+  case GalgasBool::boolTrue : {
+    GGS_uint index_9079_ (0) ;
+    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+      UpEnumerator__5B_terminalAST_5D_ enumerator_9079 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+      const bool nonEmpty_enumerator_9079 = enumerator_9079.hasCurrentObject () ;
+      if (nonEmpty_enumerator_9079) {
+        result.appendString ("static const bool ") ;
+        result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+        result.appendString ("_kEndOfScriptInTemplateArray [") ;
+        result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 176)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 176)).stringValue ()) ;
+        result.appendString ("] = {\n") ;
+      }
+      while (enumerator_9079.hasCurrentObject ()) {
+        result.appendString ("  ") ;
+        result.appendString (enumerator_9079.current_entry (HERE).readProperty_isEndOfTemplateMark ().getter_cString (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 177)).stringValue ()) ;
+        result.appendString (" /* ") ;
+        result.appendString (enumerator_9079.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().stringValue ()) ;
+        result.appendString (" */") ;
+        enumerator_9079.gotoNextObject () ;
+        if (enumerator_9079.hasCurrentObject ()) {
+          result.appendString (",\n") ;
+        }
+        index_9079_.increment () ;
+      }
+      if (nonEmpty_enumerator_9079) {
+        result.appendString ("\n} ;\n") ;
+      }
+    }
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//               INTERNAL PARSE LEXICAL TOKEN                                         \n//--------------------------------------------------------------------------------------------------\n\nvoid Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::internalParseLexicalToken (cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & token) {\n") ;
+  const GalgasBool test_6 = in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE.boolEnum () ;
+  switch (test_6) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("  bool loop = true ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  GGS_uint index_9734_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_9734 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_9734.hasCurrentObject ()) {
+      result.appendString ("  token.mLexicalAttribute_") ;
+      result.appendString (enumerator_9734.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 193)).stringValue ()) ;
+      result.appendString (extensionGetter_initialization (enumerator_9734.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 193)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_9734.gotoNextObject () ;
+      index_9734_.increment () ;
+    }
+  }
+  result.appendString ("  mTokenStartLocation = mCurrentLocation ;\n  try{\n") ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
+    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
+  }
+  GGS_uint index_9955_ (0) ;
+  if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
+    UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_9955 (in_LEXICAL_5F_RULE_5F_LIST) ;
+    while (enumerator_9955.hasCurrentObject ()) {
+      result.appendString (callExtensionGetter_generateLexicalRuleCode ((const cPtr_abstractLexicalRuleAST *) enumerator_9955.current_entry (HERE).ptr (), in_LEXIQUE_5F_IDENTIFIER, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 200)).stringValue ()) ;
+      enumerator_9955.gotoNextObject () ;
+      index_9955_.increment () ;
+    }
+  }
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
+    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
+  }
+  result.appendString ("if (testForInputUTF32Char (utf32 ('\\0'))) { // End of source text \? \n      token.mTokenCode = kToken_ ; // Empty string code\n    }else{ // Unknown input character\n      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n      token.mTokenCode = -1 ; // No token\n      advance () ; // ... go throught unknown character\n    }\n  }catch (const C_lexicalErrorException &) {\n    token.mTokenCode = -1 ; // No token\n    advance () ; // ... go throught unknown character\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n//               P A R S E    L E X I C A L    T O K E N                                         \n//--------------------------------------------------------------------------------------------------\n\nbool Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::parseLexicalToken (void) {\n  cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" token ;\n  token.mTokenCode = -1 ;\n  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\\0')) {\n") ;
+  const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 225)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_7) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("    if ((mMatchedTemplateDelimiterIndex >= 0)\n     && (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)\n     && (mCurrentChar.u32 () != '\\0')) {\n      const bool foundEndDelimitor = testForInputUTF32String (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,\n                                                               true) ;\n      if (foundEndDelimitor) {\n        mMatchedTemplateDelimiterIndex = -1 ;\n      }\n    }\n    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar.u32 () != '\\0')) {\n      int32_t replacementIndex = 0 ;\n      while (replacementIndex >= 0) {\n        replacementIndex = findTemplateDelimiterIndex (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateReplacementArray, ") ;
+    result.appendString (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 238)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 238)).stringValue ()) ;
+    result.appendString (") ;\n        if (replacementIndex >= 0) {\n          if (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {\n            token.mTemplateStringBeforeToken.appendString (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateReplacementArray [replacementIndex].mEndString) ;\n          }else{\n            String s ;\n            while (notTestForInputUTF32String (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateReplacementArray [replacementIndex].mEndString,\n                                                kEndOfSourceLexicalErrorMessage\n                                               COMMA_HERE)) {\n              s.appendChar (previousChar ()) ;\n            }\n            ") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;\n          }\n        }\n      }\n      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kTemplateDefinitionArray, ") ;
+    result.appendString (in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 253)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 253)).stringValue ()) ;
+    result.appendString (") ;\n      if (mMatchedTemplateDelimiterIndex < 0) {\n        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;\n        advance () ;\n      }\n    }\n    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar.u32 () != '\\0')) {\n      internalParseLexicalToken (token) ;\n    }\n    if ((token.mTokenCode > 0) && ") ;
+    result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString ("_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {\n      mMatchedTemplateDelimiterIndex = -1 ;\n    }\n  ") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("    internalParseLexicalToken (token) ;") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n  }\n  if (mCurrentChar.u32 () == '\\0') {\n    token.mTokenCode = 0 ;\n    enterToken (token) ;\n  }\n  return token.mTokenCode > 0 ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                         E N T E R    T O K E N                                                \n//--------------------------------------------------------------------------------------------------\n\nvoid Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::enterToken (cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" & ioToken) {\n  cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" * ptr = nullptr ;\n  macroMyNew (ptr, cTokenFor_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" ()) ;\n  ptr->mTokenCode = ioToken.mTokenCode ;\n  ptr->mStartLocation = mTokenStartLocation ;\n  ptr->mEndLocation = mTokenEndLocation ;\n  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;\n  ioToken.mTemplateStringBeforeToken = \"\" ;\n") ;
+  GGS_uint index_14349_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_14349 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_14349.hasCurrentObject ()) {
+      result.appendString ("  ptr->mLexicalAttribute_") ;
+      result.appendString (enumerator_14349.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 290)).stringValue ()) ;
+      result.appendString (" = ioToken.mLexicalAttribute_") ;
+      result.appendString (enumerator_14349.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 290)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_14349.gotoNextObject () ;
+      index_14349_.increment () ;
+    }
+  }
+  result.appendString ("  enterTokenFromPointer (ptr) ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//               A T T R I B U T E   A C C E S S                                                 \n") ;
+  GGS_uint index_14779_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_14779 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_14779.hasCurrentObject ()) {
+      result.appendString ("//--------------------------------------------------------------------------------------------------\n\n") ;
+      result.appendString (extensionGetter_cppTypeName (enumerator_14779.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 300)).stringValue ()) ;
+      result.appendString (" Lexique_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("::attributeValue_") ;
+      result.appendString (enumerator_14779.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 300)).stringValue ()) ;
+      result.appendString (" (void) const {\n  cTokenFor_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" * ptr = (cTokenFor_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" *) currentTokenPtr (HERE) ;\n  return ptr->mLexicalAttribute_") ;
+      result.appendString (enumerator_14779.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 302)).stringValue ()) ;
+      result.appendString (" ;\n}\n\n") ;
+      enumerator_14779.gotoNextObject () ;
+      index_14779_.increment () ;
+    }
+  }
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//         A S S I G N    F R O M    A T T R I B U T E                                           \n") ;
+  GGS_uint index_15484_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_15484 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_15484.hasCurrentObject ()) {
+      result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_l") ;
+      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_15484.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 310)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 310)).stringValue ()) ;
+      result.appendString (" Lexique_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("::synthetizedAttribute_") ;
+      result.appendString (enumerator_15484.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 310)).stringValue ()) ;
+      result.appendString (" (void) const {\n  cTokenFor_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" * ptr = (cTokenFor_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" *) currentTokenPtr (HERE) ;\n  macroValidSharedObject (ptr, cTokenFor_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (") ;\n  GGS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n  GGS_") ;
+      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_15484.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 314)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 314)).stringValue ()) ;
+      result.appendString (" value (ptr->mLexicalAttribute_") ;
+      result.appendString (enumerator_15484.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 314)).stringValue ()) ;
+      result.appendString (") ;\n  GGS_l") ;
+      result.appendString (extensionGetter_lexicalTypeBaseName (enumerator_15484.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 315)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 315)).stringValue ()) ;
+      result.appendString (" result (value, currentLocation) ;\n  return result ;\n}\n\n") ;
+      enumerator_15484.gotoNextObject () ;
+      index_15484_.increment () ;
+    }
+  }
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//                         I N T R O S P E C T I O N                                             \n//--------------------------------------------------------------------------------------------------\n\n GGS__5B_string_5D_ Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::symbols (LOCATION_ARGS) {\n  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n") ;
+  GGS_uint index_16883_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_16883 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_16883.hasCurrentObject ()) {
+      result.appendString ("  result.plusPlusAssignOperation (GGS_string (") ;
+      result.appendString (enumerator_16883.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 326)).stringValue ()) ;
+      result.appendString (") COMMA_HERE) ;\n") ;
+      enumerator_16883.gotoNextObject () ;
+      index_16883_.increment () ;
+    }
+  }
+  result.appendString ("  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordLists_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (GenericUniqueArray <String> & ") ;
+  const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_8) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("/* ioList */") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("ioList") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (") {\n") ;
+  GGS_uint index_17410_ (0) ;
+  if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_17410 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
+    while (enumerator_17410.hasCurrentObject ()) {
+      result.appendString ("  ioList.appendObject (") ;
+      result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 338)).add_operation (enumerator_17410.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 338)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 338)).stringValue ()) ;
+      result.appendString (") ;\n") ;
+      enumerator_17410.gotoNextObject () ;
+      index_17410_.increment () ;
+    }
+  }
+  result.appendString ("}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordsForIdentifier_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (") ;
+  columnMarker = result.currentColumn () ;
+  result.appendString ("const String & ") ;
+  const GalgasBool test_9 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_9) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("/* inIdentifier */") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("inIdentifier") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (",\n     ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("bool & ") ;
+  const GalgasBool test_10 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 345)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_10) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("/* ioFound */") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("ioFound") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (",\n     ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result.appendString ("GenericUniqueArray <String> & ") ;
+  const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 346)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_11) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("/* ioList */") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("ioList") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (") {\n") ;
+  GGS_uint index_18123_ (0) ;
+  if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_18123 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
+    while (enumerator_18123.hasCurrentObject ()) {
+      result.appendString ("  if (inIdentifier == ") ;
+      result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).add_operation (enumerator_18123.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).stringValue ()) ;
+      result.appendString (") {\n    ioFound = true ;\n") ;
+      GGS_uint index_18298_ (0) ;
+      if (enumerator_18123.current_mTokenSortedList (HERE).isValid ()) {
+        UpEnumerator_sortedTokenArray enumerator_18298 (enumerator_18123.current_mTokenSortedList (HERE)) ;
+        while (enumerator_18298.hasCurrentObject ()) {
+          result.appendString ("    ioList.appendObject (") ;
+          result.appendString (enumerator_18298.current_entry (HERE).readProperty_mName ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 353)).stringValue ()) ;
+          result.appendString (") ;\n") ;
+          enumerator_18298.gotoNextObject () ;
+          index_18298_.increment () ;
+        }
+      }
+      result.appendString ("    ioList.sortArrayUsingCompareMethod() ;\n  }\n") ;
+      enumerator_18123.gotoNextObject () ;
+      index_18123_.increment () ;
+    }
+  }
+  result.appendString ("}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic LexiqueIntrospection lexiqueIntrospection_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("\n__attribute__ ((used))\n__attribute__ ((unused)) (getKeywordLists_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (", getKeywordsForIdentifier_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (") ;\n\n//--------------------------------------------------------------------------------------------------\n//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           \n//--------------------------------------------------------------------------------------------------\n\nuint32_t Lexique_") ;
+  result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§\n  static const uint32_t kTerminalSymbolStyles [") ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).stringValue ()) ;
+  result.appendString ("] = {0") ;
+  GGS_uint index_19311_ (0) ;
+  if (in_TERMINAL_5F_LIST.isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_19311 (in_TERMINAL_5F_LIST) ;
+    while (enumerator_19311.hasCurrentObject ()) {
+      result.appendString (",\n    ") ;
+      result.appendString (enumerator_19311.current_entry (HERE).readProperty_mStyleIndex ().getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 373)).stringValue ()) ;
+      result.appendString (" /* ") ;
+      result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.stringValue ()) ;
+      result.appendString ("_1_") ;
+      result.appendString (enumerator_19311.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 373)).stringValue ()) ;
+      result.appendString (" */") ;
+      enumerator_19311.gotoNextObject () ;
+      index_19311_.increment () ;
+    }
+  }
+  result.appendString ("\n  } ;\n  return (inTerminalIndex >= 0) \? kTerminalSymbolStyles [inTerminalIndex] : 0 ;\n}\n\n") ;
+  return GGS_string (result) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-
-static LexiqueIntrospection lexiqueIntrospection_projectComponentScanner
-__attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_projectComponentScanner, getKeywordsForIdentifier_projectComponentScanner) ;
-
-//--------------------------------------------------------------------------------------------------
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//
+//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
+//
 //--------------------------------------------------------------------------------------------------
 
-uint32_t Lexique_projectComponentScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§
-  static const uint32_t kTerminalSymbolStyles [29] = {0,
-    0 /* projectComponentScanner_1_identifier */,
-    6 /* projectComponentScanner_1_literalInt */,
-    8 /* projectComponentScanner_1__27_char_27_ */,
-    12 /* projectComponentScanner_1_comment */,
-    12 /* projectComponentScanner_1_commentMark */,
-    9 /* projectComponentScanner_1__22_string_22_ */,
-    11 /* projectComponentScanner_1__23_macAppBundleBaseName */,
-    11 /* projectComponentScanner_1__23_codeblocks_2D_linux_33__32_ */,
-    11 /* projectComponentScanner_1__23_codeblocks_2D_linux_36__34_ */,
-    11 /* projectComponentScanner_1__23_codeblocks_2D_windows */,
-    11 /* projectComponentScanner_1__23_libpmCustomPath */,
-    11 /* projectComponentScanner_1__23_productName */,
-    11 /* projectComponentScanner_1__23_version */,
-    11 /* projectComponentScanner_1__23_macCodeSign */,
-    11 /* projectComponentScanner_1__23_makefile_2D_macosx */,
-    11 /* projectComponentScanner_1__23_makefile_2D_unix */,
-    11 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx */,
-    11 /* projectComponentScanner_1__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx */,
-    11 /* projectComponentScanner_1__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx */,
-    11 /* projectComponentScanner_1__23_makefile_2D_win_33__32__2D_on_2D_macosx */,
-    11 /* projectComponentScanner_1__23_macSwiftApp */,
-    11 /* projectComponentScanner_1__23_lexical_2D_style */,
-    11 /* projectComponentScanner_1__23_bool_2D_build_2D_option */,
-    11 /* projectComponentScanner_1__23_string_2D_build_2D_option */,
-    11 /* projectComponentScanner_1__23_u_33__32__2D_build_2D_option */,
-    2 /* projectComponentScanner_1__2E_ */,
-    2 /* projectComponentScanner_1__3A_ */,
-    2 /* projectComponentScanner_1__2D__3E_ */
-  } ;
-  return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (Compiler * inCompiler,
+                                                                                         const GGS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
+                                                                                         const GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                         const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                         const GGS_lexicalMessageMap & /* in_LEXICAL_5F_MESSAGE_5F_MAP */,
+                                                                                         const GGS__5B_terminalAST_5D_ & /* in_TERMINAL_5F_LIST */,
+                                                                                         const GGS_stringset & /* in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES */,
+                                                                                         const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                         const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                         const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                         const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
+                                                                                         const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                         const GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   LEXIQUE ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nimport SwiftUI\n\n//--------------------------------------------------------------------------------------------------\n\nclass ScannerFor_") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString (" : AbstractScanner {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  private let mDebug = false\n  private let mVerboseDebug = false\n  private var mTokenArray = [LexicalToken] ()\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  final override func popUpDefinitionList () -> [[UInt16]] {\n    return gPopUpData_") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  final override func lineComment () -> String\? {\n    return gLineComment_") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func selectionRange (forProposedRange inProposedSelectionRange : NSRange,\n                                granularity inGranularity : NSSelectionGranularity,\n                                nsTextViewComputedRange inTextViewComputedRange : NSRange) -> NSRange {\n    var result = inTextViewComputedRange\n    switch inGranularity {\n    case .selectByCharacter :\n      ()\n    case .selectByWord :\n      var found = false\n      var idx = 0\n      while idx < self.mTokenArray.count, !found {\n        let token = self.mTokenArray [idx]\n        idx += 1\n        let tokenRange = token.range\n        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)\n           && (tokenRange.location <= inProposedSelectionRange.location)\n        if found, self.atomicSelectionFor (token: token.tokenCode) {\n          result = tokenRange\n        }\n      }\n    case .selectByParagraph :\n      var found = false\n      var idx = 0\n      while idx < self.mTokenArray.count, !found {\n        let token = self.mTokenArray [idx]\n        idx += 1\n        let tokenRange = token.range\n        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)\n           && (tokenRange.location <= inProposedSelectionRange.location)\n        if found {\n          result = tokenRange\n        }\n      }\n    @unknown default:\n      ()\n    }\n    return result\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Scanner\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n") ;
+  GGS_uint index_2839_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_2839 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
+    while (enumerator_2839.hasCurrentObject ()) {
+      result.appendString ("  private var mLexicalAttribute_") ;
+      result.appendString (enumerator_2839.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" : ") ;
+      result.appendString (extensionGetter_swiftTypeName (enumerator_2839.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 76)).stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (extensionGetter_swiftInitializationCode (enumerator_2839.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 76)).stringValue ()) ;
+      result.appendString ("\n") ;
+      enumerator_2839.gotoNextObject () ;
+      index_2839_.increment () ;
+    }
+  }
+  result.appendString ("\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func lexiqueIdentifier () -> String {\n    return ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexiqueIdentifier ()\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func isTemplateLexique () -> Bool {\n    return ") ;
+  result.appendString (GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).objectCompare (GGS_uint (uint32_t (0U)))).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).stringValue ()) ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func terminalVocabularyCount () -> Int {\n    return ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 94)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 94)).stringValue ()) ;
+  result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {\n    let kTerminalSymbolStyles : [UInt8] = [\n      0, // Default\n") ;
+  GGS_uint index_3900_idx (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_3900 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_3900.hasCurrentObject ()) {
+      result.appendString ("      ") ;
+      result.appendString (enumerator_3900.current_entry (HERE).readProperty_mStyleIndex ().getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
+      result.appendString (", // ") ;
+      result.appendString (index_3900_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
+      result.appendString (" : ") ;
+      result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+      result.appendString ("_1_") ;
+      result.appendString (enumerator_3900.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
+      result.appendString ("\n") ;
+      enumerator_3900.gotoNextObject () ;
+      index_3900_idx.increment () ;
+    }
+  }
+  result.appendString ("      ") ;
+  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
+  result.appendString (", // ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
+  result.appendString (" : ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_ERROR\n      ") ;
+  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
+  result.appendString ("  // ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
+  result.appendString (" : ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalSymbolStyles [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {\n    let kTerminalAtomicSelection : [Bool] = [\n      false, // Default\n") ;
+  GGS_uint index_4706_idx (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_4706 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_4706.hasCurrentObject ()) {
+      result.appendString ("      ") ;
+      result.appendString (enumerator_4706.current_entry (HERE).readProperty_atomicSelection ().getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
+      result.appendString (", // ") ;
+      result.appendString (index_4706_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
+      result.appendString (" : ") ;
+      result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+      result.appendString ("_1_") ;
+      result.appendString (enumerator_4706.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
+      result.appendString ("\n") ;
+      enumerator_4706.gotoNextObject () ;
+      index_4706_idx.increment () ;
+    }
+  }
+  result.appendString ("      false, // ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).stringValue ()) ;
+  result.appendString (" : ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_ERROR\n      false  // ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).stringValue ()) ;
+  result.appendString (" : ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalAtomicSelection [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func indexingTitles () -> [String] {\n") ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_INDEXING_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 131)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("    return [\n") ;
+    GGS_uint index_5400_ (0) ;
+    if (in_INDEXING_5F_LIST.isValid ()) {
+      UpEnumerator__5B_indexingAST_5D_ enumerator_5400 (in_INDEXING_5F_LIST) ;
+      while (enumerator_5400.hasCurrentObject ()) {
+        result.appendString ("      ") ;
+        result.appendString (enumerator_5400.current_entry (HERE).readProperty_mIndexComment ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 135)).stringValue ()) ;
+        result.appendString (" /* ") ;
+        result.appendString (enumerator_5400.current_entry (HERE).readProperty_mIndexName ().readProperty_string ().stringValue ()) ;
+        result.appendString (" */") ;
+        enumerator_5400.gotoNextObject () ;
+        if (enumerator_5400.hasCurrentObject ()) {
+          result.appendString (",\n") ;
+        }
+        index_5400_.increment () ;
+      }
+    }
+    result.appendString ("\n    ]\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("\n    return []\n") ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  final var mLexicalStyleSnapShot = LexicalStyleSnapShot ()\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {\n    if self.mDebug { Swift.print (\"performLexicalColoringAfterUserDefaultChange\") }\n    let start = Date ()\n    if stylesDidChange (&self.mLexicalStyleSnapShot) {\n      let nsString = inTextStorage.string as NSString\n      let fullRange = NSRange (location: 0, length: nsString.length)\n    //---- Apply default attributes\n      let tsDelegate : (any NSTextStorageDelegate)\? = inTextStorage.delegate\n      inTextStorage.delegate = nil // NSTextStorageDelegate\n      inTextStorage.beginEditing ()\n      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont\n      inTextStorage.font = defaultFont\n      let ps = NSMutableParagraphStyle ()\n      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0\n      let defaultAttributes : [NSAttributedString.Key : Any] = [\n        .font: defaultFont,\n        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),\n        .paragraphStyle : ps\n      ]\n      inTextStorage.setAttributes (defaultAttributes, range: fullRange)\n    //--- Apply styles\n      for token in self.mTokenArray {\n        let idx = Int (self.styleIndexFor (token: token.tokenCode))\n        if idx > 0, idx < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),\n           let attributes = self.mLexicalStyleSnapShot.mAttributeArray [idx - 1] {\n          inTextStorage.addAttributes (attributes, range: token.range)\n        }\n      }\n      inTextStorage.endEditing ()\n      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate\n    }\n    if self.mDebug { Swift.print (\"  done: \\(Int (Date ().timeIntervalSince (start) * 1000.0)) ms\") }\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,\n                                                   editedRange inEditedRange : NSRange,\n                                                   changeInLength inDelta : Int,\n                                                   popMenuItems ioPopupMenuItems : inout [IdentifiableAttributedString]) {\n    if self.mDebug { Swift.print (\"performLexicalAnalysisAndColoring \\(inEditedRange), delta \\(inDelta)\") }\n    let nsString = inTextStorage.string as NSString\n  //---\n    var savedTokenCount = 0\n    var found = false\n    while savedTokenCount < self.mTokenArray.count, !found {\n      if self.mTokenArray [savedTokenCount].range.upperBound < inEditedRange.location {\n        savedTokenCount += 1\n      }else{\n        found = true\n      }\n    }\n    if self.mDebug { Swift.print (\"  savedTokenCount \\(savedTokenCount), currently \\(self.mTokenArray.count) tokens\") }\n  //--- Eliminate tokens beyond end of source string\n    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {\n      if self.mVerboseDebug { Swift.print (\"Remove last token \\(lastToken.range), beyond end\") }\n      _ = self.mTokenArray.removeLast ()\n    }\n    if self.mDebug { Swift.print (\"  Eliminate token beyond end: \\(self.mTokenArray.count) tokens\") }\n  //--- Translater les tokens suivants\n    var i = savedTokenCount + 1\n    while i < self.mTokenArray.count {\n      let token = self.mTokenArray [i]\n      let newToken = LexicalToken (\n        range: NSRange (location: token.range.location + inDelta, length: token.range.length),\n        tokenCode: token.tokenCode,\n        templateDelimiterIndex: token.templateDelimiterIndex\n      )\n      self.mTokenArray [i] = newToken\n      i += 1\n    }\n  //--- Eliminate tokens beyond end of source string\n    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {\n      if self.mVerboseDebug { Swift.print (\"Remove last token \\(lastToken.range), beyond end\") }\n      _ = self.mTokenArray.removeLast ()\n    }\n    if self.mDebug { Swift.print (\"  Eliminate token beyond end, after delta correction: \\(self.mTokenArray.count) tokens\") }\n  //--- Perform lexical analysis\n    let start = Date ()\n    if savedTokenCount == 0 {\n      self.resetScannerLocation (withString: nsString)\n    }else{\n      self.resetScanner (\n        withString: nsString,\n        location: self.mTokenArray [savedTokenCount-1].range.upperBound,\n        templateDelimiterIndex : self.mTokenArray [savedTokenCount-1].templateDelimiterIndex\n      )\n    }\n    if self.mDebug { Swift.print (\"  Scanning start location: \\(self.currentLocation)\") }\n    var stop = false\n    var insertionIndex = savedTokenCount\n    while self.currentLocation < nsString.length, !stop {\n      let token : LexicalToken = self.parseLexicalTokenForLexicalColoring ()\n      if token.tokenCode > 0 { // For eliminating separators\n        if self.mVerboseDebug { Swift.print (\"  -> new token \\(token.range) '\\(nsString.substring (with: token.range))'\") }\n      //--- Eliminate previous tokens before new token location\n        if insertionIndex < self.mTokenArray.count,\n              self.mTokenArray [insertionIndex] == token,\n              token.range.location > inEditedRange.upperBound {\n          if self.mVerboseDebug { Swift.print (\"    stop at \\(insertionIndex)\") }\n          stop = true\n        }else{\n          while insertionIndex < self.mTokenArray.count,\n                self.mTokenArray [insertionIndex].range.lowerBound <= token.range.location {\n            if self.mVerboseDebug { Swift.print (\"    remove token \\(self.mTokenArray [insertionIndex].range) at \\(insertionIndex)\") }\n            self.mTokenArray.remove (at: insertionIndex)\n          }\n          if insertionIndex == self.mTokenArray.count {\n            if self.mVerboseDebug { Swift.print (\"    append token \\(token.range) at \\(insertionIndex)\") }\n            self.mTokenArray.append (token)\n            insertionIndex += 1\n          }else{\n            if self.mVerboseDebug {  Swift.print (\"    insert token \\(token.range) at \\(insertionIndex)\") }\n            self.mTokenArray.insert (token, at: insertionIndex)\n            insertionIndex += 1\n          }\n        }\n      }\n    }\n    if self.mDebug { Swift.print (\"  Lexical analysis time: \\(Int (Date ().timeIntervalSince (start) * 1000.0)) ms\") }\n  //---- Apply default attributes\n    let modificationStart = min (inEditedRange.location, (savedTokenCount == 0)\n      \? 0\n      : self.mTokenArray [savedTokenCount - 1].range.upperBound)\n    let modificationEnd = max (inEditedRange.upperBound, (insertionIndex == self.mTokenArray.count)\n       \? nsString.length\n       : self.mTokenArray [insertionIndex].range.upperBound\n    )\n    if self.mDebug { Swift.print (\"  Attributes will change from char index \\(modificationStart) to \\(modificationEnd)\") }\n    let start2 = Date ()\n    if modificationStart < modificationEnd {\n      let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)\n      let tsDelegate : (any NSTextStorageDelegate)\? = inTextStorage.delegate\n      inTextStorage.delegate = nil // NSTextStorageDelegate\n      inTextStorage.beginEditing ()\n      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont\n      let ps = NSMutableParagraphStyle ()\n      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0\n      let defaultAttributes : [NSAttributedString.Key : Any] = [\n        .font: defaultFont,\n        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),\n        .paragraphStyle : ps\n      ]\n      if self.mVerboseDebug { Swift.print (\"Apply default attributes \\(modifiedRange)\") }\n      inTextStorage.setAttributes (defaultAttributes, range: modifiedRange)\n    //--- Apply styles\n      var idx = 0\n      stop = false\n      while idx < self.mTokenArray.count, !stop { // Apply token styles\n        let token = self.mTokenArray [idx]\n        idx += 1\n        if token.range.lowerBound >= modifiedRange.upperBound {\n          stop = true\n        }else if token.range.upperBound > modifiedRange.lowerBound {\n          let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))\n          if styleIndex > 0, styleIndex < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),\n             let attributes = self.mLexicalStyleSnapShot.mAttributeArray [styleIndex - 1] {\n            inTextStorage.addAttributes (attributes, range: token.range)\n          }\n        }\n      }\n      inTextStorage.endEditing ()\n      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate\n    }\n    if self.mDebug { Swift.print (\"  Adding attributes: \\(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms\") }\n    ioPopupMenuItems = self.updateEntryPopUpButtons (self.mTokenArray)\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func parseLexicalTokenForLexicalColoring () -> LexicalToken {\n    var loop = true\n    var scanningOk = true\n") ;
+  GGS_uint index_14870_ (0) ;
+  if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
+    UpEnumerator_lexicalAttributeMap enumerator_14870 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
+    while (enumerator_14870.hasCurrentObject ()) {
+      result.appendString ("    self.mLexicalAttribute_") ;
+      result.appendString (enumerator_14870.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString (" = ") ;
+      result.appendString (extensionGetter_swiftInitializationCode (enumerator_14870.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 329)).stringValue ()) ;
+      result.appendString ("\n") ;
+      enumerator_14870.gotoNextObject () ;
+      index_14870_.increment () ;
+    }
+  }
+  result.appendString ("    var tokenCode : UInt16 = 0\n    let startLocation = self.currentLocation\n") ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
+    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
+  }
+  GGS_uint index_15107_ (0) ;
+  if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
+    UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_15107 (in_LEXICAL_5F_RULE_5F_LIST) ;
+    while (enumerator_15107.hasCurrentObject ()) {
+      result.appendString (callExtensionGetter_generateSwiftCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_15107.current_entry (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 336)).stringValue ()) ;
+      enumerator_15107.gotoNextObject () ;
+      index_15107_.increment () ;
+    }
+  }
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
+    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
+  }
+  result.appendString ("if self.testForInputChar (0) { // End of source text \?\n      tokenCode = ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_1_ ; // Empty string code\n    }else{ // Unknown input character\n      tokenCode = ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_TEMPLATE\n      self.advance ()\n    }\n    return LexicalToken (\n      range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n      tokenCode: tokenCode,\n      templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n    )\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n") ;
+  GGS_uint index_15940_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ().isValid ()) {
+    UpEnumerator_lexicalExplicitTokenListMapMap enumerator_15940 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ()) ;
+    while (enumerator_15940.hasCurrentObject ()) {
+      const GalgasBool test_1 = enumerator_15940.current_mShouldBeGenerated (HERE).boolEnum () ;
+      switch (test_1) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("//--------------------------------------------------------------------------------------------------\n//             Key words table '") ;
+        result.appendString (enumerator_15940.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString ("'      \n//--------------------------------------------------------------------------------------------------\n\nfileprivate let kDictionary_") ;
+        result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 361)).stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_15940.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (" : [String : UInt16] = [\n") ;
+        GGS_uint index_16476_ (0) ;
+        if (enumerator_15940.current_mTokenSortedList (HERE).isValid ()) {
+          UpEnumerator_sortedTokenArray enumerator_16476 (enumerator_15940.current_mTokenSortedList (HERE)) ;
+          while (enumerator_16476.hasCurrentObject ()) {
+            result.appendString ("  ") ;
+            result.appendString (enumerator_16476.current_entry (HERE).readProperty_mName ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 363)).stringValue ()) ;
+            result.appendString (" : ") ;
+            result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+            result.appendString ("_1_") ;
+            result.appendString (enumerator_16476.current_entry (HERE).readProperty_mTerminalName ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 363)).stringValue ()) ;
+            enumerator_16476.gotoNextObject () ;
+            if (enumerator_16476.hasCurrentObject ()) {
+              result.appendString (",\n") ;
+            }
+            index_16476_.increment () ;
+          }
+        }
+        result.appendString ("\n]\n\nfileprivate func search_into_") ;
+        result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 367)).stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_15940.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (" (_ inSearchedString : String) -> UInt16 {\n  return kDictionary_") ;
+        result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 368)).stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_15940.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+        result.appendString (" [inSearchedString, default: ") ;
+        result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+        result.appendString ("_1_]\n}\n\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_15940.gotoNextObject () ;
+      index_15940_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexiqueIdentifier () -> String {\n  return \"") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("\"\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_styleNameFor (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n    \"Default Style\", // 0\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 401)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_2) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("fileprivate let kTemplateReplacementArray_") ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 402)).stringValue ()) ;
+    result.appendString (" : [String] = [\n") ;
+    GGS_uint index_18211_ (0) ;
+    if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
+      UpEnumerator__5B_templateReplacementAST_5D_ enumerator_18211 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+      while (enumerator_18211.hasCurrentObject ()) {
+        result.appendString ("  ") ;
+        result.appendString (enumerator_18211.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 405)).stringValue ()) ;
+        enumerator_18211.gotoNextObject () ;
+        if (enumerator_18211.hasCurrentObject ()) {
+          result.appendString (",\n") ;
+        }
+        index_18211_.increment () ;
+      }
+    }
+    result.appendString ("\n]\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 415)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  switch (test_3) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("fileprivate let kTemplateDefinitionArray_") ;
+    result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 416)).stringValue ()) ;
+    result.appendString (" : [SWIFT_TemplateDelimiter] = [\n") ;
+    GGS_uint index_18822_ (0) ;
+    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
+      UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_18822 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
+      while (enumerator_18822.hasCurrentObject ()) {
+        result.appendString ("  SWIFT_TemplateDelimiter (startString: ") ;
+        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
+        result.appendString (", endString: ") ;
+        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
+        result.appendString (", discardStartString: ") ;
+        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mPreservesStartDelimiter ().operator_not (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).stringValue ()) ;
+        result.appendString (")") ;
+        enumerator_18822.gotoNextObject () ;
+        if (enumerator_18822.hasCurrentObject ()) {
+          result.appendString (",\n") ;
+        }
+        index_18822_.increment () ;
+      }
+    }
+    result.appendString ("\n]\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N\n//--------------------------------------------------------------------------------------------------\n\nlet ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_1_ : UInt16 = 0\n") ;
+  GGS_uint index_19506_idx (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_19506 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_19506.hasCurrentObject ()) {
+      result.appendString ("let ") ;
+      result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+      result.appendString ("_1_") ;
+      result.appendString (enumerator_19506.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
+      result.appendString (" : UInt16 = ") ;
+      result.appendString (index_19506_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
+      result.appendString ("\n") ;
+      enumerator_19506.gotoNextObject () ;
+      index_19506_idx.increment () ;
+    }
+  }
+  result.appendString ("let ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_ERROR : UInt16 = ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).stringValue ()) ;
+  result.appendString ("\nlet ") ;
+  result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
+  result.appendString ("_2_TEMPLATE : UInt16 = ") ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).stringValue ()) ;
+  result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  return GGS_string (result) ;
 }
 

@@ -2,6 +2,7 @@
 #include "F_mainForLIBPM.h"
 #include "analyzeCommandLineOptions.h"
 #include "execution-mode.h"
+#include "filewrapper-utilities.h"
 #include "LexiqueIntrospection.h"
 #include "F_DisplayException.h"
 % for (mValue) in IMPORTED_COMPONENT_LIST do

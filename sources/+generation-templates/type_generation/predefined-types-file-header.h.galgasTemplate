@@ -25,6 +25,7 @@
 #include "Compiler.h"
 #include "FileManager.h"
 #include "execution-mode.h"
+#include "filewrapper-utilities.h"
 
 //--------------------------------------------------------------------------------------------------
 // Lexical styles

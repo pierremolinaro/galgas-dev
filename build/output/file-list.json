@@ -15,7 +15,6 @@
          "../sources/tool-sources"
   ],
   "SOURCES" : [
-    "all-declarations-23.cpp",
     "all-declarations-22.cpp",
     "all-declarations-21.cpp",
     "all-declarations-20.cpp",
@@ -123,6 +122,7 @@
     "SHA256.cpp",
     "galgas-random.cpp",
     "execution-mode.cpp",
+    "filewrapper-utilities.cpp",
     "Compiler.cpp",
     "Lexique.cpp",
     "Lexique-parsing.cpp",

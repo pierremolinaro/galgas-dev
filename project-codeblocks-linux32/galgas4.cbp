@@ -73,7 +73,6 @@
   </Compiler>
   <Linker>
 </Linker>
-  <Unit filename="../build/output/all-declarations-23.cpp" />
   <Unit filename="../build/output/all-declarations-22.cpp" />
   <Unit filename="../build/output/all-declarations-21.cpp" />
   <Unit filename="../build/output/all-declarations-20.cpp" />
@@ -194,6 +193,7 @@
    <Unit filename="../libpm/utilities/SHA256.cpp" />
    <Unit filename="../libpm/utilities/galgas-random.cpp" />
    <Unit filename="../libpm/galgas/execution-mode.cpp" />
+   <Unit filename="../libpm/galgas/filewrapper-utilities.cpp" />
    <Unit filename="../libpm/galgas/Compiler.cpp" />
    <Unit filename="../libpm/galgas/Lexique.cpp" />
    <Unit filename="../libpm/galgas/Lexique-parsing.cpp" />

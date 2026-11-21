@@ -8793,16 +8793,89 @@ class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: [formalInputParameterAST] array
+//
+//Filewrapper 'lexiqueGenerationTemplates'
+//
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator__5B_formalInputParameterAST_5D_ final {
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compiler * inCompiler,
+                                                                          const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                          const class GGS__5B_lexicalListDeclarationAST_5D_ & in_DELIMITOR_5F_LIST_5F_LIST,
+                                                                          const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                          const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                          const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (Compiler * inCompiler,
+                                                                                            const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                            const class GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
+                                                                                            const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                            const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                            const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
+                                                                                            const class GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                            const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                            const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                            const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                            const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                            const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                            const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (Compiler * inCompiler,
+                                                                                         const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                         const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                         const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                         const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                         const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
+                                                                                         const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                         const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                         const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                         const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                         const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
+                                                                                         const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                         const class GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [lexicalFunctionFormalArgumentAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ final {
 //--- Constructor
-  public: DownEnumerator__5B_formalInputParameterAST_5D_ (const class GGS__5B_formalInputParameterAST_5D_ & inOperand) ;
+  public: DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand) ;
 
 //--- No copy
-  private: DownEnumerator__5B_formalInputParameterAST_5D_ (const DownEnumerator__5B_formalInputParameterAST_5D_ &) = delete ;
-  private: DownEnumerator__5B_formalInputParameterAST_5D_ & operator = (const DownEnumerator__5B_formalInputParameterAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ & operator = (const DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ &) = delete ;
 
 //---
   public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
@@ -8812,23 +8885,23 @@ class DownEnumerator__5B_formalInputParameterAST_5D_ final {
   public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
-  public: class GGS_formalInputParameterAST current (LOCATION_ARGS) const ;
-  public: class GGS_formalInputParameterAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+  public: class GGS_lexicalFunctionFormalArgumentAST current (LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
 //---- Properties
-  private: const GenericArray <GGS_formalInputParameterAST> mSharedArray ;
+  private: const GenericArray <GGS_lexicalFunctionFormalArgumentAST> mSharedArray ;
   private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator__5B_formalInputParameterAST_5D_ final {
+class UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ final {
 //--- Constructor
-  public: UpEnumerator__5B_formalInputParameterAST_5D_ (const class GGS__5B_formalInputParameterAST_5D_ & inOperand) ;
+  public: UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand) ;
 
 //--- No copy
-  private: UpEnumerator__5B_formalInputParameterAST_5D_ (const UpEnumerator__5B_formalInputParameterAST_5D_ &) = delete ;
-  private: UpEnumerator__5B_formalInputParameterAST_5D_ & operator = (const UpEnumerator__5B_formalInputParameterAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ & operator = (const UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ &) = delete ;
 
 //---
   public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
@@ -8841,27 +8914,27 @@ class UpEnumerator__5B_formalInputParameterAST_5D_ final {
   public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
-  public: class GGS_formalInputParameterAST current (LOCATION_ARGS) const ;
-  public: class GGS_formalInputParameterAST current_entry (LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST current (LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST current_entry (LOCATION_ARGS) const ;
 
 //---- Properties
-  private: const GenericArray <GGS_formalInputParameterAST> mSharedArray ;
+  private: const GenericArray <GGS_lexicalFunctionFormalArgumentAST> mSharedArray ;
   private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
+class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
-  private: GenericArray <GGS_formalInputParameterAST> mSharedArray ;
+  private: GenericArray <GGS_lexicalFunctionFormalArgumentAST> mSharedArray ;
   private: bool mIsValid ;
 
 //--------------------------------- Default constructor
-  public: GGS__5B_formalInputParameterAST_5D_ (void) ;
+  public: GGS__5B_lexicalFunctionFormalArgumentAST_5D_ (void) ;
 
 //--------------------------------- Handle copy
-  public: GGS__5B_formalInputParameterAST_5D_ (const GGS__5B_formalInputParameterAST_5D_ & inSource) ;
-  public: GGS__5B_formalInputParameterAST_5D_ & operator = (const GGS__5B_formalInputParameterAST_5D_ & inSource) ;
+  public: GGS__5B_lexicalFunctionFormalArgumentAST_5D_ (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inSource) ;
+  public: GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & operator = (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inSource) ;
 
 //--------------------------------- Direct access
   public: void removeAll (void) ;
@@ -8878,33 +8951,33 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS__5B_formalInputParameterAST_5D_ init (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_lexicalFunctionFormalArgumentAST_5D_ init (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_formalInputParameterAST_5D_ inOperand,
+  public: void plusAssignOperation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_formalInputParameterAST & inOperand
+  public: void plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS__5B_formalInputParameterAST_5D_ add_operation (const GGS__5B_formalInputParameterAST_5D_ & inOperand,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_lexicalFunctionFormalArgumentAST_5D_ add_operation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_formalInputParameterAST constinArgument0,
+  public: void setter_append (class GGS_lexicalFunctionFormalArgumentAST constinArgument0,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insert (class GGS_formalInputParameterAST constinArgument0,
+  public: void setter_insert (class GGS_lexicalFunctionFormalArgumentAST constinArgument0,
                               class GGS_uint constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_remove (class GGS_formalInputParameterAST & outArgument0,
+  public: void setter_remove (class GGS_lexicalFunctionFormalArgumentAST & outArgument0,
                               class GGS_uint constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
@@ -8912,15 +8985,15 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeFirst (class GGS_formalInputParameterAST & outArgument0,
+  public: void setter_removeFirst (class GGS_lexicalFunctionFormalArgumentAST & outArgument0,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeLast (class GGS_formalInputParameterAST & outArgument0,
+  public: void setter_removeLast (class GGS_lexicalFunctionFormalArgumentAST & outArgument0,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_formalInputParameterAST constinArgument0,
+  public: void setter_set (class GGS_lexicalFunctionFormalArgumentAST constinArgument0,
                            class GGS_uint constinArgument1,
                            Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
@@ -8932,26 +9005,26 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_formalInputParameterAST getter_first (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST getter_first (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_formalInputParameterAST getter_last (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST getter_last (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalInputParameterAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalInputParameterAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                    const class GGS_uint & constinOperand1,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                             const class GGS_uint & constinOperand1,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_formalInputParameterAST readSubcript__3F_ (const class GGS_uint & in0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -8961,44 +9034,212 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator__5B_formalInputParameterAST_5D_ ;
-  friend class DownEnumerator__5B_formalInputParameterAST_5D_ ;
+  friend class UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ ;
+  friend class DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalInputParameterAST_5D_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalFunctionFormalArgumentAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @formalInputParameterAST struct
+// Phase 1: [lexicalRoutineFormalArgumentAST] array
 //--------------------------------------------------------------------------------------------------
 
-class GGS_formalInputParameterAST final : public AC_GALGAS_root {
+class DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ & operator = (const DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_lexicalRoutineFormalArgumentAST current (LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineFormalArgumentAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_lexicalRoutineFormalArgumentAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ & operator = (const UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_lexicalRoutineFormalArgumentAST current (LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineFormalArgumentAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_lexicalRoutineFormalArgumentAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_lexicalRoutineFormalArgumentAST> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_lexicalRoutineFormalArgumentAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_lexicalRoutineFormalArgumentAST_5D_ (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inSource) ;
+  public: GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & operator = (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_lexicalRoutineFormalArgumentAST_5D_ init (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_lexicalRoutineFormalArgumentAST_5D_ add_operation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_lexicalRoutineFormalArgumentAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_lexicalRoutineFormalArgumentAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_lexicalRoutineFormalArgumentAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_lexicalRoutineFormalArgumentAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_lexicalRoutineFormalArgumentAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_lexicalRoutineFormalArgumentAST constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalRoutineFormalArgumentAST getter_first (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalRoutineFormalArgumentAST getter_last (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                            const class GGS_uint & constinOperand1,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalRoutineFormalArgumentAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ ;
+  friend class DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalRoutineFormalArgumentAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedToken struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedToken final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_lstring mProperty_mFormalSelector ;
-  public: inline GGS_lstring readProperty_mFormalSelector (void) const {
-    return mProperty_mFormalSelector ;
+  public: GGS_uint mProperty_mLength ;
+  public: inline GGS_uint readProperty_mLength (void) const {
+    return mProperty_mLength ;
   }
 
-  public: GGS_lstring mProperty_mFormalArgumentTypeName ;
-  public: inline GGS_lstring readProperty_mFormalArgumentTypeName (void) const {
-    return mProperty_mFormalArgumentTypeName ;
+  public: GGS_string mProperty_mName ;
+  public: inline GGS_string readProperty_mName (void) const {
+    return mProperty_mName ;
   }
 
-  public: GGS_lstring mProperty_mFormalArgumentName ;
-  public: inline GGS_lstring readProperty_mFormalArgumentName (void) const {
-    return mProperty_mFormalArgumentName ;
-  }
-
-  public: GGS_bool mProperty_mIsUnused ;
-  public: inline GGS_bool readProperty_mIsUnused (void) const {
-    return mProperty_mIsUnused ;
-  }
-
-  public: GGS_bool mProperty_mIsConstant ;
-  public: inline GGS_bool readProperty_mIsConstant (void) const {
-    return mProperty_mIsConstant ;
+  public: GGS_string mProperty_mTerminalName ;
+  public: inline GGS_string readProperty_mTerminalName (void) const {
+    return mProperty_mTerminalName ;
   }
 
 //--------------------------------- Accessors
@@ -9006,53 +9247,1857 @@ class GGS_formalInputParameterAST final : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_formalInputParameterAST (void) ;
+  public: GGS_sortedToken (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMFormalSelector (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalSelector = inValue ;
+  public: inline void setter_setMLength (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLength = inValue ;
   }
 
-  public: inline void setter_setMFormalArgumentTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentTypeName = inValue ;
+  public: inline void setter_setMName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mName = inValue ;
   }
 
-  public: inline void setter_setMFormalArgumentName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentName = inValue ;
-  }
-
-  public: inline void setter_setMIsUnused (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsUnused = inValue ;
-  }
-
-  public: inline void setter_setMIsConstant (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mIsConstant = inValue ;
+  public: inline void setter_setMTerminalName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTerminalName = inValue ;
   }
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_formalInputParameterAST (const GGS_lstring & in_mFormalSelector,
-                                       const GGS_lstring & in_mFormalArgumentTypeName,
-                                       const GGS_lstring & in_mFormalArgumentName,
-                                       const GGS_bool & in_mIsUnused,
-                                       const GGS_bool & in_mIsConstant) ;
+  public: GGS_sortedToken (const GGS_uint & in_mLength,
+                           const GGS_string & in_mName,
+                           const GGS_string & in_mTerminalName) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_formalInputParameterAST (const GGS_formalInputParameterAST & inSource) ;
+  public: GGS_sortedToken (const GGS_sortedToken & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_formalInputParameterAST & operator = (const GGS_formalInputParameterAST & inSource) ;
+  public: GGS_sortedToken & operator = (const GGS_sortedToken & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_formalInputParameterAST init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                       const class GGS_lstring & inOperand1,
-                                                                       const class GGS_lstring & inOperand2,
-                                                                       const class GGS_bool & inOperand3,
-                                                                       const class GGS_bool & inOperand4,
+  public: static GGS_sortedToken init_21__21__21_ (const class GGS_uint & inOperand0,
+                                                   const class GGS_string & inOperand1,
+                                                   const class GGS_string & inOperand2,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedToken ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: sortedTokenArray array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_sortedTokenArray final {
+//--- Constructor
+  public: DownEnumerator_sortedTokenArray (const class GGS_sortedTokenArray & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_sortedTokenArray (const DownEnumerator_sortedTokenArray &) = delete ;
+  private: DownEnumerator_sortedTokenArray & operator = (const DownEnumerator_sortedTokenArray &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedToken current (LOCATION_ARGS) const ;
+  public: class GGS_sortedToken current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_sortedToken> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_sortedTokenArray final {
+//--- Constructor
+  public: UpEnumerator_sortedTokenArray (const class GGS_sortedTokenArray & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_sortedTokenArray (const UpEnumerator_sortedTokenArray &) = delete ;
+  private: UpEnumerator_sortedTokenArray & operator = (const UpEnumerator_sortedTokenArray &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedToken current (LOCATION_ARGS) const ;
+  public: class GGS_sortedToken current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_sortedToken> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedTokenArray final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_sortedToken> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_sortedTokenArray (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_sortedTokenArray (const GGS_sortedTokenArray & inSource) ;
+  public: GGS_sortedTokenArray & operator = (const GGS_sortedTokenArray & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedTokenArray init (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_sortedTokenArray inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_sortedToken & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_sortedTokenArray add_operation (const GGS_sortedTokenArray & inOperand,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_sortedToken constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_sortedToken & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_sortedToken & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_sortedToken & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedToken getter_first (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedToken getter_last (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray getter_sublist (const class GGS_uint & constinOperand0,
+                                                     const class GGS_uint & constinOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_sortedToken readSubcript__3F_ (const class GGS_uint & in0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_sortedTokenArray ;
+  friend class DownEnumerator_sortedTokenArray ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedTokenArray ;
+
+//--------------------------------------------------------------------------------------------------
+//   enum lexicalArgumentModeAST
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalArgumentModeAST final : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_lexicalArgumentModeAST (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_lexicalInputMode,
+    enum_lexicalInputOutputMode
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputMode (LOCATION_ARGS) ;
+
+  public: static class GGS_lexicalArgumentModeAST class_func_lexicalInputOutputMode (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalArgumentModeAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_isLexicalInputMode (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isLexicalInputOutputMode (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension func '@abstractLexicalRuleAST generateLexicalRuleCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string callExtensionGetter_generateLexicalRuleCode (const class cPtr_abstractLexicalRuleAST * inObject,
+                                                              const class GGS_string constin_inScannerClassName,
+                                                              const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension func '@abstractLexicalRuleAST generateSwiftCocoaCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string callExtensionGetter_generateSwiftCocoaCode (const class cPtr_abstractLexicalRuleAST * inObject,
+                                                             const class GGS_string constin_inScannerClassName,
+                                                             const class GGS_lexiqueAnalysisContext constin__5F_inLexiqueAnalysisContext,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cppConstInFormalArgument (const class GGS_lexicalArgumentModeAST & inObject,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cppReferenceInFormalArgument (const class GGS_lexicalArgumentModeAST & inObject,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum appendArgumentOfMethod' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_appendArgumentOfMethod (const class GGS_lexicalTypeEnum & inObject,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum appendMethodName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_appendMethodName (const class GGS_lexicalTypeEnum & inObject,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum cppTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_cppTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum initialization' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_initialization (const class GGS_lexicalTypeEnum & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum lexicalTypeBaseName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_lexicalTypeBaseName (const class GGS_lexicalTypeEnum & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum swiftInitializationCode' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftInitializationCode (const class GGS_lexicalTypeEnum & inObject,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@lexicalTypeEnum swiftTypeName' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_swiftTypeName (const class GGS_lexicalTypeEnum & inObject,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalAttributeMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalAttributeMap final {
+
+  public: DownEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalAttributeMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalAttributeMap (const DownEnumerator_lexicalAttributeMap &) = delete ;
+  private: DownEnumerator_lexicalAttributeMap & operator = (const DownEnumerator_lexicalAttributeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalAttributeMap final {
+  public: UpEnumerator_lexicalAttributeMap (const class GGS_lexicalAttributeMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalAttributeMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalTypeEnum current_mLexicalType (LOCATION_ARGS) const ;
+  public: class GGS_lexicalAttributeMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalAttributeMap (const UpEnumerator_lexicalAttributeMap &) = delete ;
+  private: UpEnumerator_lexicalAttributeMap & operator = (const UpEnumerator_lexicalAttributeMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalAttributeMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalAttributeMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalAttributeMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalAttributeMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalAttributeMap (const GGS_lexicalAttributeMap & inSource) ;
+  public: GGS_lexicalAttributeMap & operator = (const GGS_lexicalAttributeMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalAttributeMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalAttributeMap init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalAttributeMap class_func_mapWithMapToOverride (const class GGS_lexicalAttributeMap & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_lexicalTypeEnum constinArgument1,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMLexicalTypeForKey (class GGS_lexicalTypeEnum constinArgument0,
+                                             class GGS_string constinArgument1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_lexicalTypeEnum & outArgument1,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum getter_mLexicalTypeForKey (const class GGS_string & constinOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalAttributeMap getter_overriddenMap (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalAttributeMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalAttributeMap ;
+  friend class DownEnumerator_lexicalAttributeMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalExplicitTokenListMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalExplicitTokenListMap final {
+
+  public: DownEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalExplicitTokenListMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalExplicitTokenListMap (const DownEnumerator_lexicalExplicitTokenListMap &) = delete ;
+  private: DownEnumerator_lexicalExplicitTokenListMap & operator = (const DownEnumerator_lexicalExplicitTokenListMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalExplicitTokenListMap final {
+  public: UpEnumerator_lexicalExplicitTokenListMap (const class GGS_lexicalExplicitTokenListMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalExplicitTokenListMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mTerminal (LOCATION_ARGS) const ;
+  public: class GGS_bool current_atomicSelection (LOCATION_ARGS) const ;
+  public: class GGS_bool current_isEndOfTemplateMark (LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalExplicitTokenListMap (const UpEnumerator_lexicalExplicitTokenListMap &) = delete ;
+  private: UpEnumerator_lexicalExplicitTokenListMap & operator = (const UpEnumerator_lexicalExplicitTokenListMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalExplicitTokenListMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalExplicitTokenListMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalExplicitTokenListMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalExplicitTokenListMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalExplicitTokenListMap (const GGS_lexicalExplicitTokenListMap & inSource) ;
+  public: GGS_lexicalExplicitTokenListMap & operator = (const GGS_lexicalExplicitTokenListMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalExplicitTokenListMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalExplicitTokenListMap init (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalExplicitTokenListMap class_func_mapWithMapToOverride (const class GGS_lexicalExplicitTokenListMap & inOperand0
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_lstring constinArgument1,
+                                 class GGS_bool constinArgument2,
+                                 class GGS_bool constinArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setAtomicSelectionForKey (class GGS_bool constinArgument0,
+                                                class GGS_string constinArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setIsEndOfTemplateMarkForKey (class GGS_bool constinArgument0,
+                                                    class GGS_string constinArgument1,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMTerminalForKey (class GGS_lstring constinArgument0,
+                                          class GGS_string constinArgument1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_lstring & outArgument1,
+                                 class GGS_bool & outArgument2,
+                                 class GGS_bool & outArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_atomicSelectionForKey (const class GGS_string & constinOperand0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isEndOfTemplateMarkForKey (const class GGS_string & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_mTerminalForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMap getter_overriddenMap (Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalExplicitTokenListMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalExplicitTokenListMap ;
+  friend class DownEnumerator_lexicalExplicitTokenListMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalExplicitTokenListMapMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalExplicitTokenListMapMap final {
+
+  public: DownEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalExplicitTokenListMapMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray current_mTokenSortedList (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalExplicitTokenListMapMap (const DownEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+  private: DownEnumerator_lexicalExplicitTokenListMapMap & operator = (const DownEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalExplicitTokenListMapMap final {
+  public: UpEnumerator_lexicalExplicitTokenListMapMap (const class GGS_lexicalExplicitTokenListMapMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalExplicitTokenListMapMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMap current_mExplicitTokenListMap (LOCATION_ARGS) const ;
+  public: class GGS_sortedTokenArray current_mTokenSortedList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mShouldBeGenerated (LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalExplicitTokenListMapMap (const UpEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+  private: UpEnumerator_lexicalExplicitTokenListMapMap & operator = (const UpEnumerator_lexicalExplicitTokenListMapMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalExplicitTokenListMapMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalExplicitTokenListMapMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalExplicitTokenListMapMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalExplicitTokenListMapMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalExplicitTokenListMapMap (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
+  public: GGS_lexicalExplicitTokenListMapMap & operator = (const GGS_lexicalExplicitTokenListMapMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalExplicitTokenListMapMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalExplicitTokenListMapMap init (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalExplicitTokenListMapMap class_func_mapWithMapToOverride (const class GGS_lexicalExplicitTokenListMapMap & inOperand0
+                                                                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_lexicalExplicitTokenListMap constinArgument1,
+                                 class GGS_sortedTokenArray constinArgument2,
+                                 class GGS_bool constinArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMExplicitTokenListMapForKey (class GGS_lexicalExplicitTokenListMap constinArgument0,
+                                                      class GGS_string constinArgument1,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMShouldBeGeneratedForKey (class GGS_bool constinArgument0,
+                                                   class GGS_string constinArgument1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMTokenSortedListForKey (class GGS_sortedTokenArray constinArgument0,
+                                                 class GGS_string constinArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_lexicalExplicitTokenListMap & outArgument1,
+                                 class GGS_sortedTokenArray & outArgument2,
+                                 class GGS_bool & outArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMap getter_mExplicitTokenListMapForKey (const class GGS_string & constinOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_mShouldBeGeneratedForKey (const class GGS_string & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedTokenArray getter_mTokenSortedListForKey (const class GGS_string & constinOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalExplicitTokenListMapMap getter_overriddenMap (Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalExplicitTokenListMapMap ;
+  friend class DownEnumerator_lexicalExplicitTokenListMapMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalFunctionMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalFunctionMap final {
+
+  public: DownEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalFunctionMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ current_mLexicalTypeList (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
+
+  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalFunctionMap (const DownEnumerator_lexicalFunctionMap &) = delete ;
+  private: DownEnumerator_lexicalFunctionMap & operator = (const DownEnumerator_lexicalFunctionMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalFunctionMap final {
+  public: UpEnumerator_lexicalFunctionMap (const class GGS_lexicalFunctionMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalFunctionMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ current_mLexicalTypeList (LOCATION_ARGS) const ;
+  public: class GGS_lexicalTypeEnum current_mReturnedLexicalType (LOCATION_ARGS) const ;
+  public: class GGS_string current_mReplacementFunctionName (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalFunctionMap (const UpEnumerator_lexicalFunctionMap &) = delete ;
+  private: UpEnumerator_lexicalFunctionMap & operator = (const UpEnumerator_lexicalFunctionMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalFunctionMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalFunctionMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalFunctionMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalFunctionMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalFunctionMap (const GGS_lexicalFunctionMap & inSource) ;
+  public: GGS_lexicalFunctionMap & operator = (const GGS_lexicalFunctionMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalFunctionMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalFunctionMap init (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalFunctionMap class_func_mapWithMapToOverride (const class GGS_lexicalFunctionMap & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ constinArgument1,
+                                 class GGS_lexicalTypeEnum constinArgument2,
+                                 class GGS_string constinArgument3,
+                                 class GGS_bool constinArgument4,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMIsExternForKey (class GGS_bool constinArgument0,
+                                          class GGS_string constinArgument1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMLexicalTypeListForKey (class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ constinArgument0,
+                                                 class GGS_string constinArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMReplacementFunctionNameForKey (class GGS_string constinArgument0,
+                                                         class GGS_string constinArgument1,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMReturnedLexicalTypeForKey (class GGS_lexicalTypeEnum constinArgument0,
+                                                     class GGS_string constinArgument1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & outArgument1,
+                                 class GGS_lexicalTypeEnum & outArgument2,
+                                 class GGS_string & outArgument3,
+                                 class GGS_bool & outArgument4,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_mIsExternForKey (const class GGS_string & constinOperand0,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ getter_mLexicalTypeListForKey (const class GGS_string & constinOperand0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_mReplacementFunctionNameForKey (const class GGS_string & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalTypeEnum getter_mReturnedLexicalTypeForKey (const class GGS_string & constinOperand0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalFunctionMap getter_overriddenMap (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalFunctionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalFunctionMap ;
+  friend class DownEnumerator_lexicalFunctionMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalMessageMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalMessageMap final {
+
+  public: DownEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalMessageMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalMessageMap (const DownEnumerator_lexicalMessageMap &) = delete ;
+  private: DownEnumerator_lexicalMessageMap & operator = (const DownEnumerator_lexicalMessageMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalMessageMap final {
+  public: UpEnumerator_lexicalMessageMap (const class GGS_lexicalMessageMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalMessageMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mLexicalMessage (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mMessageIsUsed (LOCATION_ARGS) const ;
+  public: class GGS_lexicalMessageMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalMessageMap (const UpEnumerator_lexicalMessageMap &) = delete ;
+  private: UpEnumerator_lexicalMessageMap & operator = (const UpEnumerator_lexicalMessageMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalMessageMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalMessageMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalMessageMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalMessageMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalMessageMap (const GGS_lexicalMessageMap & inSource) ;
+  public: GGS_lexicalMessageMap & operator = (const GGS_lexicalMessageMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalMessageMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalMessageMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalMessageMap class_func_mapWithMapToOverride (const class GGS_lexicalMessageMap & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS_lstring constinArgument1,
+                                 class GGS_bool constinArgument2,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_replaceKey (class GGS_lexicalMessageMap_2E_element constinArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMLexicalMessageForKey (class GGS_lstring constinArgument0,
+                                                class GGS_string constinArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMMessageIsUsedForKey (class GGS_bool constinArgument0,
+                                               class GGS_string constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS_lstring & outArgument1,
+                                 class GGS_bool & outArgument2,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_mLexicalMessageForKey (const class GGS_string & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_mMessageIsUsedForKey (const class GGS_string & constinOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalMessageMap getter_overriddenMap (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalMessageMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalMessageMap_2E_element readSubcript__3F_searchKey (const class GGS_lstring & in0,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalMessageMap ;
+  friend class DownEnumerator_lexicalMessageMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalRoutineMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalRoutineMap final {
+
+  public: DownEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inMap) ;
+
+  public: ~ DownEnumerator_lexicalRoutineMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ current_mErrorMessageList (LOCATION_ARGS) const ;
+
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalRoutineMap (const DownEnumerator_lexicalRoutineMap &) = delete ;
+  private: DownEnumerator_lexicalRoutineMap & operator = (const DownEnumerator_lexicalRoutineMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalRoutineMap final {
+  public: UpEnumerator_lexicalRoutineMap (const class GGS_lexicalRoutineMap & inMap)  ;
+
+  public: ~ UpEnumerator_lexicalRoutineMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ current_mErrorMessageList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalRoutineMap (const UpEnumerator_lexicalRoutineMap &) = delete ;
+  private: UpEnumerator_lexicalRoutineMap & operator = (const UpEnumerator_lexicalRoutineMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalRoutineMap final : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_lexicalRoutineMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_lexicalRoutineMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_lexicalRoutineMap (void) ;
+
+//--- Handle copy
+  public: GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) ;
+  public: GGS_lexicalRoutineMap & operator = (const GGS_lexicalRoutineMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_lexicalRoutineMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalRoutineMap init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalRoutineMap class_func_mapWithMapToOverride (const class GGS_lexicalRoutineMap & inOperand0
+                                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ constinArgument1,
+                                 class GGS__5B_string_5D_ constinArgument2,
+                                 class GGS_bool constinArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMErrorMessageListForKey (class GGS__5B_string_5D_ constinArgument0,
+                                                  class GGS_string constinArgument1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMIsExternForKey (class GGS_bool constinArgument0,
+                                          class GGS_string constinArgument1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMLexicalRoutineFormalArgumentListForKey (class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ constinArgument0,
+                                                                  class GGS_string constinArgument1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & outArgument1,
+                                 class GGS__5B_string_5D_ & outArgument2,
+                                 class GGS_bool & outArgument3,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_mErrorMessageListForKey (const class GGS_string & constinOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_mIsExternForKey (const class GGS_string & constinOperand0,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ getter_mLexicalRoutineFormalArgumentListForKey (const class GGS_string & constinOperand0,
+                                                                                                            Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalRoutineMap getter_overriddenMap (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_lexicalRoutineMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalRoutineMap ;
+  friend class DownEnumerator_lexicalRoutineMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalFunctionFormalArgumentAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalFunctionFormalArgumentAST final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lexicalTypeEnum mProperty_mLexicalType ;
+  public: inline GGS_lexicalTypeEnum readProperty_mLexicalType (void) const {
+    return mProperty_mLexicalType ;
+  }
+
+  public: GGS_string mProperty_mArgumentNameForComment ;
+  public: inline GGS_string readProperty_mArgumentNameForComment (void) const {
+    return mProperty_mArgumentNameForComment ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lexicalFunctionFormalArgumentAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMLexicalType (const GGS_lexicalTypeEnum & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalType = inValue ;
+  }
+
+  public: inline void setter_setMArgumentNameForComment (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mArgumentNameForComment = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lexicalFunctionFormalArgumentAST (const GGS_lexicalTypeEnum & in_mLexicalType,
+                                                const GGS_string & in_mArgumentNameForComment) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lexicalFunctionFormalArgumentAST (const GGS_lexicalFunctionFormalArgumentAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalFunctionFormalArgumentAST & operator = (const GGS_lexicalFunctionFormalArgumentAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalFunctionFormalArgumentAST init_21__21_ (const class GGS_lexicalTypeEnum & inOperand0,
+                                                                    const class GGS_string & inOperand1,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalRoutineFormalArgumentAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalRoutineFormalArgumentAST final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lexicalArgumentModeAST mProperty_mLexicalFormalArgumentMode ;
+  public: inline GGS_lexicalArgumentModeAST readProperty_mLexicalFormalArgumentMode (void) const {
+    return mProperty_mLexicalFormalArgumentMode ;
+  }
+
+  public: GGS_lexicalTypeEnum mProperty_mLexicalFormalArgumentType ;
+  public: inline GGS_lexicalTypeEnum readProperty_mLexicalFormalArgumentType (void) const {
+    return mProperty_mLexicalFormalArgumentType ;
+  }
+
+  public: GGS_string mProperty_mArgumentNameForComment ;
+  public: inline GGS_string readProperty_mArgumentNameForComment (void) const {
+    return mProperty_mArgumentNameForComment ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lexicalRoutineFormalArgumentAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMLexicalFormalArgumentMode (const GGS_lexicalArgumentModeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalFormalArgumentMode = inValue ;
+  }
+
+  public: inline void setter_setMLexicalFormalArgumentType (const GGS_lexicalTypeEnum & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalFormalArgumentType = inValue ;
+  }
+
+  public: inline void setter_setMArgumentNameForComment (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mArgumentNameForComment = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lexicalRoutineFormalArgumentAST (const GGS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
+                                               const GGS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
+                                               const GGS_string & in_mArgumentNameForComment) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lexicalRoutineFormalArgumentAST (const GGS_lexicalRoutineFormalArgumentAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalRoutineFormalArgumentAST & operator = (const GGS_lexicalRoutineFormalArgumentAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalRoutineFormalArgumentAST init_21__21__21_ (const class GGS_lexicalArgumentModeAST & inOperand0,
+                                                                       const class GGS_lexicalTypeEnum & inOperand1,
+                                                                       const class GGS_string & inOperand2,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -9079,544 +11124,181 @@ class GGS_formalInputParameterAST final : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @onceFunctionDeclarationAST reference class
+// Phase 1: @terminalMap map
 //--------------------------------------------------------------------------------------------------
 
-class GGS_onceFunctionDeclarationAST : public GGS_semanticDeclarationAST {
-//--------------------------------- Default constructor
-  public: GGS_onceFunctionDeclarationAST (void) ;
+#include "SharedGenericPtrWithValueSemantics.h"
 
-//--------------------------------- Constructor from pointer
-  public: GGS_onceFunctionDeclarationAST (const class cPtr_onceFunctionDeclarationAST * inSourcePtr) ;
+template <typename INFO> class GenericMapRoot ;
 
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mGlobalConstanteName (void) const ;
+//--------------------------------------------------------------------------------------------------
 
-  public: class GGS_lstring readProperty_mResultTypeName (void) const ;
+class DownEnumerator_terminalMap final {
 
-  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mFunctionInstructionList (void) const ;
+  public: DownEnumerator_terminalMap (const class GGS_terminalMap & inMap) ;
 
-  public: class GGS_location readProperty_mEndOfFunctionInstructionList (void) const ;
+  public: ~ DownEnumerator_terminalMap (void) = default ;
 
-  public: class GGS_bool readProperty_mIsPrivate (void) const ;
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
-  public: class GGS_bool readProperty_mIsUsefull (void) const ;
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 
-//-- Start of type generic part
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 
-//--------------------------------- Initializers
-  public: static GGS_onceFunctionDeclarationAST init_21_isPredefined_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                              const class GGS_lstring & inOperand1,
-                                                                                              const class GGS_lstring & inOperand2,
-                                                                                              const class GGS__5B_semanticInstructionAST_5D_ & inOperand3,
-                                                                                              const class GGS_location & inOperand4,
-                                                                                              const class GGS_bool & inOperand5,
-                                                                                              const class GGS_bool & inOperand6,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_onceFunctionDeclarationAST & inOperand) const ;
+  public: class GGS__5B_lexicalSentValue_5D_ current_mSentAttributeList (LOCATION_ARGS) const ;
 
-//--------------------------------- Setters
+  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
 
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
+  private: DownEnumerator_terminalMap (const DownEnumerator_terminalMap &) = delete ;
+  private: DownEnumerator_terminalMap & operator = (const DownEnumerator_terminalMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
+class UpEnumerator_terminalMap final {
+  public: UpEnumerator_terminalMap (const class GGS_terminalMap & inMap)  ;
+
+  public: ~ UpEnumerator_terminalMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalSentValue_5D_ current_mSentAttributeList (LOCATION_ARGS) const ;
+  public: class GGS_terminalMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_terminalMap (const UpEnumerator_terminalMap &) = delete ;
+  private: UpEnumerator_terminalMap & operator = (const UpEnumerator_terminalMap &) = delete ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @onceFunctionDeclarationAST class
-//--------------------------------------------------------------------------------------------------
 
-class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
+class GGS_terminalMap final : public AC_GALGAS_root {
 
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                        const class GGS_lstring & inOperand1,
-                                                                                        const class GGS_lstring & inOperand2,
-                                                                                        const class GGS__5B_semanticInstructionAST_5D_ & inOperand3,
-                                                                                        const class GGS_location & inOperand4,
-                                                                                        const class GGS_bool & inOperand5,
-                                                                                        const class GGS_bool & inOperand6,
-                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func keyRepresentation
-  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc enterDeclarationInGraph
-  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
-           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
-           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
-           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
-           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
-           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc enterDeclarationInSemanticContext
-  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
-           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
-           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
-           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
-           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticContext & arg__ioSemanticContext,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc semanticAnalysis
-  public: virtual void method_semanticAnalysis (class GGS__5B_lstring_5D_ & arg_ioUsefulnessRootEntities,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_string arg_inProductDirectory,
-           const class GGS_semanticContext arg__inSemanticContext,
-           class GGS_unifiedTypeMap & arg__ioTypeMap,
-           const class GGS_predefinedTypes arg__inPredefinedTypes,
-           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mGlobalConstanteName ;
-  public: GGS_lstring mProperty_mResultTypeName ;
-  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mFunctionInstructionList ;
-  public: GGS_location mProperty_mEndOfFunctionInstructionList ;
-  public: GGS_bool mProperty_mIsPrivate ;
-  public: GGS_bool mProperty_mIsUsefull ;
-
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_terminalMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
-  public: cPtr_onceFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: GGS_terminalMap (void) ;
 
-//--- Constructor
-  public: cPtr_onceFunctionDeclarationAST (const GGS_bool & in_isPredefined,
-                                           const GGS_lstring & in_mGlobalConstanteName,
-                                           const GGS_lstring & in_mResultTypeName,
-                                           const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
-                                           const GGS_location & in_mEndOfFunctionInstructionList,
-                                           const GGS_bool & in_mIsPrivate,
-                                           const GGS_bool & in_mIsUsefull,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+//--- Virtual destructor
+  public: virtual ~ GGS_terminalMap (void) ;
 
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+//--- Handle copy
+  public: GGS_terminalMap (const GGS_terminalMap & inSource) ;
+  public: GGS_terminalMap & operator = (const GGS_terminalMap & inSource) ;
 
-//--- Attribute accessors
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
 //--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
-} ;
 
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @onceFunctionDeclarationAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
+//--- performInsert
+  protected: void performInsert (const class GGS_terminalMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> sortedInfoArray (void) const ;
 
-class GGS_onceFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_onceFunctionDeclarationAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_onceFunctionDeclarationAST_2E_weak (const class GGS_onceFunctionDeclarationAST & inSource) ;
-
-  public: GGS_onceFunctionDeclarationAST_2E_weak & operator = (const class GGS_onceFunctionDeclarationAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_onceFunctionDeclarationAST_2E_weak init_nil (void) {
-    GGS_onceFunctionDeclarationAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_onceFunctionDeclarationAST bang_onceFunctionDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_onceFunctionDeclarationAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
+  public: static GGS_terminalMap init (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- GALGAS class functions
-  public: static class GGS_onceFunctionDeclarationAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_onceFunctionDeclarationAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//   enum xcodeProject
-//--------------------------------------------------------------------------------------------------
-
-class GGS_xcodeProject final : public AC_GALGAS_root {
-//--------------------------------- Default constructor
-  public: GGS_xcodeProject (void) ;
-
-//--------------------------------- Enumeration
-  public: enum class Enumeration {
-    invalid,
-    enum_none,
-    enum_swiftApp
-  } ;
-  
-//--------------------------------- Private properties
-  private: Enumeration mEnum ;
-
-//--------------------------------- Associated value extraction
-
-//--------------------------------- Accessors
-  public: inline bool isValid (void) const override {
-    return Enumeration::invalid != mEnum ;
-  }
-
-  public: inline void drop (void) override {
-    mEnum = Enumeration::invalid ;
-  }
-
-  public: inline Enumeration enumValue (void) const {
-    return mEnum ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_xcodeProject class_func_none (LOCATION_ARGS) ;
-
-  public: static class GGS_xcodeProject class_func_swiftApp (LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_xcodeProject & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_isNone (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isSwiftApp (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProject ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @sortedLexicalStyle struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_sortedLexicalStyle final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_string mProperty_name ;
-  public: inline GGS_string readProperty_name (void) const {
-    return mProperty_name ;
-  }
-
-  public: GGS_string mProperty_comment ;
-  public: inline GGS_string readProperty_comment (void) const {
-    return mProperty_comment ;
-  }
-
-  public: GGS_uint mProperty_index ;
-  public: inline GGS_uint readProperty_index (void) const {
-    return mProperty_index ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_sortedLexicalStyle (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_name = inValue ;
-  }
-
-  public: inline void setter_setComment (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_comment = inValue ;
-  }
-
-  public: inline void setter_setIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_index = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_sortedLexicalStyle (const GGS_string & in_name,
-                                  const GGS_string & in_comment,
-                                  const GGS_uint & in_index) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_sortedLexicalStyle (const GGS_sortedLexicalStyle & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_sortedLexicalStyle & operator = (const GGS_sortedLexicalStyle & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_sortedLexicalStyle init_21__21__21_ (const class GGS_string & inOperand0,
-                                                          const class GGS_string & inOperand1,
-                                                          const class GGS_uint & inOperand2,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyle ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: sortedLexicalStyleArray array
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_sortedLexicalStyleArray final {
-//--- Constructor
-  public: DownEnumerator_sortedLexicalStyleArray (const class GGS_sortedLexicalStyleArray & inOperand) ;
-
-//--- No copy
-  private: DownEnumerator_sortedLexicalStyleArray (const DownEnumerator_sortedLexicalStyleArray &) = delete ;
-  private: DownEnumerator_sortedLexicalStyleArray & operator = (const DownEnumerator_sortedLexicalStyleArray &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_sortedLexicalStyle current (LOCATION_ARGS) const ;
-  public: class GGS_sortedLexicalStyle current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
-
-//---- Properties
-  private: const GenericArray <GGS_sortedLexicalStyle> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_sortedLexicalStyleArray final {
-//--- Constructor
-  public: UpEnumerator_sortedLexicalStyleArray (const class GGS_sortedLexicalStyleArray & inOperand) ;
-
-//--- No copy
-  private: UpEnumerator_sortedLexicalStyleArray (const UpEnumerator_sortedLexicalStyleArray &) = delete ;
-  private: UpEnumerator_sortedLexicalStyleArray & operator = (const UpEnumerator_sortedLexicalStyleArray &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
-
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_sortedLexicalStyle current (LOCATION_ARGS) const ;
-  public: class GGS_sortedLexicalStyle current_entry (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const GenericArray <GGS_sortedLexicalStyle> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_sortedLexicalStyle> mSharedArray ;
-  private: bool mIsValid ;
-
-//--------------------------------- Default constructor
-  public: GGS_sortedLexicalStyleArray (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS_sortedLexicalStyleArray (const GGS_sortedLexicalStyleArray & inSource) ;
-  public: GGS_sortedLexicalStyleArray & operator = (const GGS_sortedLexicalStyleArray & inSource) ;
-
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
-
-//--------------------------------- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
-
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_sortedLexicalStyleArray init (Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS_sortedLexicalStyleArray inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_sortedLexicalStyle & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_sortedLexicalStyleArray add_operation (const GGS_sortedLexicalStyleArray & inOperand,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+  public: static class GGS_terminalMap class_func_mapWithMapToOverride (const class GGS_terminalMap & inOperand0
+                                                                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_sortedLexicalStyle constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_sortedLexicalStyle & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalSentValue_5D_ constinArgument1,
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeFirst (class GGS_sortedLexicalStyle & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeLast (class GGS_sortedLexicalStyle & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
+  public: void setter_setMSentAttributeListForKey (class GGS__5B_lexicalSentValue_5D_ constinArgument0,
+                                                   class GGS_string constinArgument1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_lexicalSentValue_5D_ & outArgument1,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyle getter_first (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyle getter_last (Compiler * inCompiler
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyleArray getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyleArray getter_sublist (const class GGS_uint & constinOperand0,
-                                                            const class GGS_uint & constinOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lexicalSentValue_5D_ getter_mSentAttributeListForKey (const class GGS_string & constinOperand0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_terminalMap getter_overriddenMap (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sortedLexicalStyle readSubcript__3F_ (const class GGS_uint & in0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: class GGS_terminalMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -9626,142 +11308,189 @@ class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_sortedLexicalStyleArray ;
-  friend class DownEnumerator_sortedLexicalStyleArray ;
+  friend class UpEnumerator_terminalMap ;
+  friend class DownEnumerator_terminalMap ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyleArray ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalMap ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//LEXIQUE projectComponentScanner
-//
+// Phase 1: @lexiqueAnalysisContext struct
 //--------------------------------------------------------------------------------------------------
 
-#include "Lexique.h"
+class GGS_lexiqueAnalysisContext final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_string mProperty_mLexiqueName ;
+  public: inline GGS_string readProperty_mLexiqueName (void) const {
+    return mProperty_mLexiqueName ;
+  }
 
-//--------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S
-//--------------------------------------------------------------------------------------------------
+  public: GGS_lexicalRoutineMap mProperty_mLexicalRoutineMessageMap ;
+  public: inline GGS_lexicalRoutineMap readProperty_mLexicalRoutineMessageMap (void) const {
+    return mProperty_mLexicalRoutineMessageMap ;
+  }
 
-//--------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S
-//--------------------------------------------------------------------------------------------------
+  public: GGS_lexicalFunctionMap mProperty_mLexicalFunctionMap ;
+  public: inline GGS_lexicalFunctionMap readProperty_mLexicalFunctionMap (void) const {
+    return mProperty_mLexicalFunctionMap ;
+  }
 
-//--------------------------------------------------------------------------------------------------
-//                       T O K E N    C L A S S
-//--------------------------------------------------------------------------------------------------
+  public: GGS_lexicalMessageMap mProperty_mLexicalMessageMap ;
+  public: inline GGS_lexicalMessageMap readProperty_mLexicalMessageMap (void) const {
+    return mProperty_mLexicalMessageMap ;
+  }
 
-class cTokenFor_projectComponentScanner : public cToken {
-  public: BigSigned mLexicalAttribute_bigintValue ;
-  public: utf32 mLexicalAttribute_charValue ;
-  public: String mLexicalAttribute_tokenString ;
-  public: uint32_t mLexicalAttribute_uint_33__32_value ;
+  public: GGS_terminalMap mProperty_mTerminalMap ;
+  public: inline GGS_terminalMap readProperty_mTerminalMap (void) const {
+    return mProperty_mTerminalMap ;
+  }
 
-  public: cTokenFor_projectComponentScanner (void) ;
+  public: GGS__5B_terminalAST_5D_ mProperty_mTerminalList ;
+  public: inline GGS__5B_terminalAST_5D_ readProperty_mTerminalList (void) const {
+    return mProperty_mTerminalList ;
+  }
+
+  public: GGS_lexicalAttributeMap mProperty_mLexicalAttributeMap ;
+  public: inline GGS_lexicalAttributeMap readProperty_mLexicalAttributeMap (void) const {
+    return mProperty_mLexicalAttributeMap ;
+  }
+
+  public: GGS_lexicalExplicitTokenListMapMap mProperty_mLexicalTokenListMap ;
+  public: inline GGS_lexicalExplicitTokenListMapMap readProperty_mLexicalTokenListMap (void) const {
+    return mProperty_mLexicalTokenListMap ;
+  }
+
+  public: GGS_stringset mProperty_mUnicodeStringToGenerate ;
+  public: inline GGS_stringset readProperty_mUnicodeStringToGenerate (void) const {
+    return mProperty_mUnicodeStringToGenerate ;
+  }
+
+  public: GGS__5B_templateDelimitorAST_5D_ mProperty_mTemplateDelimitorList ;
+  public: inline GGS__5B_templateDelimitorAST_5D_ readProperty_mTemplateDelimitorList (void) const {
+    return mProperty_mTemplateDelimitorList ;
+  }
+
+  public: GGS_stringset mProperty_mUnicodeTestFunctions ;
+  public: inline GGS_stringset readProperty_mUnicodeTestFunctions (void) const {
+    return mProperty_mUnicodeTestFunctions ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lexiqueAnalysisContext (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMLexiqueName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexiqueName = inValue ;
+  }
+
+  public: inline void setter_setMLexicalRoutineMessageMap (const GGS_lexicalRoutineMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalRoutineMessageMap = inValue ;
+  }
+
+  public: inline void setter_setMLexicalFunctionMap (const GGS_lexicalFunctionMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalFunctionMap = inValue ;
+  }
+
+  public: inline void setter_setMLexicalMessageMap (const GGS_lexicalMessageMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalMessageMap = inValue ;
+  }
+
+  public: inline void setter_setMTerminalMap (const GGS_terminalMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTerminalMap = inValue ;
+  }
+
+  public: inline void setter_setMTerminalList (const GGS__5B_terminalAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTerminalList = inValue ;
+  }
+
+  public: inline void setter_setMLexicalAttributeMap (const GGS_lexicalAttributeMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalAttributeMap = inValue ;
+  }
+
+  public: inline void setter_setMLexicalTokenListMap (const GGS_lexicalExplicitTokenListMapMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLexicalTokenListMap = inValue ;
+  }
+
+  public: inline void setter_setMUnicodeStringToGenerate (const GGS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mUnicodeStringToGenerate = inValue ;
+  }
+
+  public: inline void setter_setMTemplateDelimitorList (const GGS__5B_templateDelimitorAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTemplateDelimitorList = inValue ;
+  }
+
+  public: inline void setter_setMUnicodeTestFunctions (const GGS_stringset & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mUnicodeTestFunctions = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lexiqueAnalysisContext (const GGS_string & in_mLexiqueName,
+                                      const GGS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
+                                      const GGS_lexicalFunctionMap & in_mLexicalFunctionMap,
+                                      const GGS_lexicalMessageMap & in_mLexicalMessageMap,
+                                      const GGS_terminalMap & in_mTerminalMap,
+                                      const GGS__5B_terminalAST_5D_ & in_mTerminalList,
+                                      const GGS_lexicalAttributeMap & in_mLexicalAttributeMap,
+                                      const GGS_lexicalExplicitTokenListMapMap & in_mLexicalTokenListMap,
+                                      const GGS_stringset & in_mUnicodeStringToGenerate,
+                                      const GGS__5B_templateDelimitorAST_5D_ & in_mTemplateDelimitorList,
+                                      const GGS_stringset & in_mUnicodeTestFunctions) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lexiqueAnalysisContext (const GGS_lexiqueAnalysisContext & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lexiqueAnalysisContext & operator = (const GGS_lexiqueAnalysisContext & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexiqueAnalysisContext init_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                              const class GGS_lexicalRoutineMap & inOperand1,
+                                                                                              const class GGS_lexicalFunctionMap & inOperand2,
+                                                                                              const class GGS_lexicalMessageMap & inOperand3,
+                                                                                              const class GGS_terminalMap & inOperand4,
+                                                                                              const class GGS__5B_terminalAST_5D_ & inOperand5,
+                                                                                              const class GGS_lexicalAttributeMap & inOperand6,
+                                                                                              const class GGS_lexicalExplicitTokenListMapMap & inOperand7,
+                                                                                              const class GGS_stringset & inOperand8,
+                                                                                              const class GGS__5B_templateDelimitorAST_5D_ & inOperand9,
+                                                                                              const class GGS_stringset & inOperand10,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S
-//--------------------------------------------------------------------------------------------------
 
-class Lexique_projectComponentScanner : public Lexique {
-//--- Constructors
-  public: Lexique_projectComponentScanner (Compiler * inCallerCompiler,
-                       const String & inSourceFileName
-                       COMMA_LOCATION_ARGS) ;
-
-  public: Lexique_projectComponentScanner (Compiler * inCallerCompiler,
-                       const String & inSourceString,
-                       const String & inStringForError
-                       COMMA_LOCATION_ARGS) ;
-
-//--- Instrospection
-  public: static GGS__5B_string_5D_ symbols (LOCATION_ARGS) ;
-
-//--- Declaring a protected virtual destructor enables the compiler to raise
-//    an error if a direct delete is performed; only the static proc
-//    SharedObject::detachPointer may invoke delete.
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected: virtual ~ Lexique_projectComponentScanner (void) { }
-  #endif
-
-
-
-//--- Terminal symbols enumeration
-  public: const static int32_t kToken_ = 0 ;
-  public: static const int32_t kToken_identifier = 1 ;
-  public: static const int32_t kToken_literalInt = 2 ;
-  public: static const int32_t kToken__27_char_27_ = 3 ;
-  public: static const int32_t kToken_comment = 4 ;
-  public: static const int32_t kToken_commentMark = 5 ;
-  public: static const int32_t kToken__22_string_22_ = 6 ;
-  public: static const int32_t kToken__23_macAppBundleBaseName = 7 ;
-  public: static const int32_t kToken__23_codeblocks_2D_linux_33__32_ = 8 ;
-  public: static const int32_t kToken__23_codeblocks_2D_linux_36__34_ = 9 ;
-  public: static const int32_t kToken__23_codeblocks_2D_windows = 10 ;
-  public: static const int32_t kToken__23_libpmCustomPath = 11 ;
-  public: static const int32_t kToken__23_productName = 12 ;
-  public: static const int32_t kToken__23_version = 13 ;
-  public: static const int32_t kToken__23_macCodeSign = 14 ;
-  public: static const int32_t kToken__23_makefile_2D_macosx = 15 ;
-  public: static const int32_t kToken__23_makefile_2D_unix = 16 ;
-  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = 17 ;
-  public: static const int32_t kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = 18 ;
-  public: static const int32_t kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = 19 ;
-  public: static const int32_t kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx = 20 ;
-  public: static const int32_t kToken__23_macSwiftApp = 21 ;
-  public: static const int32_t kToken__23_lexical_2D_style = 22 ;
-  public: static const int32_t kToken__23_bool_2D_build_2D_option = 23 ;
-  public: static const int32_t kToken__23_string_2D_build_2D_option = 24 ;
-  public: static const int32_t kToken__23_u_33__32__2D_build_2D_option = 25 ;
-  public: static const int32_t kToken__2E_ = 26 ;
-  public: static const int32_t kToken__3A_ = 27 ;
-  public: static const int32_t kToken__2D__3E_ = 28 ;
-
-//--- Key words table 'attributeKeyWordList'
-  public: static int32_t search_into_attributeKeyWordList (const String & inSearchedString) ;
-
-//--- Key words table 'galgasDelimitorsList'
-  public: static int32_t search_into_galgasDelimitorsList (const String & inSearchedString) ;
-
-
-//--- Assign from attribute
-  public: GGS_lbigint synthetizedAttribute_bigintValue (void) const ;
-  public: GGS_lchar synthetizedAttribute_charValue (void) const ;
-  public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
-  public: GGS_luint synthetizedAttribute_uint_33__32_value (void) const ;
-
-
-//--- Attribute access
-  public: BigSigned attributeValue_bigintValue (void) const ;
-  public: utf32 attributeValue_charValue (void) const ;
-  public: String attributeValue_tokenString (void) const ;
-  public: uint32_t attributeValue_uint_33__32_value (void) const ;
-
-
-//--- indexing keys
-
-//--- Parse lexical token
-  protected: void internalParseLexicalToken (cTokenFor_projectComponentScanner & token) ;
-  protected: virtual bool parseLexicalToken (void) override ;
-
-//--- Get terminal message
-  protected: virtual String getMessageForTerminal (const int32_t inTerminalSymbol) const override ;
-
-//--- Get terminal count
-  public: virtual int32_t terminalVocabularyCount (void) const override { return 28 ; }
-
-//--- Get Token String
-  public: virtual String getCurrentTokenString (const cToken * inTokenPtr) const override ;
-
-//--- Enter Token
-  protected: void enterToken (cTokenFor_projectComponentScanner & ioToken) ;
-
-//--- Style index
-  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;
-} ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueAnalysisContext ;
 

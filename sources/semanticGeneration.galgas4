@@ -1109,8 +1109,8 @@ override proc @filewrapperDeclarationForGeneration.appendDeclaration1
 
 //--------------------------------------------------------------------------------------------------
 
-proc generateWrapperContents
-  (let @string inFilewrapperName,
+proc generateWrapperContents (
+  let @string inFilewrapperName,
   let @string inFilewrapperDirectory,
   let @uint inFilewrapperDirectoryIndex,
   let @wrapperFileMap inFilewrapperRegularFileMap,
@@ -1142,7 +1142,7 @@ proc generateWrapperContents
       else
         ioImplementation += contents.utf8RepresentationEscapingQuestionMark
       end
-      ioImplementation += " ;\n\nconst cRegularFileWrapper gWrapperFile_"
+      ioImplementation += " ;\n\nconst RegularFileWrapper gWrapperFile_"
       ioImplementation += filewrapperRegularFile.mWrapperFileIndex.string
       ioImplementation += "_"
       ioImplementation += inFilewrapperName.identifierRepresentation
@@ -1164,7 +1164,7 @@ proc generateWrapperContents
       + filewrapperRegularFile.mWrapperFileIndex.string + "_"
       + inFilewrapperName.identifierRepresentation + " [" + contents.count + "] = {"
       + contents.cStringRepresentation + "} ;\n\n"
-      + "const cRegularFileWrapper gWrapperFile_" + filewrapperRegularFile.mWrapperFileIndex.string+ "_"
+      + "const RegularFileWrapper gWrapperFile_" + filewrapperRegularFile.mWrapperFileIndex.string+ "_"
       + inFilewrapperName.identifierRepresentation + " (\n"
       + "  " + filewrapperRegularFile.lkey.string.utf8RepresentationEscapingQuestionMark + ",\n"
       + "  " + filewrapperRegularFile.lkey.string.pathExtension.utf8RepresentationEscapingQuestionMark + ",\n"
@@ -1187,7 +1187,7 @@ proc generateWrapperContents
   end
 //--- Generate all Filewrapper list
   ioImplementation += "//--- All files of '" + inFilewrapperDirectory + "' directory\n\n"
-  + "static const cRegularFileWrapper * gWrapperAllFiles_"
+  + "static const RegularFileWrapper * gWrapperAllFiles_"
   + inFilewrapperName.identifierRepresentation + "_" + inFilewrapperDirectoryIndex.string
   + " [" + (inFilewrapperRegularFileMap.count + 1).string + "] = {\n"
   for filewrapperRegularFile in inFilewrapperRegularFileMap do
@@ -1197,7 +1197,7 @@ proc generateWrapperContents
   +"} ;\n\n"
 //--- Generate all directory wrapper list
   ioImplementation += "//--- All sub-directories of '" + inFilewrapperDirectory + "' directory\n\n"
-  + "static const cDirectoryWrapper * gWrapperAllDirectories_"
+  + "static const DirectoryWrapper * gWrapperAllDirectories_"
   + inFilewrapperName.identifierRepresentation + "_" + inFilewrapperDirectoryIndex.string
   + " [" + (inFilewrapperDirectoryMap.count + 1).string + "] = {\n"
   for entry in inFilewrapperDirectoryMap do
@@ -1207,7 +1207,7 @@ proc generateWrapperContents
   + "} ;\n\n"
 //--- Generate directory wrapper
   ioImplementation += "//--- Directory '" + inFilewrapperDirectory + "'\n\n"
-  + "const cDirectoryWrapper gWrapperDirectory_" + inFilewrapperDirectoryIndex.string + "_"
+  + "const DirectoryWrapper gWrapperDirectory_" + inFilewrapperDirectoryIndex.string + "_"
   + inFilewrapperName.identifierRepresentation + " (\n"
   + "  " + inFilewrapperDirectory.utf8RepresentationEscapingQuestionMark + ",\n"
   + "  " + inFilewrapperRegularFileMap.count.string + ",\n"

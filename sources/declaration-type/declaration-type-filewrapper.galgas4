@@ -1,0 +1,490 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//   SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //! Filewrapper Declaration
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $filewrapper$
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+    $in$
+    $"string"$ (?let @lstring filewrapperPath)
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
+    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      false, // private
+      @string.stringWithSourceFilePath,
+      filewrapperName,
+      filewrapperPath,
+      filewrapperTextFileExtensionList,
+      filewrapperBinaryFileExtensionList,
+      filewrapperTemplateList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+    $private$
+    $filewrapper$
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+    $in$
+    $"string"$ (?let @lstring filewrapperPath)
+    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
+    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      true, // private
+      @string.stringWithSourceFilePath,
+      filewrapperName,
+      filewrapperPath,
+      filewrapperTextFileExtensionList,
+      filewrapperBinaryFileExtensionList,
+      filewrapperTemplateList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <filewrapper_text_files> (![@lstring] outFilewrapperTextFileExtensionList ) {
+    outFilewrapperTextFileExtensionList = @()
+    ${$
+    select
+    or
+      repeat
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperTextFileExtensionList ++= pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <filewrapper_binary_files> (![@lstring] outFilewrapperBinaryFileExtensionList ) {
+    outFilewrapperBinaryFileExtensionList = @()
+    ${$
+    select
+    or
+      repeat
+        $"string"$ (?let @lstring pathExtension)
+        outFilewrapperBinaryFileExtensionList ++= pathExtension
+      while
+        $,$
+      end
+    end
+    $}$
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
+                               ![@filewrapperTemplateAST] outFilewrapperTemplateList ) {
+    ${$
+    outFilewrapperTemplateList = @()
+    repeat
+    while
+      $template$
+      $identifier$ (?let mFilewrapperTemplateName)
+      $:$
+      $"string"$ (?let mFilewrapperTemplatePath)
+      var [@formalTemplateInputParameterAST] filewrapperTemplateFormalInputParameters = @()
+      $($
+      select
+      or
+        repeat
+          let @lstring selector
+          select
+            selector = "".nowhere
+          or
+            $?$
+            selector = "".nowhere
+          or
+            $?selector:$ (?selector)
+          end
+          <type_definition> (!?ioDeclarations, ?let typeName)
+          $identifier$ (?let argumentName)
+          let isUnused = argumentName.hasPrefix ("_")
+          filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
+        while
+          $,$
+        end
+      end
+      $)$
+      outFilewrapperTemplateList ++= @(
+        mFilewrapperTemplateName,
+        mFilewrapperTemplatePath,
+        filewrapperTemplateFormalInputParameters
+      )
+    end
+    $}$
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//  AST
+//--------------------------------------------------------------------------------------------------
+
+struct @formalTemplateInputParameterAST {
+  public let @lstring mFormalTemplateSelector
+  public let @lstring mFormalArgumentTypeName
+  public let @lstring mFormalArgumentName
+  public let @bool mIsUnused
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @filewrapperTemplateAST {
+  public let @lstring mFilewrapperTemplateName
+  public let @lstring mFilewrapperTemplatePath
+  public let [@formalTemplateInputParameterAST] mFilewrapperTemplateFormalInputParameters
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @filewrapperDeclarationAST : @semanticDeclarationAST {
+  public let @bool mIsInternal
+  public let @string mSourceFileAbsolutePath
+  public let @lstring mFilewrapperName
+  public let @lstring mFilewrapperPath
+  public let [@lstring] mFilewrapperTextFileExtensionList
+  public let [@lstring] mFilewrapperBinaryFileExtensionList
+  public let [@filewrapperTemplateAST] mFilewrapperTemplateList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "filewrapper @" + self.mFilewrapperName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+  override proc enterDeclarationInGraph (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+                                         ?!@equatableExtensionMap _ioEquatableExtensionMap,
+                     ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+                     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+                     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+                     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+                     ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
+    let key = @lstring ("@" + self.mFilewrapperName, self.mFilewrapperName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    for templ in self.mFilewrapperTemplateList do
+      for formal in templ.mFilewrapperTemplateFormalInputParameters do
+        let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
+        !?ioSemanticTypePrecedenceGraph.noteNode (argKey)
+ //       !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: argKey)
+      end
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext (?!@equatableExtensionMap _ioEquatableExtensionMap,
+                                  let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+                                  let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+                                  let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+                                  let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  ?!@semanticContext ioSemanticContext) {
+  //--- Templates
+    var @filewrapperTemplateMap filewrapperTemplateMap = @()
+    for filewrapperTemplate in self.mFilewrapperTemplateList do
+      var [@functionSignatureElement] templateSignature = @()
+      for parameter in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
+        !?ioTypeMap.makeEntry (parameter.mFormalArgumentTypeName, ?let parameterTypeIndex)
+        templateSignature ++= @(
+          parameter.mFormalTemplateSelector,
+          parameterTypeIndex,
+          parameter.mFormalArgumentName.string,
+          parameter.mIsUnused)
+      end
+      !?filewrapperTemplateMap.insertKey (
+        filewrapperTemplate.mFilewrapperTemplateName,
+        templateSignature,
+        filewrapperTemplate.mFilewrapperTemplatePath
+      )
+    end
+  //--- Build text file extension map
+    var @wrapperExtensionMap textExtensionMap = @()
+    for value in self.mFilewrapperTextFileExtensionList do
+      !?textExtensionMap.insertKey (value)
+    end
+  //--- Build binary file extension map
+    var @wrapperExtensionMap binaryFileExtensionMap = @()
+    for value in self.mFilewrapperBinaryFileExtensionList do
+      if textExtensionMap.contains (value.string) then
+        error value:"the '" + value + "' extension is already used for text files"
+      else
+      !?binaryFileExtensionMap.insertKey (value)
+      end
+    end
+  //--- Enumerate filewrapper files
+    let @wrapperFileMap regularRootFileMap
+    let @wrapperDirectoryMap wrapperDirectoryMap
+    let @string absoluteSourcePath
+    if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
+      absoluteSourcePath = self.mFilewrapperPath.string
+    else
+      absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
+    end
+    if not absoluteSourcePath.directoryExists then
+      error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+      spoil regularRootFileMap, wrapperDirectoryMap
+    else
+    //--- Enumerate paths
+      var @uint wrapperFileIndex = 0
+      var @uint wrapperDirectoryIndex = 0
+      recursivelyEnumerateDirectories (
+       absoluteSourcePath,
+       "/",
+       textExtensionMap,
+       binaryFileExtensionMap,
+       ?regularRootFileMap,
+       ?wrapperDirectoryMap,
+       !?wrapperFileIndex,
+       !?wrapperDirectoryIndex
+     )
+    end
+  //--- Insert filewrapper
+    !?ioSemanticContext.mFilewrapperMap.insertKey (
+      self.mFilewrapperName,
+      self.mFilewrapperPath,
+      self.mFilewrapperTextFileExtensionList,
+      regularRootFileMap,
+      wrapperDirectoryMap,
+      filewrapperTemplateMap,
+      self.mIsInternal
+    )
+  //--- Add initializer without argument
+    var @initializerMap initializerMap = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
+    !?initializerMap.insertKey
+      (@(emptyArgumentList.initializerSignature, self.mFilewrapperName),
+      emptyArgumentList
+    )
+  //--- Getters
+    commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
+//    enterBaseGetterWithArgument (
+//      !?getterMap,
+//      !?ioTypeMap,
+//      !getterName: "contains",
+//      !argSelector: "",
+//      !argType: self.mOptionSetTypeName,
+//      !argName: "inOperand",
+//      !returnedTypeName: "bool",
+//      !hasCompilerArgument: false
+//    )
+  //--- class functions
+    !?ioTypeMap.makeEntryFromString ("string", ?let stringType)
+    var @classFunctionMap classFunctionMap = @()
+    for aTemplate in self.mFilewrapperTemplateList do
+      var formalArgumentList = [@functionSignatureElement] ()
+      for formalInputArgument in aTemplate.mFilewrapperTemplateFormalInputParameters do
+        !?ioTypeMap.makeEntry (formalInputArgument.mFormalArgumentTypeName, ?let typeIndex)
+        formalArgumentList ++= @(
+          formalInputArgument.mFormalTemplateSelector,
+          typeIndex,
+          formalInputArgument.mFormalArgumentName.string,
+          true
+        )
+      end
+      !?classFunctionMap.insertKey (
+         aTemplate.mFilewrapperTemplateName,
+         formalArgumentList,
+         true,
+         stringType
+      )
+//      !?ioTypeMap.makeEntry (extensionGetter.mResultTypeName, ?let returnedType)
+
+
+//      for formal in templ.mFilewrapperTemplateFormalInputParameters do
+//        let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
+//        !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: argKey)
+//      end
+    end
+  //--- Add extensions
+    var @setterMap setterMap = @()
+    var @instanceMethodMap instanceMethodMap = @()
+    addExtensions (
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
+      !?ioSemanticContext,
+      !?ioTypeMap,
+      self.mFilewrapperName,
+      !isClass: false,
+      !?initializerMap,
+      !?getterMap,
+      !?setterMap,
+      !?instanceMethodMap,
+      !acceptSetters: true
+    )
+  //--- Operators
+//    var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
+//      | .prefixTildeOperator
+//      | .generateDescriptionGetterUtilityMethod | .infixSubOperator
+//      | .andAssignOperatorWithExpression // var &= exp
+//      | .orAssignOperatorWithExpression // var |= exp
+//      | .xorAssignOperatorWithExpression // var ^= exp
+//      | .minusAssignOperatorWithExpression // var -= exp
+  //--- Enter in type map
+//    let typeDefinition = @unifiedTypeDefinition (
+//      !typeName: self.mFilewrapperName,
+//      !isPredefined: false,
+//      !isConcrete: true,
+//      !isFinal: true,
+//      !superType: .null,
+//      !typeKind: .otherType,
+//      !supportArrayLiteral: false,
+//      !allTypedPropertyList: [],
+//      !propertyMap: @(),
+//      !currentTypedPropertyList: [],
+//      !initializerMap: initializerMap,
+//      !classFunctionMap: classFunctionMap,
+//      !getterMap: getterMap,
+//      !setterMap: setterMap,
+//      !instanceMethodMap: instanceMethodMap,
+//      !classMethodMap: @(),
+//      !unwrappedType: .null,
+//      !readSubscriptMap: @(),
+//      !writeSubscriptMap: @(),
+//      !enumerationDescriptorList: @(),
+//      !features: @(),
+//      !generateHeaderInSeparateFile: false,
+//      !typeForEnumeratedElement: .null,
+//      !headerFileName: "filewrapper-" + self.mFilewrapperName.string.fileNameRepresentation,
+//      !headerKind: .twoHeaders
+//    )
+ //   !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?![@lstring] _ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  let @predefinedTypes inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
+  //--- Useful entities graph
+    let filewrapperNameForUsefulness = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
+    !?ioUsefulEntitiesGraph.addNode (filewrapperNameForUsefulness, filewrapperNameForUsefulness)
+  //--- Get filewrapper features
+    inSemanticContext.mFilewrapperMap.searchKey (
+      self.mFilewrapperName,
+      ?*,
+      ?*,
+      ?let @wrapperFileMap wrapperFileMap,
+      ?let @wrapperDirectoryMap wrapperDirectoryMap,
+      ?2*
+    )
+  //--- Build absolute path
+    let @string absoluteSourcePath
+    if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
+      absoluteSourcePath = self.mFilewrapperPath.string
+    else
+      absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
+    end
+    if not absoluteSourcePath.directoryExists then
+      error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+    else
+    //--- Analyze filewrapper templates
+      var [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration = @()
+      for filewrapperTemplate in self.mFilewrapperTemplateList do
+        let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
+          self.mFilewrapperName,
+          filewrapperTemplate.mFilewrapperTemplateName
+        )
+        !?ioUsefulEntitiesGraph.addNode (filewrapperTemplateNameForUsefulness, filewrapperTemplateNameForUsefulness)
+        !?ioUsefulEntitiesGraph.addEdge (!from: filewrapperTemplateNameForUsefulness, !to: filewrapperNameForUsefulness)
+        if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
+          error filewrapperTemplate.mFilewrapperTemplatePath
+           : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
+        end
+        let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
+      //--- Parse template
+        grammar templateGrammar (?let [@templateInstructionAST] resultingInstructionList)
+           in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
+      //--- Build template variable map
+        var @templateVariableMap templateVariableMap = @()
+        var [@formalInputParameterForGeneration] filewrapperTemplateFormalInputParameters = @()
+        for formal in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
+          let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
+          let @string cppVarName = "in_" + formal.mFormalArgumentName.string.identifierRepresentation
+          !?templateVariableMap.insertKey (formal.mFormalArgumentName, type, cppVarName)
+          filewrapperTemplateFormalInputParameters ++= @(formal.mFormalTemplateSelector, type, cppVarName, formal.mFormalArgumentName, true)
+        end
+      //--- Analyze template
+        var templateInstructionListForGeneration = [@templateInstructionForGeneration] ()
+        let templateAnalysisContext = @templateAnalysisContext (
+          inSemanticContext,
+          inPredefinedTypes,
+          templateVariableMap
+        )
+        templateInstructionListAnalysis (
+          filewrapperNameForUsefulness,
+          !?ioUsefulEntitiesGraph,
+          templateAnalysisContext,
+          !?ioTypeMap,
+          resultingInstructionList,
+          !?templateInstructionListForGeneration
+        )
+      //--- Enter in generation list
+        filewrapperTemplateListForGeneration ++= @(
+          filewrapperTemplate.mFilewrapperTemplateName.string,
+          filewrapperTemplateFormalInputParameters,
+          templateInstructionListForGeneration
+        )
+      end
+    //--- Enter filewrapper in generated list
+      ioSemanticDeclarationListForGeneration ++= @filewrapperDeclarationForGeneration (
+        !infoMessage: "filewrapper " + self.mFilewrapperName,
+        !generateHeader: true,
+        !implementationCppFileName: "filewrapper-" + self.mFilewrapperName,
+        self.mFilewrapperName.string,
+        self.mFilewrapperPath.string,
+        wrapperFileMap,
+        wrapperDirectoryMap,
+        filewrapperTemplateListForGeneration
+      )
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+

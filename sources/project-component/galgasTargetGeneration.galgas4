@@ -781,6 +781,8 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "C_galgas_class_inspector.h",
         "execution-mode.cpp",
         "execution-mode.h",
+        "filewrapper-utilities.cpp",
+        "filewrapper-utilities.h",
         "galgas-input-output.cpp",
         "galgas-input-output.h",
         "GALGAS_TypeDescriptor.cpp",

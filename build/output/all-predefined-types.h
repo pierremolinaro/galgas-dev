@@ -29,6 +29,7 @@
 #include "Compiler.h"
 #include "FileManager.h"
 #include "execution-mode.h"
+#include "filewrapper-utilities.h"
 
 //--------------------------------------------------------------------------------------------------
 // Lexical styles
@@ -2057,54 +2058,12 @@ class GGS_f_36__34_ final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_f_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-//   @filewrapper type
-//--------------------------------------------------------------------------------------------------
-
-class cRegularFileWrapper final {
-  public: const char * mName ;
-  public: const char * mExtension ;
-  public: const bool mIsTextFile ; // True: text file, false: binary file
-  public: const uint32_t mFileLength ;
-  public: const char * mContents ;
-
-//--- Constructor
-  public: cRegularFileWrapper (const char * inName,
-                                const char * inExtension,
-                                const bool inIsTextFile,
-                                const uint32_t inFileLength,
-                                const char * inContents) ;
-
-//--- No copy
-  private: cRegularFileWrapper (const cRegularFileWrapper &) ;
-  private: cRegularFileWrapper & operator = (const cRegularFileWrapper &) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class cDirectoryWrapper final {
-  public: const char * mDirectoryName ;
-  public: const uint32_t mFileCount ;
-  public: const cRegularFileWrapper * * const mFiles ;
-  public: const uint32_t mDirectoryCount ;
-  public: const cDirectoryWrapper * * mDirectories ;
-
-//--- Constructor
-  public: cDirectoryWrapper (const char * inDirectoryName,
-                              const uint32_t inFileCount,
-                              const cRegularFileWrapper * * const inFiles,
-                              const uint32_t inDirectoryCount,
-                              const cDirectoryWrapper * * inDirectories) ;
-
-//--- No copy
-  private: cDirectoryWrapper (const cDirectoryWrapper &) ;
-  private: cDirectoryWrapper & operator = (const cDirectoryWrapper &) ;
-} ;
-
+//   filewrapper GGS_filewrapper
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapper final : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private: const cDirectoryWrapper * mRootDirectoryPtr ;
+  private: const DirectoryWrapper * mRootDirectoryPtr ;
   private: String mCurrentDirectory ;
 
 //--------------------------------- Accessors
@@ -2115,7 +2074,7 @@ class GGS_filewrapper final : public AC_GALGAS_root {
   public: GGS_filewrapper (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_filewrapper (const cDirectoryWrapper & inRootDirectory) ;
+  public: GGS_filewrapper (const DirectoryWrapper & inRootDirectory) ;
 
 //--------------------------------- Handle copy
   public: GGS_filewrapper (const GGS_filewrapper & inSource) ;
