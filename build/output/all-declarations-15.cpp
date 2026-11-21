@@ -14074,19 +14074,19 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_map
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i35_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 29)) ;
-  GGS_lstring var_filewrapperName_1693 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperName_1688 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 30)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 31)) ;
-  GGS_lstring var_filewrapperPath_1782 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 30)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 31)) ;
+  GGS_lstring var_filewrapperPath_1776 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 32)) ;
-  GGS__5B_lstring_5D_ var_filewrapperTextFileExtensionList_1834 ;
-  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_1834, inCompiler) ;
-  GGS__5B_lstring_5D_ var_filewrapperBinaryFileExtensionList_1905 ;
-  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_1905, inCompiler) ;
-  GGS__5B_filewrapperTemplateAST_5D_ var_filewrapperTemplateList_1993 ;
-  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_1993, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (false), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 39)), var_filewrapperName_1693, var_filewrapperPath_1782, var_filewrapperTextFileExtensionList_1834, var_filewrapperBinaryFileExtensionList_1905, var_filewrapperTemplateList_1993, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 36)) ;
+  GGS__5B_lstring_5D_ var_filewrapperTextFileExtensionList_1828 ;
+  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_1828, inCompiler) ;
+  GGS__5B_lstring_5D_ var_filewrapperBinaryFileExtensionList_1899 ;
+  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_1899, inCompiler) ;
+  GGS__5B_filewrapperTemplateAST_5D_ var_filewrapperTemplateList_1987 ;
+  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_1987, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (false), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 39)), var_filewrapperName_1688, var_filewrapperPath_1776, var_filewrapperTextFileExtensionList_1828, var_filewrapperBinaryFileExtensionList_1899, var_filewrapperTemplateList_1987, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 36)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -14094,8 +14094,8 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i35_indexing (Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 29)) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 30)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 31)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 30)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 31)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 32)) ;
   nt_filewrapper_5F_text_5F_files_indexing (inCompiler) ;
   nt_filewrapper_5F_binary_5F_files_indexing (inCompiler) ;
@@ -14108,19 +14108,19 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 51)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 52)) ;
-  GGS_lstring var_filewrapperName_2600 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperName_2589 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 53)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 54)) ;
-  GGS_lstring var_filewrapperPath_2689 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 53)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 54)) ;
+  GGS_lstring var_filewrapperPath_2677 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 55)) ;
-  GGS__5B_lstring_5D_ var_filewrapperTextFileExtensionList_2741 ;
-  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_2741, inCompiler) ;
-  GGS__5B_lstring_5D_ var_filewrapperBinaryFileExtensionList_2812 ;
-  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_2812, inCompiler) ;
-  GGS__5B_filewrapperTemplateAST_5D_ var_filewrapperTemplateList_2900 ;
-  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_2900, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (true), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 62)), var_filewrapperName_2600, var_filewrapperPath_2689, var_filewrapperTextFileExtensionList_2741, var_filewrapperBinaryFileExtensionList_2812, var_filewrapperTemplateList_2900, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 59)) ;
+  GGS__5B_lstring_5D_ var_filewrapperTextFileExtensionList_2729 ;
+  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_2729, inCompiler) ;
+  GGS__5B_lstring_5D_ var_filewrapperBinaryFileExtensionList_2800 ;
+  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_2800, inCompiler) ;
+  GGS__5B_filewrapperTemplateAST_5D_ var_filewrapperTemplateList_2888 ;
+  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_2888, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (true), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 62)), var_filewrapperName_2589, var_filewrapperPath_2677, var_filewrapperTextFileExtensionList_2729, var_filewrapperBinaryFileExtensionList_2800, var_filewrapperTemplateList_2888, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 59)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -14129,8 +14129,8 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 51)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 52)) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 53)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 54)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__40_type COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 53)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 54)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 55)) ;
   nt_filewrapper_5F_text_5F_files_indexing (inCompiler) ;
   nt_filewrapper_5F_binary_5F_files_indexing (inCompiler) ;
@@ -14150,9 +14150,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GGS_lstring var_pathExtension_3581 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_pathExtension_3569 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 79)) ;
-      outArgument_outFilewrapperTextFileExtensionList.plusPlusAssignOperation (var_pathExtension_3581  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 80)) ;
+      outArgument_outFilewrapperTextFileExtensionList.plusPlusAssignOperation (var_pathExtension_3569  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 80)) ;
       if (select_galgas_34_DeclarationsSyntax_34 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 82)) ;
       }else{
@@ -14203,9 +14203,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GGS_lstring var_pathExtension_4025 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_pathExtension_4013 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 96)) ;
-      outArgument_outFilewrapperBinaryFileExtensionList.plusPlusAssignOperation (var_pathExtension_4025  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 97)) ;
+      outArgument_outFilewrapperBinaryFileExtensionList.plusPlusAssignOperation (var_pathExtension_4013  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 97)) ;
       if (select_galgas_34_DeclarationsSyntax_36 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 99)) ;
       }else{
@@ -14255,12 +14255,12 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   while (repeatFlag_0) {
     if (select_galgas_34_DeclarationsSyntax_37 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 113)) ;
-      GGS_lstring var_mFilewrapperTemplateName_4530 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_mFilewrapperTemplateName_4518 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 114)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 115)) ;
-      GGS_lstring var_mFilewrapperTemplatePath_4589 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_mFilewrapperTemplatePath_4577 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 116)) ;
-      GGS__5B_formalTemplateInputParameterAST_5D_ var_filewrapperTemplateFormalInputParameters_4660 = GGS__5B_formalTemplateInputParameterAST_5D_::init (inCompiler COMMA_HERE) ;
+      GGS__5B_formalTemplateInputParameterAST_5D_ var_filewrapperTemplateFormalInputParameters_4648 = GGS__5B_formalTemplateInputParameterAST_5D_::init (inCompiler COMMA_HERE) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 118)) ;
       switch (select_galgas_34_DeclarationsSyntax_38 (inCompiler)) {
       case 1: {
@@ -14268,28 +14268,28 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
       case 2: {
         bool repeatFlag_1 = true ;
         while (repeatFlag_1) {
-          GGS_lstring var_selector_4777 ;
+          GGS_lstring var_selector_4765 ;
           switch (select_galgas_34_DeclarationsSyntax_40 (inCompiler)) {
           case 1: {
-            var_selector_4777 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-filewrapper.galgas4", 124)) ;
+            var_selector_4765 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-filewrapper.galgas4", 124)) ;
           } break ;
           case 2: {
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 126)) ;
-            var_selector_4777 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-filewrapper.galgas4", 127)) ;
+            var_selector_4765 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-filewrapper.galgas4", 127)) ;
           } break ;
           case 3: {
-            var_selector_4777 = inCompiler->synthetizedAttribute_tokenString () ;
+            var_selector_4765 = inCompiler->synthetizedAttribute_tokenString () ;
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 129)) ;
           } break ;
           default:
             break ;
           }
-          GGS_lstring var_typeName_5016 ;
-          nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_5016, inCompiler) ;
-          GGS_lstring var_argumentName_5055 = inCompiler->synthetizedAttribute_tokenString () ;
+          GGS_lstring var_typeName_5004 ;
+          nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_5004, inCompiler) ;
+          GGS_lstring var_argumentName_5043 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 132)) ;
-          GGS_bool var_isUnused_5083 = var_argumentName_5055.readProperty_string ().getter_hasPrefix (GGS_string ("_") COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 133)) ;
-          var_filewrapperTemplateFormalInputParameters_4660.plusPlusAssignOperation (GGS_formalTemplateInputParameterAST::init_21__21__21__21_ (var_selector_4777, var_typeName_5016, var_argumentName_5055, var_isUnused_5083, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 134)) ;
+          GGS_bool var_isUnused_5071 = var_argumentName_5043.readProperty_string ().getter_hasPrefix (GGS_string ("_") COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 133)) ;
+          var_filewrapperTemplateFormalInputParameters_4648.plusPlusAssignOperation (GGS_formalTemplateInputParameterAST::init_21__21__21__21_ (var_selector_4765, var_typeName_5004, var_argumentName_5043, var_isUnused_5071, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 134)) ;
           if (select_galgas_34_DeclarationsSyntax_39 (inCompiler) == 2) {
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 136)) ;
           }else{
@@ -14301,7 +14301,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
         break ;
       }
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 139)) ;
-      outArgument_outFilewrapperTemplateList.plusPlusAssignOperation (GGS_filewrapperTemplateAST::init_21__21__21_ (var_mFilewrapperTemplateName_4530, var_mFilewrapperTemplatePath_4589, var_filewrapperTemplateFormalInputParameters_4660, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 140)) ;
+      outArgument_outFilewrapperTemplateList.plusPlusAssignOperation (GGS_filewrapperTemplateAST::init_21__21__21_ (var_mFilewrapperTemplateName_4518, var_mFilewrapperTemplatePath_4577, var_filewrapperTemplateFormalInputParameters_4648, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-filewrapper.galgas4", 140)) ;
     }else{
       repeatFlag_0 = false ;
     }

@@ -603,7 +603,7 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
+filewrapper @typeGenerationTemplate : "+generation-templates/type_generation" {
   "txt"
 }{
 }{
@@ -653,7 +653,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
 //
 //--------------------------------------------------------------------------------------------------
 
-filewrapper semanticComponentGenerationTemplate in "+generation-templates/semantic_generation" {
+filewrapper @semanticComponentGenerationTemplate : "+generation-templates/semantic_generation" {
 }{
 }{
 //----------- initializer
@@ -1389,7 +1389,7 @@ proc generatePredefinedTypeFiles (let @string inDirectory,
 //           G E N E R A T I O N    F I L E W R A P P E R S
 //--------------------------------------------------------------------------------------------------
 
-filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
+filewrapper @semanticFileGenerationTemplate : "+generation-templates/semantic_generation" {
 }{
 }{
   template semanticFileHeader : "semantic-file.h.galgasTemplate" (

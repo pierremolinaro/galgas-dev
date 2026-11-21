@@ -1081,7 +1081,7 @@ sortedarray @sortedLexicalStyleArray : @sortedLexicalStyle { index < }
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper lexicalTemplates in "../+generation-templates/lexique_generation" {
+filewrapper @lexicalTemplates : "../+generation-templates/lexique_generation" {
 }{
 }{
 
@@ -1092,7 +1092,7 @@ filewrapper lexicalTemplates in "../+generation-templates/lexique_generation" {
 
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper targetGalgas3GenerationFileWrapper in "../+generation-templates/target_generation" {
+private filewrapper @targetGalgas3GenerationFileWrapper : "../+generation-templates/target_generation" {
  "bat", "rtf", "py"
 }{
 }{

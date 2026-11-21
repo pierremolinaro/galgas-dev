@@ -286,7 +286,7 @@ override proc @weakReferenceTypeForGeneration.appendSpecificImplementation
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-filewrapper weakClassGenerationTemplate in "../+generation-templates/type_generation" {
+filewrapper @weakClassGenerationTemplate : "../+generation-templates/type_generation" {
   "galgas4"
 }{
 }{

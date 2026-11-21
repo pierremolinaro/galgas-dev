@@ -407,7 +407,7 @@ struct @XcodeProjectDescriptor {
 
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/target_generation/project-xcode-swiftui" {
+private filewrapper @xcodeProjectGenerationFilewrapper : "+generation-templates/target_generation/project-xcode-swiftui" {
 }{
 }{
   template xcodeproj : "project.pbxproj.galgasTemplate" (

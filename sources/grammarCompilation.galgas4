@@ -219,7 +219,7 @@ proc buildRuleList (
 //
 //--------------------------------------------------------------------------------------------------
 
-filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generation" {
+filewrapper @grammarGenerationTemplate : "+generation-templates/grammar_generation" {
 }{
 }{
   template grammarZone3HeaderGalgas3 : "grammar-zone3-galgas3.h.galgasTemplate" (

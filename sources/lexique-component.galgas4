@@ -640,7 +640,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
 //         G E N E R A T I O N    T E M P L A T E S
 //--------------------------------------------------------------------------------------------------
 
-filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
+filewrapper @lexiqueGenerationTemplates : "+generation-templates/lexique_generation" {
 }{
 }{
   template headerZone2 : "lexique_header_template_zone_2.h.galgasTemplate" (

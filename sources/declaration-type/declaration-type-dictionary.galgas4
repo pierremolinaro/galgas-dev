@@ -366,7 +366,7 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper dictionaryGenerationTemplate in "../+generation-templates/type_generation" {
+private filewrapper @dictionaryGenerationTemplate : "../+generation-templates/type_generation" {
 }{
 }{
 

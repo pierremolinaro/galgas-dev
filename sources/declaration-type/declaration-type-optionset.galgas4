@@ -302,7 +302,7 @@ final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper structGenerationTemplate in "../+generation-templates/type_generation" {
+filewrapper @structGenerationTemplate : "../+generation-templates/type_generation" {
 }{
 }{
   template optionSetTypeHeader1 : "GALGAS_option_set.h1.galgasTemplate" (

@@ -183,7 +183,7 @@ final class @buildOptionStringTypeForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper buildOptionStringGenerationTemplate in "../+generation-templates/type_generation" {
+filewrapper @buildOptionStringGenerationTemplate : "../+generation-templates/type_generation" {
 }{
 }{
   template buildOptionTypeHeader1 : "buildOptionString.h1.galgasTemplate" (

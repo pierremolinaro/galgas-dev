@@ -24,7 +24,7 @@
 //           G E N E R A T I O N    F I L E W R A P P E R S
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
+private filewrapper @programFileGenerationTemplate : "+generation-templates/program_generation" {
 }{
 }{
   template programFileImplementation : "program-file.cpp.galgasTemplate" (

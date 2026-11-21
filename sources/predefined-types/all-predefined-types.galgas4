@@ -393,7 +393,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
 
 //--------------------------------------------------------------------------------------------------
 
-filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_generation" {
+filewrapper @predefinedTypeGenerationTemplate : "../+generation-templates/type_generation" {
 }{
 }{
   template predefinedTypesImplementation : "predefined_types.cpp.galgasTemplate" (

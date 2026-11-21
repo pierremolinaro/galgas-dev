@@ -27,7 +27,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-filewrapper projectCreationFileWrapper in "+generation-templates/project_creation" {
+filewrapper @projectCreationFileWrapper : "+generation-templates/project_creation" {
 }{
 }{
 //--- Project

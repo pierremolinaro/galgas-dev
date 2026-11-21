@@ -395,19 +395,7 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
 //           G E N E R A T I O N    F I L E W R A P P E R S
 //--------------------------------------------------------------------------------------------------
 
-//filewrapper targetGenerationTemplate in "+generation-templates/option_generation" {
-//}{
-//}{
-//  template optionImplementationSwiftUI : "build-options-implementation-swiftui.galgasTemplate" (
-//    ?[@projectBuildOption] BOOL_OPTION_ARRAY,
-//    ?[@projectBuildOption] UINT_OPTION_ARRAY,
-//    ?[@projectBuildOption] STRING_OPTION_ARRAY
-//  )
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-filewrapper typeDumpGenerationTemplate in "+generation-templates/target_generation" {
+filewrapper @typeDumpGenerationTemplate : "+generation-templates/target_generation" {
 }{
 }{
   template typeDump : "typeDump.html.galgasTemplate" (

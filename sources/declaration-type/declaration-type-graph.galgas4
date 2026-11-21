@@ -606,7 +606,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-private filewrapper graphGenerationTemplate in "../+generation-templates/type_generation" {
+private filewrapper @graphGenerationTemplate : "../+generation-templates/type_generation" {
 }{
 }{
   template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (

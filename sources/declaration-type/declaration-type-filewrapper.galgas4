@@ -27,8 +27,8 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $filewrapper$
-    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
-    $in$
+    $@type$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+    $:$
     $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
@@ -50,8 +50,8 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $filewrapper$
-    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
-    $in$
+    $@type$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+    $:$
     $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
@@ -202,7 +202,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       for formal in templ.mFilewrapperTemplateFormalInputParameters do
         let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
         !?ioSemanticTypePrecedenceGraph.noteNode (argKey)
- //       !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: argKey)
       end
     end
   }
@@ -324,13 +323,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
          true,
          stringType
       )
-//      !?ioTypeMap.makeEntry (extensionGetter.mResultTypeName, ?let returnedType)
-
-
-//      for formal in templ.mFilewrapperTemplateFormalInputParameters do
-//        let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
-//        !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: argKey)
-//      end
     end
   //--- Add extensions
     var @setterMap setterMap = @()
@@ -350,43 +342,35 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       !?instanceMethodMap,
       !acceptSetters: true
     )
-  //--- Operators
-//    var features = @typeFeatures.infixAndOperator | .infixOrOperator | .infixXorOperator
-//      | .prefixTildeOperator
-//      | .generateDescriptionGetterUtilityMethod | .infixSubOperator
-//      | .andAssignOperatorWithExpression // var &= exp
-//      | .orAssignOperatorWithExpression // var |= exp
-//      | .xorAssignOperatorWithExpression // var ^= exp
-//      | .minusAssignOperatorWithExpression // var -= exp
   //--- Enter in type map
-//    let typeDefinition = @unifiedTypeDefinition (
-//      !typeName: self.mFilewrapperName,
-//      !isPredefined: false,
-//      !isConcrete: true,
-//      !isFinal: true,
-//      !superType: .null,
-//      !typeKind: .otherType,
-//      !supportArrayLiteral: false,
-//      !allTypedPropertyList: [],
-//      !propertyMap: @(),
-//      !currentTypedPropertyList: [],
-//      !initializerMap: initializerMap,
-//      !classFunctionMap: classFunctionMap,
-//      !getterMap: getterMap,
-//      !setterMap: setterMap,
-//      !instanceMethodMap: instanceMethodMap,
-//      !classMethodMap: @(),
-//      !unwrappedType: .null,
-//      !readSubscriptMap: @(),
-//      !writeSubscriptMap: @(),
-//      !enumerationDescriptorList: @(),
-//      !features: @(),
-//      !generateHeaderInSeparateFile: false,
-//      !typeForEnumeratedElement: .null,
-//      !headerFileName: "filewrapper-" + self.mFilewrapperName.string.fileNameRepresentation,
-//      !headerKind: .twoHeaders
-//    )
- //   !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+    let typeDefinition = @unifiedTypeDefinition (
+      !typeName: self.mFilewrapperName,
+      !isPredefined: false,
+      !isConcrete: true,
+      !isFinal: true,
+      !superType: .null,
+      !typeKind: .otherType,
+      !supportArrayLiteral: false,
+      !allTypedPropertyList: [],
+      !propertyMap: @(),
+      !currentTypedPropertyList: [],
+      !initializerMap: initializerMap,
+      !classFunctionMap: classFunctionMap,
+      !getterMap: getterMap,
+      !setterMap: setterMap,
+      !instanceMethodMap: instanceMethodMap,
+      !classMethodMap: @(),
+      !unwrappedType: .null,
+      !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
+      !enumerationDescriptorList: @(),
+      !features: @(),
+      !generateHeaderInSeparateFile: false,
+      !typeForEnumeratedElement: .null,
+      !headerFileName: "filewrapper-" + self.mFilewrapperName.string.fileNameRepresentation,
+      !headerKind: .oneHeader
+    )
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

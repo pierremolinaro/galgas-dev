@@ -1,6 +1,51 @@
 #include "all-declarations-21.h"
 //--------------------------------------------------------------------------------------------------
 //
+//Once function 'gGenerateFewHeaderFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+static GGS_bool onceFunction_gGenerateFewHeaderFiles (Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_bool result ; // Returned variable
+  result = GGS_bool (true) ;
+//---
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Function implementation                                                                      
+//--------------------------------------------------------------------------------------------------
+
+static bool gOnceFunctionResultAvailable_gGenerateFewHeaderFiles = false ;
+static GGS_bool gOnceFunctionResult_gGenerateFewHeaderFiles ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool function_gGenerateFewHeaderFiles (Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  if (! gOnceFunctionResultAvailable_gGenerateFewHeaderFiles) {
+    gOnceFunctionResult_gGenerateFewHeaderFiles = onceFunction_gGenerateFewHeaderFiles (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_gGenerateFewHeaderFiles = true ;
+  }
+  return gOnceFunctionResult_gGenerateFewHeaderFiles ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void releaseOnceFunctionResult_gGenerateFewHeaderFiles (void) {
+  gOnceFunctionResult_gGenerateFewHeaderFiles.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+PrologueEpilogue gEpilogueForOnceFunction_gGenerateFewHeaderFiles (nullptr,
+                                                                   releaseOnceFunctionResult_gGenerateFewHeaderFiles) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Once function 'gLexicalTypeMap'
 //
 //--------------------------------------------------------------------------------------------------
@@ -7775,55 +7820,5 @@ void cPtr_ifExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedT
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mThenExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 116)) ;
   const GGS_ifExpressionAST temp_2 = this ;
   callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_2.readProperty_mElseExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 117)) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@ifExpressionAST analyzeSemanticExpression'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_ifExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                             GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                             const GGS_unifiedTypeMapEntry constinArgument_inType,
-                                                             const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                             GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                             GGS_localVarManager & ioArgument_ioVariableMap,
-                                                             GGS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_semanticExpressionForGeneration var_if_5F_expression_5384 ;
-  const GGS_ifExpressionAST temp_0 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mIfExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_if_5F_expression_5384, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 132)) ;
-  GGS_semanticExpressionForGeneration var_then_5F_expression_5675 ;
-  const GGS_ifExpressionAST temp_1 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_1.readProperty_mThenExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_then_5F_expression_5675, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 142)) ;
-  GGS_semanticExpressionForGeneration var_else_5F_expression_5968 ;
-  const GGS_ifExpressionAST temp_2 = this ;
-  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_2.readProperty_mElseExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inType, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_else_5F_expression_5968, inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 152)) ;
-  GalgasBool test_3 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_3) {
-    test_3 = GGS_bool (ComparisonKind::notEqual, extensionGetter_definition (var_if_5F_expression_5384.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 162)).readProperty_typeName ().readProperty_string ().objectCompare (GGS_string ("bool"))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_3) {
-      const GGS_ifExpressionAST temp_4 = this ;
-      GenericArray <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (temp_4.readProperty_mOperatorLocation (), GGS_string ("the test expression type is '@").add_operation (extensionGetter_definition (var_if_5F_expression_5384.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 164)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 164)).add_operation (GGS_string ("', it should be '@bool'"), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 164)), fixItArray5  COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 163)) ;
-      outArgument_outExpression.drop () ; // Release error dropped variable
-    }
-  }
-  if (GalgasBool::boolFalse == test_3) {
-    GalgasBool test_6 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_6) {
-      test_6 = GGS_bool (ComparisonKind::notEqual, var_then_5F_expression_5675.readProperty_mResultType ().objectCompare (var_else_5F_expression_5968.readProperty_mResultType ())).boolEnum () ;
-      if (GalgasBool::boolTrue == test_6) {
-        const GGS_ifExpressionAST temp_7 = this ;
-        GenericArray <FixItDescription> fixItArray8 ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mOperatorLocation (), GGS_string ("operand expression types are '@").add_operation (extensionGetter_definition (var_then_5F_expression_5675.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)).add_operation (GGS_string ("' and '@"), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)).add_operation (extensionGetter_definition (var_else_5F_expression_5968.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)).add_operation (GGS_string ("': they should be the same"), inCompiler COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 168)), fixItArray8  COMMA_SOURCE_FILE ("expression-primary-if.galgas4", 167)) ;
-        outArgument_outExpression.drop () ; // Release error dropped variable
-      }
-    }
-    if (GalgasBool::boolFalse == test_6) {
-      const GGS_ifExpressionAST temp_9 = this ;
-      outArgument_outExpression = GGS_ifExpressionForGeneration::init_21__21__21__21__21_ (var_then_5F_expression_5675.readProperty_mResultType (), temp_9.readProperty_mOperatorLocation (), var_if_5F_expression_5384, var_then_5F_expression_5675, var_else_5F_expression_5968, inCompiler COMMA_HERE) ;
-    }
-  }
 }
 

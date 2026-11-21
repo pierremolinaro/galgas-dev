@@ -762,7 +762,7 @@ func generateClassInstanceMethodDeclaration (?let @lstring inMethodName,
 //! Generation Filewrappers
 //--------------------------------------------------------------------------------------------------
 
-filewrapper classGenerationTemplate in "../+generation-templates/type_generation" {
+filewrapper @classGenerationTemplate : "../+generation-templates/type_generation" {
   "galgas4"
 }{
 }{

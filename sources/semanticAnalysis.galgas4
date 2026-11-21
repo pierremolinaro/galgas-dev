@@ -730,7 +730,7 @@ struct @ruleDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_generation" {
+filewrapper @syntaxFileGenerationTemplate : "+generation-templates/syntax_generation" {
 }{
 }{
   template syntaxFileImplementationGalgas3 : "syntax-file-galgas3.cpp.galgasTemplate" (

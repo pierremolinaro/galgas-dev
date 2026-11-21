@@ -17,7 +17,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-filewrapper libpmFileWrapper in "../libpm" {
+filewrapper @libpmFileWrapper : "../libpm" {
  "h", "cpp", "c", "m", "py", "swift" // Text files
 }{
  "tiff", "png", "xib", "gif" // Binary files

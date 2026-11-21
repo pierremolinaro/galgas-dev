@@ -24,7 +24,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
+filewrapper @grammarRulesInTexDocumentTemplate : "+generation-templates/grammar_generation" {
 }{
 }{
   template document : "grammar-rules-document.tex.galgasTemplate" (
