@@ -4,8 +4,10 @@
 #macSwiftApp
 #macAppBundleBaseName : "fr.what"
 
-#lexical-style : delimitersStyle -> "Delimiter"
-#lexical-style : nameStyle -> "Name"
-#lexical-style : attributeValue -> "Attribute value"
-#lexical-style : commentStyle -> "Comment"
-#lexical-style : textStyle -> "Text"
+#lexical-style delimitersStyle : "Delimiter"
+#lexical-style nameStyle : "Name"
+#lexical-style attributeValue : "Attribute value"
+#lexical-style commentStyle : "Comment"
+#lexical-style textStyle : "Text"
+
+#bool-build-option dumpUnicode : '\0' "dump-unicode" -> "List all unicode character properties"

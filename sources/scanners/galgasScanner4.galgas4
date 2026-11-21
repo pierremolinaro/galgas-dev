@@ -86,19 +86,6 @@ indexing indexingNameReference : "Indexing Name Reference"
 @char charValue
 @string tokenString
 
-//style keywordsStyle -> "Keywords"
-//style delimitersStyle -> "Delimiters"
-//style selectorStyle -> "Selectors"
-//style terminalStyle -> "Terminal Symbols"
-//style nonTerminalStyle -> "Non Terminal Symbols"
-//style integerStyle -> "Integer Constants"
-//style floatStyle -> "Floating Point Constants"
-//style characterStyle -> "Character Constants"
-//style stringStyle -> "String Constants"
-//style typeNameStyle -> "Type Names (@...)"
-//style attributeStyle -> "Attributes (#...)"
-//style commentStyle -> "Comments"
-
 // ------------------------- identifier or key word --------------------
 // let $identifier$ (!@string) : syntaxErrorMessage "an identifier"
 $identifier$ !tokenString #errorMessage "an identifier"
@@ -151,11 +138,9 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "nil",
   "not",
   "on",
-  "option",
   "or",
   "override",
   "package",
-//  "parse",
   "public",
   "protected",
   "private",
@@ -168,7 +153,6 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "self",
   "send",
   "sortedarray",
-//  "sortedlist",
   "spoil",
   "super",
   "struct",
@@ -182,7 +166,6 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
 //  "typealias",
   "var",
   "warning",
-//  "weak",
   "while",
   "with"
 }

@@ -5,7 +5,7 @@
 
 BoolCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
-  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
   %![[sortedOption.mInvocationChar uint] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%
@@ -25,7 +25,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifi
 
 UIntCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
-  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
   %![[sortedOption.mInvocationChar uint] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,
@@ -46,7 +46,7 @@ GGS_uint GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifi
 
 StringCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
-  "z"%![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
+  %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
   %![[sortedOption.mInvocationChar uint] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,

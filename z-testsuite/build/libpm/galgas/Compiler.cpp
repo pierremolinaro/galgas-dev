@@ -9,7 +9,7 @@
 #include "FileManager.h"
 #include "Compiler.h"
 #include "galgas-input-output.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 
@@ -24,14 +24,14 @@ const char * Compiler::kEndOfSourceLexicalErrorMessage = "end of source" ;
 //--------------------------------------------------------------------------------------------------
 
 bool Compiler::performGeneration (void) {
-  return (! gOption_galgas_5F_builtin_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue)
+  return (!gBuildOption_do_5F_not_5F_generate_5F_any_5F_file.mValue)
       && (executionMode () == kExecutionModeNormal) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool Compiler::performLogFileRead (void) {
-  return gOption_galgas_5F_builtin_5F_options_log_5F_file_5F_read.mValue ;
+  return gBuildOption_log_5F_file_5F_read.readProperty_value () ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -5,7 +5,7 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "F_mainForLIBPM.h"
 #include "analyzeCommandLineOptions.h"
 #include "utf32.h"

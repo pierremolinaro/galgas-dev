@@ -79,7 +79,6 @@
    <Unit filename="../build/libpm/command_line_interface/BoolCommandLineOption.cpp" />
    <Unit filename="../build/libpm/command_line_interface/UIntCommandLineOption.cpp" />
    <Unit filename="../build/libpm/command_line_interface/StringCommandLineOption.cpp" />
-   <Unit filename="../build/libpm/command_line_interface/builtin-command-line-options.cpp" />
    <Unit filename="../build/libpm/command_line_interface/analyzeCommandLineOptions.cpp" />
    <Unit filename="../build/libpm/command_line_interface/F_mainForLIBPM.cpp" />
    <Unit filename="../build/libpm/big-integers/BigSigned-add.cpp" />
@@ -143,7 +142,7 @@
    <Unit filename="../build/libpm/utilities/md5.cpp" />
    <Unit filename="../build/libpm/utilities/SHA256.cpp" />
    <Unit filename="../build/libpm/utilities/galgas-random.cpp" />
-   <Unit filename="../build/libpm/galgas/C_galgas_CLI_Options.cpp" />
+   <Unit filename="../build/libpm/galgas/execution-mode.cpp" />
    <Unit filename="../build/libpm/galgas/Compiler.cpp" />
    <Unit filename="../build/libpm/galgas/Lexique.cpp" />
    <Unit filename="../build/libpm/galgas/Lexique-parsing.cpp" />

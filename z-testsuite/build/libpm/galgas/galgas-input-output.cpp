@@ -6,12 +6,11 @@
 
 #include "galgas-input-output.h"
 #include "ConsoleOut.h"
-#include "builtin-command-line-options.h"
 #include "analyzeCommandLineOptions.h"
-#include "C_galgas_CLI_Options.h"
+#include "execution-mode.h"
 #include "C_galgas_class_inspector.h"
 #include "IssueDescriptor.h"
-#include "Compiler.h"
+#include "all-predefined-types.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -69,7 +68,7 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 //--------------------------------------------------------------------------------------------------
 
 int32_t maxErrorCount (void) {
-  int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_errors.mValue ;
+  int32_t result = (int32_t) gBuildOption_max_5F_errors.mValue ;
   return (result == 0) ? INT32_MAX : result ;
 }
 
@@ -84,7 +83,7 @@ int32_t totalErrorCount (void) {
 //--------------------------------------------------------------------------------------------------
 
 int32_t maxWarningCount (void) {
-  int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_warnings.mValue ;
+  int32_t result = (int32_t) gBuildOption_max_5F_warnings.mValue ;
   return (result == 0) ? INT32_MAX : result ;
 }
 

@@ -5,5 +5,5 @@
   #macSwiftApp
   #macAppBundleBaseName : "fr.what"
 
-  #lexical-style : keywordsStyle -> "Keywords:"
-  #lexical-style : delimitersStyle -> "Delimiters:"
+  #lexical-style keywordsStyle : "Keywords:"
+  #lexical-style delimitersStyle : "Delimiters:"

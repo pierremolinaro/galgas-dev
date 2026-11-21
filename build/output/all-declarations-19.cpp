@@ -4946,7 +4946,7 @@ GGS_string filewrapperTemplate_buildOptionGenerationTemplate_buildOptionTypeSpec
     while (enumerator_188.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nBoolCommandLineOption gBuildOption_") ;
       result.appendString (enumerator_188.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 6)).stringValue ()) ;
-      result.appendString (" (\n  \"build\",\n  \"z\"") ;
+      result.appendString (" (\n  \"build\",\n  ") ;
       result.appendString (enumerator_188.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 8)).stringValue ()) ;
       result.appendString (",\n  ") ;
       result.appendString (enumerator_188.current_entry (HERE).readProperty_mInvocationChar ().readProperty_char ().getter_uint (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 9)).getter_string (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 9)).stringValue ()) ;
@@ -4966,55 +4966,55 @@ GGS_string filewrapperTemplate_buildOptionGenerationTemplate_buildOptionTypeSpec
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//                               U32 options\n") ;
-  GGS_uint index_1218_ (0) ;
+  GGS_uint index_1215_ (0) ;
   if (in_UINT_5F_OPTION_5F_ARRAY.isValid ()) {
-    UpEnumerator__5B_projectBuildOption_5D_ enumerator_1218 (in_UINT_5F_OPTION_5F_ARRAY) ;
-    while (enumerator_1218.hasCurrentObject ()) {
+    UpEnumerator__5B_projectBuildOption_5D_ enumerator_1215 (in_UINT_5F_OPTION_5F_ARRAY) ;
+    while (enumerator_1215.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nUIntCommandLineOption gBuildOption_") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 26)).stringValue ()) ;
-      result.appendString (" (\n  \"build\",\n  \"z\"") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 28)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 26)).stringValue ()) ;
+      result.appendString (" (\n  \"build\",\n  ") ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 28)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mInvocationChar ().readProperty_char ().getter_uint (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 29)).getter_string (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 29)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mInvocationChar ().readProperty_char ().getter_uint (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 29)).getter_string (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 29)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mInvocationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 30)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mInvocationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 30)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mExplanationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 31)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mExplanationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 31)).stringValue ()) ;
       result.appendString (",\n  0\n) ;\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_uint GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::class_func_") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 37)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 37)).stringValue ()) ;
       result.appendString (" (UNUSED_LOCATION_ARGS) {\n  return GGS_uint (gBuildOption_") ;
-      result.appendString (enumerator_1218.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 38)).stringValue ()) ;
+      result.appendString (enumerator_1215.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 38)).stringValue ()) ;
       result.appendString (".readProperty_value ()) ;\n}\n\n") ;
-      enumerator_1218.gotoNextObject () ;
-      index_1218_.increment () ;
+      enumerator_1215.gotoNextObject () ;
+      index_1215_.increment () ;
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//                              String options\n") ;
-  GGS_uint index_2257_ (0) ;
+  GGS_uint index_2251_ (0) ;
   if (in_STRING_5F_OPTION_5F_ARRAY.isValid ()) {
-    UpEnumerator__5B_projectBuildOption_5D_ enumerator_2257 (in_STRING_5F_OPTION_5F_ARRAY) ;
-    while (enumerator_2257.hasCurrentObject ()) {
+    UpEnumerator__5B_projectBuildOption_5D_ enumerator_2251 (in_STRING_5F_OPTION_5F_ARRAY) ;
+    while (enumerator_2251.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nStringCommandLineOption gBuildOption_") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 47)).stringValue ()) ;
-      result.appendString (" (\n  \"build\",\n  \"z\"") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 49)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 47)).stringValue ()) ;
+      result.appendString (" (\n  \"build\",\n  ") ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 49)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mInvocationChar ().readProperty_char ().getter_uint (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 50)).getter_string (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 50)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mInvocationChar ().readProperty_char ().getter_uint (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 50)).getter_string (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 50)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mInvocationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 51)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mInvocationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 51)).stringValue ()) ;
       result.appendString (",\n  ") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mExplanationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 52)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mExplanationString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 52)).stringValue ()) ;
       result.appendString (",\n  \"\"\n) ;\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_string GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::class_func_") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 58)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 58)).stringValue ()) ;
       result.appendString (" (UNUSED_LOCATION_ARGS) {\n  return GGS_string (gBuildOption_") ;
-      result.appendString (enumerator_2257.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 59)).stringValue ()) ;
+      result.appendString (enumerator_2251.current_entry (HERE).readProperty_mIdentifier ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("buildOptionValue.cpp.galgasTemplate", 59)).stringValue ()) ;
       result.appendString (".readProperty_value ()) ;\n}\n") ;
-      enumerator_2257.gotoNextObject () ;
-      index_2257_.increment () ;
+      enumerator_2251.gotoNextObject () ;
+      index_2251_.increment () ;
     }
   }
   result.appendString ("\n") ;

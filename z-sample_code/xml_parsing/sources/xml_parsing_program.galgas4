@@ -3,7 +3,7 @@
 
 //--- Prologue routine
 before {
-  if option xml_parsing_options [dumpUnicode.value] then
+  if @buildOptionValue.dumpUnicode then
     listUnicodeCharacterProperties ( )
   end
 }
