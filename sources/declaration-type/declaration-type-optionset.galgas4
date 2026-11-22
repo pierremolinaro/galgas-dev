@@ -125,7 +125,12 @@ final class @optionSetDeclarationAST : @semanticDeclarationAST {
     var @classFunctionMap classFunctionMap = @()
     for slotName in self.mFlagList do
       if not classFunctionMap.contains (slotName) then
-        !?classFunctionMap.insertKey (slotName, @(), false, optionSetType)
+        !?classFunctionMap.insertKey (
+          slotName,
+          !argumentTypeList: @(),
+          !hasCompilerArgument: false,
+          !returnedType: optionSetType
+        )
       end
     end
   //--- Add initializer without argument

@@ -123,16 +123,16 @@ func syntaxNameForUsefulEntitiesGraph (?let @lstring inSyntaxName ) -> @lstring 
 
 //--------------------------------------------------------------------------------------------------
 
-func filewrapperNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName ) -> @lstring {
-  result = @("filewrapper " + inFilewrapperName, inFilewrapperName.location)
-}
+//func filewrapperNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName ) -> @lstring {
+//  result = @("filewrapper " + inFilewrapperName, inFilewrapperName.location)
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-func filewrapperTemplateNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName, ?let @lstring inTemplateName
-) -> @lstring {
-  result = @("filewrapper template " + inFilewrapperName + "." + inTemplateName, inTemplateName.location)
-}
+//func filewrapperTemplateNameForUsefulEntitiesGraph (?let @lstring inFilewrapperName, ?let @lstring inTemplateName
+//) -> @lstring {
+//  result = @("filewrapper template " + inFilewrapperName + "." + inTemplateName, inTemplateName.location)
+//}
 
 //--------------------------------------------------------------------------------------------------
 

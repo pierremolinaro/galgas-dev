@@ -87,9 +87,9 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
   var @classFunctionMap classFunctionMap = @()
   !?classFunctionMap.insertKey
     (@lstring ("nil", self.mWeakReferenceTypeName.location),
-    @(),
-    false,
-    weakReferenceIndex
+    !argumentTypeList: @(),
+    !hasCompilerArgument: false,
+    !returnedType: weakReferenceIndex
   )
 //--- Add Extensions
   var @getterMap getterMap = @()

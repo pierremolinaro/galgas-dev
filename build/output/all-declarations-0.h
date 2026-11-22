@@ -11463,11 +11463,11 @@ class DownEnumerator_classFunctionMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 
-  public: class GGS__5B_functionSignatureElement_5D_ current_mArgumentTypeList (LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ current_argumentTypeList (LOCATION_ARGS) const ;
 
-  public: class GGS_bool current_mHasCompilerArgument (LOCATION_ARGS) const ;
+  public: class GGS_bool current_hasCompilerArgument (LOCATION_ARGS) const ;
 
-  public: class GGS_unifiedTypeMapEntry current_mReturnedType (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_returnedType (LOCATION_ARGS) const ;
 
   public: class GGS_classFunctionMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -11492,9 +11492,9 @@ class UpEnumerator_classFunctionMap final {
   public: inline void rewind (void) { mIndex = 0 ; }
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS__5B_functionSignatureElement_5D_ current_mArgumentTypeList (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mHasCompilerArgument (LOCATION_ARGS) const ;
-  public: class GGS_unifiedTypeMapEntry current_mReturnedType (LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ current_argumentTypeList (LOCATION_ARGS) const ;
+  public: class GGS_bool current_hasCompilerArgument (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_returnedType (LOCATION_ARGS) const ;
   public: class GGS_classFunctionMap_2E_element current (LOCATION_ARGS) const ;
 
   private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_classFunctionMap_2E_element>> mInfoArray ;
@@ -11580,20 +11580,20 @@ class GGS_classFunctionMap final : public AC_GALGAS_root {
                                        class GGS_unifiedTypeMapEntry constinArgument3
                                        COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMArgumentTypeListForKey (class GGS__5B_functionSignatureElement_5D_ constinArgument0,
-                                                  class GGS_string constinArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
+  public: void setter_setArgumentTypeListForKey (class GGS__5B_functionSignatureElement_5D_ constinArgument0,
+                                                 class GGS_string constinArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMHasCompilerArgumentForKey (class GGS_bool constinArgument0,
-                                                     class GGS_string constinArgument1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_setHasCompilerArgumentForKey (class GGS_bool constinArgument0,
+                                                    class GGS_string constinArgument1,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMReturnedTypeForKey (class GGS_unifiedTypeMapEntry constinArgument0,
-                                              class GGS_string constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+  public: void setter_setReturnedTypeForKey (class GGS_unifiedTypeMapEntry constinArgument0,
+                                             class GGS_string constinArgument1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -11607,10 +11607,18 @@ class GGS_classFunctionMap final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: class GGS__5B_functionSignatureElement_5D_ getter_argumentTypeListForKey (const class GGS_string & constinOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasCompilerArgumentForKey (const class GGS_string & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -11628,20 +11636,12 @@ class GGS_classFunctionMap final : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_functionSignatureElement_5D_ getter_mArgumentTypeListForKey (const class GGS_string & constinOperand0,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_mHasCompilerArgumentForKey (const class GGS_string & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_unifiedTypeMapEntry getter_mReturnedTypeForKey (const class GGS_string & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
-
   public: class GGS_classFunctionMap getter_overriddenMap (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_unifiedTypeMapEntry getter_returnedTypeForKey (const class GGS_string & constinOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts

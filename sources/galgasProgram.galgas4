@@ -161,8 +161,11 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
     !buildOptionValueName: "buildOptionValue"
   )
 //--- Parse predefined type definitions
+//  grammar galgas4Grammar (!?declarationAST) on
+//    filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
+//  : "GALGAS predefined types"
   grammar galgas4Grammar (!?declarationAST) on
-  filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
+    @typeGenerationTemplate.contents ().textFileContentsAtPath ("galgas-predefined-entities.txt")
   : "GALGAS predefined types"
 //--- Enumerate sources directory for getting all source files
   let sourceDirectory = inProjectSourceFilePath.string.deletingLastPathComponent + "/sources"

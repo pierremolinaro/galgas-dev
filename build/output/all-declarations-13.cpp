@@ -1,44 +1,5 @@
 #include "all-declarations-13.h"
 //--------------------------------------------------------------------------------------------------
-
-GGS_libpmFileWrapper::GGS_libpmFileWrapper (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_libpmFileWrapper GGS_libpmFileWrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_libpmFileWrapper result = GGS_libpmFileWrapper () ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_libpmFileWrapper::description (String & ioString,
-                                        const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<filewrapper @libpmFileWrapper:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//     @libpmFileWrapper generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_libpmFileWrapper ("libpmFileWrapper",
-                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_libpmFileWrapper::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_libpmFileWrapper ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@AccessControlAST checkCompatibilityWithLet'
 //
@@ -772,9 +733,7 @@ const GALGAS_TypeDescriptor * GGS_templateLexiqueComponentAST_2E_weak::staticTyp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'templateLexiqueGenerationTemplates'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -802,30 +761,36 @@ const DirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateLexiqueGenerationTemplates::GGS_templateLexiqueGenerationTemplates (void) :
+/* GGS_templateLexiqueGenerationTemplates::GGS_templateLexiqueGenerationTemplates (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateLexiqueGenerationTemplates GGS_templateLexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_templateLexiqueGenerationTemplates GGS_templateLexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_templateLexiqueGenerationTemplates result = GGS_templateLexiqueGenerationTemplates () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_templateLexiqueGenerationTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_templateLexiqueGenerationTemplates) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateLexiqueGenerationTemplates::description (String & ioString,
-                                                          const int32_t /* inIndentation */) const {
+/* void GGS_templateLexiqueGenerationTemplates::description (String & ioString,
+                                                             const int32_t ) const {
   ioString.appendCString ("<filewrapper @templateLexiqueGenerationTemplates:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @templateLexiqueGenerationTemplates cppHeader
 //--------------------------------------------------------------------------------------------------
@@ -1314,19 +1279,6 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementat
   result.appendString ("_2_TEMPLATE,\n        templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n      )\n    }\n  }\n  \n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @templateLexiqueGenerationTemplates generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateLexiqueGenerationTemplates ("templateLexiqueGenerationTemplates",
-                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateLexiqueGenerationTemplates::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLexiqueGenerationTemplates ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //  Map type @propertyIndexMap
 //--------------------------------------------------------------------------------------------------
@@ -2879,9 +2831,7 @@ const GALGAS_TypeDescriptor * GGS__5B_ruleLabelImplementationAST_5D_::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'syntaxFileGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -2909,30 +2859,36 @@ const DirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxFileGenerationTemplate::GGS_syntaxFileGenerationTemplate (void) :
+/* GGS_syntaxFileGenerationTemplate::GGS_syntaxFileGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxFileGenerationTemplate GGS_syntaxFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_syntaxFileGenerationTemplate GGS_syntaxFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_syntaxFileGenerationTemplate result = GGS_syntaxFileGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_syntaxFileGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_syntaxFileGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxFileGenerationTemplate::description (String & ioString,
-                                                    const int32_t /* inIndentation */) const {
+/* void GGS_syntaxFileGenerationTemplate::description (String & ioString,
+                                                       const int32_t ) const {
   ioString.appendCString ("<filewrapper @syntaxFileGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @syntaxFileGenerationTemplate syntaxFileImplementationGalgas3
 //--------------------------------------------------------------------------------------------------
@@ -3239,19 +3195,6 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
   result.appendString ("\n} ;\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @syntaxFileGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxFileGenerationTemplate ("syntaxFileGenerationTemplate",
-                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxFileGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxFileGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_string_3A__5B_lstring_5D__5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::buildEmptyDictionary (LOCATION_ARGS) {
@@ -14007,6 +13950,176 @@ const GALGAS_TypeDescriptor * GGS_filewrapperMap_2E_element_3F_::staticTypeDescr
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_wrapperExtensionMap_2E_element::GGS_wrapperExtensionMap_2E_element (void) :
+mProperty_lkey () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element::GGS_wrapperExtensionMap_2E_element (const GGS_wrapperExtensionMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element & GGS_wrapperExtensionMap_2E_element::operator = (const GGS_wrapperExtensionMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element GGS_wrapperExtensionMap_2E_element::init_21_ (const GGS_lstring & in_lkey,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_wrapperExtensionMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_wrapperExtensionMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element::GGS_wrapperExtensionMap_2E_element (const GGS_lstring & inOperand0) :
+mProperty_lkey (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_wrapperExtensionMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_wrapperExtensionMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_wrapperExtensionMap_2E_element::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @wrapperExtensionMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @wrapperExtensionMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element ("wrapperExtensionMap.element",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_wrapperExtensionMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @wrapperExtensionMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element_3F_::GGS_wrapperExtensionMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element_3F_::GGS_wrapperExtensionMap_2E_element_3F_ (const GGS_wrapperExtensionMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_wrapperExtensionMap_2E_element_3F_ GGS_wrapperExtensionMap_2E_element_3F_::init_nil (void) {
+  GGS_wrapperExtensionMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_wrapperExtensionMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_wrapperExtensionMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_wrapperExtensionMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_wrapperExtensionMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_wrapperExtensionMap_2E_element_3F_::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @wrapperExtensionMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element_3F_ ("wrapperExtensionMap.element?",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_wrapperExtensionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_wrapperFileMap_2E_element::GGS_wrapperFileMap_2E_element (void) :
 mProperty_lkey (),
 mProperty_mAbsoluteFilePath (),
@@ -14417,236 +14530,46 @@ const GALGAS_TypeDescriptor * GGS_wrapperDirectoryMap_2E_element_3F_::staticType
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_filewrapperTemplateMap_2E_element::GGS_filewrapperTemplateMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mTemplateSignature (),
-mProperty_mFilewrapperTemplatePath () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element::GGS_filewrapperTemplateMap_2E_element (const GGS_filewrapperTemplateMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mTemplateSignature (inSource.mProperty_mTemplateSignature),
-mProperty_mFilewrapperTemplatePath (inSource.mProperty_mFilewrapperTemplatePath) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element & GGS_filewrapperTemplateMap_2E_element::operator = (const GGS_filewrapperTemplateMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mTemplateSignature = inSource.mProperty_mTemplateSignature ;
-  mProperty_mFilewrapperTemplatePath = inSource.mProperty_mFilewrapperTemplatePath ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element GGS_filewrapperTemplateMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                               const GGS__5B_functionSignatureElement_5D_ & in_mTemplateSignature,
-                                                                                               const GGS_lstring & in_mFilewrapperTemplatePath,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_filewrapperTemplateMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mTemplateSignature = in_mTemplateSignature ;
-  result.mProperty_mFilewrapperTemplatePath = in_mFilewrapperTemplatePath ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_filewrapperTemplateMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element::GGS_filewrapperTemplateMap_2E_element (const GGS_lstring & inOperand0,
-                                                                              const GGS__5B_functionSignatureElement_5D_ & inOperand1,
-                                                                              const GGS_lstring & inOperand2) :
-mProperty_lkey (inOperand0),
-mProperty_mTemplateSignature (inOperand1),
-mProperty_mFilewrapperTemplatePath (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_filewrapperTemplateMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTemplateSignature.isValid () && mProperty_mFilewrapperTemplatePath.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_filewrapperTemplateMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mTemplateSignature.drop () ;
-  mProperty_mFilewrapperTemplatePath.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_filewrapperTemplateMap_2E_element::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @filewrapperTemplateMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mTemplateSignature.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFilewrapperTemplatePath.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperTemplateMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element ("filewrapperTemplateMap.element",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperTemplateMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @filewrapperTemplateMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element_3F_::GGS_filewrapperTemplateMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element_3F_::GGS_filewrapperTemplateMap_2E_element_3F_ (const GGS_filewrapperTemplateMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateMap_2E_element_3F_ GGS_filewrapperTemplateMap_2E_element_3F_::init_nil (void) {
-  GGS_filewrapperTemplateMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_filewrapperTemplateMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_filewrapperTemplateMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_filewrapperTemplateMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_filewrapperTemplateMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_filewrapperTemplateMap_2E_element_3F_::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperTemplateMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ("filewrapperTemplateMap.element?",
-                                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperTemplateMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (void) :
 mProperty_lkey (),
-mProperty_mArgumentTypeList (),
-mProperty_mHasCompilerArgument (),
-mProperty_mReturnedType () {
+mProperty_argumentTypeList (),
+mProperty_hasCompilerArgument (),
+mProperty_returnedType () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (const GGS_classFunctionMap_2E_element & inSource) :
 mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mArgumentTypeList (inSource.mProperty_mArgumentTypeList),
-mProperty_mHasCompilerArgument (inSource.mProperty_mHasCompilerArgument),
-mProperty_mReturnedType (inSource.mProperty_mReturnedType) {
+mProperty_argumentTypeList (inSource.mProperty_argumentTypeList),
+mProperty_hasCompilerArgument (inSource.mProperty_hasCompilerArgument),
+mProperty_returnedType (inSource.mProperty_returnedType) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_classFunctionMap_2E_element & GGS_classFunctionMap_2E_element::operator = (const GGS_classFunctionMap_2E_element & inSource) {
   mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mArgumentTypeList = inSource.mProperty_mArgumentTypeList ;
-  mProperty_mHasCompilerArgument = inSource.mProperty_mHasCompilerArgument ;
-  mProperty_mReturnedType = inSource.mProperty_mReturnedType ;
+  mProperty_argumentTypeList = inSource.mProperty_argumentTypeList ;
+  mProperty_hasCompilerArgument = inSource.mProperty_hasCompilerArgument ;
+  mProperty_returnedType = inSource.mProperty_returnedType ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_classFunctionMap_2E_element GGS_classFunctionMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                       const GGS__5B_functionSignatureElement_5D_ & in_mArgumentTypeList,
-                                                                                       const GGS_bool & in_mHasCompilerArgument,
-                                                                                       const GGS_unifiedTypeMapEntry & in_mReturnedType,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+GGS_classFunctionMap_2E_element GGS_classFunctionMap_2E_element::init_21__21_argumentTypeList_21_hasCompilerArgument_21_returnedType (const GGS_lstring & in_lkey,
+                                                                                                                                      const GGS__5B_functionSignatureElement_5D_ & in_argumentTypeList,
+                                                                                                                                      const GGS_bool & in_hasCompilerArgument,
+                                                                                                                                      const GGS_unifiedTypeMapEntry & in_returnedType,
+                                                                                                                                      Compiler * inCompiler
+                                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_classFunctionMap_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
-  result.mProperty_mArgumentTypeList = in_mArgumentTypeList ;
-  result.mProperty_mHasCompilerArgument = in_mHasCompilerArgument ;
-  result.mProperty_mReturnedType = in_mReturnedType ;
+  result.mProperty_argumentTypeList = in_argumentTypeList ;
+  result.mProperty_hasCompilerArgument = in_hasCompilerArgument ;
+  result.mProperty_returnedType = in_returnedType ;
   return result ;
 }
 
@@ -14662,24 +14585,24 @@ GGS_classFunctionMap_2E_element::GGS_classFunctionMap_2E_element (const GGS_lstr
                                                                   const GGS_bool & inOperand2,
                                                                   const GGS_unifiedTypeMapEntry & inOperand3) :
 mProperty_lkey (inOperand0),
-mProperty_mArgumentTypeList (inOperand1),
-mProperty_mHasCompilerArgument (inOperand2),
-mProperty_mReturnedType (inOperand3) {
+mProperty_argumentTypeList (inOperand1),
+mProperty_hasCompilerArgument (inOperand2),
+mProperty_returnedType (inOperand3) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_classFunctionMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mArgumentTypeList.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mReturnedType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_argumentTypeList.isValid () && mProperty_hasCompilerArgument.isValid () && mProperty_returnedType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classFunctionMap_2E_element::drop (void) {
   mProperty_lkey.drop () ;
-  mProperty_mArgumentTypeList.drop () ;
-  mProperty_mHasCompilerArgument.drop () ;
-  mProperty_mReturnedType.drop () ;
+  mProperty_argumentTypeList.drop () ;
+  mProperty_hasCompilerArgument.drop () ;
+  mProperty_returnedType.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -14692,11 +14615,11 @@ void GGS_classFunctionMap_2E_element::description (String & ioString,
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mArgumentTypeList.description (ioString, inIndentation+1) ;
+    mProperty_argumentTypeList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mHasCompilerArgument.description (ioString, inIndentation+1) ;
+    mProperty_hasCompilerArgument.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mReturnedType.description (ioString, inIndentation+1) ;
+    mProperty_returnedType.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
@@ -16375,5 +16298,96 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalMap_2E_element ("term
 
 const GALGAS_TypeDescriptor * GGS_terminalMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @terminalMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_terminalMap_2E_element_3F_::GGS_terminalMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_terminalMap_2E_element_3F_::GGS_terminalMap_2E_element_3F_ (const GGS_terminalMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_terminalMap_2E_element_3F_ GGS_terminalMap_2E_element_3F_::init_nil (void) {
+  GGS_terminalMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_terminalMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_terminalMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_terminalMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_terminalMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_terminalMap_2E_element_3F_::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @terminalMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ("terminalMap.element?",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_terminalMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_terminalMap_2E_element_3F_ ;
 }
 

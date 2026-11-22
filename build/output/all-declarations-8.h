@@ -180,165 +180,160 @@ class GGS_wrapperDirectoryMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: [filewrapperTemplateForGeneration] array
+// Phase 1: @wrapperExtensionMap map
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ final {
-//--- Constructor
-  public: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand) ;
+#include "SharedGenericPtrWithValueSemantics.h"
 
-//--- No copy
-  private: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
-  private: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ & operator = (const DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+template <typename INFO> class GenericMapRoot ;
 
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+//--------------------------------------------------------------------------------------------------
 
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
+class DownEnumerator_wrapperExtensionMap final {
 
-//--- Current element access
-  public: class GGS_filewrapperTemplateForGeneration current (LOCATION_ARGS) const ;
-  public: class GGS_filewrapperTemplateForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+  public: DownEnumerator_wrapperExtensionMap (const class GGS_wrapperExtensionMap & inMap) ;
 
-//---- Properties
-  private: const GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
-  private: int32_t mCurrent ;
+  public: ~ DownEnumerator_wrapperExtensionMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS_wrapperExtensionMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperExtensionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_wrapperExtensionMap (const DownEnumerator_wrapperExtensionMap &) = delete ;
+  private: DownEnumerator_wrapperExtensionMap & operator = (const DownEnumerator_wrapperExtensionMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ final {
-//--- Constructor
-  public: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand) ;
+class UpEnumerator_wrapperExtensionMap final {
+  public: UpEnumerator_wrapperExtensionMap (const class GGS_wrapperExtensionMap & inMap)  ;
 
-//--- No copy
-  private: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
-  private: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ & operator = (const UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+  public: ~ UpEnumerator_wrapperExtensionMap (void) = default ;
 
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
+  public: inline void rewind (void) { mIndex = 0 ; }
 
-//--- Current element access
-  public: class GGS_filewrapperTemplateForGeneration current (LOCATION_ARGS) const ;
-  public: class GGS_filewrapperTemplateForGeneration current_entry (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS_wrapperExtensionMap_2E_element current (LOCATION_ARGS) const ;
 
-//---- Properties
-  private: const GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
-  private: int32_t mCurrent ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperExtensionMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_wrapperExtensionMap (const UpEnumerator_wrapperExtensionMap &) = delete ;
+  private: UpEnumerator_wrapperExtensionMap & operator = (const UpEnumerator_wrapperExtensionMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
-  private: bool mIsValid ;
+class GGS_wrapperExtensionMap final : public AC_GALGAS_root {
 
-//--------------------------------- Default constructor
-  public: GGS__5B_filewrapperTemplateForGeneration_5D_ (void) ;
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_wrapperExtensionMap_2E_element>> mSharedRoot ;
 
-//--------------------------------- Handle copy
-  public: GGS__5B_filewrapperTemplateForGeneration_5D_ (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inSource) ;
-  public: GGS__5B_filewrapperTemplateForGeneration_5D_ & operator = (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inSource) ;
+//--- Default constructor
+  public: GGS_wrapperExtensionMap (void) ;
 
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+//--- Virtual destructor
+  public: virtual ~ GGS_wrapperExtensionMap (void) ;
 
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
+//--- Handle copy
+  public: GGS_wrapperExtensionMap (const GGS_wrapperExtensionMap & inSource) ;
+  public: GGS_wrapperExtensionMap & operator = (const GGS_wrapperExtensionMap & inSource) ;
 
-  public: virtual void drop (void) override ;
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
 
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_wrapperExtensionMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_wrapperExtensionMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperExtensionMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS__5B_filewrapperTemplateForGeneration_5D_ init (Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_filewrapperTemplateForGeneration_5D_ inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_filewrapperTemplateForGeneration & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__5B_filewrapperTemplateForGeneration_5D_ add_operation (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+  public: static GGS_wrapperExtensionMap init (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_wrapperExtensionMap class_func_mapWithMapToOverride (const class GGS_wrapperExtensionMap & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_filewrapperTemplateForGeneration constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insert (class GGS_filewrapperTemplateForGeneration constinArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_filewrapperTemplateForGeneration & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeFirst (class GGS_filewrapperTemplateForGeneration & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeLast (class GGS_filewrapperTemplateForGeneration & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_set (class GGS_filewrapperTemplateForGeneration constinArgument0,
-                           class GGS_uint constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_filewrapperTemplateForGeneration getter_first (Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_filewrapperTemplateForGeneration getter_last (Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_filewrapperTemplateForGeneration_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_filewrapperTemplateForGeneration_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                             const class GGS_uint & constinOperand1,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_wrapperExtensionMap getter_overriddenMap (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_filewrapperTemplateForGeneration readSubcript__3F_ (const class GGS_uint & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_wrapperExtensionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -348,14 +343,152 @@ class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
-  friend class DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
+  friend class UpEnumerator_wrapperExtensionMap ;
+  friend class DownEnumerator_wrapperExtensionMap ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_filewrapperTemplateForGeneration_5D_ ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperExtensionMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @wrapperExtensionMap_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_wrapperExtensionMap_2E_element final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_lkey ;
+  public: inline GGS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_wrapperExtensionMap_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_wrapperExtensionMap_2E_element (const GGS_lstring & in_lkey) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_wrapperExtensionMap_2E_element (const GGS_wrapperExtensionMap_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_wrapperExtensionMap_2E_element & operator = (const GGS_wrapperExtensionMap_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_wrapperExtensionMap_2E_element init_21_ (const class GGS_lstring & inOperand0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: wrapperExtensionMap.element? optional
+//--------------------------------------------------------------------------------------------------
+
+class GGS_wrapperExtensionMap_2E_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GGS_wrapperExtensionMap_2E_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GGS_wrapperExtensionMap_2E_element_3F_ (void) ;
+
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_wrapperExtensionMap_2E_element_3F_ (const GGS_wrapperExtensionMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
+  public: static GGS_wrapperExtensionMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
+
+  public: bool isValuated (void) const ;
+  public: inline GGS_wrapperExtensionMap_2E_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperExtensionMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [templateInstructionForGeneration] array
@@ -536,6 +669,88 @@ class GGS__5B_templateInstructionForGeneration_5D_ final : public AC_GALGAS_root
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_templateInstructionForGeneration_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionForGeneration init (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionForGeneration : public AbstractStrongPtrClass {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionForGeneration_init (Compiler * inCompiler) ;
+
+
+//--- Extension proc templateCodeGeneration
+  public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
+           class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg__ioTemporaryVariableIndex,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
+           class GGS_bool & arg__ioUseColumnMarker,
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
+
+//--- Properties
+
+
+
+//--- Constructor
+  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperTemplateForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
@@ -623,6 +838,184 @@ class GGS_filewrapperTemplateForGeneration final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [filewrapperTemplateForGeneration] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ & operator = (const DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_filewrapperTemplateForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_filewrapperTemplateForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ (const UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ & operator = (const UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_filewrapperTemplateForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_filewrapperTemplateForGeneration current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_filewrapperTemplateForGeneration> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_filewrapperTemplateForGeneration_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_filewrapperTemplateForGeneration_5D_ (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inSource) ;
+  public: GGS__5B_filewrapperTemplateForGeneration_5D_ & operator = (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_filewrapperTemplateForGeneration_5D_ init (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_filewrapperTemplateForGeneration_5D_ inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_filewrapperTemplateForGeneration & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_filewrapperTemplateForGeneration_5D_ add_operation (const GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_filewrapperTemplateForGeneration constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_filewrapperTemplateForGeneration constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_filewrapperTemplateForGeneration & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_filewrapperTemplateForGeneration & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_filewrapperTemplateForGeneration & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_filewrapperTemplateForGeneration constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_filewrapperTemplateForGeneration getter_first (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_filewrapperTemplateForGeneration getter_last (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_filewrapperTemplateForGeneration_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_filewrapperTemplateForGeneration_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                             const class GGS_uint & constinOperand1,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_filewrapperTemplateForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
+  friend class DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_filewrapperTemplateForGeneration_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [templateInstructionAST] array
@@ -885,88 +1278,6 @@ class cPtr_templateInstructionAST : public AbstractStrongPtrClass {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateInstructionForGeneration (const class cPtr_templateInstructionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateInstructionForGeneration init (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @templateInstructionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateInstructionForGeneration : public AbstractStrongPtrClass {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateInstructionForGeneration_init (Compiler * inCompiler) ;
-
-
-//--- Extension proc templateCodeGeneration
-  public: virtual void method_templateCodeGeneration (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg__ioTemporaryVariableIndex,
-           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
-           class GGS_bool & arg__ioUseColumnMarker,
-           Compiler * COMMA_LOCATION_ARGS) = 0 ;
-
-//--- Properties
-
-
-
-//--- Constructor
-  public: cPtr_templateInstructionForGeneration (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override = 0 ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @filewrapperDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1210,14 +1521,20 @@ class GGS_filewrapperTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GGS__5B_filewrapperTemplateForGeneration_5D_ readProperty_filewrapperTemplateListForGeneration (void) const ;
 
+  public: class GGS_wrapperFileMap readProperty_regularRootFileMap (void) const ;
+
+  public: class GGS_wrapperDirectoryMap readProperty_wrapperDirectoryMap (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_filewrapperTypeForGeneration init_21_infoMessage_21__21_ (const class GGS_string & inOperand0,
-                                                                               const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                               const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand2,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GGS_filewrapperTypeForGeneration init_21_infoMessage_21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                       const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                       const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand2,
+                                                                                       const class GGS_wrapperFileMap & inOperand3,
+                                                                                       const class GGS_wrapperDirectoryMap & inOperand4,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_filewrapperTypeForGeneration & inOperand) const ;
 
@@ -1254,10 +1571,12 @@ class cPtr_filewrapperTypeForGeneration : public cPtr_semanticTypeForGeneration 
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperTypeForGeneration_init_21_infoMessage_21__21_ (const class GGS_string & inOperand0,
-                                                                         const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                         const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand2,
-                                                                         Compiler * inCompiler) ;
+  public: void filewrapperTypeForGeneration_init_21_infoMessage_21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                 const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                 const class GGS__5B_filewrapperTemplateForGeneration_5D_ & inOperand2,
+                                                                                 const class GGS_wrapperFileMap & inOperand3,
+                                                                                 const class GGS_wrapperDirectoryMap & inOperand4,
+                                                                                 Compiler * inCompiler) ;
 
 
 //--- Extension proc appendDeclaration1
@@ -1273,6 +1592,8 @@ class cPtr_filewrapperTypeForGeneration : public cPtr_semanticTypeForGeneration 
 
 //--- Properties
   public: GGS__5B_filewrapperTemplateForGeneration_5D_ mProperty_filewrapperTemplateListForGeneration ;
+  public: GGS_wrapperFileMap mProperty_regularRootFileMap ;
+  public: GGS_wrapperDirectoryMap mProperty_wrapperDirectoryMap ;
 
 
 //--- Default constructor
@@ -1282,6 +1603,8 @@ class cPtr_filewrapperTypeForGeneration : public cPtr_semanticTypeForGeneration 
   public: cPtr_filewrapperTypeForGeneration (const GGS_string & in_infoMessage,
                                              const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                              const GGS__5B_filewrapperTemplateForGeneration_5D_ & in_filewrapperTemplateListForGeneration,
+                                             const GGS_wrapperFileMap & in_regularRootFileMap,
+                                             const GGS_wrapperDirectoryMap & in_wrapperDirectoryMap,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
@@ -1372,9 +1695,7 @@ class GGS_filewrapperTypeForGeneration_2E_weak : public GGS_semanticTypeForGener
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'filewrapperGenerationTemplate'
-//
+//§Filewrapper§ 'filewrapperGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -1392,24 +1713,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_filewrapperGenerationTemplate 
 // Phase 1: filewrapper @filewrapperGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_filewrapperGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_filewrapperGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_filewrapperGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_filewrapperGenerationTemplate init (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_filewrapperTemplateImplementation (const class GGS_string & inOperand0,
                                                                                 const class GGS_string & inOperand1,
                                                                                 const class GGS__5B_formalInputParameterForGeneration_5D_ & inOperand2,
@@ -1429,522 +1739,9 @@ class GGS_filewrapperGenerationTemplate final : public AC_GALGAS_root {
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @filewrapperDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_filewrapperDeclarationForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_filewrapperDeclarationForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_filewrapperDeclarationForGeneration (const class cPtr_filewrapperDeclarationForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_string readProperty_mFilewrapperName (void) const ;
-
-  public: class GGS_string readProperty_mFilewrapperAbsolutePath (void) const ;
-
-  public: class GGS_wrapperFileMap readProperty_mFilewrapperFileMap (void) const ;
-
-  public: class GGS_wrapperDirectoryMap readProperty_mFilewrapperDirectoryMap (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_filewrapperDeclarationForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                             const class GGS_bool & inOperand1,
-                                                                                                                                             const class GGS_string & inOperand2,
-                                                                                                                                             const class GGS_string & inOperand3,
-                                                                                                                                             const class GGS_string & inOperand4,
-                                                                                                                                             const class GGS_wrapperFileMap & inOperand5,
-                                                                                                                                             const class GGS_wrapperDirectoryMap & inOperand6,
-                                                                                                                                             Compiler * inCompiler
-                                                                                                                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_filewrapperDeclarationForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperDeclarationForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @filewrapperDeclarationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void filewrapperDeclarationForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                       const class GGS_bool & inOperand1,
-                                                                                                                                       const class GGS_string & inOperand2,
-                                                                                                                                       const class GGS_string & inOperand3,
-                                                                                                                                       const class GGS_string & inOperand4,
-                                                                                                                                       const class GGS_wrapperFileMap & inOperand5,
-                                                                                                                                       const class GGS_wrapperDirectoryMap & inOperand6,
-                                                                                                                                       Compiler * inCompiler) ;
-
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_string mProperty_mFilewrapperName ;
-  public: GGS_string mProperty_mFilewrapperAbsolutePath ;
-  public: GGS_wrapperFileMap mProperty_mFilewrapperFileMap ;
-  public: GGS_wrapperDirectoryMap mProperty_mFilewrapperDirectoryMap ;
-
-
-//--- Default constructor
-  public: cPtr_filewrapperDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_filewrapperDeclarationForGeneration (const GGS_string & in_infoMessage,
-                                                    const GGS_bool & in_generateHeader,
-                                                    const GGS_string & in_implementationCppFileName,
-                                                    const GGS_string & in_mFilewrapperName,
-                                                    const GGS_string & in_mFilewrapperAbsolutePath,
-                                                    const GGS_wrapperFileMap & in_mFilewrapperFileMap,
-                                                    const GGS_wrapperDirectoryMap & in_mFilewrapperDirectoryMap,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @filewrapperTemplateMap map
-//--------------------------------------------------------------------------------------------------
-
-#include "SharedGenericPtrWithValueSemantics.h"
-
-template <typename INFO> class GenericMapRoot ;
-
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_filewrapperTemplateMap final {
-
-  public: DownEnumerator_filewrapperTemplateMap (const class GGS_filewrapperTemplateMap & inMap) ;
-
-  public: ~ DownEnumerator_filewrapperTemplateMap (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-
-  public: class GGS__5B_functionSignatureElement_5D_ current_mTemplateSignature (LOCATION_ARGS) const ;
-
-  public: class GGS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
-
-  public: class GGS_filewrapperTemplateMap_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_filewrapperTemplateMap (const DownEnumerator_filewrapperTemplateMap &) = delete ;
-  private: DownEnumerator_filewrapperTemplateMap & operator = (const DownEnumerator_filewrapperTemplateMap &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_filewrapperTemplateMap final {
-  public: UpEnumerator_filewrapperTemplateMap (const class GGS_filewrapperTemplateMap & inMap)  ;
-
-  public: ~ UpEnumerator_filewrapperTemplateMap (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS__5B_functionSignatureElement_5D_ current_mTemplateSignature (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
-  public: class GGS_filewrapperTemplateMap_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> mInfoArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_filewrapperTemplateMap (const UpEnumerator_filewrapperTemplateMap &) = delete ;
-  private: UpEnumerator_filewrapperTemplateMap & operator = (const UpEnumerator_filewrapperTemplateMap &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_filewrapperTemplateMap final : public AC_GALGAS_root {
-
-//--- Private property
-  private: OptionalSharedRef <GenericMapRoot <GGS_filewrapperTemplateMap_2E_element>> mSharedRoot ;
-
-//--- Default constructor
-  public: GGS_filewrapperTemplateMap (void) ;
-
-//--- Virtual destructor
-  public: virtual ~ GGS_filewrapperTemplateMap (void) ;
-
-//--- Handle copy
-  public: GGS_filewrapperTemplateMap (const GGS_filewrapperTemplateMap & inSource) ;
-  public: GGS_filewrapperTemplateMap & operator = (const GGS_filewrapperTemplateMap & inSource) ;
-
-//--- Build
-  protected: void build (LOCATION_ARGS) ;
-
-//--- isValid
-  public: bool isValid (void) const override ;
-
-//--- Drop
-  public: void drop (void) override ;
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-
-
-//--- performInsert
-  protected: void performInsert (const class GGS_filewrapperTemplateMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
- 
-//--- infoForKey
-  protected: const SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element> infoForKey (const String & inKey) const ;
- 
-//--- Count
-  public: int32_t count (void) const ;
- 
-//--- sortedInfoArray
-  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_filewrapperTemplateMap_2E_element>> sortedInfoArray (void) const ;
-
-//--- findNearestKey
-  protected: void findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_filewrapperTemplateMap init (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_filewrapperTemplateMap class_func_mapWithMapToOverride (const class GGS_filewrapperTemplateMap & inOperand0
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Setters
-  public: void setter_insertKey (class GGS_lstring constinArgument0,
-                                 class GGS__5B_functionSignatureElement_5D_ constinArgument1,
-                                 class GGS_lstring constinArgument2,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMFilewrapperTemplatePathForKey (class GGS_lstring constinArgument0,
-                                                         class GGS_string constinArgument1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMTemplateSignatureForKey (class GGS__5B_functionSignatureElement_5D_ constinArgument0,
-                                                   class GGS_string constinArgument1,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_searchKey (class GGS_lstring constinArgument0,
-                                 class GGS__5B_functionSignatureElement_5D_ & outArgument1,
-                                 class GGS_lstring & outArgument2,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
-                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_stringset getter_keySet (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
-
-  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_mFilewrapperTemplatePathForKey (const class GGS_string & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_functionSignatureElement_5D_ getter_mTemplateSignatureForKey (const class GGS_string & constinOperand0,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_filewrapperTemplateMap getter_overriddenMap (Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subcripts
-  public: class GGS_filewrapperTemplateMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
-
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_filewrapperTemplateMap ;
-  friend class DownEnumerator_filewrapperTemplateMap ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @filewrapperTemplateMap_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_filewrapperTemplateMap_2E_element final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_lkey ;
-  public: inline GGS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-  public: GGS__5B_functionSignatureElement_5D_ mProperty_mTemplateSignature ;
-  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_mTemplateSignature (void) const {
-    return mProperty_mTemplateSignature ;
-  }
-
-  public: GGS_lstring mProperty_mFilewrapperTemplatePath ;
-  public: inline GGS_lstring readProperty_mFilewrapperTemplatePath (void) const {
-    return mProperty_mFilewrapperTemplatePath ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_filewrapperTemplateMap_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-  public: inline void setter_setMTemplateSignature (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTemplateSignature = inValue ;
-  }
-
-  public: inline void setter_setMFilewrapperTemplatePath (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFilewrapperTemplatePath = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_filewrapperTemplateMap_2E_element (const GGS_lstring & in_lkey,
-                                                 const GGS__5B_functionSignatureElement_5D_ & in_mTemplateSignature,
-                                                 const GGS_lstring & in_mFilewrapperTemplatePath) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_filewrapperTemplateMap_2E_element (const GGS_filewrapperTemplateMap_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_filewrapperTemplateMap_2E_element & operator = (const GGS_filewrapperTemplateMap_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_filewrapperTemplateMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                         const class GGS__5B_functionSignatureElement_5D_ & inOperand1,
-                                                                         const class GGS_lstring & inOperand2,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapperTemplateMap.element? optional
-//--------------------------------------------------------------------------------------------------
-
-class GGS_filewrapperTemplateMap_2E_element_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_filewrapperTemplateMap_2E_element mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_filewrapperTemplateMap_2E_element_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_filewrapperTemplateMap_2E_element_3F_ (const GGS_filewrapperTemplateMap_2E_element & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_filewrapperTemplateMap_2E_element_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_filewrapperTemplateMap_2E_element unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [sortedArraySortDescriptorAST] array
@@ -2861,9 +2658,7 @@ class GGS_sortedArrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGener
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedArrayTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'sortedArrayTypeGenerationTemplate'
-//
+//§Filewrapper§ 'sortedArrayTypeGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -2881,24 +2676,11 @@ extern const DirectoryWrapper gWrapperDirectory_0_sortedArrayTypeGenerationTempl
 // Phase 1: filewrapper @sortedArrayTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sortedArrayTypeGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_sortedArrayTypeGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_sortedArrayTypeGenerationTemplate (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_sortedArrayTypeGenerationTemplate init (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_arrayTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                   const class GGS_string & inOperand1,
                                                                   const class GGS_string & inOperand2,
@@ -2913,31 +2695,11 @@ class GGS_sortedArrayTypeGenerationTemplate final : public AC_GALGAS_root {
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedArrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @classDeclarationAST reference class
@@ -3411,9 +3173,7 @@ class GGS_classTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'classGenerationTemplate'
-//
+//§Filewrapper§ 'classGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -3431,24 +3191,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
 // Phase 1: filewrapper @classGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_classGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_classGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_classGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_classGenerationTemplate init (Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_referenceClassTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                            const class GGS_string & inOperand1,
                                                                            const class GGS_string & inOperand2,
@@ -3496,31 +3245,9 @@ class GGS_classGenerationTemplate final : public AC_GALGAS_root {
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -224,9 +224,9 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       !?constantMap.insertKey (constant.name, constantMap.count, associatedTypeList)
       !?classFunctionMap.insertOrReplace (
         constant.name,
-        argumentTypeList,
-        false,
-        enumTypeEntry
+        !argumentTypeList: argumentTypeList,
+        !hasCompilerArgument: false,
+        !returnedType: enumTypeEntry
       )
     end
   //--- Methods

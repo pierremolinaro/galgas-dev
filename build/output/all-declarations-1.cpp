@@ -14120,9 +14120,7 @@ const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDesc
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'lexiqueGenerationTemplates'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -14150,30 +14148,36 @@ const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexiqueGenerationTemplates::GGS_lexiqueGenerationTemplates (void) :
+/* GGS_lexiqueGenerationTemplates::GGS_lexiqueGenerationTemplates (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexiqueGenerationTemplates GGS_lexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_lexiqueGenerationTemplates GGS_lexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexiqueGenerationTemplates result = GGS_lexiqueGenerationTemplates () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_lexiqueGenerationTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_lexiqueGenerationTemplates) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexiqueGenerationTemplates::description (String & ioString,
-                                                  const int32_t /* inIndentation */) const {
+/* void GGS_lexiqueGenerationTemplates::description (String & ioString,
+                                                     const int32_t ) const {
   ioString.appendCString ("<filewrapper @lexiqueGenerationTemplates:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @lexiqueGenerationTemplates headerZone2
 //--------------------------------------------------------------------------------------------------
@@ -15369,16 +15373,3 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @lexiqueGenerationTemplates generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ("lexiqueGenerationTemplates",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexiqueGenerationTemplates::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ;
-}
-

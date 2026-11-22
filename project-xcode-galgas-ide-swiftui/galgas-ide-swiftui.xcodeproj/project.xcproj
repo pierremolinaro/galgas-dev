@@ -348,6 +348,7 @@
         { "path": "lexique-galgas+scanner4-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
         { "path": "lexique-galgas+template+scanner-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
         { "path": "lexique-project+component+scanner-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
+        { "path": "project_header.h" },
         { "path": "SettingsView.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
       ],
     }, {

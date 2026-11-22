@@ -4652,9 +4652,7 @@ class GGS_buildOptionTypeForGeneration_2E_weak : public GGS_semanticTypeForGener
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'buildOptionGenerationTemplate'
-//
+//§Filewrapper§ 'buildOptionGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -4672,24 +4670,11 @@ extern const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate 
 // Phase 1: filewrapper @buildOptionGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_buildOptionGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_buildOptionGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_buildOptionGenerationTemplate (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_buildOptionGenerationTemplate init (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_buildOptionTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                         const class GGS_string & inOperand1,
                                                                         const class GGS__5B_projectBuildOption_5D_ & inOperand2,
@@ -4706,37 +4691,17 @@ class GGS_buildOptionGenerationTemplate final : public AC_GALGAS_root {
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_optionImplementationSwiftUI (const class GGS__5B_projectBuildOption_5D_ & inOperand0,
                                                                           const class GGS__5B_projectBuildOption_5D_ & inOperand1,
                                                                           const class GGS__5B_projectBuildOption_5D_ & inOperand2,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @u_31__36_PredefinedTypeAST reference class
@@ -5305,9 +5270,7 @@ class GGS_buildOptionStringTypeForGeneration_2E_weak : public GGS_semanticTypeFo
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'buildOptionStringGenerationTemplate'
-//
+//§Filewrapper§ 'buildOptionStringGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -5325,24 +5288,11 @@ extern const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTem
 // Phase 1: filewrapper @buildOptionStringGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_buildOptionStringGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_buildOptionStringGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_buildOptionStringGenerationTemplate (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_buildOptionStringGenerationTemplate init (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_buildOptionTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                         const class GGS_string & inOperand1,
                                                                         Compiler * inCompiler
@@ -5356,31 +5306,11 @@ class GGS_buildOptionStringGenerationTemplate final : public AC_GALGAS_root {
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @u_36__34_PredefinedTypeAST reference class
@@ -6165,9 +6095,7 @@ class GGS_propertyInCollectionAST final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'predefinedTypeGenerationTemplate'
-//
+//§Filewrapper§ 'predefinedTypeGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -6185,24 +6113,11 @@ extern const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTempla
 // Phase 1: filewrapper @predefinedTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_predefinedTypeGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_predefinedTypeGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_predefinedTypeGenerationTemplate (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_predefinedTypeGenerationTemplate init (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_application_5F_package (Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -6217,6 +6132,8 @@ class GGS_predefinedTypeGenerationTemplate final : public AC_GALGAS_root {
 
   public: static class GGS_string class_func_char_5F_type (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_data_5F_type (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
@@ -6264,31 +6181,9 @@ class GGS_predefinedTypeGenerationTemplate final : public AC_GALGAS_root {
   public: static class GGS_string class_func_uint_5F_type (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @sintPredefinedTypeAST reference class
@@ -8075,9 +7970,7 @@ class GGS_stringsetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_w
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringsetPredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'programFileGenerationTemplate'
-//
+//§Filewrapper§ 'programFileGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -8095,24 +7988,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate 
 // Phase 1: filewrapper @programFileGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_programFileGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_programFileGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_programFileGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_programFileGenerationTemplate init (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_programFileImplementation (const class GGS_string & inOperand0,
                                                                         const class GGS__5B_string_5D_ & inOperand1,
                                                                         const class GGS_string & inOperand2,
@@ -8121,31 +8003,9 @@ class GGS_programFileGenerationTemplate final : public AC_GALGAS_root {
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programFileGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [prologueEpilogueAST] array
@@ -9132,9 +8992,7 @@ class GGS_arrayTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'arrayTypeGenerationTemplate'
-//
+//§Filewrapper§ 'arrayTypeGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -9152,24 +9010,11 @@ extern const DirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
 // Phase 1: filewrapper @arrayTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_arrayTypeGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_arrayTypeGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_arrayTypeGenerationTemplate (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_arrayTypeGenerationTemplate init (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_arrayTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                   const class GGS_string & inOperand1,
                                                                   const class GGS_string & inOperand2,
@@ -9183,31 +9028,11 @@ class GGS_arrayTypeGenerationTemplate final : public AC_GALGAS_root {
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @dictionaryDeclarationAST reference class
@@ -9613,9 +9438,7 @@ class GGS_dictionaryTypeForGeneration_2E_weak : public GGS_semanticTypeForGenera
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictionaryTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'dictionaryGenerationTemplate'
-//
+//§Filewrapper§ 'dictionaryGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -9633,24 +9456,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate ;
 // Phase 1: filewrapper @dictionaryGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_dictionaryGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_dictionaryGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_dictionaryGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_dictionaryGenerationTemplate init (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_dictTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                  const class GGS_string & inOperand1,
                                                                  const class GGS__5B_enumerationDescriptor_5D_ & inOperand2,
@@ -9668,31 +9480,9 @@ class GGS_dictionaryGenerationTemplate final : public AC_GALGAS_root {
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictionaryGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //   enum structComparison
@@ -10188,9 +9978,7 @@ class GGS_structTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structTypeForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'structureGenerationTemplate'
-//
+//§Filewrapper§ 'structureGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -10208,24 +9996,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
 // Phase 1: filewrapper @structureGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_structureGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_structureGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_structureGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_structureGenerationTemplate init (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_structTypeHeader_31_ (const class GGS_string & inOperand0,
                                                                    const class GGS_string & inOperand1,
                                                                    const class GGS__5B_typedProperty_5D_ & inOperand2,
@@ -10243,31 +10020,9 @@ class GGS_structureGenerationTemplate final : public AC_GALGAS_root {
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

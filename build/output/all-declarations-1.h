@@ -8793,9 +8793,7 @@ class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'lexiqueGenerationTemplates'
-//
+//§Filewrapper§ 'lexiqueGenerationTemplates'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -8813,24 +8811,13 @@ extern const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 // Phase 1: filewrapper @lexiqueGenerationTemplates
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexiqueGenerationTemplates final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_lexiqueGenerationTemplates final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_lexiqueGenerationTemplates (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lexiqueGenerationTemplates init (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_headerZone_32_ (const class GGS_string & inOperand0,
                                                              const class GGS__5B_lexicalListDeclarationAST_5D_ & inOperand1,
                                                              const class GGS_lexiqueAnalysisContext & inOperand2,
@@ -8869,31 +8856,9 @@ class GGS_lexiqueGenerationTemplates final : public AC_GALGAS_root {
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [lexicalFunctionFormalArgumentAST] array

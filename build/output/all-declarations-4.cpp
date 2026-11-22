@@ -3396,9 +3396,7 @@ const GALGAS_TypeDescriptor * GGS_extensionMethodForGeneration::staticTypeDescri
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'grammarRulesInTexDocumentTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -3426,30 +3424,36 @@ const DirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_grammarRulesInTexDocumentTemplate::GGS_grammarRulesInTexDocumentTemplate (void) :
+/* GGS_grammarRulesInTexDocumentTemplate::GGS_grammarRulesInTexDocumentTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_grammarRulesInTexDocumentTemplate GGS_grammarRulesInTexDocumentTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_grammarRulesInTexDocumentTemplate GGS_grammarRulesInTexDocumentTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarRulesInTexDocumentTemplate result = GGS_grammarRulesInTexDocumentTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_grammarRulesInTexDocumentTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_grammarRulesInTexDocumentTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_grammarRulesInTexDocumentTemplate::description (String & ioString,
-                                                         const int32_t /* inIndentation */) const {
+/* void GGS_grammarRulesInTexDocumentTemplate::description (String & ioString,
+                                                            const int32_t ) const {
   ioString.appendCString ("<filewrapper @grammarRulesInTexDocumentTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @grammarRulesInTexDocumentTemplate document
 //--------------------------------------------------------------------------------------------------
@@ -3466,19 +3470,6 @@ GGS_string GGS_grammarRulesInTexDocumentTemplate::class_func_document (const GGS
   result.appendString (".tex}\n\n\\end{document}\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @grammarRulesInTexDocumentTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarRulesInTexDocumentTemplate ("grammarRulesInTexDocumentTemplate",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_grammarRulesInTexDocumentTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarRulesInTexDocumentTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_row_5D_' array
 //--------------------------------------------------------------------------------------------------
@@ -12907,9 +12898,7 @@ const GALGAS_TypeDescriptor * GGS_programRuleAST::staticTypeDescriptor (void) co
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'typeDumpGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of 'makefile-arm64-linux-on-macosx' directory
@@ -13121,30 +13110,36 @@ const DirectoryWrapper gWrapperDirectory_0_typeDumpGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeDumpGenerationTemplate::GGS_typeDumpGenerationTemplate (void) :
+/* GGS_typeDumpGenerationTemplate::GGS_typeDumpGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeDumpGenerationTemplate GGS_typeDumpGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_typeDumpGenerationTemplate GGS_typeDumpGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeDumpGenerationTemplate result = GGS_typeDumpGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_typeDumpGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_typeDumpGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeDumpGenerationTemplate::description (String & ioString,
-                                                  const int32_t /* inIndentation */) const {
+/* void GGS_typeDumpGenerationTemplate::description (String & ioString,
+                                                     const int32_t ) const {
   ioString.appendCString ("<filewrapper @typeDumpGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @typeDumpGenerationTemplate typeDump
 //--------------------------------------------------------------------------------------------------
@@ -13641,8 +13636,8 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
             result.appendString ("<b>class function</b> ") ;
             result.appendString (enumerator_8172.current_lkey (HERE).readProperty_string ().stringValue ()) ;
             GGS_uint index_8254_ (0) ;
-            if (enumerator_8172.current_mArgumentTypeList (HERE).isValid ()) {
-              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_8254 (enumerator_8172.current_mArgumentTypeList (HERE)) ;
+            if (enumerator_8172.current_argumentTypeList (HERE).isValid ()) {
+              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_8254 (enumerator_8172.current_argumentTypeList (HERE)) ;
               while (enumerator_8254.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"selecteur\">\?") ;
                 const GalgasBool test_23 = GGS_bool (ComparisonKind::notEqual, enumerator_8254.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
@@ -13663,7 +13658,7 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               }
             }
             result.appendString (" &rarr; ") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8172.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8172.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).stringValue ()) ;
             result.appendString ("<br><br>") ;
             enumerator_8172.gotoNextObject () ;
             index_8172_.increment () ;
@@ -14082,19 +14077,6 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
   result.appendString ("\n</table>\n</div>\n</body>\n</html>\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @typeDumpGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDumpGenerationTemplate ("typeDumpGenerationTemplate",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeDumpGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeDumpGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //  Map type @unifiedTypeMap
 //--------------------------------------------------------------------------------------------------

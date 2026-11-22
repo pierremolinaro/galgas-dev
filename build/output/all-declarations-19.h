@@ -32,27 +32,6 @@ class GGS_lstring function_syntaxNameForUsefulEntitiesGraph (const class GGS_lst
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'filewrapperNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_filewrapperNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'filewrapperTemplateNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                                          const class GGS_lstring & constinArgument1,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'afterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

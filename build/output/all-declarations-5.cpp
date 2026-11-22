@@ -4737,9 +4737,7 @@ const GALGAS_TypeDescriptor * GGS__5B_BuildFile_5D_::staticTypeDescriptor (void)
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'xcodeProjectGenerationFilewrapper'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of 'Base.lproj' directory
@@ -4790,30 +4788,36 @@ const DirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_xcodeProjectGenerationFilewrapper::GGS_xcodeProjectGenerationFilewrapper (void) :
+/* GGS_xcodeProjectGenerationFilewrapper::GGS_xcodeProjectGenerationFilewrapper (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_xcodeProjectGenerationFilewrapper GGS_xcodeProjectGenerationFilewrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_xcodeProjectGenerationFilewrapper GGS_xcodeProjectGenerationFilewrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_xcodeProjectGenerationFilewrapper result = GGS_xcodeProjectGenerationFilewrapper () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_xcodeProjectGenerationFilewrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_xcodeProjectGenerationFilewrapper) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_xcodeProjectGenerationFilewrapper::description (String & ioString,
-                                                         const int32_t /* inIndentation */) const {
+/* void GGS_xcodeProjectGenerationFilewrapper::description (String & ioString,
+                                                            const int32_t ) const {
   ioString.appendCString ("<filewrapper @xcodeProjectGenerationFilewrapper:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @xcodeProjectGenerationFilewrapper xcodeproj
 //--------------------------------------------------------------------------------------------------
@@ -5469,19 +5473,6 @@ GGS_string GGS_xcodeProjectGenerationFilewrapper::class_func_xcodeproj (const GG
   result.appendString (" /* Project object */;\n}\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @xcodeProjectGenerationFilewrapper generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_xcodeProjectGenerationFilewrapper ("xcodeProjectGenerationFilewrapper",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_xcodeProjectGenerationFilewrapper::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_xcodeProjectGenerationFilewrapper ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@[actualParameterAST] analyzeRoutineArguments'
@@ -14532,9 +14523,7 @@ const GALGAS_TypeDescriptor * GGS__5B_galgasGUIComponentAST_5D_::staticTypeDescr
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'guiGenerationTemplates'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -14562,30 +14551,36 @@ const DirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_guiGenerationTemplates::GGS_guiGenerationTemplates (void) :
+/* GGS_guiGenerationTemplates::GGS_guiGenerationTemplates (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_guiGenerationTemplates GGS_guiGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_guiGenerationTemplates GGS_guiGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_guiGenerationTemplates result = GGS_guiGenerationTemplates () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_guiGenerationTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_guiGenerationTemplates) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_guiGenerationTemplates::description (String & ioString,
-                                              const int32_t /* inIndentation */) const {
+/* void GGS_guiGenerationTemplates::description (String & ioString,
+                                                 const int32_t ) const {
   ioString.appendCString ("<filewrapper @guiGenerationTemplates:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @guiGenerationTemplates swiftui_gui_implementation
 //--------------------------------------------------------------------------------------------------
@@ -14725,19 +14720,6 @@ GGS_string GGS_guiGenerationTemplates::class_func_swiftui_5F_gui_5F_implementati
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @guiGenerationTemplates generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_guiGenerationTemplates ("guiGenerationTemplates",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_guiGenerationTemplates::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_guiGenerationTemplates ;
-}
-
 //--------------------------------------------------------------------------------------------------
 // @nonterminalCallInstruction reference class
 //--------------------------------------------------------------------------------------------------

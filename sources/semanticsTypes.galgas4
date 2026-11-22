@@ -52,9 +52,9 @@ func [@functionSignatureElement].subcriptSignature () -> @string {
 //--------------------------------------------------------------------------------------------------
 
 map @classFunctionMap {
-  public let [@functionSignatureElement] mArgumentTypeList
-  public let @bool mHasCompilerArgument
-  public let @unifiedTypeMapEntry mReturnedType
+  public let [@functionSignatureElement] argumentTypeList #initArgLabel
+  public let @bool hasCompilerArgument #initArgLabel
+  public let @unifiedTypeMapEntry returnedType #initArgLabel
   #insertOrReplaceSetter
   #insertSetter insertKey #errorMessage "the '%K' class function has been already defined"
   #searchMethod searchKey #errorMessage "the '%K' class function is not declared"

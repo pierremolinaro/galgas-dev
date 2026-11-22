@@ -3011,9 +3011,7 @@ const GALGAS_TypeDescriptor * GGS_sortedLexicalStyleArray::staticTypeDescriptor 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'lexicalTemplates'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -3041,30 +3039,36 @@ const DirectoryWrapper gWrapperDirectory_0_lexicalTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTemplates::GGS_lexicalTemplates (void) :
+/* GGS_lexicalTemplates::GGS_lexicalTemplates (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTemplates GGS_lexicalTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_lexicalTemplates GGS_lexicalTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalTemplates result = GGS_lexicalTemplates () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_lexicalTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_lexicalTemplates) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalTemplates::description (String & ioString,
-                                        const int32_t /* inIndentation */) const {
+/* void GGS_lexicalTemplates::description (String & ioString,
+                                           const int32_t ) const {
   ioString.appendCString ("<filewrapper @lexicalTemplates:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @lexicalTemplates swiftUILexicalStyles
 //--------------------------------------------------------------------------------------------------
@@ -3189,22 +3193,7 @@ GGS_string GGS_lexicalTemplates::class_func_swiftUILexicalStyles (const GGS_sort
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//     @lexicalTemplates generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTemplates ("lexicalTemplates",
-                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalTemplates::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalTemplates ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'targetGalgas3GenerationFileWrapper'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of 'makefile-arm64-linux-on-macosx' directory
@@ -3487,30 +3476,36 @@ const DirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_targetGalgas_33_GenerationFileWrapper::GGS_targetGalgas_33_GenerationFileWrapper (void) :
+/* GGS_targetGalgas_33_GenerationFileWrapper::GGS_targetGalgas_33_GenerationFileWrapper (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_targetGalgas_33_GenerationFileWrapper GGS_targetGalgas_33_GenerationFileWrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_targetGalgas_33_GenerationFileWrapper GGS_targetGalgas_33_GenerationFileWrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_targetGalgas_33_GenerationFileWrapper result = GGS_targetGalgas_33_GenerationFileWrapper () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_targetGalgas_33_GenerationFileWrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_targetGalgas_33_GenerationFileWrapper::description (String & ioString,
-                                                             const int32_t /* inIndentation */) const {
+/* void GGS_targetGalgas_33_GenerationFileWrapper::description (String & ioString,
+                                                                const int32_t ) const {
   ioString.appendCString ("<filewrapper @targetGalgas3GenerationFileWrapper:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @targetGalgas3GenerationFileWrapper clean_macosx
 //--------------------------------------------------------------------------------------------------
@@ -4462,19 +4457,6 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_project_5F_head
   result.appendString ("\"\n\n//--------------------------------------------------------------------------------------------------\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @targetGalgas3GenerationFileWrapper generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_targetGalgas_33_GenerationFileWrapper ("targetGalgas3GenerationFileWrapper",
-                                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_targetGalgas_33_GenerationFileWrapper::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_targetGalgas_33_GenerationFileWrapper ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //
 //     L E X I Q U E                                                                             
@@ -11595,9 +11577,9 @@ GGS_classFunctionMap_2E_element_3F_ GGS_classFunctionMap
     }else{
       GGS_classFunctionMap_2E_element element ;
       element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mArgumentTypeList = info->mProperty_mArgumentTypeList ;
-      element.mProperty_mHasCompilerArgument = info->mProperty_mHasCompilerArgument ;
-      element.mProperty_mReturnedType = info->mProperty_mReturnedType ;
+      element.mProperty_argumentTypeList = info->mProperty_argumentTypeList ;
+      element.mProperty_hasCompilerArgument = info->mProperty_hasCompilerArgument ;
+      element.mProperty_returnedType = info->mProperty_returnedType ;
       result = element ;
     }
   }
@@ -11667,9 +11649,9 @@ void GGS_classFunctionMap::method_searchKey (GGS_lstring inLKey,
     outArgument1.drop () ;
     outArgument2.drop () ;
   }else{
-    outArgument0 = info->mProperty_mArgumentTypeList ;
-    outArgument1 = info->mProperty_mHasCompilerArgument ;
-    outArgument2 = info->mProperty_mReturnedType ;
+    outArgument0 = info->mProperty_argumentTypeList ;
+    outArgument1 = info->mProperty_hasCompilerArgument ;
+    outArgument2 = info->mProperty_returnedType ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -11688,9 +11670,9 @@ void GGS_classFunctionMap::setter_insertOrReplace (GGS_lstring inLKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_functionSignatureElement_5D_ GGS_classFunctionMap::getter_mArgumentTypeListForKey (const GGS_string & inKey,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const {
+GGS__5B_functionSignatureElement_5D_ GGS_classFunctionMap::getter_argumentTypeListForKey (const GGS_string & inKey,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_functionSignatureElement_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -11701,16 +11683,16 @@ GGS__5B_functionSignatureElement_5D_ GGS_classFunctionMap::getter_mArgumentTypeL
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = info->mProperty_mArgumentTypeList ;
+      result = info->mProperty_argumentTypeList ;
     }
   }
   return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_classFunctionMap::getter_mHasCompilerArgumentForKey (const GGS_string & inKey,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
+GGS_bool GGS_classFunctionMap::getter_hasCompilerArgumentForKey (const GGS_string & inKey,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -11721,16 +11703,16 @@ GGS_bool GGS_classFunctionMap::getter_mHasCompilerArgumentForKey (const GGS_stri
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = info->mProperty_mHasCompilerArgument ;
+      result = info->mProperty_hasCompilerArgument ;
     }
   }
   return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_unifiedTypeMapEntry GGS_classFunctionMap::getter_mReturnedTypeForKey (const GGS_string & inKey,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
+GGS_unifiedTypeMapEntry GGS_classFunctionMap::getter_returnedTypeForKey (const GGS_string & inKey,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
   GGS_unifiedTypeMapEntry result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
@@ -11741,17 +11723,17 @@ GGS_unifiedTypeMapEntry GGS_classFunctionMap::getter_mReturnedTypeForKey (const 
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = info->mProperty_mReturnedType ;
+      result = info->mProperty_returnedType ;
     }
   }
   return result ;
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_classFunctionMap::setter_setMArgumentTypeListForKey (GGS__5B_functionSignatureElement_5D_ inValue,
-                                                              GGS_string inKey,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GGS_classFunctionMap::setter_setArgumentTypeListForKey (GGS__5B_functionSignatureElement_5D_ inValue,
+                                                             GGS_string inKey,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
@@ -11762,16 +11744,16 @@ void GGS_classFunctionMap::setter_setMArgumentTypeListForKey (GGS__5B_functionSi
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      node->mSharedInfo->mProperty_mArgumentTypeList = inValue ;
+      node->mSharedInfo->mProperty_argumentTypeList = inValue ;
     }
   }
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_classFunctionMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValue,
-                                                                 GGS_string inKey,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GGS_classFunctionMap::setter_setHasCompilerArgumentForKey (GGS_bool inValue,
+                                                                GGS_string inKey,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
@@ -11782,16 +11764,16 @@ void GGS_classFunctionMap::setter_setMHasCompilerArgumentForKey (GGS_bool inValu
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      node->mSharedInfo->mProperty_mHasCompilerArgument = inValue ;
+      node->mSharedInfo->mProperty_hasCompilerArgument = inValue ;
     }
   }
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_classFunctionMap::setter_setMReturnedTypeForKey (GGS_unifiedTypeMapEntry inValue,
-                                                          GGS_string inKey,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GGS_classFunctionMap::setter_setReturnedTypeForKey (GGS_unifiedTypeMapEntry inValue,
+                                                         GGS_string inKey,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     mSharedRoot.insulate (HERE) ;
@@ -11802,7 +11784,7 @@ void GGS_classFunctionMap::setter_setMReturnedTypeForKey (GGS_unifiedTypeMapEntr
       message.appendCString ("' key does not exist") ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      node->mSharedInfo->mProperty_mReturnedType = inValue ;
+      node->mSharedInfo->mProperty_returnedType = inValue ;
     }
   }
 }
@@ -11829,16 +11811,16 @@ static void GGS_classFunctionMap_internalDescription (const GenericArray <Shared
     ioString.appendString ("'") ;
     ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mArgumentTypeList:") ;
-    inArray (i COMMA_HERE)->mProperty_mArgumentTypeList.description (ioString, inIndentation + 1) ;
+    ioString.appendString ("argumentTypeList:") ;
+    inArray (i COMMA_HERE)->mProperty_argumentTypeList.description (ioString, inIndentation + 1) ;
     ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mHasCompilerArgument:") ;
-    inArray (i COMMA_HERE)->mProperty_mHasCompilerArgument.description (ioString, inIndentation + 1) ;
+    ioString.appendString ("hasCompilerArgument:") ;
+    inArray (i COMMA_HERE)->mProperty_hasCompilerArgument.description (ioString, inIndentation + 1) ;
     ioString.appendNewLine () ;
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mReturnedType:") ;
-    inArray (i COMMA_HERE)->mProperty_mReturnedType.description (ioString, inIndentation + 1) ;
+    ioString.appendString ("returnedType:") ;
+    inArray (i COMMA_HERE)->mProperty_returnedType.description (ioString, inIndentation + 1) ;
   }
 }
 
@@ -11892,20 +11874,20 @@ GGS_lstring DownEnumerator_classFunctionMap::current_lkey (LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_functionSignatureElement_5D_ DownEnumerator_classFunctionMap::current_mArgumentTypeList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mArgumentTypeList ;
+GGS__5B_functionSignatureElement_5D_ DownEnumerator_classFunctionMap::current_argumentTypeList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_argumentTypeList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool DownEnumerator_classFunctionMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasCompilerArgument ;
+GGS_bool DownEnumerator_classFunctionMap::current_hasCompilerArgument (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_hasCompilerArgument ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_unifiedTypeMapEntry DownEnumerator_classFunctionMap::current_mReturnedType (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReturnedType ;
+GGS_unifiedTypeMapEntry DownEnumerator_classFunctionMap::current_returnedType (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_returnedType ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11931,20 +11913,20 @@ GGS_lstring UpEnumerator_classFunctionMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_functionSignatureElement_5D_ UpEnumerator_classFunctionMap::current_mArgumentTypeList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mArgumentTypeList ;
+GGS__5B_functionSignatureElement_5D_ UpEnumerator_classFunctionMap::current_argumentTypeList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_argumentTypeList ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool UpEnumerator_classFunctionMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasCompilerArgument ;
+GGS_bool UpEnumerator_classFunctionMap::current_hasCompilerArgument (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_hasCompilerArgument ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_unifiedTypeMapEntry UpEnumerator_classFunctionMap::current_mReturnedType (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mReturnedType ;
+GGS_unifiedTypeMapEntry UpEnumerator_classFunctionMap::current_returnedType (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_returnedType ;
 }
 
 

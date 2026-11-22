@@ -190,21 +190,6 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const clas
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'templateCodeGenerationForListInstruction?&&&&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS__5B_templateInstructionForGeneration_5D_ constinArgument0,
-                                                                               class GGS_string & ioArgument1,
-                                                                               class GGS_stringset & ioArgument2,
-                                                                               class GGS_uint & ioArgument3,
-                                                                               class GGS_stringset & ioArgument4,
-                                                                               class GGS_bool & ioArgument5,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'generateWrapperContents?????&'
 //
 //--------------------------------------------------------------------------------------------------
@@ -217,4 +202,19 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_st
                                                               class GGS_string & ioArgument5,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'templateCodeGenerationForListInstruction?&&&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS__5B_templateInstructionForGeneration_5D_ constinArgument0,
+                                                                               class GGS_string & ioArgument1,
+                                                                               class GGS_stringset & ioArgument2,
+                                                                               class GGS_uint & ioArgument3,
+                                                                               class GGS_stringset & ioArgument4,
+                                                                               class GGS_bool & ioArgument5,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 

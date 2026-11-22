@@ -2,15 +2,5 @@
 //%!" Phase 1: filewrapper @" + TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
-
-//--------------------------------- Default constructor
-  public: GGS_%!TYPE_IDENTIFIER% (void) ;
-
+class GGS_%!TYPE_IDENTIFIER% final {
 

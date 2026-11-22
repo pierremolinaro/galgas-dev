@@ -183,6 +183,20 @@ map @filewrapperMap {
 
 //--------------------------------------------------------------------------------------------------
 
+map @wrapperExtensionMap {
+  #insertSetter insertKey #errorMessage "the '%K' extension has been already declared"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @filewrapperTemplateForGeneration {
+  public let @string mFilewrapperTemplateName
+  public let [@formalInputParameterForGeneration] mFilewrapperTemplateFormalInputParameters
+  public let [@templateInstructionForGeneration] mTemplateInstructionListForGeneration
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
   public let @string mSourceFileAbsolutePath
@@ -227,25 +241,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
                                   let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
                                   ?!@unifiedTypeMap ioTypeMap,
                                   ?!@semanticContext ioSemanticContext) {
-  //--- Templates
-    var @filewrapperTemplateMap filewrapperTemplateMap = @()
-    for filewrapperTemplate in self.mFilewrapperTemplateList do
-      var [@functionSignatureElement] templateSignature = @()
-      for parameter in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
-        !?ioTypeMap.makeEntry (parameter.mFormalArgumentTypeName, ?let parameterTypeIndex)
-        templateSignature ++= @(
-          parameter.mFormalTemplateSelector,
-          parameterTypeIndex,
-          parameter.mFormalArgumentName.string,
-          parameter.mIsUnused
-        )
-      end
-      !?filewrapperTemplateMap.insertKey (
-        filewrapperTemplate.mFilewrapperTemplateName,
-        templateSignature,
-        filewrapperTemplate.mFilewrapperTemplatePath
-      )
-    end
   //--- Build text file extension map
     var @wrapperExtensionMap textExtensionMap = @()
     for value in self.mFilewrapperTextFileExtensionList do
@@ -255,7 +250,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
     var @wrapperExtensionMap binaryFileExtensionMap = @()
     for value in self.mFilewrapperBinaryFileExtensionList do
       if textExtensionMap.contains (value.string) then
-        error value:"the '" + value + "' extension is already used for text files"
+        error value: "the '" + value + "' extension is already used for text files"
       else
       !?binaryFileExtensionMap.insertKey (value)
       end
@@ -263,12 +258,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   //--- Enumerate filewrapper files
     let @wrapperFileMap regularRootFileMap
     let @wrapperDirectoryMap wrapperDirectoryMap
-    let @string absoluteSourcePath
-    if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
-      absoluteSourcePath = self.mFilewrapperPath.string
-    else
-      absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
-    end
+    let absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
     if not absoluteSourcePath.directoryExists then
       error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
       spoil regularRootFileMap, wrapperDirectoryMap
@@ -296,28 +286,19 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       wrapperDirectoryMap,
       self.mIsInternal
     )
-  //--- Add initializer without argument
-    var @initializerMap initializerMap = @()
-    let [@functionSignatureElement] emptyArgumentList = @()
-    !?initializerMap.insertKey
-      (@(emptyArgumentList.initializerSignature, self.mFilewrapperName),
-      emptyArgumentList
-    )
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
-//    enterBaseGetterWithArgument (
-//      !?getterMap,
-//      !?ioTypeMap,
-//      !getterName: "contains",
-//      !argSelector: "",
-//      !argType: self.mOptionSetTypeName,
-//      !argName: "inOperand",
-//      !returnedTypeName: "bool",
-//      !hasCompilerArgument: false
-//    )
-  //--- class functions
-    !?ioTypeMap.makeEntryFromString ("string", ?let stringType)
+  //--- Class function 'contents': returns a @filewrapper instance
     var @classFunctionMap classFunctionMap = @()
+    !?ioTypeMap.makeEntryFromString ("filewrapper", ?let filewrapperType)
+    !?classFunctionMap.insertKey (
+       @("contents", self.mFilewrapperName.location),
+       !argumentTypeList: [],
+       !hasCompilerArgument: false,
+       !returnedType: filewrapperType
+    )
+  //--- Templates are class functions
+    !?ioTypeMap.makeEntryFromString ("string", ?let stringType)
     for aTemplate in self.mFilewrapperTemplateList do
       var formalArgumentList = [@functionSignatureElement] ()
       for formalInputArgument in aTemplate.mFilewrapperTemplateFormalInputParameters do
@@ -331,14 +312,15 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       end
       !?classFunctionMap.insertKey (
          aTemplate.mFilewrapperTemplateName,
-         formalArgumentList,
-         true,
-         stringType
+         !argumentTypeList: formalArgumentList,
+         !hasCompilerArgument: true,
+         !returnedType: stringType
       )
     end
   //--- Add extensions
     var @setterMap setterMap = @()
     var @instanceMethodMap instanceMethodMap = @()
+    var @initializerMap initializerMap = @()
     addExtensions (
       inExtensionInitializerMapForBuildingContext,
       inExtensionMethodMapForBuildingContext,
@@ -362,12 +344,12 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .otherType,
+      !typeKind: .packageType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: [],
       !propertyMap: @(),
       !currentTypedPropertyList: [],
-      !initializerMap: initializerMap,
+      !initializerMap: @(),
       !classFunctionMap: classFunctionMap,
       !getterMap: getterMap,
       !setterMap: setterMap,
@@ -398,36 +380,50 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph
     let filewrapperNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mFilewrapperName)
     !?ioUsefulEntitiesGraph.addNode (filewrapperNameForUsefulness, filewrapperNameForUsefulness)
-    let filewrapperNameForUsefulnessEX = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
-    !?ioUsefulEntitiesGraph.addNode (filewrapperNameForUsefulnessEX, filewrapperNameForUsefulnessEX)
-  //--- Get filewrapper features
-    inSemanticContext.mFilewrapperMap.searchKey (
-      self.mFilewrapperName,
-      ?*,
-      ?*,
-      ?let @wrapperFileMap wrapperFileMap,
-      ?let @wrapperDirectoryMap wrapperDirectoryMap,
-      ?*
-    )
   //--- Build absolute path
-    let @string absoluteSourcePath
-    if self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
-      absoluteSourcePath = self.mFilewrapperPath.string
-    else
-      absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
-    end
+    let absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
     if not absoluteSourcePath.directoryExists then
       error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
     else
-    //--- Analyze filewrapper templates
+    //--- Build text file extension map
+      var @wrapperExtensionMap textExtensionMap = @()
+      for value in self.mFilewrapperTextFileExtensionList do
+        !?textExtensionMap.insertKey (value)
+      end
+    //--- Build binary file extension map
+      var @wrapperExtensionMap binaryFileExtensionMap = @()
+      for value in self.mFilewrapperBinaryFileExtensionList do
+        if textExtensionMap.contains (value.string) then
+          error value: "the '" + value + "' extension is already used for text files"
+        else
+        !?binaryFileExtensionMap.insertKey (value)
+        end
+      end
+    //--- Enumerate filewrapper files
+      let @wrapperFileMap regularRootFileMap
+      let @wrapperDirectoryMap wrapperDirectoryMap
+      let absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
+      if not absoluteSourcePath.directoryExists then
+        error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+        spoil regularRootFileMap, wrapperDirectoryMap
+      else
+      //--- Enumerate paths
+        var @uint wrapperFileIndex = 0
+        var @uint wrapperDirectoryIndex = 0
+        recursivelyEnumerateDirectories (
+         absoluteSourcePath,
+         "/",
+         textExtensionMap,
+         binaryFileExtensionMap,
+         ?regularRootFileMap,
+         ?wrapperDirectoryMap,
+         !?wrapperFileIndex,
+         !?wrapperDirectoryIndex
+       )
+      end
+    //-------------------------------- Analyze filewrapper templates
       var [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration = []
       for filewrapperTemplate in self.mFilewrapperTemplateList do
-        let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
-          self.mFilewrapperName,
-          filewrapperTemplate.mFilewrapperTemplateName
-        )
-        !?ioUsefulEntitiesGraph.addNode (filewrapperTemplateNameForUsefulness, filewrapperTemplateNameForUsefulness)
-        !?ioUsefulEntitiesGraph.addEdge (!from: filewrapperTemplateNameForUsefulness, !to: filewrapperNameForUsefulness)
         if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
           error filewrapperTemplate.mFilewrapperTemplatePath
            : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
@@ -467,21 +463,13 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
           templateInstructionListForGeneration
         )
       end
-    //--- Enter filewrapper in generated list
-      ioSemanticDeclarationListForGeneration ++= @filewrapperDeclarationForGeneration (
-        !infoMessage: "filewrapper " + self.mFilewrapperName,
-        !generateHeader: true,
-        !implementationCppFileName: "filewrapper-" + self.mFilewrapperName,
-        self.mFilewrapperName.string,
-        self.mFilewrapperPath.string,
-        wrapperFileMap,
-        wrapperDirectoryMap
-      )
     //---
       ioSemanticDeclarationListForGeneration ++= @filewrapperTypeForGeneration (
         !infoMessage: "filewrapper " + self.mFilewrapperName,
         ioTypeMap.typeMapEntryForLKey (self.mFilewrapperName),
-        filewrapperTemplateListForGeneration 
+        filewrapperTemplateListForGeneration,
+        regularRootFileMap,
+        wrapperDirectoryMap
       )
     end
   }
@@ -496,32 +484,42 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
 
 final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
   private let [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration
+  private let @wrapperFileMap regularRootFileMap
+  private let @wrapperDirectoryMap wrapperDirectoryMap
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
-    outHeader = @filewrapperGenerationTemplate.filewrapperTypeHeader1 (
+    var regularFileIndexStringList = [@string] ()
+    var regularBinaryContentIndexStringList = [@string] ()
+    var regularTextContentIndexStringList = [@string] ()
+    var directoryIndexStringList = [@string] ()
+    recursivlyEnumerateRegularFile (
+      self.regularRootFileMap, // self.mFilewrapperFileMap,
+      self.wrapperDirectoryMap, // mFilewrapperDirectoryMap,
+      !?regularFileIndexStringList,
+      !?directoryIndexStringList,
+      !?regularTextContentIndexStringList,
+      !?regularBinaryContentIndexStringList
+    )
+    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
+      regularFileIndexStringList,
+      directoryIndexStringList,
+      regularTextContentIndexStringList,
+      regularBinaryContentIndexStringList,
+      selfTypeDefinition.typeName.string
+    )
+    outHeader += @filewrapperGenerationTemplate.filewrapperTypeHeader1 (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation
     )
-    outHeader += @typeGenerationTemplate.unifiedClassBodyForType (
+    outHeader += @typeGenerationTemplate.unifiedClassBodyForPackage (
       selfTypeDefinition.typeName.string,
       selfTypeDefinition.typeName.string.identifierRepresentation,
-      selfTypeDefinition.isConcrete,
-      selfTypeDefinition.initializerMap,
       selfTypeDefinition.classFunctionMap,
-      selfTypeDefinition.getterMap,
-      selfTypeDefinition.setterMap,
-      selfTypeDefinition.instanceMethodMap,
-      selfTypeDefinition.classMethodMap,
-      selfTypeDefinition.readSubscriptMap,
-      selfTypeDefinition.writeSubscriptMap,
-      selfTypeDefinition.enumerationDescriptorList,
-      selfTypeDefinition.features,
-      selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportArrayLiteral
+      selfTypeDefinition.classMethodMap
     )
   }
 
@@ -531,7 +529,23 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    outImplementation = @filewrapperGenerationTemplate.filewrapperTypeSpecificImplementation (
+    outImplementation = ""
+  //--- Embedded files
+    var @string filewrapperImplementation = ""
+    generateWrapperContents (
+      self.mSelfTypeEntry.definition.typeName.string,
+      "",
+      0,
+      self.regularRootFileMap,
+      self.wrapperDirectoryMap,
+      !?filewrapperImplementation
+    )
+    outImplementation += @semanticComponentGenerationTemplate.filewrapperImplementation (
+      self.mSelfTypeEntry.definition.typeName.string,
+      filewrapperImplementation
+    )
+  //--- Type
+    outImplementation += @filewrapperGenerationTemplate.filewrapperTypeSpecificImplementation (
       self.mSelfTypeEntry.definition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation
     )
@@ -554,7 +568,7 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
         !?unusedVariableCppNameSet,
         !?useColumnMarker
       )
-    //---
+   //---
       outImplementation += @filewrapperGenerationTemplate.filewrapperTemplateImplementation (
         self.mSelfTypeEntry.definition.typeName.string,
         filewrapperTemplate.mFilewrapperTemplateName,
@@ -596,78 +610,72 @@ filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_gene
 }
 
 //--------------------------------------------------------------------------------------------------
-//    FILEWRAPPER GENERATION
+//    FILEWRAPPER GENERATION EX
 //--------------------------------------------------------------------------------------------------
 
-struct @filewrapperTemplateForGeneration {
-  public let @string mFilewrapperTemplateName
-  public let [@formalInputParameterForGeneration] mFilewrapperTemplateFormalInputParameters
-  public let [@templateInstructionForGeneration] mTemplateInstructionListForGeneration
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public let @string mFilewrapperName
-  public let @string mFilewrapperAbsolutePath
-  public let @wrapperFileMap mFilewrapperFileMap
-  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override func headerKind () ->@headerKind {
-    result = .oneHeader
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
-                                    !@string outHeader) {
-    var regularFileIndexStringList = [@string] ()
-    var regularBinaryContentIndexStringList = [@string] ()
-    var regularTextContentIndexStringList = [@string] ()
-    var directoryIndexStringList = [@string] ()
-    recursivlyEnumerateRegularFile (
-      self.mFilewrapperFileMap,
-      self.mFilewrapperDirectoryMap,
-      !?regularFileIndexStringList,
-      !?directoryIndexStringList,
-      !?regularTextContentIndexStringList,
-      !?regularBinaryContentIndexStringList
-    )
-    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
-      regularFileIndexStringList,
-      directoryIndexStringList,
-      regularTextContentIndexStringList,
-      regularBinaryContentIndexStringList,
-      self.mFilewrapperName
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
-                                              ?!@stringset ioInclusionSet,
-                                              !@string outImplementation) {
-    ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-    var @string filewrapperImplementation = ""
-    generateWrapperContents (
-      self.mFilewrapperName,
-      "",
-      0,
-      self.mFilewrapperFileMap,
-      self.mFilewrapperDirectoryMap,
-      !?filewrapperImplementation
-    )
-    outImplementation = @semanticComponentGenerationTemplate.filewrapperImplementation (
-      self.mFilewrapperName,
-      filewrapperImplementation
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//final class @filewrapperDeclarationForGenerationEX : @semanticDeclarationWithHeaderForGeneration {
+//  public let @string mFilewrapperName
+//  public let @string mFilewrapperAbsolutePath
+//  public let @wrapperFileMap mFilewrapperFileMap
+//  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  override func headerKind () ->@headerKind {
+//    result = .oneHeader
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
+//                                    !@string outHeader) {
+////    var regularFileIndexStringList = [@string] ()
+////    var regularBinaryContentIndexStringList = [@string] ()
+////    var regularTextContentIndexStringList = [@string] ()
+////    var directoryIndexStringList = [@string] ()
+////    recursivlyEnumerateRegularFile (
+////      self.mFilewrapperFileMap,
+////      self.mFilewrapperDirectoryMap,
+////      !?regularFileIndexStringList,
+////      !?directoryIndexStringList,
+////      !?regularTextContentIndexStringList,
+////      !?regularBinaryContentIndexStringList
+////    )
+//    outHeader = ""
+////    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
+////      regularFileIndexStringList,
+////      directoryIndexStringList,
+////      regularTextContentIndexStringList,
+////      regularBinaryContentIndexStringList,
+////      self.mFilewrapperName
+////    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
+//                                              ?!@stringset _ioInclusionSet,
+//                                              !@string outImplementation) {
+////    ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
+////    var @string filewrapperImplementation = ""
+////    generateWrapperContents (
+////      self.mFilewrapperName,
+////      "",
+////      0,
+////      self.mFilewrapperFileMap,
+////      self.mFilewrapperDirectoryMap,
+////      !?filewrapperImplementation
+////    )
+////    outImplementation = @semanticComponentGenerationTemplate.filewrapperImplementation (
+////      self.mFilewrapperName,
+////      filewrapperImplementation
+////    )
+//     outImplementation = ""
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -688,15 +696,6 @@ map @wrapperDirectoryMap { // Key is directory name
   public let @uint mWrapperDirectoryIndex
   #insertSetter insertKey #errorMessage "INTERNAL ERROR"
   #searchMethod searchKey #errorMessage "INTERNAL ERROR"
-}
-
-//--------------------------------------------------------------------------------------------------
-
-map @filewrapperTemplateMap {
-  public let [@functionSignatureElement] mTemplateSignature
-  public let @lstring mFilewrapperTemplatePath
-  #insertSetter insertKey #errorMessage "the '%K' filewrapper template has been already declared in %L"
-  #searchMethod searchKey #errorMessage "the '%K' filewrapper template is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -806,6 +805,68 @@ private proc generateWrapperContents (let @string inFilewrapperName,
   + "  " + inFilewrapperDirectoryMap.count.string + ",\n"
   + "  gWrapperAllDirectories_" + inFilewrapperName.identifierRepresentation + "_" + inFilewrapperDirectoryIndex.string + "\n"
   + ") ;\n\n"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
+                                              let @string inPathInWrapper,
+                                              let @wrapperExtensionMap inTextFileExtensionMap,
+                                              let @wrapperExtensionMap inBinaryFileExtensionMap,
+                                              !@wrapperFileMap outWrapperFileMap,
+                                              !@wrapperDirectoryMap outWrapperDirectoryMap,
+                                              ?!@uint ioWrapperFileIndex,
+                                              ?!@uint ioWrapperDirectoryIndex) {
+  let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
+  ioWrapperDirectoryIndex += 1
+//--- Enumerates regular files
+  let [@string] files = inAbsoluteSourcePath.regularFiles (false)
+  outWrapperFileMap = @()
+  for value in files do
+    if inTextFileExtensionMap.contains (value.pathExtension) then
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + value
+      !?outWrapperFileMap.insertKey
+        (@lstring (value, @location.here),
+        absoluteFilePath,
+        true, // Text File
+        currentDirectoryIndex,
+        ioWrapperFileIndex
+      )
+      ioWrapperFileIndex += 1
+    elsif inBinaryFileExtensionMap.contains (value.pathExtension) then
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + value
+      !?outWrapperFileMap.insertKey
+        (@lstring (value, @location.here),
+        absoluteFilePath,
+        false, // Binary file
+        currentDirectoryIndex,
+        ioWrapperFileIndex
+      )
+      ioWrapperFileIndex += 1
+    end
+  end
+//--- Enumerates regular directories
+  let [@string] directories = inAbsoluteSourcePath.directories (false)
+  outWrapperDirectoryMap = @()
+  for value in directories do
+    let @uint theDirectoryIndex = ioWrapperDirectoryIndex
+    recursivelyEnumerateDirectories (
+      inAbsoluteSourcePath + "/" + value,
+      inPathInWrapper + value + "/",
+      inTextFileExtensionMap,
+      inBinaryFileExtensionMap,
+      ?let internalWrapperFileMap,
+      ?let internalWrapperDirectoryMap,
+      !?ioWrapperFileIndex,
+      !?ioWrapperDirectoryIndex
+    )
+    !?outWrapperDirectoryMap.insertKey
+      (@lstring (value, @location.here),
+      internalWrapperFileMap,
+      internalWrapperDirectoryMap,
+      theDirectoryIndex
+    )
+  end
 }
 
 //--------------------------------------------------------------------------------------------------

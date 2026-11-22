@@ -43,9 +43,18 @@
       enableGPUValidationMode = "1"
       allowLocationSimulation = "YES"
       viewDebuggingEnabled = "No">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CFF8ED3B2D0D81C1006B2A3C"
+            BuildableName = "galgas4"
+            ReferencedContainer = "container:galgas-ide-swiftui.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Volumes/dev-git/galgas-dev/+galgas.galgasProject"
+            argument = "/Volumes/dev-git/galgas-dev/+galgas.galgas4project"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

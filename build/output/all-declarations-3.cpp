@@ -5237,9 +5237,7 @@ const GALGAS_TypeDescriptor * GGS_nonTerminalToAdd::staticTypeDescriptor (void) 
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'grammarGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -5267,30 +5265,36 @@ const DirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_grammarGenerationTemplate::GGS_grammarGenerationTemplate (void) :
+/* GGS_grammarGenerationTemplate::GGS_grammarGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_grammarGenerationTemplate GGS_grammarGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_grammarGenerationTemplate GGS_grammarGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarGenerationTemplate result = GGS_grammarGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_grammarGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_grammarGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_grammarGenerationTemplate::description (String & ioString,
-                                                 const int32_t /* inIndentation */) const {
+/* void GGS_grammarGenerationTemplate::description (String & ioString,
+                                                    const int32_t ) const {
   ioString.appendCString ("<filewrapper @grammarGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @grammarGenerationTemplate grammarZone3HeaderGalgas3
 //--------------------------------------------------------------------------------------------------
@@ -5651,19 +5655,6 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
   result.appendString ("} ;\n\n//--------------------------------------------------------------------------------------------------\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @grammarGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarGenerationTemplate ("grammarGenerationTemplate",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_grammarGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //  Map type @nonTerminalSymbolMapForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
@@ -8158,9 +8149,7 @@ const GALGAS_TypeDescriptor * GGS_formalInputParameterForGeneration::staticTypeD
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'typeGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- File '/galgas-predefined-entities.txt'
@@ -8206,30 +8195,36 @@ const DirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeGenerationTemplate::GGS_typeGenerationTemplate (void) :
+/* GGS_typeGenerationTemplate::GGS_typeGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeGenerationTemplate GGS_typeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_typeGenerationTemplate GGS_typeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeGenerationTemplate result = GGS_typeGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_typeGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_typeGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_typeGenerationTemplate::description (String & ioString,
-                                              const int32_t /* inIndentation */) const {
+/* void GGS_typeGenerationTemplate::description (String & ioString,
+                                                 const int32_t ) const {
   ioString.appendCString ("<filewrapper @typeGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @typeGenerationTemplate unifiedClassBodyForType
 //--------------------------------------------------------------------------------------------------
@@ -8309,14 +8304,14 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       UpEnumerator_classFunctionMap enumerator_806 (in_CLASS_5F_FUNC_5F_MAP) ;
       while (enumerator_806.hasCurrentObject ()) {
         result.appendString ("  public: static class GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_806.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_806.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
         result.appendString (" class_func_") ;
         result.appendString (enumerator_806.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
         result.appendString (" (") ;
         columnMarker = result.currentColumn () ;
         GGS_uint index_991_IDX (0) ;
-        if (enumerator_806.current_mArgumentTypeList (HERE).isValid ()) {
-          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_991 (enumerator_806.current_mArgumentTypeList (HERE)) ;
+        if (enumerator_806.current_argumentTypeList (HERE).isValid ()) {
+          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_991 (enumerator_806.current_argumentTypeList (HERE)) ;
           while (enumerator_991.hasCurrentObject ()) {
             result.appendString ("const class GGS_") ;
             result.appendString (extensionGetter_identifierRepresentation (enumerator_991.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 23)).stringValue ()) ;
@@ -8330,7 +8325,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             index_991_IDX.increment () ;
           }
         }
-        const GalgasBool test_2 = enumerator_806.current_mHasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).boolEnum () ;
+        const GalgasBool test_2 = enumerator_806.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).boolEnum () ;
         switch (test_2) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
@@ -8340,7 +8335,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
           result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
           } break ;
         case GalgasBool::boolFalse : {
-          const GalgasBool test_3 = enumerator_806.current_mHasCompilerArgument (HERE).boolEnum () ;
+          const GalgasBool test_3 = enumerator_806.current_hasCompilerArgument (HERE).boolEnum () ;
           switch (test_3) {
           case GalgasBool::boolTrue : {
             result.appendString ("Compiler * inCompiler\n") ;
@@ -8348,7 +8343,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 32)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 32)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
             switch (test_4) {
             case GalgasBool::boolTrue : {
               result.appendString ("\n") ;
@@ -9395,14 +9390,14 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
       UpEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP) ;
       while (enumerator_220.hasCurrentObject ()) {
         result.appendString ("  public: static class GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_220.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_220.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
         result.appendString (" class_func_") ;
         result.appendString (enumerator_220.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
         result.appendString (" (") ;
         columnMarker = result.currentColumn () ;
         GGS_uint index_405_IDX (0) ;
-        if (enumerator_220.current_mArgumentTypeList (HERE).isValid ()) {
-          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_405 (enumerator_220.current_mArgumentTypeList (HERE)) ;
+        if (enumerator_220.current_argumentTypeList (HERE).isValid ()) {
+          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_405 (enumerator_220.current_argumentTypeList (HERE)) ;
           while (enumerator_405.hasCurrentObject ()) {
             result.appendString ("const class GGS_") ;
             result.appendString (extensionGetter_identifierRepresentation (enumerator_405.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
@@ -9416,7 +9411,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
             index_405_IDX.increment () ;
           }
         }
-        const GalgasBool test_1 = enumerator_220.current_mHasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
+        const GalgasBool test_1 = enumerator_220.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
         switch (test_1) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
@@ -9426,7 +9421,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
           result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
           } break ;
         case GalgasBool::boolFalse : {
-          const GalgasBool test_2 = enumerator_220.current_mHasCompilerArgument (HERE).boolEnum () ;
+          const GalgasBool test_2 = enumerator_220.current_hasCompilerArgument (HERE).boolEnum () ;
           switch (test_2) {
           case GalgasBool::boolTrue : {
             result.appendString ("Compiler * inCompiler\n") ;
@@ -9434,7 +9429,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
             result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 18)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 18)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
             switch (test_3) {
             case GalgasBool::boolTrue : {
               result.appendString ("\n") ;
@@ -9642,22 +9637,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_externTypeHeader_31_ (const GG
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//     @typeGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeGenerationTemplate ("typeGenerationTemplate",
-                                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeGenerationTemplate ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'semanticComponentGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -9685,30 +9665,36 @@ const DirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticComponentGenerationTemplate::GGS_semanticComponentGenerationTemplate (void) :
+/* GGS_semanticComponentGenerationTemplate::GGS_semanticComponentGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticComponentGenerationTemplate GGS_semanticComponentGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_semanticComponentGenerationTemplate GGS_semanticComponentGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_semanticComponentGenerationTemplate result = GGS_semanticComponentGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_semanticComponentGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_semanticComponentGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticComponentGenerationTemplate::description (String & ioString,
-                                                           const int32_t /* inIndentation */) const {
+/* void GGS_semanticComponentGenerationTemplate::description (String & ioString,
+                                                              const int32_t ) const {
   ioString.appendCString ("<filewrapper @semanticComponentGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @semanticComponentGenerationTemplate initializerImplementation
 //--------------------------------------------------------------------------------------------------
@@ -10500,62 +10486,62 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperDeclar
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
-  result.appendString (GGS_string ("Filewrapper '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 3)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 3)).stringValue ()) ;
-  result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_307_idx (0) ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string ("§Filewrapper§ '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 2)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_303_idx (0) ;
   if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_307.hasCurrentObject ()) {
+    UpEnumerator__5B_string_5D_ enumerator_303 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_303.hasCurrentObject ()) {
       result.appendString ("extern const char * gWrapperFileContent_") ;
-      result.appendString (enumerator_307.current_entry (HERE).stringValue ()) ;
+      result.appendString (enumerator_303.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 8)).stringValue ()) ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 6)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_307.gotoNextObject () ;
-      index_307_idx.increment () ;
+      enumerator_303.gotoNextObject () ;
+      index_303_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_577_idx (0) ;
+  GGS_uint index_573_idx (0) ;
   if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_577.hasCurrentObject ()) {
+    UpEnumerator__5B_string_5D_ enumerator_573 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_573.hasCurrentObject ()) {
       result.appendString ("extern const uint8_t gWrapperFileContent_") ;
-      result.appendString (enumerator_577.current_entry (HERE).stringValue ()) ;
+      result.appendString (enumerator_573.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 14)).stringValue ()) ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 12)).stringValue ()) ;
       result.appendString (" [] ;\n") ;
-      enumerator_577.gotoNextObject () ;
-      index_577_idx.increment () ;
+      enumerator_573.gotoNextObject () ;
+      index_573_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_841_idx (0) ;
+  GGS_uint index_837_idx (0) ;
   if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_841.hasCurrentObject ()) {
+    UpEnumerator__5B_string_5D_ enumerator_837 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_837.hasCurrentObject ()) {
       result.appendString ("extern const RegularFileWrapper gWrapperFile_") ;
-      result.appendString (enumerator_841.current_entry (HERE).stringValue ()) ;
+      result.appendString (enumerator_837.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 20)).stringValue ()) ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 18)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_841.gotoNextObject () ;
-      index_841_idx.increment () ;
+      enumerator_837.gotoNextObject () ;
+      index_837_idx.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_1107_ (0) ;
+  GGS_uint index_1103_ (0) ;
   if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_1107 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_1107.hasCurrentObject ()) {
+    UpEnumerator__5B_string_5D_ enumerator_1103 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_1103.hasCurrentObject ()) {
       result.appendString ("extern const DirectoryWrapper gWrapperDirectory_") ;
-      result.appendString (enumerator_1107.current_entry (HERE).stringValue ()) ;
+      result.appendString (enumerator_1103.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 26)).stringValue ()) ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 24)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      enumerator_1107.gotoNextObject () ;
-      index_1107_.increment () ;
+      enumerator_1103.gotoNextObject () ;
+      index_1103_.increment () ;
     }
   }
   result.appendString ("\n") ;
@@ -10567,12 +10553,12 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperDeclar
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperImplementation (const GGS_string & in_FILEWRAPPER_5F_NAME,
                                                                                           const GGS_string & in_FILEWRAPPER_5F_IMPLEMENTATION,
-                                                                                          Compiler * inCompiler
+                                                                                          Compiler * /* inCompiler */
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
-  result.appendString (GGS_string ("Filewrapper '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-implementation.cpp.galgasTemplate", 3)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-implementation.cpp.galgasTemplate", 3)).stringValue ()) ;
-  result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//Filewrapper '") ;
+  result.appendString (in_FILEWRAPPER_5F_NAME.stringValue ()) ;
+  result.appendString ("'\n//--------------------------------------------------------------------------------------------------\n\n") ;
   result.appendString (in_FILEWRAPPER_5F_IMPLEMENTATION.stringValue ()) ;
   result.appendString ("\n") ;
   return GGS_string (result) ;
@@ -11167,19 +11153,6 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTempla
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//     @semanticComponentGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticComponentGenerationTemplate ("semanticComponentGenerationTemplate",
-                                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_semanticComponentGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_semanticComponentGenerationTemplate ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @lexiqueDeclarationForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -11610,9 +11583,7 @@ const GALGAS_TypeDescriptor * GGS_semanticTypeForGeneration_2E_weak::staticTypeD
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'semanticFileGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -11640,30 +11611,36 @@ const DirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticFileGenerationTemplate::GGS_semanticFileGenerationTemplate (void) :
+/* GGS_semanticFileGenerationTemplate::GGS_semanticFileGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticFileGenerationTemplate GGS_semanticFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_semanticFileGenerationTemplate GGS_semanticFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_semanticFileGenerationTemplate result = GGS_semanticFileGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_semanticFileGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_semanticFileGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_semanticFileGenerationTemplate::description (String & ioString,
-                                                      const int32_t /* inIndentation */) const {
+/* void GGS_semanticFileGenerationTemplate::description (String & ioString,
+                                                         const int32_t ) const {
   ioString.appendCString ("<filewrapper @semanticFileGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @semanticFileGenerationTemplate semanticFileHeader
 //--------------------------------------------------------------------------------------------------
@@ -11688,19 +11665,6 @@ GGS_string GGS_semanticFileGenerationTemplate::class_func_semanticFileHeader (co
   result.appendString ("\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @semanticFileGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticFileGenerationTemplate ("semanticFileGenerationTemplate",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_semanticFileGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_semanticFileGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_actualInputParameterAST_5D_' array
 //--------------------------------------------------------------------------------------------------

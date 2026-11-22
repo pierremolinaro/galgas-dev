@@ -57,15 +57,30 @@ final class @buildOptionValueDeclarationAST : @semanticDeclarationAST {
     var @classFunctionMap classFunctionMap = @()
     !?ioTypeMap.makeEntry ("bool".nowhere, ?let boolType)
     for boolOption in ioSemanticContext.projectSettings.boolBuildOptionArray do
-      !?classFunctionMap.insertKey (boolOption.mIdentifier, [], false, boolType)
+      !?classFunctionMap.insertKey (
+        boolOption.mIdentifier,
+        !argumentTypeList: [],
+        !hasCompilerArgument: false,
+        !returnedType: boolType
+      )
     end  
     !?ioTypeMap.makeEntry ("string".nowhere, ?let stringType)
     for stringOption in ioSemanticContext.projectSettings.stringBuildOptionArray do
-      !?classFunctionMap.insertKey (stringOption.mIdentifier, [], false, stringType)
+      !?classFunctionMap.insertKey (
+        stringOption.mIdentifier,
+        !argumentTypeList: [],
+        !hasCompilerArgument: false,
+        !returnedType: stringType
+      )
     end  
     !?ioTypeMap.makeEntry ("uint".nowhere, ?let u32Type)
     for u32Option in ioSemanticContext.projectSettings.u32BuildOptionArray do
-      !?classFunctionMap.insertKey (u32Option.mIdentifier, [], false, u32Type)
+      !?classFunctionMap.insertKey (
+        u32Option.mIdentifier,
+        !argumentTypeList: [],
+        !hasCompilerArgument: false,
+        !returnedType: u32Type
+      )
     end  
   //---
     let @setterMap setterMap = @()

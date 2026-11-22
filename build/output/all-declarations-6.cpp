@@ -5449,9 +5449,7 @@ const GALGAS_TypeDescriptor * GGS_buildOptionTypeForGeneration_2E_weak::staticTy
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'buildOptionGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -5479,30 +5477,36 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionGenerationTemplate::GGS_buildOptionGenerationTemplate (void) :
+/* GGS_buildOptionGenerationTemplate::GGS_buildOptionGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionGenerationTemplate GGS_buildOptionGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_buildOptionGenerationTemplate GGS_buildOptionGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_buildOptionGenerationTemplate result = GGS_buildOptionGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_buildOptionGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_buildOptionGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_buildOptionGenerationTemplate::description (String & ioString,
-                                                     const int32_t /* inIndentation */) const {
+/* void GGS_buildOptionGenerationTemplate::description (String & ioString,
+                                                        const int32_t ) const {
   ioString.appendCString ("<filewrapper @buildOptionGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @buildOptionGenerationTemplate buildOptionTypeHeader1
 //--------------------------------------------------------------------------------------------------
@@ -5826,19 +5830,6 @@ GGS_string GGS_buildOptionGenerationTemplate::class_func_optionImplementationSwi
   result.appendString ("  return CommandLineToolInvocation (tool: tool, arguments: arguments)\n}\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @buildOptionGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionGenerationTemplate ("buildOptionGenerationTemplate",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_buildOptionGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_buildOptionGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 // @u_31__36_PredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
@@ -6591,9 +6582,7 @@ const GALGAS_TypeDescriptor * GGS_buildOptionStringTypeForGeneration_2E_weak::st
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'buildOptionStringGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -6621,30 +6610,36 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringGenerationTemplate::GGS_buildOptionStringGenerationTemplate (void) :
+/* GGS_buildOptionStringGenerationTemplate::GGS_buildOptionStringGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_buildOptionStringGenerationTemplate GGS_buildOptionStringGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_buildOptionStringGenerationTemplate GGS_buildOptionStringGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_buildOptionStringGenerationTemplate result = GGS_buildOptionStringGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_buildOptionStringGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_buildOptionStringGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_buildOptionStringGenerationTemplate::description (String & ioString,
-                                                           const int32_t /* inIndentation */) const {
+/* void GGS_buildOptionStringGenerationTemplate::description (String & ioString,
+                                                              const int32_t ) const {
   ioString.appendCString ("<filewrapper @buildOptionStringGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @buildOptionStringGenerationTemplate buildOptionTypeHeader1
 //--------------------------------------------------------------------------------------------------
@@ -6724,19 +6719,6 @@ GGS_string GGS_buildOptionStringGenerationTemplate::class_func_buildOptionTypeSp
   result.appendString ("\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @buildOptionStringGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_buildOptionStringGenerationTemplate ("buildOptionStringGenerationTemplate",
-                                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_buildOptionStringGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_buildOptionStringGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 // @u_36__34_PredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
@@ -7632,9 +7614,7 @@ const GALGAS_TypeDescriptor * GGS__5B_propertyInCollectionAST_5D_::staticTypeDes
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'predefinedTypeGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -7662,30 +7642,36 @@ const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_predefinedTypeGenerationTemplate::GGS_predefinedTypeGenerationTemplate (void) :
+/* GGS_predefinedTypeGenerationTemplate::GGS_predefinedTypeGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_predefinedTypeGenerationTemplate GGS_predefinedTypeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_predefinedTypeGenerationTemplate GGS_predefinedTypeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_predefinedTypeGenerationTemplate result = GGS_predefinedTypeGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_predefinedTypeGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_predefinedTypeGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_predefinedTypeGenerationTemplate::description (String & ioString,
-                                                        const int32_t /* inIndentation */) const {
+/* void GGS_predefinedTypeGenerationTemplate::description (String & ioString,
+                                                           const int32_t ) const {
   ioString.appendCString ("<filewrapper @predefinedTypeGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @predefinedTypeGenerationTemplate predefinedTypesImplementation
 //--------------------------------------------------------------------------------------------------
@@ -7911,19 +7897,6 @@ GGS_string GGS_predefinedTypeGenerationTemplate::class_func_timer_5F_type (Compi
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @timer type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_timer final : public AC_GALGAS_root {\n//--------------------------------- Private properties\n  private: bool mIsValid ;\n  private: Timer mTimer ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }\n\n//--------------------------------- Default constructor\n  public: GGS_timer (void) ;\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @predefinedTypeGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_predefinedTypeGenerationTemplate ("predefinedTypeGenerationTemplate",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_predefinedTypeGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_predefinedTypeGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 // @sintPredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
@@ -10085,9 +10058,7 @@ const GALGAS_TypeDescriptor * GGS_stringsetPredefinedTypeAST_2E_weak::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'programFileGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -10115,30 +10086,36 @@ const DirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_programFileGenerationTemplate::GGS_programFileGenerationTemplate (void) :
+/* GGS_programFileGenerationTemplate::GGS_programFileGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_programFileGenerationTemplate GGS_programFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_programFileGenerationTemplate GGS_programFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_programFileGenerationTemplate result = GGS_programFileGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_programFileGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_programFileGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_programFileGenerationTemplate::description (String & ioString,
-                                                     const int32_t /* inIndentation */) const {
+/* void GGS_programFileGenerationTemplate::description (String & ioString,
+                                                        const int32_t ) const {
   ioString.appendCString ("<filewrapper @programFileGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @programFileGenerationTemplate programFileImplementation
 //--------------------------------------------------------------------------------------------------
@@ -10243,19 +10220,6 @@ GGS_string GGS_programFileGenerationTemplate::class_func_programFileImplementati
   result.appendString ("      }\n    //--- Error or warnings \?\n      if (totalErrorCount () > 0) {\n        returnCode = 1 ; // Error code\n      }else if (totalWarningCount () > 0) {\n        if (gBuildOption_treat_5F_warnings_5F_as_5F_error.mValue) {\n          returnCode = 1 ; // Error code\n          if (verboseOptionOn) {\n            printf (\"** Note: warnings are treated as errors. **\\n\") ;\n          }\n        }\n      }\n    //--- Epilogue\n      routine_after (commonCompiler COMMA_HERE) ;\n    //--- Emit JSON issue file \?\n      if (gBuildOption_emit_5F_issue_5F_json_5F_file.readProperty_value () != \"\") {\n        commonCompiler->writeIssueJSONFile (gBuildOption_emit_5F_issue_5F_json_5F_file.readProperty_value ()) ;\n      }\n    //--- Display error and warnings count\n      if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {\n        String message ;\n        if (totalWarningCount () == 0) {\n          message.appendCString (\"No warning\") ;\n        }else if (totalWarningCount () == 1) {\n          message.appendCString (\"1 warning\") ;\n        }else{\n          message.appendSigned (totalWarningCount ()) ;\n          message.appendCString (\" warnings\") ;\n        }\n        message.appendCString (\", \") ;\n        if (totalErrorCount () == 0) {\n          message.appendCString (\"no error\") ;\n        }else if (totalErrorCount () == 1) {\n          message.appendCString (\"1 error\") ;\n        }else{\n          message.appendSigned (totalErrorCount ()) ;\n          message.appendCString (\" errors\") ;\n        }\n        message.appendCString (\".\\n\") ;\n        ggs_printMessage (message COMMA_HERE) ;\n      }\n    }catch (const ::std::exception & e) {\n      F_default_display_exception (e) ;\n      returnCode = 1 ; // Error code\n    }catch (...) {\n      printf (\"**** Unknow exception ****\\n\") ;\n      throw ;\n    }\n    macroDetachSharedObject (commonCompiler) ;\n  }\n  return returnCode ;\n}\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @programFileGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programFileGenerationTemplate ("programFileGenerationTemplate",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_programFileGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_programFileGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_prologueEpilogueAST_5D_' array
 //--------------------------------------------------------------------------------------------------
@@ -12012,9 +11976,7 @@ const GALGAS_TypeDescriptor * GGS_arrayTypeForGeneration_2E_weak::staticTypeDesc
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'arrayTypeGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -12042,30 +12004,36 @@ const DirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_arrayTypeGenerationTemplate::GGS_arrayTypeGenerationTemplate (void) :
+/* GGS_arrayTypeGenerationTemplate::GGS_arrayTypeGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_arrayTypeGenerationTemplate GGS_arrayTypeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_arrayTypeGenerationTemplate GGS_arrayTypeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_arrayTypeGenerationTemplate result = GGS_arrayTypeGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_arrayTypeGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_arrayTypeGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_arrayTypeGenerationTemplate::description (String & ioString,
-                                                   const int32_t /* inIndentation */) const {
+/* void GGS_arrayTypeGenerationTemplate::description (String & ioString,
+                                                      const int32_t ) const {
   ioString.appendCString ("<filewrapper @arrayTypeGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @arrayTypeGenerationTemplate arrayTypeHeader1
 //--------------------------------------------------------------------------------------------------
@@ -12409,19 +12377,6 @@ GGS_string GGS_arrayTypeGenerationTemplate::class_func_arrayTypeSpecificImplemen
   result.appendString ("::current_entry (LOCATION_ARGS) const {\n  return mSharedArray (mCurrent COMMA_THERE) ;\n}\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @arrayTypeGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_arrayTypeGenerationTemplate ("arrayTypeGenerationTemplate",
-                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_arrayTypeGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_arrayTypeGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 // @dictionaryDeclarationAST reference class
 //--------------------------------------------------------------------------------------------------
@@ -13002,9 +12957,7 @@ const GALGAS_TypeDescriptor * GGS_dictionaryTypeForGeneration_2E_weak::staticTyp
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'dictionaryGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -13032,30 +12985,36 @@ const DirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dictionaryGenerationTemplate::GGS_dictionaryGenerationTemplate (void) :
+/* GGS_dictionaryGenerationTemplate::GGS_dictionaryGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_dictionaryGenerationTemplate GGS_dictionaryGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_dictionaryGenerationTemplate GGS_dictionaryGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_dictionaryGenerationTemplate result = GGS_dictionaryGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_dictionaryGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_dictionaryGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_dictionaryGenerationTemplate::description (String & ioString,
-                                                    const int32_t /* inIndentation */) const {
+/* void GGS_dictionaryGenerationTemplate::description (String & ioString,
+                                                       const int32_t ) const {
   ioString.appendCString ("<filewrapper @dictionaryGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @dictionaryGenerationTemplate dictTypeHeader1
 //--------------------------------------------------------------------------------------------------
@@ -13369,19 +13328,6 @@ GGS_string GGS_dictionaryGenerationTemplate::class_func_dictTypeSpecificImplemen
   result.appendString ("\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @dictionaryGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_dictionaryGenerationTemplate ("dictionaryGenerationTemplate",
-                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_dictionaryGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dictionaryGenerationTemplate ;
-}
-
 //--------------------------------------------------------------------------------------------------
 //  Enum structComparison
 //--------------------------------------------------------------------------------------------------
@@ -14117,9 +14063,7 @@ const GALGAS_TypeDescriptor * GGS_structTypeForGeneration_2E_weak::staticTypeDes
 }
 
 //--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'structureGenerationTemplate'
-//
 //--------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
@@ -14147,30 +14091,36 @@ const DirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_structureGenerationTemplate::GGS_structureGenerationTemplate (void) :
+/* GGS_structureGenerationTemplate::GGS_structureGenerationTemplate (void) :
 AC_GALGAS_root (),
 mIsValid (false) {
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_structureGenerationTemplate GGS_structureGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+/* GGS_structureGenerationTemplate GGS_structureGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_structureGenerationTemplate result = GGS_structureGenerationTemplate () ;
   result.mIsValid = true ;
   return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_structureGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_structureGenerationTemplate) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_structureGenerationTemplate::description (String & ioString,
-                                                   const int32_t /* inIndentation */) const {
+/* void GGS_structureGenerationTemplate::description (String & ioString,
+                                                      const int32_t ) const {
   ioString.appendCString ("<filewrapper @structureGenerationTemplate:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     ioString.appendCString (">") ;
   }
-}
+} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @structureGenerationTemplate structTypeHeader1
 //--------------------------------------------------------------------------------------------------
@@ -14525,16 +14475,3 @@ GGS_string GGS_structureGenerationTemplate::class_func_structTypeSpecificImpleme
   result.appendString ("  }\n  ioString.appendCString (\">\") ;\n}\n\n") ;
   return GGS_string (result) ;
 }
-//--------------------------------------------------------------------------------------------------
-//     @structureGenerationTemplate generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structureGenerationTemplate ("structureGenerationTemplate",
-                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_structureGenerationTemplate::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_structureGenerationTemplate ;
-}
-

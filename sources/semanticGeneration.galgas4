@@ -699,19 +699,6 @@ filewrapper @semanticComponentGenerationTemplate : "+generation-templates/semant
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
 
-//  template extensionSetterDeclaration : "extension-setter.h.galgasTemplate" (
-//    ?@string CLASS_NAME,
-//    ?@string MODIFIER_NAME,
-//    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
-//  )  
-//
-//  template extensionsetterImplementation : "extension-setter.cpp.galgasTemplate" (
-//    ?@string CLASS_NAME,
-//    ?@string MODIFIER_NAME,
-//    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST,
-//    ?@string MODIFIER_IMPLEMENTATION
-//  )
-
 //----------- Extension proc
   template abstractExtensionMethodDeclaration : "abstract-extension-proc.h.galgasTemplate" (
     ?@string CLASS_NAME,
@@ -752,7 +739,7 @@ filewrapper @semanticComponentGenerationTemplate : "+generation-templates/semant
     ?@string FILEWRAPPER_NAME
   )
 
-  template filewrapperImplementation : "filewrapper-implementation.cpp.galgasTemplate" (
+  template filewrapperImplementation : "filewrapper-implementation-ex.cpp.galgasTemplate" (
     ?@string FILEWRAPPER_NAME,
     ?@string FILEWRAPPER_IMPLEMENTATION
   )
@@ -1037,8 +1024,8 @@ override proc @programComponentForGeneration.appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-proc recursivlyEnumerateRegularFile
-  (let @wrapperFileMap inFilewrapperFileMap,
+proc recursivlyEnumerateRegularFile (
+  let @wrapperFileMap inFilewrapperFileMap,
   let @wrapperDirectoryMap inFilewrapperDirectoryMap,
   ?![@string] ioRegularFileIndexStringList,
   ?![@string] ioDirectoryIndexStringList,

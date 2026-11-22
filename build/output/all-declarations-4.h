@@ -2326,9 +2326,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'grammarRulesInTexDocumentTemplate'
-//
+//§Filewrapper§ 'grammarRulesInTexDocumentTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -2346,54 +2344,21 @@ extern const DirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTempl
 // Phase 1: filewrapper @grammarRulesInTexDocumentTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_grammarRulesInTexDocumentTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_grammarRulesInTexDocumentTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_grammarRulesInTexDocumentTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_grammarRulesInTexDocumentTemplate init (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_document (const class GGS_string & inOperand0,
                                                        const class GGS_string & inOperand1,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarRulesInTexDocumentTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [row] array
@@ -7702,9 +7667,7 @@ class GGS_programRuleAST final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programRuleAST ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'typeDumpGenerationTemplate'
-//
+//§Filewrapper§ 'typeDumpGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -7730,24 +7693,13 @@ extern const DirectoryWrapper gWrapperDirectory_8_typeDumpGenerationTemplate ;
 // Phase 1: filewrapper @typeDumpGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
-class GGS_typeDumpGenerationTemplate final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_typeDumpGenerationTemplate final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_typeDumpGenerationTemplate (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_typeDumpGenerationTemplate init (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_typeDump (const class GGS_string & inOperand0,
                                                        const class GGS_unifiedTypeMap & inOperand1,
                                                        const class GGS_stringset & inOperand2,
@@ -7755,31 +7707,9 @@ class GGS_typeDumpGenerationTemplate final : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDumpGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -1332,9 +1332,7 @@ class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyleArray ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'lexicalTemplates'
-//
+//§Filewrapper§ 'lexicalTemplates'
 //--------------------------------------------------------------------------------------------------
 
 
@@ -1352,58 +1350,23 @@ extern const DirectoryWrapper gWrapperDirectory_0_lexicalTemplates ;
 // Phase 1: filewrapper @lexicalTemplates
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTemplates final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_lexicalTemplates final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_lexicalTemplates (void) ;
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
 
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lexicalTemplates init (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_swiftUILexicalStyles (const class GGS_sortedLexicalStyleArray & inOperand0,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalTemplates ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'targetGalgas3GenerationFileWrapper'
-//
+//§Filewrapper§ 'targetGalgas3GenerationFileWrapper'
 //--------------------------------------------------------------------------------------------------
 
 extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
@@ -1433,24 +1396,11 @@ extern const DirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFile
 // Phase 1: filewrapper @targetGalgas_33_GenerationFileWrapper
 //--------------------------------------------------------------------------------------------------
 
-class GGS_targetGalgas_33_GenerationFileWrapper final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  private: bool mIsValid ;
+class GGS_targetGalgas_33_GenerationFileWrapper final {
 
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+//-- Start of package generic part
 
-//--------------------------------- Default constructor
-  public: GGS_targetGalgas_33_GenerationFileWrapper (void) ;
-
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_targetGalgas_33_GenerationFileWrapper init (Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
+//--------------------------------- GALGAS class getters
   public: static class GGS_string class_func_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (const class GGS_string & inOperand0,
                                                                                          const class GGS_string & inOperand1,
                                                                                          Compiler * inCompiler
@@ -1585,6 +1535,8 @@ class GGS_targetGalgas_33_GenerationFileWrapper final : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
+
   public: static class GGS_string class_func_install_5F_unix (Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -1617,31 +1569,9 @@ class GGS_targetGalgas_33_GenerationFileWrapper final : public AC_GALGAS_root {
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
 //--------------------------------- Class Methods
 
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
 } ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_targetGalgas_33_GenerationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3694,19 +3624,19 @@ class GGS_classFunctionMap_2E_element final : public AC_GALGAS_root {
     return mProperty_lkey ;
   }
 
-  public: GGS__5B_functionSignatureElement_5D_ mProperty_mArgumentTypeList ;
-  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_mArgumentTypeList (void) const {
-    return mProperty_mArgumentTypeList ;
+  public: GGS__5B_functionSignatureElement_5D_ mProperty_argumentTypeList ;
+  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_argumentTypeList (void) const {
+    return mProperty_argumentTypeList ;
   }
 
-  public: GGS_bool mProperty_mHasCompilerArgument ;
-  public: inline GGS_bool readProperty_mHasCompilerArgument (void) const {
-    return mProperty_mHasCompilerArgument ;
+  public: GGS_bool mProperty_hasCompilerArgument ;
+  public: inline GGS_bool readProperty_hasCompilerArgument (void) const {
+    return mProperty_hasCompilerArgument ;
   }
 
-  public: GGS_unifiedTypeMapEntry mProperty_mReturnedType ;
-  public: inline GGS_unifiedTypeMapEntry readProperty_mReturnedType (void) const {
-    return mProperty_mReturnedType ;
+  public: GGS_unifiedTypeMapEntry mProperty_returnedType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_returnedType (void) const {
+    return mProperty_returnedType ;
   }
 
 //--------------------------------- Accessors
@@ -3721,16 +3651,16 @@ class GGS_classFunctionMap_2E_element final : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
-  public: inline void setter_setMArgumentTypeList (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mArgumentTypeList = inValue ;
+  public: inline void setter_setArgumentTypeList (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_argumentTypeList = inValue ;
   }
 
-  public: inline void setter_setMHasCompilerArgument (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHasCompilerArgument = inValue ;
+  public: inline void setter_setHasCompilerArgument (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_hasCompilerArgument = inValue ;
   }
 
-  public: inline void setter_setMReturnedType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mReturnedType = inValue ;
+  public: inline void setter_setReturnedType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_returnedType = inValue ;
   }
 
 //--------------------------------- Set initialized properties
@@ -3738,9 +3668,9 @@ class GGS_classFunctionMap_2E_element final : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_classFunctionMap_2E_element (const GGS_lstring & in_lkey,
-                                           const GGS__5B_functionSignatureElement_5D_ & in_mArgumentTypeList,
-                                           const GGS_bool & in_mHasCompilerArgument,
-                                           const GGS_unifiedTypeMapEntry & in_mReturnedType) ;
+                                           const GGS__5B_functionSignatureElement_5D_ & in_argumentTypeList,
+                                           const GGS_bool & in_hasCompilerArgument,
+                                           const GGS_unifiedTypeMapEntry & in_returnedType) ;
 
 //--------------------------------- Copy constructor
   public: GGS_classFunctionMap_2E_element (const GGS_classFunctionMap_2E_element & inSource) ;
@@ -3751,12 +3681,12 @@ class GGS_classFunctionMap_2E_element final : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_classFunctionMap_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                       const class GGS__5B_functionSignatureElement_5D_ & inOperand1,
-                                                                       const class GGS_bool & inOperand2,
-                                                                       const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_classFunctionMap_2E_element init_21__21_argumentTypeList_21_hasCompilerArgument_21_returnedType (const class GGS_lstring & inOperand0,
+                                                                                                                      const class GGS__5B_functionSignatureElement_5D_ & inOperand1,
+                                                                                                                      const class GGS_bool & inOperand2,
+                                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                      Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

@@ -206,9 +206,9 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
   let @bool hasCompilerArgument
   let [@functionSignatureElement] classFuncFormalArgumentTypeList
   if let entry = classFunctionMap [self.mClassFunctionName.string] then
-    classFuncFormalArgumentTypeList = entry.mArgumentTypeList
-    hasCompilerArgument = entry.mHasCompilerArgument
-    returnedType = entry.mReturnedType
+    classFuncFormalArgumentTypeList = entry.argumentTypeList
+    hasCompilerArgument = entry.hasCompilerArgument
+    returnedType = entry.returnedType
   else
     if classFunctionMap.count == 0 then
       error self.mClassFunctionName
