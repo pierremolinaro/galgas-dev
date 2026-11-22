@@ -77,10 +77,10 @@ void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TY
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -148,7 +148,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAll (%?^%Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_remove (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%const GGS_uint inRemoveIndex,
+      %!^%const GGS_u_33__32_ inRemoveIndex,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -204,7 +204,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIE
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const GGS_uint & inIndex,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const GGS_u_33__32_ & inIndex,
         %!^%Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!TYPE_IDENTIFIER% result ;
@@ -229,8 +229,8 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_sublist (%?^%const GGS_uint & inStartIndex,
-        %!^%const GGS_uint & inLength,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_sublist (%?^%const GGS_u_33__32_ & inStartIndex,
+        %!^%const GGS_u_33__32_ & inLength,
         %!^%Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!TYPE_IDENTIFIER% result ;
@@ -298,7 +298,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (%?^%Compiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_uint & inIndex,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_u_33__32_ & inIndex,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;

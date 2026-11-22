@@ -303,8 +303,8 @@ uint32_t GGS_%!TYPE_IDENTIFIER%::count () const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
-  return GGS_uint (count ()) ;
+GGS_u_33__32_ GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  return GGS_u_33__32_ (count ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -996,12 +996,12 @@ static void countUndefinedNodeCount (const GraphNode_%!TYPE_IDENTIFIER% * inNode
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     uint32_t undefinedNodeCount = 0 ;
     countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
-    result = GGS_uint (undefinedNodeCount) ;
+    result = GGS_u_33__32_ (undefinedNodeCount) ;
   }
   return result ;
 }

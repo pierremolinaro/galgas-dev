@@ -87,7 +87,7 @@ final class @literalStringExpressionForGeneration : @semanticExpressionForGenera
 override proc @literalStringExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   if self.mString == "" then

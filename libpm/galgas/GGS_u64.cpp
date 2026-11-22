@@ -185,7 +185,7 @@ GGS_u_36__34_ GGS_u_36__34_::modulo_operation (const GGS_u_36__34_ & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_u_36__34_::left_shift_operation (const GGS_uint inShiftOperand,
+GGS_u_36__34_ GGS_u_36__34_::left_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                          Compiler * /* inCompiler*/
                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
@@ -213,7 +213,7 @@ GGS_u_36__34_ GGS_u_36__34_::left_shift_operation (const GGS_bigint inShiftOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_u_36__34_::right_shift_operation (const GGS_uint inShiftOperand,
+GGS_u_36__34_ GGS_u_36__34_::right_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                           Compiler * /* inCompiler*/
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
@@ -513,13 +513,13 @@ GGS_s_33__32_ GGS_u_36__34_::getter_s_33__32_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_u_36__34_::getter_uint (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_36__34_::getter_u_33__32_ (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (mU64 > ((uint64_t) UINT32_MAX)) {
     inCompiler->onTheFlyRunTimeError ("64-bit unsigned value to 32-bit unsigned value conversion overflow" COMMA_THERE) ;
   }else{
-    result = GGS_uint (uint32_t (mU64 & UINT32_MAX)) ;
+    result = GGS_u_33__32_ (uint32_t (mU64 & UINT32_MAX)) ;
   }
   return result ;
 }
@@ -572,7 +572,7 @@ GGS_string GGS_u_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_u_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
-                                                          const GGS_uint & inGroup,
+                                                          const GGS_u_33__32_ & inGroup,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -620,11 +620,11 @@ void GGS_u_36__34_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_u_36__34_::getter_uintSlice (const GGS_uint & inStartBit,
-                                             const GGS_uint & inBitCount,
+GGS_u_33__32_ GGS_u_36__34_::getter_uintSlice (const GGS_u_33__32_ & inStartBit,
+                                             const GGS_u_33__32_ & inBitCount,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (inStartBit.isValid () && inBitCount.isValid ()) {
     if (inBitCount.uintValue () > 32) {
       inCompiler->onTheFlyRunTimeError ("bit count operand > 32" COMMA_THERE) ;
@@ -633,7 +633,7 @@ GGS_uint GGS_u_36__34_::getter_uintSlice (const GGS_uint & inStartBit,
     }else{
       uint64_t v = mU64 >> inStartBit.uintValue () ;
       v &= ((1ULL << inBitCount.uintValue ()) - 1ULL) ;
-      result = GGS_uint (uint32_t (v & UINT32_MAX)) ;
+      result = GGS_u_33__32_ (uint32_t (v & UINT32_MAX)) ;
     }
   }
   return result ;

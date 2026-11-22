@@ -15,7 +15,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 //--------------------------------- Initializers
   public: void repeatInstructionForGrammarAnalysis_init_21__21__21_ (const class GGS_location & inOperand0,
                                                                      const class GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ & inOperand1,
-                                                                     const class GGS_uint & inOperand2,
+                                                                     const class GGS_u_33__32_ & inOperand2,
                                                                      Compiler * inCompiler) ;
 
 
@@ -24,12 +24,12 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- Extension proc tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GGS__5B_row_5D_ & arg_ioRowList,
-           const class GGS_uint arg_inRow,
-           class GGS_uint & arg_ioColumn,
+           const class GGS_u_33__32_ arg_inRow,
+           class GGS_u_33__32_ & arg_ioColumn,
            class GGS_string & arg_ioCurrentNode,
            class GGS_string & arg_ioArrowShape,
            class GGS_string & arg_ioArrows,
-           class GGS_uint & arg_ioMaxUsedRowIndex,
+           class GGS_u_33__32_ & arg_ioMaxUsedRowIndex,
            const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -54,7 +54,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 //--- END OF USER ZONE 2
 //--- Properties
   public: GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ mProperty_mRepeatBranchList ;
-  public: GGS_uint mProperty_mAddedNonTerminalSymbolIndex ;
+  public: GGS_u_33__32_ mProperty_mAddedNonTerminalSymbolIndex ;
 
 
 //--- Default constructor
@@ -63,7 +63,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 //--- Constructor
   public: cPtr_repeatInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                     const GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ & in_mRepeatBranchList,
-                                                    const GGS_uint & in_mAddedNonTerminalSymbolIndex,
+                                                    const GGS_u_33__32_ & in_mAddedNonTerminalSymbolIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 

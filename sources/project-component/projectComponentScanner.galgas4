@@ -110,7 +110,7 @@ $'char'$ ! charValue style characterStyle #errorMessage "a character constant"
 
 #errorMessage unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
 
-@uint uint32value
+@u32 uint32value
 
 rule '\'' {
   select

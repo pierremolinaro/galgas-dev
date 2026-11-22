@@ -493,7 +493,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
     )
   //-------------------------------------- Build terminal map
     for terminal in self.mTerminalDeclarationListAST do
-      var @uint terminalStyleIndex = 0
+      var @u32 terminalStyleIndex = 0
       if terminal.mStyle.string.count > 0 then
         inSemanticContext.projectSettings.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
       end
@@ -513,7 +513,7 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
       )
     end
     for property in self.mLexicalListDeclarationListAST do
-      var @uint terminalStyleIndex = 0
+      var @u32 terminalStyleIndex = 0
       if property.mStyle.string.count > 0 then
         inSemanticContext.projectSettings.lexicalStyleMap.search (property.mStyle, ?*, ?terminalStyleIndex)
       end
@@ -676,7 +676,7 @@ filewrapper @lexiqueGenerationTemplates : "+generation-templates/lexique_generat
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
     ?[@indexingAST] INDEXING_LIST,
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
-    ?@uint LEXICAL_STYLE_COUNT
+    ?@u32 LEXICAL_STYLE_COUNT
   )
 }
 

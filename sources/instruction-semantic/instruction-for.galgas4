@@ -96,7 +96,7 @@ syntax extension galgas4InstructionsSyntax {
                                   ?![@forInstructionEnumeratedObjectElementAST] ioElementList) {
     $literalInt$ (?let count)
     $*$
-    var n = count.bigint.uint
+    var n = count.bigint.u32
     if n == 0 then
       error count: "this value should be > 0"
     end
@@ -575,7 +575,7 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
@@ -600,7 +600,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   if ((self.mBeforeInstructionList.count + self.mAfterInstructionList.count) > 0) | not whileExpressionIsAllwaysTrue then
   //--- Index
     if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
     let boolVarCppName = "bool_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
@@ -697,7 +697,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
     ioGeneratedCode += "}\n"
   else //---- foreach instruction without 'before', 'after', while expression
     if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
     ioGeneratedCode += "while ("
     for entry in self.mEnumeratedObjectList
@@ -741,7 +741,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   //--- Advance index ?
     if self.mIndexVariableCppName != "" then
       !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
-      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_uint (1), " + gCompilerCppName
+      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_u_33__32_ (1), " + gCompilerCppName
       + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     end
     ioGeneratedCode += "}\n"

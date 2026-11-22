@@ -237,7 +237,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Build terminal map
   var [@terminalAST] terminalList = @()
   for terminal in terminalListAST do
-    var @uint terminalStyleIndex = 0
+    var @u32 terminalStyleIndex = 0
     if terminal.mStyle.string.count > 0 then
       inSemanticContext.projectSettings.lexicalStyleMap.search (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
@@ -256,7 +256,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
       terminalStyleIndex)
   end
   for lexicalList in lexicalListDeclarationListAST do
-    var @uint terminalStyleIndex = 0
+    var @u32 terminalStyleIndex = 0
     if lexicalList.mStyle.string.count > 0 then
       inSemanticContext.projectSettings.lexicalStyleMap.search (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end

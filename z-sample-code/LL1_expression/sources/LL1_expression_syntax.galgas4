@@ -1,44 +1,44 @@
 syntax LL1_expression_syntax : LL1_expression_lexique, #translatable {
 
 rule <StartSymbol> () {
-  <Expression> (?let @cExpression expressionTree, ?let @uint value)
+  <Expression> (?let @cExpression expressionTree, ?let @u32 value)
   println (expressionTree.description)
   println (value)
 }
-  
+
 rule <Constant>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
-  $number$ (?let @luint cst)
+  !@u32 outValue ) {
+  $number$ (?let @lu32 cst)
   send " "
   outExpressionTree = @cConst ( cst)
-  outValue = cst.uint
+  outValue = cst.u32
 }
-  
+
 rule <Expression>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   <Terme> (?outExpressionTree, ?outValue)
   repeat
-  while 
+  while
     $+$ :> (?let @string sep) (?let @string token)
     send sep
-    <Terme> (?let @cExpression rightOperand, ?let @uint v)
+    <Terme> (?let @cExpression rightOperand, ?let @u32 v)
     send token
     outExpressionTree = @cAdd (  outExpressionTree , rightOperand)
     outValue = outValue + v
   end
 }
-  
+
 rule <Terme>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   <Facteur> (?outExpressionTree, ?outValue)
   repeat
-  while 
+  while
     $*$ :> (?let @string sep) (?let @string token)
     send sep
-    <Facteur> (?let @cExpression rightOperand, ?let @uint v)
+    <Facteur> (?let @cExpression rightOperand, ?let @u32 v)
     send token
     outExpressionTree = @cMult (  outExpressionTree , rightOperand)
     outValue = outValue * v
@@ -46,7 +46,7 @@ rule <Terme>
 }
 
 rule <Facteur> (!@cExpression outExpressionTree,
-                !@uint outValue) {
+                !@u32 outValue) {
   select
     $($ :> (?*) (?*)
     <Expression> (?outExpressionTree, ?outValue)

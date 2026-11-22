@@ -19,13 +19,13 @@ syntax logo_syntax : logo_lexique {
   rule <instruction> (?!@routineMap ioTableRoutines ,?![@instruction] il ) {
     select
       $FORWARD$
-      $integer$ (?let @luint param)
+      $integer$ (?let @lu32 param)
       let @instruction ins = @forward (param)
       il ++= ins
       $;$
     or
       $ROTATE$
-      $integer$ (?let @luint param)
+      $integer$ (?let @lu32 param)
       $;$
       let @instruction ins = @rotate (param)
       il ++= ins

@@ -159,7 +159,7 @@ class cPtr_superMethodCallInstructionForGeneration : public cPtr_semanticInstruc
 
 //--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            class GGS_string & arg_ioGeneratedCode,
@@ -346,13 +346,13 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
            const class GGS_stringset arg_inIndexNameSet,
            class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
-           class GGS_uint & arg_ioSelectMethodCount,
+           class GGS_u_33__32_ & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc transformInstructionForGrammarAnalysis
   public: virtual void method_transformInstructionForGrammarAnalysis (class GGS_terminalSymbolsMapForGrammarAnalysis & arg_ioActuallyUsedTerminalSymbolMap,
            const class GGS_nonTerminalSymbolMapForGrammarAnalysis arg_inNonTerminalSymbolMap,
-           class GGS_uint & arg_ioAddedNonTerminalIndex,
+           class GGS_u_33__32_ & arg_ioAddedNonTerminalIndex,
            class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & arg_ioSyntaxInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -519,7 +519,7 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
 
 //--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            class GGS_string & arg_ioGeneratedCode,

@@ -106,7 +106,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
     var baseType = selfType
     var searching = true
     if @application.errorCount == 0 then
-      loop (@uint.max) while searching do
+      loop (@u32.max) while searching do
         if baseType.definition.superType.isNull then
           searching = false
         else
@@ -146,7 +146,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

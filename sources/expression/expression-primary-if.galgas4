@@ -194,7 +194,7 @@ final class @ifExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @ifExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {

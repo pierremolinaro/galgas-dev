@@ -596,12 +596,12 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_insert (class GGS_formalInputParameterAST constinArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_remove (class GGS_formalInputParameterAST & outArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
@@ -617,7 +617,7 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
                                   COMMA_LOCATION_ARGS) ;
 
   public: void setter_set (class GGS_formalInputParameterAST constinArgument0,
-                           class GGS_uint constinArgument1,
+                           class GGS_u_33__32_ constinArgument1,
                            Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
 
@@ -626,7 +626,7 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_formalInputParameterAST getter_first (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
@@ -634,18 +634,18 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
   public: class GGS_formalInputParameterAST getter_last (Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalInputParameterAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+  public: class GGS__5B_formalInputParameterAST_5D_ getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalInputParameterAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                    const class GGS_uint & constinOperand1,
+  public: class GGS__5B_formalInputParameterAST_5D_ getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                    const class GGS_u_33__32_ & constinOperand1,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_formalInputParameterAST readSubcript__3F_ (const class GGS_uint & in0,
+  public: class GGS_formalInputParameterAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
@@ -1090,8 +1090,8 @@ class GGS_sortedLexicalStyle final : public AC_GALGAS_root {
     return mProperty_comment ;
   }
 
-  public: GGS_uint mProperty_index ;
-  public: inline GGS_uint readProperty_index (void) const {
+  public: GGS_u_33__32_ mProperty_index ;
+  public: inline GGS_u_33__32_ readProperty_index (void) const {
     return mProperty_index ;
   }
 
@@ -1111,7 +1111,7 @@ class GGS_sortedLexicalStyle final : public AC_GALGAS_root {
     mProperty_comment = inValue ;
   }
 
-  public: inline void setter_setIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_index = inValue ;
   }
 
@@ -1121,7 +1121,7 @@ class GGS_sortedLexicalStyle final : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_sortedLexicalStyle (const GGS_string & in_name,
                                   const GGS_string & in_comment,
-                                  const GGS_uint & in_index) ;
+                                  const GGS_u_33__32_ & in_index) ;
 
 //--------------------------------- Copy constructor
   public: GGS_sortedLexicalStyle (const GGS_sortedLexicalStyle & inSource) ;
@@ -1134,7 +1134,7 @@ class GGS_sortedLexicalStyle final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_sortedLexicalStyle init_21__21__21_ (const class GGS_string & inOperand0,
                                                           const class GGS_string & inOperand1,
-                                                          const class GGS_uint & inOperand2,
+                                                          const class GGS_u_33__32_ & inOperand2,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -1271,7 +1271,7 @@ class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_remove (class GGS_sortedLexicalStyle & outArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
@@ -1291,7 +1291,7 @@ class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_sortedLexicalStyle getter_first (Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const ;
@@ -1299,18 +1299,18 @@ class GGS_sortedLexicalStyleArray final : public AC_GALGAS_root {
   public: class GGS_sortedLexicalStyle getter_last (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyleArray getter_removingFirst (const class GGS_uint & constinOperand0,
+  public: class GGS_sortedLexicalStyleArray getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sortedLexicalStyleArray getter_sublist (const class GGS_uint & constinOperand0,
-                                                            const class GGS_uint & constinOperand1,
+  public: class GGS_sortedLexicalStyleArray getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                            const class GGS_u_33__32_ & constinOperand1,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sortedLexicalStyle readSubcript__3F_ (const class GGS_uint & in0,
+  public: class GGS_sortedLexicalStyle readSubcript__3F_ (const class GGS_u_33__32_ & in0,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -1671,7 +1671,7 @@ class Lexique_projectComponentScanner : public Lexique {
   public: GGS_lbigint synthetizedAttribute_bigintValue (void) const ;
   public: GGS_lchar synthetizedAttribute_charValue (void) const ;
   public: GGS_lstring synthetizedAttribute_tokenString (void) const ;
-  public: GGS_luint synthetizedAttribute_uint_33__32_value (void) const ;
+  public: GGS_lu_33__32_ synthetizedAttribute_uint_33__32_value (void) const ;
 
 
 //--- Attribute access
@@ -1719,8 +1719,8 @@ class GGS_lexicalStyleMap_2E_element final : public AC_GALGAS_root {
     return mProperty_mComment ;
   }
 
-  public: GGS_uint mProperty_mStyleIndex ;
-  public: inline GGS_uint readProperty_mStyleIndex (void) const {
+  public: GGS_u_33__32_ mProperty_mStyleIndex ;
+  public: inline GGS_u_33__32_ readProperty_mStyleIndex (void) const {
     return mProperty_mStyleIndex ;
   }
 
@@ -1740,7 +1740,7 @@ class GGS_lexicalStyleMap_2E_element final : public AC_GALGAS_root {
     mProperty_mComment = inValue ;
   }
 
-  public: inline void setter_setMStyleIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMStyleIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mStyleIndex = inValue ;
   }
 
@@ -1750,7 +1750,7 @@ class GGS_lexicalStyleMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_lexicalStyleMap_2E_element (const GGS_lstring & in_lkey,
                                           const GGS_lstring & in_mComment,
-                                          const GGS_uint & in_mStyleIndex) ;
+                                          const GGS_u_33__32_ & in_mStyleIndex) ;
 
 //--------------------------------- Copy constructor
   public: GGS_lexicalStyleMap_2E_element (const GGS_lexicalStyleMap_2E_element & inSource) ;
@@ -1763,7 +1763,7 @@ class GGS_lexicalStyleMap_2E_element final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_lexicalStyleMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                   const class GGS_lstring & inOperand1,
-                                                                  const class GGS_uint & inOperand2,
+                                                                  const class GGS_u_33__32_ & inOperand2,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -2166,12 +2166,12 @@ class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_insert (class GGS_formalParameterAST constinArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_remove (class GGS_formalParameterAST & outArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
@@ -2187,7 +2187,7 @@ class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
                                   COMMA_LOCATION_ARGS) ;
 
   public: void setter_set (class GGS_formalParameterAST constinArgument0,
-                           class GGS_uint constinArgument1,
+                           class GGS_u_33__32_ constinArgument1,
                            Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
 
@@ -2196,7 +2196,7 @@ class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_formalParameterAST getter_first (Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const ;
@@ -2204,18 +2204,18 @@ class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
   public: class GGS_formalParameterAST getter_last (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalParameterAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+  public: class GGS__5B_formalParameterAST_5D_ getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_formalParameterAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                               const class GGS_uint & constinOperand1,
+  public: class GGS__5B_formalParameterAST_5D_ getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                               const class GGS_u_33__32_ & constinOperand1,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_formalParameterAST readSubcript__3F_ (const class GGS_uint & in0,
+  public: class GGS_formalParameterAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -2641,7 +2641,7 @@ class DownEnumerator_constantIndexMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 
-  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ current_mIndex (LOCATION_ARGS) const ;
 
   public: class GGS__5B_associatedValueDescriptor_5D_ current_mAssociatedTypeList (LOCATION_ARGS) const ;
 
@@ -2668,7 +2668,7 @@ class UpEnumerator_constantIndexMap final {
   public: inline void rewind (void) { mIndex = 0 ; }
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_uint current_mIndex (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ current_mIndex (LOCATION_ARGS) const ;
   public: class GGS__5B_associatedValueDescriptor_5D_ current_mAssociatedTypeList (LOCATION_ARGS) const ;
   public: class GGS_constantIndexMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -2746,7 +2746,7 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
 
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
-                                 class GGS_uint constinArgument1,
+                                 class GGS_u_33__32_ constinArgument1,
                                  class GGS__5B_associatedValueDescriptor_5D_ constinArgument2,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
@@ -2756,7 +2756,7 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMIndexForKey (class GGS_uint constinArgument0,
+  public: void setter_setMIndexForKey (class GGS_u_33__32_ constinArgument0,
                                        class GGS_string constinArgument1,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
@@ -2764,7 +2764,7 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
-                                 class GGS_uint & outArgument1,
+                                 class GGS_u_33__32_ & outArgument1,
                                  class GGS__5B_associatedValueDescriptor_5D_ & outArgument2,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
@@ -2775,10 +2775,10 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
+                                               const class GGS_u_33__32_ & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
@@ -2787,7 +2787,7 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_levels (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
                                                     Compiler * inCompiler
@@ -2797,9 +2797,9 @@ class GGS_constantIndexMap final : public AC_GALGAS_root {
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_mIndexForKey (const class GGS_string & constinOperand0,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_mIndexForKey (const class GGS_string & constinOperand0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_constantIndexMap getter_overriddenMap (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
@@ -3394,12 +3394,12 @@ class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_insert (class GGS_functionSignatureElement constinArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_remove (class GGS_functionSignatureElement & outArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
@@ -3415,7 +3415,7 @@ class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
                                   COMMA_LOCATION_ARGS) ;
 
   public: void setter_set (class GGS_functionSignatureElement constinArgument0,
-                           class GGS_uint constinArgument1,
+                           class GGS_u_33__32_ constinArgument1,
                            Compiler * inCompiler
                            COMMA_LOCATION_ARGS) ;
 
@@ -3424,7 +3424,7 @@ class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_functionSignatureElement getter_first (Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
@@ -3432,18 +3432,18 @@ class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
   public: class GGS_functionSignatureElement getter_last (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_functionSignatureElement_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+  public: class GGS__5B_functionSignatureElement_5D_ getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_functionSignatureElement_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                                     const class GGS_uint & constinOperand1,
+  public: class GGS__5B_functionSignatureElement_5D_ getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                     const class GGS_u_33__32_ & constinOperand1,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_functionSignatureElement readSubcript__3F_ (const class GGS_uint & in0,
+  public: class GGS_functionSignatureElement readSubcript__3F_ (const class GGS_u_33__32_ & in0,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const ;
 

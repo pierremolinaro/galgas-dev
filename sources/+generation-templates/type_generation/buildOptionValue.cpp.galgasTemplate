@@ -6,7 +6,7 @@
 BoolCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
   %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
-  %![[sortedOption.mInvocationChar uint] string]%,
+  %![[sortedOption.mInvocationChar u32] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%
 ) ;
@@ -26,7 +26,7 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifi
 UIntCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
   %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
-  %![[sortedOption.mInvocationChar uint] string]%,
+  %![[sortedOption.mInvocationChar u32] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,
   0
@@ -34,8 +34,8 @@ UIntCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierReprese
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_value ()) ;
+GGS_u_33__32_ GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
+  return GGS_u_33__32_ (gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]%.readProperty_value ()) ;
 }
 
 %end
@@ -47,7 +47,7 @@ GGS_uint GGS_%!TYPE_IDENTIFIER%::class_func_%![sortedOption.mIdentifier identifi
 StringCommandLineOption gBuildOption_%![sortedOption.mIdentifier identifierRepresentation]% (
   "build",
   %![sortedOption.mIdentifier utf8RepresentationEscapingQuestionMark]%,
-  %![[sortedOption.mInvocationChar uint] string]%,
+  %![[sortedOption.mInvocationChar u32] string]%,
   %![sortedOption.mInvocationString utf8RepresentationEscapingQuestionMark]%,
   %![sortedOption.mExplanationString utf8RepresentationEscapingQuestionMark]%,
   ""

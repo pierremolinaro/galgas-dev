@@ -1,58 +1,58 @@
 //-----------------------------------------------------------------------------------------------
 
 class @classeA {
-  public let @uint x
+  public let @u32 x
 }
 
 //-----------------------------------------------------------------------------------------------
 
 final class @classeB {
-  private let @uint x
-  
-  init (?@uint inX) { self.x = inX }
-  init (?x: let @uint inX) { self.x = inX }
+  private let @u32 x
+
+  init (?@u32 inX) { self.x = inX }
+  init (?x: let @u32 inX) { self.x = inX }
 }
 
 //-----------------------------------------------------------------------------------------------
 
 class @classeC {
-  public var @uint x = 7
+  public var @u32 x = 7
 }
 
 //-----------------------------------------------------------------------------------------------
 
 final class @classeD {
-  public let @uint x = 9
-  
-  init (?let @uint inX) { self.x = inX }
-  init (?x: let @uint inX) { self.x = inX }
+  public let @u32 x = 9
+
+  init (?let @u32 inX) { self.x = inX }
+  init (?x: let @u32 inX) { self.x = inX }
 }
 
 //-----------------------------------------------------------------------------------------------
 
 class @classeE : @classeA {
-  private let @uint y
+  private let @u32 y
 
 }
 
 //-----------------------------------------------------------------------------------------------
 
 final class @classeF : @classeC {
-  private let @uint y
+  private let @u32 y
 }
 
 //-----------------------------------------------------------------------------------------------
 
 final class @classeG : @classeC {
-  private let @uint y = 67
+  private let @u32 y = 67
 }
 
 //-----------------------------------------------------------------------------------------------
 
 final class @classeH : @classeA {
-  public let @uint y
-  
-  init (?let @uint inX, ?let @uint inY) {
+  public let @u32 y
+
+  init (?let @u32 inX, ?let @u32 inY) {
     self.y = inY
     super.init (inX)
   }
@@ -61,10 +61,10 @@ final class @classeH : @classeA {
 //-----------------------------------------------------------------------------------------------
 
 final class @classeI : @classeC {
-  public let @uint y
+  public let @u32 y
   public var @classeH? z = nil
-  
-  init (let @uint inY) {
+
+  init (let @u32 inY) {
     self.y = inY
     super.init ()
   }
@@ -81,7 +81,7 @@ proc testsuite_reference_class () {
   var @classeH? b = @classeH (13, 17)
   a.z = b
   a.z = nil
-  b = a.z 
+  b = a.z
   println ("*************************************** end of reference classe test")
 }
 

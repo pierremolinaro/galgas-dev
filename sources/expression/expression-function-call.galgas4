@@ -141,7 +141,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
 
   override proc generateExpression (?!@string ioGeneratedCode,
                                       ?!@stringset ioInclusionSet,
-                                      ?!@uint ioTemporaryVariableIndex,
+                                      ?!@u32 ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
   //--- Add return type header

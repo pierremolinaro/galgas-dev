@@ -36,13 +36,13 @@ struct @guiCompoundAttributeAST {
 
 struct @terminalLabelAST {
   public let @lstring mTerminal
-  public let @uint mDisplayFlags
+  public let @u32 mDisplayFlags
 }
 
 //--------------------------------------------------------------------------------------------------
 
 struct @guiLabelAST {
-  public let @uint mLeadingCharacterStrippedCount
+  public let @u32 mLeadingCharacterStrippedCount
   public let [@terminalLabelAST] mTerminalList
   public let @location mLocation
 }
@@ -70,7 +70,7 @@ struct @withLexiqueAST {
 
 map @extensionMap {
   public let @string mLexiqueName
-  public let @uint mIndex
+  public let @u32 mIndex
   #insertSetter insertKey #errorMessage "the '%K' extension is already declared in %L"
 }
 
@@ -85,7 +85,7 @@ struct @textMacroAST {
 
 struct @importedLexiqueAST {
   public let @string mLexiqueClassName
-  public let @uint mIndex
+  public let @u32 mIndex
   public let @string mBlockComment
   public let @string mTitle
   public let [@textMacroAST] mTextMacroList
@@ -157,7 +157,7 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
     repeat
     while
       $label$
-      let @uint displayStyle
+      let @u32 displayStyle
       select
         displayStyle = 0
       or
@@ -167,7 +167,7 @@ syntax galgas4GuiComponentSyntax : galgasScanner4 {
       var [@terminalLabelAST] terminalList = @()
       repeat
         $\$terminal\$$ (?let  @lstring terminal)
-        let @uint displayFlags
+        let @u32 displayFlags
         select
           displayFlags = 0 // Default
         or

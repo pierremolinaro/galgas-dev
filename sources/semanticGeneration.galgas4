@@ -108,7 +108,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   public let @string mLexiqueName
   public let @nonterminalMap mNonterminalDeclarationMap
   public let [@ruleDeclarationAST] mRuleDeclarationList
-  public let @uint mSelectMethodCount
+  public let @u32 mSelectMethodCount
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
 
@@ -141,8 +141,8 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
-    var selectMethodList = [@uint] ()
-    var @uint idx = 0
+    var selectMethodList = [@u32] ()
+    var @u32 idx = 0
     loop (self.mSelectMethodCount + 1)
     while idx < self.mSelectMethodCount do
       selectMethodList ++= idx
@@ -255,7 +255,7 @@ proc generateProcedure
     end
   end
 //--- Generate body
-  var @uint temporaryVariableIndex = 0
+  var @u32 temporaryVariableIndex = 0
   var routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
@@ -278,7 +278,7 @@ proc generateProcedure
     outGeneratedCode += "static "
   end
   outGeneratedCode += "void " + inProcedureMangledName + " ("
-  let @uint colRef = outGeneratedCode.currentColumn
+  let @u32 colRef = outGeneratedCode.currentColumn
 //---
   for formal in inFormalArgumentList do
     switch formal.mFormalArgumentPassingMode
@@ -370,7 +370,7 @@ proc generateFunction (let @string inFunctionCppRepresentationName,
     unusedVariableCppNameSet ++= formal.mFormalArgumentCppName
   end
 //--- Generate body
-  var @uint temporaryVariableIndex = 0
+  var @u32 temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
@@ -389,7 +389,7 @@ proc generateFunction (let @string inFunctionCppRepresentationName,
   end
   outGeneratedCode += "GGS_" + inResultType.identifierRepresentation + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
-  let @uint colRef = outGeneratedCode.currentColumn
+  let @u32 colRef = outGeneratedCode.currentColumn
 //---
   for formal in inFormalArgumentList do
     if formal.mIsConstant then
@@ -452,7 +452,7 @@ proc generateExtensionGetter (let @string inFunctionCppRepresentationName,
     unusedVariableCppNameSet ++= formal.mFormalArgumentCppName
   end
 //--- Generate body
-  var @uint temporaryVariableIndex = 0
+  var @u32 temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
@@ -468,7 +468,7 @@ proc generateExtensionGetter (let @string inFunctionCppRepresentationName,
 //--- Generate header
   outGeneratedCode += "GGS_" + inResultType.identifierRepresentation + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
-  let @uint colRef = outGeneratedCode.currentColumn
+  let @u32 colRef = outGeneratedCode.currentColumn
 //---
   for formal in inFormalArgumentList do
     if formal.mIsConstant then
@@ -525,7 +525,7 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
     unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
   end
 //--- Generate body
-  var @uint temporaryVariableIndex = 0
+  var @u32 temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
@@ -541,7 +541,7 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
 //--- Generate inclusions
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
-  loop (@uint. max) while searching do
+  loop (@u32. max) while searching do
     if not baseType.definition.superType.isNull then
       if baseType.definition.superType.definition.instanceMethodMap.contains (inMethodName) then
         baseType = baseType.definition.superType
@@ -559,7 +559,7 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
   end
 //--- Generate header
   outGeneratedCode = "void cPtr_" + className.identifierRepresentation + "::method_" + inMethodName.identifierRepresentation + " ("
-  let @uint colRef = outGeneratedCode.currentColumn
+  let @u32 colRef = outGeneratedCode.currentColumn
 //---
   for formal in inFormalArgumentList do
     switch formal.mFormalArgumentPassingMode

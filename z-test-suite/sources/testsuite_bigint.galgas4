@@ -18,7 +18,7 @@ proc testsuite_bigint_type() {
   println ((-123_456_789_012_345_678).spacedString (3))
   println ("--- extract8ForUnsignedRepresentation")
 // Parcours dans le sens des indices croissants : little endian
-  var [@uint] a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForUnsignedRepresentation
+  var [@u32] a = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract8ForUnsignedRepresentation
   var s = ""
   for n in a
     do s += n.hexString

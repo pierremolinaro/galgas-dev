@@ -49,8 +49,8 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint",
-      !returnedTypeName:"uint",
+      !getterName:"u32",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (

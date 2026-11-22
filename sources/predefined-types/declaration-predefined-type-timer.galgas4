@@ -62,7 +62,7 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"msFromStart",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

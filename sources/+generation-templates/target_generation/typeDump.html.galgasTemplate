@@ -56,7 +56,7 @@ tr.result_line {
 <p>This document lists all %![[UNIFIED_TYPE_MAP count] string]% defined types, sorted by name.</p>
 <p>%
 for (key) in FIRST_LETTER_SET
-do %<a class="header_link" href="#%![[[key characterAtIndex!0] uint] string]%">%!key%</a>%
+do %<a class="header_link" href="#%![[[key characterAtIndex!0] u32] string]%">%!key%</a>%
 between % - %
 end
 %</p>
@@ -104,9 +104,9 @@ end%
       %modulo: %!linkForType (!type_lkey.string)% <b>mod</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
     if [[element definition].features contains ![@typeFeatures infixShiftOperator]] then
-      %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
+      %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"u32")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
-      %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
+      %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"u32")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"bigint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
     if [[element definition].features contains ![@typeFeatures prefixPlusOperator]] then

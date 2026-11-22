@@ -220,7 +220,7 @@ final class @localVariableDeclarationForGeneration : @semanticInstructionForGene
 //································································································
 
 override proc @localVariableDeclarationForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {

@@ -4,8 +4,8 @@
 
 proc listUnicodeCharacterProperties () {
   print ("---- Unassigned Unicode Characters\n")
-  var @uint unicodeValue = 0
-  var @uint matchedValue = 0
+  var @u32 unicodeValue = 0
+  var @u32 matchedValue = 0
   var @bool found = false
   loop (0x10000 - unicodeValue)
   while unicodeValue < 0x10000 do

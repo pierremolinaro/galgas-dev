@@ -151,7 +151,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"count",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

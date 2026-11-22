@@ -31,12 +31,12 @@ abstract class @abstractSyntaxInstructionForGrammarAnalysis #generatedInSeparate
   public let @location mStartLocation
 
   abstract proc tikzNodeForSyntaxInstruction (?![@row] ioRowList,
-                                              ?fromRow:let @uint inRow,
-                                              ?!column:@uint ioColumn,
+                                              ?fromRow:let @u32 inRow,
+                                              ?!column:@u32 ioColumn,
                                               ?!node: @string ioCurrentNode,
                                               ?!arrowShape: @string ioArrowShape,
                                               ?!arrows:@string ioArrows,
-                                              ?!@uint ioMaxUsedRowIndex,
+                                              ?!@u32 ioMaxUsedRowIndex,
                                               ?debug:let @bool inDebug)
 }
 
@@ -48,15 +48,15 @@ abstract class @abstractSyntaxInstructionForGrammarAnalysis #generatedInSeparate
 
 struct @productionRuleForGrammarAnalysis {
   public let @lstring mLeftNonterminalSymbol
-  public let @uint mLeftNonterminalSymbolIndex
+  public let @u32 mLeftNonterminalSymbolIndex
   public let [@abstractSyntaxInstructionForGrammarAnalysis] mInstructionList
-  public let @uint mProductionIndex
+  public let @u32 mProductionIndex
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
-  public let @uint mNonTerminalIndex
+  public let @u32 mNonTerminalIndex
   #insertSetter insertKey #errorMessage "the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
@@ -68,21 +68,13 @@ map @unusedNonTerminalSymbolMapForGrammarAnalysis {
 
 struct @sortedNonTerminalSymbolForGrammarAnalysis {
   let @lstring mNonTerminalSymbol
-  let @uint mNonTerminalIndex
+  let @u32 mNonTerminalIndex
   let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
 }
 
 sortedarray @nonTerminalSymbolSortedArrayForGrammarAnalysis : @sortedNonTerminalSymbolForGrammarAnalysis {
   mNonTerminalIndex <
 }
-
-//sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
-//  public let @lstring mNonTerminalSymbol
-//  public let @uint mNonTerminalIndex
-//  public let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
-//}{
-//  mNonTerminalIndex <
-//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -92,7 +84,7 @@ sortedarray @nonTerminalSymbolSortedArrayForGrammarAnalysis : @sortedNonTerminal
 
 final class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mNonterminalSymbolName
-  public let @uint mNonterminalSymbolIndex
+  public let @u32 mNonterminalSymbolIndex
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -113,7 +105,7 @@ final class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructi
 
 final class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let [[@abstractSyntaxInstructionForGrammarAnalysis]] mSelectBranchList
-  public let @uint mAddedNonTerminalSymbolIndex
+  public let @u32 mAddedNonTerminalSymbolIndex
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -124,7 +116,7 @@ final class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionFor
 
 final class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let [[@abstractSyntaxInstructionForGrammarAnalysis]] mRepeatBranchList
-  public let @uint mAddedNonTerminalSymbolIndex
+  public let @u32 mAddedNonTerminalSymbolIndex
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -145,7 +137,7 @@ struct @syntaxComponentForGrammarAnalysis {
 //--------------------------------------------------------------------------------------------------
 
 map @terminalSymbolsMapForGrammarAnalysis {
-  public let @uint mTerminalIndex
+  public let @u32 mTerminalIndex
   #insertSetter insertKey #errorMessage "the terminal symbol '$%K$' is already declared in %L"
   #searchMethod searchKey #errorMessage "the terminal symbol '$%K$' is not declared"
 }

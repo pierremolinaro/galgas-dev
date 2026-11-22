@@ -282,7 +282,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "levels",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument: false
     )
     enterBaseGetterWith2Arguments (
@@ -291,7 +291,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       "hasKeyAtLevel",
       "string",
       "inKey",
-      "uint",
+      "u32",
       "inLevel",
       !returnedTypeName: "bool",
       !hasCompilerArgument: false
@@ -339,7 +339,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "count",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument: false
     )
   //--- Handle properties

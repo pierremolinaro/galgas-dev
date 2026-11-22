@@ -318,12 +318,12 @@ override proc @closedSliceExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
-  if leftType.definition.typeName.string != "uint" then
-    error leftExpression.mLocation : "the left expression or '...' operator should an @uint"
+  if leftType.definition.typeName.string != "u32" then
+    error leftExpression.mLocation : "the left expression or '...' operator should an @u32"
   end
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if rightType.definition.typeName.string != "uint" then
-    error rightExpression.mLocation : "the right expression or '...' operator should an @uint"
+  if rightType.definition.typeName.string != "u32" then
+    error rightExpression.mLocation : "the right expression or '...' operator should an @u32"
   end
 //--- Generate expression
   outExpression = @closedSliceExpressionForGeneration (
@@ -423,7 +423,7 @@ final class @closedSliceExpressionForGeneration : @semanticExpressionForGenerati
 override proc @orShortExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
@@ -460,7 +460,7 @@ override proc @orShortExpressionForGeneration.generateExpression
 override proc @closedSliceExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)
@@ -483,7 +483,7 @@ override proc @closedSliceExpressionForGeneration.generateExpression
 //--- Generate Comparison
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
-   +  rightTemporaryOperand + ".subtract_operation (" + leftTemporaryOperand + ", " + gCompilerCppName + self.mLocation.commaSourceFile + ").add_operation (GGS_uint (1), " + gCompilerCppName + self.mLocation.commaSourceFile + "))"
+   +  rightTemporaryOperand + ".subtract_operation (" + leftTemporaryOperand + ", " + gCompilerCppName + self.mLocation.commaSourceFile + ").add_operation (GGS_u_33__32_ (1), " + gCompilerCppName + self.mLocation.commaSourceFile + "))"
 }
 
 //································································································
@@ -491,7 +491,7 @@ override proc @closedSliceExpressionForGeneration.generateExpression
 override proc @openedSliceExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {

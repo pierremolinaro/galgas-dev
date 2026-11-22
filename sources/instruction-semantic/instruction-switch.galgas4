@@ -293,7 +293,7 @@ struct @extractedAssociatedValueForGeneration {
 struct @switchBranchForGeneration {
   public let [@lstring] mSwitchConstantList
   public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
-  public let @uint mEndOfBranchLocationIndex
+  public let @u32 mEndOfBranchLocationIndex
   public let [@semanticInstructionForGeneration] mInstructions
 }
 
@@ -307,7 +307,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

@@ -15,7 +15,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 //--------------------------------- Initializers
   public: void terminalInstructionForGrammarAnalysis_init_21__21__21_ (const class GGS_location & inOperand0,
                                                                        const class GGS_lstring & inOperand1,
-                                                                       const class GGS_uint & inOperand2,
+                                                                       const class GGS_u_33__32_ & inOperand2,
                                                                        Compiler * inCompiler) ;
 
 
@@ -24,12 +24,12 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
 //--- Extension proc tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GGS__5B_row_5D_ & arg_ioRowList,
-           const class GGS_uint arg_inRow,
-           class GGS_uint & arg_ioColumn,
+           const class GGS_u_33__32_ arg_inRow,
+           class GGS_u_33__32_ & arg_ioColumn,
            class GGS_string & arg_ioCurrentNode,
            class GGS_string & arg_ioArrowShape,
            class GGS_string & arg_ioArrows,
-           class GGS_uint & arg_ioMaxUsedRowIndex,
+           class GGS_u_33__32_ & arg_ioMaxUsedRowIndex,
            const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -53,7 +53,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 //--- END OF USER ZONE 2
 //--- Properties
   public: GGS_lstring mProperty_mTerminalSymbolName ;
-  public: GGS_uint mProperty_mTerminalSymbolIndex ;
+  public: GGS_u_33__32_ mProperty_mTerminalSymbolIndex ;
 
 
 //--- Default constructor
@@ -62,7 +62,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 //--- Constructor
   public: cPtr_terminalInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                       const GGS_lstring & in_mTerminalSymbolName,
-                                                      const GGS_uint & in_mTerminalSymbolIndex,
+                                                      const GGS_u_33__32_ & in_mTerminalSymbolIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 

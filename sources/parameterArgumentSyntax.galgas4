@@ -151,7 +151,7 @@ syntax galgas4ParameterArgumentSyntax : galgasScanner4 {
     or
       $literalInt$ (?let count)
       $*$
-      var n = count.bigint.uint
+      var n = count.bigint.u32
       if selector.string != "" then
         error selector : "the selector should be '?'" fixit #replaceBy "?"
       end

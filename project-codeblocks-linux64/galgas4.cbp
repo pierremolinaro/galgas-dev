@@ -233,7 +233,7 @@
    <Unit filename="../libpm/galgas/GGS_timer.cpp" />
    <Unit filename="../libpm/galgas/GGS_u8.cpp" />
    <Unit filename="../libpm/galgas/GGS_u16.cpp" />
-   <Unit filename="../libpm/galgas/GGS_uint.cpp" />
+   <Unit filename="../libpm/galgas/GGS_u32.cpp" />
    <Unit filename="../libpm/galgas/GGS_u64.cpp" />
   <Extensions>
    <code_completion />

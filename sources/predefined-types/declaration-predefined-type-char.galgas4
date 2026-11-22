@@ -46,7 +46,7 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"utf8Length",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -59,8 +59,8 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint",
-      !returnedTypeName:"uint",
+      !getterName:"u32",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -200,7 +200,7 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"unicodeCharacterWithUnsigned",
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inValue",
       !resultTypeName:"char",
       !hasLexiqueArg:false

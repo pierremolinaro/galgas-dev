@@ -45,13 +45,13 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixShiftOperator]] then
   %//--------------------------------- << and >> shift operators\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const class GGS_uint inShiftOperand,\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const class GGS_u_33__32_ inShiftOperand,\n%
   !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %  public: GGS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const class GGS_bigint inShiftOperand,\n%
   !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const class GGS_uint inShiftOperand,\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const class GGS_u_33__32_ inShiftOperand,\n%
   !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %  public: GGS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const class GGS_bigint inShiftOperand,\n%

@@ -154,7 +154,7 @@ proc handleNonTerminalDeclarationsFromRuleList (
 override proc @semanticInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
-  ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
+  ?!addedTerminalIndex:@u32 _ioAddedNonTerminalIndex,
   ?![@abstractSyntaxInstructionForGrammarAnalysis] _ioSyntaxInstructionList ) {
 }
 
@@ -164,7 +164,7 @@ proc transformInstructionListForGrammarAnalysis
   (let [@syntaxInstructionAST] inInstructionList,
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
+  ?!addedTerminalIndex:@u32 ioAddedNonTerminalIndex,
   ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
   for instruction in inInstructionList do
     instruction.transformInstructionForGrammarAnalysis (
@@ -184,7 +184,7 @@ proc buildRuleList (
   let [@syntaxRuleAST] inRuleList,
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?![@syntaxComponentForGrammarAnalysis] ioSyntaxComponentListForGrammarAnalysis,
-  ?!@uint ioAddedNonTerminalCount
+  ?!@u32 ioAddedNonTerminalCount
 ) {
   var productionRulesList = [@productionRuleForGrammarAnalysis] ()
   for aRule in inRuleList do
@@ -240,7 +240,7 @@ filewrapper @grammarGenerationTemplate : "+generation-templates/grammar_generati
 extern proc grammarAnalysisAndGeneration (
   let @lstring inGrammarName,
   let @lstring inGrammarClass,
-  let @uint startSymbolIndex,
+  let @u32 startSymbolIndex,
   let @string inLexiqueName,
   let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
   let [@syntaxComponentForGrammarAnalysis] ioSyntaxComponentsList,

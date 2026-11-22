@@ -481,7 +481,7 @@ mutating proc @currentVarManager.neutralAccess (let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 mutating proc [@scopeLocalVarMap].neutralAccess (let @lstring inVarName,
-                                             let @uint inIndex,
+                                             let @u32 inIndex,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing) {
@@ -566,7 +566,7 @@ mutating proc @currentVarManager.searchForWriteAccess (let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 mutating proc [@scopeLocalVarMap].writeAccessInSubMap (let @lstring inVarName,
-                                                   let @uint inIndex,
+                                                   let @u32 inIndex,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
                                                    !@string outNameForCheckingFormalParameterUsing) {
@@ -658,7 +658,7 @@ mutating proc @currentVarManager.searchForReadAccess (let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 mutating proc [@scopeLocalVarMap].readAccess (let @lstring inVarName,
-                                          let @uint inIndex,
+                                          let @u32 inIndex,
                                           !@unifiedTypeMapEntry outType,
                                           !@string outCppName,
                                           !@string outNameForCheckingFormalParameterUsing) {
@@ -749,7 +749,7 @@ mutating proc @currentVarManager.searchForReadWriteAccess (let @lstring inVarNam
 //--------------------------------------------------------------------------------------------------
 
 mutating proc [@scopeLocalVarMap].readWriteAccess (let @lstring inVarName,
-                                               let @uint inIndex,
+                                               let @u32 inIndex,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
                                                !@string outNameForCheckingFormalParameterUsing) {

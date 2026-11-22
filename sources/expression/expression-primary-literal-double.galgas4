@@ -83,7 +83,7 @@ final class @literalDoubleExpressionForGeneration : @semanticExpressionForGenera
 override proc @literalDoubleExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_f_36__34_ (" + self.mValue.string + ")"

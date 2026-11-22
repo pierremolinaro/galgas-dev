@@ -45,8 +45,8 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendPredefinedArrayTypeAST (!?ioDeclarations, "string")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "string")
   appendPredefinedArrayTypeAST (!?ioDeclarations, "lstring")
-  ioDeclarations.mDeclarationList ++= @uintPredefinedTypeAST (!isPredefined: true, "uint")
-  appendPredefinedArrayTypeAST (!?ioDeclarations, "uint")
+  ioDeclarations.mDeclarationList ++= @u32PredefinedTypeAST (!isPredefined: true, "u32")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "u32")
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
 
@@ -58,7 +58,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "f64")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "s32")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "s64")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u32")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u64")
 
   appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
@@ -367,7 +367,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
   var [@propertyInCollectionAST] propertyList = @()
   propertyList ++= @(
     !mutability: .mutableProperty,
-    !typeName: "uint".here,
+    !typeName: "u32".here,
     !name: "start".here,
     .publicAccess,
     !hasSelector: false,
@@ -375,7 +375,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
   )
   propertyList ++= @(
     !mutability: .mutableProperty,
-    !typeName: "uint".here,
+    !typeName: "u32".here,
     !name: "length".here,
     .publicAccess,
     !hasSelector: false,
@@ -385,7 +385,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
     !isPredefined: true,
     "range".here,
     propertyList,
-    !enumeratedElementTypeName: "uint",
+    !enumeratedElementTypeName: "u32",
     !comparison: .equatable,
     !isUsefullStruct: true
   )
@@ -405,7 +405,7 @@ filewrapper @predefinedTypeGenerationTemplate : "../+generation-templates/type_g
 
   template s64_type : "s64-type.h.galgasTemplate" ()
 
-  template uint_type : "uint-type.h.galgasTemplate" ()
+  template u32_type : "u32-type.h.galgasTemplate" ()
 
   template u8_type : "u8-type.h.galgasTemplate" ()
 

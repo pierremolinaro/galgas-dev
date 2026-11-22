@@ -349,7 +349,7 @@ let @lexicalTypeMap gLexicalTypeMap = {
   result = @()
   !?result.insertKey ("string".here, .lexicalType_string)
   !?result.insertKey ("char".here, .lexicalType_char)
-  !?result.insertKey ("uint".here, .lexicalType_uint)
+  !?result.insertKey ("u32".here, .lexicalType_uint)
   !?result.insertKey ("u64".here, .lexicalType_uint64)
   !?result.insertKey ("s32".here, .lexicalType_sint)
   !?result.insertKey ("s64".here, .lexicalType_sint64)

@@ -1,7 +1,7 @@
 
 
 map @aMap {
-  public let @uint value
+  public let @u32 value
   #insertSetter insertKey #errorMessage "the '%K' key is already inserted"
   #searchMethod searchKey #errorMessage "the '%K' key is not inserted"
   #removeSetter removeKey #errorMessage "the '%K' key is not inserted"
@@ -16,7 +16,7 @@ proc testsuite_map() {
   println (m.description)
   var mm = @aMap.mapWithMapToOverride (m)
   println (mm.description)
-  var @uint v
+  var @u32 v
   mm.searchKey (@lstring ("g", .here), ?v)
   println (v.description) // Displays 56
   !?mm.insertKey (@("g", .here), 11)

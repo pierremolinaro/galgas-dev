@@ -305,7 +305,7 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
     end
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
-    loop (@uint.max) while searching do
+    loop (@u32.max) while searching do
       if not baseType.definition.superType.isNull then
         if baseType.definition.superType.definition.instanceMethodMap.contains (self.mExtensionMethodName) then
           baseType = baseType.definition.superType

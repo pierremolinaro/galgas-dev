@@ -123,7 +123,7 @@ final class @bangExpressionForGeneration : @semanticExpressionForGeneration {
 
 override proc @bangExpressionForGeneration.generateExpression (?!@string ioGeneratedCode,
                                                                 ?!@stringset ioInclusionSet,
-                                                                ?!@uint ioTemporaryVariableIndex,
+                                                                ?!@u32 ioTemporaryVariableIndex,
                                                                 ?!@stringset ioUnusedVariableCppNameSet,
                                                                 !@string outCppExpression ) {
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)

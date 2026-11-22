@@ -86,15 +86,15 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
 //--- Assignment from a @bigint ?
   var handled = false
   if let bigIntSource = ioExpression as @literalBigIntExpressionForGeneration then
-    if "uint" == targetTypeForBigIntAssignment.typeName then
+    if "u32" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
-        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
+        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u32"
       end
       ioExpression = @literalUIntExpressionForGeneration (
         targetTypeForBigIntAssignment,
         ioExpression.mLocation,
-        bigIntValue.uint
+        bigIntValue.u32
       )
       handled = true
     elsif "s32" == targetTypeForBigIntAssignment.typeName then
@@ -156,7 +156,7 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
     let targetUnwrappedTypeName = inTargetType.definition.unwrappedType.typeName
     handled = targetUnwrappedTypeName == inSourceType.typeName
     var sourceType = inSourceType
-    loop (@uint.max) while (not handled) & (not sourceType.definition.superType.isNull) do
+    loop (@u32.max) while (not handled) & (not sourceType.definition.superType.isNull) do
       sourceType = sourceType.definition.superType
       handled = targetUnwrappedTypeName == sourceType.typeName
     end
@@ -165,14 +165,14 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
   if not handled then
     var sourceType = inSourceType
     var ok = inTargetType.typeName == inSourceType.typeName
-    loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+    loop (@u32.max) while (not ok) & (not sourceType.definition.superType.isNull) do
       sourceType = sourceType.definition.superType
       ok = inTargetType == sourceType
     end
     if not ok, let targetWeakRef = targetTypeDef.typeKind.getWeakReferenceType then
       sourceType = inSourceType
       ok = targetWeakRef.referenceType.typeName == sourceType.typeName
-      loop (@uint.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+      loop (@u32.max) while (not ok) & (not sourceType.definition.superType.isNull) do
         sourceType = sourceType.definition.superType
         ok = targetWeakRef.referenceType.typeName == sourceType.typeName
       end
@@ -242,18 +242,18 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
   else
     var @unifiedTypeMapEntry rightType = rightResultType
     var @bool ok = leftResultType == rightType
-    loop (@uint.max) while (not ok) & (not rightType.definition.superType.isNull) do
+    loop (@u32.max) while (not ok) & (not rightType.definition.superType.isNull) do
       rightType = rightType.definition.superType
       ok = leftResultType == rightType
     end
   //--- convert right bigint ?
     if not ok, let bigIntSource = ioRightExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == leftResultType.definition.typeName then
+      if "u32" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
-          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u32"
         end
-        ioRightExpression = @literalUIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.uint)
+        ioRightExpression = @literalUIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.u32)
         ok = true
       elsif "s32" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
@@ -280,12 +280,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
     end
   //--- convert left bigint ?
     if not ok, let bigIntSource = ioLeftExpression as @literalBigIntExpressionForGeneration then
-      if "uint" == rightType.definition.typeName then
+      if "u32" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < 0) | (bigIntValue >= (1 << 32)) then
-          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @uint"
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @u32"
         end
-        ioLeftExpression = @literalUIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.uint)
+        ioLeftExpression = @literalUIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.u32)
         ok = true
       elsif "s32" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue

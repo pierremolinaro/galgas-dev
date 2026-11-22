@@ -65,9 +65,9 @@ syntax extension galgas4SyntaxComponentSyntax {
 override proc @selectInstruction.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
+  ?!addedTerminalIndex:@u32 ioAddedNonTerminalIndex,
   ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
-  let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
+  let @u32 addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex += 1
 
   var selectBranchList = [[@abstractSyntaxInstructionForGrammarAnalysis]] ()
@@ -107,8 +107,8 @@ override proc @selectInstruction.analyzeSyntaxInstruction
   let @stringset inIndexNameSet,
   ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
-  ?!@uint ioSelectMethodCount ) {
-  let @uint choiceIndex = ioSelectMethodCount
+  ?!@u32 ioSelectMethodCount ) {
+  let @u32 choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
 //--- Begin block
   !?ioVariableMap.openOverrideForSelectBlock ()
@@ -150,7 +150,7 @@ override proc @selectInstruction.analyzeSyntaxInstruction
 
 final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @string mSyntaxComponentName
-  public let @uint mChoiceIndex
+  public let @u32 mChoiceIndex
   public let [@semanticInstructionListForGeneration] mListOfSemanticInstructionListForGeneration
 }
 
@@ -216,7 +216,7 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

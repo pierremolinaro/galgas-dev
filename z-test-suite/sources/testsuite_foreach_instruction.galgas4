@@ -30,7 +30,7 @@ proc testsuite_foreach_instruction() {
     println ("  after")
   end
   println ("--- begin of foreach instruction test 3")
-  var @uint n = 0
+  var @u32 n = 0
   for s in strList
   while n < 2
   before

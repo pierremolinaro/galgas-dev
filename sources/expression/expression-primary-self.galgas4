@@ -98,7 +98,7 @@ final class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @selfInExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "temp_" + ioTemporaryVariableIndex.string

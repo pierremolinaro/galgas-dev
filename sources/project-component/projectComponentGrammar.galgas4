@@ -298,9 +298,9 @@ syntax projectComponentSyntax : projectComponentScanner {
       if versionDefined then
         error rev.location.union (major.location) : "duplicated attribute"
       end
-      majorVersion = major.bigint.uint
-      minorVersion = minor.bigint.uint
-      revision = rev.bigint.uint
+      majorVersion = major.bigint.u32
+      minorVersion = minor.bigint.u32
+      revision = rev.bigint.u32
       versionDefined = true
     while
       $#macSwiftApp$

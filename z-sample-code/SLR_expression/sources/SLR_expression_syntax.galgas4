@@ -4,39 +4,39 @@ rule <StartSymbol> ()
 
 rule <Expression>
   (!@cExpression outExpressionTree,
-  !@uint outValue)
+  !@u32 outValue)
 
 rule <Terme>
   (!@cExpression outExpressionTree,
-  !@uint outValue)
+  !@u32 outValue)
 
 rule <Facteur>
   (!@cExpression outExpressionTree,
-  !@uint outValue)
+  !@u32 outValue)
 
 rule <Constant>
   (!@cExpression outExpressionTree,
-  !@uint outValue)
+  !@u32 outValue)
 
 rule <StartSymbol> () {
   <Expression> (?let _expressionTree, ?let value)
   println (value)
 }
-  
+
 rule <Constant>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   $number$ (?let cst)
   outExpressionTree = @cConst ( cst)
-  outValue = cst.uint
+  outValue = cst.u32
 }
 
 rule <Expression>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   select
     <Terme> (?outExpressionTree, ?outValue)
-  or 
+  or
     <Expression> (?outExpressionTree, ?outValue)
     $+$
     <Terme> (?let rightOperand, ?let v)
@@ -47,10 +47,10 @@ rule <Expression>
 
 rule <Terme>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   select
     <Facteur> (?outExpressionTree, ?outValue)
-  or 
+  or
     <Terme> (?outExpressionTree, ?outValue)
     $*$
     <Facteur> (?let rightOperand, ?let v)
@@ -61,7 +61,7 @@ rule <Terme>
 
 rule <Facteur>
   (!@cExpression outExpressionTree,
-  !@uint outValue ) {
+  !@u32 outValue ) {
   select
     $($
     <Expression> (?outExpressionTree, ?outValue)

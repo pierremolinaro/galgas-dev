@@ -21,26 +21,26 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint::GGS_uint (void) :
+GGS_u_33__32_::GGS_u_33__32_ (void) :
 AC_GALGAS_root (),
 mIsValid (false),
-mUIntValue (0) {
+mU32 (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint::GGS_uint (const uint32_t inValue) :
+GGS_u_33__32_::GGS_u_33__32_ (const uint32_t inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
-mUIntValue (inValue) {
+mU32 (inValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint::GGS_uint (const bool inValid, const uint32_t inValue) :
+GGS_u_33__32_::GGS_u_33__32_ (const bool inValid, const uint32_t inValue) :
 AC_GALGAS_root (),
 mIsValid (inValid),
-mUIntValue (inValue) {
+mU32 (inValue) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ mUIntValue (inValue) {
 //
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::class_method_setRandomSeed (GGS_uint inSeed
+void GGS_u_33__32_::class_method_setRandomSeed (GGS_u_33__32_ inSeed
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (inSeed.isValid  ()) {
     #if (COMPILE_FOR_WINDOWS == 1) || defined(__CYGWIN__)
@@ -78,33 +78,33 @@ void GGS_uint::class_method_setRandomSeed (GGS_uint inSeed
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::class_func_random (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (uint32_t (galgas_random ())) ;
+GGS_u_33__32_ GGS_u_33__32_::class_func_random (UNUSED_LOCATION_ARGS) {
+  return GGS_u_33__32_ (uint32_t (galgas_random ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::class_func_max (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (UINT32_MAX) ;
+GGS_u_33__32_ GGS_u_33__32_::class_func_max (UNUSED_LOCATION_ARGS) {
+  return GGS_u_33__32_ (UINT32_MAX) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::class_func_valueWithMask (const GGS_uint & inLowerIndex,
-                                             const GGS_uint & inUpperIndex,
+GGS_u_33__32_ GGS_u_33__32_::class_func_valueWithMask (const GGS_u_33__32_ & inLowerIndex,
+                                             const GGS_u_33__32_ & inUpperIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (inLowerIndex.isValid () && inUpperIndex.isValid ()) {
-    const uint32_t lowerIndex = inLowerIndex.mUIntValue ;
-    const uint32_t upperIndex = inUpperIndex.mUIntValue ;
+    const uint32_t lowerIndex = inLowerIndex.mU32 ;
+    const uint32_t upperIndex = inUpperIndex.mU32 ;
     if (lowerIndex > upperIndex) {
       inCompiler->onTheFlyRunTimeError ("lower index greater than upper index" COMMA_THERE) ;
     }else if (upperIndex > 31) {
       inCompiler->onTheFlyRunTimeError ("upper index greater than 31" COMMA_THERE) ;
     }else{
       const uint32_t value = uint32_t (((1 << (upperIndex + 1)) - 1) & ~ ((1 << lowerIndex) - 1)) ;
-      result = GGS_uint (value) ;
+      result = GGS_u_33__32_ (value) ;
     }
   }
   return result ;
@@ -122,55 +122,55 @@ GGS_uint GGS_uint::class_func_valueWithMask (const GGS_uint & inLowerIndex,
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::operator_and (const GGS_uint & inOperand
+GGS_u_33__32_ GGS_u_33__32_::operator_and (const GGS_u_33__32_ & inOperand
                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue & inOperand.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 & inOperand.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::operator_or (const GGS_uint & inOperand
+GGS_u_33__32_ GGS_u_33__32_::operator_or (const GGS_u_33__32_ & inOperand
                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue | inOperand.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 | inOperand.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::operator_xor (const GGS_uint & inOperand
+GGS_u_33__32_ GGS_u_33__32_::operator_xor (const GGS_u_33__32_ & inOperand
                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue ^ inOperand.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 ^ inOperand.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (~ mUIntValue) ;
+    result = GGS_u_33__32_ (~ mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_uint::objectCompare (const GGS_uint & inOperand) const {
+ComparisonResult GGS_u_33__32_::objectCompare (const GGS_u_33__32_ & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
-    if (mUIntValue < inOperand.mUIntValue) {
+    if (mU32 < inOperand.mU32) {
       result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mUIntValue > inOperand.mUIntValue) {
+    }else if (mU32 > inOperand.mU32) {
       result = ComparisonResult::firstOperandGreaterThanSecond ;
     }else{
       result = ComparisonResult::operandEqual ;
@@ -187,64 +187,64 @@ ComparisonResult GGS_uint::objectCompare (const GGS_uint & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_s_33__32_ GGS_uint::getter_s_33__32_ (Compiler * inCompiler
+GGS_s_33__32_ GGS_u_33__32_::getter_s_33__32_ (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
   GGS_s_33__32_ result ;
-  if (mUIntValue > (uint32_t (INT32_MAX))) {
-    inCompiler->onTheFlyRunTimeError ("@uint to signed value conversion overflow" COMMA_THERE) ;
+  if (mU32 > (uint32_t (INT32_MAX))) {
+    inCompiler->onTheFlyRunTimeError ("@u32 to signed value conversion overflow" COMMA_THERE) ;
   }else{
-    result = GGS_s_33__32_ ((int32_t) mUIntValue) ;
+    result = GGS_s_33__32_ ((int32_t) mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_s_36__34_ GGS_uint::getter_s_36__34_ (UNUSED_LOCATION_ARGS) const {
+GGS_s_36__34_ GGS_u_33__32_::getter_s_36__34_ (UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
   if (isValid ()) {
-    result = GGS_s_36__34_ (int64_t (mUIntValue)) ;
+    result = GGS_s_36__34_ (int64_t (mU32)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_uint::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
+GGS_u_36__34_ GGS_u_33__32_::getter_u_36__34_ (UNUSED_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
   if (isValid ()) {
-    result = GGS_u_36__34_ (mUIntValue) ;
+    result = GGS_u_36__34_ (mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_f_36__34_ GGS_uint::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
+GGS_f_36__34_ GGS_u_33__32_::getter_f_36__34_ (UNUSED_LOCATION_ARGS) const {
   GGS_f_36__34_ result ;
   if (isValid ()) {
-    result = GGS_f_36__34_ (double (mUIntValue)) ;
+    result = GGS_f_36__34_ (double (mU32)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
+GGS_bigint GGS_u_33__32_::getter_bigint (UNUSED_LOCATION_ARGS) const {
   GGS_bigint result ;
   if (isValid ()) {
-    result = GGS_bigint (BigSigned (true, mUIntValue)) ;
+    result = GGS_bigint (BigSigned (true, mU32)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_u_33__32_::getter_string (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendUnsigned (mUIntValue) ;
+    s.appendUnsigned (mU32) ;
     result = GGS_string (s) ;
   }
   return result ;
@@ -252,12 +252,12 @@ GGS_string GGS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_u_33__32_::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     String s ;
     s.appendCString ("0x") ;
-    s.appendUnsignedHex (mUIntValue) ;
+    s.appendUnsignedHex (mU32) ;
     result = GGS_string (s) ;
   }
   return result ;
@@ -265,8 +265,8 @@ GGS_string GGS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_uint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
-                                                  const GGS_uint & inGroup,
+GGS_string GGS_u_33__32_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
+                                                  const GGS_u_33__32_ & inGroup,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -276,7 +276,7 @@ GGS_string GGS_uint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
       inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
     }else{
       String s ;
-      s.appendUnsignedHex (mUIntValue) ;
+      s.appendUnsignedHex (mU32) ;
       const utf32 separator = inSeparator.charValue() ;
       for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
         s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
@@ -289,11 +289,11 @@ GGS_string GGS_uint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_u_33__32_::getter_xString (UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     String s ;
-    s.appendUnsignedHex (mUIntValue) ;
+    s.appendUnsignedHex (mU32) ;
     result = GGS_string (s) ;
   }
   return result ;
@@ -301,11 +301,11 @@ GGS_string GGS_uint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::description (String & ioString,
+void GGS_u_33__32_::description (String & ioString,
                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<@uint:") ;
+  ioString.appendCString ("<@u32:") ;
   if (isValid ()) {
-    ioString.appendUnsigned (mUIntValue) ;
+    ioString.appendUnsigned (mU32) ;
   }else{
     ioString.appendCString ("not built") ;
   }
@@ -314,42 +314,42 @@ void GGS_uint::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::getter_significantBitCount (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::getter_significantBitCount (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    uint32_t v = mUIntValue ;
+    uint32_t v = mU32 ;
     uint32_t idx = 0 ;
     while (v != 0) {
       idx += 1 ;
       v >>= 1 ;
     }
-    result = GGS_uint (idx) ;
+    result = GGS_u_33__32_ (idx) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::getter_oneBitCount (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::getter_oneBitCount (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    uint32_t v = mUIntValue ;
+    uint32_t v = mU32 ;
     uint32_t idx = 0 ;
     while (v != 0) {
       idx += v & 1 ;
       v >>= 1 ;
     }
-    result = GGS_uint (idx) ;
+    result = GGS_u_33__32_ (idx) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::getter_lsbIndex (Compiler * inCompiler
+GGS_u_33__32_ GGS_u_33__32_::getter_lsbIndex (Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  uint32_t v = mUIntValue ;
+  GGS_u_33__32_ result ;
+  uint32_t v = mU32 ;
   if (v == 0) {
     inCompiler->onTheFlyRunTimeError ("null receiver for lsbIndex reader" COMMA_THERE) ;
   }else{
@@ -358,15 +358,15 @@ GGS_uint GGS_uint::getter_lsbIndex (Compiler * inCompiler
       idx += 1 ;
       v >>= 1 ;
     }
-    result = GGS_uint (idx) ;
+    result = GGS_u_33__32_ (idx) ;
   }
   return result ;  
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (utf32 (mUIntValue).isAssigned ()) ;
+GGS_bool GGS_u_33__32_::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (utf32 (mU32).isAssigned ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -377,17 +377,17 @@ GGS_bool GGS_uint::getter_isUnicodeValueAssigned (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::add_operation (const GGS_uint & inOperand,
+GGS_u_33__32_ GGS_u_33__32_::add_operation (const GGS_u_33__32_ & inOperand,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
     uint32_t r ;
-    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
+    const bool ovf = __builtin_add_overflow (mU32, inOperand.mU32, &r) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint + operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 + operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_uint (r) ;
+      result = GGS_u_33__32_ (r) ;
     }
   }
   return result ;
@@ -395,12 +395,12 @@ GGS_uint GGS_uint::add_operation (const GGS_uint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_canAdd (const GGS_uint & inOperand
+GGS_bool GGS_u_33__32_::getter_canAdd (const GGS_u_33__32_ & inOperand
                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     uint32_t r ;
-    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
+    const bool ovf = __builtin_add_overflow (mU32, inOperand.mU32, &r) ;
     result = GGS_bool (!ovf) ;
   }
   return result ;
@@ -408,13 +408,13 @@ GGS_bool GGS_uint::getter_canAdd (const GGS_uint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::plusAssignOperation (const GGS_uint inOperand,
+void GGS_u_33__32_::plusAssignOperation (const GGS_u_33__32_ inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const bool ovf = __builtin_add_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
+    const bool ovf = __builtin_add_overflow (mU32, inOperand.mU32, &mU32) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint += operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 += operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }
   }
@@ -422,13 +422,13 @@ void GGS_uint::plusAssignOperation (const GGS_uint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::minusAssignOperation (const GGS_uint inOperand,
+void GGS_u_33__32_::minusAssignOperation (const GGS_u_33__32_ inOperand,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const bool ovf = __builtin_sub_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
+    const bool ovf = __builtin_sub_overflow (mU32, inOperand.mU32, &mU32) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint -= operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 -= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }
   }
@@ -437,13 +437,13 @@ void GGS_uint::minusAssignOperation (const GGS_uint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::mulAssignOperation (const GGS_uint inOperand,
+void GGS_u_33__32_::mulAssignOperation (const GGS_u_33__32_ inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &mUIntValue) ;
+    const bool ovf = __builtin_mul_overflow (mU32, inOperand.mU32, &mU32) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint *= operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 *= operation overflow" COMMA_THERE) ;
       mIsValid = false ;
     }
   }
@@ -451,42 +451,42 @@ void GGS_uint::mulAssignOperation (const GGS_uint inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_uint::divAssignOperation (const GGS_uint inOperand,
+void GGS_u_33__32_::divAssignOperation (const GGS_u_33__32_ inOperand,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
-    if (inOperand.mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint /= divide by zero" COMMA_THERE) ;
+    if (inOperand.mU32 == 0) {
+      inCompiler->onTheFlyRunTimeError ("@u32 /= divide by zero" COMMA_THERE) ;
       mIsValid = false ;
     }else{
-      mUIntValue /= inOperand.mUIntValue ;
+      mU32 /= inOperand.mU32 ;
     }
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::wrapping_add_operation (const GGS_uint & inOperand) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::wrapping_add_operation (const GGS_u_33__32_ & inOperand) const {
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue + inOperand.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 + inOperand.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::subtract_operation (const GGS_uint & inOperand,
+GGS_u_33__32_ GGS_u_33__32_::subtract_operation (const GGS_u_33__32_ & inOperand,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    const uint32_t r = mUIntValue - inOperand.mUIntValue ;
-    const bool ovf = mUIntValue < inOperand.mUIntValue ;
+    const uint32_t r = mU32 - inOperand.mU32 ;
+    const bool ovf = mU32 < inOperand.mU32 ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint - operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 - operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_uint (r) ;
+      result = GGS_u_33__32_ (r) ;
     }
   }
   return result ;
@@ -494,48 +494,48 @@ GGS_uint GGS_uint::subtract_operation (const GGS_uint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_canSubstract (const GGS_uint & inOperand
+GGS_bool GGS_u_33__32_::getter_canSubstract (const GGS_u_33__32_ & inOperand
                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_bool (mUIntValue >= inOperand.mUIntValue) ;
+    result = GGS_bool (mU32 >= inOperand.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::wrapping_subtract_operation (const GGS_uint & inOperand2) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::wrapping_subtract_operation (const GGS_u_33__32_ & inOperand2) const {
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_uint (mUIntValue - inOperand2.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 - inOperand2.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::wrapping_multiply_operation (const GGS_uint & inOperand2) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::wrapping_multiply_operation (const GGS_u_33__32_ & inOperand2) const {
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GGS_uint (mUIntValue * inOperand2.mUIntValue) ;
+    result = GGS_u_33__32_ (mU32 * inOperand2.mU32) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::multiply_operation (const GGS_uint & inOperand,
+GGS_u_33__32_ GGS_u_33__32_::multiply_operation (const GGS_u_33__32_ & inOperand,
                                        Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
     uint32_t r ;
-    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
+    const bool ovf = __builtin_mul_overflow (mU32, inOperand.mU32, &r) ;
     if (ovf) {
-      inCompiler->onTheFlyRunTimeError ("@uint * operation overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 * operation overflow" COMMA_THERE) ;
     }else{
-      result = GGS_uint (r) ;
+      result = GGS_u_33__32_ (r) ;
     }
   }
   return result ;
@@ -543,12 +543,12 @@ GGS_uint GGS_uint::multiply_operation (const GGS_uint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_canMultiply (const GGS_uint & inOperand
+GGS_bool GGS_u_33__32_::getter_canMultiply (const GGS_u_33__32_ & inOperand
                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
     uint32_t r ;
-    const bool ovf = __builtin_mul_overflow (mUIntValue, inOperand.mUIntValue, &r) ;
+    const bool ovf = __builtin_mul_overflow (mU32, inOperand.mU32, &r) ;
     result = GGS_bool (!ovf) ;
   }
   return result ;
@@ -556,15 +556,15 @@ GGS_bool GGS_uint::getter_canMultiply (const GGS_uint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::divide_operation (const GGS_uint & inOperand,
+GGS_u_33__32_ GGS_u_33__32_::divide_operation (const GGS_u_33__32_ & inOperand,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    if (inOperand.mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint divide by zero" COMMA_THERE) ;
+    if (inOperand.mU32 == 0) {
+      inCompiler->onTheFlyRunTimeError ("@u32 divide by zero" COMMA_THERE) ;
     }else{
-      result = GGS_uint (mUIntValue / inOperand.mUIntValue) ;
+      result = GGS_u_33__32_ (mU32 / inOperand.mU32) ;
     }
   }
   return result ;
@@ -572,36 +572,36 @@ GGS_uint GGS_uint::divide_operation (const GGS_uint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uint::getter_canDivide (const GGS_uint & inOperand
+GGS_bool GGS_u_33__32_::getter_canDivide (const GGS_u_33__32_ & inOperand
                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_bool (inOperand.mUIntValue != 0) ;
+    result = GGS_bool (inOperand.mU32 != 0) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::wrapping_divide_operation (const GGS_uint & inOperand) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_u_33__32_::wrapping_divide_operation (const GGS_u_33__32_ & inOperand) const {
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint ((inOperand.mUIntValue == 0) ? 0 : (mUIntValue / inOperand.mUIntValue)) ;
+    result = GGS_u_33__32_ ((inOperand.mU32 == 0) ? 0 : (mU32 / inOperand.mU32)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::modulo_operation (const GGS_uint & inOperand,
+GGS_u_33__32_ GGS_u_33__32_::modulo_operation (const GGS_u_33__32_ & inOperand,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    if (inOperand.mUIntValue == 0) {
-      inCompiler->onTheFlyRunTimeError ("@uint divide by zero in modulo operation" COMMA_THERE) ;
+    if (inOperand.mU32 == 0) {
+      inCompiler->onTheFlyRunTimeError ("@u32 divide by zero in modulo operation" COMMA_THERE) ;
     }else{
-      result = GGS_uint (mUIntValue % inOperand.mUIntValue) ;
+      result = GGS_u_33__32_ (mU32 % inOperand.mU32) ;
     }
   }
   return result ;
@@ -609,27 +609,27 @@ GGS_uint GGS_uint::modulo_operation (const GGS_uint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::left_shift_operation (const GGS_uint inOperand,
+GGS_u_33__32_ GGS_u_33__32_::left_shift_operation (const GGS_u_33__32_ inOperand,
                                          class Compiler * /* inCompiler*/
                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue << (inOperand.mUIntValue & 31)) ;
+    result = GGS_u_33__32_ (mU32 << (inOperand.mU32 & 31)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::left_shift_operation (const GGS_bigint inShiftOperand,
+GGS_u_33__32_ GGS_u_33__32_::left_shift_operation (const GGS_bigint inShiftOperand,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
-      inCompiler->onTheFlyRunTimeError ("@uint left shift by a negative amount" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 left shift by a negative amount" COMMA_THERE) ;
     }else{
-      result = GGS_uint (mUIntValue << (inShiftOperand.bigintValue().uint32 () & 31)) ;
+      result = GGS_u_33__32_ (mU32 << (inShiftOperand.bigintValue().uint32 () & 31)) ;
     }
   }
   return result ;
@@ -637,27 +637,27 @@ GGS_uint GGS_uint::left_shift_operation (const GGS_bigint inShiftOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::right_shift_operation (const GGS_uint inOperand,
+GGS_u_33__32_ GGS_u_33__32_::right_shift_operation (const GGS_u_33__32_ inOperand,
                                           Compiler * /* inCompiler*/
                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inOperand.isValid ()) {
-    result = GGS_uint (mUIntValue >> (inOperand.mUIntValue & 31)) ;
+    result = GGS_u_33__32_ (mU32 >> (inOperand.mU32 & 31)) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::right_shift_operation (const GGS_bigint inShiftOperand,
+GGS_u_33__32_ GGS_u_33__32_::right_shift_operation (const GGS_bigint inShiftOperand,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid () && inShiftOperand.isValid ()) {
     if (inShiftOperand.bigintValue().isStrictlyNegative ()) {
-      inCompiler->onTheFlyRunTimeError ("@uint right shift by a negative amount" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@u32 right shift by a negative amount" COMMA_THERE) ;
     }else{
-      result = GGS_uint (mUIntValue >> (inShiftOperand.bigintValue().uint32 () & 31)) ;
+      result = GGS_u_33__32_ (mU32 >> (inShiftOperand.bigintValue().uint32 () & 31)) ;
     }
   }
   return result ;

@@ -215,8 +215,8 @@ void routine_buildHeader_3F__3F__3F__26__26_ (const class GGS_headerCompositionM
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint function_gGroupAmount (Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+class GGS_u_33__32_ function_gGroupAmount (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -385,7 +385,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
                                                                                                        const class GGS_location constinArgument10,
                                                                                                        const class GGS_stringset constinArgument11,
                                                                                                        class GGS_localVarManager & ioArgument12,
-                                                                                                       class GGS_uint & ioArgument13,
+                                                                                                       class GGS_u_33__32_ & ioArgument13,
                                                                                                        class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument14,
                                                                                                        Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;

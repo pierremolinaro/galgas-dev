@@ -308,7 +308,7 @@ private proc generateInitializer (let @unifiedTypeMapEntry inReceiverType,
     unusedVariableCppNameSet ++= formalArg.mFormalArgumentCppName
   end
 //--- Generate body
-  var @uint temporaryVariableIndex = 0
+  var @u32 temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
@@ -333,7 +333,7 @@ private proc generateInitializer (let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode = "GGS_" + className.identifierRepresentation
        + " GGS_" + className.identifierRepresentation
        + "::" + inInitializerName.identifierRepresentation + " ("
-    let @uint colRef = outGeneratedCode.currentColumn
+    let @u32 colRef = outGeneratedCode.currentColumn
   //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then
@@ -363,7 +363,7 @@ private proc generateInitializer (let @unifiedTypeMapEntry inReceiverType,
     outGeneratedCode = "GGS_" + className.identifierRepresentation
        + " GGS_" + className.identifierRepresentation
        + "::" + inInitializerName.identifierRepresentation + " ("
-    let @uint colRef = outGeneratedCode.currentColumn
+    let @u32 colRef = outGeneratedCode.currentColumn
   //---
     for formalArg in inFormalArgumentList do
       if formalArg.mIsConstant then

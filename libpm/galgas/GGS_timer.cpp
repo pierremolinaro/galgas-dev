@@ -71,10 +71,10 @@ GGS_bool GGS_timer::getter_isRunning (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_timer::getter_msFromStart (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_timer::getter_msFromStart (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mTimer.msFromStart ()) ;
+    result = GGS_u_33__32_ (mTimer.msFromStart ()) ;
   }
   return result ;
 }

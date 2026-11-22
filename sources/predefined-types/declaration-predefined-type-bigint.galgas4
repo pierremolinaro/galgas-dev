@@ -80,7 +80,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !arg1TypeName:"bool",
       !arg1Name:"inBit",
-      !arg2TypeName:"uint",
+      !arg2TypeName:"u32",
       !arg2Name:"inIndex",
       !setterName:"setBitAtIndex",
       !compilerArg:false
@@ -88,7 +88,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inIndex",
       !setterName:"complementBitAtIndex",
       !compilerArg:false
@@ -140,7 +140,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"spacedString",
-      "uint", "inSeparation",
+      "u32", "inSeparation",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -157,7 +157,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !getterName:"hexStringSeparatedBy",
       "char",
       "inSeparator",
-      "uint",
+      "u32",
       "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
@@ -173,14 +173,14 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bitCountForSignedRepresentation",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bitCountForUnsignedRepresentation",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -193,8 +193,8 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint",
-      !returnedTypeName:"uint",
+      !getterName:"u32",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
@@ -229,7 +229,7 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bitAtIndex",
-      "uint", "inBitIndex",
+      "u32", "inBitIndex",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -251,28 +251,28 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForUnsignedRepresentation",
-      !returnedTypeName:"[uint]",
+      !returnedTypeName: "[u32]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForSignedRepresentation",
-      !returnedTypeName:"[uint]",
+      !returnedTypeName: "[u32]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForUnsignedRepresentation",
-      !returnedTypeName:"[uint]",
+      !returnedTypeName: "[u32]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForSignedRepresentation",
-      !returnedTypeName:"[uint]",
+      !returnedTypeName: "[u32]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

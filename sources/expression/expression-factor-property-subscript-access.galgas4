@@ -173,7 +173,7 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
 
   override proc generateExpression (?!@string ioGeneratedCode,
                                       ?!@stringset ioInclusionSet,
-                                      ?!@uint ioTemporaryVariableIndex,
+                                      ?!@u32 ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
@@ -293,7 +293,7 @@ final class @subcriptReadAccessExpressionForGeneration : @semanticExpressionForG
 
   override proc generateExpression (?!@string ioGeneratedCode,
                                       ?!@stringset ioInclusionSet,
-                                      ?!@uint ioTemporaryVariableIndex,
+                                      ?!@u32 ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)

@@ -26,7 +26,7 @@ rule 'a'->'z' |  'A'->'Z' {
 //   Literal decimal integers
 //-----------------------------------------------------------------------------------------------------------------------
 
-@uint uint32value
+@u32 uint32value
 $integer$ !uint32value style integerStyle #errorMessage "a 32-bit unsigned decimal number"
 
 #errorMessage decimalNumberTooLarge : "decimal number too large"

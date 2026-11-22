@@ -326,7 +326,7 @@ enum @ifTestForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 proc [@ifTestForGeneration].generateInstruction (?!@stringset ioInclusionSet,
-                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@u32 ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
                             ?!@string ioGeneratedCode,
                             !@string outTestVar) {

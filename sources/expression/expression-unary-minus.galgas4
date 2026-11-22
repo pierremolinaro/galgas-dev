@@ -109,7 +109,7 @@ final class @unaryMinusExpressionForGeneration : @semanticExpressionForGeneratio
 
 override proc @unaryMinusExpressionForGeneration.generateExpression (?!@string ioGeneratedCode,
                                                                       ?!@stringset ioInclusionSet,
-                                                                      ?!@uint ioTemporaryVariableIndex,
+                                                                      ?!@u32 ioTemporaryVariableIndex,
                                                                       ?!@stringset ioUnusedVariableCppNameSet,
                                                                       !@string outCppExpression ) {
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)

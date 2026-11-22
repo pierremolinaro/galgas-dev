@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------------------------
 
 class GGS_range ;
-class GGS_uint ;
+class GGS_u_33__32_ ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ class UpEnumerator_range final {
   public: void gotoNextObject (void) ;
 
 //--- Current element access
-  public: GGS_uint current (LOCATION_ARGS) const ;
+  public: GGS_u_33__32_ current (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const bool mIsValid ;
@@ -50,7 +50,7 @@ class DownEnumerator_range final {
   public: void gotoNextObject (void) ;
 
 //--- Current element access
-  public: GGS_uint current (LOCATION_ARGS) const ;
+  public: GGS_u_33__32_ current (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const bool mIsValid ;

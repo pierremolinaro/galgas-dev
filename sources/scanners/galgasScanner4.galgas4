@@ -81,8 +81,7 @@ indexing indexingNameDefinition : "Indexing Name Definition"
 indexing indexingNameReference : "Indexing Name Reference"
 
 //--- Scanner attributes
-// var @uint uint32value 
-@uint uint32value
+@u32 uint32value
 @char charValue
 @string tokenString
 

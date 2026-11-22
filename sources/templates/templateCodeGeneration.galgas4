@@ -26,7 +26,7 @@
 proc templateCodeGenerationForListInstruction (let [@templateInstructionForGeneration] inInstructionList,
                                               ?!@string ioGeneratedCode,
                                               ?!@stringset ioInclusionSet,
-                                              ?!@uint ioTemporaryVariableIndex,
+                                              ?!@u32 ioTemporaryVariableIndex,
                                               ?!@stringset ioUnusedVariableCppNameSet,
                                               ?!@bool ioUseColumnMarker ) {
   for instruction in inInstructionList do
@@ -45,7 +45,7 @@ proc templateCodeGenerationForListInstruction (let [@templateInstructionForGener
 override proc @templateInstructionStringForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   ?!@bool _ioUseColumnMarker ) {
   ioGeneratedCode += "result.appendString (" + self.mTemplateString.utf8RepresentationEscapingQuestionMark + ") ;\n"
@@ -56,7 +56,7 @@ override proc @templateInstructionStringForGeneration.templateCodeGeneration
 override proc @templateInstructionExpressionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool _ioUseColumnMarker ) {
 //--- Expression
@@ -69,7 +69,7 @@ override proc @templateInstructionExpressionForGeneration.templateCodeGeneration
 override proc @templateBlockInstructionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
 //--- Expression
@@ -95,7 +95,7 @@ override proc @templateBlockInstructionForGeneration.templateCodeGeneration
 override proc @templateInstructionGetColumnLocationForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
@@ -107,7 +107,7 @@ override proc @templateInstructionGetColumnLocationForGeneration.templateCodeGen
 override proc @templateInstructionGotoColumnLocationForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
@@ -119,7 +119,7 @@ override proc @templateInstructionGotoColumnLocationForGeneration.templateCodeGe
 override proc @templateInstructionIfForGeneration.templateCodeGeneration
                                                         (?!@string ioGeneratedCode,
                                                         ?!@stringset ioInclusionSet,
-                                                        ?!@uint ioTemporaryVariableIndex,
+                                                        ?!@u32 ioTemporaryVariableIndex,
                                                         ?!@stringset ioUnusedVariableCppNameSet,
                                                         ?!@bool ioUseColumnMarker ) {
   for templateInstructionIfBranch in self.mTemplateInstructionIfBranchList do

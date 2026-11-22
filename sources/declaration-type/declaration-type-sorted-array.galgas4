@@ -98,7 +98,7 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       ?!@unifiedTypeMap ioTypeMap,
       ?!@semanticContext ioSemanticContext) {
   //--- uint type
-    !?ioTypeMap.makeEntryFromString ("uint", ?let uintType)
+    !?ioTypeMap.makeEntryFromString ("u32", ?let uintType)
   //--- Element type
     !?ioTypeMap.makeEntry (self.elementTypeName, ?let elementType)
   //--- Getters
@@ -107,7 +107,7 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "count",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument: false
     )
     enterBaseGetterWithoutArgument (
@@ -128,7 +128,7 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "removingFirst",
-      !argSelector: "", !argType: "uint", !argName: "inIndex",
+      !argSelector: "", !argType: "u32", !argName: "inIndex",
       !returnedTypeName: self.sortedArrayTypeName.string,
       !hasCompilerArgument: true
     )
@@ -136,8 +136,8 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "sublist",
-      !arg1Selector: "from", !arg1TypeName: "uint", !arg1Name: "inStartIndex",
-      !arg2Selector: "count", !arg2TypeName: "uint", !arg2Name: "inCount",
+      !arg1Selector: "from", !arg1TypeName: "u32", !arg1Name: "inStartIndex",
+      !arg2Selector: "count", !arg2TypeName: "u32", !arg2Name: "inCount",
       !returnedTypeName: self.sortedArrayTypeName.string,
       !hasCompilerArgument: true
     )

@@ -96,7 +96,7 @@ private proc compileProgramRulesGalgas3
   let [@programRuleAST] inProgramRules,
   ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
-  var @uint ruleIndex = 0
+  var @u32 ruleIndex = 0
   for programRule in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (programRule.mSourceFileExtension)
     !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)

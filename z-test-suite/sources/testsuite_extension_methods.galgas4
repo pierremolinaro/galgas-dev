@@ -5,11 +5,11 @@ final class @TestExtensionMethod { }
 proc @TestExtensionMethod.method1() {
 }
 
-func @TestExtensionMethod.reader1() -> @uint {
+func @TestExtensionMethod.reader1() -> @u32 {
   result = 2
 }
 
-proc @TestExtensionMethod.method2 (!@uint result) {
+proc @TestExtensionMethod.method2 (!@u32 result) {
   result = self.reader1
 }
 

@@ -527,7 +527,7 @@ GGS_u_31__36_ GGS_u_31__36_::modulo_operation (const GGS_u_31__36_ & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_31__36_ GGS_u_31__36_::left_shift_operation (const GGS_uint inOperand,
+GGS_u_31__36_ GGS_u_31__36_::left_shift_operation (const GGS_u_33__32_ inOperand,
                                                    class Compiler * /* inCompiler*/
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_u_31__36_ result ;
@@ -555,7 +555,7 @@ GGS_u_31__36_ GGS_u_31__36_::left_shift_operation (const GGS_bigint inShiftOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_31__36_ GGS_u_31__36_::right_shift_operation (const GGS_uint inOperand,
+GGS_u_31__36_ GGS_u_31__36_::right_shift_operation (const GGS_u_33__32_ inOperand,
                                                     Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_u_31__36_ result ;

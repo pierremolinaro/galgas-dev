@@ -247,7 +247,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "undefinedNodeCount",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument:false // No compiler argument
     )
   //--- Getter 'undefinedNodeKeyList'

@@ -111,7 +111,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
       error self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression
   //-------------------------------------- not found, old style search
     else
-      var @uint matchingReaderCount = 0
+      var @u32 matchingReaderCount = 0
       if receiverType.definition.typeKind == .structType then
         var [@functionSignatureElement] getterFormalArgumentTypeList = @()
         var hasCompilerArgument = true
@@ -228,7 +228,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
   override proc generateExpression
     (?!@string ioGeneratedCode,
     ?!@stringset ioInclusionSet,
-    ?!@uint ioTemporaryVariableIndex,
+    ?!@u32 ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     !@string outCppExpression
   ) {
@@ -260,7 +260,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       var @unifiedTypeMapEntry baseType = self.mReceiverExpression.mResultType
      baseType.addHeaderFileName (!?ioInclusionSet)
       var @bool searching = true
-      loop (@uint.max) while searching do
+      loop (@u32.max) while searching do
         if not baseType.definition.superType.isNull then
           if baseType.definition.superType.definition.getterMap.contains (self.mGetterName) then
             baseType = baseType.definition.superType

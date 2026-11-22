@@ -9,6 +9,522 @@
 #include "all-declarations-11.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @moduloExpressionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_moduloExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_moduloExpressionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_moduloExpressionAST_2E_weak (const class GGS_moduloExpressionAST & inSource) ;
+
+  public: GGS_moduloExpressionAST_2E_weak & operator = (const class GGS_moduloExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_moduloExpressionAST_2E_weak init_nil (void) {
+    GGS_moduloExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_moduloExpressionAST bang_moduloExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_moduloExpressionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_moduloExpressionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_moduloExpressionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfInExpressionAST : public GGS_semanticExpressionAST {
+//--------------------------------- Default constructor
+  public: GGS_selfInExpressionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selfInExpressionAST (const class cPtr_selfInExpressionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mSelfLocation (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selfInExpressionAST init_21_ (const class GGS_location & inOperand0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfInExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selfInExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selfInExpressionAST : public cPtr_semanticExpressionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selfInExpressionAST_init_21_ (const class GGS_location & inOperand0,
+                                             Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeSemanticExpression
+  public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_unifiedTypeMapEntry arg_inType,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_semanticExpressionForGeneration & arg_outExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterExpressionInSemanticContext
+  public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_location mProperty_mSelfLocation ;
+
+
+//--- Default constructor
+  public: cPtr_selfInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selfInExpressionAST (const GGS_location & in_mSelfLocation,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfInExpressionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfInExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selfInExpressionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selfInExpressionAST_2E_weak (const class GGS_selfInExpressionAST & inSource) ;
+
+  public: GGS_selfInExpressionAST_2E_weak & operator = (const class GGS_selfInExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selfInExpressionAST_2E_weak init_nil (void) {
+    GGS_selfInExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selfInExpressionAST bang_selfInExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selfInExpressionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selfInExpressionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfInExpressionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfInExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfInExpressionForGeneration : public GGS_semanticExpressionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_selfInExpressionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selfInExpressionForGeneration (const class cPtr_selfInExpressionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mSelfCppName (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selfInExpressionForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                     const class GGS_location & inOperand1,
+                                                                     const class GGS_string & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfInExpressionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selfInExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selfInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selfInExpressionForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                               const class GGS_location & inOperand1,
+                                                               const class GGS_string & inOperand2,
+                                                               Compiler * inCompiler) ;
+
+
+//--- Extension proc generateExpression
+  public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
+           class GGS_stringset & arg_ioInclusionSet,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GGS_string & arg_outCppExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mSelfCppName ;
+
+
+//--- Default constructor
+  public: cPtr_selfInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selfInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                              const GGS_location & in_mLocation,
+                                              const GGS_string & in_mSelfCppName,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfInExpressionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfInExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selfInExpressionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selfInExpressionForGeneration_2E_weak (const class GGS_selfInExpressionForGeneration & inSource) ;
+
+  public: GGS_selfInExpressionForGeneration_2E_weak & operator = (const class GGS_selfInExpressionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selfInExpressionForGeneration_2E_weak init_nil (void) {
+    GGS_selfInExpressionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selfInExpressionForGeneration bang_selfInExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selfInExpressionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selfInExpressionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfInExpressionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @trueExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_trueExpressionAST : public GGS_semanticExpressionAST {
+//--------------------------------- Default constructor
+  public: GGS_trueExpressionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_trueExpressionAST (const class cPtr_trueExpressionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mLocation (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_trueExpressionAST init_21_ (const class GGS_location & inOperand0,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_trueExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_trueExpressionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @trueExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void trueExpressionAST_init_21_ (const class GGS_location & inOperand0,
+                                           Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeSemanticExpression
+  public: virtual void method_analyzeSemanticExpression (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_unifiedTypeMapEntry arg_inType,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_localVarManager & arg_ioVariableMap,
+           class GGS_semanticExpressionForGeneration & arg_outExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterExpressionInSemanticContext
+  public: virtual void method_enterExpressionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_location mProperty_mLocation ;
+
+
+//--- Default constructor
+  public: cPtr_trueExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_trueExpressionAST (const GGS_location & in_mLocation,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @trueExpressionAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -319,7 +835,7 @@ class cPtr_trueExpressionForGeneration : public cPtr_semanticExpressionForGenera
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -485,7 +1001,7 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1025,7 +1541,7 @@ class cPtr_bangExpressionForGeneration : public cPtr_semanticExpressionForGenera
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -1571,7 +2087,7 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -2988,7 +3504,7 @@ class cPtr_binaryOperatorExpressionForGeneration : public cPtr_semanticExpressio
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4088,7 +4604,7 @@ class cPtr_orShortExpressionForGeneration : public cPtr_semanticExpressionForGen
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4266,7 +4782,7 @@ class cPtr_openedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4444,7 +4960,7 @@ class cPtr_closedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -4806,7 +5322,7 @@ class cPtr_propertyAccessExpressionForGeneration : public cPtr_semanticExpressio
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5172,7 +5688,7 @@ class cPtr_subcriptReadAccessExpressionForGeneration : public cPtr_semanticExpre
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5526,7 +6042,7 @@ class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGener
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -5997,7 +6513,7 @@ class cPtr_comparisonExpressionForGeneration : public cPtr_semanticExpressionFor
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6345,7 +6861,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -6699,7 +7215,7 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7245,7 +7761,7 @@ class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGe
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7617,7 +8133,7 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -7961,7 +8477,7 @@ class cPtr_nilExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8341,7 +8857,7 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8529,79 +9045,79 @@ extern const char * gWrapperFileContent_186_libpmFileWrapper ;
 extern const char * gWrapperFileContent_179_libpmFileWrapper ;
 extern const char * gWrapperFileContent_184_libpmFileWrapper ;
 extern const char * gWrapperFileContent_123_libpmFileWrapper ;
-extern const char * gWrapperFileContent_145_libpmFileWrapper ;
+extern const char * gWrapperFileContent_144_libpmFileWrapper ;
 extern const char * gWrapperFileContent_122_libpmFileWrapper ;
 extern const char * gWrapperFileContent_104_libpmFileWrapper ;
-extern const char * gWrapperFileContent_151_libpmFileWrapper ;
-extern const char * gWrapperFileContent_143_libpmFileWrapper ;
-extern const char * gWrapperFileContent_147_libpmFileWrapper ;
-extern const char * gWrapperFileContent_158_libpmFileWrapper ;
-extern const char * gWrapperFileContent_170_libpmFileWrapper ;
-extern const char * gWrapperFileContent_154_libpmFileWrapper ;
-extern const char * gWrapperFileContent_149_libpmFileWrapper ;
+extern const char * gWrapperFileContent_150_libpmFileWrapper ;
 extern const char * gWrapperFileContent_142_libpmFileWrapper ;
+extern const char * gWrapperFileContent_146_libpmFileWrapper ;
+extern const char * gWrapperFileContent_157_libpmFileWrapper ;
+extern const char * gWrapperFileContent_170_libpmFileWrapper ;
+extern const char * gWrapperFileContent_153_libpmFileWrapper ;
+extern const char * gWrapperFileContent_148_libpmFileWrapper ;
+extern const char * gWrapperFileContent_141_libpmFileWrapper ;
 extern const char * gWrapperFileContent_119_libpmFileWrapper ;
 extern const char * gWrapperFileContent_166_libpmFileWrapper ;
-extern const char * gWrapperFileContent_136_libpmFileWrapper ;
+extern const char * gWrapperFileContent_135_libpmFileWrapper ;
 extern const char * gWrapperFileContent_120_libpmFileWrapper ;
 extern const char * gWrapperFileContent_121_libpmFileWrapper ;
 extern const char * gWrapperFileContent_118_libpmFileWrapper ;
-extern const char * gWrapperFileContent_144_libpmFileWrapper ;
+extern const char * gWrapperFileContent_143_libpmFileWrapper ;
 extern const char * gWrapperFileContent_127_libpmFileWrapper ;
 extern const char * gWrapperFileContent_167_libpmFileWrapper ;
 extern const char * gWrapperFileContent_103_libpmFileWrapper ;
-extern const char * gWrapperFileContent_139_libpmFileWrapper ;
-extern const char * gWrapperFileContent_153_libpmFileWrapper ;
+extern const char * gWrapperFileContent_138_libpmFileWrapper ;
+extern const char * gWrapperFileContent_152_libpmFileWrapper ;
 extern const char * gWrapperFileContent_130_libpmFileWrapper ;
-extern const char * gWrapperFileContent_157_libpmFileWrapper ;
+extern const char * gWrapperFileContent_156_libpmFileWrapper ;
 extern const char * gWrapperFileContent_105_libpmFileWrapper ;
-extern const char * gWrapperFileContent_135_libpmFileWrapper ;
+extern const char * gWrapperFileContent_134_libpmFileWrapper ;
 extern const char * gWrapperFileContent_113_libpmFileWrapper ;
-extern const char * gWrapperFileContent_160_libpmFileWrapper ;
-extern const char * gWrapperFileContent_146_libpmFileWrapper ;
-extern const char * gWrapperFileContent_140_libpmFileWrapper ;
+extern const char * gWrapperFileContent_159_libpmFileWrapper ;
+extern const char * gWrapperFileContent_145_libpmFileWrapper ;
+extern const char * gWrapperFileContent_139_libpmFileWrapper ;
 extern const char * gWrapperFileContent_109_libpmFileWrapper ;
 extern const char * gWrapperFileContent_124_libpmFileWrapper ;
 extern const char * gWrapperFileContent_176_libpmFileWrapper ;
-extern const char * gWrapperFileContent_134_libpmFileWrapper ;
+extern const char * gWrapperFileContent_133_libpmFileWrapper ;
 extern const char * gWrapperFileContent_171_libpmFileWrapper ;
 extern const char * gWrapperFileContent_132_libpmFileWrapper ;
 extern const char * gWrapperFileContent_117_libpmFileWrapper ;
-extern const char * gWrapperFileContent_137_libpmFileWrapper ;
+extern const char * gWrapperFileContent_136_libpmFileWrapper ;
 extern const char * gWrapperFileContent_116_libpmFileWrapper ;
+extern const char * gWrapperFileContent_163_libpmFileWrapper ;
 extern const char * gWrapperFileContent_126_libpmFileWrapper ;
-extern const char * gWrapperFileContent_162_libpmFileWrapper ;
-extern const char * gWrapperFileContent_133_libpmFileWrapper ;
+extern const char * gWrapperFileContent_161_libpmFileWrapper ;
 extern const char * gWrapperFileContent_169_libpmFileWrapper ;
-extern const char * gWrapperFileContent_156_libpmFileWrapper ;
+extern const char * gWrapperFileContent_155_libpmFileWrapper ;
 extern const char * gWrapperFileContent_173_libpmFileWrapper ;
 extern const char * gWrapperFileContent_172_libpmFileWrapper ;
-extern const char * gWrapperFileContent_141_libpmFileWrapper ;
+extern const char * gWrapperFileContent_140_libpmFileWrapper ;
 extern const char * gWrapperFileContent_106_libpmFileWrapper ;
 extern const char * gWrapperFileContent_110_libpmFileWrapper ;
-extern const char * gWrapperFileContent_163_libpmFileWrapper ;
+extern const char * gWrapperFileContent_162_libpmFileWrapper ;
 extern const char * gWrapperFileContent_125_libpmFileWrapper ;
 extern const char * gWrapperFileContent_174_libpmFileWrapper ;
-extern const char * gWrapperFileContent_161_libpmFileWrapper ;
+extern const char * gWrapperFileContent_160_libpmFileWrapper ;
 extern const char * gWrapperFileContent_107_libpmFileWrapper ;
-extern const char * gWrapperFileContent_150_libpmFileWrapper ;
+extern const char * gWrapperFileContent_149_libpmFileWrapper ;
 extern const char * gWrapperFileContent_115_libpmFileWrapper ;
 extern const char * gWrapperFileContent_111_libpmFileWrapper ;
 extern const char * gWrapperFileContent_131_libpmFileWrapper ;
 extern const char * gWrapperFileContent_165_libpmFileWrapper ;
-extern const char * gWrapperFileContent_148_libpmFileWrapper ;
-extern const char * gWrapperFileContent_138_libpmFileWrapper ;
-extern const char * gWrapperFileContent_155_libpmFileWrapper ;
+extern const char * gWrapperFileContent_147_libpmFileWrapper ;
+extern const char * gWrapperFileContent_137_libpmFileWrapper ;
+extern const char * gWrapperFileContent_154_libpmFileWrapper ;
 extern const char * gWrapperFileContent_164_libpmFileWrapper ;
 extern const char * gWrapperFileContent_112_libpmFileWrapper ;
 extern const char * gWrapperFileContent_108_libpmFileWrapper ;
 extern const char * gWrapperFileContent_129_libpmFileWrapper ;
 extern const char * gWrapperFileContent_175_libpmFileWrapper ;
-extern const char * gWrapperFileContent_152_libpmFileWrapper ;
+extern const char * gWrapperFileContent_151_libpmFileWrapper ;
 extern const char * gWrapperFileContent_168_libpmFileWrapper ;
 extern const char * gWrapperFileContent_128_libpmFileWrapper ;
 extern const char * gWrapperFileContent_114_libpmFileWrapper ;
-extern const char * gWrapperFileContent_159_libpmFileWrapper ;
+extern const char * gWrapperFileContent_158_libpmFileWrapper ;
 extern const char * gWrapperFileContent_26_libpmFileWrapper ;
 extern const char * gWrapperFileContent_28_libpmFileWrapper ;
 extern const char * gWrapperFileContent_27_libpmFileWrapper ;

@@ -53,7 +53,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithBit",
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inBitIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -85,11 +85,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithNotEqualComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -98,11 +98,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithEqualComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -111,11 +111,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithStrictLowerComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -124,11 +124,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithStrictGreaterComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -137,11 +137,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithLowerOrEqualComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -150,11 +150,11 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithGreaterOrEqualComparison",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLeftFirstIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
-      !argTypeName3:"uint",
+      !argTypeName3:"u32",
       !argName3:"inRightFirstIndex",
       !resultTypeName:"binaryset",
       !hasLexiqueArg:true
@@ -163,9 +163,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithEqualToConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -176,9 +176,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithNotEqualToConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -189,9 +189,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithStrictLowerThanConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -202,9 +202,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithStrictGreaterThanConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -215,9 +215,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithLowerOrEqualToConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -228,9 +228,9 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"binarySetWithGreaterOrEqualToConstant",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inBitIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inBitCount",
       !argTypeName3:"u64",
       !argName3:"inConstant",
@@ -269,7 +269,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"significantVariableCount",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
@@ -286,7 +286,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName:"print",
       "[string]", "inVariableList",
-      "[uint]", "inBDDCount",
+       "[u32]", "inBDDCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -309,7 +309,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"transformedBy",
-      "[uint]", "inTransformationArray",
+       "[u32]", "inTransformationArray",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
@@ -317,28 +317,28 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"forAllOnBitIndex",
-      "uint", "inBitIndex",
+      "u32", "inBitIndex",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"forAllOnBitIndexAndBeyond", "uint", "inBitIndex",
+      !getterName:"forAllOnBitIndexAndBeyond", "u32", "inBitIndex",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"existOnBitIndex", "uint", "inBitIndex",
+      !getterName:"existOnBitIndex", "u32", "inBitIndex",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"existOnBitIndexAndBeyond", "uint", "inBitIndex",
+      !getterName:"existOnBitIndexAndBeyond", "u32", "inBitIndex",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
@@ -346,7 +346,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"valueCount",
-      "uint",
+      "u32",
       "inBitCount",
       !returnedTypeName:"u64",
       !hasCompilerArgument:true
@@ -355,7 +355,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bigValueCount",
-      "uint",
+      "u32",
       "inBitCount",
       !returnedTypeName:"bigint",
       !hasCompilerArgument:true
@@ -370,21 +370,21 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint64ValueList", "uint", "inBitCount",
+      !getterName:"uint64ValueList", "u32", "inBitCount",
       !returnedTypeName:"[u64]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"stringValueList", "uint", "inBitCount",
+      !getterName:"stringValueList", "u32", "inBitCount",
       !returnedTypeName:"[string]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"stringValueListWithNameList", "uint", "inBitCount", "[string]", "inNameList",
+      !getterName:"stringValueListWithNameList", "u32", "inBitCount", "[string]", "inNameList",
       !returnedTypeName:"[string]",
       !hasCompilerArgument:true
     )
@@ -398,70 +398,70 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"compressedStringValueList", "uint", "inBitCount",
+      !getterName:"compressedStringValueList", "u32", "inBitCount",
       !returnedTypeName:"[string]",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"swap10", "uint", "inBitCount1", "uint", "inBitCount2",
+      !getterName:"swap10", "u32", "inBitCount1", "u32", "inBitCount2",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "swap021", "uint", "inBitCount1", "uint", "inBitCount2", "uint", "inBitCount3",
+      "swap021", "u32", "inBitCount1", "u32", "inBitCount2", "u32", "inBitCount3",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "swap102", "uint", "inBitCount1", "uint", "inBitCount2", "uint", "inBitCount3",
+      "swap102", "u32", "inBitCount1", "u32", "inBitCount2", "u32", "inBitCount3",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "swap120", "uint", "inBitCount1", "uint", "inBitCount2", "uint", "inBitCount3",
+      "swap120", "u32", "inBitCount1", "u32", "inBitCount2", "u32", "inBitCount3",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "swap201", "uint", "inBitCount1", "uint", "inBitCount2", "uint", "inBitCount3",
+      "swap201", "u32", "inBitCount1", "u32", "inBitCount2", "u32", "inBitCount3",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "swap210", "uint", "inBitCount1", "uint", "inBitCount2", "uint", "inBitCount3",
+      "swap210", "u32", "inBitCount1", "u32", "inBitCount2", "u32", "inBitCount3",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"transposedBy", "[uint]", "inTransposeVector",
+      !getterName:"transposedBy", "[u32]", "inTransposeVector",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"transitiveClosure", "uint", "inBitCount",
+      !getterName:"transitiveClosure", "u32", "inBitCount",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"accessibleStates", "binaryset", "inInitialStateSet", "uint", "inBitCount",
+      !getterName:"accessibleStates", "binaryset", "inInitialStateSet", "u32", "inBitCount",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
@@ -517,21 +517,21 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"binarySetByTranslatingFromIndex", "uint", "inFirstIndexToTranslate", "uint", "inTranslation",
+      !getterName:"binarySetByTranslatingFromIndex", "u32", "inFirstIndexToTranslate", "u32", "inTranslation",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith3Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      "containsValue", "u64", "inValue", "uint", "inFirstBit", "uint", "inBitCount",
+      "containsValue", "u64", "inValue", "u32", "inFirstBit", "u32", "inBitCount",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"existsOnBitRange", "uint", "inFirstBit", "uint", "inBitCount",
+      !getterName:"existsOnBitRange", "u32", "inFirstBit", "u32", "inBitCount",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
@@ -546,7 +546,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outClassMethodMap,
       !?ioUnifiedTypeMap,
       !methodName:"setNodeTableSize",
-      !argType:"uint",
+      !argType:"u32",
       !argName:"inTableSize",
       !compilerArgument:false
     )
@@ -554,7 +554,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outClassMethodMap,
       !?ioUnifiedTypeMap,
       !methodName:"setAndTableSize",
-      !argType:"uint",
+      !argType:"u32",
       !argName:"inTableSize",
       !compilerArgument:false
     )

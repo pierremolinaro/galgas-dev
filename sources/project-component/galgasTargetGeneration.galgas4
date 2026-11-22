@@ -822,7 +822,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "GGS_timer.cpp",
         "GGS_u8.cpp",
         "GGS_u16.cpp",
-        "GGS_uint.cpp",
+        "GGS_u32.cpp",
         "GGS_u64.cpp",
         "scanner_actions.cpp",
         "scanner_actions.h",
@@ -1074,7 +1074,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
 struct @sortedLexicalStyle {
   let @string name
   let @string comment
-  let @uint index
+  let @u32 index
 }
 
 sortedarray @sortedLexicalStyleArray : @sortedLexicalStyle { index < }

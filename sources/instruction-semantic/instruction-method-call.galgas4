@@ -84,7 +84,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
     var baseType = receiverExpression.mResultType
     var searching = true
     if @application.errorCount == 0 then
-      loop (@uint.max) while searching do
+      loop (@u32.max) while searching do
         if baseType.definition.superType.isNull then
           searching = false
         else
@@ -131,7 +131,7 @@ final class @methodCallInstructionForGeneration : @semanticInstructionForGenerat
 //································································································*
 
 override proc @methodCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@u32 ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      let @bool _inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {

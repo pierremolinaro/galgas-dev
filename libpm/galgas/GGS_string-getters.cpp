@@ -134,10 +134,10 @@ GGS_bool GGS_string::getter_directoryExists (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_string::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_string::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mString.length ())) ;
+    result = GGS_u_33__32_ (uint32_t (mString.length ())) ;
   }
   return result ;
 }
@@ -226,12 +226,12 @@ GGS_string GGS_string::getter_utf_38_RepresentationEnclosedWithin (const GGS_cha
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_string::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_string::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     U8Data data ;
     data.appendString (mString) ;
-    result = GGS_uint (uint32_t (data.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (data.count ())) ;
   }
   return result ;
 }
@@ -321,7 +321,7 @@ GGS_string GGS_string::getter_decodedStringFromRepresentation (Compiler * inComp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_subStringFromIndex (const GGS_uint & inStartIndex
+GGS_string GGS_string::getter_subStringFromIndex (const GGS_u_33__32_ & inStartIndex
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inStartIndex.isValid ()) {
@@ -332,7 +332,7 @@ GGS_string GGS_string::getter_subStringFromIndex (const GGS_uint & inStartIndex
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_rightSubString (const GGS_uint & inLength
+GGS_string GGS_string::getter_rightSubString (const GGS_u_33__32_ & inLength
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inLength.isValid ()) {
@@ -343,7 +343,7 @@ GGS_string GGS_string::getter_rightSubString (const GGS_uint & inLength
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_leftSubString (const GGS_uint & inLength
+GGS_string GGS_string::getter_leftSubString (const GGS_u_33__32_ & inLength
                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (inLength.isValid ()) {
@@ -354,8 +354,8 @@ GGS_string GGS_string::getter_leftSubString (const GGS_uint & inLength
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_subString (const GGS_uint & inStart,
-                                         const GGS_uint & inLength
+GGS_string GGS_string::getter_subString (const GGS_u_33__32_ & inStart,
+                                         const GGS_u_33__32_ & inLength
                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if ((inStart.isValid ()) && (inLength.isValid ())) {
@@ -496,17 +496,17 @@ GGS_string GGS_string::getter_trimmingSpaces (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_string::getter_currentColumn (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_string::getter_currentColumn (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mString.currentColumn ()) ;
+    result = GGS_u_33__32_ (mString.currentColumn ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_leftPadding (const GGS_uint & inPaddedStringLength,
+GGS_string GGS_string::getter_leftPadding (const GGS_u_33__32_ & inPaddedStringLength,
                                            const GGS_char & inPaddingChar
                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
@@ -526,7 +526,7 @@ GGS_string GGS_string::getter_leftPadding (const GGS_uint & inPaddedStringLength
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_rightPadding (const GGS_uint & inPaddedStringLength,
+GGS_string GGS_string::getter_rightPadding (const GGS_u_33__32_ & inPaddedStringLength,
                                             const GGS_char & inPaddingChar
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
@@ -546,7 +546,7 @@ GGS_string GGS_string::getter_rightPadding (const GGS_uint & inPaddedStringLengt
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_leftAndRightPadding (const GGS_uint & inPaddedStringLength,
+GGS_string GGS_string::getter_leftAndRightPadding (const GGS_u_33__32_ & inPaddedStringLength,
                                                    const GGS_char & inPaddingChar
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
@@ -597,7 +597,7 @@ GGS_string GGS_string::getter_replacing (const GGS_string & inSearchedString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_removingCharacterAtIndex (const GGS_uint & inIndex,
+GGS_string GGS_string::getter_removingCharacterAtIndex (const GGS_u_33__32_ & inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -618,7 +618,7 @@ GGS_string GGS_string::getter_removingCharacterAtIndex (const GGS_uint & inIndex
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_char GGS_string::getter_characterAtIndex (const GGS_uint & inIndex,
+GGS_char GGS_string::getter_characterAtIndex (const GGS_u_33__32_ & inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
   GGS_char result ;
@@ -710,7 +710,7 @@ GGS_s_33__32_ GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ 
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_s_33__32_ (::system (command.cString ())) ;
@@ -728,7 +728,7 @@ GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS__5B_string_5
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;
@@ -1040,10 +1040,10 @@ GGS_bool GGS_string::getter_doesEnvironmentVariableExist (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_string::getter_capacity (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_string::getter_capacity (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint ((uint32_t) mString.capacity ())  ;
+    result = GGS_u_33__32_ ((uint32_t) mString.capacity ())  ;
   }
   return result ;
 }
@@ -1063,17 +1063,17 @@ GGS_bool GGS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_string::getter_decimalUnsignedNumber (Compiler * inCompiler
+GGS_u_33__32_ GGS_string::getter_decimalUnsignedNumber (Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     uint32_t r = 0 ;
     bool ok = false ;
     mString.convertToUInt32 (r, ok) ;
     if (ok) {
-      result = GGS_uint (r) ;
+      result = GGS_u_33__32_ (r) ;
     }else{
-      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @uint number" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @u32 number" COMMA_THERE) ;
     }
   }
   return result ;

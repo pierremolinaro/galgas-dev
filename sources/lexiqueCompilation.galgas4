@@ -295,7 +295,7 @@ override proc @lexicalUnsignedInputArgumentAST.checkLexicalFunctionCallArgument
   @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum.lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error self.mUnsigned:"type error, a literal character has @uint"
+    error self.mUnsigned:"type error, a literal character has @u32"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"
@@ -406,7 +406,7 @@ override proc @lexicalUnsignedInputArgumentAST.checkLexicalRoutineCallArgument
   @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error self.mUnsigned:"type error, a literal unsigned value has @uint"
+    error self.mUnsigned:"type error, a literal unsigned value has @u32"
     + " type, but lexical routine prototype requires an @"
     + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
     + " type value"

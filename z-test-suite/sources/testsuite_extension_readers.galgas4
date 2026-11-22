@@ -2,7 +2,7 @@
 
 abstract class @A_A {
 
-  abstract func aReader( ?var @uint inA, ?let @string inB) -> @string
+  abstract func aReader( ?var @u32 inA, ?let @string inB) -> @string
 
   abstract func location() -> @location
 
@@ -10,19 +10,19 @@ abstract class @A_A {
 
 final class @B_B : @A_A { }
 
-override func @B_B.aReader( ?var @uint inA, ?let @string inB) -> @string {
+override func @B_B.aReader( ?var @u32 inA, ?let @string inB) -> @string {
   inA += 1
   result = inB + inA
 }
 
-func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
+func @B_B.otherReader( ?var @u32 inA, ?let @string inB) -> @string {
   inA += 1
   result = inB + inA + self.aReader (inA, inB) + self.aReader (inA, inB)
 }
 
 override func @B_B.location() -> @location { result = .here}
 
-func @uint.carré () -> @uint {
+func @u32.carré () -> @u32 {
   result = self * self
 }
 
@@ -34,7 +34,7 @@ proc testsuite_extension_readers() {
   if false then
     error b : "non displayed message"
   end
-  let @uint a = 9
+  let @u32 a = 9
   println ("Carré de 9: " + a.carré + "")
 }
 

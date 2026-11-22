@@ -1554,7 +1554,7 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
 
   public: class GGS__5B_ruleDeclarationAST_5D_ readProperty_mRuleDeclarationList (void) const ;
 
-  public: class GGS_uint readProperty_mSelectMethodCount (void) const ;
+  public: class GGS_u_33__32_ readProperty_mSelectMethodCount (void) const ;
 
   public: class GGS_bool readProperty_mHasIndexing (void) const ;
 
@@ -1568,7 +1568,7 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
                                                                                                      const class GGS_string & inOperand2,
                                                                                                      const class GGS_nonterminalMap & inOperand3,
                                                                                                      const class GGS__5B_ruleDeclarationAST_5D_ & inOperand4,
-                                                                                                     const class GGS_uint & inOperand5,
+                                                                                                     const class GGS_u_33__32_ & inOperand5,
                                                                                                      const class GGS_bool & inOperand6,
                                                                                                      const class GGS_bool & inOperand7,
                                                                                                      Compiler * inCompiler
@@ -1614,7 +1614,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
                                                                                                const class GGS_string & inOperand2,
                                                                                                const class GGS_nonterminalMap & inOperand3,
                                                                                                const class GGS__5B_ruleDeclarationAST_5D_ & inOperand4,
-                                                                                               const class GGS_uint & inOperand5,
+                                                                                               const class GGS_u_33__32_ & inOperand5,
                                                                                                const class GGS_bool & inOperand6,
                                                                                                const class GGS_bool & inOperand7,
                                                                                                Compiler * inCompiler) ;
@@ -1648,7 +1648,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public: GGS_string mProperty_mLexiqueName ;
   public: GGS_nonterminalMap mProperty_mNonterminalDeclarationMap ;
   public: GGS__5B_ruleDeclarationAST_5D_ mProperty_mRuleDeclarationList ;
-  public: GGS_uint mProperty_mSelectMethodCount ;
+  public: GGS_u_33__32_ mProperty_mSelectMethodCount ;
   public: GGS_bool mProperty_mHasIndexing ;
   public: GGS_bool mProperty_mHasTranslateFeature ;
 
@@ -1662,7 +1662,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
                                                const GGS_string & in_mLexiqueName,
                                                const GGS_nonterminalMap & in_mNonterminalDeclarationMap,
                                                const GGS__5B_ruleDeclarationAST_5D_ & in_mRuleDeclarationList,
-                                               const GGS_uint & in_mSelectMethodCount,
+                                               const GGS_u_33__32_ & in_mSelectMethodCount,
                                                const GGS_bool & in_mHasIndexing,
                                                const GGS_bool & in_mHasTranslateFeature,
                                                Compiler * inCompiler

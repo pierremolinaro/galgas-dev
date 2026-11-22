@@ -253,14 +253,14 @@ GGS_string GGS_location::getter_file (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_startLocationIndex (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_startLocationIndex (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mStartLocation.index ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mStartLocation.index ()) ;
     }
   }
   return result ;
@@ -268,14 +268,14 @@ GGS_uint GGS_location::getter_startLocationIndex (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_endLocationIndex (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_endLocationIndex (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLocationIndex' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.index ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mEndLocation.index ()) ;
     }
   }
   return result ;
@@ -283,14 +283,14 @@ GGS_uint GGS_location::getter_endLocationIndex (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_startColumn (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_startColumn (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mStartLocation.columnNumber ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mStartLocation.columnNumber ()) ;
     }
   }
   return result ;
@@ -298,14 +298,14 @@ GGS_uint GGS_location::getter_startColumn (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_endColumn (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_endColumn (Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endColumn' reader cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.columnNumber ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mEndLocation.columnNumber ()) ;
     }
   }
   return result ;
@@ -313,14 +313,14 @@ GGS_uint GGS_location::getter_endColumn (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_startLine (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_startLine (Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'startLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
     }
   }
   return result ;
@@ -328,14 +328,14 @@ GGS_uint GGS_location::getter_startLine (Compiler * inCompiler
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_location::getter_endLine (Compiler * inCompiler
+GGS_u_33__32_ GGS_location::getter_endLine (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (!mInternalLocation->mSourceText.isValid ()) {
       inCompiler->onTheFlyRunTimeError ("'endLine' getter cannot be called on a nowhere @location object" COMMA_THERE) ;
     }else{
-      result = GGS_uint ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
+      result = GGS_u_33__32_ ((uint32_t) mInternalLocation->mEndLocation.lineNumber ()) ;
     }
   }
   return result ;

@@ -376,7 +376,7 @@ mutating proc @XcodeProjectDescriptor.getReferenceKey
 //--------------------------------------------------------------------------------------------------
 
 struct @XcodeProjectDescriptor {
-  public var @uint mSequenceNumber = 0
+  public var @u32 mSequenceNumber = 0
   public let @string mMainGroupReference = ""
   public var [@string] mMainGroupChildrenRefs = @()
   public var @string mProjectObjectReference = ""

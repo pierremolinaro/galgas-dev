@@ -27,7 +27,7 @@
 proc generateInstructionList
   (?!@stringset ioInclusionSet,
   let [@semanticInstructionForGeneration] inInstructionList,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode
@@ -51,7 +51,7 @@ abstract class @templateInstructionForGeneration {
 
   abstract proc templateCodeGeneration (?!@string ioGeneratedCode,
                                         ?!@stringset ioInclusionSet,
-                                        ?!@uint _ioTemporaryVariableIndex,
+                                        ?!@u32 _ioTemporaryVariableIndex,
                                         ?!@stringset _ioUnusedVariableCppNameSet,
                                         ?!@bool _ioUseColumnMarker)
 
@@ -65,7 +65,7 @@ abstract class @semanticExpressionForGeneration {
   
   abstract proc generateExpression (?!@string ioGeneratedCode,
                                     ?!@stringset ioInclusionSet,
-                                    ?!@uint ioTemporaryVariableIndex,
+                                    ?!@u32 ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     !@string outCppExpression)
 }
@@ -116,7 +116,7 @@ abstract class @actualParameterForGeneration {
   public let @unifiedTypeMapEntry mFormalArgumentType
   
   abstract proc generateActualParameter (?!@stringset ioInclusionSet,
-                                         ?!@uint ioTemporaryVariableIndex,
+                                         ?!@u32 ioTemporaryVariableIndex,
                                          ?!@string ioImplementation,
                                          ?![@string] ioJokerParametersToReleaseList,
                                          ?![@string] ioOutputVariableList,
@@ -160,7 +160,7 @@ final class @inputJokerParameterForGeneration : @actualParameterForGeneration {
 abstract class @semanticInstructionForGeneration {
   
   abstract proc generateInstruction (?!@stringset ioInclusionSet,
-                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@u32 ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode)
@@ -301,7 +301,7 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
 //--------------------------------------------------------------------------------------------------
 
 map @nonTerminalSymbolMapForGrammarAnalysis {
-  public let @uint mNonTerminalIndex
+  public let @u32 mNonTerminalIndex
   public let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
 
   #insertSetter insertKey #errorMessage "the '<%K>' non terminal symbol has already been declared in %L"
@@ -312,7 +312,7 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 
 struct @nonTerminalToAdd {
   public let @string mSyntaxComponentName
-  public let @uint mNonTerminalToAddCount
+  public let @u32 mNonTerminalToAddCount
 }
 
 //--------------------------------------------------------------------------------------------------

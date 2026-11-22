@@ -1,17 +1,17 @@
 lexique SLR_expression_lexique {
 
-@uint number
+@u32 number
 $number$ ! number #errorMessage "a number"
-  
+
 list operator_list #errorMessage "the '%K' keyword"{
   "+", "*", "(", ")" }
 
 rule list operator_list
-  
+
 #errorMessage decimalNumberTooLarge : "Decimal number too large"
 
 #errorMessage internalError : "internal error"
-  
+
 rule '0'->'9'{
   enterDigitIntoUInt (!* !?number error decimalNumberTooLarge, internalError)
   repeat

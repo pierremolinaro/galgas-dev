@@ -278,7 +278,7 @@ final class @comparisonExpressionForGeneration : @semanticExpressionForGeneratio
 override proc @comparisonExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {

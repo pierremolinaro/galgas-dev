@@ -178,7 +178,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !name:"stringByRepeatingString",
       !argTypeName1:"string",
       !argName1:"inString",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inCount",
       !resultTypeName:"string",
       !hasLexiqueArg:false
@@ -189,7 +189,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !name:"stringWithSequenceOfCharacters",
       !argTypeName1:"char",
       !argName1:"inChar",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inCount",
       !resultTypeName:"string",
       !hasLexiqueArg:false
@@ -343,7 +343,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inCapacity",
       !setterName:"setCapacity",
       !compilerArg:true
@@ -351,7 +351,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inAmount",
       !setterName:"incIndentation",
       !compilerArg:true
@@ -359,7 +359,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inAmount",
       !setterName:"decIndentation",
       !compilerArg:true
@@ -367,7 +367,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName:"uint",
+      !argTypeName:"u32",
       !argName:"inColumnIndex",
       !setterName:"appendSpacesUntilColumn",
       !compilerArg:true
@@ -377,7 +377,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !arg1TypeName:"char",
       !arg1Name:"inChar",
-      !arg2TypeName:"uint",
+      !arg2TypeName:"u32",
       !arg2Name:"inIndex",
       !setterName:"setCharacterAtIndex",
       !compilerArg:true
@@ -387,7 +387,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !arg1TypeName:"char",
       !arg1Name:"inChar",
-      !arg2TypeName:"uint",
+      !arg2TypeName:"u32",
       !arg2Name:"inIndex",
       !setterName:"insertCharacterAtIndex",
       !compilerArg:true
@@ -397,7 +397,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !outputArgTypeName:"char",
       !outputArgName:"outChar",
-      !inputArgTypeName:"uint",
+      !inputArgTypeName:"u32",
       !inputArgName:"inIndex",
       !setterName:"removeCharacterAtIndex",
       !compilerArg:true
@@ -448,7 +448,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "count",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument: false
     )
 //    enterBaseGetterWithoutArgument (
@@ -539,7 +539,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8Length",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithArgument (
@@ -595,7 +595,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalUnsignedNumber",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
@@ -686,7 +686,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "capacity",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
@@ -798,7 +798,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "currentColumn",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
@@ -847,7 +847,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "characterAtIndex",
       !argSelector: "",
-      !argType: "uint", !argName: "inIndex",
+      !argType: "u32", !argName: "inIndex",
       !returnedTypeName:"char",
       !hasCompilerArgument:true
     )
@@ -878,7 +878,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "removingCharacterAtIndex",
       !argSelector: "",
-      !argType: "uint", !argName: "inIndex",
+      !argType: "u32", !argName: "inIndex",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -887,7 +887,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "subStringFromIndex",
       !argSelector: "",
-      !argType: "uint", !argName: "inIndex",
+      !argType: "u32", !argName: "inIndex",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -896,7 +896,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "rightSubString",
       !argSelector: "",
-      !argType: "uint", !argName: "inLength",
+      !argType: "u32", !argName: "inLength",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -905,7 +905,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "leftSubString",
       !argSelector: "",
-      !argType: "uint", !argName: "inLength",
+      !argType: "u32", !argName: "inLength",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -913,8 +913,8 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "subString",
-      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inStart",
-      !arg2Selector: "", !arg2TypeName: "uint", !arg2Name: "inLength",
+      !arg1Selector: "", !arg1TypeName: "u32", !arg1Name: "inStart",
+      !arg2Selector: "", !arg2TypeName: "u32", !arg2Name: "inLength",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -947,7 +947,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "leftPadding",
-      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg1Selector: "", !arg1TypeName: "u32", !arg1Name: "inPaddedStringLength",
       !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
@@ -956,7 +956,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "rightPadding",
-      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg1Selector: "", !arg1TypeName: "u32", !arg1Name: "inPaddedStringLength",
       !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
@@ -965,7 +965,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "leftAndRightPadding",
-      !arg1Selector: "", !arg1TypeName: "uint", !arg1Name: "inPaddedStringLength",
+      !arg1Selector: "", !arg1TypeName: "u32", !arg1Name: "inPaddedStringLength",
       !arg2Selector: "", !arg2TypeName: "char", !arg2Name: "inPaddingChar",
       !returnedTypeName:"string",
       !hasCompilerArgument:false

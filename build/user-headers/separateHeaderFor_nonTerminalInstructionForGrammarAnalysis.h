@@ -15,7 +15,7 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 //--------------------------------- Initializers
   public: void nonTerminalInstructionForGrammarAnalysis_init_21__21__21_ (const class GGS_location & inOperand0,
                                                                           const class GGS_lstring & inOperand1,
-                                                                          const class GGS_uint & inOperand2,
+                                                                          const class GGS_u_33__32_ & inOperand2,
                                                                           Compiler * inCompiler) ;
 
 
@@ -24,12 +24,12 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 
 //--- Extension proc tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GGS__5B_row_5D_ & arg_ioRowList,
-           const class GGS_uint arg_inRow,
-           class GGS_uint & arg_ioColumn,
+           const class GGS_u_33__32_ arg_inRow,
+           class GGS_u_33__32_ & arg_ioColumn,
            class GGS_string & arg_ioCurrentNode,
            class GGS_string & arg_ioArrowShape,
            class GGS_string & arg_ioArrows,
-           class GGS_uint & arg_ioMaxUsedRowIndex,
+           class GGS_u_33__32_ & arg_ioMaxUsedRowIndex,
            const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -54,7 +54,7 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 //--- END OF USER ZONE 2
 //--- Properties
   public: GGS_lstring mProperty_mNonterminalSymbolName ;
-  public: GGS_uint mProperty_mNonterminalSymbolIndex ;
+  public: GGS_u_33__32_ mProperty_mNonterminalSymbolIndex ;
 
 
 //--- Default constructor
@@ -63,7 +63,7 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 //--- Constructor
   public: cPtr_nonTerminalInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
                                                          const GGS_lstring & in_mNonterminalSymbolName,
-                                                         const GGS_uint & in_mNonterminalSymbolIndex,
+                                                         const GGS_u_33__32_ & in_mNonterminalSymbolIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 

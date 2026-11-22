@@ -921,8 +921,8 @@ class cParser_galgas_34_ProgramDeclarations {
 
 class GGS_XcodeProjectDescriptor final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_uint mProperty_mSequenceNumber ;
-  public: inline GGS_uint readProperty_mSequenceNumber (void) const {
+  public: GGS_u_33__32_ mProperty_mSequenceNumber ;
+  public: inline GGS_u_33__32_ readProperty_mSequenceNumber (void) const {
     return mProperty_mSequenceNumber ;
   }
 
@@ -1049,7 +1049,7 @@ class GGS_XcodeProjectDescriptor final : public AC_GALGAS_root {
   public: GGS_XcodeProjectDescriptor (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMSequenceNumber (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMSequenceNumber (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mSequenceNumber = inValue ;
   }
 
@@ -1149,7 +1149,7 @@ class GGS_XcodeProjectDescriptor final : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_XcodeProjectDescriptor (const GGS_uint & in_mSequenceNumber,
+  public: GGS_XcodeProjectDescriptor (const GGS_u_33__32_ & in_mSequenceNumber,
                                       const GGS_string & in_mMainGroupReference,
                                       const GGS__5B_string_5D_ & in_mMainGroupChildrenRefs,
                                       const GGS_string & in_mProjectObjectReference,
@@ -2876,8 +2876,8 @@ class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_roo
     return mProperty_mNonTerminalSymbol ;
   }
 
-  public: GGS_uint mProperty_mNonTerminalIndex ;
-  public: inline GGS_uint readProperty_mNonTerminalIndex (void) const {
+  public: GGS_u_33__32_ mProperty_mNonTerminalIndex ;
+  public: inline GGS_u_33__32_ readProperty_mNonTerminalIndex (void) const {
     return mProperty_mNonTerminalIndex ;
   }
 
@@ -2898,7 +2898,7 @@ class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_roo
     mProperty_mNonTerminalSymbol = inValue ;
   }
 
-  public: inline void setter_setMNonTerminalIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMNonTerminalIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mNonTerminalIndex = inValue ;
   }
 
@@ -2911,7 +2911,7 @@ class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_roo
 
 //--------------------------------- Native constructor
   public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
-                                                         const GGS_uint & in_mNonTerminalIndex,
+                                                         const GGS_u_33__32_ & in_mNonTerminalIndex,
                                                          const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap) ;
 
 //--------------------------------- Copy constructor
@@ -2924,7 +2924,7 @@ class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_roo
 
 //--------------------------------- Initializers
   public: static GGS_sortedNonTerminalSymbolForGrammarAnalysis init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                                 const class GGS_uint & inOperand1,
+                                                                                 const class GGS_u_33__32_ & inOperand1,
                                                                                  const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
@@ -3062,7 +3062,7 @@ class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGA
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_remove (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
-                              class GGS_uint constinArgument1,
+                              class GGS_u_33__32_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
@@ -3082,7 +3082,7 @@ class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGA
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_first (Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
@@ -3090,18 +3090,18 @@ class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGA
   public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_last (Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_removingFirst (const class GGS_uint & constinOperand0,
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_sublist (const class GGS_uint & constinOperand0,
-                                                                                   const class GGS_uint & constinOperand1,
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                                   const class GGS_u_33__32_ & constinOperand1,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubcript__3F_ (const class GGS_uint & in0,
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubcript__3F_ (const class GGS_u_33__32_ & in0,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
 
@@ -3227,7 +3227,7 @@ void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
 
 void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForGeneration * inObject,
                                                   class GGS_stringset & io_ioInclusionSet,
-                                                  class GGS_uint & io_ioTemporaryVariableIndex,
+                                                  class GGS_u_33__32_ & io_ioTemporaryVariableIndex,
                                                   class GGS_string & io_ioImplementation,
                                                   class GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
                                                   class GGS__5B_string_5D_ & io_ioOutputVariableList,

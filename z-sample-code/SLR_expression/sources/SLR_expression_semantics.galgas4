@@ -4,9 +4,9 @@ abstract class @cExpression {
 }
 
 final class @cConst : @cExpression {
-  public let @luint mValue
+  public let @lu32 mValue
 }
-  
+
 final class @cAdd : @cExpression {
   public let @cExpression mLeftExpression
   public let @cExpression mRightExpression

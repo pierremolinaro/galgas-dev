@@ -69,15 +69,15 @@ GGS_u_36__34_ GGS_s_36__34_::getter_u_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_s_36__34_::getter_uint (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_s_36__34_::getter_u_33__32_ (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (mS64 < 0) {
     inCompiler->onTheFlyRunTimeError ("cannot convert a negative @s64 into an uint" COMMA_THERE) ;
   }else if (mS64 > ((int64_t) UINT32_MAX)) {
     inCompiler->onTheFlyRunTimeError ("@s64 conversion to unsigned value overflow" COMMA_THERE) ;
   }else{
-    result = GGS_uint ((uint32_t) (mS64 & UINT32_MAX)) ;
+    result = GGS_u_33__32_ ((uint32_t) (mS64 & UINT32_MAX)) ;
   }
   return result ;
 }
@@ -146,7 +146,7 @@ GGS_string GGS_s_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_s_36__34_::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
-                                                       const GGS_uint & inGroup,
+                                                       const GGS_u_33__32_ & inGroup,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -488,7 +488,7 @@ GGS_s_36__34_ GGS_s_36__34_::operator_unary_minus_no_ovf (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_uint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                    Compiler * /* inCompiler*/
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;
@@ -516,7 +516,7 @@ GGS_s_36__34_ GGS_s_36__34_::left_shift_operation (const GGS_bigint inShiftOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_uint inShiftOperand,
+GGS_s_36__34_ GGS_s_36__34_::right_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                     Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_s_36__34_ result ;

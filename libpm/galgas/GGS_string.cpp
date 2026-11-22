@@ -119,7 +119,7 @@ void GGS_string::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::class_func_stringByRepeatingString (const GGS_string & inString,
-                                                                 const GGS_uint & inCount
+                                                                 const GGS_u_33__32_ & inCount
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result ;
   if (inString.isValid () && inCount.isValid ()) {
@@ -210,7 +210,7 @@ GGS_string GGS_string::class_func_CppString (const GGS_string & inString
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_string::class_func_stringWithSequenceOfCharacters (const GGS_char & inCharacter,
-                                                                        const GGS_uint & inCount
+                                                                        const GGS_u_33__32_ & inCount
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result ;
   if ((inCount.isValid ()) && (inCharacter.isValid ())) {
@@ -631,7 +631,7 @@ void GGS_string::method_makeSymbolicLinkWithPath (GGS_string inPath,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_string::setter_appendSpacesUntilColumn (GGS_uint inColumnIndex,
+void GGS_string::setter_appendSpacesUntilColumn (GGS_u_33__32_ inColumnIndex,
                                                     Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inColumnIndex.isValid ()) {
@@ -641,7 +641,7 @@ void GGS_string::setter_appendSpacesUntilColumn (GGS_uint inColumnIndex,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_string::setter_setCapacity (GGS_uint inNewCapacity,
+void GGS_string::setter_setCapacity (GGS_u_33__32_ inNewCapacity,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inNewCapacity.isValid ()) {
@@ -658,7 +658,7 @@ void GGS_string::setter_setCapacity (GGS_uint inNewCapacity,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_string::setter_incIndentation (GGS_uint inIndentation,
+void GGS_string::setter_incIndentation (GGS_u_33__32_ inIndentation,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inIndentation.isValid ()) {
@@ -668,7 +668,7 @@ void GGS_string::setter_incIndentation (GGS_uint inIndentation,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_string::setter_decIndentation (GGS_uint inIndentation,
+void GGS_string::setter_decIndentation (GGS_u_33__32_ inIndentation,
                                            Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inIndentation.isValid ()) {
@@ -679,7 +679,7 @@ void GGS_string::setter_decIndentation (GGS_uint inIndentation,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_string::setter_setCharacterAtIndex (GGS_char inCharacter,
-                                                GGS_uint inIndex,
+                                                GGS_u_33__32_ inIndex,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
@@ -701,7 +701,7 @@ void GGS_string::setter_setCharacterAtIndex (GGS_char inCharacter,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_string::setter_insertCharacterAtIndex (GGS_char inCharacter,
-                                                   GGS_uint inIndex,
+                                                   GGS_u_33__32_ inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
@@ -723,7 +723,7 @@ void GGS_string::setter_insertCharacterAtIndex (GGS_char inCharacter,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_string::setter_removeCharacterAtIndex (GGS_char & outChar,
-                                                   GGS_uint inIndex,
+                                                   GGS_u_33__32_ inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   outChar.drop () ;

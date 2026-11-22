@@ -152,10 +152,10 @@ GGS_string GGS_bool::getter_ocString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_bool::getter_uint (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_bool::getter_u_33__32_ (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint ((uint32_t) (mBoolValue ? 1 : 0)) ;
+    result = GGS_u_33__32_ ((uint32_t) (mBoolValue ? 1 : 0)) ;
   }
   return result ;
 }

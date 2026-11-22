@@ -40,7 +40,7 @@ optionset @projectTargets {
 
 map @lexicalStyleMap {
   public let @lstring mComment
-  public let @uint mStyleIndex // Always > 0
+  public let @u32 mStyleIndex // Always > 0
   #insertSetter insert #errorMessage "the '%K' style is already declared in %L"
   #searchMethod search #errorMessage "the '%K' style is not declared"
 }
@@ -58,9 +58,9 @@ struct @projectBuildOption {
 
 struct @projectSettings {
   let @string productName #initArgLabel
-  let @uint majorVersion #initArgLabel
-  let @uint minorVersion #initArgLabel
-  let @uint revision #initArgLabel
+  let @u32 majorVersion #initArgLabel
+  let @u32 minorVersion #initArgLabel
+  let @u32 revision #initArgLabel
   let @projectTargets targets #initArgLabel
   let @lstring libpmCustomPath #initArgLabel
   let @lstring macAppBundleBaseName #initArgLabel

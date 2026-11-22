@@ -1,5 +1,401 @@
 #include "all-declarations-1.h"
 //--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_switchBranchForGeneration_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_::GGS__5B_switchBranchForGeneration_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_::GGS__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_ & GGS__5B_switchBranchForGeneration_5D_::operator = (const GGS__5B_switchBranchForGeneration_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_switchBranchForGeneration_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::plusPlusAssignOperation (const GGS_switchBranchForGeneration & inValue
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS__5B_switchBranchForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::add_operation (const GGS__5B_switchBranchForGeneration_5D_ & inOperand,
+                                                                                            Compiler * /* inCompiler */
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_switchBranchForGeneration_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::description (String & ioString,
+                                                         const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@switchBranchForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::plusAssignOperation (const GGS__5B_switchBranchForGeneration_5D_ inOperand,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_append (const GGS_switchBranchForGeneration inValue,
+                                                           Compiler * /* inCompiler */
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_set (const GGS_switchBranchForGeneration inValue,
+                                                        const GGS_u_33__32_ inIndex,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'set' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_insert (const GGS_switchBranchForGeneration inValue,
+                                                           const GGS_u_33__32_ inInsertionIndex,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_remove (GGS_switchBranchForGeneration & outValue,
+                                                           const GGS_u_33__32_ inRemoveIndex,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_removeFirst (GGS_switchBranchForGeneration & outValue,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_switchBranchForGeneration_5D_::setter_removeLast (GGS_switchBranchForGeneration & outValue,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_switchBranchForGeneration_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                             const GGS_u_33__32_ & inLength,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_switchBranchForGeneration_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_first (Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS_switchBranchForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_last (Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_switchBranchForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_switchBranchForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subcript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_switchBranchForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_switchBranchForGeneration_5D_::DownEnumerator__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration DownEnumerator__5B_switchBranchForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration DownEnumerator__5B_switchBranchForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_switchBranchForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_switchBranchForGeneration_5D_::UpEnumerator__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration UpEnumerator__5B_switchBranchForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchBranchForGeneration UpEnumerator__5B_switchBranchForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[switchBranchForGeneration] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchBranchForGeneration_5D_ ("[switchBranchForGeneration]",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_switchBranchForGeneration_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_switchBranchForGeneration_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_extractedAssociatedValueForGeneration_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -58,10 +454,10 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::plusPlusAssignOperation 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -126,7 +522,7 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_removeAll (Compil
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_set (const GGS_extractedAssociatedValueForGeneration inValue,
-                                                                    const GGS_uint inIndex,
+                                                                    const GGS_u_33__32_ inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -147,7 +543,7 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_set (const GGS_ex
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_insert (const GGS_extractedAssociatedValueForGeneration inValue,
-                                                                       const GGS_uint inInsertionIndex,
+                                                                       const GGS_u_33__32_ inInsertionIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -168,7 +564,7 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_insert (const GGS
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_remove (GGS_extractedAssociatedValueForGeneration & outValue,
-                                                                       const GGS_uint inRemoveIndex,
+                                                                       const GGS_u_33__32_ inRemoveIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -224,7 +620,7 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_removeLast (GGS_e
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                            Compiler * inCompiler
                                                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_extractedAssociatedValueForGeneration_5D_ result ;
@@ -249,8 +645,8 @@ GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedVal
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                     const GGS_uint & inLength,
+GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                     const GGS_u_33__32_ & inLength,
                                                                                                                      Compiler * inCompiler
                                                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_extractedAssociatedValueForGeneration_5D_ result ;
@@ -318,7 +714,7 @@ GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGen
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                                 Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) const {
   GGS_extractedAssociatedValueForGeneration result ;
@@ -2824,10 +3220,10 @@ void GGS__5B_actualOutputArgumentAST_5D_::plusPlusAssignOperation (const GGS_act
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_actualOutputArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_actualOutputArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -2892,7 +3288,7 @@ void GGS__5B_actualOutputArgumentAST_5D_::setter_removeAll (Compiler * /* inComp
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualOutputArgumentAST_5D_::setter_set (const GGS_actualOutputArgumentAST inValue,
-                                                      const GGS_uint inIndex,
+                                                      const GGS_u_33__32_ inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -2913,7 +3309,7 @@ void GGS__5B_actualOutputArgumentAST_5D_::setter_set (const GGS_actualOutputArgu
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualOutputArgumentAST_5D_::setter_insert (const GGS_actualOutputArgumentAST inValue,
-                                                         const GGS_uint inInsertionIndex,
+                                                         const GGS_u_33__32_ inInsertionIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -2934,7 +3330,7 @@ void GGS__5B_actualOutputArgumentAST_5D_::setter_insert (const GGS_actualOutputA
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualOutputArgumentAST_5D_::setter_remove (GGS_actualOutputArgumentAST & outValue,
-                                                         const GGS_uint inRemoveIndex,
+                                                         const GGS_u_33__32_ inRemoveIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -2990,7 +3386,7 @@ void GGS__5B_actualOutputArgumentAST_5D_::setter_removeLast (GGS_actualOutputArg
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualOutputArgumentAST_5D_ GGS__5B_actualOutputArgumentAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_actualOutputArgumentAST_5D_ GGS__5B_actualOutputArgumentAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_actualOutputArgumentAST_5D_ result ;
@@ -3015,8 +3411,8 @@ GGS__5B_actualOutputArgumentAST_5D_ GGS__5B_actualOutputArgumentAST_5D_::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualOutputArgumentAST_5D_ GGS__5B_actualOutputArgumentAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                         const GGS_uint & inLength,
+GGS__5B_actualOutputArgumentAST_5D_ GGS__5B_actualOutputArgumentAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                         const GGS_u_33__32_ & inLength,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_actualOutputArgumentAST_5D_ result ;
@@ -3084,7 +3480,7 @@ GGS_actualOutputArgumentAST GGS__5B_actualOutputArgumentAST_5D_::getter_last (Co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualOutputArgumentAST GGS__5B_actualOutputArgumentAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_actualOutputArgumentAST GGS__5B_actualOutputArgumentAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_actualOutputArgumentAST result ;
@@ -3319,10 +3715,10 @@ void GGS__5B_collectionValueElementForGeneration_5D_::plusPlusAssignOperation (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_collectionValueElementForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_collectionValueElementForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3387,7 +3783,7 @@ void GGS__5B_collectionValueElementForGeneration_5D_::setter_removeAll (Compiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_collectionValueElementForGeneration_5D_::setter_set (const GGS_collectionValueElementForGeneration inValue,
-                                                                  const GGS_uint inIndex,
+                                                                  const GGS_u_33__32_ inIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3408,7 +3804,7 @@ void GGS__5B_collectionValueElementForGeneration_5D_::setter_set (const GGS_coll
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_collectionValueElementForGeneration_5D_::setter_insert (const GGS_collectionValueElementForGeneration inValue,
-                                                                     const GGS_uint inInsertionIndex,
+                                                                     const GGS_u_33__32_ inInsertionIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3429,7 +3825,7 @@ void GGS__5B_collectionValueElementForGeneration_5D_::setter_insert (const GGS_c
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_collectionValueElementForGeneration_5D_::setter_remove (GGS_collectionValueElementForGeneration & outValue,
-                                                                     const GGS_uint inRemoveIndex,
+                                                                     const GGS_u_33__32_ inRemoveIndex,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3485,7 +3881,7 @@ void GGS__5B_collectionValueElementForGeneration_5D_::setter_removeLast (GGS_col
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                        Compiler * inCompiler
                                                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_collectionValueElementForGeneration_5D_ result ;
@@ -3510,8 +3906,8 @@ GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementFo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                 const GGS_uint & inLength,
+GGS__5B_collectionValueElementForGeneration_5D_ GGS__5B_collectionValueElementForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                 const GGS_u_33__32_ & inLength,
                                                                                                                  Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_collectionValueElementForGeneration_5D_ result ;
@@ -3579,7 +3975,7 @@ GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGenerat
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                             Compiler * inCompiler
                                                                                                             COMMA_LOCATION_ARGS) const {
   GGS_collectionValueElementForGeneration result ;
@@ -3804,10 +4200,10 @@ void GGS__5B_semanticExpressionForGeneration_5D_::plusPlusAssignOperation (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_semanticExpressionForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_semanticExpressionForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3872,7 +4268,7 @@ void GGS__5B_semanticExpressionForGeneration_5D_::setter_removeAll (Compiler * /
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticExpressionForGeneration_5D_::setter_set (const GGS_semanticExpressionForGeneration inValue,
-                                                              const GGS_uint inIndex,
+                                                              const GGS_u_33__32_ inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3893,7 +4289,7 @@ void GGS__5B_semanticExpressionForGeneration_5D_::setter_set (const GGS_semantic
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticExpressionForGeneration_5D_::setter_insert (const GGS_semanticExpressionForGeneration inValue,
-                                                                 const GGS_uint inInsertionIndex,
+                                                                 const GGS_u_33__32_ inInsertionIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3914,7 +4310,7 @@ void GGS__5B_semanticExpressionForGeneration_5D_::setter_insert (const GGS_seman
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticExpressionForGeneration_5D_::setter_remove (GGS_semanticExpressionForGeneration & outValue,
-                                                                 const GGS_uint inRemoveIndex,
+                                                                 const GGS_u_33__32_ inRemoveIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3970,7 +4366,7 @@ void GGS__5B_semanticExpressionForGeneration_5D_::setter_removeLast (GGS_semanti
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticExpressionForGeneration_5D_ result ;
@@ -3995,8 +4391,8 @@ GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGenerat
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                         const GGS_uint & inLength,
+GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                         const GGS_u_33__32_ & inLength,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticExpressionForGeneration_5D_ result ;
@@ -4064,7 +4460,7 @@ GGS_semanticExpressionForGeneration GGS__5B_semanticExpressionForGeneration_5D_:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticExpressionForGeneration GGS__5B_semanticExpressionForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_semanticExpressionForGeneration GGS__5B_semanticExpressionForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_semanticExpressionForGeneration result ;
@@ -5311,10 +5707,10 @@ void GGS__5B_templateDelimitor_32_AST_5D_::plusPlusAssignOperation (const GGS_te
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_templateDelimitor_32_AST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_templateDelimitor_32_AST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -5379,7 +5775,7 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeAll (Compiler * /* inCom
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitor_32_AST_5D_::setter_set (const GGS_templateDelimitor_32_AST inValue,
-                                                       const GGS_uint inIndex,
+                                                       const GGS_u_33__32_ inIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -5400,7 +5796,7 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_set (const GGS_templateDelimit
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitor_32_AST_5D_::setter_insert (const GGS_templateDelimitor_32_AST inValue,
-                                                          const GGS_uint inInsertionIndex,
+                                                          const GGS_u_33__32_ inInsertionIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -5421,7 +5817,7 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_insert (const GGS_templateDeli
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitor_32_AST_5D_::setter_remove (GGS_templateDelimitor_32_AST & outValue,
-                                                          const GGS_uint inRemoveIndex,
+                                                          const GGS_u_33__32_ inRemoveIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -5477,7 +5873,7 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeLast (GGS_templateDelimi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_templateDelimitor_32_AST_5D_ result ;
@@ -5502,8 +5898,8 @@ GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                           const GGS_uint & inLength,
+GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                           const GGS_u_33__32_ & inLength,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_templateDelimitor_32_AST_5D_ result ;
@@ -5571,7 +5967,7 @@ GGS_templateDelimitor_32_AST GGS__5B_templateDelimitor_32_AST_5D_::getter_last (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateDelimitor_32_AST GGS__5B_templateDelimitor_32_AST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_templateDelimitor_32_AST GGS__5B_templateDelimitor_32_AST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_templateDelimitor_32_AST result ;
@@ -5826,10 +6222,10 @@ void GGS__5B_templateReplacementAST_5D_::plusPlusAssignOperation (const GGS_temp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_templateReplacementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_templateReplacementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -5894,7 +6290,7 @@ void GGS__5B_templateReplacementAST_5D_::setter_removeAll (Compiler * /* inCompi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateReplacementAST_5D_::setter_set (const GGS_templateReplacementAST inValue,
-                                                     const GGS_uint inIndex,
+                                                     const GGS_u_33__32_ inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -5915,7 +6311,7 @@ void GGS__5B_templateReplacementAST_5D_::setter_set (const GGS_templateReplaceme
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateReplacementAST_5D_::setter_insert (const GGS_templateReplacementAST inValue,
-                                                        const GGS_uint inInsertionIndex,
+                                                        const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -5936,7 +6332,7 @@ void GGS__5B_templateReplacementAST_5D_::setter_insert (const GGS_templateReplac
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateReplacementAST_5D_::setter_remove (GGS_templateReplacementAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
+                                                        const GGS_u_33__32_ inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -5992,7 +6388,7 @@ void GGS__5B_templateReplacementAST_5D_::setter_removeLast (GGS_templateReplacem
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_templateReplacementAST_5D_ result ;
@@ -6017,8 +6413,8 @@ GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::getter_re
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
+GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                       const GGS_u_33__32_ & inLength,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_templateReplacementAST_5D_ result ;
@@ -6086,7 +6482,7 @@ GGS_templateReplacementAST GGS__5B_templateReplacementAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateReplacementAST GGS__5B_templateReplacementAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_templateReplacementAST GGS__5B_templateReplacementAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_templateReplacementAST result ;
@@ -6321,10 +6717,10 @@ void GGS__5B_lexicalAttributeAST_5D_::plusPlusAssignOperation (const GGS_lexical
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalAttributeAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalAttributeAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6389,7 +6785,7 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_removeAll (Compiler * /* inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalAttributeAST_5D_::setter_set (const GGS_lexicalAttributeAST inValue,
-                                                  const GGS_uint inIndex,
+                                                  const GGS_u_33__32_ inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6410,7 +6806,7 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_set (const GGS_lexicalAttributeAST 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalAttributeAST_5D_::setter_insert (const GGS_lexicalAttributeAST inValue,
-                                                     const GGS_uint inInsertionIndex,
+                                                     const GGS_u_33__32_ inInsertionIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6431,7 +6827,7 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_insert (const GGS_lexicalAttributeA
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalAttributeAST_5D_::setter_remove (GGS_lexicalAttributeAST & outValue,
-                                                     const GGS_uint inRemoveIndex,
+                                                     const GGS_u_33__32_ inRemoveIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -6487,7 +6883,7 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_removeLast (GGS_lexicalAttributeAST
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalAttributeAST_5D_ result ;
@@ -6512,8 +6908,8 @@ GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::getter_removing
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                 const GGS_uint & inLength,
+GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                 const GGS_u_33__32_ & inLength,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalAttributeAST_5D_ result ;
@@ -6581,7 +6977,7 @@ GGS_lexicalAttributeAST GGS__5B_lexicalAttributeAST_5D_::getter_last (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeAST GGS__5B_lexicalAttributeAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalAttributeAST GGS__5B_lexicalAttributeAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GGS_lexicalAttributeAST result ;
@@ -6806,10 +7202,10 @@ void GGS__5B_terminalDeclarationAST_5D_::plusPlusAssignOperation (const GGS_term
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_terminalDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_terminalDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6874,7 +7270,7 @@ void GGS__5B_terminalDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalDeclarationAST_5D_::setter_set (const GGS_terminalDeclarationAST inValue,
-                                                     const GGS_uint inIndex,
+                                                     const GGS_u_33__32_ inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6895,7 +7291,7 @@ void GGS__5B_terminalDeclarationAST_5D_::setter_set (const GGS_terminalDeclarati
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalDeclarationAST_5D_::setter_insert (const GGS_terminalDeclarationAST inValue,
-                                                        const GGS_uint inInsertionIndex,
+                                                        const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6916,7 +7312,7 @@ void GGS__5B_terminalDeclarationAST_5D_::setter_insert (const GGS_terminalDeclar
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalDeclarationAST_5D_::setter_remove (GGS_terminalDeclarationAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
+                                                        const GGS_u_33__32_ inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -6972,7 +7368,7 @@ void GGS__5B_terminalDeclarationAST_5D_::setter_removeLast (GGS_terminalDeclarat
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_terminalDeclarationAST_5D_ result ;
@@ -6997,8 +7393,8 @@ GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::getter_re
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
+GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                       const GGS_u_33__32_ & inLength,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_terminalDeclarationAST_5D_ result ;
@@ -7066,7 +7462,7 @@ GGS_terminalDeclarationAST GGS__5B_terminalDeclarationAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_terminalDeclarationAST GGS__5B_terminalDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_terminalDeclarationAST GGS__5B_terminalDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_terminalDeclarationAST result ;
@@ -7202,10 +7598,10 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::plusPlusAssignOperation (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalMessageDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalMessageDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -7270,7 +7666,7 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeAll (Compiler * /* i
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_set (const GGS_lexicalMessageDeclarationAST inValue,
-                                                           const GGS_uint inIndex,
+                                                           const GGS_u_33__32_ inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -7291,7 +7687,7 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_set (const GGS_lexicalMess
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_insert (const GGS_lexicalMessageDeclarationAST inValue,
-                                                              const GGS_uint inInsertionIndex,
+                                                              const GGS_u_33__32_ inInsertionIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -7312,7 +7708,7 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_insert (const GGS_lexicalM
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_remove (GGS_lexicalMessageDeclarationAST & outValue,
-                                                              const GGS_uint inRemoveIndex,
+                                                              const GGS_u_33__32_ inRemoveIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -7368,7 +7764,7 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeLast (GGS_lexicalMes
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalMessageDeclarationAST_5D_ result ;
@@ -7393,8 +7789,8 @@ GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                   const GGS_uint & inLength,
+GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                   const GGS_u_33__32_ & inLength,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalMessageDeclarationAST_5D_ result ;
@@ -7462,7 +7858,7 @@ GGS_lexicalMessageDeclarationAST GGS__5B_lexicalMessageDeclarationAST_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalMessageDeclarationAST GGS__5B_lexicalMessageDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalMessageDeclarationAST GGS__5B_lexicalMessageDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GGS_lexicalMessageDeclarationAST result ;
@@ -7687,10 +8083,10 @@ void GGS__5B_lexicalListDeclarationAST_5D_::plusPlusAssignOperation (const GGS_l
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalListDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalListDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -7755,7 +8151,7 @@ void GGS__5B_lexicalListDeclarationAST_5D_::setter_removeAll (Compiler * /* inCo
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListDeclarationAST_5D_::setter_set (const GGS_lexicalListDeclarationAST inValue,
-                                                        const GGS_uint inIndex,
+                                                        const GGS_u_33__32_ inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -7776,7 +8172,7 @@ void GGS__5B_lexicalListDeclarationAST_5D_::setter_set (const GGS_lexicalListDec
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListDeclarationAST_5D_::setter_insert (const GGS_lexicalListDeclarationAST inValue,
-                                                           const GGS_uint inInsertionIndex,
+                                                           const GGS_u_33__32_ inInsertionIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -7797,7 +8193,7 @@ void GGS__5B_lexicalListDeclarationAST_5D_::setter_insert (const GGS_lexicalList
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListDeclarationAST_5D_::setter_remove (GGS_lexicalListDeclarationAST & outValue,
-                                                           const GGS_uint inRemoveIndex,
+                                                           const GGS_u_33__32_ inRemoveIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -7853,7 +8249,7 @@ void GGS__5B_lexicalListDeclarationAST_5D_::setter_removeLast (GGS_lexicalListDe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalListDeclarationAST_5D_ result ;
@@ -7878,8 +8274,8 @@ GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::get
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                             const GGS_uint & inLength,
+GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                             const GGS_u_33__32_ & inLength,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalListDeclarationAST_5D_ result ;
@@ -7947,7 +8343,7 @@ GGS_lexicalListDeclarationAST GGS__5B_lexicalListDeclarationAST_5D_::getter_last
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalListDeclarationAST GGS__5B_lexicalListDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalListDeclarationAST GGS__5B_lexicalListDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_lexicalListDeclarationAST result ;
@@ -8083,10 +8479,10 @@ void GGS__5B_abstractLexicalRuleAST_5D_::plusPlusAssignOperation (const GGS_abst
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_abstractLexicalRuleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_abstractLexicalRuleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -8151,7 +8547,7 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeAll (Compiler * /* inCompi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractLexicalRuleAST_5D_::setter_set (const GGS_abstractLexicalRuleAST inValue,
-                                                     const GGS_uint inIndex,
+                                                     const GGS_u_33__32_ inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -8172,7 +8568,7 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_set (const GGS_abstractLexicalRu
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractLexicalRuleAST_5D_::setter_insert (const GGS_abstractLexicalRuleAST inValue,
-                                                        const GGS_uint inInsertionIndex,
+                                                        const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -8193,7 +8589,7 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_insert (const GGS_abstractLexica
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractLexicalRuleAST_5D_::setter_remove (GGS_abstractLexicalRuleAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
+                                                        const GGS_u_33__32_ inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -8249,7 +8645,7 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeLast (GGS_abstractLexicalR
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_abstractLexicalRuleAST_5D_ result ;
@@ -8274,8 +8670,8 @@ GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::getter_re
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
+GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                       const GGS_u_33__32_ & inLength,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_abstractLexicalRuleAST_5D_ result ;
@@ -8343,7 +8739,7 @@ GGS_abstractLexicalRuleAST GGS__5B_abstractLexicalRuleAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_abstractLexicalRuleAST GGS__5B_abstractLexicalRuleAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_abstractLexicalRuleAST GGS__5B_abstractLexicalRuleAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_abstractLexicalRuleAST result ;
@@ -8550,10 +8946,10 @@ void GGS__5B_indexingAST_5D_::plusPlusAssignOperation (const GGS_indexingAST & i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_indexingAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_indexingAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -8618,7 +9014,7 @@ void GGS__5B_indexingAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_indexingAST_5D_::setter_set (const GGS_indexingAST inValue,
-                                          const GGS_uint inIndex,
+                                          const GGS_u_33__32_ inIndex,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -8639,7 +9035,7 @@ void GGS__5B_indexingAST_5D_::setter_set (const GGS_indexingAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_indexingAST_5D_::setter_insert (const GGS_indexingAST inValue,
-                                             const GGS_uint inInsertionIndex,
+                                             const GGS_u_33__32_ inInsertionIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -8660,7 +9056,7 @@ void GGS__5B_indexingAST_5D_::setter_insert (const GGS_indexingAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_indexingAST_5D_::setter_remove (GGS_indexingAST & outValue,
-                                             const GGS_uint inRemoveIndex,
+                                             const GGS_u_33__32_ inRemoveIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -8716,7 +9112,7 @@ void GGS__5B_indexingAST_5D_::setter_removeLast (GGS_indexingAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_indexingAST_5D_ result ;
@@ -8741,8 +9137,8 @@ GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::getter_removingFirst (const GGS
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                 const GGS_uint & inLength,
+GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                 const GGS_u_33__32_ & inLength,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_indexingAST_5D_ result ;
@@ -8810,7 +9206,7 @@ GGS_indexingAST GGS__5B_indexingAST_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_indexingAST GGS__5B_indexingAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_indexingAST GGS__5B_indexingAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GGS_indexingAST result ;
@@ -9035,10 +9431,10 @@ void GGS__5B_lexicalInstructionAST_5D_::plusPlusAssignOperation (const GGS_lexic
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -9103,7 +9499,7 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_removeAll (Compiler * /* inCompil
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalInstructionAST_5D_::setter_set (const GGS_lexicalInstructionAST inValue,
-                                                    const GGS_uint inIndex,
+                                                    const GGS_u_33__32_ inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -9124,7 +9520,7 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_set (const GGS_lexicalInstruction
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalInstructionAST_5D_::setter_insert (const GGS_lexicalInstructionAST inValue,
-                                                       const GGS_uint inInsertionIndex,
+                                                       const GGS_u_33__32_ inInsertionIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -9145,7 +9541,7 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_insert (const GGS_lexicalInstruct
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalInstructionAST_5D_::setter_remove (GGS_lexicalInstructionAST & outValue,
-                                                       const GGS_uint inRemoveIndex,
+                                                       const GGS_u_33__32_ inRemoveIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -9201,7 +9597,7 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_removeLast (GGS_lexicalInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalInstructionAST_5D_ result ;
@@ -9226,8 +9622,8 @@ GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::getter_remo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                     const GGS_uint & inLength,
+GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                     const GGS_u_33__32_ & inLength,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalInstructionAST_5D_ result ;
@@ -9295,7 +9691,7 @@ GGS_lexicalInstructionAST GGS__5B_lexicalInstructionAST_5D_::getter_last (Compil
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalInstructionAST GGS__5B_lexicalInstructionAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalInstructionAST GGS__5B_lexicalInstructionAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   GGS_lexicalInstructionAST result ;
@@ -9502,10 +9898,10 @@ void GGS__5B_lexicalWhileBranchAST_5D_::plusPlusAssignOperation (const GGS_lexic
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalWhileBranchAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalWhileBranchAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -9570,7 +9966,7 @@ void GGS__5B_lexicalWhileBranchAST_5D_::setter_removeAll (Compiler * /* inCompil
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalWhileBranchAST_5D_::setter_set (const GGS_lexicalWhileBranchAST inValue,
-                                                    const GGS_uint inIndex,
+                                                    const GGS_u_33__32_ inIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -9591,7 +9987,7 @@ void GGS__5B_lexicalWhileBranchAST_5D_::setter_set (const GGS_lexicalWhileBranch
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalWhileBranchAST_5D_::setter_insert (const GGS_lexicalWhileBranchAST inValue,
-                                                       const GGS_uint inInsertionIndex,
+                                                       const GGS_u_33__32_ inInsertionIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -9612,7 +10008,7 @@ void GGS__5B_lexicalWhileBranchAST_5D_::setter_insert (const GGS_lexicalWhileBra
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalWhileBranchAST_5D_::setter_remove (GGS_lexicalWhileBranchAST & outValue,
-                                                       const GGS_uint inRemoveIndex,
+                                                       const GGS_u_33__32_ inRemoveIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -9668,7 +10064,7 @@ void GGS__5B_lexicalWhileBranchAST_5D_::setter_removeLast (GGS_lexicalWhileBranc
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalWhileBranchAST_5D_ result ;
@@ -9693,8 +10089,8 @@ GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::getter_remo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                     const GGS_uint & inLength,
+GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                     const GGS_u_33__32_ & inLength,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalWhileBranchAST_5D_ result ;
@@ -9762,7 +10158,7 @@ GGS_lexicalWhileBranchAST GGS__5B_lexicalWhileBranchAST_5D_::getter_last (Compil
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalWhileBranchAST GGS__5B_lexicalWhileBranchAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalWhileBranchAST GGS__5B_lexicalWhileBranchAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
   GGS_lexicalWhileBranchAST result ;
@@ -9898,10 +10294,10 @@ void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::plusPlusAssignO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -9966,7 +10362,7 @@ void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_removeAl
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_set (const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST inValue,
-                                                                             const GGS_uint inIndex,
+                                                                             const GGS_u_33__32_ inIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -9987,7 +10383,7 @@ void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_set (con
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_insert (const GGS_lexicalRoutineOrFunctionFormalInputArgumentAST inValue,
-                                                                                const GGS_uint inInsertionIndex,
+                                                                                const GGS_u_33__32_ inInsertionIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -10008,7 +10404,7 @@ void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_insert (
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_remove (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outValue,
-                                                                                const GGS_uint inRemoveIndex,
+                                                                                const GGS_u_33__32_ inRemoveIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -10064,7 +10460,7 @@ void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::setter_removeLa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                                              Compiler * inCompiler
                                                                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ result ;
@@ -10089,8 +10485,8 @@ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                                       const GGS_uint & inLength,
+GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                                       const GGS_u_33__32_ & inLength,
                                                                                                                                        Compiler * inCompiler
                                                                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ result ;
@@ -10158,7 +10554,7 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST GGS__5B_lexicalRoutineOrFunct
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineOrFunctionFormalInputArgumentAST GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalRoutineOrFunctionFormalInputArgumentAST GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                                                   Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_lexicalRoutineOrFunctionFormalInputArgumentAST result ;
@@ -10365,10 +10761,10 @@ void GGS__5B_sentLexicalAttributeAST_5D_::plusPlusAssignOperation (const GGS_sen
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_sentLexicalAttributeAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_sentLexicalAttributeAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -10433,7 +10829,7 @@ void GGS__5B_sentLexicalAttributeAST_5D_::setter_removeAll (Compiler * /* inComp
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_sentLexicalAttributeAST_5D_::setter_set (const GGS_sentLexicalAttributeAST inValue,
-                                                      const GGS_uint inIndex,
+                                                      const GGS_u_33__32_ inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -10454,7 +10850,7 @@ void GGS__5B_sentLexicalAttributeAST_5D_::setter_set (const GGS_sentLexicalAttri
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_sentLexicalAttributeAST_5D_::setter_insert (const GGS_sentLexicalAttributeAST inValue,
-                                                         const GGS_uint inInsertionIndex,
+                                                         const GGS_u_33__32_ inInsertionIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -10475,7 +10871,7 @@ void GGS__5B_sentLexicalAttributeAST_5D_::setter_insert (const GGS_sentLexicalAt
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_sentLexicalAttributeAST_5D_::setter_remove (GGS_sentLexicalAttributeAST & outValue,
-                                                         const GGS_uint inRemoveIndex,
+                                                         const GGS_u_33__32_ inRemoveIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -10531,7 +10927,7 @@ void GGS__5B_sentLexicalAttributeAST_5D_::setter_removeLast (GGS_sentLexicalAttr
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_sentLexicalAttributeAST_5D_ result ;
@@ -10556,8 +10952,8 @@ GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                         const GGS_uint & inLength,
+GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                         const GGS_u_33__32_ & inLength,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_sentLexicalAttributeAST_5D_ result ;
@@ -10625,7 +11021,7 @@ GGS_sentLexicalAttributeAST GGS__5B_sentLexicalAttributeAST_5D_::getter_last (Co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sentLexicalAttributeAST GGS__5B_sentLexicalAttributeAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_sentLexicalAttributeAST GGS__5B_sentLexicalAttributeAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_sentLexicalAttributeAST result ;
@@ -10850,10 +11246,10 @@ void GGS__5B_lexicalListEntryAST_5D_::plusPlusAssignOperation (const GGS_lexical
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalListEntryAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalListEntryAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -10918,7 +11314,7 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_removeAll (Compiler * /* inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListEntryAST_5D_::setter_set (const GGS_lexicalListEntryAST inValue,
-                                                  const GGS_uint inIndex,
+                                                  const GGS_u_33__32_ inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -10939,7 +11335,7 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_set (const GGS_lexicalListEntryAST 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListEntryAST_5D_::setter_insert (const GGS_lexicalListEntryAST inValue,
-                                                     const GGS_uint inInsertionIndex,
+                                                     const GGS_u_33__32_ inInsertionIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -10960,7 +11356,7 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_insert (const GGS_lexicalListEntryA
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListEntryAST_5D_::setter_remove (GGS_lexicalListEntryAST & outValue,
-                                                     const GGS_uint inRemoveIndex,
+                                                     const GGS_u_33__32_ inRemoveIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -11016,7 +11412,7 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_removeLast (GGS_lexicalListEntryAST
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalListEntryAST_5D_ result ;
@@ -11041,8 +11437,8 @@ GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::getter_removing
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                 const GGS_uint & inLength,
+GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                 const GGS_u_33__32_ & inLength,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalListEntryAST_5D_ result ;
@@ -11110,7 +11506,7 @@ GGS_lexicalListEntryAST GGS__5B_lexicalListEntryAST_5D_::getter_last (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalListEntryAST GGS__5B_lexicalListEntryAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalListEntryAST GGS__5B_lexicalListEntryAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GGS_lexicalListEntryAST result ;
@@ -11355,10 +11751,10 @@ void GGS__5B_semanticDeclarationAST_5D_::plusPlusAssignOperation (const GGS_sema
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_semanticDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_semanticDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -11423,7 +11819,7 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationAST_5D_::setter_set (const GGS_semanticDeclarationAST inValue,
-                                                     const GGS_uint inIndex,
+                                                     const GGS_u_33__32_ inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -11444,7 +11840,7 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_set (const GGS_semanticDeclarati
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationAST_5D_::setter_insert (const GGS_semanticDeclarationAST inValue,
-                                                        const GGS_uint inInsertionIndex,
+                                                        const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -11465,7 +11861,7 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_insert (const GGS_semanticDeclar
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationAST_5D_::setter_remove (GGS_semanticDeclarationAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
+                                                        const GGS_u_33__32_ inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -11521,7 +11917,7 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_removeLast (GGS_semanticDeclarat
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticDeclarationAST_5D_ result ;
@@ -11546,8 +11942,8 @@ GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::getter_re
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
+GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                       const GGS_u_33__32_ & inLength,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticDeclarationAST_5D_ result ;
@@ -11615,7 +12011,7 @@ GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_semanticDeclarationAST result ;
@@ -11844,10 +12240,10 @@ void GGS__5B_lexicalSentValue_5D_::plusPlusAssignOperation (const GGS_lexicalSen
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_lexicalSentValue_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_lexicalSentValue_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -11912,7 +12308,7 @@ void GGS__5B_lexicalSentValue_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalSentValue_5D_::setter_set (const GGS_lexicalSentValue inValue,
-                                               const GGS_uint inIndex,
+                                               const GGS_u_33__32_ inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -11933,7 +12329,7 @@ void GGS__5B_lexicalSentValue_5D_::setter_set (const GGS_lexicalSentValue inValu
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalSentValue_5D_::setter_insert (const GGS_lexicalSentValue inValue,
-                                                  const GGS_uint inInsertionIndex,
+                                                  const GGS_u_33__32_ inInsertionIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -11954,7 +12350,7 @@ void GGS__5B_lexicalSentValue_5D_::setter_insert (const GGS_lexicalSentValue inV
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalSentValue_5D_::setter_remove (GGS_lexicalSentValue & outValue,
-                                                  const GGS_uint inRemoveIndex,
+                                                  const GGS_u_33__32_ inRemoveIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -12010,7 +12406,7 @@ void GGS__5B_lexicalSentValue_5D_::setter_removeLast (GGS_lexicalSentValue & out
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalSentValue_5D_ result ;
@@ -12035,8 +12431,8 @@ GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::getter_removingFirst 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                           const GGS_uint & inLength,
+GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                           const GGS_u_33__32_ & inLength,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_lexicalSentValue_5D_ result ;
@@ -12104,7 +12500,7 @@ GGS_lexicalSentValue GGS__5B_lexicalSentValue_5D_::getter_last (Compiler * inCom
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalSentValue GGS__5B_lexicalSentValue_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_lexicalSentValue GGS__5B_lexicalSentValue_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GGS_lexicalSentValue result ;
@@ -12240,10 +12636,10 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::plusPlusAssignOperation (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_semanticDeclarationForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_semanticDeclarationForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -12308,7 +12704,7 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeAll (Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::setter_set (const GGS_semanticDeclarationForGeneration inValue,
-                                                               const GGS_uint inIndex,
+                                                               const GGS_u_33__32_ inIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -12329,7 +12725,7 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_set (const GGS_semanti
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::setter_insert (const GGS_semanticDeclarationForGeneration inValue,
-                                                                  const GGS_uint inInsertionIndex,
+                                                                  const GGS_u_33__32_ inInsertionIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -12350,7 +12746,7 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_insert (const GGS_sema
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::setter_remove (GGS_semanticDeclarationForGeneration & outValue,
-                                                                  const GGS_uint inRemoveIndex,
+                                                                  const GGS_u_33__32_ inRemoveIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -12406,7 +12802,7 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeLast (GGS_semant
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                  Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticDeclarationForGeneration_5D_ result ;
@@ -12431,8 +12827,8 @@ GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGener
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                           const GGS_uint & inLength,
+GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                           const GGS_u_33__32_ & inLength,
                                                                                                            Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticDeclarationForGeneration_5D_ result ;
@@ -12500,7 +12896,7 @@ GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_semanticDeclarationForGeneration result ;
@@ -12729,10 +13125,10 @@ void GGS__5B_terminalAST_5D_::plusPlusAssignOperation (const GGS_terminalAST & i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_terminalAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_terminalAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -12797,7 +13193,7 @@ void GGS__5B_terminalAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalAST_5D_::setter_set (const GGS_terminalAST inValue,
-                                          const GGS_uint inIndex,
+                                          const GGS_u_33__32_ inIndex,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -12818,7 +13214,7 @@ void GGS__5B_terminalAST_5D_::setter_set (const GGS_terminalAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalAST_5D_::setter_insert (const GGS_terminalAST inValue,
-                                             const GGS_uint inInsertionIndex,
+                                             const GGS_u_33__32_ inInsertionIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -12839,7 +13235,7 @@ void GGS__5B_terminalAST_5D_::setter_insert (const GGS_terminalAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalAST_5D_::setter_remove (GGS_terminalAST & outValue,
-                                             const GGS_uint inRemoveIndex,
+                                             const GGS_u_33__32_ inRemoveIndex,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -12895,7 +13291,7 @@ void GGS__5B_terminalAST_5D_::setter_removeLast (GGS_terminalAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_terminalAST_5D_ result ;
@@ -12920,8 +13316,8 @@ GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::getter_removingFirst (const GGS
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                 const GGS_uint & inLength,
+GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                 const GGS_u_33__32_ & inLength,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_terminalAST_5D_ result ;
@@ -12989,7 +13385,7 @@ GGS_terminalAST GGS__5B_terminalAST_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_terminalAST GGS__5B_terminalAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_terminalAST GGS__5B_terminalAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   GGS_terminalAST result ;
@@ -13107,7 +13503,7 @@ GGS_terminalAST GGS_terminalAST::init_21__21__21__21_isEndOfTemplateMark_21_atom
                                                                                                  const GGS_string & in_mSyntaxErrorMessage,
                                                                                                  const GGS_bool & in_isEndOfTemplateMark,
                                                                                                  const GGS_bool & in_atomicSelection,
-                                                                                                 const GGS_uint & in_mStyleIndex,
+                                                                                                 const GGS_u_33__32_ & in_mStyleIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_terminalAST result ;
@@ -13133,7 +13529,7 @@ GGS_terminalAST::GGS_terminalAST (const GGS_lstring & inOperand0,
                                   const GGS_string & inOperand2,
                                   const GGS_bool & inOperand3,
                                   const GGS_bool & inOperand4,
-                                  const GGS_uint & inOperand5) :
+                                  const GGS_u_33__32_ & inOperand5) :
 mProperty_mTerminalName (inOperand0),
 mProperty_mSentAttributeList (inOperand1),
 mProperty_mSyntaxErrorMessage (inOperand2),
@@ -13254,10 +13650,10 @@ void GGS__5B_templateDelimitorAST_5D_::plusPlusAssignOperation (const GGS_templa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_templateDelimitorAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_templateDelimitorAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -13322,7 +13718,7 @@ void GGS__5B_templateDelimitorAST_5D_::setter_removeAll (Compiler * /* inCompile
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitorAST_5D_::setter_set (const GGS_templateDelimitorAST inValue,
-                                                   const GGS_uint inIndex,
+                                                   const GGS_u_33__32_ inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -13343,7 +13739,7 @@ void GGS__5B_templateDelimitorAST_5D_::setter_set (const GGS_templateDelimitorAS
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitorAST_5D_::setter_insert (const GGS_templateDelimitorAST inValue,
-                                                      const GGS_uint inInsertionIndex,
+                                                      const GGS_u_33__32_ inInsertionIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -13364,7 +13760,7 @@ void GGS__5B_templateDelimitorAST_5D_::setter_insert (const GGS_templateDelimito
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitorAST_5D_::setter_remove (GGS_templateDelimitorAST & outValue,
-                                                      const GGS_uint inRemoveIndex,
+                                                      const GGS_u_33__32_ inRemoveIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -13420,7 +13816,7 @@ void GGS__5B_templateDelimitorAST_5D_::setter_removeLast (GGS_templateDelimitorA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_templateDelimitorAST_5D_ result ;
@@ -13445,8 +13841,8 @@ GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::getter_removi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                   const GGS_uint & inLength,
+GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                   const GGS_u_33__32_ & inLength,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_templateDelimitorAST_5D_ result ;
@@ -13514,7 +13910,7 @@ GGS_templateDelimitorAST GGS__5B_templateDelimitorAST_5D_::getter_last (Compiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateDelimitorAST GGS__5B_templateDelimitorAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_templateDelimitorAST GGS__5B_templateDelimitorAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GGS_templateDelimitorAST result ;
@@ -14193,7 +14589,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
   result.appendString (GGS_string ("LEXIQUE ").add_operation (in_LEXIQUE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 3)).stringValue ()) ;
   result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n#include \"Lexique.h\"\n\n//--------------------------------------------------------------------------------------------------\n//                    E X T E R N    R O U T I N E S\n//--------------------------------------------------------------------------------------------------\n") ;
-  GGS_uint index_654_ (0) ;
+  GGS_u_33__32_ index_654_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalRoutineMessageMap ().isValid ()) {
     UpEnumerator_lexicalRoutineMap enumerator_654 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalRoutineMessageMap ()) ;
     while (enumerator_654.hasCurrentObject ()) {
@@ -14203,7 +14599,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
         result.appendString ("\nvoid scanner_routine_") ;
         result.appendString (enumerator_654.current_lkey (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" (Lexique & inLexique") ;
-        GGS_uint index_804_ (0) ;
+        GGS_u_33__32_ index_804_ (0) ;
         if (enumerator_654.current_mLexicalRoutineFormalArgumentList (HERE).isValid ()) {
           UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_804 (enumerator_654.current_mLexicalRoutineFormalArgumentList (HERE)) ;
           while (enumerator_804.hasCurrentObject ()) {
@@ -14217,7 +14613,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
             index_804_.increment () ;
           }
         }
-        GGS_uint index_1193_ (0) ;
+        GGS_u_33__32_ index_1193_ (0) ;
         if (enumerator_654.current_mErrorMessageList (HERE).isValid ()) {
           UpEnumerator__5B_string_5D_ enumerator_1193 (enumerator_654.current_mErrorMessageList (HERE)) ;
           while (enumerator_1193.hasCurrentObject ()) {
@@ -14239,7 +14635,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                    E X T E R N    F U N C T I O N S\n//--------------------------------------------------------------------------------------------------\n") ;
-  GGS_uint index_1679_ (0) ;
+  GGS_u_33__32_ index_1679_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalFunctionMap ().isValid ()) {
     UpEnumerator_lexicalFunctionMap enumerator_1679 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalFunctionMap ()) ;
     while (enumerator_1679.hasCurrentObject ()) {
@@ -14251,7 +14647,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
         result.appendString (" scanner_function_") ;
         result.appendString (enumerator_1679.current_lkey (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" (Lexique & inLexique") ;
-        GGS_uint index_1846_ (0) ;
+        GGS_u_33__32_ index_1846_ (0) ;
         if (enumerator_1679.current_mLexicalTypeList (HERE).isValid ()) {
           UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ enumerator_1846 (enumerator_1679.current_mLexicalTypeList (HERE)) ;
           while (enumerator_1846.hasCurrentObject ()) {
@@ -14277,7 +14673,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                       T O K E N    C L A S S\n//--------------------------------------------------------------------------------------------------\n\nclass cTokenFor_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" : public cToken {\n") ;
-  GGS_uint index_2381_ (0) ;
+  GGS_u_33__32_ index_2381_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_2381 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
     while (enumerator_2381.hasCurrentObject ()) {
@@ -14301,7 +14697,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
   result.appendString (" (Compiler * inCallerCompiler,\n                       const String & inSourceString,\n                       const String & inStringForError\n                       COMMA_LOCATION_ARGS) ;\n\n//--- Instrospection\n  public: static GGS__5B_string_5D_ symbols (LOCATION_ARGS) ;\n\n//--- Declaring a protected virtual destructor enables the compiler to raise\n//    an error if a direct delete is performed; only the static proc\n//    SharedObject::detachPointer may invoke delete.\n  #ifndef DO_NOT_GENERATE_CHECKINGS\n    protected: virtual ~ Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (void) { }\n  #endif\n") ;
-  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 80)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 80)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_2) {
   case GalgasBool::boolTrue : {
     result.appendString ("\n//--- Scanner mode for template scanner\n  private: int32_t mMatchedTemplateDelimiterIndex ;\n") ;
@@ -14312,20 +14708,20 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
     break ;
   }
   result.appendString ("\n\n\n//--- Terminal symbols enumeration\n  public: const static int32_t kToken_ = 0 ;\n") ;
-  GGS_uint index_3962_idx (0) ;
+  GGS_u_33__32_ index_3962_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_3962 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
     while (enumerator_3962.hasCurrentObject ()) {
       result.appendString ("  public: static const int32_t kToken_") ;
       result.appendString (enumerator_3962.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
       result.appendString (" = ") ;
-      result.appendString (index_3962_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
+      result.appendString (index_3962_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).getter_string (SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 89)).stringValue ()) ;
       result.appendString (" ;\n") ;
       enumerator_3962.gotoNextObject () ;
       index_3962_idx.increment () ;
     }
   }
-  GGS_uint index_4148_ (0) ;
+  GGS_u_33__32_ index_4148_ (0) ;
   if (in_DELIMITOR_5F_LIST_5F_LIST.isValid ()) {
     UpEnumerator__5B_lexicalListDeclarationAST_5D_ enumerator_4148 (in_DELIMITOR_5F_LIST_5F_LIST) ;
     while (enumerator_4148.hasCurrentObject ()) {
@@ -14339,7 +14735,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
     }
   }
   result.appendString ("\n\n//--- Assign from attribute\n") ;
-  GGS_uint index_4440_ (0) ;
+  GGS_u_33__32_ index_4440_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_4440 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
     while (enumerator_4440.hasCurrentObject ()) {
@@ -14353,7 +14749,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
     }
   }
   result.appendString ("\n\n//--- Attribute access\n") ;
-  GGS_uint index_4711_ (0) ;
+  GGS_u_33__32_ index_4711_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_4711 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
     while (enumerator_4711.hasCurrentObject ()) {
@@ -14367,7 +14763,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
     }
   }
   result.appendString ("\n\n//--- indexing keys\n") ;
-  GGS_uint index_4893_idx (0) ;
+  GGS_u_33__32_ index_4893_idx (0) ;
   if (in_INDEXING_5F_LIST.isValid ()) {
     UpEnumerator__5B_indexingAST_5D_ enumerator_4893 (in_INDEXING_5F_LIST) ;
     while (enumerator_4893.hasCurrentObject ()) {
@@ -14414,7 +14810,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("::cTokenFor_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (void)") ;
-  GGS_uint index_634_ (0) ;
+  GGS_u_33__32_ index_634_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_634 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     const bool nonEmpty_enumerator_634 = enumerator_634.hasCurrentObject () ;
@@ -14443,7 +14839,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("const String & inSourceFileName\n                ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) :\nLexique (inCallerCompiler, inSourceFileName COMMA_THERE)") ;
-  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 28)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 28)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_0) {
   case GalgasBool::boolTrue : {
     result.appendString (",\nmMatchedTemplateDelimiterIndex (-1)") ;
@@ -14466,7 +14862,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("const String & inStringForError\n                ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) :\nLexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)") ;
-  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 41)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 41)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_1) {
   case GalgasBool::boolTrue : {
     result.appendString (",\nmMatchedTemplateDelimiterIndex (-1)") ;
@@ -14477,7 +14873,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     break ;
   }
   result.appendString (" {\n}\n\n//--------------------------------------------------------------------------------------------------\n//                        Lexical error message list                                             \n//--------------------------------------------------------------------------------------------------\n") ;
-  GGS_uint index_2068_ (0) ;
+  GGS_u_33__32_ index_2068_ (0) ;
   if (in_LEXICAL_5F_MESSAGE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalMessageMap enumerator_2068 (in_LEXICAL_5F_MESSAGE_5F_MAP) ;
     while (enumerator_2068.hasCurrentObject ()) {
@@ -14495,11 +14891,11 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                getMessageForTerminal                                                          \n//--------------------------------------------------------------------------------------------------\n\nString Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::getMessageForTerminal (const int32_t inTerminalIndex) const {\n  String result = \"<unknown>\" ;\n  if ((inTerminalIndex >= 0) && (inTerminalIndex < ") ;
-  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).stringValue ()) ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 61)).stringValue ()) ;
   result.appendString (")) {\n    static const char * syntaxErrorMessageArray [") ;
-  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).stringValue ()) ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 62)).stringValue ()) ;
   result.appendString ("] = {kEndOfSourceLexicalErrorMessage") ;
-  GGS_uint index_2910_ (0) ;
+  GGS_u_33__32_ index_2910_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_2910 (in_TERMINAL_5F_LIST) ;
     while (enumerator_2910.hasCurrentObject ()) {
@@ -14510,11 +14906,11 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("\n    } ;\n    result = syntaxErrorMessageArray [inTerminalIndex] ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                      U N I C O D E    S T R I N G S                                           \n//--------------------------------------------------------------------------------------------------\n") ;
-  GGS_uint index_3442_ (0) ;
+  GGS_u_33__32_ index_3442_ (0) ;
   if (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES.isValid ()) {
     UpEnumerator_stringset enumerator_3442 (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES) ;
     while (enumerator_3442.hasCurrentObject ()) {
-      const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, enumerator_3442.current_key (HERE).getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 77)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, enumerator_3442.current_key (HERE).getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 77)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_2) {
       case GalgasBool::boolTrue : {
         result.appendString ("\n//--- Unicode string for '$") ;
@@ -14537,7 +14933,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("\n") ;
-  GGS_uint index_3891_ (0) ;
+  GGS_u_33__32_ index_3891_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_3891 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
     while (enumerator_3891.hasCurrentObject ()) {
@@ -14558,7 +14954,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
       result.appendString ("_") ;
       result.appendString (enumerator_3891.current_lkey (HERE).readProperty_string ().stringValue ()) ;
       result.appendString ("] = {\n") ;
-      GGS_uint index_4560_ (0) ;
+      GGS_u_33__32_ index_4560_ (0) ;
       if (enumerator_3891.current_mTokenSortedList (HERE).isValid ()) {
         UpEnumerator_sortedTokenArray enumerator_4560 (enumerator_3891.current_mTokenSortedList (HERE)) ;
         while (enumerator_4560.hasCurrentObject ()) {
@@ -14602,7 +14998,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (" * ptr = (const cTokenFor_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" *) inTokenPtr ;\n  String s ;\n  if (ptr == nullptr) {\n    s.appendCString (\"$$\") ;\n  }else{\n    switch (ptr->mTokenCode) {\n    case kToken_:\n      s.appendCString (\"$$\") ;\n      break ;\n") ;
-  GGS_uint index_5825_ (0) ;
+  GGS_u_33__32_ index_5825_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_5825 (in_TERMINAL_5F_LIST) ;
     while (enumerator_5825.hasCurrentObject ()) {
@@ -14611,7 +15007,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
       result.appendString (":\n      s.appendChar (utf32 ('$')) ;\n      s.appendCString (") ;
       result.appendString (enumerator_5825.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 117)).stringValue ()) ;
       result.appendString (") ;\n      s.appendChar (utf32 ('$')) ;\n") ;
-      GGS_uint index_6150_ (0) ;
+      GGS_u_33__32_ index_6150_ (0) ;
       if (enumerator_5825.current_entry (HERE).readProperty_mSentAttributeList ().isValid ()) {
         UpEnumerator__5B_lexicalSentValue_5D_ enumerator_6150 (enumerator_5825.current_entry (HERE).readProperty_mSentAttributeList ()) ;
         while (enumerator_6150.hasCurrentObject ()) {
@@ -14631,7 +15027,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("    default:\n      break ;\n    }\n  }\n  return s ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters                                                 \n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_6991_ (0) ;
+  GGS_u_33__32_ index_6991_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
     UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_6991 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
     const bool nonEmpty_enumerator_6991 = enumerator_6991.hasCurrentObject () ;
@@ -14650,7 +15046,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
       result.appendString (", ") ;
       result.appendString (enumerator_6991.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 138)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 138)).stringValue ()) ;
       result.appendString (", ") ;
-      const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_6991.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 139)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_6991.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 139)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_3) {
       case GalgasBool::boolTrue : {
         result.appendString ("{}, 0,") ;
@@ -14681,7 +15077,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements                                               \n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_8003_ (0) ;
+  GGS_u_33__32_ index_8003_ (0) ;
   if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_templateReplacementAST_5D_ enumerator_8003 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
     const bool nonEmpty_enumerator_8003 = enumerator_8003.hasCurrentObject () ;
@@ -14706,7 +15102,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
       result.appendString (", ") ;
       result.appendString (enumerator_8003.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 159)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 159)).stringValue ()) ;
       result.appendString (", ") ;
-      const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_8003.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 160)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_8003.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 160)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_4) {
       case GalgasBool::boolTrue : {
         result.appendString ("nullptr") ;
@@ -14730,10 +15126,10 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark                                 \n//--------------------------------------------------------------------------------------------------\n\n") ;
-  const GalgasBool test_5 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 174)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_5 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 174)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_5) {
   case GalgasBool::boolTrue : {
-    GGS_uint index_9079_ (0) ;
+    GGS_u_33__32_ index_9079_ (0) ;
     if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
       UpEnumerator__5B_terminalAST_5D_ enumerator_9079 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
       const bool nonEmpty_enumerator_9079 = enumerator_9079.hasCurrentObject () ;
@@ -14781,7 +15177,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   case GalgasBool::boolNotValid :
     break ;
   }
-  GGS_uint index_9734_ (0) ;
+  GGS_u_33__32_ index_9734_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_9734 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     while (enumerator_9734.hasCurrentObject ()) {
@@ -14794,10 +15190,10 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("  mTokenStartLocation = mCurrentLocation ;\n  try{\n") ;
-  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
-    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
+    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
   }
-  GGS_uint index_9955_ (0) ;
+  GGS_u_33__32_ index_9955_ (0) ;
   if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
     UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_9955 (in_LEXICAL_5F_RULE_5F_LIST) ;
     while (enumerator_9955.hasCurrentObject ()) {
@@ -14806,15 +15202,15 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
       index_9955_.increment () ;
     }
   }
-  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
-    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).isValid ()) {
+    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 198)).uintValue ())) ;
   }
   result.appendString ("if (testForInputUTF32Char (utf32 ('\\0'))) { // End of source text \? \n      token.mTokenCode = kToken_ ; // Empty string code\n    }else{ // Unknown input character\n      unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;\n      token.mTokenCode = -1 ; // No token\n      advance () ; // ... go throught unknown character\n    }\n  }catch (const C_lexicalErrorException &) {\n    token.mTokenCode = -1 ; // No token\n    advance () ; // ... go throught unknown character\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n//               P A R S E    L E X I C A L    T O K E N                                         \n//--------------------------------------------------------------------------------------------------\n\nbool Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::parseLexicalToken (void) {\n  cTokenFor_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" token ;\n  token.mTokenCode = -1 ;\n  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\\0')) {\n") ;
-  const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 225)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_7 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 225)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_7) {
   case GalgasBool::boolTrue : {
     result.appendString ("    if ((mMatchedTemplateDelimiterIndex >= 0)\n     && (") ;
@@ -14856,7 +15252,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (" * ptr = nullptr ;\n  macroMyNew (ptr, cTokenFor_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" ()) ;\n  ptr->mTokenCode = ioToken.mTokenCode ;\n  ptr->mStartLocation = mTokenStartLocation ;\n  ptr->mEndLocation = mTokenEndLocation ;\n  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;\n  ioToken.mTemplateStringBeforeToken = \"\" ;\n") ;
-  GGS_uint index_14349_ (0) ;
+  GGS_u_33__32_ index_14349_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_14349 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     while (enumerator_14349.hasCurrentObject ()) {
@@ -14870,7 +15266,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("  enterTokenFromPointer (ptr) ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//               A T T R I B U T E   A C C E S S                                                 \n") ;
-  GGS_uint index_14779_ (0) ;
+  GGS_u_33__32_ index_14779_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_14779 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     while (enumerator_14779.hasCurrentObject ()) {
@@ -14892,7 +15288,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     }
   }
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//         A S S I G N    F R O M    A T T R I B U T E                                           \n") ;
-  GGS_uint index_15484_ (0) ;
+  GGS_u_33__32_ index_15484_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_15484 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     while (enumerator_15484.hasCurrentObject ()) {
@@ -14922,7 +15318,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//                         I N T R O S P E C T I O N                                             \n//--------------------------------------------------------------------------------------------------\n\n GGS__5B_string_5D_ Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::symbols (LOCATION_ARGS) {\n  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n") ;
-  GGS_uint index_16883_ (0) ;
+  GGS_u_33__32_ index_16883_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_16883 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
     while (enumerator_16883.hasCurrentObject ()) {
@@ -14936,7 +15332,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString ("  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordLists_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (GenericUniqueArray <String> & ") ;
-  const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_8) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioList */") ;
@@ -14948,7 +15344,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     break ;
   }
   result.appendString (") {\n") ;
-  GGS_uint index_17410_ (0) ;
+  GGS_u_33__32_ index_17410_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_17410 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
     while (enumerator_17410.hasCurrentObject ()) {
@@ -14964,7 +15360,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
   result.appendString ("const String & ") ;
-  const GalgasBool test_9 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_9 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_9) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* inIdentifier */") ;
@@ -14978,7 +15374,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (",\n     ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("bool & ") ;
-  const GalgasBool test_10 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 345)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_10 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 345)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_10) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioFound */") ;
@@ -14992,7 +15388,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (",\n     ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("GenericUniqueArray <String> & ") ;
-  const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 346)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 346)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_11) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioList */") ;
@@ -15004,14 +15400,14 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
     break ;
   }
   result.appendString (") {\n") ;
-  GGS_uint index_18123_ (0) ;
+  GGS_u_33__32_ index_18123_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_18123 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
     while (enumerator_18123.hasCurrentObject ()) {
       result.appendString ("  if (inIdentifier == ") ;
       result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).add_operation (enumerator_18123.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 350)).stringValue ()) ;
       result.appendString (") {\n    ioFound = true ;\n") ;
-      GGS_uint index_18298_ (0) ;
+      GGS_u_33__32_ index_18298_ (0) ;
       if (enumerator_18123.current_mTokenSortedList (HERE).isValid ()) {
         UpEnumerator_sortedTokenArray enumerator_18298 (enumerator_18123.current_mTokenSortedList (HERE)) ;
         while (enumerator_18298.hasCurrentObject ()) {
@@ -15036,9 +15432,9 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   result.appendString (") ;\n\n//--------------------------------------------------------------------------------------------------\n//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           \n//--------------------------------------------------------------------------------------------------\n\nuint32_t Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§\n  static const uint32_t kTerminalSymbolStyles [") ;
-  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).stringValue ()) ;
+  result.appendString (in_TERMINAL_5F_LIST.getter_count (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 371)).stringValue ()) ;
   result.appendString ("] = {0") ;
-  GGS_uint index_19311_ (0) ;
+  GGS_u_33__32_ index_19311_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_19311 (in_TERMINAL_5F_LIST) ;
     while (enumerator_19311.hasCurrentObject ()) {
@@ -15071,7 +15467,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
                                                                                      const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                                      const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
                                                                                      const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                     const GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT,
+                                                                                     const GGS_u_33__32_ & in_LEXICAL_5F_STYLE_5F_COUNT,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -15084,7 +15480,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  final override func lineComment () -> String\? {\n    return gLineComment_") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func selectionRange (forProposedRange inProposedSelectionRange : NSRange,\n                                granularity inGranularity : NSSelectionGranularity,\n                                nsTextViewComputedRange inTextViewComputedRange : NSRange) -> NSRange {\n    var result = inTextViewComputedRange\n    switch inGranularity {\n    case .selectByCharacter :\n      ()\n    case .selectByWord :\n      var found = false\n      var idx = 0\n      while idx < self.mTokenArray.count, !found {\n        let token = self.mTokenArray [idx]\n        idx += 1\n        let tokenRange = token.range\n        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)\n           && (tokenRange.location <= inProposedSelectionRange.location)\n        if found, self.atomicSelectionFor (token: token.tokenCode) {\n          result = tokenRange\n        }\n      }\n    case .selectByParagraph :\n      var found = false\n      var idx = 0\n      while idx < self.mTokenArray.count, !found {\n        let token = self.mTokenArray [idx]\n        idx += 1\n        let tokenRange = token.range\n        found = ((tokenRange.location + tokenRange.length) > inProposedSelectionRange.location)\n           && (tokenRange.location <= inProposedSelectionRange.location)\n        if found {\n          result = tokenRange\n        }\n      }\n    @unknown default:\n      ()\n    }\n    return result\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Scanner\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n") ;
-  GGS_uint index_2839_ (0) ;
+  GGS_u_33__32_ index_2839_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ().isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_2839 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalAttributeMap ()) ;
     while (enumerator_2839.hasCurrentObject ()) {
@@ -15102,18 +15498,18 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func lexiqueIdentifier () -> String {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_lexiqueIdentifier ()\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func isTemplateLexique () -> Bool {\n    return ") ;
-  result.appendString (GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).objectCompare (GGS_uint (uint32_t (0U)))).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).stringValue ()) ;
+  result.appendString (GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 88)).stringValue ()) ;
   result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func terminalVocabularyCount () -> Int {\n    return ") ;
   result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 94)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 94)).stringValue ()) ;
   result.appendString ("\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func styleIndexFor (token inTokenIndex : UInt16) -> UInt8 {\n    let kTerminalSymbolStyles : [UInt8] = [\n      0, // Default\n") ;
-  GGS_uint index_3900_idx (0) ;
+  GGS_u_33__32_ index_3900_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_3900 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
     while (enumerator_3900.hasCurrentObject ()) {
       result.appendString ("      ") ;
       result.appendString (enumerator_3900.current_entry (HERE).readProperty_mStyleIndex ().getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
       result.appendString (", // ") ;
-      result.appendString (index_3900_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
+      result.appendString (index_3900_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 104)).stringValue ()) ;
       result.appendString (" : ") ;
       result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
       result.appendString ("_1_") ;
@@ -15124,26 +15520,26 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     }
   }
   result.appendString ("      ") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
+  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
   result.appendString (", // ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 106)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_ERROR\n      ") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
+  result.appendString (in_LEXICAL_5F_STYLE_5F_COUNT.add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
   result.appendString ("  // ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 107)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalSymbolStyles [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func atomicSelectionFor (token inTokenIndex : UInt16) -> Bool {\n    let kTerminalAtomicSelection : [Bool] = [\n      false, // Default\n") ;
-  GGS_uint index_4706_idx (0) ;
+  GGS_u_33__32_ index_4706_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_4706 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
     while (enumerator_4706.hasCurrentObject ()) {
       result.appendString ("      ") ;
       result.appendString (enumerator_4706.current_entry (HERE).readProperty_atomicSelection ().getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
       result.appendString (", // ") ;
-      result.appendString (index_4706_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
+      result.appendString (index_4706_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 119)).stringValue ()) ;
       result.appendString (" : ") ;
       result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
       result.appendString ("_1_") ;
@@ -15154,19 +15550,19 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     }
   }
   result.appendString ("      false, // ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 121)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_ERROR\n      false  // ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 122)).stringValue ()) ;
   result.appendString (" : ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_TEMPLATE\n    ]\n    return kTerminalAtomicSelection [Int (inTokenIndex)]\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func indexingTitles () -> [String] {\n") ;
-  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_INDEXING_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 131)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_INDEXING_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 131)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_0) {
   case GalgasBool::boolTrue : {
     result.appendString ("    return [\n") ;
-    GGS_uint index_5400_ (0) ;
+    GGS_u_33__32_ index_5400_ (0) ;
     if (in_INDEXING_5F_LIST.isValid ()) {
       UpEnumerator__5B_indexingAST_5D_ enumerator_5400 (in_INDEXING_5F_LIST) ;
       while (enumerator_5400.hasCurrentObject ()) {
@@ -15191,7 +15587,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     break ;
   }
   result.appendString ("  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  final var mLexicalStyleSnapShot = LexicalStyleSnapShot ()\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func performLexicalColoringAfterUserDefaultChange (textStorage inTextStorage : NSTextStorage) {\n    if self.mDebug { Swift.print (\"performLexicalColoringAfterUserDefaultChange\") }\n    let start = Date ()\n    if stylesDidChange (&self.mLexicalStyleSnapShot) {\n      let nsString = inTextStorage.string as NSString\n      let fullRange = NSRange (location: 0, length: nsString.length)\n    //---- Apply default attributes\n      let tsDelegate : (any NSTextStorageDelegate)\? = inTextStorage.delegate\n      inTextStorage.delegate = nil // NSTextStorageDelegate\n      inTextStorage.beginEditing ()\n      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont\n      inTextStorage.font = defaultFont\n      let ps = NSMutableParagraphStyle ()\n      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0\n      let defaultAttributes : [NSAttributedString.Key : Any] = [\n        .font: defaultFont,\n        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),\n        .paragraphStyle : ps\n      ]\n      inTextStorage.setAttributes (defaultAttributes, range: fullRange)\n    //--- Apply styles\n      for token in self.mTokenArray {\n        let idx = Int (self.styleIndexFor (token: token.tokenCode))\n        if idx > 0, idx < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),\n           let attributes = self.mLexicalStyleSnapShot.mAttributeArray [idx - 1] {\n          inTextStorage.addAttributes (attributes, range: token.range)\n        }\n      }\n      inTextStorage.endEditing ()\n      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate\n    }\n    if self.mDebug { Swift.print (\"  done: \\(Int (Date ().timeIntervalSince (start) * 1000.0)) ms\") }\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  override func performLexicalAnalysisAndColoring (textStorage inTextStorage : NSTextStorage,\n                                                   editedRange inEditedRange : NSRange,\n                                                   changeInLength inDelta : Int,\n                                                   popMenuItems ioPopupMenuItems : inout [IdentifiableAttributedString]) {\n    if self.mDebug { Swift.print (\"performLexicalAnalysisAndColoring \\(inEditedRange), delta \\(inDelta)\") }\n    let nsString = inTextStorage.string as NSString\n  //---\n    var savedTokenCount = 0\n    var found = false\n    while savedTokenCount < self.mTokenArray.count, !found {\n      if self.mTokenArray [savedTokenCount].range.upperBound < inEditedRange.location {\n        savedTokenCount += 1\n      }else{\n        found = true\n      }\n    }\n    if self.mDebug { Swift.print (\"  savedTokenCount \\(savedTokenCount), currently \\(self.mTokenArray.count) tokens\") }\n  //--- Eliminate tokens beyond end of source string\n    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {\n      if self.mVerboseDebug { Swift.print (\"Remove last token \\(lastToken.range), beyond end\") }\n      _ = self.mTokenArray.removeLast ()\n    }\n    if self.mDebug { Swift.print (\"  Eliminate token beyond end: \\(self.mTokenArray.count) tokens\") }\n  //--- Translater les tokens suivants\n    var i = savedTokenCount + 1\n    while i < self.mTokenArray.count {\n      let token = self.mTokenArray [i]\n      let newToken = LexicalToken (\n        range: NSRange (location: token.range.location + inDelta, length: token.range.length),\n        tokenCode: token.tokenCode,\n        templateDelimiterIndex: token.templateDelimiterIndex\n      )\n      self.mTokenArray [i] = newToken\n      i += 1\n    }\n  //--- Eliminate tokens beyond end of source string\n    while let lastToken = self.mTokenArray.last, lastToken.range.upperBound > nsString.length {\n      if self.mVerboseDebug { Swift.print (\"Remove last token \\(lastToken.range), beyond end\") }\n      _ = self.mTokenArray.removeLast ()\n    }\n    if self.mDebug { Swift.print (\"  Eliminate token beyond end, after delta correction: \\(self.mTokenArray.count) tokens\") }\n  //--- Perform lexical analysis\n    let start = Date ()\n    if savedTokenCount == 0 {\n      self.resetScannerLocation (withString: nsString)\n    }else{\n      self.resetScanner (\n        withString: nsString,\n        location: self.mTokenArray [savedTokenCount-1].range.upperBound,\n        templateDelimiterIndex : self.mTokenArray [savedTokenCount-1].templateDelimiterIndex\n      )\n    }\n    if self.mDebug { Swift.print (\"  Scanning start location: \\(self.currentLocation)\") }\n    var stop = false\n    var insertionIndex = savedTokenCount\n    while self.currentLocation < nsString.length, !stop {\n      let token : LexicalToken = self.parseLexicalTokenForLexicalColoring ()\n      if token.tokenCode > 0 { // For eliminating separators\n        if self.mVerboseDebug { Swift.print (\"  -> new token \\(token.range) '\\(nsString.substring (with: token.range))'\") }\n      //--- Eliminate previous tokens before new token location\n        if insertionIndex < self.mTokenArray.count,\n              self.mTokenArray [insertionIndex] == token,\n              token.range.location > inEditedRange.upperBound {\n          if self.mVerboseDebug { Swift.print (\"    stop at \\(insertionIndex)\") }\n          stop = true\n        }else{\n          while insertionIndex < self.mTokenArray.count,\n                self.mTokenArray [insertionIndex].range.lowerBound <= token.range.location {\n            if self.mVerboseDebug { Swift.print (\"    remove token \\(self.mTokenArray [insertionIndex].range) at \\(insertionIndex)\") }\n            self.mTokenArray.remove (at: insertionIndex)\n          }\n          if insertionIndex == self.mTokenArray.count {\n            if self.mVerboseDebug { Swift.print (\"    append token \\(token.range) at \\(insertionIndex)\") }\n            self.mTokenArray.append (token)\n            insertionIndex += 1\n          }else{\n            if self.mVerboseDebug {  Swift.print (\"    insert token \\(token.range) at \\(insertionIndex)\") }\n            self.mTokenArray.insert (token, at: insertionIndex)\n            insertionIndex += 1\n          }\n        }\n      }\n    }\n    if self.mDebug { Swift.print (\"  Lexical analysis time: \\(Int (Date ().timeIntervalSince (start) * 1000.0)) ms\") }\n  //---- Apply default attributes\n    let modificationStart = min (inEditedRange.location, (savedTokenCount == 0)\n      \? 0\n      : self.mTokenArray [savedTokenCount - 1].range.upperBound)\n    let modificationEnd = max (inEditedRange.upperBound, (insertionIndex == self.mTokenArray.count)\n       \? nsString.length\n       : self.mTokenArray [insertionIndex].range.upperBound\n    )\n    if self.mDebug { Swift.print (\"  Attributes will change from char index \\(modificationStart) to \\(modificationEnd)\") }\n    let start2 = Date ()\n    if modificationStart < modificationEnd {\n      let modifiedRange = NSRange (location: modificationStart, length: modificationEnd - modificationStart)\n      let tsDelegate : (any NSTextStorageDelegate)\? = inTextStorage.delegate\n      inTextStorage.delegate = nil // NSTextStorageDelegate\n      inTextStorage.beginEditing ()\n      let defaultFont = self.mLexicalStyleSnapShot.mFont.nsFont\n      let ps = NSMutableParagraphStyle ()\n      ps.lineHeightMultiple = CGFloat (self.mLexicalStyleSnapShot.mLineHeight) / 10.0\n      let defaultAttributes : [NSAttributedString.Key : Any] = [\n        .font: defaultFont,\n        .foregroundColor: NSColor (self.mLexicalStyleSnapShot.mDefaultColor),\n        .paragraphStyle : ps\n      ]\n      if self.mVerboseDebug { Swift.print (\"Apply default attributes \\(modifiedRange)\") }\n      inTextStorage.setAttributes (defaultAttributes, range: modifiedRange)\n    //--- Apply styles\n      var idx = 0\n      stop = false\n      while idx < self.mTokenArray.count, !stop { // Apply token styles\n        let token = self.mTokenArray [idx]\n        idx += 1\n        if token.range.lowerBound >= modifiedRange.upperBound {\n          stop = true\n        }else if token.range.upperBound > modifiedRange.lowerBound {\n          let styleIndex = Int (self.styleIndexFor (token: token.tokenCode))\n          if styleIndex > 0, styleIndex < (self.mLexicalStyleSnapShot.mAttributeArray.count - 1),\n             let attributes = self.mLexicalStyleSnapShot.mAttributeArray [styleIndex - 1] {\n            inTextStorage.addAttributes (attributes, range: token.range)\n          }\n        }\n      }\n      inTextStorage.endEditing ()\n      inTextStorage.delegate = tsDelegate // NSTextStorageDelegate\n    }\n    if self.mDebug { Swift.print (\"  Adding attributes: \\(Int (Date ().timeIntervalSince (start2) * 1000.0)) ms\") }\n    ioPopupMenuItems = self.updateEntryPopUpButtons (self.mTokenArray)\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  //   Lexical analysis\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  func parseLexicalTokenForLexicalColoring () -> LexicalToken {\n    var loop = true\n    var scanningOk = true\n") ;
-  GGS_uint index_14870_ (0) ;
+  GGS_u_33__32_ index_14870_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
     UpEnumerator_lexicalAttributeMap enumerator_14870 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP) ;
     while (enumerator_14870.hasCurrentObject ()) {
@@ -15205,10 +15601,10 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     }
   }
   result.appendString ("    var tokenCode : UInt16 = 0\n    let startLocation = self.currentLocation\n") ;
-  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
-    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
+    result.incIndentation (int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
   }
-  GGS_uint index_15107_ (0) ;
+  GGS_u_33__32_ index_15107_ (0) ;
   if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
     UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_15107 (in_LEXICAL_5F_RULE_5F_LIST) ;
     while (enumerator_15107.hasCurrentObject ()) {
@@ -15217,15 +15613,15 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
       index_15107_.increment () ;
     }
   }
-  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
-    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_uint (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
+  if (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).isValid ()) {
+    result.incIndentation (- int32_t (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 334)).uintValue ())) ;
   }
   result.appendString ("if self.testForInputChar (0) { // End of source text \?\n      tokenCode = ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_1_ ; // Empty string code\n    }else{ // Unknown input character\n      tokenCode = ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_TEMPLATE\n      self.advance ()\n    }\n    return LexicalToken (\n      range: NSRange (location: startLocation, length: self.currentLocation - startLocation),\n      tokenCode: tokenCode,\n      templateDelimiterIndex: self.mEndTemplateDelimiterIndex\n    )\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n") ;
-  GGS_uint index_15940_ (0) ;
+  GGS_u_33__32_ index_15940_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ().isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_15940 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mLexicalTokenListMap ()) ;
     while (enumerator_15940.hasCurrentObject ()) {
@@ -15239,7 +15635,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
         result.appendString ("_") ;
         result.appendString (enumerator_15940.current_lkey (HERE).readProperty_string ().stringValue ()) ;
         result.appendString (" : [String : UInt16] = [\n") ;
-        GGS_uint index_16476_ (0) ;
+        GGS_u_33__32_ index_16476_ (0) ;
         if (enumerator_15940.current_mTokenSortedList (HERE).isValid ()) {
           UpEnumerator_sortedTokenArray enumerator_16476 (enumerator_15940.current_mTokenSortedList (HERE)) ;
           while (enumerator_16476.hasCurrentObject ()) {
@@ -15286,13 +15682,13 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("_styleNameFor (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n    \"Default Style\", // 0\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 401)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 401)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_2) {
   case GalgasBool::boolTrue : {
     result.appendString ("fileprivate let kTemplateReplacementArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 402)).stringValue ()) ;
     result.appendString (" : [String] = [\n") ;
-    GGS_uint index_18211_ (0) ;
+    GGS_u_33__32_ index_18211_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
       UpEnumerator__5B_templateReplacementAST_5D_ enumerator_18211 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
       while (enumerator_18211.hasCurrentObject ()) {
@@ -15313,13 +15709,13 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     break ;
   }
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 415)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 415)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case GalgasBool::boolTrue : {
     result.appendString ("fileprivate let kTemplateDefinitionArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 416)).stringValue ()) ;
     result.appendString (" : [SWIFT_TemplateDelimiter] = [\n") ;
-    GGS_uint index_18822_ (0) ;
+    GGS_u_33__32_ index_18822_ (0) ;
     if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
       UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_18822 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
       while (enumerator_18822.hasCurrentObject ()) {
@@ -15347,7 +15743,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N\n//--------------------------------------------------------------------------------------------------\n\nlet ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_1_ : UInt16 = 0\n") ;
-  GGS_uint index_19506_idx (0) ;
+  GGS_u_33__32_ index_19506_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_19506 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
     while (enumerator_19506.hasCurrentObject ()) {
@@ -15356,7 +15752,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
       result.appendString ("_1_") ;
       result.appendString (enumerator_19506.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
       result.appendString (" : UInt16 = ") ;
-      result.appendString (index_19506_idx.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
+      result.appendString (index_19506_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
       result.appendString ("\n") ;
       enumerator_19506.gotoNextObject () ;
       index_19506_idx.increment () ;
@@ -15365,11 +15761,11 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("let ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_ERROR : UInt16 = ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 436)).stringValue ()) ;
   result.appendString ("\nlet ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_2_TEMPLATE : UInt16 = ") ;
-  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).stringValue ()) ;
+  result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).stringValue ()) ;
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
 }

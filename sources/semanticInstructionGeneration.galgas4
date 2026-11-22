@@ -24,7 +24,7 @@
 
 override proc @outputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?![@string] _ioJokerParametersToReleaseList,
   ?![@string] _ioOutputVariableList,
@@ -39,7 +39,7 @@ override proc @outputActualParameterForGeneration.generateActualParameter (
 
 override proc @outputInputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@string _ioImplementation,
   ?![@string] _ioJokerParametersToReleaseList,
   ?![@string] _ioOutputVariableList,
@@ -59,7 +59,7 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter (
 
 override proc @inputActualParameterForGeneration.generateActualParameter (
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@string _ioImplementation,
   ?![@string] _ioJokerParametersToReleaseList,
   ?![@string] ioOutputVariableList,
@@ -74,7 +74,7 @@ override proc @inputActualParameterForGeneration.generateActualParameter (
 
 override proc @inputJokerParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?![@string] ioJokerParametersToReleaseList,
   ?![@string] ioOutputVariableList,
@@ -90,7 +90,7 @@ override proc @inputJokerParameterForGeneration.generateActualParameter (
 //--------------------------------------------------------------------------------------------------
 
 override proc @semanticBlockInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@u32 ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
                                      let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {

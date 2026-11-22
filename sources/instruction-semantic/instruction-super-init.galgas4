@@ -173,7 +173,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

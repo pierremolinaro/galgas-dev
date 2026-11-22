@@ -64,7 +64,7 @@ override proc @penDown.codeDisplay
 //--------------------------------------------------------------------------------------------------
 
 final class @rotate : @instruction {
-  public let @luint mAngle
+  public let @lu32 mAngle
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -76,13 +76,13 @@ override proc @rotate.codeDisplay
   ?!@f64 ioAngle,
   ?!@string _SVG
 ) {
-  ioAngle = ioAngle + self.mAngle.uint.f64
+  ioAngle = ioAngle + self.mAngle.u32.f64
 }
 
 //--------------------------------------------------------------------------------------------------
 
 final class @forward : @instruction {
-  public let @luint mLength
+  public let @lu32 mLength
 }
 
 //--------------------------------------------------------------------------------------------------

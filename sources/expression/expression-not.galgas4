@@ -125,7 +125,7 @@ final class @notExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @notExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)

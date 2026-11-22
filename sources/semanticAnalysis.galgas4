@@ -486,11 +486,11 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   var @lstring lexiqueComponentName =  "".nowhere // Empty string means unknown
   var [@syntaxComponentForGrammarAnalysis] syntaxComponentListForGrammarAnalysis = @()
   var [@nonTerminalToAdd] nonTerminalToAddList = @()
-  var @uint addedNonTerminalCount = 0
+  var @u32 addedNonTerminalCount = 0
   for syntaxComponentName in self.mSyntaxComponents do
     let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (syntaxComponentName)
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: syntaxNameForUsefulness)
-    let @uint addedNonTerminalCountRef = addedNonTerminalCount
+    let @u32 addedNonTerminalCountRef = addedNonTerminalCount
     inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey
       (syntaxComponentName,
       ?let @lstring lexiqueName,
@@ -533,7 +533,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
       !?syntaxComponentListForGrammarAnalysis,
       !?addedNonTerminalCount
     )
-    var @uint i = 0
+    var @u32 i = 0
     loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
       nonTerminalToAddList ++= @(syntaxComponentName, i)
       i += 1
@@ -543,7 +543,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 //--- Search start symbol in non terminal map
   nonTerminalMapForGrammarAnalysis.searchKey
     (self.mStartSymbolName,
-    ?let @uint startSymbolIndex,
+    ?let @u32 startSymbolIndex,
     ?let @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
   )
 //--- Check signatures
@@ -556,7 +556,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 //--------------------------------------------------------- Unused Non Terminal Symbols
   var @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = @()
   for unusedNonterminal in self.mUnusedNonterminalList do
-    nonTerminalMapForGrammarAnalysis.searchKey (unusedNonterminal, ?let @uint nonterminalIndex, ?*)
+    nonTerminalMapForGrammarAnalysis.searchKey (unusedNonterminal, ?let @u32 nonterminalIndex, ?*)
     !?unusedNonTerminalSymbolsForGrammar.insertKey (unusedNonterminal, nonterminalIndex)
   end
 //--------------------------------------------------------- Non terminal symbols, sorted by index
@@ -663,7 +663,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("bool".here),
     inTypeMap.typeMapEntryForLKey ("char".here),
     inTypeMap.typeMapEntryForLKey ("string".here),
-    inTypeMap.typeMapEntryForLKey ("uint".here),
+    inTypeMap.typeMapEntryForLKey ("u32".here),
     inTypeMap.typeMapEntryForLKey ("s32".here),
     inTypeMap.typeMapEntryForLKey ("u64".here),
     inTypeMap.typeMapEntryForLKey ("s64".here),
@@ -671,7 +671,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("lbool".here),
     inTypeMap.typeMapEntryForLKey ("lchar".here),
     inTypeMap.typeMapEntryForLKey ("lstring".here),
-    inTypeMap.typeMapEntryForLKey ("luint".here),
+    inTypeMap.typeMapEntryForLKey ("lu32".here),
     inTypeMap.typeMapEntryForLKey ("ls32".here),
     inTypeMap.typeMapEntryForLKey ("lu64".here),
     inTypeMap.typeMapEntryForLKey ("ls64".here),
@@ -720,7 +720,7 @@ struct @ruleLabelImplementationAST {
 
 struct @ruleDeclarationAST {
   public let @string mNonterminalName
-  public let @uint mRuleIndex
+  public let @u32 mRuleIndex
   public let [@ruleLabelImplementationAST] mLabelImplementationList
 }
 
@@ -741,7 +741,7 @@ filewrapper @syntaxFileGenerationTemplate : "+generation-templates/syntax_genera
     ?@string LEXIQUE_NAME,
     ?@nonterminalMap NONTERMINAL_MAP,
     ?[@ruleDeclarationAST] RULE_DECLARATION_LIST,
-    ?[@uint] SELECT_METHOD_LIST,
+    ?[@u32] SELECT_METHOD_LIST,
     ?@bool HAS_INDEXING,
     ?@bool HAS_TRANSLATE_FEATURE
   )
@@ -841,7 +841,7 @@ override proc @semanticInstructionAST.analyzeSyntaxInstruction
   let @stringset _inIndexNameSet,
   ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
-  ?!@uint _ioSelectMethodCount
+  ?!@u32 _ioSelectMethodCount
 ) {
   self.analyzeSemanticInstruction
     (inUsefulnessCallerEntityName,
@@ -1140,7 +1140,7 @@ proc analyzeSyntaxInstructionList
   let @location inEndOfBranchLocation,
   let @stringset inIndexNameSet,
   ?!@localVarManager ioVariableMap,
-  ?!@uint ioSelectMethodCount,
+  ?!@u32 ioSelectMethodCount,
   ![@semanticInstructionForGeneration] outInstructionListForGeneration ) {
   outInstructionListForGeneration = [@semanticInstructionForGeneration] ()
 //--- Begin branch
@@ -1187,7 +1187,7 @@ proc semanticAnalysisOfRuleLabel
   let @string inComponentName,
   let @location inEndOfInstructionList,
   let @stringset inIndexNameSet,
-  ?!@uint ioSelectMethodCount,
+  ?!@u32 ioSelectMethodCount,
   ![@formalParameterForGeneration] outSignatureForGeneration,
   ![@formalParameterSignatureElement] outSignature,
   ![@semanticInstructionForGeneration] outInstructionListForGeneration
@@ -1286,13 +1286,13 @@ private proc semanticAnalysisOfSyntaxComponent
     !selfObjectCppPrefixForAccessingProperty: ""
   )
 //--- Rule list
-  var @uint selectMethodCount = 0
+  var @u32 selectMethodCount = 0
   var [@ruleDeclarationAST] ruleDeclarationList = @()
-  var @uint newRuleIndex = 0
+  var @u32 newRuleIndex = 0
   for aRule in inRuleList do
   //---
     var [@ruleLabelImplementationAST] ruleLabelImplementationList = @()
-    var @uint localSelectMethodCount = selectMethodCount
+    var @u32 localSelectMethodCount = selectMethodCount
     nonterminalMap.searchKey (aRule.mNonterminalName, ?*)
     for aLabel in aRule.mLabelList do
       localSelectMethodCount = selectMethodCount

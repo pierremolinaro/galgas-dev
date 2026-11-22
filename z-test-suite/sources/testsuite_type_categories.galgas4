@@ -3,7 +3,7 @@
 proc testsuite_type_categories() {
   println ("*************************************** begin of type extension test")
   print ("Square of 7") ; println (7 .u64.square.description)
-  var aList = [@uint] []
+  var aList = [@u32] []
   !?aList.append (1)
   !?aList.append (2)
   !?aList.append (3)
@@ -14,7 +14,7 @@ proc testsuite_type_categories() {
   let cst = 7
   cst.u64.square (?v)
   println (v.description)
-  let @uint u
+  let @u32 u
   aList.sum (?u)
   println (u.description)
   let @string s
@@ -34,7 +34,7 @@ func @u64.square() -> @u64 {
   result = self * self
 }
 
-func [@uint].sum() -> @uint {
+func [@u32].sum() -> @u32 {
   result = 0
   for value in self do
     result = result + value
@@ -50,7 +50,7 @@ proc @u64.square (!@u64 outResult) {
   outResult = self * self
 }
 
-proc [@uint].sum (!@uint outResult) {
+proc [@u32].sum (!@u32 outResult) {
   outResult = 0
   for value in self do
     outResult = outResult + value
@@ -62,11 +62,11 @@ proc @lstring.op (!@string outResult) {
 }
 
 //----------- Extension setters
-mutating proc @lstring.appendInt (let@uint inValue) {
+mutating proc @lstring.appendInt (@u32 inValue) {
   self.string += inValue.string
 }
 
-mutating proc [@uint].appendSquare (let@uint inValue) {
+mutating proc [@u32].appendSquare (@u32 inValue) {
   !?self.append (inValue * inValue)
 }
 

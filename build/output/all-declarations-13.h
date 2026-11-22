@@ -464,10 +464,10 @@ class GGS_propertyIndexMap final : public AC_GALGAS_root {
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
+                                               const class GGS_u_33__32_ & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
@@ -476,7 +476,7 @@ class GGS_propertyIndexMap final : public AC_GALGAS_root {
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_levels (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
                                                     Compiler * inCompiler
@@ -973,7 +973,7 @@ class GGS_syntaxFileGenerationTemplate final {
                                                                              const class GGS_string & inOperand1,
                                                                              const class GGS_nonterminalMap & inOperand2,
                                                                              const class GGS__5B_ruleDeclarationAST_5D_ & inOperand3,
-                                                                             const class GGS__5B_uint_5D_ & inOperand4,
+                                                                             const class GGS__5B_u_33__32__5D_ & inOperand4,
                                                                              const class GGS_bool & inOperand5,
                                                                              const class GGS_bool & inOperand6,
                                                                              Compiler * inCompiler
@@ -1170,7 +1170,7 @@ class GGS__5B_string_3A__5B_lstring_5D__5D_ final : public GenericDictionary <GG
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
@@ -1496,7 +1496,7 @@ class GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ final : public GenericDi
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts
@@ -1746,10 +1746,10 @@ class GGS_extensionMethodMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
+                                               const class GGS_u_33__32_ & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
@@ -1758,7 +1758,7 @@ class GGS_extensionMethodMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_levels (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
                                                     Compiler * inCompiler
@@ -2057,10 +2057,10 @@ class GGS_extensionSetterMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
+                                               const class GGS_u_33__32_ & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
@@ -2069,7 +2069,7 @@ class GGS_extensionSetterMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_levels (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
                                                     Compiler * inCompiler
@@ -2368,10 +2368,10 @@ class GGS_extensionGetterMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
-                                               const class GGS_uint & constinOperand1
+                                               const class GGS_u_33__32_ & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
@@ -2380,7 +2380,7 @@ class GGS_extensionGetterMapForGlobalCheckings final : public AC_GALGAS_root {
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_levels (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
                                                     Compiler * inCompiler
@@ -2559,7 +2559,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterMapForG
 void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionForGeneration * inObject,
                                                  class GGS_string & io_ioGeneratedCode,
                                                  class GGS_stringset & io_ioInclusionSet,
-                                                 class GGS_uint & io__5F_ioTemporaryVariableIndex,
+                                                 class GGS_u_33__32_ & io__5F_ioTemporaryVariableIndex,
                                                  class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                  class GGS_bool & io__5F_ioUseColumnMarker,
                                                  Compiler * inCompiler
@@ -2640,7 +2640,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
 //--- Extension proc generateExpression
   public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
            class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppExpression,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -2886,7 +2886,7 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 
 //--- Extension proc generateActualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
            class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
            class GGS__5B_string_5D_ & arg_ioOutputVariableList,
@@ -3070,7 +3070,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 
 //--- Extension proc generateActualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
            class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
            class GGS__5B_string_5D_ & arg_ioOutputVariableList,
@@ -3254,7 +3254,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 
 //--- Extension proc generateActualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
            class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
            class GGS__5B_string_5D_ & arg_ioOutputVariableList,
@@ -3436,7 +3436,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 
 //--- Extension proc generateActualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
            class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
            class GGS__5B_string_5D_ & arg_ioOutputVariableList,
@@ -3558,7 +3558,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputJokerParameterFor
 
 void callExtensionMethod_generateInstruction (class cPtr_semanticInstructionForGeneration * inObject,
                                               class GGS_stringset & io_ioInclusionSet,
-                                              class GGS_uint & io_ioTemporaryVariableIndex,
+                                              class GGS_u_33__32_ & io_ioTemporaryVariableIndex,
                                               class GGS_stringset & io_ioUnusedVariableCppNameSet,
                                               const class GGS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                               class GGS_string & io_ioGeneratedCode,
@@ -3627,7 +3627,7 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 
 //--- Extension proc generateInstruction
   public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
            class GGS_stringset & arg_ioUnusedVariableCppNameSet,
            const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
            class GGS_string & arg_ioGeneratedCode,

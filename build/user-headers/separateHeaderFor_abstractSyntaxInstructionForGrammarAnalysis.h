@@ -25,12 +25,12 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public AbstractStrongPt
 
 //--- Extension proc tikzNodeForSyntaxInstruction
   public: virtual void method_tikzNodeForSyntaxInstruction (class GGS__5B_row_5D_ & arg_ioRowList,
-           const class GGS_uint arg_inRow,
-           class GGS_uint & arg_ioColumn,
+           const class GGS_u_33__32_ arg_inRow,
+           class GGS_u_33__32_ & arg_ioColumn,
            class GGS_string & arg_ioCurrentNode,
            class GGS_string & arg_ioArrowShape,
            class GGS_string & arg_ioArrows,
-           class GGS_uint & arg_ioMaxUsedRowIndex,
+           class GGS_u_33__32_ & arg_ioMaxUsedRowIndex,
            const class GGS_bool arg_inDebug,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 

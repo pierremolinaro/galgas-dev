@@ -132,7 +132,7 @@ end
     "GGS_timer.cpp",
     "GGS_u8.cpp",
     "GGS_u16.cpp",
-    "GGS_uint.cpp",
+    "GGS_u32.cpp",
     "GGS_u64.cpp"
   ],
   "USER_LINK_OPTIONS" : [%

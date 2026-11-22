@@ -168,8 +168,8 @@ void routine_recursivelyEnumerateDirectories_3F__3F__3F__3F__21__21__26__26_ (co
                                                                               const class GGS_wrapperExtensionMap constinArgument3,
                                                                               class GGS_wrapperFileMap & outArgument4,
                                                                               class GGS_wrapperDirectoryMap & outArgument5,
-                                                                              class GGS_uint & ioArgument6,
-                                                                              class GGS_uint & ioArgument7,
+                                                                              class GGS_u_33__32_ & ioArgument6,
+                                                                              class GGS_u_33__32_ & ioArgument7,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -211,7 +211,7 @@ void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class
 
 void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
                                                               const class GGS_string constinArgument1,
-                                                              const class GGS_uint constinArgument2,
+                                                              const class GGS_u_33__32_ constinArgument2,
                                                               const class GGS_wrapperFileMap constinArgument3,
                                                               const class GGS_wrapperDirectoryMap constinArgument4,
                                                               class GGS_string & ioArgument5,
@@ -227,7 +227,7 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_st
 void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS__5B_templateInstructionForGeneration_5D_ constinArgument0,
                                                                                class GGS_string & ioArgument1,
                                                                                class GGS_stringset & ioArgument2,
-                                                                               class GGS_uint & ioArgument3,
+                                                                               class GGS_u_33__32_ & ioArgument3,
                                                                                class GGS_stringset & ioArgument4,
                                                                                class GGS_bool & ioArgument5,
                                                                                Compiler * inCompiler

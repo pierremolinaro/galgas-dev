@@ -110,7 +110,7 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
     !?ioVariableMap,
     ?var variantExpression
   )
-//--- Check variant expression type is @uint
+//--- Check variant expression type is @u32
   checkAssignmentTypeWithImplicitGetterCall (
     inAnalysisContext.predefinedTypes.mUIntType,
     variantExpression.mResultType,
@@ -186,7 +186,7 @@ final class @loopInstructionWithVariantForGeneration : @semanticInstructionForGe
 //·································································································
 
 override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {

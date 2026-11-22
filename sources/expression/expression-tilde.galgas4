@@ -108,7 +108,7 @@ final class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @tildeExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   self.mExpression.mResultType.addHeaderFileName (!?ioInclusionSet)

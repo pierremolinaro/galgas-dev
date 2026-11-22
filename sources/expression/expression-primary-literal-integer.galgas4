@@ -89,7 +89,7 @@ override proc @literalBigIntExpressionAST.analyzeSemanticExpression
 //--------------------------------------------------------------------------------------------------
 
 final class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
-  public let @uint mValue
+  public let @u32 mValue
 }
 
 //································································································
@@ -97,10 +97,10 @@ final class @literalUIntExpressionForGeneration : @semanticExpressionForGenerati
 override proc @literalUIntExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  outCppExpression = "GGS_uint (uint32_t (" + self.mValue.string + "U))"
+  outCppExpression = "GGS_u_33__32_ (uint32_t (" + self.mValue.string + "U))"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ final class @literalUInt64ExpressionForGeneration : @semanticExpressionForGenera
   
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset _ioInclusionSet,
-                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@u32 _ioTemporaryVariableIndex,
                                     ?!@stringset _ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
     outCppExpression = "GGS_u_36__34_ (uint64_t (" + self.mValue.string + "ULL))"
@@ -124,7 +124,7 @@ final class @literalU8ExpressionForGeneration : @semanticExpressionForGeneration
   
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset _ioInclusionSet,
-                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@u32 _ioTemporaryVariableIndex,
                                     ?!@stringset _ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
     outCppExpression = "GGS_u_38_ (" + self.mValue.string + ")"
@@ -142,7 +142,7 @@ final class @literalSIntExpressionForGeneration : @semanticExpressionForGenerati
 override proc @literalSIntExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_s_33__32_ (int32_t (" + self.mValue.string + "L))"
@@ -159,7 +159,7 @@ final class @literalSInt64ExpressionForGeneration : @semanticExpressionForGenera
 override proc @literalSInt64ExpressionForGeneration.generateExpression
                                                           (?!@string _ioGeneratedCode,
                                                           ?!@stringset _ioInclusionSet,
-                                                          ?!@uint _ioTemporaryVariableIndex,
+                                                          ?!@u32 _ioTemporaryVariableIndex,
                                                           ?!@stringset _ioUnusedVariableCppNameSet,
                                                           !@string outCppExpression ) {
   outCppExpression = "GGS_s_36__34_ (int64_t (" + self.mValue.string + "LL))"
@@ -176,7 +176,7 @@ final class @literalBigIntExpressionForGeneration : @semanticExpressionForGenera
 override proc @literalBigIntExpressionForGeneration.generateExpression
                                                           (?!@string _ioGeneratedCode,
                                                           ?!@stringset _ioInclusionSet,
-                                                          ?!@uint _ioTemporaryVariableIndex,
+                                                          ?!@u32 _ioTemporaryVariableIndex,
                                                           ?!@stringset ioUnusedVariableCppNameSet,
                                                           !@string outCppExpression ) {
   outCppExpression = "GGS_bigint (\"" + self.mValue.string + "\", "

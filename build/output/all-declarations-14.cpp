@@ -4329,7 +4329,7 @@ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element & GGS_unusedNonTermi
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
-                                                                                                                                       const GGS_uint & in_mNonTerminalIndex,
+                                                                                                                                       const GGS_u_33__32_ & in_mNonTerminalIndex,
                                                                                                                                        Compiler * inCompiler
                                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element result ;
@@ -4347,7 +4347,7 @@ void GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::setInitialized
 //--------------------------------------------------------------------------------------------------
 
 GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element (const GGS_lstring & inOperand0,
-                                                                                                                          const GGS_uint & inOperand1) :
+                                                                                                                          const GGS_u_33__32_ & inOperand1) :
 mProperty_lkey (inOperand0),
 mProperty_mNonTerminalIndex (inOperand1) {
 }
@@ -4509,7 +4509,7 @@ GGS_terminalSymbolsMapForGrammarAnalysis_2E_element & GGS_terminalSymbolsMapForG
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_terminalSymbolsMapForGrammarAnalysis_2E_element GGS_terminalSymbolsMapForGrammarAnalysis_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
-                                                                                                                       const GGS_uint & in_mTerminalIndex,
+                                                                                                                       const GGS_u_33__32_ & in_mTerminalIndex,
                                                                                                                        Compiler * inCompiler
                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_terminalSymbolsMapForGrammarAnalysis_2E_element result ;
@@ -4527,7 +4527,7 @@ void GGS_terminalSymbolsMapForGrammarAnalysis_2E_element::setInitializedProperti
 //--------------------------------------------------------------------------------------------------
 
 GGS_terminalSymbolsMapForGrammarAnalysis_2E_element::GGS_terminalSymbolsMapForGrammarAnalysis_2E_element (const GGS_lstring & inOperand0,
-                                                                                                          const GGS_uint & inOperand1) :
+                                                                                                          const GGS_u_33__32_ & inOperand1) :
 mProperty_lkey (inOperand0),
 mProperty_mTerminalIndex (inOperand1) {
 }
@@ -7484,7 +7484,7 @@ GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element & GGS_nonTerminalSymbolMap
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                                                               const GGS_uint & in_mNonTerminalIndex,
+                                                                                                                               const GGS_u_33__32_ & in_mNonTerminalIndex,
                                                                                                                                const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap,
                                                                                                                                Compiler * inCompiler
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
@@ -7504,7 +7504,7 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::setInitializedProper
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element (const GGS_lstring & inOperand0,
-                                                                                                              const GGS_uint & inOperand1,
+                                                                                                              const GGS_u_33__32_ & inOperand1,
                                                                                                               const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mNonTerminalIndex (inOperand1),
@@ -13977,7 +13977,7 @@ GGS_switchBranchForGeneration & GGS_switchBranchForGeneration::operator = (const
 
 GGS_switchBranchForGeneration GGS_switchBranchForGeneration::init_21__21__21__21_ (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
                                                                                    const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
-                                                                                   const GGS_uint & in_mEndOfBranchLocationIndex,
+                                                                                   const GGS_u_33__32_ & in_mEndOfBranchLocationIndex,
                                                                                    const GGS__5B_semanticInstructionForGeneration_5D_ & in_mInstructions,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -13999,7 +13999,7 @@ void GGS_switchBranchForGeneration::setInitializedProperties (Compiler * /* inCo
 
 GGS_switchBranchForGeneration::GGS_switchBranchForGeneration (const GGS__5B_lstring_5D_ & inOperand0,
                                                               const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand1,
-                                                              const GGS_uint & inOperand2,
+                                                              const GGS_u_33__32_ & inOperand2,
                                                               const GGS__5B_semanticInstructionForGeneration_5D_ & inOperand3) :
 mProperty_mSwitchConstantList (inOperand0),
 mProperty_mExtractedAssociatedValuesForGeneration (inOperand1),

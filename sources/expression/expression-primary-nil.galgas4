@@ -96,7 +96,7 @@ final class @nilExpressionForGeneration : @semanticExpressionForGeneration {
 
   override proc generateExpression (?!@string _ioGeneratedCode,
                                       ?!@stringset _ioInclusionSet,
-                                      ?!@uint _ioTemporaryVariableIndex,
+                                      ?!@u32 _ioTemporaryVariableIndex,
                                       ?!@stringset _ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
     outCppExpression = "GGS_" + self.mResultType.identifierRepresentation + "::init_nil ()"

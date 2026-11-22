@@ -58,10 +58,10 @@ void GGS__5B_actualParameterAST_5D_::plusPlusAssignOperation (const GGS_actualPa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_actualParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_actualParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -126,7 +126,7 @@ void GGS__5B_actualParameterAST_5D_::setter_removeAll (Compiler * /* inCompiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterAST_5D_::setter_set (const GGS_actualParameterAST inValue,
-                                                 const GGS_uint inIndex,
+                                                 const GGS_u_33__32_ inIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -147,7 +147,7 @@ void GGS__5B_actualParameterAST_5D_::setter_set (const GGS_actualParameterAST in
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterAST_5D_::setter_insert (const GGS_actualParameterAST inValue,
-                                                    const GGS_uint inInsertionIndex,
+                                                    const GGS_u_33__32_ inInsertionIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -168,7 +168,7 @@ void GGS__5B_actualParameterAST_5D_::setter_insert (const GGS_actualParameterAST
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterAST_5D_::setter_remove (GGS_actualParameterAST & outValue,
-                                                    const GGS_uint inRemoveIndex,
+                                                    const GGS_u_33__32_ inRemoveIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -224,7 +224,7 @@ void GGS__5B_actualParameterAST_5D_::setter_removeLast (GGS_actualParameterAST &
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualParameterAST_5D_ GGS__5B_actualParameterAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_actualParameterAST_5D_ GGS__5B_actualParameterAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_actualParameterAST_5D_ result ;
@@ -249,8 +249,8 @@ GGS__5B_actualParameterAST_5D_ GGS__5B_actualParameterAST_5D_::getter_removingFi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualParameterAST_5D_ GGS__5B_actualParameterAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                               const GGS_uint & inLength,
+GGS__5B_actualParameterAST_5D_ GGS__5B_actualParameterAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                               const GGS_u_33__32_ & inLength,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_actualParameterAST_5D_ result ;
@@ -318,7 +318,7 @@ GGS_actualParameterAST GGS__5B_actualParameterAST_5D_::getter_last (Compiler * i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualParameterAST GGS__5B_actualParameterAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_actualParameterAST GGS__5B_actualParameterAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GGS_actualParameterAST result ;
@@ -525,10 +525,10 @@ void GGS__5B_semanticInstructionForGeneration_5D_::plusPlusAssignOperation (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_semanticInstructionForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_semanticInstructionForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -593,7 +593,7 @@ void GGS__5B_semanticInstructionForGeneration_5D_::setter_removeAll (Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionForGeneration_5D_::setter_set (const GGS_semanticInstructionForGeneration inValue,
-                                                               const GGS_uint inIndex,
+                                                               const GGS_u_33__32_ inIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -614,7 +614,7 @@ void GGS__5B_semanticInstructionForGeneration_5D_::setter_set (const GGS_semanti
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionForGeneration_5D_::setter_insert (const GGS_semanticInstructionForGeneration inValue,
-                                                                  const GGS_uint inInsertionIndex,
+                                                                  const GGS_u_33__32_ inInsertionIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -635,7 +635,7 @@ void GGS__5B_semanticInstructionForGeneration_5D_::setter_insert (const GGS_sema
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionForGeneration_5D_::setter_remove (GGS_semanticInstructionForGeneration & outValue,
-                                                                  const GGS_uint inRemoveIndex,
+                                                                  const GGS_u_33__32_ inRemoveIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -691,7 +691,7 @@ void GGS__5B_semanticInstructionForGeneration_5D_::setter_removeLast (GGS_semant
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                  Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticInstructionForGeneration_5D_ result ;
@@ -716,8 +716,8 @@ GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGener
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                           const GGS_uint & inLength,
+GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                           const GGS_u_33__32_ & inLength,
                                                                                                            Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticInstructionForGeneration_5D_ result ;
@@ -785,7 +785,7 @@ GGS_semanticInstructionForGeneration GGS__5B_semanticInstructionForGeneration_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticInstructionForGeneration GGS__5B_semanticInstructionForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_semanticInstructionForGeneration GGS__5B_semanticInstructionForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionForGeneration result ;
@@ -992,10 +992,10 @@ void GGS__5B_actualParameterForGeneration_5D_::plusPlusAssignOperation (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_actualParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_actualParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -1060,7 +1060,7 @@ void GGS__5B_actualParameterForGeneration_5D_::setter_removeAll (Compiler * /* i
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterForGeneration_5D_::setter_set (const GGS_actualParameterForGeneration inValue,
-                                                           const GGS_uint inIndex,
+                                                           const GGS_u_33__32_ inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -1081,7 +1081,7 @@ void GGS__5B_actualParameterForGeneration_5D_::setter_set (const GGS_actualParam
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterForGeneration_5D_::setter_insert (const GGS_actualParameterForGeneration inValue,
-                                                              const GGS_uint inInsertionIndex,
+                                                              const GGS_u_33__32_ inInsertionIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -1102,7 +1102,7 @@ void GGS__5B_actualParameterForGeneration_5D_::setter_insert (const GGS_actualPa
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualParameterForGeneration_5D_::setter_remove (GGS_actualParameterForGeneration & outValue,
-                                                              const GGS_uint inRemoveIndex,
+                                                              const GGS_u_33__32_ inRemoveIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -1158,7 +1158,7 @@ void GGS__5B_actualParameterForGeneration_5D_::setter_removeLast (GGS_actualPara
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_actualParameterForGeneration_5D_ result ;
@@ -1183,8 +1183,8 @@ GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                   const GGS_uint & inLength,
+GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                   const GGS_u_33__32_ & inLength,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_actualParameterForGeneration_5D_ result ;
@@ -1252,7 +1252,7 @@ GGS_actualParameterForGeneration GGS__5B_actualParameterForGeneration_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualParameterForGeneration GGS__5B_actualParameterForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_actualParameterForGeneration GGS__5B_actualParameterForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GGS_actualParameterForGeneration result ;
@@ -1620,10 +1620,10 @@ void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::plusPlusAssignOper
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -1688,7 +1688,7 @@ void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_removeAll (
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_set (const GGS_abstractSyntaxInstructionForGrammarAnalysis inValue,
-                                                                          const GGS_uint inIndex,
+                                                                          const GGS_u_33__32_ inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -1709,7 +1709,7 @@ void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_set (const 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_insert (const GGS_abstractSyntaxInstructionForGrammarAnalysis inValue,
-                                                                             const GGS_uint inInsertionIndex,
+                                                                             const GGS_u_33__32_ inInsertionIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -1730,7 +1730,7 @@ void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_insert (con
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_remove (GGS_abstractSyntaxInstructionForGrammarAnalysis & outValue,
-                                                                             const GGS_uint inRemoveIndex,
+                                                                             const GGS_u_33__32_ inRemoveIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -1786,7 +1786,7 @@ void GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::setter_removeLast 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                                        Compiler * inCompiler
                                                                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ result ;
@@ -1811,8 +1811,8 @@ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B_abstractSyntaxIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                                 const GGS_uint & inLength,
+GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                                 const GGS_u_33__32_ & inLength,
                                                                                                                                  Compiler * inCompiler
                                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ result ;
@@ -1880,7 +1880,7 @@ GGS_abstractSyntaxInstructionForGrammarAnalysis GGS__5B_abstractSyntaxInstructio
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_abstractSyntaxInstructionForGrammarAnalysis GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_abstractSyntaxInstructionForGrammarAnalysis GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                                             Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) const {
   GGS_abstractSyntaxInstructionForGrammarAnalysis result ;
@@ -2911,10 +2911,10 @@ void GGS__5B_fixitElementAST_5D_::plusPlusAssignOperation (const GGS_fixitElemen
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_fixitElementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_fixitElementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -2979,7 +2979,7 @@ void GGS__5B_fixitElementAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementAST_5D_::setter_set (const GGS_fixitElementAST inValue,
-                                              const GGS_uint inIndex,
+                                              const GGS_u_33__32_ inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3000,7 +3000,7 @@ void GGS__5B_fixitElementAST_5D_::setter_set (const GGS_fixitElementAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementAST_5D_::setter_insert (const GGS_fixitElementAST inValue,
-                                                 const GGS_uint inInsertionIndex,
+                                                 const GGS_u_33__32_ inInsertionIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3021,7 +3021,7 @@ void GGS__5B_fixitElementAST_5D_::setter_insert (const GGS_fixitElementAST inVal
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementAST_5D_::setter_remove (GGS_fixitElementAST & outValue,
-                                                 const GGS_uint inRemoveIndex,
+                                                 const GGS_u_33__32_ inRemoveIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3077,7 +3077,7 @@ void GGS__5B_fixitElementAST_5D_::setter_removeLast (GGS_fixitElementAST & outVa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_fixitElementAST_5D_ result ;
@@ -3102,8 +3102,8 @@ GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_removingFirst (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                         const GGS_uint & inLength,
+GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                         const GGS_u_33__32_ & inLength,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_fixitElementAST_5D_ result ;
@@ -3171,7 +3171,7 @@ GGS_fixitElementAST GGS__5B_fixitElementAST_5D_::getter_last (Compiler * inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_fixitElementAST GGS__5B_fixitElementAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_fixitElementAST GGS__5B_fixitElementAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GGS_fixitElementAST result ;
@@ -3580,10 +3580,10 @@ void GGS__5B_fixitElementForGeneration_5D_::plusPlusAssignOperation (const GGS_f
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_fixitElementForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_fixitElementForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3648,7 +3648,7 @@ void GGS__5B_fixitElementForGeneration_5D_::setter_removeAll (Compiler * /* inCo
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementForGeneration_5D_::setter_set (const GGS_fixitElementForGeneration inValue,
-                                                        const GGS_uint inIndex,
+                                                        const GGS_u_33__32_ inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3669,7 +3669,7 @@ void GGS__5B_fixitElementForGeneration_5D_::setter_set (const GGS_fixitElementFo
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementForGeneration_5D_::setter_insert (const GGS_fixitElementForGeneration inValue,
-                                                           const GGS_uint inInsertionIndex,
+                                                           const GGS_u_33__32_ inInsertionIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3690,7 +3690,7 @@ void GGS__5B_fixitElementForGeneration_5D_::setter_insert (const GGS_fixitElemen
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_fixitElementForGeneration_5D_::setter_remove (GGS_fixitElementForGeneration & outValue,
-                                                           const GGS_uint inRemoveIndex,
+                                                           const GGS_u_33__32_ inRemoveIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3746,7 +3746,7 @@ void GGS__5B_fixitElementForGeneration_5D_::setter_removeLast (GGS_fixitElementF
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_fixitElementForGeneration_5D_ result ;
@@ -3771,8 +3771,8 @@ GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::get
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                             const GGS_uint & inLength,
+GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                             const GGS_u_33__32_ & inLength,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_fixitElementForGeneration_5D_ result ;
@@ -3840,7 +3840,7 @@ GGS_fixitElementForGeneration GGS__5B_fixitElementForGeneration_5D_::getter_last
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_fixitElementForGeneration GGS__5B_fixitElementForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_fixitElementForGeneration GGS__5B_fixitElementForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_fixitElementForGeneration result ;
@@ -3925,7 +3925,7 @@ const GALGAS_TypeDescriptor * GGS__5B_fixitElementForGeneration_5D_::staticTypeD
 
 void extensionMethod_generateFixIt (const GGS__5B_fixitElementForGeneration_5D_ inObject,
                                     GGS_stringset & ioArgument_ioInclusionSet,
-                                    GGS_uint & ioArgument_ioTemporaryVariableIndex,
+                                    GGS_u_33__32_ & ioArgument_ioTemporaryVariableIndex,
                                     GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                     const GGS_bool /* constinArgument__5F_inGenerateSyntaxDirectedTranslationString */,
                                     GGS_string & ioArgument_ioGeneratedCode,
@@ -3934,12 +3934,12 @@ void extensionMethod_generateFixIt (const GGS__5B_fixitElementForGeneration_5D_ 
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFixItArrayCppName.drop () ; // Release 'out' argument
   outArgument_outFixItArrayCppName = GGS_string ("fixItArray").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-error.galgas4", 322)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 322)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 323)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_u_33__32_ (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 323)) ;
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GenericArray <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 324)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 324)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 324)) ;
   const GGS__5B_fixitElementForGeneration_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_fixitElementForGeneration_5D_ enumerator_13505 (temp_0) ;
-  while (enumerator_13505.hasCurrentObject ()) {
-    switch (enumerator_13505.current (HERE).enumValue ()) {
+  UpEnumerator__5B_fixitElementForGeneration_5D_ enumerator_13504 (temp_0) ;
+  while (enumerator_13504.hasCurrentObject ()) {
+    switch (enumerator_13504.current (HERE).enumValue ()) {
     case GGS_fixitElementForGeneration::Enumeration::invalid:
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItRemove:
@@ -3949,33 +3949,33 @@ void extensionMethod_generateFixIt (const GGS__5B_fixitElementForGeneration_5D_ 
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItReplace:
       {
-        GGS_semanticExpressionForGeneration extractedValue_13733_exp_0 ;
-        enumerator_13505.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_13733_exp_0) ;
-        GGS_string var_receiverCppVarName_13910 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13733_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_13910, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 330)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (var_receiverCppVarName_13910, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)) ;
+        GGS_semanticExpressionForGeneration extractedValue_13732_exp_0 ;
+        enumerator_13504.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_13732_exp_0) ;
+        GGS_string var_receiverCppVarName_13909 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13732_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_13909, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 330)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (var_receiverCppVarName_13909, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 337)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertBefore:
       {
-        GGS_semanticExpressionForGeneration extractedValue_14136_exp_0 ;
-        enumerator_13505.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_14136_exp_0) ;
-        GGS_string var_receiverCppVarName_14313 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14136_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14313, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 339)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (var_receiverCppVarName_14313, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)) ;
+        GGS_semanticExpressionForGeneration extractedValue_14135_exp_0 ;
+        enumerator_13504.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_14135_exp_0) ;
+        GGS_string var_receiverCppVarName_14312 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14135_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14312, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 339)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (var_receiverCppVarName_14312, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 346)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertAfter:
       {
-        GGS_semanticExpressionForGeneration extractedValue_14543_exp_0 ;
-        enumerator_13505.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_14543_exp_0) ;
-        GGS_string var_receiverCppVarName_14720 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14543_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14720, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 348)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (var_receiverCppVarName_14720, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)) ;
+        GGS_semanticExpressionForGeneration extractedValue_14542_exp_0 ;
+        enumerator_13504.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_14542_exp_0) ;
+        GGS_string var_receiverCppVarName_14719 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14542_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14719, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 348)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (var_receiverCppVarName_14719, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 355)) ;
       }
       break ;
     }
-    enumerator_13505.gotoNextObject () ;
+    enumerator_13504.gotoNextObject () ;
   }
 }
 
@@ -4351,10 +4351,10 @@ void GGS__5B_formalParameterSignatureElement_5D_::plusPlusAssignOperation (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_formalParameterSignatureElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_formalParameterSignatureElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -4419,7 +4419,7 @@ void GGS__5B_formalParameterSignatureElement_5D_::setter_removeAll (Compiler * /
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterSignatureElement_5D_::setter_set (const GGS_formalParameterSignatureElement inValue,
-                                                              const GGS_uint inIndex,
+                                                              const GGS_u_33__32_ inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -4440,7 +4440,7 @@ void GGS__5B_formalParameterSignatureElement_5D_::setter_set (const GGS_formalPa
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterSignatureElement_5D_::setter_insert (const GGS_formalParameterSignatureElement inValue,
-                                                                 const GGS_uint inInsertionIndex,
+                                                                 const GGS_u_33__32_ inInsertionIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -4461,7 +4461,7 @@ void GGS__5B_formalParameterSignatureElement_5D_::setter_insert (const GGS_forma
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterSignatureElement_5D_::setter_remove (GGS_formalParameterSignatureElement & outValue,
-                                                                 const GGS_uint inRemoveIndex,
+                                                                 const GGS_u_33__32_ inRemoveIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -4517,7 +4517,7 @@ void GGS__5B_formalParameterSignatureElement_5D_::setter_removeLast (GGS_formalP
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterSignatureElement_5D_ GGS__5B_formalParameterSignatureElement_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_formalParameterSignatureElement_5D_ GGS__5B_formalParameterSignatureElement_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_formalParameterSignatureElement_5D_ result ;
@@ -4542,8 +4542,8 @@ GGS__5B_formalParameterSignatureElement_5D_ GGS__5B_formalParameterSignatureElem
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterSignatureElement_5D_ GGS__5B_formalParameterSignatureElement_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                         const GGS_uint & inLength,
+GGS__5B_formalParameterSignatureElement_5D_ GGS__5B_formalParameterSignatureElement_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                         const GGS_u_33__32_ & inLength,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_formalParameterSignatureElement_5D_ result ;
@@ -4611,7 +4611,7 @@ GGS_formalParameterSignatureElement GGS__5B_formalParameterSignatureElement_5D_:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignatureElement GGS__5B_formalParameterSignatureElement_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_formalParameterSignatureElement GGS__5B_formalParameterSignatureElement_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_formalParameterSignatureElement result ;
@@ -6240,10 +6240,10 @@ void GGS__5B_CommaSeparatedExpressionElement_5D_::plusPlusAssignOperation (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_CommaSeparatedExpressionElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_CommaSeparatedExpressionElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6308,7 +6308,7 @@ void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_removeAll (Compiler * /
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_set (const GGS_CommaSeparatedExpressionElement inValue,
-                                                              const GGS_uint inIndex,
+                                                              const GGS_u_33__32_ inIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6329,7 +6329,7 @@ void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_set (const GGS_CommaSep
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_insert (const GGS_CommaSeparatedExpressionElement inValue,
-                                                                 const GGS_uint inInsertionIndex,
+                                                                 const GGS_u_33__32_ inInsertionIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6350,7 +6350,7 @@ void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_insert (const GGS_Comma
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_remove (GGS_CommaSeparatedExpressionElement & outValue,
-                                                                 const GGS_uint inRemoveIndex,
+                                                                 const GGS_u_33__32_ inRemoveIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -6406,7 +6406,7 @@ void GGS__5B_CommaSeparatedExpressionElement_5D_::setter_removeLast (GGS_CommaSe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_CommaSeparatedExpressionElement_5D_ GGS__5B_CommaSeparatedExpressionElement_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_CommaSeparatedExpressionElement_5D_ GGS__5B_CommaSeparatedExpressionElement_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_CommaSeparatedExpressionElement_5D_ result ;
@@ -6431,8 +6431,8 @@ GGS__5B_CommaSeparatedExpressionElement_5D_ GGS__5B_CommaSeparatedExpressionElem
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_CommaSeparatedExpressionElement_5D_ GGS__5B_CommaSeparatedExpressionElement_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                         const GGS_uint & inLength,
+GGS__5B_CommaSeparatedExpressionElement_5D_ GGS__5B_CommaSeparatedExpressionElement_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                         const GGS_u_33__32_ & inLength,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_CommaSeparatedExpressionElement_5D_ result ;
@@ -6500,7 +6500,7 @@ GGS_CommaSeparatedExpressionElement GGS__5B_CommaSeparatedExpressionElement_5D_:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_CommaSeparatedExpressionElement GGS__5B_CommaSeparatedExpressionElement_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_CommaSeparatedExpressionElement GGS__5B_CommaSeparatedExpressionElement_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_CommaSeparatedExpressionElement result ;
@@ -6863,10 +6863,10 @@ void GGS__5B_ifTestForGeneration_5D_::plusPlusAssignOperation (const GGS_ifTestF
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_ifTestForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_ifTestForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6931,7 +6931,7 @@ void GGS__5B_ifTestForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ifTestForGeneration_5D_::setter_set (const GGS_ifTestForGeneration inValue,
-                                                  const GGS_uint inIndex,
+                                                  const GGS_u_33__32_ inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6952,7 +6952,7 @@ void GGS__5B_ifTestForGeneration_5D_::setter_set (const GGS_ifTestForGeneration 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ifTestForGeneration_5D_::setter_insert (const GGS_ifTestForGeneration inValue,
-                                                     const GGS_uint inInsertionIndex,
+                                                     const GGS_u_33__32_ inInsertionIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6973,7 +6973,7 @@ void GGS__5B_ifTestForGeneration_5D_::setter_insert (const GGS_ifTestForGenerati
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ifTestForGeneration_5D_::setter_remove (GGS_ifTestForGeneration & outValue,
-                                                     const GGS_uint inRemoveIndex,
+                                                     const GGS_u_33__32_ inRemoveIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -7029,7 +7029,7 @@ void GGS__5B_ifTestForGeneration_5D_::setter_removeLast (GGS_ifTestForGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ifTestForGeneration_5D_ GGS__5B_ifTestForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_ifTestForGeneration_5D_ GGS__5B_ifTestForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_ifTestForGeneration_5D_ result ;
@@ -7054,8 +7054,8 @@ GGS__5B_ifTestForGeneration_5D_ GGS__5B_ifTestForGeneration_5D_::getter_removing
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ifTestForGeneration_5D_ GGS__5B_ifTestForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                 const GGS_uint & inLength,
+GGS__5B_ifTestForGeneration_5D_ GGS__5B_ifTestForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                 const GGS_u_33__32_ & inLength,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_ifTestForGeneration_5D_ result ;
@@ -7123,7 +7123,7 @@ GGS_ifTestForGeneration GGS__5B_ifTestForGeneration_5D_::getter_last (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ifTestForGeneration GGS__5B_ifTestForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_ifTestForGeneration GGS__5B_ifTestForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GGS_ifTestForGeneration result ;
@@ -7556,8 +7556,8 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS__5B_CommaSeparated
                 var_testType_5970 = var_castType_5923 ;
                 GGS_unifiedTypeMapEntry var_t_7715 = var_castType_5923 ;
                 GGS_bool var_found_7748 = GGS_bool (ComparisonKind::equal, var_t_7715.objectCompare (var_analyzedExpression_5886.readProperty_mResultType ())) ;
-                if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).isValid ()) {
-                  uint32_t variant_7802 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).uintValue () ;
+                if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).isValid ()) {
+                  uint32_t variant_7802 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 200)).uintValue () ;
                   bool loop_7802 = true ;
                   while (loop_7802) {
                     loop_7802 = var_found_7748.operator_not (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 201)).operator_and (extensionGetter_definition (var_t_7715, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 201)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 201)).operator_not (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 201)) COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 201)).isValid () ;
@@ -7651,8 +7651,8 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS__5B_CommaSeparated
                     }
                   }
                 }
-                if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).isValid ()) {
-                  uint32_t variant_9895 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).uintValue () ;
+                if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).isValid ()) {
+                  uint32_t variant_9895 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 255)).uintValue () ;
                   bool loop_9895 = true ;
                   while (loop_9895) {
                     loop_9895 = var_found_9645.operator_not (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 256)).operator_and (extensionGetter_definition (var_t_9614, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 256)).readProperty_superType ().getter_isNull (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 256)).operator_not (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 256)) COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 256)).isValid () ;
@@ -7746,7 +7746,7 @@ void extensionMethod_analyzeSemanticExpressionList (const GGS__5B_CommaSeparated
 
 void extensionMethod_generateInstruction (const GGS__5B_ifTestForGeneration_5D_ inObject,
                                           GGS_stringset & ioArgument_ioInclusionSet,
-                                          GGS_uint & ioArgument_ioTemporaryVariableIndex,
+                                          GGS_u_33__32_ & ioArgument_ioTemporaryVariableIndex,
                                           GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
                                           GGS_string & ioArgument_ioGeneratedCode,
                                           GGS_string & outArgument_outTestVar,
@@ -7754,73 +7754,73 @@ void extensionMethod_generateInstruction (const GGS__5B_ifTestForGeneration_5D_ 
                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outTestVar.drop () ; // Release 'out' argument
   outArgument_outTestVar = GGS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 334)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 334)) ;
-  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 335)) ;
+  ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_u_33__32_ (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 335)) ;
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GalgasBool ").add_operation (outArgument_outTestVar, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 336)).add_operation (GGS_string (" = GalgasBool::boolTrue ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 336)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 336)) ;
   const GGS__5B_ifTestForGeneration_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_ifTestForGeneration_5D_ enumerator_13136 (temp_0) ;
-  while (enumerator_13136.hasCurrentObject ()) {
+  UpEnumerator__5B_ifTestForGeneration_5D_ enumerator_13135 (temp_0) ;
+  while (enumerator_13135.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (GalgasBool::boolTrue == ").add_operation (outArgument_outTestVar, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 338)).add_operation (GGS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 338)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 338)) ;
     {
-    ioArgument_ioGeneratedCode.setter_incIndentation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 339)) ;
+    ioArgument_ioGeneratedCode.setter_incIndentation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 339)) ;
     }
-    switch (enumerator_13136.current (HERE).enumValue ()) {
+    switch (enumerator_13135.current (HERE).enumValue ()) {
     case GGS_ifTestForGeneration::Enumeration::invalid:
       break ;
     case GGS_ifTestForGeneration::Enumeration::enum_regular:
       {
-        GGS_semanticExpressionForGeneration extractedValue_13302_exp_0 ;
-        enumerator_13136.current (HERE).getAssociatedValuesFor_regular (extractedValue_13302_exp_0) ;
-        GGS_string var_cppVarName_13480 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13302_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_13480, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 342)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(outArgument_outTestVar.add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)).add_operation (var_cppVarName_13480, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)).add_operation (GGS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)) ;
+        GGS_semanticExpressionForGeneration extractedValue_13301_exp_0 ;
+        enumerator_13135.current (HERE).getAssociatedValuesFor_regular (extractedValue_13301_exp_0) ;
+        GGS_string var_cppVarName_13479 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13301_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_13479, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 342)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(outArgument_outTestVar.add_operation (GGS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)).add_operation (var_cppVarName_13479, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)).add_operation (GGS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 349)) ;
       }
       break ;
     case GGS_ifTestForGeneration::Enumeration::enum_letVarExp:
       {
-        GGS_string extractedValue_13597_targetVarCppName_0 ;
-        GGS_semanticExpressionForGeneration extractedValue_13615_exp_1 ;
-        GGS_unifiedTypeMapEntry extractedValue_13620_targetType_2 ;
-        GGS_unifiedTypeMapEntry extractedValue_13632_testType_3 ;
-        enumerator_13136.current (HERE).getAssociatedValuesFor_letVarExp (extractedValue_13597_targetVarCppName_0, extractedValue_13615_exp_1, extractedValue_13620_targetType_2, extractedValue_13632_testType_3) ;
-        extensionMethod_addHeaderFileName (extractedValue_13620_targetType_2, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 351)) ;
-        extensionMethod_addHeaderFileName (extractedValue_13632_testType_3, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 352)) ;
-        GGS_string var_targetTypeName_13760 = extensionGetter_identifierRepresentation (extractedValue_13620_targetType_2, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 353)) ;
-        GGS_string var_testTypeName_13823 = extensionGetter_identifierRepresentation (extractedValue_13632_testType_3, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 354)) ;
-        GGS_string var_cppVarName_14042 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13615_exp_1.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_14042, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 355)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (var_targetTypeName_13760, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)).add_operation (extractedValue_13597_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" (dynamic_cast <const cPtr_").add_operation (var_testTypeName_13823, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (GGS_string (" *> ("), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (var_cppVarName_14042, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (GGS_string (".ptr ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (nullptr == ").add_operation (extractedValue_13597_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)).add_operation (GGS_string (".ptr ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)) ;
+        GGS_string extractedValue_13596_targetVarCppName_0 ;
+        GGS_semanticExpressionForGeneration extractedValue_13614_exp_1 ;
+        GGS_unifiedTypeMapEntry extractedValue_13619_targetType_2 ;
+        GGS_unifiedTypeMapEntry extractedValue_13631_testType_3 ;
+        enumerator_13135.current (HERE).getAssociatedValuesFor_letVarExp (extractedValue_13596_targetVarCppName_0, extractedValue_13614_exp_1, extractedValue_13619_targetType_2, extractedValue_13631_testType_3) ;
+        extensionMethod_addHeaderFileName (extractedValue_13619_targetType_2, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 351)) ;
+        extensionMethod_addHeaderFileName (extractedValue_13631_testType_3, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 352)) ;
+        GGS_string var_targetTypeName_13759 = extensionGetter_identifierRepresentation (extractedValue_13619_targetType_2, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 353)) ;
+        GGS_string var_testTypeName_13822 = extensionGetter_identifierRepresentation (extractedValue_13631_testType_3, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 354)) ;
+        GGS_string var_cppVarName_14041 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13614_exp_1.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_14041, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 355)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (var_targetTypeName_13759, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)).add_operation (extractedValue_13596_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 362)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" (dynamic_cast <const cPtr_").add_operation (var_testTypeName_13822, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (GGS_string (" *> ("), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (var_cppVarName_14041, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)).add_operation (GGS_string (".ptr ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 363)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (nullptr == ").add_operation (extractedValue_13596_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)).add_operation (GGS_string (".ptr ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 364)) ;
         ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (outArgument_outTestVar, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 365)).add_operation (GGS_string (" = GalgasBool::boolFalse ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 365)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 365)) ;
         ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 366)) ;
       }
       break ;
     case GGS_ifTestForGeneration::Enumeration::enum_optionalExp:
       {
-        GGS_string extractedValue_14454_targetVarCppName_0 ;
-        GGS_bool extractedValue_14472_isConstant_1 ;
-        GGS_semanticExpressionForGeneration extractedValue_14484_exp_2 ;
-        GGS_unifiedTypeMapEntry extractedValue_14489_targetType_3 ;
-        enumerator_13136.current (HERE).getAssociatedValuesFor_optionalExp (extractedValue_14454_targetVarCppName_0, extractedValue_14472_isConstant_1, extractedValue_14484_exp_2, extractedValue_14489_targetType_3) ;
-        GGS_string var_targetTypeName_14513 = extensionGetter_identifierRepresentation (extractedValue_14489_targetType_3, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 368)) ;
-        GGS_string var_cppVarName_14736 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14484_exp_2.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_14736, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 369)) ;
+        GGS_string extractedValue_14453_targetVarCppName_0 ;
+        GGS_bool extractedValue_14471_isConstant_1 ;
+        GGS_semanticExpressionForGeneration extractedValue_14483_exp_2 ;
+        GGS_unifiedTypeMapEntry extractedValue_14488_targetType_3 ;
+        enumerator_13135.current (HERE).getAssociatedValuesFor_optionalExp (extractedValue_14453_targetVarCppName_0, extractedValue_14471_isConstant_1, extractedValue_14483_exp_2, extractedValue_14488_targetType_3) ;
+        GGS_string var_targetTypeName_14512 = extensionGetter_identifierRepresentation (extractedValue_14488_targetType_3, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 368)) ;
+        GGS_string var_cppVarName_14735 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14483_exp_2.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_14735, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 369)) ;
         GalgasBool test_1 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_1) {
-          test_1 = extractedValue_14472_isConstant_1.boolEnum () ;
+          test_1 = extractedValue_14471_isConstant_1.boolEnum () ;
           if (GalgasBool::boolTrue == test_1) {
             ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("const "), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 377)) ;
           }
         }
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (var_targetTypeName_14513, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)).add_operation (extractedValue_14454_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" = ").add_operation (var_cppVarName_14736, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)).add_operation (GGS_string (".unwrappedValue () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (!").add_operation (var_cppVarName_14736, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)).add_operation (GGS_string (".isValuated ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GGS_").add_operation (var_targetTypeName_14512, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)).add_operation (GGS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)).add_operation (extractedValue_14453_targetVarCppName_0, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 379)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string (" = ").add_operation (var_cppVarName_14735, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)).add_operation (GGS_string (".unwrappedValue () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 380)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("if (!").add_operation (var_cppVarName_14735, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)).add_operation (GGS_string (".isValuated ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 381)) ;
         ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  ").add_operation (outArgument_outTestVar, inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 382)).add_operation (GGS_string (" = GalgasBool::boolFalse ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 382)), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 382)) ;
         ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-comma-separated-expression.galgas4", 383)) ;
       }
       break ;
     }
-    enumerator_13136.gotoNextObject () ;
+    enumerator_13135.gotoNextObject () ;
   }
 }
 
@@ -10009,10 +10009,10 @@ void GGS__5B_semanticInstructionAST_5D_::plusPlusAssignOperation (const GGS_sema
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_semanticInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_semanticInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -10077,7 +10077,7 @@ void GGS__5B_semanticInstructionAST_5D_::setter_removeAll (Compiler * /* inCompi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionAST_5D_::setter_set (const GGS_semanticInstructionAST inValue,
-                                                     const GGS_uint inIndex,
+                                                     const GGS_u_33__32_ inIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -10098,7 +10098,7 @@ void GGS__5B_semanticInstructionAST_5D_::setter_set (const GGS_semanticInstructi
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionAST_5D_::setter_insert (const GGS_semanticInstructionAST inValue,
-                                                        const GGS_uint inInsertionIndex,
+                                                        const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -10119,7 +10119,7 @@ void GGS__5B_semanticInstructionAST_5D_::setter_insert (const GGS_semanticInstru
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticInstructionAST_5D_::setter_remove (GGS_semanticInstructionAST & outValue,
-                                                        const GGS_uint inRemoveIndex,
+                                                        const GGS_u_33__32_ inRemoveIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -10175,7 +10175,7 @@ void GGS__5B_semanticInstructionAST_5D_::setter_removeLast (GGS_semanticInstruct
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticInstructionAST_5D_ result ;
@@ -10200,8 +10200,8 @@ GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_re
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                       const GGS_uint & inLength,
+GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                       const GGS_u_33__32_ & inLength,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_semanticInstructionAST_5D_ result ;
@@ -10269,7 +10269,7 @@ GGS_semanticInstructionAST GGS__5B_semanticInstructionAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticInstructionAST GGS__5B_semanticInstructionAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_semanticInstructionAST GGS__5B_semanticInstructionAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionAST result ;
@@ -11359,10 +11359,10 @@ void GGS__5B_localConstant_5D_::plusPlusAssignOperation (const GGS_localConstant
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_localConstant_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_localConstant_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -11427,7 +11427,7 @@ void GGS__5B_localConstant_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_localConstant_5D_::setter_set (const GGS_localConstant inValue,
-                                            const GGS_uint inIndex,
+                                            const GGS_u_33__32_ inIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -11448,7 +11448,7 @@ void GGS__5B_localConstant_5D_::setter_set (const GGS_localConstant inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_localConstant_5D_::setter_insert (const GGS_localConstant inValue,
-                                               const GGS_uint inInsertionIndex,
+                                               const GGS_u_33__32_ inInsertionIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -11469,7 +11469,7 @@ void GGS__5B_localConstant_5D_::setter_insert (const GGS_localConstant inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_localConstant_5D_::setter_remove (GGS_localConstant & outValue,
-                                               const GGS_uint inRemoveIndex,
+                                               const GGS_u_33__32_ inRemoveIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -11525,7 +11525,7 @@ void GGS__5B_localConstant_5D_::setter_removeLast (GGS_localConstant & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_localConstant_5D_ result ;
@@ -11550,8 +11550,8 @@ GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_removingFirst (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                     const GGS_uint & inLength,
+GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                     const GGS_u_33__32_ & inLength,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_localConstant_5D_ result ;
@@ -11619,7 +11619,7 @@ GGS_localConstant GGS__5B_localConstant_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_localConstant GGS__5B_localConstant_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_localConstant GGS__5B_localConstant_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GGS_localConstant result ;
@@ -12275,10 +12275,10 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::plusPlusAssignOperati
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -12343,7 +12343,7 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_removeAll (Com
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_set (const GGS_forInstructionEnumeratedObjectElementAST inValue,
-                                                                       const GGS_uint inIndex,
+                                                                       const GGS_u_33__32_ inIndex,
                                                                        Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -12364,7 +12364,7 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_set (const GGS
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_insert (const GGS_forInstructionEnumeratedObjectElementAST inValue,
-                                                                          const GGS_uint inInsertionIndex,
+                                                                          const GGS_u_33__32_ inInsertionIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -12385,7 +12385,7 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_insert (const 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_remove (GGS_forInstructionEnumeratedObjectElementAST & outValue,
-                                                                          const GGS_uint inRemoveIndex,
+                                                                          const GGS_u_33__32_ inRemoveIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -12441,7 +12441,7 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_removeLast (GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                                  Compiler * inCompiler
                                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ result ;
@@ -12466,8 +12466,8 @@ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnume
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                           const GGS_uint & inLength,
+GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                           const GGS_u_33__32_ & inLength,
                                                                                                                            Compiler * inCompiler
                                                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ result ;
@@ -12535,7 +12535,7 @@ GGS_forInstructionEnumeratedObjectElementAST GGS__5B_forInstructionEnumeratedObj
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectElementAST GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_forInstructionEnumeratedObjectElementAST GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                                       Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_forInstructionEnumeratedObjectElementAST result ;
@@ -13028,10 +13028,10 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::plusPlusAssignOperation (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -13096,7 +13096,7 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_removeAll (Compiler *
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_set (const GGS_forInstructionEnumeratedObjectAST inValue,
-                                                                const GGS_uint inIndex,
+                                                                const GGS_u_33__32_ inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -13117,7 +13117,7 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_set (const GGS_forIns
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_insert (const GGS_forInstructionEnumeratedObjectAST inValue,
-                                                                   const GGS_uint inInsertionIndex,
+                                                                   const GGS_u_33__32_ inInsertionIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -13138,7 +13138,7 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_insert (const GGS_for
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_remove (GGS_forInstructionEnumeratedObjectAST & outValue,
-                                                                   const GGS_uint inRemoveIndex,
+                                                                   const GGS_u_33__32_ inRemoveIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -13194,7 +13194,7 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_removeLast (GGS_forIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                    Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectAST_5D_ result ;
@@ -13219,8 +13219,8 @@ GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedOb
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                             const GGS_uint & inLength,
+GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                             const GGS_u_33__32_ & inLength,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectAST_5D_ result ;
@@ -13288,7 +13288,7 @@ GGS_forInstructionEnumeratedObjectAST GGS__5B_forInstructionEnumeratedObjectAST_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectAST GGS__5B_forInstructionEnumeratedObjectAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_forInstructionEnumeratedObjectAST GGS__5B_forInstructionEnumeratedObjectAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_forInstructionEnumeratedObjectAST result ;
@@ -13424,10 +13424,10 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::plusPlusAssignOper
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -13492,7 +13492,7 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_removeAll (
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_set (const GGS_forInstructionEnumeratedObjectForGeneration inValue,
-                                                                          const GGS_uint inIndex,
+                                                                          const GGS_u_33__32_ inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -13513,7 +13513,7 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_set (const 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_insert (const GGS_forInstructionEnumeratedObjectForGeneration inValue,
-                                                                             const GGS_uint inInsertionIndex,
+                                                                             const GGS_u_33__32_ inInsertionIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -13534,7 +13534,7 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_insert (con
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_remove (GGS_forInstructionEnumeratedObjectForGeneration & outValue,
-                                                                             const GGS_uint inRemoveIndex,
+                                                                             const GGS_u_33__32_ inRemoveIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -13590,7 +13590,7 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_removeLast 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                                        Compiler * inCompiler
                                                                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ result ;
@@ -13615,8 +13615,8 @@ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                                 const GGS_uint & inLength,
+GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                                                 const GGS_u_33__32_ & inLength,
                                                                                                                                  Compiler * inCompiler
                                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ result ;
@@ -13684,7 +13684,7 @@ GGS_forInstructionEnumeratedObjectForGeneration GGS__5B_forInstructionEnumerated
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_forInstructionEnumeratedObjectForGeneration GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_forInstructionEnumeratedObjectForGeneration GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                                             Compiler * inCompiler
                                                                                                                             COMMA_LOCATION_ARGS) const {
   GGS_forInstructionEnumeratedObjectForGeneration result ;
@@ -14297,10 +14297,10 @@ void GGS__5B_switchBranchAST_5D_::plusPlusAssignOperation (const GGS_switchBranc
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_switchBranchAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_switchBranchAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -14365,7 +14365,7 @@ void GGS__5B_switchBranchAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchBranchAST_5D_::setter_set (const GGS_switchBranchAST inValue,
-                                              const GGS_uint inIndex,
+                                              const GGS_u_33__32_ inIndex,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -14386,7 +14386,7 @@ void GGS__5B_switchBranchAST_5D_::setter_set (const GGS_switchBranchAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchBranchAST_5D_::setter_insert (const GGS_switchBranchAST inValue,
-                                                 const GGS_uint inInsertionIndex,
+                                                 const GGS_u_33__32_ inInsertionIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -14407,7 +14407,7 @@ void GGS__5B_switchBranchAST_5D_::setter_insert (const GGS_switchBranchAST inVal
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchBranchAST_5D_::setter_remove (GGS_switchBranchAST & outValue,
-                                                 const GGS_uint inRemoveIndex,
+                                                 const GGS_u_33__32_ inRemoveIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -14463,7 +14463,7 @@ void GGS__5B_switchBranchAST_5D_::setter_removeLast (GGS_switchBranchAST & outVa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_switchBranchAST_5D_ result ;
@@ -14488,8 +14488,8 @@ GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_removingFirst (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                         const GGS_uint & inLength,
+GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                         const GGS_u_33__32_ & inLength,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_switchBranchAST_5D_ result ;
@@ -14557,7 +14557,7 @@ GGS_switchBranchAST GGS__5B_switchBranchAST_5D_::getter_last (Compiler * inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_switchBranchAST GGS__5B_switchBranchAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_switchBranchAST GGS__5B_switchBranchAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GGS_switchBranchAST result ;
@@ -14693,10 +14693,10 @@ void GGS__5B_switchExtractedValuesAST_5D_::plusPlusAssignOperation (const GGS_sw
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_switchExtractedValuesAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_switchExtractedValuesAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -14761,7 +14761,7 @@ void GGS__5B_switchExtractedValuesAST_5D_::setter_removeAll (Compiler * /* inCom
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchExtractedValuesAST_5D_::setter_set (const GGS_switchExtractedValuesAST inValue,
-                                                       const GGS_uint inIndex,
+                                                       const GGS_u_33__32_ inIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -14782,7 +14782,7 @@ void GGS__5B_switchExtractedValuesAST_5D_::setter_set (const GGS_switchExtracted
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchExtractedValuesAST_5D_::setter_insert (const GGS_switchExtractedValuesAST inValue,
-                                                          const GGS_uint inInsertionIndex,
+                                                          const GGS_u_33__32_ inInsertionIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -14803,7 +14803,7 @@ void GGS__5B_switchExtractedValuesAST_5D_::setter_insert (const GGS_switchExtrac
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_switchExtractedValuesAST_5D_::setter_remove (GGS_switchExtractedValuesAST & outValue,
-                                                          const GGS_uint inRemoveIndex,
+                                                          const GGS_u_33__32_ inRemoveIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -14859,7 +14859,7 @@ void GGS__5B_switchExtractedValuesAST_5D_::setter_removeLast (GGS_switchExtracte
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_switchExtractedValuesAST_5D_ result ;
@@ -14884,8 +14884,8 @@ GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                           const GGS_uint & inLength,
+GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                           const GGS_u_33__32_ & inLength,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_switchExtractedValuesAST_5D_ result ;
@@ -14953,7 +14953,7 @@ GGS_switchExtractedValuesAST GGS__5B_switchExtractedValuesAST_5D_::getter_last (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_switchExtractedValuesAST GGS__5B_switchExtractedValuesAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_switchExtractedValuesAST GGS__5B_switchExtractedValuesAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_switchExtractedValuesAST result ;
@@ -15127,401 +15127,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesAST ("sw
 
 const GALGAS_TypeDescriptor * GGS_switchExtractedValuesAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_switchExtractedValuesAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_switchBranchForGeneration_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_::GGS__5B_switchBranchForGeneration_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_::GGS__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_ & GGS__5B_switchBranchForGeneration_5D_::operator = (const GGS__5B_switchBranchForGeneration_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_switchBranchForGeneration_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::plusPlusAssignOperation (const GGS_switchBranchForGeneration & inValue
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B_switchBranchForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::add_operation (const GGS__5B_switchBranchForGeneration_5D_ & inOperand,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_switchBranchForGeneration_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::description (String & ioString,
-                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@switchBranchForGeneration], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::plusAssignOperation (const GGS__5B_switchBranchForGeneration_5D_ inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_append (const GGS_switchBranchForGeneration inValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_set (const GGS_switchBranchForGeneration inValue,
-                                                        const GGS_uint inIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_insert (const GGS_switchBranchForGeneration inValue,
-                                                           const GGS_uint inInsertionIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_remove (GGS_switchBranchForGeneration & outValue,
-                                                           const GGS_uint inRemoveIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_removeFirst (GGS_switchBranchForGeneration & outValue,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_switchBranchForGeneration_5D_::setter_removeLast (GGS_switchBranchForGeneration & outValue,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const {
-  GGS__5B_switchBranchForGeneration_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                             const GGS_uint & inLength,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_switchBranchForGeneration_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_first (Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const {
-  GGS_switchBranchForGeneration result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_last (Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_switchBranchForGeneration result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_switchBranchForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_switchBranchForGeneration_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_switchBranchForGeneration_5D_::DownEnumerator__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration DownEnumerator__5B_switchBranchForGeneration_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration DownEnumerator__5B_switchBranchForGeneration_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_switchBranchForGeneration_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_switchBranchForGeneration_5D_::UpEnumerator__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration UpEnumerator__5B_switchBranchForGeneration_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchBranchForGeneration UpEnumerator__5B_switchBranchForGeneration_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[switchBranchForGeneration] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchBranchForGeneration_5D_ ("[switchBranchForGeneration]",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_switchBranchForGeneration_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_switchBranchForGeneration_5D_ ;
 }
 

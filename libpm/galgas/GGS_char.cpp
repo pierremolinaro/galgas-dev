@@ -189,10 +189,10 @@ GGS_string GGS_char::getter_utf_33__32_CharConstantRepresentation (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_char::getter_uint (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_char::getter_u_33__32_ (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mCharValue.u32 ()) ;
+    result = GGS_u_33__32_ (mCharValue.u32 ()) ;
   }
   return result ;
 }
@@ -378,17 +378,17 @@ GGS_char GGS_char::getter_unicodeToUpper (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_char::getter_utf_38_Length (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mCharValue.utf8Length ()) ;
+    result = GGS_u_33__32_ (mCharValue.utf8Length ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_char GGS_char::class_func_unicodeCharacterWithUnsigned (const GGS_uint & inValue
+GGS_char GGS_char::class_func_unicodeCharacterWithUnsigned (const GGS_u_33__32_ & inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_char result ;
   if (inValue.isValid ()) {

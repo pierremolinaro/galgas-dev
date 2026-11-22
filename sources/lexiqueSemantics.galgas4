@@ -24,7 +24,7 @@ struct @terminalAST {
   public let @string mSyntaxErrorMessage
   public let @bool isEndOfTemplateMark #initArgLabel
   public let @bool atomicSelection #initArgLabel // True if atomic selection in source editor
-  public let @uint mStyleIndex // 0 if default style
+  public let @u32 mStyleIndex // 0 if default style
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ map @lexicalExplicitTokenListMap {
 //--------------------------------------------------------------------------------------------------
 
 struct @sortedToken {
-  let @uint mLength
+  let @u32 mLength
   let @string mName
   let @string mTerminalName
 }
@@ -48,14 +48,6 @@ struct @sortedToken {
 sortedarray @sortedTokenArray : @sortedToken {
   mLength <, mName <
 }
-
-//sortedlist @tokenSortedlist {
-//  public let @uint mLength
-//  public let @string mName
-//  public let @string mTerminalName
-//}{
-//  mLength <, mName <
-//}
 
 //--------------------------------------------------------------------------------------------------
 

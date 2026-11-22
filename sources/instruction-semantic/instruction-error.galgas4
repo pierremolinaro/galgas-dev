@@ -314,7 +314,7 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
 //--------------------------------------------------------------------------------------------------
 
 proc [@fixitElementForGeneration].generateFixIt (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode,
@@ -370,7 +370,7 @@ final class @errorInstructionForGeneration : @semanticInstructionForGeneration {
 //································································································*
 
 override proc @errorInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {

@@ -644,7 +644,7 @@ void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList
 
 void routine_generateInstructionList_26__3F__26__26__3F__26_ (class GGS_stringset & ioArgument0,
                                                               const class GGS__5B_semanticInstructionForGeneration_5D_ constinArgument1,
-                                                              class GGS_uint & ioArgument2,
+                                                              class GGS_u_33__32_ & ioArgument2,
                                                               class GGS_stringset & ioArgument3,
                                                               const class GGS_bool constinArgument4,
                                                               class GGS_string & ioArgument5,

@@ -35,7 +35,7 @@ filewrapper @grammarRulesInTexDocumentTemplate : "+generation-templates/grammar_
 
 private func escapeForTex (let @string inString) -> @string {
   result = ""
-  for @uint idx in 0 ..< inString.count do
+  for @u32 idx in 0 ..< inString.count do
     let c = inString.characterAtIndex (idx)
     if c == '_' then
       result += "\\_"
@@ -115,8 +115,8 @@ proc @productionRuleForGrammarAnalysis.displayRule (let @string inSyntaxComponen
   var [@row] rowArray = [@([@(currentNode, "[firstPoint] ()")])]
   var @string arrows = ""
   var @string arrowStyle = "--"
-  var @uint column = 1
-  var @uint unusedMaxUsedRowIndex = 0 // Unused
+  var @u32 column = 1
+  var @u32 unusedMaxUsedRowIndex = 0 // Unused
   for instruction in self.mInstructionList do
     instruction.tikzNodeForSyntaxInstruction (
       !?rowArray,
@@ -171,11 +171,11 @@ proc @productionRuleForGrammarAnalysis.displayRuleVertically (let @string inSynt
   rowArray ++= @([@(currentNode, "[firstPoint] ()")])
   var @string arrows = ""
   var @string arrowStyle = "--"
-  var @uint unusedMaxUsedRowIndex = 0 // Unused
+  var @u32 unusedMaxUsedRowIndex = 0 // Unused
   var row = self.mInstructionList.count
   for instruction in self.mInstructionList do
     row -= 1
-    var @uint column = 1
+    var @u32 column = 1
     instruction.tikzNodeForSyntaxInstruction (
       !?rowArray,
       !fromRow:row,
@@ -223,12 +223,12 @@ proc @productionRuleForGrammarAnalysis.displayRuleVertically (let @string inSynt
 
 proc [@abstractSyntaxInstructionForGrammarAnalysis].tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
-  ?fromRow:let @uint inRow,
-  ?!column:@uint ioColumn,
+  ?fromRow:let @u32 inRow,
+  ?!column:@u32 ioColumn,
   ?!node: @string ioCurrentNode,
   ?!arrowShape: @string ioArrowShape,
   ?!arrows:@string ioArrows,
-  ?!@uint ioMaxUsedRowIndex,
+  ?!@u32 ioMaxUsedRowIndex,
   ?debug:let @bool inDebug
 ) {
   if self.count == 0 then
@@ -268,8 +268,8 @@ struct @row {
 
 mutating proc [@row].appendRow (
   ?nodeDefinition:let @string inNodeDefinition,
-  ?row:let @uint inRow,
-  ?column:let @uint inColumn,
+  ?row:let @u32 inRow,
+  ?column:let @u32 inColumn,
   !nodeName:@string outNodeName
 ) {
 //--- Add rows ?
@@ -298,12 +298,12 @@ mutating proc [@row].appendRow (
 
 override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
-  ?fromRow:let @uint inRow,
-  ?!column:@uint ioColumn,
+  ?fromRow:let @u32 inRow,
+  ?!column:@u32 ioColumn,
   ?!node: @string ioCurrentNode,
   ?!arrowShape: @string ioArrowShape,
   ?!arrows:@string ioArrows,
-  ?!@uint _ioMaxUsedRowIndex,
+  ?!@u32 _ioMaxUsedRowIndex,
   ?debug:let @bool _inDebug
 ) {
   let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (self.mNonterminalSymbolName)
@@ -324,12 +324,12 @@ override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruc
 
 override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
-  ?fromRow:let @uint inRow,
-  ?!column:@uint ioColumn,
+  ?fromRow:let @u32 inRow,
+  ?!column:@u32 ioColumn,
   ?!node: @string ioCurrentNode,
   ?!arrowShape: @string ioArrowShape,
   ?!arrows:@string ioArrows,
-  ?!@uint ioMaxUsedRowIndex,
+  ?!@u32 ioMaxUsedRowIndex,
   ?debug:let @bool inDebug
 ) {
 //--- Trace ?
@@ -418,12 +418,12 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 
 override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
-  ?fromRow:let @uint inRow,
-  ?!column:@uint ioColumn,
+  ?fromRow:let @u32 inRow,
+  ?!column:@u32 ioColumn,
   ?!node: @string ioCurrentNode,
   ?!arrowShape: @string ioArrowShape,
   ?!arrows:@string ioArrows,
-  ?!@uint ioMaxUsedRowIndex,
+  ?!@u32 ioMaxUsedRowIndex,
   ?debug:let @bool inDebug
 ) {
 //--- Trace ?

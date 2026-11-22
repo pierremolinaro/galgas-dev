@@ -91,9 +91,9 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   override proc transformInstructionForGrammarAnalysis (
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
-    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
+    ?!addedTerminalIndex:@u32 _ioAddedNonTerminalIndex,
     ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList) {
-    let @uint terminalSymbolIndex
+    let @u32 terminalSymbolIndex
     if let entry = ioActuallyUsedTerminalSymbolMap [self.mTerminalName.string] then
       terminalSymbolIndex = entry.mTerminalIndex
     else
@@ -122,7 +122,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     let @stringset inIndexNameSet,
     ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
-    ?!@uint _ioSelectMethodCount) {
+    ?!@u32 _ioSelectMethodCount) {
     inTerminalMap.searchKey (self.mTerminalName, ?let [@lexicalSentValue] sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
@@ -191,17 +191,17 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
 final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   public let @lstring mTerminalSymbolName
-  public let @uint mTerminalSymbolIndex
+  public let @u32 mTerminalSymbolIndex
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc tikzNodeForSyntaxInstruction (?![@row] ioRowList,
-                                                ?fromRow:let @uint inRow,
-                                                ?!column:@uint ioColumn,
+                                                ?fromRow:let @u32 inRow,
+                                                ?!column:@u32 ioColumn,
                                                 ?!node: @string ioCurrentNode,
                                                 ?!arrowShape: @string ioArrowShape,
                                                 ?!arrows:@string ioArrows,
-                                                ?!@uint _ioMaxUsedRowIndex,
+                                                ?!@u32 _ioMaxUsedRowIndex,
                                                 ?debug:let @bool _inDebug) {
     !?ioRowList.appendRow
       (!nodeDefinition:"[terminal] {" + escapeForTex (self.mTerminalSymbolName) + "}",
@@ -295,7 +295,7 @@ override func @terminalCheckInstructionForGeneration.compareInstructionSyntaxSig
 //--------------------------------------------------------------------------------------------------
 
 override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@stringset _ioInclusionSet,
-                                       ?!@uint _ioTemporaryVariableIndex,
+                                       ?!@u32 _ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

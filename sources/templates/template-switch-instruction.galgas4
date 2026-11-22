@@ -236,7 +236,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
 struct @templateInstructionSwitchBranchForGeneration {
   public let [@lstring] mConstantList
   public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
-  public let @uint mEndOfBranchLocationIndex
+  public let @u32 mEndOfBranchLocationIndex
   public let [@templateInstructionForGeneration] mInstructionList
 }
 
@@ -253,7 +253,7 @@ final class @templateInstructionSwitchForGeneration : @templateInstructionForGen
 override proc @templateInstructionSwitchForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker
 ) {

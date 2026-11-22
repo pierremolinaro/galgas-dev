@@ -229,11 +229,11 @@ abstract class @syntaxInstructionAST {
                                           let @stringset inIndexNameSet,
                                           ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                           ?!@localVarManager ioVariableMap,
-                                          ?!@uint ioSelectMethodCount)
+                                          ?!@u32 ioSelectMethodCount)
 
   abstract proc transformInstructionForGrammarAnalysis (?!usedTerminalMap: @terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
                                                         ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-                                                        ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
+                                                        ?!addedTerminalIndex:@u32 ioAddedNonTerminalIndex,
                                                         ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList)
 
 }

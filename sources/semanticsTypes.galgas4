@@ -249,7 +249,7 @@ extension [@associatedValueDescriptor] : #equatable {
 //--------------------------------------------------------------------------------------------------
 
 map @constantIndexMap #equatable {
-  public let @uint mIndex
+  public let @u32 mIndex
   public let [@associatedValueDescriptor] mAssociatedTypeList
   #insertSetter insertKey #errorMessage "the '%K' constant is already declared"
   #searchMethod searchKey #errorMessage "the '%K' constant is not declared"

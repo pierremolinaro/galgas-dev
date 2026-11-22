@@ -3,7 +3,7 @@
 proc testsuite_extension_setters() {
   println ("*************************************** begin of extension setter test")
   let v = @TestExtensionSetter (1, "Hello")
-  var @uint u = 2
+  var @u32 u = 2
   let @string s = " World"
   v.setter2 (!?u, s)
   println (u.description)
@@ -15,7 +15,7 @@ proc testsuite_extension_setters() {
 }
 
 abstract class @abstractTestExtensionSetter {
-  public var @uint mInteger
+  public var @u32 mInteger
 
   abstract proc m ()
 
@@ -25,23 +25,23 @@ class @TestExtensionSetter : @abstractTestExtensionSetter {
   public var @string mString
 }
 
-proc @TestExtensionSetter.setter3 (let @uint inArg) {
+proc @TestExtensionSetter.setter3 (let @u32 inArg) {
   !?self.mString.appendSpacesUntilColumn (inArg)
 }
 
 
-proc @TestExtensionSetter.setter1 (?!@uint ioArg) {
+proc @TestExtensionSetter.setter1 (?!@u32 ioArg) {
   self.mInteger = self.mInteger + ioArg
   ioArg += 1
 //--- Ces instructions doivent engendrer une erreur de compilation
 }
 
 final class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
-  public let @uint mOtherInteger
+  public let @u32 mOtherInteger
 }
 
 
-proc @TestExtensionSetter.setter2 (?!@uint ioArg, let@string inS) {
+proc @TestExtensionSetter.setter2 (?!@u32 ioArg, let@string inS) {
   self.setter1 (!?ioArg)
   self.mString += inS
 }
@@ -57,7 +57,7 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   TYPE CAST IN SETTER CALL                
+//   TYPE CAST IN SETTER CALL
 //--------------------------------------------------------------------------------------------------
 
 private proc typeCastInSetterCall () {

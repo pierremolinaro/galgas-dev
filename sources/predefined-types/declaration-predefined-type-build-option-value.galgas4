@@ -73,7 +73,7 @@ final class @buildOptionValueDeclarationAST : @semanticDeclarationAST {
         !returnedType: stringType
       )
     end  
-    !?ioTypeMap.makeEntry ("uint".nowhere, ?let u32Type)
+    !?ioTypeMap.makeEntry ("u32".nowhere, ?let u32Type)
     for u32Option in ioSemanticContext.projectSettings.u32BuildOptionArray do
       !?classFunctionMap.insertKey (
         u32Option.mIdentifier,

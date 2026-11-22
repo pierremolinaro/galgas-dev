@@ -222,8 +222,8 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       spoil regularRootFileMap, wrapperDirectoryMap
     else
     //--- Enumerate paths
-      var @uint wrapperFileIndex = 0
-      var @uint wrapperDirectoryIndex = 0
+      var @u32 wrapperFileIndex = 0
+      var @u32 wrapperDirectoryIndex = 0
       recursivelyEnumerateDirectories (
        absoluteSourcePath,
        "/",
@@ -366,8 +366,8 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         spoil regularRootFileMap, wrapperDirectoryMap
       else
       //--- Enumerate paths
-        var @uint wrapperFileIndex = 0
-        var @uint wrapperDirectoryIndex = 0
+        var @u32 wrapperFileIndex = 0
+        var @u32 wrapperDirectoryIndex = 0
         recursivelyEnumerateDirectories (
          absoluteSourcePath,
          "/",
@@ -511,7 +511,7 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
     for filewrapperTemplate in self.filewrapperTemplateListForGeneration do
     //--- Build generated code for instruction list
       var @string generatedCodeForInstructionList = ""
-      var @uint temporaryVariableIndex = 0
+      var @u32 temporaryVariableIndex = 0
       var @stringset unusedVariableCppNameSet = @()
       unusedVariableCppNameSet ++= gCompilerCppName
       for entry in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
@@ -584,8 +584,8 @@ filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_gene
 map @wrapperFileMap { // Key is file name
   public let @string mAbsoluteFilePath
   public let @bool mIsTextFile // true: text file, false: binary file
-  public let @uint mWrapperDirectoryIndex
-  public let @uint mWrapperFileIndex
+  public let @u32 mWrapperDirectoryIndex
+  public let @u32 mWrapperFileIndex
   #insertSetter insertKey #errorMessage "INTERNAL ERROR"
   #searchMethod searchKey #errorMessage "INTERNAL ERROR"
 }
@@ -595,7 +595,7 @@ map @wrapperFileMap { // Key is file name
 map @wrapperDirectoryMap { // Key is directory name
   public let @wrapperFileMap mRegularFileMap
   public let @wrapperDirectoryMap mDirectoryMap
-  public let @uint mWrapperDirectoryIndex
+  public let @u32 mWrapperDirectoryIndex
   #insertSetter insertKey #errorMessage "INTERNAL ERROR"
   #searchMethod searchKey #errorMessage "INTERNAL ERROR"
 }
@@ -604,7 +604,7 @@ map @wrapperDirectoryMap { // Key is directory name
 
 private proc generateWrapperContents (let @string inFilewrapperName,
                                       let @string inFilewrapperDirectory,
-                                      let @uint inFilewrapperDirectoryIndex,
+                                      let @u32 inFilewrapperDirectoryIndex,
                                       let @wrapperFileMap inFilewrapperRegularFileMap,
                                       let @wrapperDirectoryMap inFilewrapperDirectoryMap,
                                       ?!@string ioImplementation) {
@@ -717,9 +717,9 @@ private proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
                                               let @wrapperExtensionMap inBinaryFileExtensionMap,
                                               !@wrapperFileMap outWrapperFileMap,
                                               !@wrapperDirectoryMap outWrapperDirectoryMap,
-                                              ?!@uint ioWrapperFileIndex,
-                                              ?!@uint ioWrapperDirectoryIndex) {
-  let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
+                                              ?!@u32 ioWrapperFileIndex,
+                                              ?!@u32 ioWrapperDirectoryIndex) {
+  let @u32 currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex += 1
 //--- Enumerates regular files
   let [@string] files = inAbsoluteSourcePath.regularFiles (false)
@@ -751,7 +751,7 @@ private proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
   let [@string] directories = inAbsoluteSourcePath.directories (false)
   outWrapperDirectoryMap = @()
   for value in directories do
-    let @uint theDirectoryIndex = ioWrapperDirectoryIndex
+    let @u32 theDirectoryIndex = ioWrapperDirectoryIndex
     recursivelyEnumerateDirectories (
       inAbsoluteSourcePath + "/" + value,
       inPathInWrapper + value + "/",

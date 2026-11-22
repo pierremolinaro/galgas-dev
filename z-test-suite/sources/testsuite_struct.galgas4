@@ -1,8 +1,8 @@
 
 struct @structTest {
   public var @string mString
-  public let @uint mInt = 34
-  
+  public let @u32 mInt = 34
+
   init (?let @string inString) {
     self.mString = inString
   }

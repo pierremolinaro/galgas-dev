@@ -4,7 +4,7 @@ indexing routineDefinition : "Routine Definition"
 indexing routineCall : "Routine call"
 
 //--------------------------------------------------------------------------------------------------
-//   Identifiers and keywords                
+//   Identifiers and keywords
 //--------------------------------------------------------------------------------------------------
 
 @string tokenString
@@ -26,10 +26,10 @@ rule 'a'->'z' |  'A'->'Z' {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Literal decimal integers                
+//   Literal decimal integers
 //--------------------------------------------------------------------------------------------------
 
-@uint uint32value
+@u32 uint32value
 $integer$ !uint32value style integerStyle #errorMessage "a 32-bit unsigned decimal number"
 
 #errorMessage decimalNumberTooLarge : "decimal number too large"
@@ -47,7 +47,7 @@ rule '0'->'9' {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Literal character strings               
+//   Literal character strings
 //--------------------------------------------------------------------------------------------------
 
 $"string"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage "a character string constant \"...\""
@@ -69,7 +69,7 @@ rule '"' {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Delimiters                              
+//   Delimiters
 //--------------------------------------------------------------------------------------------------
 
 list delimitorsList style delimitersStyle #errorMessage "the '%K' delimitor" {
@@ -79,7 +79,7 @@ list delimitorsList style delimitersStyle #errorMessage "the '%K' delimitor" {
 rule list delimitorsList
 
 //--------------------------------------------------------------------------------------------------
-//   Comments                                
+//   Comments
 //--------------------------------------------------------------------------------------------------
 
 $comment$ style commentStyle #nonAtomicSelection #errorMessage "a comment"
@@ -91,7 +91,7 @@ rule '#' {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   Separators                              
+//   Separators
 //--------------------------------------------------------------------------------------------------
 
 rule '\u0001' -> ' ' {

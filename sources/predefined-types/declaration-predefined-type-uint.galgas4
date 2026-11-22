@@ -22,12 +22,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-final class @uintPredefinedTypeAST : @predefinedTypeAST {
+final class @u32PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func cppDeclarationString () -> @string {
-    result = @predefinedTypeGenerationTemplate.uint_type ()
+    result = @predefinedTypeGenerationTemplate.u32_type ()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,25 +51,25 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"random",
-      !resultTypeName:"uint",
+      !resultTypeName:"u32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"max",
-      !resultTypeName:"uint",
+      !resultTypeName:"u32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"valueWithMask",
-      !argTypeName1:"uint",
+      !argTypeName1:"u32",
       !argName1:"inLowerIndex",
-      !argTypeName2:"uint",
+      !argTypeName2:"u32",
       !argName2:"inUpperIndex",
-      !resultTypeName:"uint",
+      !resultTypeName:"u32",
       !hasLexiqueArg:true
     )
   }
@@ -118,21 +118,21 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"lsbIndex",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"significantBitCount",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"oneBitCount",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -155,7 +155,7 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !getterName:"hexStringSeparatedBy",
       "char",
       "inSeparator",
-      "uint",
+      "u32",
       "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
@@ -184,28 +184,28 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", "uint", "inOperand",
+      !getterName:"canAdd", "u32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", "uint", "inOperand",
+      !getterName:"canSubstract", "u32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", "uint", "inOperand",
+      !getterName:"canMultiply", "u32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", "uint", "inOperand",
+      !getterName:"canDivide", "u32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -220,7 +220,7 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outClassMethodMap,
       !?ioUnifiedTypeMap,
       !methodName:"setRandomSeed",
-      !argType:"uint",
+      !argType:"u32",
       !argName:"inSeed",
       !compilerArgument:false
     )

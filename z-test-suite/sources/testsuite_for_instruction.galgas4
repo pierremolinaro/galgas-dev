@@ -7,7 +7,7 @@ proc testsuite_for_instruction() {
   !?strList.append ("b")
   !?strList.append ("c")
   !?strList.append ("d")
-  for s in strList 
+  for s in strList
   before
     println ("  before")
   do
@@ -32,7 +32,7 @@ proc testsuite_for_instruction() {
   end
 
   println ("--- begin of for instruction test 3")
-  var @uint n = 0
+  var @u32 n = 0
   for xyz in strList
   while n < 2
   before

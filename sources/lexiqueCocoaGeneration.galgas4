@@ -46,9 +46,9 @@ override func @lexicalCharacterIntervalMatchAST.generateSwiftCocoaConditionCode
   ) -> @string {
   result = ""
   result = "self.testForInputFromChar ("
-  result += self.mLowerBound.char.uint.string
+  result += self.mLowerBound.char.u32.string
   result += ", toChar:"
-  result += self.mUpperBound.char.uint.string
+  result += self.mUpperBound.char.u32.string
   result += ")"
 }
 
@@ -77,7 +77,7 @@ override func @lexicalCharacterMatchAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string {
   result = "self.testForInputChar ("
-  result += self.mCharacter.char.uint.string
+  result += self.mCharacter.char.u32.string
   result += ")"
 }
 
@@ -105,7 +105,7 @@ override func @lexicalAttributeInputArgumentAST.generateSwiftCocoaRoutineOrFunct
 
 override func @lexicalCharacterInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
   () -> @string {
-  result = self.mCharacter.char.uint.string
+  result = self.mCharacter.char.u32.string
 }
 
 //--------------------------------------------------------------------------------------------------

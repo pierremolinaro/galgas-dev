@@ -197,7 +197,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
   var baseType = receiverType
   var searching = true
   if @application.errorCount == 0 then
-    loop (@uint.max) while searching do
+    loop (@u32.max) while searching do
       if baseType.definition.superType.isNull then
         searching = false
       else
@@ -300,7 +300,7 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
 //································································································*
 
 override proc @setterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
@@ -368,7 +368,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
 //································································································*
 
 override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {

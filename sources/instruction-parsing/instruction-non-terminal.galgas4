@@ -59,7 +59,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
   override proc transformInstructionForGrammarAnalysis
                     (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-                    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
+                    ?!addedTerminalIndex:@u32 _ioAddedNonTerminalIndex,
                     ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
     inNonTerminalSymbolMap.searchKey (self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
     ioSyntaxInstructionList ++= @nonTerminalInstructionForGrammarAnalysis (
@@ -83,7 +83,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             let @stringset _inIndexNameSet,
                                             ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
-                                            ?!@uint _ioSelectMethodCount ) {
+                                            ?!@u32 _ioSelectMethodCount ) {
     inNonterminalMap.searchKey (self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
     let [@formalParameterSignatureElement] signature
     labelMap.searchKey ("".nowhere, ?*, ?signature, ?*)
@@ -181,7 +181,7 @@ override func @nonterminalInstructionForGeneration.compareInstructionSyntaxSigna
 //--------------------------------------------------------------------------------------------------
 
 override proc @nonterminalInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@u32 ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
                             let @bool inGenerateSyntaxDirectedTranslationString,
                             ?!@string ioGeneratedCode) {

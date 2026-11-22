@@ -173,7 +173,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
 
   override proc generateExpression (?!@string ioGeneratedCode,
                                       ?!@stringset ioInclusionSet,
-                                      ?!@uint ioTemporaryVariableIndex,
+                                      ?!@u32 ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
   //---

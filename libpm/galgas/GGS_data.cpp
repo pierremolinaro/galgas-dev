@@ -93,10 +93,10 @@ void GGS_data::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_data::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_data::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mData.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mData.count ())) ;
   }
   return result ;
 }
@@ -156,7 +156,7 @@ void GGS_data::setter_appendU_31__36_LE (GGS_u_31__36_ inArgument0,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
+void GGS_data::setter_appendUIntBE (GGS_u_33__32_ inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
@@ -169,7 +169,7 @@ void GGS_data::setter_appendUIntBE (GGS_uint inArgument0
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_data::setter_appendUIntLE (GGS_uint inArgument0
+void GGS_data::setter_appendUIntLE (GGS_u_33__32_ inArgument0
                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;

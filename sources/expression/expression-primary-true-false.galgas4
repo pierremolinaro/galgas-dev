@@ -135,7 +135,7 @@ final class @trueExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @trueExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_bool (true)"
@@ -151,7 +151,7 @@ final class @falseExpressionForGeneration : @semanticExpressionForGeneration {
 override proc @falseExpressionForGeneration.generateExpression
   (?!@string _ioGeneratedCode,
   ?!@stringset _ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
+  ?!@u32 _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_bool (false)"

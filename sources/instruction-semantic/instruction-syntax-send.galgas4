@@ -69,7 +69,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
   override proc transformInstructionForGrammarAnalysis (
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
-    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
+    ?!addedTerminalIndex:@u32 _ioAddedNonTerminalIndex,
     ?![@abstractSyntaxInstructionForGrammarAnalysis] _ioSyntaxInstructionList) {
   }
 
@@ -87,7 +87,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
                                   let @stringset _inIndexNameSet,
                                   ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                   ?!@localVarManager ioVariableMap,
-                                  ?!@uint _ioSelectMethodCount) {
+                                  ?!@u32 _ioSelectMethodCount) {
     if not inHasTranslateFeature then
       error self.mInstructionLocation
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
@@ -128,7 +128,7 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

@@ -31,7 +31,7 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   protected: void makeNewEmptyGraph (LOCATION_ARGS) ;
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
@@ -39,7 +39,7 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 
   public: class GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% getter_lkeyList (LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
+  public: class GGS_u_33__32_ getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
   public: class GGS__5B_string_5D_ getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 

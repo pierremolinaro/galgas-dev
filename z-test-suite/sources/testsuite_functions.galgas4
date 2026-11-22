@@ -1,20 +1,20 @@
 
 
 func functionTest(
-  ?@uint inArg1,
-  ?let@uint inArg2)
--> @uint {
+  ?@u32 inArg1,
+  ?@u32 inArg2)
+-> @u32 {
   result = inArg1 + inArg2
 }
 
 extern func externTestFunction (
-  ?@uint inArg1,
-  ?let @uint inArg2)
--> @uint
+  ?@u32 inArg1,
+  ?let @u32 inArg2)
+-> @u32
 
 proc testsuite_functions() {
   println ("*************************************** begin of function test")
-  var @uint r = functionTest (2, 3)
+  var @u32 r = functionTest (2, 3)
   println (r.description)
   r = externTestFunction (2, 3)
   println (r.description)

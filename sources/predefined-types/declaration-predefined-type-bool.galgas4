@@ -66,8 +66,8 @@ final class @boolPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint",
-      !returnedTypeName:"uint",
+      !getterName:"u32",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

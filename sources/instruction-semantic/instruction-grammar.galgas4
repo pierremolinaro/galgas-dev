@@ -404,7 +404,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc @grammarInstructionWithSourceFileForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-    ?!@uint ioTemporaryVariableIndex,
+    ?!@u32 ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     let @bool _inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {
@@ -474,7 +474,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc @grammarInstructionWithSourceExpressionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-    ?!@uint ioTemporaryVariableIndex,
+    ?!@u32 ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
     let @bool _inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {

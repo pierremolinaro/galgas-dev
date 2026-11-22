@@ -111,20 +111,20 @@ GGS_bigint GGS_bigint::class_func_zero (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_bigint::getter_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_bigint::getter_bitCountForSignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mValue.requiredBitCountForSignedRepresentation ()) ;
+    result = GGS_u_33__32_ (mValue.requiredBitCountForSignedRepresentation ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_bigint::getter_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_bigint::getter_bitCountForUnsignedRepresentation (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mValue.requiredBitCountForUnsignedRepresentation ()) ;
+    result = GGS_u_33__32_ (mValue.requiredBitCountForUnsignedRepresentation ()) ;
   }
   return result ;
 }
@@ -191,14 +191,14 @@ GGS_s_33__32_ GGS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_5D_ GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_5D_ result ;
+GGS__5B_u_33__32__5D_ GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_33__32__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
-    result = GGS__5B_uint_5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_33__32__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.plusPlusAssignOperation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_33__32_ (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -206,14 +206,14 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_38_ForUnsignedRepresentation (LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_5D_ GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_5D_ result ;
+GGS__5B_u_33__32__5D_ GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_33__32__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
-    result = GGS__5B_uint_5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_33__32__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i++) {
-      result.plusPlusAssignOperation (GGS_uint (valueArray (i COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_33__32_ (valueArray (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -221,14 +221,14 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_38_ForSignedRepresentation (LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_5D_ result ;
+GGS__5B_u_33__32__5D_ GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_33__32__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForUnsignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, 0) ;
-    result = GGS__5B_uint_5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_33__32__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -237,7 +237,7 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LO
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.plusPlusAssignOperation (GGS_uint (v) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_33__32_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -245,14 +245,14 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForUnsignedRepresentation (LO
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION_ARGS) const {
-  GGS__5B_uint_5D_ result ;
+GGS__5B_u_33__32__5D_ GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCATION_ARGS) const {
+  GGS__5B_u_33__32__5D_ result ;
   if (isValid ()) {
     GenericUniqueArray <uint8_t> valueArray ;
     mValue.extractBytesForSignedRepresentation (valueArray) ;
     const int32_t paddingCount = (4 - (valueArray.count () % 4)) % 4 ;
     valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) ? 0xFF : 0) ;
-    result = GGS__5B_uint_5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_u_33__32__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valueArray.count () ; i+=4) {
       uint32_t v = valueArray (i+3 COMMA_HERE) ;
       v <<= 8 ;
@@ -261,7 +261,7 @@ GGS__5B_uint_5D_ GGS_bigint::getter_extract_33__32_ForSignedRepresentation (LOCA
       v |= valueArray (i+1 COMMA_HERE) ;
       v <<= 8 ;
       v |= valueArray (i COMMA_HERE) ;
-      result.plusPlusAssignOperation (GGS_uint (v) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_u_33__32_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -329,7 +329,7 @@ GGS_string GGS_bigint::getter_string (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_bigint::getter_spacedString (const GGS_uint & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_string GGS_bigint::getter_spacedString (const GGS_u_33__32_ & inSeparation COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inSeparation.isValid ()) {
     result = GGS_string (mValue.spacedDecimalString (inSeparation.uintValue ())) ;
@@ -350,7 +350,7 @@ GGS_string GGS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_bigint::getter_hexStringSeparatedBy (const GGS_char & inSeparator,
-                                                          const GGS_uint & inGroup,
+                                                          const GGS_u_33__32_ & inGroup,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -388,7 +388,7 @@ GGS_string GGS_bigint::getter_xString (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_bigint::getter_bitAtIndex (const GGS_uint & inBitIndex
+GGS_bool GGS_bigint::getter_bitAtIndex (const GGS_u_33__32_ & inBitIndex
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inBitIndex.isValid ()) {
@@ -399,7 +399,7 @@ GGS_bool GGS_bigint::getter_bitAtIndex (const GGS_uint & inBitIndex
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_bigint::setter_complementBitAtIndex (const GGS_uint inBitIndex
+void GGS_bigint::setter_complementBitAtIndex (const GGS_u_33__32_ inBitIndex
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitIndex.isValid ()) {
     mValue.complementBitAtIndex (inBitIndex.uintValue ()) ;
@@ -409,7 +409,7 @@ void GGS_bigint::setter_complementBitAtIndex (const GGS_uint inBitIndex
 //--------------------------------------------------------------------------------------------------
 
 void GGS_bigint::setter_setBitAtIndex (const GGS_bool inBitValue,
-                                            const GGS_uint inBitIndex
+                                            const GGS_u_33__32_ inBitIndex
                                             COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitValue.isValid () && inBitIndex.isValid ()) {
     mValue.setBitAtIndex (inBitValue.boolValue(), inBitIndex.uintValue ()) ;
@@ -449,14 +449,14 @@ GGS_u_38_ GGS_bigint::getter_u_38_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_bigint::getter_uint (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_bigint::getter_u_33__32_ (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
     if (mValue.fitsInUInt32 ()) {
-      result = GGS_uint (mValue.uint32 ()) ;
+      result = GGS_u_33__32_ (mValue.uint32 ()) ;
     }else{
-      inCompiler->onTheFlyRunTimeError ("@bigint to @uint conversion overflow" COMMA_THERE) ;
+      inCompiler->onTheFlyRunTimeError ("@bigint to @32 conversion overflow" COMMA_THERE) ;
     }
   }
   return result ;
@@ -668,7 +668,7 @@ GGS_bigint GGS_bigint::operator_tilde (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_bigint::left_shift_operation (const GGS_uint inShiftOperand,
+GGS_bigint GGS_bigint::left_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                    class Compiler * /* inCompiler*/
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
 
@@ -700,7 +700,7 @@ GGS_bigint GGS_bigint::left_shift_operation (const GGS_bigint inShiftOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_bigint::right_shift_operation (const GGS_uint inShiftOperand,
+GGS_bigint GGS_bigint::right_shift_operation (const GGS_u_33__32_ inShiftOperand,
                                                     class Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bigint result ;

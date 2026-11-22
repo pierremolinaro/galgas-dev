@@ -1008,7 +1008,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
 final class @inputJokerActualParameterAST : @actualParameterAST {
   public let @location mQualifierLocation
-  public let @uint mJokerIndex
+  public let @u32 mJokerIndex
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

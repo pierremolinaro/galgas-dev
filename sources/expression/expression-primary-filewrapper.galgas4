@@ -106,7 +106,7 @@ final class @filewrapperInExpressionAST : @semanticExpressionAST {
         directoryList = [] // For exiting loop
       end
     end
-    let @uint fileIndex
+    let @u32 fileIndex
     let @bool isTextFile
     if filewrapperFileMap.contains (fileName) then
       filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
@@ -142,14 +142,14 @@ final class @filewrapperInExpressionAST : @semanticExpressionAST {
 final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry filewrapperType
   private let @string mFilewrapperName
-  private let @uint mFilewrapperFileIndex
+  private let @u32 mFilewrapperFileIndex
   private let @bool mIsTextFile
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset ioInclusionSet,
-                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@u32 _ioTemporaryVariableIndex,
                                     ?!@stringset _ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
   //---

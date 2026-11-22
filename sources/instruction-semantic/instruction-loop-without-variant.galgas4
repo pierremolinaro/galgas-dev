@@ -147,7 +147,7 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
+                                       ?!@u32 ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

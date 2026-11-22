@@ -1,24 +1,24 @@
 //--------------------------------------------------------------------------------------------------
-//   @uint type
+//   @u32 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_uint final : public AC_GALGAS_root {
+class GGS_u_33__32_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: uint32_t mUIntValue ;
+  private: uint32_t mU32 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline uint32_t uintValue (void) const { return mUIntValue ; }
-  public: inline void increment (void) { mUIntValue += 1 ; }
+  public: inline uint32_t uintValue (void) const { return mU32 ; }
+  public: inline void increment (void) { mU32 += 1 ; }
 
 //--------------------------------- Default constructor
-  public: GGS_uint (void) ;
+  public: GGS_u_33__32_ (void) ;
 
 //--------------------------------- Native constructors
-  public: GGS_uint (const uint32_t inValue) ;
-  public: GGS_uint (const bool inValid, const uint32_t inValue) ;
+  public: GGS_u_33__32_ (const uint32_t inValue) ;
+  public: GGS_u_33__32_ (const bool inValid, const uint32_t inValue) ;
 
 %
 

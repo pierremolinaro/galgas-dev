@@ -906,13 +906,13 @@
                 "galgas4-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_u64.cpp",
+              "path": "GGS_u32.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_uint.cpp",
+              "path": "GGS_u64.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",

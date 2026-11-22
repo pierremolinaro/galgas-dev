@@ -862,11 +862,11 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString ("COMMA_LOCATION_ARGS) :\nLexique_") ;
   result.appendString (in_SUPER_5F_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),\nmMatchedTemplateDelimiterIndex (-1) {\n}\n\n//--------------------------------------------------------------------------------------------------\n//                      U N I C O D E    S T R I N G S\n//--------------------------------------------------------------------------------------------------\n") ;
-  GGS_uint index_1512_ (0) ;
+  GGS_u_33__32_ index_1512_ (0) ;
   if (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES.isValid ()) {
     UpEnumerator_stringset enumerator_1512 (in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES) ;
     while (enumerator_1512.hasCurrentObject ()) {
-      const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_1512.current_key (HERE).getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 33)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_1512.current_key (HERE).getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 33)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_0) {
       case GalgasBool::boolTrue : {
         result.appendString ("\n//--- Unicode string for '$") ;
@@ -889,7 +889,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_2266_ (0) ;
+  GGS_u_33__32_ index_2266_ (0) ;
   if (in_TEMPLATE_5F_DELIMITOR_5F_LIST.isValid ()) {
     UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_2266 (in_TEMPLATE_5F_DELIMITOR_5F_LIST) ;
     const bool nonEmpty_enumerator_2266 = enumerator_2266.hasCurrentObject () ;
@@ -908,7 +908,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
       result.appendString (", ") ;
       result.appendString (enumerator_2266.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 45)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 45)).stringValue ()) ;
       result.appendString (", ") ;
-      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_2266.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 46)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_2266.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 46)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_1) {
       case GalgasBool::boolTrue : {
         result.appendString ("{}, 0,") ;
@@ -939,7 +939,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_3231_ (0) ;
+  GGS_u_33__32_ index_3231_ (0) ;
   if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_templateReplacementAST_5D_ enumerator_3231 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
     const bool nonEmpty_enumerator_3231 = enumerator_3231.hasCurrentObject () ;
@@ -964,7 +964,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
       result.appendString (", ") ;
       result.appendString (enumerator_3231.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 66)).getter_string (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 66)).stringValue ()) ;
       result.appendString (", ") ;
-      const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_3231.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_3231.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 67)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_2) {
       case GalgasBool::boolTrue : {
         result.appendString ("nullptr") ;
@@ -988,7 +988,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_4172_ (0) ;
+  GGS_u_33__32_ index_4172_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_4172 (in_TERMINAL_5F_LIST) ;
     const bool nonEmpty_enumerator_4172 = enumerator_4172.hasCurrentObject () ;
@@ -1044,7 +1044,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString ("_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {\n      mMatchedTemplateDelimiterIndex = -1 ;\n    }\n  }\n  if (mCurrentChar.u32 () == '\\0') {\n    token.mTokenCode = 0 ;\n    enterToken (token) ;\n  }\n  return token.mTokenCode > 0 ;\n}\n\n//--------------------------------------------------------------------------------------------------\n//                         I N T R O S P E C T I O N\n//--------------------------------------------------------------------------------------------------\n\nGGS__5B_string_5D_ Lexique_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::symbols (LOCATION_ARGS) {\n  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n") ;
-  GGS_uint index_7617_ (0) ;
+  GGS_u_33__32_ index_7617_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_7617 (in_TERMINAL_5F_LIST) ;
     while (enumerator_7617.hasCurrentObject ()) {
@@ -1058,7 +1058,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString ("  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void getKeywordLists_") ;
   result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" (GenericUniqueArray <String> & ") ;
-  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 158)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 158)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_3) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioList */") ;
@@ -1070,7 +1070,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
     break ;
   }
   result.appendString (") {\n") ;
-  GGS_uint index_8144_ (0) ;
+  GGS_u_33__32_ index_8144_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_8144 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
     while (enumerator_8144.hasCurrentObject ()) {
@@ -1086,7 +1086,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
   result.appendString ("const String & ") ;
-  const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 168)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 168)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_4) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* inIdentifier */") ;
@@ -1100,7 +1100,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString (",\n     ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("bool & ") ;
-  const GalgasBool test_5 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 169)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_5 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 169)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_5) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioFound */") ;
@@ -1114,7 +1114,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   result.appendString (",\n     ") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("GenericUniqueArray <String> & ") ;
-  const GalgasBool test_6 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 170)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_6 = GGS_bool (ComparisonKind::equal, in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.getter_count (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 170)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_6) {
   case GalgasBool::boolTrue : {
     result.appendString ("/* ioList */") ;
@@ -1126,14 +1126,14 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
     break ;
   }
   result.appendString (") {\n") ;
-  GGS_uint index_8857_ (0) ;
+  GGS_u_33__32_ index_8857_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
     UpEnumerator_lexicalExplicitTokenListMapMap enumerator_8857 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP) ;
     while (enumerator_8857.hasCurrentObject ()) {
       result.appendString ("  if (inIdentifier == ") ;
       result.appendString (in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 174)).add_operation (enumerator_8857.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 174)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_implementation-galgas3.cpp.galgasTemplate", 174)).stringValue ()) ;
       result.appendString (") {\n    ioFound = true ;\n") ;
-      GGS_uint index_9032_ (0) ;
+      GGS_u_33__32_ index_9032_ (0) ;
       if (enumerator_8857.current_mTokenSortedList (HERE).isValid ()) {
         UpEnumerator_sortedTokenArray enumerator_9032 (enumerator_8857.current_mTokenSortedList (HERE)) ;
         while (enumerator_9032.hasCurrentObject ()) {
@@ -1172,13 +1172,13 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementat
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("\nimport SwiftUI\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 8)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 8)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_0) {
   case GalgasBool::boolTrue : {
     result.appendString ("fileprivate let kTemplateReplacementArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 9)).stringValue ()) ;
     result.appendString (" : [String] = [\n") ;
-    GGS_uint index_468_ (0) ;
+    GGS_u_33__32_ index_468_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
       UpEnumerator__5B_templateReplacementAST_5D_ enumerator_468 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
       while (enumerator_468.hasCurrentObject ()) {
@@ -1199,20 +1199,20 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementat
     break ;
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//                           Template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 21)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 21)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_1) {
   case GalgasBool::boolTrue : {
     result.appendString ("fileprivate let kTemplateDefinitionArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 22)).stringValue ()) ;
     result.appendString (" : [TemplateDelimiter] = [\n") ;
-    GGS_uint index_1024_ (0) ;
+    GGS_u_33__32_ index_1024_ (0) ;
     if (in_TEMPLATE_5F_DELIMITOR_5F_LIST.isValid ()) {
       UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_1024 (in_TEMPLATE_5F_DELIMITOR_5F_LIST) ;
       while (enumerator_1024.hasCurrentObject ()) {
         result.appendString ("  TemplateDelimiter (startString: ") ;
         result.appendString (enumerator_1024.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 25)).stringValue ()) ;
         result.appendString (", endString: ") ;
-        const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1024.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 26)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+        const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1024.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("template_lexique_swiftui_implementation.swift.galgasTemplate", 26)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
         switch (test_2) {
         case GalgasBool::boolTrue : {
           result.appendString ("nil") ;
@@ -1241,7 +1241,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementat
     break ;
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//            Terminal Symbols as end of script in template mark\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_1851_ (0) ;
+  GGS_u_33__32_ index_1851_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_terminalAST_5D_ enumerator_1851 (in_TERMINAL_5F_LIST) ;
     const bool nonEmpty_enumerator_1851 = enumerator_1851.hasCurrentObject () ;
@@ -1331,7 +1331,7 @@ GGS_bool GGS_propertyIndexMap::getter_contains (const GGS_string & inKey
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_propertyIndexMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                     const GGS_uint & inLevel
+                                                     const GGS_u_33__32_ & inLevel
                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -1342,20 +1342,20 @@ GGS_bool GGS_propertyIndexMap::getter_hasKeyAtLevel (const GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_propertyIndexMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_propertyIndexMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_propertyIndexMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_propertyIndexMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -1788,7 +1788,7 @@ GGS_bool GGS_nonterminalLabelMap::getter_contains (const GGS_string & inKey
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_nonterminalLabelMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                        const GGS_uint & inLevel
+                                                        const GGS_u_33__32_ & inLevel
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -1799,20 +1799,20 @@ GGS_bool GGS_nonterminalLabelMap::getter_hasKeyAtLevel (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonterminalLabelMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonterminalLabelMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonterminalLabelMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonterminalLabelMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -2493,10 +2493,10 @@ void GGS__5B_ruleLabelImplementationAST_5D_::plusPlusAssignOperation (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_ruleLabelImplementationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_ruleLabelImplementationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -2561,7 +2561,7 @@ void GGS__5B_ruleLabelImplementationAST_5D_::setter_removeAll (Compiler * /* inC
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleLabelImplementationAST_5D_::setter_set (const GGS_ruleLabelImplementationAST inValue,
-                                                         const GGS_uint inIndex,
+                                                         const GGS_u_33__32_ inIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -2582,7 +2582,7 @@ void GGS__5B_ruleLabelImplementationAST_5D_::setter_set (const GGS_ruleLabelImpl
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleLabelImplementationAST_5D_::setter_insert (const GGS_ruleLabelImplementationAST inValue,
-                                                            const GGS_uint inInsertionIndex,
+                                                            const GGS_u_33__32_ inInsertionIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -2603,7 +2603,7 @@ void GGS__5B_ruleLabelImplementationAST_5D_::setter_insert (const GGS_ruleLabelI
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleLabelImplementationAST_5D_::setter_remove (GGS_ruleLabelImplementationAST & outValue,
-                                                            const GGS_uint inRemoveIndex,
+                                                            const GGS_u_33__32_ inRemoveIndex,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -2659,7 +2659,7 @@ void GGS__5B_ruleLabelImplementationAST_5D_::setter_removeLast (GGS_ruleLabelImp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                      Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_ruleLabelImplementationAST_5D_ result ;
@@ -2684,8 +2684,8 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::g
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                               const GGS_uint & inLength,
+GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                               const GGS_u_33__32_ & inLength,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_ruleLabelImplementationAST_5D_ result ;
@@ -2753,7 +2753,7 @@ GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::getter_la
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
   GGS_ruleLabelImplementationAST result ;
@@ -2897,7 +2897,7 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxFileImplementation
                                                                                             Compiler * /* inCompiler */
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  GGS_uint index_29_ (0) ;
+  GGS_u_33__32_ index_29_ (0) ;
   if (in_INCLUSION_5F_SET.isValid ()) {
     UpEnumerator_stringset enumerator_29 (in_INCLUSION_5F_SET) ;
     while (enumerator_29.hasCurrentObject ()) {
@@ -2919,7 +2919,7 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
                                                                                         const GGS_string & in_LEXIQUE_5F_NAME,
                                                                                         const GGS_nonterminalMap & in_NONTERMINAL_5F_MAP,
                                                                                         const GGS__5B_ruleDeclarationAST_5D_ & in_RULE_5F_DECLARATION_5F_LIST,
-                                                                                        const GGS__5B_uint_5D_ & in_SELECT_5F_METHOD_5F_LIST,
+                                                                                        const GGS__5B_u_33__32__5D_ & in_SELECT_5F_METHOD_5F_LIST,
                                                                                         const GGS_bool & in_HAS_5F_INDEXING,
                                                                                         const GGS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
                                                                                         Compiler * inCompiler
@@ -2933,11 +2933,11 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
   result.appendString (" {\n//--- Virtual destructor\n  public: virtual ~ cParser_") ;
   result.appendString (in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 9)).stringValue ()) ;
   result.appendString (" (void) { }\n\n//--- Non terminal declarations\n") ;
-  GGS_uint index_510_ (0) ;
+  GGS_u_33__32_ index_510_ (0) ;
   if (in_NONTERMINAL_5F_MAP.isValid ()) {
     UpEnumerator_nonterminalMap enumerator_510 (in_NONTERMINAL_5F_MAP) ;
     while (enumerator_510.hasCurrentObject ()) {
-      GGS_uint index_566_ (0) ;
+      GGS_u_33__32_ index_566_ (0) ;
       if (enumerator_510.current_mLabelMap (HERE).isValid ()) {
         UpEnumerator_nonterminalLabelMap enumerator_566 (enumerator_510.current_mLabelMap (HERE)) ;
         while (enumerator_566.hasCurrentObject ()) {
@@ -2947,7 +2947,7 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
           result.appendString (enumerator_566.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_726_IDX (0) ;
+          GGS_u_33__32_ index_726_IDX (0) ;
           if (enumerator_566.current_mSignature (HERE).isValid ()) {
             UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_726 (enumerator_566.current_mSignature (HERE)) ;
             while (enumerator_726.hasCurrentObject ()) {
@@ -3039,11 +3039,11 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
     }
   }
   result.appendString ("\n//--- Rule declarations\n") ;
-  GGS_uint index_1951_ (0) ;
+  GGS_u_33__32_ index_1951_ (0) ;
   if (in_RULE_5F_DECLARATION_5F_LIST.isValid ()) {
     UpEnumerator__5B_ruleDeclarationAST_5D_ enumerator_1951 (in_RULE_5F_DECLARATION_5F_LIST) ;
     while (enumerator_1951.hasCurrentObject ()) {
-      GGS_uint index_2003_ (0) ;
+      GGS_u_33__32_ index_2003_ (0) ;
       if (enumerator_1951.current_entry (HERE).readProperty_mLabelImplementationList ().isValid ()) {
         UpEnumerator__5B_ruleLabelImplementationAST_5D_ enumerator_2003 (enumerator_1951.current_entry (HERE).readProperty_mLabelImplementationList ()) ;
         while (enumerator_2003.hasCurrentObject ()) {
@@ -3057,7 +3057,7 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
           result.appendString (enumerator_2003.current_entry (HERE).readProperty_mLabelName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 40)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_2260_IDX (0) ;
+          GGS_u_33__32_ index_2260_IDX (0) ;
           if (enumerator_2003.current_entry (HERE).readProperty_mSignature ().isValid ()) {
             UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_2260 (enumerator_2003.current_entry (HERE).readProperty_mSignature ()) ;
             while (enumerator_2260.hasCurrentObject ()) {
@@ -3177,9 +3177,9 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDecla
     }
   }
   result.appendString ("\n\n//--- Select methods\n") ;
-  GGS_uint index_3835_ (0) ;
+  GGS_u_33__32_ index_3835_ (0) ;
   if (in_SELECT_5F_METHOD_5F_LIST.isValid ()) {
-    UpEnumerator__5B_uint_5D_ enumerator_3835 (in_SELECT_5F_METHOD_5F_LIST) ;
+    UpEnumerator__5B_u_33__32__5D_ enumerator_3835 (in_SELECT_5F_METHOD_5F_LIST) ;
     while (enumerator_3835.hasCurrentObject ()) {
       result.appendString ("  protected: virtual int32_t select_") ;
       result.appendString (in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue ()) ;
@@ -3225,10 +3225,10 @@ void GGS__5B_string_3A__5B_lstring_5D__5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_string_3A__5B_lstring_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_string_3A__5B_lstring_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (count ())) ;
+    result = GGS_u_33__32_ (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -3577,10 +3577,10 @@ void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::description (String & io
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (count ())) ;
+    result = GGS_u_33__32_ (uint32_t (count ())) ;
   }
   return result ;
 }
@@ -3907,7 +3907,7 @@ GGS_bool GGS_extensionMethodMapForGlobalCheckings::getter_contains (const GGS_st
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_extensionMethodMapForGlobalCheckings::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                                         const GGS_uint & inLevel
+                                                                         const GGS_u_33__32_ & inLevel
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -3918,20 +3918,20 @@ GGS_bool GGS_extensionMethodMapForGlobalCheckings::getter_hasKeyAtLevel (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionMethodMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionMethodMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionMethodMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionMethodMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -4283,7 +4283,7 @@ GGS_bool GGS_extensionSetterMapForGlobalCheckings::getter_contains (const GGS_st
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_extensionSetterMapForGlobalCheckings::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                                         const GGS_uint & inLevel
+                                                                         const GGS_u_33__32_ & inLevel
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -4294,20 +4294,20 @@ GGS_bool GGS_extensionSetterMapForGlobalCheckings::getter_hasKeyAtLevel (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionSetterMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionSetterMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionSetterMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionSetterMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -4659,7 +4659,7 @@ GGS_bool GGS_extensionGetterMapForGlobalCheckings::getter_contains (const GGS_st
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_extensionGetterMapForGlobalCheckings::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                                         const GGS_uint & inLevel
+                                                                         const GGS_u_33__32_ & inLevel
                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -4670,20 +4670,20 @@ GGS_bool GGS_extensionGetterMapForGlobalCheckings::getter_hasKeyAtLevel (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionGetterMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionGetterMapForGlobalCheckings::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_extensionGetterMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_extensionGetterMapForGlobalCheckings::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -4992,7 +4992,7 @@ const GALGAS_TypeDescriptor * GGS_extensionGetterMapForGlobalCheckings::staticTy
 void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGeneration * inObject,
                                                  GGS_string & io_ioGeneratedCode,
                                                  GGS_stringset & io_ioInclusionSet,
-                                                 GGS_uint & io__5F_ioTemporaryVariableIndex,
+                                                 GGS_u_33__32_ & io__5F_ioTemporaryVariableIndex,
                                                  GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                  GGS_bool & io__5F_ioUseColumnMarker,
                                                  Compiler * inCompiler
@@ -5013,7 +5013,7 @@ void callExtensionMethod_templateCodeGeneration (cPtr_templateInstructionForGene
 void callExtensionMethod_generateExpression (cPtr_semanticExpressionForGeneration * inObject,
                                              GGS_string & io_ioGeneratedCode,
                                              GGS_stringset & io_ioInclusionSet,
-                                             GGS_uint & io_ioTemporaryVariableIndex,
+                                             GGS_u_33__32_ & io_ioTemporaryVariableIndex,
                                              GGS_stringset & io_ioUnusedVariableCppNameSet,
                                              GGS_string & out_outCppExpression,
                                              Compiler * inCompiler
@@ -5791,7 +5791,7 @@ const GALGAS_TypeDescriptor * GGS_inputJokerParameterForGeneration_2E_weak::stat
 
 void callExtensionMethod_generateInstruction (cPtr_semanticInstructionForGeneration * inObject,
                                               GGS_stringset & io_ioInclusionSet,
-                                              GGS_uint & io_ioTemporaryVariableIndex,
+                                              GGS_u_33__32_ & io_ioTemporaryVariableIndex,
                                               GGS_stringset & io_ioUnusedVariableCppNameSet,
                                               const GGS_bool constin_inGenerateSyntaxDirectedTranslationString,
                                               GGS_string & io_ioGeneratedCode,
@@ -9766,7 +9766,7 @@ GGS_lexicalStyleMap_2E_element & GGS_lexicalStyleMap_2E_element::operator = (con
 
 GGS_lexicalStyleMap_2E_element GGS_lexicalStyleMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
                                                                                  const GGS_lstring & in_mComment,
-                                                                                 const GGS_uint & in_mStyleIndex,
+                                                                                 const GGS_u_33__32_ & in_mStyleIndex,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalStyleMap_2E_element result ;
@@ -9786,7 +9786,7 @@ void GGS_lexicalStyleMap_2E_element::setInitializedProperties (Compiler * /* inC
 
 GGS_lexicalStyleMap_2E_element::GGS_lexicalStyleMap_2E_element (const GGS_lstring & inOperand0,
                                                                 const GGS_lstring & inOperand1,
-                                                                const GGS_uint & inOperand2) :
+                                                                const GGS_u_33__32_ & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mComment (inOperand1),
 mProperty_mStyleIndex (inOperand2) {
@@ -12640,7 +12640,7 @@ GGS_extensionMap_2E_element & GGS_extensionMap_2E_element::operator = (const GGS
 
 GGS_extensionMap_2E_element GGS_extensionMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
                                                                            const GGS_string & in_mLexiqueName,
-                                                                           const GGS_uint & in_mIndex,
+                                                                           const GGS_u_33__32_ & in_mIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GGS_extensionMap_2E_element result ;
@@ -12660,7 +12660,7 @@ void GGS_extensionMap_2E_element::setInitializedProperties (Compiler * /* inComp
 
 GGS_extensionMap_2E_element::GGS_extensionMap_2E_element (const GGS_lstring & inOperand0,
                                                           const GGS_string & inOperand1,
-                                                          const GGS_uint & inOperand2) :
+                                                          const GGS_u_33__32_ & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mLexiqueName (inOperand1),
 mProperty_mIndex (inOperand2) {
@@ -14154,8 +14154,8 @@ GGS_wrapperFileMap_2E_element & GGS_wrapperFileMap_2E_element::operator = (const
 GGS_wrapperFileMap_2E_element GGS_wrapperFileMap_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_lkey,
                                                                                        const GGS_string & in_mAbsoluteFilePath,
                                                                                        const GGS_bool & in_mIsTextFile,
-                                                                                       const GGS_uint & in_mWrapperDirectoryIndex,
-                                                                                       const GGS_uint & in_mWrapperFileIndex,
+                                                                                       const GGS_u_33__32_ & in_mWrapperDirectoryIndex,
+                                                                                       const GGS_u_33__32_ & in_mWrapperFileIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperFileMap_2E_element result ;
@@ -14178,8 +14178,8 @@ void GGS_wrapperFileMap_2E_element::setInitializedProperties (Compiler * /* inCo
 GGS_wrapperFileMap_2E_element::GGS_wrapperFileMap_2E_element (const GGS_lstring & inOperand0,
                                                               const GGS_string & inOperand1,
                                                               const GGS_bool & inOperand2,
-                                                              const GGS_uint & inOperand3,
-                                                              const GGS_uint & inOperand4) :
+                                                              const GGS_u_33__32_ & inOperand3,
+                                                              const GGS_u_33__32_ & inOperand4) :
 mProperty_lkey (inOperand0),
 mProperty_mAbsoluteFilePath (inOperand1),
 mProperty_mIsTextFile (inOperand2),
@@ -14361,7 +14361,7 @@ GGS_wrapperDirectoryMap_2E_element & GGS_wrapperDirectoryMap_2E_element::operato
 GGS_wrapperDirectoryMap_2E_element GGS_wrapperDirectoryMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
                                                                                              const GGS_wrapperFileMap & in_mRegularFileMap,
                                                                                              const GGS_wrapperDirectoryMap & in_mDirectoryMap,
-                                                                                             const GGS_uint & in_mWrapperDirectoryIndex,
+                                                                                             const GGS_u_33__32_ & in_mWrapperDirectoryIndex,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperDirectoryMap_2E_element result ;
@@ -14383,7 +14383,7 @@ void GGS_wrapperDirectoryMap_2E_element::setInitializedProperties (Compiler * /*
 GGS_wrapperDirectoryMap_2E_element::GGS_wrapperDirectoryMap_2E_element (const GGS_lstring & inOperand0,
                                                                         const GGS_wrapperFileMap & inOperand1,
                                                                         const GGS_wrapperDirectoryMap & inOperand2,
-                                                                        const GGS_uint & inOperand3) :
+                                                                        const GGS_u_33__32_ & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mRegularFileMap (inOperand1),
 mProperty_mDirectoryMap (inOperand2),
@@ -16016,7 +16016,7 @@ GGS_constantIndexMap_2E_element & GGS_constantIndexMap_2E_element::operator = (c
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_constantIndexMap_2E_element GGS_constantIndexMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                   const GGS_uint & in_mIndex,
+                                                                                   const GGS_u_33__32_ & in_mIndex,
                                                                                    const GGS__5B_associatedValueDescriptor_5D_ & in_mAssociatedTypeList,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -16036,7 +16036,7 @@ void GGS_constantIndexMap_2E_element::setInitializedProperties (Compiler * /* in
 //--------------------------------------------------------------------------------------------------
 
 GGS_constantIndexMap_2E_element::GGS_constantIndexMap_2E_element (const GGS_lstring & inOperand0,
-                                                                  const GGS_uint & inOperand1,
+                                                                  const GGS_u_33__32_ & inOperand1,
                                                                   const GGS__5B_associatedValueDescriptor_5D_ & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mIndex (inOperand1),

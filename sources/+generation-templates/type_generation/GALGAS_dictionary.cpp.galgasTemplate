@@ -28,10 +28,10 @@ void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (count ())) ;
+    result = GGS_u_33__32_ (uint32_t (count ())) ;
   }
   return result ;
 }

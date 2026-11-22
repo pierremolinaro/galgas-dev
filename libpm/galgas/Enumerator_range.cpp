@@ -33,8 +33,8 @@ void DownEnumerator_range::gotoNextObject (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint DownEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_uint (hasCurrentObject (), uint32_t (mCurrent)) ;
+GGS_u_33__32_ DownEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_u_33__32_ (hasCurrentObject (), uint32_t (mCurrent)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -62,8 +62,8 @@ void UpEnumerator_range::gotoNextObject (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint UpEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
-  return GGS_uint (hasCurrentObject (), uint32_t (mCurrent)) ;
+GGS_u_33__32_ UpEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
+  return GGS_u_33__32_ (hasCurrentObject (), uint32_t (mCurrent)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

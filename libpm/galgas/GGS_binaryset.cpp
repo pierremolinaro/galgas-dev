@@ -44,7 +44,7 @@ GGS_binaryset GGS_binaryset::class_func_fullBinarySet (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithBit (const GGS_uint & inBitIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithBit (const GGS_u_33__32_ & inBitIndex,
                                                           Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GGS_binaryset result ;
@@ -114,10 +114,10 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_
 //--------------------------------------------------------------------------------------------------
 
 static GGS_binaryset binarySetWithComparison (Compiler * inCompiler,
-                                              const GGS_uint & inLeftFirstIndex,
-                                              const GGS_uint & inBitCount,
+                                              const GGS_u_33__32_ & inLeftFirstIndex,
+                                              const GGS_u_33__32_ & inBitCount,
                                               const BinaryDecisionDiagram::compareEnum inComparison,
-                                              const GGS_uint & inRightFirstIndex
+                                              const GGS_u_33__32_ & inRightFirstIndex
                                               COMMA_LOCATION_ARGS) {
   GGS_binaryset result ;
   if ((inLeftFirstIndex.isValid ()) && inBitCount.isValid () && (inRightFirstIndex.isValid ())) {
@@ -139,9 +139,9 @@ static GGS_binaryset binarySetWithComparison (Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualComparison (const GGS_uint & inLeftFirstIndex,
-                                                                      const GGS_uint & inBitCount,
-                                                                      const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                      const GGS_u_33__32_ & inBitCount,
+                                                                      const GGS_u_33__32_ & inRightFirstIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -154,9 +154,9 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualComparison (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualComparison (const GGS_uint & inLeftFirstIndex,
-                                                                         const GGS_uint & inBitCount,
-                                                                         const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                         const GGS_u_33__32_ & inBitCount,
+                                                                         const GGS_u_33__32_ & inRightFirstIndex,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -169,9 +169,9 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualComparison (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (const GGS_uint & inLeftFirstIndex,
-                                                                             const GGS_uint & inBitCount,
-                                                                             const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                             const GGS_u_33__32_ & inBitCount,
+                                                                             const GGS_u_33__32_ & inRightFirstIndex,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -184,9 +184,9 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (const GGS_uint & inLeftFirstIndex,
-                                                                               const GGS_uint & inBitCount,
-                                                                               const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                               const GGS_u_33__32_ & inBitCount,
+                                                                               const GGS_u_33__32_ & inRightFirstIndex,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -199,9 +199,9 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerComparison (const GGS_uint & inLeftFirstIndex,
-                                                                            const GGS_uint & inBitCount,
-                                                                            const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                            const GGS_u_33__32_ & inBitCount,
+                                                                            const GGS_u_33__32_ & inRightFirstIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -214,9 +214,9 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerComparison (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (const GGS_uint & inLeftFirstIndex,
-                                                                              const GGS_uint & inBitCount,
-                                                                              const GGS_uint & inRightFirstIndex,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (const GGS_u_33__32_ & inLeftFirstIndex,
+                                                                              const GGS_u_33__32_ & inBitCount,
+                                                                              const GGS_u_33__32_ & inRightFirstIndex,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
   return binarySetWithComparison (inCompiler,
@@ -230,8 +230,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (co
 //--------------------------------------------------------------------------------------------------
 
 static GGS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,
-                                                          const GGS_uint & inBitIndex,
-                                                          const GGS_uint & inBitCount,
+                                                          const GGS_u_33__32_ & inBitIndex,
+                                                          const GGS_u_33__32_ & inBitCount,
                                                           const BinaryDecisionDiagram::compareEnum inComparison,
                                                           const GGS_u_36__34_ & inConstant
                                                           COMMA_LOCATION_ARGS) {
@@ -252,8 +252,8 @@ static GGS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualToConstant (const GGS_uint & inBitIndex,
-                                                                      const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualToConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                      const GGS_u_33__32_ & inBitCount,
                                                                       const GGS_u_36__34_ & inConstant,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
@@ -267,8 +267,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualToConstant (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualToConstant (const GGS_uint & inBitIndex,
-                                                                         const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualToConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                         const GGS_u_33__32_ & inBitCount,
                                                                          const GGS_u_36__34_ & inConstant,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
@@ -282,8 +282,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualToConstant (const G
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (const GGS_uint & inBitIndex,
-                                                                             const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                             const GGS_u_33__32_ & inBitCount,
                                                                              const GGS_u_36__34_ & inConstant,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) {
@@ -297,8 +297,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (const GGS_uint & inBitIndex,
-                                                                              const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                              const GGS_u_33__32_ & inBitCount,
                                                                               const GGS_u_36__34_ & inConstant,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) {
@@ -312,8 +312,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (const GGS_uint & inBitIndex,
-                                                                               const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                               const GGS_u_33__32_ & inBitCount,
                                                                                const GGS_u_36__34_ & inConstant,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
@@ -327,8 +327,8 @@ GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (const GGS_uint & inBitIndex,
-                                                                                const GGS_uint & inBitCount,
+GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (const GGS_u_33__32_ & inBitIndex,
+                                                                                const GGS_u_33__32_ & inBitCount,
                                                                                 const GGS_u_36__34_ & inConstant,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
@@ -418,8 +418,8 @@ void GGS_binaryset::description (String & ioString,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_binaryset::getter_containsValue (const GGS_u_36__34_ & inValue,
-                                              const GGS_uint & inFirstBit,
-                                              const GGS_uint & inBitCount
+                                              const GGS_u_33__32_ & inFirstBit,
+                                              const GGS_u_33__32_ & inBitCount
                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inValue.isValid () && inFirstBit.isValid () && inBitCount.isValid ()) {
@@ -542,17 +542,17 @@ GGS_bool GGS_binaryset::getter_isEmpty (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_binaryset::getter_significantVariableCount (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_binaryset::getter_significantVariableCount (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mBDD.significantVariableCount ()) ;
+    result = GGS_u_33__32_ (mBDD.significantVariableCount ()) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS_binaryset::getter_valueCount (const GGS_uint & inVariableCount,
+GGS_u_36__34_ GGS_binaryset::getter_valueCount (const GGS_u_33__32_ & inVariableCount,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
@@ -568,7 +568,7 @@ GGS_u_36__34_ GGS_binaryset::getter_valueCount (const GGS_uint & inVariableCount
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_binaryset::getter_bigValueCount (const GGS_uint & inVariableCount,
+GGS_bigint GGS_binaryset::getter_bigValueCount (const GGS_u_33__32_ & inVariableCount,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) const {
   GGS_bigint result ;
@@ -594,7 +594,7 @@ GGS_u_36__34_ GGS_binaryset::getter_compressedValueCount (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_u_36__34__5D_ GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint & inVariableCount
+GGS__5B_u_36__34__5D_ GGS_binaryset::getter_uint_36__34_ValueList (const GGS_u_33__32_ & inVariableCount
                                                                       COMMA_LOCATION_ARGS) const {
   GGS__5B_u_36__34__5D_ result ;
   if (isValid () && inVariableCount.isValid ()) {
@@ -611,7 +611,7 @@ GGS__5B_u_36__34__5D_ GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_string_5D_ GGS_binaryset::getter_stringValueListWithNameList (const GGS_uint & inVariableCount,
+GGS__5B_string_5D_ GGS_binaryset::getter_stringValueListWithNameList (const GGS_u_33__32_ & inVariableCount,
                                                                       const GGS__5B_string_5D_ & inStringList,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
@@ -622,7 +622,7 @@ GGS__5B_string_5D_ GGS_binaryset::getter_stringValueListWithNameList (const GGS_
     result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;
-      GGS_uint object = GGS_uint (v) ;
+      GGS_u_33__32_ object = GGS_u_33__32_ (v) ;
       result.plusPlusAssignOperation (inStringList.readSubcript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;
     }
   }
@@ -631,7 +631,7 @@ GGS__5B_string_5D_ GGS_binaryset::getter_stringValueListWithNameList (const GGS_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_string_5D_ GGS_binaryset::getter_compressedStringValueList (const GGS_uint & inVariableCount,
+GGS__5B_string_5D_ GGS_binaryset::getter_compressedStringValueList (const GGS_u_33__32_ & inVariableCount,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   GGS__5B_string_5D_ result ;
@@ -661,7 +661,7 @@ GGS__5B_string_5D_ GGS_binaryset::getter_compressedStringValueList (const GGS_ui
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_string_5D_ GGS_binaryset::getter_stringValueList (const GGS_uint & inVariableCount
+GGS__5B_string_5D_ GGS_binaryset::getter_stringValueList (const GGS_u_33__32_ & inVariableCount
                                                           COMMA_LOCATION_ARGS) const {
   GGS__5B_string_5D_ result ;
   if (isValid () && inVariableCount.isValid ()) {
@@ -684,7 +684,7 @@ GGS_string GGS_binaryset::getter_predicateStringValue (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_forAllOnBitIndex (const GGS_uint & inVariableIndex
+GGS_binaryset GGS_binaryset::getter_forAllOnBitIndex (const GGS_u_33__32_ & inVariableIndex
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid()) {
@@ -695,7 +695,7 @@ GGS_binaryset GGS_binaryset::getter_forAllOnBitIndex (const GGS_uint & inVariabl
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_forAllOnBitIndexAndBeyond (const GGS_uint & inVariableIndex
+GGS_binaryset GGS_binaryset::getter_forAllOnBitIndexAndBeyond (const GGS_u_33__32_ & inVariableIndex
                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid ()) {
@@ -706,7 +706,7 @@ GGS_binaryset GGS_binaryset::getter_forAllOnBitIndexAndBeyond (const GGS_uint & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_existOnBitIndex (const GGS_uint & inVariableIndex
+GGS_binaryset GGS_binaryset::getter_existOnBitIndex (const GGS_u_33__32_ & inVariableIndex
                                                      COMMA_UNUSED_LOCATION_ARGS)const  {
   GGS_binaryset result ;
   if (isValid ()) {
@@ -717,7 +717,7 @@ GGS_binaryset GGS_binaryset::getter_existOnBitIndex (const GGS_uint & inVariable
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_existOnBitIndexAndBeyond (const GGS_uint & inVariableIndex
+GGS_binaryset GGS_binaryset::getter_existOnBitIndexAndBeyond (const GGS_u_33__32_ & inVariableIndex
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inVariableIndex.isValid ()) {
@@ -729,14 +729,14 @@ GGS_binaryset GGS_binaryset::getter_existOnBitIndexAndBeyond (const GGS_uint & i
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_binaryset::getter_print (const GGS__5B_string_5D_ & inVariableList,
-                                        const GGS__5B_uint_5D_ & inBDDCount
+                                        const GGS__5B_u_33__32__5D_ & inBDDCount
                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
     GenericUniqueArray <String> variablesNames ;
     GenericUniqueArray <int32_t> bitCounts ;
     UpEnumerator__5B_string_5D_ variableEnumerator (inVariableList) ;
-    UpEnumerator__5B_uint_5D_ bddCountEnumerator (inBDDCount) ;
+    UpEnumerator__5B_u_33__32__5D_ bddCountEnumerator (inBDDCount) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current (HERE).stringValue () ;
       variablesNames.appendObject (name) ;
@@ -754,13 +754,13 @@ GGS_string GGS_binaryset::getter_print (const GGS__5B_string_5D_ & inVariableLis
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS__5B_uint_5D_ & inTransformationArray
+GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS__5B_u_33__32__5D_ & inTransformationArray
                                                    COMMA_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inTransformationArray.isValid ()) {
     uint32_t * substitutionArray = nullptr ;
     macroMyNewPODArray (substitutionArray, uint32_t, inTransformationArray.count ()) ;
-    UpEnumerator__5B_uint_5D_ enumerator (inTransformationArray) ;
+    UpEnumerator__5B_u_33__32__5D_ enumerator (inTransformationArray) ;
     uint32_t idx = 0 ;
     while (enumerator.hasCurrentObject ()) {
       const uint32_t value = enumerator.current (HERE).uintValue () ;
@@ -814,8 +814,8 @@ GGS_string GGS_binaryset::getter_graphvizDump (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_31__30_ (const GGS_uint & inBitCount1,
-                                                  const GGS_uint & inBitCount2
+GGS_binaryset GGS_binaryset::getter_swap_31__30_ (const GGS_u_33__32_ & inBitCount1,
+                                                  const GGS_u_33__32_ & inBitCount2
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid ()) {
@@ -828,9 +828,9 @@ GGS_binaryset GGS_binaryset::getter_swap_31__30_ (const GGS_uint & inBitCount1,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_30__32__31_ (const GGS_uint & inBitCount1,
-                                                      const GGS_uint & inBitCount2,
-                                                      const GGS_uint & inBitCount3
+GGS_binaryset GGS_binaryset::getter_swap_30__32__31_ (const GGS_u_33__32_ & inBitCount1,
+                                                      const GGS_u_33__32_ & inBitCount2,
+                                                      const GGS_u_33__32_ & inBitCount3
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {
@@ -844,9 +844,9 @@ GGS_binaryset GGS_binaryset::getter_swap_30__32__31_ (const GGS_uint & inBitCoun
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_31__30__32_ (const GGS_uint & inBitCount1,
-                                                      const GGS_uint & inBitCount2,
-                                                      const GGS_uint & inBitCount3
+GGS_binaryset GGS_binaryset::getter_swap_31__30__32_ (const GGS_u_33__32_ & inBitCount1,
+                                                      const GGS_u_33__32_ & inBitCount2,
+                                                      const GGS_u_33__32_ & inBitCount3
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {
@@ -860,9 +860,9 @@ GGS_binaryset GGS_binaryset::getter_swap_31__30__32_ (const GGS_uint & inBitCoun
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_31__32__30_ (const GGS_uint & inBitCount1,
-                                                      const GGS_uint & inBitCount2,
-                                                      const GGS_uint & inBitCount3
+GGS_binaryset GGS_binaryset::getter_swap_31__32__30_ (const GGS_u_33__32_ & inBitCount1,
+                                                      const GGS_u_33__32_ & inBitCount2,
+                                                      const GGS_u_33__32_ & inBitCount3
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {
@@ -876,9 +876,9 @@ GGS_binaryset GGS_binaryset::getter_swap_31__32__30_ (const GGS_uint & inBitCoun
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_32__30__31_ (const GGS_uint & inBitCount1,
-                                                      const GGS_uint & inBitCount2,
-                                                      const GGS_uint & inBitCount3
+GGS_binaryset GGS_binaryset::getter_swap_32__30__31_ (const GGS_u_33__32_ & inBitCount1,
+                                                      const GGS_u_33__32_ & inBitCount2,
+                                                      const GGS_u_33__32_ & inBitCount3
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {
@@ -892,9 +892,9 @@ GGS_binaryset GGS_binaryset::getter_swap_32__30__31_ (const GGS_uint & inBitCoun
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_swap_32__31__30_ (const GGS_uint & inBitCount1,
-                                                      const GGS_uint & inBitCount2,
-                                                      const GGS_uint & inBitCount3
+GGS_binaryset GGS_binaryset::getter_swap_32__31__30_ (const GGS_u_33__32_ & inBitCount1,
+                                                      const GGS_u_33__32_ & inBitCount2,
+                                                      const GGS_u_33__32_ & inBitCount3
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {
@@ -908,7 +908,7 @@ GGS_binaryset GGS_binaryset::getter_swap_32__31__30_ (const GGS_uint & inBitCoun
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_transitiveClosure (const GGS_uint & inBitCount
+GGS_binaryset GGS_binaryset::getter_transitiveClosure (const GGS_u_33__32_ & inBitCount
                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inBitCount.isValid ()) {
@@ -921,7 +921,7 @@ GGS_binaryset GGS_binaryset::getter_transitiveClosure (const GGS_uint & inBitCou
 //--------------------------------------------------------------------------------------------------
 
 GGS_binaryset GGS_binaryset::getter_accessibleStates (const GGS_binaryset & inInitialStateSet,
-                                                      const GGS_uint & inBitCount
+                                                      const GGS_u_33__32_ & inBitCount
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
 //--- Current object is edge [x, y].
 //    Accessible states set is computed by:
@@ -937,8 +937,8 @@ GGS_binaryset GGS_binaryset::getter_accessibleStates (const GGS_binaryset & inIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_binarySetByTranslatingFromIndex (const GGS_uint & inFirstIndexToTranslate,
-                                                                     const GGS_uint & inTranslation
+GGS_binaryset GGS_binaryset::getter_binarySetByTranslatingFromIndex (const GGS_u_33__32_ & inFirstIndexToTranslate,
+                                                                     const GGS_u_33__32_ & inTranslation
                                                                      COMMA_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inFirstIndexToTranslate.isValid () && (inTranslation.isValid ())) {
@@ -965,8 +965,8 @@ GGS_binaryset GGS_binaryset::getter_binarySetByTranslatingFromIndex (const GGS_u
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_existsOnBitRange (const GGS_uint & inFirstIndex,
-                                                      const GGS_uint & inCount
+GGS_binaryset GGS_binaryset::getter_existsOnBitRange (const GGS_u_33__32_ & inFirstIndex,
+                                                      const GGS_u_33__32_ & inCount
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inFirstIndex.isValid () && inCount.isValid ()) {
@@ -984,7 +984,7 @@ GGS_binaryset GGS_binaryset::getter_existsOnBitRange (const GGS_uint & inFirstIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_uint_5D_ & inVector,
+GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_u_33__32__5D_ & inVector,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GGS_binaryset result ;
@@ -993,7 +993,7 @@ GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_uint_5D_ & inVec
     uint32_t * substitionArray = nullptr ;
     macroMyNewArray (substitionArray, uint32_t, varCount) ;
     for (uint32_t i=0 ; i<varCount ; i++) {
-      const GGS_uint v = inVector.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE) ;
+      const GGS_u_33__32_ v = inVector.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE) ;
       substitionArray [i] = v.uintValue () ;
     }
     result = GGS_binaryset (mBDD.substitution (substitionArray, varCount COMMA_THERE)) ;
@@ -1004,7 +1004,7 @@ GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_uint_5D_ & inVec
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::left_shift_operation (const GGS_uint inLeftShiftCount,
+GGS_binaryset GGS_binaryset::left_shift_operation (const GGS_u_33__32_ inLeftShiftCount,
                                                    class Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
@@ -1032,7 +1032,7 @@ GGS_binaryset GGS_binaryset::left_shift_operation (const GGS_bigint inLeftShiftC
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::right_shift_operation (const GGS_uint inRightShiftCount,
+GGS_binaryset GGS_binaryset::right_shift_operation (const GGS_u_33__32_ inRightShiftCount,
                                                     class Compiler * /* inCompiler*/
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_binaryset result ;
@@ -1076,7 +1076,7 @@ ComparisonResult GGS_binaryset::objectCompare (const GGS_binaryset & inOperand) 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_binaryset::class_method_setNodeTableSize (class GGS_uint inTableSize
+void GGS_binaryset::class_method_setNodeTableSize (class GGS_u_33__32_ inTableSize
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (inTableSize.isValid ()) {
     BinaryDecisionDiagram::setHashMapMaxSize (inTableSize.uintValue ()) ;
@@ -1085,7 +1085,7 @@ void GGS_binaryset::class_method_setNodeTableSize (class GGS_uint inTableSize
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_binaryset::class_method_setAndTableSize (class GGS_uint inTableSize
+void GGS_binaryset::class_method_setAndTableSize (class GGS_u_33__32_ inTableSize
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   if (inTableSize.isValid ()) {
     BinaryDecisionDiagram::setANDOperationCacheMaxSize (inTableSize.uintValue ()) ;

@@ -88,7 +88,7 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
 
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset ioInclusionSet,
-                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@u32 _ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
@@ -115,7 +115,7 @@ final class @globalConstantInExpressionForGeneration : @semanticExpressionForGen
 
   override proc generateExpression (?!@string _ioGeneratedCode,
                                     ?!@stringset ioInclusionSet,
-                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@u32 _ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
   //--- Add return type header

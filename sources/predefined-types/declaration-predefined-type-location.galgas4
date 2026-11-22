@@ -88,14 +88,14 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startLocationIndex",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endLocationIndex",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
@@ -109,28 +109,28 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startLine",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endLine",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startColumn",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endColumn",
-      !returnedTypeName:"uint",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (

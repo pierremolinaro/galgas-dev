@@ -175,10 +175,10 @@ GGS_bool GGS_stringset::getter_contains (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedMap.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedMap.count ())) ;
   }
   return result ;
 }

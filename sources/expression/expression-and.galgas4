@@ -221,7 +221,7 @@ final class @andShortExpressionForGeneration : @semanticExpressionForGeneration 
 override proc @andShortExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   self.mLeftExpression.mResultType.addHeaderFileName (!?ioInclusionSet)

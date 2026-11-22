@@ -114,7 +114,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "count",
-      !returnedTypeName: "uint",
+      !returnedTypeName: "u32",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
@@ -158,7 +158,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName: "uint",
+      !argTypeName: "u32",
       !argName: "inValue",
       !setterName: "appendUIntBE",
       !compilerArg:false
@@ -166,7 +166,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
     enterModifierWithInputArgument (
       !?outSetterMap,
       !?ioUnifiedTypeMap,
-      !argTypeName: "uint",
+      !argTypeName: "u32",
       !argName: "inValue",
       !setterName: "appendUIntLE",
       !compilerArg: false

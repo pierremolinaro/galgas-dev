@@ -101,7 +101,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         error self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName
       end
     else
-      var @uint matchingReaderCount = 0
+      var @u32 matchingReaderCount = 0
       if receiverType.definition.typeKind == @typeKindEnum.structType then
         getterFormalArgumentTypeList = @()
         hasCompilerArgument = true
@@ -1374,9 +1374,9 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
     error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression
-  elsif rightType.definition.typeName.string != "uint" then
+  elsif rightType.definition.typeName.string != "u32" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
+    : "for a shift operator, right operand type should be '@u32': it is '@" + rightType.definition.typeName.string + "'"
     spoil outExpression
   else
   //--- Generate expression
@@ -1422,9 +1422,9 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
     error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression
-  elsif rightType.definition.typeName.string != "uint" then
+  elsif rightType.definition.typeName.string != "u32" then
     error self.mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
+    : "for a shift operator, right operand type should be '@u32': it is '@" + rightType.definition.typeName.string + "'"
     spoil outExpression
   else
   //--- Generate expression
@@ -1520,13 +1520,13 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
       .definedAsMember,
       expression,
       @(),
-      "uint",
+      "u32",
       @(),
       true
     )
     expression = conversionExpression
-  elsif expression.mResultType.definition.typeName.string != "uint" then
-    error self.mLocation:"expression type should be '@uint' (it is '@" + expression.mResultType.definition.typeName.string + "')"
+  elsif expression.mResultType.definition.typeName.string != "u32" then
+    error self.mLocation:"expression type should be '@u32' (it is '@" + expression.mResultType.definition.typeName.string + "')"
   end
   var blockInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (

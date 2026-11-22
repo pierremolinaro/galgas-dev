@@ -116,17 +116,17 @@ final class @u64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"uint",
-      !returnedTypeName:"uint",
+      !getterName:"u32",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uintSlice",
-      "uint", "inStartBit",
-      "uint", "inBitCount",
-      !returnedTypeName:"uint",
+      "u32", "inStartBit",
+      "u32", "inBitCount",
+      !returnedTypeName:"u32",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
@@ -149,7 +149,7 @@ final class @u64PredefinedTypeAST : @predefinedTypeAST {
       !getterName:"hexStringSeparatedBy",
       "char",
       "inSeparator",
-      "uint",
+      "u32",
       "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true

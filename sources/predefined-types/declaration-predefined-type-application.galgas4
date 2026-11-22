@@ -51,7 +51,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name: "compilationMode",
-      !resultTypeName: "uint",
+      !resultTypeName: "u32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
@@ -72,14 +72,14 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"errorCount",
-      !resultTypeName:"uint",
+      !resultTypeName:"u32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"warningCount",
-      !resultTypeName:"uint",
+      !resultTypeName:"u32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
@@ -107,14 +107,14 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
 //      !?outMap,
 //      !?ioUnifiedTypeMap,
 //      !name:"commandLineArgumentCount",
-//      !resultTypeName:"uint",
+//      !resultTypeName:"u32",
 //      !hasLexiqueArg:false
 //    )
 //    enterClassFunctionWithArgument (
 //      !?outMap,
 //      !?ioUnifiedTypeMap,
 //      !name:"commandLineArgumentAtIndex",
-//      !argTypeName:"uint",
+//      !argTypeName:"u32",
 //      !argName:"inIndex",
 //      !resultTypeName:"string",
 //      !hasLexiqueArg:true
@@ -171,7 +171,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
 //      !resultTypeName:"bool",
 //      !hasLexiqueArg:false
 //    )
-//  //--- Class functions for "uint" options
+//  //--- Class functions for "u32" options
 //    enterClassFunctionWithoutArgument (
 //      !?outMap,
 //      !?ioUnifiedTypeMap,
@@ -220,7 +220,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
 //      !argName1:"inOptionComponentName",
 //      !argTypeName2:"string",
 //      !argName2:"inOptionName",
-//      !resultTypeName:"uint",
+//      !resultTypeName:"u32",
 //      !hasLexiqueArg:false
 //    )
 //  //--- Class functions for "string" options
@@ -303,7 +303,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outClassMethodMap,
       !?ioUnifiedTypeMap,
       !methodName: "exit",
-      !argType: "uint",
+      !argType: "u32",
       !argName: "inErrorCode",
       !compilerArgument:false
     )
@@ -327,7 +327,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
 //      !argName1:"inDomain",
 //      !argType2:"string",
 //      !argName2:"inIdentifier",
-//      !argType3:"uint",
+//      !argType3:"u32",
 //      !argName3:"inValue",
 //      !compilerArgument:false
 //    )

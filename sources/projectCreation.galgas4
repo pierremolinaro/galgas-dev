@@ -71,7 +71,7 @@ proc projectCreation (let @string inProjectPath ) {
   //--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = inProjectPath.lastPathComponent
     var @bool ok = projectName.characterAtIndex (0).isalpha
-    var @uint idx = 1
+    var @u32 idx = 1
     loop (projectName.count)
     while (idx < projectName.count) & ok do
       let @char c = projectName.characterAtIndex (idx)

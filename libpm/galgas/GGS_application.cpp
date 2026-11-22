@@ -46,23 +46,23 @@ GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (uint32_t (totalErrorCount ())) ;
+GGS_u_33__32_ GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {
+  return GGS_u_33__32_ (uint32_t (totalErrorCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {
-  return GGS_uint (uint32_t (totalWarningCount ())) ;
+GGS_u_33__32_ GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {
+  return GGS_u_33__32_ (uint32_t (totalWarningCount ())) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
+GGS_u_33__32_ GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
   #ifdef __LP64__
-    return GGS_uint (64) ;
+    return GGS_u_33__32_ (64) ;
   #else
-    return GGS_uint (32) ;
+    return GGS_u_33__32_ (32) ;
   #endif
 }
 
@@ -145,7 +145,7 @@ GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
 //}
 
 //--------------------------------------------------------------------------------------------------
-//   @UINT options                                                                               
+//   @u32 options                                                                               
 //--------------------------------------------------------------------------------------------------
 
 //GGS__5B_stringString_5D_ GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {
@@ -201,13 +201,13 @@ GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-//GGS_uint GGS_application::class_func_uintOptionValue (const GGS_string & inDomainName,
+//GGS_u_33__32_ GGS_application::class_func_uintOptionValue (const GGS_string & inDomainName,
 //                                                      const GGS_string & inIdentifier
 //                                                      COMMA_UNUSED_LOCATION_ARGS) {
-//  GGS_uint result ;
+//  GGS_u_33__32_ result ;
 //  if (inDomainName.isValid () && inIdentifier.isValid ()) {
 //    const uint32_t v = UIntCommandLineOption::getUIntOptionValue (inDomainName.stringValue (), inIdentifier.stringValue ()) ;
-//    result = GGS_uint (v) ;
+//    result = GGS_u_33__32_ (v) ;
 //  }
 //  return result ;
 //}
@@ -216,7 +216,7 @@ GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
 
 //void GGS_application::class_method_setUIntOptionValue (GGS_string inDomainName,
 //                                                       GGS_string inIdentifier,
-//                                                       GGS_uint inValue
+//                                                       GGS_u_33__32_ inValue
 //                                                       COMMA_UNUSED_LOCATION_ARGS) {
 //  if (inDomainName.isValid () && inIdentifier.isValid () && inValue.isValid ()) {
 //    UIntCommandLineOption::setUIntOptionValue (inDomainName.stringValue (),
@@ -227,7 +227,7 @@ GGS_uint GGS_application::class_func_compilationMode (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-//void GGS_application::class_method_exit (GGS_uint inValue
+//void GGS_application::class_method_exit (GGS_u_33__32_ inValue
 //                                         COMMA_UNUSED_LOCATION_ARGS) {
 //  if (inValue.isValid ()) {
 //    exit (int (inValue.uintValue ())) ;
@@ -334,13 +334,13 @@ GGS_string GGS_application::class_func_galgasVersionString (UNUSED_LOCATION_ARGS
 //  Command line arguments
 //--------------------------------------------------------------------------------------------------
 
-//GGS_uint GGS_application::class_func_commandLineArgumentCount (UNUSED_LOCATION_ARGS) {
-//  return GGS_uint (commandLineArgumentCount ()) ;
+//GGS_u_33__32_ GGS_application::class_func_commandLineArgumentCount (UNUSED_LOCATION_ARGS) {
+//  return GGS_u_33__32_ (commandLineArgumentCount ()) ;
 //}
 
 //--------------------------------------------------------------------------------------------------
 
-//GGS_string GGS_application::class_func_commandLineArgumentAtIndex (const GGS_uint & inIndex,
+//GGS_string GGS_application::class_func_commandLineArgumentAtIndex (const GGS_u_33__32_ & inIndex,
 //                                                                   Compiler * inCompiler
 //                                                                   COMMA_LOCATION_ARGS) {
 //  GGS_string result ;

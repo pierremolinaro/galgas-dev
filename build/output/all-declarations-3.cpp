@@ -51,7 +51,7 @@ GGS_bool GGS_writeSubcriptMap::getter_contains (const GGS_string & inKey
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_writeSubcriptMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                     const GGS_uint & inLevel
+                                                     const GGS_u_33__32_ & inLevel
                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -62,20 +62,20 @@ GGS_bool GGS_writeSubcriptMap::getter_hasKeyAtLevel (const GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_writeSubcriptMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_writeSubcriptMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_writeSubcriptMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_writeSubcriptMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -1236,10 +1236,10 @@ void GGS__5B_functionSignatureElement_5D_::plusPlusAssignOperation (const GGS_fu
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_functionSignatureElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_functionSignatureElement_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -1304,7 +1304,7 @@ void GGS__5B_functionSignatureElement_5D_::setter_removeAll (Compiler * /* inCom
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_functionSignatureElement_5D_::setter_set (const GGS_functionSignatureElement inValue,
-                                                       const GGS_uint inIndex,
+                                                       const GGS_u_33__32_ inIndex,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -1325,7 +1325,7 @@ void GGS__5B_functionSignatureElement_5D_::setter_set (const GGS_functionSignatu
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_functionSignatureElement_5D_::setter_insert (const GGS_functionSignatureElement inValue,
-                                                          const GGS_uint inInsertionIndex,
+                                                          const GGS_u_33__32_ inInsertionIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -1346,7 +1346,7 @@ void GGS__5B_functionSignatureElement_5D_::setter_insert (const GGS_functionSign
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_functionSignatureElement_5D_::setter_remove (GGS_functionSignatureElement & outValue,
-                                                          const GGS_uint inRemoveIndex,
+                                                          const GGS_u_33__32_ inRemoveIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -1402,7 +1402,7 @@ void GGS__5B_functionSignatureElement_5D_::setter_removeLast (GGS_functionSignat
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_functionSignatureElement_5D_ GGS__5B_functionSignatureElement_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_functionSignatureElement_5D_ GGS__5B_functionSignatureElement_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_functionSignatureElement_5D_ result ;
@@ -1427,8 +1427,8 @@ GGS__5B_functionSignatureElement_5D_ GGS__5B_functionSignatureElement_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_functionSignatureElement_5D_ GGS__5B_functionSignatureElement_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                           const GGS_uint & inLength,
+GGS__5B_functionSignatureElement_5D_ GGS__5B_functionSignatureElement_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                           const GGS_u_33__32_ & inLength,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_functionSignatureElement_5D_ result ;
@@ -1496,7 +1496,7 @@ GGS_functionSignatureElement GGS__5B_functionSignatureElement_5D_::getter_last (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionSignatureElement GGS__5B_functionSignatureElement_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_functionSignatureElement GGS__5B_functionSignatureElement_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_functionSignatureElement result ;
@@ -1741,10 +1741,10 @@ void GGS__5B_nonTerminalLabelAST_5D_::plusPlusAssignOperation (const GGS_nonTerm
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_nonTerminalLabelAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_nonTerminalLabelAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -1809,7 +1809,7 @@ void GGS__5B_nonTerminalLabelAST_5D_::setter_removeAll (Compiler * /* inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalLabelAST_5D_::setter_set (const GGS_nonTerminalLabelAST inValue,
-                                                  const GGS_uint inIndex,
+                                                  const GGS_u_33__32_ inIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -1830,7 +1830,7 @@ void GGS__5B_nonTerminalLabelAST_5D_::setter_set (const GGS_nonTerminalLabelAST 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalLabelAST_5D_::setter_insert (const GGS_nonTerminalLabelAST inValue,
-                                                     const GGS_uint inInsertionIndex,
+                                                     const GGS_u_33__32_ inInsertionIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -1851,7 +1851,7 @@ void GGS__5B_nonTerminalLabelAST_5D_::setter_insert (const GGS_nonTerminalLabelA
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalLabelAST_5D_::setter_remove (GGS_nonTerminalLabelAST & outValue,
-                                                     const GGS_uint inRemoveIndex,
+                                                     const GGS_u_33__32_ inRemoveIndex,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -1907,7 +1907,7 @@ void GGS__5B_nonTerminalLabelAST_5D_::setter_removeLast (GGS_nonTerminalLabelAST
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonTerminalLabelAST_5D_ GGS__5B_nonTerminalLabelAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_nonTerminalLabelAST_5D_ GGS__5B_nonTerminalLabelAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
   GGS__5B_nonTerminalLabelAST_5D_ result ;
@@ -1932,8 +1932,8 @@ GGS__5B_nonTerminalLabelAST_5D_ GGS__5B_nonTerminalLabelAST_5D_::getter_removing
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonTerminalLabelAST_5D_ GGS__5B_nonTerminalLabelAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                 const GGS_uint & inLength,
+GGS__5B_nonTerminalLabelAST_5D_ GGS__5B_nonTerminalLabelAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                 const GGS_u_33__32_ & inLength,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_nonTerminalLabelAST_5D_ result ;
@@ -2001,7 +2001,7 @@ GGS_nonTerminalLabelAST GGS__5B_nonTerminalLabelAST_5D_::getter_last (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonTerminalLabelAST GGS__5B_nonTerminalLabelAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_nonTerminalLabelAST GGS__5B_nonTerminalLabelAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
   GGS_nonTerminalLabelAST result ;
@@ -2236,10 +2236,10 @@ void GGS__5B_signatureElementForGrammarAnalysis_5D_::plusPlusAssignOperation (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -2304,7 +2304,7 @@ void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_removeAll (Compiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_set (const GGS_signatureElementForGrammarAnalysis inValue,
-                                                                 const GGS_uint inIndex,
+                                                                 const GGS_u_33__32_ inIndex,
                                                                  Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -2325,7 +2325,7 @@ void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_set (const GGS_signa
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_insert (const GGS_signatureElementForGrammarAnalysis inValue,
-                                                                    const GGS_uint inInsertionIndex,
+                                                                    const GGS_u_33__32_ inInsertionIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -2346,7 +2346,7 @@ void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_insert (const GGS_si
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_remove (GGS_signatureElementForGrammarAnalysis & outValue,
-                                                                    const GGS_uint inRemoveIndex,
+                                                                    const GGS_u_33__32_ inRemoveIndex,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -2402,7 +2402,7 @@ void GGS__5B_signatureElementForGrammarAnalysis_5D_::setter_removeLast (GGS_sign
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_signatureElementForGrammarAnalysis_5D_ GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_signatureElementForGrammarAnalysis_5D_ GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                      Compiler * inCompiler
                                                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_signatureElementForGrammarAnalysis_5D_ result ;
@@ -2427,8 +2427,8 @@ GGS__5B_signatureElementForGrammarAnalysis_5D_ GGS__5B_signatureElementForGramma
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_signatureElementForGrammarAnalysis_5D_ GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                               const GGS_uint & inLength,
+GGS__5B_signatureElementForGrammarAnalysis_5D_ GGS__5B_signatureElementForGrammarAnalysis_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                               const GGS_u_33__32_ & inLength,
                                                                                                                Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_signatureElementForGrammarAnalysis_5D_ result ;
@@ -2496,7 +2496,7 @@ GGS_signatureElementForGrammarAnalysis GGS__5B_signatureElementForGrammarAnalysi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_signatureElementForGrammarAnalysis GGS__5B_signatureElementForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_signatureElementForGrammarAnalysis GGS__5B_signatureElementForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                           Compiler * inCompiler
                                                                                                           COMMA_LOCATION_ARGS) const {
   GGS_signatureElementForGrammarAnalysis result ;
@@ -2632,10 +2632,10 @@ void GGS__5B_nonterminalDeclarationAST_5D_::plusPlusAssignOperation (const GGS_n
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_nonterminalDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_nonterminalDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -2700,7 +2700,7 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeAll (Compiler * /* inCo
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonterminalDeclarationAST_5D_::setter_set (const GGS_nonterminalDeclarationAST inValue,
-                                                        const GGS_uint inIndex,
+                                                        const GGS_u_33__32_ inIndex,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -2721,7 +2721,7 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_set (const GGS_nonterminalDec
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonterminalDeclarationAST_5D_::setter_insert (const GGS_nonterminalDeclarationAST inValue,
-                                                           const GGS_uint inInsertionIndex,
+                                                           const GGS_u_33__32_ inInsertionIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -2742,7 +2742,7 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_insert (const GGS_nonterminal
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonterminalDeclarationAST_5D_::setter_remove (GGS_nonterminalDeclarationAST & outValue,
-                                                           const GGS_uint inRemoveIndex,
+                                                           const GGS_u_33__32_ inRemoveIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -2798,7 +2798,7 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeLast (GGS_nonterminalDe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_nonterminalDeclarationAST_5D_ result ;
@@ -2823,8 +2823,8 @@ GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::get
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                             const GGS_uint & inLength,
+GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                             const GGS_u_33__32_ & inLength,
                                                                                              Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_nonterminalDeclarationAST_5D_ result ;
@@ -2892,7 +2892,7 @@ GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::getter_last
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_nonterminalDeclarationAST result ;
@@ -3117,10 +3117,10 @@ void GGS__5B_syntaxRuleAST_5D_::plusPlusAssignOperation (const GGS_syntaxRuleAST
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_syntaxRuleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_syntaxRuleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3185,7 +3185,7 @@ void GGS__5B_syntaxRuleAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxRuleAST_5D_::setter_set (const GGS_syntaxRuleAST inValue,
-                                            const GGS_uint inIndex,
+                                            const GGS_u_33__32_ inIndex,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3206,7 +3206,7 @@ void GGS__5B_syntaxRuleAST_5D_::setter_set (const GGS_syntaxRuleAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxRuleAST_5D_::setter_insert (const GGS_syntaxRuleAST inValue,
-                                               const GGS_uint inInsertionIndex,
+                                               const GGS_u_33__32_ inInsertionIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3227,7 +3227,7 @@ void GGS__5B_syntaxRuleAST_5D_::setter_insert (const GGS_syntaxRuleAST inValue,
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxRuleAST_5D_::setter_remove (GGS_syntaxRuleAST & outValue,
-                                               const GGS_uint inRemoveIndex,
+                                               const GGS_u_33__32_ inRemoveIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3283,7 +3283,7 @@ void GGS__5B_syntaxRuleAST_5D_::setter_removeLast (GGS_syntaxRuleAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxRuleAST_5D_ result ;
@@ -3308,8 +3308,8 @@ GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_removingFirst (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                     const GGS_uint & inLength,
+GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                     const GGS_u_33__32_ & inLength,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxRuleAST_5D_ result ;
@@ -3377,7 +3377,7 @@ GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
   GGS_syntaxRuleAST result ;
@@ -3513,10 +3513,10 @@ void GGS__5B_syntaxInstructionAST_5D_::plusPlusAssignOperation (const GGS_syntax
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_syntaxInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_syntaxInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3581,7 +3581,7 @@ void GGS__5B_syntaxInstructionAST_5D_::setter_removeAll (Compiler * /* inCompile
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxInstructionAST_5D_::setter_set (const GGS_syntaxInstructionAST inValue,
-                                                   const GGS_uint inIndex,
+                                                   const GGS_u_33__32_ inIndex,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3602,7 +3602,7 @@ void GGS__5B_syntaxInstructionAST_5D_::setter_set (const GGS_syntaxInstructionAS
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxInstructionAST_5D_::setter_insert (const GGS_syntaxInstructionAST inValue,
-                                                      const GGS_uint inInsertionIndex,
+                                                      const GGS_u_33__32_ inInsertionIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -3623,7 +3623,7 @@ void GGS__5B_syntaxInstructionAST_5D_::setter_insert (const GGS_syntaxInstructio
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxInstructionAST_5D_::setter_remove (GGS_syntaxInstructionAST & outValue,
-                                                      const GGS_uint inRemoveIndex,
+                                                      const GGS_u_33__32_ inRemoveIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -3679,7 +3679,7 @@ void GGS__5B_syntaxInstructionAST_5D_::setter_removeLast (GGS_syntaxInstructionA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxInstructionAST_5D_ result ;
@@ -3704,8 +3704,8 @@ GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_removi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                   const GGS_uint & inLength,
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                   const GGS_u_33__32_ & inLength,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxInstructionAST_5D_ result ;
@@ -3773,7 +3773,7 @@ GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::getter_last (Compiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
   GGS_syntaxInstructionAST result ;
@@ -3909,10 +3909,10 @@ void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::plusPlusAssignOperation (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -3977,7 +3977,7 @@ void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_removeAll (Compiler *
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_set (const GGS_syntaxComponentForGrammarAnalysis inValue,
-                                                                const GGS_uint inIndex,
+                                                                const GGS_u_33__32_ inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -3998,7 +3998,7 @@ void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_set (const GGS_syntax
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_insert (const GGS_syntaxComponentForGrammarAnalysis inValue,
-                                                                   const GGS_uint inInsertionIndex,
+                                                                   const GGS_u_33__32_ inInsertionIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -4019,7 +4019,7 @@ void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_insert (const GGS_syn
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_remove (GGS_syntaxComponentForGrammarAnalysis & outValue,
-                                                                   const GGS_uint inRemoveIndex,
+                                                                   const GGS_u_33__32_ inRemoveIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -4075,7 +4075,7 @@ void GGS__5B_syntaxComponentForGrammarAnalysis_5D_::setter_removeLast (GGS_synta
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxComponentForGrammarAnalysis_5D_ GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_syntaxComponentForGrammarAnalysis_5D_ GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                    Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxComponentForGrammarAnalysis_5D_ result ;
@@ -4100,8 +4100,8 @@ GGS__5B_syntaxComponentForGrammarAnalysis_5D_ GGS__5B_syntaxComponentForGrammarA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxComponentForGrammarAnalysis_5D_ GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                             const GGS_uint & inLength,
+GGS__5B_syntaxComponentForGrammarAnalysis_5D_ GGS__5B_syntaxComponentForGrammarAnalysis_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                             const GGS_u_33__32_ & inLength,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_syntaxComponentForGrammarAnalysis_5D_ result ;
@@ -4169,7 +4169,7 @@ GGS_syntaxComponentForGrammarAnalysis GGS__5B_syntaxComponentForGrammarAnalysis_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxComponentForGrammarAnalysis GGS__5B_syntaxComponentForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_syntaxComponentForGrammarAnalysis GGS__5B_syntaxComponentForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_syntaxComponentForGrammarAnalysis result ;
@@ -4305,10 +4305,10 @@ void GGS__5B_productionRuleForGrammarAnalysis_5D_::plusPlusAssignOperation (cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -4373,7 +4373,7 @@ void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_removeAll (Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_set (const GGS_productionRuleForGrammarAnalysis inValue,
-                                                               const GGS_uint inIndex,
+                                                               const GGS_u_33__32_ inIndex,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -4394,7 +4394,7 @@ void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_set (const GGS_product
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_insert (const GGS_productionRuleForGrammarAnalysis inValue,
-                                                                  const GGS_uint inInsertionIndex,
+                                                                  const GGS_u_33__32_ inInsertionIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -4415,7 +4415,7 @@ void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_insert (const GGS_prod
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_remove (GGS_productionRuleForGrammarAnalysis & outValue,
-                                                                  const GGS_uint inRemoveIndex,
+                                                                  const GGS_u_33__32_ inRemoveIndex,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -4471,7 +4471,7 @@ void GGS__5B_productionRuleForGrammarAnalysis_5D_::setter_removeLast (GGS_produc
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_productionRuleForGrammarAnalysis_5D_ GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_productionRuleForGrammarAnalysis_5D_ GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                  Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_productionRuleForGrammarAnalysis_5D_ result ;
@@ -4496,8 +4496,8 @@ GGS__5B_productionRuleForGrammarAnalysis_5D_ GGS__5B_productionRuleForGrammarAna
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_productionRuleForGrammarAnalysis_5D_ GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                           const GGS_uint & inLength,
+GGS__5B_productionRuleForGrammarAnalysis_5D_ GGS__5B_productionRuleForGrammarAnalysis_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                           const GGS_u_33__32_ & inLength,
                                                                                                            Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_productionRuleForGrammarAnalysis_5D_ result ;
@@ -4565,7 +4565,7 @@ GGS_productionRuleForGrammarAnalysis GGS__5B_productionRuleForGrammarAnalysis_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_productionRuleForGrammarAnalysis GGS__5B_productionRuleForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_productionRuleForGrammarAnalysis GGS__5B_productionRuleForGrammarAnalysis_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                       Compiler * inCompiler
                                                                                                       COMMA_LOCATION_ARGS) const {
   GGS_productionRuleForGrammarAnalysis result ;
@@ -4673,9 +4673,9 @@ GGS_productionRuleForGrammarAnalysis & GGS_productionRuleForGrammarAnalysis::ope
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_productionRuleForGrammarAnalysis GGS_productionRuleForGrammarAnalysis::init_21__21__21__21_ (const GGS_lstring & in_mLeftNonterminalSymbol,
-                                                                                                 const GGS_uint & in_mLeftNonterminalSymbolIndex,
+                                                                                                 const GGS_u_33__32_ & in_mLeftNonterminalSymbolIndex,
                                                                                                  const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & in_mInstructionList,
-                                                                                                 const GGS_uint & in_mProductionIndex,
+                                                                                                 const GGS_u_33__32_ & in_mProductionIndex,
                                                                                                  Compiler * inCompiler
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_productionRuleForGrammarAnalysis result ;
@@ -4695,9 +4695,9 @@ void GGS_productionRuleForGrammarAnalysis::setInitializedProperties (Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 GGS_productionRuleForGrammarAnalysis::GGS_productionRuleForGrammarAnalysis (const GGS_lstring & inOperand0,
-                                                                            const GGS_uint & inOperand1,
+                                                                            const GGS_u_33__32_ & inOperand1,
                                                                             const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & inOperand2,
-                                                                            const GGS_uint & inOperand3) :
+                                                                            const GGS_u_33__32_ & inOperand3) :
 mProperty_mLeftNonterminalSymbol (inOperand0),
 mProperty_mLeftNonterminalSymbolIndex (inOperand1),
 mProperty_mInstructionList (inOperand2),
@@ -4810,10 +4810,10 @@ void GGS__5B_nonTerminalToAdd_5D_::plusPlusAssignOperation (const GGS_nonTermina
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_nonTerminalToAdd_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_nonTerminalToAdd_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -4878,7 +4878,7 @@ void GGS__5B_nonTerminalToAdd_5D_::setter_removeAll (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalToAdd_5D_::setter_set (const GGS_nonTerminalToAdd inValue,
-                                               const GGS_uint inIndex,
+                                               const GGS_u_33__32_ inIndex,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -4899,7 +4899,7 @@ void GGS__5B_nonTerminalToAdd_5D_::setter_set (const GGS_nonTerminalToAdd inValu
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalToAdd_5D_::setter_insert (const GGS_nonTerminalToAdd inValue,
-                                                  const GGS_uint inInsertionIndex,
+                                                  const GGS_u_33__32_ inInsertionIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -4920,7 +4920,7 @@ void GGS__5B_nonTerminalToAdd_5D_::setter_insert (const GGS_nonTerminalToAdd inV
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_nonTerminalToAdd_5D_::setter_remove (GGS_nonTerminalToAdd & outValue,
-                                                  const GGS_uint inRemoveIndex,
+                                                  const GGS_u_33__32_ inRemoveIndex,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -4976,7 +4976,7 @@ void GGS__5B_nonTerminalToAdd_5D_::setter_removeLast (GGS_nonTerminalToAdd & out
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonTerminalToAdd_5D_ GGS__5B_nonTerminalToAdd_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_nonTerminalToAdd_5D_ GGS__5B_nonTerminalToAdd_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                  Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
   GGS__5B_nonTerminalToAdd_5D_ result ;
@@ -5001,8 +5001,8 @@ GGS__5B_nonTerminalToAdd_5D_ GGS__5B_nonTerminalToAdd_5D_::getter_removingFirst 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonTerminalToAdd_5D_ GGS__5B_nonTerminalToAdd_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                           const GGS_uint & inLength,
+GGS__5B_nonTerminalToAdd_5D_ GGS__5B_nonTerminalToAdd_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                           const GGS_u_33__32_ & inLength,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
   GGS__5B_nonTerminalToAdd_5D_ result ;
@@ -5070,7 +5070,7 @@ GGS_nonTerminalToAdd GGS__5B_nonTerminalToAdd_5D_::getter_last (Compiler * inCom
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonTerminalToAdd GGS__5B_nonTerminalToAdd_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_nonTerminalToAdd GGS__5B_nonTerminalToAdd_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
   GGS_nonTerminalToAdd result ;
@@ -5172,7 +5172,7 @@ GGS_nonTerminalToAdd & GGS_nonTerminalToAdd::operator = (const GGS_nonTerminalTo
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_nonTerminalToAdd GGS_nonTerminalToAdd::init_21__21_ (const GGS_string & in_mSyntaxComponentName,
-                                                         const GGS_uint & in_mNonTerminalToAddCount,
+                                                         const GGS_u_33__32_ & in_mNonTerminalToAddCount,
                                                          Compiler * inCompiler
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GGS_nonTerminalToAdd result ;
@@ -5190,7 +5190,7 @@ void GGS_nonTerminalToAdd::setInitializedProperties (Compiler * /* inCompiler */
 //--------------------------------------------------------------------------------------------------
 
 GGS_nonTerminalToAdd::GGS_nonTerminalToAdd (const GGS_string & inOperand0,
-                                            const GGS_uint & inOperand1) :
+                                            const GGS_u_33__32_ & inOperand1) :
 mProperty_mSyntaxComponentName (inOperand0),
 mProperty_mNonTerminalToAddCount (inOperand1) {
 }
@@ -5316,7 +5316,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
   result.appendString (in_GRAMMAR_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 5)).stringValue ()) ;
   result.appendString (" : ") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_331_ (0) ;
+  GGS_u_33__32_ index_331_ (0) ;
   if (in_SYNTAX_5F_COMPONENTS.isValid ()) {
     UpEnumerator__5B_lstring_5D_ enumerator_331 (in_SYNTAX_5F_COMPONENTS) ;
     while (enumerator_331.hasCurrentObject ()) {
@@ -5331,7 +5331,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
     }
   }
   result.appendString (" {\n") ;
-  GGS_uint index_503_ (0) ;
+  GGS_u_33__32_ index_503_ (0) ;
   if (in_NON_5F_TERMINAL_5F_MAP.isValid ()) {
     UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_503 (in_NON_5F_TERMINAL_5F_MAP) ;
     while (enumerator_503.hasCurrentObject ()) {
@@ -5361,7 +5361,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
       result.appendString ("_indexing (Lexique_") ;
       result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString (" * inCompiler) ;\n\n") ;
-      GGS_uint index_1120_ (0) ;
+      GGS_u_33__32_ index_1120_ (0) ;
       if (enumerator_503.current_mNonterminalSymbolParametersMap (HERE).isValid ()) {
         UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_1120 (enumerator_503.current_mNonterminalSymbolParametersMap (HERE)) ;
         while (enumerator_1120.hasCurrentObject ()) {
@@ -5373,7 +5373,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
           result.appendString (enumerator_1120.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 27)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_1369_IDX (0) ;
+          GGS_u_33__32_ index_1369_IDX (0) ;
           if (enumerator_1120.current_mFormalParametersList (HERE).isValid ()) {
             UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_1369 (enumerator_1120.current_mFormalParametersList (HERE)) ;
             while (enumerator_1369.hasCurrentObject ()) {
@@ -5465,7 +5465,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
               break ;
             }
             result.appendString ("GGS_lstring inFileName") ;
-            GGS_uint index_2840_IDX (0) ;
+            GGS_u_33__32_ index_2840_IDX (0) ;
             if (enumerator_1120.current_mFormalParametersList (HERE).isValid ()) {
               UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_2840 (enumerator_1120.current_mFormalParametersList (HERE)) ;
               while (enumerator_2840.hasCurrentObject ()) {
@@ -5542,7 +5542,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
             result.appendString ("GGS_string inSourceString,\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
             result.appendString ("GGS_string inNameString") ;
-            GGS_uint index_4155_IDX (0) ;
+            GGS_u_33__32_ index_4155_IDX (0) ;
             if (enumerator_1120.current_mFormalParametersList (HERE).isValid ()) {
               UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_4155 (enumerator_1120.current_mFormalParametersList (HERE)) ;
               while (enumerator_4155.hasCurrentObject ()) {
@@ -5634,7 +5634,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
       index_503_.increment () ;
     }
   }
-  GGS_uint index_5706_ (0) ;
+  GGS_u_33__32_ index_5706_ (0) ;
   if (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST.isValid ()) {
     UpEnumerator__5B_nonTerminalToAdd_5D_ enumerator_5706 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST) ;
     while (enumerator_5706.hasCurrentObject ()) {
@@ -5707,7 +5707,7 @@ GGS_bool GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_contains (const GGS_
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                                           const GGS_uint & inLevel
+                                                                           const GGS_u_33__32_ & inLevel
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -5718,20 +5718,20 @@ GGS_bool GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_hasKeyAtLevel (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -5918,7 +5918,7 @@ GGS_nonTerminalSymbolMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAna
 //--------------------------------------------------------------------------------------------------
 
 void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_insertKey (GGS_lstring inLKey,
-                                                                   GGS_uint inArgument0,
+                                                                   GGS_u_33__32_ inArgument0,
                                                                    GGS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument1,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -5931,7 +5931,7 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_insertKey (GGS_lstring i
 //--------------------------------------------------------------------------------------------------
 
 void GGS_nonTerminalSymbolMapForGrammarAnalysis::method_searchKey (GGS_lstring inLKey,
-                                                                   GGS_uint & outArgument0,
+                                                                   GGS_u_33__32_ & outArgument0,
                                                                    GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument1,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -5956,10 +5956,10 @@ void GGS_nonTerminalSymbolMapForGrammarAnalysis::method_searchKey (GGS_lstring i
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_mNonTerminalIndexForKey (const GGS_string & inKey,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_mNonTerminalIndexForKey (const GGS_string & inKey,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info = infoForKey (key) ;
@@ -5996,7 +5996,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGramm
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalIndexForKey (GGS_uint inValue,
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalIndexForKey (GGS_u_33__32_ inValue,
                                                                                     GGS_string inKey,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
@@ -6116,7 +6116,7 @@ GGS_lstring DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
+GGS_u_33__32_ DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonTerminalIndex ;
 }
 
@@ -6149,7 +6149,7 @@ GGS_lstring UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey (L
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
+GGS_u_33__32_ UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonTerminalIndex ;
 }
 
@@ -6348,10 +6348,10 @@ void GGS__5B_ruleDeclarationAST_5D_::plusPlusAssignOperation (const GGS_ruleDecl
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_ruleDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_ruleDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6416,7 +6416,7 @@ void GGS__5B_ruleDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompiler 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleDeclarationAST_5D_::setter_set (const GGS_ruleDeclarationAST inValue,
-                                                 const GGS_uint inIndex,
+                                                 const GGS_u_33__32_ inIndex,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6437,7 +6437,7 @@ void GGS__5B_ruleDeclarationAST_5D_::setter_set (const GGS_ruleDeclarationAST in
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleDeclarationAST_5D_::setter_insert (const GGS_ruleDeclarationAST inValue,
-                                                    const GGS_uint inInsertionIndex,
+                                                    const GGS_u_33__32_ inInsertionIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6458,7 +6458,7 @@ void GGS__5B_ruleDeclarationAST_5D_::setter_insert (const GGS_ruleDeclarationAST
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_ruleDeclarationAST_5D_::setter_remove (GGS_ruleDeclarationAST & outValue,
-                                                    const GGS_uint inRemoveIndex,
+                                                    const GGS_u_33__32_ inRemoveIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -6514,7 +6514,7 @@ void GGS__5B_ruleDeclarationAST_5D_::setter_removeLast (GGS_ruleDeclarationAST &
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                      Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
   GGS__5B_ruleDeclarationAST_5D_ result ;
@@ -6539,8 +6539,8 @@ GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_removingFi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                               const GGS_uint & inLength,
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                               const GGS_u_33__32_ & inLength,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_ruleDeclarationAST_5D_ result ;
@@ -6608,7 +6608,7 @@ GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::getter_last (Compiler * i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GGS_ruleDeclarationAST result ;
@@ -6744,10 +6744,10 @@ void GGS__5B_formalParameterForGeneration_5D_::plusPlusAssignOperation (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_formalParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_formalParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -6812,7 +6812,7 @@ void GGS__5B_formalParameterForGeneration_5D_::setter_removeAll (Compiler * /* i
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterForGeneration_5D_::setter_set (const GGS_formalParameterForGeneration inValue,
-                                                           const GGS_uint inIndex,
+                                                           const GGS_u_33__32_ inIndex,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -6833,7 +6833,7 @@ void GGS__5B_formalParameterForGeneration_5D_::setter_set (const GGS_formalParam
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterForGeneration_5D_::setter_insert (const GGS_formalParameterForGeneration inValue,
-                                                              const GGS_uint inInsertionIndex,
+                                                              const GGS_u_33__32_ inInsertionIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -6854,7 +6854,7 @@ void GGS__5B_formalParameterForGeneration_5D_::setter_insert (const GGS_formalPa
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterForGeneration_5D_::setter_remove (GGS_formalParameterForGeneration & outValue,
-                                                              const GGS_uint inRemoveIndex,
+                                                              const GGS_u_33__32_ inRemoveIndex,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -6910,7 +6910,7 @@ void GGS__5B_formalParameterForGeneration_5D_::setter_removeLast (GGS_formalPara
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_formalParameterForGeneration_5D_ result ;
@@ -6935,8 +6935,8 @@ GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                   const GGS_uint & inLength,
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                   const GGS_u_33__32_ & inLength,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_formalParameterForGeneration_5D_ result ;
@@ -7004,7 +7004,7 @@ GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::gette
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                               Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
   GGS_formalParameterForGeneration result ;
@@ -7133,7 +7133,7 @@ GGS_bool GGS_nonterminalMap::getter_contains (const GGS_string & inKey
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool GGS_nonterminalMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                   const GGS_uint & inLevel
+                                                   const GGS_u_33__32_ & inLevel
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
@@ -7144,20 +7144,20 @@ GGS_bool GGS_nonterminalMap::getter_hasKeyAtLevel (const GGS_string & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonterminalMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonterminalMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_nonterminalMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_nonterminalMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
   }
   return result ;
 }
@@ -7692,10 +7692,10 @@ void GGS__5B_formalInputParameterForGeneration_5D_::plusPlusAssignOperation (con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_formalInputParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_formalInputParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -7760,7 +7760,7 @@ void GGS__5B_formalInputParameterForGeneration_5D_::setter_removeAll (Compiler *
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterForGeneration_5D_::setter_set (const GGS_formalInputParameterForGeneration inValue,
-                                                                const GGS_uint inIndex,
+                                                                const GGS_u_33__32_ inIndex,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -7781,7 +7781,7 @@ void GGS__5B_formalInputParameterForGeneration_5D_::setter_set (const GGS_formal
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterForGeneration_5D_::setter_insert (const GGS_formalInputParameterForGeneration inValue,
-                                                                   const GGS_uint inInsertionIndex,
+                                                                   const GGS_u_33__32_ inInsertionIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -7802,7 +7802,7 @@ void GGS__5B_formalInputParameterForGeneration_5D_::setter_insert (const GGS_for
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterForGeneration_5D_::setter_remove (GGS_formalInputParameterForGeneration & outValue,
-                                                                   const GGS_uint inRemoveIndex,
+                                                                   const GGS_u_33__32_ inRemoveIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -7858,7 +7858,7 @@ void GGS__5B_formalInputParameterForGeneration_5D_::setter_removeLast (GGS_forma
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                                    Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) const {
   GGS__5B_formalInputParameterForGeneration_5D_ result ;
@@ -7883,8 +7883,8 @@ GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGen
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                             const GGS_uint & inLength,
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                             const GGS_u_33__32_ & inLength,
                                                                                                              Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
   GGS__5B_formalInputParameterForGeneration_5D_ result ;
@@ -7952,7 +7952,7 @@ GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_formalInputParameterForGeneration result ;
@@ -8249,7 +8249,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
   String result ;
   uint32_t columnMarker = 0 ;
   result.appendString ("//-- Start of type generic part\n\n//--------------------------------- Initializers\n") ;
-  GGS_uint index_133_ (0) ;
+  GGS_u_33__32_ index_133_ (0) ;
   if (in_INITIALIZER_5F_MAP.isValid ()) {
     UpEnumerator_initializerMap enumerator_133 (in_INITIALIZER_5F_MAP) ;
     while (enumerator_133.hasCurrentObject ()) {
@@ -8259,7 +8259,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       result.appendString (enumerator_133.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 5)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_260_IDX (0) ;
+      GGS_u_33__32_ index_260_IDX (0) ;
       if (enumerator_133.current_mArgumentTypeList (HERE).isValid ()) {
         UpEnumerator__5B_functionSignatureElement_5D_ enumerator_260 (enumerator_133.current_mArgumentTypeList (HERE)) ;
         while (enumerator_260.hasCurrentObject ()) {
@@ -8295,11 +8295,11 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       index_133_.increment () ;
     }
   }
-  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 18)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 18)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_1) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- GALGAS class functions\n") ;
-    GGS_uint index_806_ (0) ;
+    GGS_u_33__32_ index_806_ (0) ;
     if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
       UpEnumerator_classFunctionMap enumerator_806 (in_CLASS_5F_FUNC_5F_MAP) ;
       while (enumerator_806.hasCurrentObject ()) {
@@ -8309,7 +8309,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
         result.appendString (enumerator_806.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
         result.appendString (" (") ;
         columnMarker = result.currentColumn () ;
-        GGS_uint index_991_IDX (0) ;
+        GGS_u_33__32_ index_991_IDX (0) ;
         if (enumerator_806.current_argumentTypeList (HERE).isValid ()) {
           UpEnumerator__5B_functionSignatureElement_5D_ enumerator_991 (enumerator_806.current_argumentTypeList (HERE)) ;
           while (enumerator_991.hasCurrentObject ()) {
@@ -8325,7 +8325,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             index_991_IDX.increment () ;
           }
         }
-        const GalgasBool test_2 = enumerator_806.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).boolEnum () ;
+        const GalgasBool test_2 = enumerator_806.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).boolEnum () ;
         switch (test_2) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
@@ -8343,7 +8343,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 32)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 32)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
             switch (test_4) {
             case GalgasBool::boolTrue : {
               result.appendString ("\n") ;
@@ -8399,7 +8399,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
     result.appendString (" left_shift_operation (") ;
     columnMarker = result.currentColumn () ;
-    result.appendString ("const class GGS_uint inShiftOperand,\n") ;
+    result.appendString ("const class GGS_u_33__32_ inShiftOperand,\n") ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result.appendString ("Compiler * inCompiler\n") ;
     result.appendSpacesUntilColumn (columnMarker) ;
@@ -8415,7 +8415,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
     result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
     result.appendString (" right_shift_operation (") ;
     columnMarker = result.currentColumn () ;
-    result.appendString ("const class GGS_uint inShiftOperand,\n") ;
+    result.appendString ("const class GGS_u_33__32_ inShiftOperand,\n") ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result.appendString ("Compiler * inCompiler\n") ;
     result.appendSpacesUntilColumn (columnMarker) ;
@@ -8819,55 +8819,55 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
     break ;
   }
   result.appendString ("\n//--------------------------------- Setters\n") ;
-  GGS_uint index_10447_ (0) ;
+  GGS_u_33__32_ index_10457_ (0) ;
   if (in_MODIFIER_5F_MAP.isValid ()) {
-    UpEnumerator_setterMap enumerator_10447 (in_MODIFIER_5F_MAP) ;
-    while (enumerator_10447.hasCurrentObject ()) {
-      const GalgasBool test_33 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 229)))).boolEnum () ;
+    UpEnumerator_setterMap enumerator_10457 (in_MODIFIER_5F_MAP) ;
+    while (enumerator_10457.hasCurrentObject ()) {
+      const GalgasBool test_33 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 229)))).boolEnum () ;
       switch (test_33) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_34 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10447.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).boolEnum () ;
+        const GalgasBool test_34 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).boolEnum () ;
         switch (test_34) {
         case GalgasBool::boolTrue : {
           result.appendString ("  public: void setter_") ;
-          result.appendString (enumerator_10447.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 231)).stringValue ()) ;
+          result.appendString (enumerator_10457.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 231)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_10805_IDX (0) ;
-          if (enumerator_10447.current_mParameterList (HERE).isValid ()) {
-            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10805 (enumerator_10447.current_mParameterList (HERE)) ;
-            while (enumerator_10805.hasCurrentObject ()) {
-              const GalgasBool test_35 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)))).boolEnum () ;
+          GGS_u_33__32_ index_10815_IDX (0) ;
+          if (enumerator_10457.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10815 (enumerator_10457.current_mParameterList (HERE)) ;
+            while (enumerator_10815.hasCurrentObject ()) {
+              const GalgasBool test_35 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)))).boolEnum () ;
               switch (test_35) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
                 result.appendString (" constinArgument") ;
-                result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
+                result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 235)))).boolEnum () ;
+                const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 235)))).boolEnum () ;
                 switch (test_36) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
                   result.appendString (" & ioArgument") ;
-                  result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
+                  result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_37 = GGS_bool (ComparisonKind::equal, enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))).boolEnum () ;
+                  const GalgasBool test_37 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))).boolEnum () ;
                   switch (test_37) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
                     result.appendString (" & outArgument") ;
-                    result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
+                    result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10805.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
                     result.appendString (" inArgument") ;
-                    result.appendString (index_10805_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
+                    result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolNotValid :
                     break ;
@@ -8880,18 +8880,18 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
               case GalgasBool::boolNotValid :
                 break ;
               }
-              enumerator_10805.gotoNextObject () ;
-              if (enumerator_10805.hasCurrentObject ()) {
+              enumerator_10815.gotoNextObject () ;
+              if (enumerator_10815.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_10805_IDX.increment () ;
+              index_10815_IDX.increment () ;
             }
           }
-          const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_10447.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
           switch (test_38) {
           case GalgasBool::boolTrue : {
-            const GalgasBool test_39 = enumerator_10447.current_mHasCompilerArgument (HERE).boolEnum () ;
+            const GalgasBool test_39 = enumerator_10457.current_mHasCompilerArgument (HERE).boolEnum () ;
             switch (test_39) {
             case GalgasBool::boolTrue : {
               result.appendString ("Compiler * inCompiler\n") ;
@@ -8907,7 +8907,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             }
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_40 = enumerator_10447.current_mHasCompilerArgument (HERE).boolEnum () ;
+            const GalgasBool test_40 = enumerator_10457.current_mHasCompilerArgument (HERE).boolEnum () ;
             switch (test_40) {
             case GalgasBool::boolTrue : {
               result.appendString (",\n") ;
@@ -8941,60 +8941,60 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_10447.gotoNextObject () ;
-      index_10447_.increment () ;
+      enumerator_10457.gotoNextObject () ;
+      index_10457_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Instance Methods\n") ;
-  GGS_uint index_12255_ (0) ;
+  GGS_u_33__32_ index_12265_ (0) ;
   if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
-    UpEnumerator_instanceMethodMap enumerator_12255 (in_INSTANCE_5F_METHOD_5F_MAP) ;
-    while (enumerator_12255.hasCurrentObject ()) {
-      const GalgasBool test_41 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 267)))).boolEnum () ;
+    UpEnumerator_instanceMethodMap enumerator_12265 (in_INSTANCE_5F_METHOD_5F_MAP) ;
+    while (enumerator_12265.hasCurrentObject ()) {
+      const GalgasBool test_41 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 267)))).boolEnum () ;
       switch (test_41) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_42 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12255.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).boolEnum () ;
+        const GalgasBool test_42 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).boolEnum () ;
         switch (test_42) {
         case GalgasBool::boolTrue : {
           result.appendString ("  public: void method_") ;
-          result.appendString (enumerator_12255.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 269)).stringValue ()) ;
+          result.appendString (enumerator_12265.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 269)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_12613_IDX (0) ;
-          if (enumerator_12255.current_mParameterList (HERE).isValid ()) {
-            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12613 (enumerator_12255.current_mParameterList (HERE)) ;
-            while (enumerator_12613.hasCurrentObject ()) {
-              const GalgasBool test_43 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 271)))).boolEnum () ;
+          GGS_u_33__32_ index_12623_IDX (0) ;
+          if (enumerator_12265.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12623 (enumerator_12265.current_mParameterList (HERE)) ;
+            while (enumerator_12623.hasCurrentObject ()) {
+              const GalgasBool test_43 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 271)))).boolEnum () ;
               switch (test_43) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
                 result.appendString (" constinArgument") ;
-                result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
+                result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)))).boolEnum () ;
+                const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)))).boolEnum () ;
                 switch (test_44) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
                   result.appendString (" & ioArgument") ;
-                  result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
+                  result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_45 = GGS_bool (ComparisonKind::equal, enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 275)))).boolEnum () ;
+                  const GalgasBool test_45 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 275)))).boolEnum () ;
                   switch (test_45) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
                     result.appendString (" & outArgument") ;
-                    result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
+                    result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
                     result.appendString ("class GGS_") ;
-                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12613.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
                     result.appendString (" inArgument") ;
-                    result.appendString (index_12613_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
+                    result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolNotValid :
                     break ;
@@ -9007,18 +9007,18 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
               case GalgasBool::boolNotValid :
                 break ;
               }
-              enumerator_12613.gotoNextObject () ;
-              if (enumerator_12613.hasCurrentObject ()) {
+              enumerator_12623.gotoNextObject () ;
+              if (enumerator_12623.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_12613_IDX.increment () ;
+              index_12623_IDX.increment () ;
             }
           }
-          const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_12255.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
           switch (test_46) {
           case GalgasBool::boolTrue : {
-            const GalgasBool test_47 = enumerator_12255.current_mHasCompilerArgument (HERE).boolEnum () ;
+            const GalgasBool test_47 = enumerator_12265.current_mHasCompilerArgument (HERE).boolEnum () ;
             switch (test_47) {
             case GalgasBool::boolTrue : {
               result.appendString ("Compiler * inCompiler\n") ;
@@ -9034,7 +9034,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
             }
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_48 = enumerator_12255.current_mHasCompilerArgument (HERE).boolEnum () ;
+            const GalgasBool test_48 = enumerator_12265.current_mHasCompilerArgument (HERE).boolEnum () ;
             switch (test_48) {
             case GalgasBool::boolTrue : {
               result.appendString (",\n") ;
@@ -9068,54 +9068,54 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_12255.gotoNextObject () ;
-      index_12255_.increment () ;
+      enumerator_12265.gotoNextObject () ;
+      index_12265_.increment () ;
     }
   }
   result.appendString ("//--------------------------------- Class Methods\n") ;
-  GGS_uint index_14010_ (0) ;
+  GGS_u_33__32_ index_14020_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
-    UpEnumerator_classMethodMap enumerator_14010 (in_CLASS_5F_METHOD_5F_MAP) ;
-    while (enumerator_14010.hasCurrentObject ()) {
+    UpEnumerator_classMethodMap enumerator_14020 (in_CLASS_5F_METHOD_5F_MAP) ;
+    while (enumerator_14020.hasCurrentObject ()) {
       result.appendString ("  public: static void class_method_") ;
-      result.appendString (enumerator_14010.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 304)).stringValue ()) ;
+      result.appendString (enumerator_14020.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 304)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_14138_IDX (0) ;
-      if (enumerator_14010.current_mParameterList (HERE).isValid ()) {
-        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_14138 (enumerator_14010.current_mParameterList (HERE)) ;
-        while (enumerator_14138.hasCurrentObject ()) {
-          const GalgasBool test_49 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 306)))).boolEnum () ;
+      GGS_u_33__32_ index_14148_IDX (0) ;
+      if (enumerator_14020.current_mParameterList (HERE).isValid ()) {
+        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_14148 (enumerator_14020.current_mParameterList (HERE)) ;
+        while (enumerator_14148.hasCurrentObject ()) {
+          const GalgasBool test_49 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 306)))).boolEnum () ;
           switch (test_49) {
           case GalgasBool::boolTrue : {
             result.appendString ("class GGS_") ;
-            result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
             result.appendString (" constinArgument") ;
-            result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
+            result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_50 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))).boolEnum () ;
+            const GalgasBool test_50 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))).boolEnum () ;
             switch (test_50) {
             case GalgasBool::boolTrue : {
               result.appendString ("class GGS_") ;
-              result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
               result.appendString (" & ioArgument") ;
-              result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
+              result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
               } break ;
             case GalgasBool::boolFalse : {
-              const GalgasBool test_51 = GGS_bool (ComparisonKind::equal, enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 310)))).boolEnum () ;
+              const GalgasBool test_51 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 310)))).boolEnum () ;
               switch (test_51) {
               case GalgasBool::boolTrue : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
                 result.appendString (" & outArgument") ;
-                result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
+                result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
                 result.appendString ("class GGS_") ;
-                result.appendString (extensionGetter_identifierRepresentation (enumerator_14138.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
                 result.appendString (" inArgument") ;
-                result.appendString (index_14138_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
+                result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolNotValid :
                 break ;
@@ -9128,18 +9128,18 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
           case GalgasBool::boolNotValid :
             break ;
           }
-          enumerator_14138.gotoNextObject () ;
-          if (enumerator_14138.hasCurrentObject ()) {
+          enumerator_14148.gotoNextObject () ;
+          if (enumerator_14148.hasCurrentObject ()) {
             result.appendString (",\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
-          index_14138_IDX.increment () ;
+          index_14148_IDX.increment () ;
         }
       }
-      const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_14010.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 317)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_14020.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 317)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_52) {
       case GalgasBool::boolTrue : {
-        const GalgasBool test_53 = enumerator_14010.current_mHasCompilerArgument (HERE).boolEnum () ;
+        const GalgasBool test_53 = enumerator_14020.current_mHasCompilerArgument (HERE).boolEnum () ;
         switch (test_53) {
         case GalgasBool::boolTrue : {
           result.appendString ("Compiler * inCompiler\n") ;
@@ -9155,7 +9155,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
         }
         } break ;
       case GalgasBool::boolFalse : {
-        const GalgasBool test_54 = enumerator_14010.current_mHasCompilerArgument (HERE).boolEnum () ;
+        const GalgasBool test_54 = enumerator_14020.current_mHasCompilerArgument (HERE).boolEnum () ;
         switch (test_54) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
@@ -9177,19 +9177,19 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
         break ;
       }
       result.appendString (") ;\n\n") ;
-      enumerator_14010.gotoNextObject () ;
-      index_14010_.increment () ;
+      enumerator_14020.gotoNextObject () ;
+      index_14020_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Getters\n") ;
-  GGS_uint index_15445_ (0) ;
+  GGS_u_33__32_ index_15455_ (0) ;
   if (in_GETTER_5F_MAP.isValid ()) {
-    UpEnumerator_getterMap enumerator_15445 (in_GETTER_5F_MAP) ;
-    while (enumerator_15445.hasCurrentObject ()) {
-      const GalgasBool test_55 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    UpEnumerator_getterMap enumerator_15455 (in_GETTER_5F_MAP) ;
+    while (enumerator_15455.hasCurrentObject ()) {
+      const GalgasBool test_55 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       switch (test_55) {
       case GalgasBool::boolTrue : {
-        switch (enumerator_15445.current_mKind (HERE).enumValue ()) {
+        switch (enumerator_15455.current_mKind (HERE).enumValue ()) {
         case GGS_methodKind::Enumeration::invalid :
           break ;
         case GGS_methodKind::Enumeration::enum_definedAsExtension :
@@ -9198,35 +9198,35 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
           break ;
         case GGS_methodKind::Enumeration::enum_definedAsMember :
           {
-            const GalgasBool test_56 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15445.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).boolEnum () ;
+            const GalgasBool test_56 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).boolEnum () ;
             switch (test_56) {
             case GalgasBool::boolTrue : {
               result.appendString ("  public: class GGS_") ;
-              result.appendString (extensionGetter_identifierRepresentation (enumerator_15445.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_15455.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
               result.appendString (" getter_") ;
-              result.appendString (enumerator_15445.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
+              result.appendString (enumerator_15455.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
               result.appendString (" (") ;
               columnMarker = result.currentColumn () ;
-              GGS_uint index_15899_IDX (0) ;
-              if (enumerator_15445.current_mArgumentTypeList (HERE).isValid ()) {
-                UpEnumerator__5B_functionSignatureElement_5D_ enumerator_15899 (enumerator_15445.current_mArgumentTypeList (HERE)) ;
-                while (enumerator_15899.hasCurrentObject ()) {
+              GGS_u_33__32_ index_15909_IDX (0) ;
+              if (enumerator_15455.current_mArgumentTypeList (HERE).isValid ()) {
+                UpEnumerator__5B_functionSignatureElement_5D_ enumerator_15909 (enumerator_15455.current_mArgumentTypeList (HERE)) ;
+                while (enumerator_15909.hasCurrentObject ()) {
                   result.appendString ("const class GGS_") ;
-                  result.appendString (extensionGetter_identifierRepresentation (enumerator_15899.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_15909.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
                   result.appendString (" & constinOperand") ;
-                  result.appendString (index_15899_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
-                  enumerator_15899.gotoNextObject () ;
-                  if (enumerator_15899.hasCurrentObject ()) {
+                  result.appendString (index_15909_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
+                  enumerator_15909.gotoNextObject () ;
+                  if (enumerator_15909.hasCurrentObject ()) {
                     result.appendString (",\n") ;
                     result.appendSpacesUntilColumn (columnMarker) ;
                   }
-                  index_15899_IDX.increment () ;
+                  index_15909_IDX.increment () ;
                 }
               }
-              const GalgasBool test_57 = GGS_bool (ComparisonKind::equal, enumerator_15445.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 348)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+              const GalgasBool test_57 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 348)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
               switch (test_57) {
               case GalgasBool::boolTrue : {
-                const GalgasBool test_58 = enumerator_15445.current_mHasCompilerArgument (HERE).boolEnum () ;
+                const GalgasBool test_58 = enumerator_15455.current_mHasCompilerArgument (HERE).boolEnum () ;
                 switch (test_58) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("Compiler * inCompiler\n") ;
@@ -9241,7 +9241,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
                 }
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_59 = enumerator_15445.current_mHasCompilerArgument (HERE).boolEnum () ;
+                const GalgasBool test_59 = enumerator_15455.current_mHasCompilerArgument (HERE).boolEnum () ;
                 switch (test_59) {
                 case GalgasBool::boolTrue : {
                   result.appendString (",\n") ;
@@ -9278,78 +9278,78 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
       case GalgasBool::boolNotValid :
         break ;
       }
-      enumerator_15445.gotoNextObject () ;
-      index_15445_.increment () ;
+      enumerator_15455.gotoNextObject () ;
+      index_15455_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------- Read subcripts\n") ;
-  GGS_uint index_16622_ (0) ;
+  GGS_u_33__32_ index_16632_ (0) ;
   if (in_READ_5F_SUBCRIPT_5F_MAP.isValid ()) {
-    UpEnumerator_readSubcriptMap enumerator_16622 (in_READ_5F_SUBCRIPT_5F_MAP) ;
-    while (enumerator_16622.hasCurrentObject ()) {
+    UpEnumerator_readSubcriptMap enumerator_16632 (in_READ_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_16632.hasCurrentObject ()) {
       result.appendString ("  public: class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_16622.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_16632.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).stringValue ()) ;
       result.appendString (" readSubcript_") ;
-      result.appendString (enumerator_16622.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
+      result.appendString (enumerator_16632.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_16778_IDX (0) ;
-      if (enumerator_16622.current_argumentTypeList (HERE).isValid ()) {
-        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_16778 (enumerator_16622.current_argumentTypeList (HERE)) ;
-        while (enumerator_16778.hasCurrentObject ()) {
+      GGS_u_33__32_ index_16788_IDX (0) ;
+      if (enumerator_16632.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_16788 (enumerator_16632.current_argumentTypeList (HERE)) ;
+        while (enumerator_16788.hasCurrentObject ()) {
           result.appendString ("const class GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_16778.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_16788.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
           result.appendString (" & in") ;
-          result.appendString (index_16778_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
+          result.appendString (index_16788_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
-          enumerator_16778.gotoNextObject () ;
-          index_16778_IDX.increment () ;
+          enumerator_16788.gotoNextObject () ;
+          index_16788_IDX.increment () ;
         }
       }
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
-      enumerator_16622.gotoNextObject () ;
-      index_16622_.increment () ;
+      enumerator_16632.gotoNextObject () ;
+      index_16632_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------- Write subcripts\n") ;
-  GGS_uint index_17077_ (0) ;
+  GGS_u_33__32_ index_17087_ (0) ;
   if (in_WRITE_5F_SUBCRIPT_5F_MAP.isValid ()) {
-    UpEnumerator_writeSubcriptMap enumerator_17077 (in_WRITE_5F_SUBCRIPT_5F_MAP) ;
-    while (enumerator_17077.hasCurrentObject ()) {
+    UpEnumerator_writeSubcriptMap enumerator_17087 (in_WRITE_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_17087.hasCurrentObject ()) {
       result.appendString ("  public: void writeSubcript_") ;
-      result.appendString (enumerator_17077.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 384)).stringValue ()) ;
+      result.appendString (enumerator_17087.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 384)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_17188_IDX (0) ;
-      if (enumerator_17077.current_argumentTypeList (HERE).isValid ()) {
-        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17188 (enumerator_17077.current_argumentTypeList (HERE)) ;
-        while (enumerator_17188.hasCurrentObject ()) {
+      GGS_u_33__32_ index_17198_IDX (0) ;
+      if (enumerator_17087.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17198 (enumerator_17087.current_argumentTypeList (HERE)) ;
+        while (enumerator_17198.hasCurrentObject ()) {
           result.appendString ("const class GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_17188.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_17198.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
           result.appendString (" in") ;
-          result.appendString (index_17188_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
+          result.appendString (index_17198_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
-          enumerator_17188.gotoNextObject () ;
-          index_17188_IDX.increment () ;
+          enumerator_17198.gotoNextObject () ;
+          index_17198_IDX.increment () ;
         }
       }
       result.appendString ("const class GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_17077.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_17087.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
       result.appendString (" inValue,\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
-      enumerator_17077.gotoNextObject () ;
-      index_17077_.increment () ;
+      enumerator_17087.gotoNextObject () ;
+      index_17087_.increment () ;
     }
   }
   result.appendString ("\n\n//--------------------------------- Introspection\n  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;\n") ;
-  const GalgasBool test_60 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 397)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_60 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 397)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_60) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- Friend\n  friend class UpEnumerator_") ;
@@ -9381,11 +9381,11 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
   String result ;
   uint32_t columnMarker = 0 ;
   result.appendString ("//-- Start of package generic part\n\n") ;
-  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 4)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 4)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
   switch (test_0) {
   case GalgasBool::boolTrue : {
     result.appendString ("//--------------------------------- GALGAS class getters\n") ;
-    GGS_uint index_220_ (0) ;
+    GGS_u_33__32_ index_220_ (0) ;
     if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
       UpEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP) ;
       while (enumerator_220.hasCurrentObject ()) {
@@ -9395,7 +9395,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
         result.appendString (enumerator_220.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
         result.appendString (" (") ;
         columnMarker = result.currentColumn () ;
-        GGS_uint index_405_IDX (0) ;
+        GGS_u_33__32_ index_405_IDX (0) ;
         if (enumerator_220.current_argumentTypeList (HERE).isValid ()) {
           UpEnumerator__5B_functionSignatureElement_5D_ enumerator_405 (enumerator_220.current_argumentTypeList (HERE)) ;
           while (enumerator_405.hasCurrentObject ()) {
@@ -9411,7 +9411,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
             index_405_IDX.increment () ;
           }
         }
-        const GalgasBool test_1 = enumerator_220.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_uint (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
+        const GalgasBool test_1 = enumerator_220.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
         switch (test_1) {
         case GalgasBool::boolTrue : {
           result.appendString (",\n") ;
@@ -9429,7 +9429,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
             result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
             } break ;
           case GalgasBool::boolFalse : {
-            const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 18)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+            const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 18)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
             switch (test_3) {
             case GalgasBool::boolTrue : {
               result.appendString ("\n") ;
@@ -9461,7 +9461,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
     break ;
   }
   result.appendString ("//--------------------------------- Class Methods\n") ;
-  GGS_uint index_1059_ (0) ;
+  GGS_u_33__32_ index_1059_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
     UpEnumerator_classMethodMap enumerator_1059 (in_CLASS_5F_METHOD_5F_MAP) ;
     while (enumerator_1059.hasCurrentObject ()) {
@@ -9469,7 +9469,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
       result.appendString (enumerator_1059.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 29)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
-      GGS_uint index_1187_IDX (0) ;
+      GGS_u_33__32_ index_1187_IDX (0) ;
       if (enumerator_1059.current_mParameterList (HERE).isValid ()) {
         UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_1187 (enumerator_1059.current_mParameterList (HERE)) ;
         while (enumerator_1187.hasCurrentObject ()) {
@@ -9524,7 +9524,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
           index_1187_IDX.increment () ;
         }
       }
-      const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_1059.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 42)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_1059.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 42)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_7) {
       case GalgasBool::boolTrue : {
         const GalgasBool test_8 = enumerator_1059.current_mHasCompilerArgument (HERE).boolEnum () ;
@@ -9736,7 +9736,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString ("const class cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-func.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_513_ (0) ;
+  GGS_u_33__32_ index_513_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_513 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_513.hasCurrentObject ()) {
@@ -9793,7 +9793,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString ("const cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-func.cpp.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_501_ (0) ;
+  GGS_u_33__32_ index_501_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_501 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_501.hasCurrentObject ()) {
@@ -9829,7 +9829,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString (" result ;\n  if (nullptr != inObject) {\n    result = inObject->getter_") ;
   result.appendString (in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-func.cpp.galgasTemplate", 20)).stringValue ()) ;
   result.appendString (" (") ;
-  GGS_uint index_1113_ (0) ;
+  GGS_u_33__32_ index_1113_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_1113 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_1113.hasCurrentObject ()) {
@@ -9866,7 +9866,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterDe
   result.appendString ("const cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-func.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_498_ (0) ;
+  GGS_u_33__32_ index_498_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_498 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_498.hasCurrentObject ()) {
@@ -9926,7 +9926,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterIm
   result.appendString ("const cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-func.cpp.galgasTemplate", 11)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_620_ (0) ;
+  GGS_u_33__32_ index_620_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_620 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_620.hasCurrentObject ()) {
@@ -9962,7 +9962,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterIm
   result.appendString (" result ;\n  if (nullptr != inObject) {\n    result = inObject->getter_") ;
   result.appendString (in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-func.cpp.galgasTemplate", 24)).stringValue ()) ;
   result.appendString (" (") ;
-  GGS_uint index_1232_ (0) ;
+  GGS_u_33__32_ index_1232_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_1232 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_1232.hasCurrentObject ()) {
@@ -10014,7 +10014,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString ("class cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-proc.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_460_ (0) ;
+  GGS_u_33__32_ index_460_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_460 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_460.hasCurrentObject ()) {
@@ -10094,7 +10094,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString ("cPtr_") ;
   result.appendString (extensionGetter_definition (in_RECEIVER_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("abstract-extension-proc.cpp.galgasTemplate", 7)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-proc.cpp.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_518_ (0) ;
+  GGS_u_33__32_ index_518_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_518 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_518.hasCurrentObject ()) {
@@ -10152,7 +10152,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) {\n//--- Drop output arguments\n") ;
-  GGS_uint index_1558_ (0) ;
+  GGS_u_33__32_ index_1558_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_1558 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_1558.hasCurrentObject ()) {
@@ -10177,7 +10177,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   result.appendString (") ;\n    inObject->method_") ;
   result.appendString (in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-proc.cpp.galgasTemplate", 32)).stringValue ()) ;
   result.appendString (" (") ;
-  GGS_uint index_2032_ (0) ;
+  GGS_u_33__32_ index_2032_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_2032 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_2032.hasCurrentObject ()) {
@@ -10244,7 +10244,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodDe
   result.appendString ("class cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-proc.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_451_ (0) ;
+  GGS_u_33__32_ index_451_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_451 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_451.hasCurrentObject ()) {
@@ -10327,7 +10327,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodIm
   result.appendString ("cPtr_") ;
   result.appendString (in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-proc.cpp.galgasTemplate", 9)).stringValue ()) ;
   result.appendString (" * inObject") ;
-  GGS_uint index_567_ (0) ;
+  GGS_u_33__32_ index_567_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_567 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_567.hasCurrentObject ()) {
@@ -10385,7 +10385,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodIm
   result.appendString ("Compiler * inCompiler\n") ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result.appendString ("COMMA_LOCATION_ARGS) {\n") ;
-  GGS_uint index_1579_ (0) ;
+  GGS_u_33__32_ index_1579_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_1579 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_1579.hasCurrentObject ()) {
@@ -10410,7 +10410,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodIm
   result.appendString (") ;\n    inObject->method_") ;
   result.appendString (in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-proc.cpp.galgasTemplate", 32)).stringValue ()) ;
   result.appendString (" (") ;
-  GGS_uint index_2005_ (0) ;
+  GGS_u_33__32_ index_2005_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_2005 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_2005.hasCurrentObject ()) {
@@ -10497,7 +10497,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterAs
   result.appendString ("const class GGS_") ;
   result.appendString (in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-func-as-function-declaration.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" & inObject") ;
-  GGS_uint index_499_IDX (0) ;
+  GGS_u_33__32_ index_499_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_499 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_499.hasCurrentObject ()) {
@@ -10568,7 +10568,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodAs
   result.appendString ("const class GGS_") ;
   result.appendString (in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-proc-as-function.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" inObject") ;
-  GGS_uint index_448_ (0) ;
+  GGS_u_33__32_ index_448_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_448 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_448.hasCurrentObject ()) {
@@ -10665,7 +10665,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionSetterAs
   result.appendString ("class GGS_") ;
   result.appendString (in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" & ioObject") ;
-  GGS_uint index_457_ (0) ;
+  GGS_u_33__32_ index_457_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_457 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_457.hasCurrentObject ()) {
@@ -10744,7 +10744,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_functionDeclarati
   result.appendString (in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-declaration.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_389_IDX (0) ;
+  GGS_u_33__32_ index_389_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_389 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_389.hasCurrentObject ()) {
@@ -10810,7 +10810,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_routineDeclaratio
   result.appendString (in_ROUTINE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("routine-declaration.h.galgasTemplate", 7)).stringValue ()) ;
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
-  GGS_uint index_354_IDX (0) ;
+  GGS_u_33__32_ index_354_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalParameterForGeneration_5D_ enumerator_354 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_354.hasCurrentObject ()) {
@@ -10959,7 +10959,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTempla
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
   result.appendString ("Compiler * inCompiler") ;
-  GGS_uint index_478_ (0) ;
+  GGS_u_33__32_ index_478_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_478 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_478.hasCurrentObject ()) {
@@ -11014,7 +11014,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTempla
   case GalgasBool::boolNotValid :
     break ;
   }
-  GGS_uint index_589_ (0) ;
+  GGS_u_33__32_ index_589_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_589 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
     while (enumerator_589.hasCurrentObject ()) {
@@ -11053,12 +11053,12 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTempla
   case GalgasBool::boolNotValid :
     break ;
   }
-  if (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_uint (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).isValid ()) {
-    result.incIndentation (int32_t (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_uint (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).uintValue ())) ;
+  if (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).isValid ()) {
+    result.incIndentation (int32_t (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).uintValue ())) ;
   }
   result.appendString (in_GENERATED_5F_INSTRUCTION_5F_STRING.stringValue ()) ;
-  if (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_uint (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).isValid ()) {
-    result.incIndentation (- int32_t (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_uint (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).uintValue ())) ;
+  if (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).isValid ()) {
+    result.incIndentation (- int32_t (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).getter_u_33__32_ (inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 27)).uintValue ())) ;
   }
   result.appendString ("  return GGS_string (result) ;\n}\n\n") ;
   return GGS_string (result) ;
@@ -11562,7 +11562,7 @@ GGS_string GGS_semanticFileGenerationTemplate::class_func_semanticFileHeader (co
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("#pragma once\n\n//--------------------------------------------------------------------------------------------------\n\n#include \"all-predefined-types.h\"\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_295_ (0) ;
+  GGS_u_33__32_ index_295_ (0) ;
   if (in_IMPORTED_5F_COMPONENT_5F_LIST.isValid ()) {
     UpEnumerator__5B_string_5D_ enumerator_295 (in_IMPORTED_5F_COMPONENT_5F_LIST) ;
     while (enumerator_295.hasCurrentObject ()) {
@@ -11635,10 +11635,10 @@ void GGS__5B_actualInputParameterAST_5D_::plusPlusAssignOperation (const GGS_act
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_actualInputParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS__5B_actualInputParameterAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
@@ -11703,7 +11703,7 @@ void GGS__5B_actualInputParameterAST_5D_::setter_removeAll (Compiler * /* inComp
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualInputParameterAST_5D_::setter_set (const GGS_actualInputParameterAST inValue,
-                                                      const GGS_uint inIndex,
+                                                      const GGS_u_33__32_ inIndex,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
@@ -11724,7 +11724,7 @@ void GGS__5B_actualInputParameterAST_5D_::setter_set (const GGS_actualInputParam
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualInputParameterAST_5D_::setter_insert (const GGS_actualInputParameterAST inValue,
-                                                         const GGS_uint inInsertionIndex,
+                                                         const GGS_u_33__32_ inInsertionIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
@@ -11745,7 +11745,7 @@ void GGS__5B_actualInputParameterAST_5D_::setter_insert (const GGS_actualInputPa
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_actualInputParameterAST_5D_::setter_remove (GGS_actualInputParameterAST & outValue,
-                                                         const GGS_uint inRemoveIndex,
+                                                         const GGS_u_33__32_ inRemoveIndex,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   outValue.drop () ;
@@ -11801,7 +11801,7 @@ void GGS__5B_actualInputParameterAST_5D_::setter_removeLast (GGS_actualInputPara
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualInputParameterAST_5D_ GGS__5B_actualInputParameterAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+GGS__5B_actualInputParameterAST_5D_ GGS__5B_actualInputParameterAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                                Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
   GGS__5B_actualInputParameterAST_5D_ result ;
@@ -11826,8 +11826,8 @@ GGS__5B_actualInputParameterAST_5D_ GGS__5B_actualInputParameterAST_5D_::getter_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_actualInputParameterAST_5D_ GGS__5B_actualInputParameterAST_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                         const GGS_uint & inLength,
+GGS__5B_actualInputParameterAST_5D_ GGS__5B_actualInputParameterAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                         const GGS_u_33__32_ & inLength,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
   GGS__5B_actualInputParameterAST_5D_ result ;
@@ -11895,7 +11895,7 @@ GGS_actualInputParameterAST GGS__5B_actualInputParameterAST_5D_::getter_last (Co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualInputParameterAST GGS__5B_actualInputParameterAST_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+GGS_actualInputParameterAST GGS__5B_actualInputParameterAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_actualInputParameterAST result ;
@@ -14572,251 +14572,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerForGenera
 
 const GALGAS_TypeDescriptor * GGS_extensionInitializerForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @extensionGetterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionGetterAST::objectCompare (const GGS_extensionGetterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionGetterAST::GGS_extensionGetterAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_extensionGetterAST GGS_extensionGetterAST::
-init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                              const GGS_lstring & in_mTypeName,
-                                              const GGS_lstring & in_mExtensionGetterName,
-                                              const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                              const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                              const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                              const GGS_location & in_mEndOfReaderLocation,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cPtr_extensionGetterAST * object = nullptr ;
-  macroMyNew (object, cPtr_extensionGetterAST (inCompiler COMMA_THERE)) ;
-  object->extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mExtensionGetterName, in_mExtensionGetterFormalInputParameterList, in_mExtensionGetterReturnedTypeName, in_mExtensionGetterInstructionList, in_mEndOfReaderLocation, inCompiler) ;
-  const GGS_extensionGetterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_extensionGetterAST::
-extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                 const GGS_lstring & in_mTypeName,
-                                                                 const GGS_lstring & in_mExtensionGetterName,
-                                                                 const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                                                 const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                                                 const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                                                 const GGS_location & in_mEndOfReaderLocation,
-                                                                 Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
-  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
-  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
-  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
-  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionGetterAST::GGS_extensionGetterAST (const cPtr_extensionGetterAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_formalInputParameterAST_5D_ () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterFormalInputParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterReturnedTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_semanticInstructionAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_semanticInstructionAST_5D_ () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mEndOfReaderLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @extensionGetterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterAST::cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExtensionGetterName (),
-mProperty_mExtensionGetterFormalInputParameterList (),
-mProperty_mExtensionGetterReturnedTypeName (),
-mProperty_mExtensionGetterInstructionList (),
-mProperty_mEndOfReaderLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GGS_bool & in_isPredefined,
-                                                  const GGS_lstring & in_mTypeName,
-                                                  const GGS_lstring & in_mExtensionGetterName,
-                                                  const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                                  const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                                  const GGS_location & in_mEndOfReaderLocation,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExtensionGetterName (),
-mProperty_mExtensionGetterFormalInputParameterList (),
-mProperty_mExtensionGetterReturnedTypeName (),
-mProperty_mExtensionGetterInstructionList (),
-mProperty_mEndOfReaderLocation () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
-  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
-  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
-  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
-  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
-}
-
-void cPtr_extensionGetterAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@extensionGetterAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_extensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
-    mProperty_mExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalInputParameterList") ;
-    mProperty_mExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedTypeName") ;
-    mProperty_mExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mExtensionGetterInstructionList") ;
-    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @extensionGetterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_extensionGetterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 

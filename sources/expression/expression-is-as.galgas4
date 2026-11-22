@@ -240,7 +240,7 @@ final class @testDynamicClassInExpressionForGeneration : @semanticExpressionForG
 override proc @testDynamicClassInExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   let typeNameRepresentation = self.mCastType.definition.typeName.string.identifierRepresentation
@@ -264,7 +264,7 @@ override proc @testDynamicClassInExpressionForGeneration.generateExpression
 override proc @castInExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
+  ?!@u32 ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {

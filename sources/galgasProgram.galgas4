@@ -261,7 +261,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
     for entry in typeMap do
       if currentFirstLetter != entry.lkey.string.characterAtIndex (0) then
         currentFirstLetter = entry.lkey.string.characterAtIndex (0)
-        tableOfTypeString += "<br><a name=\"" + currentFirstLetter.uint
+        tableOfTypeString += "<br><a name=\"" + currentFirstLetter.u32
         tableOfTypeString += "\"><b>" + currentFirstLetter + "</b></a><br>"
       end
       tableOfTypeString += linkForType (entry.lkey.string) + "<br>"

@@ -216,16 +216,16 @@ GGS_f_36__34_ GGS_f_36__34_::getter_power (const GGS_f_36__34_ & inExponant,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_f_36__34_::getter_uint (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
+GGS_u_33__32_ GGS_f_36__34_::getter_u_33__32_ (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
   if ((mF64 > double (UINT32_MAX)) || (mF64 < 0.0)) {
     String s = "Cannot convert @f64 (" ;
     s.appendDouble (mF64) ;
-    s.appendCString (") to @uint") ;
+    s.appendCString (") to @u32") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_uint ((uint32_t) (lround (mF64) & INT32_MAX)) ;
+    result = GGS_u_33__32_ ((uint32_t) (lround (mF64) & INT32_MAX)) ;
   }
   return result ;
 }
