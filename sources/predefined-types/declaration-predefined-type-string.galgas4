@@ -623,7 +623,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalSignedNumber",
-      !returnedTypeName: "sint",
+      !returnedTypeName: "s32",
       !hasCompilerArgument:true
     )
     enterBaseGetterWithoutArgument (
@@ -805,7 +805,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "system",
-      !returnedTypeName:"sint",
+      !returnedTypeName:"s32",
       !hasCompilerArgument:false
     )
     enterBaseGetterWithoutArgument (
@@ -830,7 +830,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !getterName: "commandWithArguments",
       !argSelector: "",
       !argType: "[string]", !argName: "inArguments",
-      !returnedTypeName: "sint",
+      !returnedTypeName: "s32",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithArgument (

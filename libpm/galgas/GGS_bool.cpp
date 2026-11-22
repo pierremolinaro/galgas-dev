@@ -172,10 +172,10 @@ GGS_bigint GGS_bool::getter_bigint (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_bool::getter_sint (UNUSED_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_bool::getter_s_33__32_ (UNUSED_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (isValid ()) {
-    result = GGS_sint (mBoolValue ? 1 : 0) ;
+    result = GGS_s_33__32_ (mBoolValue ? 1 : 0) ;
   }
   return result ;
 }

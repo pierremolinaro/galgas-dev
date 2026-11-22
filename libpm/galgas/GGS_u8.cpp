@@ -135,11 +135,11 @@ ComparisonResult GGS_u_38_::objectCompare (const GGS_u_38_ & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_u_38_::getter_sint (Compiler *
-                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_u_38_::getter_s_33__32_ (Compiler *
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (isValid ()) {
-    result = GGS_sint (int32_t (mU8)) ;
+    result = GGS_s_33__32_ (int32_t (mU8)) ;
   }
   return result ;
 }

@@ -858,13 +858,13 @@
                 "galgas4-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_s64.cpp",
+              "path": "GGS_s32.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_sint.cpp",
+              "path": "GGS_s64.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",

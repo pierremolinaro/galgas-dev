@@ -5854,26 +5854,26 @@ class GGS_predefinedTypeGenerationTemplate final {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @sintPredefinedTypeAST reference class
+// Phase 1: @s_33__32_PredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
+class GGS_s_33__32_PredefinedTypeAST : public GGS_predefinedTypeAST {
 //--------------------------------- Default constructor
-  public: GGS_sintPredefinedTypeAST (void) ;
+  public: GGS_s_33__32_PredefinedTypeAST (void) ;
 
 //--------------------------------- Constructor from pointer
-  public: GGS_sintPredefinedTypeAST (const class cPtr_sintPredefinedTypeAST * inSourcePtr) ;
+  public: GGS_s_33__32_PredefinedTypeAST (const class cPtr_s_33__32_PredefinedTypeAST * inSourcePtr) ;
 
 //--------------------------------- Property access
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_sintPredefinedTypeAST init_21_isPredefined_21_ (const class GGS_bool & inOperand0,
-                                                                     const class GGS_string & inOperand1,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GGS_s_33__32_PredefinedTypeAST init_21_isPredefined_21_ (const class GGS_bool & inOperand0,
+                                                                          const class GGS_string & inOperand1,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_sintPredefinedTypeAST & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_s_33__32_PredefinedTypeAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5895,22 +5895,22 @@ class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @sintPredefinedTypeAST class
+// Phase 2: pointer class for @s32PredefinedTypeAST class
 //--------------------------------------------------------------------------------------------------
 
-class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
+class cPtr_s_33__32_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void printNonNullClassInstanceProperties (void) const override ;
   #endif
 
 //--------------------------------- Initializers
-  public: void sintPredefinedTypeAST_init_21_isPredefined_21_ (const class GGS_bool & inOperand0,
-                                                               const class GGS_string & inOperand1,
-                                                               Compiler * inCompiler) ;
+  public: void s_33__32_PredefinedTypeAST_init_21_isPredefined_21_ (const class GGS_bool & inOperand0,
+                                                                    const class GGS_string & inOperand1,
+                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension func cppDeclarationString
@@ -5933,13 +5933,13 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 
 //--- Default constructor
-  public: cPtr_sintPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: cPtr_s_33__32_PredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_sintPredefinedTypeAST (const GGS_bool & in_isPredefined,
-                                      const GGS_string & in_mPredefinedTypeName,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+  public: cPtr_s_33__32_PredefinedTypeAST (const GGS_bool & in_isPredefined,
+                                           const GGS_string & in_mPredefinedTypeName,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
@@ -5955,29 +5955,29 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @sintPredefinedTypeAST_2E_weak weak reference class
+// Phase 1: @s_33__32_PredefinedTypeAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
+class GGS_s_33__32_PredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 //--------------------------------- Default constructor
-  public: GGS_sintPredefinedTypeAST_2E_weak (void) ;
+  public: GGS_s_33__32_PredefinedTypeAST_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GGS_sintPredefinedTypeAST_2E_weak (const class GGS_sintPredefinedTypeAST & inSource) ;
+  public: GGS_s_33__32_PredefinedTypeAST_2E_weak (const class GGS_s_33__32_PredefinedTypeAST & inSource) ;
 
-  public: GGS_sintPredefinedTypeAST_2E_weak & operator = (const class GGS_sintPredefinedTypeAST & inSource) ;
+  public: GGS_s_33__32_PredefinedTypeAST_2E_weak & operator = (const class GGS_s_33__32_PredefinedTypeAST & inSource) ;
 
 //--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
-  public: inline static GGS_sintPredefinedTypeAST_2E_weak init_nil (void) {
-    GGS_sintPredefinedTypeAST_2E_weak result ;
+  public: inline static GGS_s_33__32_PredefinedTypeAST_2E_weak init_nil (void) {
+    GGS_s_33__32_PredefinedTypeAST_2E_weak result ;
     macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
 //--------------------------------- Bang operator
-  public: GGS_sintPredefinedTypeAST bang_sintPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_s_33__32_PredefinedTypeAST bang_s_33__32_PredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- isValuated
   public: inline bool isValuated (void) const {
@@ -5985,7 +5985,7 @@ class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
   }
 
 //--------------------------------- Unwrapped value
-  public: GGS_sintPredefinedTypeAST unwrappedValue (void) const ;
+  public: GGS_s_33__32_PredefinedTypeAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -6000,10 +6000,10 @@ class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_sintPredefinedTypeAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GGS_s_33__32_PredefinedTypeAST_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_sintPredefinedTypeAST_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_s_33__32_PredefinedTypeAST_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -6025,7 +6025,7 @@ class GGS_sintPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_weak {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @s_36__34_PredefinedTypeAST reference class

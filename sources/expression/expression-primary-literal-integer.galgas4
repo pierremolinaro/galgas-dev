@@ -134,7 +134,7 @@ final class @literalU8ExpressionForGeneration : @semanticExpressionForGeneration
 //--------------------------------------------------------------------------------------------------
 
 final class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @sint mValue
+  private let @s32 mValue
 }
 
 //································································································
@@ -145,7 +145,7 @@ override proc @literalSIntExpressionForGeneration.generateExpression
   ?!@uint _ioTemporaryVariableIndex,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
-  outCppExpression = "GGS_sint (int32_t (" + self.mValue.string + "L))"
+  outCppExpression = "GGS_s_33__32_ (int32_t (" + self.mValue.string + "L))"
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ proc testsuite_bigint_type() {
   println (@bigint.zero.string)
   println ((1234).string)
   println ((-1234).string)
-  println ((1234).sint.string)
+  println ((1234).s32.string)
   println ((-1234).string)
   println ("--- getter string")
   println ((-1234567890_1234567890_1234567890).string)

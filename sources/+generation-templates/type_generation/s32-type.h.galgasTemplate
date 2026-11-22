@@ -1,22 +1,22 @@
 //--------------------------------------------------------------------------------------------------
-//   @sint type
+//   @s32 type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_sint final : public AC_GALGAS_root {
+class GGS_s_33__32_ final : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private: bool mIsValid ;
-  private: int32_t mSIntValue ;
+  private: int32_t mS32 ;
 
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
   public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }
-  public: inline int32_t intValue (void) const { return mSIntValue ; }
+  public: inline int32_t s32 (void) const { return mS32 ; }
 
 //--------------------------------- Default constructor
-  public: GGS_sint (void) ;
+  public: GGS_s_33__32_ (void) ;
 
 //--------------------------------- Native constructor
-  public: GGS_sint (const int32_t inValue) ;
+  public: GGS_s_33__32_ (const int32_t inValue) ;
 
 %
 

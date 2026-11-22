@@ -85,7 +85,7 @@ static GGS_lexicalTypeMap onceFunction_gLexicalTypeMap (Compiler * inCompiler
   result.setter_insertKey (GGS_string ("u64").getter_here (inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 353)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 353)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 353)) ;
   }
   {
-  result.setter_insertKey (GGS_string ("sint").getter_here (inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)) ;
+  result.setter_insertKey (GGS_string ("s32").getter_here (inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 354)) ;
   }
   {
   result.setter_insertKey (GGS_string ("s64").getter_here (inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 355)), GGS_lexicalTypeEnum::class_func_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 355)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 355)) ;
@@ -142,34 +142,34 @@ void routine_buildLexicalAttributeMap_3F__3F__26_ (const GGS_lexicalTypeMap cons
                                                    GGS_lexicalAttributeMap & ioArgument_ioLexicalAttributeMap,
                                                    Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator__5B_lexicalAttributeAST_5D_ enumerator_13944 (constinArgument_inLexicalAttributeList) ;
-  while (enumerator_13944.hasCurrentObject ()) {
+  UpEnumerator__5B_lexicalAttributeAST_5D_ enumerator_13943 (constinArgument_inLexicalAttributeList) ;
+  while (enumerator_13943.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = constinArgument_inLexicalTypeMap.getter_contains (enumerator_13944.current (HERE).readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 377)).boolEnum () ;
+      test_0 = constinArgument_inLexicalTypeMap.getter_contains (enumerator_13943.current (HERE).readProperty_mTypeName ().readProperty_string () COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 377)).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
-        GGS_lexicalTypeEnum var_lexicalType_14128 ;
-        constinArgument_inLexicalTypeMap.method_searchKey (enumerator_13944.current (HERE).readProperty_mTypeName (), var_lexicalType_14128, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 378)) ;
+        GGS_lexicalTypeEnum var_lexicalType_14127 ;
+        constinArgument_inLexicalTypeMap.method_searchKey (enumerator_13943.current (HERE).readProperty_mTypeName (), var_lexicalType_14127, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 378)) ;
         {
-        ioArgument_ioLexicalAttributeMap.setter_insertKey (enumerator_13944.current (HERE).readProperty_mName (), var_lexicalType_14128, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 379)) ;
+        ioArgument_ioLexicalAttributeMap.setter_insertKey (enumerator_13943.current (HERE).readProperty_mName (), var_lexicalType_14127, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 379)) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_0) {
-      GGS_string var_m_14246 = GGS_string::makeEmptyString () ;
-      var_m_14246.plusAssignOperation(GGS_string ("the @").add_operation (enumerator_13944.current (HERE).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)).add_operation (GGS_string (" type is not a valid lexical attribute type; are allowed:"), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)) ;
-      UpEnumerator_lexicalTypeMap enumerator_14382 (constinArgument_inLexicalTypeMap) ;
-      while (enumerator_14382.hasCurrentObject ()) {
-        var_m_14246.plusAssignOperation(GGS_string (" @").add_operation (enumerator_14382.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 384)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 384)) ;
-        enumerator_14382.gotoNextObject () ;
-        if (enumerator_14382.hasCurrentObject ()) {
-          var_m_14246.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 386)) ;
+      GGS_string var_m_14245 = GGS_string::makeEmptyString () ;
+      var_m_14245.plusAssignOperation(GGS_string ("the @").add_operation (enumerator_13943.current (HERE).readProperty_mTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)).add_operation (GGS_string (" type is not a valid lexical attribute type; are allowed:"), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 382)) ;
+      UpEnumerator_lexicalTypeMap enumerator_14381 (constinArgument_inLexicalTypeMap) ;
+      while (enumerator_14381.hasCurrentObject ()) {
+        var_m_14245.plusAssignOperation(GGS_string (" @").add_operation (enumerator_14381.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 384)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 384)) ;
+        enumerator_14381.gotoNextObject () ;
+        if (enumerator_14381.hasCurrentObject ()) {
+          var_m_14245.plusAssignOperation(GGS_string (","), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 386)) ;
         }
       }
       GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (enumerator_13944.current (HERE).readProperty_mTypeName ().readProperty_location (), var_m_14246, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 388)) ;
+      inCompiler->emitSemanticError (enumerator_13943.current (HERE).readProperty_mTypeName ().readProperty_location (), var_m_14245, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 388)) ;
     }
-    enumerator_13944.gotoNextObject () ;
+    enumerator_13943.gotoNextObject () ;
   }
 }
 
@@ -4478,7 +4478,7 @@ void cPtr_literalSIntExpressionForGeneration::method_generateExpression (GGS_str
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_literalSIntExpressionForGeneration temp_0 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_sint (int32_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)).add_operation (GGS_string ("L))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_s_33__32_ (int32_t (").add_operation (temp_0.readProperty_mValue ().getter_string (SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)).add_operation (GGS_string ("L))"), inCompiler COMMA_SOURCE_FILE ("expression-primary-literal-integer.galgas4", 148)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

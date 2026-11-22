@@ -97,15 +97,15 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
         bigIntValue.uint
       )
       handled = true
-    elsif "sint" == targetTypeForBigIntAssignment.typeName then
+    elsif "s32" == targetTypeForBigIntAssignment.typeName then
       let bigIntValue = bigIntSource.mValue
       if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
-        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
+        error ioExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s32"
       end
       ioExpression = @literalSIntExpressionForGeneration (
         targetTypeForBigIntAssignment,
         ioExpression.mLocation,
-        bigIntValue.sint
+        bigIntValue.s32
       )
       handled = true
     elsif "u64" == targetTypeForBigIntAssignment.typeName then
@@ -255,12 +255,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioRightExpression = @literalUIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.uint)
         ok = true
-      elsif "sint" == leftResultType.definition.typeName then
+      elsif "s32" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
-          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
+          error ioRightExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s32"
         end
-        ioRightExpression = @literalSIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.sint)
+        ioRightExpression = @literalSIntExpressionForGeneration (leftResultType, ioRightExpression.mLocation, bigIntValue.s32)
         ok = true
       elsif "u64" == leftResultType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
@@ -287,12 +287,12 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
         end
         ioLeftExpression = @literalUIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.uint)
         ok = true
-      elsif "sint" == rightType.definition.typeName then
+      elsif "s32" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue
         if (bigIntValue < -(1 << 31)) | (bigIntValue >= (1 << 31)) then
-          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @sint"
+          error ioLeftExpression.mLocation : "literal value (" + bigIntValue + ") does not fit in an @s32"
         end
-        ioLeftExpression = @literalSIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.sint)
+        ioLeftExpression = @literalSIntExpressionForGeneration (rightType, ioLeftExpression.mLocation, bigIntValue.s32)
         ok = true
       elsif "u64" == rightType.definition.typeName then
         let bigIntValue = bigIntSource.mValue

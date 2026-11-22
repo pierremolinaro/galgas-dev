@@ -248,16 +248,16 @@ GGS_u_36__34_ GGS_f_36__34_::getter_u_36__34_ (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_f_36__34_::getter_sint (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_f_36__34_::getter_s_33__32_ (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if ((mF64 > double (INT32_MAX)) || (mF64 < double (INT32_MIN))) {
     String s = "Cannot convert @f64 (" ;
     s.appendDouble (mF64) ;
     s.appendCString (") to @sint") ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GGS_sint (int32_t (lround (mF64) & INT32_MAX)) ;
+    result = GGS_s_33__32_ (int32_t (lround (mF64) & INT32_MAX)) ;
   }
   return result ;
 }

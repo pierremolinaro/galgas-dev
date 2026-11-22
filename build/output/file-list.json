@@ -153,7 +153,7 @@
     "GGS_f64.cpp",
     "GGS_filewrapper.cpp",
     "GGS_location.cpp",
-    "GGS_sint.cpp",
+    "GGS_s32.cpp",
     "GGS_s64.cpp",
     "GGS_string.cpp",
     "GGS_string-getters.cpp",

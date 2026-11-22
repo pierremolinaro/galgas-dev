@@ -187,13 +187,13 @@ ComparisonResult GGS_uint::objectCompare (const GGS_uint & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_uint::getter_sint (Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_uint::getter_s_33__32_ (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (mUIntValue > (uint32_t (INT32_MAX))) {
     inCompiler->onTheFlyRunTimeError ("@uint to signed value conversion overflow" COMMA_THERE) ;
   }else{
-    result = GGS_sint ((int32_t) mUIntValue) ;
+    result = GGS_s_33__32_ ((int32_t) mUIntValue) ;
   }
   return result ;
 }

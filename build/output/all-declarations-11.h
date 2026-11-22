@@ -6764,14 +6764,14 @@ class GGS_literalSIntExpressionForGeneration : public GGS_semanticExpressionForG
   public: GGS_literalSIntExpressionForGeneration (const class cPtr_literalSIntExpressionForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_sint readProperty_mValue (void) const ;
+  public: class GGS_s_33__32_ readProperty_mValue (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_literalSIntExpressionForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                           const class GGS_location & inOperand1,
-                                                                          const class GGS_sint & inOperand2,
+                                                                          const class GGS_s_33__32_ & inOperand2,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -6812,7 +6812,7 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
 //--------------------------------- Initializers
   public: void literalSIntExpressionForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                     const class GGS_location & inOperand1,
-                                                                    const class GGS_sint & inOperand2,
+                                                                    const class GGS_s_33__32_ & inOperand2,
                                                                     Compiler * inCompiler) ;
 
 
@@ -6825,7 +6825,7 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_sint mProperty_mValue ;
+  public: GGS_s_33__32_ mProperty_mValue ;
 
 
 //--- Default constructor
@@ -6834,7 +6834,7 @@ class cPtr_literalSIntExpressionForGeneration : public cPtr_semanticExpressionFo
 //--- Constructor
   public: cPtr_literalSIntExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
                                                    const GGS_location & in_mLocation,
-                                                   const GGS_sint & in_mValue,
+                                                   const GGS_s_33__32_ & in_mValue,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 

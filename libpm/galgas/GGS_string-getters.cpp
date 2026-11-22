@@ -692,20 +692,20 @@ GGS__5B_string_5D_ GGS_string::getter_componentsSeparatedByString (const GGS_str
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_string::getter_system (UNUSED_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_string::getter_system (UNUSED_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (isValid ()) {
-    result = GGS_sint (::system (mString.cString ())) ;
+    result = GGS_s_33__32_ (::system (mString.cString ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inArguments,
+GGS_s_33__32_ GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inArguments,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+  GGS_s_33__32_ result ;
   if (isValid () && inArguments.isValid ()) {
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
@@ -713,7 +713,7 @@ GGS_sint GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inA
       command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
-    result = GGS_sint (::system (command.cString ())) ;
+    result = GGS_s_33__32_ (::system (command.cString ())) ;
   }
   return result ;
 }
@@ -1125,15 +1125,15 @@ GGS_bool GGS_string::getter_isDecimalSignedNumber (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_string::getter_decimalSignedNumber (Compiler * inCompiler
+GGS_s_33__32_ GGS_string::getter_decimalSignedNumber (Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+  GGS_s_33__32_ result ;
   if (isValid ()) {
     int32_t r = 0 ;
     bool ok = false ;
     mString.convertToSInt32 (r, ok) ;
     if (ok) {
-      result = GGS_sint (r) ;
+      result = GGS_s_33__32_ (r) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @sint number" COMMA_THERE) ;
     }

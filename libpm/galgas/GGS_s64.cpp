@@ -84,15 +84,15 @@ GGS_uint GGS_s_36__34_::getter_uint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_s_36__34_::getter_sint (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_s_36__34_::getter_s_33__32_ (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (mS64 < INT32_MIN) {
     inCompiler->onTheFlyRunTimeError ("conversion from 64-bit signed value to 32-bit signed value overflow" COMMA_THERE) ;
   }else if (mS64 > INT32_MAX) {
     inCompiler->onTheFlyRunTimeError ("conversion from 64-bit signed value to 32-bit signed value overflow" COMMA_THERE) ;
   }else{
-    result = GGS_sint ((int32_t) (mS64 & UINT32_MAX)) ;
+    result = GGS_s_33__32_ ((int32_t) (mS64 & UINT32_MAX)) ;
   }
   return result ;
 }

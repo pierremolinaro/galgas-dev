@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-final class @sintPredefinedTypeAST : @predefinedTypeAST {
+final class @s32PredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -53,14 +53,14 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"max",
-      !resultTypeName:"sint",
+      !resultTypeName:"s32",
       !hasLexiqueArg:false
     )
     enterClassFunctionWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"min",
-      !resultTypeName:"sint",
+      !resultTypeName:"s32",
       !hasLexiqueArg:false
     )
   }
@@ -141,28 +141,28 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", "sint", "inOperand",
+      !getterName:"canAdd", "s32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", "sint", "inOperand",
+      !getterName:"canSubstract", "s32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", "sint", "inOperand",
+      !getterName:"canMultiply", "s32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", "sint", "inOperand",
+      !getterName:"canDivide", "s32", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

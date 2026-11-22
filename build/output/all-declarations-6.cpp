@@ -7128,7 +7128,7 @@ GGS_string GGS_predefinedTypeGenerationTemplate::class_func_primitiveTypesHeader
 GGS_string GGS_predefinedTypeGenerationTemplate::class_func_sint_5F_type (Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @sint type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_sint final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: int32_t mSIntValue ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline int32_t intValue (void) const { return mSIntValue ; }\n\n//--------------------------------- Default constructor\n  public: GGS_sint (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_sint (const int32_t inValue) ;\n\n") ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @s32 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_s_33__32_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: int32_t mS32 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline int32_t s32 (void) const { return mS32 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_s_33__32_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_s_33__32_ (const int32_t inValue) ;\n\n") ;
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -7304,10 +7304,10 @@ GGS_string GGS_predefinedTypeGenerationTemplate::class_func_timer_5F_type (Compi
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-// @sintPredefinedTypeAST reference class
+// @s_33__32_PredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_sintPredefinedTypeAST::objectCompare (const GGS_sintPredefinedTypeAST & inOperand) const {
+ComparisonResult GGS_s_33__32_PredefinedTypeAST::objectCompare (const GGS_s_33__32_PredefinedTypeAST & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     const size_t myObjectPtr = size_t (mObjectPtr) ;
@@ -7325,55 +7325,55 @@ ComparisonResult GGS_sintPredefinedTypeAST::objectCompare (const GGS_sintPredefi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST::GGS_sintPredefinedTypeAST (void) :
+GGS_s_33__32_PredefinedTypeAST::GGS_s_33__32_PredefinedTypeAST (void) :
 GGS_predefinedTypeAST () {
 }
 
 //--- Synthetized initializer ----------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST GGS_sintPredefinedTypeAST::
+GGS_s_33__32_PredefinedTypeAST GGS_s_33__32_PredefinedTypeAST::
 init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
                           const GGS_string & in_mPredefinedTypeName,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
-  cPtr_sintPredefinedTypeAST * object = nullptr ;
-  macroMyNew (object, cPtr_sintPredefinedTypeAST (inCompiler COMMA_THERE)) ;
-  object->sintPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
-  const GGS_sintPredefinedTypeAST result (object) ;
+  cPtr_s_33__32_PredefinedTypeAST * object = nullptr ;
+  macroMyNew (object, cPtr_s_33__32_PredefinedTypeAST (inCompiler COMMA_THERE)) ;
+  object->s_33__32_PredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  const GGS_s_33__32_PredefinedTypeAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_sintPredefinedTypeAST::
-sintPredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
-                                                const GGS_string & in_mPredefinedTypeName,
-                                                Compiler * /* inCompiler */) {
+void cPtr_s_33__32_PredefinedTypeAST::
+s_33__32_PredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                                                     const GGS_string & in_mPredefinedTypeName,
+                                                     Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST::GGS_sintPredefinedTypeAST (const cPtr_sintPredefinedTypeAST * inSourcePtr) :
+GGS_s_33__32_PredefinedTypeAST::GGS_s_33__32_PredefinedTypeAST (const cPtr_s_33__32_PredefinedTypeAST * inSourcePtr) :
 GGS_predefinedTypeAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_sintPredefinedTypeAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_s_33__32_PredefinedTypeAST) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Pointer class for @sintPredefinedTypeAST class
+//Pointer class for @s32PredefinedTypeAST class
 //--------------------------------------------------------------------------------------------------
 
-cPtr_sintPredefinedTypeAST::cPtr_sintPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_s_33__32_PredefinedTypeAST::cPtr_s_33__32_PredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_sintPredefinedTypeAST::cPtr_sintPredefinedTypeAST (const GGS_bool & in_isPredefined,
-                                                        const GGS_string & in_mPredefinedTypeName,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) :
+cPtr_s_33__32_PredefinedTypeAST::cPtr_s_33__32_PredefinedTypeAST (const GGS_bool & in_isPredefined,
+                                                                  const GGS_string & in_mPredefinedTypeName,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
 cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMMA_THERE) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
@@ -7381,13 +7381,13 @@ cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMM
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * cPtr_sintPredefinedTypeAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
+const GALGAS_TypeDescriptor * cPtr_s_33__32_PredefinedTypeAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST ;
 }
 
-void cPtr_sintPredefinedTypeAST::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("[@sintPredefinedTypeAST:") ;
+void cPtr_s_33__32_PredefinedTypeAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@s32PredefinedTypeAST:") ;
   mProperty_isPredefined.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
@@ -7396,9 +7396,9 @@ void cPtr_sintPredefinedTypeAST::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-AbstractPtrClass * cPtr_sintPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+AbstractPtrClass * cPtr_s_33__32_PredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_sintPredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_s_33__32_PredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7406,27 +7406,27 @@ AbstractPtrClass * cPtr_sintPredefinedTypeAST::duplicate (Compiler * inCompiler 
 //--------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_sintPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+  void cPtr_s_33__32_PredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
     cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
   }
 #endif
 
 //--------------------------------------------------------------------------------------------------
-//     @sintPredefinedTypeAST generic code implementation
+//     @s32PredefinedTypeAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST ("sintPredefinedTypeAST",
-                                                                          & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST ("s32PredefinedTypeAST",
+                                                                               & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_sintPredefinedTypeAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST ;
+const GALGAS_TypeDescriptor * GGS_s_33__32_PredefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_sintPredefinedTypeAST_2E_weak::objectCompare (const GGS_sintPredefinedTypeAST_2E_weak & inOperand) const {
+ComparisonResult GGS_s_33__32_PredefinedTypeAST_2E_weak::objectCompare (const GGS_s_33__32_PredefinedTypeAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
     PtrWeakReferenceProxy * myPtr = mProxyPtr ;
@@ -7446,13 +7446,13 @@ ComparisonResult GGS_sintPredefinedTypeAST_2E_weak::objectCompare (const GGS_sin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST_2E_weak::GGS_sintPredefinedTypeAST_2E_weak (void) :
+GGS_s_33__32_PredefinedTypeAST_2E_weak::GGS_s_33__32_PredefinedTypeAST_2E_weak (void) :
 GGS_predefinedTypeAST_2E_weak () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST_2E_weak & GGS_sintPredefinedTypeAST_2E_weak::operator = (const GGS_sintPredefinedTypeAST & inSource) {
+GGS_s_33__32_PredefinedTypeAST_2E_weak & GGS_s_33__32_PredefinedTypeAST_2E_weak::operator = (const GGS_s_33__32_PredefinedTypeAST & inSource) {
   PtrWeakReferenceProxy * proxyPtr = nullptr ;
   AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
   if (p != nullptr) {
@@ -7464,27 +7464,27 @@ GGS_sintPredefinedTypeAST_2E_weak & GGS_sintPredefinedTypeAST_2E_weak::operator 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST_2E_weak::GGS_sintPredefinedTypeAST_2E_weak (const GGS_sintPredefinedTypeAST & inSource) :
+GGS_s_33__32_PredefinedTypeAST_2E_weak::GGS_s_33__32_PredefinedTypeAST_2E_weak (const GGS_s_33__32_PredefinedTypeAST & inSource) :
 GGS_predefinedTypeAST_2E_weak (inSource) {
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST_2E_weak GGS_sintPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_sintPredefinedTypeAST_2E_weak result ;
+GGS_s_33__32_PredefinedTypeAST_2E_weak GGS_s_33__32_PredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_s_33__32_PredefinedTypeAST_2E_weak result ;
   macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST GGS_sintPredefinedTypeAST_2E_weak::unwrappedValue (void) const {
-  GGS_sintPredefinedTypeAST result ;
+GGS_s_33__32_PredefinedTypeAST GGS_s_33__32_PredefinedTypeAST_2E_weak::unwrappedValue (void) const {
+  GGS_s_33__32_PredefinedTypeAST result ;
   if (isValid ()) {
-    const cPtr_sintPredefinedTypeAST * p = (cPtr_sintPredefinedTypeAST *) ptr () ;
+    const cPtr_s_33__32_PredefinedTypeAST * p = (cPtr_s_33__32_PredefinedTypeAST *) ptr () ;
     if (nullptr != p) {
-      result = GGS_sintPredefinedTypeAST (p) ;
+      result = GGS_s_33__32_PredefinedTypeAST (p) ;
     }
   }
   return result ;
@@ -7492,31 +7492,31 @@ GGS_sintPredefinedTypeAST GGS_sintPredefinedTypeAST_2E_weak::unwrappedValue (voi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sintPredefinedTypeAST GGS_sintPredefinedTypeAST_2E_weak::bang_sintPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_sintPredefinedTypeAST result ;
+GGS_s_33__32_PredefinedTypeAST GGS_s_33__32_PredefinedTypeAST_2E_weak::bang_s_33__32_PredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_s_33__32_PredefinedTypeAST result ;
   if (mProxyPtr != nullptr) {
     AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
     if (strongPtr == nullptr) {
       inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
     }else{
-      macroValidSharedObject (strongPtr, cPtr_sintPredefinedTypeAST) ;
-      result = GGS_sintPredefinedTypeAST ((cPtr_sintPredefinedTypeAST *) strongPtr) ;
+      macroValidSharedObject (strongPtr, cPtr_s_33__32_PredefinedTypeAST) ;
+      result = GGS_s_33__32_PredefinedTypeAST ((cPtr_s_33__32_PredefinedTypeAST *) strongPtr) ;
     }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @sintPredefinedTypeAST.weak generic code implementation
+//     @s32PredefinedTypeAST.weak generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ("sintPredefinedTypeAST.weak",
-                                                                                  & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST_2E_weak ("s32PredefinedTypeAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_sintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sintPredefinedTypeAST_2E_weak ;
+const GALGAS_TypeDescriptor * GGS_s_33__32_PredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_s_33__32_PredefinedTypeAST_2E_weak ;
 }
 
 //--------------------------------------------------------------------------------------------------

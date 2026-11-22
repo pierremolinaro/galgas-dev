@@ -182,7 +182,7 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_f64.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_filewrapper.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_location.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/GGS_sint.cpp" />
+   <Unit filename="%!LIBPM_PATH%/galgas/GGS_s32.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_s64.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_string.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_string-getters.cpp" />

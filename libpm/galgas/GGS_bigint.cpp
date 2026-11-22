@@ -181,10 +181,10 @@ GGS_bool GGS_bigint::getter_isZero (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_bigint::getter_sign (UNUSED_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (isValid ()) {
-    result = GGS_sint (mValue.sign ()) ;
+    result = GGS_s_33__32_ (mValue.sign ()) ;
   }
   return result ;
 }
@@ -464,12 +464,12 @@ GGS_uint GGS_bigint::getter_uint (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_bigint::getter_sint (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  GGS_sint result ;
+GGS_s_33__32_ GGS_bigint::getter_s_33__32_ (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const {
+  GGS_s_33__32_ result ;
   if (isValid ()) {
     if (mValue.fitsInSInt32 ()) {
-      result = GGS_sint (mValue.int32 ()) ;
+      result = GGS_s_33__32_ (mValue.int32 ()) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("@bigint to @sint conversion overflow" COMMA_THERE) ;
     }
