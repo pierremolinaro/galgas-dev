@@ -19,12 +19,6 @@
 //!   AST
 //--------------------------------------------------------------------------------------------------
 
-final class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
-  public let @lstring mFilewrapperName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 final class @filewrapperInExpressionAST : @semanticExpressionAST {
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
@@ -41,19 +35,14 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $filewrapper$
+    $@type$ (?let filewrapperName) indexing (filewrapperReference)
     $[$
-    $identifier$ (?let filewrapperName) indexing (filewrapperReference)
-    select
-      warning filewrapperName : "FILEWRAPPER!!"
-      outExpression = @filewrapperObjectInstanciationInExpressionAST (filewrapperName)
-    or
-      $"string"$ (?let @lstring filePath)
-      outExpression = @filewrapperInExpressionAST (
-        filewrapperName,
-        filePath
-      )
-    end
+    $"string"$ (?let @lstring filePath)
     $]$
+    outExpression = @filewrapperInExpressionAST (
+      filewrapperName,
+      filePath
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,55 +53,7 @@ syntax extension galgas4ExpressionSyntax {
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperObjectInstanciationInExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap _ioTypeMap
-) {
-}
-
-//································································································
-
-override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry _inType,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager _ioVariableMap,
-  !@semanticExpressionForGeneration outExpression
-) {
-//  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
-//  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
-//----- Self type
-  let @unifiedTypeMapEntry fileWrapperType = ioTypeMap.typeMapEntryForLKey (self.mFilewrapperName)
-//--- Search for filewrapper name in filewrapper map
-  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey (
-    self.mFilewrapperName,
-    ?let @lstring filewrapperPath,
-    ?3*,
-    ?let @bool isInternal
-  )
-//--- Check internal
-  if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
-    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
-    end
-  end
-//---
-  outExpression = @filewrapperInExpressionForGeneration (
-    ioTypeMap.typeMapEntryForLKey (@lstring ("filewrapper", self.mFilewrapperName.location)),
-    self.mFilewrapperName.location,
-    fileWrapperType,
-    self.mFilewrapperName.string,
-    filewrapperPath.string
-  )
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @filewrapperInExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap _ioTypeMap
-) {
+override proc @filewrapperInExpressionAST.enterExpressionInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
 }
 
 //································································································
@@ -200,27 +141,6 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
 
 //--------------------------------------------------------------------------------------------------
 //! CODE GENERATION
-//--------------------------------------------------------------------------------------------------
-
-final class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @unifiedTypeMapEntry filewrapperType
-  public let @string mFilewrapperName
-  public let @string mFilewrapperPath
-}
-
-//································································································
-
-override proc @filewrapperInExpressionForGeneration.generateExpression
-         (?!@string _ioGeneratedCode,
-          ?!@stringset ioInclusionSet,
-          ?!@uint _ioTemporaryVariableIndex,
-          ?!@stringset _ioUnusedVariableCppNameSet,
-          !@string outCppExpression) {
-//  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-  self.filewrapperType.addHeaderFileName (!?ioInclusionSet)
-  outCppExpression = "GGS_filewrapper (gWrapperDirectory_0_" + self.mFilewrapperName.identifierRepresentation + ")"
-}
-
 //--------------------------------------------------------------------------------------------------
 
 final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {

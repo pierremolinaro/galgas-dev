@@ -422,7 +422,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
     s2.writeToFileWhenDifferentContents (InfoPlist_strings_path, ?*)
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not Credits_rtf_path.fileExists then
-      let s = filewrapper [targetGalgas3GenerationFileWrapper "project-xcode-swiftui/Base.lproj/Credits.rtf"]
+      let s = filewrapper @targetGalgas3GenerationFileWrapper ["project-xcode-swiftui/Base.lproj/Credits.rtf"]
       s.writeToFile (Credits_rtf_path)
     end
   //--- Enumerate icons files in "userResources" directory
