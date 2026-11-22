@@ -399,8 +399,6 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @typeDumpGenerationTemplate : "+generation-templates/target_generation" {
-}{
-}{
   template typeDump : "typeDump.html.galgasTemplate" (
     ?@string PROJECT_NAME,
     ?@unifiedTypeMap UNIFIED_TYPE_MAP,

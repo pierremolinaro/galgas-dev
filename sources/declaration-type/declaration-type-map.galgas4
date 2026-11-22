@@ -831,8 +831,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @mapGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template mapTypeHeader1 : "GALGAS_map.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

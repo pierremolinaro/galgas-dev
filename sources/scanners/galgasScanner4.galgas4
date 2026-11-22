@@ -237,7 +237,8 @@ rule '0'->'9' {
 #errorMessage undefinedAttribute : "undefined attribute"
 
 list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" {
-  "applicationBundleBase" -> $#applicationBundleBase$,
+//  "applicationBundleBase" -> $#applicationBundleBase$,
+  "binaryFileExtension" -> $#binaryFileExtension$,
   "clonable" -> $#clonable$,
   "comparable" -> $#comparable$,
   "equatable" -> $#equatable$,
@@ -251,7 +252,7 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "insertSetter" -> $#insertSetter$,
   "nonAtomicSelection" -> $#nonAtomicSelection$,
   "preserved" -> $#preserved$,
-  "quietOutputByDefault" -> $#quietOutputByDefault$,
+ // "quietOutputByDefault" -> $#quietOutputByDefault$,
   "replaceBy" -> $#replaceBy$,
   "remove" -> $#remove$,
   "removeSetter" -> $#removeSetter$,
@@ -261,6 +262,7 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "searchString" -> $#searchString$,
   "templateEndMark" -> $#templateEndMark$,
   "templateReplacement" -> $#templateReplacement$,
+  "textFileExtension" -> $#textFileExtension$,
   "translatable" -> $#translatable$,
   "unused" -> $#unused$,
   "usefull" -> $#usefull$

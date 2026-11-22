@@ -1,60 +1,5 @@
 #include "all-declarations-19.h"
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@lexicalRoutineCallInstructionAST checkLexicalInstruction'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                            GGS_lexicalTagMap & /* ioArgument__5F_ioTagMap */,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ var_lexicalRoutineFormalArgumentList_7501 ;
-  GGS__5B_string_5D_ var_routineErrorMessageList_7544 ;
-  const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
-  GGS_bool joker_7573 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalRoutineMessageMap ().method_searchKey (temp_0.readProperty_mRoutineName (), var_lexicalRoutineFormalArgumentList_7501, var_routineErrorMessageList_7544, joker_7573, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 172)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    const GGS_lexicalRoutineCallInstructionAST temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_lexicalRoutineFormalArgumentList_7501.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 179)).objectCompare (temp_2.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 179)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_lexicalRoutineCallInstructionAST temp_3 = this ;
-      const GGS_lexicalRoutineCallInstructionAST temp_4 = this ;
-      GenericArray <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_4.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 180)).add_operation (GGS_string (" actual argument(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)).add_operation (var_lexicalRoutineFormalArgumentList_7501.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 183)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 182)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 182)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 183)), fixItArray5  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 180)) ;
-    }
-  }
-  const GGS_lexicalRoutineCallInstructionAST temp_6 = this ;
-  UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_8029 (var_lexicalRoutineFormalArgumentList_7501) ;
-  UpEnumerator__5B_abstractLexicalRoutineActualArgumentAST_5D_ enumerator_8078 (temp_6.readProperty_mActualArgumentList ()) ;
-  while (enumerator_8029.hasCurrentObject () && enumerator_8078.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_8078.current (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_8029.current (HERE).readProperty_mLexicalFormalArgumentMode (), enumerator_8029.current (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 188)) ;
-    enumerator_8029.gotoNextObject () ;
-    enumerator_8078.gotoNextObject () ;
-  }
-  GalgasBool test_7 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_7) {
-    const GGS_lexicalRoutineCallInstructionAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_routineErrorMessageList_7544.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)).objectCompare (temp_8.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_7) {
-      const GGS_lexicalRoutineCallInstructionAST temp_9 = this ;
-      const GGS_lexicalRoutineCallInstructionAST temp_10 = this ;
-      GenericArray <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_10.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)).add_operation (GGS_string (" error message(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).add_operation (var_routineErrorMessageList_7544.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 198)).add_operation (GGS_string (" error message(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)), fixItArray11  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)) ;
-    }
-  }
-  const GGS_lexicalRoutineCallInstructionAST temp_12 = this ;
-  UpEnumerator__5B_lstring_5D_ enumerator_8697 (temp_12.readProperty_mErrorMessageList ()) ;
-  while (enumerator_8697.hasCurrentObject ()) {
-    GGS_lexicalMessageMap_2E_element var_entry_8726 = ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalMessageMap ().readSubcript__3F_searchKey (enumerator_8697.current (HERE), inCompiler COMMA_HERE) ;
-    var_entry_8726.mProperty_mMessageIsUsed = GGS_bool (true) ;
-    {
-    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_replaceKey (var_entry_8726, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 206)) ;
-    }
-    enumerator_8697.gotoNextObject () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //Overriding extension func '@lexicalRoutineCallInstructionAST generateSwiftCocoaInstructionCode'
 //
@@ -2533,7 +2478,7 @@ GGS_string function_linkForType (const GGS_string & constinArgument_inTypeName,
                                  Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result ; // Returned variable
-  result = GGS_string ("<a class=\"header_link\" href=\"#").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 415)).add_operation (GGS_string ("\">@"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 415)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 415)).add_operation (GGS_string ("</a>"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 415)) ;
+  result = GGS_string ("<a class=\"header_link\" href=\"#").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 413)).add_operation (GGS_string ("\">@"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 413)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 413)).add_operation (GGS_string ("</a>"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 413)) ;
 //---
   return result ;
 }
@@ -7816,6 +7761,41 @@ void routine_appendPredefinedArrayTypeAST_26__3F_ (GGS_galgasDeclarationAST & io
   GGS_string var_arrayTypeName_13768 = function_makeArrayTypeName (constinArgument_inElementTypeName, inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 291)) ;
   ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (var_arrayTypeName_13768  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 292)) ;
   ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_arrayTypeDeclarationAST::init_21_isPredefined_21_arrayTypeName_21_elementTypeName_21_isUsefull (GGS_bool (true), var_arrayTypeName_13768.getter_nowhere (SOURCE_FILE ("all-predefined-types.galgas4", 295)), constinArgument_inElementTypeName.getter_nowhere (SOURCE_FILE ("all-predefined-types.galgas4", 296)), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 293)) ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'appendStructASTForTypeWithLocation&?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_appendStructASTForTypeWithLocation_26__3F_ (GGS__5B_semanticDeclarationAST_5D_ & ioArgument_ioDeclarationListASTs,
+                                                         const GGS_string constinArgument_inElementTypeName,
+                                                         Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_propertyInCollectionAST_5D_ var_propertyList_14385 = GGS__5B_propertyInCollectionAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_propertyList_14385.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 307)), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 308)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (constinArgument_inElementTypeName, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 309)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 310)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 312)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 306)) ;
+  var_propertyList_14385.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 315)), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 316)), inCompiler COMMA_HERE), GGS_lstring::init_21__21_ (GGS_string ("location"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 317)), inCompiler COMMA_HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 318)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 320)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 314)) ;
+  GGS_structDeclarationAST var_type_14922 = GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_lstring::init_21__21_ (GGS_string ("l").add_operation (constinArgument_inElementTypeName, inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 324)), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 324)), inCompiler COMMA_HERE), var_propertyList_14385, GGS_string::makeEmptyString (), GGS_structComparison::class_func_equatable (SOURCE_FILE ("all-predefined-types.galgas4", 327)), GGS_bool (true), inCompiler COMMA_HERE) ;
+  ioArgument_ioDeclarationListASTs.plusPlusAssignOperation (var_type_14922  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 330)) ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'append_stringString_StructAST&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_append_5F_stringString_5F_StructAST_26_ (GGS__5B_semanticDeclarationAST_5D_ & ioArgument_ioDeclarationListASTs,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_propertyInCollectionAST_5D_ var_propertyList_15389 = GGS__5B_propertyInCollectionAST_5D_::init (inCompiler COMMA_HERE) ;
+  var_propertyList_15389.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 338)), GGS_string ("string").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 339)), GGS_string ("left").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 340)), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 341)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 343)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 337)) ;
+  var_propertyList_15389.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 346)), GGS_string ("string").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 347)), GGS_string ("right").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 348)), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 349)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 351)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 345)) ;
+  GGS_structDeclarationAST var_type_15813 = GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_string ("stringString").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 355)), var_propertyList_15389, GGS_string::makeEmptyString (), GGS_structComparison::class_func_equatable (SOURCE_FILE ("all-predefined-types.galgas4", 358)), GGS_bool (true), inCompiler COMMA_HERE) ;
+  ioArgument_ioDeclarationListASTs.plusPlusAssignOperation (var_type_15813  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 361)) ;
 }
 
 

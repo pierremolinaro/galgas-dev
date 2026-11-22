@@ -240,6 +240,7 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
                                     ?!@uint ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
                                     !@string outCppExpression) {
+    self.classFuncType.addHeaderFileName (!?ioInclusionSet)
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     for type in self.requiredTypes do
       type.addHeaderFileName (!?ioInclusionSet)

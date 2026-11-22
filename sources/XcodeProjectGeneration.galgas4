@@ -408,8 +408,7 @@ struct @XcodeProjectDescriptor {
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @xcodeProjectGenerationFilewrapper : "+generation-templates/target_generation/project-xcode-swiftui" {
-}{
-}{
+
   template xcodeproj : "project.pbxproj.galgasTemplate" (
     ?@string PROJECT_REF,
     ?@string MAIN_GROUP_REF,

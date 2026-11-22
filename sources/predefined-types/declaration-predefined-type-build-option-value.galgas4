@@ -229,8 +229,7 @@ final class @buildOptionTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @buildOptionGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template buildOptionTypeHeader1 : "buildOptionValue.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

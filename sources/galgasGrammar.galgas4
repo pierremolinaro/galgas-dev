@@ -28,7 +28,6 @@ indexing grammar galgas4Grammar "SLR" {
   syntax galgas4InstructionsSyntax
   syntax galgas4DeclarationsSyntax
   syntax galgas4LexiqueComponentSyntax
-//  syntax galgas4OptionComponentSyntax
   syntax galgas4GuiComponentSyntax
   syntax galgas4SyntaxComponentSyntax
   syntax galgas4GrammarComponentSyntax

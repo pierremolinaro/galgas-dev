@@ -199,7 +199,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       1, // 93 : galgasScanner4_1_warning
       1, // 94 : galgasScanner4_1_while
       1, // 95 : galgasScanner4_1_with
-      11, // 96 : galgasScanner4_1__23_applicationBundleBase
+      11, // 96 : galgasScanner4_1__23_binaryFileExtension
       11, // 97 : galgasScanner4_1__23_clonable
       11, // 98 : galgasScanner4_1__23_comparable
       11, // 99 : galgasScanner4_1__23_equatable
@@ -213,16 +213,16 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       11, // 107 : galgasScanner4_1__23_insertSetter
       11, // 108 : galgasScanner4_1__23_nonAtomicSelection
       11, // 109 : galgasScanner4_1__23_preserved
-      11, // 110 : galgasScanner4_1__23_quietOutputByDefault
-      11, // 111 : galgasScanner4_1__23_replaceBy
-      11, // 112 : galgasScanner4_1__23_remove
-      11, // 113 : galgasScanner4_1__23_removeSetter
-      11, // 114 : galgasScanner4_1__23_replaceSetter
-      11, // 115 : galgasScanner4_1__23_searchMethod
-      11, // 116 : galgasScanner4_1__23_searchSubscript
-      11, // 117 : galgasScanner4_1__23_searchString
-      11, // 118 : galgasScanner4_1__23_templateEndMark
-      11, // 119 : galgasScanner4_1__23_templateReplacement
+      11, // 110 : galgasScanner4_1__23_replaceBy
+      11, // 111 : galgasScanner4_1__23_remove
+      11, // 112 : galgasScanner4_1__23_removeSetter
+      11, // 113 : galgasScanner4_1__23_replaceSetter
+      11, // 114 : galgasScanner4_1__23_searchMethod
+      11, // 115 : galgasScanner4_1__23_searchSubscript
+      11, // 116 : galgasScanner4_1__23_searchString
+      11, // 117 : galgasScanner4_1__23_templateEndMark
+      11, // 118 : galgasScanner4_1__23_templateReplacement
+      11, // 119 : galgasScanner4_1__23_textFileExtension
       11, // 120 : galgasScanner4_1__23_translatable
       11, // 121 : galgasScanner4_1__23_unused
       11, // 122 : galgasScanner4_1__23_usefull
@@ -380,7 +380,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 93 : galgasScanner4_1_warning
       true, // 94 : galgasScanner4_1_while
       true, // 95 : galgasScanner4_1_with
-      true, // 96 : galgasScanner4_1__23_applicationBundleBase
+      true, // 96 : galgasScanner4_1__23_binaryFileExtension
       true, // 97 : galgasScanner4_1__23_clonable
       true, // 98 : galgasScanner4_1__23_comparable
       true, // 99 : galgasScanner4_1__23_equatable
@@ -394,16 +394,16 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 107 : galgasScanner4_1__23_insertSetter
       true, // 108 : galgasScanner4_1__23_nonAtomicSelection
       true, // 109 : galgasScanner4_1__23_preserved
-      true, // 110 : galgasScanner4_1__23_quietOutputByDefault
-      true, // 111 : galgasScanner4_1__23_replaceBy
-      true, // 112 : galgasScanner4_1__23_remove
-      true, // 113 : galgasScanner4_1__23_removeSetter
-      true, // 114 : galgasScanner4_1__23_replaceSetter
-      true, // 115 : galgasScanner4_1__23_searchMethod
-      true, // 116 : galgasScanner4_1__23_searchSubscript
-      true, // 117 : galgasScanner4_1__23_searchString
-      true, // 118 : galgasScanner4_1__23_templateEndMark
-      true, // 119 : galgasScanner4_1__23_templateReplacement
+      true, // 110 : galgasScanner4_1__23_replaceBy
+      true, // 111 : galgasScanner4_1__23_remove
+      true, // 112 : galgasScanner4_1__23_removeSetter
+      true, // 113 : galgasScanner4_1__23_replaceSetter
+      true, // 114 : galgasScanner4_1__23_searchMethod
+      true, // 115 : galgasScanner4_1__23_searchSubscript
+      true, // 116 : galgasScanner4_1__23_searchString
+      true, // 117 : galgasScanner4_1__23_templateEndMark
+      true, // 118 : galgasScanner4_1__23_templateReplacement
+      true, // 119 : galgasScanner4_1__23_textFileExtension
       true, // 120 : galgasScanner4_1__23_translatable
       true, // 121 : galgasScanner4_1__23_unused
       true, // 122 : galgasScanner4_1__23_usefull
@@ -1322,10 +1322,10 @@ fileprivate let kDictionary_galgasScanner_34__attributeKeyWordList : [String : U
   "replaceSetter" : galgasScanner4_1__23_replaceSetter,
   "searchSubscript" : galgasScanner4_1__23_searchSubscript,
   "templateEndMark" : galgasScanner4_1__23_templateEndMark,
+  "textFileExtension" : galgasScanner4_1__23_textFileExtension,
   "nonAtomicSelection" : galgasScanner4_1__23_nonAtomicSelection,
+  "binaryFileExtension" : galgasScanner4_1__23_binaryFileExtension,
   "templateReplacement" : galgasScanner4_1__23_templateReplacement,
-  "quietOutputByDefault" : galgasScanner4_1__23_quietOutputByDefault,
-  "applicationBundleBase" : galgasScanner4_1__23_applicationBundleBase,
   "insertOrReplaceSetter" : galgasScanner4_1__23_insertOrReplaceSetter,
   "generatedInSeparateFile" : galgasScanner4_1__23_generatedInSeparateFile
 ]
@@ -1556,7 +1556,7 @@ let galgasScanner4_1_var : UInt16 = 92
 let galgasScanner4_1_warning : UInt16 = 93
 let galgasScanner4_1_while : UInt16 = 94
 let galgasScanner4_1_with : UInt16 = 95
-let galgasScanner4_1__23_applicationBundleBase : UInt16 = 96
+let galgasScanner4_1__23_binaryFileExtension : UInt16 = 96
 let galgasScanner4_1__23_clonable : UInt16 = 97
 let galgasScanner4_1__23_comparable : UInt16 = 98
 let galgasScanner4_1__23_equatable : UInt16 = 99
@@ -1570,16 +1570,16 @@ let galgasScanner4_1__23_insertOrReplaceSetter : UInt16 = 106
 let galgasScanner4_1__23_insertSetter : UInt16 = 107
 let galgasScanner4_1__23_nonAtomicSelection : UInt16 = 108
 let galgasScanner4_1__23_preserved : UInt16 = 109
-let galgasScanner4_1__23_quietOutputByDefault : UInt16 = 110
-let galgasScanner4_1__23_replaceBy : UInt16 = 111
-let galgasScanner4_1__23_remove : UInt16 = 112
-let galgasScanner4_1__23_removeSetter : UInt16 = 113
-let galgasScanner4_1__23_replaceSetter : UInt16 = 114
-let galgasScanner4_1__23_searchMethod : UInt16 = 115
-let galgasScanner4_1__23_searchSubscript : UInt16 = 116
-let galgasScanner4_1__23_searchString : UInt16 = 117
-let galgasScanner4_1__23_templateEndMark : UInt16 = 118
-let galgasScanner4_1__23_templateReplacement : UInt16 = 119
+let galgasScanner4_1__23_replaceBy : UInt16 = 110
+let galgasScanner4_1__23_remove : UInt16 = 111
+let galgasScanner4_1__23_removeSetter : UInt16 = 112
+let galgasScanner4_1__23_replaceSetter : UInt16 = 113
+let galgasScanner4_1__23_searchMethod : UInt16 = 114
+let galgasScanner4_1__23_searchSubscript : UInt16 = 115
+let galgasScanner4_1__23_searchString : UInt16 = 116
+let galgasScanner4_1__23_templateEndMark : UInt16 = 117
+let galgasScanner4_1__23_templateReplacement : UInt16 = 118
+let galgasScanner4_1__23_textFileExtension : UInt16 = 119
 let galgasScanner4_1__23_translatable : UInt16 = 120
 let galgasScanner4_1__23_unused : UInt16 = 121
 let galgasScanner4_1__23_usefull : UInt16 = 122

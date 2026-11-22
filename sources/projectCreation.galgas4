@@ -28,8 +28,6 @@
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @projectCreationFileWrapper : "+generation-templates/project_creation" {
-}{
-}{
 //--- Project
   template PROJECT_project : "+PROJECT.galgas4project.galgasTemplate" (?@string PROJECT_NAME)
   template PROJECT_cocoa : "PROJECT-cocoa.galgas.galgasTemplate" (?@string PROJECT_NAME)

@@ -607,8 +607,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @graphGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

@@ -27,88 +27,36 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $filewrapper$
-    $@type$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
-    $:$
-    $"string"$ (?let @lstring filewrapperPath)
-    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
-    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
-    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      false, // private
-      @string.stringWithSourceFilePath,
-      filewrapperName,
-      filewrapperPath,
-      filewrapperTextFileExtensionList,
-      filewrapperBinaryFileExtensionList,
-      filewrapperTemplateList
-    )
+    <filewrapper_declaration> (!private: false, !?ioDeclarations)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $private$
     $filewrapper$
+    <filewrapper_declaration> (!private: true, !?ioDeclarations)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <filewrapper_declaration> (?private: @bool inIsPrivate, ?!@galgasDeclarationAST ioDeclarations) {
     $@type$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
     $:$
     $"string"$ (?let @lstring filewrapperPath)
-    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
-    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
-    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      true, // private
-      @string.stringWithSourceFilePath,
-      filewrapperName,
-      filewrapperPath,
-      filewrapperTextFileExtensionList,
-      filewrapperBinaryFileExtensionList,
-      filewrapperTemplateList
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_text_files> (![@lstring] outFilewrapperTextFileExtensionList ) {
-    outFilewrapperTextFileExtensionList = @()
+    var [@lstring] filewrapperTextFileExtensionList = []
+    var [@lstring] filewrapperBinaryFileExtensionList = []
+    var [@filewrapperTemplateAST] filewrapperTemplateList = []
     ${$
-    select
-    or
-      repeat
-        $"string"$ (?let @lstring pathExtension)
-        outFilewrapperTextFileExtensionList ++= pathExtension
-      while
-        $,$
-      end
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_binary_files> (![@lstring] outFilewrapperBinaryFileExtensionList ) {
-    outFilewrapperBinaryFileExtensionList = @()
-    ${$
-    select
-    or
-      repeat
-        $"string"$ (?let @lstring pathExtension)
-        outFilewrapperBinaryFileExtensionList ++= pathExtension
-      while
-        $,$
-      end
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
-                               ![@filewrapperTemplateAST] outFilewrapperTemplateList ) {
-    ${$
-    outFilewrapperTemplateList = @()
     repeat
+    while
+      $#textFileExtension$
+      $"string"$ (?let @lstring pathExtension)
+      filewrapperTextFileExtensionList ++= pathExtension
+    while
+      $#binaryFileExtension$
+      $"string"$ (?let @lstring pathExtension)
+      filewrapperBinaryFileExtensionList ++= pathExtension
     while
       $template$
       $identifier$ (?let mFilewrapperTemplateName)
@@ -137,13 +85,23 @@ syntax extension galgas4DeclarationsSyntax {
         end
       end
       $)$
-      outFilewrapperTemplateList ++= @(
+      filewrapperTemplateList ++= @(
         mFilewrapperTemplateName,
         mFilewrapperTemplatePath,
         filewrapperTemplateFormalInputParameters
       )
     end
     $}$
+    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
+      !isPredefined: false, // Is not predefined
+      inIsPrivate,
+      @string.stringWithSourceFilePath,
+      filewrapperName,
+      filewrapperPath,
+      filewrapperTextFileExtensionList,
+      filewrapperBinaryFileExtensionList,
+      filewrapperTemplateList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -497,14 +455,14 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
     var regularTextContentIndexStringList = [@string] ()
     var directoryIndexStringList = [@string] ()
     recursivlyEnumerateRegularFile (
-      self.regularRootFileMap, // self.mFilewrapperFileMap,
-      self.wrapperDirectoryMap, // mFilewrapperDirectoryMap,
+      self.regularRootFileMap,
+      self.wrapperDirectoryMap,
       !?regularFileIndexStringList,
       !?directoryIndexStringList,
       !?regularTextContentIndexStringList,
       !?regularBinaryContentIndexStringList
     )
-    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
+    outHeader = @filewrapperGenerationTemplate.filewrapperDeclaration (
       regularFileIndexStringList,
       directoryIndexStringList,
       regularTextContentIndexStringList,
@@ -540,7 +498,7 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
       self.wrapperDirectoryMap,
       !?filewrapperImplementation
     )
-    outImplementation += @semanticComponentGenerationTemplate.filewrapperImplementation (
+    outImplementation += @filewrapperGenerationTemplate.filewrapperImplementation (
       self.mSelfTypeEntry.definition.typeName.string,
       filewrapperImplementation
     )
@@ -587,8 +545,7 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template filewrapperTypeHeader1 : "GALGAS_filewrapper.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
@@ -607,75 +564,20 @@ filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_gene
     ?@bool USES_COLUMN_MARKER,
     ?@string GENERATED_INSTRUCTION_STRING
   )
+
+  template filewrapperDeclaration : "filewrapper-contents-declaration.h.galgasTemplate" (
+    ?[@string] FILE_INDEX_STRING_LIST,
+    ?[@string] DIRECTORY_INDEX_STRING_LIST,
+    ?[@string] TEXT_CONTENT_INDEX_STRING_LIST,
+    ?[@string] BINARY_CONTENT_INDEX_STRING_LIST,
+    ?@string FILEWRAPPER_NAME
+  )
+
+  template filewrapperImplementation : "filewrapper-contents-implementation.cpp.galgasTemplate" (
+    ?@string FILEWRAPPER_NAME,
+    ?@string FILEWRAPPER_IMPLEMENTATION
+  )
 }
-
-//--------------------------------------------------------------------------------------------------
-//    FILEWRAPPER GENERATION EX
-//--------------------------------------------------------------------------------------------------
-
-//final class @filewrapperDeclarationForGenerationEX : @semanticDeclarationWithHeaderForGeneration {
-//  public let @string mFilewrapperName
-//  public let @string mFilewrapperAbsolutePath
-//  public let @wrapperFileMap mFilewrapperFileMap
-//  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  override func headerKind () ->@headerKind {
-//    result = .oneHeader
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
-//                                    !@string outHeader) {
-////    var regularFileIndexStringList = [@string] ()
-////    var regularBinaryContentIndexStringList = [@string] ()
-////    var regularTextContentIndexStringList = [@string] ()
-////    var directoryIndexStringList = [@string] ()
-////    recursivlyEnumerateRegularFile (
-////      self.mFilewrapperFileMap,
-////      self.mFilewrapperDirectoryMap,
-////      !?regularFileIndexStringList,
-////      !?directoryIndexStringList,
-////      !?regularTextContentIndexStringList,
-////      !?regularBinaryContentIndexStringList
-////    )
-//    outHeader = ""
-////    outHeader = @semanticComponentGenerationTemplate.filewrapperDeclaration (
-////      regularFileIndexStringList,
-////      directoryIndexStringList,
-////      regularTextContentIndexStringList,
-////      regularBinaryContentIndexStringList,
-////      self.mFilewrapperName
-////    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
-//                                              ?!@stringset _ioInclusionSet,
-//                                              !@string outImplementation) {
-////    ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-////    var @string filewrapperImplementation = ""
-////    generateWrapperContents (
-////      self.mFilewrapperName,
-////      "",
-////      0,
-////      self.mFilewrapperFileMap,
-////      self.mFilewrapperDirectoryMap,
-////      !?filewrapperImplementation
-////    )
-////    outImplementation = @semanticComponentGenerationTemplate.filewrapperImplementation (
-////      self.mFilewrapperName,
-////      filewrapperImplementation
-////    )
-//     outImplementation = ""
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -860,11 +762,40 @@ private proc recursivelyEnumerateDirectories (let @string inAbsoluteSourcePath,
       !?ioWrapperFileIndex,
       !?ioWrapperDirectoryIndex
     )
-    !?outWrapperDirectoryMap.insertKey
-      (@lstring (value, @location.here),
+    !?outWrapperDirectoryMap.insertKey (
+      value.here,
       internalWrapperFileMap,
       internalWrapperDirectoryMap,
       theDirectoryIndex
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc recursivlyEnumerateRegularFile (let @wrapperFileMap inFilewrapperFileMap,
+                                             let @wrapperDirectoryMap inFilewrapperDirectoryMap,
+                                             ?![@string] ioRegularFileIndexStringList,
+                                             ?![@string] ioDirectoryIndexStringList,
+                                             ?![@string] ioRegularTextContentIndexStringList,
+                                             ?![@string] ioRegularBinaryContentIndexStringList) {
+  ioDirectoryIndexStringList ++= ioDirectoryIndexStringList.count.string
+  for filewrapperFile in inFilewrapperFileMap do
+    ioRegularFileIndexStringList ++= ioRegularFileIndexStringList.count.string
+    if filewrapperFile.mIsTextFile then
+      ioRegularTextContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
+    else
+      ioRegularBinaryContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
+    end
+  end
+  for filewrapperDirectory in inFilewrapperDirectoryMap do
+    recursivlyEnumerateRegularFile (
+      filewrapperDirectory.mRegularFileMap,
+      filewrapperDirectory.mDirectoryMap,
+      !?ioRegularFileIndexStringList,
+      !?ioDirectoryIndexStringList,
+      !?ioRegularTextContentIndexStringList,
+      !?ioRegularBinaryContentIndexStringList
     )
   end
 }

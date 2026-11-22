@@ -641,8 +641,6 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @lexiqueGenerationTemplates : "+generation-templates/lexique_generation" {
-}{
-}{
   template headerZone2 : "lexique_header_template_zone_2.h.galgasTemplate" (
     ?@string LEXIQUE_IDENTIFIER,
     ?[@lexicalListDeclarationAST] DELIMITOR_LIST_LIST,

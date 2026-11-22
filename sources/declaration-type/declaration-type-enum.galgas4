@@ -495,8 +495,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @enumGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template enumTypeHeader1 : "GALGAS_enum.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

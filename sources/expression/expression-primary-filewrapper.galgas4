@@ -16,15 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//!   AST
-//--------------------------------------------------------------------------------------------------
-
-final class @filewrapperInExpressionAST : @semanticExpressionAST {
-  public let @lstring mFilewrapperName
-  public let @lstring mFilewrapperPath
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -50,93 +41,98 @@ syntax extension galgas4ExpressionSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! SEMANTICS
+//!   AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperInExpressionAST.enterExpressionInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
-}
+final class @filewrapperInExpressionAST : @semanticExpressionAST {
+  private let @lstring mFilewrapperName
+  private let @lstring mFilewrapperPath
 
-//································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override proc @filewrapperInExpressionAST.analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry _inType,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager _ioVariableMap,
-  !@semanticExpressionForGeneration outExpression
-) {
-//  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
-//  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
-//--- Parse filewrapper path
-  var [@string] directoryList
-  let @string fileName
-  if self.mFilewrapperPath.count() == 0 then
-    error self.mFilewrapperPath : "path is empty" spoil directoryList, fileName
-  elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
-    error self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName
-  else
-    directoryList = self.mFilewrapperPath.componentsSeparatedByString ("/")
-    !?directoryList.removeLast (?fileName)
-  end
-//--- Get filewrapper features
-  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-    (self.mFilewrapperName,
-    ?*,
-    ?*,
-    ?var @wrapperFileMap filewrapperFileMap,
-    ?var @wrapperDirectoryMap filewrapperDirectoryMap,
-    ?let @bool isInternal
-  )
-//--- Check internal
-  if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
-    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
-    end
-  end
-//--- Search for file
-  var @string builtPath = ""
-  loop (filewrapperDirectoryMap.count + 1)
-  while directoryList.count > 0 do
-    !?directoryList.removeFirst (?let directoryName)
-    builtPath += directoryName + "/"
-    if filewrapperDirectoryMap.contains (directoryName) then
-      filewrapperDirectoryMap.searchKey
-        (@lstring (directoryName, @location.here),
-        ?filewrapperFileMap,
-        ?filewrapperDirectoryMap,
-        ?*
-      )
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc analyzeSemanticExpression (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
+                                           ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                                           ?inferenceType: let @unifiedTypeMapEntry _inType,
+                                           let @analysisContext inAnalysisContext,
+                                           ?!@unifiedTypeMap ioTypeMap,
+                                           ?!@localVarManager _ioVariableMap,
+                                           !@semanticExpressionForGeneration outExpression) {
+  //--- Parse filewrapper path (à améliorer avec une meilleure implémentation des types)
+    var [@string] directoryList
+    let @string fileName
+    if self.mFilewrapperPath.count() == 0 then
+      error self.mFilewrapperPath : "path is empty" spoil directoryList, fileName
+    elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
+      error self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName
     else
-      error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap
-      directoryList = [@string] () // For exiting loop
+      directoryList = self.mFilewrapperPath.componentsSeparatedByString ("/")
+      !?directoryList.removeLast (?fileName)
     end
-  end
-  let @uint fileIndex
-  let @bool isTextFile
-  if filewrapperFileMap.contains (fileName) then
-    filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
-  else
-    error self.mFilewrapperPath
-    : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
-    spoil fileIndex, isTextFile
-  end
-//----- Self type
-  let @unifiedTypeMapEntry fileWrapperType = ioTypeMap.typeMapEntryForLKey (self.mFilewrapperName)
-//---
-  outExpression = @filewrapperStaticPathInExpressionForGeneration (
-    if isTextFile
-      then inAnalysisContext.predefinedTypes.mStringType
-      else ioTypeMap.typeMapEntryForLKey (@lstring ("data", @location.here))
-     end,
-    self.mFilewrapperName.location,
-    fileWrapperType,
-    self.mFilewrapperName.string,
-    fileIndex,
-    isTextFile
-  )
+  //--- Get filewrapper features
+    inAnalysisContext.semanticContext.mFilewrapperMap.searchKey (
+      self.mFilewrapperName,
+      ?*,
+      ?*,
+      ?var @wrapperFileMap filewrapperFileMap,
+      ?var @wrapperDirectoryMap filewrapperDirectoryMap,
+      ?let @bool isInternal
+    )
+  //--- Check internal
+    if isInternal then
+      let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
+      if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
+        error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
+      end
+    end
+  //--- Search for file
+    var @string builtPath = ""
+    loop (filewrapperDirectoryMap.count + 1) while directoryList.count > 0 do
+      !?directoryList.removeFirst (?let directoryName)
+      builtPath += directoryName + "/"
+      if filewrapperDirectoryMap.contains (directoryName) then
+        filewrapperDirectoryMap.searchKey (
+          directoryName.here,
+          ?filewrapperFileMap,
+          ?filewrapperDirectoryMap,
+          ?*
+        )
+      else
+        error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap
+        directoryList = [] // For exiting loop
+      end
+    end
+    let @uint fileIndex
+    let @bool isTextFile
+    if filewrapperFileMap.contains (fileName) then
+      filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
+    else
+      error self.mFilewrapperPath
+      : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
+      spoil fileIndex, isTextFile
+    end
+  //----- Self type
+    let @unifiedTypeMapEntry fileWrapperType = ioTypeMap.typeMapEntryForLKey (self.mFilewrapperName)
+  //---
+    outExpression = @filewrapperStaticPathInExpressionForGeneration (
+      if isTextFile
+        then inAnalysisContext.predefinedTypes.mStringType
+        else ioTypeMap.typeMapEntryForLKey ("data".here)
+       end,
+      self.mFilewrapperName.location,
+      fileWrapperType,
+      self.mFilewrapperName.string,
+      fileIndex,
+      isTextFile
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -145,24 +141,25 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
 
 final class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry filewrapperType
-  public let @string mFilewrapperName
-  public let @uint mFilewrapperFileIndex
-  public let @bool mIsTextFile
-}
+  private let @string mFilewrapperName
+  private let @uint mFilewrapperFileIndex
+  private let @bool mIsTextFile
 
-//································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override proc @filewrapperStaticPathInExpressionForGeneration.generateExpression
-  (?!@string _ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
-  ?!@stringset _ioUnusedVariableCppNameSet,
-  !@string outCppExpression ) {
-//---
-  self.filewrapperType.addHeaderFileName (!?ioInclusionSet)
-//  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-  outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
-  outCppExpression += " (gWrapperFileContent_" + self.mFilewrapperFileIndex.string + "_" + self.mFilewrapperName.identifierRepresentation + ")"
+  override proc generateExpression (?!@string _ioGeneratedCode,
+                                    ?!@stringset ioInclusionSet,
+                                    ?!@uint _ioTemporaryVariableIndex,
+                                    ?!@stringset _ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
+  //---
+    self.filewrapperType.addHeaderFileName (!?ioInclusionSet)
+    outCppExpression = if self.mIsTextFile then "GGS_string" else "GGS_data" end
+    outCppExpression += " (gWrapperFileContent_" + self.mFilewrapperFileIndex.string + "_" + self.mFilewrapperName.identifierRepresentation + ")"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

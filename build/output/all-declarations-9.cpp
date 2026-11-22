@@ -1,383 +1,5 @@
 #include "all-declarations-9.h"
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (void) :
-mProperty_mSyntaxComponentName (),
-mProperty_mImportedLexiqueFilePath (),
-mProperty_mNonterminalDeclarationList (),
-mProperty_mRuleList (),
-mProperty_mHasTranslateFeature () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_syntaxComponentAST & inSource) :
-mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName),
-mProperty_mImportedLexiqueFilePath (inSource.mProperty_mImportedLexiqueFilePath),
-mProperty_mNonterminalDeclarationList (inSource.mProperty_mNonterminalDeclarationList),
-mProperty_mRuleList (inSource.mProperty_mRuleList),
-mProperty_mHasTranslateFeature (inSource.mProperty_mHasTranslateFeature) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST & GGS_syntaxComponentAST::operator = (const GGS_syntaxComponentAST & inSource) {
-  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
-  mProperty_mImportedLexiqueFilePath = inSource.mProperty_mImportedLexiqueFilePath ;
-  mProperty_mNonterminalDeclarationList = inSource.mProperty_mNonterminalDeclarationList ;
-  mProperty_mRuleList = inSource.mProperty_mRuleList ;
-  mProperty_mHasTranslateFeature = inSource.mProperty_mHasTranslateFeature ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_syntaxComponentAST GGS_syntaxComponentAST::init_21__21__21__21__21_ (const GGS_lstring & in_mSyntaxComponentName,
-                                                                         const GGS_lstring & in_mImportedLexiqueFilePath,
-                                                                         const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
-                                                                         const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
-                                                                         const GGS_bool & in_mHasTranslateFeature,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxComponentAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
-  result.mProperty_mImportedLexiqueFilePath = in_mImportedLexiqueFilePath ;
-  result.mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
-  result.mProperty_mRuleList = in_mRuleList ;
-  result.mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_lstring & inOperand0,
-                                                const GGS_lstring & inOperand1,
-                                                const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand2,
-                                                const GGS__5B_syntaxRuleAST_5D_ & inOperand3,
-                                                const GGS_bool & inOperand4) :
-mProperty_mSyntaxComponentName (inOperand0),
-mProperty_mImportedLexiqueFilePath (inOperand1),
-mProperty_mNonterminalDeclarationList (inOperand2),
-mProperty_mRuleList (inOperand3),
-mProperty_mHasTranslateFeature (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxComponentAST::isValid (void) const {
-  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::drop (void) {
-  mProperty_mSyntaxComponentName.drop () ;
-  mProperty_mImportedLexiqueFilePath.drop () ;
-  mProperty_mNonterminalDeclarationList.drop () ;
-  mProperty_mRuleList.drop () ;
-  mProperty_mHasTranslateFeature.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxComponentAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRuleList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxComponentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentAST ("syntaxComponentAST",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxComponentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument__5F_inPosfix */,
-                                                                          GGS__5B_semanticInstructionForGeneration_5D_ & /* ioArgument__5F_ioInstructionListForGeneration */,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_appendSyntaxSignature (cPtr_semanticInstructionForGeneration * inObject,
-                                                const GGS_string constin__5F_inPosfix,
-                                                GGS__5B_semanticInstructionForGeneration_5D_ & io__5F_ioInstructionListForGeneration,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
-    inObject->method_appendSyntaxSignature (constin__5F_inPosfix, io__5F_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration /* constinArgument__5F_inTestedInstruction */,
-                                                                                          Compiler */* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ; // Returned variable
-  result = GGS_bool (true) ;
-//---
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                const GGS_semanticInstructionForGeneration in__5F_inTestedInstruction,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_bool result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_compareInstructionSyntaxSignature (in__5F_inTestedInstruction, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Filewrapper 'projectCreationFileWrapper'
-//--------------------------------------------------------------------------------------------------
-
-//--- All files of 'helpers' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const DirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper (
-  "helpers",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_2,
-  0,
-  gWrapperAllDirectories_projectCreationFileWrapper_2
-) ;
-
-//--- All files of 'build' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_1 [2] = {
-  & gWrapperDirectory_2_projectCreationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const DirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper (
-  "build",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_1,
-  1,
-  gWrapperAllDirectories_projectCreationFileWrapper_1
-) ;
-
-//--- All files of '' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_0 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of '' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_0 [2] = {
-  & gWrapperDirectory_1_projectCreationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory ''
-
-const DirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_0,
-  1,
-  gWrapperAllDirectories_projectCreationFileWrapper_0
-) ;
-
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_projectCreationFileWrapper::GGS_projectCreationFileWrapper (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_projectCreationFileWrapper GGS_projectCreationFileWrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_projectCreationFileWrapper result = GGS_projectCreationFileWrapper () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper GGS_projectCreationFileWrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
-  return GGS_filewrapper (gWrapperDirectory_0_projectCreationFileWrapper) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_projectCreationFileWrapper::description (String & ioString,
-                                                     const int32_t ) const {
-  ioString.appendCString ("<filewrapper @projectCreationFileWrapper:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_project
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#productName : ") ;
-  result.appendString (in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgas4project.galgasTemplate", 1)).stringValue ()) ;
-  result.appendString ("\n#version : 0.0.1\n\n#makefile-unix\n#makefile-macosx\n#makefile-x86linux32-on-macosx\n#makefile-x86linux64-on-macosx\n#makefile-arm64-linux-on-macosx\n#makefile-win32-on-macosx\n\n#codeblocks-windows\n#codeblocks-linux32\n#codeblocks-linux64\n\n#macSwiftApp\n#macAppBundleBaseName : \"fr.unknown\"\n\n#lexical-style keywordsStyle : \"Keywords\"\n#lexical-style integerStyle : \"Integer Constants\"\n#lexical-style stringStyle : \"String Constants\"\n#lexical-style delimitersStyle : \"Delimiters\"\n#lexical-style commentStyle : \"Comments\"\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_cocoa
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GGS_string & in_PROJECT_5F_NAME,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("gui cocoa {\n\n  with lexique ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n    fileExtension: \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_grammar
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("grammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar \"LL1\" {\n  syntax ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_syntax\n  <start_symbol> ()\n}\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_lexique
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("lexique ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Identifiers and keywords\n//-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\n$identifier$ ! tokenString #errorMessage \"an identifier\"\n\n//--- This is the keyword list\nlist keyWordList style keywordsStyle #errorMessage \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send #searchString tokenString in keyWordList default $identifier$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal decimal integers\n//-----------------------------------------------------------------------------------------------------------------------\n\n@uint uint32value\n$integer$ !uint32value style integerStyle #errorMessage \"a 32-bit unsigned decimal number\"\n\n#errorMessage decimalNumberTooLarge : \"decimal number too large\"\n#errorMessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal character strings\n//-----------------------------------------------------------------------------------------------------------------------\n\n$\"string\"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage \"a character string constant \\\"...\\\"\"\n\n\n#errorMessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Delimiters\n//-----------------------------------------------------------------------------------------------------------------------\n\nlist delimitorsList style delimitersStyle #errorMessage \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Comments\n//-----------------------------------------------------------------------------------------------------------------------\n\n$comment$ style commentStyle #nonAtomicSelection #errorMessage \"a comment\"\nrule \"//\" {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Separators\n//-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_program
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--- Prologue routine\nbefore {\n}\n\n//--- 'when' clauses\ncase . \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\"\nmessage \"a source text file with the .") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString (" extension\"\ngrammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar () in inSourceFile\n}\n\n//--- Epilogue routine\nafter {\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_semantics
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("\n// ADD YOUR CODE\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_syntax
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_syntax (const GGS_string & in_PROJECT_5F_NAME,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("syntax ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_syntax : ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n\nrule <start_symbol> () {\n  // ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n// ADD OTHER RULES\n\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
 //  Extension Getter '@location sourceFile'
 //--------------------------------------------------------------------------------------------------
 
@@ -16863,5 +16485,308 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST 
 
 const GALGAS_TypeDescriptor * GGS_externFunctionDeclarationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_externFunctionDeclarationAST_2E_weak::objectCompare (const GGS_externFunctionDeclarationAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST_2E_weak::GGS_externFunctionDeclarationAST_2E_weak (void) :
+GGS_semanticDeclarationAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST_2E_weak & GGS_externFunctionDeclarationAST_2E_weak::operator = (const GGS_externFunctionDeclarationAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST_2E_weak::GGS_externFunctionDeclarationAST_2E_weak (const GGS_externFunctionDeclarationAST & inSource) :
+GGS_semanticDeclarationAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST_2E_weak GGS_externFunctionDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_externFunctionDeclarationAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST GGS_externFunctionDeclarationAST_2E_weak::unwrappedValue (void) const {
+  GGS_externFunctionDeclarationAST result ;
+  if (isValid ()) {
+    const cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_externFunctionDeclarationAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST GGS_externFunctionDeclarationAST_2E_weak::bang_externFunctionDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_externFunctionDeclarationAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_externFunctionDeclarationAST) ;
+      result = GGS_externFunctionDeclarationAST ((cPtr_externFunctionDeclarationAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @externFunctionDeclarationAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2E_weak ("externFunctionDeclarationAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_externFunctionDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @functionDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_functionDeclarationAST::objectCompare (const GGS_functionDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionDeclarationAST::GGS_functionDeclarationAST (void) :
+GGS_externFunctionDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_functionDeclarationAST GGS_functionDeclarationAST::
+init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (const GGS_bool & in_isPredefined,
+                                                             const GGS_lstring & in_mFunctionName,
+                                                             const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                             const GGS_lstring & in_mResultTypeName,
+                                                             const GGS_bool & in_usefullFunc,
+                                                             const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                             const GGS_location & in_mEndOfFunctionInstructionList,
+                                                             const GGS_bool & in_mIsInternal,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cPtr_functionDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_functionDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->functionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (in_isPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_usefullFunc, in_mFunctionInstructionList, in_mEndOfFunctionInstructionList, in_mIsInternal, inCompiler) ;
+  const GGS_functionDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_functionDeclarationAST::
+functionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                    const GGS_lstring & in_mFunctionName,
+                                                                                    const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                                                    const GGS_lstring & in_mResultTypeName,
+                                                                                    const GGS_bool & in_usefullFunc,
+                                                                                    const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                                                    const GGS_location & in_mEndOfFunctionInstructionList,
+                                                                                    const GGS_bool & in_mIsInternal,
+                                                                                    Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionDeclarationAST::GGS_functionDeclarationAST (const cPtr_functionDeclarationAST * inSourcePtr) :
+GGS_externFunctionDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_functionDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_functionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mEndOfFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_functionDeclarationAST::readProperty_mIsInternal (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mIsInternal ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @functionDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_externFunctionDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (const GGS_bool & in_isPredefined,
+                                                          const GGS_lstring & in_mFunctionName,
+                                                          const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                          const GGS_lstring & in_mResultTypeName,
+                                                          const GGS_bool & in_usefullFunc,
+                                                          const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                          const GGS_location & in_mEndOfFunctionInstructionList,
+                                                          const GGS_bool & in_mIsInternal,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_externFunctionDeclarationAST (in_isPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_usefullFunc, inCompiler COMMA_THERE),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_functionDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
+}
+
+void cPtr_functionDeclarationAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@functionDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_usefullFunc.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsInternal.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_functionDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_functionDeclarationAST (mProperty_isPredefined, mProperty_mFunctionName, mProperty_mFormalArgumentList, mProperty_mResultTypeName, mProperty_usefullFunc, mProperty_mFunctionInstructionList, mProperty_mEndOfFunctionInstructionList, mProperty_mIsInternal, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_functionDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
+    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @functionDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionDeclarationAST ("functionDeclarationAST",
+                                                                           & kTypeDescriptor_GALGAS_externFunctionDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
 }
 

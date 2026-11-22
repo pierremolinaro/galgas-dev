@@ -394,8 +394,7 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @sortedArrayTypeGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template arrayTypeHeader1 : "GALGAS_sorted_array.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

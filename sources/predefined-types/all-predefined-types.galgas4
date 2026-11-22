@@ -394,8 +394,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @predefinedTypeGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
+
   template predefinedTypesImplementation : "predefined_types.cpp.galgasTemplate" (
     ?@sortedLexicalStyleArray LEXICAL_STYLE_SORTED_ARRAY
   )

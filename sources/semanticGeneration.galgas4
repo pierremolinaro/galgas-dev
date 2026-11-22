@@ -602,9 +602,8 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @typeGenerationTemplate : "+generation-templates/type_generation" {
-  "txt"
-}{
-}{
+  #textFileExtension "txt"
+
   template unifiedClassBodyForType : "unified-class-body-for-type.h.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
@@ -652,8 +651,6 @@ filewrapper @typeGenerationTemplate : "+generation-templates/type_generation" {
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @semanticComponentGenerationTemplate : "+generation-templates/semantic_generation" {
-}{
-}{
 //----------- initializer
   template initializerImplementation : "initializer.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
@@ -729,19 +726,6 @@ filewrapper @semanticComponentGenerationTemplate : "+generation-templates/semant
     ?@string CLASS_NAME,
     ?@string METHOD_NAME,
     ?@string METHOD_IMPLEMENTATION
-  )
-
-  template filewrapperDeclaration : "filewrapper-declaration.h.galgasTemplate" (
-    ?[@string] FILE_INDEX_STRING_LIST,
-    ?[@string] DIRECTORY_INDEX_STRING_LIST,
-    ?[@string] TEXT_CONTENT_INDEX_STRING_LIST,
-    ?[@string] BINARY_CONTENT_INDEX_STRING_LIST,
-    ?@string FILEWRAPPER_NAME
-  )
-
-  template filewrapperImplementation : "filewrapper-implementation-ex.cpp.galgasTemplate" (
-    ?@string FILEWRAPPER_NAME,
-    ?@string FILEWRAPPER_IMPLEMENTATION
   )
 
 //--- Extension func implemented as function
@@ -1019,40 +1003,6 @@ override proc @programComponentForGeneration.appendSpecificImplementation
 }
 
 //--------------------------------------------------------------------------------------------------
-
-//! Filewrapper
-
-//--------------------------------------------------------------------------------------------------
-
-proc recursivlyEnumerateRegularFile (
-  let @wrapperFileMap inFilewrapperFileMap,
-  let @wrapperDirectoryMap inFilewrapperDirectoryMap,
-  ?![@string] ioRegularFileIndexStringList,
-  ?![@string] ioDirectoryIndexStringList,
-  ?![@string] ioRegularTextContentIndexStringList,
-  ?![@string] ioRegularBinaryContentIndexStringList ) {
-  ioDirectoryIndexStringList ++= ioDirectoryIndexStringList.count.string
-  for filewrapperFile in inFilewrapperFileMap do
-    ioRegularFileIndexStringList ++= ioRegularFileIndexStringList.count.string
-    if filewrapperFile.mIsTextFile then
-      ioRegularTextContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
-    else
-      ioRegularBinaryContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
-    end
-  end
-  for filewrapperDirectory in inFilewrapperDirectoryMap do
-    recursivlyEnumerateRegularFile (
-      filewrapperDirectory.mRegularFileMap,
-      filewrapperDirectory.mDirectoryMap,
-      !?ioRegularFileIndexStringList,
-      !?ioDirectoryIndexStringList,
-      !?ioRegularTextContentIndexStringList,
-      !?ioRegularBinaryContentIndexStringList
-    )
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
 //    P R I M I T I V E    T Y P E
 //--------------------------------------------------------------------------------------------------
 
@@ -1174,8 +1124,7 @@ proc generatePredefinedTypeFiles (let @string inDirectory,
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @semanticFileGenerationTemplate : "+generation-templates/semantic_generation" {
-}{
-}{
+
   template semanticFileHeader : "semantic-file.h.galgasTemplate" (
     ?@string COMPONENT_NAME,
     ?[@string] IMPORTED_COMPONENT_LIST

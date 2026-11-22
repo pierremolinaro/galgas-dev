@@ -25,8 +25,7 @@
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @programFileGenerationTemplate : "+generation-templates/program_generation" {
-}{
-}{
+
   template programFileImplementation : "program-file.cpp.galgasTemplate" (
     ?@string COMPONENT_NAME,
     ?[@string] IMPORTED_COMPONENT_LIST,

@@ -1,7 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 
-filewrapper @generationTemplate : "."
-{}{}{
+filewrapper @generationTemplate : "." {
   template svg : "logo-svg.galgasTemplate" (
     ?@string TITLE,
     ?@string DRAWINGS

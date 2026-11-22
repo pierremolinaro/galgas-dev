@@ -763,9 +763,8 @@ func generateClassInstanceMethodDeclaration (?let @lstring inMethodName,
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @classGenerationTemplate : "../+generation-templates/type_generation" {
-  "galgas4"
-}{
-}{
+  #textFileExtension "galgas4"
+
   template referenceClassTypeHeader1 : "GALGAS_reference_class.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,

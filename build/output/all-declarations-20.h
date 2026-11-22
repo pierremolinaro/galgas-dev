@@ -190,6 +190,21 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const clas
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'recursivlyEnumerateRegularFile??&&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class GGS_wrapperFileMap constinArgument0,
+                                                                     const class GGS_wrapperDirectoryMap constinArgument1,
+                                                                     class GGS__5B_string_5D_ & ioArgument2,
+                                                                     class GGS__5B_string_5D_ & ioArgument3,
+                                                                     class GGS__5B_string_5D_ & ioArgument4,
+                                                                     class GGS__5B_string_5D_ & ioArgument5,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'generateWrapperContents?????&'
 //
 //--------------------------------------------------------------------------------------------------

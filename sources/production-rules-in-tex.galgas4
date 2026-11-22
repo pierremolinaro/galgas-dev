@@ -25,8 +25,6 @@
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @grammarRulesInTexDocumentTemplate : "+generation-templates/grammar_generation" {
-}{
-}{
   template document : "grammar-rules-document.tex.galgasTemplate" (
     ?@string DOCUMENT_NAME,
     ?@string TEX_ESCAPED_DOCUMENT_NAME

@@ -18,10 +18,17 @@
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @libpmFileWrapper : "../libpm" {
- "h", "cpp", "c", "m", "py", "swift" // Text files
-}{
- "tiff", "png", "xib", "gif" // Binary files
-}{
+  #textFileExtension "h"
+  #textFileExtension "cpp"
+  #textFileExtension "c"
+  #textFileExtension "m"
+  #textFileExtension "py"
+  #textFileExtension "swift"
+
+  #binaryFileExtension "tiff"
+  #binaryFileExtension "png"
+  #binaryFileExtension "xib"
+  #binaryFileExtension "gif"
 }
 
 //--------------------------------------------------------------------------------------------------

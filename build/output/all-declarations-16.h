@@ -3887,39 +3887,17 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
                                    GGS_semanticExpressionAST & outArgument1,
                                    Lexique_galgasScanner_34_ * inCompiler) ;
 
-//------------------------------------- 'filewrapper_binary_files' non terminal
+//------------------------------------- 'filewrapper_declaration' non terminal
 //--- 'parse' label
- /*  public: virtual void nt_filewrapper_5F_binary_5F_files_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
+ /*  public: virtual void nt_filewrapper_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
 
 //--- indexing
-  public: virtual void nt_filewrapper_5F_binary_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_filewrapper_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_filewrapper_5F_binary_5F_files_ (GGS__5B_lstring_5D_ & outArgument0,
-                                                           Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'filewrapper_templates' non terminal
-//--- 'parse' label
- /*  public: virtual void nt_filewrapper_5F_templates_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
-
-//--- indexing
-  public: virtual void nt_filewrapper_5F_templates_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_filewrapper_5F_templates_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                     GGS__5B_filewrapperTemplateAST_5D_ & outArgument1,
-                                                     Lexique_galgasScanner_34_ * inCompiler) ;
-
-//------------------------------------- 'filewrapper_text_files' non terminal
-//--- 'parse' label
- /*  public: virtual void nt_filewrapper_5F_text_5F_files_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
-
-//--- indexing
-  public: virtual void nt_filewrapper_5F_text_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_filewrapper_5F_text_5F_files_ (GGS__5B_lstring_5D_ & outArgument0,
-                                                         Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_filewrapper_5F_declaration_ (const GGS_bool inArgument0,
+                                                       GGS_galgasDeclarationAST & ioArgument1,
+                                                       Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'for_instruction_element' non terminal
 //--- 'parse' label
@@ -4996,14 +4974,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_54 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_55 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_56 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_57 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_58 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_DeclarationsSyntax_59 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
 

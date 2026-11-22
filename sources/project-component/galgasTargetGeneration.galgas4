@@ -1082,9 +1082,6 @@ sortedarray @sortedLexicalStyleArray : @sortedLexicalStyle { index < }
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @lexicalTemplates : "../+generation-templates/lexique_generation" {
-}{
-}{
-
   template swiftUILexicalStyles : "lexicalStyles.swift.galgasTemplate" (
     ?@sortedLexicalStyleArray LEXICAL_STYLE_SORTED_ARRAY
   )
@@ -1093,9 +1090,10 @@ filewrapper @lexicalTemplates : "../+generation-templates/lexique_generation" {
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @targetGalgas3GenerationFileWrapper : "../+generation-templates/target_generation" {
- "bat", "rtf", "py"
-}{
-}{
+  #textFileExtension "bat"
+  #textFileExtension "rtf"
+  #textFileExtension "py"
+
   template clean_macosx : "makefile-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
   template build_macosx : "makefile-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
   template build_verbose_macosx : "makefile-macosx/verbose-build.py.galgasTemplate" ()

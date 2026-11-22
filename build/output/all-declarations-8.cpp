@@ -1,584 +1,5 @@
 #include "all-declarations-8.h"
 //--------------------------------------------------------------------------------------------------
-//  Map type @wrapperDirectoryMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap::GGS_wrapperDirectoryMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap::~ GGS_wrapperDirectoryMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap::GGS_wrapperDirectoryMap (const GGS_wrapperDirectoryMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap & GGS_wrapperDirectoryMap::operator = (const GGS_wrapperDirectoryMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_wrapperDirectoryMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_wrapperDirectoryMap::getter_contains (const GGS_string & inKey
-                                                   COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_wrapperDirectoryMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                        const GGS_uint & inLevel
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_wrapperDirectoryMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_wrapperDirectoryMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_wrapperDirectoryMap::getter_locationForKey (const GGS_string & inKey,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_wrapperDirectoryMap::getter_keyList (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid ()) {
-    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_wrapperDirectoryMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_wrapperDirectoryMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::performInsert (const GGS_wrapperDirectoryMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_wrapperDirectoryMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>
-GGS_wrapperDirectoryMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_wrapperDirectoryMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>>
-GGS_wrapperDirectoryMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_wrapperDirectoryMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap_2E_element_3F_ GGS_wrapperDirectoryMap
-::readSubcript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_wrapperDirectoryMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_wrapperDirectoryMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_wrapperDirectoryMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mRegularFileMap = info->mProperty_mRegularFileMap ;
-      element.mProperty_mDirectoryMap = info->mProperty_mDirectoryMap ;
-      element.mProperty_mWrapperDirectoryIndex = info->mProperty_mWrapperDirectoryIndex ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::class_func_mapWithMapToOverride (const GGS_wrapperDirectoryMap & inMapToOverride
-                                                                                  COMMA_LOCATION_ARGS) {
-  GGS_wrapperDirectoryMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_wrapperDirectoryMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::getter_overriddenMap (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_wrapperDirectoryMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::setter_insertKey (GGS_lstring inLKey,
-                                                GGS_wrapperFileMap inArgument0,
-                                                GGS_wrapperDirectoryMap inArgument1,
-                                                GGS_uint inArgument2,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  const GGS_wrapperDirectoryMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "INTERNAL ERROR" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::method_searchKey (GGS_lstring inLKey,
-                                                GGS_wrapperFileMap & outArgument0,
-                                                GGS_wrapperDirectoryMap & outArgument1,
-                                                GGS_uint & outArgument2,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "INTERNAL ERROR" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mRegularFileMap ;
-    outArgument1 = info->mProperty_mDirectoryMap ;
-    outArgument2 = info->mProperty_mWrapperDirectoryIndex ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperFileMap GGS_wrapperDirectoryMap::getter_mRegularFileMapForKey (const GGS_string & inKey,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_wrapperFileMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mRegularFileMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::getter_mDirectoryMapForKey (const GGS_string & inKey,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const {
-  GGS_wrapperDirectoryMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mDirectoryMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_wrapperDirectoryMap::getter_mWrapperDirectoryIndexForKey (const GGS_string & inKey,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mWrapperDirectoryIndex ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::setter_setMRegularFileMapForKey (GGS_wrapperFileMap inValue,
-                                                               GGS_string inKey,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_wrapperDirectoryMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mRegularFileMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::setter_setMDirectoryMapForKey (GGS_wrapperDirectoryMap inValue,
-                                                             GGS_string inKey,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_wrapperDirectoryMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mDirectoryMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::setter_setMWrapperDirectoryIndexForKey (GGS_uint inValue,
-                                                                      GGS_string inKey,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_wrapperDirectoryMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mWrapperDirectoryIndex = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_wrapperDirectoryMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mRegularFileMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mRegularFileMap.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mDirectoryMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mDirectoryMap.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mWrapperDirectoryIndex:") ;
-    inArray (i COMMA_HERE)->mProperty_mWrapperDirectoryIndex.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_wrapperDirectoryMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @wrapperDirectoryMap") ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_wrapperDirectoryMap_2E_element>> array = sortedInfoArray () ;
-    GGS_wrapperDirectoryMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_wrapperDirectoryMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_wrapperDirectoryMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @wrapperDirectoryMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_wrapperDirectoryMap::DownEnumerator_wrapperDirectoryMap (const GGS_wrapperDirectoryMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap_2E_element DownEnumerator_wrapperDirectoryMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_wrapperDirectoryMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperFileMap DownEnumerator_wrapperDirectoryMap::current_mRegularFileMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRegularFileMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap DownEnumerator_wrapperDirectoryMap::current_mDirectoryMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mDirectoryMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_wrapperDirectoryMap::current_mWrapperDirectoryIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mWrapperDirectoryIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @wrapperDirectoryMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_wrapperDirectoryMap::UpEnumerator_wrapperDirectoryMap (const GGS_wrapperDirectoryMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap_2E_element UpEnumerator_wrapperDirectoryMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_wrapperDirectoryMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperFileMap UpEnumerator_wrapperDirectoryMap::current_mRegularFileMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRegularFileMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_wrapperDirectoryMap UpEnumerator_wrapperDirectoryMap::current_mDirectoryMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mDirectoryMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_wrapperDirectoryMap::current_mWrapperDirectoryIndex (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mWrapperDirectoryIndex ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @wrapperDirectoryMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap ("wrapperDirectoryMap",
-                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_wrapperDirectoryMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_wrapperDirectoryMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Map type @wrapperExtensionMap
 //--------------------------------------------------------------------------------------------------
 
@@ -3223,6 +2644,95 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTemplateImpl
     result.incIndentation (- int32_t (GGS_bigint ("2", inCompiler  COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 27)).getter_uint (inCompiler COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 27)).uintValue ())) ;
   }
   result.appendString ("  return GGS_string (result) ;\n}\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @filewrapperGenerationTemplate filewrapperDeclaration
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperDeclaration (const GGS__5B_string_5D_ & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                 const GGS__5B_string_5D_ & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                 const GGS__5B_string_5D_ & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                 const GGS__5B_string_5D_ & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                 const GGS_string & in_FILEWRAPPER_5F_NAME,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string ("§Filewrapper§ '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 2)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_303_idx (0) ;
+  if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
+    UpEnumerator__5B_string_5D_ enumerator_303 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_303.hasCurrentObject ()) {
+      result.appendString ("extern const char * gWrapperFileContent_") ;
+      result.appendString (enumerator_303.current_entry (HERE).stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 6)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_303.gotoNextObject () ;
+      index_303_idx.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_573_idx (0) ;
+  if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
+    UpEnumerator__5B_string_5D_ enumerator_573 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_573.hasCurrentObject ()) {
+      result.appendString ("extern const uint8_t gWrapperFileContent_") ;
+      result.appendString (enumerator_573.current_entry (HERE).stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 12)).stringValue ()) ;
+      result.appendString (" [] ;\n") ;
+      enumerator_573.gotoNextObject () ;
+      index_573_idx.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_837_idx (0) ;
+  if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
+    UpEnumerator__5B_string_5D_ enumerator_837 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_837.hasCurrentObject ()) {
+      result.appendString ("extern const RegularFileWrapper gWrapperFile_") ;
+      result.appendString (enumerator_837.current_entry (HERE).stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 18)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_837.gotoNextObject () ;
+      index_837_idx.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_uint index_1103_ (0) ;
+  if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
+    UpEnumerator__5B_string_5D_ enumerator_1103 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
+    while (enumerator_1103.hasCurrentObject ()) {
+      result.appendString ("extern const DirectoryWrapper gWrapperDirectory_") ;
+      result.appendString (enumerator_1103.current_entry (HERE).stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-contents-declaration.h.galgasTemplate", 24)).stringValue ()) ;
+      result.appendString (" ;\n") ;
+      enumerator_1103.gotoNextObject () ;
+      index_1103_.increment () ;
+    }
+  }
+  result.appendString ("\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @filewrapperGenerationTemplate filewrapperImplementation
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperImplementation (const GGS_string & in_FILEWRAPPER_5F_NAME,
+                                                                                    const GGS_string & in_FILEWRAPPER_5F_IMPLEMENTATION,
+                                                                                    Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//Filewrapper '") ;
+  result.appendString (in_FILEWRAPPER_5F_NAME.stringValue ()) ;
+  result.appendString ("'\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  result.appendString (in_FILEWRAPPER_5F_IMPLEMENTATION.stringValue ()) ;
+  result.appendString ("\n") ;
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
@@ -15986,3 +15496,381 @@ const GALGAS_TypeDescriptor * GGS__5B_syntaxComponentAST_5D_::staticTypeDescript
   return & kTypeDescriptor_GALGAS__5B_syntaxComponentAST_5D_ ;
 }
 
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentAST::GGS_syntaxComponentAST (void) :
+mProperty_mSyntaxComponentName (),
+mProperty_mImportedLexiqueFilePath (),
+mProperty_mNonterminalDeclarationList (),
+mProperty_mRuleList (),
+mProperty_mHasTranslateFeature () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_syntaxComponentAST & inSource) :
+mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName),
+mProperty_mImportedLexiqueFilePath (inSource.mProperty_mImportedLexiqueFilePath),
+mProperty_mNonterminalDeclarationList (inSource.mProperty_mNonterminalDeclarationList),
+mProperty_mRuleList (inSource.mProperty_mRuleList),
+mProperty_mHasTranslateFeature (inSource.mProperty_mHasTranslateFeature) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentAST & GGS_syntaxComponentAST::operator = (const GGS_syntaxComponentAST & inSource) {
+  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
+  mProperty_mImportedLexiqueFilePath = inSource.mProperty_mImportedLexiqueFilePath ;
+  mProperty_mNonterminalDeclarationList = inSource.mProperty_mNonterminalDeclarationList ;
+  mProperty_mRuleList = inSource.mProperty_mRuleList ;
+  mProperty_mHasTranslateFeature = inSource.mProperty_mHasTranslateFeature ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_syntaxComponentAST GGS_syntaxComponentAST::init_21__21__21__21__21_ (const GGS_lstring & in_mSyntaxComponentName,
+                                                                         const GGS_lstring & in_mImportedLexiqueFilePath,
+                                                                         const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                                                         const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
+                                                                         const GGS_bool & in_mHasTranslateFeature,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_syntaxComponentAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  result.mProperty_mImportedLexiqueFilePath = in_mImportedLexiqueFilePath ;
+  result.mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
+  result.mProperty_mRuleList = in_mRuleList ;
+  result.mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentAST::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_lstring & inOperand0,
+                                                const GGS_lstring & inOperand1,
+                                                const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand2,
+                                                const GGS__5B_syntaxRuleAST_5D_ & inOperand3,
+                                                const GGS_bool & inOperand4) :
+mProperty_mSyntaxComponentName (inOperand0),
+mProperty_mImportedLexiqueFilePath (inOperand1),
+mProperty_mNonterminalDeclarationList (inOperand2),
+mProperty_mRuleList (inOperand3),
+mProperty_mHasTranslateFeature (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_syntaxComponentAST::isValid (void) const {
+  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentAST::drop (void) {
+  mProperty_mSyntaxComponentName.drop () ;
+  mProperty_mImportedLexiqueFilePath.drop () ;
+  mProperty_mNonterminalDeclarationList.drop () ;
+  mProperty_mRuleList.drop () ;
+  mProperty_mHasTranslateFeature.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentAST::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxComponentAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mRuleList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @syntaxComponentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentAST ("syntaxComponentAST",
+                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_syntaxComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxComponentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument__5F_inPosfix */,
+                                                                          GGS__5B_semanticInstructionForGeneration_5D_ & /* ioArgument__5F_ioInstructionListForGeneration */,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_appendSyntaxSignature (cPtr_semanticInstructionForGeneration * inObject,
+                                                const GGS_string constin__5F_inPosfix,
+                                                GGS__5B_semanticInstructionForGeneration_5D_ & io__5F_ioInstructionListForGeneration,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
+    inObject->method_appendSyntaxSignature (constin__5F_inPosfix, io__5F_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration /* constinArgument__5F_inTestedInstruction */,
+                                                                                          Compiler */* inCompiler */
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ; // Returned variable
+  result = GGS_bool (true) ;
+//---
+  return result ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                const GGS_semanticInstructionForGeneration in__5F_inTestedInstruction,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GGS_bool result ;
+  if (nullptr != inObject) {
+    result = inObject->getter_compareInstructionSyntaxSignature (in__5F_inTestedInstruction, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Filewrapper 'projectCreationFileWrapper'
+//--------------------------------------------------------------------------------------------------
+
+//--- All files of 'helpers' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const DirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper (
+  "helpers",
+  0,
+  gWrapperAllFiles_projectCreationFileWrapper_2,
+  0,
+  gWrapperAllDirectories_projectCreationFileWrapper_2
+) ;
+
+//--- All files of 'build' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_1 [2] = {
+  & gWrapperDirectory_2_projectCreationFileWrapper,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const DirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper (
+  "build",
+  0,
+  gWrapperAllFiles_projectCreationFileWrapper_1,
+  1,
+  gWrapperAllDirectories_projectCreationFileWrapper_1
+) ;
+
+//--- All files of '' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_0 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of '' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_0 [2] = {
+  & gWrapperDirectory_1_projectCreationFileWrapper,
+  nullptr
+} ;
+
+//--- Directory ''
+
+const DirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper (
+  "",
+  0,
+  gWrapperAllFiles_projectCreationFileWrapper_0,
+  1,
+  gWrapperAllDirectories_projectCreationFileWrapper_0
+) ;
+
+
+//--------------------------------------------------------------------------------------------------
+
+/* GGS_projectCreationFileWrapper::GGS_projectCreationFileWrapper (void) :
+AC_GALGAS_root (),
+mIsValid (false) {
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+/* GGS_projectCreationFileWrapper GGS_projectCreationFileWrapper::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_projectCreationFileWrapper result = GGS_projectCreationFileWrapper () ;
+  result.mIsValid = true ;
+  return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_projectCreationFileWrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_projectCreationFileWrapper) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/* void GGS_projectCreationFileWrapper::description (String & ioString,
+                                                     const int32_t ) const {
+  ioString.appendCString ("<filewrapper @projectCreationFileWrapper:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    ioString.appendCString (">") ;
+  }
+} */
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_project
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const GGS_string & in_PROJECT_5F_NAME,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("#productName : ") ;
+  result.appendString (in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgas4project.galgasTemplate", 1)).stringValue ()) ;
+  result.appendString ("\n#version : 0.0.1\n\n#makefile-unix\n#makefile-macosx\n#makefile-x86linux32-on-macosx\n#makefile-x86linux64-on-macosx\n#makefile-arm64-linux-on-macosx\n#makefile-win32-on-macosx\n\n#codeblocks-windows\n#codeblocks-linux32\n#codeblocks-linux64\n\n#macSwiftApp\n#macAppBundleBaseName : \"fr.unknown\"\n\n#lexical-style keywordsStyle : \"Keywords\"\n#lexical-style integerStyle : \"Integer Constants\"\n#lexical-style stringStyle : \"String Constants\"\n#lexical-style delimitersStyle : \"Delimiters\"\n#lexical-style commentStyle : \"Comments\"\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_cocoa
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GGS_string & in_PROJECT_5F_NAME,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("gui cocoa {\n\n  with lexique ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique {\n    fileExtension: \"") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_grammar
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const GGS_string & in_PROJECT_5F_NAME,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("grammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar \"LL1\" {\n  syntax ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_syntax\n  <start_symbol> ()\n}\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_lexique
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const GGS_string & in_PROJECT_5F_NAME,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("lexique ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique {\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Identifiers and keywords\n//-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\n$identifier$ ! tokenString #errorMessage \"an identifier\"\n\n//--- This is the keyword list\nlist keyWordList style keywordsStyle #errorMessage \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send #searchString tokenString in keyWordList default $identifier$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal decimal integers\n//-----------------------------------------------------------------------------------------------------------------------\n\n@uint uint32value\n$integer$ !uint32value style integerStyle #errorMessage \"a 32-bit unsigned decimal number\"\n\n#errorMessage decimalNumberTooLarge : \"decimal number too large\"\n#errorMessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal character strings\n//-----------------------------------------------------------------------------------------------------------------------\n\n$\"string\"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage \"a character string constant \\\"...\\\"\"\n\n\n#errorMessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Delimiters\n//-----------------------------------------------------------------------------------------------------------------------\n\nlist delimitorsList style delimitersStyle #errorMessage \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Comments\n//-----------------------------------------------------------------------------------------------------------------------\n\n$comment$ style commentStyle #nonAtomicSelection #errorMessage \"a comment\"\nrule \"//\" {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Separators\n//-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_program
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const GGS_string & in_PROJECT_5F_NAME,
+                                                                          Compiler * /* inCompiler */
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--- Prologue routine\nbefore {\n}\n\n//--- 'when' clauses\ncase . \"") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("\"\nmessage \"a source text file with the .") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString (" extension\"\ngrammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_grammar () in inSourceFile\n}\n\n//--- Epilogue routine\nafter {\n}\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_semantics
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (const GGS_string & /* in_PROJECT_5F_NAME */,
+                                                                            Compiler * /* inCompiler */
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("\n// ADD YOUR CODE\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @projectCreationFileWrapper PROJECT_syntax
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_syntax (const GGS_string & in_PROJECT_5F_NAME,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("syntax ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_syntax : ") ;
+  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
+  result.appendString ("_lexique {\n\nrule <start_symbol> () {\n  // ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n// ADD OTHER RULES\n\n}\n") ;
+  return GGS_string (result) ;
+}

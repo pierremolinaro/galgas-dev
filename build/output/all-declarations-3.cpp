@@ -10475,95 +10475,6 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_overridingExtensi
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate filewrapperDeclaration
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperDeclaration (const GGS__5B_string_5D_ & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                       const GGS__5B_string_5D_ & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                       const GGS__5B_string_5D_ & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                       const GGS__5B_string_5D_ & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                       const GGS_string & in_FILEWRAPPER_5F_NAME,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
-  result.appendString (GGS_string ("§Filewrapper§ '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 2)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 2)).stringValue ()) ;
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_303_idx (0) ;
-  if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_303 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_303.hasCurrentObject ()) {
-      result.appendString ("extern const char * gWrapperFileContent_") ;
-      result.appendString (enumerator_303.current_entry (HERE).stringValue ()) ;
-      result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 6)).stringValue ()) ;
-      result.appendString (" ;\n") ;
-      enumerator_303.gotoNextObject () ;
-      index_303_idx.increment () ;
-    }
-  }
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_573_idx (0) ;
-  if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_573 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_573.hasCurrentObject ()) {
-      result.appendString ("extern const uint8_t gWrapperFileContent_") ;
-      result.appendString (enumerator_573.current_entry (HERE).stringValue ()) ;
-      result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 12)).stringValue ()) ;
-      result.appendString (" [] ;\n") ;
-      enumerator_573.gotoNextObject () ;
-      index_573_idx.increment () ;
-    }
-  }
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_837_idx (0) ;
-  if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_837 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_837.hasCurrentObject ()) {
-      result.appendString ("extern const RegularFileWrapper gWrapperFile_") ;
-      result.appendString (enumerator_837.current_entry (HERE).stringValue ()) ;
-      result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 18)).stringValue ()) ;
-      result.appendString (" ;\n") ;
-      enumerator_837.gotoNextObject () ;
-      index_837_idx.increment () ;
-    }
-  }
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_uint index_1103_ (0) ;
-  if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_1103 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
-    while (enumerator_1103.hasCurrentObject ()) {
-      result.appendString ("extern const DirectoryWrapper gWrapperDirectory_") ;
-      result.appendString (enumerator_1103.current_entry (HERE).stringValue ()) ;
-      result.appendString ("_") ;
-      result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 24)).stringValue ()) ;
-      result.appendString (" ;\n") ;
-      enumerator_1103.gotoNextObject () ;
-      index_1103_.increment () ;
-    }
-  }
-  result.appendString ("\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate filewrapperImplementation
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperImplementation (const GGS_string & in_FILEWRAPPER_5F_NAME,
-                                                                                          const GGS_string & in_FILEWRAPPER_5F_IMPLEMENTATION,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//Filewrapper '") ;
-  result.appendString (in_FILEWRAPPER_5F_NAME.stringValue ()) ;
-  result.appendString ("'\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  result.appendString (in_FILEWRAPPER_5F_IMPLEMENTATION.stringValue ()) ;
-  result.appendString ("\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
 //Filewrapper template @semanticComponentGenerationTemplate extensionGetterAsFunctionDeclaration
 //--------------------------------------------------------------------------------------------------
 
@@ -14661,5 +14572,251 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerForGenera
 
 const GALGAS_TypeDescriptor * GGS_extensionInitializerForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_extensionInitializerForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @extensionGetterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_extensionGetterAST::objectCompare (const GGS_extensionGetterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_extensionGetterAST::GGS_extensionGetterAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_extensionGetterAST GGS_extensionGetterAST::
+init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                              const GGS_lstring & in_mTypeName,
+                                              const GGS_lstring & in_mExtensionGetterName,
+                                              const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
+                                              const GGS_lstring & in_mExtensionGetterReturnedTypeName,
+                                              const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
+                                              const GGS_location & in_mEndOfReaderLocation,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  cPtr_extensionGetterAST * object = nullptr ;
+  macroMyNew (object, cPtr_extensionGetterAST (inCompiler COMMA_THERE)) ;
+  object->extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mExtensionGetterName, in_mExtensionGetterFormalInputParameterList, in_mExtensionGetterReturnedTypeName, in_mExtensionGetterInstructionList, in_mEndOfReaderLocation, inCompiler) ;
+  const GGS_extensionGetterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_extensionGetterAST::
+extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                 const GGS_lstring & in_mTypeName,
+                                                                 const GGS_lstring & in_mExtensionGetterName,
+                                                                 const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
+                                                                 const GGS_lstring & in_mExtensionGetterReturnedTypeName,
+                                                                 const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
+                                                                 const GGS_location & in_mEndOfReaderLocation,
+                                                                 Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
+  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
+  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
+  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
+  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_extensionGetterAST::GGS_extensionGetterAST (const cPtr_extensionGetterAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_extensionGetterAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mExtensionGetterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_formalInputParameterAST_5D_ () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mExtensionGetterFormalInputParameterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mExtensionGetterReturnedTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mExtensionGetterInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    return p->mProperty_mEndOfReaderLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @extensionGetterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_extensionGetterAST::cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExtensionGetterName (),
+mProperty_mExtensionGetterFormalInputParameterList (),
+mProperty_mExtensionGetterReturnedTypeName (),
+mProperty_mExtensionGetterInstructionList (),
+mProperty_mEndOfReaderLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GGS_bool & in_isPredefined,
+                                                  const GGS_lstring & in_mTypeName,
+                                                  const GGS_lstring & in_mExtensionGetterName,
+                                                  const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
+                                                  const GGS_lstring & in_mExtensionGetterReturnedTypeName,
+                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
+                                                  const GGS_location & in_mEndOfReaderLocation,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExtensionGetterName (),
+mProperty_mExtensionGetterFormalInputParameterList (),
+mProperty_mExtensionGetterReturnedTypeName (),
+mProperty_mExtensionGetterInstructionList (),
+mProperty_mEndOfReaderLocation () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
+  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
+  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
+  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
+  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
+}
+
+void cPtr_extensionGetterAST::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@extensionGetterAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_extensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
+    mProperty_mExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalInputParameterList") ;
+    mProperty_mExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedTypeName") ;
+    mProperty_mExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mExtensionGetterInstructionList") ;
+    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @extensionGetterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_extensionGetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
 }
 

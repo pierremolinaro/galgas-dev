@@ -9,177 +9,6 @@
 #include "all-declarations-7.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @wrapperDirectoryMap_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_wrapperDirectoryMap_2E_element final : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_lkey ;
-  public: inline GGS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-  public: GGS_wrapperFileMap mProperty_mRegularFileMap ;
-  public: inline GGS_wrapperFileMap readProperty_mRegularFileMap (void) const {
-    return mProperty_mRegularFileMap ;
-  }
-
-  public: GGS_wrapperDirectoryMap mProperty_mDirectoryMap ;
-  public: inline GGS_wrapperDirectoryMap readProperty_mDirectoryMap (void) const {
-    return mProperty_mDirectoryMap ;
-  }
-
-  public: GGS_uint mProperty_mWrapperDirectoryIndex ;
-  public: inline GGS_uint readProperty_mWrapperDirectoryIndex (void) const {
-    return mProperty_mWrapperDirectoryIndex ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_wrapperDirectoryMap_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-  public: inline void setter_setMRegularFileMap (const GGS_wrapperFileMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mRegularFileMap = inValue ;
-  }
-
-  public: inline void setter_setMDirectoryMap (const GGS_wrapperDirectoryMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDirectoryMap = inValue ;
-  }
-
-  public: inline void setter_setMWrapperDirectoryIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mWrapperDirectoryIndex = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_wrapperDirectoryMap_2E_element (const GGS_lstring & in_lkey,
-                                              const GGS_wrapperFileMap & in_mRegularFileMap,
-                                              const GGS_wrapperDirectoryMap & in_mDirectoryMap,
-                                              const GGS_uint & in_mWrapperDirectoryIndex) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_wrapperDirectoryMap_2E_element (const GGS_wrapperDirectoryMap_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_wrapperDirectoryMap_2E_element & operator = (const GGS_wrapperDirectoryMap_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_wrapperDirectoryMap_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                          const class GGS_wrapperFileMap & inOperand1,
-                                                                          const class GGS_wrapperDirectoryMap & inOperand2,
-                                                                          const class GGS_uint & inOperand3,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: wrapperDirectoryMap.element? optional
-//--------------------------------------------------------------------------------------------------
-
-class GGS_wrapperDirectoryMap_2E_element_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_wrapperDirectoryMap_2E_element mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_wrapperDirectoryMap_2E_element_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_wrapperDirectoryMap_2E_element_3F_ (const GGS_wrapperDirectoryMap_2E_element & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_wrapperDirectoryMap_2E_element_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_wrapperDirectoryMap_2E_element unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subcripts
-
-
-//--------------------------------- Write subcripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap_2E_element_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @wrapperExtensionMap map
 //--------------------------------------------------------------------------------------------------
 
@@ -1719,6 +1548,19 @@ class GGS_filewrapperGenerationTemplate final {
 
 //--------------------------------- GALGAS class getters
   public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_filewrapperDeclaration (const class GGS__5B_string_5D_ & inOperand0,
+                                                                     const class GGS__5B_string_5D_ & inOperand1,
+                                                                     const class GGS__5B_string_5D_ & inOperand2,
+                                                                     const class GGS__5B_string_5D_ & inOperand3,
+                                                                     const class GGS_string & inOperand4,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_filewrapperImplementation (const class GGS_string & inOperand0,
+                                                                        const class GGS_string & inOperand1,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_filewrapperTemplateImplementation (const class GGS_string & inOperand0,
                                                                                 const class GGS_string & inOperand1,
@@ -9573,4 +9415,87 @@ class GGS_syntaxComponentAST final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_appendSyntaxSignature (class cPtr_semanticInstructionForGeneration * inObject,
+                                                const class GGS_string constin__5F_inPosfix,
+                                                class GGS__5B_semanticInstructionForGeneration_5D_ & io__5F_ioInstructionListForGeneration,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                      const class GGS_semanticInstructionForGeneration constin__5F_inTestedInstruction,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//§Filewrapper§ 'projectCreationFileWrapper'
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const DirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper ;
+extern const DirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper ;
+extern const DirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: filewrapper @projectCreationFileWrapper
+//--------------------------------------------------------------------------------------------------
+
+class GGS_projectCreationFileWrapper final {
+
+//-- Start of package generic part
+
+//--------------------------------- GALGAS class getters
+  public: static class GGS_string class_func_PROJECT_5F_cocoa (const class GGS_string & inOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_grammar (const class GGS_string & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_lexique (const class GGS_string & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_program (const class GGS_string & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_project (const class GGS_string & inOperand0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_semantics (const class GGS_string & inOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_PROJECT_5F_syntax (const class GGS_string & inOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
+
+//--------------------------------- Class Methods
+
+} ;
 

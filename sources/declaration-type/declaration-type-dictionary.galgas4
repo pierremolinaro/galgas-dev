@@ -367,9 +367,6 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @dictionaryGenerationTemplate : "../+generation-templates/type_generation" {
-}{
-}{
-
 //--------- dict
   template dictTypeHeader1 : "GALGAS_dictionary.h1.galgasTemplate" (
     ?@string TYPE_NAME,

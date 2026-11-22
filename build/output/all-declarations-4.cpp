@@ -1,251 +1,5 @@
 #include "all-declarations-4.h"
 //--------------------------------------------------------------------------------------------------
-// @extensionGetterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_extensionGetterAST::objectCompare (const GGS_extensionGetterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionGetterAST::GGS_extensionGetterAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_extensionGetterAST GGS_extensionGetterAST::
-init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                              const GGS_lstring & in_mTypeName,
-                                              const GGS_lstring & in_mExtensionGetterName,
-                                              const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                              const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                              const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                              const GGS_location & in_mEndOfReaderLocation,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  cPtr_extensionGetterAST * object = nullptr ;
-  macroMyNew (object, cPtr_extensionGetterAST (inCompiler COMMA_THERE)) ;
-  object->extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (in_isPredefined, in_mTypeName, in_mExtensionGetterName, in_mExtensionGetterFormalInputParameterList, in_mExtensionGetterReturnedTypeName, in_mExtensionGetterInstructionList, in_mEndOfReaderLocation, inCompiler) ;
-  const GGS_extensionGetterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_extensionGetterAST::
-extensionGetterAST_init_21_isPredefined_21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                 const GGS_lstring & in_mTypeName,
-                                                                 const GGS_lstring & in_mExtensionGetterName,
-                                                                 const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                                                 const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                                                 const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                                                 const GGS_location & in_mEndOfReaderLocation,
-                                                                 Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
-  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
-  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
-  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
-  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_extensionGetterAST::GGS_extensionGetterAST (const cPtr_extensionGetterAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalInputParameterAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterFormalInputParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_formalInputParameterAST_5D_ () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterFormalInputParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_extensionGetterAST::readProperty_mExtensionGetterReturnedTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterReturnedTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_semanticInstructionAST_5D_ GGS_extensionGetterAST::readProperty_mExtensionGetterInstructionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_semanticInstructionAST_5D_ () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mExtensionGetterInstructionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_extensionGetterAST::readProperty_mEndOfReaderLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_extensionGetterAST * p = (cPtr_extensionGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
-    return p->mProperty_mEndOfReaderLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @extensionGetterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterAST::cPtr_extensionGetterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExtensionGetterName (),
-mProperty_mExtensionGetterFormalInputParameterList (),
-mProperty_mExtensionGetterReturnedTypeName (),
-mProperty_mExtensionGetterInstructionList (),
-mProperty_mEndOfReaderLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GGS_bool & in_isPredefined,
-                                                  const GGS_lstring & in_mTypeName,
-                                                  const GGS_lstring & in_mExtensionGetterName,
-                                                  const GGS__5B_formalInputParameterAST_5D_ & in_mExtensionGetterFormalInputParameterList,
-                                                  const GGS_lstring & in_mExtensionGetterReturnedTypeName,
-                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
-                                                  const GGS_location & in_mEndOfReaderLocation,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mExtensionGetterName (),
-mProperty_mExtensionGetterFormalInputParameterList (),
-mProperty_mExtensionGetterReturnedTypeName (),
-mProperty_mExtensionGetterInstructionList (),
-mProperty_mEndOfReaderLocation () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mExtensionGetterName = in_mExtensionGetterName ;
-  mProperty_mExtensionGetterFormalInputParameterList = in_mExtensionGetterFormalInputParameterList ;
-  mProperty_mExtensionGetterReturnedTypeName = in_mExtensionGetterReturnedTypeName ;
-  mProperty_mExtensionGetterInstructionList = in_mExtensionGetterInstructionList ;
-  mProperty_mEndOfReaderLocation = in_mEndOfReaderLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
-}
-
-void cPtr_extensionGetterAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@extensionGetterAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_extensionGetterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_extensionGetterAST (mProperty_isPredefined, mProperty_mTypeName, mProperty_mExtensionGetterName, mProperty_mExtensionGetterFormalInputParameterList, mProperty_mExtensionGetterReturnedTypeName, mProperty_mExtensionGetterInstructionList, mProperty_mEndOfReaderLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_extensionGetterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mExtensionGetterName.printNonNullClassInstanceProperties ("mExtensionGetterName") ;
-    mProperty_mExtensionGetterFormalInputParameterList.printNonNullClassInstanceProperties ("mExtensionGetterFormalInputParameterList") ;
-    mProperty_mExtensionGetterReturnedTypeName.printNonNullClassInstanceProperties ("mExtensionGetterReturnedTypeName") ;
-    mProperty_mExtensionGetterInstructionList.printNonNullClassInstanceProperties ("mExtensionGetterInstructionList") ;
-    mProperty_mEndOfReaderLocation.printNonNullClassInstanceProperties ("mEndOfReaderLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @extensionGetterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_extensionGetterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_extensionGetterAST_2E_weak::objectCompare (const GGS_extensionGetterAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -3877,53 +3631,53 @@ void extensionMethod_displayRule (const GGS_productionRuleForGrammarAnalysis inO
                                   GGS_string & ioArgument_ioGeneratedCode,
                                   Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_currentNode_5069 = GGS_string ("P0start") ;
-  GGS__5B_row_5D_ temp_0 = GGS__5B_row_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 117)) ;
-  GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 117)) ;
-  temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_5069, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 117)) ;
-  temp_0.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 117)) ;
-  GGS__5B_row_5D_ var_rowArray_5106 = temp_0 ;
-  GGS_string var_arrows_5172 = GGS_string::makeEmptyString () ;
-  GGS_string var_arrowStyle_5198 = GGS_string ("--") ;
-  GGS_uint var_column_5228 = GGS_uint (uint32_t (1U)) ;
-  GGS_uint var_unusedMaxUsedRowIndex_5251 = GGS_uint (uint32_t (0U)) ;
+  GGS_string var_currentNode_5063 = GGS_string ("P0start") ;
+  GGS__5B_row_5D_ temp_0 = GGS__5B_row_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_5063, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  temp_0.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  GGS__5B_row_5D_ var_rowArray_5100 = temp_0 ;
+  GGS_string var_arrows_5166 = GGS_string::makeEmptyString () ;
+  GGS_string var_arrowStyle_5192 = GGS_string ("--") ;
+  GGS_uint var_column_5222 = GGS_uint (uint32_t (1U)) ;
+  GGS_uint var_unusedMaxUsedRowIndex_5245 = GGS_uint (uint32_t (0U)) ;
   const GGS_productionRuleForGrammarAnalysis temp_2 = inObject ;
-  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_5313 (temp_2.readProperty_mInstructionList ()) ;
-  while (enumerator_5313.hasCurrentObject ()) {
-    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5313.current (HERE).ptr (), var_rowArray_5106, GGS_uint (uint32_t (0U)), var_column_5228, var_currentNode_5069, var_arrowStyle_5198, var_arrows_5172, var_unusedMaxUsedRowIndex_5251, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 123)) ;
-    enumerator_5313.gotoNextObject () ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_5307 (temp_2.readProperty_mInstructionList ()) ;
+  while (enumerator_5307.hasCurrentObject ()) {
+    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5307.current (HERE).ptr (), var_rowArray_5100, GGS_uint (uint32_t (0U)), var_column_5222, var_currentNode_5063, var_arrowStyle_5192, var_arrows_5166, var_unusedMaxUsedRowIndex_5245, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 121)) ;
+    enumerator_5307.gotoNextObject () ;
   }
-  GGS_string var_lastNodeName_5701 ;
+  GGS_string var_lastNodeName_5695 ;
   {
-  extensionSetter_appendRow (var_rowArray_5106, GGS_string ("[lastPoint] ()"), GGS_uint (uint32_t (0U)), var_column_5228, var_lastNodeName_5701, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 135)) ;
+  extensionSetter_appendRow (var_rowArray_5100, GGS_string ("[lastPoint] ()"), GGS_uint (uint32_t (0U)), var_column_5222, var_lastNodeName_5695, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 133)) ;
   }
-  var_arrows_5172.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_5069, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 136)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 136)).add_operation (var_lastNodeName_5701, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 136)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 136)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 136)) ;
+  var_arrows_5166.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_5063, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (var_lastNodeName_5695, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)) ;
   const GGS_productionRuleForGrammarAnalysis temp_3 = inObject ;
-  GGS_location var_loc_5821 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 139)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).add_operation (function_escapeForTex (var_loc_5821.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 142)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).add_operation (function_escapeForTex (var_loc_5821.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 143)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 144)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 145)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 139)) ;
-  DownEnumerator__5B_row_5D_ enumerator_6232 (var_rowArray_5106) ;
-  while (enumerator_6232.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 148)) ;
-    UpEnumerator__5B__32_string_5D_ enumerator_6298 (enumerator_6232.current (HERE).readProperty_columns ()) ;
-    while (enumerator_6298.hasCurrentObject ()) {
+  GGS_location var_loc_5815 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)).add_operation (function_escapeForTex (var_loc_5815.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 139)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).add_operation (function_escapeForTex (var_loc_5815.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)) ;
+  DownEnumerator__5B_row_5D_ enumerator_6226 (var_rowArray_5100) ;
+  while (enumerator_6226.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 146)) ;
+    UpEnumerator__5B__32_string_5D_ enumerator_6292 (enumerator_6226.current (HERE).readProperty_columns ()) ;
+    while (enumerator_6292.hasCurrentObject ()) {
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, enumerator_6298.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, enumerator_6292.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 149)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_6298.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 153)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 153)).add_operation (enumerator_6298.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 153)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 153)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 153)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_6292.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (enumerator_6292.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)) ;
       }
-      enumerator_6298.gotoNextObject () ;
+      enumerator_6292.gotoNextObject () ;
     }
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 156)) ;
-    enumerator_6232.gotoNextObject () ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 154)) ;
+    enumerator_6226.gotoNextObject () ;
   }
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 158)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_5172, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 160)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 161)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 156)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_5166, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 158)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 159)) ;
 }
 
 
@@ -3938,63 +3692,63 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleForGrammarAn
                                             GGS_string & ioArgument_ioGeneratedCode,
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_currentNode_6955 = GGS_string ("P0start") ;
-  GGS__5B_row_5D_ var_rowArray_6992 = GGS__5B_row_5D_::init (inCompiler COMMA_HERE) ;
+  GGS_string var_currentNode_6949 = GGS_string ("P0start") ;
+  GGS__5B_row_5D_ var_rowArray_6986 = GGS__5B_row_5D_::init (inCompiler COMMA_HERE) ;
   const GGS_productionRuleForGrammarAnalysis temp_0 = inObject ;
-  UpEnumerator_range enumerator_7046 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 170)).subtract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 170)))) ;
-  while (enumerator_7046.hasCurrentObject ()) {
-    GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
-    temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
-    var_rowArray_6992.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
-    enumerator_7046.gotoNextObject () ;
+  UpEnumerator_range enumerator_7040 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 168)).subtract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 168)))) ;
+  while (enumerator_7040.hasCurrentObject ()) {
+    GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 169)) ;
+    temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 169)) ;
+    var_rowArray_6986.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 169)) ;
+    enumerator_7040.gotoNextObject () ;
   }
-  GGS__5B__32_string_5D_ temp_2 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 173)) ;
-  temp_2.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_6955, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 173)) ;
-  var_rowArray_6992.plusPlusAssignOperation (GGS_row::init_21_ (temp_2, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 173)) ;
-  GGS_string var_arrows_7161 = GGS_string::makeEmptyString () ;
-  GGS_string var_arrowStyle_7187 = GGS_string ("--") ;
-  GGS_uint var_unusedMaxUsedRowIndex_7217 = GGS_uint (uint32_t (0U)) ;
+  GGS__5B__32_string_5D_ temp_2 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
+  temp_2.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_6949, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
+  var_rowArray_6986.plusPlusAssignOperation (GGS_row::init_21_ (temp_2, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 171)) ;
+  GGS_string var_arrows_7155 = GGS_string::makeEmptyString () ;
+  GGS_string var_arrowStyle_7181 = GGS_string ("--") ;
+  GGS_uint var_unusedMaxUsedRowIndex_7211 = GGS_uint (uint32_t (0U)) ;
   const GGS_productionRuleForGrammarAnalysis temp_3 = inObject ;
-  GGS_uint var_row_7259 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
+  GGS_uint var_row_7253 = temp_3.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
   const GGS_productionRuleForGrammarAnalysis temp_4 = inObject ;
-  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_7319 (temp_4.readProperty_mInstructionList ()) ;
-  while (enumerator_7319.hasCurrentObject ()) {
-    var_row_7259.minusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 179)) ;
-    GGS_uint var_column_7366 = GGS_uint (uint32_t (1U)) ;
-    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7319.current (HERE).ptr (), var_rowArray_6992, var_row_7259, var_column_7366, var_currentNode_6955, var_arrowStyle_7187, var_arrows_7161, var_unusedMaxUsedRowIndex_7217, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 181)) ;
-    enumerator_7319.gotoNextObject () ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_7313 (temp_4.readProperty_mInstructionList ()) ;
+  while (enumerator_7313.hasCurrentObject ()) {
+    var_row_7253.minusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
+    GGS_uint var_column_7360 = GGS_uint (uint32_t (1U)) ;
+    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_7313.current (HERE).ptr (), var_rowArray_6986, var_row_7253, var_column_7360, var_currentNode_6949, var_arrowStyle_7181, var_arrows_7155, var_unusedMaxUsedRowIndex_7211, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 179)) ;
+    enumerator_7313.gotoNextObject () ;
   }
-  GGS_string var_lastNodeName_7744 ;
+  GGS_string var_lastNodeName_7738 ;
   {
-  extensionSetter_appendRow (var_rowArray_6992, GGS_string ("[lastPoint] ()"), var_row_7259, GGS_uint (uint32_t (2U)), var_lastNodeName_7744, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 193)) ;
+  extensionSetter_appendRow (var_rowArray_6986, GGS_string ("[lastPoint] ()"), var_row_7253, GGS_uint (uint32_t (2U)), var_lastNodeName_7738, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 191)) ;
   }
-  var_arrows_7161.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_6955, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 194)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 194)).add_operation (var_lastNodeName_7744, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 194)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 194)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 194)) ;
+  var_arrows_7155.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_6949, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 192)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 192)).add_operation (var_lastNodeName_7738, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 192)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 192)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 192)) ;
   const GGS_productionRuleForGrammarAnalysis temp_5 = inObject ;
-  GGS_location var_loc_7864 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 198)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 197)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 198)).add_operation (function_escapeForTex (var_loc_7864.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 200)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 200)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 200)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 200)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 199)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 200)).add_operation (function_escapeForTex (var_loc_7864.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 201)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 201)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 201)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 201)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 202)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 203)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 197)) ;
-  DownEnumerator__5B_row_5D_ enumerator_8273 (var_rowArray_6992) ;
-  while (enumerator_8273.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 206)) ;
-    UpEnumerator__5B__32_string_5D_ enumerator_8337 (enumerator_8273.current (HERE).readProperty_columns ()) ;
-    while (enumerator_8337.hasCurrentObject ()) {
+  GGS_location var_loc_7858 = temp_5.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 196)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 195)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 196)).add_operation (function_escapeForTex (var_loc_7858.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 198)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 198)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 198)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 198)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 197)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 198)).add_operation (function_escapeForTex (var_loc_7858.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 199)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 199)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 199)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 199)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 199)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 200)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 201)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 195)) ;
+  DownEnumerator__5B_row_5D_ enumerator_8267 (var_rowArray_6986) ;
+  while (enumerator_8267.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 204)) ;
+    UpEnumerator__5B__32_string_5D_ enumerator_8331 (enumerator_8267.current (HERE).readProperty_columns ()) ;
+    while (enumerator_8331.hasCurrentObject ()) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {
-        test_6 = GGS_bool (ComparisonKind::equal, enumerator_8337.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        test_6 = GGS_bool (ComparisonKind::equal, enumerator_8331.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
         if (GalgasBool::boolTrue == test_6) {
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)) ;
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 207)) ;
         }
       }
       if (GalgasBool::boolFalse == test_6) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_8337.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 211)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 211)).add_operation (enumerator_8337.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 211)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 211)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 211)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_8331.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)).add_operation (enumerator_8331.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 209)) ;
       }
-      enumerator_8337.gotoNextObject () ;
+      enumerator_8331.gotoNextObject () ;
     }
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 214)) ;
-    enumerator_8273.gotoNextObject () ;
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 212)) ;
+    enumerator_8267.gotoNextObject () ;
   }
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 216)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_7161, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 218)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 219)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 214)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_7155, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 216)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 217)) ;
 }
 
 
@@ -4018,24 +3772,24 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GGS__5B_abstractSyntaxI
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ temp_1 = inObject ;
-    test_0 = GGS_bool (ComparisonKind::equal, temp_1.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 236)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+    test_0 = GGS_bool (ComparisonKind::equal, temp_1.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 234)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_string var_nodeName_9396 ;
+      GGS_string var_nodeName_9390 ;
       {
-      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_nodeName_9396, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 237)) ;
+      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_nodeName_9390, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 235)) ;
       }
-      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)).add_operation (var_nodeName_9396, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 243)) ;
-      ioArgument_ioCurrentNode = var_nodeName_9396 ;
+      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)).add_operation (var_nodeName_9390, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 241)) ;
+      ioArgument_ioCurrentNode = var_nodeName_9390 ;
       ioArgument_ioArrowShape = GGS_string ("--") ;
-      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 246)) ;
+      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 244)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
     const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ temp_2 = inObject ;
-    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_9607 (temp_2) ;
-    while (enumerator_9607.hasCurrentObject ()) {
-      callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9607.current (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 249)) ;
-      enumerator_9607.gotoNextObject () ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_9601 (temp_2) ;
+    while (enumerator_9601.hasCurrentObject ()) {
+      callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_9601.current (HERE).ptr (), ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, ioArgument_ioMaxUsedRowIndex, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 247)) ;
+      enumerator_9601.gotoNextObject () ;
     }
   }
 }
@@ -4541,35 +4295,35 @@ void extensionSetter_appendRow (GGS__5B_row_5D_ & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outNodeName.drop () ; // Release 'out' argument
   const GGS__5B_row_5D_ temp_0 = ioObject ;
-  GGS_uint var_length_10382 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 278)) ;
+  GGS_uint var_length_10376 = temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 276)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10382.objectCompare (constinArgument_inRow)).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::lowerOrEqual, var_length_10376.objectCompare (constinArgument_inRow)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      UpEnumerator_range enumerator_10452 (GGS_range (var_length_10382, constinArgument_inRow.subtract_operation (var_length_10382, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 280)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 280)))) ;
-      while (enumerator_10452.hasCurrentObject ()) {
-        ioObject.plusAssignOperation(GGS__5B_row_5D_::init (inCompiler COMMA_HERE), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 281)) ;
-        enumerator_10452.gotoNextObject () ;
+      UpEnumerator_range enumerator_10446 (GGS_range (var_length_10376, constinArgument_inRow.subtract_operation (var_length_10376, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 278)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 278)))) ;
+      while (enumerator_10446.hasCurrentObject ()) {
+        ioObject.plusAssignOperation(GGS__5B_row_5D_::init (inCompiler COMMA_HERE), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 279)) ;
+        enumerator_10446.gotoNextObject () ;
       }
     }
   }
   const GGS__5B_row_5D_ temp_2 = ioObject ;
-  GGS__5B__32_string_5D_ var_cols_10513 = temp_2.readSubcript__3F_ (constinArgument_inRow, inCompiler COMMA_HERE).readProperty_columns () ;
+  GGS__5B__32_string_5D_ var_cols_10507 = temp_2.readSubcript__3F_ (constinArgument_inRow, inCompiler COMMA_HERE).readProperty_columns () ;
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {
-    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10513.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 287)).objectCompare (constinArgument_inColumn)).boolEnum () ;
+    test_3 = GGS_bool (ComparisonKind::lowerOrEqual, var_cols_10507.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 285)).objectCompare (constinArgument_inColumn)).boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
-      UpEnumerator_range enumerator_10631 (GGS_range (var_cols_10513.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 288)), constinArgument_inColumn.subtract_operation (var_cols_10513.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 288)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 288)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 288)))) ;
-      while (enumerator_10631.hasCurrentObject ()) {
-        var_cols_10513.plusPlusAssignOperation (GGS__32_string::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 289)) ;
-        enumerator_10631.gotoNextObject () ;
+      UpEnumerator_range enumerator_10625 (GGS_range (var_cols_10507.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 286)), constinArgument_inColumn.subtract_operation (var_cols_10507.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 286)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 286)).add_operation (GGS_uint (1), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 286)))) ;
+      while (enumerator_10625.hasCurrentObject ()) {
+        var_cols_10507.plusPlusAssignOperation (GGS__32_string::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 287)) ;
+        enumerator_10625.gotoNextObject () ;
       }
     }
   }
-  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 293)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 293)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 293)).add_operation (var_cols_10513.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 293)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 293)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 293)) ;
-  var_cols_10513.plusPlusAssignOperation (GGS__32_string::init_21__21_ (outArgument_outNodeName, constinArgument_inNodeDefinition, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 294)) ;
+  outArgument_outNodeName = GGS_string ("p").add_operation (constinArgument_inRow.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 291)).add_operation (GGS_string ("-"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 291)).add_operation (var_cols_10507.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 291)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 291)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 291)) ;
+  var_cols_10507.plusPlusAssignOperation (GGS__32_string::init_21__21_ (outArgument_outNodeName, constinArgument_inNodeDefinition, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 292)) ;
   {
-  ioObject.setter_set (GGS_row::init_21_ (var_cols_10513, inCompiler COMMA_HERE), constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 296)) ;
+  ioObject.setter_set (GGS_row::init_21_ (var_cols_10507, inCompiler COMMA_HERE), constinArgument_inRow, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 294)) ;
   }
 }
 
@@ -4583,15 +4337,15 @@ GGS_bool extensionGetter_displayVertically (const GGS__5B_abstractSyntaxInstruct
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result ; // Returned variable
   const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ temp_0 = inObject ;
-  result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 532)).objectCompare (GGS_uint (uint32_t (4U)))) ;
+  result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 530)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ temp_1 = inObject ;
-  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_18705 (temp_1) ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_18699 (temp_1) ;
   bool bool_2 = result.isValidAndTrue () ;
-  if (enumerator_18705.hasCurrentObject () && bool_2) {
-    while (enumerator_18705.hasCurrentObject () && bool_2) {
-      result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18705.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 534)) ;
-      enumerator_18705.gotoNextObject () ;
-      if (enumerator_18705.hasCurrentObject ()) {
+  if (enumerator_18699.hasCurrentObject () && bool_2) {
+    while (enumerator_18699.hasCurrentObject () && bool_2) {
+      result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_18699.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 532)) ;
+      enumerator_18699.gotoNextObject () ;
+      if (enumerator_18699.hasCurrentObject ()) {
         bool_2 = result.isValidAndTrue () ;
       }
     }
@@ -16042,5 +15796,584 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalRoutineFormalArgum
 
 const GALGAS_TypeDescriptor * GGS__5B_lexicalRoutineFormalArgumentAST_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_lexicalRoutineFormalArgumentAST_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @lexicalRoutineMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap::~ GGS_lexicalRoutineMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap::GGS_lexicalRoutineMap (const GGS_lexicalRoutineMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap & GGS_lexicalRoutineMap::operator = (const GGS_lexicalRoutineMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap GGS_lexicalRoutineMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_lexicalRoutineMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalRoutineMap::getter_contains (const GGS_string & inKey
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalRoutineMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                      const GGS_uint & inLevel
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalRoutineMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_lexicalRoutineMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_lexicalRoutineMap::getter_locationForKey (const GGS_string & inKey,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_lexicalRoutineMap::getter_keyList (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid ()) {
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexicalRoutineMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_lexicalRoutineMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::performInsert (const GGS_lexicalRoutineMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_lexicalRoutineMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>
+GGS_lexicalRoutineMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_lexicalRoutineMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>>
+GGS_lexicalRoutineMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_lexicalRoutineMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap_2E_element_3F_ GGS_lexicalRoutineMap
+::readSubcript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_lexicalRoutineMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_lexicalRoutineMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_lexicalRoutineMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLexicalRoutineFormalArgumentList = info->mProperty_mLexicalRoutineFormalArgumentList ;
+      element.mProperty_mErrorMessageList = info->mProperty_mErrorMessageList ;
+      element.mProperty_mIsExtern = info->mProperty_mIsExtern ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap GGS_lexicalRoutineMap::class_func_mapWithMapToOverride (const GGS_lexicalRoutineMap & inMapToOverride
+                                                                              COMMA_LOCATION_ARGS) {
+  GGS_lexicalRoutineMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_lexicalRoutineMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS_lexicalRoutineMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
+                                              GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inArgument0,
+                                              GGS__5B_string_5D_ inArgument1,
+                                              GGS_bool inArgument2,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  const GGS_lexicalRoutineMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
+  const char * kInsertErrorMessage = "the '%K' lexical routine has been already declared" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inLKey,
+                                              GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & outArgument0,
+                                              GGS__5B_string_5D_ & outArgument1,
+                                              GGS_bool & outArgument2,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' lexical routine is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mLexicalRoutineFormalArgumentList ;
+    outArgument1 = info->mProperty_mErrorMessageList ;
+    outArgument2 = info->mProperty_mIsExtern ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ GGS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GGS_string & inKey,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLexicalRoutineFormalArgumentList ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_string_5D_ GGS_lexicalRoutineMap::getter_mErrorMessageListForKey (const GGS_string & inKey,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mErrorMessageList ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_lexicalRoutineMap::getter_mIsExternForKey (const GGS_string & inKey,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mIsExtern ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inValue,
+                                                                               GGS_string inKey,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLexicalRoutineFormalArgumentList = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GGS__5B_string_5D_ inValue,
+                                                               GGS_string inKey,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mErrorMessageList = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::setter_setMIsExternForKey (GGS_bool inValue,
+                                                       GGS_string inKey,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_lexicalRoutineMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mIsExtern = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_lexicalRoutineMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mLexicalRoutineFormalArgumentList:") ;
+    inArray (i COMMA_HERE)->mProperty_mLexicalRoutineFormalArgumentList.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mErrorMessageList:") ;
+    inArray (i COMMA_HERE)->mProperty_mErrorMessageList.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mIsExtern:") ;
+    inArray (i COMMA_HERE)->mProperty_mIsExtern.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalRoutineMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @lexicalRoutineMap") ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> array = sortedInfoArray () ;
+    GGS_lexicalRoutineMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_lexicalRoutineMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_lexicalRoutineMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @lexicalRoutineMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_lexicalRoutineMap::DownEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap_2E_element DownEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ DownEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_string_5D_ DownEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool DownEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @lexicalRoutineMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_lexicalRoutineMap::UpEnumerator_lexicalRoutineMap (const GGS_lexicalRoutineMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineMap_2E_element UpEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ UpEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_string_5D_ UpEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool UpEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsExtern ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalRoutineMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ("lexicalRoutineMap",
+                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalRoutineMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 }
 

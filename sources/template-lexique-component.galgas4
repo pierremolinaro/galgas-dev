@@ -336,8 +336,6 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 private filewrapper @templateLexiqueGenerationTemplates : "+generation-templates/lexique_generation" {
-}{
-}{
   template cppHeader : "template_lexique_header_template_zone_2.h.galgasTemplate" (
     ?@string LEXIQUE_IDENTIFIER,
     ?@string SUPER_LEXIQUE_IDENTIFIER

@@ -417,8 +417,7 @@ proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOpt
 //--------------------------------------------------------------------------------------------------
 
 filewrapper @guiGenerationTemplates : "+generation-templates/gui_generation" {
-}{
-}{
+
   template swiftui_gui_implementation : "gui-implementation-swiftui.swift.galgasTemplate" (
     ?@guiAnalysisContext GUI_CONTEXT
   )
