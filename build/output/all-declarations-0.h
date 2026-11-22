@@ -7700,8 +7700,6 @@ class DownEnumerator_filewrapperMap final {
 
   public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
 
-  public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
-
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
 
   public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
@@ -7731,7 +7729,6 @@ class UpEnumerator_filewrapperMap final {
   public: class GGS__5B_lstring_5D_ current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
   public: class GGS_wrapperFileMap current_mFilewrapperFileMap (LOCATION_ARGS) const ;
   public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
-  public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
   public: class GGS_bool current_mIsInternal (LOCATION_ARGS) const ;
   public: class GGS_filewrapperMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -7810,8 +7807,7 @@ class GGS_filewrapperMap final : public AC_GALGAS_root {
                                  class GGS__5B_lstring_5D_ constinArgument2,
                                  class GGS_wrapperFileMap constinArgument3,
                                  class GGS_wrapperDirectoryMap constinArgument4,
-                                 class GGS_filewrapperTemplateMap constinArgument5,
-                                 class GGS_bool constinArgument6,
+                                 class GGS_bool constinArgument5,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -7835,11 +7831,6 @@ class GGS_filewrapperMap final : public AC_GALGAS_root {
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMFilewrapperTemplateMapForKey (class GGS_filewrapperTemplateMap constinArgument0,
-                                                        class GGS_string constinArgument1,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
   public: void setter_setMIsInternalForKey (class GGS_bool constinArgument0,
                                             class GGS_string constinArgument1,
                                             Compiler * inCompiler
@@ -7852,8 +7843,7 @@ class GGS_filewrapperMap final : public AC_GALGAS_root {
                                  class GGS__5B_lstring_5D_ & outArgument2,
                                  class GGS_wrapperFileMap & outArgument3,
                                  class GGS_wrapperDirectoryMap & outArgument4,
-                                 class GGS_filewrapperTemplateMap & outArgument5,
-                                 class GGS_bool & outArgument6,
+                                 class GGS_bool & outArgument5,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
 
@@ -7896,10 +7886,6 @@ class GGS_filewrapperMap final : public AC_GALGAS_root {
   public: class GGS_lstring getter_mFilewrapperPathForKey (const class GGS_string & constinOperand0,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_filewrapperTemplateMap getter_mFilewrapperTemplateMapForKey (const class GGS_string & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_mIsInternalForKey (const class GGS_string & constinOperand0,
                                                    Compiler * inCompiler

@@ -38,24 +38,21 @@ syntax extension galgas4ExpressionSyntax {
       <output_expression_list> (!?ioDeclarations, ?expressionList)
       $)$
     end
-    let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST (
       @("", startOfExpression),
       classFuncName,
-      expressionList,
-      startOfExpression.union (endOfExpression)
+      expressionList
     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_beginning_by_type_dot_name> (let @lstring inTypeName,
-                                       let @lstring inClassFunctionName,
-                                       ?!@galgasDeclarationAST ioDeclarations,
-                                       !@semanticExpressionAST outExpression ) {
+                                             let @lstring inClassFunctionName,
+                                             ?!@galgasDeclarationAST ioDeclarations,
+                                             !@semanticExpressionAST outExpression ) {
   //--- Actual arguments
     let [@actualOutputArgumentAST] expressionList
-    let startOfExpression = @location.here
     select
       expressionList = @()
     or
@@ -63,12 +60,10 @@ syntax extension galgas4ExpressionSyntax {
       <output_expression_list> (!?ioDeclarations, ?expressionList)
       $)$
     end
-    let endOfExpression = @location.here
     outExpression = @classFuncExpressionAST (
       inTypeName,
       inClassFunctionName,
-      expressionList,
-      startOfExpression.union (endOfExpression)
+      expressionList
     )
   }
 
@@ -82,7 +77,6 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
   private let @lstring typeName
   private let @lstring classFuncName
   private let [@actualOutputArgumentAST] expressions
-  private let @location locationForOldStyleCollectionInitializerError
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -95,14 +89,14 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticExpression
-                          (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticExpression (
+                          ?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                           ?inferenceType: let @unifiedTypeMapEntry inType,
                           let @analysisContext inAnalysisContext,
                           ?!@unifiedTypeMap ioTypeMap,
                           ?!@localVarManager ioVariableMap,
-                          !@semanticExpressionForGeneration outExpression ) {
+                          !@semanticExpressionForGeneration outExpression) {
     analyzeConstructorInvocation (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
@@ -113,15 +107,15 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
       self.typeName,
       self.classFuncName,
       self.expressions,
-      self.locationForOldStyleCollectionInitializerError,
       ?let @unifiedTypeMapEntry returnedType,
       ?let @unifiedTypeMapEntry classFuncType,
       ?let [@semanticExpressionForGeneration] constructorEffectiveParameterList,
       ?let @bool hasCompilerArgument,
       ?let [@unifiedTypeMapEntry] requiredTypes
     )
-    let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (@(classFuncType.definition.typeName.string, self.typeName))
-    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: constructorTypeUsefulnessName)
+  //---
+    let typeUsefulnessName = typeNameForUsefulEntitiesGraph (@(classFuncType.definition.typeName.string, self.typeName))
+    !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: typeUsefulnessName)
     let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (@(returnedType.definition.typeName.string, self.typeName))
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: returnedTypeUsefulnessName)
   //---
@@ -151,7 +145,6 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
                       let @lstring inTypeName,
                       let @lstring inConstructorName,
                       let [@actualOutputArgumentAST] inInitializerEffectiveParameterExpressions,
-                      let @location _inLocationForOldStyleCollectionInitializerError,
                       !@unifiedTypeMapEntry outReturnedType,
                       !@unifiedTypeMapEntry outConstructorType,
                       ![@semanticExpressionForGeneration] outConstructorEffectiveParameterList,
@@ -200,9 +193,9 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
     outConstructorEffectiveParameterList = @()
     for effectiveParameter in inInitializerEffectiveParameterExpressions,
         formalArg in constructorFormalArgumentTypeList do
-      !?outRequiredTypes.append (formalArg.mFormalArgumentType)
-      effectiveParameter.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      outRequiredTypes ++= formalArg.mFormalArgumentType
+      effectiveParameter.mExpression.analyzeSemanticExpression (
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: formalArg.mFormalArgumentType,
         inAnalysisContext,
@@ -243,18 +236,18 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc generateExpression (?!@string ioGeneratedCode,
-                                      ?!@stringset ioInclusionSet,
-                                      ?!@uint ioTemporaryVariableIndex,
-                                      ?!@stringset ioUnusedVariableCppNameSet,
-                                      !@string outCppExpression ) {
+                                    ?!@stringset ioInclusionSet,
+                                    ?!@uint ioTemporaryVariableIndex,
+                                    ?!@stringset ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     for type in self.requiredTypes do
       type.addHeaderFileName (!?ioInclusionSet)
     end
     var [@string] parameterList = @()
     for expression in self.mEffectiveParameterList do
-      expression.generateExpression
-        (!?ioGeneratedCode,
+      expression.generateExpression (
+        !?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,

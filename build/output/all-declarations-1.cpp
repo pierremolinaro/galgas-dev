@@ -14149,18 +14149,42 @@ const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates (
 
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
-//
+
+GGS_lexiqueGenerationTemplates::GGS_lexiqueGenerationTemplates (void) :
+AC_GALGAS_root (),
+mIsValid (false) {
+}
+
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compiler * inCompiler,
-                                                                          const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                          const GGS__5B_lexicalListDeclarationAST_5D_ & in_DELIMITOR_5F_LIST_5F_LIST,
-                                                                          const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                          const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                          const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+GGS_lexiqueGenerationTemplates GGS_lexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexiqueGenerationTemplates result = GGS_lexiqueGenerationTemplates () ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexiqueGenerationTemplates::description (String & ioString,
+                                                  const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<filewrapper @lexiqueGenerationTemplates:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    ioString.appendCString (">") ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @lexiqueGenerationTemplates headerZone2
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                      const GGS__5B_lexicalListDeclarationAST_5D_ & in_DELIMITOR_5F_LIST_5F_LIST,
+                                                                      const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                      const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                      const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//") ;
   result.appendString (GGS_string ("LEXIQUE ").add_operation (in_LEXIQUE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("lexique_header_template_zone_2.h.galgasTemplate", 3)).stringValue ()) ;
@@ -14361,27 +14385,24 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compil
   result.appendString (" & ioToken) ;\n\n//--- Style index\n  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const override ;\n} ;\n\n") ;
   return GGS_string (result) ;
 }
-
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
-//
+//Filewrapper template @lexiqueGenerationTemplates implementationZone2Galgas3
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (Compiler * inCompiler,
-                                                                                            const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                            const GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
-                                                                                            const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                            const GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                            const GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
-                                                                                            const GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
-                                                                                            const GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                            const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                            const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                            const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                            const GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                            const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galgas_33_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                        const GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
+                                                                                        const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                        const GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                        const GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
+                                                                                        const GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                        const GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                        const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                        const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                        const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                        const GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                        const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   uint32_t columnMarker = 0 ;
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//     L E X I Q U E                                                                             \n//\n//--------------------------------------------------------------------------------------------------\n\n#include \"utf32.h\"\n#include \"scanner_actions.h\"\n#include \"LexiqueIntrospection.h\"\n\n//--------------------------------------------------------------------------------------------------\n\ncTokenFor_") ;
@@ -15031,27 +15052,24 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_
   result.appendString ("\n  } ;\n  return (inTerminalIndex >= 0) \? kTerminalSymbolStyles [inTerminalIndex] : 0 ;\n}\n\n") ;
   return GGS_string (result) ;
 }
-
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
-//
+//Filewrapper template @lexiqueGenerationTemplates swiftUIImplementationZone2
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (Compiler * inCompiler,
-                                                                                         const GGS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
-                                                                                         const GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                         const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                         const GGS_lexicalMessageMap & /* in_LEXICAL_5F_MESSAGE_5F_MAP */,
-                                                                                         const GGS__5B_terminalAST_5D_ & /* in_TERMINAL_5F_LIST */,
-                                                                                         const GGS_stringset & /* in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES */,
-                                                                                         const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                         const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                         const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                         const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
-                                                                                         const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                         const GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_32_ (const GGS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
+                                                                                     const GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                     const GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                     const GGS_lexicalMessageMap & /* in_LEXICAL_5F_MESSAGE_5F_MAP */,
+                                                                                     const GGS__5B_terminalAST_5D_ & /* in_TERMINAL_5F_LIST */,
+                                                                                     const GGS_stringset & /* in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES */,
+                                                                                     const GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                     const GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                     const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                     const GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
+                                                                                     const GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                     const GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
   result.appendString ("//--------------------------------------------------------------------------------------------------\n//   LEXIQUE ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
@@ -15350,5 +15368,17 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZ
   result.appendString (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).add_operation (GGS_uint (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 437)).stringValue ()) ;
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n\n") ;
   return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//     @lexiqueGenerationTemplates generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ("lexiqueGenerationTemplates",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexiqueGenerationTemplates::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ;
 }
 

@@ -171,6 +171,18 @@ struct @filewrapperTemplateAST {
 
 //--------------------------------------------------------------------------------------------------
 
+map @filewrapperMap {
+  public let @lstring mFilewrapperPath
+  public let [@lstring] mFilewrapperExtensionList
+  public let @wrapperFileMap mFilewrapperFileMap
+  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
+  public let @bool mIsInternal
+  #insertSetter insertKey #errorMessage "the '%K' filewrapper has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' filewrapper is not declared"
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @bool mIsInternal
   public let @string mSourceFileAbsolutePath
@@ -282,7 +294,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       self.mFilewrapperTextFileExtensionList,
       regularRootFileMap,
       wrapperDirectoryMap,
-      filewrapperTemplateMap,
       self.mIsInternal
     )
   //--- Add initializer without argument
@@ -396,7 +407,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       ?*,
       ?let @wrapperFileMap wrapperFileMap,
       ?let @wrapperDirectoryMap wrapperDirectoryMap,
-      ?2*
+      ?*
     )
   //--- Build absolute path
     let @string absoluteSourcePath
@@ -464,8 +475,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         self.mFilewrapperName.string,
         self.mFilewrapperPath.string,
         wrapperFileMap,
-        wrapperDirectoryMap,
-        filewrapperTemplateListForGeneration
+        wrapperDirectoryMap
       )
     //---
       ioSemanticDeclarationListForGeneration ++= @filewrapperTypeForGeneration (
@@ -602,7 +612,6 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
   public let @string mFilewrapperAbsolutePath
   public let @wrapperFileMap mFilewrapperFileMap
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-  public let [@filewrapperTemplateForGeneration] mFilewrapperTemplateListForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -633,14 +642,6 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
       regularBinaryContentIndexStringList,
       self.mFilewrapperName
     )
-  //--- template generation
-    for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
-      outHeader += @semanticComponentGenerationTemplate.filewrapperTemplateDeclaration (
-        self.mFilewrapperName,
-        filewrapperTemplate.mFilewrapperTemplateName,
-        filewrapperTemplate.mFilewrapperTemplateFormalInputParameters
-      )
-    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -662,35 +663,6 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
       self.mFilewrapperName,
       filewrapperImplementation
     )
-  //--- template generation
-    for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
-    //--- Build generated code for instruction list
-      var @string generatedCodeForInstructionList = ""
-      var @uint temporaryVariableIndex = 0
-      var @stringset unusedVariableCppNameSet = @()
-      unusedVariableCppNameSet ++= gCompilerCppName
-      for entry in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
-        unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
-      end
-      var @bool useColumnMarker = false
-      templateCodeGenerationForListInstruction (
-        filewrapperTemplate.mTemplateInstructionListForGeneration,
-        !?generatedCodeForInstructionList,
-        !?ioInclusionSet,
-        !?temporaryVariableIndex,
-        !?unusedVariableCppNameSet,
-        !?useColumnMarker
-      )
-    //---
-      outImplementation += @semanticComponentGenerationTemplate.filewrapperTemplateImplementation (
-        self.mFilewrapperName,
-        filewrapperTemplate.mFilewrapperTemplateName,
-        filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
-        unusedVariableCppNameSet,
-        useColumnMarker,
-        generatedCodeForInstructionList
-      )
-    end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

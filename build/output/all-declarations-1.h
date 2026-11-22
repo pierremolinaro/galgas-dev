@@ -8810,60 +8810,90 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST
 extern const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
-//
+// Phase 1: filewrapper @lexiqueGenerationTemplates
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compiler * inCompiler,
-                                                                          const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                          const class GGS__5B_lexicalListDeclarationAST_5D_ & in_DELIMITOR_5F_LIST_5F_LIST,
-                                                                          const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                          const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                          const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST
-                                                                          COMMA_LOCATION_ARGS) ;
+class GGS_lexiqueGenerationTemplates final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  private: bool mIsValid ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }
+
+//--------------------------------- Default constructor
+  public: GGS_lexiqueGenerationTemplates (void) ;
+
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexiqueGenerationTemplates init (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_string class_func_headerZone_32_ (const class GGS_string & inOperand0,
+                                                             const class GGS__5B_lexicalListDeclarationAST_5D_ & inOperand1,
+                                                             const class GGS_lexiqueAnalysisContext & inOperand2,
+                                                             const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand3,
+                                                             const class GGS__5B_indexingAST_5D_ & inOperand4,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_implementationZone_32_Galgas_33_ (const class GGS_string & inOperand0,
+                                                                               const class GGS_bool & inOperand1,
+                                                                               const class GGS_lexicalAttributeMap & inOperand2,
+                                                                               const class GGS_lexicalMessageMap & inOperand3,
+                                                                               const class GGS__5B_terminalAST_5D_ & inOperand4,
+                                                                               const class GGS_lexicalExplicitTokenListMapMap & inOperand5,
+                                                                               const class GGS_stringset & inOperand6,
+                                                                               const class GGS__5B_abstractLexicalRuleAST_5D_ & inOperand7,
+                                                                               const class GGS_lexiqueAnalysisContext & inOperand8,
+                                                                               const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand9,
+                                                                               const class GGS_string & inOperand10,
+                                                                               const class GGS__5B_templateReplacementAST_5D_ & inOperand11,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_swiftUIImplementationZone_32_ (const class GGS_string & inOperand0,
+                                                                            const class GGS_string & inOperand1,
+                                                                            const class GGS_lexicalAttributeMap & inOperand2,
+                                                                            const class GGS_lexicalMessageMap & inOperand3,
+                                                                            const class GGS__5B_terminalAST_5D_ & inOperand4,
+                                                                            const class GGS_stringset & inOperand5,
+                                                                            const class GGS__5B_abstractLexicalRuleAST_5D_ & inOperand6,
+                                                                            const class GGS_lexiqueAnalysisContext & inOperand7,
+                                                                            const class GGS__5B_templateReplacementAST_5D_ & inOperand8,
+                                                                            const class GGS__5B_indexingAST_5D_ & inOperand9,
+                                                                            const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand10,
+                                                                            const class GGS_uint & inOperand11,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
-//
-//--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (Compiler * inCompiler,
-                                                                                            const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                            const class GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
-                                                                                            const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                            const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                            const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
-                                                                                            const class GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
-                                                                                            const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                            const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                            const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                            const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                            const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                            const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (Compiler * inCompiler,
-                                                                                         const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                         const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                         const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                         const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                         const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
-                                                                                         const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                         const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                         const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                         const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                         const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
-                                                                                         const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                         const class GGS_uint & in_LEXICAL_5F_STYLE_5F_COUNT
-                                                                                         COMMA_LOCATION_ARGS) ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [lexicalFunctionFormalArgumentAST] array

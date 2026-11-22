@@ -78,8 +78,8 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
 //--- Get type proc signature
   type.definition.classMethodMap.searchKey (self.mMethodName, ?let routineSignature, ?let hasCompilerArgument)
 //--- Check effective parameters
-  self.mActualParameterList.analyzeRoutineArguments
-    (inUsefulnessCallerEntityName,
+  self.mActualParameterList.analyzeRoutineArguments (
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
     !?ioTypeMap,

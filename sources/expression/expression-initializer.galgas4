@@ -21,41 +21,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//   $@($
-//   <output_expression_list_ggs34> (!?ioDeclarations, ?let expressionList)
-//   $)$
-//    let endOfExpression = @location.here
-//    outExpression = @initializerCallAST (
-//      !"".here,
-//      expressionList,
-//      endOfExpression
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//    $@type$ (?let typeName) indexing (typeReferenceInConstructor)
-//    $($
-//    <output_expression_list_ggs34> (!?ioDeclarations, ?let expressionList)
-//    $)$
-//    let endOfExpression = @location.here
-//    outExpression = @initializerCallAST (typeName, expressionList, endOfExpression)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,7 +28,7 @@ syntax extension galgas4ExpressionSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary> (?!@galgasDeclarationAST ioDeclarations,
-                 !@semanticExpressionAST outExpression ) {
+                  !@semanticExpressionAST outExpression) {
     <simple_type_definition> (!?ioDeclarations, ?let typeName)
     select
       <primary_beginning_by_type> (typeName, !?ioDeclarations, ?outExpression)

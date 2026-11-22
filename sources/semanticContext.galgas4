@@ -94,23 +94,6 @@ map @functionMap {
 
 //--------------------------------------------------------------------------------------------------
 //
-//  F I L E W R A P P E R   M A P
-//
-//--------------------------------------------------------------------------------------------------
-
-map @filewrapperMap {
-  public let @lstring mFilewrapperPath
-  public let [@lstring] mFilewrapperExtensionList
-  public let @wrapperFileMap mFilewrapperFileMap
-  public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-  public let @filewrapperTemplateMap mFilewrapperTemplateMap
-  public let @bool mIsInternal
-  #insertSetter insertKey #errorMessage "the '%K' filewrapper has been already declared in %L"
-  #searchMethod searchKey #errorMessage "the '%K' filewrapper is not declared"
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //  L E X I Q U E   M A P
 //
 //--------------------------------------------------------------------------------------------------

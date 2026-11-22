@@ -15,8 +15,6 @@
          "../sources/tool-sources"
   ],
   "SOURCES" : [
-    "all-declarations-24.cpp",
-    "all-declarations-23.cpp",
     "all-declarations-22.cpp",
     "all-declarations-21.cpp",
     "all-declarations-20.cpp",

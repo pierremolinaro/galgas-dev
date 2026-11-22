@@ -32,11 +32,11 @@ final class @filewrapperInExpressionAST : @semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-final class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
-  public let @lstring mFilewrapperName
-  public let @lstring mFilewrapperTemplateName
-  public let [@actualOutputArgumentAST] mExpressions
-}
+//final class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+//  public let @lstring mFilewrapperName
+//  public let @lstring mFilewrapperTemplateName
+//  public let [@actualOutputArgumentAST] mExpressions
+//}
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
@@ -46,33 +46,19 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $filewrapper$
     $[$
-    let pt = @location.here
     $identifier$ (?let filewrapperName) indexing (filewrapperReference)
     select
       outExpression = @filewrapperObjectInstanciationInExpressionAST (filewrapperName)
     or
-      $.$
-      select
-        $"string"$ (?let @lstring filePath)
-        outExpression = @filewrapperInExpressionAST (
-          filewrapperName,
-          filePath
-        )
-      or
-        $identifier$ (?let @lstring filewrapperTemplateName)
-        error pt : "FILEWRAPPER!!!!"
-        $:$
-        <output_expression_list> (!?ioDeclarations, ?let [@actualOutputArgumentAST] expressionList)
-        outExpression = @filewrapperTemplateInExpressionAST (
-          filewrapperName,
-          filewrapperTemplateName,
-          expressionList
-        )
-      end
+      $"string"$ (?let @lstring filePath)
+      outExpression = @filewrapperInExpressionAST (
+        filewrapperName,
+        filePath
+      )
     end
     $]$
   }
@@ -107,7 +93,7 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
   inAnalysisContext.semanticContext.mFilewrapperMap.searchKey (
     self.mFilewrapperName,
     ?let @lstring filewrapperPath,
-    ?4*,
+    ?3*,
     ?let @bool isInternal
   )
 //--- Check internal
@@ -127,79 +113,79 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @filewrapperTemplateInExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap ioTypeMap
-) {
-  for exp in self.mExpressions do
-    exp.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-  end
-}
+//override proc @filewrapperTemplateInExpressionAST.enterExpressionInSemanticContext
+//  (?!@unifiedTypeMap ioTypeMap
+//) {
+//  for exp in self.mExpressions do
+//    exp.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+//  end
+//}
 
 //································································································
 
-override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry _inType,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager ioVariableMap,
-  !@semanticExpressionForGeneration outExpression
-) {
-  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (self.mFilewrapperName, self.mFilewrapperTemplateName)
-  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
-//---
-  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-     (self.mFilewrapperName,
-     ?4*,
-     ?let @filewrapperTemplateMap filewrapperTemplateMap,
-     ?let @bool isInternal
-   )
-//--- Check internal
-  if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
-    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
-    end
-  end
-//---
-  filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let [@functionSignatureElement] templateSignature, ?*)
-//--- Analysis arguments
-  var [@semanticExpressionForGeneration] effectiveParameterList
-  if self.mExpressions.count != templateSignature.count then
-    error self.mFilewrapperTemplateName
-    : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
-    + templateSignature.count.string + " parameter(s), while this call has "
-    + self.mExpressions.count.string + " parameter(s)"
-    spoil effectiveParameterList
-  else
-    effectiveParameterList = @()
-    for actual in self.mExpressions, formal in templateSignature do
-      if formal.mFormalSelector.string != actual.mActualSelector.string then
-        let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
-      end
-      actual.mExpression.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-        !?ioUsefulEntitiesGraph,
-        !inferenceType: formal.mFormalArgumentType,
-        inAnalysisContext,
-        !?ioTypeMap,
-        !?ioVariableMap,
-        ?@semanticExpressionForGeneration exp
-      )
-      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-      effectiveParameterList ++= exp
-    end
-  end
-//---
-  outExpression = @filewrapperTemplateInExpressionForGeneration (
-    inAnalysisContext.predefinedTypes.mStringType,
-    self.mFilewrapperName.location,
-    self.mFilewrapperName.string,
-    self.mFilewrapperTemplateName.string,
-    effectiveParameterList)
-}
+//override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
+//  (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+//  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+//  ?inferenceType: let @unifiedTypeMapEntry _inType,
+//  let @analysisContext inAnalysisContext,
+//                                ?!@unifiedTypeMap ioTypeMap,
+//  ?!@localVarManager ioVariableMap,
+//  !@semanticExpressionForGeneration outExpression
+//) {
+//  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (self.mFilewrapperName, self.mFilewrapperTemplateName)
+//  !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
+////---
+//  inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
+//     (self.mFilewrapperName,
+//     ?4*,
+//     ?let @filewrapperTemplateMap filewrapperTemplateMap,
+//     ?let @bool isInternal
+//   )
+////--- Check internal
+//  if isInternal then
+//    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
+//    if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
+//      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
+//    end
+//  end
+////---
+//  filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let [@functionSignatureElement] templateSignature, ?*)
+////--- Analysis arguments
+//  var [@semanticExpressionForGeneration] effectiveParameterList
+//  if self.mExpressions.count != templateSignature.count then
+//    error self.mFilewrapperTemplateName
+//    : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
+//    + templateSignature.count.string + " parameter(s), while this call has "
+//    + self.mExpressions.count.string + " parameter(s)"
+//    spoil effectiveParameterList
+//  else
+//    effectiveParameterList = @()
+//    for actual in self.mExpressions, formal in templateSignature do
+//      if formal.mFormalSelector.string != actual.mActualSelector.string then
+//        let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
+//        error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
+//      end
+//      actual.mExpression.analyzeSemanticExpression
+//        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+//        !?ioUsefulEntitiesGraph,
+//        !inferenceType: formal.mFormalArgumentType,
+//        inAnalysisContext,
+//        !?ioTypeMap,
+//        !?ioVariableMap,
+//        ?@semanticExpressionForGeneration exp
+//      )
+//      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
+//      effectiveParameterList ++= exp
+//    end
+//  end
+////---
+//  outExpression = @filewrapperTemplateInExpressionForGeneration (
+//    inAnalysisContext.predefinedTypes.mStringType,
+//    self.mFilewrapperName.location,
+//    self.mFilewrapperName.string,
+//    self.mFilewrapperTemplateName.string,
+//    effectiveParameterList)
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -239,7 +225,6 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
     ?*,
     ?var @wrapperFileMap filewrapperFileMap,
     ?var @wrapperDirectoryMap filewrapperDirectoryMap,
-    ?*,
     ?let @bool isInternal
   )
 //--- Check internal
@@ -311,41 +296,41 @@ override proc @filewrapperInExpressionForGeneration.generateExpression
 
 //--------------------------------------------------------------------------------------------------
 
-final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
-  public let @string mFilewrapperName
-  public let @string mFilewrapperTemplateName
-  public let [@semanticExpressionForGeneration] mActualOutputParameterList
-}
+//final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+//  public let @string mFilewrapperName
+//  public let @string mFilewrapperTemplateName
+//  public let [@semanticExpressionForGeneration] mActualOutputParameterList
+//}
 
 //································································································
 
-override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  !@string outCppExpression ) {
-//---
-  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-  var parameterList = [@string] ()
-  for expression in self.mActualOutputParameterList do
-    expression.generateExpression
-      (!?ioGeneratedCode,
-      !?ioInclusionSet,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      ?let parameter
-    )
-    parameterList ++= parameter
-  end
-  outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
-                  + " (" + gCompilerCppName
-  for value in parameterList do
-    outCppExpression += ", " + value
-  end
-  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
-  outCppExpression += self.mLocation.commaSourceFile + "))"
-}
+//override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
+//  (?!@string ioGeneratedCode,
+//  ?!@stringset ioInclusionSet,
+//  ?!@uint ioTemporaryVariableIndex,
+//  ?!@stringset ioUnusedVariableCppNameSet,
+//  !@string outCppExpression ) {
+////---
+//  ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
+//  var parameterList = [@string] ()
+//  for expression in self.mActualOutputParameterList do
+//    expression.generateExpression
+//      (!?ioGeneratedCode,
+//      !?ioInclusionSet,
+//      !?ioTemporaryVariableIndex,
+//      !?ioUnusedVariableCppNameSet,
+//      ?let parameter
+//    )
+//    parameterList ++= parameter
+//  end
+//  outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
+//                  + " (" + gCompilerCppName
+//  for value in parameterList do
+//    outCppExpression += ", " + value
+//  end
+//  !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+//  outCppExpression += self.mLocation.commaSourceFile + "))"
+//}
 
 //--------------------------------------------------------------------------------------------------
 
