@@ -17,15 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalRewindInstructionAST : @lexicalInstructionAST {
-  private let @lstring mLexicalTagName
-  private let @lstring mTerminalName
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -46,44 +37,48 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalRewindInstructionAST.checkLexicalInstruction (
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?!@lexicalTagMap ioTagMap) {
-  ioTagMap.searchKey (self.mLexicalTagName)
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mTerminalName, ?*)
-}
+final class @lexicalRewindInstructionAST : @lexicalInstructionAST {
+  private let @lstring mLexicalTagName
+  private let @lstring mTerminalName
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRewindInstructionAST.generateSwiftCocoaInstructionCode (
-  ?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
-  result += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
-}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap ioTagMap) {
+    ioTagMap.searchKey (self.mLexicalTagName)
+    ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mTerminalName, ?*)
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRewindInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)-> @string {
+    result = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
+    result += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
+  }
 
-//·································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRewindInstructionAST.generateLexicalInstructionCode (?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
-  result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
-  result += "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
-  result += "token.mTokenCode = kToken_" + self.mTerminalName.string.identifierRepresentation + " ;\n"
-  result += "enterToken (token) ;\n"
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateLexicalInstructionCode (?let @string _inScannerClassName,
+                                ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
+    result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
+    result += "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
+    result += "token.mTokenCode = kToken_" + self.mTerminalName.string.identifierRepresentation + " ;\n"
+    result += "enterToken (token) ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

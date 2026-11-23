@@ -8330,28 +8330,6 @@ class GGS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_l
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension func '@lexicalInstructionAST generateLexicalInstructionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateLexicalInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
-                                                                     const class GGS_string constin_inScannerClassName,
-                                                                     const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension func '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const class cPtr_lexicalInstructionAST * inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension func '@abstractLexicalRuleAST lexicalRuleUsesLoopLocalVar'
 //
 //--------------------------------------------------------------------------------------------------

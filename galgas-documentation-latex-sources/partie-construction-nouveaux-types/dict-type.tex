@@ -8,33 +8,33 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Un objet de type \ggst+dict+ est un dictionnaire. Contrairement à un objet de type \ggst+map+ , le type de la clé est déclaré explicitement et peut être d'un type quelconque.
+Un objet de type \ggsq+dict+ est un dictionnaire. Contrairement à un objet de type \ggsq+map+ , le type de la clé est déclaré explicitement et peut être d'un type quelconque.
 
-{\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggst+@lstring+, comme la clé implicite d'une \ggst+map+. Toutefois, la sémantique est différente. Dans une \ggst=map=, c'est la composante \ggst=string= de la clé qui est prise en compte comme clé effective. La composante \ggst=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggst=dict=, le type déclaré comme clé est intégralement pris en compte : si la clé d'un \ggst=dict= est un \ggst=@lstring=, la comparaison des clés prend en compte la composante \ggst=string= {\bf et} la composante \ggst=location=.
+{\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggsq+@lstring+, comme la clé implicite d'une \ggsq+map+. Toutefois, la sémantique est différente. Dans une \ggsq=map=, c'est la composante \ggsq=string= de la clé qui est prise en compte comme clé effective. La composante \ggsq=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggsq=dict=, le type déclaré comme clé est intégralement pris en compte : si la clé d'un \ggsq=dict= est un \ggsq=@lstring=, la comparaison des clés prend en compte la composante \ggsq=string= {\bf et} la composante \ggsq=location=.
 
 \section{Déclaration}
 
-\begin{galgas3}
+\begin{galgas4}
 dict @MonDictionnaire : @uint {
   @string mPremier
   @bool mSecond
 }
-\end{galgas3}
+\end{galgas4}
 
-La déclaration d'un type \ggst+dict+ nomme~:
+La déclaration d'un type \ggsq+dict+ nomme~:
 \begin{itemize}
-  \item le nom du type \ggst+dict+ (ici \ggst+@MonDictionnaire+)~;
-  \item le type de la clé (ici \ggst+@uint+)~;
-  \item les propriétés associées (ici \ggst=mPremier= et \ggst=mSecond=).
+  \item le nom du type \ggsq+dict+ (ici \ggsq+@MonDictionnaire+)~;
+  \item le type de la clé (ici \ggsq+@uint+)~;
+  \item les propriétés associées (ici \ggsq=mPremier= et \ggsq=mSecond=).
 \end{itemize}
 
-Les noms \ggst=key=, \ggst=object= et \ggst=desciption= sont interdits pour une propriété.
+Les noms \ggsq=key=, \ggsq=object= et \ggsq=desciption= sont interdits pour une propriété.
 
 On peut déclarer un dictionaire sans propriété, et ainsi gérer des \emph{ensembles} :
 
-\begin{galgas3}
+\begin{galgas4}
 dict @autreDictionnaire : @uint { }
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -53,44 +53,44 @@ Pour initialiser un dictionnaire vide, il y a trois possibilités, sémantiqueme
 \subsectionLabel{Constante \texttt{\{\}}}{constanteDictVide}
 
 Cette constante permet d'instancier un dictionnaire vide. Exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = {}
-\end{galgas3}
+\end{galgas4}
 
 Ou encore~:
 
-\begin{galgas3}
+\begin{galgas4}
 var unDictionnaire = @MonDictionnaire {}
-\end{galgas3}
+\end{galgas4}
 
 \subsectionLabel{Constructeur \texttt{emptyDict}}{constructeurEmptyDict}
 
-Pour instancier un dictionnaire vide, une autre possibilité est d'appeler le constructeur \ggst=emptyDict=. Exemple~:
-\begin{galgas3}
+Pour instancier un dictionnaire vide, une autre possibilité est d'appeler le constructeur \ggsq=emptyDict=. Exemple~:
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = .emptyDict
-\end{galgas3}
+\end{galgas4}
 
 Ou encore~:
 
-\begin{galgas3}
+\begin{galgas4}
 var unDictionnaire = @MonDictionnaire.emptyDict
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionLabel{Constructeur \texttt{default}}{constructeurDictDefault}
 
 
-Un dictionnaire accepte le constructeur \ggst=default=. Exemple~:
-\begin{galgas3}
+Un dictionnaire accepte le constructeur \ggsq=default=. Exemple~:
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = .default
-\end{galgas3}
+\end{galgas4}
 
 Ou encore~:
 
-\begin{galgas3}
+\begin{galgas4}
 var unDictionnaire = @MonDictionnaire.default
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -99,16 +99,16 @@ var unDictionnaire = @MonDictionnaire.default
 
 \section{Insertion}
 
-Un \ggst+dict+ implémente implicitement l'opérateur \ggst:+=: qui permet d'insérer une nouvelle entrée à un dictionnaire. Ses arguments sont, dans l'ordre~: un objet du type de la clé, puis un objet par propriété déclarée. Aucune erreur n'est déclenchée en cas de tentative d'insertion d'une clé déjà existante~; les valeurs des propriétés associées à la clé sont simplement remplacées.
+Un \ggsq+dict+ implémente implicitement l'opérateur \ggsq:+=: qui permet d'insérer une nouvelle entrée à un dictionnaire. Ses arguments sont, dans l'ordre~: un objet du type de la clé, puis un objet par propriété déclarée. Aucune erreur n'est déclenchée en cas de tentative d'insertion d'une clé déjà existante~; les valeurs des propriétés associées à la clé sont simplement remplacées.
 
 Par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = {}
 @uint clef = ...
 @string s = ...
 @uint v = ...
 unDictionnaire += !clef !s !v
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -122,9 +122,9 @@ unDictionnaire += !clef !s !v
 
 \section{Recherche}
 
-Une \ggst+dict+ déclare implicitement la \emph{méthode} de recherche \ggst=searchKey= qui permet de rechercher une entrée d'un dictionnaire, et retourne la valeur de ses propriétés associées. Une erreur est déclenchée si la clé n'existe pas.
+Une \ggsq+dict+ déclare implicitement la \emph{méthode} de recherche \ggsq=searchKey= qui permet de rechercher une entrée d'un dictionnaire, et retourne la valeur de ses propriétés associées. Une erreur est déclenchée si la clé n'existe pas.
 
-La \emph{méthode} de recherche \ggst=searchKey= est appelée dans une \emph{instruction d'appel de méthode}~:
+La \emph{méthode} de recherche \ggsq=searchKey= est appelée dans une \emph{instruction d'appel de méthode}~:
 \begin{itemize}
   \item le premier argument (sortie) est une expression de type de la clé qui caractérise la clé à rechercher~;
   \item ensuite, pour chaque propriété déclarée, un argument en entrée nommant une variable destinée à recevoir la valeur de la propriété correspondante.
@@ -132,12 +132,12 @@ La \emph{méthode} de recherche \ggst=searchKey= est appelée dans une \emph{ins
 
 
 Par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = {}
 ...
 @lstring clef = ...
 [unDictionnaire searchKey !clef ?@string s ?@uint v]
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -148,33 +148,33 @@ Par exemple~:
 
 \section{Retrait}
 
-Un \ggst+dict+ déclare implicitement le \emph{setter} de retrait \ggst=removeKey=. Il permet de retirer une entrée d'un dictionnaire, et retourne la valeur des propriétés associées à la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
+Un \ggsq+dict+ déclare implicitement le \emph{setter} de retrait \ggsq=removeKey=. Il permet de retirer une entrée d'un dictionnaire, et retourne la valeur des propriétés associées à la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
 
 
 
-Le \emph{setter} de retrait \ggst=removeKey= est appelé dans une \emph{instruction d'appel de setter}~:
+Le \emph{setter} de retrait \ggsq=removeKey= est appelé dans une \emph{instruction d'appel de setter}~:
 \begin{itemize}
   \item le premier argument (sortie) est une expression de type de la clé qui caractérise la clé à retirer~;
   \item ensuite, pour chaque propriété déclarée, un argument en entrée nommant une variable destinée à recevoir la valeur de la propriété correspondant de la clé retirée.
 \end{itemize}
 
 Par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @MonDictionnaire unDictionnaire = {}
 ...
 @lstring clef = ...
 [!?unDictionnaire removeKey !clef ?@string s ?@uint v]
-\end{galgas3}
+\end{galgas4}
 
 \section{Getters}
 
 %\subsection{Getter \texttt{allKeyList}}
 %
-%\begin{galgas3}
+%\begin{galgas4}
 %getter @T allKeyList -> @lstringlist
-%\end{galgas3}
+%\end{galgas4}
 %
-%Le \emph{getter} \ggst+allKeyList+ retourne la liste construite avec toutes les clés du récepteur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est~:
+%Le \emph{getter} \ggsq+allKeyList+ retourne la liste construite avec toutes les clés du récepteur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est~:
 %\begin{itemize}
 %  \item d'abord les clés du dictionnaire de premier niveau, puis celles des tables surchargées, dans l'ordre de la surcharge~;
 %  \itel pour chaque table, les clés apparaissent dans l'ordre alphabétique croissant.
@@ -182,41 +182,41 @@ Par exemple~:
 
 \subsection{Getter \texttt{count}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter count -> @uint
-\end{galgas3}
+\end{galgas4}
 
 
-Le \emph{getter} \ggst+count+ retourne un \ggst+@uint+ qui contient le nombre d'entrées du dictionnaire.
+Le \emph{getter} \ggsq+count+ retourne un \ggsq+@uint+ qui contient le nombre d'entrées du dictionnaire.
 
 
 
 \subsection{Getter \texttt{hasKey}}
 
 
-Le \emph{getter} \ggst+hasKey+ retourne un \ggst+@bool+ qui est \ggst+true+ si la clé \ggst+inKey+ est dans le dictionnaire, \ggst+false+ dans le cas contraire.
+Le \emph{getter} \ggsq+hasKey+ retourne un \ggsq+@bool+ qui est \ggsq+true+ si la clé \ggsq+inKey+ est dans le dictionnaire, \ggsq+false+ dans le cas contraire.
 
 
 
 %\subsection{Getter \texttt{keyList}}
 %
-%\begin{galgas3}
+%\begin{galgas4}
 %getter keyList -> @lstringlist
-%\end{galgas3}
+%\end{galgas4}
 %
 %
-%Le \emph{getter} \ggst+keyList+ retourne la liste construite avec toutes les clés du dictionnaire de premier niveau du récepteur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
+%Le \emph{getter} \ggsq+keyList+ retourne la liste construite avec toutes les clés du dictionnaire de premier niveau du récepteur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
 
 
 
 %\subsection{Getter \texttt{keySet}}
 %
-%\begin{galgas3}
+%\begin{galgas4}
 %getter keySet -> @stringset
-%\end{galgas3}
+%\end{galgas4}
 %
 %
-%Le \emph{getter} \ggst+keySet+ retourne l'ensemble de toutes les clés du dictionnaire de premier niveau du récepteur.
+%Le \emph{getter} \ggsq+keySet+ retourne l'ensemble de toutes les clés du dictionnaire de premier niveau du récepteur.
 
 
 
@@ -236,5 +236,5 @@ Le \emph{getter} \ggst+hasKey+ retourne un \ggst+@bool+ qui est \ggst+true+ si l
 
 \section{Énumération}
 
-L'instruction \ggst+for+ permet d'énumérer des objets de type \ggst+dict+ ; elle est décrite à la \refSectionPage{instructionFor}.
+L'instruction \ggsq+for+ permet d'énumérer des objets de type \ggsq+dict+ ; elle est décrite à la \refSectionPage{instructionFor}.
 

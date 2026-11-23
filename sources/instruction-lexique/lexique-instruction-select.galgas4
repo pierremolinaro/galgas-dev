@@ -17,15 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalSelectInstructionAST : @lexicalInstructionAST {
-  private let [@lexicalSelectBranchAST] mLexicalSelectBranchList
-  private let [@lexicalInstructionAST] mDefaultInstructionList
-}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -64,105 +55,108 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalSelectInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap ioTagMap)  {
-  for lexicalSelectBranch in self.mLexicalSelectBranchList do
-    lexicalSelectBranch.mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
+final class @lexicalSelectInstructionAST : @lexicalInstructionAST {
+  private let [@lexicalSelectBranchAST] mLexicalSelectBranchList
+  private let [@lexicalInstructionAST] mDefaultInstructionList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap ioTagMap)  {
+    for lexicalSelectBranch in self.mLexicalSelectBranchList do
+      lexicalSelectBranch.mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
+      var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
+      for entry in lexicalSelectBranch.mSelectInstructionList do
+        entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+      end
+    end
     var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
-    for entry in lexicalSelectBranch.mSelectInstructionList do
+    for entry in self.mDefaultInstructionList do
       entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
     end
-  end
-  var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
-  for entry in self.mDefaultInstructionList do
-    entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string {
-  result = ""
-//---
-  for lexicalSelectBranch in self.mLexicalSelectBranchList
-  do
-    result += "if scanningOk && ("
-    result += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
-    result += ") {\n"
-    !?result.incIndentation (2)
-    for entry in lexicalSelectBranch.mSelectInstructionList do
-      result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string {
+    result = ""
+  //---
+    for lexicalSelectBranch in self.mLexicalSelectBranchList
+    do
+      result += "if scanningOk && ("
+      result += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
+      result += ") {\n"
+      !?result.incIndentation (2)
+      for entry in lexicalSelectBranch.mSelectInstructionList do
+        result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
+    between
+      result += "}else "
     end
-    !?result.decIndentation (2)
-  between
-    result += "}else "
-  end
-//--- Default branch
-  if self.mDefaultInstructionList.count > 0 then
-    result += "}else{\n"
-    !?result.incIndentation (2)
-    for entry in self.mDefaultInstructionList do
-      result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+  //--- Default branch
+    if self.mDefaultInstructionList.count > 0 then
+      result += "}else{\n"
+      !?result.incIndentation (2)
+      for entry in self.mDefaultInstructionList do
+        result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
     end
-    !?result.decIndentation (2)
-  end
-  result += "}\n"
-}
-
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalSelectInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-  for entry in self.mLexicalSelectBranchList while not result do
-    for inst in entry.mSelectInstructionList while not result do
-      result = inst.lexicalInstructionUsesLoopLocalVariable
+    result += "}\n"
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+    for entry in self.mLexicalSelectBranchList while not result do
+      for inst in entry.mSelectInstructionList while not result do
+        result = inst.lexicalInstructionUsesLoopLocalVariable
+      end
     end
-  end
-  for instr in self.mDefaultInstructionList while not result do
-    result = instr.lexicalInstructionUsesLoopLocalVariable
-  end
-}
-
-//·································································································
-
-override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string {
-  result = ""
-//---
-  for lexicalSelectBranch in self.mLexicalSelectBranchList
-  do
-    result += "if ("
-    result += lexicalSelectBranch.mSelectExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
-    result += ") {\n"
-    !?result.incIndentation (2)
-    for instr in lexicalSelectBranch.mSelectInstructionList do
-      result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+    for instr in self.mDefaultInstructionList while not result do
+      result = instr.lexicalInstructionUsesLoopLocalVariable
     end
-    !?result.decIndentation (2)
-  between
-    result += "}else "
-  end
-//--- Default branch
-  if self.mDefaultInstructionList.count > 0 then
-    result += "}else{\n"
-    !?result.incIndentation (2)
-    for instr in self.mDefaultInstructionList do
-      result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                                  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string {
+    result = ""
+  //---
+    for lexicalSelectBranch in self.mLexicalSelectBranchList
+    do
+      result += "if ("
+      result += lexicalSelectBranch.mSelectExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
+      result += ") {\n"
+      !?result.incIndentation (2)
+      for instr in lexicalSelectBranch.mSelectInstructionList do
+        result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
+    between
+      result += "}else "
     end
-    !?result.decIndentation (2)
-  end
-  result += "}\n"
+  //--- Default branch
+    if self.mDefaultInstructionList.count > 0 then
+      result += "}else{\n"
+      !?result.incIndentation (2)
+      for instr in self.mDefaultInstructionList do
+        result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
+    end
+    result += "}\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

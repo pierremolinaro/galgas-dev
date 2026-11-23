@@ -17,31 +17,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
-  private let @lstring mSentTerminal
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3LexiqueComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
-//    $\$terminal\$$ (?let @lstring sentTerminal)
-//    outInstruction = @lexicalSimpleSendInstructionAST (!sentTerminal)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -57,41 +33,42 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap)  {
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mSentTerminal, ?*)
-}
+final class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
+  private let @lstring mSentTerminal
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalSimpleSendInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string {
-  result = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
-}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap)  {
+    ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mSentTerminal, ?*)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateLexicalInstructionCode (?let @string _inScannerClassName,
+                                  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result  = "token.mTokenCode = kToken_" + self.mSentTerminal.string.identifierRepresentation + " ;\n"
+    result += "enterToken (token) ;\n"
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalSimpleSendInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
-
-//·································································································
-
-override func @lexicalSimpleSendInstructionAST.generateLexicalInstructionCode
-  (?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string
-{
-  result  = "token.mTokenCode = kToken_" + self.mSentTerminal.string.identifierRepresentation + " ;\n"
-  result += "enterToken (token) ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

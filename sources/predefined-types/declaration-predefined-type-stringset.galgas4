@@ -150,23 +150,23 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"count",
-      !returnedTypeName:"u32",
-      !hasCompilerArgument:false
+      !getterName: "count",
+      !returnedTypeName: "u32",
+      !hasCompilerArgument: false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"anyString",
-      !returnedTypeName:"string",
-      !hasCompilerArgument:true
+      !getterName: "any",
+      !returnedTypeName: "string",
+      !hasCompilerArgument: true
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"stringArray",
-      !returnedTypeName:"[string]",
-      !hasCompilerArgument:false
+      !getterName: "array",
+      !returnedTypeName: "[string]",
+      !hasCompilerArgument: false
     )
   }
 

@@ -20,16 +20,16 @@ D'une manière classique, une expression est constituée d'\emph{opérandes} (\r
 
 \subsection{\texttt{self}}\index{self}
 
-Dans une expression, \ggst+self+ représente une copie de l'objet courant. On ne peut donc utiliser \ggst+self+ que dans une expression à l'intérieur d'une \emph{méthode}, d'un \emph{getter}, d'un \emph{setter}, ou d'une extension (\refChapterPage{chapitreExtensions}). Sont donc exclues les procédures et les fonctions.
+Dans une expression, \ggsq+self+ représente une copie de l'objet courant. On ne peut donc utiliser \ggsq+self+ que dans une expression à l'intérieur d'une \emph{méthode}, d'un \emph{getter}, d'un \emph{setter}, ou d'une extension (\refChapterPage{chapitreExtensions}). Sont donc exclues les procédures et les fonctions.
 
-\ggst+self+ effectue un accès en lecture seule de l'objet courant.
+\ggsq+self+ effectue un accès en lecture seule de l'objet courant.
 
 Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryGetter}) :
-\begin{galgas3}
+\begin{galgas4}
 getter @uint64 square -> @uint64 outResult {
   outResult = self * self
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -46,13 +46,13 @@ Cette construction est obsolète, et est remplacée avantageusement par l'\emph{
 
 La syntaxe de l'\emph{expression de conversion polymorphique inverse} est :
 
-\begin{galgas3box}
+\begin{galgas4box}
 expression as @T
-\end{galgas3box}
+\end{galgas4box}
 
-Elle permet de renvoyer la valeur de \ggst+expression+ sous la forme d'un objet de type statique \ggst+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggst+expression+ n'est pas \ggst+@T+ ou une de ses classes héritières~; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
+Elle permet de renvoyer la valeur de \ggsq+expression+ sous la forme d'un objet de type statique \ggsq+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggsq+expression+ n'est pas \ggsq+@T+ ou une de ses classes héritières~; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
-Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \ggst+cast+ (\refSectionPage{instructionCast}).
+Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \ggsq+cast+ (\refSectionPage{instructionCast}).
 
 
 
@@ -62,18 +62,18 @@ Pour tester le type dynamique de l'expression avant d'effectuer la conversion, u
 
 \subsectionLabel{Test du type dynamique d'une expression}{testTypeDynamiqueExpression}
 
-L'opérande \ggst+expression is conversion @T+ teste le type dynamique de \ggst+expression+ vis à vis du type \ggst+@T+ :
+L'opérande \ggsq+expression is conversion @T+ teste le type dynamique de \ggsq+expression+ vis à vis du type \ggsq+@T+ :
 \begin{itemize}
-\item si \ggst+conversion+ est \ggst+==+, la valeur renvoyée est \ggst+true+ si le type dynamique de l'\ggst+expression+ est exactement \ggst+@T+, et \ggst+false+ dans le cas contraire~;
-\item si \ggst+conversion+ est  \ggst+>=+, la valeur renvoyée est \ggst+true+ si le type dynamique de l'\ggst+expression+ est \ggst+@T+ ou une de ses classes héritières, et \ggst+false+ dans le cas contraire~;
-\item si \ggst+conversion+ est  \ggst+>+, la valeur renvoyée est \ggst+true+ si le type dynamique de l'\ggst+expression+ n'est pas \ggst+@T+ mais une de ses classes héritières, et \ggst+false+ dans le cas contraire.
+\item si \ggsq+conversion+ est \ggsq+==+, la valeur renvoyée est \ggsq+true+ si le type dynamique de l'\ggsq+expression+ est exactement \ggsq+@T+, et \ggsq+false+ dans le cas contraire~;
+\item si \ggsq+conversion+ est  \ggsq+>=+, la valeur renvoyée est \ggsq+true+ si le type dynamique de l'\ggsq+expression+ est \ggsq+@T+ ou une de ses classes héritières, et \ggsq+false+ dans le cas contraire~;
+\item si \ggsq+conversion+ est  \ggsq+>+, la valeur renvoyée est \ggsq+true+ si le type dynamique de l'\ggsq+expression+ n'est pas \ggsq+@T+ mais une de ses classes héritières, et \ggsq+false+ dans le cas contraire.
 \end{itemize}
 
 
 
 Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
 
-\begin{galgas3}
+\begin{galgas4}
 if expression is == @B then
   let @B cst = expression as @B
   ...
@@ -83,7 +83,7 @@ elsif expression is >= @C then
 else
   message "conversion impossible"
 end
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -91,7 +91,7 @@ end
 
 \subsection{Parenthèses}
 
-Les parenthèses \ggst+(+ et \ggst+)+ permettent de forcer le groupement d'opérandes.
+Les parenthèses \ggsq+(+ et \ggsq+)+ permettent de forcer le groupement d'opérandes.
 
 
 
@@ -100,7 +100,7 @@ Les parenthèses \ggst+(+ et \ggst+)+ permettent de forcer le groupement d'opér
 
 \subsection{\texttt{true} et \texttt{false}}
 
-\ggst+true+ et \ggst+false+ sont les constantes du type \ggst+@bool+.
+\ggsq+true+ et \ggsq+false+ sont les constantes du type \ggsq+@bool+.
 
 \subsection{Constante chaîne de caractères}
 
@@ -110,11 +110,11 @@ Les parenthèses \ggst+(+ et \ggst+)+ permettent de forcer le groupement d'opér
 
 Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \texttt{\_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
 \begin{itemize}
-  \item pas de suffixe : \ggst+@uint+~;
-  \item suffixe \texttt{S} : \ggst+@sint+~;
-  \item suffixe \texttt{L} : \ggst+@uint64+~;
-  \item suffixe \texttt{LS} : \ggst+@sint64+~;
-  \item suffixe \texttt{G} : \ggst+@bigint+.
+  \item pas de suffixe : \ggsq+@uint+~;
+  \item suffixe \texttt{S} : \ggsq+@sint+~;
+  \item suffixe \texttt{L} : \ggsq+@uint64+~;
+  \item suffixe \texttt{LS} : \ggsq+@sint64+~;
+  \item suffixe \texttt{G} : \ggsq+@bigint+.
 \end{itemize}
 
 \subsection{Constante flottante}
@@ -136,15 +136,15 @@ Une constante entière est une séquence de chiffres décimaux, éventuellement 
 
 L'appel d'un constructeur instancie un nouvel objet. Sa syntaxe est :
 
-\begin{galgas3box}
+\begin{galgas4box}
 @T.constructeur {!exp0 !exp1 ...}
-\end{galgas3box}
+\end{galgas4box}
 
 Par exemple :
-\begin{galgas3}
+\begin{galgas4}
 @lstring ls = @lstring.new {!"" !@location.here{}}
 @stringlist str = @lstringlist.emptyList {}
-\end{galgas3}
+\end{galgas4}
 
 Deux simplifications syntaxiques sont proposées :
 \begin{itemize}
@@ -157,21 +157,21 @@ Deux simplifications syntaxiques sont proposées :
 
 Si la liste des arguments est vide, les accolades peuvent être omises.
 
-\begin{galgas3}
+\begin{galgas4}
 @lstring ls = @lstring.new {!"" !@location.here}
 @stringlist str = @lstringlist.emptyList
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsubsection{Inférence du type}
 
-Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \ggst+@location.here+ qui peut être simplifié en \ggst+.here+.
+Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \ggsq+@location.here+ qui peut être simplifié en \ggsq+.here+.
 
-\begin{galgas3}
+\begin{galgas4}
 @lstring ls = .new {!"" !.here}
 @stringlist str = .emptyList
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -191,13 +191,13 @@ Si le type peut être inféré, il peut être omis (remarquer que ceci est valab
 
 \subsectionLabel{Valeur d'une option}{appelOption}
 
-Les options de la ligne de commande sont définies dans un composant \ggst+option+ (\refChapterPage{composantOption}). L'opérande \emph{appel d'option} permet d'obtenir des informations sur une option.
+Les options de la ligne de commande sont définies dans un composant \ggsq+option+ (\refChapterPage{composantOption}). L'opérande \emph{appel d'option} permet d'obtenir des informations sur une option.
 
-Sa syntaxe est \ggst+[option nom_composant_option.nom_option nom_info]+, où :
+Sa syntaxe est \ggsq+[option nom_composant_option.nom_option nom_info]+, où :
 \begin{itemize}
-  \item \ggst+nom_composant_option+ est le nom du composant \ggst+option+ qui déclare l'option~;
-  \item \ggst+nom_option+ est le nom donné à l'option lors de sa déclaration~;
-  \item \ggst+nom_info+ est le nom de l'information dont la valeur sera retournée par l'opérande.
+  \item \ggsq+nom_composant_option+ est le nom du composant \ggsq+option+ qui déclare l'option~;
+  \item \ggsq+nom_option+ est le nom donné à l'option lors de sa déclaration~;
+  \item \ggsq+nom_info+ est le nom de l'information dont la valeur sera retournée par l'opérande.
 \end{itemize}
 
 
@@ -206,28 +206,28 @@ Les informations qui peuvent être ainsi obtenues sont décrites dans le \refTab
   \centering
   \begin{tabular}{llll}
   \textbf{nom\_info} & \textbf{Commentaire}  & \textbf{Type de la valeur retournée}\\
-  \ggst+value+ & Valeur de l'option & \ggst+@T+ (le type de l'option)\\
-  \ggst+char+ & Caractère d'appel de l'option & \ggst+@char+\\
-  \ggst+string+ & Chaîne d'appel de l'option & \ggst+@string+\\
-  \ggst+comment+ & Description de l'option & \ggst+@string+\\
+  \ggsq+value+ & Valeur de l'option & \ggsq+@T+ (le type de l'option)\\
+  \ggsq+char+ & Caractère d'appel de l'option & \ggsq+@char+\\
+  \ggsq+string+ & Chaîne d'appel de l'option & \ggsq+@string+\\
+  \ggsq+comment+ & Description de l'option & \ggsq+@string+\\
   \end{tabular}
   \caption{Informations relatives à une option de la ligne de commande}
   \labelTableau{infosDeAppelOption}
 \end{table}
 
-Par exemple, si un composant \ggst+option+ est déclaré comme suit :
-\begin{galgas3}
+Par exemple, si un composant \ggsq+option+ est déclaré comme suit :
+\begin{galgas4}
 option mesOptions {
   @bool extractOption : 'S', "asm" -> "Extract assembly code"
 }
-\end{galgas3}
+\end{galgas4}
 
 Alors :
 \begin{itemize}
-  \item \ggst+[option mesOptions.extractOption value]+ renvoie un \ggst+@bool+ qui vaut \ggst+true+ si l'option a été activée, \ggst+false+ dans le cas contraire~;
-  \item \ggst+[option mesOptions.extractOption char]+ renvoie un \ggst+@char+ qui vaut \ggst+'S'+~;
-  \item \ggst+[option mesOptions.extractOption string]+ renvoie un \ggst+@string+ qui vaut \ggst+"asm"+~;
-  \item \ggst+[option mesOptions.extractOption comment]+ renvoie un \ggst+@string+ qui vaut \ggst+"Extract assembly code"+.
+  \item \ggsq+[option mesOptions.extractOption value]+ renvoie un \ggsq+@bool+ qui vaut \ggsq+true+ si l'option a été activée, \ggsq+false+ dans le cas contraire~;
+  \item \ggsq+[option mesOptions.extractOption char]+ renvoie un \ggsq+@char+ qui vaut \ggsq+'S'+~;
+  \item \ggsq+[option mesOptions.extractOption string]+ renvoie un \ggsq+@string+ qui vaut \ggsq+"asm"+~;
+  \item \ggsq+[option mesOptions.extractOption comment]+ renvoie un \ggsq+@string+ qui vaut \ggsq+"Extract assembly code"+.
 \end{itemize}
 
 Noter qu'à partir de la version 3.1.4, les options \emph{quiet} et \emph{verbose} (\refSubsectionPage{optionsQuietVerbose}) ne peuvent pas être appelées par cette construction : il faut utiliser le \refConstructorPage{application}{verboseOutput}.
@@ -240,31 +240,31 @@ Noter qu'à partir de la version 3.1.4, les options \emph{quiet} et \emph{verbos
 
 \subsectionLabel{Priorité des opérateurs}{prioriteOperateurs}
 
-La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \ggst*4 + 3 - 2 - 3* est équivalent à \ggst*((4 + 3) - 2) - 3*.
+La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \ggsq*4 + 3 - 2 - 3* est équivalent à \ggsq*((4 + 3) - 2) - 3*.
 
 \begin{table}[t]
   \small
   \centering
   \begin{tabular}{llll}
   \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\
-  0 (plus faible) & \ggst+|+ & « ou » logique & \refSubsectionPage{operateursLogiques}\\
-    & \ggst+||+ & « ou », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
-    & \ggst+^+ & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
-  1 & \ggst+&+ & « et » logique & \refSubsectionPage{operateursLogiques}\\
-    & \ggst+&&+ & « et », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
-  2 & \ggst+==+, \ggst+!=+ & Test d'identité & \refSubsectionPage{operateursComparaison}\\
-    & \ggst+<+, \ggst+<=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
-    & \ggst+>+, \ggst+>=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
-  3 & \ggst+<<+, \ggst+>>+ & Décalage & \refSubsectionPage{operateursDecalage}\\
-    & \ggst*+*, \ggst*&+* & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
-    & \ggst+-+, \ggst+&-+ & Soustraction & \refSubsectionPage{operateursArithmétique}\\
-  4 & \ggst+*+,  \ggst+&*+ & Multiplication & \refSubsectionPage{operateursArithmétique}\\
-    & \ggst+/+, \ggst+&/+ & Division & \refSubsectionPage{operateursArithmétique}\\
-    & \ggst+mod+ & Modulo & \refSubsectionPage{operateursArithmétique}\\
-  5 & \ggst+-+, \ggst+&-+ & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
-  6 & \ggst+not+ & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
-  7 & \ggst+~+ & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
-  8 (plus forte) & \ggst+.+ & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
+  0 (plus faible) & \ggsq+|+ & « ou » logique & \refSubsectionPage{operateursLogiques}\\
+    & \ggsq+||+ & « ou », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
+    & \ggsq+^+ & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
+  1 & \ggsq+&+ & « et » logique & \refSubsectionPage{operateursLogiques}\\
+    & \ggsq+&&+ & « et », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
+  2 & \ggsq+==+, \ggsq+!=+ & Test d'identité & \refSubsectionPage{operateursComparaison}\\
+    & \ggsq+<+, \ggsq+<=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
+    & \ggsq+>+, \ggsq+>=+ & Comparaison & \refSubsectionPage{operateursComparaison}\\
+  3 & \ggsq+<<+, \ggsq+>>+ & Décalage & \refSubsectionPage{operateursDecalage}\\
+    & \ggsq*+*, \ggsq*&+* & Addition, concaténation & \refSubsectionPage{operateursArithmétique}\\
+    & \ggsq+-+, \ggsq+&-+ & Soustraction & \refSubsectionPage{operateursArithmétique}\\
+  4 & \ggsq+*+,  \ggsq+&*+ & Multiplication & \refSubsectionPage{operateursArithmétique}\\
+    & \ggsq+/+, \ggsq+&/+ & Division & \refSubsectionPage{operateursArithmétique}\\
+    & \ggsq+mod+ & Modulo & \refSubsectionPage{operateursArithmétique}\\
+  5 & \ggsq+-+, \ggsq+&-+ & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
+  6 & \ggsq+not+ & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
+  7 & \ggsq+~+ & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
+  8 (plus forte) & \ggsq+.+ & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
   \end{tabular}
   \caption{Priorité des opérateurs}
   \labelTableau{prioriteOperateurs}
@@ -272,15 +272,15 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Logique}{operateursLogiques}
 
-\ggst+|+, \ggst+^+, \ggst+&+, \ggst+not+
+\ggsq+|+, \ggsq+^+, \ggsq+&+, \ggsq+not+
 
 \subsectionLabel{Logique, évaluation en court-circuit}{operateursCourtCircuit}
 
-\ggst+||+ et \ggst+&&+
+\ggsq+||+ et \ggsq+&&+
 
 \subsectionLabel{Complémentation bit-à-bit}{complementationBitABit}
 
- \ggst+~+
+ \ggsq+~+
 
 
 \subsectionLabel{Comparaison}{operateursComparaison}
@@ -288,27 +288,27 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Décalage}{operateursDecalage}
 
-\ggst+<<+ et \ggst+>>+
+\ggsq+<<+ et \ggsq+>>+
 
 \subsectionLabel{Arithmétique}{operateursArithmétique}
 
-GALGAS propose des opérateurs arithmétiques qui détectent les dépassements de capacité : \ggst*+*, \ggst+-+, \ggst+*+. Une erreur est déclenchée à chaque débordement.
+GALGAS propose des opérateurs arithmétiques qui détectent les dépassements de capacité : \ggsq*+*, \ggsq+-+, \ggsq+*+. Une erreur est déclenchée à chaque débordement.
 
-L'opérateur de division \ggst+/+ déclenche une erreur lors d'une division par zéro. Pour les types signés, une erreur est aussi déclenchée par la division de \ggst+@sint.min+ par \ggst+-1S+, et la division de \ggst+@sint64.min+ par \ggst+-1LS+.
+L'opérateur de division \ggsq+/+ déclenche une erreur lors d'une division par zéro. Pour les types signés, une erreur est aussi déclenchée par la division de \ggsq+@sint.min+ par \ggsq+-1S+, et la division de \ggsq+@sint64.min+ par \ggsq+-1LS+.
 
-Ces opérateurs ne détectent pas un dépassement de capacité : \ggst*&+*, \ggst+&-+, \ggst+&*+, et fonctionnent donc comme les opérateurs arithmétiques du C.
+Ces opérateurs ne détectent pas un dépassement de capacité : \ggsq*&+*, \ggsq+&-+, \ggsq+&*+, et fonctionnent donc comme les opérateurs arithmétiques du C.
 
-L'opérateur de division \ggst+&/+ ne déclenche aucune erreur lors d'une division par zéro, la valeur renvoyée est zéro. La division de \ggst+@sint.min+ par \ggst+-1S+ retourne \ggst+@sint.min+, et celle de \ggst+@sint64.min+ par \ggst+-1LS+ retourne \ggst+@sint64.min+.
+L'opérateur de division \ggsq+&/+ ne déclenche aucune erreur lors d'une division par zéro, la valeur renvoyée est zéro. La division de \ggsq+@sint.min+ par \ggsq+-1S+ retourne \ggsq+@sint.min+, et celle de \ggsq+@sint64.min+ par \ggsq+-1LS+ retourne \ggsq+@sint64.min+.
 
-L'opérateur \ggst+mod+ déclenche une erreur en cas de division par zéro.
+L'opérateur \ggsq+mod+ déclenche une erreur en cas de division par zéro.
 
-La négation arithmétique (opérateur \ggst+-+ unaire) est uniquement définie sur les types entiers signés, et détecte les débordements provoqués par \ggst+- @sint.min+ et \ggst+- @sint64.min+.
+La négation arithmétique (opérateur \ggsq+-+ unaire) est uniquement définie sur les types entiers signés, et détecte les débordements provoqués par \ggsq+- @sint.min+ et \ggsq+- @sint64.min+.
 
-Il existe un second opérateur de négation arithmétique (\ggst+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggst+&- @sint.min+ renvoie \ggst+@sint.min+ et \ggst+&- @sint64.min+ renvoie  \ggst+@sint64.min+.
+Il existe un second opérateur de négation arithmétique (\ggsq+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggsq+&- @sint.min+ renvoie \ggsq+@sint.min+ et \ggsq+&- @sint64.min+ renvoie  \ggsq+@sint64.min+.
 
 
-On peut tester l'absence de débordement grâce aux \emph{getters} \ggst+canAdd+, \ggst+canSubstract+, \ggst+canMultiply+ et \ggst+canDivide+, définis pour les quatre types \ggst+@uint+, \ggst+@uint64+, \ggst+@sint+ et \ggst+@sint64+. Si ces \emph{getters} renvoient \ggst+true+, alors les opérations correspondantes s'effectueront sans débordement. Par exemple :
-\begin{galgas3}
+On peut tester l'absence de débordement grâce aux \emph{getters} \ggsq+canAdd+, \ggsq+canSubstract+, \ggsq+canMultiply+ et \ggsq+canDivide+, définis pour les quatre types \ggsq+@uint+, \ggsq+@uint64+, \ggsq+@sint+ et \ggsq+@sint64+. Si ces \emph{getters} renvoient \ggsq+true+, alors les opérations correspondantes s'effectueront sans débordement. Par exemple :
+\begin{galgas4}
 @uint a = ...
 @uint b = ...
 if [a canAdd !b] then
@@ -316,11 +316,11 @@ if [a canAdd !b] then
 else
   # L'addition provoquerait un débordement
 end
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionLabel{Accès à un champ d'une structure}{accesChampStructure}
 
-\ggst+.+
+\ggsq+.+
 
 

@@ -11,27 +11,27 @@
 
 \section{Déclaration}
 
-La déclaration d'un type \ggst+enum+ nomme l'ensemble des constantes du type énuméré. Plusieurs types énumérés peuvent définir des constantes de même nom. Dans ce premier exemple, les constantes n'ont pas de valeur associée.
+La déclaration d'un type \ggsq+enum+ nomme l'ensemble des constantes du type énuméré. Plusieurs types énumérés peuvent définir des constantes de même nom. Dans ce premier exemple, les constantes n'ont pas de valeur associée.
 
 Par exemple :
 
-\begin{galgas34}
+\begin{galgas4}
 enum @feuTricolore {
   case vert
   case orange
   case rouge
 }
-\end{galgas34}
+\end{galgas4}
 
 Il est possible d'associer plusieurs valeurs à chaque constante d'un type énuméré. Par exemple~:
 
-\begin{galgas3}
+\begin{galgas4}
 enum @monOption {
   case noOption
   case option1 (@string name)
   case option2 (@uint value @string name)
 }
-\end{galgas3}
+\end{galgas4}
 
 \begin{galgas4}
 enum @monOption {
@@ -52,35 +52,35 @@ Chaque valeur associée est spécifiée par son type et son nom. Noter la virgul
 
 Chaque constante définit un initialisateur de même nom. Si la constante n'a pas de valeur associée, on écrit :
 
-\begin{galgas34}
+\begin{galgas4}
 var @feuTricolore feu = @feuTricolore.vert ()
-\end{galgas34}
+\end{galgas4}
 
 Les parenthèses peuvent être omises :
-\begin{galgas34}
+\begin{galgas4}
 var @feuTricolore feu = @feuTricolore.vert
-\end{galgas34}
+\end{galgas4}
 
 L'annotation de type peut être omise :
 
-\begin{galgas34}
+\begin{galgas4}
 var @feuTricolore feu = .vert
-\end{galgas34}
+\end{galgas4}
 
-\begin{galgas34}
+\begin{galgas4}
 var feu = @feuTricolore.vert
-\end{galgas34}
+\end{galgas4}
 
 
 Si la constante présente des valeurs associées, l'initialisateur présente autant d'arguments, chaque ayant comme étiquette le nom donné dans la déclaration~:
 
-\begin{galgas3}
+\begin{galgas4}
 var @monOption feu = @monOption.option2 {!name: "toto" !value: 0}
-\end{galgas3}
+\end{galgas4}
 
-\begin{galgas34}
+\begin{galgas4}
 var @monOption feu = @monOption.option2 (!name: "toto", !value: 0)
-\end{galgas34}
+\end{galgas4}
 
 Comme dans l'exemple précédent, l'annotation de type peut être omise.
 
@@ -93,61 +93,61 @@ Comme dans l'exemple précédent, l'annotation de type peut être omise.
 
 \section{L'instruction \texttt{switch}}
 
-L'instruction \ggst+switch+ (\refSectionPage{instructionSwitch}) est dédiée à tous les types énumérés. On écrit par exemple :
+L'instruction \ggsq+switch+ (\refSectionPage{instructionSwitch}) est dédiée à tous les types énumérés. On écrit par exemple :
 
-\begin{galgas34}
+\begin{galgas4}
 var @feuTricolore feu = ...
 switch feu
 case vert : ...
 case orange : ...
 case rouge : ...
 end
-\end{galgas34}
+\end{galgas4}
 
-Chaque constante doit apparaître une et une seule fois~: l'instruction \ggst+switch+ est exhaustive.
+Chaque constante doit apparaître une et une seule fois~: l'instruction \ggsq+switch+ est exhaustive.
 
 Si une constante présente des valeurs associées, alors elles doivent toutes être mentionnées~:
 
-\begin{galgas3}
+\begin{galgas4}
 var @monOption uneOption = ...
 switch uneOption
 case noOption : ...
 case option1 (@string unNom) : ...
 case option2 (@uint unEntier @string unNom) : ...
 end
-\end{galgas3}
+\end{galgas4}
 
 L'annotation de type d'une valeur associée peut être omise~:
 
-\begin{galgas3}
+\begin{galgas4}
 var @monOption uneOption = ...
 switch uneOption
 case noOption : ...
 case option1 (unNom) : ...
 case option2 (unEntier unNom) : ...
 end
-\end{galgas3}
+\end{galgas4}
 
 Si une valeur associée n'est pas utile, on peut remplacer son nom par un joker~:
-\begin{galgas3}
+\begin{galgas4}
 var @monOption uneOption = ...
 switch uneOption
 case noOption : ...
 case option1 (unNom) : ...
 case option2 (unEntier *) : ...
 end
-\end{galgas3}
+\end{galgas4}
 
 Plusieurs \emph{jokers} consécutifs peuvent être regroupés~:
 
-\begin{galgas3}
+\begin{galgas4}
 var @monOption uneOption = ...
 switch uneOption
 case noOption : ...
 case option1 (unNom) : ...
 case option2 (2*) : ...
 end
-\end{galgas3}
+\end{galgas4}
 
 En GALGAS4, les valeurs associées consécutives doivent être séparées par des virgules~:
 
@@ -186,11 +186,11 @@ func @monOption.isNoOption () -> @bool
 func @monOption.isOption1 () -> @bool
 func @monOption.isOption2 () -> @bool
 \end{galgas4}
-\begin{galgas3}
+\begin{galgas4}
 func @monOption isNoOption -> @bool
 func @monOption isOption1 -> @bool
 func @monOption isOption2 -> @bool
-\end{galgas3}
+\end{galgas4}
 
 Ainsi~:
 
@@ -200,12 +200,12 @@ let @bool b = v.isNoOption // b est true
 v = @monOption.option1 (!name: "xyz")
 let @bool c = v.isNoOption // c est false
 \end{galgas4}
-\begin{galgas3}
+\begin{galgas4}
 var v = @monOption.noOption
 let @bool b = [v isNoOption] // b est true
 v = @monOption.option1 (!name: "xyz")
 let @bool c = [v isNoOption] // c est false
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -229,10 +229,10 @@ Les \emph{getter} associés ont pour signature~:
 func @monOption.getOption1 () -> @monOption.@option1?
 func @monOption.getOption2 () -> @monOption.@option2?
 \end{galgas4}
-\begin{galgas3}
+\begin{galgas4}
 func @monOption getOption1 -> @monOption.@option1?
 func @monOption getOption2 -> @monOption.@option2?
-\end{galgas3}
+\end{galgas4}
 
 Pour accéder aux aux valeurs associées, il faut extraire la valeur embarquée dans la valeur optionnelle renvoyée, ce qui peut être fait dans une instruction \ggsq!if!~:
 
@@ -248,7 +248,7 @@ else
 end
 \end{galgas4}
 
-\begin{galgas3}
+\begin{galgas4}
 var v = ...
 if let x = [v getOption1] then
   // Ici, v a pour valeur option1
@@ -258,7 +258,7 @@ else
   // Ici, v a pour une valeur autre que option1
   // et x n'est pas accessible
 end
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -283,31 +283,31 @@ Les \emph{méthodes} associées ont pour signature~:
 proc @monOption.extractOption1 (!unNom: @string outNom)
 proc @monOption.extractOption2 (!unEntier: @uint outEntier, !unNom: @string outNom)
 \end{galgas4}
-\begin{galgas3}
+\begin{galgas4}
 method @monOption extractOption1 !unNom: @string outNom
 method @monOption extractOption2 !unEntier: @uint outEntier !unNom: @string outNom
-\end{galgas3}
+\end{galgas4}
 
 Ces méthodes peuvent s'utiliser comme suit~:
 \begin{galgas4}
 var v = ...
 if v.isOption1 then
-  v.extractOption1 (?unNom: let nom) 
+  v.extractOption1 (?unNom: let nom)
   // Ici, 'nom' a pour valeur la valeur associée
 else
   // ...
 end
 \end{galgas4}
 
-\begin{galgas3}
+\begin{galgas4}
 var v = ...
 if v.isOption1 then
-  [v extractOption1 ?unNom: let nom] 
+  [v extractOption1 ?unNom: let nom]
   // Ici, 'nom' a pour valeur la valeur associée
 else
   // ...
 end
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -327,17 +327,17 @@ Par défaut, un type enuméré n'accepte aucun des six opérateurs de comparaiso
 
 \subsection{L'attribut \texttt{\%equatable}}
 
-Si le type énuméré est déclaré avec l'attribut \ggsq!%equatable!, alors les opérateurs \ggst+==+, \ggst+!=+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%equatable! ou \ggsq!%comparable!.
+Si le type énuméré est déclaré avec l'attribut \ggsq!%equatable!, alors les opérateurs \ggsq+==+, \ggsq+!=+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%equatable! ou \ggsq!%comparable!.
 
 Comme aucune relation d'ordre n'est définie, l'ordre de déclaration des constantes est sans importance.
 
-\begin{galgas3}
+\begin{galgas4}
 enum @monOption %equatable {
   case noOption
   case option1 (@string name)
   case option2 (@uint value @string name)
 }
-\end{galgas3}
+\end{galgas4}
 
 \begin{galgas4}
 enum @monOption %equatable {
@@ -350,15 +350,15 @@ enum @monOption %equatable {
 
 \subsection{L'attribut \texttt{\%comparable}}
 
-Si le type énuméré est déclaré avec l'attribut \ggsq!%comparable!, alors les six opérateurs \ggst+==+, \ggst+!=+, \ggsq+<+, \ggsq+<=+, \ggsq+>+ et \ggsq+>+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%comparable!.
+Si le type énuméré est déclaré avec l'attribut \ggsq!%comparable!, alors les six opérateurs \ggsq+==+, \ggsq+!=+, \ggsq+<+, \ggsq+<=+, \ggsq+>+ et \ggsq+>+ sont définis. Ceci exige que tous les types des valeurs associées soient eux-mêmes \ggsq!%comparable!.
 
-\begin{galgas3}
+\begin{galgas4}
 enum @monOption %comparable {
   case noOption
   case option1 (@string name)
   case option2 (@uint value @string name)
 }
-\end{galgas3}
+\end{galgas4}
 
 \begin{galgas4}
 enum @monOption %comparable {
@@ -370,7 +370,7 @@ enum @monOption %comparable {
 
 L'ordre est lexicographique : c'est celui de la déclaration, c'est-à-dire que \ggsq!@monOption.noOption < @monOption.option1! et \ggsq!@monOption.option1 < @monOption.option2!.
 
-Pour les constantes ayant des valeurs associées, l'ordre est obtenu en comparant ces valeurs les unes après les autres~: par exemple pour \ggsq!option2!, on compare d'abord \ggsq!value!, puis \ggsq!name!. 
+Pour les constantes ayant des valeurs associées, l'ordre est obtenu en comparant ces valeurs les unes après les autres~: par exemple pour \ggsq!option2!, on compare d'abord \ggsq!value!, puis \ggsq!name!.
 
 
 
@@ -384,7 +384,7 @@ Pour les constantes ayant des valeurs associées, l'ordre est obtenu en comparan
 
 Associer des valeurs à chaque constante permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
 
-\begin{galgas34}
+\begin{galgas4}
 rule <regleProduction> {
   select
   or
@@ -392,12 +392,12 @@ rule <regleProduction> {
     $identifier$ (?let nomOption)
   end
 }
-\end{galgas34}
+\end{galgas4}
 
 Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
 
 \textbf{Première solution.} La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
-\begin{galgas34}
+\begin{galgas4}
 rule <regleProduction> {
   let @lstring nomOption
   select
@@ -407,7 +407,7 @@ rule <regleProduction> {
     $identifier$ (?nomOption)
   end
 }
-\end{galgas34}
+\end{galgas4}
 
 Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considérée comme l'absence d'option.
 
@@ -445,7 +445,7 @@ enum @option {
 }
 \end{galgas4}
 
-À la constante \ggst+optionPresente+ est associée une valeur de type \ggst+@lstring+, identifiée par le nom \ggst+name+. La construction est maintenant réalisée par :
+À la constante \ggsq+optionPresente+ est associée une valeur de type \ggsq+@lstring+, identifiée par le nom \ggsq+name+. La construction est maintenant réalisée par :
 \begin{galgas4}
 rule <regleProduction> {
   let @option optionAST

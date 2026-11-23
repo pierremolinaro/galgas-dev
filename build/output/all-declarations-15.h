@@ -2783,19 +2783,6 @@ class GGS_lexicalStructuredSendInstructionAST_2E_weak : public GGS_lexicalInstru
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStructuredSendInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalRoutineCallArgument (class cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          class GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
-                                                          const class GGS_lexicalArgumentModeAST constin__5F_inLexicalRoutineFormalArgumentMode,
-                                                          const class GGS_lexicalTypeEnum constin__5F_inLexicalRoutineFormalArgumentType,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @routinePrototypeDeclarationForGeneration_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 

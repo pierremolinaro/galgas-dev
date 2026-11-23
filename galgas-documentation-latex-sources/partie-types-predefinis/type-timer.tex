@@ -6,30 +6,30 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Le type \ggst!@timer! permet de mesurer des durées d'exécution de portions de code ; une utilisation typique est :
+Le type \ggsq!@timer! permet de mesurer des durées d'exécution de portions de code ; une utilisation typique est :
 
-\begin{galgas3}
+\begin{galgas4}
 var @timer t = .start
   # instructions
 message "Durée : " + [t string] + "\n" # Affiche la durée d'exécution des instructions
-\end{galgas3}
+\end{galgas4}
 
 
 \section{Constructeurs}
 
-Le type \ggst!@timer! accepte deux constructeurs :
+Le type \ggsq!@timer! accepte deux constructeurs :
 \begin{itemize}
-  \item le contructeur \ggst!start! ;
+  \item le contructeur \ggsq!start! ;
 \end{itemize}
 
 
 \subsectionConstructor{start}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 constructor @timer start -> @timer
-\end{galgas3box}
+\end{galgas4box}
 
-Appeler le constructeur \ggst!start! est la seule façon d'instancier un objet \ggst!@timer!. Le chronomètre est enclenché, c'est-à-dire qu'il compte la durée à partir de laquelle le constructeur \ggst!start! a été appelé.
+Appeler le constructeur \ggsq!start! est la seule façon d'instancier un objet \ggsq!@timer!. Le chronomètre est enclenché, c'est-à-dire qu'il compte la durée à partir de laquelle le constructeur \ggsq!start! a été appelé.
 
 
 
@@ -39,26 +39,26 @@ Appeler le constructeur \ggst!start! est la seule façon d'instancier un objet \
 
 \section{Setters}
 
-Le type \ggst!@timer! accepte deux \emph{setters} :
+Le type \ggsq!@timer! accepte deux \emph{setters} :
 \begin{itemize}
-  \item le \emph{setter} \ggst!resume! ;
-  \item le \emph{setter} \ggst!stop!.
+  \item le \emph{setter} \ggsq!resume! ;
+  \item le \emph{setter} \ggsq!stop!.
 \end{itemize}
 
 \subsectionSetter{resume}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 setter @timer resume
-\end{galgas3box}
+\end{galgas4box}
 
-Le \emph{setter} \ggst!resume! redémarre le chronomètre si il est arrêté, et le réinitialise si il est en marche.
+Le \emph{setter} \ggsq!resume! redémarre le chronomètre si il est arrêté, et le réinitialise si il est en marche.
 \subsectionSetter{stop}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 setter @timer stop
-\end{galgas3box}
+\end{galgas4box}
 
-Le \emph{setter} \ggst!stop! arrête le chronomètre. Si il est déjà arrêté, appeler ce \emph{setter} n'a aucun effet.
+Le \emph{setter} \ggsq!stop! arrête le chronomètre. Si il est déjà arrêté, appeler ce \emph{setter} n'a aucun effet.
 
 
 
@@ -68,36 +68,36 @@ Le \emph{setter} \ggst!stop! arrête le chronomètre. Si il est déjà arrêté,
 
 \section{Getters}
 
-Le type \ggst!@timer! accepte trois \emph{getters} :
+Le type \ggsq!@timer! accepte trois \emph{getters} :
 \begin{itemize}
-  \item le \emph{getter} \ggst!isRunning! ;
-  \item le \emph{getter} \ggst!msFromStart! ;
-  \item le \emph{getter} \ggst!string!.
+  \item le \emph{getter} \ggsq!isRunning! ;
+  \item le \emph{getter} \ggsq!msFromStart! ;
+  \item le \emph{getter} \ggsq!string!.
 \end{itemize}
 
 \subsectionGetter{isRunning}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter @timer isRunning -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} renvoie  \ggst!true! si le récepteur décompte le temps, ou \ggst!false! si il a été arrêté par un appel au \emph{setter} \ggst!stop!.
+Ce \emph{getter} renvoie  \ggsq!true! si le récepteur décompte le temps, ou \ggsq!false! si il a été arrêté par un appel au \emph{setter} \ggsq!stop!.
 
 
 \subsectionGetter{msFromStart}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter @timer msFromStart -> @uint
-\end{galgas3box}
+\end{galgas4box}
 
-La valeur obtenue par le \emph{getter} \ggst!msFromStart! est la durée écoulée depuis son instanciation (par le constructeur \ggst!start!) ou depuis le dernier appel au \emph{setter} \ggst!resume!. La durée est exprimée en millisecondes.
+La valeur obtenue par le \emph{getter} \ggsq!msFromStart! est la durée écoulée depuis son instanciation (par le constructeur \ggsq!start!) ou depuis le dernier appel au \emph{setter} \ggsq!resume!. La durée est exprimée en millisecondes.
 
 
 \subsectionGetter{string}{timer}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter @timer string -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-La valeur obtenue par le \emph{getter} \ggst!string! est la durée écoulée depuis son instanciation (par le constructeur \ggst!start!) ou depuis le dernier appel au \emph{setter} \ggst!resume!. La durée est exprimée sous la forme d'une chaîne de caractères.
+La valeur obtenue par le \emph{getter} \ggsq!string! est la durée écoulée depuis son instanciation (par le constructeur \ggsq!start!) ou depuis le dernier appel au \emph{setter} \ggsq!resume!. La durée est exprimée sous la forme d'une chaîne de caractères.
 

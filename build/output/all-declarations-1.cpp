@@ -15679,7 +15679,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("\"\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
-  result.appendString ("_styleNameFor (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n    \"Default Style\", // 0\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
+  result.appendString ("_styleNameFor (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n    \"defaultStyle\", // 0\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_styleIdentifierForEx (styleIndex inIndex : UInt8) -> String {\n  let kStyleArray : [String] = [\n  ]\n  return kStyleArray [Int (inIndex)]\n}\n\n//--------------------------------------------------------------------------------------------------\n//                           Template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
   const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 401)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
@@ -15688,17 +15688,17 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     result.appendString ("fileprivate let kTemplateReplacementArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 402)).stringValue ()) ;
     result.appendString (" : [String] = [\n") ;
-    GGS_u_33__32_ index_18211_ (0) ;
+    GGS_u_33__32_ index_18210_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-      UpEnumerator__5B_templateReplacementAST_5D_ enumerator_18211 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
-      while (enumerator_18211.hasCurrentObject ()) {
+      UpEnumerator__5B_templateReplacementAST_5D_ enumerator_18210 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+      while (enumerator_18210.hasCurrentObject ()) {
         result.appendString ("  ") ;
-        result.appendString (enumerator_18211.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 405)).stringValue ()) ;
-        enumerator_18211.gotoNextObject () ;
-        if (enumerator_18211.hasCurrentObject ()) {
+        result.appendString (enumerator_18210.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 405)).stringValue ()) ;
+        enumerator_18210.gotoNextObject () ;
+        if (enumerator_18210.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
-        index_18211_.increment () ;
+        index_18210_.increment () ;
       }
     }
     result.appendString ("\n]\n") ;
@@ -15715,22 +15715,22 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
     result.appendString ("fileprivate let kTemplateDefinitionArray_") ;
     result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 416)).stringValue ()) ;
     result.appendString (" : [SWIFT_TemplateDelimiter] = [\n") ;
-    GGS_u_33__32_ index_18822_ (0) ;
+    GGS_u_33__32_ index_18821_ (0) ;
     if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ().isValid ()) {
-      UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_18822 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
-      while (enumerator_18822.hasCurrentObject ()) {
+      UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_18821 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTemplateDelimitorList ()) ;
+      while (enumerator_18821.hasCurrentObject ()) {
         result.appendString ("  SWIFT_TemplateDelimiter (startString: ") ;
-        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
+        result.appendString (enumerator_18821.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
         result.appendString (", endString: ") ;
-        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
+        result.appendString (enumerator_18821.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 419)).stringValue ()) ;
         result.appendString (", discardStartString: ") ;
-        result.appendString (enumerator_18822.current_entry (HERE).readProperty_mPreservesStartDelimiter ().operator_not (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).stringValue ()) ;
+        result.appendString (enumerator_18821.current_entry (HERE).readProperty_mPreservesStartDelimiter ().operator_not (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).getter_cString (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 420)).stringValue ()) ;
         result.appendString (")") ;
-        enumerator_18822.gotoNextObject () ;
-        if (enumerator_18822.hasCurrentObject ()) {
+        enumerator_18821.gotoNextObject () ;
+        if (enumerator_18821.hasCurrentObject ()) {
           result.appendString (",\n") ;
         }
-        index_18822_.increment () ;
+        index_18821_.increment () ;
       }
     }
     result.appendString ("\n]\n") ;
@@ -15743,19 +15743,19 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
   result.appendString ("\n\n//--------------------------------------------------------------------------------------------------\n//         T E R M I N A L    S Y M B O L    E N U M E R A T I O N\n//--------------------------------------------------------------------------------------------------\n\nlet ") ;
   result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
   result.appendString ("_1_ : UInt16 = 0\n") ;
-  GGS_u_33__32_ index_19506_idx (0) ;
+  GGS_u_33__32_ index_19505_idx (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ().isValid ()) {
-    UpEnumerator__5B_terminalAST_5D_ enumerator_19506 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
-    while (enumerator_19506.hasCurrentObject ()) {
+    UpEnumerator__5B_terminalAST_5D_ enumerator_19505 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.readProperty_mTerminalList ()) ;
+    while (enumerator_19505.hasCurrentObject ()) {
       result.appendString ("let ") ;
       result.appendString (in_LEXIQUE_5F_CLASS_5F_NAME.stringValue ()) ;
       result.appendString ("_1_") ;
-      result.appendString (enumerator_19506.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
+      result.appendString (enumerator_19505.current_entry (HERE).readProperty_mTerminalName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
       result.appendString (" : UInt16 = ") ;
-      result.appendString (index_19506_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
+      result.appendString (index_19505_idx.add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).getter_string (SOURCE_FILE ("lexique_swiftui_implementation.swift.galgasTemplate", 434)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_19506.gotoNextObject () ;
-      index_19506_idx.increment () ;
+      enumerator_19505.gotoNextObject () ;
+      index_19505_idx.increment () ;
     }
   }
   result.appendString ("let ") ;

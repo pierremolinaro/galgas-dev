@@ -3073,15 +3073,15 @@ class GGS_stringset final : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_string getter_anyString (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_string getter_any (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_array (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_stringArray (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subcripts

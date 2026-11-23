@@ -8,12 +8,12 @@
 
 String styleNameForIndex (const uint32_t inStyleIndex) {
   const char * array [%![[LEXICAL_STYLE_SORTED_ARRAY count] + 3 string]%] = {
-    "Default Style", // 0
+    "defaultStyle", // 0
 %
 for (aStyle) in LEXICAL_STYLE_SORTED_ARRAY do
   %    %![aStyle.name cStringRepresentation]%, // %![aStyle.index string]%\n%
 end
-%    "Lexical error", // %![[LEXICAL_STYLE_SORTED_ARRAY count] + 1 string]%
+%    "LexicalError", // %![[LEXICAL_STYLE_SORTED_ARRAY count] + 1 string]%
     "Template" // %![[LEXICAL_STYLE_SORTED_ARRAY count] + 2 string]%
   } ;
   return (inStyleIndex < %![[LEXICAL_STYLE_SORTED_ARRAY count] + 3 string]%) ? array [inStyleIndex] : "" ;

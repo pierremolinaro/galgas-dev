@@ -17,14 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalDropInstructionAST : @lexicalInstructionAST {
-  private let @lstring mTerminalName
-}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -41,40 +33,41 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalDropInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap) {
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mTerminalName, ?*)
-}
+final class @lexicalDropInstructionAST : @lexicalInstructionAST {
+  private let @lstring mTerminalName
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalDropInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string {
-  result = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
-}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap) {
+    ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mTerminalName, ?*)
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalDropInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                     ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
+  }
 
-//·································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalDropInstructionAST.generateLexicalInstructionCode
-  (?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string
-{
-  result = "enterDroppedTerminal (kToken_" + self.mTerminalName.string.identifierRepresentation + ") ;\n"
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateLexicalInstructionCode (?let @string _inScannerClassName,
+                                 ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "enterDroppedTerminal (kToken_" + self.mTerminalName.string.identifierRepresentation + ") ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

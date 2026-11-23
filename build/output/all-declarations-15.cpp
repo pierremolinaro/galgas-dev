@@ -6366,25 +6366,6 @@ const GALGAS_TypeDescriptor * GGS_lexicalStructuredSendInstructionAST_2E_weak::s
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalRoutineCallArgument (cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          GGS_lexiqueAnalysisContext & io__5F_ioLexiqueAnalysisContext,
-                                                          const GGS_lexicalArgumentModeAST constin__5F_inLexicalRoutineFormalArgumentMode,
-                                                          const GGS_lexicalTypeEnum constin__5F_inLexicalRoutineFormalArgumentType,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find proc
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
-    inObject->method_checkLexicalRoutineCallArgument (io__5F_ioLexiqueAnalysisContext, constin__5F_inLexicalRoutineFormalArgumentMode, constin__5F_inLexicalRoutineFormalArgumentType, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
 
 GGS_lexicalSelectBranchAST::GGS_lexicalSelectBranchAST (void) :
 mProperty_mSelectExpression (),

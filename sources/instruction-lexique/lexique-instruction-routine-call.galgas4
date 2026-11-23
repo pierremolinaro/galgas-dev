@@ -17,39 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-abstract class @abstractLexicalRoutineActualArgumentAST {
-  protected let @location mActualPassingModeLocation
-
-  abstract proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
-                                                 @lexicalArgumentModeAST _inLexicalRoutineFormalArgumentMode,
-                                                 @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  private let @lstring mAttributeName
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
-  private let @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
-  private let @lstring mRoutineName
-  private let [@abstractLexicalRoutineActualArgumentAST] mActualArgumentList
-  private let [@lstring] mErrorMessageList
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -97,173 +64,198 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-extension @abstractLexicalRoutineActualArgumentAST {
+abstract class @abstractLexicalRoutineActualArgumentAST {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  protected let @location mActualPassingModeLocation
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  abstract proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                                                 @lexicalArgumentModeAST _inLexicalRoutineFormalArgumentMode,
+                                                 @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   abstract func generateSwiftCocoaRoutineArgument (?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string
-}
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalAttributeInputOutputArgumentAST.generateSwiftCocoaRoutineArgument (
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string
-{
-  result = "&self.mLexicalAttribute_" + self.mAttributeName
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
-  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @lexicalAttributeInputOutputArgumentAST.checkLexicalRoutineCallArgument (
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
-  @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
-//--- Check attribute definition
-  ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (self.mAttributeName,
-    ?let attributeLexicalType
-  )
-//--- Type check
-  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error self.mAttributeName:"type error, attribute type is @"
-    + attributeLexicalType.lexicalTypeBaseName
-    + " type, but lexical routine prototype requires @"
-    + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
-    + " type"
-    
-  end
-//--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputOutputMode then
-    error self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @lexicalFormalInputArgumentAST.checkLexicalRoutineCallArgument (
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
-  @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
-//--- Check attribute definition
-  self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
-    (!?ioLexiqueAnalysisContext,
-    inLexicalRoutineFormalArgumentType
-  )
-//--- Passing mode check
-  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
-    error self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap) {
-  ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
-    (self.mRoutineName,
-    ?let lexicalRoutineFormalArgumentList,
-    ?let routineErrorMessageList,
-    ?*
-  )
-//--- Check actual argument count
-  if lexicalRoutineFormalArgumentList.count != self.mActualArgumentList.count then
-    error self.mRoutineName : "this lexical routine call names "
-    + self.mActualArgumentList.count.string
-    + " actual argument(s), but the lexical routine prototype requires "
-    + lexicalRoutineFormalArgumentList.count + " actual argument(s)"
-    
-  end
-//--- Check actual argument against formal parameters
-  for formal in lexicalRoutineFormalArgumentList, actual in self.mActualArgumentList do
-    actual.checkLexicalRoutineCallArgument
-      (!?ioLexiqueAnalysisContext,
-      formal.mLexicalFormalArgumentMode,
-      formal.mLexicalFormalArgumentType
-    )
-  end
-//--- Check error message count
-  if routineErrorMessageList.count != self.mErrorMessageList.count then
-    error self.mRoutineName: "this lexical routine call names "
-    + self.mErrorMessageList.count.string
-    + " error message(s), but the lexical routine prototype requires "
-    + routineErrorMessageList.count.string + " error message(s)"
-    
-  end
-//--- Check error messages are actually defined
-  for value in self.mErrorMessageList do
-    var entry = ioLexiqueAnalysisContext.mLexicalMessageMap [!searchKey: value]
-    entry.mMessageIsUsed = true
-    !?ioLexiqueAnalysisContext.mLexicalMessageMap.replaceKey (!with: entry)
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string _inScannerClassName,
-   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
-  -> @string {
-  result = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
-  for actual in self.mActualArgumentList do
-    result += ", " + actual.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
-  end
-  result += ")\n"
-}
-
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
-
-extension @abstractLexicalRoutineActualArgumentAST {
   abstract func generateRoutineArgument () -> @string
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
-//·································································································
+//--------------------------------------------------------------------------------------------------
 
-override func @lexicalAttributeInputOutputArgumentAST.generateRoutineArgument
-  () -> @string {
-  result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
+final class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+  private let @lstring mAttributeName
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateSwiftCocoaRoutineArgument (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "&self.mLexicalAttribute_" + self.mAttributeName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                            @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+                                            @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
+  //--- Check attribute definition
+    ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey (
+      self.mAttributeName,
+      ?let attributeLexicalType
+    )
+  //--- Type check
+    if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+      error self.mAttributeName:"type error, attribute type is @"
+      + attributeLexicalType.lexicalTypeBaseName
+      + " type, but lexical routine prototype requires @"
+      + inLexicalRoutineFormalArgumentType.lexicalTypeBaseName
+      + " type"
+      
+    end
+  //--- Passing mode check
+    if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputOutputMode then
+      error self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateRoutineArgument () -> @string {
+    result = "token.mLexicalAttribute_" + self.mAttributeName.string.identifierRepresentation
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
-//·································································································
+//--------------------------------------------------------------------------------------------------
 
-override func @lexicalFormalInputArgumentAST.generateRoutineArgument
-  () -> @string {
-  result = self.mRoutineOrFunctionFormalInputArgument.generateRoutineOrFunctionArgument
+final class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+  private let @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateSwiftCocoaRoutineArgument (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                             @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+                                             @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
+  //--- Check attribute definition
+    self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
+      (!?ioLexiqueAnalysisContext,
+      inLexicalRoutineFormalArgumentType
+    )
+  //--- Passing mode check
+    if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
+      error self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateRoutineArgument () -> @string {
+    result = self.mRoutineOrFunctionFormalInputArgument.generateRoutineOrFunctionArgument
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
-//·································································································
+//--------------------------------------------------------------------------------------------------
 
-override func @lexicalRoutineCallInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
+final class @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
+  private let @lstring mRoutineName
+  private let [@abstractLexicalRoutineActualArgumentAST] mActualArgumentList
+  private let [@lstring] mErrorMessageList
 
-//·································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRoutineCallInstructionAST.generateLexicalInstructionCode (
-  ?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "::scanner_routine_" + self.mRoutineName + " (*this"
-  for lexicalRoutineActualArgument in self.mActualArgumentList do
-    result += ", " + lexicalRoutineActualArgument.generateRoutineArgument
-  end
-  for entry in self.mErrorMessageList do
-    result += ", gLexicalMessage_" + inScannerClassName + "_" + entry
-  end
-  result += ") ;\n"
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap) {
+    ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
+      (self.mRoutineName,
+      ?let lexicalRoutineFormalArgumentList,
+      ?let routineErrorMessageList,
+      ?*
+    )
+  //--- Check actual argument count
+    if lexicalRoutineFormalArgumentList.count != self.mActualArgumentList.count then
+      error self.mRoutineName : "this lexical routine call names "
+      + self.mActualArgumentList.count.string
+      + " actual argument(s), but the lexical routine prototype requires "
+      + lexicalRoutineFormalArgumentList.count + " actual argument(s)"
+      
+    end
+  //--- Check actual argument against formal parameters
+    for formal in lexicalRoutineFormalArgumentList, actual in self.mActualArgumentList do
+      actual.checkLexicalRoutineCallArgument
+        (!?ioLexiqueAnalysisContext,
+        formal.mLexicalFormalArgumentMode,
+        formal.mLexicalFormalArgumentType
+      )
+    end
+  //--- Check error message count
+    if routineErrorMessageList.count != self.mErrorMessageList.count then
+      error self.mRoutineName: "this lexical routine call names "
+      + self.mErrorMessageList.count.string
+      + " error message(s), but the lexical routine prototype requires "
+      + routineErrorMessageList.count.string + " error message(s)"
+      
+    end
+  //--- Check error messages are actually defined
+    for value in self.mErrorMessageList do
+      var entry = ioLexiqueAnalysisContext.mLexicalMessageMap [!searchKey: value]
+      entry.mMessageIsUsed = true
+      !?ioLexiqueAnalysisContext.mLexicalMessageMap.replaceKey (!with: entry)
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateSwiftCocoaInstructionCode (?let @string _inScannerClassName,
+                                   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string {
+    result = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
+    for actual in self.mActualArgumentList do
+      result += ", " + actual.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
+    end
+    result += ")\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                                                ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "::scanner_routine_" + self.mRoutineName + " (*this"
+    for lexicalRoutineActualArgument in self.mActualArgumentList do
+      result += ", " + lexicalRoutineActualArgument.generateRoutineArgument
+    end
+    for entry in self.mErrorMessageList do
+      result += ", gLexicalMessage_" + inScannerClassName + "_" + entry
+    end
+    result += ") ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

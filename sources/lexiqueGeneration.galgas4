@@ -164,18 +164,6 @@ override func @lexicalErrorByDefaultAST.generateDefaultSendCode
 }
 
 //--------------------------------------------------------------------------------------------------
-//  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N
-//--------------------------------------------------------------------------------------------------
-
-extension @lexicalInstructionAST {
-
-  abstract func generateLexicalInstructionCode (?let @string inScannerClassName,
-                                                ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string
-
-  abstract func lexicalInstructionUsesLoopLocalVariable () -> @bool
-}
-
-//--------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N
 //--------------------------------------------------------------------------------------------------
 

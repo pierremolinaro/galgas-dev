@@ -6043,18 +6043,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExpressionAST_2
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension proc '@lexicalInstructionAST checkLexicalInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalInstruction (class cPtr_lexicalInstructionAST * inObject,
-                                                  class GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                  class GGS_lexicalTagMap & io__5F_ioTagMap,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension proc '@abstractLexicalRuleAST checkLexicalRule'
 //
 //--------------------------------------------------------------------------------------------------

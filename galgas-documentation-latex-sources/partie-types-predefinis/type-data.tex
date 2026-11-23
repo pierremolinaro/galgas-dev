@@ -6,7 +6,7 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Le type \ggst=@data= est un buffer d'octets. Il peut être utilisé pour lire et écrire des fichiers binaires.
+Le type \ggsq=@data= est un buffer d'octets. Il peut être utilisé pour lire et écrire des fichiers binaires.
 
 
 
@@ -16,22 +16,22 @@ Le type \ggst=@data= est un buffer d'octets. Il peut être utilisé pour lire et
 
 \subsectionConstructor{dataWithContentsOfFile}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor dataWithContentsOfFile ?@string inFilePath -> @data
-\end{galgas3}
+\end{galgas4}
 
-Ce constructeur instancie un objet \ggst=@data= avec le contenu du fichier désigné par \ggst=inFilePath=. Si le fichier n'existe pas, une erreur d'exécution est déclenchée et le constructeur renvoie une valeur poison.
+Ce constructeur instancie un objet \ggsq=@data= avec le contenu du fichier désigné par \ggsq=inFilePath=. Si le fichier n'existe pas, une erreur d'exécution est déclenchée et le constructeur renvoie une valeur poison.
 
 
 
 
 \subsectionConstructor{emptyData}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor emptyData -> @data
-\end{galgas3}
+\end{galgas4}
 
-Ce constructeur instancie un objet \ggst=@data= vide.
+Ce constructeur instancie un objet \ggsq=@data= vide.
 
 
 
@@ -46,18 +46,18 @@ Ce constructeur instancie un objet \ggst=@data= vide.
 
 \subsectionGetter{count}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 getter count -> @uint
-\end{galgas3}
+\end{galgas4}
 
 Ce \emph{getter} renvoie le nombre d'octets du récepteur.
 
 
 \subsectionGetter{cStringRepresentation}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 getter cStringRepresentation -> @string
-\end{galgas3}
+\end{galgas4}
 
 Ce \emph{getter} renvoie la valeur du récepteur sous la forme d'une liste d'octets séparés par des virgules. Chaque octet est écrit en décimal. Toutes les 16 valeurs, un retour-chariot est inséré.
 
@@ -65,9 +65,9 @@ Ce \emph{getter} renvoie la valeur du récepteur sous la forme d'une liste d'oct
 
 \subsectionGetter{length}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 getter length -> @uint # Obsolète, utiliser count
-\end{galgas3}
+\end{galgas4}
 
 Ce \emph{getter} renvoie le nombre d'octets du récepteur.
 
@@ -80,35 +80,35 @@ Ce \emph{getter} renvoie le nombre d'octets du récepteur.
 
 \subsectionMethod{writeToExecutableFile}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 method writeToExecutableFile ?@string inFilePath
-\end{galgas3}
+\end{galgas4}
 
-Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggst=inFilePath=, et rend ce fichier exécutable.
+Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggsq=inFilePath=, et rend ce fichier exécutable.
 
 
 
 
 \subsectionMethod{writeToFile}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 method writeToFile ?@string inFilePath
-\end{galgas3}
+\end{galgas4}
 
-Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggst=inFilePath=.
+Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggsq=inFilePath=.
 
 
 
 
 \subsectionMethod{writeToFileWhenDifferentContents}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 method writeToFileWhenDifferentContents
   ?@string inFilePath
   !@bool outFileModified
-\end{galgas3}
+\end{galgas4}
 
-Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggst=inFilePath=, uniquement si la valeur du récepteur est différente du contenu du fihier. La variable \ggst=outFileModified= est retournée à l'appelant, et permet de savoir si le fichier a été modifié ou non.
+Cette méthode écrit le contenu du récepteur dans le fichier désigné par \ggsq=inFilePath=, uniquement si la valeur du récepteur est différente du contenu du fihier. La variable \ggsq=outFileModified= est retournée à l'appelant, et permet de savoir si le fichier a été modifié ou non.
 
 
 
@@ -121,21 +121,21 @@ Cette méthode écrit le contenu du récepteur dans le fichier désigné par \gg
 
 \subsectionSetter{appendByte}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendByte ?@uint inValue
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur. Comme un objet de \ggst=@data= est un tableau d'octets, \ggst=inValue= doit être compris entre $0$ et $255$. Si il est supérieur à $255$, une erreur d'exécution est déclenchée.
+Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur. Comme un objet de \ggsq=@data= est un tableau d'octets, \ggsq=inValue= doit être compris entre $0$ et $255$. Si il est supérieur à $255$, une erreur d'exécution est déclenchée.
 
 
 
 \subsectionSetter{appendData}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendData ?@data inData
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{setter} ajoute la valeur de \ggst=inData= à la fin du récepteur.
+Ce \emph{setter} ajoute la valeur de \ggsq=inData= à la fin du récepteur.
 
 
 
@@ -143,11 +143,11 @@ Ce \emph{setter} ajoute la valeur de \ggst=inData= à la fin du récepteur.
 
 \subsectionSetter{appendShortBE}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendShortBE ?@uint inValue
-\end{galgas3}
+\end{galgas4}
 
-Pour ce \emph{setter}, \ggst=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids fort, puis l'octet de poids faible.
+Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids fort, puis l'octet de poids faible.
 
 
 
@@ -157,11 +157,11 @@ Pour ce \emph{setter}, \ggst=inValue= doit être compris entre $0$ et $2^{16}-1$
 
 \subsectionSetter{appendShortLE}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendShortLE ?@uint inValue
-\end{galgas3}
+\end{galgas4}
 
-Pour ce \emph{setter}, \ggst=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids faible, puis l'octet de poids fort.
+Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids faible, puis l'octet de poids fort.
 
 
 
@@ -172,11 +172,11 @@ Pour ce \emph{setter}, \ggst=inValue= doit être compris entre $0$ et $2^{16}-1$
 
 \subsectionSetter{appendUIntBE}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendUIntBE ?@uint inValue
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids fort.
+Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids fort.
 
 
 
@@ -188,11 +188,11 @@ Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur, sou
 
 \subsectionSetter{appendUIntLE}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendUIntLE ?@uint inValue
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids faible.
+Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids faible.
 
 
 
@@ -206,13 +206,13 @@ Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur, sou
 
 \subsectionSetter{appendUTF8String}{data}
 
-\begin{galgas3}
+\begin{galgas4}
 setter appendUTF8String ?@string inValue
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{setter} ajoute la valeur de \ggst=inValue= à la fin du récepteur, sous la forme d'une chaîne de caractères UTF-8, y compris le zéro final.
+Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sous la forme d'une chaîne de caractères UTF-8, y compris le zéro final.
 
 
 \section{Énumération des valeurs}
 
-Un objet de type \ggst=@data= est énumérable par une instruction \ggst=for= (\refSectionPage{instructionFor}).
+Un objet de type \ggsq=@data= est énumérable par une instruction \ggsq=for= (\refSectionPage{instructionFor}).

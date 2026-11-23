@@ -38,60 +38,60 @@ Une fonction GALGAS n'accepte que des arguments en entrée, et retourne une vale
 
 \subsection{déclaration d'une fonction}\index{Fonction!Déclaration}
 
-\begin{galgas3}
+\begin{galgas4}
 private # Optionnel
 func nom_fonction liste_arguments_entree -> @T var_resultat {
   liste_instructions
 }
-\end{galgas3}
+\end{galgas4}
 
-Une fonction est désignée par \ggst+nom_fonction+. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \ggst+var_resultat+ à l'issue de l'exécution de la \ggst+liste_instructions+. Aussi, l'exécution de la \ggst+liste_instructions+ doit valuer \ggst+var_resultat+.
+Une fonction est désignée par \ggsq+nom_fonction+. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \ggsq+var_resultat+ à l'issue de l'exécution de la \ggsq+liste_instructions+. Aussi, l'exécution de la \ggsq+liste_instructions+ doit valuer \ggsq+var_resultat+.
 
 Exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 func produit ?@uint a ?@uint b -> @uint resultat {
   resultat = a * b
 }
-\end{galgas3}
+\end{galgas4}
 
-Mentionner la variable \ggst=resultat= est optionnel. Par défaut, en son absence, une variable nommée \ggst=result= est implictement déclarée :
+Mentionner la variable \ggsq=resultat= est optionnel. Par défaut, en son absence, une variable nommée \ggsq=result= est implictement déclarée :
 
-\begin{galgas3}
+\begin{galgas4}
 func produit ?@uint a ?@uint b -> @uint {
   result = a * b
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsection{Fonction interne à un fichier}
 
-En préfixant la déclaration d'une fonction par \ggst+private+, on limite son appel aux expressions situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une fonction par \ggsq+private+, on limite son appel aux expressions situées dans le même fichier que la déclaration.
 
 
 
 
 \subsection{Attribut \texttt{\%once}}
 
-Une fonction sans argument accepte l'attribut \ggst+%once+ :
+Une fonction sans argument accepte l'attribut \ggsq+%once+ :
 
-\begin{galgas3}
+\begin{galgas4}
 func %once masque -> @uint {
   result = 1 << 16
 }
-\end{galgas3}
+\end{galgas4}
 
-L'attribut \ggst+%once+ organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
+L'attribut \ggsq+%once+ organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
 
-Une fonction \ggst+%once+ peut être déclarée interne en la préfixant par \ggst+private+.
+Une fonction \ggsq+%once+ peut être déclarée interne en la préfixant par \ggsq+private+.
 
-\begin{galgas3}
+\begin{galgas4}
 private func %once masque -> @uint {
   result = 1 << 16
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -100,23 +100,23 @@ private func %once masque -> @uint {
 
 \subsectionLabel{Attribut \texttt{\%usefull}}{fonctionUsefull}
 
-Une fonction accepte l'attribut \ggst+%usefull+ :
+Une fonction accepte l'attribut \ggsq+%usefull+ :
 
-\begin{galgas3}
+\begin{galgas4}
 func %usefull carré ?let @uint inX -> @uint {
   result = inX * inX
 }
-\end{galgas3}
+\end{galgas4}
 
-L'attribut \ggst+%usefull+ déclare la fonction comme utile, c'est-à-dire qu'elle est considérée comme une construction racine du graphe d'utilité calculé par l'option \tpp{-{}-check-usefulness} (\refChapterPage{chapitreCalculEntitesUtiles}). Ceci est nécessaire si la fonction n'est pas appelée directement, mais par l'intermédiaire d'un objet de type \refTypePredefini{function}.
+L'attribut \ggsq+%usefull+ déclare la fonction comme utile, c'est-à-dire qu'elle est considérée comme une construction racine du graphe d'utilité calculé par l'option \tpp{-{}-check-usefulness} (\refChapterPage{chapitreCalculEntitesUtiles}). Ceci est nécessaire si la fonction n'est pas appelée directement, mais par l'intermédiaire d'un objet de type \refTypePredefini{function}.
 
-Attributs \ggst+%once+ et \ggst+%usefull+ sont cumulables :
+Attributs \ggsq+%once+ et \ggsq+%usefull+ sont cumulables :
 
-\begin{galgas3}
+\begin{galgas4}
 private func %once %usefull masque -> @uint {
   result = 1 << 16
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -128,28 +128,28 @@ Une procédure GALGAS accepte des arguments en entrée, en sortie, en entrée/so
 
 \subsection{Déclaration d'une procédure}\index{Procédure!Déclaration}
 
-\begin{galgas3}
+\begin{galgas4}
 private # Optionnel
 proc nom_procedure liste_arguments {
   liste_instructions
 }
-\end{galgas3}
+\end{galgas4}
 
-Une procédure est désignée par \ggst+nom_procedure+. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
+Une procédure est désignée par \ggsq+nom_procedure+. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
 
 Exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 proc produit ?@uint a ?@uint b !@uint resultat {
   resultat = a * b
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsection{Procédure interne à un fichier}
 
-En préfixant la déclaration d'une procédure par \ggst+private+, on limite son appel aux instructions situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une procédure par \ggsq+private+, on limite son appel aux instructions situées dans le même fichier que la déclaration.
 
 
 
@@ -170,17 +170,17 @@ La définition d'une telle fonction ou procédure s'effectue en trois étapes :
 
 \subsection{Déclaration d'une fonction ou d'une procédure externe}
 
-Il suffit d'écrire l'en-tête de la fonction, précédée du mot réservé \ggst=extern=. Par exemple~:
-\begin{galgas3}
+Il suffit d'écrire l'en-tête de la fonction, précédée du mot réservé \ggsq=extern=. Par exemple~:
+\begin{galgas4}
 extern func maFonctionExterne ?@uint a ?@uint b -> @uint
-\end{galgas3}
+\end{galgas4}
 
 Comme pour les fonctions GALGAS (\refSectionPage{declarationFonction}), une fonction externe n'accepte que des arguments en entrée.
 
 Il en est de même pour une procédure~:
-\begin{galgas3}
+\begin{galgas4}
 extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
-\end{galgas3}
+\end{galgas4}
 
 Cette déclaration peut apparaître dans n'importe quel fichier d'extension \texttt{.galgas} : la portée de la déclaration est globale à tout le projet, donc une fonction ou une procédure externe peut être appelée à partir de n'importe quel fichier d'extension \texttt{.galgas} du projet.
 
@@ -202,19 +202,19 @@ Donc :
 
 Créez un fichier C++ vide, et placez le dans un répertoire situé à la racine de votre pprojet GALGAS, c'est-à-dire dans le même répertoire dans le fichier projet GALGAS : par exemple \texttt{monRepertoire/monCode.cpp}.
 
-Il faut ajouter dans le fichier projet GALGAS la prise en compte de ce fichier C++. Pour cela, éditez votre fichier d'extension \texttt{.galgasProject} et insérez la ligne commençant par \ggst=%tool-source=\index{\%tool-source}~:
+Il faut ajouter dans le fichier projet GALGAS la prise en compte de ce fichier C++. Pour cela, éditez votre fichier d'extension \texttt{.galgasProject} et insérez la ligne commençant par \ggsq=%tool-source=\index{\%tool-source}~:
 
-\begin{galgas3}
+\begin{galgas4}
 project (...) -> "..." {
   ...
   %tool-source : "monRepertoire/monCode.cpp"
   ...
 }
-\end{galgas3}
+\end{galgas4}
 
-La déclaration \ggst=%tool-source= indique le fichier C++ fait partie de la liste des fichiers C++ à compiler. Le chemin du fichier source C++ peut être soit un chemin absolu, soit, comme c'est le cas ici, un chemin relatif par rapport au répertoire qui contient le fichier projet GALGAS (d'extension \texttt{.galgasProject}).
+La déclaration \ggsq=%tool-source= indique le fichier C++ fait partie de la liste des fichiers C++ à compiler. Le chemin du fichier source C++ peut être soit un chemin absolu, soit, comme c'est le cas ici, un chemin relatif par rapport au répertoire qui contient le fichier projet GALGAS (d'extension \texttt{.galgasProject}).
 
-Dans un fichier projet GALGAS, zéro, une ou plusieurs déclarations \ggst=%tool-source= peuvent apparaître.
+Dans un fichier projet GALGAS, zéro, une ou plusieurs déclarations \ggsq=%tool-source= peuvent apparaître.
 
 À ce point d'avancement, le fichier C++ est vide, il peut être compilé. Si vous lancez une compilation GALGAS suivie d'une compilation C++, vous verrez apparaître \texttt{monCode.cpp} dans la liste des fichiers C++ compilés. Évidement, si il y a des fonctions ou procédures GALGAS externes non définies, vous aurez des erreurs d'édition des liens.
 
@@ -240,15 +240,15 @@ Le fichier \texttt{all-declarations.h} est engendré par la compilation GALGAS e
 \subsubsection{Squelette de l'implémentation d'une fonction externe}
 
 Par exemple, on considère la fonction GALGAS externe~:
-\begin{galgas3}
+\begin{galgas4}
 extern func maFonctionExterne ?@uint a ?@uint b -> @uint
-\end{galgas3}
+\end{galgas4}
 
-Le nom C++ de la fonction GALGAS \ggst=maFonctionExterne= est \texttt{function\_maFonctionExterne}, c'est-à-dire que le nom GALGAS est préfixé par \texttt{function\_}. Il y a d'autres transformations, si le nom de la fonction est contient des lettres non-ASCII, des chiffres, ou des caractères « \texttt{\_} ». En effet, le C++ n'accepte pas les lettres non ASCII dans les identificateurs, le compilateur GALGAS les remplacent par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal. Pour ne pas introduire d'ambiguïté, le caractère « \texttt{\_} » est transformé de la même façon, il devient donc « \texttt{\_5F\_} ». Pour des raisons historiques, il en est de même pour les chiffres décimaux.
+Le nom C++ de la fonction GALGAS \ggsq=maFonctionExterne= est \texttt{function\_maFonctionExterne}, c'est-à-dire que le nom GALGAS est préfixé par \texttt{function\_}. Il y a d'autres transformations, si le nom de la fonction est contient des lettres non-ASCII, des chiffres, ou des caractères « \texttt{\_} ». En effet, le C++ n'accepte pas les lettres non ASCII dans les identificateurs, le compilateur GALGAS les remplacent par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal. Pour ne pas introduire d'ambiguïté, le caractère « \texttt{\_} » est transformé de la même façon, il devient donc « \texttt{\_5F\_} ». Pour des raisons historiques, il en est de même pour les chiffres décimaux.
 
-Ainsi, une fonction nommée \ggst=hé_hé= en GALGAS est traduite en \texttt{function\_h\_E9\_\_5F\_h\_E9\_} en C++.
+Ainsi, une fonction nommée \ggsq=hé_hé= en GALGAS est traduite en \texttt{function\_h\_E9\_\_5F\_h\_E9\_} en C++.
 
-Pour écrire l'en-tête de la fonction, le plus simple est de rechercher son prototype dans les fichiers d'en-tête du répertoire \texttt{build/output}. Pour la fonction \ggst=maFonctionExterne=, celui-ci est :
+Pour écrire l'en-tête de la fonction, le plus simple est de rechercher son prototype dans les fichiers d'en-tête du répertoire \texttt{build/output}. Pour la fonction \ggsq=maFonctionExterne=, celui-ci est :
 
 \begin{lstlisting}[language=C++]
 class GALGAS_uint function_maFonctionExterne (class GALGAS_uint inArgument0,
@@ -260,7 +260,7 @@ class GALGAS_uint function_maFonctionExterne (class GALGAS_uint inArgument0,
 
 Deux remarques~:
 \begin{itemize}
-  \item Les noms de types GALGAS (par exemple \ggst=@xyz=) sont préfixés par \texttt{GALGAS\_} en C++, et les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal (comme pour les noms de fonction, voir ci-dessus) ; ainsi, \ggst=@uint64= devient \texttt{GALGAS\_uint\_36\_\_34\_} ;
+  \item Les noms de types GALGAS (par exemple \ggsq=@xyz=) sont préfixés par \texttt{GALGAS\_} en C++, et les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal (comme pour les noms de fonction, voir ci-dessus) ; ainsi, \ggsq=@uint64= devient \texttt{GALGAS\_uint\_36\_\_34\_} ;
   \item il n'y a pas de virgule après «~\texttt{inCompiler}~», \texttt{COMMA\_LOCATION\_ARGS} est une macro (voir sa définition dans le fichier \texttt{build/libpm/utilities/M\_SourceLocation.h}).
 \end{itemize}
 
@@ -280,12 +280,12 @@ Pour écrire le code de la fonction, il faut prendre en compte les \emph{valeurs
   \item \emph{poison}, l'entité ne possède pas de valeur valide.
 \end{itemize}
 
-Aussi toute routine -- aussi bien les routines implémentées en dur dans GALGAS que les routines externes écrites directement en C++ -- doit vérifier si les valeurs qu'elle reçoit sont valides. Si il n'est pas possible d'effectuer le calcul souhaité, il faut retourner une valeur poison. On pourra regarder avec profit comment sont implémentées les opérations sur les \ggst=@uint=, dans le fichier \texttt{build/libpm/galgas2/GALGAS\_uint.cpp}.
+Aussi toute routine -- aussi bien les routines implémentées en dur dans GALGAS que les routines externes écrites directement en C++ -- doit vérifier si les valeurs qu'elle reçoit sont valides. Si il n'est pas possible d'effectuer le calcul souhaité, il faut retourner une valeur poison. On pourra regarder avec profit comment sont implémentées les opérations sur les \ggsq=@uint=, dans le fichier \texttt{build/libpm/galgas2/GALGAS\_uint.cpp}.
 
 
 Tout type GALGAS définit une méthode \texttt{isValid} qui permet de savoir si l'objet possède une valeur valide ou non. Le constructeur par défaut d'un objet crée une valeur poison, les constructeurs dédiés une valeur valide.
 
-Par exemple, si l'on veut que \ggst=maFonctionExterne= retourne la somme des deux arguments, on écrira :
+Par exemple, si l'on veut que \ggsq=maFonctionExterne= retourne la somme des deux arguments, on écrira :
 
 \begin{lstlisting}[language=C++]
 GALGAS_uint function_maFonctionExterne (GALGAS_uint inArgument0,
@@ -306,9 +306,9 @@ Dès que l'un des deux arguments est une valeur poison, le résultat renvoyé es
 \subsubsection{Squelette de l'implémentation d'une procédure externe}
 
 Par exemple, on considère la procédure GALGAS externe~:
-\begin{galgas3}
+\begin{galgas4}
 extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
-\end{galgas3}
+\end{galgas4}
 
 Cette déclaration engendre le prototype suivant dans un des fichiers d'en-tête C++ (situé dans le répertoire \texttt{build/output})~:
 \begin{lstlisting}[language=C++]
@@ -321,7 +321,7 @@ void routine_maProc_E9_dureExterne (class GALGAS_uint & outArgument0,
 
 Remarques~:
 \begin{itemize}
-  \item le nom de la procédure GALGAS est préfixée par \texttt{routine\_}, et, comme pour les noms de fonction, les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal : ainsi, «~\ggst=é=~» devient «~\texttt{\_E9\_}~» ;
+  \item le nom de la procédure GALGAS est préfixée par \texttt{routine\_}, et, comme pour les noms de fonction, les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal : ainsi, «~\ggsq=é=~» devient «~\texttt{\_E9\_}~» ;
   \item un argument en sortie (comme \texttt{outArgument0}) est passé par référence ;
   \item un argument en entrée / sortie (comme \texttt{ioArgument1}) est passé par référence ;
   \item un argument en entrée (comme \texttt{inArgument2}) est passé par valeur (le constructeur de recopie est appelé).

@@ -113,29 +113,29 @@ Les types prédéfinis sont :
 
 Tout type implémente implicitement :
 \begin{itemize}
-  \item l'opérateur \ggst+==+ ;
-  \item l'opérateur \ggst+!=+ ;
-  \item le \emph{getter} \ggst+description+ ;
-  \item le \emph{getter} \ggst+dynamicType+ ;
-  \item le \emph{getter} \ggst+object+.
+  \item l'opérateur \ggsq+==+ ;
+  \item l'opérateur \ggsq+!=+ ;
+  \item le \emph{getter} \ggsq+description+ ;
+  \item le \emph{getter} \ggsq+dynamicType+ ;
+  \item le \emph{getter} \ggsq+object+.
 \end{itemize}
 
 
 \subsection{L'opérateur \texttt{==}}
 
-\begin{galgas3}
+\begin{galgas4}
 func == ?@T ?@T -> @bool
-\end{galgas3}
+\end{galgas4}
 
 Cet opérateur permet de tester l'identité entre de deux objets de même type.
 
 \subsection{L'opérateur \texttt{!=}}
 
-\begin{galgas3}
+\begin{galgas4}
 func != ?@T ?@T -> @bool
-\end{galgas3}
+\end{galgas4}
 
-Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \ggst+==+.
+Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \ggsq+==+.
 
 
 
@@ -143,47 +143,47 @@ Cet opérateur permet de tester la non identité entre de deux objets de même t
 
 \subsection{Le getter \texttt{description}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter @T description -> @string
-\end{galgas3}
+\end{galgas4}
 
-Le \emph{getter} \ggst+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggst+log+ (\refSectionPage{instructionLog}).
+Le \emph{getter} \ggsq+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggsq+log+ (\refSectionPage{instructionLog}).
 
 
 
 \subsection{Le getter \texttt{dynamicType}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter @T dynamicType -> @type
-\end{galgas3}
+\end{galgas4}
 
-Le \emph{getter} \ggst+dynamicType+ retourne un objet de type \ggst+@type+, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
+Le \emph{getter} \ggsq+dynamicType+ retourne un objet de type \ggsq+@type+, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
 
 Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
 
-\begin{galgas3}
+\begin{galgas4}
 @uint n = 2
 @type t = [n dynamicType]
 log t # Affiche @uint
-\end{galgas3}
+\end{galgas4}
 
 Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.
 
 Par exemple, en déclarant :
-\begin{galgas3}
+\begin{galgas4}
 class @A { }
 class @B : @A { }
-\end{galgas3}
+\end{galgas4}
 
 Et avec la séquence d'instructions suivante :
-\begin{galgas3}
+\begin{galgas4}
 @B b = .new
 @type t = [b dynamicType]
 log t # Affiche @B, type statique de b : @B
 @A a = b # Affectation polymorphique
 t = [a dynamicType]
 log t # Affiche @B, type statique de a : @A
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -191,10 +191,10 @@ log t # Affiche @B, type statique de a : @A
 
 \subsection{Le getter \texttt{object}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter @T object -> @object
-\end{galgas3}
+\end{galgas4}
 
 
-Le \emph{getter} \ggst+object+ retourne un objet de type \ggst+@object+. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
+Le \emph{getter} \ggsq+object+ retourne un objet de type \ggsq+@object+. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
 

@@ -17,15 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
-  private let [@lexicalSendSearchAST] mLexicalSendSearchList
-  private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -65,61 +56,65 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CONTEXT
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalStructuredSendInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap) {
-  for lexicalSendSearch in self.mLexicalSendSearchList do
-    !?ioLexiqueAnalysisContext.mLexicalTokenListMap.setMShouldBeGeneratedForKey (true, lexicalSendSearch.mSearchListName.string)
-    ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey (lexicalSendSearch.mAttributeName, ?*)
-  end
-  self.mLexicalSendDefaultAction.checkLexicalDefaultAction (!?ioLexiqueAnalysisContext)
-}
+final class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
+  private let [@lexicalSendSearchAST] mLexicalSendSearchList
+  private let @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalStructuredSendInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = ""
-  for lexicalSendSearch in self.mLexicalSendSearchList do
-    result += "if (tokenCode == 0) {\n"
-    result += "  tokenCode = search_into_" + inScannerClassName.identifierRepresentation
-    result += "_" + lexicalSendSearch.mSearchListName + " (mLexicalAttribute_" + lexicalSendSearch.mAttributeName + ") ;\n"
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap) {
+    for lexicalSendSearch in self.mLexicalSendSearchList do
+      !?ioLexiqueAnalysisContext.mLexicalTokenListMap.setMShouldBeGeneratedForKey (true, lexicalSendSearch.mSearchListName.string)
+      ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey (lexicalSendSearch.mAttributeName, ?*)
+    end
+    self.mLexicalSendDefaultAction.checkLexicalDefaultAction (!?ioLexiqueAnalysisContext)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                 ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = ""
+    for lexicalSendSearch in self.mLexicalSendSearchList do
+      result += "if (tokenCode == 0) {\n"
+      result += "  tokenCode = search_into_" + inScannerClassName.identifierRepresentation
+      result += "_" + lexicalSendSearch.mSearchListName + " (mLexicalAttribute_" + lexicalSendSearch.mAttributeName + ") ;\n"
+      result += "}\n"
+    end
+    result += "if tokenCode == 0 {\n"
+    result += "  " + self.mLexicalSendDefaultAction.generateSwiftCocoaDefaultSendCode (inScannerClassName)
     result += "}\n"
-  end
-  result += "if tokenCode == 0 {\n"
-  result += "  " + self.mLexicalSendDefaultAction.generateSwiftCocoaDefaultSendCode (inScannerClassName)
-  result += "}\n"
-}
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//--------------------------------------------------------------------------------------------------
-//! CODE GENERATION
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalStructuredSendInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
-
-//·································································································
-
-override func @lexicalStructuredSendInstructionAST.generateLexicalInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = ""
-  for lexicalSendSearch in self.mLexicalSendSearchList do
+  
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                               ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = ""
+    for lexicalSendSearch in self.mLexicalSendSearchList do
+      result += "if (token.mTokenCode == -1) {\n"
+      result += "  token.mTokenCode = search_into_" + lexicalSendSearch.mSearchListName + " (token.mLexicalAttribute_" + lexicalSendSearch.mAttributeName.string.identifierRepresentation + ") ;\n"
+      result += "}\n"
+    end
     result += "if (token.mTokenCode == -1) {\n"
-    result += "  token.mTokenCode = search_into_" + lexicalSendSearch.mSearchListName + " (token.mLexicalAttribute_" + lexicalSendSearch.mAttributeName.string.identifierRepresentation + ") ;\n"
+    result += "  " + self.mLexicalSendDefaultAction.generateDefaultSendCode (inScannerClassName)
     result += "}\n"
-  end
-  result += "if (token.mTokenCode == -1) {\n"
-  result += "  " + self.mLexicalSendDefaultAction.generateDefaultSendCode (inScannerClassName)
-  result += "}\n"
-  result += "enterToken (token) ;\n"
+    result += "enterToken (token) ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

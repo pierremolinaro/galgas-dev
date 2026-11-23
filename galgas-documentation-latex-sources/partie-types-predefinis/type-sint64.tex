@@ -6,7 +6,7 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-An \ggst+@sint64+ object value is a 64-bit signed integer value. You can initialize an \ggst+@sint64+ object from an 64-bit signed integer constant:\\
+An \ggsq+@sint64+ object value is a 64-bit signed integer value. You can initialize an \ggsq+@sint64+ object from an 64-bit signed integer constant:\\
 
 \texttt{@sint64 mySignedInteger = 123\_456LS ;}
 
@@ -17,11 +17,11 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
 \subsectionConstructor{min}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor min -> @sint64
-\end{galgas3}
+\end{galgas4}
 
-Returns an \ggst+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
+Returns an \ggsq+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
 
 
 
@@ -29,11 +29,11 @@ Returns an \ggst+@sint64+ object that the minimum value of the 64-bit signed ran
 
 \subsectionConstructor{max}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor max -> @sint64
-\end{galgas3}
+\end{galgas4}
 
-Returns an \ggst+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
+Returns an \ggsq+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
 
 
 \section{Getters}
@@ -41,47 +41,47 @@ Returns an \ggst+@sint64+ object that the maximum value of the 64-bit signed ran
 
 \subsectionGetter{bigint}{sint64}
 
-Ce \emph{getter} permet de convertir un \ggst!@sint64! en \ggst!@bigint!. Comme la plage des valeurs des \ggst!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+Ce \emph{getter} permet de convertir un \ggsq!@sint64! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
 
-\begin{galgas3}
+\begin{galgas4}
   message [[-1234LS bigint] string] + "\n" # -1234
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionGetter{double}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter double -> @double
-\end{galgas3}
+\end{galgas4}
 
-Returns the receiver's value converted in a \ggst+@double+ object. As a 64-bit integer value can always be converted in a \ggst+@double+ value, this getter never fails.
+Returns the receiver's value converted in a \ggsq+@double+ object. As a 64-bit integer value can always be converted in a \ggsq+@double+ value, this getter never fails.
 
 
 
 \subsectionGetter{hexStringSeparatedBy}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
-\end{galgas3}
+\end{galgas4}
 
-Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggst=inGroup= digits are separated by the \ggst=inSeparator= character.
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
 
-If \ggst=inGroup= is equal to zero, a run-time error is raised.
+If \ggsq=inGroup= is equal to zero, a run-time error is raised.
 
 For example:
-\begin{galgas3}
+\begin{galgas4}
 let s = [0x123456789ABCDEF0LS hexStringSeparatedBy !'_' !3] # 0x1_234_567_89A_BCD_EF0
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{sint}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter sint -> @sint
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.
 
@@ -93,9 +93,9 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsectionGetter{string}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter string -> @string
-\end{galgas3}
+\end{galgas4}
 
 Returns a decimal string representation of the receiver's value. This getter never fails.
 
@@ -108,9 +108,9 @@ Returns a decimal string representation of the receiver's value. This getter nev
 
 \subsectionGetter{uint}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter uint -> @uint
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative or greater than $2^{32}-1$.
 
@@ -122,9 +122,9 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsectionGetter{uint64}{sint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter uint64 -> @uint64
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. This getter raises a run-time error if the receiver's value is negative.
 
@@ -141,57 +141,57 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsection{Opérateurs infixés}
 
-Le type \ggst+@sint64+ accepte les opérateurs arithmétiques infixés suivants :
+Le type \ggsq+@sint64+ accepte les opérateurs arithmétiques infixés suivants :
 \begin{itemize}
-  \item \ggst!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
-  \item \ggst!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
-  \item \ggst!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&/!, division, qui retourne zéro si le diviseur est nul.
+  \item \ggsq!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggsq!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggsq!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&/!, division, qui retourne zéro si le diviseur est nul.
 \end{itemize}
 
-Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggst+@sint64+.
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@sint64+.
 
 \subsection{Opérateurs préfixés}
-Le type \ggst+@sint64+ accepte les opérateurs arithmétiques préfixés suivants :
+Le type \ggsq+@sint64+ accepte les opérateurs arithmétiques préfixés suivants :
 \begin{itemize}
-  \item \ggst!+!, qui retourne simplement la valeur de l'opérande ;
-  \item \ggst!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{63}$ ;
-  \item \ggst!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{63}$ est $-2^{63}$.
+  \item \ggsq!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggsq!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{63}$ ;
+  \item \ggsq!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{63}$ est $-2^{63}$.
 \end{itemize}
 
-La valeur renvoyée est du même type  \ggst+@sint64+.
+La valeur renvoyée est du même type  \ggsq+@sint64+.
 
 
 \subsectionLabel{Instructions}{instructionsSINT64}
 
-Le type \ggst+@sint64+ accepte les instructions arithmétiques suivantes :
+Le type \ggsq+@sint64+ accepte les instructions arithmétiques suivantes :
 \begin{itemize}
-  \item \ggst!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
-  \item \ggst!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+  \item \ggsq!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
+  \item \ggsq!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
 \end{itemize}
 
-\ggst!x+=y! est équivalent à \ggst!x=x+y! ; \ggst!x-=y! est équivalent à \ggst!x=x-y!.
-La variable cible \ggst!x!, comme l'expression source \ggst!y! doivent être du même type \ggst+@sint64+.
+\ggsq!x+=y! est équivalent à \ggsq!x=x+y! ; \ggsq!x-=y! est équivalent à \ggsq!x=x-y!.
+La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@sint64+.
 
 Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
-\begin{galgas3}
+\begin{galgas4}
 @sint64 n = ... ; n ++ # Incrémentation
-\end{galgas3}
+\end{galgas4}
 
-\begin{galgas3}
+\begin{galgas4}
 @sint64 n = ... ; n -- # Décrémentation
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -202,7 +202,7 @@ Incrémentation et décrémentation sont des instructions, et ne peuvent pas app
 \section{Shift Operators}
 
 
-The \ggst+@sint64+ type supports right and left shift operators:\newline
+The \ggsq+@sint64+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -212,7 +212,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \ggst+@sint64+ object, and the left argument to be \ggst+@uint+ object.\newline
+Theses operators require the right argument to be \ggsq+@sint64+ object, and the left argument to be \ggsq+@uint+ object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -223,7 +223,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \ggst+@sint64+ type supports the three bit-wise logical operators:\newline
+The \ggsq+@sint64+ type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -235,10 +235,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggst+@sint64+ objects.\newline
+Theses operators require both arguments to be \ggsq+@sint64+ objects.\newline
 
 
-The \ggst+@sint64+ type supports the bit-wise logical unary operator:\newline
+The \ggsq+@sint64+ type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -246,7 +246,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \ggst+@sint64+ object.
+This operator returns an \ggsq+@sint64+ object.
 
 
 
@@ -256,7 +256,7 @@ This operator returns an \ggst+@sint64+ object.
 
 \section{Comparison Operators}
 
-The \ggst+@sint64+ type supports the six comparison operators:\newline
+The \ggsq+@sint64+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -274,6 +274,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggst+@sint64+ objects, and return a \ggst+@bool+ object.
+Theses operators require both arguments to be \ggsq+@sint64+ objects, and return a \ggsq+@bool+ object.
 
 

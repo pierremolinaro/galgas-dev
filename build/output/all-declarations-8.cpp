@@ -11233,24 +11233,6 @@ const GALGAS_TypeDescriptor * GGS_lexicalExpressionAST_2E_weak::staticTypeDescri
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension proc '@lexicalInstructionAST checkLexicalInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_checkLexicalInstruction (cPtr_lexicalInstructionAST * inObject,
-                                                  GGS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                  GGS_lexicalTagMap & io__5F_ioTagMap,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find proc
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
-    inObject->method_checkLexicalInstruction (io_ioLexiqueAnalysisContext, io__5F_ioTagMap, inCompiler COMMA_THERE) ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-//
 //Abstract extension proc '@abstractLexicalRuleAST checkLexicalRule'
 //
 //--------------------------------------------------------------------------------------------------
@@ -11371,14 +11353,14 @@ GGS_bool extensionGetter_useLoopLocalVar (const GGS__5B_abstractLexicalRuleAST_5
   GGS_bool result ; // Returned variable
   result = GGS_bool (false) ;
   const GGS__5B_abstractLexicalRuleAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_2832 (temp_0) ;
-  bool bool_1 = result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 70)).isValidAndTrue () ;
-  if (enumerator_2832.hasCurrentObject () && bool_1) {
-    while (enumerator_2832.hasCurrentObject () && bool_1) {
-      result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2832.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 71)) ;
-      enumerator_2832.gotoNextObject () ;
-      if (enumerator_2832.hasCurrentObject ()) {
-        bool_1 = result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 70)).isValidAndTrue () ;
+  UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_2523 (temp_0) ;
+  bool bool_1 = result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 61)).isValidAndTrue () ;
+  if (enumerator_2523.hasCurrentObject () && bool_1) {
+    while (enumerator_2523.hasCurrentObject () && bool_1) {
+      result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2523.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 62)) ;
+      enumerator_2523.gotoNextObject () ;
+      if (enumerator_2523.hasCurrentObject ()) {
+        bool_1 = result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 61)).isValidAndTrue () ;
       }
     }
   }

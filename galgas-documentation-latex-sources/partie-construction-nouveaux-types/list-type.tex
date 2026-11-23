@@ -10,65 +10,65 @@
 
 \section{Déclaration d'un type de liste}
 
-La déclaration d'un type \ggst+list+ nomme toutes les propriétés des éléments de la liste~:
+La déclaration d'un type \ggsq+list+ nomme toutes les propriétés des éléments de la liste~:
 
-\begin{galgas3}
+\begin{galgas4}
 list @MyList {
   @string mFirstAttribute
   @bool mSecondAttribute
 }
-\end{galgas3}
+\end{galgas4}
 
 \section{Constructeurs}
 
 \subsection{Le constructeur \texttt{emptyList}}
 
-Pour chaque liste, le constructeur \ggst+emptyList+ est implicitement déclaré. Il retourne une liste vide~:
+Pour chaque liste, le constructeur \ggsq+emptyList+ est implicitement déclaré. Il retourne une liste vide~:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = [@MyList emptyList]
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{Le constructeur \texttt{listWithValue}}
 
 Ce constructeur permet de construire directement une liste contenant un élément~:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = [@myList listWithValue !"c" !3]
-\end{galgas3}
+\end{galgas4}
 
 
 Using this constructor is equivalent to:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = [@MyList emptyList]
 aList += !"c" !3
-\end{galgas3}
+\end{galgas4}
 
 \section{Adding elements}
 
 \subsectionLabel{The \texttt{+=} operator}{operatorPlusEgalSurListe}
 
-The  \ggst*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \ggst+list+ declaration:\\
+The  \ggsq*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \ggsq+list+ declaration:\\
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString = ...
 @bool aBool = ...
 aList += !aString !aBool
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{L'instruction \texttt{+=}}
 
-L'instruction \ggst*cible += expression* concatène la liste définie par la valeur de \ggst+expression+ à la liste \ggst+cible+ :
+L'instruction \ggsq*cible += expression* concatène la liste définie par la valeur de \ggsq+expression+ à la liste \ggsq+cible+ :
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @MyList secondList = ...
 aList += secondList
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -81,119 +81,119 @@ aList += secondList
 Le setter \texttt{append} permet d'ajouter un élément à la fin de la liste, à partir d'un objet du type \emph{élément de la liste} implicitement déclaré.
 
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString = ...
 @bool aBool = ...
 @MyList-element élément = .new {!aString !aBool}
 [!?aList append !élément]
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{The \texttt{prependValue} setter}
 
 {\bf \textcolor{red}{Ce setter a été supprimé~; utiliser le setter \emph{insertAtIndex}.}}
 
-The \ggst+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \ggst+list+ declaration:
+The \ggsq+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \ggsq+list+ declaration:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString = ...
 @bool aBool = ...
 [!?aList prependValue !aString !aBool]
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsection{Setter \texttt{insertAtIndex}}
 
-Le setter \ggst+insertAtIndex+ permet d'insérer un nouvel élément à une position quelconque de la liste. Si le type \ggst+list+ correspondant déclare $n$ champs, l'appel du setter comprend $n+1$ arguments :
+Le setter \ggsq+insertAtIndex+ permet d'insérer un nouvel élément à une position quelconque de la liste. Si le type \ggsq+list+ correspondant déclare $n$ champs, l'appel du setter comprend $n+1$ arguments :
 \begin{itemize}
   \item les $n$ premiers correspondent aux valeurs des champs du nouvel élément inséré~;
-  \item le dernier est l'indice d'insertion, une valeur de type \ggst+@uint+.
+  \item le dernier est l'indice d'insertion, une valeur de type \ggsq+@uint+.
 \end{itemize}
 
-L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisait le setter \emph{prependValue}), et la longueur courante de la liste (insertion à la fin, comme le fait l'opérateur \ggst*+=*, \refSubsectionPage{operatorPlusEgalSurListe}). Si la liste est vide, insérer à l'indice $0$ est donc la seule possibilité.
+L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisait le setter \emph{prependValue}), et la longueur courante de la liste (insertion à la fin, comme le fait l'opérateur \ggsq*+=*, \refSubsectionPage{operatorPlusEgalSurListe}). Si la liste est vide, insérer à l'indice $0$ est donc la seule possibilité.
 
 Par exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString = ...
 @bool aBool = ..
 [!?aList insertAtIndex !aString !aBool !0]
-\end{galgas3}
+\end{galgas4}
 
 \subsection{The concatenation operator}
 
-The «~\ggst*+*~» operator can be used for concatenating two lists of the same type:
+The «~\ggsq*+*~» operator can be used for concatenating two lists of the same type:
 
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList firstList = ..
 @MyList secondList = ..
 @MyList thirdList = firstList + secondList
-\end{galgas3}
+\end{galgas4}
 
 \section{Removing elements}
 
 \subsection{Setter \texttt{popFirst}}
 
 
-The \ggst+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \ggst+list+ declaration:
+The \ggsq+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \ggsq+list+ declaration:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString
 @bool aBool
 [!?aList popFirst ?aString ?aBool]
-\end{galgas3}
+\end{galgas4}
 
-If the list is empty when \ggst+popFirst+ setter is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \ggsq+popFirst+ setter is invoked, a run-time error is raised and the input arguments are not valuated.
 
 \subsection{Setter \texttt{popLast}}
 
 
-The \ggst+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \ggst+list+ declaration:
+The \ggsq+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \ggsq+list+ declaration:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString
 @bool aBool
 [!?aList popLast ?aString ?aBool]
-\end{galgas3}
+\end{galgas4}
 
-If the list is empty when \ggst+popLast+ is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \ggsq+popLast+ is invoked, a run-time error is raised and the input arguments are not valuated.
 
 \section{Methods}
 
 \subsection{The \texttt{first} method}
 
-The \ggst+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggst+list+ declaration:
+The \ggsq+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggsq+list+ declaration:
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString
 @bool aBool
 [aList first ?aString ?aBool]
-\end{galgas3}
+\end{galgas4}
 
-If the list is empty when \ggst+first+ is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \ggsq+first+ is invoked, a run-time error is raised and the input arguments are not valuated.
 
 \subsection{The \texttt{last} method}
 
-The \ggst+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggst+list+ declaration:\\
+The \ggsq+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggsq+list+ declaration:\\
 
-\begin{galgas3}
+\begin{galgas4}
 @MyList aList = ...
 @string aString
 @bool aBool
 [aList last ?aString ?aBool]
-\end{galgas3}
+\end{galgas4}
 
 
-If the list is empty when \ggst+last+ is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \ggsq+last+ is invoked, a run-time error is raised and the input arguments are not valuated.
 
 
 
@@ -206,41 +206,41 @@ If the list is empty when \ggst+last+ is invoked, a run-time error is raised and
 
 \subsection{Le getter \texttt{count}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter count -> @uint
-\end{galgas3}
+\end{galgas4}
 
-Le \emph{getter} \ggst+count+ retourne le nombre d'éléments du récepteur.
+Le \emph{getter} \ggsq+count+ retourne le nombre d'éléments du récepteur.
 
 
 
 \subsection{Le getter \texttt{length}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter length -> @uint
-\end{galgas3}
+\end{galgas4}
 
-Le \emph{getter} \ggst+length+ retourne le nombre d'éléments du récepteur. Obsolète : utiliser \ggst+count+.
+Le \emph{getter} \ggsq+length+ retourne le nombre d'éléments du récepteur. Obsolète : utiliser \ggsq+count+.
 
 
 \subsection{Le getter \texttt{range}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter range -> @range
-\end{galgas3}
+\end{galgas4}
 
-The \ggst+range+ getter returns a range starting at $0$ of length equal to the number of elements of the receiver.
+The \ggsq+range+ getter returns a range starting at $0$ of length equal to the number of elements of the receiver.
 
 
 
 
 \subsection{Le getter \texttt{subListFromIndex}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter subListFromIndex ?@uint inIndex -> @self
-\end{galgas3}
+\end{galgas4}
 
-This getter returns a new list containing the elements of the receiver from the one at a given index to the end. The  \ggst+inIndex+ value should be lower or equal to the length of the receiver's value. If \ggst+inIndex+ is equal to the length of the receiver, the getter returns an empty list.
+This getter returns a new list containing the elements of the receiver from the one at a given index to the end. The  \ggsq+inIndex+ value should be lower or equal to the length of the receiver's value. If \ggsq+inIndex+ is equal to the length of the receiver, the getter returns an empty list.
 
 
 
@@ -249,22 +249,22 @@ This getter returns a new list containing the elements of the receiver from the 
 
 \subsection{Le getter \texttt{subListToIndex}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter subListToIndex ?@uint inIndex -> @self
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{getter} retourne une liste comprenant les éléments du récepteur à partir de l'indice $0$ jusqu'à l'indice \ggst+inIndex+ compris. Si \ggst+inIndex+ est supérieur ou égal au nombre d'éléments de la liste, une erreur d'exécution est déclenchée.
+Ce \emph{getter} retourne une liste comprenant les éléments du récepteur à partir de l'indice $0$ jusqu'à l'indice \ggsq+inIndex+ compris. Si \ggsq+inIndex+ est supérieur ou égal au nombre d'éléments de la liste, une erreur d'exécution est déclenchée.
 
 
 
 
 \subsection{Le getter \texttt{subListWithRange}}
 
-\begin{galgas3}
+\begin{galgas4}
 getter subListWithRange
   ?@range inRange
   -> @self
-\end{galgas3}
+\end{galgas4}
 
 This getter returns a list containing the elements of the receiver that lie within a given range. The range must not exceed the length of the receiver's value, that is $range\_start + range\_length \leqslant list\_length$. If the range's length is equal to zero, this getter returns an empty list.
 
@@ -284,7 +284,7 @@ This getter returns a list containing the elements of the receiver that lie with
 
 \section{Enumerating a list with a \texttt{for} instruction}
 
-The \ggst+for+ instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the \ggst+>+ qualifier.
+The \ggsq+for+ instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the \ggsq+>+ qualifier.
 
 There are two ways for accessing element values:
 \begin{itemize}
@@ -294,66 +294,66 @@ There are two ways for accessing element values:
 
 Given the list declaration:
 
-\begin{galgas3}
+\begin{galgas4}
 list @MyList {
   @string mFirstAttribute
   @bool mSecondAttribute
 }
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Enumeration using the implicitly declared constants}
 
-For every attribute, a constant of the same name is available in the \ggst+do+ instruction list. Theses constants receive the value of the corresponding attribute of the current element.
+For every attribute, a constant of the same name is available in the \ggsq+do+ instruction list. Theses constants receive the value of the corresponding attribute of the current element.
 
-\begin{galgas3}
+\begin{galgas4}
 for () in aList do
   # the mFirstAttribute constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the mSecondAttribute constant receives the value
   # of the mSecondAttribute attribute of the current element.
 end
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Enumeration using the explicitly declared constants}
 
-The \ggst+for+ header declares a sequence of constants, corresponding to the attribute list of the \ggst+do+ declaration. Theses constants receive the value of the corresponding attribute of the current element.
+The \ggsq+for+ header declares a sequence of constants, corresponding to the attribute list of the \ggsq+do+ declaration. Theses constants receive the value of the corresponding attribute of the current element.
 
 
-\begin{galgas3}
+\begin{galgas4}
 for (kString kBool) in aList do
   # the kString constant receives the value
   # of the mFirstAttribute attribute of the current element,
   # and the kBool constant receives the value
   # of the mSecondAttribute attribute of the current element.
 end
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Enumeration in the reverse order}
 
-In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the \ggst+>+ qualifier:
+In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the \ggsq+>+ qualifier:
 
-\begin{galgas3}
+\begin{galgas4}
 for > (kString kBool) in aList do
   ...
 end
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \section{Direct Access of an element attribute}
 
-In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \ggst+@uint+ index, spanning from 0 to element count (value returned by \ggst+length+ getter) minus one.
+In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \ggsq+@uint+ index, spanning from 0 to element count (value returned by \ggsq+length+ getter) minus one.
 
-The element retrieved with \ggst+first+ method is at index 0.
+The element retrieved with \ggsq+first+ method is at index 0.
 
-The element retrieved with \ggst+last+ method is at index equal to element count minus one.
+The element retrieved with \ggsq+last+ method is at index equal to element count minus one.
 
 \subsection{Read Access}
 
-By default and for every attribute, a getter is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} getter is provided. It accepts one \ggst+@uint+ argument, the value of the index.
+By default and for every attribute, a getter is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} getter is provided. It accepts one \ggsq+@uint+ argument, the value of the index.
 
-Si la propriété a été déclarée \ggst+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+Si la propriété a été déclarée \ggsq+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
 
 
 
@@ -361,11 +361,11 @@ Si la propriété a été déclarée \ggst+private+, seules les \emph{méthodes}
 
 By default, a setter is provided for performing a direct write access to an attribute at a given index.
 
-The setter name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the setter is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \ggst+@uint+ argument, the value of the index.
+The setter name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the setter is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \ggsq+@uint+ argument, the value of the index.
 
 For example:
 
-\begin{galgas3}
+\begin{galgas4}
 list @MyList {
   @string mFirstAttribute
   @bool mSecondAttribute
@@ -373,14 +373,14 @@ list @MyList {
 ...
 @string s = ...
 [!?aList setMFirstAttributeAtIndex !s !1]
-\end{galgas3}
+\end{galgas4}
 
-Si la propriété a été déclarée \ggst+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
+Si la propriété a été déclarée \ggsq+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
 
 
 \subsection{Example of read and write accesses}
 
-\begin{galgas3}
+\begin{galgas4}
 list @myList {
   @string name
 }
@@ -410,21 +410,21 @@ s = [strList nameAtIndex !2]
 log s # displays LOGGING s: <@string:"z">
 s = [strList nameAtIndex !3]
 log s # displays LOGGING s: <@string:"t">
-\end{galgas3}
+\end{galgas4}
 
 
 \section{Types liste prédéfinis}
 
 \subsectionTypePredefiniLabelIndex{2stringlist}
 
-Le type \ggst!@2stringlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@2stringlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @2stringlist {
   @string mValue0
   @string mValue1
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -435,14 +435,14 @@ list @2stringlist {
 
 \subsectionTypePredefiniLabelIndex{2lstringlist}
 
-Le type \ggst!@2lstringlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@2lstringlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @2lstringlist {
   @lstring mValue0
   @lstring mValue1
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -453,13 +453,13 @@ list @2lstringlist {
 
 \subsectionTypePredefiniLabelIndex{bigintlist}
 
-Le type \ggst!@bigintlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@bigintlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @bigintlist {
   @bigint mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -470,13 +470,13 @@ list @bigintlist {
 
 \subsectionTypePredefiniLabelIndex{functionlist}
 
-Le type \ggst!@functionlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@functionlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @functionlist {
   @function mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -487,13 +487,13 @@ list @functionlist {
 
 \subsectionTypePredefiniLabelIndex{lbigintlist}
 
-Le type \ggst!@lbigintlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@lbigintlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @lbigintlist {
   @lbigint mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -506,13 +506,13 @@ list @lbigintlist {
 
 \subsectionTypePredefiniLabelIndex{luintlist}
 
-Le type \ggst!@luintlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@luintlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @luintlist {
   @luint mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -525,13 +525,13 @@ list @luintlist {
 
 \subsectionTypePredefiniLabelIndex{lstringlist}
 
-Le type \ggst!@lstringlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@lstringlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @lstringlist {
   @lstring mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -541,13 +541,13 @@ list @lstringlist {
 
 \subsectionTypePredefiniLabelIndex{objectlist}
 
-Le type \ggst!@objectlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@objectlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @objectlist {
   @object mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -555,13 +555,13 @@ list @objectlist {
 
 \subsectionTypePredefiniLabelIndex{stringlist}
 
-Le type \ggst!@stringlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@stringlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @stringlist {
   @string mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -571,13 +571,13 @@ list @stringlist {
 
 \subsectionTypePredefiniLabelIndex{typelist}
 
-Le type \ggst!@typelist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@typelist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @typelist {
   @type mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -585,13 +585,13 @@ list @typelist {
 
 \subsectionTypePredefiniLabelIndex{uintlist}
 
-Le type \ggst!@uintlist! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@uintlist! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @uintlist {
   @uint mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 
 
 
@@ -600,11 +600,11 @@ list @uintlist {
 
 \subsectionTypePredefiniLabelIndex{uint64list}
 
-Le type \ggst!@uint64list! est implicitement déclaré de la façon suivante :
+Le type \ggsq!@uint64list! est implicitement déclaré de la façon suivante :
 
-\begin{galgas3box}
+\begin{galgas4box}
 list @uint64list {
   @uint64 mValue
 }
-\end{galgas3box}
+\end{galgas4box}
 

@@ -12,70 +12,70 @@
 L'appel d'un initialiseur instancie et initialise complètement un objet.
 
 Par exemple, la déclaration de structure suivante provoque la définition implicite d'un initialiseur synthétisé~:
-\begin{galgas34}
+\begin{galgas4}
 struct @maStructure {
   public var @uint propriété1
   public var @bool propriété2
 }
-\end{galgas34}
+\end{galgas4}
 
 La syntaxe la plus générale d'appel de l'initialisateur synthétisé est~:
 
-\begin{galgas34}
+\begin{galgas4}
 var aVariable = @maStructure (123, true)
-\end{galgas34}
-\begin{galgas3}
+\end{galgas4}
+\begin{galgas4}
 var aVariable = @maStructure {!123 !true}
-\end{galgas3}
+\end{galgas4}
 
 
-Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur, en utilisant en GALGAS 4 le délimiteur \ggsq=@(= ou en GALGAS 3 le délimiteur \ggst=@{=~:
-\begin{galgas34}
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel de l'initialisateur, en utilisant en GALGAS 4 le délimiteur \ggsq=@(=~:
+\begin{galgas4}
 var @maStructure aVariable = @(123, true)
-\end{galgas34}
-\begin{galgas3}
+\end{galgas4}
+\begin{galgas4}
 var @maStructure aVariable = @{!123 !true}
-\end{galgas3}
+\end{galgas4}
 
 
 Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
-\begin{galgas3}
+\begin{galgas4}
 struct @maStructure {
   public var @uint propriété1 %initArgLabel
   public var @bool propriété2
 }
-\end{galgas3}
+\end{galgas4}
 
 Alors l'appel de l'initialisateur synthétisé devient~:
 \begin{galgas4}
 var aVariable = @maStructure (!propriété1: 123, true)
 \end{galgas4}
-\begin{galgas3}
+\begin{galgas4}
 var aVariable = @maStructure {!propriété1: 123 !true}
-\end{galgas3}
+\end{galgas4}
 
 Si la propriété est initialisée, alors l'attribut \ggsq=%initArgLabel= est invalide (déclenche une erreur de syntaxe).
 
 
 Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
-\begin{galgas34}
+\begin{galgas4}
 struct @maStructure {
   public var @uint propriété1 = 1
   public var @bool propriété2 = 2
 }
-\end{galgas34}
+\end{galgas4}
 
 On écrit donc~:
-\begin{galgas34}
+\begin{galgas4}
 var aVariable = @maStructure ()
 // Ou :
 var @maStructure aVariable = @()
-\end{galgas34}
-\begin{galgas3}
+\end{galgas4}
+\begin{galgas4}
 var aVariable = @maStructure {}
 // Ou :
 var @maStructure aVariable = @{}
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -126,8 +126,7 @@ L’ordre des options et des fichiers sources est quelconque. La ligne de comman
 Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'option \emph{quiet}, soit l'option \emph{verbose}, mais par les deux :
 \begin{itemize}
   \item le compilateur GALGAS implémente l'option \emph{quiet}, mais pas l'option \emph{verbose} ;
-  \item par défaut, un compilateur engendré par GALGAS implémente l'option \emph{quiet}, mais pas l'option \emph{verbose} ;
-  \item Si la déclaration \ggst!%quietOutputByDefault!\index{\%quietOutputByDefault} parmi les déclarations du fichier projet (voir \refSectionPage{projetDeclarationQuietOutputByDefault}), le compilateur engendré par GALGAS implémente l'option \emph{verbose}, mais pas l'option \emph{quiet}.
+  \item par défaut, un compilateur engendré par GALGAS implémente l'option \emph{quiet}, mais pas l'option \emph{verbose}.
 \end{itemize}
 
 
@@ -158,33 +157,33 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\optionGGS{-{-}property-access-requires-self} Quand cette option est activée, \ggst!self! est requis pour accéder aux propriétés de l'objet courant dans les \emph{méthodes}, \emph{getter} et \emph{setter}. Par exemple, étant donné la classe \ggst!@maClasse!~:
+\optionGGS{-{-}property-access-requires-self} Quand cette option est activée, \ggsq!self! est requis pour accéder aux propriétés de l'objet courant dans les \emph{méthodes}, \emph{getter} et \emph{setter}. Par exemple, étant donné la classe \ggsq!@maClasse!~:
 
-\begin{galgas3}
+\begin{galgas4}
 class @maClasse {
   @uint maPropriété
 }
-\end{galgas3}
+\end{galgas4}
 
 Si on écrit~:
-\begin{galgas3}
+\begin{galgas4}
 setter @maClasse incrémenter {
   maPropriété ++
 }
-\end{galgas3}
+\end{galgas4}
 
-Cette écriture du \ggst!setter! n'est acceptée que si l'option \texttt{-{-}property-access-requires-self} est désactivée. Si elle est activée, il faut écrire~:
-\begin{galgas3}
+Cette écriture du \ggsq!setter! n'est acceptée que si l'option \texttt{-{-}property-access-requires-self} est désactivée. Si elle est activée, il faut écrire~:
+\begin{galgas4}
 setter @maClasse incrémenter {
   self.maPropriété ++
 }
-\end{galgas3}
+\end{galgas4}
 
 À noter que cette dernière écriture est toujours acceptée, que l'option \texttt{-{-}property-access-requires-self} soit activée ou non.
 
 
 
-\optionGGS{-{-}warns-anonymous-for-instruction} Quand cette option est activée, un warning est émis pour chaque instruction \ggst!for! dont la variable énumérée est anonyme (construction \ggst!for () in ... !, voir \refSubsectionPage{enumerationImplicite}).
+\optionGGS{-{-}warns-anonymous-for-instruction} Quand cette option est activée, un warning est émis pour chaque instruction \ggsq!for! dont la variable énumérée est anonyme (construction \ggsq!for () in ... !, voir \refSubsectionPage{enumerationImplicite}).
 
 
 
@@ -214,7 +213,7 @@ setter @maClasse incrémenter {
 \optionGGS{-{-}compile=$nom$} Enchaîne une compilation C++ après une compilation GALGAS sans erreur. Le $nom$ est le nom d'une cible de type \emph{makefile} ; par exemple, \texttt{-{-}compile=makefile-macosx} enchaîne la compilation C++ de la cible \emph{makefile-macosx}.
 
 
-\optionGGS{-{-}macosx=$n$} Force la génération d'un projet Xcode dont le SDK et le \emph{macos Deployement Target} sont fixés à 10.$n$.  Attention, cette option ne vous dispense pas de préciser \ggst=%applicationBundleBase= (\refSectionPage{parametrageProjetGALGAS}).
+\optionGGS{-{-}macosx=$n$} Force la génération d'un projet Xcode dont le SDK et le \emph{macos Deployement Target} sont fixés à 10.$n$.  Attention, cette option ne vous dispense pas de préciser \ggsq=%applicationBundleBase= (\refSectionPage{parametrageProjetGALGAS}).
 
 
 
@@ -252,7 +251,7 @@ Ces options produisent des fichiers qui facilitent la documention \LaTeX~de votr
 
 
 
-\optionGGS{-{-}generate-shared-map-automaton-dot-files} Exporte les automates d'états finis associés à chaque table de symboles de type \ggst!shared map!. Les fichiers de sortie sont placés dans le répertoire \texttt{build/helpers}, et portent le nom du type table postfixé par l'extension \texttt{.dot}.
+\optionGGS{-{-}generate-shared-map-automaton-dot-files} Exporte les automates d'états finis associés à chaque table de symboles de type \ggsq!shared map!. Les fichiers de sortie sont placés dans le répertoire \texttt{build/helpers}, et portent le nom du type table postfixé par l'extension \texttt{.dot}.
 
 
 
@@ -271,16 +270,16 @@ Ces options produisent des fichiers qui facilitent la documention \LaTeX~de votr
   \item $fichier$ est une chaîne qui désigne le fichier de sortie.
 \end{itemize}
 
-Prenons un exemple ; supposons que le composant \ggst!lexique! de votre langage soit~:
-\begin{galgas3}
+Prenons un exemple ; supposons que le composant \ggsq!lexique! de votre langage soit~:
+\begin{galgas4}
 lexique lex {
   ...
   list mots ... { "a", "b", "c" }
   ...
 }
-\end{galgas3}
+\end{galgas4}
 
-En appelant votre compilateur avec l'option \optionGGS{-{-}output-keyword-list-file=lex:mots:2:::motsreserves.tex}, la liste des mots réservés définies par la liste \ggst!mots! du lexique \ggst!lex! sera écrite dans le fichier \texttt{motsreserves.tex}. Ce fichier aura le contenu suivant :
+En appelant votre compilateur avec l'option \optionGGS{-{-}output-keyword-list-file=lex:mots:2:::motsreserves.tex}, la liste des mots réservés définies par la liste \ggsq!mots! du lexique \ggsq!lex! sera écrite dans le fichier \texttt{motsreserves.tex}. Ce fichier aura le contenu suivant :
 \begin{lstlisting}[backgroundcolor=\color{yellow!10}, frame=tlbr, basicstyle=\small\tt]
   a & b \\
   c & \\

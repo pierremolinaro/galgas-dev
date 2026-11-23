@@ -17,16 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
-  private let [@lexicalInstructionAST] mRepeatedInstructionList
-  private let [@lexicalWhileBranchAST] mLexicalWhileBranchList
-  private let @location mLocation
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
@@ -60,137 +50,103 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalRepeatInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap ioTagMap)  {
-  for lexicalWhileBranch in self.mLexicalWhileBranchList do
-    lexicalWhileBranch.mWhileExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
-    var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
-    for instr in lexicalWhileBranch.mWhileInstructionList do
-      instr.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+final class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
+  private let [@lexicalInstructionAST] mRepeatedInstructionList
+  private let [@lexicalWhileBranchAST] mLexicalWhileBranchList
+  private let @location mLocation
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap ioTagMap)  {
+    for lexicalWhileBranch in self.mLexicalWhileBranchList do
+      lexicalWhileBranch.mWhileExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
+      var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
+      for instr in lexicalWhileBranch.mWhileInstructionList do
+        instr.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+      end
     end
-  end
-  var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
-  for entry in self.mRepeatedInstructionList do
-    entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
-  end
-}
+    var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
+    for entry in self.mRepeatedInstructionList do
+      entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+    end
+  }
 
-//----- func ---------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//override func @lexicalRepeatInstructionAST generateObjcCocoaInstructionCode
-//                                      ?let @string inScannerClassName
-//                                      ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-//                                      -> @string {
-//  let loopVarName = "loop" + [self.mLocation endLocationIndex]
-//  result = "BOOL " + loopVarName + " = YES ;\n"
-//  result += "do {\n"
-//  !?result incIndentation !2]
-//--- Repeated instruction
-//  for (mInstruction) in self.mRepeatedInstructionList do
-//    result += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-//  end
-//---
-//  for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
-//  do
-//    result += "if (scanningOk && ("
-//    result += [mWhileExpression generateObjcCocoaConditionCode !inLexiqueAnalysisContext]
-//    result += ")) {\n"
-//    !?result incIndentation !2]
-//    for (mInstruction) in mWhileInstructionList do
-//      result += [mInstruction generateObjcCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
-//    end
-//    !?result decIndentation !2]
-//  between
-//    result += "}else "
-//  end
-//  result += "}else{\n"
-//                      "  " + loopVarName + " = NO ;\n"
-//                      "}\n"
-//  !?result decIndentation !2]
-//  result += "}while (" + loopVarName + " && scanningOk) ;\n"
-//                      "loop = YES ;\n"
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string {
-  result = "while (loop && scanningOk) {\n"
-  !?result.incIndentation (2)
-//--- Repeated instruction
-  for entry in self.mRepeatedInstructionList do
-    result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
-  end
-//---
-  for lexicalWhileBranch in self.mLexicalWhileBranchList
-  do
-    result += "if scanningOk && ("
-    result += lexicalWhileBranch.mWhileExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
-    result += ") {\n"
+  override func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                                   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string {
+    result = "while (loop && scanningOk) {\n"
     !?result.incIndentation (2)
-    for entry in lexicalWhileBranch.mWhileInstructionList do
+  //--- Repeated instruction
+    for entry in self.mRepeatedInstructionList do
       result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
+  //---
+    for lexicalWhileBranch in self.mLexicalWhileBranchList
+    do
+      result += "if scanningOk && ("
+      result += lexicalWhileBranch.mWhileExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
+      result += ") {\n"
+      !?result.incIndentation (2)
+      for entry in lexicalWhileBranch.mWhileInstructionList do
+        result += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
+    between
+      result += "}else "
+    end
+    result += "}else{\n"
+                        "  loop = false\n"
+                        "}\n"
     !?result.decIndentation (2)
-  between
-    result += "}else "
-  end
-  result += "}else{\n"
-                      "  loop = false\n"
-                      "}\n"
-  !?result.decIndentation (2)
-  result += "}\n"
-                      "loop = true\n"
-}
+    result += "}\n"
+              "loop = true\n"
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRepeatInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = true
-}
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = true
+  }
 
-//·································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalRepeatInstructionAST.generateLexicalInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string {
-  result = "do {\n"
-  !?result.incIndentation (2)
-//--- Repeated instruction
-  for entry in self.mRepeatedInstructionList do
-    result += entry.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
-  end
-//---
-  for lexicalWhileBranch in self.mLexicalWhileBranchList
-  do
-    result += "if ("
-    result += lexicalWhileBranch.mWhileExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
-    result += ") {\n"
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                                ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string {
+    result = "do {\n"
     !?result.incIndentation (2)
-    for entry in lexicalWhileBranch.mWhileInstructionList do
+  //--- Repeated instruction
+    for entry in self.mRepeatedInstructionList do
       result += entry.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
+  //---
+    for lexicalWhileBranch in self.mLexicalWhileBranchList
+    do
+      result += "if ("
+      result += lexicalWhileBranch.mWhileExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
+      result += ") {\n"
+      !?result.incIndentation (2)
+      for entry in lexicalWhileBranch.mWhileInstructionList do
+        result += entry.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      end
+      !?result.decIndentation (2)
+    between
+      result += "}else "
+    end
+    result += "}else{\n"
+                        "  loop = false ;\n"
+                        "}\n"
     !?result.decIndentation (2)
-  between
-    result += "}else "
-  end
-  result += "}else{\n"
-                      "  loop = false ;\n"
-                      "}\n"
-  !?result.decIndentation (2)
-  result += "}while (loop) ;\n"
-                      "loop = true ;\n"
+    result += "}while (loop) ;\n"
+              "loop = true ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

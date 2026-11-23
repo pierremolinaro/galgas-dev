@@ -17,14 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalTagInstructionAST : @lexicalInstructionAST {
-  private let @lstring mLexicalTagName
-}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -41,41 +33,43 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalTagInstructionAST.checkLexicalInstruction (
-  ?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
-  ?!@lexicalTagMap ioTagMap) {
-  !?ioTagMap.insertKey (self.mLexicalTagName)
-}
+final class @lexicalTagInstructionAST : @lexicalInstructionAST {
+  private let @lstring mLexicalTagName
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalTagInstructionAST.generateSwiftCocoaInstructionCode (
-  ?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
-}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap ioTagMap) {
+    !?ioTagMap.insertKey (self.mLexicalTagName)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateSwiftCocoaInstructionCode (?let @string _inScannerClassName,
+                                  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateLexicalInstructionCode (?let @string _inScannerClassName,
+                                 ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "const LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
+                      + "const LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
+                      + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalTagInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override func @lexicalTagInstructionAST.generateLexicalInstructionCode (
-  ?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "const LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
-                    + "const LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
-                    + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

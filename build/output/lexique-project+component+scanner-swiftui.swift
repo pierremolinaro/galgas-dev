@@ -695,7 +695,7 @@ func projectComponentScanner_lexiqueIdentifier () -> String {
 
 func projectComponentScanner_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "Default Style", // 0
+    "defaultStyle", // 0
   ]
   return kStyleArray [Int (inIndex)]
 }

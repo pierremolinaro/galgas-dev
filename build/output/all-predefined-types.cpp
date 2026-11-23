@@ -12,7 +12,7 @@
 
 String styleNameForIndex (const uint32_t inStyleIndex) {
   const char * array [15] = {
-    "Default Style", // 0
+    "defaultStyle", // 0
     "keywordsStyle", // 1
     "delimitersStyle", // 2
     "selectorStyle", // 3
@@ -25,7 +25,7 @@ String styleNameForIndex (const uint32_t inStyleIndex) {
     "typeNameStyle", // 10
     "attributeStyle", // 11
     "commentStyle", // 12
-    "Lexical error", // 13
+    "LexicalError", // 13
     "Template" // 14
   } ;
   return (inStyleIndex < 15) ? array [inStyleIndex] : "" ;

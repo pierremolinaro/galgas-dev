@@ -25,8 +25,8 @@ Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contien
 Pour engendrer un projet \texttt{Xcode}, il y a deux attributs obligatoires, et un attribut optionnel~:
 \begin{itemize}
 \item un premier attribut obligatoire qui définit le OSX SDK et la version système cible (\refSubsectionPage{attributOSXSDK})~;
-\item un second attribut obligatoire \ggst=%applicationBundleBase= (\refSubsectionPage{attributapplicationBundleBase})~;
-\item un attribut optionnel \ggst=%macCodeSign=, qui définit comment est signé l'application OS X engendrée (\refSubsectionPage{attributmacCodeSign}).
+\item un second attribut obligatoire \ggsq=%applicationBundleBase= (\refSubsectionPage{attributapplicationBundleBase})~;
+\item un attribut optionnel \ggsq=%macCodeSign=, qui définit comment est signé l'application OS X engendrée (\refSubsectionPage{attributmacCodeSign}).
 \end{itemize}
 
 
@@ -34,17 +34,17 @@ Pour engendrer un projet \texttt{Xcode}, il y a deux attributs obligatoires, et 
 
 \subsectionLabel{Attribut définissant le OSX SDK et la version système cible}{attributOSXSDK}
 
-Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggst+%MacOS+ dans votre fichier projet (d'extension \tpp{.galgasProject}, voir \refChapterPage{composantProjet}). Par exemple~:
+Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggsq+%MacOS+ dans votre fichier projet (d'extension \tpp{.galgasProject}, voir \refChapterPage{composantProjet}). Par exemple~:
 
-\begin{galgas3}
+\begin{galgas4}
 project (0:0:1) -> "logo" {
   %applicationBundleBase : "fr.what"
   ...
-\end{galgas3}
+\end{galgas4}
 
-%Vous pouvez aussi utiliser l'option \texttt{-{-}macosx=$n$} (\refSectionPage{optionsGeneration}). Attention, cette option ne vous dispense pas de préciser \ggst=%applicationBundleBase=.
+%Vous pouvez aussi utiliser l'option \texttt{-{-}macosx=$n$} (\refSectionPage{optionsGeneration}). Attention, cette option ne vous dispense pas de préciser \ggsq=%applicationBundleBase=.
 %
-%Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé~: ainsi, \ggst+%Lion+ définit la version \texttt{Lion} (10.7). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggst+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré. Quand \ggst+%SnowLeopard+ est sélectionné, l'application Cocoa engendrée utilise le \emph{garbage collector}. Sinon, elle adopte l'\emph{Automatic Reference Counting} (\emph{ARC}).
+%Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé~: ainsi, \ggsq+%Lion+ définit la version \texttt{Lion} (10.7). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggsq+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré. Quand \ggsq+%SnowLeopard+ est sélectionné, l'application Cocoa engendrée utilise le \emph{garbage collector}. Sinon, elle adopte l'\emph{Automatic Reference Counting} (\emph{ARC}).
 
 %
 %\begin{table}[!t]
@@ -52,16 +52,16 @@ project (0:0:1) -> "logo" {
 %  \begin{tabular}{rlll}
 %    \textbf{Option} & \textbf{Version SDK Mac OS} & \textbf{Version de}  &  \textbf{Gestion mémoire}\\
 %                    &                             & \textbf{déploiement} &                          \\
-%    \ggst+%SnowLeopard+ & \texttt{SnowLeopard} (10.6) & 10.6  & \emph{Garbage Collector}\\
-%    \ggst+%Lion+ & \texttt{Lion} (10.7) & 10.7 & \emph{ARC}\\
-%    \ggst+%MountainLion+ & \texttt{Mountain Lion} (10.8) & 10.8 & \emph{ARC}\\
-%    \ggst+%Mavericks+ & \texttt{Mavericks} (10.9) & 10.9 & \emph{ARC}\\
-%    \ggst+%Yosemite+ & \texttt{Yosemite} (10.10) & 10.10  & \emph{ARC}\\
-%    \ggst+%YosemiteElCapitan+ & \texttt{El Capitan} (10.11) & 10.10  & \emph{ARC}\\
-%    \ggst+%ElCapitan+ & \texttt{El Capitan} (10.11) & 10.11  & \emph{ARC}\\
-%    \ggst+%Sierra+ & \texttt{Sierra} (10.12) & 10.12  & \emph{ARC}\\
-%    \ggst+%ElCapitanSierra+ & \texttt{Sierra} (10.12) & 10.11  & \emph{ARC}\\
-%    \ggst+%LatestMacOS+ & -- & -- & --\\
+%    \ggsq+%SnowLeopard+ & \texttt{SnowLeopard} (10.6) & 10.6  & \emph{Garbage Collector}\\
+%    \ggsq+%Lion+ & \texttt{Lion} (10.7) & 10.7 & \emph{ARC}\\
+%    \ggsq+%MountainLion+ & \texttt{Mountain Lion} (10.8) & 10.8 & \emph{ARC}\\
+%    \ggsq+%Mavericks+ & \texttt{Mavericks} (10.9) & 10.9 & \emph{ARC}\\
+%    \ggsq+%Yosemite+ & \texttt{Yosemite} (10.10) & 10.10  & \emph{ARC}\\
+%    \ggsq+%YosemiteElCapitan+ & \texttt{El Capitan} (10.11) & 10.10  & \emph{ARC}\\
+%    \ggsq+%ElCapitan+ & \texttt{El Capitan} (10.11) & 10.11  & \emph{ARC}\\
+%    \ggsq+%Sierra+ & \texttt{Sierra} (10.12) & 10.12  & \emph{ARC}\\
+%    \ggsq+%ElCapitanSierra+ & \texttt{Sierra} (10.12) & 10.11  & \emph{ARC}\\
+%    \ggsq+%LatestMacOS+ & -- & -- & --\\
 %  \end{tabular}
 %  \caption{Options du projet GALGAS indiquant la version Mac OS}
 %  \labelTableau{options-pour-xcode}
@@ -73,27 +73,27 @@ project (0:0:1) -> "logo" {
 
 \subsectionLabel{Attribut \texttt{\%applicationBundleBase}}{attributapplicationBundleBase}\index{\%applicationBundleBase}
 
-Il y a un second attribut obligatoire à ajouter dans le projet GALGAS~: \ggst+%applicationBundleBase+. Celle-ci fixe le \emph{Bundle Identifier} de l'application Cocoa. À la chaîne définie dans l'option (ici \ggst+"fr.what"+) est ajouté le nom du projet (défini dans l'en-tête, ici \ggst+"logo"+), précédé par un point~: le \emph{Bundle Identifier} est donc \tpp{fr.what.logo}.
+Il y a un second attribut obligatoire à ajouter dans le projet GALGAS~: \ggsq+%applicationBundleBase+. Celle-ci fixe le \emph{Bundle Identifier} de l'application Cocoa. À la chaîne définie dans l'option (ici \ggsq+"fr.what"+) est ajouté le nom du projet (défini dans l'en-tête, ici \ggsq+"logo"+), précédé par un point~: le \emph{Bundle Identifier} est donc \tpp{fr.what.logo}.
 
 
 \subsectionLabel{Attribut \texttt{\%macCodeSign}}{attributmacCodeSign}\index{\%macCodeSign}
 
 Par défaut, l'application engendrée par Xcode n'est pas signée. Cela signifie qu'elle tournera sur le système et la machine où elle a été compilée, mais peut-être pas sur un autre système et / ou une autre machine.
 
-L'attribut \ggst=%macCodeSign= permet de préciser comment Xcode va signer l'application.
+L'attribut \ggsq=%macCodeSign= permet de préciser comment Xcode va signer l'application.
 
 \fbox{\begin{minipage}{1.0\textwidth}
 Dans la version actuelle de GALGAS, l'attribut \texttt{\%macCodeSign} permet de signer l'application avec votre compte \texttt{Mac Developer}, ou un certificat défini dans le \emph{Trousseau d'accès}, par exemple un certificat auto-signé.
 \end{minipage}}
 
-L'attribut \ggst=%macCodeSign= doit être associé à une chaîne de caractères, qui comprend deux éléments séparés par un «~:~»~:
-\begin{galgas3}
+L'attribut \ggsq=%macCodeSign= doit être associé à une chaîne de caractères, qui comprend deux éléments séparés par un «~:~»~:
+\begin{galgas4}
   %macCodeSign = "MacDeveloper:ZW8HY75J3X"
-\end{galgas3}
+\end{galgas4}
 ou
-\begin{galgas3}
+\begin{galgas4}
   %macCodeSign = "Certificate:John Egg Smith"
-\end{galgas3}
+\end{galgas4}
 Le premier correspond au certificat associé à votre compte \texttt{Mac Developer}, le second à un certificat détenu dans le \emph{Trousseau d'accès} («~\emph{Key Chain}~»).
 
 \fbox{\begin{minipage}{1.0\textwidth}
@@ -111,7 +111,7 @@ Pour obtenir la chaîne associée à votre compte \texttt{Mac Developer}, vous a
 
 La \refSubsubsectionPage{definirCertificatAutoSigne} montre comment définir un certificat auto-signé.
 
-Une fois que l'attribut \ggst=%macCodeSign= aura été défini, vous pourrez effectuer la compilation GALGAS de votre projet. Compiler le projet Xcode engendrera une application signée. On pourra le vérifier, comme expliqué à la \refSubsectionPage{verifierSignatureAppli}.
+Une fois que l'attribut \ggsq=%macCodeSign= aura été défini, vous pourrez effectuer la compilation GALGAS de votre projet. Compiler le projet Xcode engendrera une application signée. On pourra le vérifier, comme expliqué à la \refSubsectionPage{verifierSignatureAppli}.
 
 \subsubsectionLabel{Utilitaire \texttt{certtool}}{utilitaireCerttool}
 
@@ -221,10 +221,10 @@ La valeur associée au paramètre \tpp{DEVELOPMENT\_TEAM} est la chaîne recherc
 
 Pour définir un certificat auto-signé, appler l'application «~\emph{Trousseaux d'accès}~» («~\emph{Keychain Access}~»). Ensuite, sélectionner dans le menu de l'application \tpp{Assistant de certification} -> \tpp{Créer un certificat…}, comme indiqué à la \refFigure{a}{figureDefinirCertificatAutoSigne}. Ensuite, dans la fenêtre qui apparaît (\refFigure{b}{figureDefinirCertificatAutoSigne}), entrer le nom que vous allez donner au certificat (ici «~John Egg Smith~»), sélectionner pour le \tpp{Type d'identité} «~Racine auto-signée~», et pour \tpp{Type de certificat} «~Signature de code~». Terminer la création en cliquant sur \tpp{Créer}.
 
-Le nom que vous avez donné au certificat est important, c'est lui que vous allez utilisez pour l'attribut \ggst=%macCodeSign= (respecter absolument la casse et les espaces)~:
-\begin{galgas3}
+Le nom que vous avez donné au certificat est important, c'est lui que vous allez utilisez pour l'attribut \ggsq=%macCodeSign= (respecter absolument la casse et les espaces)~:
+\begin{galgas4}
   %macCodeSign = "Certificate:John Egg Smith"
-\end{galgas3}
+\end{galgas4}
 
 
 \begin{figure}[!t]
@@ -375,15 +375,15 @@ Pour configurer votre projet, vous avez à modifier le composant \emph{lexique},
 
 \subsection{En tête du composant \texttt{lexique}}
 
-Il faut modifier l'en-tête, en ajoutant la déclaration  \ggst+indexing in+ :
+Il faut modifier l'en-tête, en ajoutant la déclaration  \ggsq+indexing in+ :
 
 
-\begin{galgas3}
+\begin{galgas4}
 lexique logo_lexique indexing in "INDEXING" {
   ...
-\end{galgas3}
+\end{galgas4}
 
-La chaîne \ggst+"INDEXING"+ définit le nom du répertoire qui contient les fichiers cache de l'indexation. Ce répertoire est relatif au répertoire qui contient le fichier source.
+La chaîne \ggsq+"INDEXING"+ définit le nom du répertoire qui contient les fichiers cache de l'indexation. Ce répertoire est relatif au répertoire qui contient le fichier source.
 
 Note : si vous effectuez maintenant la compilation GALGAS, vous obtiendrez une erreur sur la définition de la grammaire, indiquant qu'elle doit aussi indiquer la prise en compte de l'indexation.
 
@@ -392,12 +392,12 @@ Note : si vous effectuez maintenant la compilation GALGAS, vous obtiendrez une e
 
 \subsection{En tête du composant \texttt{grammar}}
 
-Il suffit de préfixer par \ggst+indexing+ l'en-tête du composant \ggst+grammar+ :
+Il suffit de préfixer par \ggsq+indexing+ l'en-tête du composant \ggsq+grammar+ :
 
-\begin{galgas3}
+\begin{galgas4}
 indexing grammar logo_grammar ... {
   ...
-\end{galgas3}
+\end{galgas4}
 
 Note : maintenant, la compilation GALGAS s'effectue sans erreur.
 
@@ -406,18 +406,18 @@ Note : maintenant, la compilation GALGAS s'effectue sans erreur.
 
 \subsection{Règle d'analyse des fichiers sources}
 
-La règle d'analyse des fichiers source doit mentionner dans l'en-tête la grammaire utilisée pour l'analyse (pour l'exemple du langage LOGO, c'est le rôle de la troisième ligne \ggst+grammar logo_grammar+).
+La règle d'analyse des fichiers source doit mentionner dans l'en-tête la grammaire utilisée pour l'analyse (pour l'exemple du langage LOGO, c'est le rôle de la troisième ligne \ggsq+grammar logo_grammar+).
 
-\begin{galgas3}
+\begin{galgas4}
 case . "logo"
 message "a source text file with the .logo extension"
 grammar logo_grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar logo_grammar in inSourceFile
 }
-\end{galgas3}
+\end{galgas4}
 
-Quand le mode d'exécution (absence de l'option \tpp{-{}-mode}) est le mode par défaut, les instructions de la règle sont exécutées. Ci-dessus, la seule instruction est l'instruction \ggst+grammar logo_grammar in inSourceFile+ (ligne 5).
+Quand le mode d'exécution (absence de l'option \tpp{-{}-mode}) est le mode par défaut, les instructions de la règle sont exécutées. Ci-dessus, la seule instruction est l'instruction \ggsq+grammar logo_grammar in inSourceFile+ (ligne 5).
 
 Quand le mode d'exécution (présence de l'option \tpp{-{}-mode}) n'est pas le mode par défaut, les instructions de la règle ne sont pas exécutées, et les opérations sont guidées par la grammaire indiquée ligne 3. Dans le cas de l'indexation, l'exécution construit l'indexation du fichier source.
 
@@ -431,17 +431,17 @@ Quand le mode d'exécution (présence de l'option \tpp{-{}-mode}) n'est pas le m
 
 \subsection{Déclaration des classes d'index}
 
-La déclaration des classes d'index s'effectue dans l'analyseur lexical. Dans la cadre du langage d'exemple LOGO, on veut simplement indéxer les routines, plus précisément l'endroit de leur définition, et les endroits où elles sont appelées. On définit donc deux classes d'index \ggst+routineDefinition+ et \ggst+routineCall+. À chaque déclaration est associée une chaîne de caractères, qui sera le titre affiché dans le menu contextuel.
+La déclaration des classes d'index s'effectue dans l'analyseur lexical. Dans la cadre du langage d'exemple LOGO, on veut simplement indéxer les routines, plus précisément l'endroit de leur définition, et les endroits où elles sont appelées. On définit donc deux classes d'index \ggsq+routineDefinition+ et \ggsq+routineCall+. À chaque déclaration est associée une chaîne de caractères, qui sera le titre affiché dans le menu contextuel.
 
 
-\begin{galgas3}
+\begin{galgas4}
 lexique logo_lexique indexing in "INDEXING" {
   ...
 indexing routineDefinition : "Routine Definition"
   ...
 indexing routineCall : "Routine call"
   ...
-\end{galgas3}
+\end{galgas4}
 
 
 Ces définitions peuvent être placées à tout endroit dans la définition de l'analyseur lexical.
@@ -459,7 +459,7 @@ L'analyseur syntaxique va être complété de façon à définir les symboles qu
 
 Considérons d'abord la déclaration de routine. La règle de l'analyseur syntaxique qui définit cette analyse est :
 
-\begin{galgas3}
+\begin{galgas4}
 rule <routine_definition> {
   $ROUTINE$
   $identifier$ ?let routineName
@@ -467,11 +467,11 @@ rule <routine_definition> {
   <instruction_list>
   $END$
 }
-\end{galgas3}
+\end{galgas4}
 
-Le nom de la routine est défini par l'instruction \ggst+$identifier$ ?let routineName+ : on la modifie alors de façon à signifier que l'indentificateur doit être indéxé comme une définition de routine :
+Le nom de la routine est défini par l'instruction \ggsq+$identifier$ ?let routineName+ : on la modifie alors de façon à signifier que l'indentificateur doit être indéxé comme une définition de routine :
 
-\begin{galgas3}
+\begin{galgas4}
 rule <routine_definition> {
   $ROUTINE$
   $identifier$ ?let routineName indexing routineDefinition
@@ -479,11 +479,11 @@ rule <routine_definition> {
   <instruction_list>
   $END$
 }
-\end{galgas3}
+\end{galgas4}
 
 Maintenant, l'instruction d'appel de routine :
 
-\begin{galgas3}
+\begin{galgas4}
 rule <instruction> {
   select
     $CALL$
@@ -493,11 +493,11 @@ rule <instruction> {
     ...
   end
 }
-\end{galgas3}
+\end{galgas4}
 
-On modifie de manière analogue l'instruction \ggst+$identifier$ ?let @lstring routineName+~:
+On modifie de manière analogue l'instruction \ggsq+$identifier$ ?let @lstring routineName+~:
 
-\begin{galgas3}
+\begin{galgas4}
 rule <instruction> {
   select
     $CALL$
@@ -507,7 +507,7 @@ rule <instruction> {
     ...
   end
 }
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -524,15 +524,15 @@ Les modifications sont terminées. Vous pouvez recompiler votre projet (compilat
 
 
 
-%\noindent{4} \textbf{Program component configuration.} Insert the \ggst+grammar+ declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
+%\noindent{4} \textbf{Program component configuration.} Insert the \ggsq+grammar+ declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
 %
-%\begin{galgas3}
+%\begin{galgas4}
 %case ...
 %message ...
 %grammar my_grammar
 %?@lstring inSourceFile {
 %  ...
-%\end{galgas3}
+%\end{galgas4}
 %
 %
 %
@@ -541,7 +541,7 @@ Les modifications sont terminées. Vous pouvez recompiler votre projet (compilat
 %
 %\noindent{5} \textbf{Define indexing entries.} The indexing entries are defined within the rules of syntax components. The \emph{terminal check} instruction is the unique way for definition, by naming an index class name:
 %
-%\begin{galgas3}
+%\begin{galgas4}
 %syntax ... ("my_lexique.gLexique")~:
 %  ...
 %rule ... :
@@ -550,16 +550,16 @@ Les modifications sont terminées. Vous pouvez recompiler votre projet (compilat
 %  ...
 %end rule ;
 %  ...
-%\end{galgas3}
+%\end{galgas4}
 %
 %Any kind of terminal symbol accepts an « \texttt{indexing} » attribute : keywords, delimiters, literal string, integers, identifiers, \dots
 %
 %Several index class names can be named, using a comma as separator:
-%\begin{galgas3}
+%\begin{galgas4}
 %  ...
 %  $identifier$ ? ... indexing myIndexClass1, myIndexClass2 ;
 %  ...
-%\end{galgas3}
+%\end{galgas4}
 %
 %
 %

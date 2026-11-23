@@ -7682,21 +7682,21 @@ GGS_string GGS_predefinedTypeGenerationTemplate::class_func_predefinedTypesImple
   String result ;
   result.appendString ("//--------------------------------------------------------------------------------------------------\n\n#include \"all-predefined-types.h\"\n\n//--------------------------------------------------------------------------------------------------\n// Lexical styles\n//--------------------------------------------------------------------------------------------------\n\nString styleNameForIndex (const uint32_t inStyleIndex) {\n  const char * array [") ;
   result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).add_operation (GGS_u_33__32_ (uint32_t (3U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).stringValue ()) ;
-  result.appendString ("] = {\n    \"Default Style\", // 0\n") ;
-  GGS_u_33__32_ index_564_ (0) ;
+  result.appendString ("] = {\n    \"defaultStyle\", // 0\n") ;
+  GGS_u_33__32_ index_563_ (0) ;
   if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
-    UpEnumerator_sortedLexicalStyleArray enumerator_564 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
-    while (enumerator_564.hasCurrentObject ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_563 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_563.hasCurrentObject ()) {
       result.appendString ("    ") ;
-      result.appendString (enumerator_564.current_entry (HERE).readProperty_name ().getter_cStringRepresentation (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
+      result.appendString (enumerator_563.current_entry (HERE).readProperty_name ().getter_cStringRepresentation (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
       result.appendString (", // ") ;
-      result.appendString (enumerator_564.current_entry (HERE).readProperty_index ().getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
+      result.appendString (enumerator_563.current_entry (HERE).readProperty_index ().getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
       result.appendString ("\n") ;
-      enumerator_564.gotoNextObject () ;
-      index_564_.increment () ;
+      enumerator_563.gotoNextObject () ;
+      index_563_.increment () ;
     }
   }
-  result.appendString ("    \"Lexical error\", // ") ;
+  result.appendString ("    \"LexicalError\", // ") ;
   result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).stringValue ()) ;
   result.appendString ("\n    \"Template\" // ") ;
   result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).stringValue ()) ;
@@ -10805,40 +10805,6 @@ GGS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSendDe
   GGS_string result ;
   if (nullptr != inObject) {
     result = inObject->getter_generateDefaultSendCode (in_inScannerClassName, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension func '@lexicalInstructionAST generateLexicalInstructionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string callExtensionGetter_generateLexicalInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                               const GGS_string in_inScannerClassName,
-                                                               const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_generateLexicalInstructionCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension func '@lexicalInstructionAST lexicalInstructionUsesLoopLocalVariable'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const cPtr_lexicalInstructionAST * inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_bool result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_lexicalInstructionUsesLoopLocalVariable (inCompiler COMMA_THERE) ;
   }
   return result ;
 }

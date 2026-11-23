@@ -438,12 +438,12 @@ Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO. Pou
 
 Remarques préliminaires~:
 \begin{enumerate}
-  \item en GALGAS, tous les symboles terminaux sont notés par une chaîne de caractères non vide délimitée par deux caractères \tpp{\$}~; par exemple~: \ggst+$identifier$+, \ggst+$integer$+, …
-  \item en GALGAS, un nom de type est un identificateur précédé du caractère \tpp{@}~; par exemple~: \ggst+@string+, \ggst+@uint+, \ggst+@lstring+, \ggst+@luint+, …~;
-  \item le type \ggst+@string+ définit une valeur chaîne de caractères~;
-  \item le type \ggst+@uint+ définit une valeur entière non signée sur 32 bits~;
-  \item le type \ggst+@lstring+ définit une valeur composée d'une chaîne de caractères et d'une information de localisation sur la position de la chaîne dans le texte source~;
-  \item le type \ggst+@luint+ définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source~;
+  \item en GALGAS, tous les symboles terminaux sont notés par une chaîne de caractères non vide délimitée par deux caractères \tpp{\$}~; par exemple~: \ggsq+$identifier$+, \ggsq+$integer$+, …
+  \item en GALGAS, un nom de type est un identificateur précédé du caractère \tpp{@}~; par exemple~: \ggsq+@string+, \ggsq+@uint+, \ggsq+@lstring+, \ggsq+@luint+, …~;
+  \item le type \ggsq+@string+ définit une valeur chaîne de caractères~;
+  \item le type \ggsq+@uint+ définit une valeur entière non signée sur 32 bits~;
+  \item le type \ggsq+@lstring+ définit une valeur composée d'une chaîne de caractères et d'une information de localisation sur la position de la chaîne dans le texte source~;
+  \item le type \ggsq+@luint+ définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source~;
   \item ces informations de localisation sont à la base du signalement d'erreur.
 \end{enumerate}
 
@@ -453,7 +453,7 @@ Par défaut, une analyse lexicale des identificateurs et une liste de mots rése
 
 Voici les lignes correspondantes~:
 
-\begin{galgas3}
+\begin{galgas4}
 @string tokenString
 style keywordsStyle -> "Keywords"
 $identifier$ ! tokenString error message "an identifier"
@@ -470,31 +470,31 @@ rule 'a'->'z' | 'A'->'Z' {
   end
   send search tokenString in keyWordList default $identifier$
 }
-\end{galgas3}
+\end{galgas4}
 
 Explications~:
 \begin{enumerate}
-  \item \ggst+@string tokenString+ déclare l’attribut lexical tokenString de type chaîne de caractères~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur chaîne vide~;
-  \item \ggst|style keywordsStyle -> "Keywords"| déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne)~;
-  \item \ggst+$identifier$ ! tokenString error message "an identifier"+ déclare le terminal \ggst+$identifier$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggst+tokenString+~; le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique~;
-  \item \ggst+list keyWordList style keywordsStyle error ...+ déclare une liste de mots réservés associés à un style d’affichage (pour l’application Cocoa sur Mac), un message d’erreur syntaxique~; telle qu’elle est présente, cette définition déclare les deux terminaux \ggst+$begin$+ et \ggst+$end$+~;
-  \item enfin, \ggst+rule 'a'->'z' | 'A'->'Z' ...+ effectue l’analyse lexicale des identificateurs en accumulant dans \ggst+tokenString+ les caractères rencontrés~; la recherche d'un mot réservé est effectuée par \ggst+send search tokenString in keyWordList+ \ggst+default $identifier$+~: par défaut si la chaîne entrée n'est pas un mot réservé, un identificateur est retourné à l’analyseur syntaxique.
+  \item \ggsq+@string tokenString+ déclare l’attribut lexical tokenString de type chaîne de caractères~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur chaîne vide~;
+  \item \ggsq|style keywordsStyle -> "Keywords"| déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne)~;
+  \item \ggsq+$identifier$ ! tokenString error message "an identifier"+ déclare le terminal \ggsq+$identifier$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggsq+tokenString+~; le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique~;
+  \item \ggsq+list keyWordList style keywordsStyle error ...+ déclare une liste de mots réservés associés à un style d’affichage (pour l’application Cocoa sur Mac), un message d’erreur syntaxique~; telle qu’elle est présente, cette définition déclare les deux terminaux \ggsq+$begin$+ et \ggsq+$end$+~;
+  \item enfin, \ggsq+rule 'a'->'z' | 'A'->'Z' ...+ effectue l’analyse lexicale des identificateurs en accumulant dans \ggsq+tokenString+ les caractères rencontrés~; la recherche d'un mot réservé est effectuée par \ggsq+send search tokenString in keyWordList+ \ggsq+default $identifier$+~: par défaut si la chaîne entrée n'est pas un mot réservé, un identificateur est retourné à l’analyseur syntaxique.
 \end{enumerate}
 
 \textbf{Travail à faire.} Modifier la liste des mots réservés en y plaçant ceux du langage LOGO.
-%\begin{galgas3}
+%\begin{galgas4}
 %list keyWordList style keywordsStyle error message "the '%K' keyword" {
 %  "PROGRAM", "ROUTINE", "BEGIN", "END", "FORWARD",
 %  "ROTATE",  "CALL",    "PEN",   "UP",  "DOWN"
 %}
-%\end{galgas3}
+%\end{galgas4}
 
 \subsection{Analyse lexicale d'une constante entière}
 
 L’analyse lexicale d’une constante entière 32 bits non signée est présente par défaut, vous n’avez rien à ajouter.
 
 Voici l'écriture correspondante~:
-\begin{galgas3}
+\begin{galgas4}
 style integerStyle -> "Integer Constants"
 @uint uint32value
 $integer$ !uint32value style integerStyle
@@ -517,40 +517,40 @@ rule '0'->'9' {
   )
   send $integer$
 }
-\end{galgas3}
+\end{galgas4}
 
 
 Explications :
 \begin{enumerate}
-  \item \ggst+style integerStyle -> "Integer Constants"+ déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne)~;
-  \item \ggst+@uint uint32value+ déclare l’attribut lexical \ggst+uint32value+ de type entier 32 bits non signé~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro~;
-  \item \ggst+$integer$ !uint32value style integerStyle ...+ déclare le terminal \ggst+$integer$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggst+uint32value+~;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique~;
-  \item \ggst+message decimalNumberTooLarge~: "decimal number too large"+ déclare un message d’erreur~;
-  \item enfin \ggst+rule '0'->'9' ...+ définit l’analyse lexicale d’une contante entière non signé~; les caractères qui la composent sont accumulés dans \ggst+tokenString+, et la conversion de cette chaîne en entier est effectuée par la routine \ggst+convertDecimalStringIntoUInt+~; pour finir, \ggst+send $integer$+ envoie le terminal vers l’analyseur syntaxique.
+  \item \ggsq+style integerStyle -> "Integer Constants"+ déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne)~;
+  \item \ggsq+@uint uint32value+ déclare l’attribut lexical \ggsq+uint32value+ de type entier 32 bits non signé~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro~;
+  \item \ggsq+$integer$ !uint32value style integerStyle ...+ déclare le terminal \ggsq+$integer$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggsq+uint32value+~;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique~;
+  \item \ggsq+message decimalNumberTooLarge~: "decimal number too large"+ déclare un message d’erreur~;
+  \item enfin \ggsq+rule '0'->'9' ...+ définit l’analyse lexicale d’une contante entière non signé~; les caractères qui la composent sont accumulés dans \ggsq+tokenString+, et la conversion de cette chaîne en entier est effectuée par la routine \ggsq+convertDecimalStringIntoUInt+~; pour finir, \ggsq+send $integer$+ envoie le terminal vers l’analyseur syntaxique.
 \end{enumerate}
 
 \subsection{Analyse des délimiteurs}
 Par défaut, un certain nombre de délimiteurs sont définis~:
 
-\begin{galgas3}
+\begin{galgas4}
 style delimitersStyle -> "Delimiters"
 list delimitorsList style delimitersStyle error message "the '%K' delimitor" {
   ":",    ",",    ";",   "!",  "{",  "}", "->", "@", "*", "-"
 }
 
 rule list delimitorsList
-\end{galgas3}
+\end{galgas4}
 
-La règle \ggst+list delimitorsList style delimitersStyle error ...+ déclare les terminaux \ggst+$:$+, \ggst+$,$+… Les messages d'erreur syntaxique sont définis en remplaçant la séquence \tpp{\%K} par l’épellation du délimiteur.
+La règle \ggsq+list delimitorsList style delimitersStyle error ...+ déclare les terminaux \ggsq+$:$+, \ggsq+$,$+… Les messages d'erreur syntaxique sont définis en remplaçant la séquence \tpp{\%K} par l’épellation du délimiteur.
 
-L'analyse des délimiteurs est définit par la règle \ggst+rule list delimitorsList+.
+L'analyse des délimiteurs est définit par la règle \ggsq+rule list delimitorsList+.
 
 \textbf{Travail à faire~:} remplacer la liste des délimiteurs par celle du langage LOGO.
 
 \subsection{Analyse des chaînes de caractères}
 Une analyse des chaînes de caractères est disponible par défaut. Comme le langage LOGO n’utilise pas de chaînes de caractères, vous pouvez supprimer les définitions suivantes~:
 
-\begin{galgas3}
+\begin{galgas4}
 style stringStyle -> "String Constants"
 $literal_string$ ! tokenString style stringStyle %nonAtomicSelection
                    error message "a character string constant \"...\""
@@ -569,20 +569,20 @@ rule '"' {
     error incorrectStringEnd
   end
 }
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Analyse des séparateurs}
 C'est une règle très simple, qui accepte tout caractère de code ASCII compris entre \tpp{0x01} et \tpp{0x20} (l'espace). Comme il n'y a pas d'instruction send dans la règle lexicale, l'occurrence d'un séparateur est complètement ignorée par l'analyseur syntaxique.
-\begin{galgas3}
+\begin{galgas4}
 rule '\u0001' -> ' ' {
 }
-\end{galgas3}
+\end{galgas4}
 La séquence d'échappement \tpp{\textbackslash u} permet d'écrire directement des points de code Unicode sous la forme de quatre chiffres hexadécimaux.
 
 \subsection{Analyse des commentaires}
-C'est un peu plus compliqué, il faut repérer la fin de la ligne courante. Or, celle-ci peut être un seul caractère \tpp{LF} (fichier Unix), un seul caractère \tpp{CR} (fichier Mac Classic), une séquence \tpp{CRLF} (fichier Windows). D'autre part, une ligne de commentaire peut être la dernière ligne du fichier~: notez que GALGAS rajoute automatiquement le caractère \tpp{\textquotesingle\textbackslash 0\textquotesingle} à la fin de la chaîne source. L'analyse d'un commentaire consiste donc, une fois le caractère initial \tpp{\textquotesingle\textbackslash\#\textquotesingle} repéré, à accepter silencieusement tous les caractères possibles, sauf \tpp{\textquotesingle\textbackslash u000A\textquotesingle} (LF), \tpp{\textquotesingle\textbackslash u000D\textquotesingle} (CR), \tpp{\textquotesingle\textbackslash0\textquotesingle}. L’écriture \ggst+drop $comment$+ signifie que le terminal \ggst+$comment$+ n’est pas transmis à l’analyseur syntaxique.
+C'est un peu plus compliqué, il faut repérer la fin de la ligne courante. Or, celle-ci peut être un seul caractère \tpp{LF} (fichier Unix), un seul caractère \tpp{CR} (fichier Mac Classic), une séquence \tpp{CRLF} (fichier Windows). D'autre part, une ligne de commentaire peut être la dernière ligne du fichier~: notez que GALGAS rajoute automatiquement le caractère \tpp{\textquotesingle\textbackslash 0\textquotesingle} à la fin de la chaîne source. L'analyse d'un commentaire consiste donc, une fois le caractère initial \tpp{\textquotesingle\textbackslash\#\textquotesingle} repéré, à accepter silencieusement tous les caractères possibles, sauf \tpp{\textquotesingle\textbackslash u000A\textquotesingle} (LF), \tpp{\textquotesingle\textbackslash u000D\textquotesingle} (CR), \tpp{\textquotesingle\textbackslash0\textquotesingle}. L’écriture \ggsq+drop $comment$+ signifie que le terminal \ggsq+$comment$+ n’est pas transmis à l’analyseur syntaxique.
 
-\begin{galgas3}
+\begin{galgas4}
 style commentStyle -> "Comments"
 $comment$ style commentStyle %nonAtomicSelection error message "a comment"
 rule '#' {
@@ -591,7 +591,7 @@ rule '#' {
   end
   drop $comment$
 }
-\end{galgas3}
+\end{galgas4}
 
 Remarquez que pour un fichier Windows, le caractère \tpp{CR} marque la fin du commentaire, et que le caractère \tpp{LF} qui suit est silencieusement absorbé comme délimiteur.
 
@@ -611,18 +611,18 @@ Le fichier \tpp{logo-syntax.galgas} contient une liste de règles de production.
 
 Le fichier \tpp{logo-grammar.galgas} a la composition suivante~:
 
-\begin{galgas3}
+\begin{galgas4}
 grammar logo_grammar "LL1" {
   syntax logo_syntax
   <start_symbol>
 }
-\end{galgas3}
+\end{galgas4}
 
 Explications~:
 \begin{enumerate}
-  \item \ggst+"LL1"+ est la classe de la grammaire~;
-  \item \ggst+syntax logo_syntax+~: les règles de productions sont dans le composant syntaxique \ggst+logo_syntax+, situé dans le fichier \tpp{logo-syntax.galgas}~;
-  \item \ggst+<start_symbol>+~: l'axiome de la grammaire.
+  \item \ggsq+"LL1"+ est la classe de la grammaire~;
+  \item \ggsq+syntax logo_syntax+~: les règles de productions sont dans le composant syntaxique \ggsq+logo_syntax+, situé dans le fichier \tpp{logo-syntax.galgas}~;
+  \item \ggsq+<start_symbol>+~: l'axiome de la grammaire.
 \end{enumerate}
 
 A priori, vous n'avez pas besoin de modifier le fichier \tpp{logo-grammar.galgas} au cours de ce tutorial. Vous pouvez cependant modifier l'analyse effectuée en suivant les indications du \refTableauPage{tableauClasseGrammaire}\footnote{Rappel~: toute grammaire LL(1) est SLR, toute grammaire SLR est LR(1).}.
@@ -642,14 +642,14 @@ A priori, vous n'avez pas besoin de modifier le fichier \tpp{logo-grammar.galgas
 
 
 
-Par défaut dans le fichier \tpp{logo\_syntax.galgas}, seul le non terminal \ggst+<start_symbol>+ est déclaré, et une règle de production vide est écrite.
+Par défaut dans le fichier \tpp{logo\_syntax.galgas}, seul le non terminal \ggsq+<start_symbol>+ est déclaré, et une règle de production vide est écrite.
 
 C'est à vous d'écrire les règles de production qui définissent le langage LOGO (voir sa définition syntaxique \refSubsectionPage{definitionSyntaxiqueLOGO}).
 
 Voici les indications qui vous permettront d'écrire ces règles~:
 \begin{itemize}
   \item vous pouvez déclarer autant de non terminaux que vous voulez~;
-  \item la forme d'une règle de production est~: \ggst+rule <mon_non_terminal> { partie droite }+
+  \item la forme d'une règle de production est~: \ggsq+rule <mon_non_terminal> { partie droite }+
   \item la partie droite est une séquence éventuellement vide de~:
   \begin{itemize}
     \item terminaux~;
@@ -662,7 +662,7 @@ Voici les indications qui vous permettront d'écrire ces règles~:
 
 Pour vous aider, voici une écriture possible de la dérivation de l'axiome~:
 
-\begin{galgas3}
+\begin{galgas4}
 rule <start_symbol> {
 #-- Définition des routines
   $PROGRAM$
@@ -676,11 +676,11 @@ rule <start_symbol> {
   $END$
   $.$
 }
-\end{galgas3}
+\end{galgas4}
 
-Et la règle de production \ggst+<routine_definition>+~:
+Et la règle de production \ggsq+<routine_definition>+~:
 
-\begin{galgas3}
+\begin{galgas4}
 rule <routine_definition> {
   $ROUTINE$
   $identifier$ ?*
@@ -688,11 +688,11 @@ rule <routine_definition> {
   <instruction_list>
   $END$
 }
-\end{galgas3}
+\end{galgas4}
 
-Noter l’écriture \ggst+$identifier$ ?*+~: en effet, quand l’analyseur lexical envoie vers l’analyseur syntaxique le token \ggst+$identifier$+, celui-ci est accompagné d’une chaîne de caractères. On indique que la valeur de celle-ci n’est pas utilisée (pour le moment) par l’écriture \ggst+?*+.
+Noter l’écriture \ggsq+$identifier$ ?*+~: en effet, quand l’analyseur lexical envoie vers l’analyseur syntaxique le token \ggsq+$identifier$+, celui-ci est accompagné d’une chaîne de caractères. On indique que la valeur de celle-ci n’est pas utilisée (pour le moment) par l’écriture \ggsq+?*+.
 
-Il en est de même pour le token \ggst+$integer$+ qui est accompagné d’une valeur entière.
+Il en est de même pour le token \ggsq+$integer$+ qui est accompagné d’une valeur entière.
 
 Si des erreurs d'analyse de la grammaire surviennent, vous pouvez ajouter dans la ligne de commande l'option \tpp{-{}-output-html-grammar}~: celle-ci provoquera la génération du fichier \tpp{chezmoi/logo/build/helpers/lo}\-\tpp{go\_grammar.html} qui contient tous les détails de l'analyse de la grammaire.
 
@@ -712,30 +712,30 @@ Le but de cette étape est d'enrichir les fichiers GALGAS de façon à vérifier
 
 \subsection{Préliminaire~: obtenir la valeur des identificateurs}
 
-Dans l’analyseur syntaxique, pour chaque occurrence du token \ggst+$identifier$+, nous avons précédemment écrit \ggst+$identifier$ ?*+ pour signifier que la valeur de la chaîne de caractères n’était pas utilisée.
+Dans l’analyseur syntaxique, pour chaque occurrence du token \ggsq+$identifier$+, nous avons précédemment écrit \ggsq+$identifier$ ?*+ pour signifier que la valeur de la chaîne de caractères n’était pas utilisée.
 
 À partir de maintenant, nous avons besoin de cette valeur. Celle-ci est récupérée en écrivant~:
 
-\begin{galgas3}
+\begin{galgas4}
 $identifier$ ?let @lstring unNom
-\end{galgas3}
+\end{galgas4}
 
 
-Cette écriture déclare une constante locale, nommée \ggst+unNom+, de type \ggst+@lstring+.
+Cette écriture déclare une constante locale, nommée \ggsq+unNom+, de type \ggsq+@lstring+.
 
-Notez que le type mentionné est \ggst+@lstring+, alors que dans l’analyseur lexical une valeur de type \ggst+@string+ est associée au terminal \ggst+$identifier$+. Le type \ggst+@lstring+ est une structure composée d’une valeur de type \ggst+@string+ et d’une valeur de type \ggst+@location+. Cette dernière désigne un point dans le texte source analysé. Lors de la transmission des informations de l’analyseur lexical vers l’analyseur syntaxique, la valeur de type \ggst+@string+ est associée à la position de l’identificateur dans le texte source. Ceci permet de construire facilement des messages d’erreur qui désigne l’endroit dans le texte source où une erreur est apparue.
+Notez que le type mentionné est \ggsq+@lstring+, alors que dans l’analyseur lexical une valeur de type \ggsq+@string+ est associée au terminal \ggsq+$identifier$+. Le type \ggsq+@lstring+ est une structure composée d’une valeur de type \ggsq+@string+ et d’une valeur de type \ggsq+@location+. Cette dernière désigne un point dans le texte source analysé. Lors de la transmission des informations de l’analyseur lexical vers l’analyseur syntaxique, la valeur de type \ggsq+@string+ est associée à la position de l’identificateur dans le texte source. Ceci permet de construire facilement des messages d’erreur qui désigne l’endroit dans le texte source où une erreur est apparue.
 
-Pour le moment, on ne modifie pas les terminaux \ggst+$integer$+.
+Pour le moment, on ne modifie pas les terminaux \ggsq+$integer$+.
 
 Faire les modifications et recompiler. Comme les valeurs récupérées ne sont pas utilisées et perdues, vous obtenez un \emph{warning} pour chaque constante.
 
-Vous pouvez afficher la valeur obtenue en ajoutant une instruction \ggst+log+ à chacune des séquences précédentes~:
-\begin{galgas3}
+Vous pouvez afficher la valeur obtenue en ajoutant une instruction \ggsq+log+ à chacune des séquences précédentes~:
+\begin{galgas4}
 $identifier$ ?let @lstring unNom
 log unNom
-\end{galgas3}
+\end{galgas4}
 
-L'instruction \ggst+log+ affiche la valeur d'une variable ou d’une constante. Elle est utilisable sur tous les types GALGAS.
+L'instruction \ggsq+log+ affiche la valeur d'une variable ou d’une constante. Elle est utilisable sur tous les types GALGAS.
 
 \subsection{Principes d'écriture de la sémantique}
 
@@ -759,7 +759,7 @@ En GALGAS, nous utilisons plutôt le vocabulaire des langages de programmation~:
 Un argument formel cite~:
 \begin{itemize}
   \item un délimiteur qui précise le sens de transmission de l'argument formel~;
-  \item son type (par exemple \ggst+@lstring+, \ggst+@luint+, …)~;
+  \item son type (par exemple \ggsq+@lstring+, \ggsq+@luint+, …)~;
   \item son nom.
 \end{itemize}
 
@@ -770,10 +770,10 @@ Le sens de transmission d'un argument formel est défini dans le \refTableauPage
   \centering
   \begin{tabular}{ll}
     \textbf{Délimiteur} & \textbf{Sens de transmission} \\
-      \ggst+?+ & Entrée \\
-      \ggst+?let+ & Entrée constant \\
-      \ggst+!+ & Sortie \\
-      \ggst+?!+ & Entrée/sortie \\
+      \ggsq+?+ & Entrée \\
+      \ggsq+?let+ & Entrée constant \\
+      \ggsq+!+ & Sortie \\
+      \ggsq+?!+ & Entrée/sortie \\
   \end{tabular}
   \caption{Sens de transmission d'un argument formel}
   \labelTableau{tableauSensTransmissionArgumentsFormels}
@@ -794,10 +794,10 @@ Le sens de transmission d'un paramètre effectif est défini dans le \refTableau
   \centering
   \begin{tabular}{lll}
     \textbf{Délimiteur} & \textbf{Sens de transmission} & \textbf{Argument formel correspondant} \\
-      \ggst+?+  & Entrée & \ggst+!+ (argument formel en sortie) \\
-      \ggst+!+  & Sortie & \ggst+?+ (argument formel en entrée) ou \\
-               &        & \ggst+?let+ (argument formel en entrée constant) \\
-      \ggst+!?+ & Sortie/entrée & \ggst+?!+ (argument formel en entrée/sortie) \\
+      \ggsq+?+  & Entrée & \ggsq+!+ (argument formel en sortie) \\
+      \ggsq+!+  & Sortie & \ggsq+?+ (argument formel en entrée) ou \\
+               &        & \ggsq+?let+ (argument formel en entrée constant) \\
+      \ggsq+!?+ & Sortie/entrée & \ggsq+?!+ (argument formel en entrée/sortie) \\
   \end{tabular}
   \caption{Sens de transmission d'un paramètre effectif}
   \labelTableau{tableauSensTransmissionParametresEffectifs}
@@ -807,7 +807,7 @@ Le sens de transmission d'un paramètre effectif est défini dans le \refTableau
 
 Il existe plusieurs sortes de types~:
 \begin{itemize}
-  \item les types prédéfinis par le langage, comme \ggst+@lstring+, \ggst+@luint+, …~;
+  \item les types prédéfinis par le langage, comme \ggsq+@lstring+, \ggsq+@luint+, …~;
   \item les types définis par l'utilisateur, qui peuvent être~:
   \begin{itemize}
     \item des types \emph{table}~;
@@ -822,14 +822,14 @@ Pour décrire la sémantique statique (\refSubsectionPage{semantiqueStatiqueLOGO
 \subsubsection{Ajout du type de table des routines}
 éditez le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} et ajouter la définition suivante~:
 
-\begin{galgas3}
+\begin{galgas4}
 map @routineMap {
   insert insertKey error message "the '%K' routine has been already declared"
   search searchKey error message "the '%K' routine is not declared"
 }
-\end{galgas3}
+\end{galgas4}
 
-Ceci déclare le type \ggst+@routineMap+, avec une méthode d'insertion \ggst+insertKey+ accompagnée de son message d'erreur, et une méthode de recherche \ggst+searchKey+ accompagnée de son message d'erreur. Implicitement, la clé de la table est du type \ggst+@lstring+.
+Ceci déclare le type \ggsq+@routineMap+, avec une méthode d'insertion \ggsq+insertKey+ accompagnée de son message d'erreur, et une méthode de recherche \ggsq+searchKey+ accompagnée de son message d'erreur. Implicitement, la clé de la table est du type \ggsq+@lstring+.
 
 Cette définition sera complétée dans l'étape suivante afin de prendre en compte les instructions des routines (on n'en a pas besoin pour le moment).
 
@@ -845,36 +845,36 @@ Voici quatre instructions relatives aux tables dont vous allez avoir besoin~:
 \end{itemize}
 
 La déclaration d'un objet de type table se fait simplement en nommant le type puis l'objet~; par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @routineMap maTable
-\end{galgas3}
+\end{galgas4}
 
 L'initialisation d'un objet de type table s'effectue en créant une table vide~:
-\begin{galgas3}
+\begin{galgas4}
 maTable = {}
-\end{galgas3}
+\end{galgas4}
 
 Les deux écritures précédentes peuvent être condensées en une seule par~:
-\begin{galgas3}
+\begin{galgas4}
 @routineMap maTable = {}
-\end{galgas3}
+\end{galgas4}
 
 L'instruction d'insertion dans une table est~:
-\begin{galgas3}
+\begin{galgas4}
 [!?maTable insertKey !clef]
-\end{galgas3}
-où \ggst+insertKey+ est le nom d'une méthode d'insertion déclarée dans le type table~; clef doit être une variable de type \ggst+@lstring+ valuée. Si il existe déjà une entrée de même nom, le message d'erreur associé à la méthode d'insertion est affiché.
+\end{galgas4}
+où \ggsq+insertKey+ est le nom d'une méthode d'insertion déclarée dans le type table~; clef doit être une variable de type \ggsq+@lstring+ valuée. Si il existe déjà une entrée de même nom, le message d'erreur associé à la méthode d'insertion est affiché.
 
 L'instruction de recherche dans une table est~:
-\begin{galgas3}
+\begin{galgas4}
 [maTable searchKey !clef]
-\end{galgas3}
-où \ggst+searchKey+ est le nom d'une méthode de recherche déclarée dans le type table~; \ggst+clef+ doit être une variable de type \ggst+@lstring+ valuée. Si il n'existe pas d'entrée de même nom, le message d'erreur associé à la méthode de recherche est affiché.
+\end{galgas4}
+où \ggsq+searchKey+ est le nom d'une méthode de recherche déclarée dans le type table~; \ggsq+clef+ doit être une variable de type \ggsq+@lstring+ valuée. Si il n'existe pas d'entrée de même nom, le message d'erreur associé à la méthode de recherche est affiché.
 
 \subsubsection{Ajout de la sémantique dans les règles de productions}
 Éditer le fichier \tpp{chezmoi/logo/galgas-sources/logo-syntax.galgas} et modifiez la dérivation de l'axiome~:
 
-\begin{galgas3}
+\begin{galgas4}
 rule <start_symbol> {
   $PROGRAM$
   @routineMap tableRoutines = {}
@@ -887,14 +887,14 @@ rule <start_symbol> {
   $END$
   $.$
 }
-\end{galgas3}
+\end{galgas4}
 
-L'appel du non terminal\ggst+<routine_definition>+ impose que son en-tête doit être modifiée en conséquence~:
-\begin{galgas3}
+L'appel du non terminal\ggsq+<routine_definition>+ impose que son en-tête doit être modifiée en conséquence~:
+\begin{galgas4}
 rule <routine_definition> ?!@routineMap ioTableRoutines {
   ...
 }
-\end{galgas3}
+\end{galgas4}
 
 \subsubsection{Travail à faire}
 Maintenant, à vous de compléter les règles de façon à prendre en compte toutes les contraintes édictées à la \refSubsectionPage{semantiqueStatiqueLOGO}.
@@ -915,21 +915,21 @@ Dans la sémantique dynamique (\refSubsectionPage{semantiqueDynamiqueLOGO}), nou
 \subsection{Préliminaire~: les constantes entières}
 
 Modifier maintenant l’analyse syntaxique des constantes entières, à l’image de ce qui a été fait pour les identificateurs~:
-\begin{galgas3}
+\begin{galgas4}
 $integer$ ?let @luint unNom
-\end{galgas3}
+\end{galgas4}
 
-Le type \ggst+@luint+ est une structure composée d’une valeur de type \ggst+@uint+ et d’une valeur de type \ggst+@location+.
+Le type \ggsq+@luint+ est une structure composée d’une valeur de type \ggsq+@uint+ et d’une valeur de type \ggsq+@location+.
 
 \subsection{Mise à plat de la liste des instructions}
 Le but ultime est d'obtenir la liste des instructions du programme principal. Mais quelles sont les instructions qui devront apparaître dans cette liste ? A priori, toutes les instructions décrites dans la \refSubsectionPage{semantiqueDynamiqueLOGO}. En fait, vous pouvez vous passer de l'instruction \tpp{CALL} en insérant dans la liste des instructions non pas cette instruction, mais la liste des instructions de la routine correspondante. Il faut procéder de même lors de construction de la liste de chaque routine.
 
 \subsection{Hiérarchie des classes des instructions}
-Une solution classique pour ce type de situation est de définir une classe abstraite \ggst+@instruction+, et des classes concrètes \ggst+@penUp+, \ggst+@penDown+, \ggst+@rotate+ et \ggst+@forward+ qui héritent de cette classe abstraite.
+Une solution classique pour ce type de situation est de définir une classe abstraite \ggsq+@instruction+, et des classes concrètes \ggsq+@penUp+, \ggsq+@penDown+, \ggsq+@rotate+ et \ggsq+@forward+ qui héritent de cette classe abstraite.
 
 Éditez le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, dans n’importe quel ordre, GALGAS est indifférent à l’ordre des déclarations)~:
 
-\begin{galgas3}
+\begin{galgas4}
 abstract class @instruction {
 }
 class @penUp : @instruction {
@@ -942,10 +942,10 @@ class @forward : @instruction {
 class @rotate : @instruction {
   @luint mAngle
 }
-\end{galgas3}
+\end{galgas4}
 
 
-Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \ggst+@luint+.
+Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \ggsq+@luint+.
 
 \subsection{Instructions sur les objets de type \texttt{class}}
 
@@ -956,19 +956,19 @@ Vous avez besoin de deux instructions relatives aux classes~:
 \end{itemize}
 
 La déclaration d'un référence de type classe se fait simplement en nommant le type puis l'objet~; par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @instruction instruction
-\end{galgas3}
+\end{galgas4}
 
 L'instanciation d'un objet de type classe s'effectue en appelant le constructeur new d'une classe concrète avec les paramètres effectifs correspondants aux attributs de la classe, précédés des paramètres effectifs correspondants aux attributs des classes héritées~:
-\begin{galgas3}
+\begin{galgas4}
 instruction = @rotate.new {!valeurAngle}
-\end{galgas3}
+\end{galgas4}
 
 Les deux instructions peuvent réduites en~:
-\begin{galgas3}
+\begin{galgas4}
 @instruction instruction = @rotate.new {!valeurAngle}
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Travail à faire}
 Compléter les règles de productions pour chaque instruction (sauf l'instruction \tpp{CALL}).
@@ -978,13 +978,13 @@ Pour construire la liste des instructions, il faut définir un nouveau type dont
 
 Éditez le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, GALGAS est indifférent à l’ordre des déclarations)~:
 
-\begin{galgas3}
+\begin{galgas4}
 list @instructionList {
   @instruction mInstruction
 }
-\end{galgas3}
+\end{galgas4}
 
-Ceci déclare le type de liste \ggst+@instructionList+, dont chaque élément contient un objet instance d'une classe héritière de \ggst+@instruction+.
+Ceci déclare le type de liste \ggsq+@instructionList+, dont chaque élément contient un objet instance d'une classe héritière de \ggsq+@instruction+.
 
 Instructions sur les objets de type liste
 Voici trois instructions relatives aux listes dont vous allez avoir besoin~:
@@ -995,66 +995,66 @@ Voici trois instructions relatives aux listes dont vous allez avoir besoin~:
 \end{itemize}
 
 La déclaration d'un objet de type liste se fait simplement en nommant le type puis l'objet~; par exemple~:
-\begin{galgas3}
+\begin{galgas4}
 @instructionList maListe
-\end{galgas3}
+\end{galgas4}
 
 L'initialisation d'un objet de type liste s'effectue en créant une liste vide~:
-\begin{galgas3}
+\begin{galgas4}
 maListe = {}
-\end{galgas3}
+\end{galgas4}
 
 Les deux écritures précédentes peuvent condensées en une seule par~:
-\begin{galgas3}
+\begin{galgas4}
 @instructionList maListe = {}
-\end{galgas3}
+\end{galgas4}
 
 L'instruction d'ajout d'une valeur dans une liste est~:
-\begin{galgas3}
+\begin{galgas4}
 maListe += !instruction
-\end{galgas3}
+\end{galgas4}
 L'ajout s'effectue toujours à la fin de la liste.
 
 \subsection{Travail à faire}
 Compléter les règles de productions construire la liste des instructions d'une routine et la liste des instructions du programme principal (les instructions CALL sont toujours ignorées).
 
 \subsection{L'instruction \texttt{CALL}}
-Pour prendre en compte l’instruction \tpp{CALL}, nous allons procéder comme suit~: d’abord, la définition du type table \ggst+@routineMap+ va être modifier de façon à associer à chaque routine la liste mise à plat des instructions. Ensuite, nous prendrons en compte l’instruction \tpp{CALL} en extrayant de la table des routines la liste des instructions de la routine appelée, et en l’insérant à la fin de la liste courante des instructions.
+Pour prendre en compte l’instruction \tpp{CALL}, nous allons procéder comme suit~: d’abord, la définition du type table \ggsq+@routineMap+ va être modifier de façon à associer à chaque routine la liste mise à plat des instructions. Ensuite, nous prendrons en compte l’instruction \tpp{CALL} en extrayant de la table des routines la liste des instructions de la routine appelée, et en l’insérant à la fin de la liste courante des instructions.
 
 \subsection{Modification du type table \texttt{@routineMap}}
-Il faut maintenant modifier la définition du type table \ggst+@routineMap+ de façon qu'à chaque nom de routine soit associée sa liste d'instructions~:
+Il faut maintenant modifier la définition du type table \ggsq+@routineMap+ de façon qu'à chaque nom de routine soit associée sa liste d'instructions~:
 
-\begin{galgas3}
+\begin{galgas4}
 map @routineMap {
   @instructionList mInstructionList
   insert insertKey  error message "the '%K' routine has been already declared"
   search searchKey error message "the '%K' routine is not declared"
 }
-\end{galgas3}
+\end{galgas4}
 
 Recompiler les sources GALGAS, et examiner les erreurs produites. Corrigez les en vous aidant des explications suivantes~:
 \begin{itemize}
-  \item l'instruction d'insertion doit maintenant nommer un argument effectif en sortie supplémentaire, de type \ggst+@instructionList+~:
+  \item l'instruction d'insertion doit maintenant nommer un argument effectif en sortie supplémentaire, de type \ggsq+@instructionList+~:
   \begin{description}
-    \item[ ] \ggst+[!?maTable insertKey !clef !maListe]+
+    \item[ ] \ggsq+[!?maTable insertKey !clef !maListe]+
   \end{description}
-  \item l'instruction de recherche doit maintenant nommer un argument effectif en entrée, dont le type est \ggst+@instructionList+~:
+  \item l'instruction de recherche doit maintenant nommer un argument effectif en entrée, dont le type est \ggsq+@instructionList+~:
   \begin{description}
-    \item[ ] \ggst+[maTable searchKey !clef ?maListe]+
+    \item[ ] \ggsq+[maTable searchKey !clef ?maListe]+
   \end{description}
 \end{itemize}
 
 {\bf Prise en compte de l'instruction \tpp{CALL}.} Il suffit d'ajouter à la liste courante des instructions toutes les instructions de la routine appelée par \tpp{CALL}~:
-\begin{galgas3}
+\begin{galgas4}
 ...
 [maTable searchKey !nomRoutine ?listeInstructionRoutine]
 for i in listeInstructionRoutine do
   listeCouranteInstructions += !i.mInstruction
 end
 ...
-\end{galgas3}
+\end{galgas4}
 
-L'instruction \ggst+for+ permet d’énumérer un objet de type liste. Le corps de la boucle (entre \ggst+do+ et \ggst+end+) est exécuté une fois pour chaque élément \ggst+i+ de la liste.
+L'instruction \ggsq+for+ permet d’énumérer un objet de type liste. Le corps de la boucle (entre \ggsq+do+ et \ggsq+end+) est exécuté une fois pour chaque élément \ggsq+i+ de la liste.
 
 
 
@@ -1067,9 +1067,9 @@ L'instruction \ggst+for+ permet d’énumérer un objet de type liste. Le corps 
 
 Dans ce TP, la génération de code est divisée en deux étapes~: d'abord, la succession des segments à tracer est simplement affichée sur le terminal~; dans un second temps, un fichier SVG est engendré au moyen d'un template.
 
-L'allure du calcul des tracés est la suivante (à placer à la fin de la règle \ggst+<start_symbol>+) dans \tpp{logo-syntax.galgas}~:
+L'allure du calcul des tracés est la suivante (à placer à la fin de la règle \ggsq+<start_symbol>+) dans \tpp{logo-syntax.galgas}~:
 
-\begin{galgas3}
+\begin{galgas4}
   ...
   @bool pendown = false
   @double x = 0.0
@@ -1078,26 +1078,26 @@ L'allure du calcul des tracés est la suivante (à placer à la fin de la règle
   for i in instructionList do
     ...
   end
-\end{galgas3}
+\end{galgas4}
 
 Pour exprimer l'action à réaliser, des méthodes (définies et implémentées en dehors de leurs classes) vont être utilisées.
 
 \subsection{Déclaration de la méthode abstraite}
-Elle est nommée par exemple \ggst+codeDisplay+ et on peut la déclarer dans n'importe que fichier~; par souci de simplicité, on choisit le fichier qui contient les déclarations sémantiques, c'est-à-dire \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
+Elle est nommée par exemple \ggsq+codeDisplay+ et on peut la déclarer dans n'importe que fichier~; par souci de simplicité, on choisit le fichier qui contient les déclarations sémantiques, c'est-à-dire \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
 
-\begin{galgas3}
+\begin{galgas4}
 abstract method @instruction codeDisplay
   ?!@bool ioPenDown
   ?!@double ioX
   ?!@double ioY
   ?!@double ioAngle
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Implémentation d'une héritière concrète}
 
-Par exemple, pour la classe \ggst+@penUp+, la surcharge de la méthode \ggst+codeDisplay+ est la suivante. Pour la même raison que précédemment, on place cette déclaration dans le fichier de définitions sémantiques \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
+Par exemple, pour la classe \ggsq+@penUp+, la surcharge de la méthode \ggsq+codeDisplay+ est la suivante. Pour la même raison que précédemment, on place cette déclaration dans le fichier de définitions sémantiques \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
 
-\begin{galgas3}
+\begin{galgas4}
 override method @penUp codeDisplay
   ?!@bool ioPenDown
   ?!@double unused ioX
@@ -1106,23 +1106,23 @@ override method @penUp codeDisplay
 {
   ioPenDown = false
 }
-\end{galgas3}
+\end{galgas4}
 
-L'implémentation de la méthode héritière concrète pour \ggst+@penDown+ est élémentaire.
+L'implémentation de la méthode héritière concrète pour \ggsq+@penDown+ est élémentaire.
 
 \subsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
-Il faut accumuler l'angle de rotation dans l'argument \ggst+ioAngle+. Or l'attribut \ggst+mAngle+ de la classe \ggst+@rotate+ n'est pas du type \ggst+@uint+, mais du type \ggst+@luint+. Pour extraire la composante \ggst+@uint+ d’un \ggst+@luint+, on écrit \ggst+[mAngle uint]+. Pour transformer un objet \ggst+unUint+ de type \ggst+@uint+ en \ggst+@double+, on écrit de la même façon \ggst+[unUint double]+.
+Il faut accumuler l'angle de rotation dans l'argument \ggsq+ioAngle+. Or l'attribut \ggsq+mAngle+ de la classe \ggsq+@rotate+ n'est pas du type \ggsq+@uint+, mais du type \ggsq+@luint+. Pour extraire la composante \ggsq+@uint+ d’un \ggsq+@luint+, on écrit \ggsq+[mAngle uint]+. Pour transformer un objet \ggsq+unUint+ de type \ggsq+@uint+ en \ggsq+@double+, on écrit de la même façon \ggsq+[unUint double]+.
 
 
  Il faut donc écrire~:
-\begin{galgas3}
+\begin{galgas4}
 ioAngle = ioAngle + [[mAngle uint] double]
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Implémentation de l'héritière concrète pour \texttt{@forward}}
 La méthode complète est alors~:
 
-\begin{galgas3}
+\begin{galgas4}
 override method @forward codeDisplay
   ?!@bool ioPenDown
   ?!@double ioX
@@ -1137,11 +1137,11 @@ override method @forward codeDisplay
   ioX = x
   ioY = y
 }
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Calcul des tracés}
-Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'appel de la méhode \ggst+codeDisplay+ pour chaque instruction.
-\begin{galgas3}
+Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'appel de la méhode \ggsq+codeDisplay+ pour chaque instruction.
+\begin{galgas4}
   ...
   @bool pendown = false
   @double x = 0.0
@@ -1150,7 +1150,7 @@ Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'
   for i in instructionList do
     [i.mInstruction codeDisplay !?penDown !?x !?y !?angle]
   end
-\end{galgas3}
+\end{galgas4}
 
 Maintenant vous pouvez effectuer la compilation GALGAS et la compilation C++.
 
@@ -1189,12 +1189,12 @@ Créer un fichier \tpp{chezmoi/logo/galgas-sources/logo-svg.galgasTemplate} et y
 Notez~:
 \begin{itemize}
   \item l'échappement des caractères \tpp{\%}~: pour obtenir \texttt{"100\%"}, on écrit \tpp{"100\textbackslash\%"}~;
-  \item les deux symboles \ggst+TITLE+ et \ggst+DRAWINGS+.
+  \item les deux symboles \ggsq+TITLE+ et \ggsq+DRAWINGS+.
 \end{itemize}
 
 \subsection{Déclarer un template en GALGAS}
 Dans le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}, insérer la déclaration du template~:
-\begin{galgas3}
+\begin{galgas4}
 filewrapper generationTemplate in "." {
 }{
 }{
@@ -1202,14 +1202,14 @@ filewrapper generationTemplate in "." {
     ?@string TITLE
     ?@string DRAWINGS
 }
-\end{galgas3}
+\end{galgas4}
 
-En GALGAS, un filewrapper est une structure de données qui est l'image d'un répertoire contenant des fichiers et des sous répertoires. Un fichier particulier est un template~; la déclaration mentionne les symboles (ici \ggst+TITLE+ et \ggst+DRAWINGS+) comme arguments d'entrée, et le contenu est analysé par GALGAS de façon à vérifier qu'il est bien formé (usage correct des caractères \tpp{\%}).
+En GALGAS, un filewrapper est une structure de données qui est l'image d'un répertoire contenant des fichiers et des sous répertoires. Un fichier particulier est un template~; la déclaration mentionne les symboles (ici \ggsq+TITLE+ et \ggsq+DRAWINGS+) comme arguments d'entrée, et le contenu est analysé par GALGAS de façon à vérifier qu'il est bien formé (usage correct des caractères \tpp{\%}).
 
 \subsection{Construire la liste des instructions SVG}
-La liste des instructions de tracé est accumulée dans une chaîne de caractères. Modifier toutes les méthodes \ggst+codeDisplay+ de façon à construire cette chaîne en ajoutant un argument formel en entrée/sortie~: \tpp{?!@string SVG}. Il faut modifier la méthode \ggst+codeDisplay+ de la classe \ggst+@forward+ pour ajouter la génération de code~:
+La liste des instructions de tracé est accumulée dans une chaîne de caractères. Modifier toutes les méthodes \ggsq+codeDisplay+ de façon à construire cette chaîne en ajoutant un argument formel en entrée/sortie~: \tpp{?!@string SVG}. Il faut modifier la méthode \ggsq+codeDisplay+ de la classe \ggsq+@forward+ pour ajouter la génération de code~:
 
-\begin{galgas3}
+\begin{galgas4}
 override method @forward codeDisplay
   ?!@bool ioPenDown
   ?!@double ioX
@@ -1227,10 +1227,10 @@ override method @forward codeDisplay
   ioX = x
   ioY = y
 }
-\end{galgas3}
+\end{galgas4}
 
-Pour terminer, voici le code complet de l’axiome \ggst+<start_symbol>+, qui enchaîne analyse syntaxique, sémantique et génération du fichier SVG~:
-\begin{galgas3}
+Pour terminer, voici le code complet de l’axiome \ggsq+<start_symbol>+, qui enchaîne analyse syntaxique, sémantique et génération du fichier SVG~:
+\begin{galgas4}
 rule <start_symbol> {
 #-- Definition des routines
   $PROGRAM$
@@ -1262,7 +1262,7 @@ rule <start_symbol> {
   ]
   [code writeToFile ![sourceFilePath stringByDeletingPathExtension] + ".svg"]
 }
-\end{galgas3}
+\end{galgas4}
 
 Compiler et essayer l'exécutable~: un fichier SVG doit être produit lors de chaque exécution.
 

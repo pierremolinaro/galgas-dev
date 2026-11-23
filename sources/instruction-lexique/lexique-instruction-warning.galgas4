@@ -17,14 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalWarningInstructionAST : @lexicalInstructionAST {
-  private let @lstring mWarningMessageName
-}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -41,41 +33,41 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @lexicalWarningInstructionAST.checkLexicalInstruction (
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?!@lexicalTagMap _ioTagMap) {
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mWarningMessageName.string)
-}
+final class @lexicalWarningInstructionAST : @lexicalInstructionAST {
+  private let @lstring mWarningMessageName
 
-//--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalWarningInstructionAST.generateSwiftCocoaInstructionCode (
-  ?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "" // No generated code
-}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap) {
+    !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mWarningMessageName.string)
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateSwiftCocoaInstructionCode (?let @string _inScannerClassName,
+                                  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "" // No generated code
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
+  
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                                 ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalWarningInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
-
-//·································································································
-
-override func @lexicalWarningInstructionAST.generateLexicalInstructionCode (
-  ?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
-  -> @string {
-  result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 //--------------------------------------------------------------------------------------------------

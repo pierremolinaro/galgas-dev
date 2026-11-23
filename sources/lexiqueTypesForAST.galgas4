@@ -30,15 +30,6 @@ abstract class @lexicalExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract class @lexicalInstructionAST {
-
-  abstract proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                                         ?!@lexicalTagMap _ioTagMap)
-
-}
-
-//--------------------------------------------------------------------------------------------------
-
 struct @templateDelimitor2AST {
   public let @lstring mStartString
   public let @bool nonAtomicSelection #initArgLabel

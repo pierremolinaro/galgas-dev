@@ -15,10 +15,9 @@
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-% http://latexcolor.com
-
 \definecolor{modebeige}{rgb}{0.59, 0.44, 0.09}
 
+\newcommand\defaultStyleGalgas[1]{\textcolor{black}{#1}}
 \newcommand\keywordsStyleGalgas[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStyleGalgas[1]{\textcolor{brown}{\textbf{#1}}}
 \newcommand\selectorStyleGalgas[1]{\textcolor{PineGreen}{#1}}
@@ -35,6 +34,7 @@
 
 \newcommand\lexicalErrorGalgas{\textcolor{red}{\textbullet ERRLEX\textbullet}}
 
+\newcommand\defaultStylegalgas[1]{\textcolor{black}{#1}}
 \newcommand\keywordsStylegalgas[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStylegalgas[1]{\textcolor{brown}{\textbf{#1}}}
 \newcommand\selectorStylegalgas[1]{\textcolor{PineGreen}{#1}}
@@ -52,133 +52,6 @@
 \newcommand\lexicalErrorgalgas{\textcolor{red}{\textbullet ERRLEX\textbullet}}
 
 \newwrite\tempfile
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas3 : affichage de code galgas 3
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newmdenv[
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=orange!50,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 3},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{siderules3}
-
-\makeatletter
-\newenvironment{galgas3}{
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.galgas3%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}
-  {\medskip\begin{siderules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\end{siderules3}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas3box : affichage de code galgas encadré                                                           *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newmdenv[
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=orange!25,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 3},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{boxrules3}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\makeatletter
-\newenvironment{galgas3box}{%
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.galgas3%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}
-  {\singlespacing\begin{boxrules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\end{boxrules3}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% COMMANDE \ggst : affichage de code en ligne galgas 3
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\makeatletter
-\newcommand*\ggst{%
-  \@bsphack%
-  \begingroup%
-  \let\do\@makeother\dospecials%
-  \let\do\do@noligs\verbatim@nolig@list%
-  \catcode`\^^M=15\relax%
-  \@vobeyspaces%
-  \@ggst{\temporary}%
-}%
-\newcommand\@ggst[2]{%
-  \catcode`-=12\relax%
-  \catcode`<=12\relax%
-  \catcode`>=12\relax%
-  \catcode`,=12\relax%
-  \catcode`'=12\relax%
-  \catcode``=12\relax%
-  \catcode`#2\active%
-  \catcode`~\active%
-  \lccode`\~`#2\relax%
-  \begingroup%
-  \lowercase{%
-    \def\@tempa##1~{%
-      \expandafter\endgroup%
-      \expandafter\DeclareRobustCommand%
-      \expandafter*%
-      \expandafter#1%
-      \expandafter{\@tempa}%
-      \@esphack%
-      \immediate\openout\tempfile=temp.galgas3%
-      \immediate\write\tempfile{##1}%
-      \immediate\closeout\tempfile%
-      \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}%
-      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\unskip}%
-    }%
-  }%
-  \ifnum`#2=`\~\else\@makeother\~\fi%
-  \expandafter\endgroup%
-  \@tempa%
-}%
-\makeatother
 
 %-----------------------------------------------------------------------------------------------------------------------*
 % ENVIRONNEMENT galgas4 : affichage de code galgas 4
@@ -217,90 +90,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}
   {\medskip\begin{siderules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{siderules4}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas34 : affichage de code galgas 3 et galgas4
-%-----------------------------------------------------------------------------------------------------------------------*
-
-
-\newmdenv[
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=ForestGreen,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 3 et GALGAS 4},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{siderules34}
-
-\makeatletter
-\newenvironment{galgas34}{%
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.galgas4%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
-  {\medskip\begin{siderules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{siderules34}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas34box : affichage de code galgas encadré                                                           *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newmdenv[
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=ForestGreen,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 3 et GALGAS 4},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{boxrules34}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\makeatletter
-\newenvironment{galgas34box}{%
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.galgas4%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
-  {\singlespacing\begin{boxrules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules34}}
 }
 \makeatother
 
@@ -339,7 +130,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}
   {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules4}}
 }
 \makeatother
@@ -380,7 +171,7 @@
       \immediate\openout\tempfile=temp.galgas4%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}%
+      \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}%
       \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\unskip}%
     }%
   }%

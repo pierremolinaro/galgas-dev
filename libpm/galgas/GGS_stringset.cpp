@@ -150,7 +150,7 @@ GGS_stringset GGS_stringset::subtract_operation (const GGS_stringset & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_string_5D_ GGS_stringset::getter_stringArray (LOCATION_ARGS) const {
+GGS__5B_string_5D_ GGS_stringset::getter_array (LOCATION_ARGS) const {
   GGS__5B_string_5D_ result ;
   if (isValid ()) {
     result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
@@ -185,8 +185,8 @@ GGS_u_33__32_ GGS_stringset::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_stringset::getter_anyString (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
+GGS_string GGS_stringset::getter_any (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid ()) {
     if (mSharedMap.count () == 0) {

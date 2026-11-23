@@ -16,14 +16,14 @@ Ajouter une méthode, un \emph{getter}, un \emph{setter} ou un constructeur à u
 \item mettre à jour la documentation \LaTeX.
 \end{enumerate}
 
-À titre d'exemple, nous allons montrer comment la méthode \ggst!makeDirectoryAndWriteToExecutableFile! de la classe \ggst!@string! a été ajoutée.
+À titre d'exemple, nous allons montrer comment la méthode \ggsq!makeDirectoryAndWriteToExecutableFile! de la classe \ggsq!@string! a été ajoutée.
 
 \subsection{Ajouter la méthode dans GALGAS}
 
 Éditez le fichier GALGAS, en fonction du \refTableau{ajoutMethodeTypePrédéfini}. Comme c'est une méthode que nous voulons ajouter, on édite le fichier \texttt{galgas-sources/semanticsInstanceMethods.galgas}.
 
-Dans ce fichier, il y a une méthode pour chaque type prédéfini. Pour la classe \ggst!@string!, on a :
-\begin{galgas3}
+Dans ce fichier, il y a une méthode pour chaque type prédéfini. Pour la classe \ggsq!@string!, on a :
+\begin{galgas4}
 override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap
@@ -38,7 +38,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !true
   )
   ...
-\end{galgas3}
+\end{galgas4}
 
 \begin{table}[t]
   \centering
@@ -54,8 +54,8 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   \labelTableau{ajoutMethodeTypePrédéfini}
 \end{table}
 
-Pour ajouter la méthode \ggst!makeDirectoryAndWriteToExecutableFile! de la classe \ggst!@string!, on complète cette méthode par :
-\begin{galgas3}
+Pour ajouter la méthode \ggsq!makeDirectoryAndWriteToExecutableFile! de la classe \ggsq!@string!, on complète cette méthode par :
+\begin{galgas4}
 override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap
@@ -71,7 +71,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !true
   )
 }
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Reconstruire le fichier d'en-tête des types prédéfinis}
 

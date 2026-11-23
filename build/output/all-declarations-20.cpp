@@ -1,22 +1,6 @@
 #include "all-declarations-20.h"
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'appendStructASTForRangeType&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendStructASTForRangeType_26_ (GGS__5B_semanticDeclarationAST_5D_ & ioArgument_ioDeclarationListASTs,
-                                              Compiler * inCompiler
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_propertyInCollectionAST_5D_ var_propertyList_16267 = GGS__5B_propertyInCollectionAST_5D_::init (inCompiler COMMA_HERE) ;
-  var_propertyList_16267.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 369)), GGS_string ("u32").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 370)), GGS_string ("start").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 371)), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 372)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 374)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 368)) ;
-  var_propertyList_16267.plusPlusAssignOperation (GGS_propertyInCollectionAST::init_21_mutability_21_typeName_21_name_21__21_hasSelector_21_initialization (GGS_propertyMutability::class_func_mutableProperty (SOURCE_FILE ("all-predefined-types.galgas4", 377)), GGS_string ("u32").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 378)), GGS_string ("length").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 379)), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("all-predefined-types.galgas4", 380)), GGS_bool (false), GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("all-predefined-types.galgas4", 382)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 376)) ;
-  ioArgument_ioDeclarationListASTs.plusPlusAssignOperation (GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (GGS_bool (true), GGS_string ("range").getter_here (inCompiler COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 386)), var_propertyList_16267, GGS_string ("u32"), GGS_structComparison::class_func_equatable (SOURCE_FILE ("all-predefined-types.galgas4", 389)), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("all-predefined-types.galgas4", 384)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension func '@s32PredefinedTypeAST cppDeclarationString'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1164,10 +1148,10 @@ void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & 
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("count"), GGS_string ("u32"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 150)) ;
   }
   {
-  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("anyString"), GGS_string ("string"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 157)) ;
+  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("any"), GGS_string ("string"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 157)) ;
   }
   {
-  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("stringArray"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 164)) ;
+  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("array"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 164)) ;
   }
 }
 
@@ -1582,21 +1566,21 @@ GGS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const GG
                                                                         Compiler * inCompiler
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ; // Returned variable
-  GGS_sortedTokenArray var_tokenSortedList_8828 ;
+  GGS_sortedTokenArray var_tokenSortedList_8245 ;
   const GGS_lexicalImplicitRuleAST temp_0 = this ;
-  GGS_lexicalExplicitTokenListMap joker_8819 ; // Joker input parameter
-  GGS_bool joker_8845 ; // Joker input parameter
-  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8819, var_tokenSortedList_8828, joker_8845, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 196)) ;
+  GGS_lexicalExplicitTokenListMap joker_8236 ; // Joker input parameter
+  GGS_bool joker_8262 ; // Joker input parameter
+  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8236, var_tokenSortedList_8245, joker_8262, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 184)) ;
   result = GGS_string::makeEmptyString () ;
-  DownEnumerator_sortedTokenArray enumerator_8880 (var_tokenSortedList_8828) ;
-  while (enumerator_8880.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("if (testForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 199)) ;
-    result.plusAssignOperation(enumerator_8880.current (HERE).readProperty_mName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 200)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 200)) ;
-    result.plusAssignOperation(GGS_string (", true)) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 201)) ;
-    result.plusAssignOperation(GGS_string ("  token.mTokenCode = kToken_").add_operation (enumerator_8880.current (HERE).readProperty_mTerminalName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 202)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 202)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 202)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 202)) ;
-    result.plusAssignOperation(GGS_string ("  enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 203)) ;
-    result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 204)) ;
-    enumerator_8880.gotoNextObject () ;
+  DownEnumerator_sortedTokenArray enumerator_8297 (var_tokenSortedList_8245) ;
+  while (enumerator_8297.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("if (testForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 187)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 187)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 187)) ;
+    result.plusAssignOperation(enumerator_8297.current (HERE).readProperty_mName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 188)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 188)) ;
+    result.plusAssignOperation(GGS_string (", true)) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 189)) ;
+    result.plusAssignOperation(GGS_string ("  token.mTokenCode = kToken_").add_operation (enumerator_8297.current (HERE).readProperty_mTerminalName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 190)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 190)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 190)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 190)) ;
+    result.plusAssignOperation(GGS_string ("  enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 191)) ;
+    result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 192)) ;
+    enumerator_8297.gotoNextObject () ;
   }
 //---
   return result ;
@@ -1631,21 +1615,21 @@ GGS_string cPtr_lexicalExplicitRuleAST::getter_generateLexicalRuleCode (const GG
   GGS_string result ; // Returned variable
   result = GGS_string ("if (") ;
   const GGS_lexicalExplicitRuleAST temp_0 = this ;
-  result.plusAssignOperation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) temp_0.readProperty_mLexicalRuleExpression ().ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 221)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 221)) ;
-  result.plusAssignOperation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 222)) ;
+  result.plusAssignOperation(callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) temp_0.readProperty_mLexicalRuleExpression ().ptr (), constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 209)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 209)) ;
+  result.plusAssignOperation(GGS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 210)) ;
   {
-  result.setter_incIndentation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 223)) ;
+  result.setter_incIndentation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 211)) ;
   }
   const GGS_lexicalExplicitRuleAST temp_1 = this ;
-  UpEnumerator__5B_lexicalInstructionAST_5D_ enumerator_10034 (temp_1.readProperty_mInstructionList ()) ;
-  while (enumerator_10034.hasCurrentObject ()) {
-    result.plusAssignOperation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_10034.current (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 225)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 225)) ;
-    enumerator_10034.gotoNextObject () ;
+  UpEnumerator__5B_lexicalInstructionAST_5D_ enumerator_9451 (temp_1.readProperty_mInstructionList ()) ;
+  while (enumerator_9451.hasCurrentObject ()) {
+    result.plusAssignOperation(callExtensionGetter_generateLexicalInstructionCode ((const cPtr_lexicalInstructionAST *) enumerator_9451.current (HERE).ptr (), constinArgument_inScannerClassName, constinArgument_inLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 213)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 213)) ;
+    enumerator_9451.gotoNextObject () ;
   }
   {
-  result.setter_decIndentation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 227)) ;
+  result.setter_decIndentation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 215)) ;
   }
-  result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 228)) ;
+  result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 216)) ;
 //---
   return result ;
 }
@@ -1662,14 +1646,14 @@ GGS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (Compil
   GGS_bool result ; // Returned variable
   result = GGS_bool (false) ;
   const GGS_lexicalExplicitRuleAST temp_0 = this ;
-  UpEnumerator__5B_lexicalInstructionAST_5D_ enumerator_10431 (temp_0.readProperty_mInstructionList ()) ;
-  bool bool_1 = result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas4", 235)).isValidAndTrue () ;
-  if (enumerator_10431.hasCurrentObject () && bool_1) {
-    while (enumerator_10431.hasCurrentObject () && bool_1) {
-      result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_10431.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 236)) ;
-      enumerator_10431.gotoNextObject () ;
-      if (enumerator_10431.hasCurrentObject ()) {
-        bool_1 = result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas4", 235)).isValidAndTrue () ;
+  UpEnumerator__5B_lexicalInstructionAST_5D_ enumerator_9848 (temp_0.readProperty_mInstructionList ()) ;
+  bool bool_1 = result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas4", 223)).isValidAndTrue () ;
+  if (enumerator_9848.hasCurrentObject () && bool_1) {
+    while (enumerator_9848.hasCurrentObject () && bool_1) {
+      result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_9848.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 224)) ;
+      enumerator_9848.gotoNextObject () ;
+      if (enumerator_9848.hasCurrentObject ()) {
+        bool_1 = result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas4", 223)).isValidAndTrue () ;
       }
     }
   }

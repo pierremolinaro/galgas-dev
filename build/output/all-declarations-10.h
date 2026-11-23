@@ -1014,18 +1014,6 @@ class GGS_string callExtensionGetter_generateSwiftCocoaDefaultSendCode (const cl
 
 //--------------------------------------------------------------------------------------------------
 //
-//Abstract extension func '@lexicalInstructionAST generateSwiftCocoaInstructionCode'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string callExtensionGetter_generateSwiftCocoaInstructionCode (const class cPtr_lexicalInstructionAST * inObject,
-                                                                        const class GGS_string constin_inScannerClassName,
-                                                                        const class GGS_lexiqueAnalysisContext constin_inLexiqueAnalysisContext,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //LEXIQUE galgasScanner_34_
 //
 //--------------------------------------------------------------------------------------------------
@@ -8357,4 +8345,109 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateAddOperationAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateSubOperationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateSubOperationAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateSubOperationAST (const class cPtr_templateSubOperationAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mOperatorLocation (void) const ;
+
+  public: class GGS_templateExpressionAST readProperty_mLeftExpression (void) const ;
+
+  public: class GGS_templateExpressionAST readProperty_mRightExpression (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateSubOperationAST init_21__21__21_ (const class GGS_location & inOperand0,
+                                                               const class GGS_templateExpressionAST & inOperand1,
+                                                               const class GGS_templateExpressionAST & inOperand2,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateSubOperationAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateSubOperationAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateSubOperationAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateSubOperationAST_init_21__21__21_ (const class GGS_location & inOperand0,
+                                                         const class GGS_templateExpressionAST & inOperand1,
+                                                         const class GGS_templateExpressionAST & inOperand2,
+                                                         Compiler * inCompiler) ;
+
+
+//--- Extension proc templateExpressionAnalysis
+  public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_semanticExpressionForGeneration & arg_outExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_location mProperty_mOperatorLocation ;
+  public: GGS_templateExpressionAST mProperty_mLeftExpression ;
+  public: GGS_templateExpressionAST mProperty_mRightExpression ;
+
+
+//--- Default constructor
+  public: cPtr_templateSubOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateSubOperationAST (const GGS_location & in_mOperatorLocation,
+                                        const GGS_templateExpressionAST & in_mLeftExpression,
+                                        const GGS_templateExpressionAST & in_mRightExpression,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

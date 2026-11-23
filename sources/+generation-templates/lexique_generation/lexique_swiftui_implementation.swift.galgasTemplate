@@ -381,7 +381,7 @@ func %!LEXIQUE_CLASS_NAME%_lexiqueIdentifier () -> String {
 
 func %!LEXIQUE_CLASS_NAME%_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "Default Style", // 0
+    "defaultStyle", // 0
   ]
   return kStyleArray [Int (inIndex)]
 }

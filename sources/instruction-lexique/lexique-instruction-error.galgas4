@@ -17,14 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-final class @lexicalErrorInstructionAST : @lexicalInstructionAST {
-  private let @lstring mErrorMessageName
-}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
@@ -41,50 +33,40 @@ syntax extension galgas4LexiqueComponentSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CHECK LEXICAL INSTRUCTION
-//--------------------------------------------------------------------------------------------------
 
-override proc @lexicalErrorInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap) {
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mErrorMessageName.string)
-}
+final class @lexicalErrorInstructionAST : @lexicalInstructionAST {
+  private let @lstring mErrorMessageName
 
-//--------------------------------------------------------------------------------------------------
-//! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//override func lexicalErrorInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string unused inScannerClassName
-//  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-//  -> @string {
-//  result = "scanningOk = NO ;\n"
-//}
+  override proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap) {
+    !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mErrorMessageName.string)
+  }
 
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalErrorInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string _inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string {
-  result = "scanningOk = false\n"
-}
+  override func generateSwiftCocoaInstructionCode (?let @string _inScannerClassName,
+                                ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "scanningOk = false\n"
+  }
 
-//--------------------------------------------------------------------------------------------------
-//! C++ CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalErrorInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
-  result = false
-}
+  override func lexicalInstructionUsesLoopLocalVariable () -> @bool {
+    result = false
+  }
 
-//·································································································
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override func @lexicalErrorInstructionAST.generateLexicalInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string {
-  result = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+
+  override func generateLexicalInstructionCode (?let @string inScannerClassName,
+                              ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string {
+    result = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

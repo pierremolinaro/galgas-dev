@@ -5,11 +5,11 @@
 
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
-An \ggst+@uint64+ object value is a 64-bit unsigned integer value. You can initialize an \ggst+@uint64+ object from a 64-bit unsigned integer constant:
+An \ggsq+@uint64+ object value is a 64-bit unsigned integer value. You can initialize an \ggsq+@uint64+ object from a 64-bit unsigned integer constant:
 
-\begin{galgas3}
+\begin{galgas4}
 @uint64 myUnsignedInteger = 123_456L
-\end{galgas3}
+\end{galgas4}
 
 Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
@@ -20,23 +20,23 @@ Note the \texttt{L} suffix is required for a 64-bit unsigned integer constant.
 
 \subsectionConstructor{max}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor max -> @uint64
-\end{galgas3}
+\end{galgas4}
 
-Returns an \ggst+@uint64+ object that the maximum value of the 64-bit unsigned range ($2^{64}-1$).
+Returns an \ggsq+@uint64+ object that the maximum value of the 64-bit unsigned range ($2^{64}-1$).
 
 
 \subsectionConstructor{uint64BaseValueWithCompressedBitString}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor uint64BaseValueWithCompressedBitString
    ?@string inBitString
    -> @uint64
-\end{galgas3}
+\end{galgas4}
 
 
-Returns an \ggst+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.
+Returns an \ggsq+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.
 
 The inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
 
@@ -46,10 +46,10 @@ Note that the first character of the \emph{inBitString} argument value correspon
 
 
 \textbf{Exemple :}
-\begin{galgas3}
+\begin{galgas4}
 @uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"]
 log v # Displays <@uint64:18>
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -57,12 +57,12 @@ log v # Displays <@uint64:18>
 
 \subsectionConstructor{uint64MaskWithCompressedBitString}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor uint64MaskWithCompressedBitString ?@string inBitString -> @uint64
-\end{galgas3}
+\end{galgas4}
 
 
-Returns an \ggst+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.
+Returns an \ggsq+@uint64+ object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.
 
 The \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
 
@@ -71,33 +71,33 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.
 
 \textbf{Exemple :}
-\begin{galgas3}
+\begin{galgas4}
 @uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;
 log v ; # Displays <@uint64:51> ;
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionConstructor{uint64WithBitString}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor uint64WithBitString ?@string inBitString -> @uint64
-\end{galgas3}
+\end{galgas4}
 
 
-Returns an \ggst+@uint64+ object computed from a string containing '0' or '1' characters.
+Returns an \ggsq+@uint64+ object computed from a string containing '0' or '1' characters.
 
 The \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
 
-This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \ggst+@uint64+ object containing the converted value.
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \ggsq+@uint64+ object containing the converted value.
 
 Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.
 
 \textbf{Exemple :}
-\begin{galgas3}
+\begin{galgas4}
 @uint64 v [uint64WithBitString !"0101"]] ;
 log v ; # Displays <@uint64:5> ;
-\end{galgas3}
+\end{galgas4}
 
 
 \section{Getters}
@@ -105,42 +105,42 @@ log v ; # Displays <@uint64:5> ;
 
 \subsectionGetter{alphaString}{uint64}
 
-Ce \emph{getter} permet de convertir un \ggst!@uint64! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
+Ce \emph{getter} permet de convertir un \ggsq!@uint64! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
 
-La chaîne obtenue comporte exactement 14 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggst=a= ayant la valeur $0$, et la lettre \ggst=z= la valeur $25$.
+La chaîne obtenue comporte exactement 14 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggsq=a= ayant la valeur $0$, et la lettre \ggsq=z= la valeur $25$.
 
 
-\begin{galgas3}
+\begin{galgas4}
   message [0L alphaString] + "\n"          # aaaaaaaaaaaaaa
   message [12_345L alphaString] + "\n"     # aaaaaaaaaaasgv
   message [@uint64.max alphaString] + "\n" # hlhxczmxsyumqp
-\end{galgas3}
+\end{galgas4}
 
 \subsectionGetter{bigint}{uint64}
 
-Ce \emph{getter} permet de convertir un \ggst!@uint64! en \ggst!@bigint!. Comme la plage des valeurs des \ggst!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+Ce \emph{getter} permet de convertir un \ggsq!@uint64! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
 
-\begin{galgas3}
+\begin{galgas4}
   message [[1234L bigint] string] + "\n" # 1234
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionGetter{double}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter double -> @double
-\end{galgas3}
+\end{galgas4}
 
-Returns the receiver's value converted in a \ggst+@double+ object. As a 64-bit integer value can always be converted in a \ggst+@double+ value, this getter never fails.
+Returns the receiver's value converted in a \ggsq+@double+ object. As a 64-bit integer value can always be converted in a \ggsq+@double+ value, this getter never fails.
 
 
 
 \subsectionGetter{hexString}{uint64}
 
 
-\begin{galgas3}
+\begin{galgas4}
 getter hexString -> @string
-\end{galgas3}
+\end{galgas4}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. For getting an hexadecimal representation string with any prefix, see \refGetterPage{uint64}{xString}.
 
@@ -151,18 +151,18 @@ Returns the an hexadecimal string representation of the receiver value, prefixed
 
 \subsectionGetter{hexStringSeparatedBy}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
-\end{galgas3}
+\end{galgas4}
 
-Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggst=inGroup= digits are separated by the \ggst=inSeparator= character.
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
 
-If \ggst=inGroup= is equal to zero, a run-time error is raised.
+If \ggsq=inGroup= is equal to zero, a run-time error is raised.
 
 For example:
-\begin{galgas3}
+\begin{galgas4}
 let s = [0x123456789ABCDEF0L hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DEF0
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -170,9 +170,9 @@ let s = [0x123456789ABCDEF0L hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DE
 
 \subsectionGetter{sint}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter sint -> @sint
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
 
@@ -180,18 +180,18 @@ Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed intege
 
 \subsectionGetter{sint64}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter sint64 -> @sint64
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. An error is raised is receiver's value is greater than $2^{63}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
 
 
 \subsectionGetter{string}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter string -> @string
-\end{galgas3}
+\end{galgas4}
 
 Returns a decimal string representation of the receiver's value. For an hexadecimal string representation of the receiver's value, see \refGetterPage{uint64}{hexString} and \refGetterPage{uint64}{xString}.
 
@@ -199,18 +199,18 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 
 \subsectionGetter{uint}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter uint -> @uint
-\end{galgas3}
+\end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is greater than $2^{32}-1$. This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
 \subsectionGetter{uintSlice}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter uintSlice ?@uint inStartBit ?@uint inBitCount -> @uint
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -218,10 +218,10 @@ Returns an \refTypePredefini{uint} value, extracted from a bit slice of the rece
 
 
 \textbf{Exemple :}
-\begin{galgas3}
+\begin{galgas4}
 @uint64 v = 0x1234_5678_9ABC_DEF0L
 @uint result = [v uintSlice !4 !5] # The result value is 0x8_9ABC
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -235,9 +235,9 @@ Returns an \refTypePredefini{uint} value, extracted from a bit slice of the rece
 
 \subsectionGetter{xString}{uint64}
 
-\begin{galgas3}
+\begin{galgas4}
 getter xString -> @string
-\end{galgas3}
+\end{galgas4}
 
 Returns an hexadecimal string representation of the receiver's value (without any prefix). For an decimal string representation of the receiver's value, see the \refGetterPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refGetterPage{uint64}{string}.
 
@@ -254,58 +254,58 @@ Returns an hexadecimal string representation of the receiver's value (without an
 
 \subsection{Opérateurs infixés}
 
-Le type \ggst+@uint64+ accepte les opérateurs arithmétiques infixés suivants :
+Le type \ggsq+@uint64+ accepte les opérateurs arithmétiques infixés suivants :
 \begin{itemize}
-  \item \ggst!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
-  \item \ggst!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
-  \item \ggst!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&/!, division, qui retourne zéro si le diviseur est nul.
+  \item \ggsq!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!*!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggsq!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggsq!&+!, addition, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&-!, soustraction, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&*!, multiplication, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&/!, division, qui retourne zéro si le diviseur est nul.
 \end{itemize}
 
-Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggst+@uint64+.
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@uint64+.
 
 \subsection{Opérateur préfixé}
-Le type \ggst+@uint64+ accepte un opérateur arithmétique préfixé :
+Le type \ggsq+@uint64+ accepte un opérateur arithmétique préfixé :
 \begin{itemize}
-  \item \ggst!+!, qui retourne simplement la valeur de l'opérande.
+  \item \ggsq!+!, qui retourne simplement la valeur de l'opérande.
 \end{itemize}
 
 \subsectionLabel{Instructions}{instructionsUINT64}
 
-Le type \ggst+@uint64+ accepte les instructions arithmétiques suivantes :
+Le type \ggsq+@uint64+ accepte les instructions arithmétiques suivantes :
 \begin{itemize}
-  \item \ggst!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
-  \item \ggst!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
-  \item \ggst!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
-  \item \ggst!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
+  \item \ggsq!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!*=!, multiplication, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!/=!, division, une erreur d'exécution est déclenchée en cas division par zéro ;
+  \item \ggsq!++!, incrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!--!, décrémentation, une erreur d'exécution est déclenchée en cas de débordement ;
+  \item \ggsq!&++!, incrémentation, le résultat étant silencieusement tronqué sur 64 bits ;
+  \item \ggsq!&--!, décrémentation, le résultat étant silencieusement tronqué sur 64 bits.
 \end{itemize}
 
-\ggst!x+=y! est équivalent à \ggst!x=x+y! ; \ggst!x-=y! est équivalent à \ggst!x=x-y!.
-La variable cible \ggst!x!, comme l'expression source \ggst!y! doivent être du même type \ggst+@uint64+.
+\ggsq!x+=y! est équivalent à \ggsq!x=x+y! ; \ggsq!x-=y! est équivalent à \ggsq!x=x-y!.
+La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@uint64+.
 
 Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
-\begin{galgas3}
+\begin{galgas4}
 @uint64 n = ... ; n ++ # Incrémentation
-\end{galgas3}
+\end{galgas4}
 
-\begin{galgas3}
+\begin{galgas4}
 @uint64 n = ... ; n -- # Décrémentation
-\end{galgas3}
+\end{galgas4}
 
 
 \section{Shift Operators}
 
 
-The \ggst+@uint+ type supports right and left shift operators:\newline
+The \ggsq+@uint+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -315,7 +315,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the left argument to be \ggst+@uint64+ object, and  the right argument to be \ggst+@uint+ object.\newline
+Theses operators require the left argument to be \ggsq+@uint64+ object, and  the right argument to be \ggsq+@uint+ object.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -326,7 +326,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \ggst+@uint64+ type supports the three bit-wise logical diadic operators:
+The \ggsq+@uint64+ type supports the three bit-wise logical diadic operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -338,10 +338,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggst+@uint64+ objects.\newline
+Theses operators require both arguments to be \ggsq+@uint64+ objects.\newline
 
 
-The \ggst+@uint64+ type supports the bit-wise logical unary operator:
+The \ggsq+@uint64+ type supports the bit-wise logical unary operator:
 
 \begin{tabular}{|c|c|}
   \hline
@@ -349,14 +349,14 @@ The \ggst+@uint64+ type supports the bit-wise logical unary operator:
   \hline
 \end{tabular}
 
-This operator returns an \ggst+@uint64+ object.
+This operator returns an \ggsq+@uint64+ object.
 
 
 
 
 \section{Comparison Operators}
 
-The \ggst+@uint64+ type supports the six comparison operators:
+The \ggsq+@uint64+ type supports the six comparison operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -374,4 +374,4 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggst+@uint64+ objects, and return a \ggst+@bool+ object.
+Theses operators require both arguments to be \ggsq+@uint64+ objects, and return a \ggsq+@bool+ object.

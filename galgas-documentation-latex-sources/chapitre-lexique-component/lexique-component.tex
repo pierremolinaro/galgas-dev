@@ -10,7 +10,7 @@
 
 Le rôle d'un analyseur lexical est de grouper les caractères de la chaîne d'entrée en \emph{symboles terminaux}, ou encore \emph{terminaux}, en écartant les séparateurs comment les espaces ou les commentaires.
 
-En GALGAS, un analyseur lexical est défini par un composant \ggst+lexique+. Les composants \ggst+syntax+, qui définissent un ensemble de règles de production, font référence à un composant \ggst+lexique+.
+En GALGAS, un analyseur lexical est défini par un composant \ggsq+lexique+. Les composants \ggsq+syntax+, qui définissent un ensemble de règles de production, font référence à un composant \ggsq+lexique+.
 
 
 
@@ -23,18 +23,18 @@ En GALGAS, un analyseur lexical est défini par un composant \ggst+lexique+. Les
 \section{Définition d'un composant \texttt{lexique}}
 
 
-En GALGAS, un composant \ggst+lexique+ a la structure suivante :
+En GALGAS, un composant \ggsq+lexique+ a la structure suivante :
 
-\begin{galgas3}
+\begin{galgas4}
 lexique nom {
   declarations
 }
-\end{galgas3}
+\end{galgas4}
 
-Le \ggst+nom+ est le nom donné au composant ; il est utilisé pour référencer le composant \ggst+lexique+ dans un composant \ggst+syntax+.
+Le \ggsq+nom+ est le nom donné au composant ; il est utilisé pour référencer le composant \ggsq+lexique+ dans un composant \ggsq+syntax+.
 
 
-Un composant \ggst+lexique+ peut contenir les déclarations suivantes :
+Un composant \ggsq+lexique+ peut contenir les déclarations suivantes :
 \begin{itemize}
   \item déclaration d'attribut lexical ;
   \item déclaration d'un symbole terminal ;
@@ -62,9 +62,9 @@ The //lexical rules// define the executable part of a lexical component. Every l
 %\section{Fichiers engendrés}
 %
 %A lexical component description is translated in C++ code; for every lexical component, GALGAS generates a specific C++ class:
-%  * the name of the class is the name of the \ggst+lexique+ component;
-%  * this class is declared in a header file that is named the name of the \ggst+lexique+ component with the ''\textquotesingle.h\textquotesingle'' extension;
-%  * this class is implemented in a file that is named the name of the \ggst+lexique+ component with the ''\textquotesingle.cpp\textquotesingle'' extension;
+%  * the name of the class is the name of the \ggsq+lexique+ component;
+%  * this class is declared in a header file that is named the name of the \ggsq+lexique+ component with the ''\textquotesingle.h\textquotesingle'' extension;
+%  * this class is implemented in a file that is named the name of the \ggsq+lexique+ component with the ''\textquotesingle.cpp\textquotesingle'' extension;
 %  * this class inherits from ''C\_Lexique'' class (declared in ''libpm/galgas/C\_Lexique.h'' and implemented in ''libpm/galgas/C\_Lexique.cpp'').
 %
 %The two generated files are generated according the [[generated\_files|GALGAS file generation process]].
@@ -111,7 +111,7 @@ This is very simple scanner, from ''galgas/samples/notSLRgrammar.ggs'':
 **end** **rule** ;\\
 **end** **lexique** ;''|
 
-This \ggst+lexique+ component defines the following set of terminal symbols: ''\\$id\\$'' (explicitly declared), ''\\$=\\$'' and ''\\$*\\$'' (declared  by ''delimitorsList'' list.
+This \ggsq+lexique+ component defines the following set of terminal symbols: ''\\$id\\$'' (explicitly declared), ''\\$=\\$'' and ''\\$*\\$'' (declared  by ''delimitorsList'' list.
 
 The first rule sends the ''\\$id\\$'' terminal symbol each time a lower case or upper case character is found. The second rule names the ''delimitorsList'' list and sends the ''\\$=\\$'' or ''\\$*\\$'' terminal symbol each time the corresponding character is found. The last rule discards silently the space character and any control character.
 
@@ -119,7 +119,7 @@ Note that this scanner considers identifiers of only one character: ''ab'' is sc
 
 ===== Finding Sample Code =====
 
-You can find examples of \ggst+lexique+ components in:
+You can find examples of \ggsq+lexique+ components in:
   * ''galgas/sample/alt\_sample.ggs'' file; this is a very basic scanner that handles one-letter identifier and four delimitors;
   * ''galgas/sample/arith\_expression.ggs'' file (for scanning literal integers);
   * ''galgas/sample/test\_LR1\_grammar.ggs'' file gives an example of a small scanner for "toy" parser;
@@ -371,217 +371,217 @@ Running the \texttt{-{}-print-predefined-lexical-actions} command line option li
 
 \subsection{Routine \texttt{codePointToUnicode}}
 
-\begin{galgas3}
+\begin{galgas4}
 codePointToUnicode ?@string inCodePointString
                    !@string outString
-\end{galgas3}
+\end{galgas4}
 
 \subsection{\texttt{convertBinaryStringIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertBinaryStringIntoBigInt ?@string inString
                               !@bigint outBigInt
                               error inCharacterIsNotBinaryDigitError
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{\texttt{convertDecimalStringIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertDecimalStringIntoBigInt ?@string inString
                                !@bigint outBigInt
                                error inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{\texttt{convertDecimalStringIntoSInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertDecimalStringIntoSInt ?@string inString
                              !@sint outSignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertDecimalStringIntoSInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertDecimalStringIntoSInt64 ?@string inString
                                !@sint64 outSignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertDecimalStringIntoUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertDecimalStringIntoUInt ?@string inString
                              !@uint outUnsignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertDecimalStringIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertDecimalStringIntoUInt64 ?@string inString
                                !@uint64 outUnsignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{\texttt{convertHexStringIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHexStringIntoBigInt ?@string inString
                            !@bigint outSignedNumber
                            error inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsection{Routine \texttt{convertHTMLSequenceToUnicodeCharacter}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHTMLSequenceToUnicodeCharacter ?@string inString
                                       !@char outUnicodeCharacter
                                       error inUnassignedHTMLSequenceError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertHexStringIntoSInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHexStringIntoSInt ?@string inString
                          !@sint outSignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertHexStringIntoSInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHexStringIntoSInt64 ?@string inString
                            !@sint64 outSignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertHexStringIntoUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHexStringIntoUInt ?@string inString
                          !@uint outUnsignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertHexStringIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertHexStringIntoUInt64 ?@string inString
                            !@uint64 outUnsignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{convertStringToDouble}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertStringToDouble ?@string inString
                       !@double outDouble
                       error inConversionError
-\end{galgas3}
+\end{galgas4}
 
 This action tries to convert the string value of the first argument into a double value. On success, the resulting double is set to the second argument. The conversion error message is displayed on conversion error.
 
 \subsection{Routine \texttt{convertUInt64ToSInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertUInt64ToSInt64 !@uint64 inUnsignedNumber
                       !@sint64 outSignedNumber
                       error inNumberTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>63</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
 \subsection{Routine \texttt{convertUIntToSInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertUIntToSInt !@uint inUnsignedNumber
                   !@sint outSignedNumber
                   error inNumberTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>31</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
 \subsection{Routine \texttt{convertUnsignedNumberToUnicodeChar}}
 
-\begin{galgas3}
+\begin{galgas4}
 convertUnsignedNumberToUnicodeChar ?@uint inUnsignedNumber
                                    !@char outUnicodeCharacter
                                    error inUnassignedUnicodeValueError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterBinaryDigitIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterBinaryDigitIntoBigInt ?@char inCharacter
                            ?!@bigint ioBigInt
                            error inCharacterIsNotBinDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterBinDigitIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterBinDigitIntoUInt64 ?@char inCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterBinDigitIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterBinDigitIntoUInt64 ?@char inCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterCharacterIntoCharacter}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterCharacterIntoCharacter ?!@char ioCharacter
                             ?@char inCharacter
-\end{galgas3}
+\end{galgas4}
 
 This routine performs ''ioCharacter = inCharacter'' assignment.
 
 \subsection{Routine \texttt{enterCharacterIntoString}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterCharacterIntoString ?!@string ioString
                          ?@char inCharacter
-\end{galgas3}
+\end{galgas4}
 
 Appends the character value of the second argument to the string value of the first argument. The resulting string is set to the first argument.
 
 \subsection{Routine \texttt{enterDecimalDigitIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterDecimalDigitIntoBigInt ?@char inCharacter
                             ?!@bigint ioBigInt
                             error inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterDigitIntoASCIIcharacter}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterDigitIntoASCIIcharacter ?!@char ioASCIICharacter
                              !@char inDecimalDigitCharacter
                              error inErrorCodeGreaterThan255,
                                    inErrorNotDecimalDigitCharacter
-\end{galgas3}
+\end{galgas4}
 
 Build an ASCII character from its decimal definition.
 
@@ -591,34 +591,34 @@ Note: this lexical action treats characters as unsigned values.
 
 \subsection{Routine \texttt{enterDigitIntoUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterDigitIntoUInt !@char inDecimalDigitCharacter
                    ?!@uint ioUnsignedNumber
                    error inNumberTooLargeError,
                          inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
 
 \subsection{Routine \texttt{enterDigitIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterDigitIntoUInt64 !@char inDecimalDigitCharacter
                      ?!@uint64 ioUnsignedNumber
                      error inNumberTooLargeError,
                            inCharacterIsNotDecimalDigitError
-\end{galgas3}
+\end{galgas4}
 
 First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
 
 \subsection{Routine \texttt{enterHexDigitIntoASCIIcharacter}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterHexDigitIntoASCIIcharacter ?!@char ioASCIICharacter
                                 !@char inHexDigitCharacter
                                 error inErrorCodeGreaterThan255,
                                       inErrorNotHexDigitCharacter
-\end{galgas3}
+\end{galgas4}
 
 Build an ASCII character from its hexadecimal definition.
 
@@ -631,11 +631,11 @@ Note: this lexical action treats characters as unsigned values.
 
 \subsection{Routine \texttt{enterHexDigitIntoBigInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterHexDigitIntoBigInt ?@char inCharacter
                         ?!@bigint ioBigInt
                         error inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -646,84 +646,84 @@ enterHexDigitIntoBigInt ?@char inCharacter
 
 \subsection{Routine \texttt{enterHexDigitIntoUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterHexDigitIntoUInt !@char inHexDigitCharacter
                       ?!@uint ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
 \subsection{Routine \texttt{enterHexDigitIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterHexDigitIntoUInt64 !@char inHexDigitCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotHexDigitError
-\end{galgas3}
+\end{galgas4}
 
 First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
 \subsection{Routine \texttt{enterOctDigitIntoUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterOctDigitIntoUInt !@char inString
                       ?!@uint ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotOctDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{enterOctDigitIntoUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 enterOctDigitIntoUInt64 !@char inString
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotOctDigitError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{multiplyUInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 multiplyUInt !@uint inUnsignedNumber
              ?!@uint ioUnsignedNumber
              error inResultTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
 \subsection{Routine \texttt{multiplyUInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 multiplyUInt64 !@uint inUnsignedNumber
                ?!@uint64 ioUnsignedNumber
                error inResultTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
 \subsection{Routine \texttt{negateSInt}}
 
-\begin{galgas3}
+\begin{galgas4}
 negateSInt ?!@sint ioNumber
            error inNumberTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Routine \texttt{negateSInt64}}
 
-\begin{galgas3}
+\begin{galgas4}
 negateSInt64 ?!@sint64 ioNumber
              error inNumberTooLargeError
-\end{galgas3}
+\end{galgas4}
 
 
 \subsection{Routine \texttt{resetString}}
 
-\begin{galgas3}
+\begin{galgas4}
 resetString ?!@string ioString
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -742,17 +742,17 @@ Running the \texttt{-{}-print-predefined-lexical-actions} command line option li
 
 \subsection{Fonction \texttt{toLower}}
 
-\begin{galgas3}
+\begin{galgas4}
 toLower ?@char inCharacter -> @char
-\end{galgas3}
+\end{galgas4}
 
 If the character value of the argument is an upper case letter, this function returns the corresponding lower case letter. Otherwise, it returns the unchanged character value of the argument.
 
 \subsection{Fonction \texttt{toUpper}}
 
-\begin{galgas3}
+\begin{galgas4}
 toUpper ?@char inCharacter -> @char
-\end{galgas3}
+\end{galgas4}
 
 
 If the character value of the argument is an lower case letter, this function returns the corresponding upper case letter. Otherwise, it returns the unchanged character value of the argument.
@@ -765,7 +765,7 @@ You can define your own lexical actions and functions in C++ and make them avail
 
 \subsection{Où ?}
 
-You must define your lexical actions and functions as a method of the C++ class generated by compilation of the \ggst+lexique+ component. You need to modify the generated code, adding method prototype declaration in class declaration.
+You must define your lexical actions and functions as a method of the C++ class generated by compilation of the \ggsq+lexique+ component. You need to modify the generated code, adding method prototype declaration in class declaration.
 
 **So that the method declaration that you added is not deleted at the time of a future compilation, define it in user zone 2 of the generated header file.** For more details, see [[generated\_files |file generation process page]].
 

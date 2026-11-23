@@ -156,14 +156,6 @@ override func @lexicalErrorByDefaultAST.generateSwiftCocoaDefaultSendCode
 }
 
 //--------------------------------------------------------------------------------------------------
-
-extension @lexicalInstructionAST {
-
-  abstract func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
-                                                   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string
-}
-
-//--------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (SWIFT)
 //--------------------------------------------------------------------------------------------------
 

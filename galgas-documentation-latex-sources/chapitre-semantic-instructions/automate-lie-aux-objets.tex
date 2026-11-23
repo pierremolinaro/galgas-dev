@@ -74,19 +74,19 @@
 Le compilateur GALGAS effectue une surveillance très stricte des accès aux objets -- constantes, variables et paramètres formels. Il signale ainsi par des \emph{alertes} et des \emph{erreurs} tout violation des règles d'accès.
 
 On peut illustrer le résultat de cette surveillance par le fragment de code suivant :
-\begin{galgas3}
+\begin{galgas4}
 var @uint x
 if condition then
   x = 2
 end
 let y = x # Une erreur de compilation est déclenchée ici
-\end{galgas3}
+\end{galgas4}
 
-Quelle serait la valeur de la variable \ggst!x! à l'issue de l'exécution de ce code ? Si \ggst!condition! est vrai, \ggst!x! vaut $2$ ; sinon, \ggst!x! n'a pas de valeur.
+Quelle serait la valeur de la variable \ggsq!x! à l'issue de l'exécution de ce code ? Si \ggsq!condition! est vrai, \ggsq!x! vaut $2$ ; sinon, \ggsq!x! n'a pas de valeur.
 
-Le compilateur GALGAS détecte cette situation et considère que la variable est initialisée si elle l'est par toutes les branches de l'instruction \ggst!if!. Dans le cas contraire, comme ci-dessus, elle est considérée comme non initialisée. Aussi sa lecture déclenche un message d'erreur. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut donc que les deux branches affectent une valeur à \ggst!x! :
+Le compilateur GALGAS détecte cette situation et considère que la variable est initialisée si elle l'est par toutes les branches de l'instruction \ggsq!if!. Dans le cas contraire, comme ci-dessus, elle est considérée comme non initialisée. Aussi sa lecture déclenche un message d'erreur. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut donc que les deux branches affectent une valeur à \ggsq!x! :
 
-\begin{galgas3}
+\begin{galgas4}
 var @uint x
 if condition then
   x = 2
@@ -94,7 +94,7 @@ else
   x = 4
 end
 let y = x # Ok
-\end{galgas3}
+\end{galgas4}
 
 Pour contrôler le bon usage des variables et des constantes locales, le compilateur GALGAS associe pendant la compilation un automate d'états finis à chaque variable locale.
 
@@ -161,9 +161,9 @@ Les états sont les suivants~:
 
 Un état initial est désigné par une flèche noire. La déclaration d'une variable locale place son automate dans l'état \texttt{DECLARED}~:
 
-\begin{galgas3}
+\begin{galgas4}
 var @uint x # État 'declared'
-\end{galgas3}
+\end{galgas4}
 
 Il y a deux actions possibles~:
 \begin{itemize}
@@ -181,16 +181,16 @@ Les transitions sont présentées en couleur, selon leur validité~:
 \end{itemize}
 
 Ainsi, la lecture d'une variable dans l'état \texttt{DECLARED} est une erreur~: en effet, la variable n'a pas de valeur. La transition correspondante est donc en rouge. Voici un exemple qui illustre cette situation~:
-\begin{galgas3}
+\begin{galgas4}
 var @uint x # État 'declared'
 var y = x # Erreur, x n'a pas de valeur
-\end{galgas3}
+\end{galgas4}
 
 L'écriture d'une variable qui est dans l'état \texttt{INITIALIZED} n'est pas une erreur, mais révèle une anomalie~: la valeur écrasée n'a jamais été lue~; un message d'alerte est donc émis. Par exemple :
-\begin{galgas3}
+\begin{galgas4}
 var @uint x = 2 # État 'initialized'
 var x = 3 # Alerte, l'initialisation de x à 2 est inutile
-\end{galgas3}
+\end{galgas4}
 
 Remarquons que les actions \texttt{read} et \texttt{write} sont acceptées silencieusement dans l'état \texttt{INVALID}~: en effet, on arrive dans cet état après l'occurrence d'une erreur qui a été signalée à l'utilisateur, en acceptant silencieusement on n'émet pas de message d'erreur à chaque accès à la variable.
 
@@ -248,20 +248,20 @@ L'automate d'états finis associé à une constante locale est présenté à la 
 \end{figure}
 
 Voici un exemple.
-\begin{galgas3}
+\begin{galgas4}
 let @uint x = 2 # État 'initialized'
 ...
 var y = x # Ok, l'état de 'x' est 'read'
-\end{galgas3}
+\end{galgas4}
 
 On n'est pas obligé de fournir une valeur à la déclaration d'une constante. On peut ainsi écrire~:
-\begin{galgas3}
+\begin{galgas4}
 let @uint x # État 'declared'
 ...
 x = 2 # État 'initialized'
 ...
 var y = x # Ok, l'état de 'x' est 'read'
-\end{galgas3}
+\end{galgas4}
 
 
 

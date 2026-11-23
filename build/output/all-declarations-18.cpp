@@ -7520,17 +7520,17 @@ void cPtr_lexicalStructuredSendInstructionAST::method_checkLexicalInstruction (G
                                                                                Compiler * inCompiler
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_lexicalStructuredSendInstructionAST temp_0 = this ;
-  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_3356 (temp_0.readProperty_mLexicalSendSearchList ()) ;
-  while (enumerator_3356.hasCurrentObject ()) {
+  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_3198 (temp_0.readProperty_mLexicalSendSearchList ()) ;
+  while (enumerator_3198.hasCurrentObject ()) {
     {
-    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalTokenListMap.setter_setMShouldBeGeneratedForKey (GGS_bool (true), enumerator_3356.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 75)) ;
+    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalTokenListMap.setter_setMShouldBeGeneratedForKey (GGS_bool (true), enumerator_3198.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 71)) ;
     }
-    GGS_lexicalTypeEnum joker_3606 ; // Joker input parameter
-    ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_3356.current (HERE).readProperty_mAttributeName (), joker_3606, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 76)) ;
-    enumerator_3356.gotoNextObject () ;
+    GGS_lexicalTypeEnum joker_3452 ; // Joker input parameter
+    ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (enumerator_3198.current (HERE).readProperty_mAttributeName (), joker_3452, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 72)) ;
+    enumerator_3198.gotoNextObject () ;
   }
   const GGS_lexicalStructuredSendInstructionAST temp_1 = this ;
-  callExtensionMethod_checkLexicalDefaultAction ((cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 78)) ;
+  callExtensionMethod_checkLexicalDefaultAction ((cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 74)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7546,18 +7546,18 @@ GGS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateSwiftCocoaIn
   GGS_string result ; // Returned variable
   result = GGS_string::makeEmptyString () ;
   const GGS_lexicalStructuredSendInstructionAST temp_0 = this ;
-  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_4050 (temp_0.readProperty_mLexicalSendSearchList ()) ;
-  while (enumerator_4050.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("if (tokenCode == 0) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 89)) ;
-    result.plusAssignOperation(GGS_string ("  tokenCode = search_into_").add_operation (constinArgument_inScannerClassName.getter_identifierRepresentation (SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 90)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 90)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 90)) ;
-    result.plusAssignOperation(GGS_string ("_").add_operation (enumerator_4050.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 91)).add_operation (GGS_string (" (mLexicalAttribute_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 91)).add_operation (enumerator_4050.current (HERE).readProperty_mAttributeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 91)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 91)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 91)) ;
-    result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 92)) ;
-    enumerator_4050.gotoNextObject () ;
+  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_3901 (temp_0.readProperty_mLexicalSendSearchList ()) ;
+  while (enumerator_3901.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("if (tokenCode == 0) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 83)) ;
+    result.plusAssignOperation(GGS_string ("  tokenCode = search_into_").add_operation (constinArgument_inScannerClassName.getter_identifierRepresentation (SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 84)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 84)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 84)) ;
+    result.plusAssignOperation(GGS_string ("_").add_operation (enumerator_3901.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 85)).add_operation (GGS_string (" (mLexicalAttribute_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 85)).add_operation (enumerator_3901.current (HERE).readProperty_mAttributeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 85)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 85)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 85)) ;
+    result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 86)) ;
+    enumerator_3901.gotoNextObject () ;
   }
-  result.plusAssignOperation(GGS_string ("if tokenCode == 0 {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 94)) ;
+  result.plusAssignOperation(GGS_string ("if tokenCode == 0 {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 88)) ;
   const GGS_lexicalStructuredSendInstructionAST temp_1 = this ;
-  result.plusAssignOperation(GGS_string ("  ").add_operation (callExtensionGetter_generateSwiftCocoaDefaultSendCode ((const cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 95)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 95)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 95)) ;
-  result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 96)) ;
+  result.plusAssignOperation(GGS_string ("  ").add_operation (callExtensionGetter_generateSwiftCocoaDefaultSendCode ((const cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 89)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 89)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 89)) ;
+  result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 90)) ;
 //---
   return result ;
 }
@@ -7591,18 +7591,18 @@ GGS_string cPtr_lexicalStructuredSendInstructionAST::getter_generateLexicalInstr
   GGS_string result ; // Returned variable
   result = GGS_string::makeEmptyString () ;
   const GGS_lexicalStructuredSendInstructionAST temp_0 = this ;
-  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_5203 (temp_0.readProperty_mLexicalSendSearchList ()) ;
-  while (enumerator_5203.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("if (token.mTokenCode == -1) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 115)) ;
-    result.plusAssignOperation(GGS_string ("  token.mTokenCode = search_into_").add_operation (enumerator_5203.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)).add_operation (GGS_string (" (token.mLexicalAttribute_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)).add_operation (enumerator_5203.current (HERE).readProperty_mAttributeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 116)) ;
-    result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 117)) ;
-    enumerator_5203.gotoNextObject () ;
+  UpEnumerator__5B_lexicalSendSearchAST_5D_ enumerator_4924 (temp_0.readProperty_mLexicalSendSearchList ()) ;
+  while (enumerator_4924.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("if (token.mTokenCode == -1) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 106)) ;
+    result.plusAssignOperation(GGS_string ("  token.mTokenCode = search_into_").add_operation (enumerator_4924.current (HERE).readProperty_mSearchListName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)).add_operation (GGS_string (" (token.mLexicalAttribute_"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)).add_operation (enumerator_4924.current (HERE).readProperty_mAttributeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 107)) ;
+    result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 108)) ;
+    enumerator_4924.gotoNextObject () ;
   }
-  result.plusAssignOperation(GGS_string ("if (token.mTokenCode == -1) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 119)) ;
+  result.plusAssignOperation(GGS_string ("if (token.mTokenCode == -1) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 110)) ;
   const GGS_lexicalStructuredSendInstructionAST temp_1 = this ;
-  result.plusAssignOperation(GGS_string ("  ").add_operation (callExtensionGetter_generateDefaultSendCode ((const cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 120)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 120)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 120)) ;
-  result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 121)) ;
-  result.plusAssignOperation(GGS_string ("enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 122)) ;
+  result.plusAssignOperation(GGS_string ("  ").add_operation (callExtensionGetter_generateDefaultSendCode ((const cPtr_lexicalSendDefaultActionAST *) temp_1.readProperty_mLexicalSendDefaultAction ().ptr (), constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 111)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 111)), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 111)) ;
+  result.plusAssignOperation(GGS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 112)) ;
+  result.plusAssignOperation(GGS_string ("enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexique-instruction-structured-send.galgas4", 113)) ;
 //---
   return result ;
 }
@@ -7619,7 +7619,55 @@ GGS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateSwiftCoco
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ; // Returned variable
   const GGS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
-  result = GGS_string ("&self.mLexicalAttribute_").add_operation (temp_0.readProperty_mAttributeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 113)) ;
+  result = GGS_string ("&self.mLexicalAttribute_").add_operation (temp_0.readProperty_mAttributeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 102)) ;
+//---
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
+                                                                                          const GGS_lexicalArgumentModeAST constinArgument_inLexicalRoutineFormalArgumentMode,
+                                                                                          const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexicalTypeEnum var_attributeLexicalType_5033 ;
+  const GGS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_5033, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 111)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_5033.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_lexicalAttributeInputOutputArgumentAST temp_2 = this ;
+      GenericArray <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_5033, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 118)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 117)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 118)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 120)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 119)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 120)), fixItArray3  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 117)) ;
+    }
+  }
+  GalgasBool test_4 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_4) {
+    test_4 = GGS_bool (ComparisonKind::notEqual, constinArgument_inLexicalRoutineFormalArgumentMode.objectCompare (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 125)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_4) {
+      const GGS_lexicalAttributeInputOutputArgumentAST temp_5 = this ;
+      GenericArray <FixItDescription> fixItArray6 ;
+      inCompiler->emitSemanticError (temp_5.readProperty_mActualPassingModeLocation (), GGS_string ("the output mode (!) is required here, not an output/input mode"), fixItArray6  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 126)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension func '@lexicalAttributeInputOutputArgumentAST generateRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalAttributeInputOutputArgumentAST::getter_generateRoutineArgument (Compiler * inCompiler
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result ; // Returned variable
+  const GGS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
+  result = GGS_string ("token.mLexicalAttribute_").add_operation (temp_0.readProperty_mAttributeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 133)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 133)) ;
 //---
   return result ;
 }
@@ -7636,43 +7684,11 @@ GGS_string cPtr_lexicalFormalInputArgumentAST::getter_generateSwiftCocoaRoutineA
                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ; // Returned variable
   const GGS_lexicalFormalInputArgumentAST temp_0 = this ;
-  result = callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) temp_0.readProperty_mRoutineOrFunctionFormalInputArgument ().ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 121)) ;
+  result = callExtensionGetter_generateSwiftCocoaRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) temp_0.readProperty_mRoutineOrFunctionFormalInputArgument ().ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 148)) ;
 //---
   return result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalAttributeInputOutputArgumentAST::method_checkLexicalRoutineCallArgument (GGS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                                          const GGS_lexicalArgumentModeAST constinArgument_inLexicalRoutineFormalArgumentMode,
-                                                                                          const GGS_lexicalTypeEnum constinArgument_inLexicalRoutineFormalArgumentType,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTypeEnum var_attributeLexicalType_5727 ;
-  const GGS_lexicalAttributeInputOutputArgumentAST temp_0 = this ;
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalAttributeMap ().method_searchKey (temp_0.readProperty_mAttributeName (), var_attributeLexicalType_5727, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 131)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_attributeLexicalType_5727.objectCompare (constinArgument_inLexicalRoutineFormalArgumentType)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_lexicalAttributeInputOutputArgumentAST temp_2 = this ;
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mAttributeName ().readProperty_location (), GGS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType_5727, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 138)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 137)).add_operation (GGS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 138)).add_operation (extensionGetter_lexicalTypeBaseName (constinArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 139)).add_operation (GGS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 140)), fixItArray3  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 137)) ;
-    }
-  }
-  GalgasBool test_4 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::notEqual, constinArgument_inLexicalRoutineFormalArgumentMode.objectCompare (GGS_lexicalArgumentModeAST::class_func_lexicalInputOutputMode (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 145)))).boolEnum () ;
-    if (GalgasBool::boolTrue == test_4) {
-      const GGS_lexicalAttributeInputOutputArgumentAST temp_5 = this ;
-      GenericArray <FixItDescription> fixItArray6 ;
-      inCompiler->emitSemanticError (temp_5.readProperty_mActualPassingModeLocation (), GGS_string ("the output mode (!) is required here, not an output/input mode"), fixItArray6  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 146)) ;
-    }
-  }
-}
 
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument'
@@ -7697,6 +7713,22 @@ void cPtr_lexicalFormalInputArgumentAST::method_checkLexicalRoutineCallArgument 
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Overriding extension func '@lexicalFormalInputArgumentAST generateRoutineArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalFormalInputArgumentAST::getter_generateRoutineArgument (Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result ; // Returned variable
+  const GGS_lexicalFormalInputArgumentAST temp_0 = this ;
+  result = callExtensionGetter_generateRoutineOrFunctionArgument ((const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST *) temp_0.readProperty_mRoutineOrFunctionFormalInputArgument ().ptr (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 170)) ;
+//---
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@lexicalRoutineCallInstructionAST checkLexicalInstruction'
 //--------------------------------------------------------------------------------------------------
 
@@ -7704,50 +7736,50 @@ void cPtr_lexicalRoutineCallInstructionAST::method_checkLexicalInstruction (GGS_
                                                                             GGS_lexicalTagMap & /* ioArgument__5F_ioTagMap */,
                                                                             Compiler * inCompiler
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ var_lexicalRoutineFormalArgumentList_7501 ;
-  GGS__5B_string_5D_ var_routineErrorMessageList_7544 ;
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ var_lexicalRoutineFormalArgumentList_8545 ;
+  GGS__5B_string_5D_ var_routineErrorMessageList_8590 ;
   const GGS_lexicalRoutineCallInstructionAST temp_0 = this ;
-  GGS_bool joker_7573 ; // Joker input parameter
-  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalRoutineMessageMap ().method_searchKey (temp_0.readProperty_mRoutineName (), var_lexicalRoutineFormalArgumentList_7501, var_routineErrorMessageList_7544, joker_7573, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 172)) ;
+  GGS_bool joker_8621 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalRoutineMessageMap ().method_searchKey (temp_0.readProperty_mRoutineName (), var_lexicalRoutineFormalArgumentList_8545, var_routineErrorMessageList_8590, joker_8621, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 188)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_lexicalRoutineCallInstructionAST temp_2 = this ;
-    test_1 = GGS_bool (ComparisonKind::notEqual, var_lexicalRoutineFormalArgumentList_7501.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 179)).objectCompare (temp_2.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 179)))).boolEnum () ;
+    test_1 = GGS_bool (ComparisonKind::notEqual, var_lexicalRoutineFormalArgumentList_8545.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)).objectCompare (temp_2.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       const GGS_lexicalRoutineCallInstructionAST temp_3 = this ;
       const GGS_lexicalRoutineCallInstructionAST temp_4 = this ;
       GenericArray <FixItDescription> fixItArray5 ;
-      inCompiler->emitSemanticError (temp_3.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_4.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 180)).add_operation (GGS_string (" actual argument(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 181)).add_operation (var_lexicalRoutineFormalArgumentList_7501.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 183)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 182)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 182)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 183)), fixItArray5  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 180)) ;
+      inCompiler->emitSemanticError (temp_3.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_4.readProperty_mActualArgumentList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)).add_operation (GGS_string (" actual argument(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).add_operation (var_lexicalRoutineFormalArgumentList_8545.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 198)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 198)).add_operation (GGS_string (" actual argument(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)), fixItArray5  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)) ;
     }
   }
   const GGS_lexicalRoutineCallInstructionAST temp_6 = this ;
-  UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_8029 (var_lexicalRoutineFormalArgumentList_7501) ;
-  UpEnumerator__5B_abstractLexicalRoutineActualArgumentAST_5D_ enumerator_8078 (temp_6.readProperty_mActualArgumentList ()) ;
-  while (enumerator_8029.hasCurrentObject () && enumerator_8078.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_8078.current (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_8029.current (HERE).readProperty_mLexicalFormalArgumentMode (), enumerator_8029.current (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 188)) ;
-    enumerator_8029.gotoNextObject () ;
-    enumerator_8078.gotoNextObject () ;
+  UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ enumerator_9099 (var_lexicalRoutineFormalArgumentList_8545) ;
+  UpEnumerator__5B_abstractLexicalRoutineActualArgumentAST_5D_ enumerator_9148 (temp_6.readProperty_mActualArgumentList ()) ;
+  while (enumerator_9099.hasCurrentObject () && enumerator_9148.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalRoutineCallArgument ((cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_9148.current (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, enumerator_9099.current (HERE).readProperty_mLexicalFormalArgumentMode (), enumerator_9099.current (HERE).readProperty_mLexicalFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 204)) ;
+    enumerator_9099.gotoNextObject () ;
+    enumerator_9148.gotoNextObject () ;
   }
   GalgasBool test_7 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_7) {
     const GGS_lexicalRoutineCallInstructionAST temp_8 = this ;
-    test_7 = GGS_bool (ComparisonKind::notEqual, var_routineErrorMessageList_7544.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)).objectCompare (temp_8.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 195)))).boolEnum () ;
+    test_7 = GGS_bool (ComparisonKind::notEqual, var_routineErrorMessageList_8590.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 211)).objectCompare (temp_8.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 211)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_7) {
       const GGS_lexicalRoutineCallInstructionAST temp_9 = this ;
       const GGS_lexicalRoutineCallInstructionAST temp_10 = this ;
       GenericArray <FixItDescription> fixItArray11 ;
-      inCompiler->emitSemanticError (temp_9.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_10.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)).add_operation (GGS_string (" error message(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 197)).add_operation (var_routineErrorMessageList_7544.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 198)).add_operation (GGS_string (" error message(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 199)), fixItArray11  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 196)) ;
+      inCompiler->emitSemanticError (temp_9.readProperty_mRoutineName ().readProperty_location (), GGS_string ("this lexical routine call names ").add_operation (temp_10.readProperty_mErrorMessageList ().getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 213)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 213)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 212)).add_operation (GGS_string (" error message(s), but the lexical routine prototype requires "), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 213)).add_operation (var_routineErrorMessageList_8590.getter_count (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 215)).getter_string (SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 215)), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 214)).add_operation (GGS_string (" error message(s)"), inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 215)), fixItArray11  COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 212)) ;
     }
   }
   const GGS_lexicalRoutineCallInstructionAST temp_12 = this ;
-  UpEnumerator__5B_lstring_5D_ enumerator_8697 (temp_12.readProperty_mErrorMessageList ()) ;
-  while (enumerator_8697.hasCurrentObject ()) {
-    GGS_lexicalMessageMap_2E_element var_entry_8726 = ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalMessageMap ().readSubcript__3F_searchKey (enumerator_8697.current (HERE), inCompiler COMMA_HERE) ;
-    var_entry_8726.mProperty_mMessageIsUsed = GGS_bool (true) ;
+  UpEnumerator__5B_lstring_5D_ enumerator_9799 (temp_12.readProperty_mErrorMessageList ()) ;
+  while (enumerator_9799.hasCurrentObject ()) {
+    GGS_lexicalMessageMap_2E_element var_entry_9830 = ioArgument_ioLexiqueAnalysisContext.readProperty_mLexicalMessageMap ().readSubcript__3F_searchKey (enumerator_9799.current (HERE), inCompiler COMMA_HERE) ;
+    var_entry_9830.mProperty_mMessageIsUsed = GGS_bool (true) ;
     {
-    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_replaceKey (var_entry_8726, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 206)) ;
+    ioArgument_ioLexiqueAnalysisContext.mProperty_mLexicalMessageMap.setter_replaceKey (var_entry_9830, inCompiler COMMA_SOURCE_FILE ("lexique-instruction-routine-call.galgas4", 222)) ;
     }
-    enumerator_8697.gotoNextObject () ;
+    enumerator_9799.gotoNextObject () ;
   }
 }
 

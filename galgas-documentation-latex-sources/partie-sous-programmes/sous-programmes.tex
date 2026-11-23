@@ -55,17 +55,17 @@ GALGAS distingue trois sortes d'arguments formels :
 
 \subsectionLabel{Argument formel en entrée}{argumentFormelEntree}
 
-Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une expression précédée par \ggst+!+.
+Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une expression précédée par \ggsq+!+.
 
 \begin{table}[t]
   \centering
   \small
   \begin{tabular}{lll}
     \textbf{Argument formel  en entrée} & \textbf{Remarque} & \textbf{Paramètre effectif en sortie} \\
-    \ggst+?selector:@T variable+ & Variable (modifiable) & \ggst+!selector:expression+ \\
-    \ggst+?selector:@T unused variable+ & Variable inutilisée &  \\
-    \ggst+?selector:let @T constante+ & Constante & \\
-    \ggst+?selector:let @T unused constante+ & Constante inutilisée & \\
+    \ggsq+?selector:@T variable+ & Variable (modifiable) & \ggsq+!selector:expression+ \\
+    \ggsq+?selector:@T unused variable+ & Variable inutilisée &  \\
+    \ggsq+?selector:let @T constante+ & Constante & \\
+    \ggsq+?selector:let @T unused constante+ & Constante inutilisée & \\
   \end{tabular}
   \caption{Argument formel en entrée, paramètre effectif en sortie}
   \labelTableau{ArgumentFormelEntree}
@@ -74,7 +74,7 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
 
 \subsectionLabel{Argument formel en entrée/sortie}{argumentFormelEntreeSortie}
 
-Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \ggst+!?+. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \ggst+struct+.
+Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \ggsq+!?+. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \ggsq+struct+.
 
 \begin{table}[t]
   \centering
@@ -82,9 +82,9 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \begin{tabular}{lll}
     \textbf{Argument formel en entrée/sortie} & \textbf{Paramètre effectif} & \textbf{Remarque}\\
                                               & \textbf{en sortie/entrée} & \\
-    \ggst+?!selector:@T variable+ & \ggst+!?selector:cible+ & \\
-    \ggst+?!selector:@T unused variable+ & \ggst+!?selector:*+ & Variable anonyme\\
-    & \ggst+!?n*+ & $n$ variables anonymes\\
+    \ggsq+?!selector:@T variable+ & \ggsq+!?selector:cible+ & \\
+    \ggsq+?!selector:@T unused variable+ & \ggsq+!?selector:*+ & Variable anonyme\\
+    & \ggsq+!?n*+ & $n$ variables anonymes\\
   \end{tabular}
   \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
   \labelTableau{ArgumentFormelEntreeSortie}
@@ -97,20 +97,20 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \small
     \begin{tabular}{lll}
       \textbf{Argument formel en sortie} & \textbf{Paramètre effectif en entrée} & \textbf{Remarque} \\
-        \ggst+!selector:@T variable+ & \ggst+?selector:variable+ & Affectation \\
-      & \ggst+?selector:@T variable+ & Déclaration et affectation \\
-      & \ggst+?selector:let @T constante+ & Déclaration et affectation \\
-      & \ggst+?selector:let @T unused constante+ & Déclaration et affectation \\
-      & \ggst+?selector:let constante+ & Déclaration et affectation \\
-      & \ggst+?selector:let unused constante+ & Déclaration et affectation \\
-      & \ggst+?selector:*+ & Une variable anonyme \\
-      & \ggst+?n*+ & $n$ variables anonymes \\
+        \ggsq+!selector:@T variable+ & \ggsq+?selector:variable+ & Affectation \\
+      & \ggsq+?selector:@T variable+ & Déclaration et affectation \\
+      & \ggsq+?selector:let @T constante+ & Déclaration et affectation \\
+      & \ggsq+?selector:let @T unused constante+ & Déclaration et affectation \\
+      & \ggsq+?selector:let constante+ & Déclaration et affectation \\
+      & \ggsq+?selector:let unused constante+ & Déclaration et affectation \\
+      & \ggsq+?selector:*+ & Une variable anonyme \\
+      & \ggsq+?n*+ & $n$ variables anonymes \\
     \end{tabular}
   \caption{Argument formel en sortie, paramètre effectif en entrée}
   \labelTableau{ArgumentFormelSortie}
 \end{table}
 
-Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel en sortie. Le compilateur vérifie que les instructions du sous-programme fixent une valeur à chaque argument formel en sortie.Le paramètre effectif correspondant est une \emph{cible} précédée par \ggst+?+. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \ggst+struct+.
+Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel en sortie. Le compilateur vérifie que les instructions du sous-programme fixent une valeur à chaque argument formel en sortie.Le paramètre effectif correspondant est une \emph{cible} précédée par \ggsq+?+. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \ggsq+struct+.
 
 
 
@@ -129,19 +129,19 @@ Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel e
 
 \section{Sélecteur}
 
-Il est possible d'associer un nom avec chaque symbole \ggst+?+, \ggst+?!+, \ggst+!+ et \ggst+!?+. Ce nom est appelé \emph{sélecteur}.
+Il est possible d'associer un nom avec chaque symbole \ggsq+?+, \ggsq+?!+, \ggsq+!+ et \ggsq+!?+. Ce nom est appelé \emph{sélecteur}.
 
-Un sélecteur commence par une lettre et est suivi par zéro, un ou plusieurs lettres ou chiffres, et termine obligatoirement par deux points \ggst+:+. Aucun espace n'est autorisé. Par exemple :
+Un sélecteur commence par une lettre et est suivi par zéro, un ou plusieurs lettres ou chiffres, et termine obligatoirement par deux points \ggsq+:+. Aucun espace n'est autorisé. Par exemple :
 
-\ggst+?valeur:+
+\ggsq+?valeur:+
 
-\ggst+!par2:+
+\ggsq+!par2:+
 
-Les sélecteurs peuvent être utilisés à chaque fois que le symbole \ggst+?+, \ggst+?!+, \ggst+!+ et \ggst+!?+ apparaît. Quand un argument formel est déclaré avec un sélecteur, alors le paramètre effectif doit nommer le même sélecteur.
+Les sélecteurs peuvent être utilisés à chaque fois que le symbole \ggsq+?+, \ggsq+?!+, \ggsq+!+ et \ggsq+!?+ apparaît. Quand un argument formel est déclaré avec un sélecteur, alors le paramètre effectif doit nommer le même sélecteur.
 
 Par exemple, si on considère une routine déclarée par :
 
-\begin{galgas3}
+\begin{galgas4}
 proc aireRectangle
   ?longueur: @uint inA
   ?largeur: @uint inA
@@ -149,11 +149,11 @@ proc aireRectangle
 {
   ...
 }
-\end{galgas3}
+\end{galgas4}
 
 Alors son appel s'exprimera par :
-\begin{galgas3}
+\begin{galgas4}
   aireRectangle (!longueur:2 !largeur:3 ?aire:let aire)
-\end{galgas3}
+\end{galgas4}
 
 

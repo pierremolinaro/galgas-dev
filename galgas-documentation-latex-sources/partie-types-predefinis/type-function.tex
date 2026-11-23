@@ -6,13 +6,13 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Le type \ggst=@function= permet de faire l'inventaire des fonctions définies dans votre projet GALGAS et de les appeler de manière indirecte. Un objet de type \ggst=@function= est une référence à une fonction du projet GALGAS, et permet de l'appeler de manière indirecte.
+Le type \ggsq=@function= permet de faire l'inventaire des fonctions définies dans votre projet GALGAS et de les appeler de manière indirecte. Un objet de type \ggsq=@function= est une référence à une fonction du projet GALGAS, et permet de l'appeler de manière indirecte.
 
 Pour faire l'inventaire des fonctions : \refConstructorPage{function}{functionList}.
 
 Pour savoir si une fonction d'un certain nom existe : \refConstructorPage{function}{isFunctionDefined}.
 
-Pour instancier un objet \ggst=@function= qui référence une fonction : \refConstructorPage{function}{functionWithName}, ou exploiter la liste retournée par le \refConstructorPage{function}{functionList}.
+Pour instancier un objet \ggsq=@function= qui référence une fonction : \refConstructorPage{function}{functionWithName}, ou exploiter la liste retournée par le \refConstructorPage{function}{functionList}.
 
 Pour connaître le type des arguments et le type retourné par une fonction :  \refGetterPage{function}{formalParameterTypeList} et  \refGetterPage{function}{resultType}.
 
@@ -28,9 +28,9 @@ Pour appeler une fonction :  \refGetterPage{function}{invoke}.
 
 \subsectionConstructor{functionList}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor functionList -> @functionlist
-\end{galgas3}
+\end{galgas4}
 
 Ce constructeur renvoie la liste de toute les fonctions définies dans le projet GALGAS.
 
@@ -38,11 +38,11 @@ Ce constructeur renvoie la liste de toute les fonctions définies dans le projet
 
 \subsectionConstructor{functionWithName}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor functionWithName ?let @string inFunctionName -> @function
-\end{galgas3}
+\end{galgas4}
 
-Ce constructeur renvoie un objet de type \ggst=@function= permettant d'appeler de manière indirecte la fonction dont le nom est \ggst=inFunctionName=. Si il n'y a pas de fonction de ce nom, une erreur d'exécution est déclenchée, et une valeur \emph{poison} est retournée. Pour savoir si une fonction existe, utiliser le \refConstructorPage{function}{isFunctionDefined}.
+Ce constructeur renvoie un objet de type \ggsq=@function= permettant d'appeler de manière indirecte la fonction dont le nom est \ggsq=inFunctionName=. Si il n'y a pas de fonction de ce nom, une erreur d'exécution est déclenchée, et une valeur \emph{poison} est retournée. Pour savoir si une fonction existe, utiliser le \refConstructorPage{function}{isFunctionDefined}.
 
 
 
@@ -50,11 +50,11 @@ Ce constructeur renvoie un objet de type \ggst=@function= permettant d'appeler d
 
 \subsectionConstructor{isFunctionDefined}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 constructor isFunctionDefined ?let @string inFunctionName -> @bool
-\end{galgas3}
+\end{galgas4}
 
-Ce constructeur permet de savoir si une fonction dont le nom est \ggst=inFunctionName= existe.
+Ce constructeur permet de savoir si une fonction dont le nom est \ggsq=inFunctionName= existe.
 
 
 
@@ -66,9 +66,9 @@ Ce constructeur permet de savoir si une fonction dont le nom est \ggst=inFunctio
 
 \subsectionGetter{formalParameterTypeList}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 getter formalParameterTypeList -> @typelist
-\end{galgas3}
+\end{galgas4}
 
 Ce \emph{getter} renvoie la liste des types des arguments formels de la fonction désignée par le récepteur. Une fonction n'admet que des arguments formels en entrée, aussi le mode de passage est connu et n'est pas renvoyé par ce \emph{getter}.
 
@@ -77,12 +77,12 @@ Ce \emph{getter} renvoie la liste des types des arguments formels de la fonction
 
 \subsectionGetter{invoke}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 getter invoke ?@objectlist inParameters
               ?@location inErrorLocation -> @object
-\end{galgas3}
+\end{galgas4}
 
-Ce \emph{getter} appelle la fonction désignée par le récepteur avec la liste de paramètres effectifs \ggst=inParameters=. La valeur renvoyée par ce \emph{getter} est la valeur renvoyée par la fonction appelée. Si liste de paramètres effectifs \ggst=inParameters= est invalide (nombre incorrect d'éléments, type des arguments ne correspondant pas), une erreur d'exécution est déclenchée, en signalant la position de l'erreur grâce à \ggst=inErrorLocation=.
+Ce \emph{getter} appelle la fonction désignée par le récepteur avec la liste de paramètres effectifs \ggsq=inParameters=. La valeur renvoyée par ce \emph{getter} est la valeur renvoyée par la fonction appelée. Si liste de paramètres effectifs \ggsq=inParameters= est invalide (nombre incorrect d'éléments, type des arguments ne correspondant pas), une erreur d'exécution est déclenchée, en signalant la position de l'erreur grâce à \ggsq=inErrorLocation=.
 
 
 
@@ -90,9 +90,9 @@ Ce \emph{getter} appelle la fonction désignée par le récepteur avec la liste 
 
 \subsectionGetter{resultType}{function}
 
-\begin{galgas3}
+\begin{galgas4}
 getter resultType -> @type
-\end{galgas3}
+\end{galgas4}
 
 Ce \emph{getter} renvoie le type de la valeur retournée par la fonction désignée par le récepteur.
 

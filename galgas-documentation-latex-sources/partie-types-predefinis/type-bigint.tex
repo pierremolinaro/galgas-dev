@@ -6,37 +6,37 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-Le type \ggst+@bigint+ définit les entiers signés d'une taille quelconque, seulement limitée par la mémoire disponible. Ce type est simplement une interface des entiers de la librairie GMP\footnote{\url{http://www.gmplib.org}.}.
+Le type \ggsq+@bigint+ définit les entiers signés d'une taille quelconque, seulement limitée par la mémoire disponible. Ce type est simplement une interface des entiers de la librairie GMP\footnote{\url{http://www.gmplib.org}.}.
 
 \section{Constante littérale}
 
-Utiliser le suffixe « \texttt{G} » pour définir une constante littérale de type \ggst!@bigint! :
-\begin{galgas3}
+Utiliser le suffixe « \texttt{G} » pour définir une constante littérale de type \ggsq!@bigint! :
+\begin{galgas4}
 @bigint a = 1234567890_1234567890_1234567890_G
 message [a string] + "\n" # 123456789012345678901234567890
-\end{galgas3}
+\end{galgas4}
 
 Vous pouvez utiliser le caractère de soulignement « \texttt{\_} » pour séparer les chiffres.
 
 Avec le préfixe « \texttt{0x} », vous pouvez écrire les nombres en héxadécimal :
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = 0x123456789ABCDEF0_123456789abcdefG
 message [a hexString] + "\n" # 0x123456789ABCDEF0_123456789ABCDEF
-\end{galgas3}
+\end{galgas4}
 
 Les lettres minuscules « \texttt{a} » à « \texttt{f} » et majuscules « \texttt{A} » à « \texttt{F} » sont utilisées pour définir les constantes entières en héxadécimal.
 
 \section{Construction}
 
-Le type \ggst!@bigint! ne définit que deux constructeurs :
+Le type \ggsq!@bigint! ne définit que deux constructeurs :
 \begin{itemize}
   \item \refConstructorPage{bigint}{zero} ;
   \item \refConstructorPage{bigint}{default}.
 \end{itemize}
 
-Ces deux constructeurs renvoient un \ggst!@bigint! initilisé à $0$.
+Ces deux constructeurs renvoient un \ggsq!@bigint! initilisé à $0$.
 
-Pour construire un \ggst!@bigint!, vous pouvez aussi utiliser les \emph{getters} suivants :
+Pour construire un \ggsq!@bigint!, vous pouvez aussi utiliser les \emph{getters} suivants :
 \begin{itemize}
   \item \refGetterPage{bool}{bigint} ;
   \item \refGetterPage{sint}{bigint} ;
@@ -47,28 +47,28 @@ Pour construire un \ggst!@bigint!, vous pouvez aussi utiliser les \emph{getters}
 
 \subsectionConstructor{zero}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 constructor @bigint zero -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-Le constructeur \ggst!zero! renvoie un \ggst!@bigint! initialisé à zéro :
-\begin{galgas3}
+Le constructeur \ggsq!zero! renvoie un \ggsq!@bigint! initialisé à zéro :
+\begin{galgas4}
 @bigint a = .zero
 message [a string] + "\n" # 0
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionConstructor{default}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 constructor @bigint default -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-Le constructeur \ggst!default!, comme le constructeur \ggst!zero!, renvoie un \ggst!@bigint! initialisé à zéro :
-\begin{galgas3}
+Le constructeur \ggsq!default!, comme le constructeur \ggsq!zero!, renvoie un \ggsq!@bigint! initialisé à zéro :
+\begin{galgas4}
 @bigint a = .default
 message [a string] + "\n" # 0
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -82,51 +82,51 @@ message [a string] + "\n" # 0
 
 \section{Comparaison}
 
-Le type \ggst!@bigint! implémente les six opérateurs de comparaison \ggst!==!, \ggst+!=+, \ggst!<!, \ggst!<=!, \ggst!>! et \ggst!>=!. Il implémente aussi les \emph{getters} \ggst!isZero! et \ggst!sign! qui permettent de comparer un \ggst!@bigint! avec zéro.
+Le type \ggsq!@bigint! implémente les six opérateurs de comparaison \ggsq!==!, \ggsq+!=+, \ggsq!<!, \ggsq!<=!, \ggsq!>! et \ggsq!>=!. Il implémente aussi les \emph{getters} \ggsq!isZero! et \ggsq!sign! qui permettent de comparer un \ggsq!@bigint! avec zéro.
 
 \subsection{Opérateurs infixés de comparaison}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint == @bigint -> @bool
 operator @bigint != @bigint -> @bool
 operator @bigint >= @bigint -> @bool
 operator @bigint >  @bigint -> @bool
 operator @bigint <= @bigint -> @bool
 operator @bigint <  @bigint -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
 \subsectionGetter{isZero}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter isZero -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} renvoie \ggst!true! si valeur du récepteur est nulle, et \ggst!false! dans le cas contraire.
+Ce \emph{getter} renvoie \ggsq!true! si valeur du récepteur est nulle, et \ggsq!false! dans le cas contraire.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0G isZero] ocString] + "\n" # YES
 message [[1G isZero] ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionGetter{sign}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter sign -> @sint
-\end{galgas3box}
+\end{galgas4box}
 
 Ce \emph{getter} renvoie :
 \begin{itemize}
-\item \ggst!-1S! si la valeur du récepteur est strictement négative ;
-\item \ggst!0S! si la valeur du récepteur est nulle ;
-\item \ggst!1S! si la valeur du récepteur est strictement positive.
+\item \ggsq!-1S! si la valeur du récepteur est strictement négative ;
+\item \ggsq!0S! si la valeur du récepteur est nulle ;
+\item \ggsq!1S! si la valeur du récepteur est strictement positive.
 \end{itemize}
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0G sign] >= 0S ocString] + "\n" # YES
 message [[1G sign] < 0S ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -141,7 +141,7 @@ message [[1G sign] < 0S ocString] + "\n" # NO
 \section{Conversions}
 
 
-Les \emph{getters} suivants permettent de convertir un \ggst!@bigint! dans un type entier usuel :
+Les \emph{getters} suivants permettent de convertir un \ggsq!@bigint! dans un type entier usuel :
 \begin{itemize}
   \item \refGetterPage{bigint}{sint} ;
   \item \refGetterPage{bigint}{sint64} ;
@@ -161,112 +161,112 @@ Ils échouent si le récepteur ne peut pas être converti sans perte. On peut ut
 
 \subsectionGetter{bitCountForSignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter bitCountForSignedRepresentation -> @uint
-\end{galgas3box}
+\end{galgas4box}
 
 Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur du récepteur dans la représentation binaire \emph{complément à deux}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0G bitCountForSignedRepresentation] string] + "\n" # 1
 message [[1G bitCountForSignedRepresentation] string] + "\n" # 2
 message [[-1G bitCountForSignedRepresentation] string] + "\n" # 1
 message [[0x8000G bitCountForSignedRepresentation] string] + "\n" # 17
 message [[-0x8000G bitCountForSignedRepresentation] string] + "\n" # 16
-\end{galgas3}
+\end{galgas4}
 
 
 Pour connaître le nombre d'octets nécessaires pour représenter la valeur du récepteur dans la représentation binaire \emph{complément à deux}, on calcule :
-\begin{galgas3}
+\begin{galgas4}
 ([bigint bitCountForSignedRepresentation] - 1) / 8 + 1
-\end{galgas3}
+\end{galgas4}
 
 Et pour le nombre de mots de 32 bits :
-\begin{galgas3}
+\begin{galgas4}
 ([bigint bitCountForSignedRepresentation] - 1) / 32 + 1
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionGetter{bitCountForUnsignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter bitCountForUnsignedRepresentation -> @uint
-\end{galgas3box}
+\end{galgas4box}
 
 Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur absolue du récepteur dans la représentation binaire \emph{naturelle}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0G bitCountForUnsignedRepresentation] string] + "\n" # 1
 message [[1G bitCountForUnsignedRepresentation] string] + "\n" # 1
 message [[-1G bitCountForUnsignedRepresentation] string] + "\n" # 1
 message [[0x8000G bitCountForUnsignedRepresentation] string] + "\n" # 16
 message [[-0x8000G bitCountForUnsignedRepresentation] string] + "\n" # 16
-\end{galgas3}
+\end{galgas4}
 
 Comme c'est la valeur absolue qui est prise en compte, le signe n'intervient pas.
 
 Pour connaître le nombre d'octets nécessaires pour représenter la valeur absolue du récepteur dans la représentation binaire \emph{naturelle}, on calcule :
-\begin{galgas3}
+\begin{galgas4}
 ([bigint bitCountForUnsignedRepresentation] - 1) / 8 + 1
-\end{galgas3}
+\end{galgas4}
 
 Et pour le nombre de mots de 32 bits :
-\begin{galgas3}
+\begin{galgas4}
 ([bigint bitCountForUnsignedRepresentation] - 1) / 32 + 1
-\end{galgas3}
+\end{galgas4}
 
 \subsectionGetter{fitsInSInt}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter fitsInSInt -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggst!@sint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint}.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggsq!@sint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678G fitsInSInt] ocString] + "\n" # YES
 message [[0x7FFF_FFFFG fitsInSInt] ocString] + "\n" # YES
 message [[0x8000_0000G fitsInSInt] ocString] + "\n" # NO
 message [[-0x8000_0000G fitsInSInt] ocString] + "\n" # YES
 message [[-0x8000_0001G fitsInSInt] ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{fitsInSInt64}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter fitsInSInt64 -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggst!@sint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint64}.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggsq!@sint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint64}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678_9ABC_DEF0G fitsInSInt64] ocString] + "\n" # YES
 message [[0x7FFF_FFFF_FFFF_FFFFG fitsInSInt64] ocString] + "\n" # YES
 message [[0x8000_0000_0000_0000G fitsInSInt64] ocString] + "\n" # NO
 message [[-0x8000_0000_0000_0000G fitsInSInt64] ocString] + "\n" # YES
 message [[-0x8000_0000_0000_0001G fitsInSInt64] ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{fitsInUInt}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter fitsInUInt -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggst!@uint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint}.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggsq!@uint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678G fitsInUInt] ocString] + "\n" # YES
 message [[0x1234_5678_9G fitsInUInt] ocString] + "\n" # NO
 message [[-1G fitsInUInt] ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -275,71 +275,71 @@ message [[-1G fitsInUInt] ocString] + "\n" # NO
 
 \subsectionGetter{fitsInUInt64}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter fitsInUInt64 -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggst!@uint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint64}.
+Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggsq!@uint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint64}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678_9ABC_DEF0G fitsInUInt64] ocString] + "\n" # YES
 message [[0x1234_5678_9ABC_DEF0_1G fitsInUInt64] ocString] + "\n" # NO
 message [[-1G fitsInUInt64] ocString] + "\n" # NO
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionGetter{sint}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter sint -> @sint
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de convertir le récepteur en \ggst!@sint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt}.
+Ce \emph{getter} permet de convertir le récepteur en \ggsq!@sint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[-0x1234_5678G sint] hexString] + "\n" # 0xEDCBA988
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{sint64}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter sint64 -> @sint64
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de convertir le récepteur en \ggst!@sint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt64}.
+Ce \emph{getter} permet de convertir le récepteur en \ggsq!@sint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt64}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[-0x1234_5678_9ABC_DEF0G sint64] hexString] + "\n" # 0xEDCBA98765432110
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionGetter{uint}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter uint -> @uint
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de convertir le récepteur en \ggst!@uint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt}.
+Ce \emph{getter} permet de convertir le récepteur en \ggsq!@uint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678G uint] hexString] + "\n" # 0x12345678
-\end{galgas3}
+\end{galgas4}
 
 
 \subsectionGetter{uint64}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter uint64 -> @uint64
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet de convertir le récepteur en \ggst!@uint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt64}.
+Ce \emph{getter} permet de convertir le récepteur en \ggsq!@uint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt64}.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234_5678_9ABC_DEFG uint64] hexString] + "\n" # 0x123456789ABCDEF
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -349,7 +349,7 @@ message [[0x1234_5678_9ABC_DEFG uint64] hexString] + "\n" # 0x123456789ABCDEF
 
 \section{Conversions en chaîne de caractères}
 
-Plusieurs \emph{getters} sont disponibles pour convertir un \ggst!bigint! en \ggst!@string! :
+Plusieurs \emph{getters} sont disponibles pour convertir un \ggsq!bigint! en \ggsq!@string! :
 \begin{itemize}
   \item \refGetterPage{bigint}{string} ;
   \item \refGetterPage{bigint}{spacedString} ;
@@ -359,33 +359,33 @@ Plusieurs \emph{getters} sont disponibles pour convertir un \ggst!bigint! en \gg
 
 \subsectionGetter{string}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter string -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggst!0! à \ggst!9!). Si cette valeur est négative, le premier caractère est un signe \ggst!-!. Par exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggsq!0! à \ggsq!9!). Si cette valeur est négative, le premier caractère est un signe \ggsq!-!. Par exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = -1234567890_1234567890_1234567890_G
 message [a string] + "\n" # -123456789012345678901234567890
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsectionGetter{spacedString}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter spacedString ?@uint inSeparation -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggst!0! à \ggst!9!). Si cette valeur est négative, le premier caractère est un signe \ggst!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « \texttt{-} ». Par exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggsq!0! à \ggsq!9!). Si cette valeur est négative, le premier caractère est un signe \ggsq!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « \texttt{-} ». Par exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 message [123_456_789_012_345_678G spacedString !3] + "\n"
 # "123 456 789 012 345 678"
 message [-123_456_789_012_345_678G spacedString !3] + "\n"
 # "-123 456 789 012 345 678"
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -393,16 +393,16 @@ message [-123_456_789_012_345_678G spacedString !3] + "\n"
 
 \subsectionGetter{hexString}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter hexString -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggst!0! à \ggst!9!, \ggst!A! à \ggst!F!). La valeur retournée est préfixée par « \texttt{0x} », qui est placé après un éventuel signe « \texttt{-} ». Exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggsq!0! à \ggsq!9!, \ggsq!A! à \ggsq!F!). La valeur retournée est préfixée par « \texttt{0x} », qui est placé après un éventuel signe « \texttt{-} ». Exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = -1234567890_1234567890_1234567890_G
 message [a hexString] + "\n" # -0x18EE90FF6C373E0EE4E3F0AD2
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -413,18 +413,18 @@ message [a hexString] + "\n" # -0x18EE90FF6C373E0EE4E3F0AD2
 
 \subsectionGetter{hexStringSeparatedBy}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggst=inGroup= digits are separated by the \ggst=inSeparator= character.
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
 
-If \ggst=inGroup= is equal to zero, a run-time error is raised.
+If \ggsq=inGroup= is equal to zero, a run-time error is raised.
 
 For example:
-\begin{galgas3}
+\begin{galgas4}
 let s = [0x123456789ABCDEF0G hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DEF0
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -433,16 +433,16 @@ let s = [0x123456789ABCDEF0G hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DE
 
 \subsectionGetter{xString}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter xString -> @string
-\end{galgas3box}
+\end{galgas4box}
 
-Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggst!0! à \ggst!9!, \ggst!A! à \ggst!F!). Si cette valeur est négative, le premier caractère est un signe \ggst!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
+Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggsq!0! à \ggsq!9!, \ggsq!A! à \ggsq!F!). Si cette valeur est négative, le premier caractère est un signe \ggsq!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = -1234567890_1234567890_1234567890_G
 message [a xString] + "\n" # -18EE90FF6C373E0EE4E3F0AD2
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -454,7 +454,7 @@ message [a xString] + "\n" # -18EE90FF6C373E0EE4E3F0AD2
 
 \section{Extraction}
 
-Six \emph{getters} d'extraction sont définis. Ils permettent d'obtenir la valeur d'un \ggst!@bigint! sous la forme d'un \ggst!@uintlist! ou d'un \ggst!@uint64list!. Ces getters sont :
+Six \emph{getters} d'extraction sont définis. Ils permettent d'obtenir la valeur d'un \ggsq!@bigint! sous la forme d'un \ggsq!@uintlist! ou d'un \ggsq!@uint64list!. Ces getters sont :
 \begin{itemize}
   \item \refGetterPage{bigint}{extract8ForUnsignedRepresentation} ;
   \item \refGetterPage{bigint}{extract8ForSignedRepresentation} ;
@@ -468,13 +468,13 @@ Les \emph{getters} « \texttt{extract8…} » fournissent des mots de $8$ bits, 
 
 \subsectionGetter{extract8ForUnsignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract8ForUnsignedRepresentation -> @uintlist
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggst!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggsq!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
-\begin{galgas3}
+\begin{galgas4}
 # Parcours dans le sens des indices croissants : little endian
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract8ForUnsignedRepresentation
@@ -492,11 +492,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
-\end{galgas3}
+\end{galgas4}
 
 Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
 
-\begin{galgas3}
+\begin{galgas4}
 @uintlist a = [0G extract8ForUnsignedRepresentation]
 var s = ""
 for (n) in a
@@ -504,19 +504,19 @@ for (n) in a
   between s += " "
 end
 message s + "\n" # 0x0
-\end{galgas3}
+\end{galgas4}
 
 \subsectionGetter{extract8ForSignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract8ForSignedRepresentation -> @uintlist
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggst!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggsq!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
-Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée. Dans l'exemple ci-dessus, c'est la valeur \texttt{0xFF\_EEDD\_...\_2211G} qui est utilisée, comme pour le premier exemple du \emph{getter} \ggst!extract8ForUnsignedRepresentation!. Comme le bit de poids fort de ce nombre est $1$, l'extraction en \emph{signé} retourne un élément de plus que l'extraction en \emph{non signé}, élément dont la valeur est $0$.
+Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée. Dans l'exemple ci-dessus, c'est la valeur \texttt{0xFF\_EEDD\_...\_2211G} qui est utilisée, comme pour le premier exemple du \emph{getter} \ggsq!extract8ForUnsignedRepresentation!. Comme le bit de poids fort de ce nombre est $1$, l'extraction en \emph{signé} retourne un élément de plus que l'extraction en \emph{non signé}, élément dont la valeur est $0$.
 
-\begin{galgas3}
+\begin{galgas4}
 # Parcours dans le sens des indices croissants : little endian
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract8ForSignedRepresentation
@@ -534,11 +534,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0x00 0xFF 0xEE 0xDD 0xCC 0xBB 0xAA . . . 0x44 0x33 0x22 0x11
-\end{galgas3}
+\end{galgas4}
 
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ :
 
-\begin{galgas3}
+\begin{galgas4}
 # Parcours dans le sens des indices croissants : little endian
 @uintlist a = [-0x4433_2211G extract8ForSignedRepresentation]
 var s = ""
@@ -554,17 +554,17 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xBB 0xCC 0xDD 0xEF
-\end{galgas3}
+\end{galgas4}
 
 \subsectionGetter{extract32ForUnsignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract32ForUnsignedRepresentation -> @uintlist
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggst!@uintlist!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggsq!@uintlist!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
-\begin{galgas3}
+\begin{galgas4}
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract32ForUnsignedRepresentation
 ]
@@ -582,11 +582,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
-\end{galgas3}
+\end{galgas4}
 
 Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
 
-\begin{galgas3}
+\begin{galgas4}
 @uintlist a = [0G extract32ForUnsignedRepresentation]
 var s = ""
 for (n) in a
@@ -594,22 +594,22 @@ for (n) in a
   between s += " "
 end
 message s + "\n" # 0x0
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{extract32ForSignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract32ForSignedRepresentation -> @uintlist
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggst!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggsq!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
 Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
 
-\begin{galgas3}
+\begin{galgas4}
 let @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract32ForSignedRepresentation
 ]
@@ -627,11 +627,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
-\end{galgas3}
+\end{galgas4}
 
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ :
 
-\begin{galgas3}
+\begin{galgas4}
 let @uintlist a = [-0x55_4433_2211G extract32ForSignedRepresentation]
 # Parcours dans le sens des indices croissants : little endian
 var s = ""
@@ -647,7 +647,7 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -655,13 +655,13 @@ message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
 
 \subsectionGetter{extract64ForUnsignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract64ForUnsignedRepresentation -> @uint64list
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggst!@uint64list!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggsq!@uint64list!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
-\begin{galgas3}
+\begin{galgas4}
 let @uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract64ForUnsignedRepresentation
 ]
@@ -679,11 +679,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
-\end{galgas3}
+\end{galgas4}
 
 Si le récepteur est nul, le vecteur retourné comprend un seul élément de valeur $0$.
 
-\begin{galgas3}
+\begin{galgas4}
 @uint64list a = [0G extract64ForUnsignedRepresentation]
 var s = ""
 for (n) in a
@@ -691,22 +691,22 @@ for (n) in a
   between s += " "
 end
 message s + "\n" # 0x0
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionGetter{extract64ForSignedRepresentation}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter extract64ForSignedRepresentation -> @uint64list
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggst!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
+Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggsq!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
 Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
 
-\begin{galgas3}
+\begin{galgas4}
 let @uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract64ForSignedRepresentation
 ]
@@ -724,11 +724,11 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
-\end{galgas3}
+\end{galgas4}
 
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ :
 
-\begin{galgas3}
+\begin{galgas4}
 let @uint64list a = [-0x55_4433_2211G extract64ForSignedRepresentation]
 # Parcours dans le sens des indices croissants : little endian
 var s = ""
@@ -744,7 +744,7 @@ for > (n) in a
   between s += " "
 end
 message s + "\n" # 0xFFFFFFAABBCCDDEF
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -764,17 +764,17 @@ message s + "\n" # 0xFFFFFFAABBCCDDEF
 
 \subsection{Opérateurs \texttt{+} et \texttt{-} préfixés}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator + @bigint -> @bigint
 operator - @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
 L'opérateur « \texttt{-} » préfixé effectue la négation de l'expression qui le suit. L'opérateur « \texttt{+} » préfixé n'a aucun effet, il retourne la valeur de l'expression.
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = +1234567890_1234567890_1234567890_G
 message [a string] + "\n" # 123456789012345678901234567890
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -786,16 +786,16 @@ message [a string] + "\n" # 123456789012345678901234567890
 
 \subsectionGetter{abs}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter abs -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-Le \emph{getter} \ggst!abs! retourne la valeur absolue.
+Le \emph{getter} \ggsq!abs! retourne la valeur absolue.
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint a = [-1234567890_1234567890_1234567890_G abs]
 message [a string] + "\n" # 123456789012345678901234567890
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -804,30 +804,30 @@ message [a string] + "\n" # 123456789012345678901234567890
 
 \subsection{Addition et soustraction}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint + @bigint -> @bigint
 operator @bigint - @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-Les opérateurs « \texttt{+} » et « \texttt{-} » infixés effectuent respectivement la somme et la différence de leurs opérandes. Comme la taille des \ggst!@bigint! est non limitée, aucun débordement n'a lieu.
+Les opérateurs « \texttt{+} » et « \texttt{-} » infixés effectuent respectivement la somme et la différence de leurs opérandes. Comme la taille des \ggsq!@bigint! est non limitée, aucun débordement n'a lieu.
 
 
 \subsection{Incrémentation et décrémentation}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint ++
 operator @bigint --
-\end{galgas3box}
+\end{galgas4box}
 
-Le type \ggst!@bigint! accepte les opérateurs d'incrémentation \ggst!++! et de décrémentation \ggst!--!. Aucun débordement n'a lieu.
+Le type \ggsq!@bigint! accepte les opérateurs d'incrémentation \ggsq!++! et de décrémentation \ggsq!--!. Aucun débordement n'a lieu.
 
 \subsection{Multiplication}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint * @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur \ggst!*! infixé effectue le produit de ses opérandes. Comme la taille des \ggst!@bigint! est non limitée, aucun débordement n'a lieu.
+L'opérateur \ggsq!*! infixé effectue le produit de ses opérandes. Comme la taille des \ggsq!@bigint! est non limitée, aucun débordement n'a lieu.
 
 
 
@@ -848,50 +848,50 @@ Trois opérations différentes sont possibles, suivant que l'on veuille obtenir 
 \item \emph{vers zéro}, et $r$ a le même signe que $n$.
 \end{itemize}
 
-En C, les opérateurs de division (« \texttt{/} »), et de calcul du reste (« \texttt{\%} ») utilisent un quotient arrondi \emph{vers zéro}. L'opérateur de décalage à droite (« \texttt{>{}>} ») de $n$ bits renvoie le quotient arrondi vers \emph{vers $-\infty$} de la division par $2^n$. En GALGAS, les opérateurs correspondants sur les types \ggst!@uint!, \ggst!@sint!, \ggst!@uint64! et \ggst!@sint64! sont conformes à ce comportement.
+En C, les opérateurs de division (« \texttt{/} »), et de calcul du reste (« \texttt{\%} ») utilisent un quotient arrondi \emph{vers zéro}. L'opérateur de décalage à droite (« \texttt{>{}>} ») de $n$ bits renvoie le quotient arrondi vers \emph{vers $-\infty$} de la division par $2^n$. En GALGAS, les opérateurs correspondants sur les types \ggsq!@uint!, \ggsq!@sint!, \ggsq!@uint64! et \ggsq!@sint64! sont conformes à ce comportement.
 
-Le type \ggst!@bigint! obéit aux mêmes règles :
+Le type \ggsq!@bigint! obéit aux mêmes règles :
 \begin{itemize}
-\item les opérateurs \ggst!/! et \ggst!mod! infixés effectuent la division qui calcule le quotient arrondi \emph{vers zéro} ;
-  \item l'opérateur \ggst!>>! infixé calcule le quotient arrondi \emph{vers $-\infty$} de la division par $2^n$ ;
+\item les opérateurs \ggsq!/! et \ggsq!mod! infixés effectuent la division qui calcule le quotient arrondi \emph{vers zéro} ;
+  \item l'opérateur \ggsq!>>! infixé calcule le quotient arrondi \emph{vers $-\infty$} de la division par $2^n$ ;
 \end{itemize}
 
 De plus, trois méthodes sont disponibles, qui retournent quotient et reste de la division :
 \begin{itemize}
-  \item la méthode \ggst!divideBy! retourne le le quotient arrondi \emph{vers zéro} et le reste correspondant ;
-  \item la méthode \ggst!floorDivideBy! retourne le le quotient arrondi \emph{vers $-\infty$} et le reste correspondant ;
-  \item la méthode \ggst!ceilDivideBy! retourne le le quotient arrondi \emph{vers $+\infty$} et le reste correspondant.
+  \item la méthode \ggsq!divideBy! retourne le le quotient arrondi \emph{vers zéro} et le reste correspondant ;
+  \item la méthode \ggsq!floorDivideBy! retourne le le quotient arrondi \emph{vers $-\infty$} et le reste correspondant ;
+  \item la méthode \ggsq!ceilDivideBy! retourne le le quotient arrondi \emph{vers $+\infty$} et le reste correspondant.
 \end{itemize}
 
 
 \subsection{Opérateur « \texttt{/} » infixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint / @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
 Il effectue la division entière de l'expression de gauche par l'expression de droite et renvoie le quotient. Si l'expression de gauche est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
-\begin{galgas3}
+\begin{galgas4}
 message [(-7S) / 2S string] + "\n" # -3
 message [(-7G) / 2G string] + "\n" # -3
 message [(-7S) / (-2S) string] + "\n" # 3
 message [(-7G) / (-2G) string] + "\n" # 3
 message [7S / (-2S) string] + "\n" # -3
 message [7G / (-2G) string] + "\n" # -3
-\end{galgas3}
+\end{galgas4}
 
 
 
 \subsection{Opérateur « \texttt{mod} » infixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint mod @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
 Il renvoie le reste de la division entière de l'expression de gauche par l'expression de droite, telle que décrite au dessus. Si cette dernière est nulle, alors un message d'erreur est affiché et le résultat n'est pas construit.
 
-\begin{galgas3}
+\begin{galgas4}
 message [9876543210G mod 1234567890G string] + "\n" # 90
 message [(-9876543210G) mod 1234567890G string] + "\n" # -90
 message [(-9876543210G) mod (-1234567890G) string] + "\n"  # -90
@@ -900,22 +900,22 @@ message [2000S mod 183S string] + "\n" # 170
 message [(-2000S) mod 183S string] + "\n" # -170
 message [(-2000S) mod (-183S) string] + "\n" # -170
 message [2000S mod (-183S) string] + "\n" # 170
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionMethod{divideBy}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 method @bigint divideBy ?@bigint inDivisor
                         !@bigint outQuotient
                         !@bigint outRemainder
-\end{galgas3box}
+\end{galgas4box}
 
-Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggst!/! » et « \ggst!mod! » en une seule opération pour retourner quotient et reste.
+Elle effectue la division dont le quotient arrondi \emph{vers zéro}, c'est-à-dire elle combine les opérateurs « \ggsq!/! » et « \ggsq!mod! » en une seule opération pour retourner quotient et reste.
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint quotient
 @bigint remainder
 [9876543210_9876543210G divideBy
@@ -942,22 +942,22 @@ message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
   ?remainder:remainder
 ]
 message [quotient string] + " " + remainder + "\n" # -80000000737 8280
-\end{galgas3}
+\end{galgas4}
 
 
 
 
 \subsectionMethod{floorDivideBy}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 method @bigint floorDivideBy ?@bigint inDivisor
                              !@bigint outQuotient
                              !@bigint outRemainder
-\end{galgas3box}
+\end{galgas4box}
 
 Elle effectue toujours la division dont le quotient arrondi \emph{vers $-\infty$}.
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint quotient
 @bigint remainder
 [9876543210_9876543210G floorDivideBy
@@ -984,7 +984,7 @@ message [quotient string] + " " + remainder + "\n" # 80000000737 -8280
   ?remainder:remainder
 ]
 message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -992,15 +992,15 @@ message [quotient string] + " " + remainder + "\n" # -80000000738 -1234559610
 
 \subsectionMethod{ceilDivideBy}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 method @bigint ceilDivideBy ?@bigint inDivisor
                             !@bigint outQuotient
                             !@bigint outRemainder
-\end{galgas3box}
+\end{galgas4box}
 
 Elle effectue toujours la division dont le quotient arrondi \emph{vers $+\infty$}.
 
-\begin{galgas3}
+\begin{galgas4}
 @bigint quotient
 @bigint remainder
 [9876543210_9876543210G ceilDivideBy
@@ -1027,7 +1027,7 @@ message [quotient string] + " " + remainder + "\n" # 80000000738 1234559610
   ?remainder:remainder
 ]
 message [quotient string] + " " + remainder + "\n" # -80000000737 8280
-\end{galgas3}
+\end{galgas4}
 
 
 
@@ -1040,38 +1040,38 @@ message [quotient string] + " " + remainder + "\n" # -80000000737 8280
 
 \subsection{Opérateur \texttt{<{}<}}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint << @uint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur « \ggst!<<! » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggst!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggst!@sint! et \ggst!@sint64! :
+L'opérateur « \ggsq!<<! » infixé effectue un décalage à gauche. L'expression de droite est toujours un \ggsq!@uint!. Un décalage à gauche de $n$ bits est sémantiquement équivalent à une multiplication par $2^n$, que le nombre auquel s'applique le décalage soit signé ou non. C'est la sémantique des décalages à gauche des types \ggsq!@sint! et \ggsq!@sint64! :
 
-\begin{galgas3}
+\begin{galgas4}
 message [0x1234567890G << 12 hexString] + "\n" # 0x1234567890000
 message [(-0x1234567890G) << 12 hexString] + "\n" # -0x1234567890000
 message [2000S << 2 string] + "\n" # 8000
 message [(-2000S) << 2 string] + "\n" # -8000
-\end{galgas3}
+\end{galgas4}
 
 \subsection{Opérateur \texttt{>{}>}}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint >> @uint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur « \ggst!>>! » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggst!@uint! :
-\begin{galgas3}
+L'opérateur « \ggsq!>>! » infixé effectue un décalage à droite. L'expression de droite est toujours un \ggsq!@uint! :
+\begin{galgas4}
 message [0x1234567890G >> 12 hexString] + "\n" # 0x1234567
 message [(-0x1234567890G) >> 12 hexString] + "\n" # -0x1234567
 message [2000S >> 2 string] + "\n" # 500
 message [(-2000S) >> 2 string] + "\n" # -500
-\end{galgas3}
+\end{galgas4}
 
 Un décalage à droite de $n$ bits d'un nombre posifif ou négatif est sémantiquement équivalent au quotient \emph{par défaut} d'une division par $2^n$, c'est-à-dire que le reste est toujours positif ou nul.
 
 Quelques exemples de décalage à droite de nombres positifs :
 
-\begin{galgas3}
+\begin{galgas4}
 message [9G >> 1 string] + "\n" # 4
 message [9S >> 1 string] + "\n" # 4
 message [7G >> 1 string] + "\n" # 3
@@ -1080,12 +1080,12 @@ message [3G >> 1 string] + "\n" # 1
 message [3S >> 1 string] + "\n" # 1
 message [1G >> 1 string] + "\n" # 0
 message [1S >> 1 string] + "\n" # 0
-\end{galgas3}
+\end{galgas4}
 
 
 Et pour des nombres négatifs :
 
-\begin{galgas3}
+\begin{galgas4}
 message [-9G >> 1 string] + "\n" # -5
 message [-9S >> 1 string] + "\n" # -5
 message [-7G >> 1 string] + "\n" # -4
@@ -1094,9 +1094,9 @@ message [-3G >> 1 string] + "\n" # -2
 message [-3S >> 1 string] + "\n" # -2
 message [-1G >> 1 string] + "\n" # -1
 message [-1S >> 1 string] + "\n" # -1
-\end{galgas3}
+\end{galgas4}
 
-Dans tous les cas, la sémantique du décalage à droite du type \ggst!@bigint! est la même que celles des types \ggst!@sint! et \ggst!@sint64!.
+Dans tous les cas, la sémantique du décalage à droite du type \ggsq!@bigint! est la même que celles des types \ggsq!@sint! et \ggsq!@sint64!.
 
 
 
@@ -1109,7 +1109,7 @@ Dans tous les cas, la sémantique du décalage à droite du type \ggst!@bigint! 
 
 \section{Opérations logiques}
 
-Le type \ggst!@bigint! implémente les opérations logiques \ggst!&! (\emph{et logique}), \ggst!|! (\emph{ou logique}), \ggst!^! (\emph{ou exclusif logique}) et \ggst!~! (\emph{négation logique}). Si les opérandes sont positifs ou nuls, le comportement de ces opérateurs est celui attendu. Pour comprendre le comportement avec des opérandes négatifs, ou de signe contraire, il faut considérer que la représentation des \ggst!@bigint! est la suivante :
+Le type \ggsq!@bigint! implémente les opérations logiques \ggsq!&! (\emph{et logique}), \ggsq!|! (\emph{ou logique}), \ggsq!^! (\emph{ou exclusif logique}) et \ggsq!~! (\emph{négation logique}). Si les opérandes sont positifs ou nuls, le comportement de ces opérateurs est celui attendu. Pour comprendre le comportement avec des opérandes négatifs, ou de signe contraire, il faut considérer que la représentation des \ggsq!@bigint! est la suivante :
 \begin{itemize}
   \item la valeur d'un nombre positif ou nul est préfixée par une infinité de zéros ;
   \item la valeur d'un nombre strictement négatif est préfixée par une infinité de uns.
@@ -1124,17 +1124,17 @@ Par exemple :
 
 \subsection{Opérateur \texttt{\&} infixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint & @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur \ggst!&! infixé réalise un « \emph{et logique} » entre ses opérandes. Le résultat est positif ou nul dès qu'un des deux opérandes est positif.
+L'opérateur \ggsq!&! infixé réalise un « \emph{et logique} » entre ses opérandes. Le résultat est positif ou nul dès qu'un des deux opérandes est positif.
 
-\begin{galgas3}
+\begin{galgas4}
 message [0x1234G & 0x4321G hexString] + "\n" # 0x220
 message [-0x1234G & 0x4321G hexString] + "\n" # 0x4100
 message [-0x80G & 0xFFG hexString] + "\n" # 0x80
-\end{galgas3}
+\end{galgas4}
 
 Considérons le deuxième exemple et voyons comment le résultat est obtenu :
 
@@ -1146,17 +1146,17 @@ Résultat & \texttt{0x…04100} & représentation théorique de \texttt{0x4100} 
 
 \subsection{Opérateur \texttt{|} infixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint | @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur \ggst!|! infixé réalise un « \emph{ou logique} » entre ses opérandes. Le résultat est négatif dès qu'un des deux opérandes est négatif.
+L'opérateur \ggsq!|! infixé réalise un « \emph{ou logique} » entre ses opérandes. Le résultat est négatif dès qu'un des deux opérandes est négatif.
 
-\begin{galgas3}
+\begin{galgas4}
 message [0x1234G | 0x4321G hexString] + "\n" # 0x5335
 message [-0x1234G | 0x4321G hexString] + "\n" # -0x1013
 message [-0x80G | 0xFFG hexString] + "\n" # -0x1
-\end{galgas3}
+\end{galgas4}
 
 Considérons le deuxième exemple et voyons comment le résultat est obtenu :
 
@@ -1169,19 +1169,19 @@ Résultat & \texttt{0x…FEFED} & représentation théorique de \texttt{-0x1013}
 
 \subsection{Opérateur $\wedge$ infixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator @bigint ^ @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
 
-L'opérateur \ggst!^! infixé réalise un « \emph{ou exclusif logique} » entre ses opérandes. Le résultat est négatif quand les deux opérandes sont de signe contraire, et positif si ils sont de même signe.
+L'opérateur \ggsq!^! infixé réalise un « \emph{ou exclusif logique} » entre ses opérandes. Le résultat est négatif quand les deux opérandes sont de signe contraire, et positif si ils sont de même signe.
 
-\begin{galgas3}
+\begin{galgas4}
 message [0x1234G ^ 0x4321G hexString] + "\n" # 0x5115
 message [-0x1234G ^ 0x4321G hexString] + "\n" # -0x5113
 message [-0x80G ^ 0xFFG hexString] + "\n" # -0x81
 message [-0x80G ^ -0xFFG hexString] + "\n" # 0x81
-\end{galgas3}
+\end{galgas4}
 
 Considérons le deuxième exemple et voyons comment le résultat est obtenu :
 
@@ -1194,16 +1194,16 @@ Résultat & \texttt{0x…FAEED} & représentation théorique de \texttt{-0x5113}
 
 \subsection{Opérateur $\sim$ préfixé}
 
-\begin{galgas3box}
+\begin{galgas4box}
 operator ~ @bigint -> @bigint
-\end{galgas3box}
+\end{galgas4box}
 
-L'opérateur \ggst!~! préfixé réalise la complémentation logique de son opérande. Le résultat est négatif si l'opérande est positif ou nul, et positif si il est négatif.
+L'opérateur \ggsq!~! préfixé réalise la complémentation logique de son opérande. Le résultat est négatif si l'opérande est positif ou nul, et positif si il est négatif.
 
-\begin{galgas3}
+\begin{galgas4}
 message [~  0x1234G hexString] + "\n" # -0x1235
 message [~ -0x1234G hexString] + "\n" # 0x1233
-\end{galgas3}
+\end{galgas4}
 
 Considérons le second exemple et voyons comment le résultat est obtenu :
 
@@ -1224,9 +1224,9 @@ Résultat & \texttt{0x…01233} & représentation théorique de \texttt{0x1233} 
 
 \section{Manipulation de bits}
 
-Les constructions suivantes permettent d'accéder à un bit particulier de la représentation signée en \emph{complément à deux} de la valeur d'un \ggst!@bitint!.
+Les constructions suivantes permettent d'accéder à un bit particulier de la représentation signée en \emph{complément à deux} de la valeur d'un \ggsq!@bitint!.
 
-Pour comprendre le comportement avec un récepteur négatif, il faut considérer, comme pour les opérateurs logiques, que la représentation des \ggst!@bigint! est la suivante :
+Pour comprendre le comportement avec un récepteur négatif, il faut considérer, comme pour les opérateurs logiques, que la représentation des \ggsq!@bigint! est la suivante :
 \begin{itemize}
   \item la valeur d'un nombre positif ou nul est préfixée par une infinité de zéros ;
   \item la valeur d'un nombre strictement négatif est préfixée par une infinité de uns.
@@ -1240,30 +1240,30 @@ Par exemple :
 
 \subsectionGetter{bitAtIndex}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 getter bitAtIndex ?@uint inIndex -> @bool
-\end{galgas3box}
+\end{galgas4box}
 
-Ce \emph{getter} permet d'obtenir la valeur d'un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. À partir d'un certain rang, la valeur obtenue pour un nombre positif est toujours \ggst!false!, et pour un nombre négatif toujours \ggst!true!.
+Ce \emph{getter} permet d'obtenir la valeur d'un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. À partir d'un certain rang, la valeur obtenue pour un nombre positif est toujours \ggsq!false!, et pour un nombre négatif toujours \ggsq!true!.
 
-\begin{galgas3}
+\begin{galgas4}
 message [[0x1234G bitAtIndex !7] ocString] + "\n" # NO
 message [[0x1234G bitAtIndex !5] ocString] + "\n" # YES
 message [[0x1234G bitAtIndex !25] ocString] + "\n" # NO
 message [[-0x1234G bitAtIndex !7] ocString] + "\n" # YES
 message [[-0x1234G bitAtIndex !5] ocString] + "\n" # NO
 message [[-0x1234G bitAtIndex !25] ocString] + "\n" # YES
-\end{galgas3}
+\end{galgas4}
 
 \subsectionSetter{setBitAtIndex}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 setter @bigint setBitAtIndex ?@bool inValue ?@uint inIndex
-\end{galgas3box}
+\end{galgas4box}
 
 Ce \emph{setter} permet de mettre à zéro ou à un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. Noter que cette opération ne change jamais le signe d'un nombre.
 
-\begin{galgas3}
+\begin{galgas4}
 var a = 0x1234G
 [!?a setBitAtIndex !true !14]
 message [a hexString] + "\n" # 0x5234
@@ -1274,7 +1274,7 @@ a = -0x1234G
 message [a hexString] + "\n" # -0x5234
 [!?a setBitAtIndex !false !40] # -0x10000005234
 message [a hexString] + "\n"
-\end{galgas3}
+\end{galgas4}
 
 Considérons le dernier exemple et voyons comment le résultat est obtenu :
 
@@ -1289,20 +1289,20 @@ Le résultat est un \emph{et logique} entre la valeur du récepteur et  $\sim2^{
 
 \subsectionSetter{complementBitAtIndex}{bigint}
 
-\begin{galgas3box}
+\begin{galgas4box}
 setter @bigint complementBitAtIndex ?@uint inIndex
-\end{galgas3box}
+\end{galgas4box}
 
 Ce \emph{setter} permet de complémenter un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. Noter que cette opération ne change jamais le signe d'un nombre.
 
-\begin{galgas3}
+\begin{galgas4}
 var a = 0x1234G
 [!?a complementBitAtIndex !14]
 message [a hexString] + "\n" # 0x5234
 a = -0x1234G
 [!?a complementBitAtIndex !40]
 message [a hexString] + "\n" # -0x10000005234
-\end{galgas3}
+\end{galgas4}
 
 Considérons le dernier exemple et voyons comment le résultat est obtenu :
 
