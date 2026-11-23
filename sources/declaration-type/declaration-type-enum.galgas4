@@ -496,14 +496,14 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @enumGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template enumTypeHeader1 : "GALGAS_enum.h1.galgasTemplate" (
+  template enumTypeHeader1 : "GALGAS-enum.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@enumConstantForGeneration] CONSTANT_LIST,
     ?@bool HAS_ASSOCIATED_VALUES
   )
 
-  template enumTypeSpecificImplementation : "GALGAS_enum.cpp.galgasTemplate" (
+  template enumTypeSpecificImplementation : "GALGAS-enum.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@enumConstantForGeneration] CONSTANT_LIST,

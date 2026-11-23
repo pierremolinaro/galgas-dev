@@ -243,14 +243,14 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
 private filewrapper @optionalTypeGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template optionalTypeHeader1 : "GALGAS_optional.h1.galgasTemplate" (
+  template optionalTypeHeader1 : "GALGAS-optional.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string UNWRAPPED_TYPE_IDENTIFIER,
     ?@string WEAK_TYPE_IDENTIFIER // "" if no weak type
   )
 
-  template optionalTypeSpecificImplementation : "GALGAS_optional.cpp.galgasTemplate" (
+  template optionalTypeSpecificImplementation : "GALGAS-optional.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string UNWRAPPED_TYPE_IDENTIFIER,

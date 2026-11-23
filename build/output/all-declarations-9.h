@@ -137,8 +137,6 @@ void callExtensionMethod_enterInstructionInSemanticContext (class cPtr_semanticI
 // Phase 1: @grammarLabelMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -228,13 +226,13 @@ class GGS_grammarLabelMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -1365,8 +1363,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_globalConstantMap_2E_e
 // Phase 1: @extensionInitializerMapForType map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1456,13 +1452,13 @@ class GGS_extensionInitializerMapForType final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerMapForType_2E_element>> sortedInfoArray (void) const ;
 
@@ -1849,8 +1845,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerFo
 // Phase 1: @extensionMethodMapForType map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1943,13 +1937,13 @@ class GGS_extensionMethodMapForType final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForType_2E_element>> sortedInfoArray (void) const ;
 
@@ -2357,8 +2351,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodMapForB
 // Phase 1: @extensionSetterMapForType map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2448,13 +2440,13 @@ class GGS_extensionSetterMapForType final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForType_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForType_2E_element>> sortedInfoArray (void) const ;
 
@@ -2841,8 +2833,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterMapForB
 // Phase 1: @extensionGetterMapForType map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2938,13 +2928,13 @@ class GGS_extensionGetterMapForType final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForType_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForType_2E_element>> sortedInfoArray (void) const ;
 
@@ -5551,8 +5541,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_acceptableParameter ;
 // Phase 1: @routineArgumentMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5645,13 +5633,13 @@ class GGS_routineArgumentMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_routineArgumentMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -7101,8 +7089,6 @@ void callExtensionMethod_transformInstructionForGrammarAnalysis (class cPtr_synt
 // Phase 1: @terminalSymbolsMapForGrammarAnalysis map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7192,13 +7178,13 @@ class GGS_terminalSymbolsMapForGrammarAnalysis final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalSymbolsMapForGrammarAnalysis_2E_element>> sortedInfoArray (void) const ;
 

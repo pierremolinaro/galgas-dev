@@ -400,41 +400,41 @@ filewrapper @predefinedTypeGenerationTemplate : "../+generation-templates/type_g
 
   template primitiveTypesHeaderPrologue : "predefined-types-file-header.h.galgasTemplate" ()
 
-  template sint_type : "s32-type.h.galgasTemplate" ()
+  template sint_type : "GGS-s32-type.h.galgasTemplate" ()
 
-  template s64_type : "s64-type.h.galgasTemplate" ()
+  template s64_type : "GGS-s64-type.h.galgasTemplate" ()
 
-  template u32_type : "u32-type.h.galgasTemplate" ()
+  template u32_type : "GGS-u32-type.h.galgasTemplate" ()
 
-  template u8_type : "u8-type.h.galgasTemplate" ()
+  template u8_type : "GGS-u8-type.h.galgasTemplate" ()
 
-  template u16_type : "u16-type.h.galgasTemplate" ()
+  template u16_type : "GGS-u16-type.h.galgasTemplate" ()
 
-  template u64_type : "u64-type.h.galgasTemplate" ()
+  template u64_type : "GGS-u64-type.h.galgasTemplate" ()
 
-  template bool_type : "bool-type.h.galgasTemplate" ()
+  template bool_type : "GGS-bool-type.h.galgasTemplate" ()
 
-  template binaryset_type : "binaryset-type.h.galgasTemplate" ()
+  template binaryset_type : "GGS-binaryset-type.h.galgasTemplate" ()
 
-  template location_type : "location-type.h.galgasTemplate" ()
+  template location_type : "GGS-location-type.h.galgasTemplate" ()
 
-  template data_type : "data-type.h.galgasTemplate" ()
+  template data_type : "GGS-data-type.h.galgasTemplate" ()
 
-  template char_type : "char-type.h.galgasTemplate" ()
+  template char_type : "GGS-char-type.h.galgasTemplate" ()
 
-  template f64_type : "f64-type.h.galgasTemplate" ()
+  template f64_type : "GGS-f64-type.h.galgasTemplate" ()
 
-  template string_type : "string-type.h.galgasTemplate" ()
+  template string_type : "GGS-string-type.h.galgasTemplate" ()
 
-  template stringset_type : "stringset-type.h.galgasTemplate" ()
+  template stringset_type : "GGS-stringset-type.h.galgasTemplate" ()
 
-  template filewrapper_type : "filewrapper-type.h.galgasTemplate" ()
+  template filewrapper_type : "GGS-filewrapper-type.h.galgasTemplate" ()
 
-  template application_package : "application-package.h.galgasTemplate" ()
+  template application_package : "GGS-application-package.h.galgasTemplate" ()
 
-  template bigint_type : "bigint-type.h.galgasTemplate" ()
+  template bigint_type : "GGS-bigint-type.h.galgasTemplate" ()
 
-  template timer_type : "timer-type.h.galgasTemplate" ()
+  template timer_type : "GGS-timer-type.h.galgasTemplate" ()
 }
 
 //--------------------------------------------------------------------------------------------------

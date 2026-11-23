@@ -832,7 +832,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
 private filewrapper @mapGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template mapTypeHeader1 : "GALGAS_map.h1.galgasTemplate" (
+  template mapTypeHeader1 : "GALGAS-map.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@typedProperty] CURRENT_PROPERTY_LIST,
@@ -843,7 +843,7 @@ private filewrapper @mapGenerationTemplate : "../+generation-templates/type_gene
     ?@bool GENERATE_COMPARISON
   )
 
-  template mapTypeSpecificImplementation : "GALGAS_map.cpp.galgasTemplate" (
+  template mapTypeSpecificImplementation : "GALGAS-map.cpp.galgasTemplate" (
     ?@string TYPE_IDENTIFIER,
     ?[@typedProperty] PROPERTY_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,

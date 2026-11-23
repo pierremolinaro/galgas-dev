@@ -53,9 +53,6 @@
 #bool-build-option generateManyFiles : "generate-many-cpp-files"
     -> "Generate many C++ implementation files"
 
-//  @string cppCompile : '\0', "compile"
-//    -> "Perform C++ compilation on 'string' target"
-
 #bool-build-option check_big_int : "check-big-int"
     -> "Run bit integers checks"
 

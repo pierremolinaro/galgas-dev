@@ -2108,8 +2108,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticTypePrecedence
 // Phase 1: @extensionGetterMapForBuildingContext map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2199,13 +2197,13 @@ class GGS_extensionGetterMapForBuildingContext final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForBuildingContext_2E_element>> sortedInfoArray (void) const ;
 
@@ -2307,8 +2305,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterMapForB
 // Phase 1: @extensionInitializerForBuildingContext map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2398,13 +2394,13 @@ class GGS_extensionInitializerForBuildingContext final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionInitializerForBuildingContext_2E_element>> sortedInfoArray (void) const ;
 
@@ -2506,8 +2502,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionInitializerFo
 // Phase 1: @extensionMethodMapForBuildingContext map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2597,13 +2591,13 @@ class GGS_extensionMethodMapForBuildingContext final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForBuildingContext_2E_element>> sortedInfoArray (void) const ;
 
@@ -2705,8 +2699,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodMapForB
 // Phase 1: @extensionSetterMapForBuildingContext map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2796,13 +2788,13 @@ class GGS_extensionSetterMapForBuildingContext final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForBuildingContext_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForBuildingContext_2E_element>> sortedInfoArray (void) const ;
 

@@ -608,7 +608,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
 private filewrapper @graphGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (
+  template graphTypeHeader1 : "GALGAS-graph.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
@@ -617,7 +617,7 @@ private filewrapper @graphGenerationTemplate : "../+generation-templates/type_ge
     ?@unifiedTypeMapEntry STRING_ARRAY_TYPE
   )
 
-  template graphTypeSpecificImplementation : "GALGAS_graph.cpp.galgasTemplate" (
+  template graphTypeSpecificImplementation : "GALGAS-graph.cpp.galgasTemplate" (
     ?@unifiedTypeMapEntry TYPE,
     ?@string TYPE_IDENTIFIER,
     ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,

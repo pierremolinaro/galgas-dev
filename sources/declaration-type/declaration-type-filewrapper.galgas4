@@ -546,12 +546,12 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template filewrapperTypeHeader1 : "GALGAS_filewrapper.h1.galgasTemplate" (
+  template filewrapperTypeHeader1 : "GALGAS-filewrapper.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
   )
 
-  template filewrapperTypeSpecificImplementation : "GALGAS_filewrapper.cpp.galgasTemplate" (
+  template filewrapperTypeSpecificImplementation : "GALGAS-filewrapper.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
   )

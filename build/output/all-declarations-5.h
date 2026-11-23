@@ -5624,8 +5624,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_withLexiqueAST ;
 // Phase 1: @extensionMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5718,13 +5716,13 @@ class GGS_extensionMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -7189,8 +7187,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_guiAnalysisContext ;
 // Phase 1: @optionComponentMapForGeneration map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -7280,13 +7276,13 @@ class GGS_optionComponentMapForGeneration final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForGeneration_2E_element>> sortedInfoArray (void) const ;
 

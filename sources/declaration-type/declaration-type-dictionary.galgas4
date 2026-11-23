@@ -368,7 +368,7 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
 
 private filewrapper @dictionaryGenerationTemplate : "../+generation-templates/type_generation" {
 //--------- dict
-  template dictTypeHeader1 : "GALGAS_dictionary.h1.galgasTemplate" (
+  template dictTypeHeader1 : "GALGAS-dictionary.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
@@ -376,7 +376,7 @@ private filewrapper @dictionaryGenerationTemplate : "../+generation-templates/ty
     ?@string ELEMENT_TYPE_IDENTIFIER
   )
 
-  template dictTypeSpecificImplementation : "GALGAS_dictionary.cpp.galgasTemplate" (
+  template dictTypeSpecificImplementation : "GALGAS-dictionary.cpp.galgasTemplate" (
     ?@string TYPE_IDENTIFIER,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@string KEY_TYPE_IDENTIFIER,

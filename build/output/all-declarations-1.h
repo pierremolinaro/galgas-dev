@@ -10120,8 +10120,6 @@ class GGS_string extensionGetter_swiftTypeName (const class GGS_lexicalTypeEnum 
 // Phase 1: @lexicalAttributeMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10211,13 +10209,13 @@ class GGS_lexicalAttributeMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalAttributeMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -10310,8 +10308,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ;
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalExplicitTokenListMap map
 //--------------------------------------------------------------------------------------------------
-
-#include "SharedGenericPtrWithValueSemantics.h"
 
 template <typename INFO> class GenericMapRoot ;
 
@@ -10408,13 +10404,13 @@ class GGS_lexicalExplicitTokenListMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -10530,8 +10526,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenLi
 // Phase 1: @lexicalExplicitTokenListMapMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10627,13 +10621,13 @@ class GGS_lexicalExplicitTokenListMapMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalExplicitTokenListMapMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -10749,8 +10743,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenLi
 // Phase 1: @lexicalFunctionMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -10849,13 +10841,13 @@ class GGS_lexicalFunctionMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -10982,8 +10974,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ;
 // Phase 1: @lexicalMessageMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11076,13 +11066,13 @@ class GGS_lexicalMessageMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalMessageMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -11195,8 +11185,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 // Phase 1: @lexicalRoutineMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11292,13 +11280,13 @@ class GGS_lexicalRoutineMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -11581,8 +11569,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalAr
 // Phase 1: @terminalMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -11672,13 +11658,13 @@ class GGS_terminalMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_terminalMap_2E_element>> sortedInfoArray (void) const ;
 

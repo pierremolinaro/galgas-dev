@@ -360,13 +360,13 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @arrayTypeGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template arrayTypeHeader1 : "GALGAS_array.h1.galgasTemplate" (
+  template arrayTypeHeader1 : "GALGAS-array.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string ELEMENT_TYPE_IDENTIFIER
   )
 
-  template arrayTypeSpecificImplementation : "GALGAS_array.cpp.galgasTemplate" (
+  template arrayTypeSpecificImplementation : "GALGAS-array.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string ELEMENT_TYPE_IDENTIFIER,

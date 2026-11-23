@@ -325,8 +325,6 @@ class GGS_templateLexiqueGenerationTemplates final {
 // Phase 1: @propertyIndexMap map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -416,13 +414,13 @@ class GGS_propertyIndexMap final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_propertyIndexMap_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_propertyIndexMap_2E_element>> sortedInfoArray (void) const ;
 
@@ -1621,8 +1619,6 @@ class GGS__5B_unifiedTypeMapEntry_5D_ extensionGetter_listForKey (const class GG
 // Phase 1: @extensionMethodMapForGlobalCheckings map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1709,13 +1705,13 @@ class GGS_extensionMethodMapForGlobalCheckings final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionMethodMapForGlobalCheckings_2E_element>> sortedInfoArray (void) const ;
 
@@ -1932,8 +1928,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionMethodMapForG
 // Phase 1: @extensionSetterMapForGlobalCheckings map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2020,13 +2014,13 @@ class GGS_extensionSetterMapForGlobalCheckings final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionSetterMapForGlobalCheckings_2E_element>> sortedInfoArray (void) const ;
 
@@ -2243,8 +2237,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionSetterMapForG
 // Phase 1: @extensionGetterMapForGlobalCheckings map
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2331,13 +2323,13 @@ class GGS_extensionGetterMapForGlobalCheckings final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_extensionGetterMapForGlobalCheckings_2E_element>> sortedInfoArray (void) const ;
 

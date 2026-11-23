@@ -26,6 +26,7 @@
 #include "FileManager.h"
 #include "execution-mode.h"
 #include "filewrapper-utilities.h"
+#include "SharedGenericPtrWithValueSemantics.h"
 
 //--------------------------------------------------------------------------------------------------
 // Lexical styles

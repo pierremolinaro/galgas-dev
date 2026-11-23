@@ -309,13 +309,13 @@ final class @optionSetTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @structGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template optionSetTypeHeader1 : "GALGAS_option_set.h1.galgasTemplate" (
+  template optionSetTypeHeader1 : "GALGAS-option_set.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@lstring] SLOT_LIST
   )
 
-  template optionSetTypeSpecificImplementation : "GALGAS_option_set.cpp.galgasTemplate" (
+  template optionSetTypeSpecificImplementation : "GALGAS-option_set.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@lstring] SLOT_LIST,

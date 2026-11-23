@@ -765,7 +765,7 @@ func generateClassInstanceMethodDeclaration (?let @lstring inMethodName,
 filewrapper @classGenerationTemplate : "../+generation-templates/type_generation" {
   #textFileExtension "galgas4"
 
-  template referenceClassTypeHeader1 : "GALGAS_reference_class.h1.galgasTemplate" (
+  template referenceClassTypeHeader1 : "GALGAS-class.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string SUPER_TYPE_IDENTIFIER,
@@ -773,7 +773,7 @@ filewrapper @classGenerationTemplate : "../+generation-templates/type_generation
     ?[@typedProperty] CURRENT_PROPERTY_LIST
   )
 
-  template referenceClassTypeHeader2part1 : "GALGAS_reference_class.h2-part1.galgasTemplate" (
+  template referenceClassTypeHeader2part1 : "GALGAS-class.h2-part1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string SUPER_TYPE_IDENTIFIER,
@@ -785,7 +785,7 @@ filewrapper @classGenerationTemplate : "../+generation-templates/type_generation
     ?@initializerMap INITIALIZER_MAP
   )
 
-  template referenceClassTypeHeader2part2 : "GALGAS_reference_class.h2-part2.galgasTemplate" (
+  template referenceClassTypeHeader2part2 : "GALGAS-class.h2-part2.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string SUPER_TYPE_IDENTIFIER,
@@ -795,7 +795,7 @@ filewrapper @classGenerationTemplate : "../+generation-templates/type_generation
     ?[@typedProperty] INITIALIZER_ARGUMENT_LIST
   )
 
-  template referenceClassTypeSpecificImplementation : "GALGAS_reference_class.cpp.galgasTemplate" (
+  template referenceClassTypeSpecificImplementation : "GALGAS-class.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string SUPER_TYPE_IDENTIFIER,

@@ -415,13 +415,13 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @structureGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template structTypeHeader1 : "GALGAS_struct.h1.galgasTemplate" (
+  template structTypeHeader1 : "GALGAS-struct.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@typedProperty] PROPERTY_LIST
   )
 
-  template structTypeSpecificImplementation  :"GALGAS_struct.cpp.galgasTemplate" (
+  template structTypeSpecificImplementation  :"GALGAS-struct.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?[@typedProperty] PROPERTY_LIST,

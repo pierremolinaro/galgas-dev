@@ -636,7 +636,7 @@ filewrapper @typeGenerationTemplate : "+generation-templates/type_generation" {
   )
 
 //--------- Extern Type
-  template externTypeHeader1 : "GALGAS_extern_type.h1.galgasTemplate" (
+  template externTypeHeader1 : "GALGAS-extern_type.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@string PRE_DECLARATION,

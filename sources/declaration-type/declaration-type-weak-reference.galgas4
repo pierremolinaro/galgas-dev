@@ -290,14 +290,14 @@ filewrapper @weakClassGenerationTemplate : "../+generation-templates/type_genera
   #textFileExtension "galgas4"
 
 //--------- Value Class
-  template weakReferenceClassTypeHeader1 : "GALGAS_weak_reference_class.h1.galgasTemplate" (
+  template weakReferenceClassTypeHeader1 : "GALGAS-weak-reference.h1.galgasTemplate" (
     ?@string CLASS_TYPE_IDENTIFIER,
     ?@string WEAK_REF_TYPE_IDENTIFIER,
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER,
     ?@string OPTIONAL_CLASS_TYPE_IDENTIFIER
   )
  
-  template weakReferenceClassTypeSpecificImplementation : "GALGAS_weak_reference_class.cpp.galgasTemplate" (
+  template weakReferenceClassTypeSpecificImplementation : "GALGAS-weak-reference.cpp.galgasTemplate" (
     ?@string CLASS_TYPE_IDENTIFIER,
     ?@string WEAK_REF_TYPE_IDENTIFIER,
     ?@string SUPER_WEAK_REF_TYPE_IDENTIFIER,

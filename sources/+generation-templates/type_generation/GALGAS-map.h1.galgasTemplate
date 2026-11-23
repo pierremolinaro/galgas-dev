@@ -2,8 +2,6 @@
 //%!" Phase 1: @" + TYPE_IDENTIFIER + " map"%
 //--------------------------------------------------------------------------------------------------
 
-#include "SharedGenericPtrWithValueSemantics.h"
-
 template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
@@ -103,13 +101,13 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
- 
+
 //--- infoForKey
   protected: const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> infoForKey (const String & inKey) const ;
- 
+
 //--- Count
   public: int32_t count (void) const ;
- 
+
 //--- sortedInfoArray
   protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> sortedInfoArray (void) const ;
 
