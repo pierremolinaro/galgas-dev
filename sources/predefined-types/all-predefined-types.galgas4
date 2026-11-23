@@ -62,7 +62,6 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "u64")
 
   appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
-//  appendProjectTargetTypes (!?ioDeclarations.mDeclarationList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -75,7 +74,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func typeKind () -> @typeKindEnum {
-    result = .otherType
+    result = .valueType
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -274,8 +273,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getEnumerationList (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                            ![@enumerationDescriptor] outEnumerationList,
-                            !@string outEnumeratedType) {
+                           ![@enumerationDescriptor] outEnumerationList,
+                           !@string outEnumeratedType) {
     outEnumerationList = @() // Enumeration is not supported
     outEnumeratedType = "" // Enumeration is not supported
   }

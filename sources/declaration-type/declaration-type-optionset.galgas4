@@ -183,7 +183,7 @@ final class @optionSetDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .optionsetType,
+      !typeKind: .valueType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

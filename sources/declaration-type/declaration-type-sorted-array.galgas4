@@ -237,7 +237,7 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .otherType,
+      !typeKind: .valueType,
       !supportArrayLiteral: true,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

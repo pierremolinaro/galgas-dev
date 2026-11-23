@@ -111,7 +111,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .otherType,
+      !typeKind: .valueType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: propertyMap,

@@ -6727,12 +6727,8 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
     enum_classType,
     enum_weakReferenceType,
     enum_enumType,
-    enum_mapType,
-    enum_optionsetType,
     enum_structType,
-    enum_graphType,
-    enum_externType,
-    enum_otherType,
+    enum_valueType,
     enum_packageType
   } ;
   
@@ -6767,19 +6763,11 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
   public: static class GGS_typeKindEnum class_func_enumType (const class GGS_constantIndexMap & inOperand0
                                                              COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_typeKindEnum class_func_externType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_graphType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_mapType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_optionsetType (LOCATION_ARGS) ;
-
-  public: static class GGS_typeKindEnum class_func_otherType (LOCATION_ARGS) ;
-
   public: static class GGS_typeKindEnum class_func_packageType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_structType (LOCATION_ARGS) ;
+
+  public: static class GGS_typeKindEnum class_func_valueType (LOCATION_ARGS) ;
 
   public: static class GGS_typeKindEnum class_func_weakReferenceType (const class GGS_unifiedTypeMapEntry & inOperand0
                                                                       COMMA_LOCATION_ARGS) ;
@@ -6812,19 +6800,11 @@ class GGS_typeKindEnum final : public AC_GALGAS_root {
 
   public: class GGS_bool getter_isEnumType (LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_isExternType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isGraphType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isMapType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isOptionsetType (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isOtherType (LOCATION_ARGS) const ;
-
   public: class GGS_bool getter_isPackageType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isStructType (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isValueType (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_isWeakReferenceType (LOCATION_ARGS) const ;
 

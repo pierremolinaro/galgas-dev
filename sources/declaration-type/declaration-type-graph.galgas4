@@ -451,7 +451,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .graphType,
+      !typeKind: .valueType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

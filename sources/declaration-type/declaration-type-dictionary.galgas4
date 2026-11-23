@@ -219,7 +219,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !isConcrete: true,
     !isFinal: true,
     !superType: .null,
-    !typeKind: .mapType,
+    !typeKind: .valueType,
     !supportArrayLiteral: false,
     !allTypedPropertyList: @(),
     !propertyMap: @(),

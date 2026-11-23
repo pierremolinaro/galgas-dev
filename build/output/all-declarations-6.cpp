@@ -6944,7 +6944,7 @@ const GALGAS_TypeDescriptor * GGS_u_36__34_PredefinedTypeAST_2E_weak::staticType
 GGS_typeKindEnum cPtr_predefinedTypeAST::getter_typeKind (Compiler */* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeKindEnum result ; // Returned variable
-  result = GGS_typeKindEnum::class_func_otherType (SOURCE_FILE ("all-predefined-types.galgas4", 78)) ;
+  result = GGS_typeKindEnum::class_func_valueType (SOURCE_FILE ("all-predefined-types.galgas4", 78)) ;
 //---
   return result ;
 }

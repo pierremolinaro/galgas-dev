@@ -10047,22 +10047,6 @@ GGS_typeKindEnum GGS_typeKindEnum::class_func_enumType (const GGS_constantIndexM
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeKindEnum GGS_typeKindEnum::class_func_mapType (UNUSED_LOCATION_ARGS) {
-  GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_mapType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum GGS_typeKindEnum::class_func_optionsetType (UNUSED_LOCATION_ARGS) {
-  GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_optionsetType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typeKindEnum GGS_typeKindEnum::class_func_structType (UNUSED_LOCATION_ARGS) {
   GGS_typeKindEnum result ;
   result.mEnum = Enumeration::enum_structType ;
@@ -10071,25 +10055,9 @@ GGS_typeKindEnum GGS_typeKindEnum::class_func_structType (UNUSED_LOCATION_ARGS) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeKindEnum GGS_typeKindEnum::class_func_graphType (UNUSED_LOCATION_ARGS) {
+GGS_typeKindEnum GGS_typeKindEnum::class_func_valueType (UNUSED_LOCATION_ARGS) {
   GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_graphType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum GGS_typeKindEnum::class_func_externType (UNUSED_LOCATION_ARGS) {
-  GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_externType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum GGS_typeKindEnum::class_func_otherType (UNUSED_LOCATION_ARGS) {
-  GGS_typeKindEnum result ;
-  result.mEnum = Enumeration::enum_otherType ;
+  result.mEnum = Enumeration::enum_valueType ;
   return result ;
 }
 
@@ -10179,25 +10147,13 @@ void GGS_typeKindEnum::getAssociatedValuesFor_enumType (GGS_constantIndexMap & o
 
 //--------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_typeKindEnum [11] = {
+static const char * gEnumNameArrayFor_typeKindEnum [7] = {
   "(not built)",
   "classType",
   "weakReferenceType",
   "enumType",
-  "mapType",
-  "optionsetType",
   "structType",
-  "graphType",
-  "externType",
-  "otherType",
+  "valueType",
   "packageType"
 } ;
 
@@ -10221,38 +10177,14 @@ GGS_bool GGS_typeKindEnum::getter_isEnumType (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_typeKindEnum::getter_isMapType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_mapType == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeKindEnum::getter_isOptionsetType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_optionsetType == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_bool GGS_typeKindEnum::getter_isStructType (UNUSED_LOCATION_ARGS) const {
   return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_structType == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_typeKindEnum::getter_isGraphType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_graphType == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeKindEnum::getter_isExternType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_externType == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeKindEnum::getter_isOtherType (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_otherType == mEnum) ;
+GGS_bool GGS_typeKindEnum::getter_isValueType (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_valueType == mEnum) ;
 }
 
 //--------------------------------------------------------------------------------------------------

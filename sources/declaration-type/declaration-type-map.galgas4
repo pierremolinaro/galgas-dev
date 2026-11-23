@@ -575,7 +575,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .mapType,
+      !typeKind: .valueType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

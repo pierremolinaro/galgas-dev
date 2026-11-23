@@ -357,7 +357,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !isConcrete: true,
       !isFinal: true,
       !superType: .null,
-      !typeKind: .externType,
+      !typeKind: .valueType,
       !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),

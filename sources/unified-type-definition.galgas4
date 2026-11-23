@@ -56,12 +56,8 @@ enum @typeKindEnum #equatable {
   case classType
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
-  case mapType
-  case optionsetType
   case structType
-  case graphType
-  case externType
-  case otherType
+  case valueType
   case packageType
 
   //----------------------------------------------------------------------------------------------
@@ -70,12 +66,8 @@ enum @typeKindEnum #equatable {
     switch self
       case classType : result = "class"
       case enumType (*) : result = "enumeration"
-      case mapType : result = "map"
       case structType : result = "struct"
-      case optionsetType : result = "optionset"
-      case graphType : result = "graph"
-      case otherType : result = "other"
-      case externType : result = "extern"
+      case valueType : result = "value type"
       case packageType : result = "package"
       case weakReferenceType (*) : result = "weak reference"
     end
