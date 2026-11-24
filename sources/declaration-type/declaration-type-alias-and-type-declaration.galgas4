@@ -65,15 +65,15 @@ func makeEmbeddedElementTypeLName (?let @lstring inTypeName ) -> @lstring {
 //   WEAK TYPE NAME UTILITIES
 //--------------------------------------------------------------------------------------------------
 
-func makeWeakTypeName (?let @string inTypeName ) -> @string {
-  result = makeEmbeddedTypeName (!outer: inTypeName, !inner: "weak")
-}
+//func makeWeakTypeName (?let @string inTypeName ) -> @string {
+//  result = makeEmbeddedTypeName (!outer: inTypeName, !inner: "weak")
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
-  result = @(makeWeakTypeName (inTypeName), inTypeName)
-}
+//func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
+//  result = @(makeWeakTypeName (inTypeName), inTypeName)
+//}
 
 //--------------------------------------------------------------------------------------------------
 //   SYNTAX

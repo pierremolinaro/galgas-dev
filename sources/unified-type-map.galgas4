@@ -163,16 +163,9 @@ final class @unifiedTypeMapElementClass {
 //! @unifiedTypeMapEntry
 //--------------------------------------------------------------------------------------------------
 
-//struct @weakEntry %equatable {
-//  public weak var @unifiedTypeMapElementClass mWeakValue
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 enum @unifiedTypeMapEntry #equatable {
   case null
-//  case element (@weakEntry weakElement)
-  case element (@unifiedTypeMapElementClass.@weak weakElement)
+  case element (@unifiedTypeMapElementClass weakElement)
 
   //----------------------------------------------------------------------------------------------
 
@@ -181,16 +174,17 @@ enum @unifiedTypeMapEntry #equatable {
     case null :
       error .nowhere : "null type" spoil result
     case element (weakElement) :
-      if let type = weakElement then
+      let type = weakElement
+//      if let type = weakElement then
         switch type.mDefinition
         case unsolved :
           error .nowhere : "unsolved type" spoil result
         case solved (definition) :
           result = definition
         end
-      else
-        error .nowhere : "nil type" spoil result
-      end
+//      else
+//        error .nowhere : "nil type" spoil result
+//      end
     end
   }
 

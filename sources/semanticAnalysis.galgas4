@@ -1362,7 +1362,7 @@ private proc emitClassGraphFile (let @string inDotDocumentFilePath,
         case null :
           document += "  \"@" + definition.typeName + "\" ;\n"
         case element (superType) :
-          if let t = superType, let solvedType = t.mDefinition.getSolved then
+          if let solvedType = superType.mDefinition.getSolved then
             document += "  \"@" + definition.typeName + "\" ;\n"
             document += "  \"@" + definition.typeName + "\" -> \"@"
             document += solvedType.definition.typeName.string + "\" ;\n"

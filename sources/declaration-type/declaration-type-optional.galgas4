@@ -162,13 +162,13 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   //---
     let optionalType = ioTypeMap.typeMapEntryForLKey (self.optionalTypeName)
     let unwrappedType = ioTypeMap.typeMapEntryForLKey (self.unwrappedTypeName)
-    let correspondingWeakTypeName = makeWeakTypeLName (unwrappedType.definition.typeName)
-    let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (correspondingWeakTypeName)
+//    let correspondingWeakTypeName = makeWeakTypeLName (unwrappedType.definition.typeName)
+//    let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (correspondingWeakTypeName)
     ioSemanticDeclarationListForGeneration ++= @optionalTypeForGeneration (
       !infoMessage: "optional type " + self.optionalTypeName,
       optionalType,
       unwrappedType,
-      correspondingWeakTypeOrNull
+      .null // correspondingWeakTypeOrNull
     )
   }
 

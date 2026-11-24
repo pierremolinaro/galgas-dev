@@ -84,16 +84,16 @@ syntax extension galgas4DeclarationsSyntax {
       clonable
     )
   //--- Associated Weak Type
-    ioDeclarations.mDeclarationList ++= @weakReferenceDeclarationAST (
-      !isPredefined: false,
-      className,
-      makeWeakTypeLName (className),
-      if superClassName.string == ""
-         then superClassName
-         else makeWeakTypeLName (superClassName)
-       end,
-      generateInSeparateFile
-    )
+//    ioDeclarations.mDeclarationList ++= @weakReferenceDeclarationAST (
+//      !isPredefined: false,
+//      className,
+//      makeWeakTypeLName (className),
+//      if superClassName.string == ""
+//         then superClassName
+//         else makeWeakTypeLName (superClassName)
+//       end,
+//      generateInSeparateFile
+//    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,8 +133,8 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- Add edge from super class
     if self.mSuperClassName.string != "" then
-      !?ioSemanticTypePrecedenceGraph.addEdge
-        (!from: key,
+      !?ioSemanticTypePrecedenceGraph.addEdge (
+        !from: key,
         !to: @("@" + self.mSuperClassName, self.mSuperClassName.location)
       )
     end
@@ -377,11 +377,11 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mSuperClassName)
       !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: superClassNameForUsefulness)
     end
-    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (makeWeakTypeLName (self.mClassTypeName))
-    !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: weakRefTypeNameForUsefulness)
-    if self.isPredefined  then
-      ioUsefulnessRootEntities ++= weakRefTypeNameForUsefulness
-    end
+//    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (makeWeakTypeLName (self.mClassTypeName))
+//    !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: weakRefTypeNameForUsefulness)
+//    if self.isPredefined  then
+//      ioUsefulnessRootEntities ++= weakRefTypeNameForUsefulness
+//    end
   //----- Self type
     let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mClassTypeName)
   //--- Super class type
