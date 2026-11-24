@@ -771,8 +771,6 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "AbstractPtrClass.h",
         "AbstractStrongPtrClass.cpp",
         "AbstractStrongPtrClass.h",
-        "PtrWeakReferenceProxy.cpp",
-        "PtrWeakReferenceProxy.h",
         "Compiler.cpp",
         "Compiler.h",
         "C_galgas_class_inspector.cpp",

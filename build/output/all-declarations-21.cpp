@@ -2104,43 +2104,43 @@ void routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
                                                                              const GGS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_7063 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 167)) ;
-  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_7148 (var_descendantClasses_7063) ;
-  while (enumerator_7148.hasCurrentObject ()) {
-    GGS_lstring var_descendantClassName_7186 = extensionGetter_definition (enumerator_7148.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 169)).readProperty_typeName () ;
-    GGS__5B_lstring_5D_ var_overridingMethods_7253 = extensionGetter_listForKey (constinArgument_inOverridingExtensionMethodListMap, var_descendantClassName_7186.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 170)) ;
-    GGS_bool var_found_7362 = GGS_bool (false) ;
-    UpEnumerator__5B_lstring_5D_ enumerator_7393 (var_overridingMethods_7253) ;
-    bool bool_0 = var_found_7362.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 172)).isValidAndTrue () ;
-    if (enumerator_7393.hasCurrentObject () && bool_0) {
-      while (enumerator_7393.hasCurrentObject () && bool_0) {
-        var_found_7362 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionSetterName.readProperty_string ().objectCompare (enumerator_7393.current (HERE).readProperty_string ())) ;
-        enumerator_7393.gotoNextObject () ;
-        if (enumerator_7393.hasCurrentObject ()) {
-          bool_0 = var_found_7362.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 172)).isValidAndTrue () ;
+  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_6677 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 155)) ;
+  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_6762 (var_descendantClasses_6677) ;
+  while (enumerator_6762.hasCurrentObject ()) {
+    GGS_lstring var_descendantClassName_6800 = extensionGetter_definition (enumerator_6762.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 157)).readProperty_typeName () ;
+    GGS__5B_lstring_5D_ var_overridingMethods_6867 = extensionGetter_listForKey (constinArgument_inOverridingExtensionMethodListMap, var_descendantClassName_6800.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 158)) ;
+    GGS_bool var_found_6976 = GGS_bool (false) ;
+    UpEnumerator__5B_lstring_5D_ enumerator_7007 (var_overridingMethods_6867) ;
+    bool bool_0 = var_found_6976.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 160)).isValidAndTrue () ;
+    if (enumerator_7007.hasCurrentObject () && bool_0) {
+      while (enumerator_7007.hasCurrentObject () && bool_0) {
+        var_found_6976 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionSetterName.readProperty_string ().objectCompare (enumerator_7007.current (HERE).readProperty_string ())) ;
+        enumerator_7007.gotoNextObject () ;
+        if (enumerator_7007.hasCurrentObject ()) {
+          bool_0 = var_found_6976.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 160)).isValidAndTrue () ;
         }
       }
     }
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = var_found_7362.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 175)).boolEnum () ;
+      test_1 = var_found_6976.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 163)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = extensionGetter_definition (enumerator_7148.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 176)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 176)).boolEnum () ;
+          test_2 = extensionGetter_definition (enumerator_6762.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 164)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 164)).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
             {
-            routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_7186.readProperty_string (), constinArgument_inAbstractExtensionSetterName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionMethodListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 177)) ;
+            routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_6800.readProperty_string (), constinArgument_inAbstractExtensionSetterName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionMethodListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 165)) ;
             }
           }
         }
         if (GalgasBool::boolFalse == test_2) {
           GenericArray <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionSetterName.readProperty_location (), GGS_string ("an abstract extension proc '").add_operation (constinArgument_inAbstractExtensionSetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 186)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 186)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 186)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 187)).add_operation (var_descendantClassName_7186.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 188)).add_operation (GGS_string ("' does not implement this proc"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 188)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 186)) ;
+          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionSetterName.readProperty_location (), GGS_string ("an abstract extension proc '").add_operation (constinArgument_inAbstractExtensionSetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 174)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 174)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 174)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 175)).add_operation (var_descendantClassName_6800.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 176)).add_operation (GGS_string ("' does not implement this proc"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 176)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 174)) ;
         }
       }
     }
-    enumerator_7148.gotoNextObject () ;
+    enumerator_6762.gotoNextObject () ;
   }
 }
 
@@ -2159,43 +2159,43 @@ void routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
                                                                              const GGS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_8654 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 204)) ;
-  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_8739 (var_descendantClasses_8654) ;
-  while (enumerator_8739.hasCurrentObject ()) {
-    GGS_lstring var_descendantClassName_8777 = extensionGetter_definition (enumerator_8739.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 206)).readProperty_typeName () ;
-    GGS__5B_lstring_5D_ var_overridingMethods_8844 = extensionGetter_listForKey (constinArgument_inOverridingExtensionMethodListMap, var_descendantClassName_8777.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 207)) ;
-    GGS_bool var_found_8953 = GGS_bool (false) ;
-    UpEnumerator__5B_lstring_5D_ enumerator_8986 (var_overridingMethods_8844) ;
-    bool bool_0 = var_found_8953.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 209)).isValidAndTrue () ;
-    if (enumerator_8986.hasCurrentObject () && bool_0) {
-      while (enumerator_8986.hasCurrentObject () && bool_0) {
-        var_found_8953 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionMethodName.readProperty_string ().objectCompare (enumerator_8986.current (HERE).readProperty_string ())) ;
-        enumerator_8986.gotoNextObject () ;
-        if (enumerator_8986.hasCurrentObject ()) {
-          bool_0 = var_found_8953.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 209)).isValidAndTrue () ;
+  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_8268 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 192)) ;
+  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_8353 (var_descendantClasses_8268) ;
+  while (enumerator_8353.hasCurrentObject ()) {
+    GGS_lstring var_descendantClassName_8391 = extensionGetter_definition (enumerator_8353.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 194)).readProperty_typeName () ;
+    GGS__5B_lstring_5D_ var_overridingMethods_8458 = extensionGetter_listForKey (constinArgument_inOverridingExtensionMethodListMap, var_descendantClassName_8391.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 195)) ;
+    GGS_bool var_found_8567 = GGS_bool (false) ;
+    UpEnumerator__5B_lstring_5D_ enumerator_8600 (var_overridingMethods_8458) ;
+    bool bool_0 = var_found_8567.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 197)).isValidAndTrue () ;
+    if (enumerator_8600.hasCurrentObject () && bool_0) {
+      while (enumerator_8600.hasCurrentObject () && bool_0) {
+        var_found_8567 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionMethodName.readProperty_string ().objectCompare (enumerator_8600.current (HERE).readProperty_string ())) ;
+        enumerator_8600.gotoNextObject () ;
+        if (enumerator_8600.hasCurrentObject ()) {
+          bool_0 = var_found_8567.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 197)).isValidAndTrue () ;
         }
       }
     }
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = var_found_8953.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 212)).boolEnum () ;
+      test_1 = var_found_8567.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 200)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = extensionGetter_definition (enumerator_8739.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 213)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 213)).boolEnum () ;
+          test_2 = extensionGetter_definition (enumerator_8353.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 201)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 201)).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
             {
-            routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_8777.readProperty_string (), constinArgument_inAbstractExtensionMethodName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionMethodListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 214)) ;
+            routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_8391.readProperty_string (), constinArgument_inAbstractExtensionMethodName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionMethodListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 202)) ;
             }
           }
         }
         if (GalgasBool::boolFalse == test_2) {
           GenericArray <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionMethodName.readProperty_location (), GGS_string ("an abstract extension proc '").add_operation (constinArgument_inAbstractExtensionMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 223)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 223)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 223)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 224)).add_operation (var_descendantClassName_8777.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 225)).add_operation (GGS_string ("' does not implement this proc"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 225)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 223)) ;
+          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionMethodName.readProperty_location (), GGS_string ("an abstract extension proc '").add_operation (constinArgument_inAbstractExtensionMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 211)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 211)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 211)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 212)).add_operation (var_descendantClassName_8391.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 213)).add_operation (GGS_string ("' does not implement this proc"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 213)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 211)) ;
         }
       }
     }
-    enumerator_8739.gotoNextObject () ;
+    enumerator_8353.gotoNextObject () ;
   }
 }
 
@@ -2214,43 +2214,43 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
                                                                              const GGS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                                              Compiler * inCompiler
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_10249 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 241)) ;
-  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_10338 (var_descendantClasses_10249) ;
-  while (enumerator_10338.hasCurrentObject ()) {
-    GGS_lstring var_descendantClassName_10376 = extensionGetter_definition (enumerator_10338.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 243)).readProperty_typeName () ;
-    GGS__5B_lstring_5D_ var_overridingReaders_10447 = extensionGetter_listForKey (constinArgument_inOverridingExtensionGetterListMap, var_descendantClassName_10376.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 244)) ;
-    GGS_bool var_found_10556 = GGS_bool (false) ;
-    UpEnumerator__5B_lstring_5D_ enumerator_10592 (var_overridingReaders_10447) ;
-    bool bool_0 = var_found_10556.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 246)).isValidAndTrue () ;
-    if (enumerator_10592.hasCurrentObject () && bool_0) {
-      while (enumerator_10592.hasCurrentObject () && bool_0) {
-        var_found_10556 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionGetterName.readProperty_string ().objectCompare (enumerator_10592.current (HERE).readProperty_string ())) ;
-        enumerator_10592.gotoNextObject () ;
-        if (enumerator_10592.hasCurrentObject ()) {
-          bool_0 = var_found_10556.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 246)).isValidAndTrue () ;
+  GGS__5B_unifiedTypeMapEntry_5D_ var_descendantClasses_9863 = extensionGetter_listForKey (constinArgument_inDescendantClassListMap, constinArgument_inClassName, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 229)) ;
+  UpEnumerator__5B_unifiedTypeMapEntry_5D_ enumerator_9952 (var_descendantClasses_9863) ;
+  while (enumerator_9952.hasCurrentObject ()) {
+    GGS_lstring var_descendantClassName_9990 = extensionGetter_definition (enumerator_9952.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 231)).readProperty_typeName () ;
+    GGS__5B_lstring_5D_ var_overridingReaders_10061 = extensionGetter_listForKey (constinArgument_inOverridingExtensionGetterListMap, var_descendantClassName_9990.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 232)) ;
+    GGS_bool var_found_10170 = GGS_bool (false) ;
+    UpEnumerator__5B_lstring_5D_ enumerator_10206 (var_overridingReaders_10061) ;
+    bool bool_0 = var_found_10170.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 234)).isValidAndTrue () ;
+    if (enumerator_10206.hasCurrentObject () && bool_0) {
+      while (enumerator_10206.hasCurrentObject () && bool_0) {
+        var_found_10170 = GGS_bool (ComparisonKind::equal, constinArgument_inAbstractExtensionGetterName.readProperty_string ().objectCompare (enumerator_10206.current (HERE).readProperty_string ())) ;
+        enumerator_10206.gotoNextObject () ;
+        if (enumerator_10206.hasCurrentObject ()) {
+          bool_0 = var_found_10170.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 234)).isValidAndTrue () ;
         }
       }
     }
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = var_found_10556.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 249)).boolEnum () ;
+      test_1 = var_found_10170.operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 237)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = extensionGetter_definition (enumerator_10338.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 250)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 250)).boolEnum () ;
+          test_2 = extensionGetter_definition (enumerator_9952.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 238)).readProperty_isConcrete ().operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 238)).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
             {
-            routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_10376.readProperty_string (), constinArgument_inAbstractExtensionGetterName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionGetterListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 251)) ;
+            routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (constinArgument_inClassNameForErrorSignaling, var_descendantClassName_9990.readProperty_string (), constinArgument_inAbstractExtensionGetterName, constinArgument_inDescendantClassListMap, constinArgument_inOverridingExtensionGetterListMap, constinArgument_inUnifiedTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 239)) ;
             }
           }
         }
         if (GalgasBool::boolFalse == test_2) {
           GenericArray <FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionGetterName.readProperty_location (), GGS_string ("an abstract extension func '").add_operation (constinArgument_inAbstractExtensionGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 261)).add_operation (var_descendantClassName_10376.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 262)).add_operation (GGS_string ("' does not implement this func"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 262)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)) ;
+          inCompiler->emitSemanticError (constinArgument_inAbstractExtensionGetterName.readProperty_location (), GGS_string ("an abstract extension func '").add_operation (constinArgument_inAbstractExtensionGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 248)).add_operation (GGS_string ("' is defined for abstract class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 248)).add_operation (constinArgument_inClassNameForErrorSignaling, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 248)).add_operation (GGS_string ("', but concrete descendant class '@"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 249)).add_operation (var_descendantClassName_9990.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 250)).add_operation (GGS_string ("' does not implement this func"), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 250)), fixItArray3  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 248)) ;
         }
       }
     }
-    enumerator_10338.gotoNextObject () ;
+    enumerator_9952.gotoNextObject () ;
   }
 }
 
@@ -2267,246 +2267,246 @@ void routine_performGalgas_33_ProjectGlobalCheckings_26__3F_ (GGS_unifiedTypeMap
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_buildOptionValue::class_func_quiet (SOURCE_FILE ("projectGlobalCheckings.galgas4", 272)).operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 272)).boolEnum () ;
+    test_0 = GGS_buildOptionValue::class_func_quiet (SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)).operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 260)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       {
-      routine_println_3F_ (GGS_string ("*** Perform global checkings"), inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 273)) ;
+      routine_println_3F_ (GGS_string ("*** Perform global checkings"), inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 261)) ;
       }
     }
   }
-  GGS_descendantClassListMap var_descendantClassListMap_11899 = GGS_descendantClassListMap::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_unifiedTypeMap enumerator_11942 (ioArgument_ioTypeMap) ;
-  while (enumerator_11942.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_superType_11964 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_11942.current (HERE).readProperty_mElement ().ptr (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 279)).readProperty_superType () ;
+  GGS_descendantClassListMap var_descendantClassListMap_11513 = GGS_descendantClassListMap::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_unifiedTypeMap enumerator_11556 (ioArgument_ioTypeMap) ;
+  while (enumerator_11556.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_superType_11578 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_11556.current (HERE).readProperty_mElement ().ptr (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 267)).readProperty_superType () ;
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = var_superType_11964.getter_isNull (SOURCE_FILE ("projectGlobalCheckings.galgas4", 280)).operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 280)).boolEnum () ;
+      test_1 = var_superType_11578.getter_isNull (SOURCE_FILE ("projectGlobalCheckings.galgas4", 268)).operator_not (SOURCE_FILE ("projectGlobalCheckings.galgas4", 268)).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         {
-        extensionSetter_insertKey (var_descendantClassListMap_11899, extensionGetter_definition (var_superType_11964, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 282)).readProperty_typeName ().readProperty_string (), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_11942.current (HERE).readProperty_lkey (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 283)), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 281)) ;
+        extensionSetter_insertKey (var_descendantClassListMap_11513, extensionGetter_definition (var_superType_11578, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 270)).readProperty_typeName ().readProperty_string (), extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_11556.current (HERE).readProperty_lkey (), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 271)), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 269)) ;
         }
       }
     }
-    enumerator_11942.gotoNextObject () ;
+    enumerator_11556.gotoNextObject () ;
   }
-  GGS_genericExtensionMethodListMap var_abstractExtensionMethodListMap_12284 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_extensionMethodListMap_12358 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingExtensionMethodListMap_12424 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionMethodListMap_12500 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_abstractExtensionGetterListMap_12584 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_extensionReaderListMap_12658 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingExtensionGetterListMap_12724 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionGetterListMap_12800 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_abstractExtensionSetterListMap_12884 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_extensionSetterListMap_12958 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingExtensionSetterListMap_13024 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionSetterListMap_13100 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
-  UpEnumerator__5B_semanticDeclarationAST_5D_ enumerator_13168 (constinArgument_inSemanticDeclarationList) ;
-  while (enumerator_13168.hasCurrentObject ()) {
-    callExtensionMethod_buildExtensionListMaps ((cPtr_semanticDeclarationAST *) enumerator_13168.current (HERE).ptr (), var_abstractExtensionSetterListMap_12884, var_extensionSetterListMap_12958, var_overridingExtensionSetterListMap_13024, var_overridingAbstractExtensionSetterListMap_13100, var_abstractExtensionMethodListMap_12284, var_extensionMethodListMap_12358, var_overridingExtensionMethodListMap_12424, var_overridingAbstractExtensionMethodListMap_12500, var_abstractExtensionGetterListMap_12584, var_extensionReaderListMap_12658, var_overridingExtensionGetterListMap_12724, var_overridingAbstractExtensionGetterListMap_12800, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 301)) ;
-    enumerator_13168.gotoNextObject () ;
+  GGS_genericExtensionMethodListMap var_abstractExtensionMethodListMap_11898 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_extensionMethodListMap_11972 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingExtensionMethodListMap_12038 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionMethodListMap_12114 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_abstractExtensionGetterListMap_12198 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_extensionReaderListMap_12272 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingExtensionGetterListMap_12338 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionGetterListMap_12414 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_abstractExtensionSetterListMap_12498 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_extensionSetterListMap_12572 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingExtensionSetterListMap_12638 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  GGS_genericExtensionMethodListMap var_overridingAbstractExtensionSetterListMap_12714 = GGS_genericExtensionMethodListMap::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_semanticDeclarationAST_5D_ enumerator_12782 (constinArgument_inSemanticDeclarationList) ;
+  while (enumerator_12782.hasCurrentObject ()) {
+    callExtensionMethod_buildExtensionListMaps ((cPtr_semanticDeclarationAST *) enumerator_12782.current (HERE).ptr (), var_abstractExtensionSetterListMap_12498, var_extensionSetterListMap_12572, var_overridingExtensionSetterListMap_12638, var_overridingAbstractExtensionSetterListMap_12714, var_abstractExtensionMethodListMap_11898, var_extensionMethodListMap_11972, var_overridingExtensionMethodListMap_12038, var_overridingAbstractExtensionMethodListMap_12114, var_abstractExtensionGetterListMap_12198, var_extensionReaderListMap_12272, var_overridingExtensionGetterListMap_12338, var_overridingAbstractExtensionGetterListMap_12414, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 289)) ;
+    enumerator_12782.gotoNextObject () ;
   }
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
-    test_2 = GGS_bool (ComparisonKind::equal, GGS_application::class_func_errorCount (SOURCE_FILE ("projectGlobalCheckings.galgas4", 317)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+    test_2 = GGS_bool (ComparisonKind::equal, GGS_application::class_func_errorCount (SOURCE_FILE ("projectGlobalCheckings.galgas4", 305)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_13898 (var_abstractExtensionSetterListMap_12884.readProperty_dictionary ()) ;
-      while (enumerator_13898.hasCurrentObject ()) {
-        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14006 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_14050 (enumerator_13898.current_value (HERE)) ;
-        while (enumerator_14050.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_13512 (var_abstractExtensionSetterListMap_12498.readProperty_dictionary ()) ;
+      while (enumerator_13512.hasCurrentObject ()) {
+        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_13620 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_13664 (enumerator_13512.current_value (HERE)) ;
+        while (enumerator_13664.hasCurrentObject ()) {
           {
-          var_extensionSetterMap_14006.setter_insertKey (enumerator_14050.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 322)) ;
+          var_extensionSetterMap_13620.setter_insertKey (enumerator_13664.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 310)) ;
           }
-          enumerator_14050.gotoNextObject () ;
+          enumerator_13664.gotoNextObject () ;
         }
-        enumerator_13898.gotoNextObject () ;
+        enumerator_13512.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14219 (var_extensionSetterListMap_12958.readProperty_dictionary ()) ;
-      while (enumerator_14219.hasCurrentObject ()) {
-        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14319 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_14363 (enumerator_14219.current_value (HERE)) ;
-        while (enumerator_14363.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_13833 (var_extensionSetterListMap_12572.readProperty_dictionary ()) ;
+      while (enumerator_13833.hasCurrentObject ()) {
+        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_13933 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_13977 (enumerator_13833.current_value (HERE)) ;
+        while (enumerator_13977.hasCurrentObject ()) {
           {
-          var_extensionSetterMap_14319.setter_insertKey (enumerator_14363.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 329)) ;
+          var_extensionSetterMap_13933.setter_insertKey (enumerator_13977.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 317)) ;
           }
-          enumerator_14363.gotoNextObject () ;
+          enumerator_13977.gotoNextObject () ;
         }
-        enumerator_14219.gotoNextObject () ;
+        enumerator_13833.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14538 (var_overridingExtensionSetterListMap_13024.readProperty_dictionary ()) ;
-      while (enumerator_14538.hasCurrentObject ()) {
-        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14648 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_14692 (enumerator_14538.current_value (HERE)) ;
-        while (enumerator_14692.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14152 (var_overridingExtensionSetterListMap_12638.readProperty_dictionary ()) ;
+      while (enumerator_14152.hasCurrentObject ()) {
+        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14262 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_14306 (enumerator_14152.current_value (HERE)) ;
+        while (enumerator_14306.hasCurrentObject ()) {
           {
-          var_extensionSetterMap_14648.setter_insertKey (enumerator_14692.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 336)) ;
+          var_extensionSetterMap_14262.setter_insertKey (enumerator_14306.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 324)) ;
           }
-          enumerator_14692.gotoNextObject () ;
+          enumerator_14306.gotoNextObject () ;
         }
-        enumerator_14538.gotoNextObject () ;
+        enumerator_14152.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14876 (var_overridingAbstractExtensionMethodListMap_12500.readProperty_dictionary ()) ;
-      while (enumerator_14876.hasCurrentObject ()) {
-        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14994 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_15038 (enumerator_14876.current_value (HERE)) ;
-        while (enumerator_15038.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14490 (var_overridingAbstractExtensionMethodListMap_12114.readProperty_dictionary ()) ;
+      while (enumerator_14490.hasCurrentObject ()) {
+        GGS_extensionSetterMapForGlobalCheckings var_extensionSetterMap_14608 = GGS_extensionSetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_14652 (enumerator_14490.current_value (HERE)) ;
+        while (enumerator_14652.hasCurrentObject ()) {
           {
-          var_extensionSetterMap_14994.setter_insertKey (enumerator_15038.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 343)) ;
+          var_extensionSetterMap_14608.setter_insertKey (enumerator_14652.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 331)) ;
           }
-          enumerator_15038.gotoNextObject () ;
+          enumerator_14652.gotoNextObject () ;
         }
-        enumerator_14876.gotoNextObject () ;
+        enumerator_14490.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_15266 (var_abstractExtensionSetterListMap_12884.readProperty_dictionary ()) ;
-      while (enumerator_15266.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_15343 (enumerator_15266.current_value (HERE)) ;
-        while (enumerator_15343.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_14880 (var_abstractExtensionSetterListMap_12498.readProperty_dictionary ()) ;
+      while (enumerator_14880.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_14957 (enumerator_14880.current_value (HERE)) ;
+        while (enumerator_14957.hasCurrentObject ()) {
           {
-          routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_15266.current_key (HERE), enumerator_15266.current_key (HERE), enumerator_15343.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionSetterListMap_13024, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 349)) ;
+          routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_14880.current_key (HERE), enumerator_14880.current_key (HERE), enumerator_14957.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionSetterListMap_12638, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 337)) ;
           }
-          enumerator_15343.gotoNextObject () ;
+          enumerator_14957.gotoNextObject () ;
         }
-        enumerator_15266.gotoNextObject () ;
+        enumerator_14880.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_15737 (var_overridingAbstractExtensionSetterListMap_13100.readProperty_dictionary ()) ;
-      while (enumerator_15737.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_15826 (enumerator_15737.current_value (HERE)) ;
-        while (enumerator_15826.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_15351 (var_overridingAbstractExtensionSetterListMap_12714.readProperty_dictionary ()) ;
+      while (enumerator_15351.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_15440 (enumerator_15351.current_value (HERE)) ;
+        while (enumerator_15440.hasCurrentObject ()) {
           {
-          routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_15737.current_key (HERE), enumerator_15737.current_key (HERE), enumerator_15826.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionSetterListMap_13024, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 362)) ;
+          routine_checkextensionSetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_15351.current_key (HERE), enumerator_15351.current_key (HERE), enumerator_15440.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionSetterListMap_12638, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 350)) ;
           }
-          enumerator_15826.gotoNextObject () ;
+          enumerator_15440.gotoNextObject () ;
         }
-        enumerator_15737.gotoNextObject () ;
+        enumerator_15351.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16147 (var_abstractExtensionMethodListMap_12284.readProperty_dictionary ()) ;
-      while (enumerator_16147.hasCurrentObject ()) {
-        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16253 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_16297 (enumerator_16147.current_value (HERE)) ;
-        while (enumerator_16297.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_15761 (var_abstractExtensionMethodListMap_11898.readProperty_dictionary ()) ;
+      while (enumerator_15761.hasCurrentObject ()) {
+        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_15867 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_15911 (enumerator_15761.current_value (HERE)) ;
+        while (enumerator_15911.hasCurrentObject ()) {
           {
-          var_extensionMethodMap_16253.setter_insertKey (enumerator_16297.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 376)) ;
+          var_extensionMethodMap_15867.setter_insertKey (enumerator_15911.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 364)) ;
           }
-          enumerator_16297.gotoNextObject () ;
+          enumerator_15911.gotoNextObject () ;
         }
-        enumerator_16147.gotoNextObject () ;
+        enumerator_15761.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16455 (var_extensionMethodListMap_12358.readProperty_dictionary ()) ;
-      while (enumerator_16455.hasCurrentObject ()) {
-        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16553 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_16597 (enumerator_16455.current_value (HERE)) ;
-        while (enumerator_16597.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16069 (var_extensionMethodListMap_11972.readProperty_dictionary ()) ;
+      while (enumerator_16069.hasCurrentObject ()) {
+        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16167 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_16211 (enumerator_16069.current_value (HERE)) ;
+        while (enumerator_16211.hasCurrentObject ()) {
           {
-          var_extensionMethodMap_16553.setter_insertKey (enumerator_16597.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 383)) ;
+          var_extensionMethodMap_16167.setter_insertKey (enumerator_16211.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 371)) ;
           }
-          enumerator_16597.gotoNextObject () ;
+          enumerator_16211.gotoNextObject () ;
         }
-        enumerator_16455.gotoNextObject () ;
+        enumerator_16069.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16761 (var_overridingExtensionMethodListMap_12424.readProperty_dictionary ()) ;
-      while (enumerator_16761.hasCurrentObject ()) {
-        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16869 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_16913 (enumerator_16761.current_value (HERE)) ;
-        while (enumerator_16913.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16375 (var_overridingExtensionMethodListMap_12038.readProperty_dictionary ()) ;
+      while (enumerator_16375.hasCurrentObject ()) {
+        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16483 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_16527 (enumerator_16375.current_value (HERE)) ;
+        while (enumerator_16527.hasCurrentObject ()) {
           {
-          var_extensionMethodMap_16869.setter_insertKey (enumerator_16913.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 390)) ;
+          var_extensionMethodMap_16483.setter_insertKey (enumerator_16527.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 378)) ;
           }
-          enumerator_16913.gotoNextObject () ;
+          enumerator_16527.gotoNextObject () ;
         }
-        enumerator_16761.gotoNextObject () ;
+        enumerator_16375.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_17086 (var_overridingAbstractExtensionMethodListMap_12500.readProperty_dictionary ()) ;
-      while (enumerator_17086.hasCurrentObject ()) {
-        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_17202 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_17246 (enumerator_17086.current_value (HERE)) ;
-        while (enumerator_17246.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_16700 (var_overridingAbstractExtensionMethodListMap_12114.readProperty_dictionary ()) ;
+      while (enumerator_16700.hasCurrentObject ()) {
+        GGS_extensionMethodMapForGlobalCheckings var_extensionMethodMap_16816 = GGS_extensionMethodMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_16860 (enumerator_16700.current_value (HERE)) ;
+        while (enumerator_16860.hasCurrentObject ()) {
           {
-          var_extensionMethodMap_17202.setter_insertKey (enumerator_17246.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 397)) ;
+          var_extensionMethodMap_16816.setter_insertKey (enumerator_16860.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 385)) ;
           }
-          enumerator_17246.gotoNextObject () ;
+          enumerator_16860.gotoNextObject () ;
         }
-        enumerator_17086.gotoNextObject () ;
+        enumerator_16700.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_17454 (var_abstractExtensionMethodListMap_12284.readProperty_dictionary ()) ;
-      while (enumerator_17454.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_17531 (enumerator_17454.current_value (HERE)) ;
-        while (enumerator_17531.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_17068 (var_abstractExtensionMethodListMap_11898.readProperty_dictionary ()) ;
+      while (enumerator_17068.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_17145 (enumerator_17068.current_value (HERE)) ;
+        while (enumerator_17145.hasCurrentObject ()) {
           {
-          routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_17454.current_key (HERE), enumerator_17454.current_key (HERE), enumerator_17531.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionMethodListMap_12424, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 403)) ;
+          routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_17068.current_key (HERE), enumerator_17068.current_key (HERE), enumerator_17145.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionMethodListMap_12038, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 391)) ;
           }
-          enumerator_17531.gotoNextObject () ;
+          enumerator_17145.gotoNextObject () ;
         }
-        enumerator_17454.gotoNextObject () ;
+        enumerator_17068.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_17896 (var_overridingAbstractExtensionMethodListMap_12500.readProperty_dictionary ()) ;
-      while (enumerator_17896.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_17983 (enumerator_17896.current_value (HERE)) ;
-        while (enumerator_17983.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_17510 (var_overridingAbstractExtensionMethodListMap_12114.readProperty_dictionary ()) ;
+      while (enumerator_17510.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_17597 (enumerator_17510.current_value (HERE)) ;
+        while (enumerator_17597.hasCurrentObject ()) {
           {
-          routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_17896.current_key (HERE), enumerator_17896.current_key (HERE), enumerator_17983.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionMethodListMap_12424, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 416)) ;
+          routine_checkExtensionMethodDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_17510.current_key (HERE), enumerator_17510.current_key (HERE), enumerator_17597.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionMethodListMap_12038, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 404)) ;
           }
-          enumerator_17983.gotoNextObject () ;
+          enumerator_17597.gotoNextObject () ;
         }
-        enumerator_17896.gotoNextObject () ;
+        enumerator_17510.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_18451 (var_abstractExtensionGetterListMap_12584.readProperty_dictionary ()) ;
-      while (enumerator_18451.hasCurrentObject ()) {
-        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_18559 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_18603 (enumerator_18451.current_value (HERE)) ;
-        while (enumerator_18603.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_18065 (var_abstractExtensionGetterListMap_12198.readProperty_dictionary ()) ;
+      while (enumerator_18065.hasCurrentObject ()) {
+        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_18173 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_18217 (enumerator_18065.current_value (HERE)) ;
+        while (enumerator_18217.hasCurrentObject ()) {
           {
-          var_ExtensionGetterMap_18559.setter_insertKey (enumerator_18603.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 432)) ;
+          var_ExtensionGetterMap_18173.setter_insertKey (enumerator_18217.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 420)) ;
           }
-          enumerator_18603.gotoNextObject () ;
+          enumerator_18217.gotoNextObject () ;
         }
-        enumerator_18451.gotoNextObject () ;
+        enumerator_18065.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_18763 (var_extensionReaderListMap_12658.readProperty_dictionary ()) ;
-      while (enumerator_18763.hasCurrentObject ()) {
-        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_18863 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_18907 (enumerator_18763.current_value (HERE)) ;
-        while (enumerator_18907.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_18377 (var_extensionReaderListMap_12272.readProperty_dictionary ()) ;
+      while (enumerator_18377.hasCurrentObject ()) {
+        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_18477 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_18521 (enumerator_18377.current_value (HERE)) ;
+        while (enumerator_18521.hasCurrentObject ()) {
           {
-          var_ExtensionGetterMap_18863.setter_insertKey (enumerator_18907.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 439)) ;
+          var_ExtensionGetterMap_18477.setter_insertKey (enumerator_18521.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 427)) ;
           }
-          enumerator_18907.gotoNextObject () ;
+          enumerator_18521.gotoNextObject () ;
         }
-        enumerator_18763.gotoNextObject () ;
+        enumerator_18377.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_19073 (var_overridingExtensionGetterListMap_12724.readProperty_dictionary ()) ;
-      while (enumerator_19073.hasCurrentObject ()) {
-        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_19183 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
-        UpEnumerator__5B_lstring_5D_ enumerator_19227 (enumerator_19073.current_value (HERE)) ;
-        while (enumerator_19227.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_18687 (var_overridingExtensionGetterListMap_12338.readProperty_dictionary ()) ;
+      while (enumerator_18687.hasCurrentObject ()) {
+        GGS_extensionGetterMapForGlobalCheckings var_ExtensionGetterMap_18797 = GGS_extensionGetterMapForGlobalCheckings::init (inCompiler COMMA_HERE) ;
+        UpEnumerator__5B_lstring_5D_ enumerator_18841 (enumerator_18687.current_value (HERE)) ;
+        while (enumerator_18841.hasCurrentObject ()) {
           {
-          var_ExtensionGetterMap_19183.setter_insertKey (enumerator_19227.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 446)) ;
+          var_ExtensionGetterMap_18797.setter_insertKey (enumerator_18841.current (HERE), inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 434)) ;
           }
-          enumerator_19227.gotoNextObject () ;
+          enumerator_18841.gotoNextObject () ;
         }
-        enumerator_19073.gotoNextObject () ;
+        enumerator_18687.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_19412 (var_abstractExtensionGetterListMap_12584.readProperty_dictionary ()) ;
-      while (enumerator_19412.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_19491 (enumerator_19412.current_value (HERE)) ;
-        while (enumerator_19491.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_19026 (var_abstractExtensionGetterListMap_12198.readProperty_dictionary ()) ;
+      while (enumerator_19026.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_19105 (enumerator_19026.current_value (HERE)) ;
+        while (enumerator_19105.hasCurrentObject ()) {
           {
-          routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_19412.current_key (HERE), enumerator_19412.current_key (HERE), enumerator_19491.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionGetterListMap_12724, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 452)) ;
+          routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_19026.current_key (HERE), enumerator_19026.current_key (HERE), enumerator_19105.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionGetterListMap_12338, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 440)) ;
           }
-          enumerator_19491.gotoNextObject () ;
+          enumerator_19105.gotoNextObject () ;
         }
-        enumerator_19412.gotoNextObject () ;
+        enumerator_19026.gotoNextObject () ;
       }
-      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_19833 (var_overridingAbstractExtensionGetterListMap_12800.readProperty_dictionary ()) ;
-      while (enumerator_19833.hasCurrentObject ()) {
-        UpEnumerator__5B_lstring_5D_ enumerator_19922 (enumerator_19833.current_value (HERE)) ;
-        while (enumerator_19922.hasCurrentObject ()) {
+      UpEnumerator__5B_string_3A__5B_lstring_5D__5D_ enumerator_19447 (var_overridingAbstractExtensionGetterListMap_12414.readProperty_dictionary ()) ;
+      while (enumerator_19447.hasCurrentObject ()) {
+        UpEnumerator__5B_lstring_5D_ enumerator_19536 (enumerator_19447.current_value (HERE)) ;
+        while (enumerator_19536.hasCurrentObject ()) {
           {
-          routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_19833.current_key (HERE), enumerator_19833.current_key (HERE), enumerator_19922.current (HERE), var_descendantClassListMap_11899, var_overridingExtensionGetterListMap_12724, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 465)) ;
+          routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (enumerator_19447.current_key (HERE), enumerator_19447.current_key (HERE), enumerator_19536.current (HERE), var_descendantClassListMap_11513, var_overridingExtensionGetterListMap_12338, ioArgument_ioTypeMap, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 453)) ;
           }
-          enumerator_19922.gotoNextObject () ;
+          enumerator_19536.gotoNextObject () ;
         }
-        enumerator_19833.gotoNextObject () ;
+        enumerator_19447.gotoNextObject () ;
       }
     }
   }

@@ -29,12 +29,6 @@ class AbstractStrongPtrClass : public AbstractPtrClass {
 //--- Destructor
   public: virtual ~ AbstractStrongPtrClass (void) ;
 
-//--- Private property
-  private: PtrWeakReferenceProxy * mProxyPtr ;
-
-//--- Get proxy
-  public: PtrWeakReferenceProxy * getProxy (void) ;
-
 //--- No Copy
   private: AbstractStrongPtrClass (const AbstractStrongPtrClass &) = delete ;
   private: AbstractStrongPtrClass & operator = (const AbstractStrongPtrClass &) = delete ;

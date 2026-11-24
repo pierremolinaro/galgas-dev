@@ -211,7 +211,6 @@
    <Unit filename="../libpm/galgas/AC_GALGAS_enumAssociatedValues.cpp" />
    <Unit filename="../libpm/galgas/AbstractPtrClass.cpp" />
    <Unit filename="../libpm/galgas/AbstractStrongPtrClass.cpp" />
-   <Unit filename="../libpm/galgas/PtrWeakReferenceProxy.cpp" />
    <Unit filename="../libpm/galgas/PtrObject.cpp" />
    <Unit filename="../libpm/galgas/scanner_actions.cpp" />
    <Unit filename="../libpm/galgas/GGS_application.cpp" />

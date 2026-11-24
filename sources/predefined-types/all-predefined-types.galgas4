@@ -304,16 +304,16 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
   var propertyList = [@propertyInCollectionAST] ()
   propertyList ++= @(
     !mutability: .mutableProperty,
-    !typeName: @lstring (inElementTypeName, @location.here),
-    !name: @lstring (inElementTypeName, @location.here),
+    !typeName: inElementTypeName.here,
+    !name: inElementTypeName.here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   propertyList ++= @(
     !mutability: .mutableProperty,
-    !typeName: @lstring ("location", @location.here),
-    !name: @lstring ("location", @location.here),
+    !typeName: "location".here,
+    !name: "location".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none

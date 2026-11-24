@@ -109,12 +109,6 @@ void AbstractOutputStream::appendString (const std::initializer_list <utf32> & i
 
 //--------------------------------------------------------------------------------------------------
 
-void AbstractOutputStream::appendString (const char * inCString, const int32_t inCount) {
-  performAppendCString (inCString, inCount) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void AbstractOutputStream::appendUTF32LiteralStringConstant (const String inString,
                                                              const bool inAppendZeroTerminator) {
   appendChar (utf32 ('{')) ;

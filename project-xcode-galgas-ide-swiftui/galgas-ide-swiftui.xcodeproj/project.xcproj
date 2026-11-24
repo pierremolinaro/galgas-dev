@@ -964,14 +964,6 @@
               ],
             },
             { "path": "ProductionNameDescriptor.h" },
-            { "path": "PtrWeakReferenceProxy.h" },
-            {
-              "path": "PtrWeakReferenceProxy.cpp",
-              "target-membership": [
-                "galgas4/compile-sources",
-                "galgas4-debug/compile-sources",
-              ],
-            },
             { "path": "scanner_actions.h" },
             {
               "path": "scanner_actions.cpp",

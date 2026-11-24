@@ -666,36 +666,9 @@ const DirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_templateLexiqueGenerationTemplates::GGS_templateLexiqueGenerationTemplates (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_templateLexiqueGenerationTemplates GGS_templateLexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_templateLexiqueGenerationTemplates result = GGS_templateLexiqueGenerationTemplates () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_filewrapper GGS_templateLexiqueGenerationTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
   return GGS_filewrapper (gWrapperDirectory_0_templateLexiqueGenerationTemplates) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_templateLexiqueGenerationTemplates::description (String & ioString,
-                                                             const int32_t ) const {
-  ioString.appendCString ("<filewrapper @templateLexiqueGenerationTemplates:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @templateLexiqueGenerationTemplates cppHeader
 //--------------------------------------------------------------------------------------------------
@@ -2763,36 +2736,9 @@ const DirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate (
 
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_syntaxFileGenerationTemplate::GGS_syntaxFileGenerationTemplate (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_syntaxFileGenerationTemplate GGS_syntaxFileGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxFileGenerationTemplate result = GGS_syntaxFileGenerationTemplate () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_filewrapper GGS_syntaxFileGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
   return GGS_filewrapper (gWrapperDirectory_0_syntaxFileGenerationTemplate) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_syntaxFileGenerationTemplate::description (String & ioString,
-                                                       const int32_t ) const {
-  ioString.appendCString ("<filewrapper @syntaxFileGenerationTemplate:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @syntaxFileGenerationTemplate syntaxFileImplementationGalgas3
 //--------------------------------------------------------------------------------------------------
@@ -3175,16 +3121,17 @@ GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubscript__3F__3F
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubscript__3F_unwrap (const GGS_string & inKey,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const {
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
   GGS__5B_lstring_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
-     String message = "dictionary does not contains the '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key") ;
+     const String message = "unknown dictionary key" ;
+//      String message = "dictionary does not contains the '" ;
+//      message.appendString (inKey.stringValue ()) ;
+//      message.appendString ("' key") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
@@ -3217,12 +3164,13 @@ void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubscript__3F_unique (const GGS
     const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
     if (overwrite) {
     //--- Build error message
-     String message = "dictionary '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key overwrite") ;
+     const String message = "dictionary key overwrite" ;
+//     String message = "dictionary '" ;
+//     message.appendString (inKey.stringValue ()) ;
+//     message.appendString ("' key overwrite") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    } 
+    }
   }
 }
 
@@ -3399,7 +3347,7 @@ GGS__5B_lstring_5D_ extensionGetter_listForKey (const GGS_genericExtensionMethod
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lstring_5D_ result ; // Returned variable
   const GGS_genericExtensionMethodListMap temp_0 = inObject ;
-  GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 56)) ;
+  GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 44)) ;
   result = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
 //---
   return result ;
@@ -3527,16 +3475,17 @@ GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubscript__3F_unwrap (const GGS_string & inKey,
-                                                                                                                   Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) const {
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
   GGS__5B_unifiedTypeMapEntry_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
-     String message = "dictionary does not contains the '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key") ;
+     const String message = "unknown dictionary key" ;
+//      String message = "dictionary does not contains the '" ;
+//      message.appendString (inKey.stringValue ()) ;
+//      message.appendString ("' key") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
@@ -3569,12 +3518,13 @@ void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubscript__3F_uniqu
     const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
     if (overwrite) {
     //--- Build error message
-     String message = "dictionary '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key overwrite") ;
+     const String message = "dictionary key overwrite" ;
+//     String message = "dictionary '" ;
+//     message.appendString (inKey.stringValue ()) ;
+//     message.appendString ("' key overwrite") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    } 
+    }
   }
 }
 

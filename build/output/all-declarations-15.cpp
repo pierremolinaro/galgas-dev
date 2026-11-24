@@ -6010,10 +6010,10 @@ void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_genericExtensionMethodListMap temp_0 = ioObject ;
-  GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 43)) ;
-  GGS__5B_lstring_5D_ var_aList_2065 = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
-  var_aList_2065.plusPlusAssignOperation (constinArgument_inValue  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 44)) ;
-  ioObject.mProperty_dictionary.writeSubscript__3F_ (constinArgument_inKey, var_aList_2065, inCompiler COMMA_HERE) ; 
+  GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 36)) ;
+  GGS__5B_lstring_5D_ var_aList_1818 = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
+  var_aList_1818.plusPlusAssignOperation (constinArgument_inValue  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 37)) ;
+  ioObject.mProperty_dictionary.writeSubscript__3F_ (constinArgument_inKey, var_aList_1818, inCompiler COMMA_HERE) ; 
 }
 
 
@@ -6029,9 +6029,9 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
                                 Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_descendantClassListMap temp_0 = ioObject ;
-  GGS__5B_unifiedTypeMapEntry_5D_ var_aList_4630 = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE) ;
-  var_aList_4630.plusPlusAssignOperation (constinArgument_inType  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 105)) ;
-  ioObject.mProperty_dictionary.writeSubscript__3F_ (constinArgument_inKey, var_aList_4630, inCompiler COMMA_HERE) ; 
+  GGS__5B_unifiedTypeMapEntry_5D_ var_aList_4244 = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE) ;
+  var_aList_4244.plusPlusAssignOperation (constinArgument_inType  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 93)) ;
+  ioObject.mProperty_dictionary.writeSubscript__3F_ (constinArgument_inKey, var_aList_4244, inCompiler COMMA_HERE) ; 
 }
 
 

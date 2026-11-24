@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------------------------
 
 #include "AbstractStrongPtrClass.h"
-#include "PtrWeakReferenceProxy.h"
 #include "cpp-allocation.h"
 
 //--------------------------------------------------------------------------------------------------
@@ -22,12 +21,14 @@
 //--------------------------------------------------------------------------------------------------
 
 AbstractStrongPtrClass::AbstractStrongPtrClass (Compiler * COMMA_LOCATION_ARGS) :
-AbstractPtrClass (THERE),
-#ifndef DO_NOT_GENERATE_CHECKINGS
+#ifdef DO_NOT_GENERATE_CHECKINGS
+  AbstractPtrClass (THERE)
+#else
+  AbstractPtrClass (THERE),
   mPreviousPtr (nullptr),
-  mNextPtr (nullptr),
+  mNextPtr (nullptr)
 #endif
-mProxyPtr (nullptr) {
+ {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     mPreviousPtr = gLastPtr ;
     if (nullptr == gLastPtr) {
@@ -54,20 +55,6 @@ AbstractStrongPtrClass::~ AbstractStrongPtrClass (void) {
       mPreviousPtr->mNextPtr = mNextPtr ;
     }
   #endif
-  if (mProxyPtr != nullptr) {
-    mProxyPtr->mStrongObjectPtr = nullptr ;
-    macroDetachSharedObject (mProxyPtr) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-PtrWeakReferenceProxy * AbstractStrongPtrClass::getProxy (void) {
-  if (mProxyPtr == nullptr) {
-    macroMyNew (mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    mProxyPtr->mStrongObjectPtr = this ;
-  }
-  return mProxyPtr ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,32 +1,5 @@
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result = GGS_%!TYPE_IDENTIFIER% () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_filewrapper GGS_%!TYPE_IDENTIFIER%::class_func_contents (UNUSED_LOCATION_ARGS) {
   return GGS_filewrapper (gWrapperDirectory_0_%!TYPE_IDENTIFIER%) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
-                              %!^%const int32_t ) const {
-  ioString.appendCString ("<filewrapper @%!TYPE_NAME%:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */

@@ -98,7 +98,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                         !@lstring outTypeName ) {
+                         !@lstring outTypeName) {
     <simple_type_definition> (!?ioDeclarations, ?outTypeName)
     repeat
     while
@@ -134,7 +134,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                                !@lstring outTypeName) {
+                                 !@lstring outTypeName) {
     $[$
     <type_definition> (!?ioDeclarations, ?outTypeName)
     select

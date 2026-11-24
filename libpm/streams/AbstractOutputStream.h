@@ -53,7 +53,6 @@ class AbstractOutputStream {
 
 //--- Appending C string
   public: void appendCString (const char * inCstring) ;
-  public: void appendString (const char * inCstring, const int32_t inCount) ;
   public: void appendString (const std::initializer_list <utf32> & inSource) ;
 
 //--- Appending character

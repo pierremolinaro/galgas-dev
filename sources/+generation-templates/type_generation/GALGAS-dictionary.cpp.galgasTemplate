@@ -73,7 +73,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F__3F_def
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap (const %?^%GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
        %!^%Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
@@ -81,9 +81,10 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap 
     const SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
     if (object.isNil ()) {
     //--- Build error message
-     String message = "dictionary does not contains the '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key") ;
+     const String message = "unknown dictionary key" ;
+//      String message = "dictionary does not contains the '" ;
+//      message.appendString (inKey.stringValue ()) ;
+//      message.appendString ("' key") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
@@ -107,8 +108,8 @@ void GGS_%!TYPE_IDENTIFIER%::writeSubscript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENT
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::writeSubscript__3F_unique (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey%
-     %,\n%!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+void GGS_%!TYPE_IDENTIFIER%::writeSubscript__3F_unique (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey,
+     %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
      %!^%Compiler * inCompiler
      %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
@@ -116,12 +117,13 @@ void GGS_%!TYPE_IDENTIFIER%::writeSubscript__3F_unique (%?^%const GGS_%!KEY_TYPE
     const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
     if (overwrite) {
     //--- Build error message
-     String message = "dictionary '" ;
-     message.appendString (inKey.stringValue ()) ;
-     message.appendString ("' key overwrite") ;
+     const String message = "dictionary key overwrite" ;
+//     String message = "dictionary '" ;
+//     message.appendString (inKey.stringValue ()) ;
+//     message.appendString ("' key overwrite") ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    } 
+    }
   }
 }
 

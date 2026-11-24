@@ -143,7 +143,7 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
     !?ioUnusedVariableCppNameSet.removeKey (gSyntaxDirectedTranslationResultVarName)
     ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
     ioGeneratedCode += "  " + gSyntaxDirectedTranslationResultVarName
-    ioGeneratedCode += ".appendString (" + sourceVar + ".stringValue ()) ;\n"
+    ioGeneratedCode += ".appendSource (" + sourceVar + ".stringValue ()) ;\n"
     ioGeneratedCode += "}\n"
   }
 

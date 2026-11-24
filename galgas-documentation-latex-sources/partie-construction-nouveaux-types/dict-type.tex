@@ -115,6 +115,19 @@ Associe la valeur \ggsq*inValue* à la clé \ggsq*inKey*. Si la clé est déjà 
 
 
 
+\subsection{Écriture, détection de la présence de la clé}
+
+\begin{galgas4box}
+mutating func [?unique: @KEY : @VALUE] [@KEY inKey] = @VALUE inValue
+\end{galgas4box}
+
+Associe la valeur \ggsq*inValue* à la clé \ggsq*inKey*. Si la clé est déjà présente, une erreur est déclenchée.
+
+
+
+
+
+
 \section{Énumération}
 
 L'instruction \ggsq+for+ permet d'énumérer un dictionaire. L'énumération s'effectue dans l'ordre croissant des clés.

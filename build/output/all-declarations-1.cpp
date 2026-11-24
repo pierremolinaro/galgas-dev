@@ -11198,36 +11198,9 @@ const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_lexiqueGenerationTemplates::GGS_lexiqueGenerationTemplates (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexiqueGenerationTemplates GGS_lexiqueGenerationTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexiqueGenerationTemplates result = GGS_lexiqueGenerationTemplates () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_filewrapper GGS_lexiqueGenerationTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
   return GGS_filewrapper (gWrapperDirectory_0_lexiqueGenerationTemplates) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_lexiqueGenerationTemplates::description (String & ioString,
-                                                     const int32_t ) const {
-  ioString.appendCString ("<filewrapper @lexiqueGenerationTemplates:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @lexiqueGenerationTemplates headerZone2
 //--------------------------------------------------------------------------------------------------
@@ -15365,36 +15338,9 @@ const DirectoryWrapper gWrapperDirectory_0_lexicalTemplates (
 
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_lexicalTemplates::GGS_lexicalTemplates (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_lexicalTemplates GGS_lexicalTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalTemplates result = GGS_lexicalTemplates () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_filewrapper GGS_lexicalTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
   return GGS_filewrapper (gWrapperDirectory_0_lexicalTemplates) ;
 }
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_lexicalTemplates::description (String & ioString,
-                                           const int32_t ) const {
-  ioString.appendCString ("<filewrapper @lexicalTemplates:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
 //--------------------------------------------------------------------------------------------------
 //Filewrapper template @lexicalTemplates swiftUILexicalStyles
 //--------------------------------------------------------------------------------------------------

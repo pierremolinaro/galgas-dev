@@ -18,7 +18,6 @@
 #include "AC_GALGAS_enumAssociatedValues.h"
 #include "DirectedGraph.h"
 #include "AbstractStrongPtrClass.h"
-#include "PtrWeakReferenceProxy.h"
 #include "BoolCommandLineOption.h"
 #include "UIntCommandLineOption.h"
 #include "StringCommandLineOption.h"
