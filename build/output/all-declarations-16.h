@@ -10,6 +10,16 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension mutating proc '@semanticContext removeAll'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_removeAll (class GGS_semanticContext & ioObject,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension mutating proc '@localVarManager insertDeclaredLocalVariable'
 //
 //--------------------------------------------------------------------------------------------------

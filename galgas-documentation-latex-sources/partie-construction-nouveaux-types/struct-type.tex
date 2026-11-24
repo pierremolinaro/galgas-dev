@@ -289,10 +289,10 @@ struct @maStructure {
 
 Par défaut, une instance de structure n'est ni égalable, ni comparable.
 
-Pour la rendre égalable (on peut alors tester l'égalité \ggsq!==! et l'inégalité \ggsq@!=@ entre deux instances), il faut ajouter l'attribut \ggsq!%equatable! dans la déclaration de structure~:
+Pour la rendre égalable (on peut alors tester l'égalité \ggsq!==! et l'inégalité \ggsq@!=@ entre deux instances), il faut ajouter l'attribut \ggsq!: #equatable! dans la déclaration de structure~:
 
 \begin{galgas4}
-struct @maStructure %equatable {
+struct @maStructure : #equatable {
   public var @u32 propriété1
   public var @bool propriété2
 }
@@ -330,7 +330,7 @@ Plusieurs types préféfinis GALGAS sont des structures.
 \subsectionTypePredefiniLabelIndex{lbigint}
 
 \begin{galgas4}
-struct @lbigint %equatable {
+struct @lbigint : #equatable {
   public var @bigint bigint
   public var @location location
 }
@@ -341,7 +341,7 @@ struct @lbigint %equatable {
 \subsectionTypePredefiniLabelIndex{lbool}
 
 \begin{galgas4}
-struct @lbool %equatable {
+struct @lbool : #equatable {
   public var @bool bool
   public var @location location
 }
@@ -352,7 +352,7 @@ struct @lbool %equatable {
 \subsectionTypePredefiniLabelIndex{lchar}
 
 \begin{galgas4}
-struct @lchar %equatable {
+struct @lchar : #equatable {
   public var @char char
   public var @location location
 }
@@ -362,7 +362,7 @@ struct @lchar %equatable {
 \subsectionTypePredefiniLabelIndex{ldouble}
 
 \begin{galgas4}
-struct @ldouble %equatable {
+struct @ldouble : #equatable {
   public var @double double
   public var @location location
 }
@@ -377,7 +377,7 @@ struct @ldouble %equatable {
 \subsectionTypePredefiniLabelIndex{lsint}
 
 \begin{galgas4}
-struct @ls32 %equatable {
+struct @ls32 : #equatable {
   public var @s32 sint
   public var @location location
 }
@@ -393,7 +393,7 @@ struct @ls32 %equatable {
 \subsectionTypePredefiniLabelIndex{lsint64}
 
 \begin{galgas4}
-struct @ls3264 %equatable {
+struct @ls64 : #equatable {
   public var @s64 sint64
   public var @location location
 }
@@ -408,7 +408,7 @@ struct @ls3264 %equatable {
 \subsectionTypePredefiniLabelIndex{lstring}
 
 \begin{galgas4}
-struct @lstring %equatable {
+struct @lstring : #equatable {
   public var @string string
   public var @location location
 }
@@ -423,7 +423,7 @@ struct @lstring %equatable {
 \subsectionTypePredefiniLabelIndex{luint}
 
 \begin{galgas4}
-struct @lu32 %equatable {
+struct @lu32 : #equatable {
   public var @u32 uint
   public var @location location
 }
@@ -437,7 +437,7 @@ struct @lu32 %equatable {
 
 
 \begin{galgas4}
-struct @lu3264 %equatable {
+struct @lu3264 : #equatable {
   public var @u64 uint64
   public var @location location
 }
@@ -449,7 +449,7 @@ struct @lu3264 %equatable {
 Le type \ggsq!@range! définit les intervalles d'entiers non signés 32 bits (\ggsq!@u32!).
 
 \begin{galgas4}
-struct @range %equatable {
+struct @range : #equatable {
   public var @u32 start
   public var @u32 length
 }

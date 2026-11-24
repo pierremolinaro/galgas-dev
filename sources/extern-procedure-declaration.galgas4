@@ -103,7 +103,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
       )
     end
   //--- Enter routine in routine map
-    !?ioSemanticContext.routineMap.insertKey (
+    !?ioSemanticContext.mRoutineMap.insertKey (
       self.mRoutineName,
       routineSignature,
       !isFilePrivate: self.isFilePrivate

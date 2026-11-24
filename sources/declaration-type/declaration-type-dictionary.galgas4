@@ -97,7 +97,6 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   let enumerationDescriptor = [@enumerationDescriptor] [@(keyType, "key"), @(valueType, "value")]
 //---
   commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
-  var @instanceMethodMap instanceMethodMap = @()
 //--- Getters
   enterBaseGetterWithArgument (
     !?getterMap,
@@ -116,23 +115,13 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   )
 //--- Handle remove mutating proc
   var @setterMap setterMap = @()
-  !?setterMap.insertOrReplace (
+  !?setterMap.insertKey (
     @("remove", self.dictionaryTypeName.location),
     @methodKind.definedAsMember,
     [@("key".nowhere, keyType, .argumentConstantIn, "inKey")],
     true,
     @methodQualifier.isBasic,
     ""
-  )
-//--- Handle search methods
-  !?instanceMethodMap.insertKey (
-    @("search", self.dictionaryTypeName),
-    @methodKind.definedAsMember,
-    [@("key".nowhere, keyType, .argumentConstantIn, "inKey")],
-    self.dictionaryTypeName.location,
-    true,
-    @methodQualifier.isBasic,
-    "" // No error message
   )
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
@@ -142,6 +131,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     emptyArgumentList
   )
 //--- Add extensions
+  var @instanceMethodMap instanceMethodMap = @()
   addExtensions (
     inExtensionInitializerMapForBuildingContext,
     inExtensionMethodMapForBuildingContext,

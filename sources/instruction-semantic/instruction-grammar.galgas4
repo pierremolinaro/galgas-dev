@@ -226,15 +226,15 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
   let usefulnessName = grammarNameForUsefulEntitiesGraph (self.mGrammarComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Search grammar in grammar map
-  inAnalysisContext.semanticContext.grammarMap.searchKey
+  inAnalysisContext.semanticContext.mGrammarMap.searchKey
     (self.mGrammarComponentName,
     ?let @grammarLabelMap grammarLabelMap,
     ?*,
     ?let @bool hasTranslateFeature
   )
 //--- Search label
-  grammarLabelMap.searchKey
-    (self.mLabelName,
+  grammarLabelMap.searchKey (
+    self.mLabelName,
     ?let [@formalParameterSignatureElement] labelSignature
   )
 //--- Check actual parameters
@@ -303,15 +303,15 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   let grammarUsefulnessName = grammarNameForUsefulEntitiesGraph (self.mGrammarComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: grammarUsefulnessName)
 //--- Search grammar in grammar map
-  inAnalysisContext.semanticContext.grammarMap.searchKey
+  inAnalysisContext.semanticContext.mGrammarMap.searchKey
     (self.mGrammarComponentName,
     ?let @grammarLabelMap grammarLabelMap,
     ?*,
     ?let @bool hasTranslateFeature
   )
 //--- Search label
-  grammarLabelMap.searchKey
-    (self.mLabelName,
+  grammarLabelMap.searchKey (
+    self.mLabelName,
     ?let [@formalParameterSignatureElement] labelSignature
   )
 //--- Check actual parameters

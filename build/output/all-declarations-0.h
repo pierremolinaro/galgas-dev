@@ -9026,9 +9026,9 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineMap ;
 
 class GGS_semanticContext final : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_routineMap mProperty_routineMap ;
-  public: inline GGS_routineMap readProperty_routineMap (void) const {
-    return mProperty_routineMap ;
+  public: GGS_routineMap mProperty_mRoutineMap ;
+  public: inline GGS_routineMap readProperty_mRoutineMap (void) const {
+    return mProperty_mRoutineMap ;
   }
 
   public: GGS_functionMap mProperty_mFunctionMap ;
@@ -9046,9 +9046,9 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     return mProperty_mFilewrapperMap ;
   }
 
-  public: GGS_grammarMap mProperty_grammarMap ;
-  public: inline GGS_grammarMap readProperty_grammarMap (void) const {
-    return mProperty_grammarMap ;
+  public: GGS_grammarMap mProperty_mGrammarMap ;
+  public: inline GGS_grammarMap readProperty_mGrammarMap (void) const {
+    return mProperty_mGrammarMap ;
   }
 
   public: GGS_lexiqueComponentMapForSemanticAnalysis mProperty_mLexiqueComponentMapForSemanticAnalysis ;
@@ -9074,8 +9074,8 @@ class GGS_semanticContext final : public AC_GALGAS_root {
   public: GGS_semanticContext (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setRoutineMap (const GGS_routineMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_routineMap = inValue ;
+  public: inline void setter_setMRoutineMap (const GGS_routineMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mRoutineMap = inValue ;
   }
 
   public: inline void setter_setMFunctionMap (const GGS_functionMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -9090,8 +9090,8 @@ class GGS_semanticContext final : public AC_GALGAS_root {
     mProperty_mFilewrapperMap = inValue ;
   }
 
-  public: inline void setter_setGrammarMap (const GGS_grammarMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_grammarMap = inValue ;
+  public: inline void setter_setMGrammarMap (const GGS_grammarMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mGrammarMap = inValue ;
   }
 
   public: inline void setter_setMLexiqueComponentMapForSemanticAnalysis (const GGS_lexiqueComponentMapForSemanticAnalysis & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -9110,11 +9110,11 @@ class GGS_semanticContext final : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_semanticContext (const GGS_routineMap & in_routineMap,
+  public: GGS_semanticContext (const GGS_routineMap & in_mRoutineMap,
                                const GGS_functionMap & in_mFunctionMap,
                                const GGS_globalConstantMap & in_mGlobalConstantMap,
                                const GGS_filewrapperMap & in_mFilewrapperMap,
-                               const GGS_grammarMap & in_grammarMap,
+                               const GGS_grammarMap & in_mGrammarMap,
                                const GGS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis,
                                const GGS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis,
                                const GGS_projectSettings & in_projectSettings) ;

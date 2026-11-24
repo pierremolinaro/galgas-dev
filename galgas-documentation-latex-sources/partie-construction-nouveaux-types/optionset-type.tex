@@ -28,8 +28,9 @@ L'implémentation actuelle limite à 64 le nombre d'éléments qui peuvent être
 
 Un \ggsq!optionset! ne définit qu'un seul initialisateur, qui construit un ensemble vide~:
 \begin{galgas4}
-@MonEnsemble.init () -> @MonEnsemble
+init @MonEnsemble ()
 \end{galgas4}
+
 Pour construire un ensemble vide~:
 \begin{galgas4}
 var @MonEnsemble ensembleVide = @()

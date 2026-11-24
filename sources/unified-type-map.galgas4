@@ -29,7 +29,7 @@ map @unifiedTypeMap {
   private var @unifiedTypeMapElementClass mElement
   #insertSetter internalInsertKey #errorMessage "the '%K' key is already declared in %L"
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func unsolvedEntryList () -> [@lstring] {
     result = @()
@@ -40,7 +40,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating proc makeEntry (let @lstring inLKey, !@unifiedTypeMapEntry outEntry) {
     if inLKey.string == "" then
@@ -54,7 +54,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating proc makeEntryFromString (let @string inKey, !@unifiedTypeMapEntry outEntry) {
     if inKey == "" then
@@ -68,7 +68,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func typeMapEntryForLKey (?let @lstring inLKey) -> @unifiedTypeMapEntry {
     if inLKey.string == "" then
@@ -80,7 +80,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func typeMapEntryOrNullForLKey (?let @lstring inLKey) -> @unifiedTypeMapEntry {
     if inLKey.string == "" then
@@ -92,7 +92,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating proc insertType (let @lstring inTypeName, let @unifiedTypeDefinition inTypeDefinition) {
     if let node = self [inTypeName] then
@@ -109,7 +109,7 @@ map @unifiedTypeMap {
     end
   }
 
-  //----------------------------------------------------------------------------------------------
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func typeDefinition (?let @lstring inLKey) -> @unifiedTypeDefinition {
     if let node = self [inLKey] then
@@ -121,6 +121,14 @@ map @unifiedTypeMap {
       end
     else
       error inLKey : "there is no '@" + inLKey + "' type" spoil result
+    end
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating proc removeAll () {
+    for (*, entry) in self do
+      entry.clear ()
     end
   }
 
@@ -143,6 +151,12 @@ enum @typeDefinition {
 
 final class @unifiedTypeMapElementClass {
   public var @typeDefinition mDefinition
+
+  //----------------------------------------------------------------------------------------------
+
+  proc clear () {
+    self.mDefinition = .unsolved
+  }
 
   //----------------------------------------------------------------------------------------------
 

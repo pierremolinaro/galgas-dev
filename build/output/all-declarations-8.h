@@ -5960,10 +5960,6 @@ class GGS__5B_string_3A__5B_galgas_33_SyntaxExtensionAST_5D__5D_ final : public 
 
 
 //--------------------------------- Instance Methods
-  public: void method_search (class GGS_string constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
@@ -7340,6 +7336,26 @@ class GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const class GGS_
                                                                 const class GGS_lstring & constinArgument0,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@unifiedTypeMap removeAll'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_removeAll (class GGS_unifiedTypeMap & ioObject,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMapElementClass clear'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_clear (class cPtr_unifiedTypeMapElementClass * inObject,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @typeDefinition_2E_solved struct

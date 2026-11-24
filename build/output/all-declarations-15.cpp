@@ -2852,6 +2852,26 @@ const GALGAS_TypeDescriptor * GGS_unifiedTypeMapElementClass::staticTypeDescript
 }
 
 //--------------------------------------------------------------------------------------------------
+//Extension proc '@unifiedTypeMapElementClass clear'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_unifiedTypeMapElementClass::method_clear (Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  this->mProperty_mDefinition = GGS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas4", 158)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_clear (cPtr_unifiedTypeMapElementClass * inObject,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) {
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_unifiedTypeMapElementClass) ;
+    inObject->method_clear (inCompiler COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //
 //Extension func '@unifiedTypeMapElementClass definition'
 //
@@ -2867,15 +2887,15 @@ GGS_unifiedTypeDefinition cPtr_unifiedTypeMapElementClass::getter_definition (Co
   case GGS_typeDefinition::Enumeration::enum_unsolved:
     {
       GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 152)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 152)) ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 166)), GGS_string ("unsolved type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 166)) ;
       result.drop () ; // Release error dropped variable
     }
     break ;
   case GGS_typeDefinition::Enumeration::enum_solved:
     {
-      GGS_unifiedTypeDefinition extractedValue_5957_definition_0 ;
-      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_5957_definition_0) ;
-      result = extractedValue_5957_definition_0 ;
+      GGS_unifiedTypeDefinition extractedValue_6316_definition_0 ;
+      temp_0.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_6316_definition_0) ;
+      result = extractedValue_6316_definition_0 ;
     }
     break ;
   }

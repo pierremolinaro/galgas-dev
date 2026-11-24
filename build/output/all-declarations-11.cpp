@@ -17559,12 +17559,15 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "  void AbstractStrongPtrClass::printExistingClassInstances (void) {\n"
   "    if (gFirstPtr != nullptr) {\n"
   "      std::cout << \"*** Unreleased class instances\" << std::endl ;\n"
-  "    }\n"
-  "    AbstractStrongPtrClass * ptr = gFirstPtr ;\n"
-  "    while (ptr != nullptr) {\n"
-  "      std::cout << \"  Instance 0x\" << std::hex << size_t (ptr) << std::dec << std::endl ;\n"
-  "      ptr->printNonNullClassInstanceProperties () ;\n"
-  "      ptr = ptr->mNextPtr ;\n"
+  "      AbstractStrongPtrClass * ptr = gFirstPtr ;\n"
+  "      uint32_t count = 0 ;\n"
+  "      while (ptr != nullptr) {\n"
+  "        count += 1 ;\n"
+  "        std::cout << \"  Instance 0x\" << std::hex << size_t (ptr) << std::dec << std::endl ;\n"
+  "        ptr->printNonNullClassInstanceProperties () ;\n"
+  "        ptr = ptr->mNextPtr ;\n"
+  "      }\n"
+  "      std::cout << count << \" unreleased class instances\" << std::endl ;\n"
   "    }\n"
   "  }\n"
   "#endif\n"
@@ -17576,7 +17579,7 @@ const RegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "AbstractStrongPtrClass.cpp",
   "cpp",
   true, // Text file
- 3116, // Text length
+ 3249, // Text length
   gWrapperFileContent_145_libpmFileWrapper
 ) ;
 

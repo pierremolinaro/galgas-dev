@@ -4109,6 +4109,9 @@ class cPtr_unifiedTypeMapElementClass : public AbstractStrongPtrClass {
 //--- Extension func definition
   public: virtual class GGS_unifiedTypeDefinition getter_definition (Compiler * COMMA_LOCATION_ARGS) const ;
 
+//--- Extension proc clear
+  public: virtual void method_clear (Compiler * COMMA_LOCATION_ARGS) ;
+
 //--- Properties
   public: GGS_typeDefinition mProperty_mDefinition ;
 

@@ -1085,10 +1085,6 @@ class GGS__5B_string_3A__5B_lstring_5D__5D_ final : public GenericDictionary <GG
 
 
 //--------------------------------- Instance Methods
-  public: void method_search (class GGS_string constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
@@ -1411,10 +1407,6 @@ class GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ final : public GenericDi
 
 
 //--------------------------------- Instance Methods
-  public: void method_search (class GGS_string constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters

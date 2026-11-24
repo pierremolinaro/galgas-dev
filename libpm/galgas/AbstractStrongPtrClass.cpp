@@ -83,12 +83,15 @@ PtrWeakReferenceProxy * AbstractStrongPtrClass::getProxy (void) {
   void AbstractStrongPtrClass::printExistingClassInstances (void) {
     if (gFirstPtr != nullptr) {
       std::cout << "*** Unreleased class instances" << std::endl ;
-    }
-    AbstractStrongPtrClass * ptr = gFirstPtr ;
-    while (ptr != nullptr) {
-      std::cout << "  Instance 0x" << std::hex << size_t (ptr) << std::dec << std::endl ;
-      ptr->printNonNullClassInstanceProperties () ;
-      ptr = ptr->mNextPtr ;
+      AbstractStrongPtrClass * ptr = gFirstPtr ;
+      uint32_t count = 0 ;
+      while (ptr != nullptr) {
+        count += 1 ;
+        std::cout << "  Instance 0x" << std::hex << size_t (ptr) << std::dec << std::endl ;
+        ptr->printNonNullClassInstanceProperties () ;
+        ptr = ptr->mNextPtr ;
+      }
+      std::cout << count << " unreleased class instances" << std::endl ;
     }
   }
 #endif

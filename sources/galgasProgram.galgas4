@@ -177,14 +177,14 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   let toolCppDirectory = sourceDirectory + "/tool-sources"
   let [@string] handCodedSourceToolFileList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, ["cpp", "h"])
 //--------------------------------- Display result
-//  if @application.errorCount == 0 then
-//    message "  Declarations: " + declarationAST.mDeclarationList.count + "\n"
-//    message "  Syntax components: " + declarationAST.mSyntaxComponentList.count + "\n" ;
-//    message "  GUI components: " + declarationAST.mGUIComponentList.count + "\n"
-//    message "  Source rules: " + declarationAST.mSourceRuleList.count + "\n" ;
-//    message "  Prologue procs: " + declarationAST.mPrologueDeclarationList.count + "\n"
-//    message "  Epilogue procs: " + declarationAST.mEpilogueDeclarationList.count + "\n"
-//  end
+  if @application.errorCount == 0 then
+    println ("  Declarations: " + declarationAST.mDeclarationList.count)
+    println ("  Syntax components: " + declarationAST.mSyntaxComponentList.count) ;
+    println ("  GUI components: " + declarationAST.mGUIComponentList.count)
+    println ("  Source rules: " + declarationAST.mSourceRuleList.count) ;
+    println ("  Prologue procs: " + declarationAST.mPrologueDeclarationList.count)
+    println ("  Epilogue procs: " + declarationAST.mEpilogueDeclarationList.count)
+  end
 //--------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (
     declarationAST.mSyntaxComponentList,
@@ -198,7 +198,7 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
   let productDirectory = absoluteBuildDirectory + "/output"
   let [@string] appProductFileList = @()
   var [@lstring] usefulnessRootEntities = @()
-  let @semanticContext semanticContext
+  var @semanticContext semanticContext
   var @unifiedTypeMap typeMap
   var [@semanticDeclarationForGeneration] semanticDeclarationSortedListForGeneration
   if @application.errorCount == 0 then
@@ -246,6 +246,8 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
     )
     semanticDeclarationSortedListForGeneration ++= programComponentForGeneration
   end
+  !?semanticContext.removeAll ()
+  drop semanticContext
 //----------------------------------- Check entity usefulness
   checkUsefulEntities (usefulEntitiesGraph, usefulnessRootEntities, productDirectory)
 //----------------------------------- Build an HTML file that contains all declared types
@@ -298,6 +300,8 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
       handCodedSourceToolFileList
     )
   end
+  !?typeMap.removeAll ()
+  drop typeMap
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -2,232 +2,113 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapterLabel{Le type \texttt{dict}}{typeDict}
+\chapterLabel{Le type \emph{dictionaire}}{typeDict}
 %-------------------------------------------------------------
 
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
+\section{Déclaration d'un type dictionaire}
 
-Un objet de type \ggsq+dict+ est un dictionnaire. Contrairement à un objet de type \ggsq+map+ , le type de la clé est déclaré explicitement et peut être d'un type quelconque.
+Un type dictionaire dont les clés sont de type \ggsq+@KEY+ et les éléments sont type \ggsq+@VALUE+ est implicitement déclaré par la construction \ggsq+[@KEY : @VALUE]+. Le type \ggsq+@KEY+ doit être \emph{comparable} et le \ggsq+@VALUE+ est un type quelconque.
 
-{\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggsq+@lstring+, comme la clé implicite d'une \ggsq+map+. Toutefois, la sémantique est différente. Dans une \ggsq=map=, c'est la composante \ggsq=string= de la clé qui est prise en compte comme clé effective. La composante \ggsq=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggsq=dict=, le type déclaré comme clé est intégralement pris en compte : si la clé d'un \ggsq=dict= est un \ggsq=@lstring=, la comparaison des clés prend en compte la composante \ggsq=string= {\bf et} la composante \ggsq=location=.
 
-\section{Déclaration}
+
+
+
+
+\section{Initialiseur}
 
 \begin{galgas4}
-dict @MonDictionnaire : @u32 {
-  @string mPremier
-  @bool mSecond
-}
+init [@KEY : @VALUE] ()
 \end{galgas4}
 
-La déclaration d'un type \ggsq+dict+ nomme~:
-\begin{itemize}
-  \item le nom du type \ggsq+dict+ (ici \ggsq+@MonDictionnaire+)~;
-  \item le type de la clé (ici \ggsq+@u32+)~;
-  \item les propriétés associées (ici \ggsq=mPremier= et \ggsq=mSecond=).
-\end{itemize}
+L'initialiseur sans argument crée un dictionaire vide.
 
-Les noms \ggsq=key=, \ggsq=object= et \ggsq=desciption= sont interdits pour une propriété.
 
-On peut déclarer un dictionaire sans propriété, et ainsi gérer des \emph{ensembles} :
+\section{Fonctions}
+
+\subsection{Fonction \texttt{count}}
 
 \begin{galgas4}
-dict @autreDictionnaire : @u32 { }
+func [@KEY : @VALUE].count () -> @u32
 \end{galgas4}
 
 
+Retourne un \ggsq+@u32+ qui contient le nombre d'entrées du dictionnaire.
 
 
 
-\section{Constructeurs}
-
-Pour initialiser un dictionnaire vide, il y a trois possibilités, sémantiquement identiques~:
-\begin{itemize}
-  \item la constante \texttt{\{\}} (\refSubsectionPage{constanteDictVide})~;
-  \item le constructeur \texttt{emptyDict} (\refSubsectionPage{constructeurEmptyDict})~;
-  \item le constructeur \texttt{default} (\refSubsectionPage{constructeurDictDefault}).
-\end{itemize}
-
-
-\subsectionLabel{Constante \texttt{\{\}}}{constanteDictVide}
-
-Cette constante permet d'instancier un dictionnaire vide. Exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = {}
-\end{galgas4}
-
-Ou encore~:
+\subsection{Fonction \texttt{contains}}
 
 \begin{galgas4}
-var unDictionnaire = @MonDictionnaire {}
+func [@KEY : @VALUE].contains (@KEY inKey) -> @bool
 \end{galgas4}
 
-\subsectionLabel{Constructeur \texttt{emptyDict}}{constructeurEmptyDict}
-
-Pour instancier un dictionnaire vide, une autre possibilité est d'appeler le constructeur \ggsq=emptyDict=. Exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = .emptyDict
-\end{galgas4}
-
-Ou encore~:
-
-\begin{galgas4}
-var unDictionnaire = @MonDictionnaire.emptyDict
-\end{galgas4}
+Retourne un \ggsq+@bool+ qui est \ggsq+true+ si la clé \ggsq+inKey+ est dans le dictionnaire, \ggsq+false+ dans le cas contraire.
 
 
 
-\subsectionLabel{Constructeur \texttt{default}}{constructeurDictDefault}
 
 
-Un dictionnaire accepte le constructeur \ggsq=default=. Exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = .default
-\end{galgas4}
 
-Ou encore~:
+
+
+
+\section{Méthodes mutantes}
+
+
+
+\subsection{Méthode mutante \texttt{remove}}
 
 \begin{galgas4}
-var unDictionnaire = @MonDictionnaire.default
+mutating func [@KEY : @VALUE].remove (@KEY inKey)
 \end{galgas4}
 
+Retire la clé \ggsq+inKey+ du dictionnaire. Une erreur est déclenchée si la clé est absente du dictionnaire.
 
 
 
 
 
-\section{Insertion}
+\section{Opérateurs d'indexation}
 
-Un \ggsq+dict+ implémente implicitement l'opérateur \ggsq:+=: qui permet d'insérer une nouvelle entrée à un dictionnaire. Ses arguments sont, dans l'ordre~: un objet du type de la clé, puis un objet par propriété déclarée. Aucune erreur n'est déclenchée en cas de tentative d'insertion d'une clé déjà existante~; les valeurs des propriétés associées à la clé sont simplement remplacées.
+\subsection{Lecture}
 
-Par exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = {}
-@u32 clef = ...
-@string s = ...
-@u32 v = ...
-unDictionnaire += !clef !s !v
-\end{galgas4}
+\begin{galgas4box}
+func [@KEY : @VALUE] [@KEY inKey] -> @VALUE?
+\end{galgas4box}
+
+Retourne la valeur associée à la clé \ggsq*inKey*, ou \ggsq*nil* si la clé est absente.
 
 
+\subsection{Lecture, avec valeur par défaut}
 
+\begin{galgas4box}
+func [@KEY : @VALUE] [@KEY inKey, ?default: @VALUE inDefaultValue] -> @VALUE
+\end{galgas4box}
 
-
-
-
-
+Retourne la valeur associée à la clé \ggsq*inKey*, ou la valeur de \ggsq*inDefaultValue* si la clé est absente.
 
 
 
-\section{Recherche}
+\subsection{Lecture, erreur si clé absente}
 
-Une \ggsq+dict+ déclare implicitement la \emph{méthode} de recherche \ggsq=searchKey= qui permet de rechercher une entrée d'un dictionnaire, et retourne la valeur de ses propriétés associées. Une erreur est déclenchée si la clé n'existe pas.
+\begin{galgas4box}
+func [@KEY : @VALUE] [?unwrap: @KEY inKey] -> @VALUE
+\end{galgas4box}
 
-La \emph{méthode} de recherche \ggsq=searchKey= est appelée dans une \emph{instruction d'appel de méthode}~:
-\begin{itemize}
-  \item le premier argument (sortie) est une expression de type de la clé qui caractérise la clé à rechercher~;
-  \item ensuite, pour chaque propriété déclarée, un argument en entrée nommant une variable destinée à recevoir la valeur de la propriété correspondante.
-\end{itemize}
-
-
-Par exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = {}
-...
-@lstring clef = ...
-[unDictionnaire searchKey !clef ?@string s ?@u32 v]
-\end{galgas4}
+Retourne la valeur associée à la clé \ggsq*inKey*, ou déclenche une erreur si la clé est absente.
 
 
 
 
+\subsection{Écriture}
 
+\begin{galgas4box}
+mutating func [@KEY : @VALUE] [@KEY inKey] = @VALUE inValue
+\end{galgas4box}
 
-
-
-\section{Retrait}
-
-Un \ggsq+dict+ déclare implicitement le \emph{setter} de retrait \ggsq=removeKey=. Il permet de retirer une entrée d'un dictionnaire, et retourne la valeur des propriétés associées à la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
-
-
-
-Le \emph{setter} de retrait \ggsq=removeKey= est appelé dans une \emph{instruction d'appel de setter}~:
-\begin{itemize}
-  \item le premier argument (sortie) est une expression de type de la clé qui caractérise la clé à retirer~;
-  \item ensuite, pour chaque propriété déclarée, un argument en entrée nommant une variable destinée à recevoir la valeur de la propriété correspondant de la clé retirée.
-\end{itemize}
-
-Par exemple~:
-\begin{galgas4}
-@MonDictionnaire unDictionnaire = {}
-...
-@lstring clef = ...
-[!?unDictionnaire removeKey !clef ?@string s ?@u32 v]
-\end{galgas4}
-
-\section{Getters}
-
-%\subsection{Getter \texttt{allKeyList}}
-%
-%\begin{galgas4}
-%getter @T allKeyList -> @lstringlist
-%\end{galgas4}
-%
-%Le \emph{getter} \ggsq+allKeyList+ retourne la liste construite avec toutes les clés du récepteur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est~:
-%\begin{itemize}
-%  \item d'abord les clés du dictionnaire de premier niveau, puis celles des tables surchargées, dans l'ordre de la surcharge~;
-%  \itel pour chaque table, les clés apparaissent dans l'ordre alphabétique croissant.
-%\end{itemize}
-
-\subsection{Getter \texttt{count}}
-
-\begin{galgas4}
-getter count -> @u32
-\end{galgas4}
-
-
-Le \emph{getter} \ggsq+count+ retourne un \ggsq+@u32+ qui contient le nombre d'entrées du dictionnaire.
-
-
-
-\subsection{Getter \texttt{hasKey}}
-
-
-Le \emph{getter} \ggsq+hasKey+ retourne un \ggsq+@bool+ qui est \ggsq+true+ si la clé \ggsq+inKey+ est dans le dictionnaire, \ggsq+false+ dans le cas contraire.
-
-
-
-%\subsection{Getter \texttt{keyList}}
-%
-%\begin{galgas4}
-%getter keyList -> @lstringlist
-%\end{galgas4}
-%
-%
-%Le \emph{getter} \ggsq+keyList+ retourne la liste construite avec toutes les clés du dictionnaire de premier niveau du récepteur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
-
-
-
-%\subsection{Getter \texttt{keySet}}
-%
-%\begin{galgas4}
-%getter keySet -> @stringset
-%\end{galgas4}
-%
-%
-%Le \emph{getter} \ggsq+keySet+ retourne l'ensemble de toutes les clés du dictionnaire de premier niveau du récepteur.
-
-
-
-
-
-
-
-
-
-
-
+Associe la valeur \ggsq*inValue* à la clé \ggsq*inKey*. Si la clé est déjà présente, l'ancienne valeur est perdue.
 
 
 
@@ -236,5 +117,19 @@ Le \emph{getter} \ggsq+hasKey+ retourne un \ggsq+@bool+ qui est \ggsq+true+ si l
 
 \section{Énumération}
 
-L'instruction \ggsq+for+ permet d'énumérer des objets de type \ggsq+dict+ ; elle est décrite à la \refSectionPage{instructionFor}.
+L'instruction \ggsq+for+ permet d'énumérer un dictionaire. L'énumération s'effectue dans l'ordre croissant des clés.
+
+
+\begin{galgas4}
+var [@string : @u32] dictionaire = @()
+dictionaire ["a"] = 1
+dictionaire ["b"] = 2
+dictionaire ["c"] = 3
+for (clé, valeur) in dictionaire do
+  print (clé)
+  print (" --> ")
+  println (valeur) // a --> 1, b --> 2, c --> 3
+end
+\end{galgas4}
+
 

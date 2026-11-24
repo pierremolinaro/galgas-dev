@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapterLabel{Le type \texttt{array}}{typeArray}
+\chapterLabel{Le type \emph{tableau}}{typeArray}
 %-------------------------------------------------------------
 
 \tableDesMatieresLocaleDeProfondeurRelative{2}
@@ -15,6 +15,10 @@ Un type tableau dont les éléments sont de type \ggsq+@VALUE+ est implicitement
 \section{Initialisation}
 
 \subsection{Initialiseur sans argument}
+
+\begin{galgas4box}
+init [@VALUE] ()
+\end{galgas4box}
 
 L'initialiseur sans argument est implicitement déclaré. Il retourne une liste vide~:
 
@@ -283,10 +287,10 @@ Retourne l'élement* d'indice \ggsq*inIndex*. Une erreur est déclenchée si \gg
 \subsection{Écriture}
 
 \begin{galgas4box}
-mutating func [@VALUE] [@u32 inIndex] = @VALUE
+mutating func [@VALUE] [@u32 inIndex] = @VALUE inValue
 \end{galgas4box}
 
-Affecte la valeur à l'indice \ggsq*inIndex* du tableau. Une erreur est déclenchée si \ggsq*inIndex* est supérieur ou égal au nombre d'éléments du tableau.
+Affecte la valeur \ggsq*inValue* à l'indice \ggsq*inIndex* du tableau. Une erreur est déclenchée si \ggsq*inIndex* est supérieur ou égal au nombre d'éléments du tableau.
 
 
 

@@ -131,14 +131,28 @@ map @syntaxComponentMap {
 //--------------------------------------------------------------------------------------------------
 
 struct @semanticContext {
-  var @routineMap routineMap = @()
+  var @routineMap mRoutineMap = @()
   var @functionMap mFunctionMap = @()
   var @globalConstantMap mGlobalConstantMap = @()
   var @filewrapperMap mFilewrapperMap = @()
-  var @grammarMap grammarMap = @()
+  var @grammarMap mGrammarMap = @()
   var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
   let @projectSettings projectSettings
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  mutating proc removeAll () {
+    self.mRoutineMap = @()
+    self.mFunctionMap = @()
+    self.mGlobalConstantMap = @()
+    self.mFilewrapperMap = @()
+    self.mLexiqueComponentMapForSemanticAnalysis = @()
+    self.mSyntaxComponentMapForSemanticAnalysis = @()
+  }
+
+  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -492,7 +506,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
     )
   end
 //--- Insert grammar in grammar map
-  !?ioSemanticContext.grammarMap.insertGrammar
+  !?ioSemanticContext.mGrammarMap.insertGrammar
     (self.mGrammarComponentName,
     grammarLabelMap,
     self.mHasIndexing.bool,
