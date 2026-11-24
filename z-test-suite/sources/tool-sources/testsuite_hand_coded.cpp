@@ -41,10 +41,10 @@ void routine_testsuite_5F_hand_5F_coded (Compiler * /* inCompiler */
 
 //----------------------------------------------------------------------------------------
 
-GGS_uint function_externTestFunction (const GGS_uint & inArg1,
-                                      const GGS_uint & inArg2,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+GGS_u_33__32_ function_externTestFunction (const GGS_u_33__32_ & inArg1,
+                                           const GGS_u_33__32_ & inArg2,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   return inArg1.add_operation (inArg2, inCompiler COMMA_THERE) ;
 }
 

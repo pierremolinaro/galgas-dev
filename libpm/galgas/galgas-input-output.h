@@ -117,13 +117,13 @@ class ParsingContext final {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t maxErrorCount (void) ;
+uint32_t maxErrorCount (void) ;
 
-int32_t totalErrorCount (void) ;
+uint32_t totalErrorCount (void) ;
 
-int32_t maxWarningCount (void) ;
+uint32_t maxWarningCount (void) ;
 
-int32_t totalWarningCount (void) ;
+uint32_t totalWarningCount (void) ;
 
 //--------------------------------------------------------------------------------------------------
 
@@ -218,8 +218,13 @@ void ggs_printFileDeletionSuccess (const String & inMessage) ;
 
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printMessage (const String & inMessage
-                       COMMA_LOCATION_ARGS) ;
+void ggs_printMessageNoLn (const String & inMessage
+                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+
+void ggs_printMessageLn (const String & inMessage
+                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 

@@ -28226,8 +28226,7 @@ const char * gWrapperFileContent_150_libpmFileWrapper =
   "  s.appendString (inMessage) ;\n"
   "  s.appendCString (\": \") ;\n"
   "  description (s, 0) ;\n"
-  "  s.appendCString (\"\\n\") ;\n"
-  "  ggs_printMessage (s COMMA_THERE) ;\n"
+  "  ggs_printMessageLn (s COMMA_THERE) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -28264,7 +28263,7 @@ const RegularFileWrapper gWrapperFile_150_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
- 1659, // Text length
+ 1634, // Text length
   gWrapperFileContent_150_libpmFileWrapper
 ) ;
 
@@ -29165,18 +29164,34 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void Compiler::printMessage (const GGS_string & inMessage\n"
-  "                             COMMA_LOCATION_ARGS) {\n"
+  "void Compiler::printMessageNoLn (const GGS_string & inMessage\n"
+  "                                 COMMA_LOCATION_ARGS) {\n"
   "  if (inMessage.isValid ()) {\n"
-  "    ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;\n"
+  "    ggs_printMessageNoLn (inMessage.stringValue () COMMA_THERE) ;\n"
   "  }\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void Compiler::printMessage (const String & inMessage\n"
+  "void Compiler::printMessageNoLn (const String & inMessage\n"
+  "                                 COMMA_LOCATION_ARGS) {\n"
+  "  ggs_printMessageNoLn (inMessage COMMA_THERE) ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void Compiler::printMessageLn (const GGS_string & inMessage\n"
   "                             COMMA_LOCATION_ARGS) {\n"
-  "  ggs_printMessage (inMessage COMMA_THERE) ;\n"
+  "  if (inMessage.isValid ()) {\n"
+  "    ggs_printMessageLn (inMessage.stringValue () COMMA_THERE) ;\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void Compiler::printMessageLn (const String & inMessage\n"
+  "                             COMMA_LOCATION_ARGS) {\n"
+  "  ggs_printMessageLn (inMessage COMMA_THERE) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -29701,7 +29716,7 @@ const RegularFileWrapper gWrapperFile_121_libpmFileWrapper (
   "Compiler.cpp",
   "cpp",
   true, // Text file
- 29083, // Text length
+ 29682, // Text length
   gWrapperFileContent_121_libpmFileWrapper
 ) ;
 
@@ -29825,8 +29840,10 @@ const char * gWrapperFileContent_118_libpmFileWrapper =
   "  public: void resetAndLoadSourceFromText (const SourceTextInString & inSourceText) ;\n"
   "\n"
   "//--- Print a message\n"
-  "  public: void printMessage (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;\n"
-  "  public: void printMessage (const String & inMessage COMMA_LOCATION_ARGS) ;\n"
+  "  public: void printMessageNoLn (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;\n"
+  "  public: void printMessageNoLn (const String & inMessage COMMA_LOCATION_ARGS) ;\n"
+  "  public: void printMessageLn (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;\n"
+  "  public: void printMessageLn (const String & inMessage COMMA_LOCATION_ARGS) ;\n"
   "\n"
   "//--- Print semantic error\n"
   "  public: void semanticErrorAtLocation (const GGS_location & inErrorLocation,\n"
@@ -29926,7 +29943,7 @@ const RegularFileWrapper gWrapperFile_118_libpmFileWrapper (
   "Compiler.h",
   "h",
   true, // Text file
- 9079, // Text length
+ 9249, // Text length
   gWrapperFileContent_118_libpmFileWrapper
 ) ;
 
@@ -31624,34 +31641,14 @@ const char * gWrapperFileContent_156_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "/* GGS_bool GGS_application::class_func_runningOnUnix (UNUSED_LOCATION_ARGS) {\n"
-  "  #if COMPILE_FOR_WINDOWS == 1\n"
-  "    return GGS_bool (false) ;\n"
-  "  #else\n"
-  "    return GGS_bool (true) ;\n"
-  "  #endif\n"
-  "} */\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "/* GGS_bool GGS_application::class_func_runningOnWindows (UNUSED_LOCATION_ARGS) {\n"
-  "  #if COMPILE_FOR_WINDOWS == 1\n"
-  "    return GGS_bool (true) ;\n"
-  "  #else\n"
-  "    return GGS_bool (false) ;\n"
-  "  #endif\n"
-  "} */\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "GGS_u_33__32_ GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {\n"
-  "  return GGS_u_33__32_ (uint32_t (totalErrorCount ())) ;\n"
+  "  return GGS_u_33__32_ (totalErrorCount ()) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_u_33__32_ GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {\n"
-  "  return GGS_u_33__32_ (uint32_t (totalWarningCount ())) ;\n"
+  "  return GGS_u_33__32_ (totalWarningCount ()) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -31994,7 +31991,7 @@ const RegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 18777, // Text length
+ 18164, // Text length
   gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
@@ -45533,8 +45530,8 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "  String message ;\n"
   "  message.appendCString (\"LEXICAL LOG:'\") ;\n"
   "  message.appendStringAsCLiteralCharConstant (mCurrentChar) ;\n"
-  "  message.appendCString (\"'\\n\") ;\n"
-  "  printMessage (message COMMA_THERE) ;\n"
+  "  message.appendCString (\"'\") ;\n"
+  "  printMessageLn (message COMMA_THERE) ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -45878,7 +45875,7 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "      message.appendString (inTag) ;\n"
   "      message.appendCString (\"'\") ;\n"
   "    }\n"
-  "    ggs_printMessage (message COMMA_HERE) ;\n"
+  "    ggs_printMessageLn (message COMMA_HERE) ;\n"
   "    mDebugDepthCounter += 1 ;\n"
   "  }\n"
   "}\n"
@@ -45906,7 +45903,7 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "    if (inValue.length () > 0) {\n"
   "      message.appendString (inValue) ;\n"
   "    }\n"
-  "    ggs_printMessage (message COMMA_HERE) ;\n"
+  "    ggs_printMessageLn (message COMMA_HERE) ;\n"
   "  }\n"
   "}\n"
   "\n"
@@ -46000,7 +45997,7 @@ const RegularFileWrapper gWrapperFile_162_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
- 33687, // Text length
+ 33691, // Text length
   gWrapperFileContent_162_libpmFileWrapper
 ) ;
 
@@ -48672,32 +48669,32 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "int32_t maxErrorCount (void) {\n"
-  "  int32_t result = (int32_t) gBuildOption_max_5F_errors.mValue ;\n"
+  "uint32_t maxErrorCount (void) {\n"
+  "  uint32_t result = gBuildOption_max_5F_errors.mValue ;\n"
   "  return (result == 0) \? INT32_MAX : result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "static int32_t mErrorTotalCount ;\n"
+  "static uint32_t gErrorTotalCount ;\n"
   "\n"
-  "int32_t totalErrorCount (void) {\n"
-  "  return mErrorTotalCount ;\n"
+  "uint32_t totalErrorCount (void) {\n"
+  "  return gErrorTotalCount ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "int32_t maxWarningCount (void) {\n"
-  "  int32_t result = (int32_t) gBuildOption_max_5F_warnings.mValue ;\n"
+  "uint32_t maxWarningCount (void) {\n"
+  "  uint32_t result = gBuildOption_max_5F_warnings.mValue ;\n"
   "  return (result == 0) \? INT32_MAX : result ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "static int32_t mTotalWarningCount ;\n"
+  "static uint32_t gTotalWarningCount ;\n"
   "\n"
-  "int32_t totalWarningCount (void) {\n"
-  "  return mTotalWarningCount ;\n"
+  "uint32_t totalWarningCount (void) {\n"
+  "  return gTotalWarningCount ;\n"
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
@@ -48786,12 +48783,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                           const String & inLexicalWarningMessage\n"
   "                           COMMA_LOCATION_ARGS) {\n"
   "//--- Increment warning count\n"
-  "  mTotalWarningCount += 1 ;\n"
+  "  gTotalWarningCount += 1 ;\n"
   "//--- Construct location warning message\n"
   "  String warningMessage ;\n"
   "//--- Add warning\n"
   "  warningMessage.appendCString (\"lexical warning #\") ;\n"
-  "  warningMessage.appendSigned (mTotalWarningCount) ;\n"
+  "  warningMessage.appendUnsigned (gTotalWarningCount) ;\n"
   "  warningMessage.appendCString (\": \") ;\n"
   "  warningMessage.appendString (inLexicalWarningMessage) ;\n"
   "  warningMessage.appendCString (\"\\n\") ;\n"
@@ -48813,11 +48810,11 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                         const String & inLexicalErrorMessage\n"
   "                         COMMA_LOCATION_ARGS) {\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Construct parsing error message\n"
   "  String errorMessage ;\n"
   "  errorMessage.appendCString (\"lexical error #\") ;\n"
-  "  errorMessage.appendSigned (mErrorTotalCount) ;\n"
+  "  errorMessage.appendUnsigned (gErrorTotalCount) ;\n"
   "  errorMessage.appendCString (\": \") ;\n"
   "  errorMessage.appendString (inLexicalErrorMessage) ;\n"
   "  errorMessage.appendCString (\"\\n\") ;\n"
@@ -48841,12 +48838,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                         const GenericUniqueArray <String> & inAcceptedTokenNames\n"
   "                         COMMA_LOCATION_ARGS) {\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String errorMessage ;\n"
   "//--- Construct parsing error message\n"
   "  errorMessage.appendCString (\"syntax error #\") ;\n"
-  "  errorMessage.appendSigned (mErrorTotalCount) ;\n"
+  "  errorMessage.appendUnsigned (gErrorTotalCount) ;\n"
   "  errorMessage.appendCString (\": found \") ;\n"
   "  errorMessage.appendString (inFoundTokenMessage) ;\n"
   "  errorMessage.appendCString (\", expected:\\n\") ;\n"
@@ -48880,7 +48877,7 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                         const String & inActualFoundClassErrorString\n"
   "                         COMMA_LOCATION_ARGS) {\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String errorMessage ;\n"
   "//--- Print extract error\n"
@@ -48929,12 +48926,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                            const String & inWarningMessage\n"
   "                            COMMA_LOCATION_ARGS) {\n"
   "//--- Increment warning count\n"
-  "  mTotalWarningCount += 1 ;\n"
+  "  gTotalWarningCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String warningMessage ;\n"
   "//--- Add warning\n"
   "  warningMessage.appendCString (\"semantic warning #\") ;\n"
-  "  warningMessage.appendSigned (mTotalWarningCount) ;\n"
+  "  warningMessage.appendUnsigned (gTotalWarningCount) ;\n"
   "  warningMessage.appendCString (\": \") ;\n"
   "  warningMessage.appendString (inWarningMessage) ;\n"
   "  warningMessage.appendCString (\"\\n\") ;\n"
@@ -48955,12 +48952,12 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                          COMMA_LOCATION_ARGS) {\n"
   "  const LocationInSource inEndErrorLocation = inIssue.mStartLocation ;\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String errorMessage ;\n"
   "//--- Print error\n"
   "  errorMessage.appendCString (\"semantic error #\") ;\n"
-  "  errorMessage.appendSigned (mErrorTotalCount) ;\n"
+  "  errorMessage.appendUnsigned (gErrorTotalCount) ;\n"
   "  errorMessage.appendCString (\": \") ;\n"
   "  String s = inErrorMessage.replacingStringByString (String (\"\\n\"), String (\"\\\\n\")) ;\n"
   "  errorMessage.appendString (inErrorMessage) ;\n"
@@ -48979,10 +48976,10 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                         const String & inRunTimeErrorMessage\n"
   "                         COMMA_LOCATION_ARGS) {\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String errorMessage = \"Run Time Error #\" ;\n"
-  "  errorMessage.appendSigned (mErrorTotalCount) ;\n"
+  "  errorMessage.appendUnsigned (gErrorTotalCount) ;\n"
   "  errorMessage.appendCString (\": \") ;\n"
   "  errorMessage.appendString (inRunTimeErrorMessage) ;\n"
   "  errorMessage.appendCString (\"\\n\") ;\n"
@@ -49000,10 +48997,10 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                           const String & inWarningMessage\n"
   "                           COMMA_LOCATION_ARGS) {\n"
   "//--- Increment warning count\n"
-  "  mTotalWarningCount += 1 ;\n"
+  "  gTotalWarningCount += 1 ;\n"
   "//--- Construct location error message\n"
   "  String warningMessage = \"Run Time Warning #\" ;\n"
-  "  warningMessage.appendSigned (mTotalWarningCount) ;\n"
+  "  warningMessage.appendUnsigned (gTotalWarningCount) ;\n"
   "  warningMessage.appendCString (\": \") ;\n"
   "  warningMessage.appendString (inWarningMessage) ;\n"
   "  warningMessage.appendCString (\"\\n\") ;\n"
@@ -49093,7 +49090,7 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "                     const char * inSourceFile,\n"
   "                     const int inSourceLine) {\n"
   "//--- Increment error count\n"
-  "  mErrorTotalCount += 1 ;\n"
+  "  gErrorTotalCount += 1 ;\n"
   "//--- Error message\n"
   "  String errorMessage = inErrorMessage ;\n"
   "  errorMessage.appendCString (\" in file '\") ;\n"
@@ -49305,8 +49302,8 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "//    Methods called for printing a message\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void ggs_printMessage (const String & inMessage\n"
-  "                       COMMA_LOCATION_ARGS) {\n"
+  "void ggs_printMessageLn (const String & inMessage\n"
+  "                         COMMA_LOCATION_ARGS) {\n"
   "  if (inMessage.length () > 0) {\n"
   "    if (!executionModeIsIndexing ()) {\n"
   "      String message = inMessage ;\n"
@@ -49315,6 +49312,27 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "      }\n"
   "      gCout.appendString (message) ;\n"
   "      gCout.flush () ;\n"
+  "    }\n"
+  "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+  "//      if (verboseOutput ()) {\n"
+  "        gCout.appendCString (\"[Displayed from file '\") ;\n"
+  "        gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;\n"
+  "        gCout.appendCString (\"' at line \") ;\n"
+  "        gCout.appendSigned (IN_SOURCE_LINE) ;\n"
+  "        gCout.appendCString (\"]\\n\") ;\n"
+  "        gCout.flush () ;\n"
+  "//      }\n"
+  "    #endif\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void ggs_printMessageNoLn (const String & inMessage\n"
+  "                           COMMA_LOCATION_ARGS) {\n"
+  "  if (inMessage.length () > 0) {\n"
+  "    if (!executionModeIsIndexing ()) {\n"
+  "      gCout.appendString (inMessage) ;\n"
   "    }\n"
   "    #ifndef DO_NOT_GENERATE_CHECKINGS\n"
   "//      if (verboseOutput ()) {\n"
@@ -49398,7 +49416,7 @@ const RegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
- 30799, // Text length
+ 31511, // Text length
   gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
@@ -49524,13 +49542,13 @@ const char * gWrapperFileContent_128_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "int32_t maxErrorCount (void) ;\n"
+  "uint32_t maxErrorCount (void) ;\n"
   "\n"
-  "int32_t totalErrorCount (void) ;\n"
+  "uint32_t totalErrorCount (void) ;\n"
   "\n"
-  "int32_t maxWarningCount (void) ;\n"
+  "uint32_t maxWarningCount (void) ;\n"
   "\n"
-  "int32_t totalWarningCount (void) ;\n"
+  "uint32_t totalWarningCount (void) ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -49625,8 +49643,13 @@ const char * gWrapperFileContent_128_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "void ggs_printMessage (const String & inMessage\n"
-  "                       COMMA_LOCATION_ARGS) ;\n"
+  "void ggs_printMessageNoLn (const String & inMessage\n"
+  "                           COMMA_LOCATION_ARGS) ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void ggs_printMessageLn (const String & inMessage\n"
+  "                         COMMA_LOCATION_ARGS) ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -49641,7 +49664,7 @@ const RegularFileWrapper gWrapperFile_128_libpmFileWrapper (
   "galgas-input-output.h",
   "h",
   true, // Text file
- 9607, // Text length
+ 9820, // Text length
   gWrapperFileContent_128_libpmFileWrapper
 ) ;
 
@@ -56009,6 +56032,95 @@ const DirectoryWrapper gWrapperDirectory_2_libpmFileWrapper (
   gWrapperAllDirectories_libpmFileWrapper_2
 ) ;
 
+//--- File 'strings/GALGAS_print.cpp'
+
+const char * gWrapperFileContent_9_libpmFileWrapper = 
+  "//\n"
+  "//  print.cpp\n"
+  "//  galgas-developer-v3\n"
+  "//\n"
+  "//  Created by Pierre Molinaro on 14/09/2023.\n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include \"GALGAS_print.h\"\n"
+  "#include \"Compiler.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include <iostream>\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void routine_println_3F_ (const GGS_string inString,\n"
+  "                          Compiler * inCompiler\n"
+  "                          COMMA_LOCATION_ARGS) {\n"
+  "  if (inString.isValid ()) {\n"
+  "    inCompiler->printMessageLn (inString.stringValue () + \"\\n\" COMMA_THERE) ;\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void routine_print_3F_ (const GGS_string inString,\n"
+  "                        Compiler * inCompiler\n"
+  "                        COMMA_LOCATION_ARGS) {\n"
+  "  if (inString.isValid ()) {\n"
+  "    inCompiler->printMessageNoLn (inString.stringValue () COMMA_THERE) ;\n"
+  "  }\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+   ;
+
+const RegularFileWrapper gWrapperFile_9_libpmFileWrapper (
+  "GALGAS_print.cpp",
+  "cpp",
+  true, // Text file
+ 1189, // Text length
+  gWrapperFileContent_9_libpmFileWrapper
+) ;
+
+//--- File 'strings/GALGAS_print.h'
+
+const char * gWrapperFileContent_8_libpmFileWrapper = 
+  "//\n"
+  "//  print.hpp\n"
+  "//  galgas-developer-v3\n"
+  "//\n"
+  "//  Created by Pierre Molinaro on 14/09/2023.\n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#pragma once\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include \"all-predefined-types.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void routine_println_3F_ (const GGS_string inString,\n"
+  "                          class Compiler * inCompiler\n"
+  "                          COMMA_LOCATION_ARGS) ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "void routine_print_3F_ (const GGS_string inString,\n"
+  "                        Compiler * inCompiler\n"
+  "                        COMMA_LOCATION_ARGS) ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+   ;
+
+const RegularFileWrapper gWrapperFile_8_libpmFileWrapper (
+  "GALGAS_print.h",
+  "h",
+  true, // Text file
+ 953, // Text length
+  gWrapperFileContent_8_libpmFileWrapper
+) ;
+
 //--- File 'strings/HTMLString.cpp'
 
 const char * gWrapperFileContent_2_libpmFileWrapper = 
@@ -57526,7 +57638,7 @@ const RegularFileWrapper gWrapperFile_4_libpmFileWrapper (
 
 //--- File 'strings/String-class.cpp'
 
-const char * gWrapperFileContent_7_libpmFileWrapper = 
+const char * gWrapperFileContent_6_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  String : an implementation of fully dynamic character string\n"
@@ -58288,12 +58400,12 @@ const char * gWrapperFileContent_7_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_7_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_6_libpmFileWrapper (
   "String-class.cpp",
   "cpp",
   true, // Text file
  27714, // Text length
-  gWrapperFileContent_7_libpmFileWrapper
+  gWrapperFileContent_6_libpmFileWrapper
 ) ;
 
 //--- File 'strings/String-class.h'
@@ -58643,98 +58755,9 @@ const RegularFileWrapper gWrapperFile_10_libpmFileWrapper (
   gWrapperFileContent_10_libpmFileWrapper
 ) ;
 
-//--- File 'strings/print.cpp'
-
-const char * gWrapperFileContent_6_libpmFileWrapper = 
-  "//\n"
-  "//  print.cpp\n"
-  "//  galgas-developer-v3\n"
-  "//\n"
-  "//  Created by Pierre Molinaro on 14/09/2023.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"print.h\"\n"
-  "#include \"Compiler.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include <iostream>\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void routine_println_3F_ (const GGS_string inString,\n"
-  "                          Compiler * inCompiler\n"
-  "                          COMMA_LOCATION_ARGS) {\n"
-  "  if (inString.isValid ()) {\n"
-  "    inCompiler->printMessage (inString.stringValue () + \"\\n\" COMMA_THERE) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void routine_print_3F_ (const GGS_string inString,\n"
-  "                        Compiler * inCompiler\n"
-  "                        COMMA_LOCATION_ARGS) {\n"
-  "  if (inString.isValid ()) {\n"
-  "    inCompiler->printMessage (inString.stringValue () COMMA_THERE) ;\n"
-  "  }\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const RegularFileWrapper gWrapperFile_6_libpmFileWrapper (
-  "print.cpp",
-  "cpp",
-  true, // Text file
- 1176, // Text length
-  gWrapperFileContent_6_libpmFileWrapper
-) ;
-
-//--- File 'strings/print.h'
-
-const char * gWrapperFileContent_9_libpmFileWrapper = 
-  "//\n"
-  "//  print.hpp\n"
-  "//  galgas-developer-v3\n"
-  "//\n"
-  "//  Created by Pierre Molinaro on 14/09/2023.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"all-predefined-types.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void routine_println_3F_ (const GGS_string inString,\n"
-  "                          class Compiler * inCompiler\n"
-  "                          COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "void routine_print_3F_ (const GGS_string inString,\n"
-  "                        Compiler * inCompiler\n"
-  "                        COMMA_LOCATION_ARGS) ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const RegularFileWrapper gWrapperFile_9_libpmFileWrapper (
-  "print.h",
-  "h",
-  true, // Text file
- 953, // Text length
-  gWrapperFileContent_9_libpmFileWrapper
-) ;
-
 //--- File 'strings/string_encodings.h'
 
-const char * gWrapperFileContent_8_libpmFileWrapper = 
+const char * gWrapperFileContent_7_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  string_encodings: enum that defines all handled string encodings                             \n"
@@ -58787,12 +58810,12 @@ const char * gWrapperFileContent_8_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_8_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_7_libpmFileWrapper (
   "string_encodings.h",
   "h",
   true, // Text file
  1936, // Text length
-  gWrapperFileContent_8_libpmFileWrapper
+  gWrapperFileContent_7_libpmFileWrapper
 ) ;
 
 //--- File 'strings/unicode-data.h'
@@ -204456,14 +204479,14 @@ const RegularFileWrapper gWrapperFile_1_libpmFileWrapper (
 //--- All files of 'strings' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_1 [12] = {
+  & gWrapperFile_9_libpmFileWrapper,
+  & gWrapperFile_8_libpmFileWrapper,
   & gWrapperFile_2_libpmFileWrapper,
   & gWrapperFile_0_libpmFileWrapper,
   & gWrapperFile_4_libpmFileWrapper,
-  & gWrapperFile_7_libpmFileWrapper,
-  & gWrapperFile_10_libpmFileWrapper,
   & gWrapperFile_6_libpmFileWrapper,
-  & gWrapperFile_9_libpmFileWrapper,
-  & gWrapperFile_8_libpmFileWrapper,
+  & gWrapperFile_10_libpmFileWrapper,
+  & gWrapperFile_7_libpmFileWrapper,
   & gWrapperFile_5_libpmFileWrapper,
   & gWrapperFile_3_libpmFileWrapper,
   & gWrapperFile_1_libpmFileWrapper,

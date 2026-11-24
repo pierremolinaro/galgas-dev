@@ -26,34 +26,14 @@ GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-/* GGS_bool GGS_application::class_func_runningOnUnix (UNUSED_LOCATION_ARGS) {
-  #if COMPILE_FOR_WINDOWS == 1
-    return GGS_bool (false) ;
-  #else
-    return GGS_bool (true) ;
-  #endif
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_bool GGS_application::class_func_runningOnWindows (UNUSED_LOCATION_ARGS) {
-  #if COMPILE_FOR_WINDOWS == 1
-    return GGS_bool (true) ;
-  #else
-    return GGS_bool (false) ;
-  #endif
-} */
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_u_33__32_ GGS_application::class_func_errorCount (UNUSED_LOCATION_ARGS) {
-  return GGS_u_33__32_ (uint32_t (totalErrorCount ())) ;
+  return GGS_u_33__32_ (totalErrorCount ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_u_33__32_ GGS_application::class_func_warningCount (UNUSED_LOCATION_ARGS) {
-  return GGS_u_33__32_ (uint32_t (totalWarningCount ())) ;
+  return GGS_u_33__32_ (totalWarningCount ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

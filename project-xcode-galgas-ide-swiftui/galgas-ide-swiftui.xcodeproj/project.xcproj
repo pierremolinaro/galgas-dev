@@ -788,6 +788,14 @@
             },
             { "path": "GALGAS_GenericDictionary.h" },
             { "path": "GALGAS_GenericMapRoot.h" },
+            { "path": "../strings/GALGAS_print.h" },
+            {
+              "path": "../strings/GALGAS_print.cpp",
+              "target-membership": [
+                "galgas4/compile-sources",
+                "galgas4-debug/compile-sources",
+              ],
+            },
             { "path": "GALGAS_TypeDescriptor.h" },
             {
               "path": "GALGAS_TypeDescriptor.cpp",
@@ -1051,14 +1059,6 @@
             { "path": "HTMLString.h" },
             {
               "path": "HTMLString.cpp",
-              "target-membership": [
-                "galgas4/compile-sources",
-                "galgas4-debug/compile-sources",
-              ],
-            },
-            { "path": "print.h" },
-            {
-              "path": "print.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",

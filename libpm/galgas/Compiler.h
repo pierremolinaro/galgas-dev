@@ -115,8 +115,10 @@ class Compiler : public SharedObject {
   public: void resetAndLoadSourceFromText (const SourceTextInString & inSourceText) ;
 
 //--- Print a message
-  public: void printMessage (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;
-  public: void printMessage (const String & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessageNoLn (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessageNoLn (const String & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessageLn (const GGS_string & inMessage COMMA_LOCATION_ARGS) ;
+  public: void printMessageLn (const String & inMessage COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic error
   public: void semanticErrorAtLocation (const GGS_location & inErrorLocation,

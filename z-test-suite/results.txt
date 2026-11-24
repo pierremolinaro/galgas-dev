@@ -151,35 +151,32 @@ Delete Test Done
   index 2 : b
   index 3 : a
 *************************************** begin of struct logging
-<struct @structTest:<@string:"az">, <@uint:34>>
+<struct @structTest:<@string:"az">, <@u32:34>>
 *************************************** begin of map
 <map @aMap (1 object):
 |-at 0: key 'g'
-| | value:<@uint:37>>
+| | value:<@u32:37>>
 <map @aMap (1 object):
 |-at 0: key 'g'
-| | value:<@uint:56>>
+| | value:<@u32:56>>
 <map @aMap (0 object):
 |  override #1 (1 object):
 |-at 0: key 'g'
-| | value:<@uint:56>>
-<@uint:56>
+| | value:<@u32:56>>
+<@u32:56>
 <map @aMap (1 object):
 |-at 0: key 'g'
-| | value:<@uint:11>
+| | value:<@u32:11>
 |  override #1 (1 object):
 |-at 0: key 'g'
-| | value:<@uint:56>>
-<@uint:11>
+| | value:<@u32:56>>
+<@u32:11>
 <map @aMap (1 object):
 |-at 0: key 'g'
-| | value:<@uint:56>>
-levelCount
-<@uint:1>
-hasKeyAtLevel
-<@bool:true>
-hasKeyAtLevel
-<@bool:false>
+| | value:<@u32:56>>
+levelCount<@u32:1>
+hasKeyAtLevel<@bool:true>
+hasKeyAtLevel<@bool:false>
 <@location:nowhere:1:1>
   key 'A', value: 1
   key 'B', value: 2
@@ -232,33 +229,30 @@ hasKeyAtLevel
   key 'y', value: 49
   key 'z', value: 50
 *************************************** begin of function test
-<@uint:5>
-<@uint:5>
+<@u32:5>
+<@u32:5>
 *************************************** begin of extension reader test
 <@string:"-3-4-4">
 Carré de 9: 81
 *************************************** begin of extension procs
 2
 *************************************** begin of extension setter test
-<@uint:3>
-<@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
+<@u32:3>
+<@TestExtensionSetter:[@TestExtensionSetter:<@u32:3>, <@string:"Hello World">]>
 Appel @inheritedClassForTypeCastInSetterCall unSetter
 *************************************** begin of mutating proc test
 v = 179
 v = 183
 v = 752
 *************************************** begin of type extension test
-Square of 7
+Square of 7<@u64:49>
+Sum 1 + 2 + 3 + 4<@u32:10>
+Hello !<@string:"Hello !">
 <@u64:49>
-Sum 1 + 2 + 3 + 4
-<@uint:10>
-Hello !
-<@string:"Hello !">
-<@u64:49>
-<@uint:10>
+<@u32:10>
 <@string:"Hello !">
 <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-<array [@uint], 5 objects>
+<array [@u_33__32_], 5 objects>
 *************************************** begin of string test
 <@string:"echo accentué">
 <@string:"accentué
@@ -268,10 +262,8 @@ Hello !
 <@string:"Range [4, 3] reverse enumeration: 6 5 4">
 *************************************** begin of extern type test
 <@complex:1, -1>
-real
-<@f64:1>
-imaginary
-<@f64:-1>
+real<@f64:1>
+imaginary<@f64:-1>
 *************************************** begin of @bigint test
 --- construction
 0

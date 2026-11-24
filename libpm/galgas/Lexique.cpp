@@ -406,8 +406,8 @@ void Lexique::lexicalLog (LOCATION_ARGS) {
   String message ;
   message.appendCString ("LEXICAL LOG:'") ;
   message.appendStringAsCLiteralCharConstant (mCurrentChar) ;
-  message.appendCString ("'\n") ;
-  printMessage (message COMMA_THERE) ;
+  message.appendCString ("'") ;
+  printMessageLn (message COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -751,7 +751,7 @@ void Lexique::enterProduction (const char * inProductionName,
       message.appendString (inTag) ;
       message.appendCString ("'") ;
     }
-    ggs_printMessage (message COMMA_HERE) ;
+    ggs_printMessageLn (message COMMA_HERE) ;
     mDebugDepthCounter += 1 ;
   }
 }
@@ -779,7 +779,7 @@ void Lexique::didParseTerminal (const char * inTerminalName,
     if (inValue.length () > 0) {
       message.appendString (inValue) ;
     }
-    ggs_printMessage (message COMMA_HERE) ;
+    ggs_printMessageLn (message COMMA_HERE) ;
   }
 }
 

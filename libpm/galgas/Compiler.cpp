@@ -204,18 +204,34 @@ void Compiler::onTheFlySemanticWarning (const String & inWarningMessage
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::printMessage (const GGS_string & inMessage
-                             COMMA_LOCATION_ARGS) {
+void Compiler::printMessageNoLn (const GGS_string & inMessage
+                                 COMMA_LOCATION_ARGS) {
   if (inMessage.isValid ()) {
-    ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;
+    ggs_printMessageNoLn (inMessage.stringValue () COMMA_THERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void Compiler::printMessage (const String & inMessage
+void Compiler::printMessageNoLn (const String & inMessage
+                                 COMMA_LOCATION_ARGS) {
+  ggs_printMessageNoLn (inMessage COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void Compiler::printMessageLn (const GGS_string & inMessage
                              COMMA_LOCATION_ARGS) {
-  ggs_printMessage (inMessage COMMA_THERE) ;
+  if (inMessage.isValid ()) {
+    ggs_printMessageLn (inMessage.stringValue () COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void Compiler::printMessageLn (const String & inMessage
+                             COMMA_LOCATION_ARGS) {
+  ggs_printMessageLn (inMessage COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

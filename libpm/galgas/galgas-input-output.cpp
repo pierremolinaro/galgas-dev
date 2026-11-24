@@ -67,32 +67,32 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t maxErrorCount (void) {
-  int32_t result = (int32_t) gBuildOption_max_5F_errors.mValue ;
+uint32_t maxErrorCount (void) {
+  uint32_t result = gBuildOption_max_5F_errors.mValue ;
   return (result == 0) ? INT32_MAX : result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static int32_t mErrorTotalCount ;
+static uint32_t gErrorTotalCount ;
 
-int32_t totalErrorCount (void) {
-  return mErrorTotalCount ;
+uint32_t totalErrorCount (void) {
+  return gErrorTotalCount ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-int32_t maxWarningCount (void) {
-  int32_t result = (int32_t) gBuildOption_max_5F_warnings.mValue ;
+uint32_t maxWarningCount (void) {
+  uint32_t result = gBuildOption_max_5F_warnings.mValue ;
   return (result == 0) ? INT32_MAX : result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-static int32_t mTotalWarningCount ;
+static uint32_t gTotalWarningCount ;
 
-int32_t totalWarningCount (void) {
-  return mTotalWarningCount ;
+uint32_t totalWarningCount (void) {
+  return gTotalWarningCount ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -181,12 +181,12 @@ void signalLexicalWarning (Compiler * inCompiler,
                            const String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount += 1 ;
+  gTotalWarningCount += 1 ;
 //--- Construct location warning message
   String warningMessage ;
 //--- Add warning
   warningMessage.appendCString ("lexical warning #") ;
-  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendUnsigned (gTotalWarningCount) ;
   warningMessage.appendCString (": ") ;
   warningMessage.appendString (inLexicalWarningMessage) ;
   warningMessage.appendCString ("\n") ;
@@ -208,11 +208,11 @@ void signalLexicalError (Compiler * inCompiler,
                          const String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Construct parsing error message
   String errorMessage ;
   errorMessage.appendCString ("lexical error #") ;
-  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendUnsigned (gErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
   errorMessage.appendString (inLexicalErrorMessage) ;
   errorMessage.appendCString ("\n") ;
@@ -236,12 +236,12 @@ void signalParsingError (Compiler * inCompiler,
                          const GenericUniqueArray <String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Construct parsing error message
   errorMessage.appendCString ("syntax error #") ;
-  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendUnsigned (gErrorTotalCount) ;
   errorMessage.appendCString (": found ") ;
   errorMessage.appendString (inFoundTokenMessage) ;
   errorMessage.appendCString (", expected:\n") ;
@@ -275,7 +275,7 @@ void signalExtractError (Compiler * inCompiler,
                          const String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Print extract error
@@ -324,12 +324,12 @@ void signalSemanticWarning (Compiler * inCompiler,
                             const String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount += 1 ;
+  gTotalWarningCount += 1 ;
 //--- Construct location error message
   String warningMessage ;
 //--- Add warning
   warningMessage.appendCString ("semantic warning #") ;
-  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendUnsigned (gTotalWarningCount) ;
   warningMessage.appendCString (": ") ;
   warningMessage.appendString (inWarningMessage) ;
   warningMessage.appendCString ("\n") ;
@@ -350,12 +350,12 @@ void signalSemanticError (Compiler * inCompiler,
                           COMMA_LOCATION_ARGS) {
   const LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage ;
 //--- Print error
   errorMessage.appendCString ("semantic error #") ;
-  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendUnsigned (gErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
   String s = inErrorMessage.replacingStringByString (String ("\n"), String ("\\n")) ;
   errorMessage.appendString (inErrorMessage) ;
@@ -374,10 +374,10 @@ void signalRunTimeError (Compiler * inCompiler,
                          const String & inRunTimeErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Construct location error message
   String errorMessage = "Run Time Error #" ;
-  errorMessage.appendSigned (mErrorTotalCount) ;
+  errorMessage.appendUnsigned (gErrorTotalCount) ;
   errorMessage.appendCString (": ") ;
   errorMessage.appendString (inRunTimeErrorMessage) ;
   errorMessage.appendCString ("\n") ;
@@ -395,10 +395,10 @@ void signalRunTimeWarning (Compiler * inCompiler,
                            const String & inWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mTotalWarningCount += 1 ;
+  gTotalWarningCount += 1 ;
 //--- Construct location error message
   String warningMessage = "Run Time Warning #" ;
-  warningMessage.appendSigned (mTotalWarningCount) ;
+  warningMessage.appendUnsigned (gTotalWarningCount) ;
   warningMessage.appendCString (": ") ;
   warningMessage.appendString (inWarningMessage) ;
   warningMessage.appendCString ("\n") ;
@@ -488,7 +488,7 @@ void ggs_fatalError (const String & inErrorMessage,
                      const char * inSourceFile,
                      const int inSourceLine) {
 //--- Increment error count
-  mErrorTotalCount += 1 ;
+  gErrorTotalCount += 1 ;
 //--- Error message
   String errorMessage = inErrorMessage ;
   errorMessage.appendCString (" in file '") ;
@@ -700,8 +700,8 @@ void ggs_printFileCreationSuccess (const String & inMessage) {
 //    Methods called for printing a message
 //--------------------------------------------------------------------------------------------------
 
-void ggs_printMessage (const String & inMessage
-                       COMMA_LOCATION_ARGS) {
+void ggs_printMessageLn (const String & inMessage
+                         COMMA_LOCATION_ARGS) {
   if (inMessage.length () > 0) {
     if (!executionModeIsIndexing ()) {
       String message = inMessage ;
@@ -710,6 +710,27 @@ void ggs_printMessage (const String & inMessage
       }
       gCout.appendString (message) ;
       gCout.flush () ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+//      if (verboseOutput ()) {
+        gCout.appendCString ("[Displayed from file '") ;
+        gCout.appendString (String (IN_SOURCE_FILE).lastPathComponent ()) ;
+        gCout.appendCString ("' at line ") ;
+        gCout.appendSigned (IN_SOURCE_LINE) ;
+        gCout.appendCString ("]\n") ;
+        gCout.flush () ;
+//      }
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void ggs_printMessageNoLn (const String & inMessage
+                           COMMA_LOCATION_ARGS) {
+  if (inMessage.length () > 0) {
+    if (!executionModeIsIndexing ()) {
+      gCout.appendString (inMessage) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
 //      if (verboseOutput ()) {

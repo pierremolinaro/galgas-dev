@@ -787,6 +787,8 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "galgas-input-output.h",
         "GALGAS_TypeDescriptor.cpp",
         "GALGAS_TypeDescriptor.h",
+        "GALGAS_print.cpp",
+        "GALGAS_print.h",
         "IssueWithFixIt.cpp",
         "IssueWithFixIt.h",
         "Lexique-parsing.cpp",
@@ -874,9 +876,7 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "string_encodings.h",
         "unicode-data.h",
         "utf32.cpp",
-        "utf32.h",
-        "print.cpp",
-        "print.h"
+        "utf32.h"
       ],
       !?cFileRefs:buildCFileRefListForTool,
       !?cppFileRefs:buildCppFileRefListForTool,

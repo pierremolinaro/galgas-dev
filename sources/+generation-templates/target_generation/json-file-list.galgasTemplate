@@ -47,7 +47,7 @@ end
     "String-class-getters.cpp",
     "String-class.cpp",
     "HTMLString.cpp",
-    "print.cpp",
+    "GALGAS_print.cpp",
     "Timer.cpp",
     "DateTime.cpp",
     "PrologueEpilogue.cpp",

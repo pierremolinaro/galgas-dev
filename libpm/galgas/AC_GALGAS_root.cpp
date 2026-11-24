@@ -16,8 +16,7 @@ void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
   s.appendString (inMessage) ;
   s.appendCString (": ") ;
   description (s, 0) ;
-  s.appendCString ("\n") ;
-  ggs_printMessage (s COMMA_THERE) ;
+  ggs_printMessageLn (s COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------

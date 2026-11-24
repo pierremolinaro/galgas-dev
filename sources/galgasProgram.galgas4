@@ -163,9 +163,6 @@ private proc compileProject (let @lstring inProjectSourceFilePath,
     !buildOptionValueName: "buildOptionValue"
   )
 //--- Parse predefined type definitions
-//  grammar galgas4Grammar (!?declarationAST) on
-//    filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
-//  : "GALGAS predefined types"
   grammar galgas4Grammar (!?declarationAST) on
     @typeGenerationTemplate.contents ().textFileContentsAtPath ("galgas-predefined-entities.txt")
   : "GALGAS predefined types"
@@ -342,6 +339,19 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
   for (name, comment, index) in inProjectSettings.lexicalStyleMap do
     sortedLexicalStyleArray ++= @(name.string, comment.string, index)
   end
+//----------------------------------------------------------------- find last predefined type index
+  var @u32 lastPredefinedTypeIndex = inSemanticDeclarationSortedListForGeneration.count
+  var looping = true
+  loop while lastPredefinedTypeIndex > 0, looping do
+    lastPredefinedTypeIndex -= 1
+    let element = inSemanticDeclarationSortedListForGeneration [lastPredefinedTypeIndex]
+    if element.isPredefined then
+      looping = false
+    end 
+  end
+  print (lastPredefinedTypeIndex)
+  print (" --- ")
+  println (inSemanticDeclarationSortedListForGeneration.count)
 //--------------------------------- Generate semantic files
 //  message "*** Generate semantic\n" ;
   var [@string] toolCppFileList = @()
