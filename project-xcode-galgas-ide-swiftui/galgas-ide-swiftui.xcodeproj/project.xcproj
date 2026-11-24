@@ -770,9 +770,9 @@
                 "galgas4-debug/compile-sources",
               ],
             },
-            { "path": "../strings/GALGAS_print.h" },
+            { "path": "GALGAS_print.h" },
             {
-              "path": "../strings/GALGAS_print.cpp",
+              "path": "GALGAS_print.cpp",
               "target-membership": [
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",

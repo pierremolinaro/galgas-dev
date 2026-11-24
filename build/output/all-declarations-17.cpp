@@ -1674,10 +1674,10 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       temp_34.plusPlusAssignOperation (GGS_string ("filewrapper-utilities.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 783)) ;
       temp_34.plusPlusAssignOperation (GGS_string ("galgas-input-output.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 784)) ;
       temp_34.plusPlusAssignOperation (GGS_string ("galgas-input-output.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 785)) ;
-      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_TypeDescriptor.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 786)) ;
-      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_TypeDescriptor.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 787)) ;
-      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_print.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 788)) ;
-      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_print.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 789)) ;
+      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_print.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 786)) ;
+      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_print.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 787)) ;
+      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_TypeDescriptor.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 788)) ;
+      temp_34.plusPlusAssignOperation (GGS_string ("GALGAS_TypeDescriptor.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 789)) ;
       temp_34.plusPlusAssignOperation (GGS_string ("IssueWithFixIt.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 790)) ;
       temp_34.plusPlusAssignOperation (GGS_string ("IssueWithFixIt.h")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 791)) ;
       temp_34.plusPlusAssignOperation (GGS_string ("Lexique-parsing.cpp")  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 792)) ;
