@@ -318,7 +318,7 @@ final class @subcriptReadAccessExpressionForGeneration : @semanticExpressionForG
       !?subcriptArgumentList.append (actualArgOperand)
     end
   //--- Generate
-    outCppExpression = operand + ".readSubcript_"
+    outCppExpression = operand + ".readSubscript_"
     outCppExpression += self.subcriptInvocationName.identifierRepresentation
     outCppExpression += " ("
     for operand in subcriptArgumentList do

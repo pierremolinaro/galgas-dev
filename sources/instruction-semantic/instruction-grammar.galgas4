@@ -114,7 +114,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let @lstring grammarComponentName) indexing (grammarComponentReference)
     let @lstring labelName
     select
-      labelName = @lstring ("", .here)
+      labelName = "".here
     or
       $label$
       $identifier$ (?labelName)

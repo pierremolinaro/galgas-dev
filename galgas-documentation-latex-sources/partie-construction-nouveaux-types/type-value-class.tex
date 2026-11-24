@@ -26,7 +26,7 @@ Voici différents exemples de déclaration de classes :
 
 \begin{galgas4}
 abstract valueclass @A {
-  @uint mA
+  @u32 mA
 }
 valueclass @B : @A {
   @string mB
@@ -63,7 +63,7 @@ Une classe déclarée par \ggsq=valueclass= a une \emph{sémantique de valeur}, 
 
 \begin{galgas4}
 valueclass @classeSemantiqueDeValeur {
-  @uint propriété
+  @u32 propriété
 }
 \end{galgas4}
 
@@ -146,19 +146,19 @@ Par défaut, la lecture d'une propriété est activée par la définition implic
 
 \begin{galgas4}
 valueclass @C {
-  @uint prop
+  @u32 prop
 }
 \end{galgas4}
 
 Et pour une variable \ggsq+c+ de type \ggsq+@C+, on peut écrire~:
 
 \begin{galgas4}
-@uint v = [c prop]
+@u32 v = [c prop]
 \end{galgas4}
 
 À partir de la version 3.3.0, il est possible d'utiliser la notation pointée~:
 \begin{galgas4}
-@uint v = c.prop
+@u32 v = c.prop
 \end{galgas4}
 
 Si la propriété a été déclarée \ggsq+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
@@ -176,7 +176,7 @@ Par défaut, une propriété est publique et un \emph{setter} est engendré impl
 
 \begin{galgas4}
 valueclass @C {
-  @uint prop
+  @u32 prop
 }
 \end{galgas4}
 
@@ -230,46 +230,6 @@ L'affectation polymorphique inverse (qui consisterait à écrire \ggsq+b = a+) e
 Il y a trois constructions qui permettent d'effectuer cette opération :
 \begin{itemize}
   \item l'expression de conversion polymorphique inverse (\refSubsectionPage{expConversionPolymorphiqueInverse}) ;
-  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}) ;
-  \item l'instruction \ggsq+cast+ (\refSectionPage{instructionCast}).
+  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}).
 \end{itemize}
-
-%Pour effectuer ponctuellement une affectation polymorphique inverse, on écrit (les parenthèses sont obligatoires) :
-%
-%\begin{galgas4}
-%@T resultat = (cast expression : @T) ;
-%\end{galgas4}
-%
-%Si le type dynamique de l'\ggsq+expression+ est \ggsq+@T+ ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \ggsq+@T+ contenant la valeur de \ggsq+expression+. Dans le cas contraire, un message d'erreur est affiché, et la variable \ggsq+resultat+ est non construite.
-%
-%L'exécution échoue donc avec émission de message d'erreur si la conversion n'est pas possible.
-%
-%
-%Grâce à l'\emph{expression de test du type dynamique}, il est possible de tester si une conversion est possible. On peut donc écrire :
-%
-%\begin{galgas4}
-%if (expression is @B) then
-%  const @B variable = (cast expression : @B) ;
-%  ...
-%elsif (expression is @C) then
-%  const @C variable = (cast expression : @C) ;
-%  ...
-%else
-%  message "conversion impossible" ;
-%end if ;
-%\end{galgas4}
-%
-%L'instruction \ggsq+cast+ permet simplement d'exprimer de manière plus élégante une série de test de conversion. La forme équivalent à l'instruction \ggsq+if+ précédente est :
-%
-%\begin{galgas4}
-%cast expression
-%when >= @B variable :
-%  ...
-%when >= @C variable :
-%  ...
-%else
-%  message "conversion impossible" ;
-%end cast ;
-%\end{galgas4}
-
 

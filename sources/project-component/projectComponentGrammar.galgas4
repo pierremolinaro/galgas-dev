@@ -59,6 +59,8 @@ syntax projectComponentSyntax : projectComponentScanner {
   //---
     boolBuildOptionArray ++= @("display_help".here, @lchar ('\0', .here), "help".here, "Display help".here)
   //---
+    boolBuildOptionArray ++= @("quiet".here, @lchar ('q', .here), "quiet".here, "Quiet output".here)
+  //---
     stringBuildOptionArray ++= @(
       "emit_issue_json_file".here,
       @lchar ('\0', .here),

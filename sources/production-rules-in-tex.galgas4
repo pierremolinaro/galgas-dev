@@ -291,7 +291,7 @@ mutating proc [@row].appendRow (
   outNodeName = "p" + inRow + "-" + cols.count
   cols ++= @(outNodeName, inNodeDefinition)
 //--- Set new row
-  !?self.set (@(cols), !at: inRow)
+  self [inRow] = @(cols)
 }
 
 //--------------------------------------------------------------------------------------------------

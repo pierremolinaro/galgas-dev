@@ -405,7 +405,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
         cppVarNameList ++= cppVarName
       end
       cppVarNameList ++= sourceVar
-      ioGeneratedCode += self.mTargetCppName + ".writeSubcript_"
+      ioGeneratedCode += self.mTargetCppName + ".writeSubscript_"
       ioGeneratedCode += subcriptSignature.identifierRepresentation
       ioGeneratedCode += " ("
       for cppVar in cppVarNameList do

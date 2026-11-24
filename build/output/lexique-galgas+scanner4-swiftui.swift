@@ -1431,7 +1431,7 @@ func galgasScanner4_lexiqueIdentifier () -> String {
 
 func galgasScanner4_styleNameFor (styleIndex inIndex : UInt8) -> String {
   let kStyleArray : [String] = [
-    "defaultStyle", // 0
+    "", // 0 (default style is denoted by an empty string)
   ]
   return kStyleArray [Int (inIndex)]
 }

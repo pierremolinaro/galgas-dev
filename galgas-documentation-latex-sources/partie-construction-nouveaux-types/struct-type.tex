@@ -13,14 +13,14 @@ Le mot-clé \ggsq!struct! permet de définir des types de structure. Un objet de
 
 \begin{galgas4}
 struct @MaStructure {
-  public var @uint propriété
+  public var @u32 propriété
 }
 \end{galgas4}
 
 Il est possible d'associer une valeur initiale à la déclaration d'une propriété~:
 \begin{galgas4}
 struct @MaStructure2 {
-  public var @uint propriété = 9
+  public var @u32 propriété = 9
 }
 \end{galgas4}
 
@@ -53,7 +53,7 @@ L'appel de l'initialisateur synthétisé comprend une valeur par propriété non
 Par exemple, pour la déclaration~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 }
 \end{galgas4}
@@ -87,7 +87,7 @@ var @maStructure aVariable = .init {!123 !true}
 Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1 %initArgLabel
+  public var @u32 propriété1 %initArgLabel
   public var @bool propriété2
 }
 \end{galgas4}
@@ -108,7 +108,7 @@ Si la propriété est initialisée, alors l'attribut \ggsq=%initArgLabel= est in
 Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1 = 1
+  public var @u32 propriété1 = 1
   public var @bool propriété2 = 2
 }
 \end{galgas4}
@@ -151,10 +151,10 @@ Un initialisateur peut être déclaré à l'intérieur de la déclaration de str
 
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 
-  init (let @uint inV1, let @uint inV2) {
+  init (let @u32 inV1, let @u32 inV2) {
     self.propriété1 = inV1
     self.propriété2 = inV2
   }
@@ -164,7 +164,7 @@ struct @maStructure {
 Et comme extension :
 
 \begin{galgas4}
-extension @maStructure.init (let @uint inV) {
+extension @maStructure.init (let @u32 inV) {
   self.propriété1 = inV
   self.propriété2 = inV
 }
@@ -172,7 +172,7 @@ extension @maStructure.init (let @uint inV) {
 
 On peut déclarer autant d'initialisateurs que l'on souhaite, du moment qu'ils se distinguent par leur nombre d'arguments et leurs étiquettes d'arguments. Par exemple, si on veut déclarer un autre initialisateur avec un seul argument, il faut ajouter, pour le distinguer du précédent, une étiquette à l'argument~:
 \begin{galgas4}
-extension @maStructure.init (?plusUn: let @uint inV) {
+extension @maStructure.init (?plusUn: let @u32 inV) {
   self.propriété1 = inV + 1
   self.propriété2 = inV + 1
 }
@@ -191,17 +191,17 @@ La liste d'instructions d'un initialisateur est divisée en deux parties séquen
 Par exemple~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 
-  init (let @uint inV1, let @uint inV2) {
+  init (let @u32 inV1, let @u32 inV2) {
     self.propriété1 = inV1
     self.propriété2 = inV2
   //--- À partir d'ici, l'objet courant est complètement initialisé
     self.propriété1 += self.somme ()
   }
 
-  func somme () -> @uint {
+  func somme () -> @u32 {
     result = self.propriété1 + self.propriété2
   }
 }
@@ -217,7 +217,7 @@ struct @maStructure {
 %Par exemple, pour la déclaration~:
 %\begin{galgas4}
 %struct @maStructure {
-%  public var @uint propriété1
+%  public var @u32 propriété1
 %  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
 %}
 %\end{galgas4}
@@ -235,7 +235,7 @@ struct @maStructure {
 %Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggsq=new=. Par exemple, si on déclare~:
 %\begin{galgas4}
 %struct @maStructure {
-%  public var @uint propriété1 %initArgLabel
+%  public var @u32 propriété1 %initArgLabel
 %  @bool propriété2 // Syntaxe obsolète, autorisée en GALGAS 3
 %}
 %\end{galgas4}
@@ -248,7 +248,7 @@ struct @maStructure {
 
 %\subsection{Constructeur \texttt{default}}
 %
-%Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggsq!@maStructure! définie au dessus~: \ggsq!@uint! accepte le constructeur par défaut (initialisation à \ggsq!0!), ainsi que \ggsq!@bool! (initialisation à \ggsq!false!). Donc~:
+%Si chacune des propriétés accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggsq!@maStructure! définie au dessus~: \ggsq!@u32! accepte le constructeur par défaut (initialisation à \ggsq!0!), ainsi que \ggsq!@bool! (initialisation à \ggsq!false!). Donc~:
 %\begin{galgas4}
 %var aVariable = @maStructure.default
 %\end{galgas4}
@@ -293,7 +293,7 @@ Pour la rendre égalable (on peut alors tester l'égalité \ggsq!==! et l'inéga
 
 \begin{galgas4}
 struct @maStructure %equatable {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 }
 \end{galgas4}
@@ -311,7 +311,7 @@ Pour rendre une structure comparable (on peut alors utiliser les opérateurs \gg
 
 \begin{galgas4}
 struct @maStructure %comparable {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 }
 \end{galgas4}
@@ -377,8 +377,8 @@ struct @ldouble %equatable {
 \subsectionTypePredefiniLabelIndex{lsint}
 
 \begin{galgas4}
-struct @lsint %equatable {
-  public var @sint sint
+struct @ls32 %equatable {
+  public var @s32 sint
   public var @location location
 }
 \end{galgas4}
@@ -393,8 +393,8 @@ struct @lsint %equatable {
 \subsectionTypePredefiniLabelIndex{lsint64}
 
 \begin{galgas4}
-struct @lsint64 %equatable {
-  public var @sint64 sint64
+struct @ls3264 %equatable {
+  public var @s64 sint64
   public var @location location
 }
 \end{galgas4}
@@ -423,8 +423,8 @@ struct @lstring %equatable {
 \subsectionTypePredefiniLabelIndex{luint}
 
 \begin{galgas4}
-struct @luint %equatable {
-  public var @uint uint
+struct @lu32 %equatable {
+  public var @u32 uint
   public var @location location
 }
 \end{galgas4}
@@ -437,8 +437,8 @@ struct @luint %equatable {
 
 
 \begin{galgas4}
-struct @luint64 %equatable {
-  public var @uint64 uint64
+struct @lu3264 %equatable {
+  public var @u64 uint64
   public var @location location
 }
 \end{galgas4}
@@ -446,18 +446,18 @@ struct @luint64 %equatable {
 
 \subsectionTypePredefiniLabelIndex{range}
 
-Le type \ggsq!@range! définit les intervalles d'entiers non signés 32 bits (\ggsq!@uint!).
+Le type \ggsq!@range! définit les intervalles d'entiers non signés 32 bits (\ggsq!@u32!).
 
 \begin{galgas4}
 struct @range %equatable {
-  public var @uint start
-  public var @uint length
+  public var @u32 start
+  public var @u32 length
 }
 \end{galgas4}
 
 La plupart des propriétés du type \ggsq!@range! découle de cette définition (\refChapterPage{typeStructure}).
 
-\ggsq+@range (a, b)+, où \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, représente~:
+\ggsq+@range (a, b)+, où \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@u32!, représente~:
 \begin{itemize}
   \item un intervalle vide si \ggsq!b! est égal à zéro ;
   \item l'intervalle $[a, a+b-1]$ si \ggsq!b! est strictement positif.
@@ -469,9 +469,9 @@ La plupart des propriétés du type \ggsq!@range! découle de cette définition 
 
 Deux opérateurs permettent de construire plus facilement des objets de type \ggsq!@range!.
 
-L'opérateur \ggsq!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, l'expression \ggsq!a ... b! est équivalente à la construction \ggsq*@range (a, b - a + 1)*. Une exception est levée si $b < a$.
+L'opérateur \ggsq!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@u32!, l'expression \ggsq!a ... b! est équivalente à la construction \ggsq*@range (a, b - a + 1)*. Une exception est levée si $b < a$.
 
-L'opérateur \ggsq!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@uint!, l'expression \ggsq!a ..< b! est équivalente à \ggsq*@range (a, b - a)*. Une exception est levée si $b < a$.
+L'opérateur \ggsq!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggsq!a! et \ggsq!b! sont des expressions de type \ggsq!@u32!, l'expression \ggsq!a ..< b! est équivalente à \ggsq*@range (a, b - a)*. Une exception est levée si $b < a$.
 
 \subsubsection{Type \texttt{@range} et instruction \texttt{for}}
 

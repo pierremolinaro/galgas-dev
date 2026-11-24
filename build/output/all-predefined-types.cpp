@@ -12,7 +12,7 @@
 
 String styleNameForIndex (const uint32_t inStyleIndex) {
   const char * array [15] = {
-    "defaultStyle", // 0
+    "", // 0 (default style is denoted by an empty string)
     "keywordsStyle", // 1
     "delimitersStyle", // 2
     "selectorStyle", // 3
@@ -182,27 +182,6 @@ void GGS__5B_u_36__34__5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_u_36__34__5D_::setter_set (const GGS_u_36__34_ inValue,
-                                        const GGS_u_33__32_ inIndex,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_u_36__34__5D_::setter_insert (const GGS_u_36__34_ inValue,
                                            const GGS_u_33__32_ inInsertionIndex,
                                            Compiler * inCompiler
@@ -287,7 +266,13 @@ GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::getter_removingFirst (const GGS_u_3
   GGS__5B_u_36__34__5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -295,10 +280,6 @@ GGS__5B_u_36__34__5D_ GGS__5B_u_36__34__5D_::getter_removingFirst (const GGS_u_3
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_u_36__34__5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -375,17 +356,16 @@ GGS_u_36__34_ GGS__5B_u_36__34__5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_36__34_ GGS__5B_u_36__34__5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_u_36__34_ GGS__5B_u_36__34__5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   GGS_u_36__34_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -394,6 +374,27 @@ GGS_u_36__34_ GGS__5B_u_36__34__5D_::readSubcript__3F_ (const GGS_u_33__32_ & in
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_u_36__34__5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                 const GGS_u_36__34_ inValue,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -591,27 +592,6 @@ void GGS__5B_stringString_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_stringString_5D_::setter_set (const GGS_stringString inValue,
-                                           const GGS_u_33__32_ inIndex,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_stringString_5D_::setter_insert (const GGS_stringString inValue,
                                               const GGS_u_33__32_ inInsertionIndex,
                                               Compiler * inCompiler
@@ -696,7 +676,13 @@ GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::getter_removingFirst (const G
   GGS__5B_stringString_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -704,10 +690,6 @@ GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::getter_removingFirst (const G
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -784,17 +766,16 @@ GGS_stringString GGS__5B_stringString_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringString GGS__5B_stringString_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+GGS_stringString GGS__5B_stringString_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
   GGS_stringString result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -803,6 +784,27 @@ GGS_stringString GGS__5B_stringString_5D_::readSubcript__3F_ (const GGS_u_33__32
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_stringString_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                    const GGS_stringString inValue,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -1143,27 +1145,6 @@ void GGS__5B_string_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_5D_::setter_set (const GGS_string inValue,
-                                     const GGS_u_33__32_ inIndex,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_string_5D_::setter_insert (const GGS_string inValue,
                                         const GGS_u_33__32_ inInsertionIndex,
                                         Compiler * inCompiler
@@ -1248,7 +1229,13 @@ GGS__5B_string_5D_ GGS__5B_string_5D_::getter_removingFirst (const GGS_u_33__32_
   GGS__5B_string_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_string_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_string_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1256,10 +1243,6 @@ GGS__5B_string_5D_ GGS__5B_string_5D_::getter_removingFirst (const GGS_u_33__32_
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_string_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -1336,17 +1319,16 @@ GGS_string GGS__5B_string_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS__5B_string_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
+GGS_string GGS__5B_string_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -1355,6 +1337,27 @@ GGS_string GGS__5B_string_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_string_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                              const GGS_string inValue,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -1641,27 +1644,6 @@ void GGS__5B_lstring_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lstring_5D_::setter_set (const GGS_lstring inValue,
-                                      const GGS_u_33__32_ inIndex,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_lstring_5D_::setter_insert (const GGS_lstring inValue,
                                          const GGS_u_33__32_ inInsertionIndex,
                                          Compiler * inCompiler
@@ -1746,7 +1728,13 @@ GGS__5B_lstring_5D_ GGS__5B_lstring_5D_::getter_removingFirst (const GGS_u_33__3
   GGS__5B_lstring_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1754,10 +1742,6 @@ GGS__5B_lstring_5D_ GGS__5B_lstring_5D_::getter_removingFirst (const GGS_u_33__3
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -1834,17 +1818,16 @@ GGS_lstring GGS__5B_lstring_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS__5B_lstring_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
+GGS_lstring GGS__5B_lstring_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
   GGS_lstring result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -1853,6 +1836,27 @@ GGS_lstring GGS__5B_lstring_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inInde
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lstring_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                               const GGS_lstring inValue,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -2050,27 +2054,6 @@ void GGS__5B_u_33__32__5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_u_33__32__5D_::setter_set (const GGS_u_33__32_ inValue,
-                                        const GGS_u_33__32_ inIndex,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_u_33__32__5D_::setter_insert (const GGS_u_33__32_ inValue,
                                            const GGS_u_33__32_ inInsertionIndex,
                                            Compiler * inCompiler
@@ -2155,7 +2138,13 @@ GGS__5B_u_33__32__5D_ GGS__5B_u_33__32__5D_::getter_removingFirst (const GGS_u_3
   GGS__5B_u_33__32__5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_u_33__32__5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_u_33__32__5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -2163,10 +2152,6 @@ GGS__5B_u_33__32__5D_ GGS__5B_u_33__32__5D_::getter_removingFirst (const GGS_u_3
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_u_33__32__5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -2243,17 +2228,16 @@ GGS_u_33__32_ GGS__5B_u_33__32__5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_33__32_ GGS__5B_u_33__32__5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_u_33__32_ GGS__5B_u_33__32__5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   GGS_u_33__32_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -2262,6 +2246,27 @@ GGS_u_33__32_ GGS__5B_u_33__32__5D_::readSubcript__3F_ (const GGS_u_33__32_ & in
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_u_33__32__5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                 const GGS_u_33__32_ inValue,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -3287,6 +3292,22 @@ GGS_bool GGS_buildOptionValue::class_func_display_5F_help (UNUSED_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
+BoolCommandLineOption gBuildOption_quiet (
+  "build",
+  "quiet",
+  113,
+  "quiet",
+  "Quiet output"
+) ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_buildOptionValue::class_func_quiet (UNUSED_LOCATION_ARGS) {
+  return GGS_bool (gBuildOption_quiet.readProperty_value ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 BoolCommandLineOption gBuildOption_outputConcreteSyntaxTree (
   "build",
   "outputConcreteSyntaxTree",
@@ -3688,6 +3709,12 @@ GGS_string GGS_buildOptionInvocationString::class_func_display_5F_version (UNUSE
 
 GGS_string GGS_buildOptionInvocationString::class_func_display_5F_help (UNUSED_LOCATION_ARGS) {
   return GGS_string (gBuildOption_display_5F_help.readProperty_string ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_buildOptionInvocationString::class_func_quiet (UNUSED_LOCATION_ARGS) {
+  return GGS_string (gBuildOption_quiet.readProperty_string ()) ;
 }
 
 //--------------------------------------------------------------------------------------------------

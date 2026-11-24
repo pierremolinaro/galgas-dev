@@ -195,7 +195,7 @@ final class @sortedArrayTypeDeclarationAST : @semanticDeclarationAST {
       emptyArgumentList
     )
   //--- Read subcripts
-    var @readSubcriptMap readSubscriptMap = @()
+    var @readSubscriptMap readSubscriptMap = @()
     let [@functionSignatureElement] argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
     !?readSubscriptMap.insertKey (
       argumentTypeList.subcriptSignature.nowhere,

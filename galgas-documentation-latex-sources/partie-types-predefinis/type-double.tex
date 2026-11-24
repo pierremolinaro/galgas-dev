@@ -19,7 +19,7 @@ Note that a \ggsq+@double+ constant is characterized by the occurrence of the de
 \subsectionConstructor{doubleWithBinaryImage}{double}
 
 \begin{galgas4}
-constructor doubleWithBinaryImage ?@uint inValue -> @double
+constructor doubleWithBinaryImage ?@u32 inValue -> @double
 \end{galgas4}
 
 
@@ -42,7 +42,7 @@ Returns an approximation of the $\pi$ constant value (\ggsq+3.141592653589793238
 \subsectionGetter{binaryImage}{double}
 
 \begin{galgas4}
-getter binaryImage -> @uint64
+getter binaryImage -> @u64
 \end{galgas4}
 
 Returns the binary image of the value of receiver's value.
@@ -75,20 +75,20 @@ Returns the \emph{sine} value of receiver's value, expressed in radian.
 \subsectionGetter{sint}{double}
 
 \begin{galgas4}
-getter sint -> @sint
+getter sint -> @s32
 \end{galgas4}
 
-Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: if receiver's value is outside \ggsq+@sint+ bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object: if receiver's value is outside \ggsq+@s32+ bounds, a runtime error is raised.
 
 
 
 \subsectionGetter{sint64}{double}
 
 \begin{galgas4}
-getter sint64 -> @sint64
+getter sint64 -> @s64
 \end{galgas4}
 
-Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: if receiver's value is outside \ggsq+@sint64+ bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object: if receiver's value is outside \ggsq+@s64+ bounds, a runtime error is raised.
 
 
 
@@ -121,10 +121,10 @@ Returns the \emph{tangent} value of receiver's value, expressed in radian.
 \subsectionGetter{uint}{double}
 
 \begin{galgas4}
-getter uint -> @uint
+getter uint -> @u32
 \end{galgas4}
 
-Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: if receiver's value is outside \ggsq+@uint+ bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object: if receiver's value is outside \ggsq+@u32+ bounds, a runtime error is raised.
 
 
 
@@ -133,10 +133,10 @@ Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned inte
 \subsectionGetter{uint64}{double}
 
 \begin{galgas4}
-getter uint64 -> @uint64
+getter uint64 -> @u64
 \end{galgas4}
 
-Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: if receiver's value is outside \ggsq+@uint64+ bounds, a runtime error is raised.
+Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object: if receiver's value is outside \ggsq+@u64+ bounds, a runtime error is raised.
 
 
 

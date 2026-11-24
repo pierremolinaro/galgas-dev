@@ -26,7 +26,7 @@ Voici différents exemples de déclaration de classes :
 
 \begin{galgas4}
 abstract refclass @A {
-  @uint mA
+  @u32 mA
 }
 refclass @B : @A {
   @string mB
@@ -63,7 +63,7 @@ Une classe déclarée par \ggsq=refclass= a une \emph{sémantique de référence
 
 \begin{galgas4}
 shared refclass @classeSemantiqueDeReference {
-  @uint propriété
+  @u32 propriété
 }
 \end{galgas4}
 
@@ -141,19 +141,19 @@ Par défaut, la lecture d'une propriété est activée par la définition implic
 
 \begin{galgas4}
 refclass @C {
-  @uint prop
+  @u32 prop
 }
 \end{galgas4}
 
 Et pour une variable \ggsq+c+ de type \ggsq+@C+, on peut écrire~:
 
 \begin{galgas4}
-@uint v = [c prop]
+@u32 v = [c prop]
 \end{galgas4}
 
 À partir de la version 3.3.0, il est possible d'utiliser la notation pointée~:
 \begin{galgas4}
-@uint v = c.prop
+@u32 v = c.prop
 \end{galgas4}
 
 Si la propriété a été déclarée \ggsq+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
@@ -171,7 +171,7 @@ Par défaut, une propriété est publique et un \emph{setter} est engendré impl
 
 \begin{galgas4}
 refclass @C {
-  @uint prop
+  @u32 prop
 }
 \end{galgas4}
 
@@ -225,15 +225,8 @@ L'affectation polymorphique inverse (qui consisterait à écrire \ggsq+b = a+) e
 Il y a trois constructions qui permettent d'effectuer cette opération :
 \begin{itemize}
   \item l'expression de conversion polymorphique inverse (\refSubsectionPage{expConversionPolymorphiqueInverse}) ;
-  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}) ;
-  \item l'instruction \ggsq+cast+ (\refSectionPage{instructionCast}).
+  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}).
 \end{itemize}
-
-%\section{Comparaison}
-%
-%La comparaison implémentée est une comparaison de références. Chaque référence est convertie en un entier non signé. Autrement dit, l'égalité entre deux références signifie qu'elles désignent le même objet.
-
-%Note~: comme l'adresse d'allocation peut varier d'une exécution à une autre, la relation d'ordre entre les objets n'est pas stable d'une exécution à l'autre.
 
 \subsection{Comparaison}
 

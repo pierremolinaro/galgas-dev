@@ -553,7 +553,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       ?let @unifiedTypeMapEntry optionalElementTypeEntry
     )
   //--- Read subcripts
-    var @readSubcriptMap readSubcriptMap = @()
+    var @readSubscriptMap readSubcriptMap = @()
     let [@functionSignatureElement] argumentTypeList = [@("".nowhere, stringTypeIndex, "inKey", true)]
     !?readSubcriptMap.insertKey
       (@(argumentTypeList.subcriptSignature, .nowhere),

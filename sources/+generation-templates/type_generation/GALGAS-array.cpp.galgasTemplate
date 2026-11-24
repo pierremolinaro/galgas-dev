@@ -124,27 +124,6 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAll (%?^%Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_set (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
-      %!^%const GGS_u_33__32_ inIndex,
-      %!^%Compiler * inCompiler
-      %!^%COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
       %!^%const GGS_u_33__32_ inInsertionIndex,
       %!^%Compiler * inCompiler
@@ -229,7 +208,13 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const G
   GGS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -237,10 +222,6 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const G
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -317,7 +298,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (%?^%Compiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_u_33__32_ & inIndex,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GGS_u_33__32_ & inIndex,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
@@ -326,8 +307,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%co
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -336,6 +316,27 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%co
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::writeSubscript__3F_ (%?^%const GGS_u_33__32_ inIndex,
+      %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+      %!^%Compiler * inCompiler
+      %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 %if GENERATE_COMPARISON then

@@ -1,0 +1,334 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Le type \texttt{array}}{typeList}
+%-------------------------------------------------------------
+
+\tableDesMatieresLocaleDeProfondeurRelative{1}
+
+
+\section{Déclaration d'un type de tableau}
+
+Un type tableau dont les éléments sont de type \ggsq+@VALUE+ est implicitement déclaré par la construction \ggsq+[@VALUE]+. Le type \ggsq+@VALUE+ est un type quelconque.
+
+\section{Initialisation}
+
+\subsection{Initialiseur sans argument}
+
+L'initialiseur sans argument est implicitement déclaré. Il retourne une liste vide~:
+
+\begin{galgas4}
+var [@string] tableau = [@string] ()
+\end{galgas4}
+
+Ou, en utilisant l'inférence de type :
+\begin{galgas4}
+var [@string] tableau = @()
+\end{galgas4}
+
+
+\subsection{Constante litérale}
+
+La construction \ggsq+[@VALUE] [ ... ]+ permet de construire une instance de \ggsq+[@VALUE]+ qui contient les éléments qui apparaissent entre les crochets :
+
+\begin{galgas4}
+var [@string] tableau = [@string] ["a", "b", "c"]
+\end{galgas4}
+
+
+Ou, en utilisant l'inférence de type :
+\begin{galgas4}
+var [@string] tableau = ["a", "b", "c"]
+\end{galgas4}
+
+
+Ou, encode :
+\begin{galgas4}
+var tableau = [@string] ["a", "b", "c"]
+\end{galgas4}
+
+Cas particulier, la liste des éléments peut être vide :
+\begin{galgas4}
+var [@string] tableau = [@string] []
+\end{galgas4}
+
+
+Ou, en utilisant l'inférence de type :
+\begin{galgas4}
+var [@string] tableau = []
+\end{galgas4}
+
+
+
+
+\section{Opérateurs}
+
+\subsectionLabel{L'instruction \texttt{++=}}{operatorPlusPlusEgalSurListe}
+
+L'instruction \ggsq*++=* ajoute un nouvel élément à la fin du tableau :\\
+
+\begin{galgas4}
+var [@string] tableau = []
+tableau ++= "a"
+tableau ++= "b"
+tableau ++= "c"
+\end{galgas4}
+
+
+
+\subsection{L'instruction \texttt{+=}}
+
+L'instruction \ggsq*cible += expression* ajoute à la fin du tableau \ggsq+cible+ les éléments de la valeur de \ggsq+expression+ :
+
+\begin{galgas4}
+var [@string] tableau = []
+tableau += ["a"]
+let t = [@string] ["b", "c"]
+tableau += t
+\end{galgas4}
+
+
+
+
+
+\subsection{L'opérateur \texttt{+}}
+
+L'opérateur \ggsq*+* réalise la concaténation de ses opérandes :
+
+\begin{galgas4}
+var [@string] tableau = ["a"] + ["b", "c"]
+\end{galgas4}
+
+
+
+\section{Fonctions}
+
+\subsection{La fonction \texttt{count}}
+
+\begin{galgas4box}
+func [@VALUE].count () -> @u32
+\end{galgas4box}
+
+Retourne le nombre d'éléments.
+
+
+\subsection{La fonction \texttt{first}}
+
+\begin{galgas4box}
+func [@VALUE].first () -> @VALUE
+\end{galgas4box}
+
+Retourne le premier élément du tableau (à l'indice $0$). Une erreur est déclenché si le tableau est vide
+
+
+
+\subsection{La fonction \texttt{last}}
+
+\begin{galgas4box}
+func [@VALUE].last () -> @VALUE
+\end{galgas4box}
+
+Retourne le dernier élément du tableau. Une erreur est déclenché si le tableau est vide
+
+
+
+
+
+\subsection{La fonction \texttt{removingFirst}}
+
+\begin{galgas4box}
+func [@VALUE].removingFirst (@u32 inIndex) -> [@VALUE]
+\end{galgas4box}
+
+Retourne le tableau privé de ses \ggsq*inIndex* éléments. \ggsq*inIndex* doit être inférieur ou égal au nombre d'éléments du tableau. Si égalité, le tableau retourné est vide. Si \ggsq*inIndex* est égal à zéro, l'intégralité du tableau est retourné.
+
+
+
+
+
+
+\subsection{La fonction \texttt{sublist}}
+
+\begin{galgas4box}
+func [@VALUE].sublist (?from: @u32 inStartIndex, ?count: @u32 inCount) -> [@VALUE]
+\end{galgas4box}
+
+Retourne un tableau contenant les \ggsq*inCount* éléments du tableau, à partir de l'indice \ggsq*inStartIndex* éléments.
+
+Si le tableau est vide, un tableau vide est retourné si \ggsq*inStartIndex* et \ggsq*inCount* sont tous les deux égaux à zéro. Si \ggsq*inStartIndex* ou \ggsq*inCount* est supérieur à zéro, une erreur est déclenchée.
+
+Si le tableau n'est pas vide, alors :
+\begin{itemize}
+  \item \ggsq*inStartIndex* doit être strictement inférieur au nombre d'éléments ;
+  \item \ggsq*inStartIndex* + \ggsq*inCount* doit être inférieur ou égal au nombre d'éléments.
+\end{itemize}
+
+
+
+
+\section{Méthodes mutantes}
+
+
+
+
+\subsection{La méthode mutante \texttt{append}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].append (@VALUE inElement)
+\end{galgas4box}
+
+Ajoute un élément à la fin du tableau.
+
+
+\begin{galgas4}
+var [@string] tableau = []
+!?tableau.append ("a")
+!?tableau.append ("b")
+!?tableau.append ("c")
+\end{galgas4}
+
+
+
+\subsection{La méthode mutante \texttt{removeAll}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].removeAll ()
+\end{galgas4box}
+
+Supprime tous les éléments du tableau.
+
+
+
+
+
+\subsection{La méthode mutante \texttt{removeFirst}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].removeFirst (!@VALUE outElement)
+\end{galgas4box}
+
+Retire le premier élément du tableau, et l'affecte à l'argument de sortie. Une erreur est déclenchée si le tableau est vide.
+
+
+
+
+
+
+
+\subsection{La méthode mutante \texttt{removeLast}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].removeLast (!@VALUE outElement)
+\end{galgas4box}
+
+Retire le dernier élément du tableau, et l'affecte à l'argument de sortie. Une erreur est déclenchée si le tableau est vide.
+
+
+
+
+
+
+
+
+\subsection{La méthode mutante \texttt{remove}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].remove (!@VALUE outElement, ?at: @u32 inIndex)
+\end{galgas4box}
+
+Retire l'élément d'indice \ggsq*inIndex* du tableau, et l'affecte à l'argument de sortie. Une erreur est déclenchée si \ggsq*inIndex* est supérieur ou égal au nombre d'éléments du tableau.
+
+
+
+
+
+
+
+
+
+\subsection{La méthode mutante \texttt{insert}}
+
+\begin{galgas4box}
+mutating proc [@VALUE].insert (@VALUE inElement, ?at: @u32 inIndex)
+\end{galgas4box}
+
+Insère \ggsq*inElement* à l'indice \ggsq*inIndex* du tableau. Une erreur est déclenchée si \ggsq*inIndex* est strictement supérieur au nombre d'éléments du tableau.
+
+
+
+
+
+
+
+
+
+
+
+\section{Opérateurs d'indexation}
+
+
+
+\subsection{Lecture}
+
+\begin{galgas4box}
+func [@VALUE] [@u32 inIndex] -> @VALUE
+\end{galgas4box}
+
+Retourne l'élement* d'indice \ggsq*inIndex*. Une erreur est déclenchée si \ggsq*inIndex* est supérieur ou égal au nombre d'éléments du tableau.
+
+
+
+
+\subsection{Écriture}
+
+\begin{galgas4box}
+mutating func [@VALUE] [@u32 inIndex] = @VALUE
+\end{galgas4box}
+
+Affecte la valeur à l'indice \ggsq*inIndex* du tableau. Une erreur est déclenchée si \ggsq*inIndex* est supérieur ou égal au nombre d'éléments du tableau.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Énumérer un tableau avec l'instruction \texttt{for}}
+
+Par défaut, un tableau est énuméré dans l'ordre des indices croissants :
+
+\begin{galgas4}
+let [@string] tableau = ["a", "b", "c"]
+for str in tableau do 
+  print (str) // Imprime abc
+end
+println ()
+\end{galgas4}
+
+Pour énumérer dans l'ordre inverse, utiliser le délimiteur \ggsq!>! :
+
+\begin{galgas4}
+let [@string] tableau = ["a", "b", "c"]
+for > str in tableau do 
+  print (str) // Imprime cba
+end
+println ()
+\end{galgas4}
+
+

@@ -12,7 +12,9 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
                             !@semanticContext outSemanticContext,
                             !@unifiedTypeMap outTypeMap,
                             ![@semanticDeclarationForGeneration] outSemanticDeclarationSortedListForGeneration) {
-  println ("*** Building semantic context")
+  if not @buildOptionValue.quiet then
+    println ("*** Building semantic context")
+  end
 //----- Build semantic context
   buildGalgasSemanticContext (
     inSemanticDeclarations,
@@ -22,7 +24,9 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
     ?let [@semanticDeclarationAST] sortedSemanticDeclarationListAST
   )
 //---
-  println ("*** Semantic analysis")
+  if not @buildOptionValue.quiet then
+    println ("*** Semantic analysis")
+  end
 //----- Check there is no undefined types
   for unsolvedtypeName in outTypeMap.unsolvedEntryList do
     error unsolvedtypeName : "the '@" + unsolvedtypeName + "' type is undefined"

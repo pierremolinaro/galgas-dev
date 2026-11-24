@@ -489,9 +489,9 @@ class GGS_propertyIndexMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_propertyIndexMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS_propertyIndexMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -1172,31 +1172,31 @@ class GGS__5B_string_3A__5B_lstring_5D__5D_ final : public GenericDictionary <GG
 
 
 //--------------------------------- Read subcripts
-  public: class GGS__5B_lstring_5D__3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D__3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_lstring_5D_ readSubcript__3F__3F_default (const class GGS_string & in0,
-                                                                  const class GGS__5B_lstring_5D_ & in1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ readSubscript__3F__3F_default (const class GGS_string & in0,
+                                                                   const class GGS__5B_lstring_5D_ & in1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_lstring_5D_ readSubcript__3F_unwrap (const class GGS_string & in0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ readSubscript__3F_unwrap (const class GGS_string & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
-  public: void writeSubcript__3F_ (const class GGS_string in0,
-                                   const class GGS__5B_lstring_5D_ inValue,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+  public: void writeSubscript__3F_ (const class GGS_string in0,
+                                    const class GGS__5B_lstring_5D_ inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
-  public: void writeSubcript__3F_unique (const class GGS_string in0,
-                                         const class GGS__5B_lstring_5D_ inValue,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+  public: void writeSubscript__3F_unique (const class GGS_string in0,
+                                          const class GGS__5B_lstring_5D_ inValue,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 
 
@@ -1498,31 +1498,31 @@ class GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ final : public GenericDi
 
 
 //--------------------------------- Read subcripts
-  public: class GGS__5B_unifiedTypeMapEntry_5D__3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_unifiedTypeMapEntry_5D__3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_unifiedTypeMapEntry_5D_ readSubcript__3F__3F_default (const class GGS_string & in0,
-                                                                              const class GGS__5B_unifiedTypeMapEntry_5D_ & in1,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_unifiedTypeMapEntry_5D_ readSubscript__3F__3F_default (const class GGS_string & in0,
+                                                                               const class GGS__5B_unifiedTypeMapEntry_5D_ & in1,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS__5B_unifiedTypeMapEntry_5D_ readSubcript__3F_unwrap (const class GGS_string & in0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_unifiedTypeMapEntry_5D_ readSubscript__3F_unwrap (const class GGS_string & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
-  public: void writeSubcript__3F_ (const class GGS_string in0,
-                                   const class GGS__5B_unifiedTypeMapEntry_5D_ inValue,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+  public: void writeSubscript__3F_ (const class GGS_string in0,
+                                    const class GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
-  public: void writeSubcript__3F_unique (const class GGS_string in0,
-                                         const class GGS__5B_unifiedTypeMapEntry_5D_ inValue,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+  public: void writeSubscript__3F_unique (const class GGS_string in0,
+                                          const class GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 
 
@@ -1765,9 +1765,9 @@ class GGS_extensionMethodMapForGlobalCheckings final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -2074,9 +2074,9 @@ class GGS_extensionSetterMapForGlobalCheckings final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -2383,9 +2383,9 @@ class GGS_extensionGetterMapForGlobalCheckings final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 

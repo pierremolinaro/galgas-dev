@@ -157,14 +157,14 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       end
     end
   //--- Check syntax directed translation destination variable
-    self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.analyzeSDT
-      (inAnalysisContext,
+    self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.analyzeSDT (
+      inAnalysisContext,
       !?ioTypeMap,
       inHasTranslateFeature,
       !?ioVariableMap
     )
-    self.mGrammarInstructionSyntaxDirectedTranslationToken.analyzeSDT
-      (inAnalysisContext,
+    self.mGrammarInstructionSyntaxDirectedTranslationToken.analyzeSDT (
+      inAnalysisContext,
       !?ioTypeMap,
       inHasTranslateFeature,
       !?ioVariableMap

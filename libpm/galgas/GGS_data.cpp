@@ -226,7 +226,7 @@ void GGS_data::method_writeToFileWhenDifferentContents (GGS_string inFilePath,
     outFileWritten = GGS_bool (needToWrite) ;
     if (needToWrite) {
       if (Compiler::performGeneration ()) {
-        const bool verboseOptionOn = true ;
+        const bool verboseOptionOn = !gBuildOption_quiet.mValue ;
         bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().deletingLastPathComponent ()) ;
         if (!ok) {
           String message ;

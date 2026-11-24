@@ -86,36 +86,36 @@ The returned object responds \ggsq+true+ to the \refGetterPage{location}{isNowhe
 \subsectionGetter{column}{location}
 
 \begin{galgas4}
-getter column -> @uint # Obsolete, use endColumn
+getter column -> @u32 # Obsolete, use endColumn
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the column of the receiver's value ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 \subsectionGetter{endColumn}{location}
 
 \begin{galgas4}
-getter endColumn -> @uint
+getter endColumn -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the column of the receiver's end location ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the column of the receiver's end location ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{endLine}{location}
 
 \begin{galgas4}
-getter endLine -> @uint
+getter endLine -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the end line of the receiver's end location. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the end line of the receiver's end location. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{endLocationIndex}{location}
 
 \begin{galgas4}
-getter endLocationIndex -> @uint
+getter endLocationIndex -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 
@@ -140,20 +140,20 @@ Returns an \ggsq+@bool+ value indicating whether the receiver'value points out a
 \subsectionGetter{line}{location}
 
 \begin{galgas4}
-getter line -> @uint  # Obsolete, use endLine
+getter line -> @u32  # Obsolete, use endLine
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the end line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the end line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 
 \subsectionGetter{locationIndex}{location}
 
 \begin{galgas4}
-getter locationIndex -> @uint # Obsolete, use endLocationIndex
+getter locationIndex -> @u32 # Obsolete, use endLocationIndex
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the the offset from the the beginning of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 
@@ -170,29 +170,29 @@ Returns an \ggsq+@string+ object that contains a string representation of the en
 \subsectionGetter{startColumn}{location}
 
 \begin{galgas4}
-getter startColumn -> @uint
+getter startColumn -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the column of the receiver's start location ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the column of the receiver's start location ; this getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{startLine}{location}
 
 \begin{galgas4}
-getter startLine -> @uint
+getter startLine -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the start line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the start line of the receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 
 \subsectionGetter{startLocationIndex}{location}
 
 \begin{galgas4}
-getter startLocationIndex -> @uint
+getter startLocationIndex -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
+Returns an \ggsq+@u32+ value containing the the offset from the the end of the source of the location defined by receiver's value. This getter raises a run-time error if the receiver's value responds \ggsq+true+ to the \refGetterPage{location}{isNowhere}.
 
 
 \subsectionGetter{startLocationString}{location}

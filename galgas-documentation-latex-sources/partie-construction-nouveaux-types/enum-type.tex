@@ -29,7 +29,7 @@ Il est possible d'associer plusieurs valeurs à chaque constante d'un type énum
 enum @monOption {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value @string name)
+  case option2 (@u32 value @string name)
 }
 \end{galgas4}
 
@@ -37,7 +37,7 @@ enum @monOption {
 enum @monOption {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value, @string name)
+  case option2 (@u32 value, @string name)
 }
 \end{galgas4}
 
@@ -113,7 +113,7 @@ var @monOption uneOption = ...
 switch uneOption
 case noOption : ...
 case option1 (@string unNom) : ...
-case option2 (@uint unEntier @string unNom) : ...
+case option2 (@u32 unEntier @string unNom) : ...
 end
 \end{galgas4}
 
@@ -219,7 +219,7 @@ struct @monOption.@option1 {
   public let @string name
 }
 struct @monOption.@option2 {
-  public let @uint value
+  public let @u32 value
   public let @string name
 }
 \end{galgas4}
@@ -281,11 +281,11 @@ Uniquement pour les constantes ayant des valeurs associées, est défini un mét
 Les \emph{méthodes} associées ont pour signature~:
 \begin{galgas4}
 proc @monOption.extractOption1 (!unNom: @string outNom)
-proc @monOption.extractOption2 (!unEntier: @uint outEntier, !unNom: @string outNom)
+proc @monOption.extractOption2 (!unEntier: @u32 outEntier, !unNom: @string outNom)
 \end{galgas4}
 \begin{galgas4}
 method @monOption extractOption1 !unNom: @string outNom
-method @monOption extractOption2 !unEntier: @uint outEntier !unNom: @string outNom
+method @monOption extractOption2 !unEntier: @u32 outEntier !unNom: @string outNom
 \end{galgas4}
 
 Ces méthodes peuvent s'utiliser comme suit~:
@@ -335,7 +335,7 @@ Comme aucune relation d'ordre n'est définie, l'ordre de déclaration des consta
 enum @monOption %equatable {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value @string name)
+  case option2 (@u32 value @string name)
 }
 \end{galgas4}
 
@@ -343,7 +343,7 @@ enum @monOption %equatable {
 enum @monOption %equatable {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value, @string name)
+  case option2 (@u32 value, @string name)
 }
 \end{galgas4}
 
@@ -356,7 +356,7 @@ Si le type énuméré est déclaré avec l'attribut \ggsq!%comparable!, alors le
 enum @monOption %comparable {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value @string name)
+  case option2 (@u32 value @string name)
 }
 \end{galgas4}
 
@@ -364,7 +364,7 @@ enum @monOption %comparable {
 enum @monOption %comparable {
   case noOption
   case option1 (@string name)
-  case option2 (@uint value, @string name)
+  case option2 (@u32 value, @string name)
 }
 \end{galgas4}
 

@@ -58,7 +58,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "--check-big-int"
+            argument = "-q"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument

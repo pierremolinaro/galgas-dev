@@ -17,7 +17,6 @@
 
 \definecolor{modebeige}{rgb}{0.59, 0.44, 0.09}
 
-\newcommand\defaultStyleGalgas[1]{\textcolor{black}{#1}}
 \newcommand\keywordsStyleGalgas[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStyleGalgas[1]{\textcolor{brown}{\textbf{#1}}}
 \newcommand\selectorStyleGalgas[1]{\textcolor{PineGreen}{#1}}
@@ -28,13 +27,12 @@
 \newcommand\floatStyleGalgas[1]{\textcolor{magenta}{#1}}
 \newcommand\characterStyleGalgas[1]{\textcolor{cyan}{#1}}
 \newcommand\stringStyleGalgas[1]{\textcolor{gray}{#1}}
-\newcommand\typeNameStyleGalgas[1]{\textcolor{gray}{#1}}
+\newcommand\typeNameStyleGalgas[1]{\textcolor{violet}{#1}}
 \newcommand\attributeStyleGalgas[1]{\textcolor{brown}{#1}}
 \newcommand\commentStyleGalgas[1]{\textcolor{red}{#1}}
 
 \newcommand\lexicalErrorGalgas{\textcolor{red}{\textbullet ERRLEX\textbullet}}
 
-\newcommand\defaultStylegalgas[1]{\textcolor{black}{#1}}
 \newcommand\keywordsStylegalgas[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStylegalgas[1]{\textcolor{brown}{\textbf{#1}}}
 \newcommand\selectorStylegalgas[1]{\textcolor{PineGreen}{#1}}
@@ -45,7 +43,7 @@
 \newcommand\floatStylegalgas[1]{\textcolor{magenta}{#1}}
 \newcommand\characterStylegalgas[1]{\textcolor{cyan}{#1}}
 \newcommand\stringStylegalgas[1]{\textcolor{gray}{#1}}
-\newcommand\typeNameStylegalgas[1]{\textcolor{gray}{#1}}
+\newcommand\typeNameStylegalgas[1]{\textcolor{violet}{#1}}
 \newcommand\attributeStylegalgas[1]{\textcolor{brown}{#1}}
 \newcommand\commentStylegalgas[1]{\textcolor{red}{#1}}
 
@@ -64,10 +62,10 @@
   rightline=false,
   skipabove=0pt,
   skipbelow=0pt,
-  linecolor=blue,
-  backgroundcolor=gray!5,
+  linecolor=JungleGreen,
+  backgroundcolor=gray!2,
   linewidth=1pt,
-  frametitle={GALGAS 4},
+%  frametitle={GALGAS 4},
   frametitlefont=\normalfont\bfseries\scriptsize,
   frametitlerule=true,
   frametitleaboveskip=3pt,
@@ -90,7 +88,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
   {\medskip\begin{siderules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{siderules4}}
 }
 \makeatother
@@ -102,10 +100,10 @@
 \newmdenv[
   skipabove=0pt,
   skipbelow=0pt,
-  linecolor=blue,
-  backgroundcolor=gray!5,
+  linecolor=JungleGreen,
+  backgroundcolor=gray!2,
   linewidth=1pt,
-  frametitle={GALGAS 4},
+%  frametitle={GALGAS 4},
   frametitlefont=\normalfont\bfseries\scriptsize,
   frametitlerule=true,
   frametitleaboveskip=3pt,
@@ -116,22 +114,22 @@
 
 \makeatletter
 \newenvironment{galgas4box}{%
-  \begingroup
-  \@bsphack
+  \begingroup%
+  \@bsphack%
   \immediate\openout\tempfile=temp.galgas4%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
+  \let\do\@makeother\dospecials%
+  \catcode`\^^M\active%
+  \verbatim@startline%
+  \verbatim@addtoline%
+  \verbatim@finish%
   \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}
-  {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules4}}
+  \verbatim@start%
+}{%
+  \immediate\closeout\tempfile%
+  \@esphack%
+  \endgroup%
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}%
+  {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules4}}%
 }
 \makeatother
 
@@ -171,7 +169,7 @@
       \immediate\openout\tempfile=temp.galgas4%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas4 --mode=latex:Galgas temp.galgas4}%
+      \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}%
       \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\unskip}%
     }%
   }%

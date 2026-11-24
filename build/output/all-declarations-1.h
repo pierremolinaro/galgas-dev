@@ -136,11 +136,6 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_switchBranchForGeneration constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -165,13 +160,18 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_switchBranchForGeneration readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS_switchBranchForGeneration readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_switchBranchForGeneration inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -314,11 +314,6 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_extractedAssociatedValueForGeneration constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -343,13 +338,18 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_extractedAssociatedValueForGeneration readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValueForGeneration readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_extractedAssociatedValueForGeneration inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -2222,11 +2222,6 @@ class GGS__5B_actualOutputArgumentAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_actualOutputArgumentAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2251,13 +2246,18 @@ class GGS__5B_actualOutputArgumentAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_actualOutputArgumentAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS_actualOutputArgumentAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_actualOutputArgumentAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -2638,11 +2638,6 @@ class GGS__5B_collectionValueElementForGeneration_5D_ final : public AC_GALGAS_r
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_collectionValueElementForGeneration constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2667,13 +2662,18 @@ class GGS__5B_collectionValueElementForGeneration_5D_ final : public AC_GALGAS_r
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_collectionValueElementForGeneration readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_collectionValueElementForGeneration readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_collectionValueElementForGeneration inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -2894,11 +2894,6 @@ class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root 
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_semanticExpressionForGeneration constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -2923,13 +2918,18 @@ class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root 
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_semanticExpressionForGeneration readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS_semanticExpressionForGeneration readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_semanticExpressionForGeneration inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -4026,11 +4026,6 @@ class GGS__5B_templateDelimitor_32_AST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_templateDelimitor_32_AST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4055,13 +4050,18 @@ class GGS__5B_templateDelimitor_32_AST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_templateDelimitor_32_AST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS_templateDelimitor_32_AST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_templateDelimitor_32_AST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -4315,11 +4315,6 @@ class GGS__5B_templateReplacementAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_templateReplacementAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4344,13 +4339,18 @@ class GGS__5B_templateReplacementAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_templateReplacementAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS_templateReplacementAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_templateReplacementAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -4582,11 +4582,6 @@ class GGS__5B_lexicalAttributeAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalAttributeAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4611,13 +4606,18 @@ class GGS__5B_lexicalAttributeAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalAttributeAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalAttributeAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalAttributeAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -4838,11 +4838,6 @@ class GGS__5B_terminalDeclarationAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_terminalDeclarationAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -4867,13 +4862,18 @@ class GGS__5B_terminalDeclarationAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_terminalDeclarationAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS_terminalDeclarationAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_terminalDeclarationAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -5016,11 +5016,6 @@ class GGS__5B_sentLexicalAttributeAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_sentLexicalAttributeAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -5045,13 +5040,18 @@ class GGS__5B_sentLexicalAttributeAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sentLexicalAttributeAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS_sentLexicalAttributeAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_sentLexicalAttributeAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -5316,11 +5316,6 @@ class GGS__5B_lexicalMessageDeclarationAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalMessageDeclarationAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -5345,13 +5340,18 @@ class GGS__5B_lexicalMessageDeclarationAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalMessageDeclarationAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalMessageDeclarationAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalMessageDeclarationAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -5572,11 +5572,6 @@ class GGS__5B_lexicalListDeclarationAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalListDeclarationAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -5601,13 +5596,18 @@ class GGS__5B_lexicalListDeclarationAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalListDeclarationAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalListDeclarationAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalListDeclarationAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -5750,11 +5750,6 @@ class GGS__5B_lexicalListEntryAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalListEntryAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -5779,13 +5774,18 @@ class GGS__5B_lexicalListEntryAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalListEntryAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalListEntryAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalListEntryAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -6039,11 +6039,6 @@ class GGS__5B_abstractLexicalRuleAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_abstractLexicalRuleAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -6068,13 +6063,18 @@ class GGS__5B_abstractLexicalRuleAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_abstractLexicalRuleAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS_abstractLexicalRuleAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_abstractLexicalRuleAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -6308,11 +6308,6 @@ class GGS__5B_indexingAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_indexingAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -6337,13 +6332,18 @@ class GGS__5B_indexingAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_indexingAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_indexingAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_indexingAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -6564,11 +6564,6 @@ class GGS__5B_lexicalInstructionAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalInstructionAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -6593,13 +6588,18 @@ class GGS__5B_lexicalInstructionAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalInstructionAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalInstructionAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalInstructionAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -6834,11 +6834,6 @@ class GGS__5B_lexicalWhileBranchAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalWhileBranchAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -6863,13 +6858,18 @@ class GGS__5B_lexicalWhileBranchAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalWhileBranchAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalWhileBranchAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalWhileBranchAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -7132,11 +7132,6 @@ class GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ final : public 
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -7161,13 +7156,18 @@ class GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ final : public 
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -7578,11 +7578,6 @@ class GGS__5B_semanticDeclarationAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_semanticDeclarationAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -7607,13 +7602,18 @@ class GGS__5B_semanticDeclarationAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_semanticDeclarationAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS_semanticDeclarationAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_semanticDeclarationAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -7890,11 +7890,6 @@ class GGS__5B_lexicalSentValue_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalSentValue constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -7919,13 +7914,18 @@ class GGS__5B_lexicalSentValue_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalSentValue readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalSentValue readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalSentValue inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -8260,11 +8260,6 @@ class GGS__5B_semanticDeclarationForGeneration_5D_ final : public AC_GALGAS_root
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_semanticDeclarationForGeneration constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -8289,13 +8284,18 @@ class GGS__5B_semanticDeclarationForGeneration_5D_ final : public AC_GALGAS_root
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_semanticDeclarationForGeneration readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_semanticDeclarationForGeneration readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_semanticDeclarationForGeneration inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -8561,11 +8561,6 @@ class GGS__5B_terminalAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_terminalAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -8590,13 +8585,18 @@ class GGS__5B_terminalAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_terminalAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_terminalAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_terminalAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -8861,11 +8861,6 @@ class GGS__5B_templateDelimitorAST_5D_ final : public AC_GALGAS_root {
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_templateDelimitorAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -8890,13 +8885,18 @@ class GGS__5B_templateDelimitorAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_templateDelimitorAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+  public: class GGS_templateDelimitorAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_templateDelimitorAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -9444,11 +9444,6 @@ class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ final : public AC_GALGAS_root
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalFunctionFormalArgumentAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -9473,13 +9468,18 @@ class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ final : public AC_GALGAS_root
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalFunctionFormalArgumentAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionFormalArgumentAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalFunctionFormalArgumentAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -9622,11 +9622,6 @@ class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ final : public AC_GALGAS_root 
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-  public: void setter_set (class GGS_lexicalRoutineFormalArgumentAST constinArgument0,
-                           class GGS_u_33__32_ constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
@@ -9651,13 +9646,18 @@ class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ final : public AC_GALGAS_root 
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalRoutineFormalArgumentAST readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineFormalArgumentAST readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
 
 
 //--------------------------------- Write subcripts
+  public: void writeSubscript__3F_ (const class GGS_u_33__32_ in0,
+                                    const class GGS_lexicalRoutineFormalArgumentAST inValue,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
 
 
 //--------------------------------- Introspection
@@ -9908,9 +9908,9 @@ class GGS_sortedTokenArray final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sortedToken readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS_sortedToken readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -10284,9 +10284,9 @@ class GGS_lexicalAttributeMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalAttributeMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalAttributeMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -10501,9 +10501,9 @@ class GGS_lexicalExplicitTokenListMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalExplicitTokenListMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -10718,9 +10718,9 @@ class GGS_lexicalExplicitTokenListMapMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalExplicitTokenListMapMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -10949,9 +10949,9 @@ class GGS_lexicalFunctionMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalFunctionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalFunctionMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -11156,13 +11156,13 @@ class GGS_lexicalMessageMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalMessageMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalMessageMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalMessageMap_2E_element readSubcript__3F_searchKey (const class GGS_lstring & in0,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalMessageMap_2E_element readSubscript__3F_searchKey (const class GGS_lstring & in0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -11377,9 +11377,9 @@ class GGS_lexicalRoutineMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_lexicalRoutineMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_lexicalRoutineMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
 
 
@@ -11733,9 +11733,9 @@ class GGS_terminalMap final : public AC_GALGAS_root {
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_terminalMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS_terminalMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
 
 

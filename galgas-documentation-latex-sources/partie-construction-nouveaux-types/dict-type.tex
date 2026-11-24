@@ -15,7 +15,7 @@ Un objet de type \ggsq+dict+ est un dictionnaire. Contrairement à un objet de t
 \section{Déclaration}
 
 \begin{galgas4}
-dict @MonDictionnaire : @uint {
+dict @MonDictionnaire : @u32 {
   @string mPremier
   @bool mSecond
 }
@@ -24,7 +24,7 @@ dict @MonDictionnaire : @uint {
 La déclaration d'un type \ggsq+dict+ nomme~:
 \begin{itemize}
   \item le nom du type \ggsq+dict+ (ici \ggsq+@MonDictionnaire+)~;
-  \item le type de la clé (ici \ggsq+@uint+)~;
+  \item le type de la clé (ici \ggsq+@u32+)~;
   \item les propriétés associées (ici \ggsq=mPremier= et \ggsq=mSecond=).
 \end{itemize}
 
@@ -33,7 +33,7 @@ Les noms \ggsq=key=, \ggsq=object= et \ggsq=desciption= sont interdits pour une 
 On peut déclarer un dictionaire sans propriété, et ainsi gérer des \emph{ensembles} :
 
 \begin{galgas4}
-dict @autreDictionnaire : @uint { }
+dict @autreDictionnaire : @u32 { }
 \end{galgas4}
 
 
@@ -104,9 +104,9 @@ Un \ggsq+dict+ implémente implicitement l'opérateur \ggsq:+=: qui permet d'ins
 Par exemple~:
 \begin{galgas4}
 @MonDictionnaire unDictionnaire = {}
-@uint clef = ...
+@u32 clef = ...
 @string s = ...
-@uint v = ...
+@u32 v = ...
 unDictionnaire += !clef !s !v
 \end{galgas4}
 
@@ -136,7 +136,7 @@ Par exemple~:
 @MonDictionnaire unDictionnaire = {}
 ...
 @lstring clef = ...
-[unDictionnaire searchKey !clef ?@string s ?@uint v]
+[unDictionnaire searchKey !clef ?@string s ?@u32 v]
 \end{galgas4}
 
 
@@ -163,7 +163,7 @@ Par exemple~:
 @MonDictionnaire unDictionnaire = {}
 ...
 @lstring clef = ...
-[!?unDictionnaire removeKey !clef ?@string s ?@uint v]
+[!?unDictionnaire removeKey !clef ?@string s ?@u32 v]
 \end{galgas4}
 
 \section{Getters}
@@ -183,11 +183,11 @@ Par exemple~:
 \subsection{Getter \texttt{count}}
 
 \begin{galgas4}
-getter count -> @uint
+getter count -> @u32
 \end{galgas4}
 
 
-Le \emph{getter} \ggsq+count+ retourne un \ggsq+@uint+ qui contient le nombre d'entrées du dictionnaire.
+Le \emph{getter} \ggsq+count+ retourne un \ggsq+@u32+ qui contient le nombre d'entrées du dictionnaire.
 
 
 

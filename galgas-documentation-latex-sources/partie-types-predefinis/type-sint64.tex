@@ -6,9 +6,9 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-An \ggsq+@sint64+ object value is a 64-bit signed integer value. You can initialize an \ggsq+@sint64+ object from an 64-bit signed integer constant:\\
+An \ggsq+@s64+ object value is a 64-bit signed integer value. You can initialize an \ggsq+@s64+ object from an 64-bit signed integer constant:\\
 
-\texttt{@sint64 mySignedInteger = 123\_456LS ;}
+\texttt{@s64 mySignedInteger = 123\_456LS ;}
 
 Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
@@ -18,10 +18,10 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 \subsectionConstructor{min}{sint64}
 
 \begin{galgas4}
-constructor min -> @sint64
+constructor min -> @s64
 \end{galgas4}
 
-Returns an \ggsq+@sint64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
+Returns an \ggsq+@s64+ object that the minimum value of the 64-bit signed range ($-2^{63}$).
 
 
 
@@ -30,10 +30,10 @@ Returns an \ggsq+@sint64+ object that the minimum value of the 64-bit signed ran
 \subsectionConstructor{max}{sint64}
 
 \begin{galgas4}
-constructor max -> @sint64
+constructor max -> @s64
 \end{galgas4}
 
-Returns an \ggsq+@sint64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
+Returns an \ggsq+@s64+ object that the maximum value of the 64-bit signed range ($2^{63}-1$).
 
 
 \section{Getters}
@@ -41,7 +41,7 @@ Returns an \ggsq+@sint64+ object that the maximum value of the 64-bit signed ran
 
 \subsectionGetter{bigint}{sint64}
 
-Ce \emph{getter} permet de convertir un \ggsq!@sint64! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+Ce \emph{getter} permet de convertir un \ggsq!@s64! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
 
 \begin{galgas4}
   message [[-1234LS bigint] string] + "\n" # -1234
@@ -62,7 +62,7 @@ Returns the receiver's value converted in a \ggsq+@double+ object. As a 64-bit i
 \subsectionGetter{hexStringSeparatedBy}{sint64}
 
 \begin{galgas4}
-getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+getter hexStringSeparatedBy ?@char inSeparator ?@u32 inGroup -> @string
 \end{galgas4}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
@@ -80,7 +80,7 @@ let s = [0x123456789ABCDEF0LS hexStringSeparatedBy !'_' !3] # 0x1_234_567_89A_BC
 \subsectionGetter{sint}{sint64}
 
 \begin{galgas4}
-getter sint -> @sint
+getter sint -> @s32
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.
@@ -109,7 +109,7 @@ Returns a decimal string representation of the receiver's value. This getter nev
 \subsectionGetter{uint}{sint64}
 
 \begin{galgas4}
-getter uint -> @uint
+getter uint -> @u32
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative or greater than $2^{32}-1$.
@@ -123,7 +123,7 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 \subsectionGetter{uint64}{sint64}
 
 \begin{galgas4}
-getter uint64 -> @uint64
+getter uint64 -> @u64
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. This getter raises a run-time error if the receiver's value is negative.
@@ -141,7 +141,7 @@ This getter is the only way to convert an \refTypePredefini{sint64} object into 
 
 \subsection{Opérateurs infixés}
 
-Le type \ggsq+@sint64+ accepte les opérateurs arithmétiques infixés suivants :
+Le type \ggsq+@s64+ accepte les opérateurs arithmétiques infixés suivants :
 \begin{itemize}
   \item \ggsq!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -154,22 +154,22 @@ Le type \ggsq+@sint64+ accepte les opérateurs arithmétiques infixés suivants 
   \item \ggsq!&/!, division, qui retourne zéro si le diviseur est nul.
 \end{itemize}
 
-Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@sint64+.
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@s64+.
 
 \subsection{Opérateurs préfixés}
-Le type \ggsq+@sint64+ accepte les opérateurs arithmétiques préfixés suivants :
+Le type \ggsq+@s64+ accepte les opérateurs arithmétiques préfixés suivants :
 \begin{itemize}
   \item \ggsq!+!, qui retourne simplement la valeur de l'opérande ;
   \item \ggsq!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{63}$ ;
   \item \ggsq!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{63}$ est $-2^{63}$.
 \end{itemize}
 
-La valeur renvoyée est du même type  \ggsq+@sint64+.
+La valeur renvoyée est du même type  \ggsq+@s64+.
 
 
 \subsectionLabel{Instructions}{instructionsSINT64}
 
-Le type \ggsq+@sint64+ accepte les instructions arithmétiques suivantes :
+Le type \ggsq+@s64+ accepte les instructions arithmétiques suivantes :
 \begin{itemize}
   \item \ggsq!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -182,15 +182,15 @@ Le type \ggsq+@sint64+ accepte les instructions arithmétiques suivantes :
 \end{itemize}
 
 \ggsq!x+=y! est équivalent à \ggsq!x=x+y! ; \ggsq!x-=y! est équivalent à \ggsq!x=x-y!.
-La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@sint64+.
+La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@s64+.
 
 Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
 \begin{galgas4}
-@sint64 n = ... ; n ++ # Incrémentation
+@s64 n = ... ; n ++ # Incrémentation
 \end{galgas4}
 
 \begin{galgas4}
-@sint64 n = ... ; n -- # Décrémentation
+@s64 n = ... ; n -- # Décrémentation
 \end{galgas4}
 
 
@@ -202,7 +202,7 @@ Incrémentation et décrémentation sont des instructions, et ne peuvent pas app
 \section{Shift Operators}
 
 
-The \ggsq+@sint64+ type supports right and left shift operators:\newline
+The \ggsq+@s64+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -212,7 +212,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \ggsq+@sint64+ object, and the left argument to be \ggsq+@uint+ object.\newline
+Theses operators require the right argument to be \ggsq+@s64+ object, and the left argument to be \ggsq+@u32+ object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -223,7 +223,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \ggsq+@sint64+ type supports the three bit-wise logical operators:\newline
+The \ggsq+@s64+ type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -235,10 +235,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@sint64+ objects.\newline
+Theses operators require both arguments to be \ggsq+@s64+ objects.\newline
 
 
-The \ggsq+@sint64+ type supports the bit-wise logical unary operator:\newline
+The \ggsq+@s64+ type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -246,7 +246,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \ggsq+@sint64+ object.
+This operator returns an \ggsq+@s64+ object.
 
 
 
@@ -256,7 +256,7 @@ This operator returns an \ggsq+@sint64+ object.
 
 \section{Comparison Operators}
 
-The \ggsq+@sint64+ type supports the six comparison operators:\newline
+The \ggsq+@s64+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -274,6 +274,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@sint64+ objects, and return a \ggsq+@bool+ object.
+Theses operators require both arguments to be \ggsq+@s64+ objects, and return a \ggsq+@bool+ object.
 
 

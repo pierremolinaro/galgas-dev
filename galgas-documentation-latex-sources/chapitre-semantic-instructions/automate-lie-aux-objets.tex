@@ -75,7 +75,7 @@ Le compilateur GALGAS effectue une surveillance très stricte des accès aux obj
 
 On peut illustrer le résultat de cette surveillance par le fragment de code suivant :
 \begin{galgas4}
-var @uint x
+var @u32 x
 if condition then
   x = 2
 end
@@ -87,7 +87,7 @@ Quelle serait la valeur de la variable \ggsq!x! à l'issue de l'exécution de ce
 Le compilateur GALGAS détecte cette situation et considère que la variable est initialisée si elle l'est par toutes les branches de l'instruction \ggsq!if!. Dans le cas contraire, comme ci-dessus, elle est considérée comme non initialisée. Aussi sa lecture déclenche un message d'erreur. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut donc que les deux branches affectent une valeur à \ggsq!x! :
 
 \begin{galgas4}
-var @uint x
+var @u32 x
 if condition then
   x = 2
 else
@@ -162,7 +162,7 @@ Les états sont les suivants~:
 Un état initial est désigné par une flèche noire. La déclaration d'une variable locale place son automate dans l'état \texttt{DECLARED}~:
 
 \begin{galgas4}
-var @uint x # État 'declared'
+var @u32 x # État 'declared'
 \end{galgas4}
 
 Il y a deux actions possibles~:
@@ -182,13 +182,13 @@ Les transitions sont présentées en couleur, selon leur validité~:
 
 Ainsi, la lecture d'une variable dans l'état \texttt{DECLARED} est une erreur~: en effet, la variable n'a pas de valeur. La transition correspondante est donc en rouge. Voici un exemple qui illustre cette situation~:
 \begin{galgas4}
-var @uint x # État 'declared'
+var @u32 x # État 'declared'
 var y = x # Erreur, x n'a pas de valeur
 \end{galgas4}
 
 L'écriture d'une variable qui est dans l'état \texttt{INITIALIZED} n'est pas une erreur, mais révèle une anomalie~: la valeur écrasée n'a jamais été lue~; un message d'alerte est donc émis. Par exemple :
 \begin{galgas4}
-var @uint x = 2 # État 'initialized'
+var @u32 x = 2 # État 'initialized'
 var x = 3 # Alerte, l'initialisation de x à 2 est inutile
 \end{galgas4}
 
@@ -249,14 +249,14 @@ L'automate d'états finis associé à une constante locale est présenté à la 
 
 Voici un exemple.
 \begin{galgas4}
-let @uint x = 2 # État 'initialized'
+let @u32 x = 2 # État 'initialized'
 ...
 var y = x # Ok, l'état de 'x' est 'read'
 \end{galgas4}
 
 On n'est pas obligé de fournir une valeur à la déclaration d'une constante. On peut ainsi écrire~:
 \begin{galgas4}
-let @uint x # État 'declared'
+let @u32 x # État 'declared'
 ...
 x = 2 # État 'initialized'
 ...

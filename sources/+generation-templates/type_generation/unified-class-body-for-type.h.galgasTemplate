@@ -368,7 +368,7 @@ end
 //--------------------------------- Read subcripts
 %
 for (key argumentList resultType) in READ_SUBCRIPT_MAP do
-%  public: class GGS_%![resultType identifierRepresentation]% readSubcript_%
+%  public: class GGS_%![resultType identifierRepresentation]% readSubscript_%
    ![key identifierRepresentation]% (%?^
   for (formal) in argumentList do (IDX)
     %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
@@ -380,7 +380,7 @@ end
 //--------------------------------- Write subcripts
 %
 for (key argumentList resultType) in WRITE_SUBCRIPT_MAP do
-%  public: void writeSubcript_%
+%  public: void writeSubscript_%
    ![key identifierRepresentation]% (%?^
   for (formal) in argumentList do (IDX)
     %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% in% ![IDX string] %,\n% !^

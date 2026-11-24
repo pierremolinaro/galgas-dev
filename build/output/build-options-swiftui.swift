@@ -11,6 +11,7 @@ import SwiftUI
 fileprivate let SELECTED_COMPILER_TOOL_INDEX_PREFKEY = "selected.compiler.tool.index"
 fileprivate let display_version_PREFKEY = "build-option:display_version"
 fileprivate let display_help_PREFKEY = "build-option:display_help"
+fileprivate let quiet_PREFKEY = "build-option:quiet"
 fileprivate let outputConcreteSyntaxTree_PREFKEY = "build-option:outputConcreteSyntaxTree"
 fileprivate let log_file_read_PREFKEY = "build-option:log_file_read"
 fileprivate let do_not_generate_any_file_PREFKEY = "build-option:do_not_generate_any_file"
@@ -54,6 +55,7 @@ struct OptionView : View {
 
   @AppStorage(display_version_PREFKEY) private var display_version : Bool = false
   @AppStorage(display_help_PREFKEY) private var display_help : Bool = false
+  @AppStorage(quiet_PREFKEY) private var quiet : Bool = false
   @AppStorage(outputConcreteSyntaxTree_PREFKEY) private var outputConcreteSyntaxTree : Bool = false
   @AppStorage(log_file_read_PREFKEY) private var log_file_read : Bool = false
   @AppStorage(do_not_generate_any_file_PREFKEY) private var do_not_generate_any_file : Bool = false
@@ -107,6 +109,7 @@ struct OptionView : View {
         VStack (alignment: .leading) {
           Toggle ("Display version", isOn: self.$display_version)
           Toggle ("Display help", isOn: self.$display_help)
+          Toggle ("Quiet output", isOn: self.$quiet)
           Toggle ("Generate the concrete syntax tree, in .dot format (suitable for Graphviz)", isOn: self.$outputConcreteSyntaxTree)
           Toggle ("Log every file read", isOn: self.$log_file_read)
           Toggle ("Do not generate any file", isOn: self.$do_not_generate_any_file)
@@ -178,6 +181,9 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: display_help_PREFKEY) {
     arguments.append ("--help")
+  }
+  if ud.bool (forKey: quiet_PREFKEY) {
+    arguments.append ("--quiet")
   }
   if ud.bool (forKey: outputConcreteSyntaxTree_PREFKEY) {
     arguments.append ("--output-concrete-syntax-tree")

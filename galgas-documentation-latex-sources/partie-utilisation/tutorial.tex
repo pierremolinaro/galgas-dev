@@ -439,11 +439,11 @@ Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO. Pou
 Remarques préliminaires~:
 \begin{enumerate}
   \item en GALGAS, tous les symboles terminaux sont notés par une chaîne de caractères non vide délimitée par deux caractères \tpp{\$}~; par exemple~: \ggsq+$identifier$+, \ggsq+$integer$+, …
-  \item en GALGAS, un nom de type est un identificateur précédé du caractère \tpp{@}~; par exemple~: \ggsq+@string+, \ggsq+@uint+, \ggsq+@lstring+, \ggsq+@luint+, …~;
+  \item en GALGAS, un nom de type est un identificateur précédé du caractère \tpp{@}~; par exemple~: \ggsq+@string+, \ggsq+@u32+, \ggsq+@lstring+, \ggsq+@lu32+, …~;
   \item le type \ggsq+@string+ définit une valeur chaîne de caractères~;
-  \item le type \ggsq+@uint+ définit une valeur entière non signée sur 32 bits~;
+  \item le type \ggsq+@u32+ définit une valeur entière non signée sur 32 bits~;
   \item le type \ggsq+@lstring+ définit une valeur composée d'une chaîne de caractères et d'une information de localisation sur la position de la chaîne dans le texte source~;
-  \item le type \ggsq+@luint+ définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source~;
+  \item le type \ggsq+@lu32+ définit une valeur composée d'une valeur entière non signée et d'une information de localisation sur la position de la chaîne dans le texte source~;
   \item ces informations de localisation sont à la base du signalement d'erreur.
 \end{enumerate}
 
@@ -496,7 +496,7 @@ L’analyse lexicale d’une constante entière 32 bits non signée est présent
 Voici l'écriture correspondante~:
 \begin{galgas4}
 style integerStyle -> "Integer Constants"
-@uint uint32value
+@u32 uint32value
 $integer$ !uint32value style integerStyle
                error message "a 32-bit unsigned decimal number"
 
@@ -523,7 +523,7 @@ rule '0'->'9' {
 Explications :
 \begin{enumerate}
   \item \ggsq+style integerStyle -> "Integer Constants"+ déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne)~;
-  \item \ggsq+@uint uint32value+ déclare l’attribut lexical \ggsq+uint32value+ de type entier 32 bits non signé~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro~;
+  \item \ggsq+@u32 uint32value+ déclare l’attribut lexical \ggsq+uint32value+ de type entier 32 bits non signé~; au début de l’analyse de chaque token, cet attribut est initialisé à la valeur zéro~;
   \item \ggsq+$integer$ !uint32value style integerStyle ...+ déclare le terminal \ggsq+$integer$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggsq+uint32value+~;  le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique~;
   \item \ggsq+message decimalNumberTooLarge~: "decimal number too large"+ déclare un message d’erreur~;
   \item enfin \ggsq+rule '0'->'9' ...+ définit l’analyse lexicale d’une contante entière non signé~; les caractères qui la composent sont accumulés dans \ggsq+tokenString+, et la conversion de cette chaîne en entier est effectuée par la routine \ggsq+convertDecimalStringIntoUInt+~; pour finir, \ggsq+send $integer$+ envoie le terminal vers l’analyseur syntaxique.
@@ -759,7 +759,7 @@ En GALGAS, nous utilisons plutôt le vocabulaire des langages de programmation~:
 Un argument formel cite~:
 \begin{itemize}
   \item un délimiteur qui précise le sens de transmission de l'argument formel~;
-  \item son type (par exemple \ggsq+@lstring+, \ggsq+@luint+, …)~;
+  \item son type (par exemple \ggsq+@lstring+, \ggsq+@lu32+, …)~;
   \item son nom.
 \end{itemize}
 
@@ -807,7 +807,7 @@ Le sens de transmission d'un paramètre effectif est défini dans le \refTableau
 
 Il existe plusieurs sortes de types~:
 \begin{itemize}
-  \item les types prédéfinis par le langage, comme \ggsq+@lstring+, \ggsq+@luint+, …~;
+  \item les types prédéfinis par le langage, comme \ggsq+@lstring+, \ggsq+@lu32+, …~;
   \item les types définis par l'utilisateur, qui peuvent être~:
   \begin{itemize}
     \item des types \emph{table}~;
@@ -916,10 +916,10 @@ Dans la sémantique dynamique (\refSubsectionPage{semantiqueDynamiqueLOGO}), nou
 
 Modifier maintenant l’analyse syntaxique des constantes entières, à l’image de ce qui a été fait pour les identificateurs~:
 \begin{galgas4}
-$integer$ ?let @luint unNom
+$integer$ ?let @lu32 unNom
 \end{galgas4}
 
-Le type \ggsq+@luint+ est une structure composée d’une valeur de type \ggsq+@uint+ et d’une valeur de type \ggsq+@location+.
+Le type \ggsq+@lu32+ est une structure composée d’une valeur de type \ggsq+@u32+ et d’une valeur de type \ggsq+@location+.
 
 \subsection{Mise à plat de la liste des instructions}
 Le but ultime est d'obtenir la liste des instructions du programme principal. Mais quelles sont les instructions qui devront apparaître dans cette liste ? A priori, toutes les instructions décrites dans la \refSubsectionPage{semantiqueDynamiqueLOGO}. En fait, vous pouvez vous passer de l'instruction \tpp{CALL} en insérant dans la liste des instructions non pas cette instruction, mais la liste des instructions de la routine correspondante. Il faut procéder de même lors de construction de la liste de chaque routine.
@@ -937,15 +937,15 @@ class @penUp : @instruction {
 class @penDown : @instruction {
 }
 class @forward : @instruction {
-  @luint mLength
+  @lu32 mLength
 }
 class @rotate : @instruction {
-  @luint mAngle
+  @lu32 mAngle
 }
 \end{galgas4}
 
 
-Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \ggsq+@luint+.
+Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \ggsq+@lu32+.
 
 \subsection{Instructions sur les objets de type \texttt{class}}
 
@@ -1111,7 +1111,7 @@ override method @penUp codeDisplay
 L'implémentation de la méthode héritière concrète pour \ggsq+@penDown+ est élémentaire.
 
 \subsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
-Il faut accumuler l'angle de rotation dans l'argument \ggsq+ioAngle+. Or l'attribut \ggsq+mAngle+ de la classe \ggsq+@rotate+ n'est pas du type \ggsq+@uint+, mais du type \ggsq+@luint+. Pour extraire la composante \ggsq+@uint+ d’un \ggsq+@luint+, on écrit \ggsq+[mAngle uint]+. Pour transformer un objet \ggsq+unUint+ de type \ggsq+@uint+ en \ggsq+@double+, on écrit de la même façon \ggsq+[unUint double]+.
+Il faut accumuler l'angle de rotation dans l'argument \ggsq+ioAngle+. Or l'attribut \ggsq+mAngle+ de la classe \ggsq+@rotate+ n'est pas du type \ggsq+@u32+, mais du type \ggsq+@lu32+. Pour extraire la composante \ggsq+@u32+ d’un \ggsq+@lu32+, on écrit \ggsq+[mAngle uint]+. Pour transformer un objet \ggsq+unUint+ de type \ggsq+@u32+ en \ggsq+@double+, on écrit de la même façon \ggsq+[unUint double]+.
 
 
  Il faut donc écrire~:

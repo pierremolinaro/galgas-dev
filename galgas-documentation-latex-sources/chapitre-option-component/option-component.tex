@@ -28,7 +28,7 @@ La déclaration d'une option présente la syntaxe suivante :
 
 Les cinq champs qui définissent une option sont :
 \begin{itemize}
-  \item \ggsq+@T+ : le type de l'option ; trois types sont autorisés : \ggsq+@bool+, \ggsq+@uint+ et \ggsq+@string+ ;
+  \item \ggsq+@T+ : le type de l'option ; trois types sont autorisés : \ggsq+@bool+, \ggsq+@u32+ et \ggsq+@string+ ;
   \item \ggsq+nom_option+ : c'est le nom, interne à GALGAS, qui permettra de désigner l'option dans l'\emph{appel d'une option} (\refSubsectionPage{appelOption}) ;
   \item \ggsq+caractere+ : le caractère qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggsq+'A'+, l'option sera activée par \texttt{-A} dans la ligne de commande ; si vous ne voulez pas d'activation par un caractère, écrivez \ggsq+'\0'+ ;
   \item \ggsq+chaine+ : la chaîne de caractères qui activera l'option dans la ligne de commande ; par exemple, en écrivant \ggsq+"ABEDEF"+, l'option sera activée par \texttt{-{}-ABCDEF} dans la ligne de commande ; si vous ne voulez pas d'activation par une chaîne, écrivez \ggsq+""+ ;
@@ -62,9 +62,9 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est \ggsq+false
 
 \section{Option entière}
 
-Le champ qui définit le type de l'option est \ggsq+@uint+ ; par exemple :
+Le champ qui définit le type de l'option est \ggsq+@u32+ ; par exemple :
 \begin{galgas4}
-  @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count"
+  @u32 nom_option : 'M', "max-iterations-count" -> "Max of iteration count"
 \end{galgas4}
 
 Dans la ligne de commande, l'option est activée par \tpp{-M=xxx} ou \tpp{-{}-max-iterations-count=xxx}, où \tpp{xxx} est un nombre entier positif ou nul (et inférieur ou égal à $2^{32}-1$).

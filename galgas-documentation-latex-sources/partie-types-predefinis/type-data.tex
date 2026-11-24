@@ -47,7 +47,7 @@ Ce constructeur instancie un objet \ggsq=@data= vide.
 \subsectionGetter{count}{data}
 
 \begin{galgas4}
-getter count -> @uint
+getter count -> @u32
 \end{galgas4}
 
 Ce \emph{getter} renvoie le nombre d'octets du récepteur.
@@ -66,7 +66,7 @@ Ce \emph{getter} renvoie la valeur du récepteur sous la forme d'une liste d'oct
 \subsectionGetter{length}{data}
 
 \begin{galgas4}
-getter length -> @uint # Obsolète, utiliser count
+getter length -> @u32 # Obsolète, utiliser count
 \end{galgas4}
 
 Ce \emph{getter} renvoie le nombre d'octets du récepteur.
@@ -122,7 +122,7 @@ Cette méthode écrit le contenu du récepteur dans le fichier désigné par \gg
 \subsectionSetter{appendByte}{data}
 
 \begin{galgas4}
-setter appendByte ?@uint inValue
+setter appendByte ?@u32 inValue
 \end{galgas4}
 
 Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur. Comme un objet de \ggsq=@data= est un tableau d'octets, \ggsq=inValue= doit être compris entre $0$ et $255$. Si il est supérieur à $255$, une erreur d'exécution est déclenchée.
@@ -144,7 +144,7 @@ Ce \emph{setter} ajoute la valeur de \ggsq=inData= à la fin du récepteur.
 \subsectionSetter{appendShortBE}{data}
 
 \begin{galgas4}
-setter appendShortBE ?@uint inValue
+setter appendShortBE ?@u32 inValue
 \end{galgas4}
 
 Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids fort, puis l'octet de poids faible.
@@ -158,7 +158,7 @@ Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$
 \subsectionSetter{appendShortLE}{data}
 
 \begin{galgas4}
-setter appendShortLE ?@uint inValue
+setter appendShortLE ?@u32 inValue
 \end{galgas4}
 
 Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$, c'est-à-dire réprésentable par un entier non signé sur deux octets. Si ce n'est pas le cas, une erreur d'exécution est déclenchée. Si c'est le cas, deux octets sont ajoutés à la fin du récepteur, d'abord l'octet de poids faible, puis l'octet de poids fort.
@@ -173,7 +173,7 @@ Pour ce \emph{setter}, \ggsq=inValue= doit être compris entre $0$ et $2^{16}-1$
 \subsectionSetter{appendUIntBE}{data}
 
 \begin{galgas4}
-setter appendUIntBE ?@uint inValue
+setter appendUIntBE ?@u32 inValue
 \end{galgas4}
 
 Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids fort.
@@ -189,7 +189,7 @@ Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sou
 \subsectionSetter{appendUIntLE}{data}
 
 \begin{galgas4}
-setter appendUIntLE ?@uint inValue
+setter appendUIntLE ?@u32 inValue
 \end{galgas4}
 
 Ce \emph{setter} ajoute la valeur de \ggsq=inValue= à la fin du récepteur, sous la forme de quatre octets, en commençant par l'octet de poids faible.

@@ -173,7 +173,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
   !?ioTypeMap.makeEntry (optionalElementTypeName, ?let @unifiedTypeMapEntry optionalElementType)
 //--- Read subcripts
-  var @readSubcriptMap readSubscriptMap = @()
+  var @readSubscriptMap readSubscriptMap = @()
   let [@functionSignatureElement] firstArgumentTypeList = [@("".nowhere, keyType, "inKey", true)]
   !?readSubscriptMap.insertKey (
     firstArgumentTypeList.subcriptSignature.nowhere,
@@ -198,7 +198,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     valueType
   )
 //--- Write subcript
-  var @writeSubcriptMap writeSubcriptMap = @()
+  var @writeSubscriptMap writeSubcriptMap = @()
   !?writeSubcriptMap.insertKey (
     firstArgumentTypeList.subcriptSignature.nowhere,
     firstArgumentTypeList,

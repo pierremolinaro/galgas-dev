@@ -14,7 +14,7 @@ Le type \ggsq+@binaryset+ encode des ensembles, des relations binaires, des expr
 \subsectionConstructor{binarySetWithBit}{binaryset}
 
 \begin{galgas4box}
-constructor binarySetWithBit ?@uint inBitIndex -> @binaryset
+constructor binarySetWithBit ?@u32 inBitIndex -> @binaryset
 \end{galgas4box}
 
 
@@ -32,9 +32,9 @@ log s # Affiche <@binaryset: 1XX>
 
 \begin{galgas4box}
 constructor binarySetWithEqualComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -58,9 +58,9 @@ log s # Affiche <@binaryset: 00x00, 01X01, 10X10, 11X11>
 
 \begin{galgas4box}
 constructor binarySetWithEqualToConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -82,9 +82,9 @@ log s # Affiche <@binaryset: 10111>
 
 \begin{galgas4box}
 constructor binarySetWithGreaterOrEqualComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -105,9 +105,9 @@ log s # Affiche <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 
 \begin{galgas4box}
 constructor binarySetWithGreaterOrEqualToConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -124,9 +124,9 @@ The constructor returns a binary set that encodes the \emph{a~>=~cst} relation, 
 
 \begin{galgas4box}
 constructor binarySetWithLowerOrEqualComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -148,9 +148,9 @@ log s # Affiche <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 
 \begin{galgas4box}
 constructor binarySetWithLowerOrEqualToConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -166,9 +166,9 @@ The constructor returns a binary set that encodes the \emph{a~<=~cst} relation, 
 
 \begin{galgas4box}
 constructor binarySetWithNotEqualComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -191,9 +191,9 @@ log s # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11
 
 \begin{galgas4box}
 constructor binarySetWithNotEqualToConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -273,9 +273,9 @@ log s # Affiche <@binaryset: 1100X0, 111XXX>
 
 \begin{galgas4box}
 constructor binarySetWithStrictGreaterComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -297,9 +297,9 @@ log s # Affiche <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 
 \begin{galgas4box}
 constructor binarySetWithStrictGreaterThanConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -315,9 +315,9 @@ The constructor returns a binary set that encodes the \emph{a~>~cst} relation, w
 
 \begin{galgas4box}
 constructor binarySetWithStrictLowerComparison
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint inRightFirstIndex
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u32 inRightFirstIndex
   -> @binaryset
 \end{galgas4box}
 
@@ -339,9 +339,9 @@ log s # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 
 \begin{galgas4box}
 constructor binarySetWithStrictLowerThanConstant
-  ?@uint inLeftFirstIndex
-  ?@uint inBitCount
-  ?@uint64 inConstant
+  ?@u32 inLeftFirstIndex
+  ?@u32 inBitCount
+  ?@u64 inConstant
   -> @binaryset
 \end{galgas4box}
 
@@ -397,7 +397,7 @@ gr = gr | [@binaryset binarySetWithPredicateString !"0101 0100"] # Edge 4 -> 5
 @binaryset initialState [binarySetWithPredicateString !"0000"] # 0 is the initial state
 @binaryset accessibleStates = [gr accessibleStates !initialState !4]
 message " Accessible:"
-@uint64list valueList = [accessibleStates uint64ValueList !4]
+@u64list valueList = [accessibleStates uint64ValueList !4]
 foreach valueList do
   message " " . [mValue string]
 end foreach
@@ -412,7 +412,7 @@ This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 \subsectionGetter{binarySetByTranslatingFromIndex}{binaryset}
 
 \begin{galgas4box}
-getter binarySetByTranslatingFromIndex ?@uint inFirstIndex ?@uint inTranslation -> @string
+getter binarySetByTranslatingFromIndex ?@u32 inFirstIndex ?@u32 inTranslation -> @string
 \end{galgas4box}
 
 
@@ -423,17 +423,17 @@ Returns a \ggsq+@binaryset+ value computed by translating the receiver's value b
 \subsectionGetter{compressedValueCount}{binaryset}
 
 \begin{galgas4box}
-getter compressedValueCount -> @uint64
+getter compressedValueCount -> @u64
 \end{galgas4box}
 
-Returns in an \ggsq+@uint64+ value the number of different compressed string values encoded by receiver's value.
+Returns in an \ggsq+@u64+ value the number of different compressed string values encoded by receiver's value.
 
 
 
 \subsectionGetter{compressedStringValueList}{binaryset}
 
 \begin{galgas4box}
-getter compressedStringValueList ?@uint inBitCount -> @stringlist
+getter compressedStringValueList ?@u32 inBitCount -> @stringlist
 \end{galgas4box}
 
 Returns the list of compressed string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
@@ -450,7 +450,7 @@ Returns the list of compressed string values corresponding to receiver's value, 
 \subsectionGetter{containsValue}{binaryset}
 
 \begin{galgas4box}
-getter containsValue ?@uint inFirstBit ?@uint inBitCount -> @bool
+getter containsValue ?@u32 inFirstBit ?@u32 inBitCount -> @bool
 \end{galgas4box}
 
 
@@ -503,7 +503,7 @@ This operation returns un \ggsq+@binaryset+ value; do not confuse with \ggsq+==+
 \subsectionGetter{existOnBitIndex}{binaryset}
 
 \begin{galgas4box}
-getter existOnBitIndex ?@uint inBitIndex -> @binaryset
+getter existOnBitIndex ?@u32 inBitIndex -> @binaryset
 \end{galgas4box}
 
 Returns the binary computed by applying the \emph{exist} operator on the \emph{inBitIndex} bit of the receiver's value.
@@ -516,7 +516,7 @@ Returns the binary computed by applying the \emph{exist} operator on the \emph{i
 \subsectionGetter{existsOnBitRange}{binaryset}
 
 \begin{galgas4box}
-getter existsOnBitRange ?@uint inFirstBitIndex ?@uint inBitCount -> @bool
+getter existsOnBitRange ?@u32 inFirstBitIndex ?@u32 inBitCount -> @bool
 \end{galgas4box}
 
 
@@ -540,7 +540,7 @@ log s # Affiche <@binaryset: 011XXX10>
 \subsectionGetter{existOnBitIndexAndBeyond}{binaryset}
 
 \begin{galgas4box}
-getter existOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
+getter existOnBitIndexAndBeyond ?@u32 inBitIndex -> @binaryset
 \end{galgas4box}
 
 Returns the binary set computed by applying the \emph{exist} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.
@@ -554,7 +554,7 @@ Returns the binary set computed by applying the \emph{exist} operator on all bit
 \subsectionGetter{forAllOnBitIndex}{binaryset}
 
 \begin{galgas4box}
-getter forAllOnBitIndex ?@uint inBitIndex -> @binaryset
+getter forAllOnBitIndex ?@u32 inBitIndex -> @binaryset
 \end{galgas4box}
 
 Returns the binary set computed by applying the \emph{for all} operator on the \emph{inFirstBitIndex} bit index of the receiver's value.
@@ -568,7 +568,7 @@ Returns the binary set computed by applying the \emph{for all} operator on the \
 \subsectionGetter{forAllOnBitIndexAndBeyond}{binaryset}
 
 \begin{galgas4box}
-getter forAllOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset
+getter forAllOnBitIndexAndBeyond ?@u32 inBitIndex -> @binaryset
 \end{galgas4box}
 
 
@@ -723,7 +723,7 @@ Returns the binary set computed by applying the \emph{strict lower} operator on 
 \subsectionGetter{stringValueList}{binaryset}
 
 \begin{galgas4box}
-getter stringValueList ?@uint inBitCount -> @stringlist
+getter stringValueList ?@u32 inBitCount -> @stringlist
 \end{galgas4box}
 
 Returns the list of string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
@@ -738,7 +738,7 @@ Returns the list of string values corresponding to receiver's value, considering
 
 \begin{galgas4box}
 getter stringValueListWithNameList
-  ?@uint inBitCount
+  ?@u32 inBitCount
   ?@stringlist inNameList
   -> @stringlist
 \end{galgas4box}
@@ -756,9 +756,9 @@ Returns the list of named values corresponding to receiver's value, considering 
 
 \begin{galgas4box}
 getter swap021
-  ?@uint inBitCount1
-  ?@uint inBitCount2
-  ?@uint inBitCount3
+  ?@u32 inBitCount1
+  ?@u32 inBitCount2
+  ?@u32 inBitCount3
   -> @binaryset
 \end{galgas4box}
 
@@ -777,7 +777,7 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 \subsectionGetter{swap01}{binaryset}
 
 \begin{galgas4box}
-getter swap01 ?@uint inBitCount1 ?@uint inBitCount2 -> @binaryset
+getter swap01 ?@u32 inBitCount1 ?@u32 inBitCount2 -> @binaryset
 \end{galgas4box}
 
 
@@ -793,9 +793,9 @@ This getter considers that the receiver encodes an \emph{(x, y)} relation, where
 
 \begin{galgas4box}
 getter swap102
-  ?@uint inBitCount1
-  ?@uint inBitCount2
-  ?@uint inBitCount3
+  ?@u32 inBitCount1
+  ?@u32 inBitCount2
+  ?@u32 inBitCount3
   -> @binaryset
 \end{galgas4box}
 
@@ -812,9 +812,9 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \begin{galgas4box}
 getter swap120
-  ?@uint inBitCount1
-  ?@uint inBitCount2
-  ?@uint inBitCount3
+  ?@u32 inBitCount1
+  ?@u32 inBitCount2
+  ?@u32 inBitCount3
   -> @binaryset
 \end{galgas4box}
 
@@ -831,9 +831,9 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \begin{galgas4box}
 getter swap201
-  ?@uint inBitCount1
-  ?@uint inBitCount2
-  ?@uint inBitCount3
+  ?@u32 inBitCount1
+  ?@u32 inBitCount2
+  ?@u32 inBitCount3
   -> @binaryset
 \end{galgas4box}
 
@@ -850,9 +850,9 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 
 \begin{galgas4box}
 getter swap210
-  ?@uint inBitCount1
-  ?@uint inBitCount2
-  ?@uint inBitCount3
+  ?@u32 inBitCount1
+  ?@u32 inBitCount2
+  ?@u32 inBitCount3
   -> @binaryset
 \end{galgas4box}
 
@@ -870,7 +870,7 @@ This getter considers that the receiver encodes an \emph{(x, y, z)} relation, wh
 \subsectionGetter{transitiveClosure}{binaryset}
 
 \begin{galgas4box}
-getter transitiveClosure ?@uint inBitCount -> @binaryset
+getter transitiveClosure ?@u32 inBitCount -> @binaryset
 \end{galgas4box}
 
 
@@ -886,14 +886,14 @@ This getter considers that the receiver encodes an \emph{(x, y)} relation, where
 \subsectionGetter{transposedBy}{binaryset}
 
 \begin{galgas4box}
-getter transposedBy ?@uintlist inVector -> @binaryset
+getter transposedBy ?@u32list inVector -> @binaryset
 \end{galgas4box}
 
 Retourne la valeur transposée du récepteur. L'argument \ggsq+inVector+ spécifie comment la transposition s'opère : la valeur à l'indice $i$ est l'indice de destination du bit $i$ dans le \emph{binaryset} renvoyé.
 
 {\bf 1\textsuperscript{er} exemple.} Si on veut échanger les bits $0$ et $1$, on écrit :
 \begin{galgas4}
-let vector = @uintlist {!1, !0}
+let vector = @u32list {!1, !0}
 let result = [myBinarySet transposedBy !vector]
 \end{galgas4}
 
@@ -902,10 +902,10 @@ let result = [myBinarySet transposedBy !vector]
   let b = @binaryset.binarySetWithStrictGreaterComparison {!0 !2 !4}
     & @binaryset.binarySetWithEqualToConstant {!2 !2 !0}
   log b # <@binaryset: 000001, 00001X, 01001X, 100011>
-  let vr = @uintlist {!0, !1, !4, !5, !2, !3}
+  let vr = @u32list {!0, !1, !4, !5, !2, !3}
   let r = [b transposedBy !vr]
   log r # <@binaryset: 000001, 00001X, 00011X, 001011>
-  let vs = @uintlist {!4, !5, !0, !1, !2, !3}
+  let vs = @u32list {!4, !5, !0, !1, !2, !3}
   let s = [b transposedBy !vs]
   log s # <@binaryset: 010000, 100X00, 110X00, 111000>
 \end{galgas4}
@@ -926,11 +926,11 @@ La constante \ggsq=b= encode la relation $A > B$, où $A$ est encodé par les bi
 \subsectionGetter{uint64ValueList}{binaryset}
 
 \begin{galgas4box}
-getter uint64ValueList ?@uint inBitCount -> @uint64list
+getter uint64ValueList ?@u32 inBitCount -> @u64list
 \end{galgas4box}
 
 
-Returns the list of \ggsq+@uint64+ values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
+Returns the list of \ggsq+@u64+ values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.
 
 
 
@@ -942,11 +942,11 @@ Returns the list of \ggsq+@uint64+ values corresponding to receiver's value, con
 \subsectionGetter{valueCount}{binaryset}
 
 \begin{galgas4box}
-getter valueCount ?@uint inBitCount -> @uint64
+getter valueCount ?@u32 inBitCount -> @u64
 \end{galgas4box}
 
 
-Returns in an \ggsq+@uint64+ object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.
+Returns in an \ggsq+@u64+ object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits. No overflow test in performed.
 
 
 

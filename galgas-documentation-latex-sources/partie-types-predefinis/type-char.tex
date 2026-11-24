@@ -127,13 +127,13 @@ Retourne un objet \ggsq+@char+ obtenu en lisant le clavier. Tout caractère Unic
 \subsectionConstructor{unicodeCharacterWithUnsigned}{char}
 
 \begin{galgas4}
-constructor unicodeCharacterWithUnsigned ?@uint inValue -> @char
+constructor unicodeCharacterWithUnsigned ?@u32 inValue -> @char
 \end{galgas4}
 
 
 Returns an \ggsq+@char+ object from an Unicode code point.
 
-A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \ggsq+@uint+ value represents an assigned Unicode value with the \refGetterPage{uint}{isUnicodeValueAssigned}.
+A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \ggsq+@u32+ value represents an assigned Unicode value with the \refGetterPage{uint}{isUnicodeValueAssigned}.
 
 
 \section{Getters}
@@ -305,10 +305,10 @@ Returns returns a string representation of the receiver's value: a one character
 \subsectionGetter{uint}{char}
 
 \begin{galgas4}
-getter uint -> @uint
+getter uint -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ object representing the Unicode code point of the receiver's value.
+Returns an \ggsq+@u32+ object representing the Unicode code point of the receiver's value.
 
 
 
@@ -366,7 +366,7 @@ Returns the uppercase character corresponding to the receiver's value: if the re
 \subsectionGetter{utf8Length}{char}
 
 \begin{galgas4}
-getter utf8Length -> @uint
+getter utf8Length -> @u32
 \end{galgas4}
 
 Returns the number of bytes of the UTF-8 representation of the receiver, that is:

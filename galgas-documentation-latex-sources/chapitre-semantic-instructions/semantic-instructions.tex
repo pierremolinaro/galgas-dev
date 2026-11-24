@@ -242,91 +242,6 @@ variable.champ.champ1 = expression
 
 
 
-\sectionLabel{L'instruction \texttt{cast}}{instructionCast}
-
-L'instruction \ggsq+cast+ permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est~:
-
-\begin{galgas4box}
-cast expression
-case conversion @T1 nom1 :
-  ...
-case conversion @T2 nom2 :
-  ...
-else
-  ...
-end
-\end{galgas4box}
-
-L'instruction accepte une ou plusieurs branches \ggsq+case+, et zéro ou une branche \ggsq+else+. \ggsq+conversion+ est soit \ggsq+==+, soit \ggsq+>=+. \ggsq+nom1+ et \ggsq+nom2+ sont des constantes dont le type est le type nommé dans la branche \ggsq+case+ qui la déclare, et dont la portée est limitée à cette branche \ggsq+case+.
-
-Lors de l'exécution, le type dynamique de \ggsq+expression+ est comparé successivement aux types (\ggsq+@T1+, \ggsq+@T2+) nommés dans les branches \ggsq+case+~; dès que ce type dynamique est~:
-\begin{itemize}
-  \item exactement la classe \ggsq+@T+ (\ggsq+conversion+ est \ggsq+==+),
-  \item la classe \ggsq+@T+ ou de l'une de ses classes héritières (\ggsq+conversion+ est \ggsq+>=+),
-  \item une classe héritière de la classe \ggsq+@T+, mais pas la classe \ggsq+@T+ (\ggsq+conversion+ est \ggsq+>+),
-\end{itemize}
-alors la constante prend la valeur de \ggsq+expression+ et les instructions de la branche correspondante sont exécutées.
-
-Si toutes les comparaisons échouent, la branche \ggsq+else+ est exécutée (si elle existe). La forme typique de cette instruction est donc~:
-
-
-\begin{galgas4box}
-cast expression
-case >= @B v1 :
-  ...
-case >= @C v2 :
-  ...
-else
-  message "conversion impossible"
-end
-\end{galgas4box}
-
-Note~: si la variable \ggsq+nom1+ ou  \ggsq+nom2+ n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \ggsq+case >= @T :+.
-
-
-
-
-
-
-
-
-
-\sectionLabel{L'instruction d'ajout \texttt{+=} d'un élément à une collection}{concatInstruction}
-
-L'instruction \ggsq!+=! présente deux syntaxes~:
-\begin{itemize}
-  \item le membre de droite est une expression~: \ggsq*cible += expression*~; cette instruction est décrite \refSectionPage{instructionAffectationCombineeOperation}~;
-  \item le membre de droite est une liste d'expressions~: \ggsq*cible += !expression1 ... !expressionN*~; cette instruction est décrite ci-dessous.
-\end{itemize}
-
-La \ggsq+cible+ est une variable ou un champ de structure.
-
-Cette instruction s'applique aux types suivants~:
-\begin{itemize}
-  \item \ggsq+@stringset+ (\refSubsectionPage{instructionConcatStringset})~;
-  \item \ggsq+list @T+ (\refSubsectionPage{instructionConcatList})~;
-  \item \ggsq+sortedlist @T+ (\refSubsectionPage{instructionConcatSortedList})~;
-  \item \ggsq+map @T+ (\refSubsectionPage{instructionConcatMap}).
-\end{itemize}
-
-
-\subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
-
-Sous la forme \ggsq*cible += expression*, l'instruction permet de concaténer d'effectuer l'union des ensembles de chaînes~:
-\begin{galgas4}
-var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
-var strset2 = @stringset {!"b", !"c"} # Valeur : "b", "c"
-strset1 += strset2 # strset1 vaut "a", "b", "c"
-\end{galgas4}
-
-La forme \ggsq*cible += !expression1 ... !expressionN* permet d'ajouter une chaîne à l'ensemble~:
-\begin{galgas4}
-var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
-strset1 += !"c" # strset1 vaut "a", "b", "c"
-strset1 += !"b" # strset1 vaut "a", "b", "c"
-\end{galgas4}
-
-
 
 \subsectionLabel{Instruction d'ajout et les listes}{instructionConcatList}
 
@@ -345,7 +260,7 @@ Sous la forme \ggsq*cible += !expression1 ... !expressionN*, l'instruction ajout
 Avec la liste~:
 \begin{galgas4}
 list @maListe {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
 }
 \end{galgas4}
@@ -369,7 +284,7 @@ Sous la forme \ggsq*cible += expression*, l'instruction effectue une concaténat
 Avec la liste triée~:
 \begin{galgas4}
 sortedlist @maListeTriee {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
 }{
   mProperty1 <
@@ -412,7 +327,7 @@ Sous la forme \ggsq*cible += !expression1 ... !expressionN*, l'instruction ajout
 Avec la table~:
 \begin{galgas4}
 map @maTable {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
 }
 \end{galgas4}
@@ -440,17 +355,11 @@ table += !clef !2 !"a"
 
 \sectionLabel{Affectation combinée à une opération~: \texttt{+=}, \texttt{-=}, \texttt{*=} et \texttt{/=}}{instructionAffectationCombineeOperation}
 
-L'instruction \ggsq!+=! présente deux syntaxes~:
-\begin{itemize}
-  \item le membre de droite est une expression~: \ggsq*cible += expression*~; cette instruction est décrite ci-dessous~;
-  \item le membre de droite est une liste d'expressions~: \ggsq*cible += !expression1 ... !expressionN*~; cette instruction est décrite \refSectionPage{concatInstruction}.
-\end{itemize}
-
 La \ggsq+cible+ est une variable ou un champ de structure.
 
 Les instructions \ggsq!+=!, \ggsq!-=!, \ggsq!*=!, \ggsq!/=! s'appliquent~:
 \begin{itemize}
- \item aux types entiers \ggsq!@sint! (\refSubsectionPage{instructionsSINT}, \ggsq!@sint64! (\refSubsectionPage{instructionsSINT64}, \ggsq!@uint! (\refSubsectionPage{instructionsUINT} et \ggsq!@uint64! (\refSubsectionPage{instructionsUINT64}~;
+ \item aux types entiers \ggsq!@s32! (\refSubsectionPage{instructionsSINT}, \ggsq!@s64! (\refSubsectionPage{instructionsSINT64}, \ggsq!@u32! (\refSubsectionPage{instructionsUINT} et \ggsq!@u64! (\refSubsectionPage{instructionsUINT64}~;
  \item au type flottant \ggsq!@double! (\refSubsectionPage{affectationsCombineesDouble}).
 \end{itemize}
 
@@ -513,7 +422,7 @@ error localisation : message_erreur : variable1, ..., variableN
 
 
 
-Le champ \ggsq+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggsq+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggsq+location+ et renvoyant un objet de type \ggsq+@location+~: c'est le cas des types prédéfinis \ggsq+@luint+, \ggsq+@luint64+, \ggsq+@lsint+, \ggsq+@lsint64+, \ggsq+@lbigint+, \ggsq+@lbool+, \ggsq+@lchar+ et \ggsq+@lstring+.
+Le champ \ggsq+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggsq+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggsq+location+ et renvoyant un objet de type \ggsq+@location+~: c'est le cas des types prédéfinis \ggsq+@lu32+, \ggsq+@lu3264+, \ggsq+@ls32+, \ggsq+@ls3264+, \ggsq+@lbigint+, \ggsq+@lbool+, \ggsq+@lchar+ et \ggsq+@lstring+.
 
 Le \ggsq+message_erreur+ est le message affiché à l'utilisateur~: c'est donc une expression de type \ggsq+@string+.
 
@@ -793,7 +702,7 @@ On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identific
 
 Cette instruction permet d'exécuter une procédure. Si par exemple celle-ci est définie par~:
 \begin{galgas4}
-proc maRoutine !@uint a ?!@string b {
+proc maRoutine !@u32 a ?!@string b {
   ...
 }
 \end{galgas4}
@@ -801,7 +710,7 @@ proc maRoutine !@uint a ?!@string b {
 L'instruction d'appel de cette routine est (il y a plusieurs variantes possibles pour le premier paramètre qui est en entrée)~:
 \begin{galgas4}
 @string x = ...
-maRoutine (?@uint y !?x)
+maRoutine (?@u32 y !?x)
 \end{galgas4}
 
 Note~: les parenthèses sont obligatoires, même si il n'y a aucun argment.
@@ -911,7 +820,7 @@ Des constantes correspondants à chaque champ de l'élément courant sont implic
   \centering
   \begin{tabular}{lp{12cm}}
   \textbf{Type} & \textbf{Constantes implicitement déclarées}\\
-  \ggsq+@data+ & \ggsq+data+, de type \ggsq+@uint+\\
+  \ggsq+@data+ & \ggsq+data+, de type \ggsq+@u32+\\
   \ggsq+dict @T+ & \ggsq+key+ représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
   \ggsq+list @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
   \ggsq+map @T+ & \ggsq+lkey+, de type \ggsq+@lstring+, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
@@ -943,7 +852,7 @@ end
 Avec la liste~:
 \begin{galgas4}
 list @maListe {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
 }
 \end{galgas4}
@@ -961,7 +870,7 @@ end
 Avec la table~:
 \begin{galgas4}
 map @maTable {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
 }
 \end{galgas4}
@@ -1044,7 +953,7 @@ Dans cette forme, une seule constante est déclarée (\ggsq+cst+), et son type e
   \centering
   \begin{tabular}{llp{7cm}}
   \textbf{Type de \texttt{expression}} & \textbf{Type implicite de la constante \texttt{cst}}\\
-  \ggsq+@data+ & \ggsq+@uint+\\
+  \ggsq+@data+ & \ggsq+@u32+\\
   \ggsq+dict @T+ & \ggsq+@T-element+\\
   \ggsq+list @T+ & \ggsq+@T-element+\\
   \ggsq+map @T+ & \ggsq+@T-element+\\
@@ -1103,7 +1012,7 @@ Les exemples précédents deviennent alors~:
 
 \begin{galgas4}
 @data d = ...
-for @uint v in d do
+for @u32 v in d do
   log v
 end
 \end{galgas4}
@@ -1159,7 +1068,7 @@ Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nombre e
 Prenons comme exemple le type liste suivant~:
 \begin{galgas4}
 list @maListe {
-  @uint mProperty1
+  @u32 mProperty1
   @string mProperty2
   @char mProperty3
   @bool mProperty4
@@ -1182,7 +1091,7 @@ Il est possible d'annoter chaque constante en précisant son type.
 
 \begin{galgas4}
 @maListe uneListe = {!1 !"a" !'b' !false}
-for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+for (@u32 p1 @string p2 @char p3 @bool p4) in uneListe do
   log p1, p2, p3, p4
 end
 \end{galgas4}
@@ -1190,7 +1099,7 @@ end
 Le compilateur vérifie alors que le type cité est égal au type déduit du type de l'expression énumérée.
 \begin{galgas4}
 @maListe uneListe = {!1 !"a" !'b' !false}
-for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+for (@u32 p1 @string p2 @char p3 @bool p4) in uneListe do
   log p1, p2, p3, p4
 end
 \end{galgas4}
@@ -1201,7 +1110,7 @@ end
 Si certaines constantes ne sont pas utiles, on peut les remplacer par un joker (\ggsq+*+). Le nom du type ne doit alors pas figurer.
 \begin{galgas4}
 @maListe uneListe = {!1 !"a" !'b' !false}
-for (@uint p1 * * @bool p4) in uneListe do
+for (@u32 p1 * * @bool p4) in uneListe do
   log p1, p4
 end
 \end{galgas4}
@@ -1209,7 +1118,7 @@ end
 Plusieurs jokers peuvent être rassemblés en mentionnant leur nombre d'occurrences.
 \begin{galgas4}
 @maListe uneListe = {!1 !"a" !'b' !false}
-for (@uint p1 2* @bool p4) in uneListe do
+for (@u32 p1 2* @bool p4) in uneListe do
   log p1, p4
 end
 \end{galgas4}
@@ -1222,7 +1131,7 @@ Trois points consécutifs (\ggsq+...+) peuvent être utilisés pour signifier qu
 
 \begin{galgas4}
 @maListe uneListe = {!1 !"a" !'b' !false}
-for (@uint p1 ...) in uneListe do
+for (@u32 p1 ...) in uneListe do
   log p1
 end
 \end{galgas4}
@@ -1297,7 +1206,7 @@ Plusieurs champs de l'instruction \ggsq+for+ sont optionnels.
 \end{itemize}
 
 
-\ggsq+(nom_index)+. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \ggsq+do+. Cet identificateur est le nom d'une constante qui a implicitement le type \ggsq+@uint+ et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \ggsq+instructions_do+, et avant l'exécution des \ggsq+instructions_between+. Sa visibilité est la branche \ggsq+do+.
+\ggsq+(nom_index)+. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \ggsq+do+. Cet identificateur est le nom d'une constante qui a implicitement le type \ggsq+@u32+ et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \ggsq+instructions_do+, et avant l'exécution des \ggsq+instructions_between+. Sa visibilité est la branche \ggsq+do+.
 
 \ggsq+while expression+. L'énumération est exécutée tant que l'\ggsq+expression+ est vraie. L'absence de cette construction est équivalent à \ggsq+while true+ et permet d'énumérer toutes les valeurs.
 
@@ -1677,33 +1586,6 @@ D'un point de vue sémantique, les instructions \ggsq+guard+ et \ggsq+if+ sont �
 
 
 
-\sectionLabel{L'instruction \texttt{log}}{instructionLog}
-
-L'instruction \ggsq+log+ permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression~:
-\begin{itemize}
-  \item pour une variable ou une constante, \ggsq+log nom+~;
-  \item pour une expression, \ggsq+log "message" : expression+~;
-\end{itemize}
-
-Par exemple~:
-\begin{galgas4}
-let x = 2
-log x # Affiche LOGGING x: <@uint:2>
-log "valeur" : x * 2 # Affiche LOGGING valeur: <@uint:4>
-\end{galgas4}
-
-Plusieurs variables ou constantes peuvent être affichées par une même instruction \ggsq+log+, en les séparant par une virgule~:
-\begin{galgas4}
-let x = 2
-log x, "valeur" : x * 2
-\end{galgas4}
-
-
-
-
-
-
-
 
 
 
@@ -1727,7 +1609,7 @@ end
 Les \ggsq+instructions_1+ et \ggsq+instructions_2+ sont des listes d'instructions qui peuvent être vides.
 
 
-Le \ggsq+variant_expression+ est une expression de type \ggsq+@uint+ qui assure que la boucle n'est pas sans fin~: elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
+Le \ggsq+variant_expression+ est une expression de type \ggsq+@u32+ qui assure que la boucle n'est pas sans fin~: elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
 
 L'\ggsq+expression+ est une expression de type \ggsq+@bool+ qui exprime la continuation de l'exécution de la boucle.
 
@@ -1811,14 +1693,14 @@ Les parenthèses sont obligatoires. La déclaration d'un procédure est présent
 
 Par exemple, la procedure suivante~:
 \begin{galgas4}
-proc produit ?@uint a ?@uint b !@uint résultat {
+proc produit ?@u32 a ?@u32 b !@u32 résultat {
   résultat = a * b
 }
 \end{galgas4}
 
 Peut être appelée par~:
 \begin{galgas4}
-produit (!2 !3 ?@uint résultat)
+produit (!2 !3 ?@u32 résultat)
 \end{galgas4}
 
 
@@ -1925,7 +1807,7 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 \begin{galgas4}
 setter setCharacterAtIndex
   ?@char inChar
-  ?@uint inIndex
+  ?@u32 inIndex
 \end{galgas4}
 
 Aussi, ce \emph{setter} peut être appelé par~:
@@ -2125,7 +2007,7 @@ warning localisation : message_alerte
 
 
 
-Le champ \ggsq+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggsq+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggsq+location+ et renvoyant un objet de type \ggsq+@location+~: c'est le cas dses types prédéfinis \ggsq+@luint+, \ggsq+@luint64+, \ggsq+@lsint+, \ggsq+@lsint64+, \ggsq+@lbigint+, \ggsq+@lbool+, \ggsq+@lchar+ et \ggsq+@lstring+.
+Le champ \ggsq+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggsq+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggsq+location+ et renvoyant un objet de type \ggsq+@location+~: c'est le cas dses types prédéfinis \ggsq+@lu32+, \ggsq+@lu3264+, \ggsq+@ls32+, \ggsq+@ls3264+, \ggsq+@lbigint+, \ggsq+@lbool+, \ggsq+@lchar+ et \ggsq+@lstring+.
 
 
 Le \ggsq+message_alerte+ est le message affiché à l'utilisateur~: c'est donc une expression de type \ggsq+@string+.
@@ -2148,308 +2030,4 @@ warning nom : message_alerte
 \end{galgas4}
 
 
-
-
-
-
-
-
-
-
-\section{L'instruction \texttt{with}}
-
-L'instruction \ggsq+with+ permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
-
-\textbf{Première forme.} Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante})~:
-\begin{galgas4}
-with expression_cle prefixe_optionnel in expression_table
-do
-  liste_instructions_do
-else
-  liste_instructions_else # Optionnel
-end
-\end{galgas4}
-
-\textbf{Deuxième forme.} Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance})~:
-\begin{galgas4}
-with expression_cle prefixe_optionnel in expression_table
-error message methode_recherche
-do
-  liste_instructions_do
-end
-\end{galgas4}
-
-
-
-\textbf{Troisième forme.} Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante})~:
-\begin{galgas4}
-with expression_cle prefixe_optionnel in !?cible_table
-do
-  liste_instructions_do
-else
-  liste_instructions_else # Optionnel
-end
-\end{galgas4}
-
-\textbf{Quatrième forme.} Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance})~:
-\begin{galgas4}
-with expression_cle prefixe_optionnel in !?cible_table
-error message methode_recherche
-do
-  liste_instructions_do
-end
-\end{galgas4}
-
-
-
-
-\subsectionLabel{Accès en lecture tolérant l'échec de la recherche}{instructionWithEnLectureTolerante}
-
-
-\begin{galgas4}
-with expression_cle prefixe_optionnel in expression_table
-do
-  liste_instructions_do
-else
-  liste_instructions_else # Optionnel
-end
-\end{galgas4}
-
-Où~:
-\begin{itemize}
-  \item \ggsq+expression_cle+ est une expression de type \ggsq+@string+ dont la valeur définit la clé~;
-  \item \ggsq+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggsq+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggsq+liste_instructions_do+~;
-  \item \ggsq+expression_table+ est une expression qui désigne la table.
-\end{itemize}
-
-La clé désignée par la valeur de \ggsq+expression_cle+ est recherchée dans la table désignée par la valeur de \ggsq+expression_table+~:
-\begin{itemize}
-  \item en cas d'échec, les instructions \ggsq+liste_instructions_else+ sont exécutées~;
-  \item en cas de succès, ce sont les instructions \ggsq+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé~; la clé est disponible sous le nom \ggsq+lkey+ éventuellement préfixé, et est de type \ggsq+@lstring+.
-\end{itemize}
-
-%Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare~:
-%\begin{galgas4}
-%map @maTable {
-%  @uint mOccurrenceCount
-%  insert insertKey error message "entree deja presente"
-%}
-%\end{galgas4}
-%
-%Et on effectue des recherches / insertions de la façon suivante~:
-%\begin{galgas4}
-%@lstring cle = ...
-%with cle.string in !?table do
-%  mOccurrenceCount ++
-%else
-%  [!?table insertKey !cle !1]
-%end
-%\end{galgas4}
-%
-%En utilisant un préfixe, le code devient~:
-%\begin{galgas4}
-%@lstring cle = ...
-%with cle.string : xyz_ in !?table do
-%  mOccurrenceCount ++
-%else
-%  [!?table insertKey !cle !1]
-%end
-%\end{galgas4}
-
-
-Par exemple, on veut disposer d'une table possédant une propriété identifiant de manière unique la clé. On déclare~:
-\begin{galgas4}
-map @maTable {
-  @uint mIndex
-  insert insertKey error message "entree deja presente"
-}
-\end{galgas4}
-
-Et on effectue des recherches / insertions de la façon suivante~:
-\begin{galgas4}
-@uint idx
-@lstring cle = ...
-with cle.string in table do
-  idx = mIndex
-else
-  idx = [table count]
-  [!?table insertKey !cle !idx]
-end
-\end{galgas4}
-
-En utilisant un préfixe, le code devient~:
-\begin{galgas4}
-@uint idx
-@lstring cle = ...
-with cle.string : xyz_ in table do
-  idx = xyz_mIndex
-else
-  idx = [table count]
-  [!?table insertKey !cle !idx]
-end
-\end{galgas4}
-
-
-
-
-\subsectionLabel{Accès en lecture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureSansTolerance}
-
-
-\begin{galgas4}
-with expression_cle prefixe_optionnel in expression_table
-error message methode_recherche
-do
-  liste_instructions_do
-end
-\end{galgas4}
-
-Où~:
-\begin{itemize}
-  \item \ggsq+expression_cle+ est une expression de type \ggsq+@lstring+ dont la valeur définit la clé~;
-  \item \ggsq+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggsq+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggsq+liste_instructions_do+~;
-  \item \ggsq+expression_table+ est une expression qui désigne la table~;
-  \item \ggsq+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggsq+search+) dont le message associé sera utilisé pour le signalement d'erreur.
-\end{itemize}
-
-La clé désignée par la valeur de \ggsq+expression_cle+ est recherchée dans la table désignée par la valeur de \ggsq+expression_table+~:
-\begin{itemize}
-  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggsq+methode_recherche+, et sa localisation par le champ \ggsq+location+ de l'\ggsq+expression_cle+~;
-  \item en cas de succès, ce sont les instructions \ggsq+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé~; la clé est disponible sous le nom \ggsq+lkey+ éventuellement préfixé, et est de type \ggsq+@lstring+.
-\end{itemize}
-
-Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la doit avoir été entrée auparavant. On déclare~:
-\begin{galgas4}
-map @maTable {
-  @uint mOccurrenceCount
-  search searchKey error message "entree %K absente"
-}
-\end{galgas4}
-
-Et on effectue des recherches de la façon suivante~:
-\begin{galgas4}
-@lstring cle = ...
-@uint occurenceCount
-with cle in table error message searchKey do
-  occurenceCount = mOccurrenceCount ++
-end
-\end{galgas4}
-
-En utilisant un préfixe, le code devient~:
-\begin{galgas4}
-@lstring cle = ...
-@uint occurenceCount
-with cle : abc_ in table error message searchKey do
-  occurenceCount = abc_mOccurrenceCount ++
-end
-\end{galgas4}
-
-
-
-
-
-\subsectionLabel{Accès en lecture/écriture tolérant l'échec de la recherche}{instructionWithEnLectureEcritureTolerante}
-
-
-\begin{galgas4}
-with expression_cle prefixe_optionnel in !?cible_table
-do
-  liste_instructions_do
-else
-  liste_instructions_else # Optionnel
-end
-\end{galgas4}
-
-
-Où~:
-\begin{itemize}
-  \item \ggsq+expression_cle+ est une expression de type \ggsq+@string+ dont la valeur définit la clé~;
-  \item \ggsq+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggsq+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggsq+liste_instructions_do+~;
-  \item \ggsq+cible_table+ est de la forme \ggsq+variable+, ou  \ggsq+variable.champ+, ou \ggsq+variable.champ.champ2+, ... et désigne la table~; la cible est accédée en lecture/écriture.
-\end{itemize}
-
-La clé désignée par la valeur de \ggsq+expression_cle+ est recherchée dans la table désignée par la valeur de \ggsq+cible_table+~:
-\begin{itemize}
-  \item en cas d'échec, les instructions \ggsq+liste_instructions_else+ sont exécutées~;
-  \item en cas de succès, ce sont les instructions \ggsq+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture / écriture, sous leur nom éventuellement préfixé~; la clé est disponible en lecture seule sous le nom \ggsq+lkey+ éventuellement préfixé, est de type \ggsq+@lstring+.
-\end{itemize}
-
-Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare~:
-\begin{galgas4}
-map @maTable {
-  @uint mOccurrenceCount
-  insert insertKey error message "entree deja presente"
-}
-\end{galgas4}
-
-Et on effectue des recherches / insertions de la façon suivante~:
-\begin{galgas4}
-@lstring cle = ...
-with cle.string in !?table do
-  mOccurrenceCount ++
-else
-  [!?table insertKey !cle !1]
-end
-\end{galgas4}
-
-En utilisant un préfixe, le code devient~:
-\begin{galgas4}
-@lstring cle = ...
-with cle.string : xyz_ in !?table do
-  xyz_mOccurrenceCount ++
-else
-  [!?table insertKey !cle !1]
-end
-\end{galgas4}
-
-
-
-\subsectionLabel{Accès en lecture/écriture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureEcritureSansTolerance}
-
-
-\begin{galgas4}
-with expression_cle prefixe_optionnel in !?cible_table
-error message methode_recherche
-do
-  liste_instructions_do
-end
-\end{galgas4}
-
-Où~:
-\begin{itemize}
-  \item \ggsq+expression_cle+ est une expression de type \ggsq+@lstring+ dont la valeur définit la clé~;
-  \item \ggsq+prefixe_optionnel+ est soit vide, soit est constitué d'un double-point \ggsq+:+ suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \ggsq+liste_instructions_do+~;
-  \item \ggsq+expression_table+ est une expression qui désigne la table~;
-  \item \ggsq+methode_recherche+ est une méthode de recherche de la table (c'est-à-dire déclarée par \ggsq+search+) dont le message associé sera utilisé pour le signalement d'erreur~;
-  \item \ggsq+cible_table+ est de la forme \ggsq+variable+, ou  \ggsq+variable.champ+, ou \ggsq+variable.champ.champ2+, ... et désigne la table~; la cible est accédée en lecture/écriture.
-\end{itemize}
-
-La clé désignée par la valeur de \ggsq+expression_cle+ est recherchée dans la table désignée par la valeur de \ggsq+expression_table+~:
-\begin{itemize}
-  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \ggsq+methode_recherche+, et sa localisation par le champ \ggsq+location+ de l'\ggsq+expression_cle+~;
-  \item en cas de succès, ce sont les instructions \ggsq+liste_instructions_do+ qui sont exécutées~; les propriétés de l'élément recherché sont alors disponibles en lecture/écriture, sous leur nom éventuellement préfixé~; la clé est disponible en lecture seule sous le nom \ggsq+lkey+ éventuellement préfixé, et est de type \ggsq+@lstring+.
-\end{itemize}
-
-Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la clé doit avoir été entrée auparavant. On déclare~:
-\begin{galgas4}
-map @maTable {
-  @uint mOccurrenceCount
-  search searchKey error message "entree %K absente"
-}
-\end{galgas4}
-
-Et on effectue des recherches de la façon suivante~:
-\begin{galgas4}
-@lstring cle = ...
-with cle in !?table error message searchKey do
-  mOccurrenceCount ++
-end
-\end{galgas4}
-
-En utilisant un préfixe, le code devient~:
-\begin{galgas4}
-@lstring cle = ...
-with cle : abc_ in !?table error message searchKey do
-  abc_mOccurrenceCount ++
-end
-\end{galgas4}
 

@@ -8,7 +8,7 @@
 
 String styleNameForIndex (const uint32_t inStyleIndex) {
   const char * array [%![[LEXICAL_STYLE_SORTED_ARRAY count] + 3 string]%] = {
-    "defaultStyle", // 0
+    "", // 0 (default style is denoted by an empty string)
 %
 for (aStyle) in LEXICAL_STYLE_SORTED_ARRAY do
   %    %![aStyle.name cStringRepresentation]%, // %![aStyle.index string]%\n%

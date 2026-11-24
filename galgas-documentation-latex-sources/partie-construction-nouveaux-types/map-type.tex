@@ -167,7 +167,7 @@ Par exemple~:
 @MaTable uneTable = {}
 @lstring clef = ...
 @string s = ...
-@uint v = ...
+@u32 v = ...
 [!?uneTable insertKey !clef !s !v]
 \end{galgas4}
 
@@ -202,7 +202,7 @@ Par exemple~:
 var @MaTable uneTable = {}
 var @lstring clef = ...
 var @string s = ...
-var @uint v = ...
+var @u32 v = ...
 [!?uneTable insertOrReplace !clef !s !v] # Insertion
 [!?uneTable insertOrReplace !clef !s !v] # Remplacement
 \end{galgas4}
@@ -251,7 +251,7 @@ On remarquera que la clé est une \ggsq!@string! et non pas une \ggsq!@lstring!,
 %Pour remplacer l'instruction \ggsq!with! qui a été supprimée :
 %
 %\begin{galgas4}
-%let @uint terminalSymbolIndex
+%let @u32 terminalSymbolIndex
 %with self.mTerminalName.string in ioActuallyUsedTerminalSymbolMap do
 %  terminalSymbolIndex = mTerminalIndex // Accès direct à l'entrée
 %else // L'entrée n'existe pas
@@ -262,7 +262,7 @@ On remarquera que la clé est une \ggsq!@string! et non pas une \ggsq!@lstring!,
 %On écrit :
 
 \begin{galgas4}
-let @uint terminalSymbolIndex
+let @u32 terminalSymbolIndex
 if let entry = ioActuallyUsedTerminalSymbolMap @[self.mTerminalName.string] then
   terminalSymbolIndex = entry.mTerminalIndex // Accès direct à l'entrée
 else // L'entrée n'existe pas
@@ -272,7 +272,7 @@ end
 
 
 \begin{galgas4}
-let @uint terminalSymbolIndex
+let @u32 terminalSymbolIndex
 if let entry = ioActuallyUsedTerminalSymbolMap [self.mTerminalName.string] then
   terminalSymbolIndex = entry.mTerminalIndex // Accès direct à l'entrée
 else // L'entrée n'existe pas
@@ -321,7 +321,7 @@ Par exemple~:
 var @MaTable uneTable = {}
 ...
 var @lstring clef = ...
-[uneTable searchKey !clef ?@string s ?@uint v]
+[uneTable searchKey !clef ?@string s ?@u32 v]
 \end{galgas4}
 
 
@@ -329,7 +329,7 @@ var @lstring clef = ...
 var @MaTable uneTable = ()
 ...
 var @lstring clef = ...
-uneTable.searchKey (!clef, ?@string s, ?@uint v)
+uneTable.searchKey (!clef, ?@string s, ?@u32 v)
 \end{galgas4}
 
 
@@ -416,7 +416,7 @@ Par exemple~:
 @MaTable uneTable = {}
 ...
 @lstring clef = ...
-[!?uneTable removeKey !clef ?@string s ?@uint v]
+[!?uneTable removeKey !clef ?@string s ?@u32 v]
 \end{galgas4}
 
 
@@ -491,11 +491,11 @@ var @MaTable.@element element = ...
 \subsection{Getter \texttt{count}}
 
 \begin{galgas4}
-getter count -> @uint
+getter count -> @u32
 \end{galgas4}
 
 
-Le \emph{getter} \ggsq+count+ retourne un \ggsq+@uint+ qui contient le nombre d'entrées de la table de premier niveau du récepteur.
+Le \emph{getter} \ggsq+count+ retourne un \ggsq+@u32+ qui contient le nombre d'entrées de la table de premier niveau du récepteur.
 
 
 
@@ -577,7 +577,7 @@ Le \emph{getter} \ggsq+overriddenMap+ retourne la table obtenue en amputant de l
 %\begin{galgas4}
 %map @MaTable %selectors {
 %  @string mPremier
-%  @uint mSecond
+%  @u32 mSecond
 %  insert insertKey error message "the '%K' key is already declared in %L"
 %  search searchKey error message "the '%K' key is not defined"
 %  remove removeKey error message "the '%K' key is not defined"
@@ -589,7 +589,7 @@ Le \emph{getter} \ggsq+overriddenMap+ retourne la table obtenue en amputant de l
 %@MaTable uneTable = {}
 %@lstring clef = ...
 %@string s = ...
-%@uint v = ...
+%@u32 v = ...
 %[!?uneTable insertKey !lkey: clef !mPremier: s !mSecond: v]
 %\end{galgas4}
 %
@@ -600,7 +600,7 @@ Le \emph{getter} \ggsq+overriddenMap+ retourne la table obtenue en amputant de l
 %@MaTable uneTable = {}
 %...
 %@lstring clef = ...
-%[uneTable searchKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
+%[uneTable searchKey !lkey: clef ?mPremier: @string s ?mSecond: @u32 v]
 %\end{galgas4}
 %
 %
@@ -609,7 +609,7 @@ Le \emph{getter} \ggsq+overriddenMap+ retourne la table obtenue en amputant de l
 %@MaTable uneTable = {}
 %...
 %@lstring clef = ...
-%[!?uneTable removeKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
+%[!?uneTable removeKey !lkey: clef ?mPremier: @string s ?mSecond: @u32 v]
 %\end{galgas4}
 %
 %Lors de l'échec d'une recherche de clés, une méthode de recherche ou un setter de retrait affiche les clés voisines contenues dans la table. L'attribut \ggsq!%noSuggestion! inhibe l'affichage de ces suggestions.

@@ -336,15 +336,15 @@ analyzeGrammar (Compiler * inCompiler,
 //--- Error flag
   typedef enum {kNoError, kError, kGrammarNotLL1, kGrammarNotSLR, kGrammarNotLR1} enumErrorKind ;
   enumErrorKind errorFlag = kNoError ;
-
 //--- Verbose Output
-  const bool verboseOptionOn = true ;
-
+  const bool verboseOptionOn = !gBuildOption_quiet.mValue ;
 //--- Create output HTML file
   const String title = String ("'") + inTargetFileName.mProperty_string.stringValue () + "' grammar" ;
-  outHTMLHelperFileContents.writeStartCode (title,
-                                            "", // No css file
-                                            k_default_style) ; // Style definition
+  outHTMLHelperFileContents.writeStartCode (
+    title,
+    "", // No css file
+    k_default_style // Style definition
+  ) ;
 //--- HTML title
   outHTMLHelperFileContents.addRawData ("<h1>") ;
   outHTMLHelperFileContents.appendString (title) ;

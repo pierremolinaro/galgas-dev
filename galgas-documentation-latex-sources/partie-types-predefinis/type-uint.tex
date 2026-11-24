@@ -6,10 +6,10 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-An \ggsq+@uint+ object value is a 32-bit unsigned integer value. You can initialize an \ggsq+@uint+ object from an unsigned integer constant:\\
+An \ggsq+@u32+ object value is a 32-bit unsigned integer value. You can initialize an \ggsq+@u32+ object from an unsigned integer constant:\\
 
 \begin{galgas4}
-@uint myUnsignedInteger = 123_456 ;
+@u32 myUnsignedInteger = 123_456 ;
 \end{galgas4}
 
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
@@ -19,15 +19,15 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 \subsectionConstructor{errorCount}{uint}
 
 \begin{galgas4}
-constructor errorCount -> @uint
+constructor errorCount -> @u32
 \end{galgas4}
 
 
-Returns an \ggsq+@uint+ object that contains the number of errors. The returned value is the cumulative count of errors from the beginning of execution.
+Returns an \ggsq+@u32+ object that contains the number of errors. The returned value is the cumulative count of errors from the beginning of execution.
 
 \textbf{Exemple :}
 \begin{galgas4}
-@uint x = [@uint errorCount] ;
+@u32 x = [@u32 errorCount] ;
 \end{galgas4}
 
 
@@ -36,10 +36,10 @@ Returns an \ggsq+@uint+ object that contains the number of errors. The returned 
 \subsectionConstructor{max}{uint}
 
 \begin{galgas4}
-constructor max -> @uint
+constructor max -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ object that the maximum value of the 32-bit unsigned range ($2^{32}-1$).
+Returns an \ggsq+@u32+ object that the maximum value of the 32-bit unsigned range ($2^{32}-1$).
 
 
 
@@ -49,13 +49,13 @@ Returns an \ggsq+@uint+ object that the maximum value of the 32-bit unsigned ran
 \subsectionConstructor{random}{uint}
 
 \begin{galgas4}
-constructor random -> @uint
+constructor random -> @u32
 \end{galgas4}
 
-Retourne une valeur aléatoire de type \ggsq+@uint+. La procédure de type \refStaticProcPage{uint}{setRandomSeed} permet d'en fixer la valeur initiale.
+Retourne une valeur aléatoire de type \ggsq+@u32+. La procédure de type \refStaticProcPage{uint}{setRandomSeed} permet d'en fixer la valeur initiale.
 
 \begin{galgas4}
-  let v = @uint.random
+  let v = @u32.random
 \end{galgas4}
 
 
@@ -65,11 +65,11 @@ Retourne une valeur aléatoire de type \ggsq+@uint+. La procédure de type \refS
 \subsectionConstructor{valueWithMask}{uint}
 
 \begin{galgas4}
-constructor valueWithMask ?@uint inLowerIndex ?@uint inUpperIndex -> @uint
+constructor valueWithMask ?@u32 inLowerIndex ?@u32 inUpperIndex -> @u32
 \end{galgas4}
 
 
-Returns an \ggsq+@uint+ object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.
+Returns an \ggsq+@u32+ object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.
 
 A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{inUpperIndex $>$ 31}.
 
@@ -77,7 +77,7 @@ A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{i
 
 \textbf{Exemple :}
 \begin{galgas4}
-@uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (0b1_1100)
+@u32 x = [@u32 valueWithMask !2 !4] ; # x is equal to 28 (0b1_1100)
 \end{galgas4}
 
 
@@ -86,11 +86,11 @@ A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{i
 \subsectionConstructor{warningCount}{uint}
 
 \begin{galgas4}
-constructor warningCount -> @uint
+constructor warningCount -> @u32
 \end{galgas4}
 
 
-Returns an \ggsq+@uint+ object that contains the number of warnings. The returned value is the cumulative count of warnings from the beginning of execution.
+Returns an \ggsq+@u32+ object that contains the number of warnings. The returned value is the cumulative count of warnings from the beginning of execution.
 
 
 
@@ -103,13 +103,13 @@ Returns an \ggsq+@uint+ object that contains the number of warnings. The returne
 
 
 \begin{galgas4box}
-proc @uint setRandomSeed ?@uint inSeed
+proc @u32 setRandomSeed ?@u32 inSeed
 \end{galgas4box}
 
 Affecte la valeur initiale utilisée par le générateur de nombres aléatoires (voir le \refConstructorPage{uint}{random}) Par exemple~:
 
 \begin{galgas4}
-  [@uint setRandomSeed !0]
+  [@u32 setRandomSeed !0]
 \end{galgas4}
 
 
@@ -121,7 +121,7 @@ Affecte la valeur initiale utilisée par le générateur de nombres aléatoires 
 
 \subsectionGetter{alphaString}{uint}
 
-Ce \emph{getter} permet de convertir un \ggsq!@uint! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
+Ce \emph{getter} permet de convertir un \ggsq!@u32! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
 
 La chaîne obtenue comporte exactement 7 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggsq=a= ayant la valeur $0$, et la lettre \ggsq=z= la valeur $25$.
 
@@ -129,14 +129,14 @@ La chaîne obtenue comporte exactement 7 lettres minuscules. C'est en fait une c
 \begin{galgas4}
   message [0 alphaString] + "\n"         # aaaaaaa
   message [12_345 alphaString] + "\n"    # aaaasgv
-  message [@uint.max alphaString] + "\n" # nxmrlxv
+  message [@u32.max alphaString] + "\n" # nxmrlxv
 \end{galgas4}
 
 
 
 \subsectionGetter{bigint}{uint}
 
-Ce \emph{getter} permet de convertir un \ggsq!@uint! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+Ce \emph{getter} permet de convertir un \ggsq!@u32! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
 
 \begin{galgas4}
   message [[1234 bigint] string] + "\n" # 1234
@@ -166,7 +166,7 @@ Returns the an hexadecimal string representation of the receiver value, prefixed
 \subsectionGetter{hexStringSeparatedBy}{uint}
 
 \begin{galgas4}
-getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+getter hexStringSeparatedBy ?@char inSeparator ?@u32 inGroup -> @string
 \end{galgas4}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
@@ -209,15 +209,15 @@ Returns an \ggsq+@bool+ value indicating whether the receiver'value represents a
 \subsectionGetter{lsbIndex}{uint}
 
 \begin{galgas4}
-getter lsbIndex -> @uint
+getter lsbIndex -> @u32
 \end{galgas4}
 
-Returns an \ggsq+@uint+ value of the index of the most significant bit of the receiver value. It raises a run-time error if the receiver value is zero.
+Returns an \ggsq+@u32+ value of the index of the most significant bit of the receiver value. It raises a run-time error if the receiver value is zero.
 
 \textbf{Exemple :}
 \begin{galgas4}
-@uint value = 192 ; # 192 is ...011000000 in binary
-@uint x = [value lsbIndex] ; # x is equal to 7
+@u32 value = 192 ; # 192 is ...011000000 in binary
+@u32 x = [value lsbIndex] ; # x is equal to 7
 \end{galgas4}
 
 The most significant bit of 192 is the 7th bit.
@@ -228,15 +228,15 @@ The most significant bit of 192 is the 7th bit.
 \subsectionGetter{significantBitCount}{uint}
 
 \begin{galgas4}
-getter significantBitCount -> @uint
+getter significantBitCount -> @u32
 \end{galgas4}
 
 Returns the number of bits needed to express the receiver value. If the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.
 
 \textbf{Exemple :}
 \begin{galgas4}
-@uint value = 145 ; # 145 is 10010001 in binary
-@uint x = [value significantBitCount] ; # x is equal to 8
+@u32 value = 145 ; # 145 is 10010001 in binary
+@u32 x = [value significantBitCount] ; # x is equal to 8
 \end{galgas4}
 
 
@@ -247,7 +247,7 @@ Returns the number of bits needed to express the receiver value. If the receiver
 \subsectionGetter{sint}{uint}
 
 \begin{galgas4}
-getter sint -> @sint
+getter sint -> @s32
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object. An error is raised is receiver's value is greater than $2^{31}-1$.
@@ -260,7 +260,7 @@ This getter is the only way to convert an \refTypePredefini{uint} object into an
 \subsectionGetter{sint64}{uint}
 
 \begin{galgas4}
-getter sint64 -> @sint64
+getter sint64 -> @s64
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.
@@ -282,7 +282,7 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 \subsectionGetter{uint64}{uint}
 
 \begin{galgas4}
-getter uint64 -> @uint64
+getter uint64 -> @u64
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. As a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.
@@ -310,7 +310,7 @@ Returns an hexadecimal string representation of the receiver's value (without an
 
 \subsection{Opérateurs infixés}
 
-Le type \ggsq+@uint+ accepte les opérateurs arithmétiques infixés suivants :
+Le type \ggsq+@u32+ accepte les opérateurs arithmétiques infixés suivants :
 \begin{itemize}
   \item \ggsq!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -323,17 +323,17 @@ Le type \ggsq+@uint+ accepte les opérateurs arithmétiques infixés suivants :
   \item \ggsq!&/!, division, qui retourne zéro si le diviseur est nul.
 \end{itemize}
 
-Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@uint+.
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@u32+.
 
 \subsection{Opérateur préfixé}
-Le type \ggsq+@uint+ accepte un opérateur arithmétique préfixé :
+Le type \ggsq+@u32+ accepte un opérateur arithmétique préfixé :
 \begin{itemize}
   \item \ggsq!+!, qui retourne simplement la valeur de l'opérande.
 \end{itemize}
 
 \subsectionLabel{Instructions}{instructionsUINT}
 
-Le type \ggsq+@uint+ accepte les deux instructions arithmétiques suivantes :
+Le type \ggsq+@u32+ accepte les deux instructions arithmétiques suivantes :
 \begin{itemize}
   \item \ggsq!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -346,15 +346,15 @@ Le type \ggsq+@uint+ accepte les deux instructions arithmétiques suivantes :
 \end{itemize}
 
 \ggsq!x+=y! est équivalent à \ggsq!x=x+y! ; \ggsq!x-=y! est équivalent à \ggsq!x=x-y!.
-La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@uint+.
+La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@u32+.
 
 Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
 \begin{galgas4}
-@uint n = ... ; n ++ # Incrémentation
+@u32 n = ... ; n ++ # Incrémentation
 \end{galgas4}
 
 \begin{galgas4}
-@uint n = ... ; n -- # Décrémentation
+@u32 n = ... ; n -- # Décrémentation
 \end{galgas4}
 
 
@@ -363,7 +363,7 @@ Incrémentation et décrémentation sont des instructions, et ne peuvent pas app
 \section{Shift Operators}
 
 
-The \ggsq+@uint+ type supports right and left shift operators:\newline
+The \ggsq+@u32+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -373,7 +373,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@uint+ objects.\newline
+Theses operators require both arguments to be \ggsq+@u32+ objects.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -384,7 +384,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \ggsq+@uint+ type supports the three bit-wise logical operators:\newline
+The \ggsq+@u32+ type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -396,10 +396,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@uint+ objects.\newline
+Theses operators require both arguments to be \ggsq+@u32+ objects.\newline
 
 
-The \ggsq+@uint+ type supports the bit-wise logical unary operator:\newline
+The \ggsq+@u32+ type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -407,7 +407,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \ggsq+@uint+ object.
+This operator returns an \ggsq+@u32+ object.
 
 
 
@@ -417,7 +417,7 @@ This operator returns an \ggsq+@uint+ object.
 
 \section{Comparison Operators}
 
-The \ggsq+@uint+ type supports the six comparison operators:\newline
+The \ggsq+@u32+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -436,6 +436,6 @@ $>=$  & Greater or Equal \\
 \end{tabular}
 
 \vspace{2mm}
-Theses operators require both arguments to be \ggsq+@uint+ objects, and return a \ggsq+@bool+ object.
+Theses operators require both arguments to be \ggsq+@u32+ objects, and return a \ggsq+@bool+ object.
 
 

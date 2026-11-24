@@ -60,14 +60,18 @@ proc performProjectCreation (let @string inProjectPath ) {
   let s8 = @projectCreationFileWrapper.PROJECT_syntax (projectName)
   s8.writeToFile (galgas_sources_DIR +"/" +projectName +"-syntax.galgas4")
 //---
-   println ("*** DONE ***")
+  if not @buildOptionValue.quiet then
+    println ("*** DONE ***")
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc projectCreation (let @string inProjectPath ) {
   if inProjectPath.count > 0 then
-    println ("*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
+    if not @buildOptionValue.quiet then
+      println ("*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
+    end
   //--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = inProjectPath.lastPathComponent
     var @bool ok = projectName.characterAtIndex (0).isalpha

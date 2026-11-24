@@ -1477,27 +1477,6 @@ void GGS__5B_enumConstant_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstant_5D_::setter_set (const GGS_enumConstant inValue,
-                                           const GGS_u_33__32_ inIndex,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_enumConstant_5D_::setter_insert (const GGS_enumConstant inValue,
                                               const GGS_u_33__32_ inInsertionIndex,
                                               Compiler * inCompiler
@@ -1582,7 +1561,13 @@ GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_removingFirst (const G
   GGS__5B_enumConstant_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1590,10 +1575,6 @@ GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_removingFirst (const G
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -1670,17 +1651,16 @@ GGS_enumConstant GGS__5B_enumConstant_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_enumConstant GGS__5B_enumConstant_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+GGS_enumConstant GGS__5B_enumConstant_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
   GGS_enumConstant result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -1689,6 +1669,27 @@ GGS_enumConstant GGS__5B_enumConstant_5D_::readSubcript__3F_ (const GGS_u_33__32
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstant_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                    const GGS_enumConstant inValue,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -1873,27 +1874,6 @@ void GGS__5B_associatedValue_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_associatedValue_5D_::setter_set (const GGS_associatedValue inValue,
-                                              const GGS_u_33__32_ inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_associatedValue_5D_::setter_insert (const GGS_associatedValue inValue,
                                                  const GGS_u_33__32_ inInsertionIndex,
                                                  Compiler * inCompiler
@@ -1978,7 +1958,13 @@ GGS__5B_associatedValue_5D_ GGS__5B_associatedValue_5D_::getter_removingFirst (c
   GGS__5B_associatedValue_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_associatedValue_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_associatedValue_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1986,10 +1972,6 @@ GGS__5B_associatedValue_5D_ GGS__5B_associatedValue_5D_::getter_removingFirst (c
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_associatedValue_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -2066,17 +2048,16 @@ GGS_associatedValue GGS__5B_associatedValue_5D_::getter_last (Compiler * inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_associatedValue GGS__5B_associatedValue_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
+GGS_associatedValue GGS__5B_associatedValue_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
   GGS_associatedValue result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -2085,6 +2066,27 @@ GGS_associatedValue GGS__5B_associatedValue_5D_::readSubcript__3F_ (const GGS_u_
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_associatedValue_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                       const GGS_associatedValue inValue,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -2358,27 +2360,6 @@ void GGS__5B_associatedValueDescriptor_5D_::setter_removeAll (Compiler * /* inCo
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_associatedValueDescriptor_5D_::setter_set (const GGS_associatedValueDescriptor inValue,
-                                                        const GGS_u_33__32_ inIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_associatedValueDescriptor_5D_::setter_insert (const GGS_associatedValueDescriptor inValue,
                                                            const GGS_u_33__32_ inInsertionIndex,
                                                            Compiler * inCompiler
@@ -2463,7 +2444,13 @@ GGS__5B_associatedValueDescriptor_5D_ GGS__5B_associatedValueDescriptor_5D_::get
   GGS__5B_associatedValueDescriptor_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_associatedValueDescriptor_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_associatedValueDescriptor_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -2471,10 +2458,6 @@ GGS__5B_associatedValueDescriptor_5D_ GGS__5B_associatedValueDescriptor_5D_::get
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_associatedValueDescriptor_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -2551,17 +2534,16 @@ GGS_associatedValueDescriptor GGS__5B_associatedValueDescriptor_5D_::getter_last
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_associatedValueDescriptor GGS__5B_associatedValueDescriptor_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
+GGS_associatedValueDescriptor GGS__5B_associatedValueDescriptor_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_associatedValueDescriptor result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -2570,6 +2552,27 @@ GGS_associatedValueDescriptor GGS__5B_associatedValueDescriptor_5D_::readSubcrip
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_associatedValueDescriptor_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                 const GGS_associatedValueDescriptor inValue,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2877,27 +2880,6 @@ void GGS__5B_enumConstantForGeneration_5D_::setter_removeAll (Compiler * /* inCo
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstantForGeneration_5D_::setter_set (const GGS_enumConstantForGeneration inValue,
-                                                        const GGS_u_33__32_ inIndex,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_enumConstantForGeneration_5D_::setter_insert (const GGS_enumConstantForGeneration inValue,
                                                            const GGS_u_33__32_ inInsertionIndex,
                                                            Compiler * inCompiler
@@ -2982,7 +2964,13 @@ GGS__5B_enumConstantForGeneration_5D_ GGS__5B_enumConstantForGeneration_5D_::get
   GGS__5B_enumConstantForGeneration_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_enumConstantForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_enumConstantForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -2990,10 +2978,6 @@ GGS__5B_enumConstantForGeneration_5D_ GGS__5B_enumConstantForGeneration_5D_::get
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_enumConstantForGeneration_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -3070,17 +3054,16 @@ GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::getter_last
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
+GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
   GGS_enumConstantForGeneration result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -3089,6 +3072,27 @@ GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::readSubcrip
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_enumConstantForGeneration_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                 const GGS_enumConstantForGeneration inValue,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -5241,27 +5245,6 @@ void GGS__5B_graphInsertModifier_5D_::setter_removeAll (Compiler * /* inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_graphInsertModifier_5D_::setter_set (const GGS_graphInsertModifier inValue,
-                                                  const GGS_u_33__32_ inIndex,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_graphInsertModifier_5D_::setter_insert (const GGS_graphInsertModifier inValue,
                                                      const GGS_u_33__32_ inInsertionIndex,
                                                      Compiler * inCompiler
@@ -5346,7 +5329,13 @@ GGS__5B_graphInsertModifier_5D_ GGS__5B_graphInsertModifier_5D_::getter_removing
   GGS__5B_graphInsertModifier_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_graphInsertModifier_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_graphInsertModifier_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -5354,10 +5343,6 @@ GGS__5B_graphInsertModifier_5D_ GGS__5B_graphInsertModifier_5D_::getter_removing
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_graphInsertModifier_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -5434,17 +5419,16 @@ GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::getter_last (Compiler *
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
+GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
   GGS_graphInsertModifier result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -5453,6 +5437,27 @@ GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::readSubcript__3F_ (cons
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_graphInsertModifier_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                           const GGS_graphInsertModifier inValue,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -7891,27 +7896,6 @@ void GGS__5B_insertSetterAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_insertSetterAST_5D_::setter_set (const GGS_insertSetterAST inValue,
-                                              const GGS_u_33__32_ inIndex,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_insertSetterAST_5D_::setter_insert (const GGS_insertSetterAST inValue,
                                                  const GGS_u_33__32_ inInsertionIndex,
                                                  Compiler * inCompiler
@@ -7996,7 +7980,13 @@ GGS__5B_insertSetterAST_5D_ GGS__5B_insertSetterAST_5D_::getter_removingFirst (c
   GGS__5B_insertSetterAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_insertSetterAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_insertSetterAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -8004,10 +7994,6 @@ GGS__5B_insertSetterAST_5D_ GGS__5B_insertSetterAST_5D_::getter_removingFirst (c
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_insertSetterAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -8084,17 +8070,16 @@ GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::getter_last (Compiler * inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
+GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
   GGS_insertSetterAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -8103,6 +8088,27 @@ GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::readSubcript__3F_ (const GGS_u_
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_insertSetterAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                       const GGS_insertSetterAST inValue,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -8386,27 +8392,6 @@ void GGS__5B_mapAccessorAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_mapAccessorAST_5D_::setter_set (const GGS_mapAccessorAST inValue,
-                                             const GGS_u_33__32_ inIndex,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_mapAccessorAST_5D_::setter_insert (const GGS_mapAccessorAST inValue,
                                                 const GGS_u_33__32_ inInsertionIndex,
                                                 Compiler * inCompiler
@@ -8491,7 +8476,13 @@ GGS__5B_mapAccessorAST_5D_ GGS__5B_mapAccessorAST_5D_::getter_removingFirst (con
   GGS__5B_mapAccessorAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_mapAccessorAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_mapAccessorAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -8499,10 +8490,6 @@ GGS__5B_mapAccessorAST_5D_ GGS__5B_mapAccessorAST_5D_::getter_removingFirst (con
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_mapAccessorAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -8579,17 +8566,16 @@ GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::getter_last (Compiler * inCompile
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
+GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
   GGS_mapAccessorAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -8598,6 +8584,27 @@ GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::readSubcript__3F_ (const GGS_u_33
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_mapAccessorAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                      const GGS_mapAccessorAST inValue,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -8871,27 +8878,6 @@ void GGS__5B_location_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_location_5D_::setter_set (const GGS_location inValue,
-                                       const GGS_u_33__32_ inIndex,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_location_5D_::setter_insert (const GGS_location inValue,
                                           const GGS_u_33__32_ inInsertionIndex,
                                           Compiler * inCompiler
@@ -8976,7 +8962,13 @@ GGS__5B_location_5D_ GGS__5B_location_5D_::getter_removingFirst (const GGS_u_33_
   GGS__5B_location_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_location_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_location_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -8984,10 +8976,6 @@ GGS__5B_location_5D_ GGS__5B_location_5D_::getter_removingFirst (const GGS_u_33_
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_location_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -9064,17 +9052,16 @@ GGS_location GGS__5B_location_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_location GGS__5B_location_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
+GGS_location GGS__5B_location_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
   GGS_location result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -9083,6 +9070,27 @@ GGS_location GGS__5B_location_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIn
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_location_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                const GGS_location inValue,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -9356,8 +9364,7 @@ void GGS_insertMethodMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_insertMethodMap_2E_element_3F_ GGS_insertMethodMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_insertMethodMap_2E_element_3F_ GGS_insertMethodMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_insertMethodMap_2E_element_3F_ result ;
@@ -9732,8 +9739,7 @@ void GGS_searchMethodMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_searchMethodMap_2E_element_3F_ GGS_searchMethodMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_searchMethodMap_2E_element_3F_ GGS_searchMethodMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_searchMethodMap_2E_element_3F_ result ;
@@ -10019,27 +10025,6 @@ void GGS__5B_optionalMethodSignatureElement_5D_::setter_removeAll (Compiler * /*
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_optionalMethodSignatureElement_5D_::setter_set (const GGS_optionalMethodSignatureElement inValue,
-                                                             const GGS_u_33__32_ inIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_optionalMethodSignatureElement_5D_::setter_insert (const GGS_optionalMethodSignatureElement inValue,
                                                                 const GGS_u_33__32_ inInsertionIndex,
                                                                 Compiler * inCompiler
@@ -10124,7 +10109,13 @@ GGS__5B_optionalMethodSignatureElement_5D_ GGS__5B_optionalMethodSignatureElemen
   GGS__5B_optionalMethodSignatureElement_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_optionalMethodSignatureElement_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_optionalMethodSignatureElement_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -10132,10 +10123,6 @@ GGS__5B_optionalMethodSignatureElement_5D_ GGS__5B_optionalMethodSignatureElemen
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_optionalMethodSignatureElement_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -10212,17 +10199,16 @@ GGS_optionalMethodSignatureElement GGS__5B_optionalMethodSignatureElement_5D_::g
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_optionalMethodSignatureElement GGS__5B_optionalMethodSignatureElement_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
+GGS_optionalMethodSignatureElement GGS__5B_optionalMethodSignatureElement_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_optionalMethodSignatureElement result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -10231,6 +10217,27 @@ GGS_optionalMethodSignatureElement GGS__5B_optionalMethodSignatureElement_5D_::r
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_optionalMethodSignatureElement_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                      const GGS_optionalMethodSignatureElement inValue,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -11560,7 +11567,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
   result.appendString (in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString ("\n::readSubcript__3F_ (const class GGS_string & inKey,\n                      Compiler * /* inCompiler */\n                      COMMA_UNUSED_LOCATION_ARGS) const {\n  GGS_") ;
+  result.appendString ("::readSubscript__3F_ (const class GGS_string & inKey,\n                      Compiler * /* inCompiler */\n                      COMMA_UNUSED_LOCATION_ARGS) const {\n  GGS_") ;
   result.appendString (in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" result ;\n  if (isValid () && inKey.isValid ()) {\n    const SharedGenericPtrWithValueSemantics <GGS_") ;
   result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -11574,9 +11581,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
     UpEnumerator__5B_typedProperty_5D_ enumerator_9014 (in_PROPERTY_5F_LIST) ;
     while (enumerator_9014.hasCurrentObject ()) {
       result.appendString ("      element.mProperty_") ;
-      result.appendString (enumerator_9014.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 229)).stringValue ()) ;
+      result.appendString (enumerator_9014.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 228)).stringValue ()) ;
       result.appendString (" = info->mProperty_") ;
-      result.appendString (enumerator_9014.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 229)).stringValue ()) ;
+      result.appendString (enumerator_9014.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 228)).stringValue ()) ;
       result.appendString (" ;\n") ;
       enumerator_9014.gotoNextObject () ;
       index_9014_.increment () ;
@@ -11591,8 +11598,8 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString (" GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-      result.appendString ("\n::readSubcript__3F_") ;
-      result.appendString (enumerator_9259.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 241)).stringValue ()) ;
+      result.appendString ("::readSubscript__3F_") ;
+      result.appendString (enumerator_9259.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 239)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("const GGS_lstring & inLKey,\n    ") ;
@@ -11604,7 +11611,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString (" result ;\n  if (isValid () && inLKey.isValid ()) {\n    const String key = inLKey.mProperty_string.stringValue () ;\n    const SharedGenericPtrWithValueSemantics <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("> info = infoForKey (key) ;\n    if (info.isNotNil ()) {\n      result = info.value () ;\n    }else{\n      const char * kErrorMessage = ") ;
-      result.appendString (enumerator_9259.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 251)).stringValue ()) ;
+      result.appendString (enumerator_9259.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 249)).stringValue ()) ;
       result.appendString (" ;\n      GenericUniqueArray <String> nearestKeyArray ;\n      findNearestKey (key, nearestKeyArray) ;\n      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kErrorMessage COMMA_THERE) ;\n    }\n  }\n  return result ;\n}\n\n") ;
       enumerator_9259.gotoNextObject () ;
       index_9259_.increment () ;
@@ -11642,7 +11649,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::setter_") ;
-      result.appendString (enumerator_11300.current_entry (HERE).readProperty_mInsertMethodName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 290)).stringValue ()) ;
+      result.appendString (enumerator_11300.current_entry (HERE).readProperty_mInsertMethodName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 288)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_lstring inLKey") ;
@@ -11653,9 +11660,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result.appendString ("GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_11557.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 292)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_11557.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 290)).stringValue ()) ;
           result.appendString (" inArgument") ;
-          result.appendString (index_11557_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 292)).stringValue ()) ;
+          result.appendString (index_11557_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 290)).stringValue ()) ;
           enumerator_11557.gotoNextObject () ;
           index_11557_IDX.increment () ;
         }
@@ -11672,22 +11679,22 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
         UpEnumerator__5B_typedProperty_5D_ enumerator_11799 (in_PROPERTY_5F_LIST) ;
         while (enumerator_11799.hasCurrentObject ()) {
           result.appendString (", inArgument") ;
-          result.appendString (index_11799_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 297)).stringValue ()) ;
+          result.appendString (index_11799_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 295)).stringValue ()) ;
           enumerator_11799.gotoNextObject () ;
           index_11799_IDX.increment () ;
         }
       }
       result.appendString (") ;\n  const char * kInsertErrorMessage = ") ;
-      result.appendString (enumerator_11300.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 298)).stringValue ()) ;
+      result.appendString (enumerator_11300.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 296)).stringValue ()) ;
       result.appendString (" ;\n") ;
-      const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_11300.current_entry (HERE).readProperty_mShadowErrorMessage ().readProperty_string ().getter_count (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 300)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_11300.current_entry (HERE).readProperty_mShadowErrorMessage ().readProperty_string ().getter_count (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 298)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_0) {
       case GalgasBool::boolTrue : {
         result.appendString ("  const char * kShadowErrorMessage = nullptr ;\n") ;
         } break ;
       case GalgasBool::boolFalse : {
         result.appendString ("  const char * kShadowErrorMessage = ") ;
-        result.appendString (enumerator_11300.current_entry (HERE).readProperty_mShadowErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 303)).stringValue ()) ;
+        result.appendString (enumerator_11300.current_entry (HERE).readProperty_mShadowErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 301)).stringValue ()) ;
         result.appendString (" ;\n") ;
         } break ;
       case GalgasBool::boolNotValid :
@@ -11705,7 +11712,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::method_") ;
-      result.appendString (enumerator_12299.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 313)).stringValue ()) ;
+      result.appendString (enumerator_12299.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 311)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_lstring inLKey") ;
@@ -11716,9 +11723,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result.appendString ("GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_12550.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 315)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_12550.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 313)).stringValue ()) ;
           result.appendString (" & outArgument") ;
-          result.appendString (index_12550_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 315)).stringValue ()) ;
+          result.appendString (index_12550_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 313)).stringValue ()) ;
           enumerator_12550.gotoNextObject () ;
           index_12550_IDX.increment () ;
         }
@@ -11730,14 +11737,14 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("COMMA_LOCATION_ARGS) const {\n  SharedGenericPtrWithValueSemantics <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("> info ;\n  if (isValid () && inLKey.isValid ()) {\n    const String key = inLKey.mProperty_string.stringValue () ;\n    info = infoForKey (key) ;\n    if (info.isNil ()) {\n      GenericUniqueArray <String> nearestKeyArray ;\n      findNearestKey (key, nearestKeyArray) ;\n      const char * kSearchErrorMessage = ") ;
-      result.appendString (enumerator_12299.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 326)).stringValue ()) ;
+      result.appendString (enumerator_12299.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 324)).stringValue ()) ;
       result.appendString (" ;\n      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;\n    }\n  }\n  if (info.isNil ()) {\n") ;
       GGS_u_33__32_ index_13335_IDX (0) ;
       if (in_PROPERTY_5F_LIST.isValid ()) {
         UpEnumerator__5B_typedProperty_5D_ enumerator_13335 (in_PROPERTY_5F_LIST) ;
         while (enumerator_13335.hasCurrentObject ()) {
           result.appendString ("    outArgument") ;
-          result.appendString (index_13335_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 332)).stringValue ()) ;
+          result.appendString (index_13335_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 330)).stringValue ()) ;
           result.appendString (".drop () ;\n") ;
           enumerator_13335.gotoNextObject () ;
           index_13335_IDX.increment () ;
@@ -11749,9 +11756,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
         UpEnumerator__5B_typedProperty_5D_ enumerator_13442 (in_PROPERTY_5F_LIST) ;
         while (enumerator_13442.hasCurrentObject ()) {
           result.appendString ("    outArgument") ;
-          result.appendString (index_13442_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 336)).stringValue ()) ;
+          result.appendString (index_13442_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 334)).stringValue ()) ;
           result.appendString (" = info->mProperty_") ;
-          result.appendString (enumerator_13442.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 336)).stringValue ()) ;
+          result.appendString (enumerator_13442.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 334)).stringValue ()) ;
           result.appendString (" ;\n") ;
           enumerator_13442.gotoNextObject () ;
           index_13442_IDX.increment () ;
@@ -11769,7 +11776,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::setter_") ;
-      result.appendString (enumerator_13604.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 345)).stringValue ()) ;
+      result.appendString (enumerator_13604.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 343)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_lstring inLKey") ;
@@ -11780,9 +11787,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
           result.appendString (",\n") ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result.appendString ("GGS_") ;
-          result.appendString (extensionGetter_identifierRepresentation (enumerator_13860.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 347)).stringValue ()) ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_13860.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 345)).stringValue ()) ;
           result.appendString (" & outArgument") ;
-          result.appendString (index_13860_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 347)).stringValue ()) ;
+          result.appendString (index_13860_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 345)).stringValue ()) ;
           enumerator_13860.gotoNextObject () ;
           index_13860_IDX.increment () ;
         }
@@ -11794,14 +11801,14 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("COMMA_LOCATION_ARGS) {\n  SharedGenericPtrWithValueSemantics <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("> info ;\n  if (isValid () && inLKey.isValid ()) {\n    const char * kRemoveErrorMessage = ") ;
-      result.appendString (enumerator_13604.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 353)).stringValue ()) ;
+      result.appendString (enumerator_13604.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 351)).stringValue ()) ;
       result.appendString (" ;\n    const String key = inLKey.mProperty_string.stringValue () ;\n    mSharedRoot.insulate (THERE) ;\n    info = mSharedRoot->removeAndReturnRemovedInfo (key) ;\n    if (info.isNil ()) {\n      GenericUniqueArray <String> nearestKeyArray ;\n      findNearestKey (key, nearestKeyArray) ;\n      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kRemoveErrorMessage COMMA_THERE) ;\n    }\n  }\n  if (info.isNil ()) {\n") ;
       GGS_u_33__32_ index_14705_IDX (0) ;
       if (in_PROPERTY_5F_LIST.isValid ()) {
         UpEnumerator__5B_typedProperty_5D_ enumerator_14705 (in_PROPERTY_5F_LIST) ;
         while (enumerator_14705.hasCurrentObject ()) {
           result.appendString ("    outArgument") ;
-          result.appendString (index_14705_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 365)).stringValue ()) ;
+          result.appendString (index_14705_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 363)).stringValue ()) ;
           result.appendString (".drop () ;\n") ;
           enumerator_14705.gotoNextObject () ;
           index_14705_IDX.increment () ;
@@ -11813,9 +11820,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
         UpEnumerator__5B_typedProperty_5D_ enumerator_14812 (in_PROPERTY_5F_LIST) ;
         while (enumerator_14812.hasCurrentObject ()) {
           result.appendString ("    outArgument") ;
-          result.appendString (index_14812_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 369)).stringValue ()) ;
+          result.appendString (index_14812_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 367)).stringValue ()) ;
           result.appendString (" = info->mProperty_") ;
-          result.appendString (enumerator_14812.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 369)).stringValue ()) ;
+          result.appendString (enumerator_14812.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 367)).stringValue ()) ;
           result.appendString (" ;\n") ;
           enumerator_14812.gotoNextObject () ;
           index_14812_IDX.increment () ;
@@ -11833,7 +11840,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::setter_") ;
-      result.appendString (enumerator_14976.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 380)).stringValue ()) ;
+      result.appendString (enumerator_14976.current_entry (HERE).readProperty_mName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 378)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_") ;
@@ -11843,7 +11850,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("Compiler * inCompiler\n       ") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) {\n  if (isValid () && inElement.isValid ()) {\n    const char * kReplaceErrorMessage = ") ;
-      result.appendString (enumerator_14976.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 384)).stringValue ()) ;
+      result.appendString (enumerator_14976.current_entry (HERE).readProperty_mErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 382)).stringValue ()) ;
       result.appendString (" ;\n    const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;\n    mSharedRoot.insulate (HERE) ;\n    OptionalSharedRef <GenericMapNode <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString (">> node = mSharedRoot->searchNode (key) ;\n    if (node.isNil ()) {\n      GenericUniqueArray <String> nearestKeyArray ;\n      findNearestKey (key, nearestKeyArray) ;\n      inCompiler->semanticErrorWith_K_message (\n        inElement.mProperty_lkey,\n        nearestKeyArray,\n        kReplaceErrorMessage\n        COMMA_THERE\n      ) ;\n    }else{\n      node->mSharedInfo = SharedGenericPtrWithValueSemantics <GGS_") ;
@@ -11868,9 +11875,9 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
         result.appendString (",\n") ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result.appendString ("GGS_") ;
-        result.appendString (extensionGetter_identifierRepresentation (enumerator_16359.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 409)).stringValue ()) ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_16359.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 407)).stringValue ()) ;
         result.appendString (" inArgument") ;
-        result.appendString (index_16359_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 409)).stringValue ()) ;
+        result.appendString (index_16359_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 407)).stringValue ()) ;
         enumerator_16359.gotoNextObject () ;
         index_16359_IDX.increment () ;
       }
@@ -11885,7 +11892,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       UpEnumerator__5B_typedProperty_5D_ enumerator_16576 (in_PROPERTY_5F_LIST) ;
       while (enumerator_16576.hasCurrentObject ()) {
         result.appendString (", inArgument") ;
-        result.appendString (index_16576_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 413)).stringValue ()) ;
+        result.appendString (index_16576_IDX.getter_string (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 411)).stringValue ()) ;
         enumerator_16576.gotoNextObject () ;
         index_16576_IDX.increment () ;
       }
@@ -11904,11 +11911,11 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
     UpEnumerator__5B_typedProperty_5D_ enumerator_16919 (in_PROPERTY_5F_LIST) ;
     while (enumerator_16919.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_16919.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 426)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_16919.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 424)).stringValue ()) ;
       result.appendString (" GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::getter_") ;
-      result.appendString (enumerator_16919.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 426)).stringValue ()) ;
+      result.appendString (enumerator_16919.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 424)).stringValue ()) ;
       result.appendString ("ForKey (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("const GGS_string & inKey,\n         ") ;
@@ -11916,11 +11923,11 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("Compiler * inCompiler\n         ") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) const {\n  GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_16919.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 429)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_16919.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 427)).stringValue ()) ;
       result.appendString (" result ;\n  if (isValid () && inKey.isValid ()) {\n    const String key = inKey.stringValue () ;\n    const SharedGenericPtrWithValueSemantics <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("> info = infoForKey (key) ;\n    if (info.isNil ()) {\n      String message = \"cannot read property in map: the '\" ;\n      message.appendString (key) ;\n      message.appendCString (\"' key does not exist\") ;\n      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n    }else{\n      result = info->mProperty_") ;
-      result.appendString (enumerator_16919.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 439)).stringValue ()) ;
+      result.appendString (enumerator_16919.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 437)).stringValue ()) ;
       result.appendString (" ;\n    }\n  }\n  return result ;\n}\n") ;
       enumerator_16919.gotoNextObject () ;
       index_16919_IDX.increment () ;
@@ -11933,11 +11940,11 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::setter_set") ;
-      result.appendString (enumerator_17924.current_entry (HERE).readProperty_name ().readProperty_string ().getter_capitalizingFirstCharacter (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 449)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 449)).stringValue ()) ;
+      result.appendString (enumerator_17924.current_entry (HERE).readProperty_name ().readProperty_string ().getter_capitalizingFirstCharacter (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 447)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 447)).stringValue ()) ;
       result.appendString ("ForKey (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_17924.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 449)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_17924.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 447)).stringValue ()) ;
       result.appendString (" inValue,\n         ") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("GGS_string inKey,\n         ") ;
@@ -11947,7 +11954,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("COMMA_LOCATION_ARGS) {\n  if (isValid () && inKey.isValid ()) {\n    const String key = inKey.stringValue () ;\n    mSharedRoot.insulate (HERE) ;\n    OptionalSharedRef <GenericMapNode <GGS_") ;
       result.appendString (in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString (">> node = mSharedRoot->searchNode (key) ;\n    if (node.isNil ()) {\n      String message = \"cannot write property in map: the '\" ;\n      message.appendString (key) ;\n      message.appendCString (\"' key does not exist\") ;\n      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n    }else{\n      node->mSharedInfo->mProperty_") ;
-      result.appendString (enumerator_17924.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 463)).stringValue ()) ;
+      result.appendString (enumerator_17924.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 461)).stringValue ()) ;
       result.appendString (" = inValue ;\n    }\n  }\n}\n") ;
       enumerator_17924.gotoNextObject () ;
       index_17924_IDX.increment () ;
@@ -11965,7 +11972,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
       result.appendString ("    ioString.appendNewLine () ;\n    ioString.appendStringMultiple (\"| \", inIndentation + 2) ;\n    ioString.appendString (\"") ;
       result.appendString (enumerator_19967.current_entry (HERE).readProperty_name ().readProperty_string ().stringValue ()) ;
       result.appendString (":\") ;\n    inArray (i COMMA_HERE)->mProperty_") ;
-      result.appendString (enumerator_19967.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 496)).stringValue ()) ;
+      result.appendString (enumerator_19967.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 494)).stringValue ()) ;
       result.appendString (".description (ioString, inIndentation + 1) ;\n") ;
       enumerator_19967.gotoNextObject () ;
       index_19967_.increment () ;
@@ -12024,13 +12031,13 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
     UpEnumerator__5B_typedProperty_5D_ enumerator_23538 (in_PROPERTY_5F_LIST) ;
     while (enumerator_23538.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_23538.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 575)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_23538.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 573)).stringValue ()) ;
       result.appendString (" DownEnumerator_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::current_") ;
-      result.appendString (enumerator_23538.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 575)).stringValue ()) ;
+      result.appendString (enumerator_23538.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 573)).stringValue ()) ;
       result.appendString (" (LOCATION_ARGS) const {\n  return mInfoArray (mIndex COMMA_THERE)->mProperty_") ;
-      result.appendString (enumerator_23538.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 576)).stringValue ()) ;
+      result.appendString (enumerator_23538.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 574)).stringValue ()) ;
       result.appendString (" ;\n}\n\n") ;
       enumerator_23538.gotoNextObject () ;
       index_23538_.increment () ;
@@ -12058,13 +12065,13 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (
     UpEnumerator__5B_typedProperty_5D_ enumerator_24859 (in_PROPERTY_5F_LIST) ;
     while (enumerator_24859.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nGGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_24859.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 606)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_24859.current_entry (HERE).readProperty_typeEntry (), inCompiler COMMA_SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 604)).stringValue ()) ;
       result.appendString (" UpEnumerator_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::current_") ;
-      result.appendString (enumerator_24859.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 606)).stringValue ()) ;
+      result.appendString (enumerator_24859.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 604)).stringValue ()) ;
       result.appendString (" (LOCATION_ARGS) const {\n  return mInfoArray (mIndex COMMA_THERE)->mProperty_") ;
-      result.appendString (enumerator_24859.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 607)).stringValue ()) ;
+      result.appendString (enumerator_24859.current_entry (HERE).readProperty_name ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS-map.cpp.galgasTemplate", 605)).stringValue ()) ;
       result.appendString (" ;\n}\n\n") ;
       enumerator_24859.gotoNextObject () ;
       index_24859_.increment () ;
@@ -12199,27 +12206,6 @@ void GGS__5B_filewrapperTemplateAST_5D_::setter_removeAll (Compiler * /* inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_filewrapperTemplateAST_5D_::setter_set (const GGS_filewrapperTemplateAST inValue,
-                                                     const GGS_u_33__32_ inIndex,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_filewrapperTemplateAST_5D_::setter_insert (const GGS_filewrapperTemplateAST inValue,
                                                         const GGS_u_33__32_ inInsertionIndex,
                                                         Compiler * inCompiler
@@ -12304,7 +12290,13 @@ GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::getter_re
   GGS__5B_filewrapperTemplateAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12312,10 +12304,6 @@ GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::getter_re
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_filewrapperTemplateAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -12392,17 +12380,16 @@ GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::getter_last (Comp
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
+GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
   GGS_filewrapperTemplateAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -12411,6 +12398,27 @@ GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::readSubcript__3F_
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_filewrapperTemplateAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                              const GGS_filewrapperTemplateAST inValue,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -12595,27 +12603,6 @@ void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeAll (Compiler * /
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalTemplateInputParameterAST_5D_::setter_set (const GGS_formalTemplateInputParameterAST inValue,
-                                                              const GGS_u_33__32_ inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_formalTemplateInputParameterAST_5D_::setter_insert (const GGS_formalTemplateInputParameterAST inValue,
                                                                  const GGS_u_33__32_ inInsertionIndex,
                                                                  Compiler * inCompiler
@@ -12700,7 +12687,13 @@ GGS__5B_formalTemplateInputParameterAST_5D_ GGS__5B_formalTemplateInputParameter
   GGS__5B_formalTemplateInputParameterAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_formalTemplateInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_formalTemplateInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12708,10 +12701,6 @@ GGS__5B_formalTemplateInputParameterAST_5D_ GGS__5B_formalTemplateInputParameter
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_formalTemplateInputParameterAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -12788,17 +12777,16 @@ GGS_formalTemplateInputParameterAST GGS__5B_formalTemplateInputParameterAST_5D_:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalTemplateInputParameterAST GGS__5B_formalTemplateInputParameterAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
+GGS_formalTemplateInputParameterAST GGS__5B_formalTemplateInputParameterAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) const {
   GGS_formalTemplateInputParameterAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -12807,6 +12795,27 @@ GGS_formalTemplateInputParameterAST GGS__5B_formalTemplateInputParameterAST_5D_:
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalTemplateInputParameterAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                       const GGS_formalTemplateInputParameterAST inValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -13189,8 +13198,7 @@ void GGS_filewrapperMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_filewrapperMap_2E_element_3F_ GGS_filewrapperMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_filewrapperMap_2E_element_3F_ GGS_filewrapperMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_filewrapperMap_2E_element_3F_ result ;
@@ -13890,8 +13898,7 @@ void GGS_wrapperFileMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_wrapperFileMap_2E_element_3F_ GGS_wrapperFileMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_wrapperFileMap_2E_element_3F_ GGS_wrapperFileMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_wrapperFileMap_2E_element_3F_ result ;

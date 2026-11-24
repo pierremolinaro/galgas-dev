@@ -59,20 +59,20 @@ A category getter is declared like a function, but its header names a type and a
 
 For example, the following code add a getter to the \ggsq+uint64+ that computes the square of its value:
 \begin{galgas4}
-getter @uint64 square -> @uint64 {
+getter @u64 square -> @u64 {
   result = self * self
 }
 \end{galgas4}
 
 This getter is called like a predefined getter:
 \begin{galgas4}
-@uint64 v = 7L
-log "Square of 7": [v square] # LOGGING Square of 7 : <@uint64:49>
+@u64 v = 7L
+log "Square of 7": [v square] # LOGGING Square of 7 : <@u64:49>
 \end{galgas4}
 
 You can add a category getter to a list :
 \begin{galgas4}
-getter @uintlist sum -> @uint {
+getter @u32list sum -> @u32 {
   result = 0
   for self do
     result = result + mValue
@@ -82,8 +82,8 @@ getter @uintlist sum -> @uint {
 
 For counting the number of element values greater than the value given in argument:
 \begin{galgas4}
-getter @uintlist countValuesGreaterThan
-  ?let @uint inTestValue -> @uint
+getter @u32list countValuesGreaterThan
+  ?let @u32 inTestValue -> @u32
 {
   result = 0
   for self do
@@ -114,21 +114,21 @@ A category method is declared like a routine, but its header names a type and a 
 
 For example, the following code add a method to the \ggsq+uint64+ that computes the square of its value:
 \begin{galgas4}
-method @uint64 square !@uint64 {
+method @u64 square !@u64 {
   result = self * self
 }
 \end{galgas4}
 
 This getter is called like a predefined method:
 \begin{galgas4}
-@uint64 v
+@u64 v
 [7L square ?v]
-log "Square of 7": v # LOGGING Square of 7 : <@uint64:49>
+log "Square of 7": v # LOGGING Square of 7 : <@u64:49>
 \end{galgas4}
 
 You can add a category method to a list :
 \begin{galgas4}
-method @uintlist sum !@uint {
+method @u32list sum !@u32 {
   result = 0
   for self do
     result = result + mValue
@@ -138,9 +138,9 @@ method @uintlist sum !@uint {
 
 For counting the number of element values greater than the value given in argument:
 \begin{galgas4}
-method @uintlist countValuesGreaterThan
-  ?let @uint inTestValue
-  !@uint outResult
+method @u32list countValuesGreaterThan
+  ?let @u32 inTestValue
+  !@u32 outResult
 {
   outResult = 0
   for self do
@@ -175,7 +175,7 @@ A category method is declared like a routine, but its header names a type and a 
 
 For structure and classes types, attributes can be read, written, read / written. For example :
 \begin{galgas4}
-setter @lstring appendInt ?let @uint inValue {
+setter @lstring appendInt ?let @u32 inValue {
   string .= [inValue string]
 }
 \end{galgas4}
@@ -184,21 +184,20 @@ setter @lstring appendInt ?let @uint inValue {
 The  \ggsq!self! key word is used as a syntactic tag for denoting a read/write or a write access on the current object. This key word is syntactically accepted in the following constructs:
 \begin{enumerate}
 \item the \emph{setter call instruction} (\refSectionPage{setterCallInstruction});
-\item the \emph{concat instruction} (\refSectionPage{concatInstruction});
 \item the \emph{assignment instruction} (\refSectionPage{assignmentInstruction}).
 \end{enumerate}
 
-Example of using  \ggsq!self! in setter call instruction; this setter prepends the square of argument value to the \ggsq+@uint64list+ value:
+Example of using  \ggsq!self! in setter call instruction; this setter prepends the square of argument value to the \ggsq+@u64list+ value:
 \begin{galgas4}
-setter @uint64list prependSquare ?let @uint64 inValue {
+setter @u64list prependSquare ?let @u64 inValue {
   [!?self prependValue !inValue * inValue]
 }
 \end{galgas4}
 
 
-Example of using  \ggsq!self! in the append instruction; this setter appends the square of argument value to the \ggsq+@uintlist+ value:
+Example of using  \ggsq!self! in the append instruction; this setter appends the square of argument value to the \ggsq+@u32list+ value:
 \begin{galgas4}
-setter @uintlist appendSquare ?let @uint inValue {
+setter @u32list appendSquare ?let @u32 inValue {
   self += !inValue * inValue
 }
 \end{galgas4}
@@ -220,7 +219,7 @@ This construct is valid only for types that handle the  \ggsq!.=! operator.
 
 Example of using \ggsq!self! in the increment instruction; this setter increments the receiver's value:
 \begin{galgas4}
-setter @uint increment {
+setter @u32 increment {
   self ++
 }
 \end{galgas4}
@@ -232,8 +231,8 @@ This construct is valid only for types that handle the \ggsq!++! operator, such 
 
 Example of using \ggsq!self! in the assignment instruction; this setter removes all odd values of the receiver:
 \begin{galgas4}
-setter @uintlist removeOddValues {
-  @uintlist listWithEvenValues [emptyList]
+setter @u32list removeOddValues {
+  @u32list listWithEvenValues [emptyList]
   for self do
     if (mValue & 1) == 0 then
       listWithEvenValues += !mValue

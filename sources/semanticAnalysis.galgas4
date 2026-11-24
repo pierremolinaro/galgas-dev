@@ -476,7 +476,9 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
                                 ?!@unifiedTypeMap ioTypeMap,
                                 let @predefinedTypes _inPredefinedTypes,
                                 ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
-  println ("*** Analyzing '" + self.mGrammarComponentName + "' grammar")
+  if not @buildOptionValue.quiet then
+    println ("*** Analyzing '" + self.mGrammarComponentName + "' grammar")
+  end
 //--- Useful entities graph
   let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (self.mGrammarComponentName)
   !?ioUsefulEntitiesGraph.addNode (grammarNameForUsefulness, grammarNameForUsefulness)

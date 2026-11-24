@@ -123,7 +123,9 @@ grammar projectComponentGrammar
 
 private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
                                      let @string inSourceToAnalyze) {
-  println ("*** Parsing project files")
+  if not @buildOptionValue.quiet then
+    println ("*** Parsing project files")
+  end
   grammar projectComponentGrammar (?let @projectSettings projectSettings) in inProjectSourceFilePath
 //  if option [mode.value] == "" then
     compileProject (inProjectSourceFilePath, inSourceToAnalyze, projectSettings)
@@ -318,7 +320,9 @@ private proc projectGeneration (let @unifiedTypeMap inTypeMap,
                                 let [@string] inHandCodedSourceToolFileList) {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
-  println ("*** Generating files")
+  if not @buildOptionValue.quiet then
+    println ("*** Generating files")
+  end
   var @stringset allProductFileSet = @()
 //--------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"

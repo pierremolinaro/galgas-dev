@@ -1,6 +1,230 @@
 #include "all-declarations-12.h"
 //--------------------------------------------------------------------------------------------------
 
+ComparisonResult GGS_moduloExpressionAST_2E_weak::objectCompare (const GGS_moduloExpressionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST_2E_weak::GGS_moduloExpressionAST_2E_weak (void) :
+GGS_semanticExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST_2E_weak & GGS_moduloExpressionAST_2E_weak::operator = (const GGS_moduloExpressionAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST_2E_weak::GGS_moduloExpressionAST_2E_weak (const GGS_moduloExpressionAST & inSource) :
+GGS_semanticExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST_2E_weak GGS_moduloExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_moduloExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST GGS_moduloExpressionAST_2E_weak::unwrappedValue (void) const {
+  GGS_moduloExpressionAST result ;
+  if (isValid ()) {
+    const cPtr_moduloExpressionAST * p = (cPtr_moduloExpressionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_moduloExpressionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_moduloExpressionAST GGS_moduloExpressionAST_2E_weak::bang_moduloExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_moduloExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_moduloExpressionAST) ;
+      result = GGS_moduloExpressionAST ((cPtr_moduloExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @moduloExpressionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ("moduloExpressionAST.weak",
+                                                                                & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_moduloExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_moduloExpressionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @selfInExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_selfInExpressionAST::objectCompare (const GGS_selfInExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_selfInExpressionAST::GGS_selfInExpressionAST (void) :
+GGS_semanticExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_selfInExpressionAST GGS_selfInExpressionAST::
+init_21_ (const GGS_location & in_mSelfLocation,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_selfInExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_selfInExpressionAST (inCompiler COMMA_THERE)) ;
+  object->selfInExpressionAST_init_21_ (in_mSelfLocation, inCompiler) ;
+  const GGS_selfInExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_selfInExpressionAST::
+selfInExpressionAST_init_21_ (const GGS_location & in_mSelfLocation,
+                              Compiler * /* inCompiler */) {
+  mProperty_mSelfLocation = in_mSelfLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_selfInExpressionAST::GGS_selfInExpressionAST (const cPtr_selfInExpressionAST * inSourcePtr) :
+GGS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_selfInExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_selfInExpressionAST::readProperty_mSelfLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_selfInExpressionAST * p = (cPtr_selfInExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selfInExpressionAST) ;
+    return p->mProperty_mSelfLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @selfInExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_selfInExpressionAST::cPtr_selfInExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mSelfLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_selfInExpressionAST::cPtr_selfInExpressionAST (const GGS_location & in_mSelfLocation,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mSelfLocation () {
+  mProperty_mSelfLocation = in_mSelfLocation ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_selfInExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfInExpressionAST ;
+}
+
+void cPtr_selfInExpressionAST::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@selfInExpressionAST:") ;
+  mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_selfInExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_selfInExpressionAST (mProperty_mSelfLocation, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_selfInExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mSelfLocation.printNonNullClassInstanceProperties ("mSelfLocation") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @selfInExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfInExpressionAST ("selfInExpressionAST",
+                                                                        & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_selfInExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selfInExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GGS_selfInExpressionAST_2E_weak::objectCompare (const GGS_selfInExpressionAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -29277,7 +29501,7 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "                                       const String & inFileName,\n"
   "                                       const String & inContents) {\n"
   "//--- Verbose option \?\n"
-  "  const bool verboseOptionOn = true ;\n"
+  "  const bool verboseOptionOn = !gBuildOption_quiet.mValue ;\n"
   "//--- Start path : by default, use source file directory\n"
   "  const String startPath = (inStartPath.length () == 0)\n"
   "   \? sourceFilePath ().deletingLastPathComponent ()\n"
@@ -29477,7 +29701,7 @@ const RegularFileWrapper gWrapperFile_121_libpmFileWrapper (
   "Compiler.cpp",
   "cpp",
   true, // Text file
- 29061, // Text length
+ 29083, // Text length
   gWrapperFileContent_121_libpmFileWrapper
 ) ;
 
@@ -33193,7 +33417,7 @@ const char * gWrapperFileContent_134_libpmFileWrapper =
   "    for (int32_t i=0 ; i<valuesArray.count () ; i++) {\n"
   "      const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;\n"
   "      GGS_u_33__32_ object = GGS_u_33__32_ (v) ;\n"
-  "      result.plusPlusAssignOperation (inStringList.readSubcript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (inStringList.readSubscript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -33563,7 +33787,7 @@ const char * gWrapperFileContent_134_libpmFileWrapper =
   "    uint32_t * substitionArray = nullptr ;\n"
   "    macroMyNewArray (substitionArray, uint32_t, varCount) ;\n"
   "    for (uint32_t i=0 ; i<varCount ; i++) {\n"
-  "      const GGS_u_33__32_ v = inVector.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE) ;\n"
+  "      const GGS_u_33__32_ v = inVector.readSubscript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE) ;\n"
   "      substitionArray [i] = v.uintValue () ;\n"
   "    }\n"
   "    result = GGS_binaryset (mBDD.substitution (substitionArray, varCount COMMA_THERE)) ;\n"
@@ -33669,7 +33893,7 @@ const RegularFileWrapper gWrapperFile_134_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
- 51662, // Text length
+ 51664, // Text length
   gWrapperFileContent_134_libpmFileWrapper
 ) ;
 
@@ -34552,7 +34776,7 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "    outFileWritten = GGS_bool (needToWrite) ;\n"
   "    if (needToWrite) {\n"
   "      if (Compiler::performGeneration ()) {\n"
-  "        const bool verboseOptionOn = true ;\n"
+  "        const bool verboseOptionOn = !gBuildOption_quiet.mValue ;\n"
   "        bool ok = FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().deletingLastPathComponent ()) ;\n"
   "        if (!ok) {\n"
   "          String message ;\n"
@@ -34709,7 +34933,7 @@ const RegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 15087, // Text length
+ 15109, // Text length
   gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
@@ -38007,7 +38231,7 @@ const char * gWrapperFileContent_171_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubscript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_s_33__32_ (::system (command.cString ())) ;\n"
@@ -38025,7 +38249,7 @@ const char * gWrapperFileContent_171_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubscript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;\n"
@@ -38707,7 +38931,7 @@ const RegularFileWrapper gWrapperFile_171_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 51860, // Text length
+ 51862, // Text length
   gWrapperFileContent_171_libpmFileWrapper
 ) ;
 
@@ -39183,7 +39407,7 @@ const char * gWrapperFileContent_132_libpmFileWrapper =
   "  if (isValid () && inFilePath.isValid ()) {\n"
   "    if (Compiler::performGeneration ()) {\n"
   "      const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;\n"
-  "      const bool verboseOptionOn = true ;\n"
+  "      const bool verboseOptionOn = !gBuildOption_quiet.mValue ;\n"
   "      const bool ok = FileManager::writeStringToFile (mString, inFilePath.mString) ;\n"
   "      if (ok && verboseOptionOn && fileAlreadyExists) {\n"
   "        ggs_printFileOperationSuccess (String (\"Replaced '\") + inFilePath.mString + \"'.\\n\") ;\n"
@@ -39733,7 +39957,7 @@ const RegularFileWrapper gWrapperFile_132_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
- 42222, // Text length
+ 42244, // Text length
   gWrapperFileContent_132_libpmFileWrapper
 ) ;
 

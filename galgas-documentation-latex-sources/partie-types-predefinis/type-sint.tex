@@ -6,10 +6,10 @@
 \tableDesMatieresLocaleDeProfondeurRelative{1}
 
 
-An \ggsq+@sint+ object value is a 32-bit signed integer value. You can initialize an \ggsq+@sint+ object from an 32-bit signed integer constant:\\
+An \ggsq+@s32+ object value is a 32-bit signed integer value. You can initialize an \ggsq+@s32+ object from an 32-bit signed integer constant:\\
 
 \begin{galgas4}
-let @sint mySignedInteger = 123_456S
+let @s32 mySignedInteger = 123_456S
 \end{galgas4}
 
 
@@ -21,10 +21,10 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 \subsectionConstructor{min}{sint}
 
 \begin{galgas4}
-constructor min -> @sint
+constructor min -> @s32
 \end{galgas4}
 
-Returns an \ggsq+@sint+ object that the minimum value of the 32-bit signed range ($-2^{31}$).
+Returns an \ggsq+@s32+ object that the minimum value of the 32-bit signed range ($-2^{31}$).
 
 
 
@@ -33,11 +33,11 @@ Returns an \ggsq+@sint+ object that the minimum value of the 32-bit signed range
 \subsectionConstructor{max}{sint}
 
 \begin{galgas4}
-constructor max -> @sint
+constructor max -> @s32
 \end{galgas4}
 
 
-Returns an \ggsq+@sint+ object that the maximum value of the 32-bit signed range ($2^{31}-1$).
+Returns an \ggsq+@s32+ object that the maximum value of the 32-bit signed range ($2^{31}-1$).
 
 
 
@@ -49,7 +49,7 @@ Returns an \ggsq+@sint+ object that the maximum value of the 32-bit signed range
 getter bigint -> @bigint
 \end{galgas4box}
 
-Ce \emph{getter} permet de convertir un \ggsq!@sint! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
+Ce \emph{getter} permet de convertir un \ggsq!@s32! en \ggsq!@bigint!. Comme la plage des valeurs des \ggsq!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
 
 \begin{galgas4}
   message [[-1234S bigint] string] + "\n" # -1234
@@ -68,7 +68,7 @@ Returns the receiver's value converted in a \ggsq+@double+ object. As a 32-bit i
 \subsectionGetter{hexStringSeparatedBy}{sint}
 
 \begin{galgas4}
-getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+getter hexStringSeparatedBy ?@char inSeparator ?@u32 inGroup -> @string
 \end{galgas4}
 
 Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggsq=inGroup= digits are separated by the \ggsq=inSeparator= character.
@@ -87,7 +87,7 @@ let s = [0x12345678S hexStringSeparatedBy !'_' !2] # 0x12_34_56_78
 \subsectionGetter{sint64}{sint}
 
 \begin{galgas4}
-getter sint64 -> @sint64
+getter sint64 -> @s64
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object. As a 32-bit signed value can always be converted in a 64-bit signed value, this getter never fails.
@@ -115,7 +115,7 @@ Returns a decimal string representation of the receiver's value. For an hexadeci
 \subsectionGetter{uint}{sint}
 
 \begin{galgas4}
-getter uint -> @uint
+getter uint -> @u32
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object. An error is raised is receiver's value is negative.
@@ -128,7 +128,7 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 \subsectionGetter{uint64}{sint}
 
 \begin{galgas4}
-getter uint64 -> @uint64
+getter uint64 -> @u64
 \end{galgas4}
 
 Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object. An error is raised is receiver's value is negative.
@@ -143,7 +143,7 @@ This getter is the only way to convert an \refTypePredefini{sint} object into an
 
 \subsection{Opérateurs infixés}
 
-Le type \ggsq+@sint+ accepte les opérateurs arithmétiques infixés suivants :
+Le type \ggsq+@s32+ accepte les opérateurs arithmétiques infixés suivants :
 \begin{itemize}
   \item \ggsq!+!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -156,22 +156,22 @@ Le type \ggsq+@sint+ accepte les opérateurs arithmétiques infixés suivants :
   \item \ggsq!&/!, division, qui retourne zéro si le diviseur est nul.
 \end{itemize}
 
-Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@sint+.
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggsq+@s32+.
 
 \subsection{Opérateurs préfixés}
-Le type \ggsq+@sint+ accepte les opérateurs arithmétiques préfixés suivants :
+Le type \ggsq+@s32+ accepte les opérateurs arithmétiques préfixés suivants :
 \begin{itemize}
   \item \ggsq!+!, qui retourne simplement la valeur de l'opérande ;
   \item \ggsq!-!, négation arithmétique, une erreur d'exécution est déclenchée si l'opérande est égal à $-2^{31}$ ;
   \item \ggsq!&-!, négation arithmétique, sans détection de débordement : la négation de $-2^{31}$ est $-2^{31}$.
 \end{itemize}
 
-La valeur renvoyée est du même type  \ggsq+@sint+.
+La valeur renvoyée est du même type  \ggsq+@s32+.
 
 
 \subsectionLabel{Instructions}{instructionsSINT}
 
-Le type \ggsq+@sint+ accepte les instructions arithmétiques suivantes :
+Le type \ggsq+@s32+ accepte les instructions arithmétiques suivantes :
 \begin{itemize}
   \item \ggsq!+=!, addition, une erreur d'exécution est déclenchée en cas de débordement ;
   \item \ggsq!-=!, soustraction, une erreur d'exécution est déclenchée en cas de débordement ;
@@ -184,15 +184,15 @@ Le type \ggsq+@sint+ accepte les instructions arithmétiques suivantes :
 \end{itemize}
 
 \ggsq!x+=y! est équivalent à \ggsq!x=x+y! ; \ggsq!x-=y! est équivalent à \ggsq!x=x-y!.
-La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@sint+.
+La variable cible \ggsq!x!, comme l'expression source \ggsq!y! doivent être du même type \ggsq+@s32+.
 
 Incrémentation et décrémentation sont des instructions, et ne peuvent pas apparaître des expressions.
 \begin{galgas4}
-@sint n = ... ; n ++ # Incrémentation
+@s32 n = ... ; n ++ # Incrémentation
 \end{galgas4}
 
 \begin{galgas4}
-@sint n = ... ; n -- # Décrémentation
+@s32 n = ... ; n -- # Décrémentation
 \end{galgas4}
 
 
@@ -204,7 +204,7 @@ Incrémentation et décrémentation sont des instructions, et ne peuvent pas app
 \section{Shift Operators}
 
 
-The \ggsq+@sint+ type supports right and left shift operators:\newline
+The \ggsq+@s32+ type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -214,7 +214,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \ggsq+@sint+ object, and the left argument to be \ggsq+@uint+ object.\newline
+Theses operators require the right argument to be \ggsq+@s32+ object, and the left argument to be \ggsq+@u32+ object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -225,7 +225,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \ggsq+@sint+ type supports the three bit-wise logical operators:\newline
+The \ggsq+@s32+ type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -237,10 +237,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@sint+ objects.\newline
+Theses operators require both arguments to be \ggsq+@s32+ objects.\newline
 
 
-The \ggsq+@sint+ type supports the bit-wise logical unary operator:\newline
+The \ggsq+@s32+ type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -248,7 +248,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \ggsq+@sint+ object.
+This operator returns an \ggsq+@s32+ object.
 
 
 
@@ -258,7 +258,7 @@ This operator returns an \ggsq+@sint+ object.
 
 \section{Comparison Operators}
 
-The \ggsq+@sint+ type supports the six comparison operators:\newline
+The \ggsq+@s32+ type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -276,6 +276,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \ggsq+@sint+ objects, and return a \ggsq+@bool+ object.
+Theses operators require both arguments to be \ggsq+@s32+ objects, and return a \ggsq+@bool+ object.
 
 

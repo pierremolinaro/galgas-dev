@@ -614,8 +614,8 @@ filewrapper @typeGenerationTemplate : "+generation-templates/type_generation" {
     ?@setterMap MODIFIER_MAP,
     ?@instanceMethodMap INSTANCE_METHOD_MAP,
     ?@classMethodMap CLASS_METHOD_MAP,
-    ?@readSubcriptMap READ_SUBCRIPT_MAP,
-    ?@writeSubcriptMap WRITE_SUBCRIPT_MAP,
+    ?@readSubscriptMap READ_SUBCRIPT_MAP,
+    ?@writeSubscriptMap WRITE_SUBCRIPT_MAP,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST, // Empty List if cannot be enumerated
     ?@typeFeatures SUPPORTED_OPERATORS,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,

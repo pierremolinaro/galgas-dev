@@ -20,7 +20,7 @@ La déclaration d'une \ggsq+sortedlist+ nomme tous les attributs qui composent u
 \begin{galgas4}
 sortedlist @MaListeOrdonnee {
   @char mCaractere ;
-  @uint mEntier ;
+  @u32 mEntier ;
 }{
   mCaractere <, mEntier >
 }
@@ -190,7 +190,7 @@ Exemple :
 
 \sectionLabel{Getter \texttt{count}}{readerSortedListCount}
 
-Le getter \ggsq+count+ retourne un \ggsq+@uint+ contenant le nombre d'éléments de la liste ordonnée.
+Le getter \ggsq+count+ retourne un \ggsq+@u32+ contenant le nombre d'éléments de la liste ordonnée.
 
 
 
@@ -201,7 +201,7 @@ Le getter \ggsq+count+ retourne un \ggsq+@uint+ contenant le nombre d'éléments
 
 \sectionLabel{Getter \texttt{length}}{readerSortedListLength}
 
-Le getter \ggsq+length+ retourne un \ggsq+@uint+ contenant le nombre d'éléments de la liste ordonnée. Obsolète, utiliser \ggsq+count+.
+Le getter \ggsq+length+ retourne un \ggsq+@u32+ contenant le nombre d'éléments de la liste ordonnée. Obsolète, utiliser \ggsq+count+.
 
 
 
@@ -219,7 +219,7 @@ Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonn�
 ...
 [!?uneListe popGreatest
   ?@char c
-  ?@uint n
+  ?@u32 n
 ]
 \end{galgas4}
 
@@ -235,7 +235,7 @@ Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonn�
 ...
 [!?uneListe popSmallest
   ?@char c
-  ?@uint n
+  ?@u32 n
 ]
 \end{galgas4}
 
@@ -261,7 +261,7 @@ Cette méthode retourne les champs du plus grand élément de la liste ordonnée
 ...
 [uneListe greatest
   ?@char c
-  ?@uint n
+  ?@u32 n
 ]
 \end{galgas4}
 
@@ -277,7 +277,7 @@ Cette méthode retourne les champs du plus petit élément de la liste ordonnée
 ...
 [uneListe smallest
   ?@char c
-  ?@uint n
+  ?@u32 n
 ]
 \end{galgas4}
 

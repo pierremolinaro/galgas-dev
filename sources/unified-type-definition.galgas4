@@ -40,8 +40,8 @@ struct @unifiedTypeDefinition {
   public let @instanceMethodMap instanceMethodMap #initArgLabel
   public let @classMethodMap classMethodMap #initArgLabel
   public let @unifiedTypeMapEntry unwrappedType #initArgLabel // null if not optional
-  public let @readSubcriptMap readSubscriptMap #initArgLabel // Read access
-  public let @writeSubcriptMap writeSubscriptMap #initArgLabel // Write access
+  public let @readSubscriptMap readSubscriptMap #initArgLabel // Read access
+  public let @writeSubscriptMap writeSubscriptMap #initArgLabel // Write access
   public let [@enumerationDescriptor] enumerationDescriptorList #initArgLabel // Empty List if cannot be enumerated
   public let @typeFeatures features #initArgLabel
   public let @bool generateHeaderInSeparateFile #initArgLabel // Significant only for classes
@@ -134,7 +134,7 @@ optionset @typeFeatures {
 //  READ SUBCRIPT MAP
 //--------------------------------------------------------------------------------------------------
 
-map @readSubcriptMap {
+map @readSubscriptMap {
   public let [@functionSignatureElement] argumentTypeList
   public let @unifiedTypeMapEntry valueType
   #insertSetter insertKey #errorMessage "the '%K' subcript has been already defined"
@@ -145,7 +145,7 @@ map @readSubcriptMap {
 //  READ SUBCRIPT MAP
 //--------------------------------------------------------------------------------------------------
 
-map @writeSubcriptMap {
+map @writeSubscriptMap {
   public let [@functionSignatureElement] argumentTypeList
   public let @unifiedTypeMapEntry valueType
   #insertSetter insertKey #errorMessage "the '%K' subcript has been already defined"

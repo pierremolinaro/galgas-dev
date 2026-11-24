@@ -184,7 +184,7 @@ end
 \begin{galgas4box}
 constructor stringByRepeatingString
   ?@string inString
-  ?@uint inCount
+  ?@u32 inCount
   -> @string
 \end{galgas4box}
 
@@ -274,7 +274,7 @@ Ce constructeur retourne la valeur associée à la variable d'environnement \ggs
 \begin{galgas4box}
 constructor stringWithSequenceOfCharacters
   ?@char inChar
-  ?@uint inCount
+  ?@u32 inCount
   -> @string
 \end{galgas4box}
 
@@ -389,7 +389,7 @@ Si la chaîne de caractères est une représentation décimale d'un entier, cett
 \subsectionGetter{capacity}{string}
 
 \begin{galgas4box}
-getter @string capacity -> @uint
+getter @string capacity -> @u32
 \end{galgas4box}
 
 Retourne le nombre de caractères alloués pour stocker la valeur du récepteur.
@@ -418,7 +418,7 @@ Retourne la valeur du récepteur dans laquelle le premier caractère, si il est 
 \subsectionGetter{characterAtIndex}{string}
 
 \begin{galgas4box}
-getter @string characterAtIndex ?@uint inIndex -> @char
+getter @string characterAtIndex ?@u32 inIndex -> @char
 \end{galgas4box}
 
 Retourne le caractère situé à l'indice \ggsq!inIndex! de la valeur du récepteur. Le premier caractère a pour indice $0$. Si \ggsq!inIndex! est supérieur au égal à la longueur de la valeur du récepteur, une erreur d'exécution est déclenchée.
@@ -436,7 +436,7 @@ Retourne le caractère situé à l'indice \ggsq!inIndex! de la valeur du récept
 \subsectionGetter{commandWithArguments}{string}
 
 \begin{galgas4box}
-getter @string commandWithArguments ?@stringlist inArguments -> @sint
+getter @string commandWithArguments ?@stringlist inArguments -> @s32
 \end{galgas4box}
 Exécute la commande \emph{shell} dont le nom est la valeur du récepteur, avec les arguments désignés par la valeur de \texttt{inArguments}. La sortie de la commande est affichée sur la console. Quand la commande est terminée, sa valeur de sortie est retournée.
 
@@ -529,7 +529,7 @@ let c = ["abcdef" containsCharacterInRange !'x' !'z'] # false
 \subsectionGetter{count}{string}
 
 \begin{galgas4box}
-getter @string count -> @uint
+getter @string count -> @u32
 \end{galgas4box}
 
 Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
@@ -560,7 +560,7 @@ Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », 
 \subsectionGetter{currentColumn}{string}
 
 \begin{galgas4box}
-getter @string currentColumn -> @uint
+getter @string currentColumn -> @u32
 \end{galgas4box}
 
 Retourne l'indice de la colonne, c'est-à-dire :
@@ -594,7 +594,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalSignedNumber}{string}
 
 \begin{galgas4box}
-getter @string decimalSignedNumber -> @sint
+getter @string decimalSignedNumber -> @s32
 \end{galgas4box}
 
 Retourne la valeur du récepteur convertie en entier signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -610,7 +610,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalSigned64Number}{string}
 
 \begin{galgas4box}
-getter @string decimalSigned64Number -> @sint64
+getter @string decimalSigned64Number -> @s64
 \end{galgas4box}
 
 Retourne la valeur du récepteur convertie en entier signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -626,7 +626,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalUnsignedNumber}{string}
 
 \begin{galgas4box}
-getter @string decimalUnsignedNumber -> @uint
+getter @string decimalUnsignedNumber -> @u32
 \end{galgas4box}
 
 Retourne la valeur du récepteur convertie en entier non signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -642,7 +642,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalUnsigned64Number}{string}
 
 \begin{galgas4box}
-getter @string decimalUnsigned64Number -> @uint64
+getter @string decimalUnsigned64Number -> @u64
 \end{galgas4box}
 
 Retourne la valeur du récepteur convertie en entier non signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -1153,7 +1153,7 @@ Retourne le récepteur ne contient pas de caractère « \texttt{/} », il est re
 \subsectionGetter{leftSubString}{string}
 
 \begin{galgas4box}
-getter @string leftSubString ?@uint inLength -> @string
+getter @string leftSubString ?@u32 inLength -> @string
 \end{galgas4box}
 
 Retourne la sous-chaîne constituée des \ggsq!inLength! derniers caractères du récepteur. Si celui-ci contient moins de \ggsq!inLength! caractères, une erreur d'exécution est déclenchée.
@@ -1168,7 +1168,7 @@ Retourne la sous-chaîne constituée des \ggsq!inLength! derniers caractères du
 \subsectionGetter{length}{string}
 
 \begin{galgas4box}
-getter @string length -> @uint # Obsolete, utiliser count
+getter @string length -> @u32 # Obsolete, utiliser count
 \end{galgas4box}
 
 Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utiliser le \refGetterPage{string}{utf8Length}.
@@ -1418,7 +1418,7 @@ let x = ["abcde" reversedString] # "edcba"
 \subsectionGetter{rightSubString}{string}
 
 \begin{galgas4box}
-getter @string rightSubString ?@uint inLength -> @string
+getter @string rightSubString ?@u32 inLength -> @string
 \end{galgas4box}
 
 Retourne la sous-chaîne constituée des \ggsq!inLength! premiers caractères du récepteur. Si celui-ci contient moins de \ggsq!inLength! caractères, une erreur d'exécution est déclenchée.
@@ -1478,7 +1478,7 @@ Si le récepteur ne contient pas de caractère « \texttt{/} », la chaîne vide
 
 \begin{galgas4box}
 getter @string stringByLeftAndRightPadding
-   ?@uint inPaddedStringLength
+   ?@u32 inPaddedStringLength
    ?@char inPaddingChar -> @string
 \end{galgas4box}
 
@@ -1495,7 +1495,7 @@ Si la longueur de la valeur du récepteur est supérieure ou égal à \ggsq!inPa
 
 \begin{galgas4box}
 getter @string stringByLeftPadding
-   ?@uint inPaddedStringLength
+   ?@u32 inPaddedStringLength
    ?@char inPaddingChar -> @string
 \end{galgas4box}
 
@@ -1510,7 +1510,7 @@ Si la longueur de la valeur du récepteur est supérieure ou égal à \ggsq!inPa
 \subsectionGetter{stringByRemovingCharacterAtIndex}{string}
 
 \begin{galgas4box}
-getter @string stringByRemovingCharacterAtIndex ?@uint inIndex -> @string
+getter @string stringByRemovingCharacterAtIndex ?@u32 inIndex -> @string
 \end{galgas4box}
 
 Retourne la valeur du récepteur, amputée du caractère situé à l'indice \ggsq!inIndex!. Une erreur d'exécution est déclenchée si \ggsq!inIndex! est supérieur ou égal au nombre de caractères du récepteur.
@@ -1541,7 +1541,7 @@ Retourne la valeur du récepteur, dans laquelle chaque occurrence de \ggsq!inSea
 
 \begin{galgas4box}
 getter @string stringByRightPadding
-   ?@uint inPaddedStringLength
+   ?@u32 inPaddedStringLength
    ?@char inPaddingChar -> @string
 \end{galgas4box}
 
@@ -1578,7 +1578,7 @@ Retourne la valeur du récepteur dans laquelles les espaces en tête et en fin o
 \subsectionGetter{subString}{string}
 
 \begin{galgas4box}
-getter @string subString ?@uint inStart ?@uint inLength -> @string
+getter @string subString ?@u32 inStart ?@u32 inLength -> @string
 \end{galgas4box}
 
 Retourne la sous-chaîne de \ggsq!inLength! caractères extraite de la valeur du récepteur à partir de l'indice \ggsq!inStart!.
@@ -1591,7 +1591,7 @@ Retourne la sous-chaîne de \ggsq!inLength! caractères extraite de la valeur du
 \subsectionGetter{subStringFromIndex}{string}
 
 \begin{galgas4box}
-getter @string subStringFromIndex ?@uint inIndex -> @string
+getter @string subStringFromIndex ?@u32 inIndex -> @string
 \end{galgas4box}
 
 Retourne la sous-chaîne de caractères extraite de la valeur du récepteur à partir de l'indice \ggsq!inIndex!. Si \ggsq!inIndex! est supérieur ou égal au nombre de caractères du récepteur, la chaîne vide est retournée.
@@ -1604,7 +1604,7 @@ Retourne la sous-chaîne de caractères extraite de la valeur du récepteur à p
 \subsectionGetter{system}{string}
 
 \begin{galgas4box}
-getter @string system -> @sint
+getter @string system -> @s32
 \end{galgas4box}
 
 
@@ -1687,7 +1687,7 @@ let y = ["êæ" uppercaseString] # "ÊÆ"
 \subsectionGetter{utf8Length}{string}
 
 \begin{galgas4box}
-getter @string utf8Length -> @uint
+getter @string utf8Length -> @u32
 \end{galgas4box}
 
 Retourne le nombre d'octets de la représentation UTF-8 de la valeur du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce nombre diffère de la valeur retournée par le \refGetterPage{string}{length}~:
@@ -1933,7 +1933,7 @@ Le récepteur contient la chaîne de caractères qui est écrit dans le fichier 
 \subsectionSetter{appendSpacesUntilColumn}{string}
 
 \begin{galgas4box}
-setter @string appendSpacesUntilColumn ?@uint inColumnIndex
+setter @string appendSpacesUntilColumn ?@u32 inColumnIndex
 \end{galgas4box}
 
 Ce \emph{setter} ajoute des espaces en fin de ligne jusqu'à atteindre la colonne \ggsq!inColumnIndex!.
@@ -1944,7 +1944,7 @@ Ce \emph{setter} ajoute des espaces en fin de ligne jusqu'à atteindre la colonn
 \subsectionSetter{decIndentation}{string}
 
 \begin{galgas4box}
-setter @string decIndentation ?@uint inAmount
+setter @string decIndentation ?@u32 inAmount
 \end{galgas4box}
 
 Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Le \refSetterPage{string}{incIndentation} permet de l'incrémenter, ce \emph{setter} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
@@ -1956,7 +1956,7 @@ Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement ins�
 \subsectionSetter{incIndentation}{string}
 
 \begin{galgas4box}
-setter @string incIndentation ?@uint inAmount
+setter @string incIndentation ?@u32 inAmount
 \end{galgas4box}
 
 Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Ce \emph{setter} permet de l'incrémenter, le \refSetterPage{string}{decIndentation} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
@@ -1973,7 +1973,7 @@ Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement ins�
 \begin{galgas4box}
 setter @string insertCharacterAtIndex
    ?@char inChar
-   ?@uint inIndex
+   ?@u32 inIndex
 \end{galgas4box}
 
 
@@ -1989,7 +1989,7 @@ Ce \emph{setter} insère le caractère caractère \ggsq!inChar! à l'indice \ggs
 \subsectionSetter{setCapacity}{string}
 
 \begin{galgas4box}
-setter @string setCapacity ?@uint inCapacity
+setter @string setCapacity ?@u32 inCapacity
 \end{galgas4box}
 
 
@@ -2005,7 +2005,7 @@ Ce \emph{setter} ajuste la zone mémoire allouée au buffer de la chaîne de car
 \begin{galgas4box}
 setter @string removeCharacterAtIndex
    !@char outChar
-   ?@uint inIndex
+   ?@u32 inIndex
 \end{galgas4box}
 
 
@@ -2021,7 +2021,7 @@ Ce \emph{setter} retire de la chaîne le caractère à l'indice \ggsq!inIndex!. 
 \begin{galgas4box}
 setter @string setCharacterAtIndex
    ?@char inChar
-   ?@uint inIndex
+   ?@u32 inIndex
 \end{galgas4box}
 
 

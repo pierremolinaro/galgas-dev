@@ -1494,8 +1494,7 @@ void GGS_propertyIndexMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_propertyIndexMap_2E_element_3F_ GGS_propertyIndexMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_propertyIndexMap_2E_element_3F_ GGS_propertyIndexMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_propertyIndexMap_2E_element_3F_ result ;
@@ -1951,8 +1950,7 @@ void GGS_nonterminalLabelMap::findNearestKey (const String & inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_nonterminalLabelMap_2E_element_3F_ GGS_nonterminalLabelMap
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_nonterminalLabelMap_2E_element_3F_ GGS_nonterminalLabelMap::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_nonterminalLabelMap_2E_element_3F_ result ;
@@ -2560,27 +2558,6 @@ void GGS__5B_ruleLabelImplementationAST_5D_::setter_removeAll (Compiler * /* inC
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_ruleLabelImplementationAST_5D_::setter_set (const GGS_ruleLabelImplementationAST inValue,
-                                                         const GGS_u_33__32_ inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS__5B_ruleLabelImplementationAST_5D_::setter_insert (const GGS_ruleLabelImplementationAST inValue,
                                                             const GGS_u_33__32_ inInsertionIndex,
                                                             Compiler * inCompiler
@@ -2665,7 +2642,13 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::g
   GGS__5B_ruleLabelImplementationAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_ruleLabelImplementationAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_ruleLabelImplementationAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -2673,10 +2656,6 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::g
       errorMessage.appendSigned (mSharedArray.count ()) ;
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_ruleLabelImplementationAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
   return result ;
@@ -2753,17 +2732,16 @@ GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::getter_la
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::readSubcript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
+GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const {
   GGS_ruleLabelImplementationAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
+      String errorMessage = "read subscript call with index " ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -2772,6 +2750,27 @@ GGS_ruleLabelImplementationAST GGS__5B_ruleLabelImplementationAST_5D_::readSubcr
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleLabelImplementationAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                  const GGS_ruleLabelImplementationAST inValue,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
 }
 
 
@@ -3235,9 +3234,9 @@ GGS_u_33__32_ GGS__5B_string_3A__5B_lstring_5D__5D_::getter_count (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lstring_5D__3F_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_ (const GGS_string & inKey,
-                                                                                  Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_lstring_5D__3F_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubscript__3F_ (const GGS_string & inKey,
+                                                                                   Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS__5B_lstring_5D__3F_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
@@ -3252,10 +3251,10 @@ GGS__5B_lstring_5D__3F_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F__3F_default (const GGS_string & inKey,
-                                                                                         const GGS__5B_lstring_5D_ & inDefaultValue,
-                                                                                         Compiler * /* inCompiler */
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubscript__3F__3F_default (const GGS_string & inKey,
+                                                                                          const GGS__5B_lstring_5D_ & inDefaultValue,
+                                                                                          Compiler * /* inCompiler */
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS__5B_lstring_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
@@ -3270,9 +3269,9 @@ GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F__3F_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_unwrap (const GGS_string & inKey,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubscript__3F_unwrap (const GGS_string & inKey,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const {
   GGS__5B_lstring_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_lstring_5D__5D_> object = infoForKey (inKey) ;
@@ -3292,10 +3291,10 @@ GGS__5B_lstring_5D_ GGS__5B_string_3A__5B_lstring_5D__5D_::readSubcript__3F_unwr
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubcript__3F_ (const GGS_string inKey,
-                                                                const GGS__5B_lstring_5D_ inValue,
-                                                                Compiler *
-                                                                COMMA_LOCATION_ARGS) {
+void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubscript__3F_ (const GGS_string inKey,
+                                                                 const GGS__5B_lstring_5D_ inValue,
+                                                                 Compiler *
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const Node__5B_string_3A__5B_lstring_5D__5D_ object (inKey, inValue) ;
     insertOrReplace (inKey, object COMMA_THERE) ;
@@ -3304,10 +3303,10 @@ void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubcript__3F_ (const GGS_string
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubcript__3F_unique (const GGS_string inKey,
-                                                                      const GGS__5B_lstring_5D_ inValue,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GGS__5B_string_3A__5B_lstring_5D__5D_::writeSubscript__3F_unique (const GGS_string inKey,
+                                                                       const GGS__5B_lstring_5D_ inValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const Node__5B_string_3A__5B_lstring_5D__5D_ object (inKey, inValue) ;
     const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
@@ -3496,7 +3495,7 @@ GGS__5B_lstring_5D_ extensionGetter_listForKey (const GGS_genericExtensionMethod
   GGS__5B_lstring_5D_ result ; // Returned variable
   const GGS_genericExtensionMethodListMap temp_0 = inObject ;
   GGS__5B_lstring_5D_ temp_1 = GGS__5B_lstring_5D_::init (inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 56)) ;
-  result = temp_0.readProperty_dictionary ().readSubcript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
+  result = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, temp_1, inCompiler COMMA_HERE) ;
 //---
   return result ;
 }
@@ -3587,9 +3586,9 @@ GGS_u_33__32_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::getter_count (U
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_unifiedTypeMapEntry_5D__3F_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F_ (const GGS_string & inKey,
-                                                                                                          Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_unifiedTypeMapEntry_5D__3F_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubscript__3F_ (const GGS_string & inKey,
+                                                                                                           Compiler * /* inCompiler */
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS__5B_unifiedTypeMapEntry_5D__3F_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
@@ -3604,10 +3603,10 @@ GGS__5B_unifiedTypeMapEntry_5D__3F_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F__3F_default (const GGS_string & inKey,
-                                                                                                                 const GGS__5B_unifiedTypeMapEntry_5D_ & inDefaultValue,
-                                                                                                                 Compiler * /* inCompiler */
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubscript__3F__3F_default (const GGS_string & inKey,
+                                                                                                                  const GGS__5B_unifiedTypeMapEntry_5D_ & inDefaultValue,
+                                                                                                                  Compiler * /* inCompiler */
+                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS__5B_unifiedTypeMapEntry_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
@@ -3622,9 +3621,9 @@ GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubcript__3F_unwrap (const GGS_string & inKey,
-                                                                                                                  Compiler * inCompiler
-                                                                                                                  COMMA_LOCATION_ARGS) const {
+GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::readSubscript__3F_unwrap (const GGS_string & inKey,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const {
   GGS__5B_unifiedTypeMapEntry_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_> object = infoForKey (inKey) ;
@@ -3644,10 +3643,10 @@ GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubcript__3F_ (const GGS_string inKey,
-                                                                            const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
-                                                                            Compiler *
-                                                                            COMMA_LOCATION_ARGS) {
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubscript__3F_ (const GGS_string inKey,
+                                                                             const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                                                             Compiler *
+                                                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ object (inKey, inValue) ;
     insertOrReplace (inKey, object COMMA_THERE) ;
@@ -3656,10 +3655,10 @@ void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubcript__3F_ (cons
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubcript__3F_unique (const GGS_string inKey,
-                                                                                  const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
+void GGS__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_::writeSubscript__3F_unique (const GGS_string inKey,
+                                                                                   const GGS__5B_unifiedTypeMapEntry_5D_ inValue,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     const Node__5B_string_3A__5B_unifiedTypeMapEntry_5D__5D_ object (inKey, inValue) ;
     const bool overwrite = insertOrReplace (inKey, object COMMA_THERE) ;
@@ -3847,7 +3846,7 @@ GGS__5B_unifiedTypeMapEntry_5D_ extensionGetter_listForKey (const GGS_descendant
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_unifiedTypeMapEntry_5D_ result ; // Returned variable
   const GGS_descendantClassListMap temp_0 = inObject ;
-  result = temp_0.readProperty_dictionary ().readSubcript__3F__3F_default (constinArgument_inKey, GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE) ;
+  result = temp_0.readProperty_dictionary ().readSubscript__3F__3F_default (constinArgument_inKey, GGS__5B_unifiedTypeMapEntry_5D_::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE) ;
 //---
   return result ;
 }
@@ -4070,8 +4069,7 @@ void GGS_extensionMethodMapForGlobalCheckings::findNearestKey (const String & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_ GGS_extensionMethodMapForGlobalCheckings
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_ GGS_extensionMethodMapForGlobalCheckings::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_extensionMethodMapForGlobalCheckings_2E_element_3F_ result ;
@@ -4446,8 +4444,7 @@ void GGS_extensionSetterMapForGlobalCheckings::findNearestKey (const String & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_ GGS_extensionSetterMapForGlobalCheckings
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_ GGS_extensionSetterMapForGlobalCheckings::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_extensionSetterMapForGlobalCheckings_2E_element_3F_ result ;
@@ -4822,8 +4819,7 @@ void GGS_extensionGetterMapForGlobalCheckings::findNearestKey (const String & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ GGS_extensionGetterMapForGlobalCheckings
-::readSubcript__3F_ (const class GGS_string & inKey,
+GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ GGS_extensionGetterMapForGlobalCheckings::readSubscript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ result ;
@@ -10323,7 +10319,7 @@ const GALGAS_TypeDescriptor * GGS_typeKindEnum_2E_enumType_3F_::staticTypeDescri
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_readSubcriptMap_2E_element::GGS_readSubcriptMap_2E_element (void) :
+GGS_readSubscriptMap_2E_element::GGS_readSubscriptMap_2E_element (void) :
 mProperty_lkey (),
 mProperty_argumentTypeList (),
 mProperty_valueType () {
@@ -10331,7 +10327,7 @@ mProperty_valueType () {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_readSubcriptMap_2E_element::GGS_readSubcriptMap_2E_element (const GGS_readSubcriptMap_2E_element & inSource) :
+GGS_readSubscriptMap_2E_element::GGS_readSubscriptMap_2E_element (const GGS_readSubscriptMap_2E_element & inSource) :
 mProperty_lkey (inSource.mProperty_lkey),
 mProperty_argumentTypeList (inSource.mProperty_argumentTypeList),
 mProperty_valueType (inSource.mProperty_valueType) {
@@ -10339,7 +10335,7 @@ mProperty_valueType (inSource.mProperty_valueType) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_readSubcriptMap_2E_element & GGS_readSubcriptMap_2E_element::operator = (const GGS_readSubcriptMap_2E_element & inSource) {
+GGS_readSubscriptMap_2E_element & GGS_readSubscriptMap_2E_element::operator = (const GGS_readSubscriptMap_2E_element & inSource) {
   mProperty_lkey = inSource.mProperty_lkey ;
   mProperty_argumentTypeList = inSource.mProperty_argumentTypeList ;
   mProperty_valueType = inSource.mProperty_valueType ;
@@ -10348,202 +10344,12 @@ GGS_readSubcriptMap_2E_element & GGS_readSubcriptMap_2E_element::operator = (con
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_readSubcriptMap_2E_element GGS_readSubcriptMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                 const GGS__5B_functionSignatureElement_5D_ & in_argumentTypeList,
-                                                                                 const GGS_unifiedTypeMapEntry & in_valueType,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_readSubcriptMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_argumentTypeList = in_argumentTypeList ;
-  result.mProperty_valueType = in_valueType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_readSubcriptMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_readSubcriptMap_2E_element::GGS_readSubcriptMap_2E_element (const GGS_lstring & inOperand0,
-                                                                const GGS__5B_functionSignatureElement_5D_ & inOperand1,
-                                                                const GGS_unifiedTypeMapEntry & inOperand2) :
-mProperty_lkey (inOperand0),
-mProperty_argumentTypeList (inOperand1),
-mProperty_valueType (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_readSubcriptMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_argumentTypeList.isValid () && mProperty_valueType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_readSubcriptMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_argumentTypeList.drop () ;
-  mProperty_valueType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_readSubcriptMap_2E_element::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @readSubcriptMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_argumentTypeList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_valueType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @readSubcriptMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_readSubcriptMap_2E_element ("readSubcriptMap.element",
-                                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_readSubcriptMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_readSubcriptMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @readSubcriptMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_readSubcriptMap_2E_element_3F_::GGS_readSubcriptMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_readSubcriptMap_2E_element_3F_::GGS_readSubcriptMap_2E_element_3F_ (const GGS_readSubcriptMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_readSubcriptMap_2E_element_3F_ GGS_readSubcriptMap_2E_element_3F_::init_nil (void) {
-  GGS_readSubcriptMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_readSubcriptMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_readSubcriptMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_readSubcriptMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_readSubcriptMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_readSubcriptMap_2E_element_3F_::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @readSubcriptMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_readSubcriptMap_2E_element_3F_ ("readSubcriptMap.element?",
-                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_readSubcriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_readSubcriptMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_writeSubcriptMap_2E_element::GGS_writeSubcriptMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_argumentTypeList (),
-mProperty_valueType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_writeSubcriptMap_2E_element::GGS_writeSubcriptMap_2E_element (const GGS_writeSubcriptMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_argumentTypeList (inSource.mProperty_argumentTypeList),
-mProperty_valueType (inSource.mProperty_valueType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_writeSubcriptMap_2E_element & GGS_writeSubcriptMap_2E_element::operator = (const GGS_writeSubcriptMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_argumentTypeList = inSource.mProperty_argumentTypeList ;
-  mProperty_valueType = inSource.mProperty_valueType ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_writeSubcriptMap_2E_element GGS_writeSubcriptMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+GGS_readSubscriptMap_2E_element GGS_readSubscriptMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
                                                                                    const GGS__5B_functionSignatureElement_5D_ & in_argumentTypeList,
                                                                                    const GGS_unifiedTypeMapEntry & in_valueType,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_writeSubcriptMap_2E_element result ;
+  GGS_readSubscriptMap_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
   result.mProperty_argumentTypeList = in_argumentTypeList ;
@@ -10553,12 +10359,12 @@ GGS_writeSubcriptMap_2E_element GGS_writeSubcriptMap_2E_element::init_21__21__21
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_writeSubcriptMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_readSubscriptMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_writeSubcriptMap_2E_element::GGS_writeSubcriptMap_2E_element (const GGS_lstring & inOperand0,
+GGS_readSubscriptMap_2E_element::GGS_readSubscriptMap_2E_element (const GGS_lstring & inOperand0,
                                                                   const GGS__5B_functionSignatureElement_5D_ & inOperand1,
                                                                   const GGS_unifiedTypeMapEntry & inOperand2) :
 mProperty_lkey (inOperand0),
@@ -10568,13 +10374,13 @@ mProperty_valueType (inOperand2) {
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_writeSubcriptMap_2E_element::isValid (void) const {
+bool GGS_readSubscriptMap_2E_element::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_argumentTypeList.isValid () && mProperty_valueType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_writeSubcriptMap_2E_element::drop (void) {
+void GGS_readSubscriptMap_2E_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_argumentTypeList.drop () ;
   mProperty_valueType.drop () ;
@@ -10582,9 +10388,9 @@ void GGS_writeSubcriptMap_2E_element::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_writeSubcriptMap_2E_element::description (String & ioString,
+void GGS_readSubscriptMap_2E_element::description (String & ioString,
                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @writeSubcriptMap.element:") ;
+  ioString.appendCString ("<struct @readSubscriptMap.element:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
@@ -10598,23 +10404,23 @@ void GGS_writeSubcriptMap_2E_element::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @writeSubcriptMap.element generic code implementation
+//     @readSubscriptMap.element generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubcriptMap_2E_element ("writeSubcriptMap.element",
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_readSubscriptMap_2E_element ("readSubscriptMap.element",
                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_writeSubcriptMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_writeSubcriptMap_2E_element ;
+const GALGAS_TypeDescriptor * GGS_readSubscriptMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_readSubscriptMap_2E_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Optional @writeSubcriptMap_2E_element_3F_
+//Optional @readSubscriptMap_2E_element_3F_
 //--------------------------------------------------------------------------------------------------
 
-GGS_writeSubcriptMap_2E_element_3F_::GGS_writeSubcriptMap_2E_element_3F_ (void) :
+GGS_readSubscriptMap_2E_element_3F_::GGS_readSubscriptMap_2E_element_3F_ (void) :
 AC_GALGAS_root (),
 mValue (),
 mState (OptionalState::invalid) {
@@ -10622,7 +10428,7 @@ mState (OptionalState::invalid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_writeSubcriptMap_2E_element_3F_::GGS_writeSubcriptMap_2E_element_3F_ (const GGS_writeSubcriptMap_2E_element & inSource) :
+GGS_readSubscriptMap_2E_element_3F_::GGS_readSubscriptMap_2E_element_3F_ (const GGS_readSubscriptMap_2E_element & inSource) :
 AC_GALGAS_root (),
 mValue (inSource),
 mState (OptionalState::valuated) {
@@ -10631,15 +10437,15 @@ mState (OptionalState::valuated) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_writeSubcriptMap_2E_element_3F_ GGS_writeSubcriptMap_2E_element_3F_::init_nil (void) {
-  GGS_writeSubcriptMap_2E_element_3F_ result ;
+GGS_readSubscriptMap_2E_element_3F_ GGS_readSubscriptMap_2E_element_3F_::init_nil (void) {
+  GGS_readSubscriptMap_2E_element_3F_ result ;
   result.mState = OptionalState::isNil ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_writeSubcriptMap_2E_element_3F_::isValid (void) const {
+bool GGS_readSubscriptMap_2E_element_3F_::isValid (void) const {
   bool result = false ;
   switch (mState) {
   case OptionalState::invalid :
@@ -10656,20 +10462,20 @@ bool GGS_writeSubcriptMap_2E_element_3F_::isValid (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_writeSubcriptMap_2E_element_3F_::isValuated (void) const {
+bool GGS_readSubscriptMap_2E_element_3F_::isValuated (void) const {
   return (mState == OptionalState::valuated) && mValue.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_writeSubcriptMap_2E_element_3F_::drop (void) {
+void GGS_readSubscriptMap_2E_element_3F_::drop (void) {
   mState = OptionalState::invalid ;
-  mValue = GGS_writeSubcriptMap_2E_element () ;
+  mValue = GGS_readSubscriptMap_2E_element () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_writeSubcriptMap_2E_element_3F_::description (String & ioString,
+void GGS_readSubscriptMap_2E_element_3F_::description (String & ioString,
                                                        const int32_t inIndentation) const {
   ioString.appendCString ("<optional @") ;
   ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
@@ -10689,16 +10495,206 @@ void GGS_writeSubcriptMap_2E_element_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @writeSubcriptMap.element? generic code implementation
+//     @readSubscriptMap.element? generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubcriptMap_2E_element_3F_ ("writeSubcriptMap.element?",
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_readSubscriptMap_2E_element_3F_ ("readSubscriptMap.element?",
                                                                                     nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_writeSubcriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_writeSubcriptMap_2E_element_3F_ ;
+const GALGAS_TypeDescriptor * GGS_readSubscriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_readSubscriptMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element::GGS_writeSubscriptMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_argumentTypeList (),
+mProperty_valueType () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element::GGS_writeSubscriptMap_2E_element (const GGS_writeSubscriptMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_argumentTypeList (inSource.mProperty_argumentTypeList),
+mProperty_valueType (inSource.mProperty_valueType) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element & GGS_writeSubscriptMap_2E_element::operator = (const GGS_writeSubscriptMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_argumentTypeList = inSource.mProperty_argumentTypeList ;
+  mProperty_valueType = inSource.mProperty_valueType ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element GGS_writeSubscriptMap_2E_element::init_21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                     const GGS__5B_functionSignatureElement_5D_ & in_argumentTypeList,
+                                                                                     const GGS_unifiedTypeMapEntry & in_valueType,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_writeSubscriptMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_argumentTypeList = in_argumentTypeList ;
+  result.mProperty_valueType = in_valueType ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_writeSubscriptMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element::GGS_writeSubscriptMap_2E_element (const GGS_lstring & inOperand0,
+                                                                    const GGS__5B_functionSignatureElement_5D_ & inOperand1,
+                                                                    const GGS_unifiedTypeMapEntry & inOperand2) :
+mProperty_lkey (inOperand0),
+mProperty_argumentTypeList (inOperand1),
+mProperty_valueType (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_writeSubscriptMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_argumentTypeList.isValid () && mProperty_valueType.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_writeSubscriptMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_argumentTypeList.drop () ;
+  mProperty_valueType.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_writeSubscriptMap_2E_element::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @writeSubscriptMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_argumentTypeList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_valueType.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @writeSubscriptMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubscriptMap_2E_element ("writeSubscriptMap.element",
+                                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_writeSubscriptMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_writeSubscriptMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @writeSubscriptMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element_3F_::GGS_writeSubscriptMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element_3F_::GGS_writeSubscriptMap_2E_element_3F_ (const GGS_writeSubscriptMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_writeSubscriptMap_2E_element_3F_ GGS_writeSubscriptMap_2E_element_3F_::init_nil (void) {
+  GGS_writeSubscriptMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_writeSubscriptMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_writeSubscriptMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_writeSubscriptMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_writeSubscriptMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_writeSubscriptMap_2E_element_3F_::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @writeSubscriptMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubscriptMap_2E_element_3F_ ("writeSubscriptMap.element?",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_writeSubscriptMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_writeSubscriptMap_2E_element_3F_ ;
 }
 
 //--------------------------------------------------------------------------------------------------

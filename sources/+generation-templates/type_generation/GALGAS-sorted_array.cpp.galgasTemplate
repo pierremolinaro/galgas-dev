@@ -298,7 +298,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (%?^%Compiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_u_33__32_ & inIndex,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GGS_u_33__32_ & inIndex,
       %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;

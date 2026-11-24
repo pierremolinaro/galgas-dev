@@ -467,7 +467,7 @@ void GGS_string::method_writeToFile (GGS_string inFilePath,
   if (isValid () && inFilePath.isValid ()) {
     if (Compiler::performGeneration ()) {
       const bool fileAlreadyExists = FileManager::fileExistsAtPath (inFilePath.mString) ;
-      const bool verboseOptionOn = true ;
+      const bool verboseOptionOn = !gBuildOption_quiet.mValue ;
       const bool ok = FileManager::writeStringToFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (String ("Replaced '") + inFilePath.mString + "'.\n") ;

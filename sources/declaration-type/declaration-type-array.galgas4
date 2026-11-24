@@ -169,16 +169,16 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       "" // No error message
     )
   //--- mutating proc 'set'
-    !?setterMap.insertKey (
-      "set".here,
-      .definedAsMember,
-      [ @("".nowhere, elementType, .argumentConstantIn, "inElement"),
-        @("at".nowhere, uintType, .argumentConstantIn, "inIndex")
-      ],
-      true,
-      .isBasic,
-      "" // No error message
-    )
+//    !?setterMap.insertKey (
+//      "set".here,
+//      .definedAsMember,
+//      [ @("".nowhere, elementType, .argumentConstantIn, "inElement"),
+//        @("at".nowhere, uintType, .argumentConstantIn, "inIndex")
+//      ],
+//      true,
+//      .isBasic,
+//      "" // No error message
+//    )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
     let [@functionSignatureElement] emptyArgumentList = @()
@@ -186,12 +186,19 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       (@(emptyArgumentList.initializerSignature, self.arrayTypeName),
       emptyArgumentList
     )
-  //--- Read subcripts
-    var @readSubcriptMap readSubscriptMap = @()
-    let [@functionSignatureElement] argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
+  //--- Read subcript
+    var @readSubscriptMap readSubscriptMap = @()
+    let [@functionSignatureElement] subscriptArgumentList = [@("".nowhere, uintType, "inIndex", true)]
     !?readSubscriptMap.insertKey (
-      argumentTypeList.subcriptSignature.nowhere,
-      argumentTypeList,
+      subscriptArgumentList.subcriptSignature.nowhere,
+      subscriptArgumentList,
+      elementType
+    )
+  //--- Write subcript
+    var @writeSubscriptMap writeSubcriptMap = @()
+    !?writeSubcriptMap.insertKey (
+      subscriptArgumentList.subcriptSignature.nowhere,
+      subscriptArgumentList,
       elementType
     )
   //--- Add extensions
@@ -242,7 +249,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: readSubscriptMap,
-      !writeSubscriptMap: @(),
+      !writeSubscriptMap: writeSubcriptMap,
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
       !generateHeaderInSeparateFile: false,

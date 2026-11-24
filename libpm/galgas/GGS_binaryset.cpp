@@ -623,7 +623,7 @@ GGS__5B_string_5D_ GGS_binaryset::getter_stringValueListWithNameList (const GGS_
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;
       GGS_u_33__32_ object = GGS_u_33__32_ (v) ;
-      result.plusPlusAssignOperation (inStringList.readSubcript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;
+      result.plusPlusAssignOperation (inStringList.readSubscript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;
     }
   }
   return result ;
@@ -993,7 +993,7 @@ GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_u_33__32__5D_ & 
     uint32_t * substitionArray = nullptr ;
     macroMyNewArray (substitionArray, uint32_t, varCount) ;
     for (uint32_t i=0 ; i<varCount ; i++) {
-      const GGS_u_33__32_ v = inVector.readSubcript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE) ;
+      const GGS_u_33__32_ v = inVector.readSubscript__3F_ (GGS_u_33__32_ (i), inCompiler COMMA_THERE) ;
       substitionArray [i] = v.uintValue () ;
     }
     result = GGS_binaryset (mBDD.substitution (substitionArray, varCount COMMA_THERE)) ;

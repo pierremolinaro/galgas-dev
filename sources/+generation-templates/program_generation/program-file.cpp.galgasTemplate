@@ -72,7 +72,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     try{
       routine_before (commonCompiler COMMA_HERE) ;
       LexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;
-      const bool verboseOptionOn = true ;
+      const bool verboseOptionOn = !gBuildOption_quiet.mValue ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         const String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GGS_string sfp = GGS_string (sourceFilesArray (i COMMA_HERE)) ;

@@ -26,7 +26,7 @@ Dans une expression, \ggsq+self+ représente une copie de l'objet courant. On ne
 
 Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryGetter}) :
 \begin{galgas4}
-getter @uint64 square -> @uint64 outResult {
+getter @u64 square -> @u64 outResult {
   outResult = self * self
 }
 \end{galgas4}
@@ -52,8 +52,7 @@ expression as @T
 
 Elle permet de renvoyer la valeur de \ggsq+expression+ sous la forme d'un objet de type statique \ggsq+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggsq+expression+ n'est pas \ggsq+@T+ ou une de ses classes héritières~; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
-Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \ggsq+cast+ (\refSectionPage{instructionCast}).
-
+Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}.
 
 
 
@@ -110,10 +109,10 @@ Les parenthèses \ggsq+(+ et \ggsq+)+ permettent de forcer le groupement d'opér
 
 Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \texttt{\_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
 \begin{itemize}
-  \item pas de suffixe : \ggsq+@uint+~;
-  \item suffixe \texttt{S} : \ggsq+@sint+~;
-  \item suffixe \texttt{L} : \ggsq+@uint64+~;
-  \item suffixe \texttt{LS} : \ggsq+@sint64+~;
+  \item pas de suffixe : \ggsq+@u32+~;
+  \item suffixe \texttt{S} : \ggsq+@s32+~;
+  \item suffixe \texttt{L} : \ggsq+@u64+~;
+  \item suffixe \texttt{LS} : \ggsq+@s64+~;
   \item suffixe \texttt{G} : \ggsq+@bigint+.
 \end{itemize}
 
@@ -294,25 +293,25 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 GALGAS propose des opérateurs arithmétiques qui détectent les dépassements de capacité : \ggsq*+*, \ggsq+-+, \ggsq+*+. Une erreur est déclenchée à chaque débordement.
 
-L'opérateur de division \ggsq+/+ déclenche une erreur lors d'une division par zéro. Pour les types signés, une erreur est aussi déclenchée par la division de \ggsq+@sint.min+ par \ggsq+-1S+, et la division de \ggsq+@sint64.min+ par \ggsq+-1LS+.
+L'opérateur de division \ggsq+/+ déclenche une erreur lors d'une division par zéro. Pour les types signés, une erreur est aussi déclenchée par la division de \ggsq+@s32.min+ par \ggsq+-1S+, et la division de \ggsq+@s64.min+ par \ggsq+-1LS+.
 
 Ces opérateurs ne détectent pas un dépassement de capacité : \ggsq*&+*, \ggsq+&-+, \ggsq+&*+, et fonctionnent donc comme les opérateurs arithmétiques du C.
 
-L'opérateur de division \ggsq+&/+ ne déclenche aucune erreur lors d'une division par zéro, la valeur renvoyée est zéro. La division de \ggsq+@sint.min+ par \ggsq+-1S+ retourne \ggsq+@sint.min+, et celle de \ggsq+@sint64.min+ par \ggsq+-1LS+ retourne \ggsq+@sint64.min+.
+L'opérateur de division \ggsq+&/+ ne déclenche aucune erreur lors d'une division par zéro, la valeur renvoyée est zéro. La division de \ggsq+@s32.min+ par \ggsq+-1S+ retourne \ggsq+@s32.min+, et celle de \ggsq+@s64.min+ par \ggsq+-1LS+ retourne \ggsq+@s64.min+.
 
 L'opérateur \ggsq+mod+ déclenche une erreur en cas de division par zéro.
 
-La négation arithmétique (opérateur \ggsq+-+ unaire) est uniquement définie sur les types entiers signés, et détecte les débordements provoqués par \ggsq+- @sint.min+ et \ggsq+- @sint64.min+.
+La négation arithmétique (opérateur \ggsq+-+ unaire) est uniquement définie sur les types entiers signés, et détecte les débordements provoqués par \ggsq+- @s32.min+ et \ggsq+- @s64.min+.
 
-Il existe un second opérateur de négation arithmétique (\ggsq+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggsq+&- @sint.min+ renvoie \ggsq+@sint.min+ et \ggsq+&- @sint64.min+ renvoie  \ggsq+@sint64.min+.
+Il existe un second opérateur de négation arithmétique (\ggsq+&-+), lui aussi uniquement défini sur les types entiers signés, qui ne détecte aucun débordement: \ggsq+&- @s32.min+ renvoie \ggsq+@s32.min+ et \ggsq+&- @s64.min+ renvoie  \ggsq+@s64.min+.
 
 
-On peut tester l'absence de débordement grâce aux \emph{getters} \ggsq+canAdd+, \ggsq+canSubstract+, \ggsq+canMultiply+ et \ggsq+canDivide+, définis pour les quatre types \ggsq+@uint+, \ggsq+@uint64+, \ggsq+@sint+ et \ggsq+@sint64+. Si ces \emph{getters} renvoient \ggsq+true+, alors les opérations correspondantes s'effectueront sans débordement. Par exemple :
+On peut tester l'absence de débordement grâce aux \emph{getters} \ggsq+canAdd+, \ggsq+canSubstract+, \ggsq+canMultiply+ et \ggsq+canDivide+, définis pour les quatre types \ggsq+@u32+, \ggsq+@u64+, \ggsq+@s32+ et \ggsq+@s64+. Si ces \emph{getters} renvoient \ggsq+true+, alors les opérations correspondantes s'effectueront sans débordement. Par exemple :
 \begin{galgas4}
-@uint a = ...
-@uint b = ...
+@u32 a = ...
+@u32 b = ...
 if [a canAdd !b] then
-  @uint r = a + b # Pas de débordement
+  @u32 r = a + b # Pas de débordement
 else
   # L'addition provoquerait un débordement
 end

@@ -3101,9 +3101,9 @@ class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGA
 
 
 //--------------------------------- Read subcripts
-  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubcript__3F_ (const class GGS_u_33__32_ & in0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
 

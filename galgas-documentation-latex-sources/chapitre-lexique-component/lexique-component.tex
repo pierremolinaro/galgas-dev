@@ -141,7 +141,7 @@ This declaration names no lexical attribute. Consequently, when the lexical send
 
 Second example:
 
-|''@uint unsignedValueAttribute;\\
+|''@u32 unsignedValueAttribute;\\
 \$literal\_integer\$ !unsignedValueAttribute error **message** %%"%%a decimal number%%"%%;''|
 
 In this declaration, the ''unsignedValueAttribute'' attribute is named in the terminal symbol declaration. So, when the lexical send instruction ''send \$literal\_integer\$;'' will be called from a lexical rule, the terminal symbol will be sent to the parser together with the unsigned value of the ''unsignedValueAttribute'' attribute, enabling the semantic instructions to catch it.
@@ -172,13 +172,13 @@ Lexical attributes carry values associated with terminal symbol. GALGAS handles 
 %\^ Attribute Type \^ Type Name \^ Default Value \^ Corresponding C++ type \^
 | ASCII String | ''@string'' | ''%%""%%'' (the empty string) | ''C\_String'' |
 | ASCII Character | ''@char'' | ''%%'\0'%%'' | ''char'' |
-| 32-bit Unsigned Integer | ''@uint'' | ''0'' | ''uint32'' |
-| 32-bit Signed Integer | ''@sint'' | ''0'' | ''sint32'' |
+| 32-bit Unsigned Integer | ''@u32'' | ''0'' | ''uint32'' |
+| 32-bit Signed Integer | ''@s32'' | ''0'' | ''sint32'' |
 | Float | ''@double'' | ''0.0'' | ''double'' |
 
 In GALGAS, type names are identifiers prefixed by a ''@'' character.
 
-An ''@string'', ''@char'', ''@uint'', ''@sint'', ''@double'' lexical attribute carry a string, character, unsigned, signed, double value.
+An ''@string'', ''@char'', ''@u32'', ''@s32'', ''@double'' lexical attribute carry a string, character, unsigned, signed, double value.
 
 In a ''**syntax**'' component, information that defines the location of the scanned terminal symbol in the input string is added to attribute value: so an ''@string'' object in the lexique component corresponds to an ''@lstring'' object in the syntax component. Location information is used by the parser and the semantic instructions for building syntax and semantic error messages that indicates //where// the error is located.
 
@@ -398,7 +398,7 @@ convertDecimalStringIntoBigInt ?@string inString
 
 \begin{galgas4}
 convertDecimalStringIntoSInt ?@string inString
-                             !@sint outSignedNumber
+                             !@s32 outSignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -407,7 +407,7 @@ convertDecimalStringIntoSInt ?@string inString
 
 \begin{galgas4}
 convertDecimalStringIntoSInt64 ?@string inString
-                               !@sint64 outSignedNumber
+                               !@s64 outSignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -416,7 +416,7 @@ convertDecimalStringIntoSInt64 ?@string inString
 
 \begin{galgas4}
 convertDecimalStringIntoUInt ?@string inString
-                             !@uint outUnsignedNumber
+                             !@u32 outUnsignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -425,7 +425,7 @@ convertDecimalStringIntoUInt ?@string inString
 
 \begin{galgas4}
 convertDecimalStringIntoUInt64 ?@string inString
-                               !@uint64 outUnsignedNumber
+                               !@u64 outUnsignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -452,7 +452,7 @@ convertHTMLSequenceToUnicodeCharacter ?@string inString
 
 \begin{galgas4}
 convertHexStringIntoSInt ?@string inString
-                         !@sint outSignedNumber
+                         !@s32 outSignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -461,7 +461,7 @@ convertHexStringIntoSInt ?@string inString
 
 \begin{galgas4}
 convertHexStringIntoSInt64 ?@string inString
-                           !@sint64 outSignedNumber
+                           !@s64 outSignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -470,7 +470,7 @@ convertHexStringIntoSInt64 ?@string inString
 
 \begin{galgas4}
 convertHexStringIntoUInt ?@string inString
-                         !@uint outUnsignedNumber
+                         !@u32 outUnsignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -479,7 +479,7 @@ convertHexStringIntoUInt ?@string inString
 
 \begin{galgas4}
 convertHexStringIntoUInt64 ?@string inString
-                           !@uint64 outUnsignedNumber
+                           !@u64 outUnsignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -497,8 +497,8 @@ This action tries to convert the string value of the first argument into a doubl
 \subsection{Routine \texttt{convertUInt64ToSInt64}}
 
 \begin{galgas4}
-convertUInt64ToSInt64 !@uint64 inUnsignedNumber
-                      !@sint64 outSignedNumber
+convertUInt64ToSInt64 !@u64 inUnsignedNumber
+                      !@s64 outSignedNumber
                       error inNumberTooLargeError
 \end{galgas4}
 
@@ -507,8 +507,8 @@ If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<s
 \subsection{Routine \texttt{convertUIntToSInt}}
 
 \begin{galgas4}
-convertUIntToSInt !@uint inUnsignedNumber
-                  !@sint outSignedNumber
+convertUIntToSInt !@u32 inUnsignedNumber
+                  !@s32 outSignedNumber
                   error inNumberTooLargeError
 \end{galgas4}
 
@@ -517,7 +517,7 @@ If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<s
 \subsection{Routine \texttt{convertUnsignedNumberToUnicodeChar}}
 
 \begin{galgas4}
-convertUnsignedNumberToUnicodeChar ?@uint inUnsignedNumber
+convertUnsignedNumberToUnicodeChar ?@u32 inUnsignedNumber
                                    !@char outUnicodeCharacter
                                    error inUnassignedUnicodeValueError
 \end{galgas4}
@@ -534,7 +534,7 @@ enterBinaryDigitIntoBigInt ?@char inCharacter
 
 \begin{galgas4}
 enterBinDigitIntoUInt64 ?@char inCharacter
-                        ?!@uint64 ioUnsignedNumber
+                        ?!@u64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
 \end{galgas4}
@@ -543,7 +543,7 @@ enterBinDigitIntoUInt64 ?@char inCharacter
 
 \begin{galgas4}
 enterBinDigitIntoUInt64 ?@char inCharacter
-                        ?!@uint64 ioUnsignedNumber
+                        ?!@u64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
 \end{galgas4}
@@ -593,7 +593,7 @@ Note: this lexical action treats characters as unsigned values.
 
 \begin{galgas4}
 enterDigitIntoUInt !@char inDecimalDigitCharacter
-                   ?!@uint ioUnsignedNumber
+                   ?!@u32 ioUnsignedNumber
                    error inNumberTooLargeError,
                          inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -604,7 +604,7 @@ First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the 
 
 \begin{galgas4}
 enterDigitIntoUInt64 !@char inDecimalDigitCharacter
-                     ?!@uint64 ioUnsignedNumber
+                     ?!@u64 ioUnsignedNumber
                      error inNumberTooLargeError,
                            inCharacterIsNotDecimalDigitError
 \end{galgas4}
@@ -648,7 +648,7 @@ enterHexDigitIntoBigInt ?@char inCharacter
 
 \begin{galgas4}
 enterHexDigitIntoUInt !@char inHexDigitCharacter
-                      ?!@uint ioUnsignedNumber
+                      ?!@u32 ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -659,7 +659,7 @@ First, the character value of the ''inHexDigitCharacter'' argument is tested to 
 
 \begin{galgas4}
 enterHexDigitIntoUInt64 !@char inHexDigitCharacter
-                        ?!@uint64 ioUnsignedNumber
+                        ?!@u64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotHexDigitError
 \end{galgas4}
@@ -670,7 +670,7 @@ First, the character value of the ''inHexDigitCharacter'' argument is tested to 
 
 \begin{galgas4}
 enterOctDigitIntoUInt !@char inString
-                      ?!@uint ioUnsignedNumber
+                      ?!@u32 ioUnsignedNumber
                       error inNumberTooLargeError,
                             inCharacterIsNotOctDigitError
 \end{galgas4}
@@ -679,7 +679,7 @@ enterOctDigitIntoUInt !@char inString
 
 \begin{galgas4}
 enterOctDigitIntoUInt64 !@char inString
-                        ?!@uint64 ioUnsignedNumber
+                        ?!@u64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotOctDigitError
 \end{galgas4}
@@ -687,8 +687,8 @@ enterOctDigitIntoUInt64 !@char inString
 \subsection{Routine \texttt{multiplyUInt}}
 
 \begin{galgas4}
-multiplyUInt !@uint inUnsignedNumber
-             ?!@uint ioUnsignedNumber
+multiplyUInt !@u32 inUnsignedNumber
+             ?!@u32 ioUnsignedNumber
              error inResultTooLargeError
 \end{galgas4}
 
@@ -697,8 +697,8 @@ Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection
 \subsection{Routine \texttt{multiplyUInt64}}
 
 \begin{galgas4}
-multiplyUInt64 !@uint inUnsignedNumber
-               ?!@uint64 ioUnsignedNumber
+multiplyUInt64 !@u32 inUnsignedNumber
+               ?!@u64 ioUnsignedNumber
                error inResultTooLargeError
 \end{galgas4}
 
@@ -707,14 +707,14 @@ Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection
 \subsection{Routine \texttt{negateSInt}}
 
 \begin{galgas4}
-negateSInt ?!@sint ioNumber
+negateSInt ?!@s32 ioNumber
            error inNumberTooLargeError
 \end{galgas4}
 
 \subsection{Routine \texttt{negateSInt64}}
 
 \begin{galgas4}
-negateSInt64 ?!@sint64 ioNumber
+negateSInt64 ?!@s64 ioNumber
              error inNumberTooLargeError
 \end{galgas4}
 
@@ -780,10 +780,10 @@ This table gives the correspondance between lexical argument types and C++ types
 |''?! @string''  |''C\_String \&''|
 |''? @char''  |''**const** **char**''|
 |''?! @char''  |''**char** \&''|
-|''? @uint''  |''**const** uint32''|
-|''?! @uint''  |''uint32 \&''|
-|''? @sint''  |''**const** sint32''|
-|''?! @sint''  |''sint32 \&''|
+|''? @u32''  |''**const** uint32''|
+|''?! @u32''  |''uint32 \&''|
+|''? @s32''  |''**const** sint32''|
+|''?! @s32''  |''sint32 \&''|
 |''? @double''  |''**const** **double**''|
 |''?! @double''  |''**double** \&''|
 

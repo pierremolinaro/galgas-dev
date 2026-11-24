@@ -580,7 +580,7 @@ mutating proc [@scopeLocalVarMap].writeAccessInSubMap (let @lstring inVarName,
       !?newValuation.writeTransition (inVarName, !inOverridenMap: true, varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.set (localMap, !at: inIndex)
+        self [inIndex] = localMap
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
@@ -675,7 +675,7 @@ mutating proc [@scopeLocalVarMap].readAccess (let @lstring inVarName,
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.set (localMap, !at: inIndex)
+        self [inIndex] = localMap
       end
     else
       !?self.readAccess (inVarName, inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
@@ -763,7 +763,7 @@ mutating proc [@scopeLocalVarMap].readWriteAccess (let @lstring inVarName,
       !?newValuation.readWriteTransition (inVarName, !inOverridenMap: true, varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.set (localMap, !at: inIndex)
+        self [inIndex] = localMap
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName

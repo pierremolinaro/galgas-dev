@@ -85,21 +85,6 @@ Les types prédéfinis sont :
     \item \refTypePredefini{luint64} ;
     \item \refTypePredefini{range} ;
   \end{itemize}
-  \item les types de listes suivants :
-  \begin{itemize}
-    \item \refTypePredefini{2stringlist} ;
-    \item \refTypePredefini{2lstringlist} ;
-    \item \refTypePredefini{bigintlist} ;
-    \item \refTypePredefini{functionlist} ;
-    \item \refTypePredefini{lbigintlist} ;
-    \item \refTypePredefini{lstringlist} ;
-    \item \refTypePredefini{luintlist} ;
-    \item \refTypePredefini{objectlist} ;
-    \item \refTypePredefini{stringlist} ;
-    \item \refTypePredefini{typelist} ;
-    \item \refTypePredefini{uintlist} ;
-    \item \refTypePredefini{uint64list}.
-  \end{itemize}
 \end{itemize}
 
 
@@ -147,7 +132,7 @@ Cet opérateur permet de tester la non identité entre de deux objets de même t
 getter @T description -> @string
 \end{galgas4}
 
-Le \emph{getter} \ggsq+description+ retourne une description textuelle du receveur, la même que celle affichée par l'instruction \ggsq+log+ (\refSectionPage{instructionLog}).
+Le \emph{getter} \ggsq+description+ retourne une description textuelle du receveur.
 
 
 
@@ -162,9 +147,9 @@ Le \emph{getter} \ggsq+dynamicType+ retourne un objet de type \ggsq+@type+, dont
 Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
 
 \begin{galgas4}
-@uint n = 2
+@u32 n = 2
 @type t = [n dynamicType]
-log t # Affiche @uint
+log t # Affiche @u32
 \end{galgas4}
 
 Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.

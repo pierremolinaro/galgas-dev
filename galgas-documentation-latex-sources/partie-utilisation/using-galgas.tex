@@ -14,7 +14,7 @@ L'appel d'un initialiseur instancie et initialise complètement un objet.
 Par exemple, la déclaration de structure suivante provoque la définition implicite d'un initialiseur synthétisé~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1
+  public var @u32 propriété1
   public var @bool propriété2
 }
 \end{galgas4}
@@ -41,7 +41,7 @@ var @maStructure aVariable = @{!123 !true}
 Il est possible d'ajouter l'attribut \ggsq=%initArgLabel= à la déclaration d'une propriété non initialisée, pour ajouter dans l'appel de l'initialisateur synthétisé l'étiquette d'argument pour cette propriété. Par exemple, si on déclare~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1 %initArgLabel
+  public var @u32 propriété1 %initArgLabel
   public var @bool propriété2
 }
 \end{galgas4}
@@ -60,7 +60,7 @@ Si la propriété est initialisée, alors l'attribut \ggsq=%initArgLabel= est in
 Si toutes les propriétés sont initialisées, alors l'initialisateur synthétisé n'a pas d'argument. Pour la structure~:
 \begin{galgas4}
 struct @maStructure {
-  public var @uint propriété1 = 1
+  public var @u32 propriété1 = 1
   public var @bool propriété2 = 2
 }
 \end{galgas4}
@@ -161,7 +161,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 \begin{galgas4}
 class @maClasse {
-  @uint maPropriété
+  @u32 maPropriété
 }
 \end{galgas4}
 

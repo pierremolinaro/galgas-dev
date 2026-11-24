@@ -29,16 +29,16 @@ Le nom \ggsq+@nom_du_type_graph+ est le nom donné au type. Le nom \ggsq+@nom_li
 
 Attention, le type \ggsq+@nom_liste_information+ est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \ggsq+@nom_liste_information-element+.
 
-Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \ggsq+@uint+, on déclarera :
+Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \ggsq+@u32+, on déclarera :
 \begin{galgas4}
-graph @monGraphe (@uintlist) {
+graph @monGraphe (@u32list) {
 }
 \end{galgas4}
 
 Si l'information associée à chaque nœud est composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste particulier :
 \begin{galgas4}
 list @maListe {
-  var @uint monInfo1
+  var @u32 monInfo1
   var @string monInfo2
 }
 graph @monGraphe (@maListe) {
@@ -99,7 +99,7 @@ Un setter d'insertion présente que des arguments d'entrée :
 Ainsi, le setter d'insertion \ggsq+addNode+ du type de graphe \ggsq+@monGraphe+ possède trois arguments en entrée ;
 \begin{itemize}
   \item le premier de type \ggsq+@lstring+ ;
-  \item le deuxième de type \ggsq+@uint+, qui correspond au premier champ \ggsq+monInfo1+ du type liste \ggsq+@maListe+ ;
+  \item le deuxième de type \ggsq+@u32+, qui correspond au premier champ \ggsq+monInfo1+ du type liste \ggsq+@maListe+ ;
   \item le troisième de type \ggsq+@string+, qui correspond au second champ \ggsq+monInfo2+ du type liste \ggsq+@maListe+.
 \end{itemize}
 
@@ -343,11 +343,11 @@ Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés 
 \subsection{Getter \texttt{undefinedNodeCount}}
 
 \begin{galgas4}
-func undefinedNodeCount () -> @uint
+func undefinedNodeCount () -> @u32
 \end{galgas4}
 
 \begin{galgas4}
-getter undefinedNodeCount -> @uint
+getter undefinedNodeCount -> @u32
 \end{galgas4}
 
 Ce getter retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}).

@@ -20,7 +20,7 @@ proc testsuite_list() {
   println (s.description)
   s = strList [3]
   println (s.description)
-  !?strList.set ("z", !at: 3)
+  strList [3] = "z"
   println (strList.description)
   println ("--- test .= operator on list")
   strList += strList

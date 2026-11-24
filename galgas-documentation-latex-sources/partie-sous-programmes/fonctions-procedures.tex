@@ -50,7 +50,7 @@ Une fonction est désignée par \ggsq+nom_fonction+. Ce nom est unique dans un p
 Exemple :
 
 \begin{galgas4}
-func produit ?@uint a ?@uint b -> @uint resultat {
+func produit ?@u32 a ?@u32 b -> @u32 resultat {
   resultat = a * b
 }
 \end{galgas4}
@@ -58,7 +58,7 @@ func produit ?@uint a ?@uint b -> @uint resultat {
 Mentionner la variable \ggsq=resultat= est optionnel. Par défaut, en son absence, une variable nommée \ggsq=result= est implictement déclarée :
 
 \begin{galgas4}
-func produit ?@uint a ?@uint b -> @uint {
+func produit ?@u32 a ?@u32 b -> @u32 {
   result = a * b
 }
 \end{galgas4}
@@ -78,7 +78,7 @@ En préfixant la déclaration d'une fonction par \ggsq+private+, on limite son a
 Une fonction sans argument accepte l'attribut \ggsq+%once+ :
 
 \begin{galgas4}
-func %once masque -> @uint {
+func %once masque -> @u32 {
   result = 1 << 16
 }
 \end{galgas4}
@@ -88,7 +88,7 @@ L'attribut \ggsq+%once+ organise le cache du résultat : celui-ci est calculé l
 Une fonction \ggsq+%once+ peut être déclarée interne en la préfixant par \ggsq+private+.
 
 \begin{galgas4}
-private func %once masque -> @uint {
+private func %once masque -> @u32 {
   result = 1 << 16
 }
 \end{galgas4}
@@ -103,7 +103,7 @@ private func %once masque -> @uint {
 Une fonction accepte l'attribut \ggsq+%usefull+ :
 
 \begin{galgas4}
-func %usefull carré ?let @uint inX -> @uint {
+func %usefull carré ?let @u32 inX -> @u32 {
   result = inX * inX
 }
 \end{galgas4}
@@ -113,7 +113,7 @@ L'attribut \ggsq+%usefull+ déclare la fonction comme utile, c'est-à-dire qu'el
 Attributs \ggsq+%once+ et \ggsq+%usefull+ sont cumulables :
 
 \begin{galgas4}
-private func %once %usefull masque -> @uint {
+private func %once %usefull masque -> @u32 {
   result = 1 << 16
 }
 \end{galgas4}
@@ -140,7 +140,7 @@ Une procédure est désignée par \ggsq+nom_procedure+. Ce nom est unique dans u
 Exemple :
 
 \begin{galgas4}
-proc produit ?@uint a ?@uint b !@uint resultat {
+proc produit ?@u32 a ?@u32 b !@u32 resultat {
   resultat = a * b
 }
 \end{galgas4}
@@ -172,14 +172,14 @@ La définition d'une telle fonction ou procédure s'effectue en trois étapes :
 
 Il suffit d'écrire l'en-tête de la fonction, précédée du mot réservé \ggsq=extern=. Par exemple~:
 \begin{galgas4}
-extern func maFonctionExterne ?@uint a ?@uint b -> @uint
+extern func maFonctionExterne ?@u32 a ?@u32 b -> @u32
 \end{galgas4}
 
 Comme pour les fonctions GALGAS (\refSectionPage{declarationFonction}), une fonction externe n'accepte que des arguments en entrée.
 
 Il en est de même pour une procédure~:
 \begin{galgas4}
-extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
+extern proc maProcédureExterne !@u32 a ?!@u32 b ?@u64 c
 \end{galgas4}
 
 Cette déclaration peut apparaître dans n'importe quel fichier d'extension \texttt{.galgas} : la portée de la déclaration est globale à tout le projet, donc une fonction ou une procédure externe peut être appelée à partir de n'importe quel fichier d'extension \texttt{.galgas} du projet.
@@ -241,7 +241,7 @@ Le fichier \texttt{all-declarations.h} est engendré par la compilation GALGAS e
 
 Par exemple, on considère la fonction GALGAS externe~:
 \begin{galgas4}
-extern func maFonctionExterne ?@uint a ?@uint b -> @uint
+extern func maFonctionExterne ?@u32 a ?@u32 b -> @u32
 \end{galgas4}
 
 Le nom C++ de la fonction GALGAS \ggsq=maFonctionExterne= est \texttt{function\_maFonctionExterne}, c'est-à-dire que le nom GALGAS est préfixé par \texttt{function\_}. Il y a d'autres transformations, si le nom de la fonction est contient des lettres non-ASCII, des chiffres, ou des caractères « \texttt{\_} ». En effet, le C++ n'accepte pas les lettres non ASCII dans les identificateurs, le compilateur GALGAS les remplacent par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal. Pour ne pas introduire d'ambiguïté, le caractère « \texttt{\_} » est transformé de la même façon, il devient donc « \texttt{\_5F\_} ». Pour des raisons historiques, il en est de même pour les chiffres décimaux.
@@ -260,7 +260,7 @@ class GALGAS_uint function_maFonctionExterne (class GALGAS_uint inArgument0,
 
 Deux remarques~:
 \begin{itemize}
-  \item Les noms de types GALGAS (par exemple \ggsq=@xyz=) sont préfixés par \texttt{GALGAS\_} en C++, et les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal (comme pour les noms de fonction, voir ci-dessus) ; ainsi, \ggsq=@uint64= devient \texttt{GALGAS\_uint\_36\_\_34\_} ;
+  \item Les noms de types GALGAS (par exemple \ggsq=@xyz=) sont préfixés par \texttt{GALGAS\_} en C++, et les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal (comme pour les noms de fonction, voir ci-dessus) ; ainsi, \ggsq=@u64= devient \texttt{GALGAS\_uint\_36\_\_34\_} ;
   \item il n'y a pas de virgule après «~\texttt{inCompiler}~», \texttt{COMMA\_LOCATION\_ARGS} est une macro (voir sa définition dans le fichier \texttt{build/libpm/utilities/M\_SourceLocation.h}).
 \end{itemize}
 
@@ -280,7 +280,7 @@ Pour écrire le code de la fonction, il faut prendre en compte les \emph{valeurs
   \item \emph{poison}, l'entité ne possède pas de valeur valide.
 \end{itemize}
 
-Aussi toute routine -- aussi bien les routines implémentées en dur dans GALGAS que les routines externes écrites directement en C++ -- doit vérifier si les valeurs qu'elle reçoit sont valides. Si il n'est pas possible d'effectuer le calcul souhaité, il faut retourner une valeur poison. On pourra regarder avec profit comment sont implémentées les opérations sur les \ggsq=@uint=, dans le fichier \texttt{build/libpm/galgas2/GALGAS\_uint.cpp}.
+Aussi toute routine -- aussi bien les routines implémentées en dur dans GALGAS que les routines externes écrites directement en C++ -- doit vérifier si les valeurs qu'elle reçoit sont valides. Si il n'est pas possible d'effectuer le calcul souhaité, il faut retourner une valeur poison. On pourra regarder avec profit comment sont implémentées les opérations sur les \ggsq=@u32=, dans le fichier \texttt{build/libpm/galgas2/GALGAS\_uint.cpp}.
 
 
 Tout type GALGAS définit une méthode \texttt{isValid} qui permet de savoir si l'objet possède une valeur valide ou non. Le constructeur par défaut d'un objet crée une valeur poison, les constructeurs dédiés une valeur valide.
@@ -307,7 +307,7 @@ Dès que l'un des deux arguments est une valeur poison, le résultat renvoyé es
 
 Par exemple, on considère la procédure GALGAS externe~:
 \begin{galgas4}
-extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
+extern proc maProcédureExterne !@u32 a ?!@u32 b ?@u64 c
 \end{galgas4}
 
 Cette déclaration engendre le prototype suivant dans un des fichiers d'en-tête C++ (situé dans le répertoire \texttt{build/output})~:

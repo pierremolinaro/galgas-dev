@@ -269,7 +269,9 @@ proc checkExtensionGetterDefinitionForClass
 
 proc performGalgas3ProjectGlobalCheckings (?!@unifiedTypeMap ioTypeMap,
                                            let [@semanticDeclarationAST] inSemanticDeclarationList) {
-  println ("*** Perform global checkings")
+  if not @buildOptionValue.quiet then
+    println ("*** Perform global checkings")
+  end
 //----- Build descendant type list map
 // For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = @()

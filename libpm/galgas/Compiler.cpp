@@ -540,7 +540,7 @@ void Compiler::generateFileFromPathes (const String & inStartPath,
                                        const String & inFileName,
                                        const String & inContents) {
 //--- Verbose option ?
-  const bool verboseOptionOn = true ;
+  const bool verboseOptionOn = !gBuildOption_quiet.mValue ;
 //--- Start path : by default, use source file directory
   const String startPath = (inStartPath.length () == 0)
    ? sourceFilePath ().deletingLastPathComponent ()
