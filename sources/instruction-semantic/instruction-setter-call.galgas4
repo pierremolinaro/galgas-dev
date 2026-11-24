@@ -329,7 +329,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
 //--- Generate proc call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "mutating proc-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
+    ioInclusionSet ++= "mutating-proc-" + self.mMethodBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       if (self.mReceiverType.definition.allTypedPropertyList.count > 0) then
         ioGeneratedCode += receiverCppName + ".insulate (" + gCompilerCppName + " COMMA_HERE) ;\n"
@@ -392,7 +392,7 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
 //--- Generate mutating proc call
   switch self.mKind
   case definedAsExtension :
-    ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
+    ioInclusionSet ++= "mutating-proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mSetterName.string.fileNameRepresentation
     if self.mReceiverType.definition.typeKind.isClassType then
       ioGeneratedCode += "callExtensionSetter_" + self.mSetterName.string.identifierRepresentation + " (" + self.mSelfCppName + ", "
     else

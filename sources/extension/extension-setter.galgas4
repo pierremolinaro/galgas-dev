@@ -203,7 +203,7 @@ override proc @extensionSetterAST.semanticAnalysis (
   ioSemanticDeclarationListForGeneration ++= @extensionSetterForGeneration (
     !infoMessage:"extension mutating proc " + self.mExtensionSetterName,
     !generateHeader: true,
-    !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
+    !implementationCppFileName: "mutating-proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
     selfType,
     self.mExtensionSetterName.string,
     formalParameterListForGeneration,
@@ -275,7 +275,7 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
     @("".nowhere, .argumentInOut, self.mReceiverType, "self".here, "ioObject"),
     !at: 0
   )
-  ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
+  ioInclusionSet ++= "mutating-proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
   generateProcedure (
     !static:false,
     "extensionSetter_" + self.mExtensionSetterName.identifierRepresentation,
