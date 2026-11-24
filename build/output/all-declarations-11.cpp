@@ -1,5 +1,464 @@
 #include "all-declarations-11.h"
 //--------------------------------------------------------------------------------------------------
+// @literalDoubleExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_literalDoubleExpressionForGeneration::objectCompare (const GGS_literalDoubleExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_literalDoubleExpressionForGeneration::GGS_literalDoubleExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_literalDoubleExpressionForGeneration GGS_literalDoubleExpressionForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                  const GGS_location & in_mLocation,
+                  const GGS_f_36__34_ & in_mValue,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_literalDoubleExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_literalDoubleExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->literalDoubleExpressionForGeneration_init_21__21__21_ (in_mResultType, in_mLocation, in_mValue, inCompiler) ;
+  const GGS_literalDoubleExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_literalDoubleExpressionForGeneration::
+literalDoubleExpressionForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                       const GGS_location & in_mLocation,
+                                                       const GGS_f_36__34_ & in_mValue,
+                                                       Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mValue = in_mValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_literalDoubleExpressionForGeneration::GGS_literalDoubleExpressionForGeneration (const cPtr_literalDoubleExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalDoubleExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_f_36__34_ GGS_literalDoubleExpressionForGeneration::readProperty_mValue (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_f_36__34_ () ;
+  }else{
+    cPtr_literalDoubleExpressionForGeneration * p = (cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_literalDoubleExpressionForGeneration) ;
+    return p->mProperty_mValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @literalDoubleExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                      const GGS_location & in_mLocation,
+                                                                                      const GGS_f_36__34_ & in_mValue,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mValue () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mValue = in_mValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_literalDoubleExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
+}
+
+void cPtr_literalDoubleExpressionForGeneration::description (String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString.appendCString ("[@literalDoubleExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mValue.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_literalDoubleExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_literalDoubleExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_literalDoubleExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mValue.printNonNullClassInstanceProperties ("mValue") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @literalDoubleExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ("literalDoubleExpressionForGeneration",
+                                                                                         & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_literalDoubleExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @functionCallExpressionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_functionCallExpressionAST::objectCompare (const GGS_functionCallExpressionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionCallExpressionAST::GGS_functionCallExpressionAST (void) :
+GGS_semanticExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_functionCallExpressionAST GGS_functionCallExpressionAST::
+init_21__21_ (const GGS_lstring & in_mFunctionName,
+              const GGS__5B_actualOutputArgumentAST_5D_ & in_mExpressionList,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_functionCallExpressionAST * object = nullptr ;
+  macroMyNew (object, cPtr_functionCallExpressionAST (inCompiler COMMA_THERE)) ;
+  object->functionCallExpressionAST_init_21__21_ (in_mFunctionName, in_mExpressionList, inCompiler) ;
+  const GGS_functionCallExpressionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_functionCallExpressionAST::
+functionCallExpressionAST_init_21__21_ (const GGS_lstring & in_mFunctionName,
+                                        const GGS__5B_actualOutputArgumentAST_5D_ & in_mExpressionList,
+                                        Compiler * /* inCompiler */) {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionCallExpressionAST::GGS_functionCallExpressionAST (const cPtr_functionCallExpressionAST * inSourcePtr) :
+GGS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_functionCallExpressionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_functionCallExpressionAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_functionCallExpressionAST * p = (cPtr_functionCallExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionCallExpressionAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_actualOutputArgumentAST_5D_ GGS_functionCallExpressionAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_actualOutputArgumentAST_5D_ () ;
+  }else{
+    cPtr_functionCallExpressionAST * p = (cPtr_functionCallExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionCallExpressionAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @functionCallExpressionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionCallExpressionAST::cPtr_functionCallExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionCallExpressionAST::cPtr_functionCallExpressionAST (const GGS_lstring & in_mFunctionName,
+                                                                const GGS__5B_actualOutputArgumentAST_5D_ & in_mExpressionList,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressionList () {
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_functionCallExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionAST ;
+}
+
+void cPtr_functionCallExpressionAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@functionCallExpressionAST:") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_functionCallExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_functionCallExpressionAST (mProperty_mFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_functionCallExpressionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @functionCallExpressionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionCallExpressionAST ("functionCallExpressionAST",
+                                                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionCallExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @functionCallExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_functionCallExpressionForGeneration::objectCompare (const GGS_functionCallExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionCallExpressionForGeneration::GGS_functionCallExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_functionCallExpressionForGeneration GGS_functionCallExpressionForGeneration::
+init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                      const GGS_location & in_mLocation,
+                      const GGS_string & in_mFunctionName,
+                      const GGS__5B_semanticExpressionForGeneration_5D_ & in_mExpressions,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_functionCallExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_functionCallExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->functionCallExpressionForGeneration_init_21__21__21__21_ (in_mResultType, in_mLocation, in_mFunctionName, in_mExpressions, inCompiler) ;
+  const GGS_functionCallExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_functionCallExpressionForGeneration::
+functionCallExpressionForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                          const GGS_location & in_mLocation,
+                                                          const GGS_string & in_mFunctionName,
+                                                          const GGS__5B_semanticExpressionForGeneration_5D_ & in_mExpressions,
+                                                          Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressions = in_mExpressions ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionCallExpressionForGeneration::GGS_functionCallExpressionForGeneration (const cPtr_functionCallExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_functionCallExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_functionCallExpressionForGeneration::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_functionCallExpressionForGeneration * p = (cPtr_functionCallExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionCallExpressionForGeneration) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticExpressionForGeneration_5D_ GGS_functionCallExpressionForGeneration::readProperty_mExpressions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticExpressionForGeneration_5D_ () ;
+  }else{
+    cPtr_functionCallExpressionForGeneration * p = (cPtr_functionCallExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionCallExpressionForGeneration) ;
+    return p->mProperty_mExpressions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @functionCallExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionCallExpressionForGeneration::cPtr_functionCallExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressions () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionCallExpressionForGeneration::cPtr_functionCallExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                    const GGS_location & in_mLocation,
+                                                                                    const GGS_string & in_mFunctionName,
+                                                                                    const GGS__5B_semanticExpressionForGeneration_5D_ & in_mExpressions,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mExpressions () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mExpressions = in_mExpressions ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_functionCallExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ;
+}
+
+void cPtr_functionCallExpressionForGeneration::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@functionCallExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressions.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_functionCallExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_functionCallExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mFunctionName, mProperty_mExpressions, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_functionCallExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mExpressions.printNonNullClassInstanceProperties ("mExpressions") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @functionCallExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ("functionCallExpressionForGeneration",
+                                                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionCallExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @andShortExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -16446,7 +16905,7 @@ const DirectoryWrapper gWrapperDirectory_13_libpmFileWrapper (
 
 //--- File 'galgas/AC_GALGAS_enumAssociatedValues.cpp'
 
-const char * gWrapperFileContent_123_libpmFileWrapper = 
+const char * gWrapperFileContent_122_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2014, ..., 2024 Pierre Molinaro.\n"
@@ -16531,17 +16990,17 @@ const char * gWrapperFileContent_123_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_123_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_122_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.cpp",
   "cpp",
   true, // Text file
  3303, // Text length
-  gWrapperFileContent_123_libpmFileWrapper
+  gWrapperFileContent_122_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_enumAssociatedValues.h'
 
-const char * gWrapperFileContent_144_libpmFileWrapper = 
+const char * gWrapperFileContent_143_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.\n"
@@ -16605,17 +17064,17 @@ const char * gWrapperFileContent_144_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_144_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_143_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.h",
   "h",
   true, // Text file
  2304, // Text length
-  gWrapperFileContent_144_libpmFileWrapper
+  gWrapperFileContent_143_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_reference_class.cpp'
 
-const char * gWrapperFileContent_122_libpmFileWrapper = 
+const char * gWrapperFileContent_121_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.\n"
@@ -16701,17 +17160,17 @@ const char * gWrapperFileContent_122_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_122_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_121_libpmFileWrapper (
   "AC_GALGAS_reference_class.cpp",
   "cpp",
   true, // Text file
  3126, // Text length
-  gWrapperFileContent_122_libpmFileWrapper
+  gWrapperFileContent_121_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_reference_class.h'
 
-const char * gWrapperFileContent_104_libpmFileWrapper = 
+const char * gWrapperFileContent_103_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2023 Pierre Molinaro.\n"
@@ -16767,17 +17226,17 @@ const char * gWrapperFileContent_104_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_104_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_103_libpmFileWrapper (
   "AC_GALGAS_reference_class.h",
   "h",
   true, // Text file
  1950, // Text length
-  gWrapperFileContent_104_libpmFileWrapper
+  gWrapperFileContent_103_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_root.cpp'
 
-const char * gWrapperFileContent_149_libpmFileWrapper = 
+const char * gWrapperFileContent_148_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -16829,17 +17288,17 @@ const char * gWrapperFileContent_149_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_149_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_148_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
  1634, // Text length
-  gWrapperFileContent_149_libpmFileWrapper
+  gWrapperFileContent_148_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AC_GALGAS_root.h'
 
-const char * gWrapperFileContent_142_libpmFileWrapper = 
+const char * gWrapperFileContent_140_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -16927,17 +17386,17 @@ const char * gWrapperFileContent_142_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_142_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_140_libpmFileWrapper (
   "AC_GALGAS_root.h",
   "h",
   true, // Text file
  3106, // Text length
-  gWrapperFileContent_142_libpmFileWrapper
+  gWrapperFileContent_140_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.cpp'
 
-const char * gWrapperFileContent_168_libpmFileWrapper = 
+const char * gWrapperFileContent_167_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -16955,17 +17414,17 @@ const char * gWrapperFileContent_168_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_168_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "AbstractPtrClass.cpp",
   "cpp",
   true, // Text file
  573, // Text length
-  gWrapperFileContent_168_libpmFileWrapper
+  gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractPtrClass.h'
 
-const char * gWrapperFileContent_152_libpmFileWrapper = 
+const char * gWrapperFileContent_151_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
@@ -17004,17 +17463,17 @@ const char * gWrapperFileContent_152_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_152_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "AbstractPtrClass.h",
   "h",
   true, // Text file
  1358, // Text length
-  gWrapperFileContent_152_libpmFileWrapper
+  gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.cpp'
 
-const char * gWrapperFileContent_147_libpmFileWrapper = 
+const char * gWrapperFileContent_146_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -17113,17 +17572,17 @@ const char * gWrapperFileContent_147_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_147_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_146_libpmFileWrapper (
   "AbstractStrongPtrClass.cpp",
   "cpp",
   true, // Text file
  3116, // Text length
-  gWrapperFileContent_147_libpmFileWrapper
+  gWrapperFileContent_146_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/AbstractStrongPtrClass.h'
 
-const char * gWrapperFileContent_141_libpmFileWrapper = 
+const char * gWrapperFileContent_139_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -17178,17 +17637,17 @@ const char * gWrapperFileContent_141_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_141_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_139_libpmFileWrapper (
   "AbstractStrongPtrClass.h",
   "h",
   true, // Text file
  1744, // Text length
-  gWrapperFileContent_141_libpmFileWrapper
+  gWrapperFileContent_139_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_class_inspector.cpp'
 
-const char * gWrapperFileContent_119_libpmFileWrapper = 
+const char * gWrapperFileContent_118_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
@@ -17222,17 +17681,17 @@ const char * gWrapperFileContent_119_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_119_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_118_libpmFileWrapper (
   "C_galgas_class_inspector.cpp",
   "cpp",
   true, // Text file
  1269, // Text length
-  gWrapperFileContent_119_libpmFileWrapper
+  gWrapperFileContent_118_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/C_galgas_class_inspector.h'
 
-const char * gWrapperFileContent_164_libpmFileWrapper = 
+const char * gWrapperFileContent_163_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
@@ -17270,17 +17729,17 @@ const char * gWrapperFileContent_164_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_164_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_163_libpmFileWrapper (
   "C_galgas_class_inspector.h",
   "h",
   true, // Text file
  1352, // Text length
-  gWrapperFileContent_164_libpmFileWrapper
+  gWrapperFileContent_163_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ComparisonKind.h'
 
-const char * gWrapperFileContent_135_libpmFileWrapper = 
+const char * gWrapperFileContent_134_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
@@ -17305,17 +17764,17 @@ const char * gWrapperFileContent_135_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_135_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_134_libpmFileWrapper (
   "ComparisonKind.h",
   "h",
   true, // Text file
  696, // Text length
-  gWrapperFileContent_135_libpmFileWrapper
+  gWrapperFileContent_134_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ComparisonResult.h'
 
-const char * gWrapperFileContent_120_libpmFileWrapper = 
+const char * gWrapperFileContent_119_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
@@ -17338,17 +17797,17 @@ const char * gWrapperFileContent_120_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_120_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_119_libpmFileWrapper (
   "ComparisonResult.h",
   "h",
   true, // Text file
  753, // Text length
-  gWrapperFileContent_120_libpmFileWrapper
+  gWrapperFileContent_119_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Compiler.cpp'
 
-const char * gWrapperFileContent_121_libpmFileWrapper = 
+const char * gWrapperFileContent_120_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.\n"
@@ -18103,17 +18562,17 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_121_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_120_libpmFileWrapper (
   "Compiler.cpp",
   "cpp",
   true, // Text file
  29682, // Text length
-  gWrapperFileContent_121_libpmFileWrapper
+  gWrapperFileContent_120_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Compiler.h'
 
-const char * gWrapperFileContent_118_libpmFileWrapper = 
+const char * gWrapperFileContent_117_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2016 Pierre Molinaro.\n"
@@ -18330,17 +18789,17 @@ const char * gWrapperFileContent_118_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_118_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_117_libpmFileWrapper (
   "Compiler.h",
   "h",
   true, // Text file
  9249, // Text length
-  gWrapperFileContent_118_libpmFileWrapper
+  gWrapperFileContent_117_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/EnumerationOrder.h'
 
-const char * gWrapperFileContent_143_libpmFileWrapper = 
+const char * gWrapperFileContent_142_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
@@ -18358,17 +18817,17 @@ const char * gWrapperFileContent_143_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_143_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_142_libpmFileWrapper (
   "EnumerationOrder.h",
   "h",
   true, // Text file
  716, // Text length
-  gWrapperFileContent_143_libpmFileWrapper
+  gWrapperFileContent_142_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Enumerator_range.cpp'
 
-const char * gWrapperFileContent_127_libpmFileWrapper = 
+const char * gWrapperFileContent_126_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.\n"
@@ -18440,17 +18899,17 @@ const char * gWrapperFileContent_127_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_127_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_126_libpmFileWrapper (
   "Enumerator_range.cpp",
   "cpp",
   true, // Text file
  2707, // Text length
-  gWrapperFileContent_127_libpmFileWrapper
+  gWrapperFileContent_126_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Enumerator_range.h'
 
-const char * gWrapperFileContent_165_libpmFileWrapper = 
+const char * gWrapperFileContent_164_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.\n"
@@ -18515,1267 +18974,17 @@ const char * gWrapperFileContent_165_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_165_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_164_libpmFileWrapper (
   "Enumerator_range.h",
   "h",
   true, // Text file
  1982, // Text length
-  gWrapperFileContent_165_libpmFileWrapper
-) ;
-
-//--- File 'galgas/GALGAS_GenericDictionary.h'
-
-const char * gWrapperFileContent_103_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Created by Pierre Molinaro on 26/06/2025, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"String-class.h\"\n"
-  "#include \"SharedGenericPtrWithValueSemantics.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//  Predeclarations\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename KEY, typename VALUE> class GenericDictionaryRoot ;\n"
-  "template <typename KEY, typename VALUE> class GenericDictionary ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//  GenericDictionaryNode\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename KEY, typename VALUE> class GenericDictionaryNode final : public SharedObject {\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mInfPtr ;\n"
-  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mSupPtr ;\n"
-  "  public:  SharedGenericPtrWithValueSemantics <VALUE> mSharedInfo ;\n"
-  "  private: int32_t mBalance ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionaryNode (const VALUE & inInfo\n"
-  "                                COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mInfPtr (),\n"
-  "  mSupPtr (),\n"
-  "  mSharedInfo (),\n"
-  "  mBalance (0) {\n"
-  "    mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_THERE) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: ~GenericDictionaryNode (void) = default ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionaryNode (const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr\n"
-  "                                     COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mInfPtr (),\n"
-  "  mSupPtr (),\n"
-  "  mSharedInfo (inNodePtr->mSharedInfo),\n"
-  "  mBalance (inNodePtr->mBalance) {\n"
-  "    if (inNodePtr->mInfPtr.isNotNil ()) {\n"
-  "      mInfPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mInfPtr COMMA_THERE) ;\n"
-  "    }\n"
-  "    if (inNodePtr->mSupPtr.isNotNil ()) {\n"
-  "      mSupPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mSupPtr COMMA_THERE) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // No copy\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: GenericDictionaryNode (const GenericDictionaryNode &) = delete ;\n"
-  "  private: GenericDictionaryNode & operator = (const GenericDictionaryNode &) = delete ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void populateInfoArray (const OptionalSharedRef <GenericDictionaryNode> & inNode,\n"
-  "                                          GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> & ioNodeArray) {\n"
-  "    if (inNode.isNotNil ()) {\n"
-  "      populateInfoArray (inNode->mInfPtr, ioNodeArray) ;\n"
-  "      ioNodeArray.appendObject (inNode->mSharedInfo) ;\n"
-  "      populateInfoArray (inNode->mSupPtr, ioNodeArray) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  friend class GenericDictionaryRoot <KEY, VALUE> ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//MARK:  GenericDictionaryRoot\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename KEY, typename VALUE> class GenericDictionaryRoot final : public SharedObject {\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Private members\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mRootNode ;\n"
-  "  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> mCacheSortedArray ;\n"
-  "  private: int32_t mCount ;\n"
-  "  private: bool mCacheSortedArrayIsValid ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Default constructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionaryRoot (LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mRootNode (),\n"
-  "  mCacheSortedArray (),\n"
-  "  mCount (0),\n"
-  "  mCacheSortedArrayIsValid (false) {\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Destructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: virtual ~ GenericDictionaryRoot (void) = default ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // No copy\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: GenericDictionaryRoot (const GenericDictionaryRoot &) = delete ;\n"
-  "  private: GenericDictionaryRoot & operator = (const GenericDictionaryRoot &) = delete ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: void duplicateTo (OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>> & outNewRoot\n"
-  "                            COMMA_UNUSED_LOCATION_ARGS) {\n"
-  "    if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray\n"
-  "      outNewRoot->mRootNode = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (mRootNode COMMA_HERE) ;\n"
-  "      outNewRoot->mCount = mCount ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: void invalidateCacheSortedArray (void) {\n"
-  "    if (mCacheSortedArrayIsValid) { // Do not duplicate mCacheSortedArray\n"
-  "      mCacheSortedArrayIsValid = false ;\n"
-  "      mCacheSortedArray.removeAllKeepingCapacity () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Accessors\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: inline int32_t count (void) const { return mCount ; }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Get sorted key array\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) {\n"
-  "    if (mCacheSortedArrayIsValid) {\n"
-  "      return mCacheSortedArray ;\n"
-  "    }else{\n"
-  "      GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> array (mCount COMMA_HERE) ;\n"
-  "      GenericDictionaryNode <KEY, VALUE>::populateInfoArray (mRootNode, array) ;\n"
-  "      mCacheSortedArray = array ;\n"
-  "      mCacheSortedArrayIsValid = true ;\n"
-  "      return array ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Search\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> searchNode (const KEY & inKey) const {\n"
-  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;\n"
-  "    internalRecursiveSearchNode (inKey, mRootNode, result) ;\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Insert\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: bool insertOrReplaceInfo (const KEY & inKey,\n"
-  "                                     const VALUE & inInfo\n"
-  "                                     COMMA_LOCATION_ARGS) {\n"
-  "    macroUniqueSharedObjectThere (this) ;\n"
-  "    bool overwrite = false ;\n"
-  "    internalRecursiveInsert (mRootNode, inKey, inInfo, overwrite) ;\n"
-  "    return overwrite ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void rotateLeft (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {\n"
-  "    if (ioRootPtr->mSupPtr->mBalance >= 0) {\n"
-  "      ioRootPtr->mBalance += 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mBalance += 1 - ioRootPtr->mSupPtr->mBalance ;\n"
-  "    }\n"
-  "\n"
-  "    if (ioRootPtr->mBalance > 0) {\n"
-  "      ioRootPtr->mSupPtr->mBalance += ioRootPtr->mBalance + 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mSupPtr->mBalance += 1 ;\n"
-  "    }\n"
-  "\n"
-  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mSupPtr, ioRootPtr->mSupPtr->mInfPtr) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void rotateRight (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {\n"
-  "    if (ioRootPtr->mInfPtr->mBalance > 0) {\n"
-  "      ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mBalance -= 1 ;\n"
-  "    }\n"
-  "    if (ioRootPtr->mBalance >= 0) {\n"
-  "      ioRootPtr->mInfPtr->mBalance -= 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mInfPtr->mBalance += ioRootPtr->mBalance - 1 ;\n"
-  "    }\n"
-  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mInfPtr, ioRootPtr->mInfPtr->mSupPtr) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr,\n"
-  "                                         const KEY & inKey,\n"
-  "                                         const VALUE & inInfo,\n"
-  "                                         bool & outOverwrite) {\n"
-  "    bool extension = false ;\n"
-  "    if (ioRootPtr.isNil ()) {\n"
-  "      ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inInfo COMMA_HERE) ;\n"
-  "      mCount += 1 ;\n"
-  "      extension = true ;\n"
-  "      outOverwrite = true ;\n"
-  "    }else{\n"
-  "      const ComparisonResult comparaison = ioRootPtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;\n"
-  "      switch (comparaison) {\n"
-  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
-  "        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo, outOverwrite) ;\n"
-  "        if (extension) {\n"
-  "          ioRootPtr->mBalance += 1 ;\n"
-  "          if (ioRootPtr->mBalance == 0) {\n"
-  "            extension = false ;\n"
-  "          }else if (ioRootPtr->mBalance > 1) {\n"
-  "            if (ioRootPtr->mInfPtr->mBalance < 0) {\n"
-  "              rotateLeft (ioRootPtr->mInfPtr) ;\n"
-  "            }\n"
-  "            rotateRight (ioRootPtr) ;\n"
-  "            extension = false ;\n"
-  "          }\n"
-  "        }\n"
-  "        break ;\n"
-  "      case ComparisonResult::firstOperandLowerThanSecond: // <\n"
-  "        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo, outOverwrite) ;\n"
-  "        if (extension) {\n"
-  "          ioRootPtr->mBalance -= 1 ;\n"
-  "          if (ioRootPtr->mBalance == 0) {\n"
-  "            extension = false ;\n"
-  "          }else if (ioRootPtr->mBalance < -1) {\n"
-  "            if (ioRootPtr->mSupPtr->mBalance > 0) {\n"
-  "              rotateRight (ioRootPtr->mSupPtr) ;\n"
-  "            }\n"
-  "            rotateLeft (ioRootPtr) ;\n"
-  "            extension = false ;\n"
-  "          }\n"
-  "        }\n"
-  "        break ;\n"
-  "      case ComparisonResult::operandEqual :\n"
-  "        extension = false ;\n"
-  "        ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_HERE) ;\n"
-  "        break ;\n"
-  "      case ComparisonResult::invalid :\n"
-  "        extension = false ;\n"
-  "        break ;\n"
-  "      }\n"
-  "    }\n"
-  "    return extension ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Removing: return removed object, or nullptr\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey) {\n"
-  "    macroUniqueSharedObject (this) ;\n"
-  "    bool ioBranchHasBeenRemoved ;\n"
-  "    auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;\n"
-  "    SharedGenericPtrWithValueSemantics <VALUE> result ;\n"
-  "    if (removedEntry.isNotNil ()) {\n"
-  "      result = removedEntry->mSharedInfo ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void supBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    ioRoot->mBalance += 1 ;\n"
-  "    switch (ioRoot->mBalance) {\n"
-  "    case 0:\n"
-  "      break;\n"
-  "    case 1:\n"
-  "      ioBranchHasBeenRemoved = false;\n"
-  "      break;\n"
-  "    case 2:\n"
-  "      switch (ioRoot->mInfPtr->mBalance) {\n"
-  "      case -1:\n"
-  "        rotateLeft (ioRoot->mInfPtr) ;\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        break;\n"
-  "      case 0:\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        ioBranchHasBeenRemoved = false;\n"
-  "        break;\n"
-  "      case 1:\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        break;\n"
-  "      }\n"
-  "      break;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void infBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    ioRoot->mBalance -= 1 ;\n"
-  "    switch (ioRoot->mBalance) {\n"
-  "    case 0:\n"
-  "      break;\n"
-  "    case -1:\n"
-  "      ioBranchHasBeenRemoved = false ;\n"
-  "      break;\n"
-  "    case -2:\n"
-  "      switch (ioRoot->mSupPtr->mBalance) {\n"
-  "      case 1:\n"
-  "        rotateRight (ioRoot->mSupPtr) ;\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        break;\n"
-  "      case 0:\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        ioBranchHasBeenRemoved = false;\n"
-  "        break;\n"
-  "      case -1:\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        break;\n"
-  "      }\n"
-  "      break;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void getPreviousElement (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
-  "                                           OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioElement,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    if (ioRoot->mSupPtr.isNil ()) {\n"
-  "      ioElement = ioRoot ;\n"
-  "      ioRoot = ioRoot->mInfPtr ;\n"
-  "      ioBranchHasBeenRemoved = true ;\n"
-  "    }else{\n"
-  "      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;\n"
-  "      if (ioBranchHasBeenRemoved) {\n"
-  "        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "      }\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> internalRemoveEntry (const KEY & inKeyToRemove,\n"
-  "                                     OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
-  "                                     bool & ioBranchHasBeenRemoved) {\n"
-  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> removedNode ;\n"
-  "    if (ioRoot.isNotNil ()) {\n"
-  "      const ComparisonResult comparaison = ioRoot->mSharedInfo->mProperty_key.objectCompare (inKeyToRemove) ;\n"
-  "      switch (comparaison) {\n"
-  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
-  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);\n"
-  "        if (ioBranchHasBeenRemoved) {\n"
-  "          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "        }\n"
-  "        break ;\n"
-  "      case ComparisonResult::firstOperandLowerThanSecond : // <\n"
-  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);\n"
-  "        if (ioBranchHasBeenRemoved) {\n"
-  "          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);\n"
-  "        }\n"
-  "        break ;\n"
-  "      case ComparisonResult::operandEqual :\n"
-  "        mCount -= 1 ;\n"
-  "        removedNode.setToNil () ;\n"
-  "        if (ioRoot->mInfPtr.isNil ()) {\n"
-  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;\n"
-  "          ioBranchHasBeenRemoved = true ;\n"
-  "        }else if (ioRoot->mSupPtr.isNil ()) {\n"
-  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;\n"
-  "          ioBranchHasBeenRemoved = true ;\n"
-  "        }else{\n"
-  "          removedNode = ioRoot ;\n"
-  "          OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> p = ioRoot ;\n"
-  "          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "          ioRoot->mSupPtr = p->mSupPtr;\n"
-  "          p->mSupPtr.setToNil () ;\n"
-  "          ioRoot->mInfPtr = p->mInfPtr;\n"
-  "          p->mInfPtr.setToNil () ;\n"
-  "          ioRoot->mBalance = p->mBalance;\n"
-  "          if (ioBranchHasBeenRemoved) {\n"
-  "            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "          }\n"
-  "        }\n"
-  "        break ;\n"
-  "      case ComparisonResult::invalid :\n"
-  "        break ;\n"
-  "      }\n"
-  "    }\n"
-  "    return removedNode ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: bool hasKey (const KEY & inKey) const {\n"
-  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;\n"
-  "    internalRecursiveSearchNode (inKey, mRootNode, result) ;\n"
-  "    return result.isNotNil () ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void internalRecursiveSearchNode (const KEY & inKey,\n"
-  "                            const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr,\n"
-  "                            OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & outInfoPtr) {\n"
-  "    if (inNodePtr.isNotNil ()) {\n"
-  "      const ComparisonResult comparaison = inNodePtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;\n"
-  "      switch (comparaison) {\n"
-  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
-  "        internalRecursiveSearchNode (inKey, inNodePtr->mInfPtr, outInfoPtr) ;\n"
-  "        break ;\n"
-  "      case ComparisonResult::firstOperandLowerThanSecond : // <\n"
-  "        internalRecursiveSearchNode (inKey, inNodePtr->mSupPtr, outInfoPtr) ;\n"
-  "        break ;\n"
-  "      case ComparisonResult::operandEqual : // Found\n"
-  "        outInfoPtr = inNodePtr ;\n"
-  "        break ;\n"
-  "      case ComparisonResult::invalid : // Found\n"
-  "        outInfoPtr.setToNil () ;\n"
-  "        break ;\n"
-  "      }\n"
-  "    }else{\n"
-  "      outInfoPtr.setToNil () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  friend class GenericDictionary <KEY, VALUE> ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//  GenericDictionary\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename KEY, typename VALUE> class GenericDictionary : public AC_GALGAS_root {\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE> > mSharedRoot ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Default constructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionary () :\n"
-  "  mSharedRoot () {\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Destructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: virtual ~ GenericDictionary (void) = default ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Build\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void build (LOCATION_ARGS) {\n"
-  "    mSharedRoot = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: inline bool isValid (void) const {\n"
-  "    return mSharedRoot.isNotNil () ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void drop (void)  {\n"
-  "    mSharedRoot.setToNil () ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Insulate\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: void insulate (LOCATION_ARGS) {\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      mSharedRoot->invalidateCacheSortedArray () ;\n"
-  "      if (!mSharedRoot->isUniquelyReferenced ()) {\n"
-  "        auto p = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;\n"
-  "        mSharedRoot->duplicateTo (p COMMA_THERE) ;\n"
-  "        mSharedRoot = p ;\n"
-  "      }\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Handle copy\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionary (const GenericDictionary & inSource) :\n"
-  "  mSharedRoot (inSource.mSharedRoot) {\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericDictionary & operator = (const GenericDictionary & inSource) {\n"
-  "    mSharedRoot = inSource.mSharedRoot ;\n"
-  "    return * this ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Insert or replace\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: bool insertOrReplace (const KEY & inKey,\n"
-  "                                const VALUE & inInfo\n"
-  "                                COMMA_LOCATION_ARGS) {\n"
-  "    if (mSharedRoot.isNotNil () && inKey.isValid ()) {\n"
-  "      insulate (THERE) ;\n"
-  "      return mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;\n"
-  "    }else{\n"
-  "      return false ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Remove\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey\n"
-  "                                                                                COMMA_LOCATION_ARGS) {\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      insulate (THERE) ;\n"
-  "      return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;\n"
-  "    }else{\n"
-  "      return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   hasKey\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: bool hasKey (const KEY & inKey) const  {\n"
-  "    bool result = false ;\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      result = mSharedRoot->hasKey (inKey) ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   infoForKey\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: const SharedGenericPtrWithValueSemantics <VALUE> infoForKey (const KEY & inKey) const {\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> node = mSharedRoot->searchNode (inKey) ;\n"
-  "      if (node.isNil ()) {\n"
-  "        return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
-  "      }else{\n"
-  "        return node->mSharedInfo ;\n"
-  "      }\n"
-  "    }else{\n"
-  "      return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   nodeForKey\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> nodeForKey (const KEY & inKey) const {\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      return mSharedRoot->searchNode (inKey) ;\n"
-  "    }else{\n"
-  "      return OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: int32_t count (void) const  {\n"
-  "    if (mSharedRoot.isNil ()) {\n"
-  "      return 0 ;\n"
-  "    }else{\n"
-  "      return mSharedRoot->count () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) const {\n"
-  "    if (mSharedRoot.isNotNil ()) {\n"
-  "      return mSharedRoot->sortedInfoArray () ;\n"
-  "    }else{\n"
-  "      return GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const RegularFileWrapper gWrapperFile_103_libpmFileWrapper (
-  "GALGAS_GenericDictionary.h",
-  "h",
-  true, // Text file
- 25617, // Text length
-  gWrapperFileContent_103_libpmFileWrapper
-) ;
-
-//--- File 'galgas/GALGAS_GenericMapRoot.h'
-
-const char * gWrapperFileContent_138_libpmFileWrapper = 
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  Created by Pierre Molinaro on 1/07/2025, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#pragma once\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "#include \"String-class.h\"\n"
-  "#include \"SharedGenericPtrWithValueSemantics.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//  Predeclarations\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename INFO> class GenericMapRoot ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//  GenericMapNode\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename INFO> class GenericMapNode final : public SharedObject {\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericMapNode <INFO>> mInfPtr ;\n"
-  "  private: OptionalSharedRef <GenericMapNode <INFO>> mSupPtr ;\n"
-  "  public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;\n"
-  "  private: String mKey ;\n"
-  "  private: int32_t mBalance ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericMapNode (const String & inKey,\n"
-  "                          const INFO & inInfo\n"
-  "                          COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mInfPtr (),\n"
-  "  mSupPtr (),\n"
-  "  mSharedInfo (),\n"
-  "  mKey (inKey),\n"
-  "  mBalance (0) {\n"
-  "    mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_THERE) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: ~GenericMapNode (void) = default ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericMapNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr\n"
-  "                          COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mInfPtr (),\n"
-  "  mSupPtr (),\n"
-  "  mSharedInfo (inNodePtr->mSharedInfo),\n"
-  "  mKey (inNodePtr->mKey),\n"
-  "  mBalance (inNodePtr->mBalance) {\n"
-  "    if (inNodePtr->mInfPtr.isNotNil ()) {\n"
-  "      mInfPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;\n"
-  "    }\n"
-  "    if (inNodePtr->mSupPtr.isNotNil ()) {\n"
-  "      mSupPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // No copy\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: GenericMapNode (const GenericMapNode &) = delete ;\n"
-  "  private: GenericMapNode & operator = (const GenericMapNode &) = delete ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void populateInfoArray (const OptionalSharedRef <GenericMapNode> & inNode,\n"
-  "                                          GenericArray <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {\n"
-  "    if (inNode.isNotNil ()) {\n"
-  "      populateInfoArray (inNode->mInfPtr, ioNodeArray) ;\n"
-  "      ioNodeArray.appendObject (inNode->mSharedInfo) ;\n"
-  "      populateInfoArray (inNode->mSupPtr, ioNodeArray) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void populateKeyList (const OptionalSharedRef <GenericMapNode> & inNode,\n"
-  "                                        GGS__5B_lstring_5D_ & ioList) {\n"
-  "    if (inNode.isNotNil ()) {\n"
-  "      populateKeyList (inNode->mInfPtr, ioList) ;\n"
-  "      ioList.plusPlusAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;\n"
-  "      populateKeyList (inNode->mSupPtr, ioList) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void populateKeySetFromNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNode,\n"
-  "                                               Compiler * inCompiler,\n"
-  "                                               GGS_stringset & ioSet) {\n"
-  "    if (inNode.isNotNil ()) {\n"
-  "      populateKeySetFromNode (inNode->mInfPtr, inCompiler, ioSet) ;\n"
-  "      ioSet.setter_insert (inNode->mSharedInfo->mProperty_lkey.mProperty_string, inCompiler COMMA_HERE) ;\n"
-  "      populateKeySetFromNode (inNode->mSupPtr, inCompiler, ioSet) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  friend class GenericMapRoot <INFO> ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "//MARK:  GenericMapRoot\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "template <typename INFO> class GenericMapRoot final : public SharedObject {\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Private members\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericMapRoot <INFO>> mOverriddenRoot ;\n"
-  "  private: OptionalSharedRef <GenericMapNode <INFO>> mRootNode ;\n"
-  "  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;\n"
-  "  private: int32_t mCount ;\n"
-  "  private: bool mCacheSortedArrayIsValid ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Default constructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericMapRoot (LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mOverriddenRoot (),\n"
-  "  mRootNode (),\n"
-  "  mCacheSortedArray (),\n"
-  "  mCount (0),\n"
-  "  mCacheSortedArrayIsValid (false) {\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericMapRoot (const OptionalSharedRef <GenericMapRoot <INFO>> & inOverridenMapRoot\n"
-  "                          COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mOverriddenRoot (inOverridenMapRoot),\n"
-  "  mRootNode (),\n"
-  "  mCacheSortedArray (),\n"
-  "  mCount (0),\n"
-  "  mCacheSortedArrayIsValid (false) {\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Constructor for duplication\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericMapRoot (const GenericMapRoot <INFO> * inSourcePtr\n"
-  "                          COMMA_LOCATION_ARGS) :\n"
-  "  SharedObject (THERE),\n"
-  "  mOverriddenRoot (inSourcePtr->mOverriddenRoot),\n"
-  "  mRootNode (),\n"
-  "  mCacheSortedArray (), // Do not copy cache array\n"
-  "  mCount (inSourcePtr->mCount),\n"
-  "  mCacheSortedArrayIsValid (false) {\n"
-  "    if (inSourcePtr->mRootNode.isNotNil ()) {\n"
-  "      mRootNode = OptionalSharedRef <GenericMapNode <INFO>>::make (inSourcePtr->mRootNode COMMA_THERE) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Destructor\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: virtual ~ GenericMapRoot (void) = default ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // No copy\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: GenericMapRoot (const GenericMapRoot &) = delete ;\n"
-  "  private: GenericMapRoot & operator = (const GenericMapRoot &) = delete ;\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Accessors\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: inline int32_t count (void) const { return mCount ; }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: inline OptionalSharedRef <GenericMapRoot <INFO>> overriddenRoot (void) const {\n"
-  "    return mOverriddenRoot ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  protected: void invalidateCacheSortedArray (void) {\n"
-  "    if (mCacheSortedArrayIsValid) {\n"
-  "      mCacheSortedArrayIsValid = false ;\n"
-  "      mCacheSortedArray.removeAllKeepingCapacity () ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Get sorted key array\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {\n"
-  "    if (mCacheSortedArrayIsValid) {\n"
-  "      return mCacheSortedArray ;\n"
-  "    }else{\n"
-  "      GenericArray <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;\n"
-  "      GenericMapNode <INFO>::populateInfoArray (mRootNode, array) ;\n"
-  "      mCacheSortedArray = array ;\n"
-  "      mCacheSortedArrayIsValid = true ;\n"
-  "      return array ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void populateKeyList (GGS__5B_lstring_5D_ & ioList) const {\n"
-  "    GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void populateKeySet (GGS_stringset & ioSet,\n"
-  "                                  Compiler * inCompiler) const {\n"
-  "    GenericMapNode <INFO>::populateKeySetFromNode (mRootNode, inCompiler, ioSet) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   Search\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: OptionalSharedRef <GenericMapNode <INFO>> searchNode (const String & inKey) {\n"
-  "    macroUniqueSharedObject (this) ;\n"
-  "    invalidateCacheSortedArray () ;\n"
-  "    OptionalSharedRef <GenericMapNode <INFO>> result = internalSearchNode (inKey, mRootNode) ;\n"
-  "    if (result.isNil () && mOverriddenRoot.isNotNil ()) {\n"
-  "      mOverriddenRoot.insulate (HERE) ;\n"
-  "      result = mOverriddenRoot->searchNode (inKey) ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: SharedGenericPtrWithValueSemantics <INFO> infoForKey (const String & inKey) const {\n"
-  "    SharedGenericPtrWithValueSemantics <INFO> result ;\n"
-  "    OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;\n"
-  "    if (node.isNotNil ()) {\n"
-  "      result = node->mSharedInfo ;\n"
-  "    }else if (mOverriddenRoot.isNotNil ()) {\n"
-  "      result = mOverriddenRoot->infoForKey (inKey) ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  //   levels\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: uint32_t levels (void) const {\n"
-  "    uint32_t result = 1 ;\n"
-  "    if (mOverriddenRoot.isNotNil ()) {\n"
-  "      result += mOverriddenRoot->levels () ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Insert\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void insertOrReplaceInfo (const INFO & inInfo,\n"
-  "                                    const bool inAllowReplacing,\n"
-  "                                    OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
-  "    macroUniqueSharedObjectThere (this) ;\n"
-  "    invalidateCacheSortedArray () ;\n"
-  "    const String key = inInfo.mProperty_lkey.mProperty_string.stringValue () ;\n"
-  "    internalRecursiveInsert (mRootNode, key, inInfo, inAllowReplacing, outExistingNode) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void rotateLeft (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {\n"
-  "    if (ioRootPtr->mSupPtr->mBalance >= 0) {\n"
-  "      ioRootPtr->mBalance += 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mBalance += 1 - ioRootPtr->mSupPtr->mBalance ;\n"
-  "    }\n"
-  "\n"
-  "    if (ioRootPtr->mBalance > 0) {\n"
-  "      ioRootPtr->mSupPtr->mBalance += ioRootPtr->mBalance + 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mSupPtr->mBalance += 1 ;\n"
-  "    }\n"
-  "\n"
-  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mSupPtr, ioRootPtr->mSupPtr->mInfPtr) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void rotateRight (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {\n"
-  "    if (ioRootPtr->mInfPtr->mBalance > 0) {\n"
-  "      ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mBalance -= 1 ;\n"
-  "    }\n"
-  "    if (ioRootPtr->mBalance >= 0) {\n"
-  "      ioRootPtr->mInfPtr->mBalance -= 1 ;\n"
-  "    }else{\n"
-  "      ioRootPtr->mInfPtr->mBalance += ioRootPtr->mBalance - 1 ;\n"
-  "    }\n"
-  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mInfPtr, ioRootPtr->mInfPtr->mSupPtr) ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: bool internalRecursiveInsert (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr,\n"
-  "                                         const String & inKey,\n"
-  "                                         const INFO & inInfo,\n"
-  "                                         const bool inAllowReplacing,\n"
-  "                                         OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode) {\n"
-  "    bool extension = false ;\n"
-  "    if (ioRootPtr.isNil ()) {\n"
-  "      ioRootPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inKey, inInfo COMMA_HERE) ;\n"
-  "      mCount += 1 ;\n"
-  "      extension = true ;\n"
-  "    }else{\n"
-  "      const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;\n"
-  "      if (comparaison > 0) {\n"
-  "        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo, inAllowReplacing, outExistingNode) ;\n"
-  "        if (extension) {\n"
-  "          ioRootPtr->mBalance += 1 ;\n"
-  "          if (ioRootPtr->mBalance == 0) {\n"
-  "            extension = false ;\n"
-  "          }else if (ioRootPtr->mBalance > 1) {\n"
-  "            if (ioRootPtr->mInfPtr->mBalance < 0) {\n"
-  "              rotateLeft (ioRootPtr->mInfPtr) ;\n"
-  "            }\n"
-  "            rotateRight (ioRootPtr) ;\n"
-  "            extension = false ;\n"
-  "          }\n"
-  "        }\n"
-  "      }else if (comparaison < 0) {\n"
-  "        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo, inAllowReplacing, outExistingNode) ;\n"
-  "        if (extension) {\n"
-  "          ioRootPtr->mBalance -= 1 ;\n"
-  "          if (ioRootPtr->mBalance == 0) {\n"
-  "            extension = false ;\n"
-  "          }else if (ioRootPtr->mBalance < -1) {\n"
-  "            if (ioRootPtr->mSupPtr->mBalance > 0) {\n"
-  "              rotateRight (ioRootPtr->mSupPtr) ;\n"
-  "            }\n"
-  "            rotateLeft (ioRootPtr) ;\n"
-  "            extension = false ;\n"
-  "          }\n"
-  "        }\n"
-  "      }else{\n"
-  "        extension = false ;\n"
-  "        outExistingNode = ioRootPtr ;\n"
-  "        if (inAllowReplacing) {\n"
-  "          ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_HERE) ;\n"
-  "        }\n"
-  "      }\n"
-  "    }\n"
-  "    return extension ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "  // Removing: return removed object, or nil\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const String & inKey) {\n"
-  "    macroUniqueSharedObject (this) ;\n"
-  "    invalidateCacheSortedArray () ;\n"
-  "    bool ioBranchHasBeenRemoved ;\n"
-  "    const auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;\n"
-  "    SharedGenericPtrWithValueSemantics <INFO> result ;\n"
-  "    if (removedEntry.isNotNil ()) {\n"
-  "      result = removedEntry->mSharedInfo ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void supBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    ioRoot->mBalance += 1 ;\n"
-  "    switch (ioRoot->mBalance) {\n"
-  "    case 0:\n"
-  "      break;\n"
-  "    case 1:\n"
-  "      ioBranchHasBeenRemoved = false;\n"
-  "      break;\n"
-  "    case 2:\n"
-  "      switch (ioRoot->mInfPtr->mBalance) {\n"
-  "      case -1:\n"
-  "        rotateLeft (ioRoot->mInfPtr) ;\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        break;\n"
-  "      case 0:\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        ioBranchHasBeenRemoved = false;\n"
-  "        break;\n"
-  "      case 1:\n"
-  "        rotateRight (ioRoot) ;\n"
-  "        break;\n"
-  "      }\n"
-  "      break;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void infBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    ioRoot->mBalance -= 1 ;\n"
-  "    switch (ioRoot->mBalance) {\n"
-  "    case 0:\n"
-  "      break;\n"
-  "    case -1:\n"
-  "      ioBranchHasBeenRemoved = false ;\n"
-  "      break;\n"
-  "    case -2:\n"
-  "      switch (ioRoot->mSupPtr->mBalance) {\n"
-  "      case 1:\n"
-  "        rotateRight (ioRoot->mSupPtr) ;\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        break;\n"
-  "      case 0:\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        ioBranchHasBeenRemoved = false;\n"
-  "        break;\n"
-  "      case -1:\n"
-  "        rotateLeft (ioRoot) ;\n"
-  "        break;\n"
-  "      }\n"
-  "      break;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void getPreviousElement (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
-  "                                           OptionalSharedRef <GenericMapNode <INFO>> & ioElement,\n"
-  "                                           bool & ioBranchHasBeenRemoved) {\n"
-  "    if (ioRoot->mSupPtr.isNil ()) {\n"
-  "      ioElement = ioRoot ;\n"
-  "      ioRoot = ioRoot->mInfPtr ;\n"
-  "      ioBranchHasBeenRemoved = true ;\n"
-  "    }else{\n"
-  "      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;\n"
-  "      if (ioBranchHasBeenRemoved) {\n"
-  "        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "      }\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: OptionalSharedRef <GenericMapNode <INFO>> internalRemoveEntry (const String & inKeyToRemove,\n"
-  "                                     OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
-  "                                     bool & ioBranchHasBeenRemoved) {\n"
-  "    OptionalSharedRef <GenericMapNode <INFO>> removedNode ;\n"
-  "    if (ioRoot.isNotNil ()) {\n"
-  "      const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;\n"
-  "      if (comparaison > 0) {\n"
-  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);\n"
-  "        if (ioBranchHasBeenRemoved) {\n"
-  "          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "        }\n"
-  "      }else if (comparaison < 0) {\n"
-  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);\n"
-  "        if (ioBranchHasBeenRemoved) {\n"
-  "          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);\n"
-  "        }\n"
-  "      }else{\n"
-  "        mCount -= 1 ;\n"
-  "        removedNode.setToNil () ;\n"
-  "        if (ioRoot->mInfPtr.isNil ()) {\n"
-  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;\n"
-  "          ioBranchHasBeenRemoved = true ;\n"
-  "        }else if (ioRoot->mSupPtr.isNil ()) {\n"
-  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;\n"
-  "          ioBranchHasBeenRemoved = true ;\n"
-  "        }else{\n"
-  "          removedNode = ioRoot ;\n"
-  "          OptionalSharedRef <GenericMapNode <INFO>> p = ioRoot ;\n"
-  "          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "          ioRoot->mSupPtr = p->mSupPtr;\n"
-  "          p->mSupPtr.setToNil () ;\n"
-  "          ioRoot->mInfPtr = p->mInfPtr;\n"
-  "          p->mInfPtr.setToNil () ;\n"
-  "          ioRoot->mBalance = p->mBalance;\n"
-  "          if (ioBranchHasBeenRemoved) {\n"
-  "            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
-  "          }\n"
-  "        }\n"
-  "      }\n"
-  "    }\n"
-  "    return removedNode ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: bool hasKey (const String & inKey, const uint32_t inLevel) const {\n"
-  "    bool result = false ;\n"
-  "    if (inLevel == 0) {\n"
-  "     const OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;\n"
-  "     result = node.isNotNil () ;\n"
-  "    }else if (mOverriddenRoot.isNotNil ()) {\n"
-  "      result = mOverriddenRoot->hasKey (inKey, inLevel - 1) ;\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static OptionalSharedRef <GenericMapNode <INFO>>\n"
-  "  internalSearchNode (const String & inKey,\n"
-  "                      const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr) {\n"
-  "    OptionalSharedRef <GenericMapNode <INFO>> result ;\n"
-  "    OptionalSharedRef <GenericMapNode <INFO>> currentNode = inNodePtr ;\n"
-  "    while (result.isNil () && currentNode.isNotNil ()) {\n"
-  "      const int32_t comparaison = currentNode->mKey.compare (inKey) ;\n"
-  "      if (comparaison > 0) {\n"
-  "        currentNode = currentNode->mInfPtr ;\n"
-  "      }else if (comparaison < 0) {\n"
-  "        currentNode = currentNode->mSupPtr ;\n"
-  "      }else{ // Found\n"
-  "        result = currentNode ;\n"
-  "      }\n"
-  "    }\n"
-  "    return result ;\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  public: void findNearestKey (const String & inKey,\n"
-  "                               GenericUniqueArray <String> & outNearestKeyArray) const {\n"
-  "    uint32_t bestDistance = UINT32_MAX ;\n"
-  "    recursiveFindNearestKey (inKey, mRootNode, bestDistance, outNearestKeyArray) ;\n"
-  "    if (mOverriddenRoot.isNotNil ()) {\n"
-  "      recursiveFindNearestKey (inKey, mOverriddenRoot->mRootNode, bestDistance, outNearestKeyArray) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "  private: static void recursiveFindNearestKey (const String & inKey,\n"
-  "                                                const OptionalSharedRef <GenericMapNode <INFO>> & inCurrentNode,\n"
-  "                                                uint32_t & ioBestDistance,\n"
-  "                                                GenericUniqueArray <String> & ioNearestKeyArray) {\n"
-  "    if (inCurrentNode.isNotNil ()) {\n"
-  "      const uint32_t distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;\n"
-  "      if (distance < ioBestDistance) {\n"
-  "        ioBestDistance = distance ;\n"
-  "        ioNearestKeyArray.removeAllKeepingCapacity () ;\n"
-  "        ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;\n"
-  "      }else if (ioBestDistance == distance) {\n"
-  "        ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;\n"
-  "      }\n"
-  "      recursiveFindNearestKey (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;\n"
-  "      recursiveFindNearestKey (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;\n"
-  "    }\n"
-  "  }\n"
-  "\n"
-  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
-  "\n"
-  "} ;\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-   ;
-
-const RegularFileWrapper gWrapperFile_138_libpmFileWrapper (
-  "GALGAS_GenericMapRoot.h",
-  "h",
-  true, // Text file
- 23646, // Text length
-  gWrapperFileContent_138_libpmFileWrapper
+  gWrapperFileContent_164_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_TypeDescriptor.cpp'
 
-const char * gWrapperFileContent_151_libpmFileWrapper = 
+const char * gWrapperFileContent_150_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
@@ -19928,17 +19137,17 @@ const char * gWrapperFileContent_151_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_151_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_150_libpmFileWrapper (
   "GALGAS_TypeDescriptor.cpp",
   "cpp",
   true, // Text file
  5389, // Text length
-  gWrapperFileContent_151_libpmFileWrapper
+  gWrapperFileContent_150_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GALGAS_TypeDescriptor.h'
 
-const char * gWrapperFileContent_130_libpmFileWrapper = 
+const char * gWrapperFileContent_129_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  This file is part of libpm library                                                           \n"
@@ -19993,17 +19202,17 @@ const char * gWrapperFileContent_130_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_130_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_129_libpmFileWrapper (
   "GALGAS_TypeDescriptor.h",
   "h",
   true, // Text file
  2275, // Text length
-  gWrapperFileContent_130_libpmFileWrapper
+  gWrapperFileContent_129_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_application.cpp'
 
-const char * gWrapperFileContent_155_libpmFileWrapper = 
+const char * gWrapperFileContent_154_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -20378,17 +19587,17 @@ const char * gWrapperFileContent_155_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_155_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_154_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
  18164, // Text length
-  gWrapperFileContent_155_libpmFileWrapper
+  gWrapperFileContent_154_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_bigint.cpp'
 
-const char * gWrapperFileContent_105_libpmFileWrapper = 
+const char * gWrapperFileContent_104_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2023 Pierre Molinaro.\n"
@@ -21169,17 +20378,17 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_105_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_104_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
  27761, // Text length
-  gWrapperFileContent_105_libpmFileWrapper
+  gWrapperFileContent_104_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_binaryset.cpp'
 
-const char * gWrapperFileContent_134_libpmFileWrapper = 
+const char * gWrapperFileContent_133_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created january 22, 2007.\n"
@@ -22277,17 +21486,17 @@ const char * gWrapperFileContent_134_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_134_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_133_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
  51664, // Text length
-  gWrapperFileContent_134_libpmFileWrapper
+  gWrapperFileContent_133_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_bool.cpp'
 
-const char * gWrapperFileContent_113_libpmFileWrapper = 
+const char * gWrapperFileContent_112_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
@@ -22506,17 +21715,17 @@ const char * gWrapperFileContent_113_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_113_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_112_libpmFileWrapper (
   "GGS_bool.cpp",
   "cpp",
   true, // Text file
  7652, // Text length
-  gWrapperFileContent_113_libpmFileWrapper
+  gWrapperFileContent_112_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_char.cpp'
 
-const char * gWrapperFileContent_157_libpmFileWrapper = 
+const char * gWrapperFileContent_156_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -22925,17 +22134,17 @@ const char * gWrapperFileContent_157_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_157_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "GGS_char.cpp",
   "cpp",
   true, // Text file
  12886, // Text length
-  gWrapperFileContent_157_libpmFileWrapper
+  gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_data.cpp'
 
-const char * gWrapperFileContent_145_libpmFileWrapper = 
+const char * gWrapperFileContent_144_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2026 Pierre Molinaro.\n"
@@ -23317,17 +22526,17 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_145_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_144_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
  15109, // Text length
-  gWrapperFileContent_145_libpmFileWrapper
+  gWrapperFileContent_144_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_f64.cpp'
 
-const char * gWrapperFileContent_139_libpmFileWrapper = 
+const char * gWrapperFileContent_137_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
@@ -23785,17 +22994,17 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_139_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_137_libpmFileWrapper (
   "GGS_f64.cpp",
   "cpp",
   true, // Text file
  15701, // Text length
-  gWrapperFileContent_139_libpmFileWrapper
+  gWrapperFileContent_137_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_filewrapper.cpp'
 
-const char * gWrapperFileContent_109_libpmFileWrapper = 
+const char * gWrapperFileContent_108_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Started february 23th, 2008.\n"
@@ -24320,17 +23529,17 @@ const char * gWrapperFileContent_109_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_109_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_108_libpmFileWrapper (
   "GGS_filewrapper.cpp",
   "cpp",
   true, // Text file
  21682, // Text length
-  gWrapperFileContent_109_libpmFileWrapper
+  gWrapperFileContent_108_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_location.cpp'
 
-const char * gWrapperFileContent_124_libpmFileWrapper = 
+const char * gWrapperFileContent_123_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -24701,12 +23910,12 @@ const char * gWrapperFileContent_124_libpmFileWrapper =
   "//----------------------------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_124_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_123_libpmFileWrapper (
   "GGS_location.cpp",
   "cpp",
   true, // Text file
  15516, // Text length
-  gWrapperFileContent_124_libpmFileWrapper
+  gWrapperFileContent_123_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_s32.cpp'
@@ -25305,7 +24514,7 @@ const RegularFileWrapper gWrapperFile_174_libpmFileWrapper (
 
 //--- File 'galgas/GGS_s64.cpp'
 
-const char * gWrapperFileContent_133_libpmFileWrapper = 
+const char * gWrapperFileContent_132_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2019 Pierre Molinaro.\n"
@@ -25896,17 +25105,17 @@ const char * gWrapperFileContent_133_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_133_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_132_libpmFileWrapper (
   "GGS_s64.cpp",
   "cpp",
   true, // Text file
  21663, // Text length
-  gWrapperFileContent_133_libpmFileWrapper
+  gWrapperFileContent_132_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string-getters.cpp'
 
-const char * gWrapperFileContent_169_libpmFileWrapper = 
+const char * gWrapperFileContent_168_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -27315,17 +26524,17 @@ const char * gWrapperFileContent_169_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_169_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
  51862, // Text length
-  gWrapperFileContent_169_libpmFileWrapper
+  gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_string.cpp'
 
-const char * gWrapperFileContent_132_libpmFileWrapper = 
+const char * gWrapperFileContent_131_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
@@ -28341,17 +27550,17 @@ const char * gWrapperFileContent_132_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_132_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_131_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
  42244, // Text length
-  gWrapperFileContent_132_libpmFileWrapper
+  gWrapperFileContent_131_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_stringset.cpp'
 
-const char * gWrapperFileContent_117_libpmFileWrapper = 
+const char * gWrapperFileContent_116_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2005, ..., 2025 Pierre Molinaro.\n"
@@ -29195,17 +28404,17 @@ const char * gWrapperFileContent_117_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_117_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_stringset.cpp",
   "cpp",
   true, // Text file
  32105, // Text length
-  gWrapperFileContent_117_libpmFileWrapper
+  gWrapperFileContent_116_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_timer.cpp'
 
-const char * gWrapperFileContent_136_libpmFileWrapper = 
+const char * gWrapperFileContent_135_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2015, ..., 2025 Pierre Molinaro.\n"
@@ -29300,17 +28509,17 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_136_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_135_libpmFileWrapper (
   "GGS_timer.cpp",
   "cpp",
   true, // Text file
  2763, // Text length
-  gWrapperFileContent_136_libpmFileWrapper
+  gWrapperFileContent_135_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u16.cpp'
 
-const char * gWrapperFileContent_116_libpmFileWrapper = 
+const char * gWrapperFileContent_115_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.\n"
@@ -29897,17 +29106,17 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_116_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_115_libpmFileWrapper (
   "GGS_u16.cpp",
   "cpp",
   true, // Text file
  20098, // Text length
-  gWrapperFileContent_116_libpmFileWrapper
+  gWrapperFileContent_115_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u32.cpp'
 
-const char * gWrapperFileContent_161_libpmFileWrapper = 
+const char * gWrapperFileContent_160_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
@@ -30576,17 +29785,17 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_161_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_160_libpmFileWrapper (
   "GGS_u32.cpp",
   "cpp",
   true, // Text file
  23263, // Text length
-  gWrapperFileContent_161_libpmFileWrapper
+  gWrapperFileContent_160_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u64.cpp'
 
-const char * gWrapperFileContent_126_libpmFileWrapper = 
+const char * gWrapperFileContent_125_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2026 Pierre Molinaro.\n"
@@ -31231,17 +30440,17 @@ const char * gWrapperFileContent_126_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_126_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_125_libpmFileWrapper (
   "GGS_u64.cpp",
   "cpp",
   true, // Text file
  23793, // Text length
-  gWrapperFileContent_126_libpmFileWrapper
+  gWrapperFileContent_125_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/GGS_u8.cpp'
 
-const char * gWrapperFileContent_159_libpmFileWrapper = 
+const char * gWrapperFileContent_158_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2026, ..., 2026 Pierre Molinaro.\n"
@@ -31828,17 +31037,1267 @@ const char * gWrapperFileContent_159_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_159_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_158_libpmFileWrapper (
   "GGS_u8.cpp",
   "cpp",
   true, // Text file
  19238, // Text length
-  gWrapperFileContent_159_libpmFileWrapper
+  gWrapperFileContent_158_libpmFileWrapper
+) ;
+
+//--- File 'galgas/GenericDictionary.h'
+
+const char * gWrapperFileContent_169_libpmFileWrapper = 
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//\n"
+  "//  Created by Pierre Molinaro on 26/06/2025, ..., 2025 Pierre Molinaro.\n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#pragma once\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include \"String-class.h\"\n"
+  "#include \"SharedGenericPtrWithValueSemantics.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//  Predeclarations\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename KEY, typename VALUE> class GenericDictionaryRoot ;\n"
+  "template <typename KEY, typename VALUE> class GenericDictionary ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//  GenericDictionaryNode\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename KEY, typename VALUE> class GenericDictionaryNode final : public SharedObject {\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mInfPtr ;\n"
+  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mSupPtr ;\n"
+  "  public:  SharedGenericPtrWithValueSemantics <VALUE> mSharedInfo ;\n"
+  "  private: int32_t mBalance ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionaryNode (const VALUE & inInfo\n"
+  "                                COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mInfPtr (),\n"
+  "  mSupPtr (),\n"
+  "  mSharedInfo (),\n"
+  "  mBalance (0) {\n"
+  "    mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_THERE) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: ~GenericDictionaryNode (void) = default ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionaryNode (const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr\n"
+  "                                     COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mInfPtr (),\n"
+  "  mSupPtr (),\n"
+  "  mSharedInfo (inNodePtr->mSharedInfo),\n"
+  "  mBalance (inNodePtr->mBalance) {\n"
+  "    if (inNodePtr->mInfPtr.isNotNil ()) {\n"
+  "      mInfPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mInfPtr COMMA_THERE) ;\n"
+  "    }\n"
+  "    if (inNodePtr->mSupPtr.isNotNil ()) {\n"
+  "      mSupPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mSupPtr COMMA_THERE) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // No copy\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: GenericDictionaryNode (const GenericDictionaryNode &) = delete ;\n"
+  "  private: GenericDictionaryNode & operator = (const GenericDictionaryNode &) = delete ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void populateInfoArray (const OptionalSharedRef <GenericDictionaryNode> & inNode,\n"
+  "                                          GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> & ioNodeArray) {\n"
+  "    if (inNode.isNotNil ()) {\n"
+  "      populateInfoArray (inNode->mInfPtr, ioNodeArray) ;\n"
+  "      ioNodeArray.appendObject (inNode->mSharedInfo) ;\n"
+  "      populateInfoArray (inNode->mSupPtr, ioNodeArray) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  friend class GenericDictionaryRoot <KEY, VALUE> ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "} ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//MARK:  GenericDictionaryRoot\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename KEY, typename VALUE> class GenericDictionaryRoot final : public SharedObject {\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Private members\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mRootNode ;\n"
+  "  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> mCacheSortedArray ;\n"
+  "  private: int32_t mCount ;\n"
+  "  private: bool mCacheSortedArrayIsValid ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Default constructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionaryRoot (LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mRootNode (),\n"
+  "  mCacheSortedArray (),\n"
+  "  mCount (0),\n"
+  "  mCacheSortedArrayIsValid (false) {\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Destructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: virtual ~ GenericDictionaryRoot (void) = default ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // No copy\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: GenericDictionaryRoot (const GenericDictionaryRoot &) = delete ;\n"
+  "  private: GenericDictionaryRoot & operator = (const GenericDictionaryRoot &) = delete ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: void duplicateTo (OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>> & outNewRoot\n"
+  "                            COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "    if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray\n"
+  "      outNewRoot->mRootNode = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (mRootNode COMMA_HERE) ;\n"
+  "      outNewRoot->mCount = mCount ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: void invalidateCacheSortedArray (void) {\n"
+  "    if (mCacheSortedArrayIsValid) { // Do not duplicate mCacheSortedArray\n"
+  "      mCacheSortedArrayIsValid = false ;\n"
+  "      mCacheSortedArray.removeAllKeepingCapacity () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Accessors\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: inline int32_t count (void) const { return mCount ; }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Get sorted key array\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) {\n"
+  "    if (mCacheSortedArrayIsValid) {\n"
+  "      return mCacheSortedArray ;\n"
+  "    }else{\n"
+  "      GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> array (mCount COMMA_HERE) ;\n"
+  "      GenericDictionaryNode <KEY, VALUE>::populateInfoArray (mRootNode, array) ;\n"
+  "      mCacheSortedArray = array ;\n"
+  "      mCacheSortedArrayIsValid = true ;\n"
+  "      return array ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Search\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> searchNode (const KEY & inKey) const {\n"
+  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;\n"
+  "    internalRecursiveSearchNode (inKey, mRootNode, result) ;\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Insert\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: bool insertOrReplaceInfo (const KEY & inKey,\n"
+  "                                     const VALUE & inInfo\n"
+  "                                     COMMA_LOCATION_ARGS) {\n"
+  "    macroUniqueSharedObjectThere (this) ;\n"
+  "    bool overwrite = false ;\n"
+  "    internalRecursiveInsert (mRootNode, inKey, inInfo, overwrite) ;\n"
+  "    return overwrite ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void rotateLeft (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {\n"
+  "    if (ioRootPtr->mSupPtr->mBalance >= 0) {\n"
+  "      ioRootPtr->mBalance += 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mBalance += 1 - ioRootPtr->mSupPtr->mBalance ;\n"
+  "    }\n"
+  "\n"
+  "    if (ioRootPtr->mBalance > 0) {\n"
+  "      ioRootPtr->mSupPtr->mBalance += ioRootPtr->mBalance + 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mSupPtr->mBalance += 1 ;\n"
+  "    }\n"
+  "\n"
+  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mSupPtr, ioRootPtr->mSupPtr->mInfPtr) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void rotateRight (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {\n"
+  "    if (ioRootPtr->mInfPtr->mBalance > 0) {\n"
+  "      ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mBalance -= 1 ;\n"
+  "    }\n"
+  "    if (ioRootPtr->mBalance >= 0) {\n"
+  "      ioRootPtr->mInfPtr->mBalance -= 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mInfPtr->mBalance += ioRootPtr->mBalance - 1 ;\n"
+  "    }\n"
+  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mInfPtr, ioRootPtr->mInfPtr->mSupPtr) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr,\n"
+  "                                         const KEY & inKey,\n"
+  "                                         const VALUE & inInfo,\n"
+  "                                         bool & outOverwrite) {\n"
+  "    bool extension = false ;\n"
+  "    if (ioRootPtr.isNil ()) {\n"
+  "      ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inInfo COMMA_HERE) ;\n"
+  "      mCount += 1 ;\n"
+  "      extension = true ;\n"
+  "      outOverwrite = true ;\n"
+  "    }else{\n"
+  "      const ComparisonResult comparaison = ioRootPtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;\n"
+  "      switch (comparaison) {\n"
+  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
+  "        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo, outOverwrite) ;\n"
+  "        if (extension) {\n"
+  "          ioRootPtr->mBalance += 1 ;\n"
+  "          if (ioRootPtr->mBalance == 0) {\n"
+  "            extension = false ;\n"
+  "          }else if (ioRootPtr->mBalance > 1) {\n"
+  "            if (ioRootPtr->mInfPtr->mBalance < 0) {\n"
+  "              rotateLeft (ioRootPtr->mInfPtr) ;\n"
+  "            }\n"
+  "            rotateRight (ioRootPtr) ;\n"
+  "            extension = false ;\n"
+  "          }\n"
+  "        }\n"
+  "        break ;\n"
+  "      case ComparisonResult::firstOperandLowerThanSecond: // <\n"
+  "        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo, outOverwrite) ;\n"
+  "        if (extension) {\n"
+  "          ioRootPtr->mBalance -= 1 ;\n"
+  "          if (ioRootPtr->mBalance == 0) {\n"
+  "            extension = false ;\n"
+  "          }else if (ioRootPtr->mBalance < -1) {\n"
+  "            if (ioRootPtr->mSupPtr->mBalance > 0) {\n"
+  "              rotateRight (ioRootPtr->mSupPtr) ;\n"
+  "            }\n"
+  "            rotateLeft (ioRootPtr) ;\n"
+  "            extension = false ;\n"
+  "          }\n"
+  "        }\n"
+  "        break ;\n"
+  "      case ComparisonResult::operandEqual :\n"
+  "        extension = false ;\n"
+  "        ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_HERE) ;\n"
+  "        break ;\n"
+  "      case ComparisonResult::invalid :\n"
+  "        extension = false ;\n"
+  "        break ;\n"
+  "      }\n"
+  "    }\n"
+  "    return extension ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Removing: return removed object, or nullptr\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey) {\n"
+  "    macroUniqueSharedObject (this) ;\n"
+  "    bool ioBranchHasBeenRemoved ;\n"
+  "    auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;\n"
+  "    SharedGenericPtrWithValueSemantics <VALUE> result ;\n"
+  "    if (removedEntry.isNotNil ()) {\n"
+  "      result = removedEntry->mSharedInfo ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void supBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    ioRoot->mBalance += 1 ;\n"
+  "    switch (ioRoot->mBalance) {\n"
+  "    case 0:\n"
+  "      break;\n"
+  "    case 1:\n"
+  "      ioBranchHasBeenRemoved = false;\n"
+  "      break;\n"
+  "    case 2:\n"
+  "      switch (ioRoot->mInfPtr->mBalance) {\n"
+  "      case -1:\n"
+  "        rotateLeft (ioRoot->mInfPtr) ;\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        break;\n"
+  "      case 0:\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        ioBranchHasBeenRemoved = false;\n"
+  "        break;\n"
+  "      case 1:\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        break;\n"
+  "      }\n"
+  "      break;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void infBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    ioRoot->mBalance -= 1 ;\n"
+  "    switch (ioRoot->mBalance) {\n"
+  "    case 0:\n"
+  "      break;\n"
+  "    case -1:\n"
+  "      ioBranchHasBeenRemoved = false ;\n"
+  "      break;\n"
+  "    case -2:\n"
+  "      switch (ioRoot->mSupPtr->mBalance) {\n"
+  "      case 1:\n"
+  "        rotateRight (ioRoot->mSupPtr) ;\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        break;\n"
+  "      case 0:\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        ioBranchHasBeenRemoved = false;\n"
+  "        break;\n"
+  "      case -1:\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        break;\n"
+  "      }\n"
+  "      break;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void getPreviousElement (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
+  "                                           OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioElement,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    if (ioRoot->mSupPtr.isNil ()) {\n"
+  "      ioElement = ioRoot ;\n"
+  "      ioRoot = ioRoot->mInfPtr ;\n"
+  "      ioBranchHasBeenRemoved = true ;\n"
+  "    }else{\n"
+  "      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;\n"
+  "      if (ioBranchHasBeenRemoved) {\n"
+  "        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "      }\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> internalRemoveEntry (const KEY & inKeyToRemove,\n"
+  "                                     OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,\n"
+  "                                     bool & ioBranchHasBeenRemoved) {\n"
+  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> removedNode ;\n"
+  "    if (ioRoot.isNotNil ()) {\n"
+  "      const ComparisonResult comparaison = ioRoot->mSharedInfo->mProperty_key.objectCompare (inKeyToRemove) ;\n"
+  "      switch (comparaison) {\n"
+  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
+  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);\n"
+  "        if (ioBranchHasBeenRemoved) {\n"
+  "          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "        }\n"
+  "        break ;\n"
+  "      case ComparisonResult::firstOperandLowerThanSecond : // <\n"
+  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);\n"
+  "        if (ioBranchHasBeenRemoved) {\n"
+  "          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);\n"
+  "        }\n"
+  "        break ;\n"
+  "      case ComparisonResult::operandEqual :\n"
+  "        mCount -= 1 ;\n"
+  "        removedNode.setToNil () ;\n"
+  "        if (ioRoot->mInfPtr.isNil ()) {\n"
+  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;\n"
+  "          ioBranchHasBeenRemoved = true ;\n"
+  "        }else if (ioRoot->mSupPtr.isNil ()) {\n"
+  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;\n"
+  "          ioBranchHasBeenRemoved = true ;\n"
+  "        }else{\n"
+  "          removedNode = ioRoot ;\n"
+  "          OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> p = ioRoot ;\n"
+  "          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "          ioRoot->mSupPtr = p->mSupPtr;\n"
+  "          p->mSupPtr.setToNil () ;\n"
+  "          ioRoot->mInfPtr = p->mInfPtr;\n"
+  "          p->mInfPtr.setToNil () ;\n"
+  "          ioRoot->mBalance = p->mBalance;\n"
+  "          if (ioBranchHasBeenRemoved) {\n"
+  "            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "          }\n"
+  "        }\n"
+  "        break ;\n"
+  "      case ComparisonResult::invalid :\n"
+  "        break ;\n"
+  "      }\n"
+  "    }\n"
+  "    return removedNode ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: bool hasKey (const KEY & inKey) const {\n"
+  "    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;\n"
+  "    internalRecursiveSearchNode (inKey, mRootNode, result) ;\n"
+  "    return result.isNotNil () ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void internalRecursiveSearchNode (const KEY & inKey,\n"
+  "                            const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr,\n"
+  "                            OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & outInfoPtr) {\n"
+  "    if (inNodePtr.isNotNil ()) {\n"
+  "      const ComparisonResult comparaison = inNodePtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;\n"
+  "      switch (comparaison) {\n"
+  "      case ComparisonResult::firstOperandGreaterThanSecond : // >\n"
+  "        internalRecursiveSearchNode (inKey, inNodePtr->mInfPtr, outInfoPtr) ;\n"
+  "        break ;\n"
+  "      case ComparisonResult::firstOperandLowerThanSecond : // <\n"
+  "        internalRecursiveSearchNode (inKey, inNodePtr->mSupPtr, outInfoPtr) ;\n"
+  "        break ;\n"
+  "      case ComparisonResult::operandEqual : // Found\n"
+  "        outInfoPtr = inNodePtr ;\n"
+  "        break ;\n"
+  "      case ComparisonResult::invalid : // Found\n"
+  "        outInfoPtr.setToNil () ;\n"
+  "        break ;\n"
+  "      }\n"
+  "    }else{\n"
+  "      outInfoPtr.setToNil () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  friend class GenericDictionary <KEY, VALUE> ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "} ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//  GenericDictionary\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename KEY, typename VALUE> class GenericDictionary : public AC_GALGAS_root {\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE> > mSharedRoot ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Default constructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionary () :\n"
+  "  mSharedRoot () {\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Destructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: virtual ~ GenericDictionary (void) = default ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Build\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void build (LOCATION_ARGS) {\n"
+  "    mSharedRoot = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: inline bool isValid (void) const {\n"
+  "    return mSharedRoot.isNotNil () ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void drop (void)  {\n"
+  "    mSharedRoot.setToNil () ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Insulate\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: void insulate (LOCATION_ARGS) {\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      mSharedRoot->invalidateCacheSortedArray () ;\n"
+  "      if (!mSharedRoot->isUniquelyReferenced ()) {\n"
+  "        auto p = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;\n"
+  "        mSharedRoot->duplicateTo (p COMMA_THERE) ;\n"
+  "        mSharedRoot = p ;\n"
+  "      }\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Handle copy\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionary (const GenericDictionary & inSource) :\n"
+  "  mSharedRoot (inSource.mSharedRoot) {\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericDictionary & operator = (const GenericDictionary & inSource) {\n"
+  "    mSharedRoot = inSource.mSharedRoot ;\n"
+  "    return * this ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Insert or replace\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: bool insertOrReplace (const KEY & inKey,\n"
+  "                                const VALUE & inInfo\n"
+  "                                COMMA_LOCATION_ARGS) {\n"
+  "    if (mSharedRoot.isNotNil () && inKey.isValid ()) {\n"
+  "      insulate (THERE) ;\n"
+  "      return mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;\n"
+  "    }else{\n"
+  "      return false ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Remove\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey\n"
+  "                                                                                COMMA_LOCATION_ARGS) {\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      insulate (THERE) ;\n"
+  "      return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;\n"
+  "    }else{\n"
+  "      return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   hasKey\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: bool hasKey (const KEY & inKey) const  {\n"
+  "    bool result = false ;\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      result = mSharedRoot->hasKey (inKey) ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   infoForKey\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: const SharedGenericPtrWithValueSemantics <VALUE> infoForKey (const KEY & inKey) const {\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> node = mSharedRoot->searchNode (inKey) ;\n"
+  "      if (node.isNil ()) {\n"
+  "        return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
+  "      }else{\n"
+  "        return node->mSharedInfo ;\n"
+  "      }\n"
+  "    }else{\n"
+  "      return SharedGenericPtrWithValueSemantics <VALUE> () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   nodeForKey\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> nodeForKey (const KEY & inKey) const {\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      return mSharedRoot->searchNode (inKey) ;\n"
+  "    }else{\n"
+  "      return OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: int32_t count (void) const  {\n"
+  "    if (mSharedRoot.isNil ()) {\n"
+  "      return 0 ;\n"
+  "    }else{\n"
+  "      return mSharedRoot->count () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) const {\n"
+  "    if (mSharedRoot.isNotNil ()) {\n"
+  "      return mSharedRoot->sortedInfoArray () ;\n"
+  "    }else{\n"
+  "      return GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "} ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+   ;
+
+const RegularFileWrapper gWrapperFile_169_libpmFileWrapper (
+  "GenericDictionary.h",
+  "h",
+  true, // Text file
+ 25617, // Text length
+  gWrapperFileContent_169_libpmFileWrapper
+) ;
+
+//--- File 'galgas/GenericMapRoot.h'
+
+const char * gWrapperFileContent_141_libpmFileWrapper = 
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//\n"
+  "//  Created by Pierre Molinaro on 1/07/2025, ..., 2025 Pierre Molinaro.\n"
+  "//\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#pragma once\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include \"String-class.h\"\n"
+  "#include \"SharedGenericPtrWithValueSemantics.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//  Predeclarations\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename INFO> class GenericMapRoot ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//  GenericMapNode\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename INFO> class GenericMapNode final : public SharedObject {\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericMapNode <INFO>> mInfPtr ;\n"
+  "  private: OptionalSharedRef <GenericMapNode <INFO>> mSupPtr ;\n"
+  "  public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;\n"
+  "  private: String mKey ;\n"
+  "  private: int32_t mBalance ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericMapNode (const String & inKey,\n"
+  "                          const INFO & inInfo\n"
+  "                          COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mInfPtr (),\n"
+  "  mSupPtr (),\n"
+  "  mSharedInfo (),\n"
+  "  mKey (inKey),\n"
+  "  mBalance (0) {\n"
+  "    mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_THERE) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: ~GenericMapNode (void) = default ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericMapNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr\n"
+  "                          COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mInfPtr (),\n"
+  "  mSupPtr (),\n"
+  "  mSharedInfo (inNodePtr->mSharedInfo),\n"
+  "  mKey (inNodePtr->mKey),\n"
+  "  mBalance (inNodePtr->mBalance) {\n"
+  "    if (inNodePtr->mInfPtr.isNotNil ()) {\n"
+  "      mInfPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;\n"
+  "    }\n"
+  "    if (inNodePtr->mSupPtr.isNotNil ()) {\n"
+  "      mSupPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // No copy\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: GenericMapNode (const GenericMapNode &) = delete ;\n"
+  "  private: GenericMapNode & operator = (const GenericMapNode &) = delete ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void populateInfoArray (const OptionalSharedRef <GenericMapNode> & inNode,\n"
+  "                                          GenericArray <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {\n"
+  "    if (inNode.isNotNil ()) {\n"
+  "      populateInfoArray (inNode->mInfPtr, ioNodeArray) ;\n"
+  "      ioNodeArray.appendObject (inNode->mSharedInfo) ;\n"
+  "      populateInfoArray (inNode->mSupPtr, ioNodeArray) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void populateKeyList (const OptionalSharedRef <GenericMapNode> & inNode,\n"
+  "                                        GGS__5B_lstring_5D_ & ioList) {\n"
+  "    if (inNode.isNotNil ()) {\n"
+  "      populateKeyList (inNode->mInfPtr, ioList) ;\n"
+  "      ioList.plusPlusAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;\n"
+  "      populateKeyList (inNode->mSupPtr, ioList) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void populateKeySetFromNode (const OptionalSharedRef <GenericMapNode <INFO>> & inNode,\n"
+  "                                               Compiler * inCompiler,\n"
+  "                                               GGS_stringset & ioSet) {\n"
+  "    if (inNode.isNotNil ()) {\n"
+  "      populateKeySetFromNode (inNode->mInfPtr, inCompiler, ioSet) ;\n"
+  "      ioSet.setter_insert (inNode->mSharedInfo->mProperty_lkey.mProperty_string, inCompiler COMMA_HERE) ;\n"
+  "      populateKeySetFromNode (inNode->mSupPtr, inCompiler, ioSet) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  friend class GenericMapRoot <INFO> ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "} ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "//MARK:  GenericMapRoot\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename INFO> class GenericMapRoot final : public SharedObject {\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Private members\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericMapRoot <INFO>> mOverriddenRoot ;\n"
+  "  private: OptionalSharedRef <GenericMapNode <INFO>> mRootNode ;\n"
+  "  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;\n"
+  "  private: int32_t mCount ;\n"
+  "  private: bool mCacheSortedArrayIsValid ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Default constructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericMapRoot (LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mOverriddenRoot (),\n"
+  "  mRootNode (),\n"
+  "  mCacheSortedArray (),\n"
+  "  mCount (0),\n"
+  "  mCacheSortedArrayIsValid (false) {\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericMapRoot (const OptionalSharedRef <GenericMapRoot <INFO>> & inOverridenMapRoot\n"
+  "                          COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mOverriddenRoot (inOverridenMapRoot),\n"
+  "  mRootNode (),\n"
+  "  mCacheSortedArray (),\n"
+  "  mCount (0),\n"
+  "  mCacheSortedArrayIsValid (false) {\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Constructor for duplication\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericMapRoot (const GenericMapRoot <INFO> * inSourcePtr\n"
+  "                          COMMA_LOCATION_ARGS) :\n"
+  "  SharedObject (THERE),\n"
+  "  mOverriddenRoot (inSourcePtr->mOverriddenRoot),\n"
+  "  mRootNode (),\n"
+  "  mCacheSortedArray (), // Do not copy cache array\n"
+  "  mCount (inSourcePtr->mCount),\n"
+  "  mCacheSortedArrayIsValid (false) {\n"
+  "    if (inSourcePtr->mRootNode.isNotNil ()) {\n"
+  "      mRootNode = OptionalSharedRef <GenericMapNode <INFO>>::make (inSourcePtr->mRootNode COMMA_THERE) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Destructor\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: virtual ~ GenericMapRoot (void) = default ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // No copy\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: GenericMapRoot (const GenericMapRoot &) = delete ;\n"
+  "  private: GenericMapRoot & operator = (const GenericMapRoot &) = delete ;\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Accessors\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: inline int32_t count (void) const { return mCount ; }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: inline OptionalSharedRef <GenericMapRoot <INFO>> overriddenRoot (void) const {\n"
+  "    return mOverriddenRoot ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  protected: void invalidateCacheSortedArray (void) {\n"
+  "    if (mCacheSortedArrayIsValid) {\n"
+  "      mCacheSortedArrayIsValid = false ;\n"
+  "      mCacheSortedArray.removeAllKeepingCapacity () ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Get sorted key array\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {\n"
+  "    if (mCacheSortedArrayIsValid) {\n"
+  "      return mCacheSortedArray ;\n"
+  "    }else{\n"
+  "      GenericArray <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;\n"
+  "      GenericMapNode <INFO>::populateInfoArray (mRootNode, array) ;\n"
+  "      mCacheSortedArray = array ;\n"
+  "      mCacheSortedArrayIsValid = true ;\n"
+  "      return array ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void populateKeyList (GGS__5B_lstring_5D_ & ioList) const {\n"
+  "    GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void populateKeySet (GGS_stringset & ioSet,\n"
+  "                                  Compiler * inCompiler) const {\n"
+  "    GenericMapNode <INFO>::populateKeySetFromNode (mRootNode, inCompiler, ioSet) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   Search\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: OptionalSharedRef <GenericMapNode <INFO>> searchNode (const String & inKey) {\n"
+  "    macroUniqueSharedObject (this) ;\n"
+  "    invalidateCacheSortedArray () ;\n"
+  "    OptionalSharedRef <GenericMapNode <INFO>> result = internalSearchNode (inKey, mRootNode) ;\n"
+  "    if (result.isNil () && mOverriddenRoot.isNotNil ()) {\n"
+  "      mOverriddenRoot.insulate (HERE) ;\n"
+  "      result = mOverriddenRoot->searchNode (inKey) ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: SharedGenericPtrWithValueSemantics <INFO> infoForKey (const String & inKey) const {\n"
+  "    SharedGenericPtrWithValueSemantics <INFO> result ;\n"
+  "    OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;\n"
+  "    if (node.isNotNil ()) {\n"
+  "      result = node->mSharedInfo ;\n"
+  "    }else if (mOverriddenRoot.isNotNil ()) {\n"
+  "      result = mOverriddenRoot->infoForKey (inKey) ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  //   levels\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: uint32_t levels (void) const {\n"
+  "    uint32_t result = 1 ;\n"
+  "    if (mOverriddenRoot.isNotNil ()) {\n"
+  "      result += mOverriddenRoot->levels () ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Insert\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void insertOrReplaceInfo (const INFO & inInfo,\n"
+  "                                    const bool inAllowReplacing,\n"
+  "                                    OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode\n"
+  "                                    COMMA_LOCATION_ARGS) {\n"
+  "    macroUniqueSharedObjectThere (this) ;\n"
+  "    invalidateCacheSortedArray () ;\n"
+  "    const String key = inInfo.mProperty_lkey.mProperty_string.stringValue () ;\n"
+  "    internalRecursiveInsert (mRootNode, key, inInfo, inAllowReplacing, outExistingNode) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void rotateLeft (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {\n"
+  "    if (ioRootPtr->mSupPtr->mBalance >= 0) {\n"
+  "      ioRootPtr->mBalance += 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mBalance += 1 - ioRootPtr->mSupPtr->mBalance ;\n"
+  "    }\n"
+  "\n"
+  "    if (ioRootPtr->mBalance > 0) {\n"
+  "      ioRootPtr->mSupPtr->mBalance += ioRootPtr->mBalance + 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mSupPtr->mBalance += 1 ;\n"
+  "    }\n"
+  "\n"
+  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mSupPtr, ioRootPtr->mSupPtr->mInfPtr) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void rotateRight (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr) {\n"
+  "    if (ioRootPtr->mInfPtr->mBalance > 0) {\n"
+  "      ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mBalance -= 1 ;\n"
+  "    }\n"
+  "    if (ioRootPtr->mBalance >= 0) {\n"
+  "      ioRootPtr->mInfPtr->mBalance -= 1 ;\n"
+  "    }else{\n"
+  "      ioRootPtr->mInfPtr->mBalance += ioRootPtr->mBalance - 1 ;\n"
+  "    }\n"
+  "    ioRootPtr.rotateOwnershipLeft (ioRootPtr->mInfPtr, ioRootPtr->mInfPtr->mSupPtr) ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: bool internalRecursiveInsert (OptionalSharedRef <GenericMapNode <INFO>> & ioRootPtr,\n"
+  "                                         const String & inKey,\n"
+  "                                         const INFO & inInfo,\n"
+  "                                         const bool inAllowReplacing,\n"
+  "                                         OptionalSharedRef <GenericMapNode <INFO>> & outExistingNode) {\n"
+  "    bool extension = false ;\n"
+  "    if (ioRootPtr.isNil ()) {\n"
+  "      ioRootPtr = OptionalSharedRef <GenericMapNode <INFO>>::make (inKey, inInfo COMMA_HERE) ;\n"
+  "      mCount += 1 ;\n"
+  "      extension = true ;\n"
+  "    }else{\n"
+  "      const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;\n"
+  "      if (comparaison > 0) {\n"
+  "        extension = internalRecursiveInsert (ioRootPtr->mInfPtr, inKey, inInfo, inAllowReplacing, outExistingNode) ;\n"
+  "        if (extension) {\n"
+  "          ioRootPtr->mBalance += 1 ;\n"
+  "          if (ioRootPtr->mBalance == 0) {\n"
+  "            extension = false ;\n"
+  "          }else if (ioRootPtr->mBalance > 1) {\n"
+  "            if (ioRootPtr->mInfPtr->mBalance < 0) {\n"
+  "              rotateLeft (ioRootPtr->mInfPtr) ;\n"
+  "            }\n"
+  "            rotateRight (ioRootPtr) ;\n"
+  "            extension = false ;\n"
+  "          }\n"
+  "        }\n"
+  "      }else if (comparaison < 0) {\n"
+  "        extension = internalRecursiveInsert (ioRootPtr->mSupPtr, inKey, inInfo, inAllowReplacing, outExistingNode) ;\n"
+  "        if (extension) {\n"
+  "          ioRootPtr->mBalance -= 1 ;\n"
+  "          if (ioRootPtr->mBalance == 0) {\n"
+  "            extension = false ;\n"
+  "          }else if (ioRootPtr->mBalance < -1) {\n"
+  "            if (ioRootPtr->mSupPtr->mBalance > 0) {\n"
+  "              rotateRight (ioRootPtr->mSupPtr) ;\n"
+  "            }\n"
+  "            rotateLeft (ioRootPtr) ;\n"
+  "            extension = false ;\n"
+  "          }\n"
+  "        }\n"
+  "      }else{\n"
+  "        extension = false ;\n"
+  "        outExistingNode = ioRootPtr ;\n"
+  "        if (inAllowReplacing) {\n"
+  "          ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_HERE) ;\n"
+  "        }\n"
+  "      }\n"
+  "    }\n"
+  "    return extension ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "  // Removing: return removed object, or nil\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const String & inKey) {\n"
+  "    macroUniqueSharedObject (this) ;\n"
+  "    invalidateCacheSortedArray () ;\n"
+  "    bool ioBranchHasBeenRemoved ;\n"
+  "    const auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;\n"
+  "    SharedGenericPtrWithValueSemantics <INFO> result ;\n"
+  "    if (removedEntry.isNotNil ()) {\n"
+  "      result = removedEntry->mSharedInfo ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void supBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    ioRoot->mBalance += 1 ;\n"
+  "    switch (ioRoot->mBalance) {\n"
+  "    case 0:\n"
+  "      break;\n"
+  "    case 1:\n"
+  "      ioBranchHasBeenRemoved = false;\n"
+  "      break;\n"
+  "    case 2:\n"
+  "      switch (ioRoot->mInfPtr->mBalance) {\n"
+  "      case -1:\n"
+  "        rotateLeft (ioRoot->mInfPtr) ;\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        break;\n"
+  "      case 0:\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        ioBranchHasBeenRemoved = false;\n"
+  "        break;\n"
+  "      case 1:\n"
+  "        rotateRight (ioRoot) ;\n"
+  "        break;\n"
+  "      }\n"
+  "      break;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void infBranchDecreased (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    ioRoot->mBalance -= 1 ;\n"
+  "    switch (ioRoot->mBalance) {\n"
+  "    case 0:\n"
+  "      break;\n"
+  "    case -1:\n"
+  "      ioBranchHasBeenRemoved = false ;\n"
+  "      break;\n"
+  "    case -2:\n"
+  "      switch (ioRoot->mSupPtr->mBalance) {\n"
+  "      case 1:\n"
+  "        rotateRight (ioRoot->mSupPtr) ;\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        break;\n"
+  "      case 0:\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        ioBranchHasBeenRemoved = false;\n"
+  "        break;\n"
+  "      case -1:\n"
+  "        rotateLeft (ioRoot) ;\n"
+  "        break;\n"
+  "      }\n"
+  "      break;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void getPreviousElement (OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
+  "                                           OptionalSharedRef <GenericMapNode <INFO>> & ioElement,\n"
+  "                                           bool & ioBranchHasBeenRemoved) {\n"
+  "    if (ioRoot->mSupPtr.isNil ()) {\n"
+  "      ioElement = ioRoot ;\n"
+  "      ioRoot = ioRoot->mInfPtr ;\n"
+  "      ioBranchHasBeenRemoved = true ;\n"
+  "    }else{\n"
+  "      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;\n"
+  "      if (ioBranchHasBeenRemoved) {\n"
+  "        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "      }\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: OptionalSharedRef <GenericMapNode <INFO>> internalRemoveEntry (const String & inKeyToRemove,\n"
+  "                                     OptionalSharedRef <GenericMapNode <INFO>> & ioRoot,\n"
+  "                                     bool & ioBranchHasBeenRemoved) {\n"
+  "    OptionalSharedRef <GenericMapNode <INFO>> removedNode ;\n"
+  "    if (ioRoot.isNotNil ()) {\n"
+  "      const int32_t comparaison = ioRoot->mKey.compare (inKeyToRemove) ;\n"
+  "      if (comparaison > 0) {\n"
+  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mInfPtr, ioBranchHasBeenRemoved);\n"
+  "        if (ioBranchHasBeenRemoved) {\n"
+  "          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "        }\n"
+  "      }else if (comparaison < 0) {\n"
+  "        removedNode = internalRemoveEntry (inKeyToRemove, ioRoot->mSupPtr, ioBranchHasBeenRemoved);\n"
+  "        if (ioBranchHasBeenRemoved) {\n"
+  "          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);\n"
+  "        }\n"
+  "      }else{\n"
+  "        mCount -= 1 ;\n"
+  "        removedNode.setToNil () ;\n"
+  "        if (ioRoot->mInfPtr.isNil ()) {\n"
+  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mSupPtr) ;\n"
+  "          ioBranchHasBeenRemoved = true ;\n"
+  "        }else if (ioRoot->mSupPtr.isNil ()) {\n"
+  "          removedNode.rotateOwnershipLeft (ioRoot, ioRoot->mInfPtr) ;\n"
+  "          ioBranchHasBeenRemoved = true ;\n"
+  "        }else{\n"
+  "          removedNode = ioRoot ;\n"
+  "          OptionalSharedRef <GenericMapNode <INFO>> p = ioRoot ;\n"
+  "          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "          ioRoot->mSupPtr = p->mSupPtr;\n"
+  "          p->mSupPtr.setToNil () ;\n"
+  "          ioRoot->mInfPtr = p->mInfPtr;\n"
+  "          p->mInfPtr.setToNil () ;\n"
+  "          ioRoot->mBalance = p->mBalance;\n"
+  "          if (ioBranchHasBeenRemoved) {\n"
+  "            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;\n"
+  "          }\n"
+  "        }\n"
+  "      }\n"
+  "    }\n"
+  "    return removedNode ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: bool hasKey (const String & inKey, const uint32_t inLevel) const {\n"
+  "    bool result = false ;\n"
+  "    if (inLevel == 0) {\n"
+  "     const OptionalSharedRef <GenericMapNode <INFO>> node = internalSearchNode (inKey, mRootNode) ;\n"
+  "     result = node.isNotNil () ;\n"
+  "    }else if (mOverriddenRoot.isNotNil ()) {\n"
+  "      result = mOverriddenRoot->hasKey (inKey, inLevel - 1) ;\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static OptionalSharedRef <GenericMapNode <INFO>>\n"
+  "  internalSearchNode (const String & inKey,\n"
+  "                      const OptionalSharedRef <GenericMapNode <INFO>> & inNodePtr) {\n"
+  "    OptionalSharedRef <GenericMapNode <INFO>> result ;\n"
+  "    OptionalSharedRef <GenericMapNode <INFO>> currentNode = inNodePtr ;\n"
+  "    while (result.isNil () && currentNode.isNotNil ()) {\n"
+  "      const int32_t comparaison = currentNode->mKey.compare (inKey) ;\n"
+  "      if (comparaison > 0) {\n"
+  "        currentNode = currentNode->mInfPtr ;\n"
+  "      }else if (comparaison < 0) {\n"
+  "        currentNode = currentNode->mSupPtr ;\n"
+  "      }else{ // Found\n"
+  "        result = currentNode ;\n"
+  "      }\n"
+  "    }\n"
+  "    return result ;\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  public: void findNearestKey (const String & inKey,\n"
+  "                               GenericUniqueArray <String> & outNearestKeyArray) const {\n"
+  "    uint32_t bestDistance = UINT32_MAX ;\n"
+  "    recursiveFindNearestKey (inKey, mRootNode, bestDistance, outNearestKeyArray) ;\n"
+  "    if (mOverriddenRoot.isNotNil ()) {\n"
+  "      recursiveFindNearestKey (inKey, mOverriddenRoot->mRootNode, bestDistance, outNearestKeyArray) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "  private: static void recursiveFindNearestKey (const String & inKey,\n"
+  "                                                const OptionalSharedRef <GenericMapNode <INFO>> & inCurrentNode,\n"
+  "                                                uint32_t & ioBestDistance,\n"
+  "                                                GenericUniqueArray <String> & ioNearestKeyArray) {\n"
+  "    if (inCurrentNode.isNotNil ()) {\n"
+  "      const uint32_t distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;\n"
+  "      if (distance < ioBestDistance) {\n"
+  "        ioBestDistance = distance ;\n"
+  "        ioNearestKeyArray.removeAllKeepingCapacity () ;\n"
+  "        ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;\n"
+  "      }else if (ioBestDistance == distance) {\n"
+  "        ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;\n"
+  "      }\n"
+  "      recursiveFindNearestKey (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;\n"
+  "      recursiveFindNearestKey (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+  "\n"
+  "} ;\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+   ;
+
+const RegularFileWrapper gWrapperFile_141_libpmFileWrapper (
+  "GenericMapRoot.h",
+  "h",
+  true, // Text file
+ 23646, // Text length
+  gWrapperFileContent_141_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.cpp'
 
-const char * gWrapperFileContent_167_libpmFileWrapper = 
+const char * gWrapperFileContent_166_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -32069,17 +32528,17 @@ const char * gWrapperFileContent_167_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_167_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_166_libpmFileWrapper (
   "IndexingDictionary.cpp",
   "cpp",
   true, // Text file
  8072, // Text length
-  gWrapperFileContent_167_libpmFileWrapper
+  gWrapperFileContent_166_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IndexingDictionary.h'
 
-const char * gWrapperFileContent_154_libpmFileWrapper = 
+const char * gWrapperFileContent_153_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
@@ -32136,12 +32595,12 @@ const char * gWrapperFileContent_154_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_154_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_153_libpmFileWrapper (
   "IndexingDictionary.h",
   "h",
   true, // Text file
  2062, // Text length
-  gWrapperFileContent_154_libpmFileWrapper
+  gWrapperFileContent_153_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueDescriptor.cpp'
@@ -32357,7 +32816,7 @@ const RegularFileWrapper gWrapperFile_170_libpmFileWrapper (
 
 //--- File 'galgas/IssueWithFixIt.cpp'
 
-const char * gWrapperFileContent_140_libpmFileWrapper = 
+const char * gWrapperFileContent_138_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2026 Pierre Molinaro.\n"
@@ -32451,17 +32910,17 @@ const char * gWrapperFileContent_140_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_140_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "IssueWithFixIt.cpp",
   "cpp",
   true, // Text file
  3585, // Text length
-  gWrapperFileContent_140_libpmFileWrapper
+  gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/IssueWithFixIt.h'
 
-const char * gWrapperFileContent_106_libpmFileWrapper = 
+const char * gWrapperFileContent_105_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2024 Pierre Molinaro.\n"
@@ -32555,17 +33014,17 @@ const char * gWrapperFileContent_106_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_106_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "IssueWithFixIt.h",
   "h",
   true, // Text file
  3291, // Text length
-  gWrapperFileContent_106_libpmFileWrapper
+  gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique-parsing.cpp'
 
-const char * gWrapperFileContent_110_libpmFileWrapper = 
+const char * gWrapperFileContent_109_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
@@ -33502,17 +33961,17 @@ const char * gWrapperFileContent_110_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_110_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_109_libpmFileWrapper (
   "Lexique-parsing.cpp",
   "cpp",
   true, // Text file
  45930, // Text length
-  gWrapperFileContent_110_libpmFileWrapper
+  gWrapperFileContent_109_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique.cpp'
 
-const char * gWrapperFileContent_160_libpmFileWrapper = 
+const char * gWrapperFileContent_159_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
@@ -34384,17 +34843,17 @@ const char * gWrapperFileContent_160_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_160_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_159_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
  33691, // Text length
-  gWrapperFileContent_160_libpmFileWrapper
+  gWrapperFileContent_159_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/Lexique.h'
 
-const char * gWrapperFileContent_125_libpmFileWrapper = 
+const char * gWrapperFileContent_124_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -34640,12 +35099,12 @@ const char * gWrapperFileContent_125_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_125_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_124_libpmFileWrapper (
   "Lexique.h",
   "h",
   true, // Text file
  11272, // Text length
-  gWrapperFileContent_125_libpmFileWrapper
+  gWrapperFileContent_124_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LexiqueIntrospection.cpp'
@@ -34794,7 +35253,7 @@ const RegularFileWrapper gWrapperFile_172_libpmFileWrapper (
 
 //--- File 'galgas/LexiqueIntrospection.h'
 
-const char * gWrapperFileContent_158_libpmFileWrapper = 
+const char * gWrapperFileContent_157_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2016, ..., 2023 Pierre Molinaro.\n"
@@ -34843,17 +35302,17 @@ const char * gWrapperFileContent_158_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_158_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_157_libpmFileWrapper (
   "LexiqueIntrospection.h",
   "h",
   true, // Text file
  2054, // Text length
-  gWrapperFileContent_158_libpmFileWrapper
+  gWrapperFileContent_157_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LocationInSource.cpp'
 
-const char * gWrapperFileContent_107_libpmFileWrapper = 
+const char * gWrapperFileContent_106_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.\n"
@@ -34937,17 +35396,17 @@ const char * gWrapperFileContent_107_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_107_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_106_libpmFileWrapper (
   "LocationInSource.cpp",
   "cpp",
   true, // Text file
  2506, // Text length
-  gWrapperFileContent_107_libpmFileWrapper
+  gWrapperFileContent_106_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/LocationInSource.h'
 
-const char * gWrapperFileContent_148_libpmFileWrapper = 
+const char * gWrapperFileContent_147_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -34998,17 +35457,17 @@ const char * gWrapperFileContent_148_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_148_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_147_libpmFileWrapper (
   "LocationInSource.h",
   "h",
   true, // Text file
  1578, // Text length
-  gWrapperFileContent_148_libpmFileWrapper
+  gWrapperFileContent_147_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/ProductionNameDescriptor.h'
 
-const char * gWrapperFileContent_115_libpmFileWrapper = 
+const char * gWrapperFileContent_114_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -35036,17 +35495,17 @@ const char * gWrapperFileContent_115_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_115_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_114_libpmFileWrapper (
   "ProductionNameDescriptor.h",
   "h",
   true, // Text file
  957, // Text length
-  gWrapperFileContent_115_libpmFileWrapper
+  gWrapperFileContent_114_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/PtrWeakReferenceProxy.cpp'
 
-const char * gWrapperFileContent_111_libpmFileWrapper = 
+const char * gWrapperFileContent_110_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -35097,17 +35556,17 @@ const char * gWrapperFileContent_111_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_111_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_110_libpmFileWrapper (
   "PtrWeakReferenceProxy.cpp",
   "cpp",
   true, // Text file
  1710, // Text length
-  gWrapperFileContent_111_libpmFileWrapper
+  gWrapperFileContent_110_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/PtrWeakReferenceProxy.h'
 
-const char * gWrapperFileContent_131_libpmFileWrapper = 
+const char * gWrapperFileContent_130_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
@@ -35160,17 +35619,17 @@ const char * gWrapperFileContent_131_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_131_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_130_libpmFileWrapper (
   "PtrWeakReferenceProxy.h",
   "h",
   true, // Text file
  1894, // Text length
-  gWrapperFileContent_131_libpmFileWrapper
+  gWrapperFileContent_130_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedGenericPtrWithValueSemantics.h'
 
-const char * gWrapperFileContent_163_libpmFileWrapper = 
+const char * gWrapperFileContent_162_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Created by Pierre Molinaro on 15/03/2025, ..., 2025 Pierre Molinaro.\n"
@@ -35355,17 +35814,17 @@ const char * gWrapperFileContent_163_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_163_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_162_libpmFileWrapper (
   "SharedGenericPtrWithValueSemantics.h",
   "h",
   true, // Text file
  8240, // Text length
-  gWrapperFileContent_163_libpmFileWrapper
+  gWrapperFileContent_162_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.cpp'
 
-const char * gWrapperFileContent_146_libpmFileWrapper = 
+const char * gWrapperFileContent_145_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
@@ -35487,17 +35946,17 @@ const char * gWrapperFileContent_146_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_146_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "SharedObject.cpp",
   "cpp",
   true, // Text file
  4051, // Text length
-  gWrapperFileContent_146_libpmFileWrapper
+  gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SharedObject.h'
 
-const char * gWrapperFileContent_137_libpmFileWrapper = 
+const char * gWrapperFileContent_136_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
@@ -36437,17 +36896,17 @@ const char * gWrapperFileContent_137_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_137_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "SharedObject.h",
   "h",
   true, // Text file
  40483, // Text length
-  gWrapperFileContent_137_libpmFileWrapper
+  gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SourceTextInString.cpp'
 
-const char * gWrapperFileContent_153_libpmFileWrapper = 
+const char * gWrapperFileContent_152_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -36522,17 +36981,17 @@ const char * gWrapperFileContent_153_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_153_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_152_libpmFileWrapper (
   "SourceTextInString.cpp",
   "cpp",
   true, // Text file
  2768, // Text length
-  gWrapperFileContent_153_libpmFileWrapper
+  gWrapperFileContent_152_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/SourceTextInString.h'
 
-const char * gWrapperFileContent_162_libpmFileWrapper = 
+const char * gWrapperFileContent_161_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -36625,17 +37084,17 @@ const char * gWrapperFileContent_162_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_162_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "SourceTextInString.h",
   "h",
   true, // Text file
  3167, // Text length
-  gWrapperFileContent_162_libpmFileWrapper
+  gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/TemplateDelimiter.h'
 
-const char * gWrapperFileContent_112_libpmFileWrapper = 
+const char * gWrapperFileContent_111_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
@@ -36682,17 +37141,17 @@ const char * gWrapperFileContent_112_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_112_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_111_libpmFileWrapper (
   "TemplateDelimiter.h",
   "h",
   true, // Text file
  1990, // Text length
-  gWrapperFileContent_112_libpmFileWrapper
+  gWrapperFileContent_111_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/execution-mode.cpp'
 
-const char * gWrapperFileContent_108_libpmFileWrapper = 
+const char * gWrapperFileContent_107_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2026 Pierre Molinaro.\n"
@@ -36808,17 +37267,17 @@ const char * gWrapperFileContent_108_libpmFileWrapper =
   "\n"
    ;
 
-const RegularFileWrapper gWrapperFile_108_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_107_libpmFileWrapper (
   "execution-mode.cpp",
   "cpp",
   true, // Text file
  4509, // Text length
-  gWrapperFileContent_108_libpmFileWrapper
+  gWrapperFileContent_107_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/execution-mode.h'
 
-const char * gWrapperFileContent_129_libpmFileWrapper = 
+const char * gWrapperFileContent_128_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2006, ..., 2015 Pierre Molinaro.\n"
@@ -36862,12 +37321,12 @@ const char * gWrapperFileContent_129_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_129_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_128_libpmFileWrapper (
   "execution-mode.h",
   "h",
   true, // Text file
  1221, // Text length
-  gWrapperFileContent_129_libpmFileWrapper
+  gWrapperFileContent_128_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/filewrapper-utilities.cpp'
@@ -36922,7 +37381,7 @@ const RegularFileWrapper gWrapperFile_173_libpmFileWrapper (
 
 //--- File 'galgas/filewrapper-utilities.h'
 
-const char * gWrapperFileContent_150_libpmFileWrapper = 
+const char * gWrapperFileContent_149_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  21 november 2026, ..., 2026Pierre Molinaro.\n"
@@ -36980,17 +37439,17 @@ const char * gWrapperFileContent_150_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_150_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "filewrapper-utilities.h",
   "h",
   true, // Text file
  2178, // Text length
-  gWrapperFileContent_150_libpmFileWrapper
+  gWrapperFileContent_149_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/galgas-input-output.cpp'
 
-const char * gWrapperFileContent_166_libpmFileWrapper = 
+const char * gWrapperFileContent_165_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.\n"
@@ -37803,17 +38262,17 @@ const char * gWrapperFileContent_166_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_166_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_165_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
  31511, // Text length
-  gWrapperFileContent_166_libpmFileWrapper
+  gWrapperFileContent_165_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/galgas-input-output.h'
 
-const char * gWrapperFileContent_128_libpmFileWrapper = 
+const char * gWrapperFileContent_127_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
@@ -38051,17 +38510,17 @@ const char * gWrapperFileContent_128_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_128_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_127_libpmFileWrapper (
   "galgas-input-output.h",
   "h",
   true, // Text file
  9820, // Text length
-  gWrapperFileContent_128_libpmFileWrapper
+  gWrapperFileContent_127_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/scanner_actions.cpp'
 
-const char * gWrapperFileContent_114_libpmFileWrapper = 
+const char * gWrapperFileContent_113_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
@@ -38937,17 +39396,17 @@ const char * gWrapperFileContent_114_libpmFileWrapper =
   "\n"
    ;
 
-const RegularFileWrapper gWrapperFile_114_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_113_libpmFileWrapper (
   "scanner_actions.cpp",
   "cpp",
   true, // Text file
  38817, // Text length
-  gWrapperFileContent_114_libpmFileWrapper
+  gWrapperFileContent_113_libpmFileWrapper
 ) ;
 
 //--- File 'galgas/scanner_actions.h'
 
-const char * gWrapperFileContent_156_libpmFileWrapper = 
+const char * gWrapperFileContent_155_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
@@ -39201,12 +39660,12 @@ const char * gWrapperFileContent_156_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
    ;
 
-const RegularFileWrapper gWrapperFile_156_libpmFileWrapper (
+const RegularFileWrapper gWrapperFile_155_libpmFileWrapper (
   "scanner_actions.h",
   "h",
   true, // Text file
  14250, // Text length
-  gWrapperFileContent_156_libpmFileWrapper
+  gWrapperFileContent_155_libpmFileWrapper
 ) ;
 
 //--- All files of 'AccentColor.colorset' directory
@@ -39280,78 +39739,78 @@ const DirectoryWrapper gWrapperDirectory_10_libpmFileWrapper (
 //--- All files of 'galgas' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_libpmFileWrapper_9 [73] = {
-  & gWrapperFile_123_libpmFileWrapper,
-  & gWrapperFile_144_libpmFileWrapper,
   & gWrapperFile_122_libpmFileWrapper,
-  & gWrapperFile_104_libpmFileWrapper,
-  & gWrapperFile_149_libpmFileWrapper,
-  & gWrapperFile_142_libpmFileWrapper,
-  & gWrapperFile_168_libpmFileWrapper,
-  & gWrapperFile_152_libpmFileWrapper,
-  & gWrapperFile_147_libpmFileWrapper,
-  & gWrapperFile_141_libpmFileWrapper,
-  & gWrapperFile_119_libpmFileWrapper,
-  & gWrapperFile_164_libpmFileWrapper,
-  & gWrapperFile_135_libpmFileWrapper,
-  & gWrapperFile_120_libpmFileWrapper,
-  & gWrapperFile_121_libpmFileWrapper,
-  & gWrapperFile_118_libpmFileWrapper,
   & gWrapperFile_143_libpmFileWrapper,
-  & gWrapperFile_127_libpmFileWrapper,
-  & gWrapperFile_165_libpmFileWrapper,
+  & gWrapperFile_121_libpmFileWrapper,
   & gWrapperFile_103_libpmFileWrapper,
-  & gWrapperFile_138_libpmFileWrapper,
-  & gWrapperFile_151_libpmFileWrapper,
-  & gWrapperFile_130_libpmFileWrapper,
-  & gWrapperFile_155_libpmFileWrapper,
-  & gWrapperFile_105_libpmFileWrapper,
-  & gWrapperFile_134_libpmFileWrapper,
-  & gWrapperFile_113_libpmFileWrapper,
-  & gWrapperFile_157_libpmFileWrapper,
-  & gWrapperFile_145_libpmFileWrapper,
-  & gWrapperFile_139_libpmFileWrapper,
-  & gWrapperFile_109_libpmFileWrapper,
-  & gWrapperFile_124_libpmFileWrapper,
-  & gWrapperFile_174_libpmFileWrapper,
-  & gWrapperFile_133_libpmFileWrapper,
-  & gWrapperFile_169_libpmFileWrapper,
-  & gWrapperFile_132_libpmFileWrapper,
-  & gWrapperFile_117_libpmFileWrapper,
-  & gWrapperFile_136_libpmFileWrapper,
-  & gWrapperFile_116_libpmFileWrapper,
-  & gWrapperFile_161_libpmFileWrapper,
-  & gWrapperFile_126_libpmFileWrapper,
-  & gWrapperFile_159_libpmFileWrapper,
-  & gWrapperFile_167_libpmFileWrapper,
-  & gWrapperFile_154_libpmFileWrapper,
-  & gWrapperFile_171_libpmFileWrapper,
-  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_148_libpmFileWrapper,
   & gWrapperFile_140_libpmFileWrapper,
-  & gWrapperFile_106_libpmFileWrapper,
-  & gWrapperFile_110_libpmFileWrapper,
+  & gWrapperFile_167_libpmFileWrapper,
+  & gWrapperFile_151_libpmFileWrapper,
+  & gWrapperFile_146_libpmFileWrapper,
+  & gWrapperFile_139_libpmFileWrapper,
+  & gWrapperFile_118_libpmFileWrapper,
+  & gWrapperFile_163_libpmFileWrapper,
+  & gWrapperFile_134_libpmFileWrapper,
+  & gWrapperFile_119_libpmFileWrapper,
+  & gWrapperFile_120_libpmFileWrapper,
+  & gWrapperFile_117_libpmFileWrapper,
+  & gWrapperFile_142_libpmFileWrapper,
+  & gWrapperFile_126_libpmFileWrapper,
+  & gWrapperFile_164_libpmFileWrapper,
+  & gWrapperFile_150_libpmFileWrapper,
+  & gWrapperFile_129_libpmFileWrapper,
+  & gWrapperFile_154_libpmFileWrapper,
+  & gWrapperFile_104_libpmFileWrapper,
+  & gWrapperFile_133_libpmFileWrapper,
+  & gWrapperFile_112_libpmFileWrapper,
+  & gWrapperFile_156_libpmFileWrapper,
+  & gWrapperFile_144_libpmFileWrapper,
+  & gWrapperFile_137_libpmFileWrapper,
+  & gWrapperFile_108_libpmFileWrapper,
+  & gWrapperFile_123_libpmFileWrapper,
+  & gWrapperFile_174_libpmFileWrapper,
+  & gWrapperFile_132_libpmFileWrapper,
+  & gWrapperFile_168_libpmFileWrapper,
+  & gWrapperFile_131_libpmFileWrapper,
+  & gWrapperFile_116_libpmFileWrapper,
+  & gWrapperFile_135_libpmFileWrapper,
+  & gWrapperFile_115_libpmFileWrapper,
   & gWrapperFile_160_libpmFileWrapper,
   & gWrapperFile_125_libpmFileWrapper,
-  & gWrapperFile_172_libpmFileWrapper,
   & gWrapperFile_158_libpmFileWrapper,
-  & gWrapperFile_107_libpmFileWrapper,
-  & gWrapperFile_148_libpmFileWrapper,
-  & gWrapperFile_115_libpmFileWrapper,
-  & gWrapperFile_111_libpmFileWrapper,
-  & gWrapperFile_131_libpmFileWrapper,
-  & gWrapperFile_163_libpmFileWrapper,
-  & gWrapperFile_146_libpmFileWrapper,
-  & gWrapperFile_137_libpmFileWrapper,
-  & gWrapperFile_153_libpmFileWrapper,
-  & gWrapperFile_162_libpmFileWrapper,
-  & gWrapperFile_112_libpmFileWrapper,
-  & gWrapperFile_108_libpmFileWrapper,
-  & gWrapperFile_129_libpmFileWrapper,
-  & gWrapperFile_173_libpmFileWrapper,
-  & gWrapperFile_150_libpmFileWrapper,
+  & gWrapperFile_169_libpmFileWrapper,
+  & gWrapperFile_141_libpmFileWrapper,
   & gWrapperFile_166_libpmFileWrapper,
-  & gWrapperFile_128_libpmFileWrapper,
+  & gWrapperFile_153_libpmFileWrapper,
+  & gWrapperFile_171_libpmFileWrapper,
+  & gWrapperFile_170_libpmFileWrapper,
+  & gWrapperFile_138_libpmFileWrapper,
+  & gWrapperFile_105_libpmFileWrapper,
+  & gWrapperFile_109_libpmFileWrapper,
+  & gWrapperFile_159_libpmFileWrapper,
+  & gWrapperFile_124_libpmFileWrapper,
+  & gWrapperFile_172_libpmFileWrapper,
+  & gWrapperFile_157_libpmFileWrapper,
+  & gWrapperFile_106_libpmFileWrapper,
+  & gWrapperFile_147_libpmFileWrapper,
   & gWrapperFile_114_libpmFileWrapper,
-  & gWrapperFile_156_libpmFileWrapper,
+  & gWrapperFile_110_libpmFileWrapper,
+  & gWrapperFile_130_libpmFileWrapper,
+  & gWrapperFile_162_libpmFileWrapper,
+  & gWrapperFile_145_libpmFileWrapper,
+  & gWrapperFile_136_libpmFileWrapper,
+  & gWrapperFile_152_libpmFileWrapper,
+  & gWrapperFile_161_libpmFileWrapper,
+  & gWrapperFile_111_libpmFileWrapper,
+  & gWrapperFile_107_libpmFileWrapper,
+  & gWrapperFile_128_libpmFileWrapper,
+  & gWrapperFile_173_libpmFileWrapper,
+  & gWrapperFile_149_libpmFileWrapper,
+  & gWrapperFile_165_libpmFileWrapper,
+  & gWrapperFile_127_libpmFileWrapper,
+  & gWrapperFile_113_libpmFileWrapper,
+  & gWrapperFile_155_libpmFileWrapper,
   nullptr
 } ;
 

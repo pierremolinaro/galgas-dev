@@ -238,65 +238,65 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
           !targetType: castType,
           !testType: testType
         )
-      elsif let weakRefType = analyzedExpression.mResultType.definition.typeKind.getWeakReferenceType then
-        if typeName.string == "" then
-          castType = weakRefType.referenceType
-        else
-          castType = ioTypeMap.typeMapEntryForLKey (typeName)
-        end
-        testType = castType
-        var @unifiedTypeMapEntry t = castType
-        var @bool found = t == analyzedExpression.mResultType
-        if found then
-          castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
-        elsif t == weakRefType.referenceType then
-          found = true
-        end
-        loop (ioTypeMap.count + 1)
-        while (not found) & not t.definition.superType.isNull do
-          t = t.definition.superType
-          if t == analyzedExpression.mResultType then
-            found = true
-            castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
-          elsif t == weakRefType.referenceType then
-            found = true
-          end
-        end
-        if not found then
-          error typeName
-          : "the '@" + castType.definition.typeName.string
-          + "' type is not compatible with the '@"
-          + analyzedExpression.mResultType.definition.typeName.string + "' type"
-          
-        end
-        !?ioVariableMap.openOverrideForSelectBlock ()
-        !?ioVariableMap.openBranch ()
-        let targetVariableCppName = "var_" + varName.string.identifierRepresentation
-              + "_" + varName.location.startLocationIndex
-        if varName.string != "" then
-         if isConstant then
-            !?ioVariableMap.insertInitializedLocalConstant
-              (varName,
-              castType,
-              targetVariableCppName,
-              targetVariableCppName
-            )
-          else
-            !?ioVariableMap.insertInitializedLocalVariable
-              (varName,
-              !warnsIfNotMutated: true,
-              castType,
-              targetVariableCppName,
-              targetVariableCppName
-            )
-          end
-        end
-        outTestListForGeneration ++= .letVarExp (
-          !targetVarCppName: targetVariableCppName,
-          !exp: analyzedExpression,
-          !targetType: castType,
-          !testType: testType
-        )
+//      elsif let weakRefType = analyzedExpression.mResultType.definition.typeKind.getWeakReferenceType then
+//        if typeName.string == "" then
+//          castType = weakRefType.referenceType
+//        else
+//          castType = ioTypeMap.typeMapEntryForLKey (typeName)
+//        end
+//        testType = castType
+//        var @unifiedTypeMapEntry t = castType
+//        var @bool found = t == analyzedExpression.mResultType
+//        if found then
+//          castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
+//        elsif t == weakRefType.referenceType then
+//          found = true
+//        end
+//        loop (ioTypeMap.count + 1)
+//        while (not found) & not t.definition.superType.isNull do
+//          t = t.definition.superType
+//          if t == analyzedExpression.mResultType then
+//            found = true
+//            castType.definition.typeKind.extractWeakReferenceType (?referenceType: castType)
+//          elsif t == weakRefType.referenceType then
+//            found = true
+//          end
+//        end
+//        if not found then
+//          error typeName
+//          : "the '@" + castType.definition.typeName.string
+//          + "' type is not compatible with the '@"
+//          + analyzedExpression.mResultType.definition.typeName.string + "' type"
+//          
+//        end
+//        !?ioVariableMap.openOverrideForSelectBlock ()
+//        !?ioVariableMap.openBranch ()
+//        let targetVariableCppName = "var_" + varName.string.identifierRepresentation
+//              + "_" + varName.location.startLocationIndex
+//        if varName.string != "" then
+//         if isConstant then
+//            !?ioVariableMap.insertInitializedLocalConstant
+//              (varName,
+//              castType,
+//              targetVariableCppName,
+//              targetVariableCppName
+//            )
+//          else
+//            !?ioVariableMap.insertInitializedLocalVariable
+//              (varName,
+//              !warnsIfNotMutated: true,
+//              castType,
+//              targetVariableCppName,
+//              targetVariableCppName
+//            )
+//          end
+//        end
+//        outTestListForGeneration ++= .letVarExp (
+//          !targetVarCppName: targetVariableCppName,
+//          !exp: analyzedExpression,
+//          !targetType: castType,
+//          !testType: testType
+//        )
       else
         error analyzedExpression.mLocation
          : "expression should be a class instance, or a weak reference: it is an @"

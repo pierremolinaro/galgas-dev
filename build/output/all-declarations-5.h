@@ -9325,6 +9325,8 @@ class cPtr_buildOptionTypeForGeneration : public cPtr_semanticTypeForGeneration 
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_buildOptionGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_buildOptionGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @buildOptionGenerationTemplate
@@ -9724,6 +9726,8 @@ class cPtr_buildOptionStringTypeForGeneration : public cPtr_semanticTypeForGener
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_buildOptionStringGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_buildOptionStringGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @buildOptionStringGenerationTemplate
@@ -10461,95 +10465,4 @@ class GGS_propertyInCollectionAST final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAST ;
-
-//--------------------------------------------------------------------------------------------------
-//§Filewrapper§ 'predefinedTypeGenerationTemplate'
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @predefinedTypeGenerationTemplate
-//--------------------------------------------------------------------------------------------------
-
-class GGS_predefinedTypeGenerationTemplate final {
-
-//-- Start of package generic part
-
-//--------------------------------- GALGAS class getters
-  public: static class GGS_string class_func_application_5F_package (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_bigint_5F_type (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_binaryset_5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_bool_5F_type (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_char_5F_type (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_data_5F_type (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_f_36__34__5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_filewrapper_5F_type (Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_location_5F_type (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_predefinedTypesImplementation (const class GGS_sortedLexicalStyleArray & inOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_primitiveTypesHeaderPrologue (Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_s_36__34__5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_sint_5F_type (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_string_5F_type (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringset_5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_timer_5F_type (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_u_31__36__5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_u_33__32__5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_u_36__34__5F_type (Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_u_38__5F_type (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Class Methods
-
-} ;
 

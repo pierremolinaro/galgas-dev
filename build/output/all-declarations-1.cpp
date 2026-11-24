@@ -1,156 +1,5 @@
 #include "all-declarations-1.h"
 //--------------------------------------------------------------------------------------------------
-// @localVariableDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_localVariableDeclarationForGeneration::objectCompare (const GGS_localVariableDeclarationForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVariableDeclarationForGeneration::GGS_localVariableDeclarationForGeneration (void) :
-GGS_semanticInstructionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_localVariableDeclarationForGeneration GGS_localVariableDeclarationForGeneration::
-init_21__21_ (const GGS_unifiedTypeMapEntry & in_mVariableType,
-              const GGS_string & in_mCppVariableName,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_localVariableDeclarationForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_localVariableDeclarationForGeneration (inCompiler COMMA_THERE)) ;
-  object->localVariableDeclarationForGeneration_init_21__21_ (in_mVariableType, in_mCppVariableName, inCompiler) ;
-  const GGS_localVariableDeclarationForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_localVariableDeclarationForGeneration::
-localVariableDeclarationForGeneration_init_21__21_ (const GGS_unifiedTypeMapEntry & in_mVariableType,
-                                                    const GGS_string & in_mCppVariableName,
-                                                    Compiler * /* inCompiler */) {
-  mProperty_mVariableType = in_mVariableType ;
-  mProperty_mCppVariableName = in_mCppVariableName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_localVariableDeclarationForGeneration::GGS_localVariableDeclarationForGeneration (const cPtr_localVariableDeclarationForGeneration * inSourcePtr) :
-GGS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_localVariableDeclarationForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_localVariableDeclarationForGeneration::readProperty_mVariableType (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_localVariableDeclarationForGeneration * p = (cPtr_localVariableDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
-    return p->mProperty_mVariableType ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_localVariableDeclarationForGeneration::readProperty_mCppVariableName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_localVariableDeclarationForGeneration * p = (cPtr_localVariableDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
-    return p->mProperty_mCppVariableName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @localVariableDeclarationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_localVariableDeclarationForGeneration::cPtr_localVariableDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mVariableType (),
-mProperty_mCppVariableName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_localVariableDeclarationForGeneration::cPtr_localVariableDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mVariableType,
-                                                                                        const GGS_string & in_mCppVariableName,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (inCompiler COMMA_THERE),
-mProperty_mVariableType (),
-mProperty_mCppVariableName () {
-  mProperty_mVariableType = in_mVariableType ;
-  mProperty_mCppVariableName = in_mCppVariableName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_localVariableDeclarationForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
-}
-
-void cPtr_localVariableDeclarationForGeneration::description (String & ioString,
-                                                              const int32_t inIndentation) const {
-  ioString.appendCString ("[@localVariableDeclarationForGeneration:") ;
-  mProperty_mVariableType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mCppVariableName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_localVariableDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_localVariableDeclarationForGeneration (mProperty_mVariableType, mProperty_mCppVariableName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_localVariableDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticInstructionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mVariableType.printNonNullClassInstanceProperties ("mVariableType") ;
-    mProperty_mCppVariableName.printNonNullClassInstanceProperties ("mCppVariableName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @localVariableDeclarationForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ("localVariableDeclarationForGeneration",
-                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_localVariableDeclarationForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Enum assignmentSupplementAST
 //--------------------------------------------------------------------------------------------------
 
@@ -12578,7 +12427,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_
 //  Map type @lexicalAttributeMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13034,7 +12883,7 @@ const GALGAS_TypeDescriptor * GGS_lexicalAttributeMap::staticTypeDescriptor (voi
 //  Map type @lexicalMessageMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13596,7 +13445,7 @@ const GALGAS_TypeDescriptor * GGS_lexicalMessageMap::staticTypeDescriptor (void)
 //  Map type @lexicalExplicitTokenListMapMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -15487,3 +15336,185 @@ const GALGAS_TypeDescriptor * GGS_sortedLexicalStyleArray::staticTypeDescriptor 
   return & kTypeDescriptor_GALGAS_sortedLexicalStyleArray ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//Filewrapper 'lexicalTemplates'
+//--------------------------------------------------------------------------------------------------
+
+//--- All files of '' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_lexicalTemplates_0 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of '' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_lexicalTemplates_0 [1] = {
+  nullptr
+} ;
+
+//--- Directory ''
+
+const DirectoryWrapper gWrapperDirectory_0_lexicalTemplates (
+  "",
+  0,
+  gWrapperAllFiles_lexicalTemplates_0,
+  0,
+  gWrapperAllDirectories_lexicalTemplates_0
+) ;
+
+
+//--------------------------------------------------------------------------------------------------
+
+/* GGS_lexicalTemplates::GGS_lexicalTemplates (void) :
+AC_GALGAS_root (),
+mIsValid (false) {
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+/* GGS_lexicalTemplates GGS_lexicalTemplates::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexicalTemplates result = GGS_lexicalTemplates () ;
+  result.mIsValid = true ;
+  return result ;
+} */
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_lexicalTemplates::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_lexicalTemplates) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+/* void GGS_lexicalTemplates::description (String & ioString,
+                                           const int32_t ) const {
+  ioString.appendCString ("<filewrapper @lexicalTemplates:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    ioString.appendCString (">") ;
+  }
+} */
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @lexicalTemplates swiftUILexicalStyles
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_lexicalTemplates::class_func_swiftUILexicalStyles (const GGS_sortedLexicalStyleArray & in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   EDITOR SETTING VIEW\n//--------------------------------------------------------------------------------------------------\n\nimport SwiftUI\n\n//--------------------------------------------------------------------------------------------------\n\nstruct EditorSettingView : View {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  @State private var mUnused = false\n\n  @AppStorage(\"FontForSource\")\n  private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))\n\n  @AppStorage(\"LineHeightForSource\")\n  private var mLineHeight : Int = 12\n\n  @AppStorage(\"ColorForSource\")\n  private var mDefaultColor : Color = .black\n\n") ;
+  GGS_u_33__32_ index_853_ (0) ;
+  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_853 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_853.hasCurrentObject ()) {
+      result.appendString ("  @AppStorage(\"ColorForSource-") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\")\n  private var mColorFor_") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Color = .black\n\n  @AppStorage(\"BoldForSource-") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\")\n  private var mBoldFor_") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Bool = false\n\n  @AppStorage(\"ItalicForSource-") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\")\n  private var mItalicFor_") ;
+      result.appendString (enumerator_853.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Bool = false\n\n") ;
+      enumerator_853.gotoNextObject () ;
+      index_853_.increment () ;
+    }
+  }
+  result.appendString ("\n  @AppStorage(\"ColorForSource_lexical_error\")\n  private var mColorFor_lexical_error : Color = .red\n\n  @AppStorage(\"BoldForSource_lexical_error\")\n  private var mBoldFor_lexical_error : Bool = false\n\n  @AppStorage(\"ItalicForSource_lexical_error\")\n  private var mItalicFor_lexical_error : Bool = false\n\n  @AppStorage(\"ColorForSourceForSource_template\")\n  private var mColorFor_template : Color = .gray\n\n  @AppStorage(\"BoldForSource_template\")\n  private var mBoldFor_template : Bool = false\n\n  @AppStorage(\"ItalicForSource_template\")\n  private var mItalicFor_template : Bool = false\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  var body : some View {\n    Form {\n      LabeledContent (\"Font\") { CustomFontPicker (fontBinding: self.$mFont) }\n      Picker(\"Line Height\", selection: self.$mLineHeight) {\n        Text(\"1.0\").tag(10)\n        Text(\"1.1\").tag(11)\n        Text(\"1.2\").tag(12)\n        Text(\"1.5\").tag(15)\n        Text(\"1.7\").tag(17)\n        Text(\"2.0\").tag(20)\n      }.pickerStyle(.automatic)\n      LabeledContent (\"Default Color\") {\n        HStack {\n          ColorPicker (\"\", selection: self.$mDefaultColor).labelsHidden ()\n          Toggle (\"Bold\", isOn: self.$mUnused).hidden () // Hidden, unused\n          Toggle (\"Italic\", isOn: self.$mUnused).hidden () // Hidden, unused\n        }\n      }\n") ;
+  GGS_u_33__32_ index_2567_ (0) ;
+  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_2567 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_2567.hasCurrentObject ()) {
+      result.appendString ("      LabeledContent (") ;
+      result.appendString (enumerator_2567.current_entry (HERE).readProperty_comment ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("lexicalStyles.swift.galgasTemplate", 74)).stringValue ()) ;
+      result.appendString (") {\n        HStack {\n          ColorPicker (\"\", selection: self.$mColorFor_") ;
+      result.appendString (enumerator_2567.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (").labelsHidden ()\n          Toggle (\"Bold\", isOn: self.$mBoldFor_") ;
+      result.appendString (enumerator_2567.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (")\n          Toggle (\"Italic\", isOn: self.$mItalicFor_") ;
+      result.appendString (enumerator_2567.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (")\n        }\n      }\n") ;
+      enumerator_2567.gotoNextObject () ;
+      index_2567_.increment () ;
+    }
+  }
+  result.appendString ("      LabeledContent (\"Lexical Error\") {\n        HStack {\n          ColorPicker (\"\", selection: self.$mColorFor_lexical_error).labelsHidden ()\n          Toggle (\"Bold\", isOn: self.$mBoldFor_lexical_error)\n          Toggle (\"Italic\", isOn: self.$mItalicFor_lexical_error)\n        }\n      }\n      LabeledContent (\"Template\") {\n        HStack {\n          ColorPicker (\"\", selection: self.$mColorFor_template).labelsHidden ()\n          Toggle (\"Bold\", isOn: self.$mBoldFor_template)\n          Toggle (\"Italic\", isOn: self.$mItalicFor_template)\n        }\n      }\n    }.padding (20)\n  }\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n}\n\n//--------------------------------------------------------------------------------------------------\n\nstruct LexicalStyleSnapShot {\n  fileprivate(set) var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))\n  fileprivate(set) var mLineHeight : Int = 12\n  fileprivate(set) var mDefaultColor : Color = .black\n") ;
+  GGS_u_33__32_ index_3982_ (0) ;
+  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_3982 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_3982.hasCurrentObject ()) {
+      result.appendString ("  fileprivate var mColorFor_") ;
+      result.appendString (enumerator_3982.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Color = .black\n  fileprivate var mBoldFor_") ;
+      result.appendString (enumerator_3982.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Bool = false\n  fileprivate var mItalicFor_") ;
+      result.appendString (enumerator_3982.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" : Bool = false\n") ;
+      enumerator_3982.gotoNextObject () ;
+      index_3982_.increment () ;
+    }
+  }
+  result.appendString ("  fileprivate var mColorFor_lexical_error : Color = .red\n  fileprivate var mBoldFor_lexical_error : Bool = false\n  fileprivate var mItalicFor_lexical_error : Bool = false\n  fileprivate var mColorFor_template : Color = .gray\n  fileprivate var mBoldFor_template : Bool = false\n  fileprivate var mItalicFor_template : Bool = false\n  fileprivate(set) var mAttributeArray = [[NSAttributedString.Key : Any]\?] ()\n}\n\n//--------------------------------------------------------------------------------------------------\n\nfunc stylesDidChange (_ ioLexicalStyleSnapShot : inout LexicalStyleSnapShot) -> Bool {\n  var didChange = false\n  let ud = UserDefaults.standard\n  if let s = ud.string (forKey: \"FontForSource\"), let v = CustomFont (rawValue: s) {\n    if ioLexicalStyleSnapShot.mFont != v {\n      ioLexicalStyleSnapShot.mFont = v\n      didChange = true\n    }\n  }\n  if let s = ud.string (forKey: \"LineHeightForSource\"), let v = Int (s) {\n    if ioLexicalStyleSnapShot.mLineHeight != v {\n      ioLexicalStyleSnapShot.mLineHeight = v\n      didChange = true\n    }\n  }\n  if let s = ud.string (forKey: \"ColorForSource\"), let v = Color (rawValue: s) {\n    if ioLexicalStyleSnapShot.mDefaultColor != v {\n      ioLexicalStyleSnapShot.mDefaultColor = v\n      didChange = true\n    }\n  }\n") ;
+  GGS_u_33__32_ index_5476_ (0) ;
+  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_5476 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_5476.hasCurrentObject ()) {
+      result.appendString ("  if let s = ud.string (forKey: \"ColorForSource-") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\"), let v = Color (rawValue: s) {\n    if ioLexicalStyleSnapShot.mColorFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" != v {\n      ioLexicalStyleSnapShot.mColorFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"BoldForSource-") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\") != nil {\n    let v = ud.bool (forKey: \"BoldForSource-") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\")\n    if ioLexicalStyleSnapShot.mBoldFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" != v {\n      ioLexicalStyleSnapShot.mBoldFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"ItalicForSource-") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\") != nil {\n    let v = ud.bool (forKey: \"ItalicForSource-") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\")\n    if ioLexicalStyleSnapShot.mItalicFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" != v {\n      ioLexicalStyleSnapShot.mItalicFor_") ;
+      result.appendString (enumerator_5476.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" = v\n      didChange = true\n    }\n  }\n") ;
+      enumerator_5476.gotoNextObject () ;
+      index_5476_.increment () ;
+    }
+  }
+  result.appendString ("    if let s = ud.string (forKey: \"ColorFor_lexical_error\"), let v = Color (rawValue: s) {\n    if ioLexicalStyleSnapShot.mColorFor_lexical_error != v {\n      ioLexicalStyleSnapShot.mColorFor_lexical_error = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"BoldFor_lexical_error\") != nil {\n    let v = ud.bool (forKey: \"BoldFor_lexical_error\")\n    if ioLexicalStyleSnapShot.mBoldFor_lexical_error != v {\n      ioLexicalStyleSnapShot.mBoldFor_lexical_error = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"ItalicFor_lexical_error\") != nil {\n    let v = ud.bool (forKey: \"ItalicFor_lexical_error\")\n    if ioLexicalStyleSnapShot.mItalicFor_lexical_error != v {\n      ioLexicalStyleSnapShot.mItalicFor_lexical_error = v\n      didChange = true\n    }\n  }\n  if let s = ud.string (forKey: \"ColorFor_template\"), let v = Color (rawValue: s) {\n    if ioLexicalStyleSnapShot.mColorFor_template != v {\n      ioLexicalStyleSnapShot.mColorFor_template = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"BoldFor_template\") != nil {\n    let v = ud.bool (forKey: \"BoldFor_template\")\n    if ioLexicalStyleSnapShot.mBoldFor_template != v {\n      ioLexicalStyleSnapShot.mBoldFor_template = v\n      didChange = true\n    }\n  }\n  if ud.string (forKey: \"ItalicFor_template\") != nil {\n    let v = ud.bool (forKey: \"ItalicFor_template\")\n    if ioLexicalStyleSnapShot.mItalicFor_template != v {\n      ioLexicalStyleSnapShot.mItalicFor_template = v\n      didChange = true\n    }\n  }\n//--- Update mAttributeArray \?\n  if didChange {\n    let fontManager = NSFontManager.shared\n    let boldFont = fontManager.convert (ioLexicalStyleSnapShot.mFont.nsFont, toHaveTrait: .boldFontMask)\n    let italicFont = fontManager.convert (ioLexicalStyleSnapShot.mFont.nsFont, toHaveTrait: .italicFontMask)\n    let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)\n    ioLexicalStyleSnapShot.mAttributeArray.removeAll (keepingCapacity: true)\n    var attributes = [NSAttributedString.Key : Any] ()\n") ;
+  GGS_u_33__32_ index_8339_ (0) ;
+  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
+    UpEnumerator_sortedLexicalStyleArray enumerator_8339 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
+    while (enumerator_8339.hasCurrentObject ()) {
+      result.appendString ("  //--- Attributes for ") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString ("\n    if ioLexicalStyleSnapShot.mColorFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" != ioLexicalStyleSnapShot.mDefaultColor {\n      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (")\n    }\n    if ioLexicalStyleSnapShot.mBoldFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" && ioLexicalStyleSnapShot.mItalicFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" {\n      attributes [.font] = boldItalicFont\n    }else if ioLexicalStyleSnapShot.mBoldFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" {\n      attributes [.font] = boldFont\n    }else if ioLexicalStyleSnapShot.mItalicFor_") ;
+      result.appendString (enumerator_8339.current_entry (HERE).readProperty_name ().stringValue ()) ;
+      result.appendString (" {\n      attributes [.font] = italicFont\n    }\n    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty \? nil : attributes)\n    attributes.removeAll (keepingCapacity: true)\n") ;
+      enumerator_8339.gotoNextObject () ;
+      index_8339_.increment () ;
+    }
+  }
+  result.appendString ("  //--- Lexical error\n    if ioLexicalStyleSnapShot.mColorFor_lexical_error != ioLexicalStyleSnapShot.mDefaultColor {\n      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_lexical_error)\n    }\n    if ioLexicalStyleSnapShot.mBoldFor_lexical_error && ioLexicalStyleSnapShot.mItalicFor_lexical_error {\n      attributes [.font] = boldItalicFont\n    }else if ioLexicalStyleSnapShot.mBoldFor_lexical_error {\n      attributes [.font] = boldFont\n    }else if ioLexicalStyleSnapShot.mItalicFor_lexical_error {\n      attributes [.font] = italicFont\n    }\n    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty \? nil : attributes)\n    attributes.removeAll (keepingCapacity: true)\n  //--- Template\n    if ioLexicalStyleSnapShot.mColorFor_template != ioLexicalStyleSnapShot.mDefaultColor {\n      attributes [.foregroundColor] = NSColor (ioLexicalStyleSnapShot.mColorFor_template)\n    }\n    if ioLexicalStyleSnapShot.mBoldFor_template && ioLexicalStyleSnapShot.mItalicFor_template {\n      attributes [.font] = boldItalicFont\n    }else if ioLexicalStyleSnapShot.mBoldFor_template {\n      attributes [.font] = boldFont\n    }else if ioLexicalStyleSnapShot.mItalicFor_template {\n      attributes [.font] = italicFont\n    }\n    ioLexicalStyleSnapShot.mAttributeArray.append (attributes.isEmpty \? nil : attributes)\n  }\n//---\n  return didChange\n}\n\n//--------------------------------------------------------------------------------------------------\n") ;
+  return GGS_string (result) ;
+}

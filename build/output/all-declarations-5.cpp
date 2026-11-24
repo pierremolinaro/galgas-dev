@@ -4472,7 +4472,7 @@ const GALGAS_TypeDescriptor * GGS_withLexiqueAST::staticTypeDescriptor (void) co
 //  Map type @extensionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -7090,7 +7090,7 @@ const GALGAS_TypeDescriptor * GGS_guiAnalysisContext::staticTypeDescriptor (void
 //  Map type @optionComponentMapForGeneration
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13734,6 +13734,51 @@ const GALGAS_TypeDescriptor * GGS_buildOptionTypeForGeneration::staticTypeDescri
 //Filewrapper 'buildOptionGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
+//--- All files of 'helpers' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const DirectoryWrapper gWrapperDirectory_2_buildOptionGenerationTemplate (
+  "helpers",
+  0,
+  gWrapperAllFiles_buildOptionGenerationTemplate_2,
+  0,
+  gWrapperAllDirectories_buildOptionGenerationTemplate_2
+) ;
+
+//--- All files of 'build' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_1 [2] = {
+  & gWrapperDirectory_2_buildOptionGenerationTemplate,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const DirectoryWrapper gWrapperDirectory_1_buildOptionGenerationTemplate (
+  "build",
+  0,
+  gWrapperAllFiles_buildOptionGenerationTemplate_1,
+  1,
+  gWrapperAllDirectories_buildOptionGenerationTemplate_1
+) ;
+
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_0 [1] = {
@@ -13742,7 +13787,8 @@ static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_0 [1] = {
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_0 [2] = {
+  & gWrapperDirectory_1_buildOptionGenerationTemplate,
   nullptr
 } ;
 
@@ -13752,7 +13798,7 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_buildOptionGenerationTemplate_0,
-  0,
+  1,
   gWrapperAllDirectories_buildOptionGenerationTemplate_0
 ) ;
 
@@ -14582,6 +14628,51 @@ const GALGAS_TypeDescriptor * GGS_buildOptionStringTypeForGeneration::staticType
 //Filewrapper 'buildOptionStringGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
+//--- All files of 'helpers' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const DirectoryWrapper gWrapperDirectory_2_buildOptionStringGenerationTemplate (
+  "helpers",
+  0,
+  gWrapperAllFiles_buildOptionStringGenerationTemplate_2,
+  0,
+  gWrapperAllDirectories_buildOptionStringGenerationTemplate_2
+) ;
+
+//--- All files of 'build' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_1 [2] = {
+  & gWrapperDirectory_2_buildOptionStringGenerationTemplate,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const DirectoryWrapper gWrapperDirectory_1_buildOptionStringGenerationTemplate (
+  "build",
+  0,
+  gWrapperAllFiles_buildOptionStringGenerationTemplate_1,
+  1,
+  gWrapperAllDirectories_buildOptionStringGenerationTemplate_1
+) ;
+
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_0 [1] = {
@@ -14590,7 +14681,8 @@ static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTe
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_0 [1] = {
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_0 [2] = {
+  & gWrapperDirectory_1_buildOptionStringGenerationTemplate,
   nullptr
 } ;
 
@@ -14600,7 +14692,7 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_buildOptionStringGenerationTemplate_0,
-  0,
+  1,
   gWrapperAllDirectories_buildOptionStringGenerationTemplate_0
 ) ;
 
@@ -15516,287 +15608,3 @@ const GALGAS_TypeDescriptor * GGS__5B_propertyInCollectionAST_5D_::staticTypeDes
   return & kTypeDescriptor_GALGAS__5B_propertyInCollectionAST_5D_ ;
 }
 
-//--------------------------------------------------------------------------------------------------
-//Filewrapper 'predefinedTypeGenerationTemplate'
-//--------------------------------------------------------------------------------------------------
-
-//--- All files of '' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_0 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of '' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [1] = {
-  nullptr
-} ;
-
-//--- Directory ''
-
-const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate (
-  "",
-  0,
-  gWrapperAllFiles_predefinedTypeGenerationTemplate_0,
-  0,
-  gWrapperAllDirectories_predefinedTypeGenerationTemplate_0
-) ;
-
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_predefinedTypeGenerationTemplate::GGS_predefinedTypeGenerationTemplate (void) :
-AC_GALGAS_root (),
-mIsValid (false) {
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_predefinedTypeGenerationTemplate GGS_predefinedTypeGenerationTemplate::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_predefinedTypeGenerationTemplate result = GGS_predefinedTypeGenerationTemplate () ;
-  result.mIsValid = true ;
-  return result ;
-} */
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper GGS_predefinedTypeGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
-  return GGS_filewrapper (gWrapperDirectory_0_predefinedTypeGenerationTemplate) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-/* void GGS_predefinedTypeGenerationTemplate::description (String & ioString,
-                                                           const int32_t ) const {
-  ioString.appendCString ("<filewrapper @predefinedTypeGenerationTemplate:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    ioString.appendCString (">") ;
-  }
-} */
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate predefinedTypesImplementation
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_predefinedTypesImplementation (const GGS_sortedLexicalStyleArray & in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n\n#include \"all-predefined-types.h\"\n\n//--------------------------------------------------------------------------------------------------\n// Lexical styles\n//--------------------------------------------------------------------------------------------------\n\nString styleNameForIndex (const uint32_t inStyleIndex) {\n  const char * array [") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).add_operation (GGS_u_33__32_ (uint32_t (3U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 10)).stringValue ()) ;
-  result.appendString ("] = {\n    \"\", // 0 (default style is denoted by an empty string)\n") ;
-  GGS_u_33__32_ index_597_ (0) ;
-  if (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.isValid ()) {
-    UpEnumerator_sortedLexicalStyleArray enumerator_597 (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY) ;
-    while (enumerator_597.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_597.current_entry (HERE).readProperty_name ().getter_cStringRepresentation (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
-      result.appendString (", // ") ;
-      result.appendString (enumerator_597.current_entry (HERE).readProperty_index ().getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 14)).stringValue ()) ;
-      result.appendString ("\n") ;
-      enumerator_597.gotoNextObject () ;
-      index_597_.increment () ;
-    }
-  }
-  result.appendString ("    \"LexicalError\", // ") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).add_operation (GGS_u_33__32_ (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 16)).stringValue ()) ;
-  result.appendString ("\n    \"Template\" // ") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).add_operation (GGS_u_33__32_ (uint32_t (2U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 17)).stringValue ()) ;
-  result.appendString ("\n  } ;\n  return (inStyleIndex < ") ;
-  result.appendString (in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY.getter_count (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 19)).add_operation (GGS_u_33__32_ (uint32_t (3U)), inCompiler COMMA_SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 19)).getter_string (SOURCE_FILE ("predefined_types.cpp.galgasTemplate", 19)).stringValue ()) ;
-  result.appendString (") \? array [inStyleIndex] : \"\" ;\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate primitiveTypesHeaderPrologue
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_primitiveTypesHeaderPrologue (Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#pragma once\n\n//--------------------------------------------------------------------------------------------------\n\n#include \"AC_GALGAS_root.h\"\n#include \"GALGAS_TypeDescriptor.h\"\n#include \"ComparisonResult.h\"\n#include \"ComparisonKind.h\"\n#include \"EnumerationOrder.h\"\n#include \"Enumerator_range.h\"\n#include \"String-class.h\"\n#include \"Timer.h\"\n#include \"AC_GALGAS_reference_class.h\"\n#include \"AC_GALGAS_enumAssociatedValues.h\"\n#include \"DirectedGraph.h\"\n#include \"AbstractStrongPtrClass.h\"\n#include \"PtrWeakReferenceProxy.h\"\n#include \"BoolCommandLineOption.h\"\n#include \"UIntCommandLineOption.h\"\n#include \"StringCommandLineOption.h\"\n#include \"PrologueEpilogue.h\"\n#include \"BigSigned.h\"\n#include \"GALGAS_GenericDictionary.h\"\n#include \"Compiler.h\"\n#include \"FileManager.h\"\n#include \"execution-mode.h\"\n#include \"filewrapper-utilities.h\"\n#include \"SharedGenericPtrWithValueSemantics.h\"\n\n//--------------------------------------------------------------------------------------------------\n// Lexical styles\n//--------------------------------------------------------------------------------------------------\n\nString styleNameForIndex (const uint32_t inStyleIndex) ;\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate sint_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_sint_5F_type (Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @s32 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_s_33__32_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: int32_t mS32 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline int32_t s32 (void) const { return mS32 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_s_33__32_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_s_33__32_ (const int32_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate s64_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_s_36__34__5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @s64 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_s_36__34_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: int64_t mS64 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline int64_t s64 (void) const { return mS64 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_s_36__34_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_s_36__34_ (const int64_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate u32_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_u_33__32__5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @u32 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_u_33__32_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: uint32_t mU32 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline uint32_t uintValue (void) const { return mU32 ; }\n  public: inline void increment (void) { mU32 += 1 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_u_33__32_ (void) ;\n\n//--------------------------------- Native constructors\n  public: GGS_u_33__32_ (const uint32_t inValue) ;\n  public: GGS_u_33__32_ (const bool inValid, const uint32_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate u8_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_u_38__5F_type (Compiler * /* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  @u8 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_u_38_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: uint8_t mU8 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline uint8_t u8 (void) const { return mU8 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_u_38_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_u_38_ (const uint8_t inValue) ;\n  public: GGS_u_38_ (const bool inValid, const uint8_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate u16_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_u_31__36__5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  @u16 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_u_31__36_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: uint16_t mU16 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline uint16_t u16 (void) const { return mU16 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_u_31__36_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_u_31__36_ (const uint16_t inValue) ;\n  public: GGS_u_31__36_ (const bool inValid, const uint16_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate u64_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_u_36__34__5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  @u64 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_u_36__34_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: uint64_t mU64 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline uint64_t u64 (void) const { return mU64 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_u_36__34_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_u_36__34_ (const uint64_t inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate bool_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_bool_5F_type (Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  @bool type\n//--------------------------------------------------------------------------------------------------\n\nenum class GalgasBool {boolNotValid, boolFalse, boolTrue} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_bool final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: bool mBoolValue ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }\n  public: inline bool boolValue (void) const { return mBoolValue ; }\n  public: GalgasBool boolEnum (void) const ;\n\n//--------------------------------- Drop\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n\n//--------------------------------- Default constructor\n  public: GGS_bool (void) ;\n\n//--------------------------------- Native constructors\n  public: GGS_bool (const bool inValue) ; // Is built\n  public: GGS_bool (const bool inBuilt, const bool inValue) ;\n\n//--------------------------------- Constructor for comparison result\n  public: GGS_bool (const ComparisonKind inComparisonKind,\n                    const ComparisonResult inComparisonResult) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate binaryset_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_binaryset_5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n// @binaryset type\n//--------------------------------------------------------------------------------------------------\n\n#include \"BinaryDecisionDiagram.h\"\n\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_binaryset final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: BinaryDecisionDiagram mBDD ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline BinaryDecisionDiagram bddValue (void) const { return mBDD ; }\n\n//--------------------------------- Default constructor\n  public: GGS_binaryset (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_binaryset (const BinaryDecisionDiagram & inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate location_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_location_5F_type (Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @location type\n//--------------------------------------------------------------------------------------------------\n\n#include \"LocationInSource.h\"\n#include \"SourceTextInString.h\"\n\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_location : public AC_GALGAS_root {\n//--------------------------------- Private properties\n  private: class InternalLocation * mInternalLocation ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;\n  public: VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n  public: LocationInSource startLocation (void) const ;\n  public: LocationInSource endLocation (void) const ;\n  public: SourceTextInString sourceText (void) const ;\n\n//--------------------------------- Default constructor\n  public: GGS_location (void) ;\n\n//--------------------------------- Handle copy\n  public: GGS_location (const GGS_location & inSource) ;\n  public: GGS_location & operator = (const GGS_location & inSource) ;\n\n//--------------------------------- Destructor\n  public: virtual ~ GGS_location (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_location (const LocationInSource & inStartLocationInSource,\n                        const LocationInSource & inEndLocationInSource,\n                        const SourceTextInString & inSourceText) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate data_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_data_5F_type (Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   Phase 1: @data enumerator\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_data final {\n  public: UpEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }\n\n  public: void gotoNextObject (void) { mIndex += 1 ; }\n\n//--- Current element access\n  public: class GGS_u_38_ current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: U8Data mArray ;\n  private: int32_t mIndex ;\n\n//--- No copy\n  private: UpEnumerator_data (const UpEnumerator_data &) = delete ;\n  private: UpEnumerator_data & operator = (const UpEnumerator_data &) = delete ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_data final {\n\n  public: DownEnumerator_data (const class GGS_data & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIndex >= 0 ; }\n\n  public: void gotoNextObject (void) { mIndex -= 1 ; }\n\n//--- Current element access\n  public: class GGS_u_38_ current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: U8Data mArray ;\n  private: int32_t mIndex ;\n\n//--- No copy\n  private: DownEnumerator_data (const DownEnumerator_data &) = delete ;\n  private: DownEnumerator_data & operator = (const DownEnumerator_data &) = delete ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//   @data type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_data final : public AC_GALGAS_root {\n\n//--------------------------------- Friends\n  friend class UpEnumerator_data ;\n  friend class DownEnumerator_data ;\n\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: U8Data mData ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline U8Data dataValue (void) const { return mData ; }\n\n//--------------------------------- Default constructor\n  public: GGS_data (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_data (const U8Data & inData) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate char_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_char_5F_type (Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @char type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_char final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: utf32 mCharValue ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline utf32 charValue (void) const { return mCharValue ; }\n\n//--------------------------------- Default constructor\n  public: GGS_char (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_char (const utf32 inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate f64_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_f_36__34__5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  @f64 type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_f_36__34_ final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: double mF64 ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mIsValid = false ; }\n  public: inline double f64 (void) const { return mF64 ; }\n\n//--------------------------------- Default constructor\n  public: GGS_f_36__34_ (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_f_36__34_ (const double inValue) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate string_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_string_5F_type (Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @string type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_string final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: bool mIsValid ;\n  private: String mString ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n  public: inline String stringValue (void) const { return mString ; }\n\n//--------------------------------- Default constructor\n  public: GGS_string (void) ;\n\n//--------------------------------- Constructor for making an empty string\n  public: static GGS_string makeEmptyString (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_string (const String & inValue) ;\n\n  #ifndef DO_NOT_GENERATE_CHECKINGS\n    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;\n  #endif\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate stringset_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_stringset_5F_type (Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n// Phase 1: @stringset\n//--------------------------------------------------------------------------------------------------\n//  SharedStringMapNode\n//--------------------------------------------------------------------------------------------------\n\nclass SharedStringMapNode final : public SharedObject {\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  private: OptionalSharedRef <SharedStringMapNode> mInfPtr ;\n  private: OptionalSharedRef <SharedStringMapNode> mSupPtr ;\n  private: int32_t mBalance ;\n  public: const String mKey ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  public: SharedStringMapNode (const String & inKey\n                               COMMA_LOCATION_ARGS) ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  public: virtual ~SharedStringMapNode (void) = default ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  public: SharedStringMapNode (const OptionalSharedRef <SharedStringMapNode> & inNodePtr\n                               COMMA_LOCATION_ARGS) ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n  // No copy\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  private: SharedStringMapNode (const SharedStringMapNode &) = delete ;\n  private: SharedStringMapNode & operator = (const SharedStringMapNode &) = delete ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  private: static void populateStringArray (const OptionalSharedRef <SharedStringMapNode> & inNode,\n                                            GenericArray <String> & ioStringArray) ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n  friend class SharedStringMapRoot ;\n\n  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//  SharedStringMap\n//--------------------------------------------------------------------------------------------------\n\nclass SharedStringMapRoot ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass SharedStringMap final {\n//--------------------------------- Private data members\n  private: OptionalSharedRef <SharedStringMapRoot> mSharedRoot ;\n\n//--------------------------------- Build\n  public: static SharedStringMap build (LOCATION_ARGS) ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const { return mSharedRoot.isNotNil () ; }\n\n//--------------------------------- Drop\n  public: void drop (void) ;\n\n//--------------------------------- Default constructor\n  public: SharedStringMap () ;\n\n//--------------------------------- Destructor\n  public: ~ SharedStringMap (void) ;\n\n//--------------------------------- Insulate\n  private: void insulate (LOCATION_ARGS) ;\n\n//--------------------------------- Handle copy\n  public: SharedStringMap (const SharedStringMap & inSource) ;\n  public: SharedStringMap & operator = (const SharedStringMap & inSource) ;\n\n//--------------------------------- Insert\n  public: void insert (OptionalSharedRef <SharedStringMapNode> & ioObject\n                       COMMA_LOCATION_ARGS) ;\n\n  public: void removeAndReturnRemovedNode (const String & inKey,\n                           OptionalSharedRef <SharedStringMapNode> & outRemovedNode\n                           COMMA_LOCATION_ARGS) ;\n\n  public: bool contains (const String & inKey) const ;\n\n  public: int32_t count (void) const ;\n\n  public: String rootNodeKey (void) const ;\n\n  public: GenericArray <String> sortedKeyArray (void) const ;\n\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass UpEnumerator_stringset final {\n  public: UpEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIndex < mStringArray.count () ; }\n\n  public: void gotoNextObject (void) { mIndex += 1 ; }\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: const GenericArray <String> mStringArray ;\n  private: int32_t mIndex ;\n\n//--- No copy\n  private: UpEnumerator_stringset (const UpEnumerator_stringset &) = delete ;\n  private: UpEnumerator_stringset & operator = (const UpEnumerator_stringset &) = delete ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nclass DownEnumerator_stringset final {\n\n  public: DownEnumerator_stringset (const class GGS_stringset & inEnumeratedObject) ;\n\n  public: bool hasCurrentObject (void) const { return mIndex >= 0 ; }\n\n  public: void gotoNextObject (void) { mIndex -= 1 ; }\n\n//--- Current element access\n  public: class GGS_string current_key (LOCATION_ARGS) const ;\n  public: class GGS_string current (LOCATION_ARGS) const ;\n\n//--- Private properties\n  private: const GenericArray <String> mStringArray ;\n  private: int32_t mIndex ;\n\n//--- No copy\n  private: DownEnumerator_stringset (const DownEnumerator_stringset &) = delete ;\n  private: DownEnumerator_stringset & operator = (const DownEnumerator_stringset &) = delete ;\n} ;\n\n//--------------------------------------------------------------------------------------------------\n//   @stringset type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_stringset final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: SharedStringMap mSharedMap ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedMap.isValid () ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override { mSharedMap.drop () ; }\n\n//--------------------------------- Default constructor\n  public: GGS_stringset (void) ;\n\n//--------------------------------- Virtual constructor\n  public: virtual ~ GGS_stringset (void) = default ;\n\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate filewrapper_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_filewrapper_5F_type (Compiler * /* inCompiler */
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   filewrapper GGS_filewrapper\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_filewrapper final : public AC_GALGAS_root {\n//--------------------------------- Private data members\n  private: const DirectoryWrapper * mRootDirectoryPtr ;\n  private: String mCurrentDirectory ;\n\n//--------------------------------- Accessors\n  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return nullptr != mRootDirectoryPtr ; }\n  public: VIRTUAL_IN_DEBUG inline void drop (void) override { mRootDirectoryPtr = nullptr ; }\n\n//--------------------------------- Default constructor\n  public: GGS_filewrapper (void) ;\n\n//--------------------------------- Native constructor\n  public: GGS_filewrapper (const DirectoryWrapper & inRootDirectory) ;\n\n//--------------------------------- Handle copy\n  public: GGS_filewrapper (const GGS_filewrapper & inSource) ;\n  public: GGS_filewrapper & operator = (const GGS_filewrapper & inSource) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate application_package
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_application_5F_package (Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
-  result.appendString (GGS_string ("@application package").stringValue ()) ;
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_application final {\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate bigint_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_bigint_5F_type (Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @bigint type\n//--------------------------------------------------------------------------------------------------\n \nclass GGS_bigint final : public AC_GALGAS_root {\n//--------------------------------- Private properties\n  private: bool mIsValid ;\n  private: BigSigned mValue ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const override { return mIsValid ; }\n  public: inline BigSigned bigintValue (void) const { return mValue ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override ;\n\n//--------------------------------- Default constructor\n  public: GGS_bigint (void) ;\n\n//--------------------------------- Constructor\n  public: GGS_bigint (const BigSigned & inValue) ;\n  public: GGS_bigint (const char * inDecimalString, Compiler * inCompiler COMMA_LOCATION_ARGS) ;\n\n//--------------------------------- Destructor\n  public: virtual ~ GGS_bigint (void) ;\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @predefinedTypeGenerationTemplate timer_type
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_predefinedTypeGenerationTemplate::class_func_timer_5F_type (Compiler * /* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//   @timer type\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_timer final : public AC_GALGAS_root {\n//--------------------------------- Private properties\n  private: bool mIsValid ;\n  private: Timer mTimer ;\n\n//--------------------------------- Accessors\n  public: inline bool isValid (void) const override { return mIsValid ; }\n  public: VIRTUAL_IN_DEBUG void drop (void) override { mIsValid = false ; }\n\n//--------------------------------- Default constructor\n  public: GGS_timer (void) ;\n\n") ;
-  return GGS_string (result) ;
-}

@@ -54,7 +54,6 @@ struct @unifiedTypeDefinition {
 
 enum @typeKindEnum #equatable {
   case classType
-  case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
   case structType
   case valueType
@@ -69,7 +68,6 @@ enum @typeKindEnum #equatable {
       case structType : result = "struct"
       case valueType : result = "value type"
       case packageType : result = "package"
-      case weakReferenceType (*) : result = "weak reference"
     end
   }
 

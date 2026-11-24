@@ -1188,7 +1188,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementat
 //  Map type @propertyIndexMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1644,7 +1644,7 @@ const GALGAS_TypeDescriptor * GGS_propertyIndexMap::staticTypeDescriptor (void) 
 //  Map type @nonterminalLabelMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -3763,7 +3763,7 @@ GGS__5B_unifiedTypeMapEntry_5D_ extensionGetter_listForKey (const GGS_descendant
 //  Map type @extensionMethodMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4138,7 +4138,7 @@ const GALGAS_TypeDescriptor * GGS_extensionMethodMapForGlobalCheckings::staticTy
 //  Map type @extensionSetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -4513,7 +4513,7 @@ const GALGAS_TypeDescriptor * GGS_extensionSetterMapForGlobalCheckings::staticTy
 //  Map type @extensionGetterMapForGlobalCheckings
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9161,203 +9161,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalStyleMap_2E_element_3F
 
 const GALGAS_TypeDescriptor * GGS_lexicalStyleMap_2E_element_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalStyleMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType::GGS_typeKindEnum_2E_weakReferenceType (void) :
-mProperty_referenceType () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType::GGS_typeKindEnum_2E_weakReferenceType (const GGS_typeKindEnum_2E_weakReferenceType & inSource) :
-mProperty_referenceType (inSource.mProperty_referenceType) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType & GGS_typeKindEnum_2E_weakReferenceType::operator = (const GGS_typeKindEnum_2E_weakReferenceType & inSource) {
-  mProperty_referenceType = inSource.mProperty_referenceType ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType GGS_typeKindEnum_2E_weakReferenceType::init_21_ (const GGS_unifiedTypeMapEntry & in_referenceType,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeKindEnum_2E_weakReferenceType result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_referenceType = in_referenceType ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum_2E_weakReferenceType::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType::GGS_typeKindEnum_2E_weakReferenceType (const GGS_unifiedTypeMapEntry & inOperand0) :
-mProperty_referenceType (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_typeKindEnum_2E_weakReferenceType::objectCompare (const GGS_typeKindEnum_2E_weakReferenceType & inOperand) const {
-   ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = mProperty_referenceType.objectCompare (inOperand.mProperty_referenceType) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typeKindEnum_2E_weakReferenceType::isValid (void) const {
-  return mProperty_referenceType.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum_2E_weakReferenceType::drop (void) {
-  mProperty_referenceType.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum_2E_weakReferenceType::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @typeKindEnum.weakReferenceType:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_referenceType.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typeKindEnum.weakReferenceType generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType ("typeKindEnum.weakReferenceType",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeKindEnum_2E_weakReferenceType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @typeKindEnum_2E_weakReferenceType_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType_3F_::GGS_typeKindEnum_2E_weakReferenceType_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType_3F_::GGS_typeKindEnum_2E_weakReferenceType_3F_ (const GGS_typeKindEnum_2E_weakReferenceType & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeKindEnum_2E_weakReferenceType_3F_ GGS_typeKindEnum_2E_weakReferenceType_3F_::init_nil (void) {
-  GGS_typeKindEnum_2E_weakReferenceType_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typeKindEnum_2E_weakReferenceType_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typeKindEnum_2E_weakReferenceType_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum_2E_weakReferenceType_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_typeKindEnum_2E_weakReferenceType () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_typeKindEnum_2E_weakReferenceType_3F_::objectCompare (const GGS_typeKindEnum_2E_weakReferenceType_3F_ & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mState < inOperand.mState) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mState > inOperand.mState) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else if (mState == OptionalState::valuated) {
-      result = mValue.objectCompare (inOperand.mValue) ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeKindEnum_2E_weakReferenceType_3F_::description (String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typeKindEnum.weakReferenceType? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType_3F_ ("typeKindEnum.weakReferenceType?",
-                                                                                          nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeKindEnum_2E_weakReferenceType_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeKindEnum_2E_weakReferenceType_3F_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -16474,5 +16277,235 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionMap_2E_element ("func
 
 const GALGAS_TypeDescriptor * GGS_functionMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @functionMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionMap_2E_element_3F_::GGS_functionMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionMap_2E_element_3F_::GGS_functionMap_2E_element_3F_ (const GGS_functionMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionMap_2E_element_3F_ GGS_functionMap_2E_element_3F_::init_nil (void) {
+  GGS_functionMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_functionMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_functionMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_functionMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_functionMap_2E_element_3F_::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @functionMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionMap_2E_element_3F_ ("functionMap.element?",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::GGS_lexiqueComponentMapForSemanticAnalysis_2E_element (void) :
+mProperty_lkey (),
+mProperty_mIsTemplate (),
+mProperty_mTerminalMap (),
+mProperty_mIndexingListAST (),
+mProperty_mTerminalListAST (),
+mProperty_mLexicalAttributeListAST (),
+mProperty_mLexicalListDeclarationListAST () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::GGS_lexiqueComponentMapForSemanticAnalysis_2E_element (const GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mIsTemplate (inSource.mProperty_mIsTemplate),
+mProperty_mTerminalMap (inSource.mProperty_mTerminalMap),
+mProperty_mIndexingListAST (inSource.mProperty_mIndexingListAST),
+mProperty_mTerminalListAST (inSource.mProperty_mTerminalListAST),
+mProperty_mLexicalAttributeListAST (inSource.mProperty_mLexicalAttributeListAST),
+mProperty_mLexicalListDeclarationListAST (inSource.mProperty_mLexicalListDeclarationListAST) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::operator = (const GGS_lexiqueComponentMapForSemanticAnalysis_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mIsTemplate = inSource.mProperty_mIsTemplate ;
+  mProperty_mTerminalMap = inSource.mProperty_mTerminalMap ;
+  mProperty_mIndexingListAST = inSource.mProperty_mIndexingListAST ;
+  mProperty_mTerminalListAST = inSource.mProperty_mTerminalListAST ;
+  mProperty_mLexicalAttributeListAST = inSource.mProperty_mLexicalAttributeListAST ;
+  mProperty_mLexicalListDeclarationListAST = inSource.mProperty_mLexicalListDeclarationListAST ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::init_21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                                                                               const GGS_bool & in_mIsTemplate,
+                                                                                                                                               const GGS_terminalMap & in_mTerminalMap,
+                                                                                                                                               const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
+                                                                                                                                               const GGS__5B_terminalDeclarationAST_5D_ & in_mTerminalListAST,
+                                                                                                                                               const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
+                                                                                                                                               const GGS__5B_lexicalListDeclarationAST_5D_ & in_mLexicalListDeclarationListAST,
+                                                                                                                                               Compiler * inCompiler
+                                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexiqueComponentMapForSemanticAnalysis_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mIsTemplate = in_mIsTemplate ;
+  result.mProperty_mTerminalMap = in_mTerminalMap ;
+  result.mProperty_mIndexingListAST = in_mIndexingListAST ;
+  result.mProperty_mTerminalListAST = in_mTerminalListAST ;
+  result.mProperty_mLexicalAttributeListAST = in_mLexicalAttributeListAST ;
+  result.mProperty_mLexicalListDeclarationListAST = in_mLexicalListDeclarationListAST ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::GGS_lexiqueComponentMapForSemanticAnalysis_2E_element (const GGS_lstring & inOperand0,
+                                                                                                              const GGS_bool & inOperand1,
+                                                                                                              const GGS_terminalMap & inOperand2,
+                                                                                                              const GGS__5B_indexingAST_5D_ & inOperand3,
+                                                                                                              const GGS__5B_terminalDeclarationAST_5D_ & inOperand4,
+                                                                                                              const GGS__5B_lexicalAttributeAST_5D_ & inOperand5,
+                                                                                                              const GGS__5B_lexicalListDeclarationAST_5D_ & inOperand6) :
+mProperty_lkey (inOperand0),
+mProperty_mIsTemplate (inOperand1),
+mProperty_mTerminalMap (inOperand2),
+mProperty_mIndexingListAST (inOperand3),
+mProperty_mTerminalListAST (inOperand4),
+mProperty_mLexicalAttributeListAST (inOperand5),
+mProperty_mLexicalListDeclarationListAST (inOperand6) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mIsTemplate.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mTerminalListAST.isValid () && mProperty_mLexicalAttributeListAST.isValid () && mProperty_mLexicalListDeclarationListAST.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mIsTemplate.drop () ;
+  mProperty_mTerminalMap.drop () ;
+  mProperty_mIndexingListAST.drop () ;
+  mProperty_mTerminalListAST.drop () ;
+  mProperty_mLexicalAttributeListAST.drop () ;
+  mProperty_mLexicalListDeclarationListAST.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::description (String & ioString,
+                                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lexiqueComponentMapForSemanticAnalysis.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mTerminalMap.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mTerminalListAST.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLexicalAttributeListAST.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLexicalListDeclarationListAST.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @lexiqueComponentMapForSemanticAnalysis.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element ("lexiqueComponentMapForSemanticAnalysis.element",
+                                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexiqueComponentMapForSemanticAnalysis_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexiqueComponentMapForSemanticAnalysis_2E_element ;
 }
 

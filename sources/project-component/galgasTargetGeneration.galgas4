@@ -829,8 +829,8 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "ComparisonResult.h",
         "ComparisonKind.h",
         "EnumerationOrder.h",
-        "GALGAS_GenericDictionary.h",
-        "GALGAS_GenericMapRoot.h",
+        "GenericDictionary.h",
+        "GenericMapRoot.h",
         "SharedGenericPtrWithValueSemantics.h",
         "SharedObject.cpp",
         "SharedObject.h"

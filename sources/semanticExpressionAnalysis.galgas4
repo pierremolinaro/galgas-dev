@@ -169,14 +169,14 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
       sourceType = sourceType.definition.superType
       ok = inTargetType == sourceType
     end
-    if not ok, let targetWeakRef = targetTypeDef.typeKind.getWeakReferenceType then
-      sourceType = inSourceType
-      ok = targetWeakRef.referenceType.typeName == sourceType.typeName
-      loop (@u32.max) while (not ok) & (not sourceType.definition.superType.isNull) do
-        sourceType = sourceType.definition.superType
-        ok = targetWeakRef.referenceType.typeName == sourceType.typeName
-      end
-    end
+//    if not ok, let targetWeakRef = targetTypeDef.typeKind.getWeakReferenceType then
+//      sourceType = inSourceType
+//      ok = targetWeakRef.referenceType.typeName == sourceType.typeName
+//      loop (@u32.max) while (not ok) & (not sourceType.definition.superType.isNull) do
+//        sourceType = sourceType.definition.superType
+//        ok = targetWeakRef.referenceType.typeName == sourceType.typeName
+//      end
+//    end
   //--- Check for a direct property access or for a conversion func
     if not ok, let prop = inSourceType.definition.propertyMap [targetTypeDef.typeName.string] then
       prop.mAccessControl.checkSetAccess (.none, inErrorLocation)

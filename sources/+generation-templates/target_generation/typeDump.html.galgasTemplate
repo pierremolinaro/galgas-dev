@@ -76,7 +76,6 @@ end
     case structType : %struct%
     case valueType : %value type%
     case packageType : %package%
-    case weakReferenceType (*) : %weak reference%
     end%
 </td></tr>
 %if not [[element definition].superType isNull] then

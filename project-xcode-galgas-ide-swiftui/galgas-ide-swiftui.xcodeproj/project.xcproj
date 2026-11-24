@@ -770,8 +770,6 @@
                 "galgas4-debug/compile-sources",
               ],
             },
-            { "path": "GALGAS_GenericDictionary.h" },
-            { "path": "GALGAS_GenericMapRoot.h" },
             { "path": "../strings/GALGAS_print.h" },
             {
               "path": "../strings/GALGAS_print.cpp",
@@ -795,7 +793,10 @@
                 "galgas4/compile-sources",
                 "galgas4-debug/compile-sources",
               ],
-            }, {
+            },
+            { "path": "GenericDictionary.h" },
+            { "path": "GenericMapRoot.h" },
+            {
               "path": "GGS_application.cpp",
               "target-membership": [
                 "galgas4/compile-sources",

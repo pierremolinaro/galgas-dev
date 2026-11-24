@@ -1,463 +1,5 @@
 #include "all-declarations-4.h"
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_row_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_::GGS__5B_row_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_::GGS__5B_row_5D_ (const GGS__5B_row_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_ & GGS__5B_row_5D_::operator = (const GGS__5B_row_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_ GGS__5B_row_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_row_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::plusPlusAssignOperation (const GGS_row & inValue
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS__5B_row_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_ GGS__5B_row_5D_::add_operation (const GGS__5B_row_5D_ & inOperand,
-                                                Compiler * /* inCompiler */
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_row_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::description (String & ioString,
-                                   const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@row], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::plusAssignOperation (const GGS__5B_row_5D_ inOperand,
-                                           Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_append (const GGS_row inValue,
-                                     Compiler * /* inCompiler */
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_insert (const GGS_row inValue,
-                                     const GGS_u_33__32_ inInsertionIndex,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_remove (GGS_row & outValue,
-                                     const GGS_u_33__32_ inRemoveIndex,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_removeFirst (GGS_row & outValue,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::setter_removeLast (GGS_row & outValue,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_ GGS__5B_row_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B_row_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex < int32_t (count ())) {
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_row_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }else if (startIndex == int32_t (count ())) {
-      result = GGS__5B_row_5D_::init (inCompiler COMMA_THERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_row_5D_ GGS__5B_row_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
-                                                 const GGS_u_33__32_ & inLength,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const {
-  GGS__5B_row_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_row_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_row_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row GGS__5B_row_5D_::getter_first (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  GGS_row result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row GGS__5B_row_5D_::getter_last (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  GGS_row result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row GGS__5B_row_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const {
-  GGS_row result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage = "read subscript call with index " ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_row_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
-                                           const GGS_row inValue,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "write subscript call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_row_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_row_5D_::DownEnumerator__5B_row_5D_ (const GGS__5B_row_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row DownEnumerator__5B_row_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row DownEnumerator__5B_row_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_row_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_row_5D_::UpEnumerator__5B_row_5D_ (const GGS__5B_row_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row UpEnumerator__5B_row_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_row UpEnumerator__5B_row_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[row] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_row_5D_ ("[row]",
-                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_row_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_row_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@productionRuleForGrammarAnalysis displayRule'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_displayRule (const GGS_productionRuleForGrammarAnalysis inObject,
-                                  const GGS_string constinArgument_inSyntaxComponentName,
-                                  GGS_string & ioArgument_ioGeneratedCode,
-                                  Compiler * inCompiler
-                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_currentNode_5062 = GGS_string ("P0start") ;
-  GGS__5B_row_5D_ temp_0 = GGS__5B_row_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
-  GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
-  temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_5062, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
-  temp_0.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
-  GGS__5B_row_5D_ var_rowArray_5099 = temp_0 ;
-  GGS_string var_arrows_5165 = GGS_string::makeEmptyString () ;
-  GGS_string var_arrowStyle_5191 = GGS_string ("--") ;
-  GGS_u_33__32_ var_column_5220 = GGS_u_33__32_ (uint32_t (1U)) ;
-  GGS_u_33__32_ var_unusedMaxUsedRowIndex_5242 = GGS_u_33__32_ (uint32_t (0U)) ;
-  const GGS_productionRuleForGrammarAnalysis temp_2 = inObject ;
-  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_5304 (temp_2.readProperty_mInstructionList ()) ;
-  while (enumerator_5304.hasCurrentObject ()) {
-    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5304.current (HERE).ptr (), var_rowArray_5099, GGS_u_33__32_ (uint32_t (0U)), var_column_5220, var_currentNode_5062, var_arrowStyle_5191, var_arrows_5165, var_unusedMaxUsedRowIndex_5242, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 121)) ;
-    enumerator_5304.gotoNextObject () ;
-  }
-  GGS_string var_lastNodeName_5692 ;
-  {
-  extensionSetter_appendRow (var_rowArray_5099, GGS_string ("[lastPoint] ()"), GGS_u_33__32_ (uint32_t (0U)), var_column_5220, var_lastNodeName_5692, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 133)) ;
-  }
-  var_arrows_5165.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_5062, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (var_lastNodeName_5692, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)) ;
-  const GGS_productionRuleForGrammarAnalysis temp_3 = inObject ;
-  GGS_location var_loc_5812 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)).add_operation (function_escapeForTex (var_loc_5812.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 139)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).add_operation (function_escapeForTex (var_loc_5812.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)) ;
-  DownEnumerator__5B_row_5D_ enumerator_6223 (var_rowArray_5099) ;
-  while (enumerator_6223.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 146)) ;
-    UpEnumerator__5B__32_string_5D_ enumerator_6289 (enumerator_6223.current (HERE).readProperty_columns ()) ;
-    while (enumerator_6289.hasCurrentObject ()) {
-      GalgasBool test_4 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, enumerator_6289.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-        if (GalgasBool::boolTrue == test_4) {
-          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 149)) ;
-        }
-      }
-      if (GalgasBool::boolFalse == test_4) {
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_6289.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (enumerator_6289.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)) ;
-      }
-      enumerator_6289.gotoNextObject () ;
-    }
-    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 154)) ;
-    enumerator_6223.gotoNextObject () ;
-  }
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 156)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_5165, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 158)) ;
-  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 159)) ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@productionRuleForGrammarAnalysis displayRuleVertically'
 //
@@ -5816,7 +5358,7 @@ const GALGAS_TypeDescriptor * GGS_usefulEntitiesGraph::staticTypeDescriptor (voi
 //  Map type @uselessEntityLocationMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6307,7 +5849,7 @@ const GALGAS_TypeDescriptor * GGS_uselessEntityLocationMap::staticTypeDescriptor
 //  Map type @headerCompositionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -6824,7 +6366,7 @@ const GALGAS_TypeDescriptor * GGS_headerCompositionMap::staticTypeDescriptor (vo
 //  Map type @headerRepartitionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -8515,20 +8057,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
           result.appendString ("package") ;
         }
         break ;
-      case GGS_typeKindEnum::Enumeration::enum_weakReferenceType :
-        {
-          GGS_unifiedTypeMapEntry extractedValue_1733__0 ;
-          callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 73)).readProperty_typeKind ().getAssociatedValuesFor_weakReferenceType (extractedValue_1733__0) ;
-          result.appendString ("weak reference") ;
-        }
-        break ;
       }
       result.appendString ("\n</td></tr>\n") ;
-      const GalgasBool test_1 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).readProperty_superType ().getter_isNull (SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).operator_not (SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).boolEnum () ;
+      const GalgasBool test_1 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 81)).readProperty_superType ().getter_isNull (SOURCE_FILE ("typeDump.html.galgasTemplate", 81)).operator_not (SOURCE_FILE ("typeDump.html.galgasTemplate", 81)).boolEnum () ;
       switch (test_1) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Superclass</td><td>") ;
-        result.appendString (function_linkForType (extensionGetter_definition (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 83)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 83)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 83)).stringValue ()) ;
+        result.appendString (function_linkForType (extensionGetter_definition (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).readProperty_superType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 82)).stringValue ()) ;
         result.appendString ("</td></tr>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8537,15 +8072,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
         break ;
       }
       result.appendString ("\n<tr class=\"result_line\"><td>Operators</td>\n  <td>\n    ") ;
-      const GalgasBool test_2 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 87)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 87)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 87)).boolEnum () ;
+      const GalgasBool test_2 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 86)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 86)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 86)).boolEnum () ;
       switch (test_2) {
       case GalgasBool::boolTrue : {
         result.appendString ("addition: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 88)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 87)).stringValue ()) ;
         result.appendString (" + ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 88)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 87)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 88)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 87)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8553,15 +8088,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_3 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 90)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 90)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 90)).boolEnum () ;
+      const GalgasBool test_3 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 89)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 89)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 89)).boolEnum () ;
       switch (test_3) {
       case GalgasBool::boolTrue : {
         result.appendString ("substraction: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 91)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 90)).stringValue ()) ;
         result.appendString (" - ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 91)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 90)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 91)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 90)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8569,15 +8104,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_4 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 93)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixMulOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 93)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 93)).boolEnum () ;
+      const GalgasBool test_4 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 92)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixMulOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 92)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 92)).boolEnum () ;
       switch (test_4) {
       case GalgasBool::boolTrue : {
         result.appendString ("multiplication: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 94)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 93)).stringValue ()) ;
         result.appendString (" * ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 94)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 93)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 94)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 93)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8585,15 +8120,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_5 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 96)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixDivOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 96)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 96)).boolEnum () ;
+      const GalgasBool test_5 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 95)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixDivOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 95)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 95)).boolEnum () ;
       switch (test_5) {
       case GalgasBool::boolTrue : {
         result.appendString ("division: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 97)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 96)).stringValue ()) ;
         result.appendString (" / ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 97)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 96)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 97)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 96)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8601,15 +8136,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_6 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 99)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixModOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 99)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 99)).boolEnum () ;
+      const GalgasBool test_6 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 98)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixModOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 98)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 98)).boolEnum () ;
       switch (test_6) {
       case GalgasBool::boolTrue : {
         result.appendString ("modulo: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 100)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 99)).stringValue ()) ;
         result.appendString (" <b>mod</b> ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 100)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 99)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 100)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 99)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8617,33 +8152,33 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_7 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 102)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixShiftOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 102)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 102)).boolEnum () ;
+      const GalgasBool test_7 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 101)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixShiftOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 101)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 101)).boolEnum () ;
       switch (test_7) {
       case GalgasBool::boolTrue : {
         result.appendString ("left shift: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 102)).stringValue ()) ;
         result.appendString (" &lt;&lt; ") ;
-        result.appendString (function_linkForType (GGS_string ("u32"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
+        result.appendString (function_linkForType (GGS_string ("u32"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 102)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 102)).stringValue ()) ;
         result.appendString ("<br><br>left shift: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 104)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
         result.appendString (" &lt;&lt; ") ;
-        result.appendString (function_linkForType (GGS_string ("bigint"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 104)).stringValue ()) ;
+        result.appendString (function_linkForType (GGS_string ("bigint"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
+        result.appendString (" &rarr; ") ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 103)).stringValue ()) ;
+        result.appendString ("<br><br>right shift: ") ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 104)).stringValue ()) ;
+        result.appendString (" &gt;&gt; ") ;
+        result.appendString (function_linkForType (GGS_string ("u32"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 104)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 104)).stringValue ()) ;
         result.appendString ("<br><br>right shift: ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 105)).stringValue ()) ;
         result.appendString (" &gt;&gt; ") ;
-        result.appendString (function_linkForType (GGS_string ("u32"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 105)).stringValue ()) ;
+        result.appendString (function_linkForType (GGS_string ("bigint"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 105)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 105)).stringValue ()) ;
-        result.appendString ("<br><br>right shift: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 106)).stringValue ()) ;
-        result.appendString (" &gt;&gt; ") ;
-        result.appendString (function_linkForType (GGS_string ("bigint"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 106)).stringValue ()) ;
-        result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 106)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8651,13 +8186,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_8 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 108)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixPlusOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 108)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 108)).boolEnum () ;
+      const GalgasBool test_8 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 107)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixPlusOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 107)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 107)).boolEnum () ;
       switch (test_8) {
       case GalgasBool::boolTrue : {
         result.appendString ("prefix +: + ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 109)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 108)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 109)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 108)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8665,13 +8200,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_9 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 111)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixMinusOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 111)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 111)).boolEnum () ;
+      const GalgasBool test_9 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 110)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixMinusOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 110)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 110)).boolEnum () ;
       switch (test_9) {
       case GalgasBool::boolTrue : {
         result.appendString ("prefix -: - ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 112)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 111)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 112)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 111)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8679,13 +8214,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_10 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 114)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 114)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 114)).boolEnum () ;
+      const GalgasBool test_10 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 113)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 113)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 113)).boolEnum () ;
       switch (test_10) {
       case GalgasBool::boolTrue : {
         result.appendString ("bit wise negation: ~ ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 115)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 114)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 115)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 114)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8693,15 +8228,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_11 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 117)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 117)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 117)).boolEnum () ;
+      const GalgasBool test_11 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 116)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 116)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 116)).boolEnum () ;
       switch (test_11) {
       case GalgasBool::boolTrue : {
         result.appendString ("boolean and: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 118)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 117)).stringValue ()) ;
         result.appendString (" &amp; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 118)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 117)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 118)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 117)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8709,15 +8244,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_12 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 120)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 120)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 120)).boolEnum () ;
+      const GalgasBool test_12 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 119)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 119)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 119)).boolEnum () ;
       switch (test_12) {
       case GalgasBool::boolTrue : {
         result.appendString ("inclusive or: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 121)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 120)).stringValue ()) ;
         result.appendString (" | ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 121)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 120)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 121)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 120)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8725,15 +8260,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_13 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 123)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 123)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 123)).boolEnum () ;
+      const GalgasBool test_13 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 122)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 122)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 122)).boolEnum () ;
       switch (test_13) {
       case GalgasBool::boolTrue : {
         result.appendString ("exclusive or: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 124)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 123)).stringValue ()) ;
         result.appendString (" ^ ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 124)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 123)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 124)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 123)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8741,13 +8276,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_14 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 126)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixNotOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 126)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 126)).boolEnum () ;
+      const GalgasBool test_14 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 125)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_prefixNotOperator (SOURCE_FILE ("typeDump.html.galgasTemplate", 125)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 125)).boolEnum () ;
       switch (test_14) {
       case GalgasBool::boolTrue : {
         result.appendString ("boolean negation: <b>not</b> ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 127)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 126)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 127)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 126)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8756,45 +8291,45 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
         break ;
       }
       result.appendString ("equality test: ") ;
-      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 129)).stringValue ()) ;
+      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 128)).stringValue ()) ;
       result.appendString (" == ") ;
+      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 128)).stringValue ()) ;
+      result.appendString (" &rarr; ") ;
+      result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 128)).stringValue ()) ;
+      result.appendString ("<br><br>inequality test: ") ;
+      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 129)).stringValue ()) ;
+      result.appendString (" != ") ;
       result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 129)).stringValue ()) ;
       result.appendString (" &rarr; ") ;
       result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 129)).stringValue ()) ;
-      result.appendString ("<br><br>inequality test: ") ;
-      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 130)).stringValue ()) ;
-      result.appendString (" != ") ;
-      result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 130)).stringValue ()) ;
-      result.appendString (" &rarr; ") ;
-      result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 130)).stringValue ()) ;
       result.appendString ("<br><br>") ;
-      const GalgasBool test_15 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 131)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("typeDump.html.galgasTemplate", 131)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 131)).boolEnum () ;
+      const GalgasBool test_15 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 130)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_comparable (SOURCE_FILE ("typeDump.html.galgasTemplate", 130)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 130)).boolEnum () ;
       switch (test_15) {
       case GalgasBool::boolTrue : {
         result.appendString ("lower than test: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 132)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 131)).stringValue ()) ;
         result.appendString (" &lt; ") ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 131)).stringValue ()) ;
+        result.appendString (" &rarr; ") ;
+        result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 131)).stringValue ()) ;
+        result.appendString ("<br><br>lower or equal test: ") ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 132)).stringValue ()) ;
+        result.appendString (" &lt;= ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 132)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
         result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 132)).stringValue ()) ;
-        result.appendString ("<br><br>lower or equal test: ") ;
+        result.appendString ("<br><br>greater than test: ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 133)).stringValue ()) ;
-        result.appendString (" &lt;= ") ;
+        result.appendString (" &gt; ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 133)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
         result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 133)).stringValue ()) ;
-        result.appendString ("<br><br>greater than test: ") ;
+        result.appendString ("<br><br>greater or equal test: ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 134)).stringValue ()) ;
-        result.appendString (" &gt; ") ;
+        result.appendString (" &gt;= ") ;
         result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 134)).stringValue ()) ;
         result.appendString (" &rarr; ") ;
         result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 134)).stringValue ()) ;
-        result.appendString ("<br><br>greater or equal test: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 135)).stringValue ()) ;
-        result.appendString (" &gt;= ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 135)).stringValue ()) ;
-        result.appendString (" &rarr; ") ;
-        result.appendString (function_linkForType (GGS_string ("bool"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 135)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8802,13 +8337,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_16 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 137)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 137)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 137)).boolEnum () ;
+      const GalgasBool test_16 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 136)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 136)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 136)).boolEnum () ;
       switch (test_16) {
       case GalgasBool::boolTrue : {
         result.appendString ("+= instruction: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 138)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 137)).stringValue ()) ;
         result.appendString (" += ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 138)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 137)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8816,13 +8351,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_17 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 140)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 140)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 140)).boolEnum () ;
+      const GalgasBool test_17 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 139)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 139)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 139)).boolEnum () ;
       switch (test_17) {
       case GalgasBool::boolTrue : {
         result.appendString ("-= instruction: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 141)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 140)).stringValue ()) ;
         result.appendString (" -= ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 141)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 140)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8830,13 +8365,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_18 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 143)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 143)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 143)).boolEnum () ;
+      const GalgasBool test_18 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 142)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 142)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 142)).boolEnum () ;
       switch (test_18) {
       case GalgasBool::boolTrue : {
         result.appendString ("*= instruction: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 144)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 143)).stringValue ()) ;
         result.appendString (" *= ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 144)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 143)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8844,13 +8379,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_19 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 146)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 146)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 146)).boolEnum () ;
+      const GalgasBool test_19 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 145)).readProperty_features ().getter_contains (GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("typeDump.html.galgasTemplate", 145)) COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 145)).boolEnum () ;
       switch (test_19) {
       case GalgasBool::boolTrue : {
         result.appendString ("/= instruction: ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 147)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 146)).stringValue ()) ;
         result.appendString (" /= ") ;
-        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 147)).stringValue ()) ;
+        result.appendString (function_linkForType (enumerator_1285.current_lkey (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 146)).stringValue ()) ;
         result.appendString ("<br><br>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8859,20 +8394,20 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
         break ;
       }
       result.appendString ("\n</td></tr>\n") ;
-      const GalgasBool test_20 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 152)).readProperty_enumerationDescriptorList ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 152)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_20 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 151)).readProperty_enumerationDescriptorList ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 151)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_20) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td><b>for</b> constants</td><td>") ;
-        GGS_u_33__32_ index_7430_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 154)).readProperty_enumerationDescriptorList ().isValid ()) {
-          UpEnumerator__5B_enumerationDescriptor_5D_ enumerator_7430 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 154)).readProperty_enumerationDescriptorList ()) ;
-          while (enumerator_7430.hasCurrentObject ()) {
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_7430.current_entry (HERE).readProperty_mEnumeratedType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 155)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 155)).stringValue ()) ;
+        GGS_u_33__32_ index_7380_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 153)).readProperty_enumerationDescriptorList ().isValid ()) {
+          UpEnumerator__5B_enumerationDescriptor_5D_ enumerator_7380 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 153)).readProperty_enumerationDescriptorList ()) ;
+          while (enumerator_7380.hasCurrentObject ()) {
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_7380.current_entry (HERE).readProperty_mEnumeratedType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 154)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 154)).stringValue ()) ;
             result.appendString (" ") ;
-            result.appendString (enumerator_7430.current_entry (HERE).readProperty_mEnumerationName ().stringValue ()) ;
+            result.appendString (enumerator_7380.current_entry (HERE).readProperty_mEnumerationName ().stringValue ()) ;
             result.appendString ("<br>") ;
-            enumerator_7430.gotoNextObject () ;
-            index_7430_.increment () ;
+            enumerator_7380.gotoNextObject () ;
+            index_7380_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -8882,11 +8417,11 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_21 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).readProperty_typeForEnumeratedElement ().getter_isNull (SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).operator_not (SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).boolEnum () ;
+      const GalgasBool test_21 = callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 158)).readProperty_typeForEnumeratedElement ().getter_isNull (SOURCE_FILE ("typeDump.html.galgasTemplate", 158)).operator_not (SOURCE_FILE ("typeDump.html.galgasTemplate", 158)).boolEnum () ;
       switch (test_21) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td><b>for</b> enumeration type</td><td>") ;
-        result.appendString (function_linkForType (extensionGetter_definition (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 160)).readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 160)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 160)).stringValue ()) ;
+        result.appendString (function_linkForType (extensionGetter_definition (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).readProperty_typeForEnumeratedElement (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 159)).stringValue ()) ;
         result.appendString ("</td></tr>") ;
         } break ;
       case GalgasBool::boolFalse : {
@@ -8894,43 +8429,43 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_22 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 163)).readProperty_classFunctionMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 163)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_22 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 162)).readProperty_classFunctionMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 162)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_22) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Class Functions</td><td>") ;
-        GGS_u_33__32_ index_8047_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 165)).readProperty_classFunctionMap ().isValid ()) {
-          UpEnumerator_classFunctionMap enumerator_8047 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 165)).readProperty_classFunctionMap ()) ;
-          while (enumerator_8047.hasCurrentObject ()) {
+        GGS_u_33__32_ index_7997_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 164)).readProperty_classFunctionMap ().isValid ()) {
+          UpEnumerator_classFunctionMap enumerator_7997 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 164)).readProperty_classFunctionMap ()) ;
+          while (enumerator_7997.hasCurrentObject ()) {
             result.appendString ("<b>class function</b> ") ;
-            result.appendString (enumerator_8047.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_u_33__32_ index_8129_ (0) ;
-            if (enumerator_8047.current_argumentTypeList (HERE).isValid ()) {
-              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_8129 (enumerator_8047.current_argumentTypeList (HERE)) ;
-              while (enumerator_8129.hasCurrentObject ()) {
+            result.appendString (enumerator_7997.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_u_33__32_ index_8079_ (0) ;
+            if (enumerator_7997.current_argumentTypeList (HERE).isValid ()) {
+              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_8079 (enumerator_7997.current_argumentTypeList (HERE)) ;
+              while (enumerator_8079.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"selecteur\">\?") ;
-                const GalgasBool test_23 = GGS_bool (ComparisonKind::notEqual, enumerator_8129.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_23 = GGS_bool (ComparisonKind::notEqual, enumerator_8079.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_23) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_8129.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).stringValue ()) ;
+                  result.appendString (enumerator_8079.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 168)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
                 case GalgasBool::boolNotValid :
                   break ;
                 }
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_8129.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 170)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 170)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_8079.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 169)).stringValue ()) ;
                 result.appendString ("</span> ") ;
-                result.appendString (enumerator_8129.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
-                enumerator_8129.gotoNextObject () ;
-                index_8129_.increment () ;
+                result.appendString (enumerator_8079.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
+                enumerator_8079.gotoNextObject () ;
+                index_8079_.increment () ;
               }
             }
             result.appendString (" &rarr; ") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8047.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 172)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 172)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_7997.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 171)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 171)).stringValue ()) ;
             result.appendString ("<br><br>") ;
-            enumerator_8047.gotoNextObject () ;
-            index_8047_.increment () ;
+            enumerator_7997.gotoNextObject () ;
+            index_7997_.increment () ;
           }
         }
         } break ;
@@ -8939,15 +8474,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_24 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).readProperty_getterMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 176)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_24 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 175)).readProperty_getterMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 175)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_24) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Getters</td><td>") ;
-        GGS_u_33__32_ index_8780_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 178)).readProperty_getterMap ().isValid ()) {
-          UpEnumerator_getterMap enumerator_8780 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 178)).readProperty_getterMap ()) ;
-          while (enumerator_8780.hasCurrentObject ()) {
-            switch (enumerator_8780.current_mKind (HERE).enumValue ()) {
+        GGS_u_33__32_ index_8730_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 177)).readProperty_getterMap ().isValid ()) {
+          UpEnumerator_getterMap enumerator_8730 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 177)).readProperty_getterMap ()) ;
+          while (enumerator_8730.hasCurrentObject ()) {
+            switch (enumerator_8730.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -8960,7 +8495,7 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               }
               break ;
             }
-            switch (enumerator_8780.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_8730.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -8996,16 +8531,16 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               break ;
             }
             result.appendString ("<b>getter</b> ") ;
-            result.appendString (enumerator_8780.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_u_33__32_ index_9233_ (0) ;
-            if (enumerator_8780.current_mArgumentTypeList (HERE).isValid ()) {
-              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_9233 (enumerator_8780.current_mArgumentTypeList (HERE)) ;
-              while (enumerator_9233.hasCurrentObject ()) {
+            result.appendString (enumerator_8730.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_u_33__32_ index_9183_ (0) ;
+            if (enumerator_8730.current_mArgumentTypeList (HERE).isValid ()) {
+              UpEnumerator__5B_functionSignatureElement_5D_ enumerator_9183 (enumerator_8730.current_mArgumentTypeList (HERE)) ;
+              while (enumerator_9183.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp; \?<span class=\"selecteur\">") ;
-                const GalgasBool test_25 = GGS_bool (ComparisonKind::notEqual, enumerator_9233.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_25 = GGS_bool (ComparisonKind::notEqual, enumerator_9183.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_25) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_9233.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 195)).stringValue ()) ;
+                  result.appendString (enumerator_9183.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 194)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -9013,18 +8548,18 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_9233.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 196)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 196)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_9183.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 195)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 195)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_9233.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
-                enumerator_9233.gotoNextObject () ;
-                index_9233_.increment () ;
+                result.appendString (enumerator_9183.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
+                enumerator_9183.gotoNextObject () ;
+                index_9183_.increment () ;
               }
             }
             result.appendString (" &rarr; ") ;
-            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8780.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 198)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 198)).stringValue ()) ;
+            result.appendString (function_linkForType (extensionGetter_definition (enumerator_8730.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 197)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 197)).stringValue ()) ;
             result.appendString ("<br><br>") ;
-            enumerator_8780.gotoNextObject () ;
-            index_8780_.increment () ;
+            enumerator_8730.gotoNextObject () ;
+            index_8730_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -9034,15 +8569,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_26 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 203)).readProperty_instanceMethodMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 203)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_26 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 202)).readProperty_instanceMethodMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 202)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_26) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Methods</td><td>") ;
-        GGS_u_33__32_ index_9893_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 205)).readProperty_instanceMethodMap ().isValid ()) {
-          UpEnumerator_instanceMethodMap enumerator_9893 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 205)).readProperty_instanceMethodMap ()) ;
-          while (enumerator_9893.hasCurrentObject ()) {
-            switch (enumerator_9893.current_mKind (HERE).enumValue ()) {
+        GGS_u_33__32_ index_9843_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 204)).readProperty_instanceMethodMap ().isValid ()) {
+          UpEnumerator_instanceMethodMap enumerator_9843 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 204)).readProperty_instanceMethodMap ()) ;
+          while (enumerator_9843.hasCurrentObject ()) {
+            switch (enumerator_9843.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -9055,7 +8590,7 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               }
               break ;
             }
-            switch (enumerator_9893.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_9843.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -9091,13 +8626,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               break ;
             }
             result.appendString ("<b>proc</b> ") ;
-            result.appendString (enumerator_9893.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_u_33__32_ index_10344_ (0) ;
-            if (enumerator_9893.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10344 (enumerator_9893.current_mParameterList (HERE)) ;
-              while (enumerator_10344.hasCurrentObject ()) {
+            result.appendString (enumerator_9843.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_u_33__32_ index_10294_ (0) ;
+            if (enumerator_9843.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10294 (enumerator_9843.current_mParameterList (HERE)) ;
+              while (enumerator_10294.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_10344.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+                switch (enumerator_10294.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -9121,10 +8656,10 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   }
                   break ;
                 }
-                const GalgasBool test_27 = GGS_bool (ComparisonKind::notEqual, enumerator_10344.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_27 = GGS_bool (ComparisonKind::notEqual, enumerator_10294.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_27) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_10344.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 228)).stringValue ()) ;
+                  result.appendString (enumerator_10294.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 227)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -9132,16 +8667,16 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_10344.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 229)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 229)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_10294.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 228)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 228)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_10344.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
-                enumerator_10344.gotoNextObject () ;
-                index_10344_.increment () ;
+                result.appendString (enumerator_10294.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
+                enumerator_10294.gotoNextObject () ;
+                index_10294_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_9893.gotoNextObject () ;
-            index_9893_.increment () ;
+            enumerator_9843.gotoNextObject () ;
+            index_9843_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -9151,15 +8686,15 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_28 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 236)).readProperty_setterMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 236)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_28 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 235)).readProperty_setterMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 235)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_28) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Setters</td><td>") ;
-        GGS_u_33__32_ index_11189_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 238)).readProperty_setterMap ().isValid ()) {
-          UpEnumerator_setterMap enumerator_11189 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 238)).readProperty_setterMap ()) ;
-          while (enumerator_11189.hasCurrentObject ()) {
-            switch (enumerator_11189.current_mKind (HERE).enumValue ()) {
+        GGS_u_33__32_ index_11139_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 237)).readProperty_setterMap ().isValid ()) {
+          UpEnumerator_setterMap enumerator_11139 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 237)).readProperty_setterMap ()) ;
+          while (enumerator_11139.hasCurrentObject ()) {
+            switch (enumerator_11139.current_mKind (HERE).enumValue ()) {
             case GGS_methodKind::Enumeration::invalid :
               break ;
             case GGS_methodKind::Enumeration::enum_definedAsMember :
@@ -9172,7 +8707,7 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               }
               break ;
             }
-            switch (enumerator_11189.current_mQualifier (HERE).enumValue ()) {
+            switch (enumerator_11139.current_mQualifier (HERE).enumValue ()) {
             case GGS_methodQualifier::Enumeration::invalid :
               break ;
             case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract :
@@ -9208,13 +8743,13 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
               break ;
             }
             result.appendString ("<b>setter</b> ") ;
-            result.appendString (enumerator_11189.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_u_33__32_ index_11642_ (0) ;
-            if (enumerator_11189.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_11642 (enumerator_11189.current_mParameterList (HERE)) ;
-              while (enumerator_11642.hasCurrentObject ()) {
+            result.appendString (enumerator_11139.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_u_33__32_ index_11592_ (0) ;
+            if (enumerator_11139.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_11592 (enumerator_11139.current_mParameterList (HERE)) ;
+              while (enumerator_11592.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_11642.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+                switch (enumerator_11592.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -9238,10 +8773,10 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   }
                   break ;
                 }
-                const GalgasBool test_29 = GGS_bool (ComparisonKind::notEqual, enumerator_11642.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_29 = GGS_bool (ComparisonKind::notEqual, enumerator_11592.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_29) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_11642.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 261)).stringValue ()) ;
+                  result.appendString (enumerator_11592.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 260)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -9249,16 +8784,16 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_11642.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 262)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 262)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_11592.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 261)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 261)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_11642.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
-                enumerator_11642.gotoNextObject () ;
-                index_11642_.increment () ;
+                result.appendString (enumerator_11592.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
+                enumerator_11592.gotoNextObject () ;
+                index_11592_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_11189.gotoNextObject () ;
-            index_11189_.increment () ;
+            enumerator_11139.gotoNextObject () ;
+            index_11139_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -9268,24 +8803,24 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
       case GalgasBool::boolNotValid :
         break ;
       }
-      const GalgasBool test_30 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 269)).readProperty_classMethodMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 269)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      const GalgasBool test_30 = GGS_bool (ComparisonKind::greaterThan, callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 268)).readProperty_classMethodMap ().getter_count (SOURCE_FILE ("typeDump.html.galgasTemplate", 268)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
       switch (test_30) {
       case GalgasBool::boolTrue : {
         result.appendString ("<tr class=\"result_line\"><td>Type procs</td><td>") ;
-        GGS_u_33__32_ index_12469_ (0) ;
-        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 271)).readProperty_classMethodMap ().isValid ()) {
-          UpEnumerator_classMethodMap enumerator_12469 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 271)).readProperty_classMethodMap ()) ;
-          while (enumerator_12469.hasCurrentObject ()) {
+        GGS_u_33__32_ index_12419_ (0) ;
+        if (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 270)).readProperty_classMethodMap ().isValid ()) {
+          UpEnumerator_classMethodMap enumerator_12419 (callExtensionGetter_definition ((const cPtr_unifiedTypeMapElementClass *) enumerator_1285.current_mElement (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 270)).readProperty_classMethodMap ()) ;
+          while (enumerator_12419.hasCurrentObject ()) {
             result.appendString ("<b>proc</b> @") ;
-            result.appendString (enumerator_12469.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            result.appendString (enumerator_12419.current_lkey (HERE).readProperty_string ().stringValue ()) ;
             result.appendString (" ") ;
-            result.appendString (enumerator_12469.current_lkey (HERE).readProperty_string ().stringValue ()) ;
-            GGS_u_33__32_ index_12557_ (0) ;
-            if (enumerator_12469.current_mParameterList (HERE).isValid ()) {
-              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12557 (enumerator_12469.current_mParameterList (HERE)) ;
-              while (enumerator_12557.hasCurrentObject ()) {
+            result.appendString (enumerator_12419.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+            GGS_u_33__32_ index_12507_ (0) ;
+            if (enumerator_12419.current_mParameterList (HERE).isValid ()) {
+              UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12507 (enumerator_12419.current_mParameterList (HERE)) ;
+              while (enumerator_12507.hasCurrentObject ()) {
                 result.appendString ("<br>&nbsp;&nbsp;&nbsp;&nbsp;") ;
-                switch (enumerator_12557.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+                switch (enumerator_12507.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
                 case GGS_formalArgumentPassingModeAST::Enumeration::invalid :
                   break ;
                 case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
@@ -9309,10 +8844,10 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   }
                   break ;
                 }
-                const GalgasBool test_31 = GGS_bool (ComparisonKind::notEqual, enumerator_12557.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+                const GalgasBool test_31 = GGS_bool (ComparisonKind::notEqual, enumerator_12507.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
                 switch (test_31) {
                 case GalgasBool::boolTrue : {
-                  result.appendString (enumerator_12557.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 281)).stringValue ()) ;
+                  result.appendString (enumerator_12507.current_entry (HERE).readProperty_mFormalSelector ().readProperty_string ().add_operation (GGS_string (":"), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 280)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
                   } break ;
@@ -9320,16 +8855,16 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
                   break ;
                 }
                 result.appendString ("</span>") ;
-                result.appendString (function_linkForType (extensionGetter_definition (enumerator_12557.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 282)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 282)).stringValue ()) ;
+                result.appendString (function_linkForType (extensionGetter_definition (enumerator_12507.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 281)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("typeDump.html.galgasTemplate", 281)).stringValue ()) ;
                 result.appendString (" ") ;
-                result.appendString (enumerator_12557.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
-                enumerator_12557.gotoNextObject () ;
-                index_12557_.increment () ;
+                result.appendString (enumerator_12507.current_entry (HERE).readProperty_mFormalArgumentName ().stringValue ()) ;
+                enumerator_12507.gotoNextObject () ;
+                index_12507_.increment () ;
               }
             }
             result.appendString ("<br><br>") ;
-            enumerator_12469.gotoNextObject () ;
-            index_12469_.increment () ;
+            enumerator_12419.gotoNextObject () ;
+            index_12419_.increment () ;
           }
         }
         result.appendString ("</td></tr>") ;
@@ -9350,7 +8885,7 @@ GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string
 //  Map type @unifiedTypeMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -9783,7 +9318,7 @@ const GALGAS_TypeDescriptor * GGS_unifiedTypeMap::staticTypeDescriptor (void) co
 //  Map type @lexicalExplicitTokenListMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -11316,7 +10851,7 @@ const GALGAS_TypeDescriptor * GGS__5B_lexicalRoutineFormalArgumentAST_5D_::stati
 //  Map type @lexicalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -12380,7 +11915,7 @@ const GALGAS_TypeDescriptor * GGS__5B_lexicalFunctionFormalArgumentAST_5D_::stat
 //  Map type @lexicalFunctionMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13019,7 +12554,7 @@ const GALGAS_TypeDescriptor * GGS_lexicalFunctionMap::staticTypeDescriptor (void
 //  Map type @lexicalTagMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
@@ -13414,7 +12949,7 @@ const GALGAS_TypeDescriptor * GGS_lexicalTagMap::staticTypeDescriptor (void) con
 //  Map type @terminalMap
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericMapRoot.h"
+#include "GenericMapRoot.h"
 
 //--------------------------------------------------------------------------------------------------
 
