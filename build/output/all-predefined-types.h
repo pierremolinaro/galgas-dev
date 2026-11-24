@@ -19,7 +19,6 @@
 #include "DirectedGraph.h"
 #include "AbstractStrongPtrClass.h"
 #include "PtrWeakReferenceProxy.h"
-#include "AC_GALGAS_weak_reference.h"
 #include "BoolCommandLineOption.h"
 #include "UIntCommandLineOption.h"
 #include "StringCommandLineOption.h"

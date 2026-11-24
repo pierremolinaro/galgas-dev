@@ -141,7 +141,6 @@
     "AbstractPtrClass.cpp",
     "AbstractStrongPtrClass.cpp",
     "PtrWeakReferenceProxy.cpp",
-    "AC_GALGAS_weak_reference.cpp",
     "scanner_actions.cpp",
     "GGS_application.cpp",
     "GGS_bigint.cpp",

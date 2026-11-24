@@ -170,7 +170,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/AbstractPtrClass.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/AbstractStrongPtrClass.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/PtrWeakReferenceProxy.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/AC_GALGAS_weak_reference.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/PtrObject.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/scanner_actions.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_application.cpp" />

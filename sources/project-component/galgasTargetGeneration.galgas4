@@ -767,8 +767,6 @@ proc updateGalgasTargets (?absoluteBuildDir: let @string inAbsoluteBuildDirector
         "AC_GALGAS_enumAssociatedValues.h",
         "AC_GALGAS_root.cpp",
         "AC_GALGAS_root.h",
-        "AC_GALGAS_weak_reference.cpp",
-        "AC_GALGAS_weak_reference.h",
         "AbstractPtrClass.cpp",
         "AbstractPtrClass.h",
         "AbstractStrongPtrClass.cpp",

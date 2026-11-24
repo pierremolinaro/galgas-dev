@@ -727,14 +727,6 @@
                 "galgas4-debug/compile-sources",
               ],
             },
-            { "path": "AC_GALGAS_weak_reference.h" },
-            {
-              "path": "AC_GALGAS_weak_reference.cpp",
-              "target-membership": [
-                "galgas4/compile-sources",
-                "galgas4-debug/compile-sources",
-              ],
-            },
             { "path": "C_galgas_class_inspector.h" },
             {
               "path": "C_galgas_class_inspector.cpp",

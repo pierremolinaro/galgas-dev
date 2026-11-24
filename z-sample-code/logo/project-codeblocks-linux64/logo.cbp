@@ -163,7 +163,6 @@
    <Unit filename="../build/libpm/galgas/AbstractPtrClass.cpp" />
    <Unit filename="../build/libpm/galgas/AbstractStrongPtrClass.cpp" />
    <Unit filename="../build/libpm/galgas/PtrWeakReferenceProxy.cpp" />
-   <Unit filename="../build/libpm/galgas/AC_GALGAS_weak_reference.cpp" />
    <Unit filename="../build/libpm/galgas/PtrObject.cpp" />
    <Unit filename="../build/libpm/galgas/scanner_actions.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_application.cpp" />
