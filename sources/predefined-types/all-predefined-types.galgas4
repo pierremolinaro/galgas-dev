@@ -96,7 +96,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
        ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
        ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
        ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-       ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+       ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.mPredefinedTypeName, .nowhere)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   }
@@ -198,7 +198,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       let @semanticContext _inSemanticContext,
       ?!@unifiedTypeMap ioTypeMap,
       let @predefinedTypes _inPredefinedTypes,
-      ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
+      ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
    let selfType = ioTypeMap.typeMapEntryForLKey (@(self.mPredefinedTypeName, .here))
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (@(self.mPredefinedTypeName, .here))
@@ -226,35 +226,35 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getClassFunctionMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                             !@classFunctionMap outClassFunctionMap ) {
+                             !@classFunctionMap outClassFunctionMap) {
     outClassFunctionMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getGetterMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                      !@getterMap outGetterMap ) {
+                      !@getterMap outGetterMap) {
     outGetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getSetterMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                      !@setterMap outSetterMap ) {
+                      !@setterMap outSetterMap) {
     outSetterMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getInstanceMethodMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                              !@instanceMethodMap outInstanceMethodMap ) {
+                              !@instanceMethodMap outInstanceMethodMap) {
     outInstanceMethodMap = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getClassMethodMap  (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                            !@classMethodMap outClassMethodMap ) {
+                            !@classMethodMap outClassMethodMap) {
     outClassMethodMap = @()
   }
 

@@ -306,7 +306,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
-                                     !@string outHeader ) {
+                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = @arrayTypeGenerationTemplate.arrayTypeHeader1 (
       selfTypeDefinition.typeName.string,
@@ -336,7 +336,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendSpecificImplementation  (let @unifiedTypeMap _inTypeMap,
                                           ?!@stringset ioInclusionSet,
-                                          !@string outImplementation ) {
+                                          !@string outImplementation) {
     self.elementType.addHeaderFileName (!?ioInclusionSet)
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition

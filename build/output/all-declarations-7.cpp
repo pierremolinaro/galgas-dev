@@ -12003,10 +12003,10 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_typeNameFormalPar
   GGS_string result ; // Returned variable
   result = GGS_string ("init") ;
   const GGS__5B_typeNameFormalParameterName_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_typeNameFormalParameterName_5D_ enumerator_7556 (temp_0) ;
-  while (enumerator_7556.hasCurrentObject ()) {
-    result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_7556.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas4", 196)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas4", 196)) ;
-    enumerator_7556.gotoNextObject () ;
+  UpEnumerator__5B_typeNameFormalParameterName_5D_ enumerator_7549 (temp_0) ;
+  while (enumerator_7549.hasCurrentObject ()) {
+    result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_7549.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas4", 196)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas4", 196)) ;
+    enumerator_7549.gotoNextObject () ;
   }
 //---
   return result ;

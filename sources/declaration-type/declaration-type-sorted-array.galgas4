@@ -374,7 +374,7 @@ final class @sortedArrayTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                               ?!@stringset ioInclusionSet,
-                                              !@string outImplementation ) {
+                                              !@string outImplementation) {
     self.elementType.addHeaderFileName (!?ioInclusionSet)
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition

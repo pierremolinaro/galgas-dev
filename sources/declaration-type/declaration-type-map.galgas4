@@ -23,7 +23,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $map$
     $@type$ (?let @lstring mapTypeName) indexing (mapDefinition, structDefinition ".element")
     let @bool isEquatable
@@ -76,7 +76,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_method_declaration> (?![@mapAccessorAST] ioMapSearchMethodListAST ) {
+  rule <search_method_declaration> (?![@mapAccessorAST] ioMapSearchMethodListAST) {
     $#searchMethod$
     $identifier$ (?let @lstring methodName)
     $#errorMessage$
@@ -86,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_subcript_declaration> (?![@mapAccessorAST] ioMapSearchSubcriptListAST ) {
+  rule <search_subcript_declaration> (?![@mapAccessorAST] ioMapSearchSubcriptListAST) {
     $#searchSubscript$
     $identifier$ (?let @lstring methodName)
     $#errorMessage$
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_setter_declaration> (?![@mapAccessorAST] ioMapRemoveMethodListAST ) {
+  rule <remove_setter_declaration> (?![@mapAccessorAST] ioMapRemoveMethodListAST) {
     $#removeSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -106,7 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_setter_declaration> (?![@mapAccessorAST] ioMapReplaceMethodListAST ) {
+  rule <replace_setter_declaration> (?![@mapAccessorAST] ioMapReplaceMethodListAST) {
     $#replaceSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -116,14 +116,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <insert_or_replace_declaration> (?![@location] ioInsertOrReplaceDeclarationListAST ) {
+  rule <insert_or_replace_declaration> (?![@location] ioInsertOrReplaceDeclarationListAST) {
     $#insertOrReplaceSetter$
     ioInsertOrReplaceDeclarationListAST ++= .here
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> (?![@insertSetterAST] ioMapMethodList ) {
+  rule <map_insert_setter_declaration> (?![@insertSetterAST] ioMapMethodList) {
     $#insertSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -195,7 +195,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
+  override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations) {
     var structAttributeList = [@propertyInCollectionAST] ()
     structAttributeList ++= @(
       !mutability: .constantProperty,
@@ -237,7 +237,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.mMapTypeName, self.mMapTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mPropertyList do
@@ -254,8 +254,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
     let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext
-  ) {
+    ?!@semanticContext ioSemanticContext) {
   //--- string type index
     !?ioTypeMap.makeEntryFromString ("string", ?let stringTypeIndex)
   //--- lstring type index

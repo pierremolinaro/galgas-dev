@@ -21,7 +21,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $struct$
     $@type$ (?let @lstring structTypeName) indexing (structDefinition)
     let @structComparison comparison
@@ -87,8 +87,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
-  ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.structTypeName, self.structTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mStructurePropertyListAST do
@@ -231,7 +230,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
               let @semanticContext inSemanticContext,
               ?!@unifiedTypeMap ioTypeMap,
               let @predefinedTypes inPredefinedTypes,
-              ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
+              ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
     let structType = ioTypeMap.typeMapEntryForLKey (self.structTypeName)
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (self.structTypeName)
   //---
@@ -391,8 +390,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
   override proc appendSpecificImplementation
     (let @unifiedTypeMap _inTypeMap,
     ?!@stringset ioInclusionSet,
-    !@string outImplementation
-  ) {
+    !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outImplementation = @structureGenerationTemplate.structTypeSpecificImplementation (

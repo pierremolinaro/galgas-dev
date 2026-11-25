@@ -23,7 +23,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     let @bool isAbstract
     let @bool clonable
     let @bool finalClass
@@ -128,7 +128,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
             ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
             ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
             ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-            ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+            ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.mClassTypeName, self.mClassTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- Add edge from super class
@@ -158,8 +158,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
     let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext
-  ) {
+    ?!@semanticContext ioSemanticContext) {
     var @getterMap getterMap
     var @setterMap setterMap
     var @instanceMethodMap instanceMethodMap
@@ -366,7 +365,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
                 let @semanticContext inSemanticContext,
                 ?!@unifiedTypeMap ioTypeMap,
                 let @predefinedTypes inPredefinedTypes,
-                ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
+                ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mClassTypeName)
     !?ioUsefulEntitiesGraph.addNode (classTypeNameForUsefulness, classTypeNameForUsefulness)
@@ -513,7 +512,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
-                                     !@string outHeader ) {
+                                     !@string outHeader) {
     if not self.mSuperClass.isNull then
       self.mSuperClass.addHeaderFileName (!?ioInclusionSet)
     end
@@ -548,7 +547,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendDeclaration2 (let @string inOutputDirectory,
                                      ?!@stringset ioInclusionSet,
-                                     !@string outHeader ) {
+                                     !@string outHeader) {
     for property in self.mCurrentTypedAttributeList do
       property.typeEntry.addHeaderFileName (!?ioInclusionSet)
     end
@@ -615,7 +614,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                ?!@stringset ioInclusionSet,
-                                               !@string outImplementation ) {
+                                               !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
 //    let at = self.mAllTypedAttributeList.subListWithRange (

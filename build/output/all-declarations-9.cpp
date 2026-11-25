@@ -10068,6 +10068,517 @@ const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST::staticTypeD
 }
 
 //--------------------------------------------------------------------------------------------------
+//     L E X I Q U E
+//--------------------------------------------------------------------------------------------------
+
+#include "utf32.h"
+#include "scanner_actions.h"
+#include "LexiqueIntrospection.h"
+
+//--------------------------------------------------------------------------------------------------
+
+Lexique_galgasTemplateScanner::Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
+                                                              const String & inSourceFileName
+                                                              COMMA_LOCATION_ARGS) :
+Lexique_galgasScanner_34_ (inCallerCompiler, inSourceFileName COMMA_THERE),
+mMatchedTemplateDelimiterIndex (-1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+Lexique_galgasTemplateScanner::Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
+                                                              const String & inSourceString,
+                                                              const String & inStringForError
+                                                              COMMA_LOCATION_ARGS) :
+Lexique_galgasScanner_34_ (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
+mMatchedTemplateDelimiterIndex (-1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//                      U N I C O D E    S T R I N G S
+//--------------------------------------------------------------------------------------------------
+
+//--- Unicode string for '$\n$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__A_ = {
+  utf32 (10),
+} ;
+
+//--- Unicode string for '$%$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__25_ = {
+  utf32 ('%'),
+} ;
+
+//--- Unicode string for '$\\$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_ = {
+  utf32 ('\\'),
+} ;
+
+//--- Unicode string for '$\\%$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__25_ = {
+  utf32 ('\\'),
+  utf32 ('%'),
+} ;
+
+//--- Unicode string for '$\\\\$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C__5C_ = {
+  utf32 ('\\'),
+  utf32 ('\\'),
+} ;
+
+//--- Unicode string for '$\\n$'
+static const std::initializer_list <utf32> kUnicodeString_galgasTemplateScanner__5C_n = {
+  utf32 ('\\'),
+  utf32 ('n'),
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Delimiters
+//--------------------------------------------------------------------------------------------------
+
+static const TemplateDelimiter galgasTemplateScanner_kTemplateDefinitionArray [1] = {
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__25_, 1, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true)
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//                           Template Replacements
+//--------------------------------------------------------------------------------------------------
+
+static const TemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [3] = {
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__25_, 2, kUnicodeString_galgasTemplateScanner__25_, 1, nullptr, true),
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_n, 2, kUnicodeString_galgasTemplateScanner__A_, 1, nullptr, true),
+  TemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__5C_, 2, kUnicodeString_galgasTemplateScanner__5C_, 1, nullptr, true)
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//            Terminal Symbols as end of script in template mark
+//--------------------------------------------------------------------------------------------------
+
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [170] = {
+  false /* identifier */,
+  false /* double.xxx */,
+  false /* literalInt */,
+  false /* 'char' */,
+  false /* $terminal$ */,
+  false /* comment */,
+  false /* commentMark */,
+  false /* @type */,
+  false /* ?selector: */,
+  false /* ? */,
+  false /* ?!selector: */,
+  false /* ?! */,
+  false /* !selector: */,
+  false /* ! */,
+  false /* !?selector: */,
+  false /* !? */,
+  false /* < */,
+  false /* <= */,
+  false /* << */,
+  false /* <non_terminal> */,
+  false /* "string" */,
+  false /* abstract */,
+  false /* after */,
+  false /* as */,
+  false /* before */,
+  false /* between */,
+  false /* block */,
+  false /* optionset */,
+  false /* case */,
+  false /* class */,
+  false /* default */,
+  false /* do */,
+  false /* drop */,
+  false /* else */,
+  false /* elsif */,
+  false /* end */,
+  false /* enum */,
+  false /* error */,
+  false /* extension */,
+  false /* extern */,
+  false /* false */,
+  false /* fileprivate */,
+  false /* filewrapper */,
+  false /* final */,
+  false /* for */,
+  false /* fixit */,
+  false /* func */,
+  false /* grammar */,
+  false /* graph */,
+  false /* guard */,
+  false /* gui */,
+  false /* if */,
+  false /* in */,
+  false /* indexing */,
+  false /* init */,
+  false /* is */,
+  false /* label */,
+  false /* let */,
+  false /* lexique */,
+  false /* list */,
+  false /* loop */,
+  false /* map */,
+  false /* mutating */,
+  false /* nil */,
+  false /* not */,
+  false /* on */,
+  false /* or */,
+  false /* override */,
+  false /* package */,
+  false /* public */,
+  false /* protected */,
+  false /* private */,
+  false /* proc */,
+  false /* project */,
+  false /* repeat */,
+  false /* rewind */,
+  false /* rule */,
+  false /* select */,
+  false /* self */,
+  false /* send */,
+  false /* sortedarray */,
+  false /* spoil */,
+  false /* super */,
+  false /* struct */,
+  false /* style */,
+  false /* switch */,
+  false /* syntax */,
+  false /* tag */,
+  false /* template */,
+  false /* then */,
+  false /* true */,
+  false /* var */,
+  false /* warning */,
+  false /* while */,
+  false /* with */,
+  false /* #binaryFileExtension */,
+  false /* #clonable */,
+  false /* #comparable */,
+  false /* #equatable */,
+  false /* #errorMessage */,
+  false /* #from */,
+  false /* #generatedInSeparateFile */,
+  false /* #initArgLabel */,
+  false /* #insertAfter */,
+  false /* #insertBefore */,
+  false /* #insertOrReplaceSetter */,
+  false /* #insertSetter */,
+  false /* #nonAtomicSelection */,
+  false /* #preserved */,
+  false /* #replaceBy */,
+  false /* #remove */,
+  false /* #removeSetter */,
+  false /* #replaceSetter */,
+  false /* #searchMethod */,
+  false /* #searchSubscript */,
+  false /* #searchString */,
+  false /* #templateEndMark */,
+  false /* #templateReplacement */,
+  false /* #textFileExtension */,
+  false /* #translatable */,
+  false /* #unused */,
+  false /* #usefull */,
+  false /* * */,
+  false /* , */,
+  false /* + */,
+  false /* &+ */,
+  false /* &- */,
+  false /* &* */,
+  false /* &/ */,
+  false /* > */,
+  false /* ; */,
+  false /* : */,
+  false /* :> */,
+  false /* - */,
+  false /* ( */,
+  false /* ) */,
+  false /* -> */,
+  false /* == */,
+  false /* = */,
+  false /* && */,
+  false /* % */,
+  false /* [ */,
+  false /* ] */,
+  false /* ++= */,
+  false /* . */,
+  false /* @( */,
+  false /* ... */,
+  false /* ..< */,
+  false /* += */,
+  false /* -= */,
+  false /* *= */,
+  false /* /= */,
+  false /* &= */,
+  false /* |= */,
+  false /* ^= */,
+  false /* / */,
+  false /* != */,
+  false /* >= */,
+  false /* & */,
+  false /* { */,
+  false /* } */,
+  false /* || */,
+  false /* | */,
+  false /* ^ */,
+  false /* >> */,
+  false /* ~ */,
+  false /* === */,
+  false /* !== */,
+  false /* ?^ */,
+  false /* !^ */
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//               P A R S E    L E X I C A L    T O K E N
+//--------------------------------------------------------------------------------------------------
+
+bool Lexique_galgasTemplateScanner::parseLexicalToken (void) {
+  cTokenFor_galgasTemplateScanner token ;
+  token.mTokenCode = -1 ;
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+    if ((mMatchedTemplateDelimiterIndex >= 0)
+        && (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
+        && (mCurrentChar.u32 () != '\0')) {
+      const bool foundEndDelimitor = testForInputUTF32String (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
+                                                               true) ;
+      if (foundEndDelimitor) {
+        mMatchedTemplateDelimiterIndex = -1 ;
+      }
+    }
+    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar.u32 () != '\0')) {
+      int32_t replacementIndex = 0 ;
+      while (replacementIndex >= 0) {
+        replacementIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateReplacementArray, 3) ;
+        if (replacementIndex >= 0) {
+          if (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction == nullptr) {
+            token.mTemplateStringBeforeToken.appendString (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString) ;
+          }else{
+            String s ;
+            while (notTestForInputUTF32String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString,
+                                               kEndOfSourceLexicalErrorMessage
+                                               COMMA_HERE)) {
+              s.appendChar (previousChar ()) ;
+            }
+            galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
+          }
+        }
+      }
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateDefinitionArray, 1) ;
+      if (mMatchedTemplateDelimiterIndex < 0) {
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
+        advance () ;
+      }
+    }
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (mCurrentChar.u32 () != '\0')) {
+      internalParseLexicalToken (token) ;
+    }
+    if ((token.mTokenCode > 0) && galgasTemplateScanner_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
+      mMatchedTemplateDelimiterIndex = -1 ;
+    }
+  }
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = 0 ;
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//                         I N T R O S P E C T I O N
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_string_5D_ Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
+  GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
+  result.plusPlusAssignOperation (GGS_string ("identifier") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("double.xxx") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("literalInt") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("'char'") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("$terminal$") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("comment") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("commentMark") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("@type") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\?selector:") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\?") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\?!selector:") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\?!") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!selector:") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!\?selector:") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!\?") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("<") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("<=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("<<") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("<non_terminal>") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\"string\"") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("abstract") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("after") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("as") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("before") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("between") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("block") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("optionset") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("case") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("class") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("default") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("do") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("drop") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("else") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("elsif") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("end") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("enum") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("error") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("extension") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("extern") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("false") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("fileprivate") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("filewrapper") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("final") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("for") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("fixit") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("func") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("grammar") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("graph") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("guard") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("gui") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("if") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("in") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("indexing") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("init") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("is") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("label") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("let") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("lexique") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("list") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("loop") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("map") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("mutating") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("nil") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("not") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("on") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("or") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("override") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("package") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("public") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("protected") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("private") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("proc") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("project") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("repeat") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("rewind") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("rule") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("select") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("self") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("send") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("sortedarray") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("spoil") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("super") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("struct") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("style") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("switch") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("syntax") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("tag") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("template") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("then") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("true") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("var") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("warning") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("while") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("with") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#binaryFileExtension") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#clonable") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#comparable") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#equatable") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#errorMessage") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#from") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#generatedInSeparateFile") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#initArgLabel") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#insertAfter") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#insertBefore") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#insertOrReplaceSetter") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#insertSetter") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#nonAtomicSelection") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#preserved") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#replaceBy") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#remove") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#removeSetter") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#replaceSetter") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#searchMethod") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#searchSubscript") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#searchString") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#templateEndMark") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#templateReplacement") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#textFileExtension") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#translatable") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#unused") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("#usefull") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("*") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (",") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("+") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&+") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&-") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&*") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&/") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (">") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (";") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (":") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (":>") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("-") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("(") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (")") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("->") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("==") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&&") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("%") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("[") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("]") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("++=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (".") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("@(") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("...") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("..<") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("+=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("-=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("*=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("/=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("|=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("^=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("/") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (">=") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("&") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("{") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("}") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("||") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("|") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("^") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string (">>") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("~") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("===") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!==") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("\?^") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("!^") COMMA_HERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordLists_galgasTemplateScanner (GenericUniqueArray <String> & /* ioList */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void getKeywordsForIdentifier_galgasTemplateScanner (const String & /* inIdentifier */,
+                                                            bool & /* ioFound */,
+                                                            GenericUniqueArray <String> & /* ioList */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static LexiqueIntrospection lexiqueIntrospection_galgasTemplateScanner
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForIdentifier_galgasTemplateScanner) ;
+
+//--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionSwitchBranchAST::GGS_templateInstructionSwitchBranchAST (void) :
 mProperty_constantList (),
@@ -16109,524 +16620,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateStrictSupTestAST ("te
 
 const GALGAS_TypeDescriptor * GGS_templateStrictSupTestAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateStrictSupTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateSupOrEqualTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateSupOrEqualTestAST::objectCompare (const GGS_templateSupOrEqualTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST::GGS_templateSupOrEqualTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST GGS_templateSupOrEqualTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateSupOrEqualTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateSupOrEqualTestAST (inCompiler COMMA_THERE)) ;
-  object->templateSupOrEqualTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateSupOrEqualTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateSupOrEqualTestAST::
-templateSupOrEqualTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                            const GGS_templateExpressionAST & in_mRightExpression,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST::GGS_templateSupOrEqualTestAST (const cPtr_templateSupOrEqualTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateSupOrEqualTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateSupOrEqualTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateSupOrEqualTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateSupOrEqualTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateSupOrEqualTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (const GGS_location & in_mOperatorLocation,
-                                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                const GGS_templateExpressionAST & in_mRightExpression,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateSupOrEqualTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ;
-}
-
-void cPtr_templateSupOrEqualTestAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateSupOrEqualTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateSupOrEqualTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateSupOrEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateSupOrEqualTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateSupOrEqualTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ("templateSupOrEqualTestAST",
-                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateSupOrEqualTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateLeftShiftOperationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateLeftShiftOperationAST::objectCompare (const GGS_templateLeftShiftOperationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST::GGS_templateLeftShiftOperationAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST GGS_templateLeftShiftOperationAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateLeftShiftOperationAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateLeftShiftOperationAST (inCompiler COMMA_THERE)) ;
-  object->templateLeftShiftOperationAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateLeftShiftOperationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateLeftShiftOperationAST::
-templateLeftShiftOperationAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                                const GGS_templateExpressionAST & in_mRightExpression,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST::GGS_templateLeftShiftOperationAST (const cPtr_templateLeftShiftOperationAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLeftShiftOperationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateLeftShiftOperationAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateLeftShiftOperationAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateLeftShiftOperationAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateLeftShiftOperationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (const GGS_location & in_mOperatorLocation,
-                                                                        const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                        const GGS_templateExpressionAST & in_mRightExpression,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateLeftShiftOperationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
-}
-
-void cPtr_templateLeftShiftOperationAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateLeftShiftOperationAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateLeftShiftOperationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateLeftShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateLeftShiftOperationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateLeftShiftOperationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ("templateLeftShiftOperationAST",
-                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateLeftShiftOperationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateRightShiftOperationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateRightShiftOperationAST::objectCompare (const GGS_templateRightShiftOperationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST::GGS_templateRightShiftOperationAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST GGS_templateRightShiftOperationAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateRightShiftOperationAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateRightShiftOperationAST (inCompiler COMMA_THERE)) ;
-  object->templateRightShiftOperationAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateRightShiftOperationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateRightShiftOperationAST::
-templateRightShiftOperationAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                                 const GGS_templateExpressionAST & in_mLeftExpression,
-                                                 const GGS_templateExpressionAST & in_mRightExpression,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST::GGS_templateRightShiftOperationAST (const cPtr_templateRightShiftOperationAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateRightShiftOperationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateRightShiftOperationAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateRightShiftOperationAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateRightShiftOperationAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateRightShiftOperationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (const GGS_location & in_mOperatorLocation,
-                                                                          const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                          const GGS_templateExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateRightShiftOperationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateRightShiftOperationAST ;
-}
-
-void cPtr_templateRightShiftOperationAST::description (String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateRightShiftOperationAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateRightShiftOperationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateRightShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateRightShiftOperationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateRightShiftOperationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateRightShiftOperationAST ("templateRightShiftOperationAST",
-                                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateRightShiftOperationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateRightShiftOperationAST ;
 }
 

@@ -41,7 +41,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <property_declaration> (?!@galgasDeclarationAST ioDeclarations,
-                               ?![@propertyInCollectionAST] ioAttributeInCollectionList ) {
+                               ?![@propertyInCollectionAST] ioAttributeInCollectionList) {
     <acces_control> (?let accessControl)
     let @propertyMutability mutability
     select
@@ -99,7 +99,7 @@ proc [@propertyInCollectionAST].buildPropertyInitializationCode (let @lstring in
                                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                         ?!@unifiedTypeMap ioTypeMap,
                                         !@stringset outUnusedVariableCppNameSet,
-                                        !@string outInitializationCode ) {
+                                        !@string outInitializationCode) {
   outInitializationCode = ""
   var inclusionSet = @stringset ()
   var @u32 temporaryVariableIndex = 0

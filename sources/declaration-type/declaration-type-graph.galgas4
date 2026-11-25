@@ -105,8 +105,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
-  ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     let arrayTypeKey = @lstring ("@" + self.mAssociatedArrayTypeName, self.mAssociatedArrayTypeName.location)

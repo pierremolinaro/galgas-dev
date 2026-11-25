@@ -10,76 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'compileBeforeClauseGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B_lstring_5D_ & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
-                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileProgramRulesGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B_lstring_5D_ & ioArgument0,
-                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                    const class GGS_analysisContext constinArgument2,
-                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS__5B_programRuleAST_5D_ constinArgument4,
-                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'compileAfterClauseGalgas3&&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B_lstring_5D_ & ioArgument0,
-                                                                   class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                   const class GGS_analysisContext constinArgument2,
-                                                                   class GGS_unifiedTypeMap & ioArgument3,
-                                                                   const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
-                                                                   class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkDiadicOperator?operatorIsHandled??&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const class GGS_bool constinArgument0,
-                                                                       const class GGS_string constinArgument1,
-                                                                       const class GGS_location constinArgument2,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument3,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument4,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeDictionaryTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeDictionaryTypeName (const class GGS_string & constinArgument0,
-                                                  const class GGS_string & constinArgument1,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'kForbiddenKeysForStruct'
 //
 //--------------------------------------------------------------------------------------------------
@@ -222,4 +152,24 @@ void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (c
                                                                                class GGS_bool & ioArgument5,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'performProjectCreation?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_performProjectCreation_3F_ (const class GGS_string constinArgument0,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'projectCreation?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
