@@ -1,0 +1,49 @@
+//--------------------------------------------------------------------------------------------------
+//  Grammar %!GRAMMAR_NAME%: Unicode strings
+//--------------------------------------------------------------------------------------------------
+%
+  for (key) in UNICODE_STRINGS_SET do
+   if [key count] > 0 then
+   %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
+   %static const std::initializer_list <utf32> kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
+   end
+  end
+%
+//--------------------------------------------------------------------------------------------------
+//  Grammar %!GRAMMAR_NAME%: template Delimiters
+//--------------------------------------------------------------------------------------------------
+
+% for (delimitor) in TEMPLATE_DELIMITOR_LIST
+    before %static const TemplateDelimiter %!GRAMMAR_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
+    do %  TemplateDelimiter (kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![delimitor.mStartString identifierRepresentation]%, %![[delimitor.mStartString count] string]%, %
+      if [delimitor.mEndString count] == 0 then
+        %{}, 0,%
+      else
+        %kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![delimitor.mEndString identifierRepresentation]%, %![[delimitor.mEndString count] string]%,%
+      end
+      % nullptr, %
+      ![not delimitor.mPreservesStartDelimiter cString]
+      %)%
+    between %,\n%
+    after %\n} ;\n%
+  end
+%
+//--------------------------------------------------------------------------------------------------
+//   Grammar %!GRAMMAR_NAME%: template Replacements
+//--------------------------------------------------------------------------------------------------
+
+% for (rep) in TEMPLATE_REPLACEMENT_LIST
+    before %static const TemplateDelimiter %!GRAMMAR_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST count] string]%] = {\n%
+    do
+      %  TemplateDelimiter (kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![rep.mMatchString identifierRepresentation]%, %![[rep.mMatchString count] string]%, %
+      %kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![rep.mReplacementString identifierRepresentation]%, %![[rep.mReplacementString count] string]%, %
+      if [rep.mReplacementFunction count] == 0 then
+        %nullptr%
+      else
+        %scanner_routine_%!rep.mReplacementFunction.string
+      end
+      %, true)%
+    between %,\n%
+    after %\n} ;\n%
+  end
+!CPP_IMPLEMENTATION_STRING%

@@ -214,44 +214,4 @@ proc buildRuleList (
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N
-//
-//--------------------------------------------------------------------------------------------------
-
-filewrapper @grammarGenerationTemplate : "+generation-templates/grammar_generation" {
-  template grammarZone3HeaderGalgas3 : "grammar-zone3-galgas3.h.galgasTemplate" (
-    ?@string LEXIQUE_IDENTIFIER,
-    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP,
-    ?[@nonTerminalToAdd] ADDED_NON_TERMINAL_LIST,
-    ?@string START_SYMBOL_NAME,
-    ?@bool HAS_TRANSLATE_FEATURE,
-    ?@string GRAMMAR_NAME,
-    ?[@lstring] SYNTAX_COMPONENTS
-  )
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//   Extern routine that performs grammar analysis
-//
-//--------------------------------------------------------------------------------------------------
-
-extern proc grammarAnalysisAndGeneration (
-  let @lstring inGrammarName,
-  let @lstring inGrammarClass,
-  let @u32 startSymbolIndex,
-  let @string inLexiqueName,
-  let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-  let [@syntaxComponentForGrammarAnalysis] ioSyntaxComponentsList,
-  let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-  let @string inHTMLfileName,
-  let @nonTerminalSymbolSortedArrayForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
-  let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
-  !@string outGrammarCppFile,
-  !@string outGrammarHTMLHelperContents,
-  !@string outSwiftGrammarDescription
-)
-
-//--------------------------------------------------------------------------------------------------
 

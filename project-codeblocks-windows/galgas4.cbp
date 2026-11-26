@@ -77,6 +77,7 @@
    <Add option="-static" />
    <Add library="Comdlg32" />
 </Linker>
+  <Unit filename="../build/output/all-declarations-22.cpp" />
   <Unit filename="../build/output/all-declarations-21.cpp" />
   <Unit filename="../build/output/all-declarations-20.cpp" />
   <Unit filename="../build/output/all-declarations-19.cpp" />

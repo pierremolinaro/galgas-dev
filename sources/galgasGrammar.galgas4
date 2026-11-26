@@ -32,6 +32,7 @@ indexing grammar galgas4Grammar "SLR" {
   syntax galgas4SyntaxComponentSyntax
   syntax galgas4GrammarComponentSyntax
   syntax galgas4ProgramDeclarations
+  syntax galgas4TypeDefinitionSyntax
 
    <start_symbol> (?!@galgasDeclarationAST ioDeclarations)
 }

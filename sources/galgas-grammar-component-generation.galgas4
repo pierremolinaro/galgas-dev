@@ -1,0 +1,149 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Generate predefined types
+//
+//  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//! Grammar
+//--------------------------------------------------------------------------------------------------
+
+final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  private let @string mGrammarName
+  private let @string mLexiqueName
+  private let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
+  private let [@nonTerminalToAdd] mNonTerminalToAddList
+  private let [@lstring] mSyntaxComponents
+  private let @string mStartSymbolName
+  private let @bool mHasTranslateFeature
+  private let @string mCppFileContents
+  private let @stringset mTemplateUnicodeStringToGenerate
+  private let [@templateDelimitorAST] mTemplateDelimitorList
+  private let [@templateReplacementAST] mTemplateReplacementList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet,
+                                     !@string outHeader ) {
+    for entry in self.mSyntaxComponents do
+      ioInclusionSet ++= "syntax-" + entry.string.fileNameRepresentation
+    end
+    outHeader = @grammarGenerationTemplate.grammarZone3HeaderGalgas3 (
+      self.mLexiqueName.identifierRepresentation,
+      self.mNonTerminalMapForGrammarAnalysis,
+      self.mNonTerminalToAddList,
+      self.mStartSymbolName,
+      self.mHasTranslateFeature,
+      self.mGrammarName,
+      self.mSyntaxComponents
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (let @unifiedTypeMap inUnifiedTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation) {
+    ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
+    for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
+      for nonterminalSymbolParameter in nonTerminal.mNonterminalSymbolParametersMap do
+        for formal in nonterminalSymbolParameter.mFormalParametersList do
+          switch formal.mFormalArgumentPassingModeForGrammarAnalysis
+          case argumentConstantIn, argumentVarIn :
+            let t = inUnifiedTypeMap.typeMapEntryForLKey (formal.mGalgasTypeNameForGrammarAnalysis)
+            t.addHeaderFileName (!?ioInclusionSet)
+          case argumentInOut, argumentOut :
+          end
+        end
+      end
+    end
+  //---
+//    outImplementation = self.mCppFileContents
+    outImplementation = @grammarGenerationTemplate.grammarImplementation (
+      self.mGrammarName,
+      self.mGrammarName.identifierRepresentation,
+      self.mTemplateUnicodeStringToGenerate,
+      self.mTemplateDelimitorList,
+      self.mTemplateReplacementList,
+      self.mCppFileContents
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func getImplementationCppFileName () -> @string {
+    result = "grammar-" + self.mGrammarName.fileNameRepresentation
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func hasCppHeaderFile () -> @bool {
+    result = false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func headerKind () -> @headerKind {
+    result = @headerKind.oneHeader
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func isPredefined () -> @bool {
+    result = false
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N
+//--------------------------------------------------------------------------------------------------
+
+private filewrapper @grammarGenerationTemplate : "+generation-templates/grammar_generation" {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  template grammarZone3HeaderGalgas3 : "grammar-zone3-galgas3.h.galgasTemplate" (
+    ?@string LEXIQUE_IDENTIFIER,
+    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP,
+    ?[@nonTerminalToAdd] ADDED_NON_TERMINAL_LIST,
+    ?@string START_SYMBOL_NAME,
+    ?@bool HAS_TRANSLATE_FEATURE,
+    ?@string GRAMMAR_NAME,
+    ?[@lstring] SYNTAX_COMPONENTS
+  )
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  template grammarImplementation : "grammar-implementation.cpp.galgasTemplate" (
+    ?@string GRAMMAR_NAME,
+    ?@string GRAMMAR_IDENTIFIER,
+    ?@stringset UNICODE_STRINGS_SET,
+    ?[@templateDelimitorAST] TEMPLATE_DELIMITOR_LIST,
+    ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
+    ?@string CPP_IMPLEMENTATION_STRING
+  )
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

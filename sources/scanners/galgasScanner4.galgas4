@@ -259,6 +259,8 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "searchMethod" -> $#searchMethod$,
   "searchSubscript" -> $#searchSubscript$,
   "searchString" -> $#searchString$,
+  "template" -> $#template$,
+  "templateDelimiter" -> $#templateDelimiter$,
   "templateEndMark" -> $#templateEndMark$,
   "templateReplacement" -> $#templateReplacement$,
   "textFileExtension" -> $#textFileExtension$,

@@ -669,14 +669,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const String & inLexiqueName,
                                const String & inTargetFileName,
+                               const String & inTemplateDescriptorString,
                                String & ioCppFileContents,
                                const String & inSyntaxDirectedTranslationVarName) {
-//--- Generate header file inclusion -----------------------------------------
-  ioCppFileContents.appendCppHyphenLineComment () ;
-  ioCppFileContents.appendCString ("// #include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.appendCString ("// #include \"execution-mode.h\"\n") ;
-  ioCppFileContents.appendCString ("// #include \"FileManager.h\"\n\n") ;
-
 //--- Print non-terminal symbols --------------------------------------
   ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
   ioCppFileContents.appendCString ("static const char * gNonTerminalNames_") ;
@@ -861,60 +856,6 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current (HERE).mProperty_mNonTerminalIndex.uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-  //--- Parse label
-//    ioCppFileContents.appendCString ("void cGrammar_") ;
-//    ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
-//    ioCppFileContents.appendCString ("::nt_") ;
-//    ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
-//    ioCppFileContents.appendCString ("_parse (") ;
-//    if (inSyntaxDirectedTranslationVarName.length () > 0) {
-//      ioCppFileContents.appendCString ("String & ") ;
-//      ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
-//      ioCppFileContents.appendCString (",\n                                ") ;
-//    }
-//    ioCppFileContents.appendCString ("Lexique_") ;
-//    ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-//    ioCppFileContents.appendCString (" * inLexique") ;
-//    ioCppFileContents.appendCString (") {\n") ;
-//    if (first < 0) { // first<0 means the non terminal symbol is unuseful
-//      ioCppFileContents.appendString ( "  inLexique->internalBottomUpParserError (HERE) ;\n") ;
-//    }else{
-//      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-//      macroAssert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-//      if (first == last) {
-//        const int32_t ip = inProductionRules.tableauIndirectionProduction (first COMMA_HERE) ;
-//        ioCppFileContents.appendCString ("  if (inLexique->nextProductionIndex () == ") ;
-//        ioCppFileContents.appendSigned (ip) ;
-//        ioCppFileContents.appendCString (") {\n") ;
-//        inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
-//                                                                    inVocabulary,
-//                                                                    "parse",
-//                                                                    ioCppFileContents,
-//                                                                    inSyntaxDirectedTranslationVarName) ;
-//        ioCppFileContents.appendCString ("  }else{\n"
-//                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
-//                             "  }\n") ;
-//      }else{
-//        ioCppFileContents.appendCString ("  switch (inLexique->nextProductionIndex ()) {\n") ;
-//        for (int32_t j=first ; j<=last ; j++) {
-//          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-//          ioCppFileContents.appendCString ("  case ") ;
-//          ioCppFileContents.appendSigned (ip) ;
-//          ioCppFileContents.appendCString (" :\n    ") ;
-//          inProductionRules.mProductionArray (ip COMMA_HERE).engendrerAppelProduction (0,
-//                                                                      inVocabulary,
-//                                                                      "parse",
-//                                                                      ioCppFileContents,
-//                                                                      inSyntaxDirectedTranslationVarName) ;
-//          ioCppFileContents.appendCString ("    break ;\n") ;
-//        }
-//        ioCppFileContents.appendCString ("  default :\n"
-//                             "    inLexique->internalBottomUpParserError (HERE) ;\n"
-//                             "    break ;\n"
-//                             "  }\n") ;
-//      }
-//    }
-//    ioCppFileContents.appendCString ("}\n\n") ;
   //--- Indexing
     ioCppFileContents.appendCString ("void cGrammar_") ;
     ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -1061,7 +1002,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  scanner->enableIndexing () ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
@@ -1097,7 +1040,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performLexicalAnalysis () ;\n"
                            "  }\n"
@@ -1112,7 +1057,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performBottomUpParsing (gActionTable_") ;
       ioCppFileContents.appendString (inTargetFileName) ;
@@ -1186,7 +1133,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                              "      macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, filePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, filePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                              "      if (scanner->sourceText ().isValid ()) {\n"
                              "        const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
       ioCppFileContents.appendString (inTargetFileName) ;
@@ -1295,7 +1244,9 @@ generate_SLR_grammar_cpp_file (const PureBNFproductionsList & inProductionRules,
         ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                                      "    macroMyNew (scanner, Lexique_") ;
         ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.appendCString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
+        ioCppFileContents.appendCString (" (inCompiler, sourceString, nameString") ;
+        ioCppFileContents.appendString (inTemplateDescriptorString) ;
+        ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                                      "    if (scanner->sourceText ().isValid ()) {\n"
                                      "      const bool ok = scanner->performBottomUpParsing (gActionTable_") ;
         ioCppFileContents.appendString (inTargetFileName) ;
@@ -1436,6 +1387,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
                   const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
+                  const String & inTemplateDescriptorString,
                   String & ioCppFileContents,
                   const String & inLexiqueName,
                   bool & outOk,
@@ -1669,6 +1621,7 @@ SLR_computations (const PureBNFproductionsList & inProductionRules,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
                                    inTargetFileName,
+                                   inTemplateDescriptorString,
                                    ioCppFileContents,
                                    inSyntaxDirectedTranslationVarName) ;
   }

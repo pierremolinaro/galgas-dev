@@ -144,6 +144,8 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* #searchMethod */,
   false /* #searchSubscript */,
   false /* #searchString */,
+  false /* #template */,
+  false /* #templateDelimiter */,
   false /* #templateEndMark */,
   false /* #templateReplacement */,
   false /* #textFileExtension */,

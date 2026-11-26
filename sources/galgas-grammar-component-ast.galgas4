@@ -1,0 +1,336 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Copyright (C) 2014, ..., 2014 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
+  private let @lbool mHasIndexing
+  private let @lstring mGrammarComponentName
+  private let @lstring mGrammarClass
+  private let [@lstring] mSyntaxComponents
+  private let @lstring mStartSymbolName
+  private let [@nonTerminalLabelAST] mStartSymbolLabelList
+  private let [@lstring] mUnusedNonterminalList
+  private let [@templateDelimitor2AST] mTemplateDelimitorList
+  private let [@templateReplacementAST] mTemplateReplacementList
+  private let @bool mHasTranslateFeature
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "grammar " + self.mGrammarComponentName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  override proc enterDeclarationInGraph (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+    let key = @lstring ("grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    for value in self.mSyntaxComponents do
+      !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("syntax " + value, value.location))
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?![@lstring] _ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string inProductDirectory,
+                                  let @semanticContext inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
+    if not @buildOptionValue.quiet then
+      println ("*** Analyzing '" + self.mGrammarComponentName + "' grammar")
+    end
+  //--- Useful entities graph
+    let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (self.mGrammarComponentName)
+    !?ioUsefulEntitiesGraph.addNode (grammarNameForUsefulness, grammarNameForUsefulness)
+  //-------------------------------------- Template delimiters
+    var @stringset unicodeStringToGenerate = @()
+    var [@templateDelimitorAST] templateDelimitorList = @()
+    for templateDelimitor in self.mTemplateDelimitorList do
+     unicodeStringToGenerate ++= templateDelimitor.mStartString.string
+     unicodeStringToGenerate ++= templateDelimitor.mEndString.string
+     templateDelimitorList ++= @(templateDelimitor.mStartString, templateDelimitor.mEndString, templateDelimitor.mPreserved)
+    end
+  //-------------------------------------- Template replacements
+    for templateReplacement in self.mTemplateReplacementList do
+      unicodeStringToGenerate ++= templateReplacement.mMatchString.string
+      unicodeStringToGenerate ++= templateReplacement.mReplacementString.string
+     // § TODO Check replacement function
+    end
+  //--------------------------------------------------------- Parse syntax components
+    var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = @()
+    var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
+    var @lstring lexiqueComponentName =  "".nowhere // Empty string means unknown
+    var [@syntaxComponentForGrammarAnalysis] syntaxComponentListForGrammarAnalysis = @()
+    var [@nonTerminalToAdd] nonTerminalToAddList = @()
+    var @u32 addedNonTerminalCount = 0
+    for syntaxComponentName in self.mSyntaxComponents do
+      let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (syntaxComponentName)
+      !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: syntaxNameForUsefulness)
+      let @u32 addedNonTerminalCountRef = addedNonTerminalCount
+      inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey (
+        syntaxComponentName,
+        ?let @lstring lexiqueName,
+        ?let [@nonterminalDeclarationAST] nonterminalDeclarationList,
+        ?let [@syntaxRuleAST] ruleList,
+        ?let @bool hasTranslateFeature
+      )
+      let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (lexiqueName)
+      !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: lexiqueNameForUsefulness)
+    //--- Check translate feature
+      if self.mHasTranslateFeature & not hasTranslateFeature then
+        error syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
+      elsif hasTranslateFeature & not self.mHasTranslateFeature then
+        error self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so"
+      end
+    //--- Handle lexique component
+      if lexiqueComponentName.string == "" then
+        lexiqueComponentName = lexiqueName
+      elsif lexiqueName.string != lexiqueComponentName.string then
+        error syntaxComponentName : "this syntax component uses '"
+          + lexiqueName + "' lexique component, but the first syntax component uses the '"
+          + lexiqueComponentName + "' lexique component (they should be the same)"
+      end
+    //--- Handle non terminal declarations
+      handleNonTerminalDeclarations (
+        !?nonTerminalMapForGrammarAnalysis,
+        nonterminalDeclarationList
+      )
+    //--- Enter non terminal definition from rule list
+      handleNonTerminalDeclarationsFromRuleList (
+        !?nonTerminalMapForGrammarAnalysis,
+        ruleList
+      )
+    //--- Handle syntax rules
+      buildRuleList (
+        nonTerminalMapForGrammarAnalysis,
+        syntaxComponentName,
+        ruleList,
+        !?actuallyUsedTerminalSymbolMap,
+        !?syntaxComponentListForGrammarAnalysis,
+        !?addedNonTerminalCount
+      )
+      var @u32 i = 0
+      loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+        nonTerminalToAddList ++= @(syntaxComponentName, i)
+        i += 1
+      end
+    end
+  //--------------------------------------------------------- Start symbol
+  //--- Search start symbol in non terminal map
+    nonTerminalMapForGrammarAnalysis.searchKey (
+      self.mStartSymbolName,
+      ?let @u32 startSymbolIndex,
+      ?let @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
+    )
+  //--- Check signatures
+    checkLabelMap (
+      self.mStartSymbolName.location,
+      self.mStartSymbolLabelList,
+      nonTerminalMapForGrammarAnalysis.locationForKey (self.mStartSymbolName.string),
+      startSymbolAltMap
+    )
+  //--------------------------------------------------------- Unused Non Terminal Symbols
+    var @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = @()
+    for unusedNonterminal in self.mUnusedNonterminalList do
+      nonTerminalMapForGrammarAnalysis.searchKey (unusedNonterminal, ?let @u32 nonterminalIndex, ?*)
+      !?unusedNonTerminalSymbolsForGrammar.insertKey (unusedNonterminal, nonterminalIndex)
+    end
+  //--------------------------------------------------------- Non terminal symbols, sorted by index
+    var @nonTerminalSymbolSortedArrayForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
+    for nonTerminal in nonTerminalMapForGrammarAnalysis do
+      nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
+    end
+  //--------------------------------------------------------- Print an tex file for grammar rule list
+    if @buildOptionValue.emitSyntaxDiagrams then
+      emitProductionRulesInTexFile (
+        inProductDirectory,
+        self.mGrammarComponentName,
+        nonTerminalMapForGrammarAnalysis,
+        syntaxComponentListForGrammarAnalysis,
+        self.mStartSymbolName
+      )
+    end
+  //--------------------------------------------------------- Emit class graph
+    let dotDocumentFilePath = inProductDirectory + "/../graph-class/graph-class.dot"
+    if @buildOptionValue.emitClassGraph then
+      emitClassGraphFile (
+        dotDocumentFilePath,
+        ioTypeMap
+      )
+    else
+      @string.deleteFileIfExists (dotDocumentFilePath)
+    end
+    //--------------------------------------------------------- Header of implementation file
+  //  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
+  // for these arguments, we need to include the corresponding type declaration.
+    var @stringset implementationFileHeader = @()
+    for nonTerminal in nonTerminalMapForGrammarAnalysis do
+      for parameterList in nonTerminal.mNonterminalSymbolParametersMap do
+        for formal in parameterList.mFormalParametersList do
+          switch formal.mFormalArgumentPassingModeForGrammarAnalysis
+          case argumentVarIn, argumentConstantIn :
+            let t = ioTypeMap.typeMapEntryForLKey (formal.mGalgasTypeNameForGrammarAnalysis)
+            t.addHeaderFileName (!?implementationFileHeader)
+          case argumentInOut, argumentOut :
+          end
+        end
+      end
+    end
+    if @buildOptionValue.generateOneHeader then
+      implementationFileHeader = @()
+    end
+  //------ Template descriptor string
+    var templateDescriptorString = ", "
+    if templateDelimitorList.count == 0 then
+      templateDescriptorString += "nullptr"
+    else
+      templateDescriptorString += self.mGrammarComponentName.string.identifierRepresentation + "_kTemplateDefinitionArray"
+    end
+    templateDescriptorString += ", "
+    templateDescriptorString += templateDelimitorList.count.string
+    templateDescriptorString += ", "
+    if self.mTemplateReplacementList.count == 0 then
+      templateDescriptorString += "nullptr"
+    else
+      templateDescriptorString += self.mGrammarComponentName.string.identifierRepresentation + "_kTemplateReplacementArray"
+    end
+    templateDescriptorString += ", "
+    templateDescriptorString += self.mTemplateReplacementList.count.string
+  //------ Analyze grammar
+    let HTMLFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".html"
+    grammarAnalysisAndGeneration (
+      self.mGrammarComponentName,
+      self.mGrammarClass,
+      startSymbolIndex,
+      lexiqueComponentName.string,
+      actuallyUsedTerminalSymbolMap,
+      syntaxComponentListForGrammarAnalysis,
+      unusedNonTerminalSymbolsForGrammar,
+      HTMLFilePath,
+      nonTerminalSymbolSortedListForGrammarAnalysis,
+      if self.mHasTranslateFeature then gSyntaxDirectedTranslationResultVarName else "" end,
+      templateDescriptorString, // ", nullptr, 0, nullptr, 0",
+      ?let @string grammarCppFile,
+      ?let @string grammarHTMLHelperContents,
+      ?let @string swiftGrammarDescription
+    )
+  //--------------------------------------------------------- Generate HTML grammar helper file
+    if @buildOptionValue.outputHTMLgrammarFile then
+      HTMLFilePath.deletingLastPathComponent.makeDirectory ()
+      grammarHTMLHelperContents.writeToFileWhenDifferentContents (HTMLFilePath, ?*)
+    else
+      @string.deleteFileIfExists (HTMLFilePath)
+    end
+  //--------------------------------------------------------- Generate Swift description file
+    let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
+    if @buildOptionValue.outputGrammarSwiftDescriptionFile then
+      swiftFilePath.deletingLastPathComponent.makeDirectory ()
+      swiftGrammarDescription.writeToFileWhenDifferentContents (swiftFilePath, ?*)
+    else
+      @string.deleteFileIfExists (swiftFilePath)
+    end
+  
+  //---
+    ioSemanticDeclarationListForGeneration ++= @grammarForGeneration (
+      !infoMessage: "",
+      !generateHeader: true,
+      !implementationCppFileName: "grammar-" + self.mGrammarComponentName.string.fileNameRepresentation,
+      self.mGrammarComponentName.string,
+      lexiqueComponentName.string,
+      nonTerminalMapForGrammarAnalysis,
+      nonTerminalToAddList,
+      self.mSyntaxComponents,
+      self.mStartSymbolName.string,
+      self.mHasTranslateFeature,
+      grammarCppFile,
+      unicodeStringToGenerate,
+      templateDelimitorList,
+      self.mTemplateReplacementList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc emitClassGraphFile (let @string inDotDocumentFilePath,
+                                let @unifiedTypeMap inTypeMap ) {
+  inDotDocumentFilePath.deletingLastPathComponent.makeDirectory ()
+  var document = "digraph G {\n"
+  document += "  rankdir=LR ;\n"
+  document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
+  for type in inTypeMap do
+    switch type.mElement.mDefinition
+    case unsolved :
+    case solved (@unifiedTypeDefinition definition) :
+      if definition.typeKind.isClassType then
+        switch definition.superType
+        case null :
+          document += "  \"@" + definition.typeName + "\" ;\n"
+        case element (superType) :
+          if let solvedType = superType.mDefinition.getSolved then
+            document += "  \"@" + definition.typeName + "\" ;\n"
+            document += "  \"@" + definition.typeName + "\" -> \"@"
+            document += solvedType.definition.typeName.string + "\" ;\n"
+          end
+        end
+      end
+    end
+  end
+  document += "}\n"
+  document.writeToFileWhenDifferentContents (inDotDocumentFilePath, ?*)
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//   Extern routine that performs grammar analysis
+//
+//--------------------------------------------------------------------------------------------------
+
+extern proc grammarAnalysisAndGeneration (
+  let @lstring inGrammarName,
+  let @lstring inGrammarClass,
+  let @u32 startSymbolIndex,
+  let @string inLexiqueName,
+  let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
+  let [@syntaxComponentForGrammarAnalysis] ioSyntaxComponentsList,
+  let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
+  let @string inHTMLfileName,
+  let @nonTerminalSymbolSortedArrayForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+  let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
+  let @string inTemplateDescriptorString,
+  !@string outGrammarCppFile,
+  !@string outGrammarHTMLHelperContents,
+  !@string outSwiftGrammarDescription
+)
+
+//--------------------------------------------------------------------------------------------------

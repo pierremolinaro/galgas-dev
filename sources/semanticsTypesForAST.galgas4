@@ -325,14 +325,6 @@ struct @SyntaxInstructionListAST {
 }
 
 //--------------------------------------------------------------------------------------------------
-//
-//   S Y N T A X    C O M P O N E N T    A S T
-//
-//--------------------------------------------------------------------------------------------------
-
-//! GALGAS 3 AST
-
-//--------------------------------------------------------------------------------------------------
 
 final class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @lstring mSyntaxComponentName
@@ -340,19 +332,34 @@ final class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
   public let [@syntaxRuleAST] mRuleList
   public let @bool mHasTranslateFeature
-}
 
-//--------------------------------------------------------------------------------------------------
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
-  public let @lbool mHasIndexing
-  public let @lstring mGrammarComponentName
-  public let @lstring mGrammarClass
-  public let [@lstring] mSyntaxComponents
-  public let @lstring mStartSymbolName
-  public let [@nonTerminalLabelAST] mStartSymbolLabelList
-  public let [@lstring] mUnusedNonterminalList
-  public let @bool mHasTranslateFeature
+  override proc enterDeclarationInGraph
+    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+    let key = @lstring ("syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("lexique " + self.mLexiqueName, self.mLexiqueName.location))
+    for aRule in self.mRuleList do
+      for aLabel in aRule.mLabelList do
+        for formal in aLabel.mFormalArguments do
+          switch formal.mFormalArgumentPassingMode
+            case argumentVarIn : !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location))
+            case argumentOut, argumentInOut, argumentConstantIn :
+          end
+        end
+      end
+    end
+  }
+
+ // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

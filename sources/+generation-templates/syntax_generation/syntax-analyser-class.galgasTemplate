@@ -55,11 +55,6 @@ end%
     end
     %Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end
-  %/*  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_parse (%?^
-  if HAS_TRANSLATE_FEATURE then
-    %String & %!gSyntaxDirectedTranslationResultVarName%,\n%!^ 
-  end
-  %Lexique_%!LEXIQUE_NAME% * inLexique) ; */\n\n%
   if HAS_INDEXING then
     %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_indexing (Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end

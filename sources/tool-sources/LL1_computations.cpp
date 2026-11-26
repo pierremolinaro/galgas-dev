@@ -444,20 +444,12 @@ static void
 generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const String & inTargetFileName,
+                               const String & inTemplateDescriptorString,
                                String & ioCppFileContents,
                                const String & inLexiqueName,
                                const GrammarVocabulary & inVocabulary,
                                const PureBNFproductionsList & inPureBNFproductions,
                                const String & inSyntaxDirectedTranslationVarName) {
-//--- Generate header file inclusion --------------------------------------------------------------
-  ioCppFileContents.appendCppHyphenLineComment () ;
-  ioCppFileContents.appendCString ("#include \"MF_MemoryControl.h\"\n") ;
-  ioCppFileContents.appendCString ("#include \"execution-mode.h\"\n\n") ;
-  ioCppFileContents.appendCString ("#include \"FileManager.h\"\n\n") ;
-
-  ioCppFileContents.appendCppHyphenLineComment () ;
-  ioCppFileContents.appendCString ("\n") ;
-
 //--- Generate LL(1) tables
   const int32_t productionsCount = inPureBNFproductions.mProductionArray.count () ;
   GenericUniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
@@ -594,27 +586,6 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
   while (nonTerminal.hasCurrentObject ()) {
     ioCppFileContents.appendCppTitleComment (String ("'") + nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue () + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((int32_t) nonTerminal.current (HERE).mProperty_mNonTerminalIndex.uintValue () COMMA_HERE) >= 0 ;
-  //--- Parse label
-//      ioCppFileContents.appendCString ("void cGrammar_") ;
-//      ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
-//      ioCppFileContents.appendCString ("::nt_") ;
-//      ioCppFileContents.appendString (nonTerminal.current (HERE).mProperty_mNonTerminalSymbol.mProperty_string.stringValue ().identifierRepresentation ()) ;
-//      ioCppFileContents.appendCString ("_parse (") ;
-//      if (inSyntaxDirectedTranslationVarName.length () > 0) {
-//        ioCppFileContents.appendCString ("String & ") ;
-//        ioCppFileContents.appendString (inSyntaxDirectedTranslationVarName) ;
-//        ioCppFileContents.appendCString (", ") ;
-//      }
-//      ioCppFileContents.appendCString ("Lexique_") ;
-//      ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-//      ioCppFileContents.appendCString (" * ") ;
-//      ioCppFileContents.appendString (existeProduction ? "inLexique" : "") ;
-//      ioCppFileContents.appendCString (") {\n") ;
-//     engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current (HERE).mProperty_mNonTerminalIndex.uintValue (), 0,
-//                                      inPureBNFproductions, ioCppFileContents,
-//                                      "parse",
-//                                      inSyntaxDirectedTranslationVarName) ;
-//    ioCppFileContents.appendCString ("}\n\n") ;
   //--- Indexing ?
     ioCppFileContents.appendCString ("void cGrammar_") ;
     ioCppFileContents.appendString (inTargetFileName.identifierRepresentation ()) ;
@@ -696,7 +667,9 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  scanner->enableIndexing () ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    const bool ok = scanner->performTopDownParsing (gProductions_") ;
@@ -735,7 +708,9 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performLexicalAnalysis () ;\n"
                            "  }\n"
@@ -750,7 +725,9 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
       ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                            "  macroMyNew (scanner, Lexique_") ;
       ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath COMMA_HERE)) ;\n"
+      ioCppFileContents.appendCString (" (inCompiler, inSourceFilePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                            "  if (scanner->sourceText ().isValid ()) {\n"
                            "    scanner->performTopDownParsing (gProductions_") ;
       ioCppFileContents.appendString (inTargetFileName) ;
@@ -828,7 +805,9 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
         ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                             "    macroMyNew (scanner, Lexique_") ;
         ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.appendCString (" (inCompiler, filePath COMMA_HERE)) ;\n"
+        ioCppFileContents.appendCString (" (inCompiler, filePath") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                             "    if (scanner->sourceText ().isValid ()) {\n"
                             "      const bool ok = scanner->performTopDownParsing (gProductions_") ;
         ioCppFileContents.appendString (inTargetFileName) ;
@@ -946,7 +925,9 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedArrayForGrammarA
         ioCppFileContents.appendCString (" * scanner = nullptr ;\n"
                              "    macroMyNew (scanner, Lexique_") ;
         ioCppFileContents.appendString (inLexiqueName.identifierRepresentation ()) ;
-        ioCppFileContents.appendCString (" (inCompiler, sourceString, nameString COMMA_HERE)) ;\n"
+        ioCppFileContents.appendCString (" (inCompiler, sourceString, nameString") ;
+      ioCppFileContents.appendString (inTemplateDescriptorString) ;
+      ioCppFileContents.appendCString (" COMMA_HERE)) ;\n"
                              "    const bool ok = scanner->performTopDownParsing (gProductions_") ;
         ioCppFileContents.appendString (inTargetFileName) ;
         ioCppFileContents.appendCString (", gProductionNames_") ;
@@ -1027,6 +1008,7 @@ LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
                   const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const String & inTargetFileName,
+                  const String & inTemplateDescriptorString,
                   String & ioCppFileContents,
                   const String & inLexiqueName,
                   bool & outOk,
@@ -1056,6 +1038,7 @@ LL1_computations (const PureBNFproductionsList & inPureBNFproductions,
     generate_LL1_grammar_Cpp_file (inNonTerminalSymbolSortedListForGrammarAnalysis,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,
+                                   inTemplateDescriptorString,
                                    ioCppFileContents,
                                    inLexiqueName,
                                    inVocabulary,

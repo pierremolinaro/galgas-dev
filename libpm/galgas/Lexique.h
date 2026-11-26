@@ -48,12 +48,20 @@ static const int32_t BOTTOM_UP_END = -1 ;
 class Lexique : public Compiler {
 //--- Constructors and destructor
   public: Lexique (Compiler * inCallerCompiler,
-                   const String & inSourceFileName
+                   const String & inSourceFileName,
+                   const TemplateDelimiter inTemplateDefinitionArray [],
+                   const uint32_t inTemplateDefinitionArrayCount,
+                   const TemplateDelimiter inTemplateReplacementArray [],
+                   const uint32_t inTemplateReplacementArrayCount
                    COMMA_LOCATION_ARGS) ;
 
   public: Lexique (Compiler * inCallerCompiler,
                    const String & inSourceString,
-                   const String & inStringForError
+                   const String & inStringForError,
+                   const TemplateDelimiter inTemplateDefinitionArray [],
+                   const uint32_t inTemplateDefinitionArrayCount,
+                   const TemplateDelimiter inTemplateReplacementArray [],
+                   const uint32_t inTemplateReplacementArrayCount
                    COMMA_LOCATION_ARGS) ;
 
   public: virtual ~Lexique (void) ;
@@ -70,6 +78,14 @@ class Lexique : public Compiler {
   public: void enableIndexing (void) ;
   public: void generateIndexFile (void) ;
   protected: IndexingDictionary * mIndexingDictionary ;
+
+//--- Scanner mode for template scanner
+  protected: int32_t mMatchedTemplateDelimiterIndex ;
+  protected: const TemplateDelimiter * mTemplateDefinitionArray ;
+  protected: const uint32_t mTemplateDefinitionArrayCount ;
+  protected: const TemplateDelimiter * mTemplateReplacementArray ;
+  protected: const uint32_t mTemplateReplacementArrayCount ;
+
 
 //--- Template String
   protected: int32_t findTemplateDelimiterIndex (const TemplateDelimiter * inTemplateDelimiterArray,

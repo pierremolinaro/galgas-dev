@@ -9,704 +9,1947 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedNonTerminalSymbolForGrammarAnalysis struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mNonTerminalSymbol ;
+  public: inline GGS_lstring readProperty_mNonTerminalSymbol (void) const {
+    return mProperty_mNonTerminalSymbol ;
+  }
+
+  public: GGS_u_33__32_ mProperty_mNonTerminalIndex ;
+  public: inline GGS_u_33__32_ readProperty_mNonTerminalIndex (void) const {
+    return mProperty_mNonTerminalIndex ;
+  }
+
+  public: GGS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
+  public: inline GGS_nonterminalSymbolLabelMapForGrammarAnalysis readProperty_mNonterminalSymbolParametersMap (void) const {
+    return mProperty_mNonterminalSymbolParametersMap ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMNonTerminalSymbol (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalSymbol = inValue ;
+  }
+
+  public: inline void setter_setMNonTerminalIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalIndex = inValue ;
+  }
+
+  public: inline void setter_setMNonterminalSymbolParametersMap (const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonterminalSymbolParametersMap = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
+                                                         const GGS_u_33__32_ & in_mNonTerminalIndex,
+                                                         const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis & operator = (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedNonTerminalSymbolForGrammarAnalysis init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                 const class GGS_u_33__32_ & inOperand1,
+                                                                                 const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedNonTerminalSymbolForGrammarAnalysis ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: nonTerminalSymbolSortedArrayForGrammarAnalysis array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis init (Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis add_operation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_sortedNonTerminalSymbolForGrammarAnalysis constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                              class GGS_u_33__32_ constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_first (Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_last (Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                                   const class GGS_u_33__32_ & constinOperand1,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+  friend class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
+//--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@semanticContext removeAll'
+//Extension mutating proc '@genericExtensionMethodListMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_removeAll (class GGS_semanticContext & ioObject,
+void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_lstring constin_inValue,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager insertDeclaredLocalVariable'
+//Extension mutating proc '@descendantClassListMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertDeclaredLocalVariable (class GGS_localVarManager & ioObject,
-                                                  const class GGS_lstring constin_inVarName,
-                                                  const class GGS_unifiedTypeMapEntry constin_inType,
-                                                  const class GGS_string constin_inCppName,
-                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
+void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_unifiedTypeMapEntry constin_inType,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@actualParameterForGeneration generateActualParameter'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForGeneration * inObject,
+                                                  class GGS_stringset & io_ioInclusionSet,
+                                                  class GGS_u_33__32_ & io_ioTemporaryVariableIndex,
+                                                  class GGS_string & io_ioImplementation,
+                                                  class GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
+                                                  class GGS__5B_string_5D_ & io_ioOutputVariableList,
+                                                  class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
+                                                  class GGS_string & out_outCppName,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager insertUsedLocalConstant'
+//Abstract extension proc '@actualParameterForGeneration generatePoisonedVariables'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertUsedLocalConstant (class GGS_localVarManager & ioObject,
-                                              const class GGS_lstring constin_inVarName,
-                                              const class GGS_unifiedTypeMapEntry constin_inType,
-                                              const class GGS_string constin_inCppName,
-                                              const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertDeclaredLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDeclaredLocalConstant (class GGS_localVarManager & ioObject,
-                                                  const class GGS_lstring constin_inVarName,
-                                                  const class GGS_unifiedTypeMapEntry constin_inType,
-                                                  const class GGS_string constin_inCppName,
-                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                const class GGS_lstring constin_inVarName,
-                                                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                const class GGS_string constin_inCppName,
-                                                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgument (class GGS_localVarManager & ioObject,
-                                                const class GGS_lstring constin_inVarName,
-                                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                                const class GGS_string constin_inCppName,
-                                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                        const class GGS_lstring constin_inVarName,
-                                                                        const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                        const class GGS_string constin_inCppName,
-                                                                        const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertConstantInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgument (class GGS_localVarManager & ioObject,
-                                                        const class GGS_lstring constin_inVarName,
-                                                        const class GGS_unifiedTypeMapEntry constin_inType,
-                                                        const class GGS_string constin_inCppName,
-                                                        const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertOutputFormalArgument (class GGS_localVarManager & ioObject,
-                                                 const class GGS_lstring constin_inVarName,
-                                                 const class GGS_unifiedTypeMapEntry constin_inType,
-                                                 const class GGS_string constin_inCppName,
-                                                 const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                      const class GGS_lstring constin_inVarName,
-                                                                      const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                      const class GGS_string constin_inCppName,
-                                                                      const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgument (class GGS_localVarManager & ioObject,
-                                                      const class GGS_lstring constin_inVarName,
-                                                      const class GGS_unifiedTypeMapEntry constin_inType,
-                                                      const class GGS_string constin_inCppName,
-                                                      const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertNonMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertNonMutableProperty (class GGS_localVarManager & ioObject,
-                                               const class GGS_lstring constin_inVarName,
-                                               const class GGS_unifiedTypeMapEntry constin_inType,
-                                               const class GGS_string constin_inCppName,
-                                               const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertMutableProperty (class GGS_localVarManager & ioObject,
-                                            const class GGS_lstring constin_inVarName,
-                                            const class GGS_unifiedTypeMapEntry constin_inType,
-                                            const class GGS_string constin_inCppName,
-                                            const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInitializerSelfProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializerSelfProperty (class GGS_localVarManager & ioObject,
-                                                    const class GGS_string constin_inPropertyName,
-                                                    const class GGS_location constin_inErrorLocation,
-                                                    const class GGS_unifiedTypeMapEntry constin_inType,
-                                                    const class GGS_string constin_inCppName,
-                                                    const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                    const class GGS_bool constin_inInitialized,
+void callExtensionMethod_generatePoisonedVariables (class cPtr_actualParameterForGeneration * inObject,
+                                                    class GGS_string & io_ioImplementation,
+                                                    class GGS_stringset & io_ioUnusedVariableCppNameSet,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager openOverrideForRepeatBlock'
-//
+// Phase 1: @outputActualParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_openOverrideForRepeatBlock (class GGS_localVarManager & ioObject,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
+class GGS_outputActualParameterForGeneration : public GGS_actualParameterForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_outputActualParameterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_outputActualParameterForGeneration (const class cPtr_outputActualParameterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_semanticExpressionForGeneration readProperty_mOutputActualParameterExpression (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_outputActualParameterForGeneration init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_outputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager closeOverride'
-//
-//--------------------------------------------------------------------------------------------------
 
-void extensionSetter_closeOverride (class GGS_localVarManager & ioObject,
-                                    const class GGS_location constin__5F_inEndOfBranchLocation,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager closeBranch'
-//
+// Phase 2: pointer class for @outputActualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_closeBranch (class GGS_localVarManager & ioObject,
-                                  const class GGS_location constin_inEndOfBranchLocation,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
+class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@localVarManager checkSelfObjectIsFullyInitialized'
-//
-//--------------------------------------------------------------------------------------------------
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
 
-void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_localVarManager inObject,
-                                                        const class GGS_location constin_inErrorLocation,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- Initializers
+  public: void outputActualParameterForGeneration_init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                Compiler * inCompiler) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager neutralAccess'
-//
-//--------------------------------------------------------------------------------------------------
 
-void extensionSetter_neutralAccess (class GGS_localVarManager & ioObject,
-                                    const class GGS_lstring constin_inVarName,
-                                    class GGS_unifiedTypeMapEntry & out_outType,
-                                    class GGS_string & out_outCppName,
-                                    class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+//--- Extension proc generateActualParameter
+  public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
+           class GGS_string & arg_ioImplementation,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
+           class GGS_string & arg_outCppName,
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager searchForDropAccess'
-//
-//--------------------------------------------------------------------------------------------------
+//--- Extension proc generatePoisonedVariables
+  public: virtual void method_generatePoisonedVariables (class GGS_string & arg_ioImplementation,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           Compiler * COMMA_LOCATION_ARGS) override ;
 
-void extensionSetter_searchForDropAccess (class GGS_localVarManager & ioObject,
-                                          const class GGS_lstring constin_inVarName,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+//--- Properties
+  public: GGS_semanticExpressionForGeneration mProperty_mOutputActualParameterExpression ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager searchForWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForWriteAccess (class GGS_localVarManager & ioObject,
-                                           const class GGS_lstring constin_inVarName,
-                                           class GGS_unifiedTypeMapEntry & out_outType,
-                                           class GGS_string & out_outCppName,
-                                           class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+//--- Default constructor
+  public: cPtr_outputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager searchForReadAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadAccess (class GGS_localVarManager & ioObject,
-                                          const class GGS_lstring constin_inVarName,
-                                          class GGS_unifiedTypeMapEntry & out_outType,
-                                          class GGS_string & out_outCppName,
-                                          class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager searchForReadWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForReadWriteAccess (class GGS_localVarManager & ioObject,
-                                               const class GGS_lstring constin_inVarName,
-                                               class GGS_unifiedTypeMapEntry & out_outType,
-                                               class GGS_string & out_outCppName,
-                                               class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@localVarManager checkAutomatonStates'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkAutomatonStates (const class GGS_localVarManager inObject,
-                                           const class GGS_location constin_inErrorLocation,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'println?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_println_3F_ (const class GGS_string constinArgument0,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'print?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_print_3F_ (const class GGS_string constinArgument0,
-                        Compiler * inCompiler
-                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeErrorOrWarningInstruction?&?&?????&!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeErrorOrWarningInstruction_3F__26__3F__26__3F__3F__3F__3F__3F__26__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                                   class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                   const class GGS_analysisContext constinArgument2,
-                                                                                                   class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument4,
-                                                                                                   const class GGS_semanticExpressionAST constinArgument5,
-                                                                                                   const class GGS__5B_fixitElementAST_5D_ constinArgument6,
-                                                                                                   const class GGS_location constinArgument7,
-                                                                                                   const class GGS_string constinArgument8,
-                                                                                                   class GGS_localVarManager & ioArgument9,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument10,
-                                                                                                   class GGS_semanticExpressionForGeneration & outArgument11,
-                                                                                                   class GGS__5B_fixitElementForGeneration_5D_ & outArgument12,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'procedureNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_procedureNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'grammarNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_grammarNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeSemanticInstructionList?&?&?localConstantList??&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList_3F__3F__26__21_ (const class GGS_lstring constinArgument0,
-                                                                                                  class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                  const class GGS_analysisContext constinArgument2,
-                                                                                                  class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                  const class GGS__5B_localConstant_5D_ constinArgument4,
-                                                                                                  const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
-                                                                                                  const class GGS_location constinArgument6,
-                                                                                                  class GGS_localVarManager & ioArgument7,
-                                                                                                  class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument8,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateInstructionList&?&&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateInstructionList_26__3F__26__26__3F__26_ (class GGS_stringset & ioArgument0,
-                                                              const class GGS__5B_semanticInstructionForGeneration_5D_ constinArgument1,
-                                                              class GGS_u_33__32_ & ioArgument2,
-                                                              class GGS_stringset & ioArgument3,
-                                                              const class GGS_bool constinArgument4,
-                                                              class GGS_string & ioArgument5,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeSemanticInstructionListWithoutBranch?&?&?localConstantList?&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F__26__21_ (const class GGS_lstring constinArgument0,
-                                                                                                           class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                           const class GGS_analysisContext constinArgument2,
-                                                                                                           class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                           const class GGS__5B_localConstant_5D_ constinArgument4,
-                                                                                                           const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
-                                                                                                           class GGS_localVarManager & ioArgument6,
-                                                                                                           class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument7,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'gLexicalTypeMap'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalTypeMap function_gLexicalTypeMap (Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLexicalAttributeMap??&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_buildLexicalAttributeMap_3F__3F__26_ (const class GGS_lexicalTypeMap constinArgument0,
-                                                   const class GGS__5B_lexicalAttributeAST_5D_ constinArgument1,
-                                                   class GGS_lexicalAttributeMap & ioArgument2,
+//--- Constructor
+  public: cPtr_outputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                   const GGS_semanticExpressionForGeneration & in_mOutputActualParameterExpression,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'lexiqueNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
 
-class GGS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLexicalFunctionMap!'
-//
-//--------------------------------------------------------------------------------------------------
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
-void routine_buildLexicalFunctionMap_21_ (class GGS_lexicalFunctionMap & outArgument0,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildLexicalRoutineMap!'
-//
+// Phase 1: @outputInputActualParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalRoutineMap_21_ (class GGS_lexicalRoutineMap & outArgument0,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_outputInputActualParameterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_outputInputActualParameterForGeneration (const class cPtr_outputInputActualParameterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mOutputInputVariableCppName (void) const ;
+
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
+
+  public: class GGS__5B_unifiedTypeMapEntry_5D_ readProperty_mTypeList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_outputInputActualParameterForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                   const class GGS_string & inOperand1,
+                                                                                   const class GGS__5B_lstring_5D_ & inOperand2,
+                                                                                   const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand3,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_outputInputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'lexicalUnicodeTestFunctionAnalysis!'
-//
-//--------------------------------------------------------------------------------------------------
 
-void routine_lexicalUnicodeTestFunctionAnalysis_21_ (class GGS_stringset & outArgument0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Function 'functionNameForUsefulEntitiesGraph'
-//
+// Phase 2: pointer class for @outputInputActualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lstring function_functionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void outputInputActualParameterForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GGS_string & inOperand1,
+                                                                             const class GGS__5B_lstring_5D_ & inOperand2,
+                                                                             const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand3,
+                                                                             Compiler * inCompiler) ;
+
+
+//--- Extension proc generateActualParameter
+  public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
+           class GGS_string & arg_ioImplementation,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
+           class GGS_string & arg_outCppName,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc generatePoisonedVariables
+  public: virtual void method_generatePoisonedVariables (class GGS_string & arg_ioImplementation,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mOutputInputVariableCppName ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
+  public: GGS__5B_unifiedTypeMapEntry_5D_ mProperty_mTypeList ;
+
+
+//--- Default constructor
+  public: cPtr_outputInputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_outputInputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                        const GGS_string & in_mOutputInputVariableCppName,
+                                                        const GGS__5B_lstring_5D_ & in_mStructAttributeList,
+                                                        const GGS__5B_unifiedTypeMapEntry_5D_ & in_mTypeList,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeFunctionBody?&?&????!signatureIR!!!'
-//
+// Phase 1: @inputActualParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__21_signatureIR_21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                             class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                             const class GGS_analysisContext constinArgument2,
-                                                                                             class GGS_unifiedTypeMap & ioArgument3,
-                                                                                             const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
-                                                                                             const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
-                                                                                             const class GGS_lstring constinArgument6,
-                                                                                             const class GGS_location constinArgument7,
-                                                                                             class GGS__5B_formalInputParameterForGeneration_5D_ & outArgument8,
-                                                                                             class GGS_unifiedTypeMapEntry & outArgument9,
-                                                                                             class GGS_string & outArgument10,
-                                                                                             class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument11,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
+class GGS_inputActualParameterForGeneration : public GGS_actualParameterForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_inputActualParameterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_inputActualParameterForGeneration (const class cPtr_inputActualParameterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mInputActualCppName (void) const ;
+
+  public: class GGS__5B__32_string_5D_ readProperty_mPoisonedVarNameList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_inputActualParameterForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                         const class GGS_string & inOperand1,
+                                                                         const class GGS__5B__32_string_5D_ & inOperand2,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_inputActualParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Function 'gSwiftLexicalStyleFileName'
-//
-//--------------------------------------------------------------------------------------------------
 
-class GGS_string function_gSwiftLexicalStyleFileName (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath??'
-//
+// Phase 2: pointer class for @inputActualParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                     const class GGS_string constinArgument1,
-                                                                                                     const class GGS_string constinArgument2,
-                                                                                                     const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                     const class GGS_string constinArgument4,
-                                                                                                     const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                     const class GGS_string constinArgument6,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
+class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void inputActualParameterForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                   const class GGS_string & inOperand1,
+                                                                   const class GGS__5B__32_string_5D_ & inOperand2,
+                                                                   Compiler * inCompiler) ;
+
+
+//--- Extension proc generateActualParameter
+  public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
+           class GGS_string & arg_ioImplementation,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
+           class GGS_string & arg_outCppName,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc generatePoisonedVariables
+  public: virtual void method_generatePoisonedVariables (class GGS_string & arg_ioImplementation,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mInputActualCppName ;
+  public: GGS__5B__32_string_5D_ mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_inputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                  const GGS_string & in_mInputActualCppName,
+                                                  const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName?????'
-//
+// Phase 1: @inputJokerParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                       const class GGS_string constinArgument1,
-                                                                                                       const class GGS_string constinArgument2,
-                                                                                                       const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                       const class GGS_string constinArgument4,
-                                                                                                       const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                       const class GGS_string constinArgument6,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
+class GGS_inputJokerParameterForGeneration : public GGS_actualParameterForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_inputJokerParameterForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_inputJokerParameterForGeneration (const class cPtr_inputJokerParameterForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mInputActualCppName (void) const ;
+
+  public: class GGS__5B__32_string_5D_ readProperty_mPoisonedVarNameList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_inputJokerParameterForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                        const class GGS_string & inOperand1,
+                                                                        const class GGS__5B__32_string_5D_ & inOperand2,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_inputJokerParameterForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxX86_64Target??buildDirName?????'
-//
-//--------------------------------------------------------------------------------------------------
 
-void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                               const class GGS_string constinArgument1,
-                                                                                                               const class GGS_string constinArgument2,
-                                                                                                               const class GGS__5B_string_5D_ constinArgument3,
-                                                                                                               const class GGS_string constinArgument4,
-                                                                                                               const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                               const class GGS_string constinArgument6,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileMinGWOnMacOSXTarget??buildDirName?'
-//
+// Phase 2: pointer class for @inputJokerParameterForGeneration class
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateMakefileMinGWOnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                          const class GGS_string constinArgument1,
-                                                                          const class GGS_string constinArgument2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void inputJokerParameterForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                  const class GGS_string & inOperand1,
+                                                                  const class GGS__5B__32_string_5D_ & inOperand2,
+                                                                  Compiler * inCompiler) ;
+
+
+//--- Extension proc generateActualParameter
+  public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_u_33__32_ & arg_ioTemporaryVariableIndex,
+           class GGS_string & arg_ioImplementation,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
+           class GGS_string & arg_outCppName,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc generatePoisonedVariables
+  public: virtual void method_generatePoisonedVariables (class GGS_string & arg_ioImplementation,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mInputActualCppName ;
+  public: GGS__5B__32_string_5D_ mProperty_mPoisonedVarNameList ;
+
+
+//--- Default constructor
+  public: cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_inputJokerParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                 const GGS_string & in_mInputActualCppName,
+                                                 const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileUnixTarget??buildDirName?'
-//
+//  GRAMMAR galgas4Grammar
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateMakefileUnixTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                 const class GGS_string constinArgument1,
-                                                                 const class GGS_string constinArgument2,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
+                                   public cParser_galgas_34_ParameterArgumentSyntax,
+                                   public cParser_galgas_34_InstructionsSyntax,
+                                   public cParser_galgas_34_DeclarationsSyntax,
+                                   public cParser_galgas_34_LexiqueComponentSyntax,
+                                   public cParser_galgas_34_GuiComponentSyntax,
+                                   public cParser_galgas_34_SyntaxComponentSyntax,
+                                   public cParser_galgas_34_GrammarComponentSyntax,
+                                   public cParser_galgas_34_ProgramDeclarations,
+                                   public cParser_galgas_34_TypeDefinitionSyntax {
+//------------------------------------- 'acces_control' non terminal
+//--- indexing
+  public: virtual void nt_acces_5F_control_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_acces_5F_control_ (GGS_AccessControlAST & outArgument0,
+                                             Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'actual_input_parameter_list' non terminal
+//--- indexing
+  public: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_actual_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                 GGS__5B_actualInputParameterAST_5D_ & outArgument1,
+                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'actual_parameter' non terminal
+//--- indexing
+  public: virtual void nt_actual_5F_parameter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_actual_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                GGS__5B_actualParameterAST_5D_ & ioArgument1,
+                                                Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'actual_parameter_list_with_parenthesis' non terminal
+//--- indexing
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                               GGS__5B_actualParameterAST_5D_ & outArgument1,
+                                                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'comma_separated_expression' non terminal
+//--- indexing
+  public: virtual void nt_comma_5F_separated_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_comma_5F_separated_5F_expression_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                             GGS__5B_CommaSeparatedExpressionElement_5D_ & outArgument1,
+                                                             Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'declaration' non terminal
+//--- indexing
+  public: virtual void nt_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
+                                        Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'expression' non terminal
+//--- indexing
+  public: virtual void nt_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_expression_ (GGS_galgasDeclarationAST & ioArgument0,
+                                       GGS_semanticExpressionAST & outArgument1,
+                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'expression_and' non terminal
+//--- indexing
+  public: virtual void nt_expression_5F_and_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_expression_5F_and_ (GGS_galgasDeclarationAST & ioArgument0,
+                                              GGS_semanticExpressionAST & outArgument1,
+                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'expression_or' non terminal
+//--- indexing
+  public: virtual void nt_expression_5F_or_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_expression_5F_or_ (GGS_galgasDeclarationAST & ioArgument0,
+                                             GGS_semanticExpressionAST & outArgument1,
+                                             Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_constructor' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_constructor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_constructor_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                      GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & ioArgument1,
+                                                      Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_cpp_classdeclaration' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_cpp_5F_classdeclaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_cpp_5F_classdeclaration_ (GGS_string & outArgument0,
+                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_cpp_predeclaration' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_cpp_5F_predeclaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_cpp_5F_predeclaration_ (GGS_string & outArgument0,
+                                                                Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_getter' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_getter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_getter_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                 GGS__5B_externTypeGetter_5D_ & ioArgument1,
+                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_method' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_method_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_method_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                 GGS__5B_externTypeMethod_5D_ & ioArgument1,
+                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'externtype_setter' non terminal
+//--- indexing
+  public: virtual void nt_externtype_5F_setter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_externtype_5F_setter_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                 GGS__5B_externTypeSetter_5D_ & ioArgument1,
+                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'factor' non terminal
+//--- indexing
+  public: virtual void nt_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_factor_ (GGS_galgasDeclarationAST & ioArgument0,
+                                   GGS_semanticExpressionAST & outArgument1,
+                                   Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'filewrapper_declaration' non terminal
+//--- indexing
+  public: virtual void nt_filewrapper_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_filewrapper_5F_declaration_ (const GGS_bool inArgument0,
+                                                       GGS_galgasDeclarationAST & ioArgument1,
+                                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'for_instruction_element' non terminal
+//--- indexing
+  public: virtual void nt_for_5F_instruction_5F_element_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_for_5F_instruction_5F_element_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                          GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & ioArgument1,
+                                                          Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'for_instruction_enumerated_object' non terminal
+//--- indexing
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                       GGS_abstractEnumeratedCollectionAST & outArgument1,
+                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'formal_input_parameter_list' non terminal
+//--- indexing
+  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                 GGS__5B_formalInputParameterAST_5D_ & outArgument1,
+                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'formal_parameter_list' non terminal
+//--- indexing
+  public: virtual void nt_formal_5F_parameter_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_formal_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                        GGS__5B_formalParameterAST_5D_ & outArgument1,
+                                                        Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'grammar_instruction_core' non terminal
+//--- indexing
+  public: virtual void nt_grammar_5F_instruction_5F_core_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_grammar_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                           const GGS_location inArgument1,
+                                                           const GGS__5B_actualParameterAST_5D_ inArgument2,
+                                                           const GGS_lstring inArgument3,
+                                                           const GGS_lstring inArgument4,
+                                                           GGS_semanticInstructionAST & outArgument5,
+                                                           Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'grammar_start_symbol_label' non terminal
+//--- indexing
+  public: virtual void nt_grammar_5F_start_5F_symbol_5F_label_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_grammar_5F_start_5F_symbol_5F_label_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                const GGS_lstring inArgument1,
+                                                                GGS__5B_nonTerminalLabelAST_5D_ & ioArgument2,
+                                                                Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'grammar_template_delimitor' non terminal
+//--- indexing
+  public: virtual void nt_grammar_5F_template_5F_delimitor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_grammar_5F_template_5F_delimitor_ (GGS__5B_templateDelimitor_32_AST_5D_ & ioArgument0,
+                                                             Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'grammar_template_replacement' non terminal
+//--- indexing
+  public: virtual void nt_grammar_5F_template_5F_replacement_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_grammar_5F_template_5F_replacement_ (GGS__5B_templateReplacementAST_5D_ & ioArgument0,
+                                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'gui_attributes' non terminal
+//--- indexing
+  public: virtual void nt_gui_5F_attributes_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_gui_5F_attributes_ (GGS__5B_guiSimpleAttributeAST_5D_ & ioArgument0,
+                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'gui_with_lexique_declaration' non terminal
+//--- indexing
+  public: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_ (GGS__5B_withLexiqueAST_5D_ & ioArgument0,
+                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'if_instruction_core' non terminal
+//--- indexing
+  public: virtual void nt_if_5F_instruction_5F_core_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_if_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                      GGS_semanticInstructionAST & outArgument1,
+                                                      Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'insert_or_replace_declaration' non terminal
+//--- indexing
+  public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_insert_5F_or_5F_replace_5F_declaration_ (GGS__5B_location_5D_ & ioArgument0,
+                                                                   Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'issue_fixit' non terminal
+//--- indexing
+  public: virtual void nt_issue_5F_fixit_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_issue_5F_fixit_ (GGS_galgasDeclarationAST & ioArgument0,
+                                           GGS__5B_fixitElementAST_5D_ & outArgument1,
+                                           Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'label_formal_parameter' non terminal
+//--- indexing
+  public: virtual void nt_label_5F_formal_5F_parameter_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_label_5F_formal_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                         GGS_lstring & outArgument1,
+                                                         GGS__5B_formalParameterAST_5D_ & ioArgument2,
+                                                         Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_attribute_declaration' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_attribute_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_attribute_5F_declaration_ (GGS__5B_lexicalAttributeAST_5D_ & ioArgument0,
+                                                                Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_explicit_rule' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_explicit_5F_rule_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_explicit_5F_rule_ (GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
+                                                        Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_expression' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_expression_ (GGS_lexicalExpressionAST & outArgument0,
+                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_factor' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_factor_ (GGS_lexicalExpressionAST & outArgument0,
+                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_implicit_rule' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_implicit_5F_rule_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_implicit_5F_rule_ (GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
+                                                        Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_indexing_declaration' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_indexing_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_indexing_5F_declaration_ (GGS__5B_indexingAST_5D_ & ioArgument0,
+                                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_instruction' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_instruction_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                   Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_list_declaration' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_list_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_list_5F_declaration_ (GGS__5B_lexicalListDeclarationAST_5D_ & ioArgument0,
+                                                           Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_list_entry' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_list_5F_entry_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_list_5F_entry_ (GGS__5B_lexicalListEntryAST_5D_ & ioArgument0,
+                                                     Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_message_declaration' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_message_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_message_5F_declaration_ (GGS__5B_lexicalMessageDeclarationAST_5D_ & ioArgument0,
+                                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_output_effective_argument' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_output_5F_effective_5F_argument_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_output_5F_effective_5F_argument_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_send_instruction' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_send_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_send_5F_instruction_ (GGS_lexicalInstructionAST & outArgument0,
+                                                           Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'lexical_term' non terminal
+//--- indexing
+  public: virtual void nt_lexical_5F_term_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_lexical_5F_term_ (GGS_lexicalExpressionAST & outArgument0,
+                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'map_insert_setter_declaration' non terminal
+//--- indexing
+  public: virtual void nt_map_5F_insert_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_map_5F_insert_5F_setter_5F_declaration_ (GGS__5B_insertSetterAST_5D_ & ioArgument0,
+                                                                   Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'method_declaration' non terminal
+//--- indexing
+  public: virtual void nt_method_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_method_5F_declaration_ (const GGS_lstring inArgument0,
+                                                  GGS_galgasDeclarationAST & ioArgument1,
+                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'non_empty_output_expression_list' non terminal
+//--- indexing
+  public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                         GGS__5B_actualOutputArgumentAST_5D_ & outArgument1,
+                                                                         Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'nonterminal_declaration' non terminal
+//--- indexing
+  public: virtual void nt_nonterminal_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_nonterminal_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                       GGS__5B_nonterminalDeclarationAST_5D_ & ioArgument1,
+                                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'output_expression_list' non terminal
+//--- indexing
+  public: virtual void nt_output_5F_expression_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                         GGS__5B_actualOutputArgumentAST_5D_ & outArgument1,
+                                                         Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'poisoned_var_list' non terminal
+//--- indexing
+  public: virtual void nt_poisoned_5F_var_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_poisoned_5F_var_5F_list_ (GGS__5B_lstring_5D_ & outArgument0,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'primary' non terminal
+//--- indexing
+  public: virtual void nt_primary_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_primary_ (GGS_galgasDeclarationAST & ioArgument0,
+                                    GGS_semanticExpressionAST & outArgument1,
+                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'primary_beginning_by_dot' non terminal
+//--- indexing
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_dot_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_dot_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                              GGS_semanticExpressionAST & outArgument1,
+                                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'primary_beginning_by_type' non terminal
+//--- indexing
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_ (const GGS_lstring inArgument0,
+                                                               GGS_galgasDeclarationAST & ioArgument1,
+                                                               GGS_semanticExpressionAST & outArgument2,
+                                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'primary_beginning_by_type_dot_name' non terminal
+//--- indexing
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_5F_dot_5F_name_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_primary_5F_beginning_5F_by_5F_type_5F_dot_5F_name_ (const GGS_lstring inArgument0,
+                                                                              const GGS_lstring inArgument1,
+                                                                              GGS_galgasDeclarationAST & ioArgument2,
+                                                                              GGS_semanticExpressionAST & outArgument3,
+                                                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'property_declaration' non terminal
+//--- indexing
+  public: virtual void nt_property_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_property_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                    GGS__5B_propertyInCollectionAST_5D_ & ioArgument1,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'relation_factor' non terminal
+//--- indexing
+  public: virtual void nt_relation_5F_factor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_relation_5F_factor_ (GGS_galgasDeclarationAST & ioArgument0,
+                                               GGS_semanticExpressionAST & outArgument1,
+                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'remove_setter_declaration' non terminal
+//--- indexing
+  public: virtual void nt_remove_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_remove_5F_setter_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+                                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'repeat_while_branch' non terminal
+//--- indexing
+  public: virtual void nt_repeat_5F_while_5F_branch_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_repeat_5F_while_5F_branch_ (GGS__5B_lexicalWhileBranchAST_5D_ & ioArgument0,
+                                                      Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'replace_setter_declaration' non terminal
+//--- indexing
+  public: virtual void nt_replace_5F_setter_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_replace_5F_setter_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+                                                             Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'search_method_declaration' non terminal
+//--- indexing
+  public: virtual void nt_search_5F_method_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_search_5F_method_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+                                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'search_subcript_declaration' non terminal
+//--- indexing
+  public: virtual void nt_search_5F_subcript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_search_5F_subcript_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+                                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'semantic_instruction' non terminal
+//--- indexing
+  public: virtual void nt_semantic_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_semantic_5F_instruction_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                    GGS_semanticInstructionAST & outArgument1,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'semantic_instruction_beginning_with_identifier' non terminal
+//--- indexing
+  public: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                       const GGS_bool inArgument1,
+                                                                                       GGS_semanticInstructionAST & outArgument2,
+                                                                                       Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'semantic_instruction_list' non terminal
+//--- indexing
+  public: virtual void nt_semantic_5F_instruction_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_semantic_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                            GGS__5B_semanticInstructionAST_5D_ & outArgument1,
+                                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'simple_expression' non terminal
+//--- indexing
+  public: virtual void nt_simple_5F_expression_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_simple_5F_expression_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                 GGS_semanticExpressionAST & outArgument1,
+                                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'simple_type_definition' non terminal
+//--- indexing
+  public: virtual void nt_simple_5F_type_5F_definition_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_simple_5F_type_5F_definition_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                         GGS_lstring & outArgument1,
+                                                         Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'simple_type_followed_by_dot_type' non terminal
+//--- indexing
+  public: virtual void nt_simple_5F_type_5F_followed_5F_by_5F_dot_5F_type_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_simple_5F_type_5F_followed_5F_by_5F_dot_5F_type_ (const GGS_lstring inArgument0,
+                                                                            GGS_galgasDeclarationAST & ioArgument1,
+                                                                            GGS_semanticExpressionAST & outArgument2,
+                                                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'sorted_array_sort_descriptor' non terminal
+//--- indexing
+  public: virtual void nt_sorted_5F_array_5F_sort_5F_descriptor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_sorted_5F_array_5F_sort_5F_descriptor_ (GGS__5B_sortedArraySortDescriptorAST_5D_ & ioArgument0,
+                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'start_symbol' non terminal
+//--- indexing
+  public: virtual void nt_start_5F_symbol_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_start_5F_symbol_ (GGS_galgasDeclarationAST & ioArgument0,
+                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//--- Start symbol
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
+                                                  GGS_lstring inFileName,
+                                                  GGS_galgasDeclarationAST & ioArgument0
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
+                                                    GGS_string inSourceString,
+                                                    GGS_string inNameString,
+                                                    GGS_galgasDeclarationAST & ioArgument0
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Indexing
+  public: static void performIndexing (Compiler * inCompiler,
+                                       const String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
+                                                  const String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
+                                                 const String & inSourceFilePath) ;
+
+//------------------------------------- 'switch_case' non terminal
+//--- indexing
+  public: virtual void nt_switch_5F_case_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_switch_5F_case_ (GGS_galgasDeclarationAST & ioArgument0,
+                                           GGS__5B_lstring_5D_ & outArgument1,
+                                           GGS__5B_switchExtractedValuesAST_5D_ & outArgument2,
+                                           Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'syntax_directed_translation_result' non terminal
+//--- indexing
+  public: virtual void nt_syntax_5F_directed_5F_translation_5F_result_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_syntax_5F_directed_5F_translation_5F_result_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                        GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & outArgument1,
+                                                                        Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'syntax_instruction' non terminal
+//--- indexing
+  public: virtual void nt_syntax_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_syntax_5F_instruction_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                  GGS_syntaxInstructionAST & outArgument1,
+                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'syntax_instruction_list' non terminal
+//--- indexing
+  public: virtual void nt_syntax_5F_instruction_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_syntax_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                          GGS__5B_syntaxInstructionAST_5D_ & outArgument1,
+                                                          Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'syntax_rule_declaration' non terminal
+//--- indexing
+  public: virtual void nt_syntax_5F_rule_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_syntax_5F_rule_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                          GGS__5B_syntaxRuleAST_5D_ & ioArgument1,
+                                                          Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'syntax_rule_label' non terminal
+//--- indexing
+  public: virtual void nt_syntax_5F_rule_5F_label_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_syntax_5F_rule_5F_label_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                    const GGS_lstring inArgument1,
+                                                    GGS__5B_syntaxRuleLabelAST_5D_ & ioArgument2,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'template_delimitor' non terminal
+//--- indexing
+  public: virtual void nt_template_5F_delimitor_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_template_5F_delimitor_ (GGS__5B_templateDelimitor_32_AST_5D_ & ioArgument0,
+                                                  Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'template_replacement' non terminal
+//--- indexing
+  public: virtual void nt_template_5F_replacement_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_template_5F_replacement_ (GGS__5B_templateReplacementAST_5D_ & ioArgument0,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'term' non terminal
+//--- indexing
+  public: virtual void nt_term_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_term_ (GGS_galgasDeclarationAST & ioArgument0,
+                                 GGS_semanticExpressionAST & outArgument1,
+                                 Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'terminal_declaration' non terminal
+//--- indexing
+  public: virtual void nt_terminal_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_terminal_5F_declaration_ (GGS__5B_terminalDeclarationAST_5D_ & ioArgument0,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'terminal_instruction_indexing' non terminal
+//--- indexing
+  public: virtual void nt_terminal_5F_instruction_5F_indexing_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_terminal_5F_instruction_5F_indexing_ (GGS__5B__32_lstring_5D_ & outArgument0,
+                                                                Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'type_definition' non terminal
+//--- indexing
+  public: virtual void nt_type_5F_definition_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_type_5F_definition_ (GGS_galgasDeclarationAST & ioArgument0,
+                                               GGS_lstring & outArgument1,
+                                               Lexique_galgasScanner_34_ * inCompiler) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_16 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_17 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_18 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_19 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_20 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_21 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_22 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_23 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_16 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_17 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_18 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_16 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_17 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_18 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_19 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_20 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_21 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_22 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_23 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_24 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_25 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_26 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_27 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_28 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_29 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_30 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_31 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_32 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_33 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_34 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_35 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_36 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_37 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_38 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_39 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_40 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_41 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_42 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_43 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_44 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_45 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_46 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_47 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_48 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_49 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_50 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_51 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_52 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_53 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_54 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_55 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_56 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_57 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_58 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_59 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_60 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_61 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_InstructionsSyntax_62 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_16 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_17 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_18 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_19 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_20 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_21 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_22 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_23 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_24 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_25 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_26 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_27 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_28 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_29 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_30 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_31 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_32 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_33 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_34 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_35 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_36 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_37 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_38 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_39 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_40 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_41 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_42 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_43 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_44 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_45 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_46 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_47 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_48 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_49 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_50 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_51 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_52 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_53 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_16 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_17 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_18 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_19 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_20 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_21 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_22 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_23 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_24 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_25 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_26 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GuiComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_9 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_10 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_11 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_12 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_13 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_14 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_SyntaxComponentSyntax_15 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_5 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_6 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_7 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_GrammarComponentSyntax_8 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ProgramDeclarations_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ProgramDeclarations_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_0 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_1 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_2 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_3 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_4 (Lexique_galgasScanner_34_ *) ;
+} ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileMacTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileMacTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                const class GGS_string constinArgument1,
-                                                                const class GGS_string constinArgument2,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileLinux32OnMacOSXTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileLinux_33__32_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                  const class GGS_string constinArgument1,
-                                                                                  const class GGS_string constinArgument2,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileLinux64OnMacOSXTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileLinux_36__34_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                  const class GGS_string constinArgument1,
-                                                                                  const class GGS_string constinArgument2,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateArm64LinuxMakefileTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                             const class GGS_string constinArgument1,
-                                                                             const class GGS_string constinArgument2,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName?????appProductFileList?swiftAppProductFileList???&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__26_ (const class GGS_string constinArgument0,
-                                                                                                                                                       const class GGS_string constinArgument1,
-                                                                                                                                                       const class GGS_string constinArgument2,
-                                                                                                                                                       const class GGS_projectSettings constinArgument3,
-                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument4,
-                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument5,
-                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument6,
-                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument7,
-                                                                                                                                                       const class GGS__5B_string_5D_ constinArgument8,
-                                                                                                                                                       const class GGS_string constinArgument9,
-                                                                                                                                                       const class GGS_stringset constinArgument10,
-                                                                                                                                                       class GGS_stringset & ioArgument11,
-                                                                                                                                                       Compiler * inCompiler
-                                                                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'updateLIBPMatPath?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_updateLIBPMatPath_3F_ (const class GGS_string constinArgument0,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'transformLabelMap'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GGS__5B_nonTerminalLabelAST_5D_ & constinArgument0,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkLabelMap????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkLabelMap_3F__3F__3F__3F_ (const class GGS_location constinArgument0,
-                                            const class GGS__5B_nonTerminalLabelAST_5D_ constinArgument1,
-                                            const class GGS_location constinArgument2,
-                                            const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis constinArgument3,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-

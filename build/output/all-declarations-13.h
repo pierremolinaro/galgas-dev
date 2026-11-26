@@ -4012,9 +4012,6 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
 
 class cGrammar_projectComponentGrammar : public cParser_projectComponentSyntax {
 //------------------------------------- 'project_component_start_symbol' non terminal
-//--- 'parse' label
- /*  public: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_projectComponentScanner * inCompiler) ; */
-
 //--- indexing
   public: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (Lexique_projectComponentScanner * inCompiler) ;
 

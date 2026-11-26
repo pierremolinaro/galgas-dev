@@ -252,12 +252,6 @@ extension @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-override func @galgas3GrammarComponentAST.keyRepresentation () -> @string {
-  result = "grammar " + self.mGrammarComponentName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override func @galgas3SyntaxComponentAST.keyRepresentation () -> @string {
   result = "syntax " + self.mSyntaxComponentName
 }
@@ -526,48 +520,6 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
 
 graph @semanticTypePrecedenceGraph : @semanticDeclarationAST {
   #insertSetter addNode #errorMessage "the '%K' type is already declared at %L"
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @galgas3GrammarComponentAST.enterDeclarationInGraph (
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap _ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
-  let key = @lstring ("grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
-  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
-  for value in self.mSyntaxComponents do
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("syntax " + value, value.location))
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap _ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
-  let key = @lstring ("syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
-  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("lexique " + self.mLexiqueName, self.mLexiqueName.location))
-  for aRule in self.mRuleList do
-    for aLabel in aRule.mLabelList do
-      for formal in aLabel.mFormalArguments do
-        switch formal.mFormalArgumentPassingMode
-          case argumentVarIn : !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location))
-          case argumentOut, argumentInOut, argumentConstantIn :
-        end
-      end
-    end
-  end
 }
 
 //--------------------------------------------------------------------------------------------------

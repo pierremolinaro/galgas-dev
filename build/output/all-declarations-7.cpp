@@ -5801,19 +5801,20 @@ GGS_semanticDeclarationAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_filewrapperDeclarationAST GGS_filewrapperDeclarationAST::
-init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                  const GGS_bool & in_mIsInternal,
-                                                  const GGS_string & in_mSourceFileAbsolutePath,
-                                                  const GGS_lstring & in_mFilewrapperName,
-                                                  const GGS_lstring & in_mFilewrapperPath,
-                                                  const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
-                                                  const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
-                                                  const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                      const GGS_bool & in_mIsInternal,
+                                                      const GGS_string & in_mSourceFileAbsolutePath,
+                                                      const GGS_lstring & in_mFilewrapperName,
+                                                      const GGS_lstring & in_mFilewrapperPath,
+                                                      const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
+                                                      const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
+                                                      const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
+                                                      const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateListEX,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cPtr_filewrapperDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_filewrapperDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mIsInternal, in_mSourceFileAbsolutePath, in_mFilewrapperName, in_mFilewrapperPath, in_mFilewrapperTextFileExtensionList, in_mFilewrapperBinaryFileExtensionList, in_mFilewrapperTemplateList, inCompiler) ;
+  object->filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (in_isPredefined, in_mIsInternal, in_mSourceFileAbsolutePath, in_mFilewrapperName, in_mFilewrapperPath, in_mFilewrapperTextFileExtensionList, in_mFilewrapperBinaryFileExtensionList, in_mFilewrapperTemplateList, in_mFilewrapperTemplateListEX, inCompiler) ;
   const GGS_filewrapperDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5822,15 +5823,16 @@ init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefin
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_filewrapperDeclarationAST::
-filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
-                                                                            const GGS_bool & in_mIsInternal,
-                                                                            const GGS_string & in_mSourceFileAbsolutePath,
-                                                                            const GGS_lstring & in_mFilewrapperName,
-                                                                            const GGS_lstring & in_mFilewrapperPath,
-                                                                            const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
-                                                                            const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
-                                                                            const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
-                                                                            Compiler * /* inCompiler */) {
+filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                const GGS_bool & in_mIsInternal,
+                                                                                const GGS_string & in_mSourceFileAbsolutePath,
+                                                                                const GGS_lstring & in_mFilewrapperName,
+                                                                                const GGS_lstring & in_mFilewrapperPath,
+                                                                                const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
+                                                                                const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
+                                                                                const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
+                                                                                const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateListEX,
+                                                                                Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsInternal = in_mIsInternal ;
   mProperty_mSourceFileAbsolutePath = in_mSourceFileAbsolutePath ;
@@ -5839,6 +5841,7 @@ filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (cons
   mProperty_mFilewrapperTextFileExtensionList = in_mFilewrapperTextFileExtensionList ;
   mProperty_mFilewrapperBinaryFileExtensionList = in_mFilewrapperBinaryFileExtensionList ;
   mProperty_mFilewrapperTemplateList = in_mFilewrapperTemplateList ;
+  mProperty_mFilewrapperTemplateListEX = in_mFilewrapperTemplateListEX ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5932,6 +5935,18 @@ GGS__5B_filewrapperTemplateAST_5D_ GGS_filewrapperDeclarationAST::readProperty_m
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GGS__5B_filewrapperTemplateAST_5D_ GGS_filewrapperDeclarationAST::readProperty_mFilewrapperTemplateListEX (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_filewrapperTemplateAST_5D_ () ;
+  }else{
+    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
+    return p->mProperty_mFilewrapperTemplateListEX ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Pointer class for @filewrapperDeclarationAST class
 //--------------------------------------------------------------------------------------------------
 
@@ -5943,7 +5958,8 @@ mProperty_mFilewrapperName (),
 mProperty_mFilewrapperPath (),
 mProperty_mFilewrapperTextFileExtensionList (),
 mProperty_mFilewrapperBinaryFileExtensionList (),
-mProperty_mFilewrapperTemplateList () {
+mProperty_mFilewrapperTemplateList (),
+mProperty_mFilewrapperTemplateListEX () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5956,6 +5972,7 @@ cPtr_filewrapperDeclarationAST::cPtr_filewrapperDeclarationAST (const GGS_bool &
                                                                 const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
                                                                 const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
                                                                 const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
+                                                                const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateListEX,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
@@ -5965,7 +5982,8 @@ mProperty_mFilewrapperName (),
 mProperty_mFilewrapperPath (),
 mProperty_mFilewrapperTextFileExtensionList (),
 mProperty_mFilewrapperBinaryFileExtensionList (),
-mProperty_mFilewrapperTemplateList () {
+mProperty_mFilewrapperTemplateList (),
+mProperty_mFilewrapperTemplateListEX () {
   mProperty_isPredefined = in_isPredefined ;
   mProperty_mIsInternal = in_mIsInternal ;
   mProperty_mSourceFileAbsolutePath = in_mSourceFileAbsolutePath ;
@@ -5974,6 +5992,7 @@ mProperty_mFilewrapperTemplateList () {
   mProperty_mFilewrapperTextFileExtensionList = in_mFilewrapperTextFileExtensionList ;
   mProperty_mFilewrapperBinaryFileExtensionList = in_mFilewrapperBinaryFileExtensionList ;
   mProperty_mFilewrapperTemplateList = in_mFilewrapperTemplateList ;
+  mProperty_mFilewrapperTemplateListEX = in_mFilewrapperTemplateListEX ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6000,6 +6019,8 @@ void cPtr_filewrapperDeclarationAST::description (String & ioString,
   mProperty_mFilewrapperBinaryFileExtensionList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mFilewrapperTemplateList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFilewrapperTemplateListEX.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -6007,7 +6028,7 @@ void cPtr_filewrapperDeclarationAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_filewrapperDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperDeclarationAST (mProperty_isPredefined, mProperty_mIsInternal, mProperty_mSourceFileAbsolutePath, mProperty_mFilewrapperName, mProperty_mFilewrapperPath, mProperty_mFilewrapperTextFileExtensionList, mProperty_mFilewrapperBinaryFileExtensionList, mProperty_mFilewrapperTemplateList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_filewrapperDeclarationAST (mProperty_isPredefined, mProperty_mIsInternal, mProperty_mSourceFileAbsolutePath, mProperty_mFilewrapperName, mProperty_mFilewrapperPath, mProperty_mFilewrapperTextFileExtensionList, mProperty_mFilewrapperBinaryFileExtensionList, mProperty_mFilewrapperTemplateList, mProperty_mFilewrapperTemplateListEX, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6024,6 +6045,7 @@ AbstractPtrClass * cPtr_filewrapperDeclarationAST::duplicate (Compiler * inCompi
     mProperty_mFilewrapperTextFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperTextFileExtensionList") ;
     mProperty_mFilewrapperBinaryFileExtensionList.printNonNullClassInstanceProperties ("mFilewrapperBinaryFileExtensionList") ;
     mProperty_mFilewrapperTemplateList.printNonNullClassInstanceProperties ("mFilewrapperTemplateList") ;
+    mProperty_mFilewrapperTemplateListEX.printNonNullClassInstanceProperties ("mFilewrapperTemplateListEX") ;
   }
 #endif
 

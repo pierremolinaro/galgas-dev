@@ -1,6 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//     L E X I Q U E                                                                             
+//     L E X I Q U E
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -22,30 +22,38 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 //--------------------------------------------------------------------------------------------------
 
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
-                %!^%const String & inSourceFileName
-                %!^%COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceFileName COMMA_THERE)%
-  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-    %,\nmMatchedTemplateDelimiterIndex (-1)%
-  end
-% {
+              %!^%const String & inSourceFileName,
+              %!^%const TemplateDelimiter inTemplateDefinitionArray [],
+              %!^%const uint32_t inTemplateDefinitionArrayCount,
+              %!^%const TemplateDelimiter inTemplateReplacementArray [],
+              %!^%const uint32_t inTemplateReplacementArrayCount
+              %!^%COMMA_LOCATION_ARGS) :
+Lexique (
+  inCallerCompiler, inSourceFileName,
+  inTemplateDefinitionArray, inTemplateDefinitionArrayCount,
+  inTemplateReplacementArray, inTemplateReplacementArrayCount
+  COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
-                %!^%const String & inSourceString,
-                %!^%const String & inStringForError
-                %!^%COMMA_LOCATION_ARGS) :
-Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
-  if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-    %,\nmMatchedTemplateDelimiterIndex (-1)%
-  end
-% {
+              %!^%const String & inSourceString,
+              %!^%const String & inStringForError,
+              %!^%const TemplateDelimiter inTemplateDefinitionArray [],
+              %!^%const uint32_t inTemplateDefinitionArrayCount,
+              %!^%const TemplateDelimiter inTemplateReplacementArray [],
+              %!^%const uint32_t inTemplateReplacementArrayCount
+              %!^%COMMA_LOCATION_ARGS) :
+Lexique (
+  inCallerCompiler, inSourceString, inStringForError,
+  inTemplateDefinitionArray, inTemplateDefinitionArrayCount,
+  inTemplateReplacementArray, inTemplateReplacementArrayCount
+  COMMA_THERE) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//                        Lexical error message list                                             
+//                        Lexical error message list
 //--------------------------------------------------------------------------------------------------
 %
   for (lkey mLexicalMessage mMessageIsUsed) in LEXICAL_MESSAGE_MAP do
@@ -53,7 +61,7 @@ Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
   end
 %
 //--------------------------------------------------------------------------------------------------
-//                getMessageForTerminal                                                          
+//                getMessageForTerminal
 //--------------------------------------------------------------------------------------------------
 
 String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTerminalIndex) const {
@@ -70,7 +78,7 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
 }
 
 //--------------------------------------------------------------------------------------------------
-//                      U N I C O D E    S T R I N G S                                           
+//                      U N I C O D E    S T R I N G S
 //--------------------------------------------------------------------------------------------------
 %
   for (key) in STRINGS_IN_EXPLICIT_RULES do
@@ -98,7 +106,7 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
   end
 %
 //--------------------------------------------------------------------------------------------------
-//                          getCurrentTokenString                                                
+//                          getCurrentTokenString
 //--------------------------------------------------------------------------------------------------
 
 String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
@@ -130,7 +138,7 @@ end
 }
 
 //--------------------------------------------------------------------------------------------------
-//                           Template Delimiters                                                 
+//                           Template Delimiters
 //--------------------------------------------------------------------------------------------------
 
 % for (delimitor) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
@@ -149,7 +157,7 @@ end
   end
 %
 //--------------------------------------------------------------------------------------------------
-//                           Template Replacements                                               
+//                           Template Replacements
 //--------------------------------------------------------------------------------------------------
 
 % for (rep) in TEMPLATE_REPLACEMENT_LIST
@@ -168,7 +176,7 @@ end
   end
 %
 //--------------------------------------------------------------------------------------------------
-//            Terminal Symbols as end of script in template mark                                 
+//            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
 % if [TEMPLATE_DELIMITOR_LIST count] > 0 then
@@ -181,7 +189,7 @@ end
   end
 %
 //--------------------------------------------------------------------------------------------------
-//               INTERNAL PARSE LEXICAL TOKEN                                         
+//               INTERNAL PARSE LEXICAL TOKEN
 //--------------------------------------------------------------------------------------------------
 
 void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
@@ -200,7 +208,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQ
       ![mLexicalRule generateLexicalRuleCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end
-%if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ? 
+%if (testForInputUTF32Char (utf32 ('\0'))) { // End of source text ?
       token.mTokenCode = kToken_ ; // Empty string code
     }else{ // Unknown input character
       unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
@@ -214,7 +222,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQ
 }
 
 //--------------------------------------------------------------------------------------------------
-//               P A R S E    L E X I C A L    T O K E N                                         
+//               P A R S E    L E X I C A L    T O K E N
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
@@ -274,7 +282,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 }
 
 //--------------------------------------------------------------------------------------------------
-//                         E N T E R    T O K E N                                                
+//                         E N T E R    T O K E N
 //--------------------------------------------------------------------------------------------------
 
 void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) {
@@ -293,7 +301,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
 }
 
 //--------------------------------------------------------------------------------------------------
-//               A T T R I B U T E   A C C E S S                                                 
+//               A T T R I B U T E   A C C E S S
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//--------------------------------------------------------------------------------------------------\n\n%
@@ -303,7 +311,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
     %}\n\n%
   end
 %//--------------------------------------------------------------------------------------------------
-//         A S S I G N    F R O M    A T T R I B U T E                                           
+//         A S S I G N    F R O M    A T T R I B U T E
 %
   for (lkey mLexicalType) in LEXICAL_ATTRIBUTE_MAP do
     %//--------------------------------------------------------------------------------------------------\n\n%
@@ -317,7 +325,7 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
     %}\n\n%
   end
 %//--------------------------------------------------------------------------------------------------
-//                         I N T R O S P E C T I O N                                             
+//                         I N T R O S P E C T I O N
 //--------------------------------------------------------------------------------------------------
 
  GGS__5B_string_5D_ Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
@@ -364,7 +372,7 @@ __attribute__ ((used))
 __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER%) ;
 
 //--------------------------------------------------------------------------------------------------
-//   S T Y L E   I N D E X    F O R    T E R M I N A L                                           
+//   S T Y L E   I N D E X    F O R    T E R M I N A L
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const { // §§

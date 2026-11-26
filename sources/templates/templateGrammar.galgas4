@@ -30,3 +30,21 @@ indexing grammar templateGrammar "SLR" {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+indexing grammar newTemplateGrammar "SLR" {
+  syntax galgas4ExpressionSyntax
+  syntax galgas4TypeDefinitionSyntax
+
+  #templateDelimiter "%" ... "%"
+
+  #templateReplacement "\\%" -> "%"
+
+  #templateReplacement "\\n" -> "\n"
+
+  #templateReplacement "\\\\" -> "\\"
+
+  <expression> (?!@galgasDeclarationAST ioDeclarations,
+                !@semanticExpressionAST outExpression)
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -46,6 +46,7 @@ syntax extension galgas4DeclarationsSyntax {
     $"string"$ (?let @lstring filewrapperPath)
     var [@lstring] filewrapperTextFileExtensionList = []
     var [@lstring] filewrapperBinaryFileExtensionList = []
+    var [@filewrapperTemplateAST] filewrapperTemplateListEX = []
     var [@filewrapperTemplateAST] filewrapperTemplateList = []
     ${$
     repeat
@@ -58,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
       $"string"$ (?let @lstring pathExtension)
       filewrapperBinaryFileExtensionList ++= pathExtension
     while
-      $template$
+      $#template$
       $identifier$ (?let mFilewrapperTemplateName)
       $:$
       $"string"$ (?let mFilewrapperTemplatePath)
@@ -90,6 +91,39 @@ syntax extension galgas4DeclarationsSyntax {
         mFilewrapperTemplatePath,
         filewrapperTemplateFormalInputParameters
       )
+    while
+      $template$
+      $identifier$ (?let mFilewrapperTemplateName)
+      $:$
+      $"string"$ (?let mFilewrapperTemplatePath)
+      var [@formalTemplateInputParameterAST] filewrapperTemplateFormalInputParameters = @()
+      $($
+      select
+      or
+        repeat
+          let @lstring selector
+          select
+            selector = "".nowhere
+          or
+            $?$
+            selector = "".nowhere
+          or
+            $?selector:$ (?selector)
+          end
+          <type_definition> (!?ioDeclarations, ?let typeName)
+          $identifier$ (?let argumentName)
+          let isUnused = argumentName.hasPrefix ("_")
+          filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
+        while
+          $,$
+        end
+      end
+      $)$
+      filewrapperTemplateListEX ++= @(
+        mFilewrapperTemplateName,
+        mFilewrapperTemplatePath,
+        filewrapperTemplateFormalInputParameters
+      )
     end
     $}$
     ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
@@ -100,7 +134,8 @@ syntax extension galgas4DeclarationsSyntax {
       filewrapperPath,
       filewrapperTextFileExtensionList,
       filewrapperBinaryFileExtensionList,
-      filewrapperTemplateList
+      filewrapperTemplateList,
+      filewrapperTemplateListEX
     )
   }
 
@@ -156,13 +191,14 @@ struct @filewrapperTemplateForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 final class @filewrapperDeclarationAST : @semanticDeclarationAST {
-  public let @bool mIsInternal
-  public let @string mSourceFileAbsolutePath
-  public let @lstring mFilewrapperName
-  public let @lstring mFilewrapperPath
-  public let [@lstring] mFilewrapperTextFileExtensionList
-  public let [@lstring] mFilewrapperBinaryFileExtensionList
-  public let [@filewrapperTemplateAST] mFilewrapperTemplateList
+  private let @bool mIsInternal
+  private let @string mSourceFileAbsolutePath
+  private let @lstring mFilewrapperName
+  private let @lstring mFilewrapperPath
+  private let [@lstring] mFilewrapperTextFileExtensionList
+  private let [@lstring] mFilewrapperBinaryFileExtensionList
+  private let [@filewrapperTemplateAST] mFilewrapperTemplateList
+  private let [@filewrapperTemplateAST] mFilewrapperTemplateListEX
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -182,6 +218,12 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
                      ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.mFilewrapperName, self.mFilewrapperName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    for templ in self.mFilewrapperTemplateListEX do
+      for formal in templ.mFilewrapperTemplateFormalInputParameters do
+        let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
+        !?ioSemanticTypePrecedenceGraph.noteNode (argKey)
+      end
+    end
     for templ in self.mFilewrapperTemplateList do
       for formal in templ.mFilewrapperTemplateFormalInputParameters do
         let argKey = @lstring ("@" + formal.mFormalArgumentTypeName, formal.mFormalArgumentTypeName.location)
@@ -257,6 +299,24 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
     )
   //--- Templates are class functions
     !?ioTypeMap.makeEntryFromString ("string", ?let stringType)
+    for aTemplate in self.mFilewrapperTemplateListEX do
+      var formalArgumentList = [@functionSignatureElement] ()
+      for formalInputArgument in aTemplate.mFilewrapperTemplateFormalInputParameters do
+        !?ioTypeMap.makeEntry (formalInputArgument.mFormalArgumentTypeName, ?let typeIndex)
+        formalArgumentList ++= @(
+          formalInputArgument.mFormalTemplateSelector,
+          typeIndex,
+          formalInputArgument.mFormalArgumentName.string,
+          true
+        )
+      end
+      !?classFunctionMap.insertKey (
+         aTemplate.mFilewrapperTemplateName,
+         !argumentTypeList: formalArgumentList,
+         !hasCompilerArgument: true,
+         !returnedType: stringType
+      )
+    end
     for aTemplate in self.mFilewrapperTemplateList do
       var formalArgumentList = [@functionSignatureElement] ()
       for formalInputArgument in aTemplate.mFilewrapperTemplateFormalInputParameters do
@@ -381,6 +441,47 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
       end
     //-------------------------------- Analyze filewrapper templates
       var [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration = []
+      for filewrapperTemplate in self.mFilewrapperTemplateListEX do
+        if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
+          error filewrapperTemplate.mFilewrapperTemplatePath
+           : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
+        end
+        let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
+      //--- Parse template
+        grammar templateGrammar (?let [@templateInstructionAST] resultingInstructionList)
+           in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
+      //--- Build template variable map
+        var @templateVariableMap templateVariableMap = @()
+        var [@formalInputParameterForGeneration] filewrapperTemplateFormalInputParameters = @()
+        for formal in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
+          let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
+          let @string cppVarName = "in_" + formal.mFormalArgumentName.string.identifierRepresentation
+          !?templateVariableMap.insertKey (formal.mFormalArgumentName, type, cppVarName)
+          filewrapperTemplateFormalInputParameters ++= @(formal.mFormalTemplateSelector, type, cppVarName, formal.mFormalArgumentName, true)
+        end
+      //--- Analyze template
+        var templateInstructionListForGeneration = [@templateInstructionForGeneration] ()
+        let templateAnalysisContext = @templateAnalysisContext (
+          inSemanticContext,
+          inPredefinedTypes,
+          templateVariableMap
+        )
+        templateInstructionListAnalysis (
+          filewrapperNameForUsefulness,
+          !?ioUsefulEntitiesGraph,
+          templateAnalysisContext,
+          !?ioTypeMap,
+          resultingInstructionList,
+          !?templateInstructionListForGeneration
+        )
+      //--- Enter in generation list
+        filewrapperTemplateListForGeneration ++= @(
+          filewrapperTemplate.mFilewrapperTemplateName.string,
+          filewrapperTemplateFormalInputParameters,
+          templateInstructionListForGeneration
+        )
+      end
+    //-------------------------------- Analyze filewrapper templates
       for filewrapperTemplate in self.mFilewrapperTemplateList do
         if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
           error filewrapperTemplate.mFilewrapperTemplatePath

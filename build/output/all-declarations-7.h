@@ -2880,19 +2880,22 @@ class GGS_filewrapperDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS__5B_filewrapperTemplateAST_5D_ readProperty_mFilewrapperTemplateList (void) const ;
 
+  public: class GGS__5B_filewrapperTemplateAST_5D_ readProperty_mFilewrapperTemplateListEX (void) const ;
+
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_filewrapperDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                 const class GGS_bool & inOperand1,
-                                                                                                 const class GGS_string & inOperand2,
-                                                                                                 const class GGS_lstring & inOperand3,
-                                                                                                 const class GGS_lstring & inOperand4,
-                                                                                                 const class GGS__5B_lstring_5D_ & inOperand5,
-                                                                                                 const class GGS__5B_lstring_5D_ & inOperand6,
-                                                                                                 const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand7,
-                                                                                                 Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GGS_filewrapperDeclarationAST init_21_isPredefined_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                     const class GGS_bool & inOperand1,
+                                                                                                     const class GGS_string & inOperand2,
+                                                                                                     const class GGS_lstring & inOperand3,
+                                                                                                     const class GGS_lstring & inOperand4,
+                                                                                                     const class GGS__5B_lstring_5D_ & inOperand5,
+                                                                                                     const class GGS__5B_lstring_5D_ & inOperand6,
+                                                                                                     const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand7,
+                                                                                                     const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand8,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_filewrapperDeclarationAST & inOperand) const ;
 
@@ -2929,15 +2932,16 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                           const class GGS_bool & inOperand1,
-                                                                                           const class GGS_string & inOperand2,
-                                                                                           const class GGS_lstring & inOperand3,
-                                                                                           const class GGS_lstring & inOperand4,
-                                                                                           const class GGS__5B_lstring_5D_ & inOperand5,
-                                                                                           const class GGS__5B_lstring_5D_ & inOperand6,
-                                                                                           const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand7,
-                                                                                           Compiler * inCompiler) ;
+  public: void filewrapperDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                               const class GGS_bool & inOperand1,
+                                                                                               const class GGS_string & inOperand2,
+                                                                                               const class GGS_lstring & inOperand3,
+                                                                                               const class GGS_lstring & inOperand4,
+                                                                                               const class GGS__5B_lstring_5D_ & inOperand5,
+                                                                                               const class GGS__5B_lstring_5D_ & inOperand6,
+                                                                                               const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand7,
+                                                                                               const class GGS__5B_filewrapperTemplateAST_5D_ & inOperand8,
+                                                                                               Compiler * inCompiler) ;
 
 
 //--- Extension func keyRepresentation
@@ -2981,6 +2985,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GGS__5B_lstring_5D_ mProperty_mFilewrapperTextFileExtensionList ;
   public: GGS__5B_lstring_5D_ mProperty_mFilewrapperBinaryFileExtensionList ;
   public: GGS__5B_filewrapperTemplateAST_5D_ mProperty_mFilewrapperTemplateList ;
+  public: GGS__5B_filewrapperTemplateAST_5D_ mProperty_mFilewrapperTemplateListEX ;
 
 
 //--- Default constructor
@@ -2995,6 +3000,7 @@ class cPtr_filewrapperDeclarationAST : public cPtr_semanticDeclarationAST {
                                           const GGS__5B_lstring_5D_ & in_mFilewrapperTextFileExtensionList,
                                           const GGS__5B_lstring_5D_ & in_mFilewrapperBinaryFileExtensionList,
                                           const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateList,
+                                          const GGS__5B_filewrapperTemplateAST_5D_ & in_mFilewrapperTemplateListEX,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 

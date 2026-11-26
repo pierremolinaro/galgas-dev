@@ -55,10 +55,19 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 //--------------------------------------------------------------------------------------------------
 
 Lexique::Lexique (Compiler * inCallerCompiler,
-                  const String & inSourceFileName
+                  const String & inSourceFileName,
+                  const TemplateDelimiter inTemplateDefinitionArray [],
+                  const uint32_t inTemplateDefinitionArrayCount,
+                  const TemplateDelimiter inTemplateReplacementArray [],
+                  const uint32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
+mMatchedTemplateDelimiterIndex (-1),
+mTemplateDefinitionArray (inTemplateDefinitionArray),
+mTemplateDefinitionArrayCount (inTemplateDefinitionArrayCount),
+mTemplateReplacementArray (inTemplateReplacementArray),
+mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
 mLastToken (nullptr),
 mCurrentTokenPtr (nullptr),
@@ -100,10 +109,19 @@ mLatexNextCharacterToEnterIndex (0) {
 
 Lexique::Lexique (Compiler * inCallerCompiler,
                   const String & inSourceString,
-                  const String & inStringForError
+                  const String & inStringForError,
+                  const TemplateDelimiter inTemplateDefinitionArray [],
+                  const uint32_t inTemplateDefinitionArrayCount,
+                  const TemplateDelimiter inTemplateReplacementArray [],
+                  const uint32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
+mMatchedTemplateDelimiterIndex (-1),
+mTemplateDefinitionArray (inTemplateDefinitionArray),
+mTemplateDefinitionArrayCount (inTemplateDefinitionArrayCount),
+mTemplateReplacementArray (inTemplateReplacementArray),
+mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
 mLastToken (nullptr),
 mCurrentTokenPtr (nullptr),

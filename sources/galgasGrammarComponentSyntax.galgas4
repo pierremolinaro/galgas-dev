@@ -53,12 +53,18 @@ syntax galgas4GrammarComponentSyntax : galgasScanner4 {
     end
     ${$
   //--- Imports
-    var [@lstring] syntaxComponents = @()
+    var [@lstring] syntaxComponents = []
+    var [@templateDelimitor2AST] templateDelimitorList = []
+    var [@templateReplacementAST] templateReplacementList = []
     repeat
+    while
+      <grammar_template_delimitor> (!? templateDelimitorList)
+    while
+      <grammar_template_replacement> (!? templateReplacementList)
+    while
       $syntax$
       $identifier$ (?let @lstring syntaxComponent)
       syntaxComponents ++= syntaxComponent
-    while
     end
   //--- Root symbol
     $<non_terminal>$ (?let @lstring startSymbol) indexing (ruleReference)
@@ -89,8 +95,68 @@ syntax galgas4GrammarComponentSyntax : galgasScanner4 {
       startSymbol,
       mLabelList,
       unusedNonterminalList,
+      templateDelimitorList,
+      templateReplacementList,
       hasTranslateFeature
     )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <grammar_template_delimitor> (?![@templateDelimitor2AST] ioTemplateDelimitorList ) {
+    $#templateDelimiter$
+    $"string"$ (?let @lstring startString)
+    var nonAtomicSelection = false
+    var templateEndMark = false
+    var preserved = false
+    repeat
+    while
+      $#nonAtomicSelection$
+      if nonAtomicSelection then
+        error .here : "duplicated %nonAtomicSelection attribute"
+      end
+      nonAtomicSelection = true
+    while
+      $#templateEndMark$
+      if templateEndMark then
+        error .here : "duplicated %templateEndMark attribute"
+      end
+      templateEndMark = true
+    while
+      $#preserved$
+      if preserved then
+        error .here : "duplicated %preserved attribute"
+      end
+      preserved = true
+    end
+    $...$
+    $"string"$ (?let @lstring endString)
+    ioTemplateDelimitorList ++= @(
+      startString,
+      !nonAtomicSelection: nonAtomicSelection,
+      templateEndMark,
+      preserved,
+      endString)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <grammar_template_replacement> (?![@templateReplacementAST] ioTemplateReplacement ) {
+    $#templateReplacement$
+    $"string"$ (?let @lstring matchString)
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ (?replacementString)
+      $:$
+      $identifier$ (?replacementFunction)
+    or
+      $->$
+      $"string"$ (?replacementString)
+      replacementFunction = @lstring ("", @location.here)
+    end
+    ioTemplateReplacement ++= @(matchString, replacementString, replacementFunction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
