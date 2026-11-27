@@ -20,7 +20,7 @@
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
 #include "GenericDictionary.h"
-#include "Compiler.h"
+#include "Lexique.h"
 #include "FileManager.h"
 #include "execution-mode.h"
 #include "filewrapper-utilities.h"

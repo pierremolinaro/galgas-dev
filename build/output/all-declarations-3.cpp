@@ -992,6 +992,51 @@ const RegularFileWrapper gWrapperFile_0_typeGenerationTemplate (
   gWrapperFileContent_0_typeGenerationTemplate
 ) ;
 
+//--- All files of 'helpers' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const DirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate (
+  "helpers",
+  0,
+  gWrapperAllFiles_typeGenerationTemplate_2,
+  0,
+  gWrapperAllDirectories_typeGenerationTemplate_2
+) ;
+
+//--- All files of 'build' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_1 [2] = {
+  & gWrapperDirectory_2_typeGenerationTemplate,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const DirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate (
+  "build",
+  0,
+  gWrapperAllFiles_typeGenerationTemplate_1,
+  1,
+  gWrapperAllDirectories_typeGenerationTemplate_1
+) ;
+
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_0 [2] = {
@@ -1001,7 +1046,8 @@ static const RegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_0 [2] 
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_0 [1] = {
+static const DirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_0 [2] = {
+  & gWrapperDirectory_1_typeGenerationTemplate,
   nullptr
 } ;
 
@@ -1011,7 +1057,7 @@ const DirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate (
   "",
   1,
   gWrapperAllFiles_typeGenerationTemplate_0,
-  0,
+  1,
   gWrapperAllDirectories_typeGenerationTemplate_0
 ) ;
 

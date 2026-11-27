@@ -23,7 +23,7 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
               %!^%const String & inSourceFileName,
-              %!^%const int32_t inOpenTemplateDelimiter,
+              %!^%const std::initializer_list <utf32> & inOpenTemplateDelimiter,
               %!^%const int32_t inCloseTemplateDelimiter,
               %!^%const TemplateDelimiter inTemplateReplacementArray [],
               %!^%const int32_t inTemplateReplacementArrayCount
@@ -40,7 +40,7 @@ Lexique (
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
               %!^%const String & inSourceString,
               %!^%const String & inStringForError,
-              %!^%const int32_t inOpenTemplateDelimiter,
+              %!^%const std::initializer_list <utf32> & inOpenTemplateDelimiter,
               %!^%const int32_t inCloseTemplateDelimiter,
               %!^%const TemplateDelimiter inTemplateReplacementArray [],
               %!^%const int32_t inTemplateReplacementArrayCount
@@ -84,7 +84,7 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
   for (key) in STRINGS_IN_EXPLICIT_RULES do
    if [key count] > 0 then
    %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
-   %static const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
+   %const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
    end
   end
 %
@@ -225,6 +225,49 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQ
 bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
   token.mTokenCode = -1 ;
+//--- Loop until found token or reached end of text
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+  //--- Reached open delimiter in text mode ?
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      const bool foundCloseDelimitor = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
+      if (foundCloseDelimitor) {
+        mTemplateTextMode = false ; // Go to code mode
+      }
+    }
+  //--- In text mode perform rreplacement if needed
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      bool found = false ;
+      for (int32_t i=0 ; (i<mTemplateReplacementArrayCount) && !found ; i++) {
+        found = notTestForInputUTF32String (mTemplateReplacementArray [i].mStartString, kEndOfSourceLexicalErrorMessage COMMA_HERE) ;
+        if (found) {
+          token.mTemplateStringBeforeToken.appendString (mTemplateReplacementArray [i].mStartString) ;
+        }
+      }
+      if (!found) {
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
+      }
+    }
+  //--- In code mode, parse token
+    if (!mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      internalParseLexicalToken (token) ;
+    //--- Found close delimiter ?
+      if ((mCloseTemplateDelimiter >= 0) && (token.mTokenCode == mCloseTemplateDelimiter)) {
+        token.mTokenCode = -1 ; // No token found
+        mTemplateTextMode = true ; // Go to text mode
+      }
+    }
+  }
+//--- If reached end of text, return token code 0
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = kToken_ ; // Reached end of text
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+/* bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+  cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
+  token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     internalParseLexicalToken (token) ;
   }
@@ -233,7 +276,7 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     enterToken (token) ;
   }
   return token.mTokenCode > 0 ;
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 //                         E N T E R    T O K E N

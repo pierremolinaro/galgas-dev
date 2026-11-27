@@ -7030,6 +7030,8 @@ class cPtr_buildOptionTypeForGeneration : public cPtr_semanticTypeForGeneration 
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_buildOptionGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_buildOptionGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @buildOptionGenerationTemplate
@@ -7429,6 +7431,8 @@ class cPtr_buildOptionStringTypeForGeneration : public cPtr_semanticTypeForGener
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_buildOptionStringGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_buildOptionStringGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @buildOptionStringGenerationTemplate
@@ -8181,6 +8185,8 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAS
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @predefinedTypeGenerationTemplate

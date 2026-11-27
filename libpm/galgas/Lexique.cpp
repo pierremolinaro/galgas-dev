@@ -56,14 +56,14 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 
 Lexique::Lexique (Compiler * inCallerCompiler,
                   const String & inSourceFileName,
-                  const int32_t inOpenTemplateDelimiter,
+                  const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                   const int32_t inCloseTemplateDelimiter,
                   const TemplateDelimiter inTemplateReplacementArray [],
                   const int32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
-mScanningTemplateString (false),
+mTemplateTextMode (false),
 mOpenTemplateDelimiter (inOpenTemplateDelimiter),
 mCloseTemplateDelimiter (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),
@@ -110,14 +110,14 @@ mLatexNextCharacterToEnterIndex (0) {
 Lexique::Lexique (Compiler * inCallerCompiler,
                   const String & inSourceString,
                   const String & inStringForError,
-                  const int32_t inOpenTemplateDelimiter,
+                  const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                   const int32_t inCloseTemplateDelimiter,
                   const TemplateDelimiter inTemplateReplacementArray [],
                   const int32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
-mScanningTemplateString (false),
+mTemplateTextMode (false),
 mOpenTemplateDelimiter (inOpenTemplateDelimiter),
 mCloseTemplateDelimiter (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),

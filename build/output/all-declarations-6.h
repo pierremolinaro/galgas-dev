@@ -691,8 +691,6 @@ class GGS_galgas_33_GrammarComponentAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_templateDelimiterDescriptorAST_3F_ readProperty_mTemplateDelimiterDescriptor (void) const ;
 
-  public: class GGS__5B_templateDelimitor_32_AST_5D_ readProperty_mTemplateDelimitorList (void) const ;
-
   public: class GGS__5B_templateReplacementAST_5D_ readProperty_mTemplateReplacementList (void) const ;
 
   public: class GGS_bool readProperty_mHasTranslateFeature (void) const ;
@@ -700,20 +698,19 @@ class GGS_galgas_33_GrammarComponentAST : public GGS_semanticDeclarationAST {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_galgas_33_GrammarComponentAST init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                                     const class GGS_lbool & inOperand1,
-                                                                                                                     const class GGS_lstring & inOperand2,
-                                                                                                                     const class GGS_lstring & inOperand3,
-                                                                                                                     const class GGS__5B_lstring_5D_ & inOperand4,
-                                                                                                                     const class GGS_lstring & inOperand5,
-                                                                                                                     const class GGS__5B_nonTerminalLabelAST_5D_ & inOperand6,
-                                                                                                                     const class GGS__5B_lstring_5D_ & inOperand7,
-                                                                                                                     const class GGS_templateDelimiterDescriptorAST_3F_ & inOperand8,
-                                                                                                                     const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand9,
-                                                                                                                     const class GGS__5B_templateReplacementAST_5D_ & inOperand10,
-                                                                                                                     const class GGS_bool & inOperand11,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GGS_galgas_33_GrammarComponentAST init_21_isPredefined_21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                                 const class GGS_lbool & inOperand1,
+                                                                                                                 const class GGS_lstring & inOperand2,
+                                                                                                                 const class GGS_lstring & inOperand3,
+                                                                                                                 const class GGS__5B_lstring_5D_ & inOperand4,
+                                                                                                                 const class GGS_lstring & inOperand5,
+                                                                                                                 const class GGS__5B_nonTerminalLabelAST_5D_ & inOperand6,
+                                                                                                                 const class GGS__5B_lstring_5D_ & inOperand7,
+                                                                                                                 const class GGS_templateDelimiterDescriptorAST_3F_ & inOperand8,
+                                                                                                                 const class GGS__5B_templateReplacementAST_5D_ & inOperand9,
+                                                                                                                 const class GGS_bool & inOperand10,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_galgas_33_GrammarComponentAST & inOperand) const ;
 
@@ -821,19 +818,18 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
   #endif
 
 //--------------------------------- Initializers
-  public: void galgas_33_GrammarComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
-                                                                                                               const class GGS_lbool & inOperand1,
-                                                                                                               const class GGS_lstring & inOperand2,
-                                                                                                               const class GGS_lstring & inOperand3,
-                                                                                                               const class GGS__5B_lstring_5D_ & inOperand4,
-                                                                                                               const class GGS_lstring & inOperand5,
-                                                                                                               const class GGS__5B_nonTerminalLabelAST_5D_ & inOperand6,
-                                                                                                               const class GGS__5B_lstring_5D_ & inOperand7,
-                                                                                                               const class GGS_templateDelimiterDescriptorAST_3F_ & inOperand8,
-                                                                                                               const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand9,
-                                                                                                               const class GGS__5B_templateReplacementAST_5D_ & inOperand10,
-                                                                                                               const class GGS_bool & inOperand11,
-                                                                                                               Compiler * inCompiler) ;
+  public: void galgas_33_GrammarComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                           const class GGS_lbool & inOperand1,
+                                                                                                           const class GGS_lstring & inOperand2,
+                                                                                                           const class GGS_lstring & inOperand3,
+                                                                                                           const class GGS__5B_lstring_5D_ & inOperand4,
+                                                                                                           const class GGS_lstring & inOperand5,
+                                                                                                           const class GGS__5B_nonTerminalLabelAST_5D_ & inOperand6,
+                                                                                                           const class GGS__5B_lstring_5D_ & inOperand7,
+                                                                                                           const class GGS_templateDelimiterDescriptorAST_3F_ & inOperand8,
+                                                                                                           const class GGS__5B_templateReplacementAST_5D_ & inOperand9,
+                                                                                                           const class GGS_bool & inOperand10,
+                                                                                                           Compiler * inCompiler) ;
 
 
 //--- Extension func keyRepresentation
@@ -878,7 +874,6 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
   public: GGS__5B_nonTerminalLabelAST_5D_ mProperty_mStartSymbolLabelList ;
   public: GGS__5B_lstring_5D_ mProperty_mUnusedNonterminalList ;
   public: GGS_templateDelimiterDescriptorAST_3F_ mProperty_mTemplateDelimiterDescriptor ;
-  public: GGS__5B_templateDelimitor_32_AST_5D_ mProperty_mTemplateDelimitorList ;
   public: GGS__5B_templateReplacementAST_5D_ mProperty_mTemplateReplacementList ;
   public: GGS_bool mProperty_mHasTranslateFeature ;
 
@@ -896,7 +891,6 @@ class cPtr_galgas_33_GrammarComponentAST : public cPtr_semanticDeclarationAST {
                                               const GGS__5B_nonTerminalLabelAST_5D_ & in_mStartSymbolLabelList,
                                               const GGS__5B_lstring_5D_ & in_mUnusedNonterminalList,
                                               const GGS_templateDelimiterDescriptorAST_3F_ & in_mTemplateDelimiterDescriptor,
-                                              const GGS__5B_templateDelimitor_32_AST_5D_ & in_mTemplateDelimitorList,
                                               const GGS__5B_templateReplacementAST_5D_ & in_mTemplateReplacementList,
                                               const GGS_bool & in_mHasTranslateFeature,
                                               Compiler * inCompiler
@@ -1168,6 +1162,8 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @arrayTypeGenerationTemplate
@@ -1468,6 +1464,8 @@ class cPtr_dictionaryTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_dictionaryGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_dictionaryGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @dictionaryGenerationTemplate
@@ -1862,6 +1860,8 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @structureGenerationTemplate
@@ -3640,6 +3640,8 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @enumGenerationTemplate
@@ -3937,6 +3939,8 @@ class cPtr_optionSetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_structGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @structGenerationTemplate
@@ -4502,6 +4506,8 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @graphGenerationTemplate
@@ -4796,6 +4802,8 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate ;
+extern const DirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @optionalTypeGenerationTemplate
@@ -6750,61 +6758,6 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Class descriptor
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//§Filewrapper§ 'mapGenerationTemplate'
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const DirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @mapGenerationTemplate
-//--------------------------------------------------------------------------------------------------
-
-class GGS_mapGenerationTemplate final {
-
-//-- Start of package generic part
-
-//--------------------------------- GALGAS class getters
-  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_mapTypeHeader_31_ (const class GGS_string & inOperand0,
-                                                                const class GGS_string & inOperand1,
-                                                                const class GGS__5B_typedProperty_5D_ & inOperand2,
-                                                                const class GGS__5B_mapAccessorAST_5D_ & inOperand3,
-                                                                const class GGS__5B_enumerationDescriptor_5D_ & inOperand4,
-                                                                const class GGS_unifiedTypeMapEntry & inOperand5,
-                                                                const class GGS_string & inOperand6,
-                                                                const class GGS_bool & inOperand7,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_mapTypeSpecificImplementation (const class GGS_string & inOperand0,
-                                                                            const class GGS__5B_typedProperty_5D_ & inOperand1,
-                                                                            const class GGS_string & inOperand2,
-                                                                            const class GGS__5B_insertSetterAST_5D_ & inOperand3,
-                                                                            const class GGS_string & inOperand4,
-                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand5,
-                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand6,
-                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand7,
-                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand8,
-                                                                            const class GGS_bool & inOperand9,
-                                                                            const class GGS_bool & inOperand10,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Class Methods
 
 } ;
 

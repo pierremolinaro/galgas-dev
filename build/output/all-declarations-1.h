@@ -7136,6 +7136,7 @@ class GGS_lexiqueGenerationTemplates final {
                                                              const class GGS_lexiqueAnalysisContext & inOperand2,
                                                              const class GGS__5B_templateDelimitor_32_AST_5D_ & inOperand3,
                                                              const class GGS__5B_indexingAST_5D_ & inOperand4,
+                                                             const class GGS_stringset & inOperand5,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 

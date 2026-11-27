@@ -1256,7 +1256,7 @@ mLexicalAttribute_uint_33__32_value () {
 
 Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                                                   const String & inSourceFileName,
-                                                                  const int32_t inOpenTemplateDelimiter,
+                                                                  const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                                                                   const int32_t inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
                                                                   const int32_t inTemplateReplacementArrayCount
@@ -1273,7 +1273,7 @@ Lexique (
 Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                                                   const String & inSourceString,
                                                                   const String & inStringForError,
-                                                                  const int32_t inOpenTemplateDelimiter,
+                                                                  const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                                                                   const int32_t inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
                                                                   const int32_t inTemplateReplacementArrayCount
@@ -1352,29 +1352,29 @@ String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inT
 //--------------------------------------------------------------------------------------------------
 
 //--- Unicode string for '$->$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
   utf32 ('-'),
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$.$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
   utf32 ('.'),
 } ;
 
 //--- Unicode string for '$//$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
   utf32 ('/'),
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$:$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
   utf32 (':'),
 } ;
 
 //--- Unicode string for '$bool-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
   utf32 ('b'),
   utf32 ('o'),
   utf32 ('o'),
@@ -1395,7 +1395,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -1417,7 +1417,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$codeblocks-linux64$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -1439,7 +1439,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$codeblocks-windows$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -1461,7 +1461,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$lexical-style$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
   utf32 ('l'),
   utf32 ('e'),
   utf32 ('x'),
@@ -1478,7 +1478,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$libpmCustomPath$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
   utf32 ('l'),
   utf32 ('i'),
   utf32 ('b'),
@@ -1497,7 +1497,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$macAppBundleBaseName$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -1521,7 +1521,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$macCodeSign$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -1536,7 +1536,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$macSwiftApp$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -1551,7 +1551,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-arm64-linux-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1585,7 +1585,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1604,7 +1604,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-unix$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1621,7 +1621,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-win32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1649,7 +1649,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-x86linux32-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1682,7 +1682,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$makefile-x86linux64-on-macosx$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -1715,7 +1715,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$productName$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -1730,7 +1730,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$string-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
   utf32 ('s'),
   utf32 ('t'),
   utf32 ('r'),
@@ -1753,7 +1753,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$u32-build-option$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
   utf32 ('u'),
   utf32 ('3'),
   utf32 ('2'),
@@ -1773,7 +1773,7 @@ static const std::initializer_list <utf32> kUnicodeString_projectComponentScanne
 } ;
 
 //--- Unicode string for '$version$'
-static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
+const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
   utf32 ('v'),
   utf32 ('e'),
   utf32 ('r'),
@@ -2350,6 +2350,49 @@ void Lexique_projectComponentScanner::internalParseLexicalToken (cTokenFor_proje
 bool Lexique_projectComponentScanner::parseLexicalToken (void) {
   cTokenFor_projectComponentScanner token ;
   token.mTokenCode = -1 ;
+//--- Loop until found token or reached end of text
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+  //--- Reached open delimiter in text mode ?
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      const bool foundCloseDelimitor = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
+      if (foundCloseDelimitor) {
+        mTemplateTextMode = false ; // Go to code mode
+      }
+    }
+  //--- In text mode perform rreplacement if needed
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      bool found = false ;
+      for (int32_t i=0 ; (i<mTemplateReplacementArrayCount) && !found ; i++) {
+        found = notTestForInputUTF32String (mTemplateReplacementArray [i].mStartString, kEndOfSourceLexicalErrorMessage COMMA_HERE) ;
+        if (found) {
+          token.mTemplateStringBeforeToken.appendString (mTemplateReplacementArray [i].mStartString) ;
+        }
+      }
+      if (!found) {
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
+      }
+    }
+  //--- In code mode, parse token
+    if (!mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      internalParseLexicalToken (token) ;
+    //--- Found close delimiter ?
+      if ((mCloseTemplateDelimiter >= 0) && (token.mTokenCode == mCloseTemplateDelimiter)) {
+        token.mTokenCode = -1 ; // No token found
+        mTemplateTextMode = true ; // Go to text mode
+      }
+    }
+  }
+//--- If reached end of text, return token code 0
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = kToken_ ; // Reached end of text
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+/* bool Lexique_projectComponentScanner::parseLexicalToken (void) {
+  cTokenFor_projectComponentScanner token ;
+  token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     internalParseLexicalToken (token) ;
   }
@@ -2358,7 +2401,7 @@ bool Lexique_projectComponentScanner::parseLexicalToken (void) {
     enterToken (token) ;
   }
   return token.mTokenCode > 0 ;
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 //                         E N T E R    T O K E N

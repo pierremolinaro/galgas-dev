@@ -10,25 +10,6 @@
   end
 %
 //--------------------------------------------------------------------------------------------------
-//  Grammar %!GRAMMAR_NAME%: template Delimiters
-//--------------------------------------------------------------------------------------------------
-
-% for (delimitor) in TEMPLATE_DELIMITOR_LIST
-    before %static const TemplateDelimiter %!GRAMMAR_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
-    do %  TemplateDelimiter (kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![delimitor.mStartString identifierRepresentation]%, %![[delimitor.mStartString count] string]%, %
-      if [delimitor.mEndString count] == 0 then
-        %{}, 0,%
-      else
-        %kUnicodeString_%!GRAMMAR_IDENTIFIER%_%![delimitor.mEndString identifierRepresentation]%, %![[delimitor.mEndString count] string]%,%
-      end
-      % nullptr, %
-      ![not delimitor.mPreservesStartDelimiter cString]
-      %)%
-    between %,\n%
-    after %\n} ;\n%
-  end
-%
-//--------------------------------------------------------------------------------------------------
 //   Grammar %!GRAMMAR_NAME%: template Replacements
 //--------------------------------------------------------------------------------------------------
 

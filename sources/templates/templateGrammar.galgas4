@@ -31,18 +31,18 @@ indexing grammar templateGrammar "SLR" {
 
 //--------------------------------------------------------------------------------------------------
 
-//indexing grammar newTemplateGrammar "SLR" #template $\($ ... $/)$ {
-//  syntax galgas4ExpressionSyntax
-//  syntax galgas4TypeDefinitionSyntax
-//
-//  #templateReplacement "\\n" -> "\n"
-//
-//  #templateReplacement "\\\\" -> "\\"
-//
-//  #unused <actual_parameter_list_with_parenthesis>
-//
-//  <expression> (?!@galgasDeclarationAST ioDeclarations,
-//                !@semanticExpressionAST outExpression)
-//}
+indexing grammar newTemplateGrammar "SLR" #template $\($ ... $/)$ {
+  syntax galgas4ExpressionSyntax
+  syntax galgas4TypeDefinitionSyntax
+
+  #templateReplacement "\\n" -> "\n"
+
+  #templateReplacement "\\\\" -> "\\"
+
+  #unused <actual_parameter_list_with_parenthesis>
+
+  <expression> (?!@galgasDeclarationAST ioDeclarations,
+                !@semanticExpressionAST outExpression)
+}
 
 //--------------------------------------------------------------------------------------------------

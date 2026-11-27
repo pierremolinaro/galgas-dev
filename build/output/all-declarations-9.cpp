@@ -1,5 +1,1586 @@
 #include "all-declarations-9.h"
 //--------------------------------------------------------------------------------------------------
+// @abstractInputParameter reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_abstractInputParameter::objectCompare (const GGS_abstractInputParameter & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractInputParameter::GGS_abstractInputParameter (void) :
+AC_GALGAS_reference_class () {
+}
+
+
+void cPtr_abstractInputParameter::
+abstractInputParameter_init (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractInputParameter::GGS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) :
+AC_GALGAS_reference_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractInputParameter) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @abstractInputParameter class
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_abstractInputParameter::cPtr_abstractInputParameter (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+AbstractStrongPtrClass (inCompiler COMMA_THERE) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_abstractInputParameter::printNonNullClassInstanceProperties (void) const {
+    AbstractStrongPtrClass::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @abstractInputParameter generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractInputParameter ("abstractInputParameter",
+                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_abstractInputParameter::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractInputParameter ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputParameterAnonymousVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputParameterAnonymousVariable::objectCompare (const GGS_inputParameterAnonymousVariable & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterAnonymousVariable::GGS_inputParameterAnonymousVariable (void) :
+GGS_abstractInputParameter () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputParameterAnonymousVariable GGS_inputParameterAnonymousVariable::
+init (Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_inputParameterAnonymousVariable * object = nullptr ;
+  macroMyNew (object, cPtr_inputParameterAnonymousVariable (inCompiler COMMA_THERE)) ;
+  object->inputParameterAnonymousVariable_init (inCompiler) ;
+  const GGS_inputParameterAnonymousVariable result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputParameterAnonymousVariable::
+inputParameterAnonymousVariable_init (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterAnonymousVariable::GGS_inputParameterAnonymousVariable (const cPtr_inputParameterAnonymousVariable * inSourcePtr) :
+GGS_abstractInputParameter (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterAnonymousVariable) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputParameterAnonymousVariable class
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterAnonymousVariable::cPtr_inputParameterAnonymousVariable (Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputParameterAnonymousVariable::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ;
+}
+
+void cPtr_inputParameterAnonymousVariable::description (String & ioString,
+                                                        const int32_t /* inIndentation */) const {
+  ioString.appendCString ("[@inputParameterAnonymousVariable]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputParameterAnonymousVariable::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputParameterAnonymousVariable (inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputParameterAnonymousVariable::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputParameterAnonymousVariable generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ("inputParameterAnonymousVariable",
+                                                                                    & kTypeDescriptor_GALGAS_abstractInputParameter) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputParameterAnonymousVariable::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputParameterVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputParameterVariable::objectCompare (const GGS_inputParameterVariable & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterVariable::GGS_inputParameterVariable (void) :
+GGS_abstractInputParameter () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputParameterVariable GGS_inputParameterVariable::
+init_21_ (const GGS_lstring & in_mActualParameterName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_inputParameterVariable * object = nullptr ;
+  macroMyNew (object, cPtr_inputParameterVariable (inCompiler COMMA_THERE)) ;
+  object->inputParameterVariable_init_21_ (in_mActualParameterName, inCompiler) ;
+  const GGS_inputParameterVariable result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputParameterVariable::
+inputParameterVariable_init_21_ (const GGS_lstring & in_mActualParameterName,
+                                 Compiler * /* inCompiler */) {
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterVariable::GGS_inputParameterVariable (const cPtr_inputParameterVariable * inSourcePtr) :
+GGS_abstractInputParameter (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterVariable) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputParameterVariable::readProperty_mActualParameterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputParameterVariable * p = (cPtr_inputParameterVariable *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputParameterVariable) ;
+    return p->mProperty_mActualParameterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputParameterVariable class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterVariable::cPtr_inputParameterVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterVariable::cPtr_inputParameterVariable (const GGS_lstring & in_mActualParameterName,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterName () {
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputParameterVariable::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterVariable ;
+}
+
+void cPtr_inputParameterVariable::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputParameterVariable:") ;
+  mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputParameterVariable::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputParameterVariable (mProperty_mActualParameterName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputParameterVariable::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputParameterVariable generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterVariable ("inputParameterVariable",
+                                                                           & kTypeDescriptor_GALGAS_abstractInputParameter) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputParameterVariable::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterVariable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputParameterDeclaredVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputParameterDeclaredVariable::objectCompare (const GGS_inputParameterDeclaredVariable & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterDeclaredVariable::GGS_inputParameterDeclaredVariable (void) :
+GGS_abstractInputParameter () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputParameterDeclaredVariable GGS_inputParameterDeclaredVariable::
+init_21__21_ (const GGS_lstring & in_mActualParameterTypeName,
+              const GGS_lstring & in_mActualParameterName,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_inputParameterDeclaredVariable * object = nullptr ;
+  macroMyNew (object, cPtr_inputParameterDeclaredVariable (inCompiler COMMA_THERE)) ;
+  object->inputParameterDeclaredVariable_init_21__21_ (in_mActualParameterTypeName, in_mActualParameterName, inCompiler) ;
+  const GGS_inputParameterDeclaredVariable result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputParameterDeclaredVariable::
+inputParameterDeclaredVariable_init_21__21_ (const GGS_lstring & in_mActualParameterTypeName,
+                                             const GGS_lstring & in_mActualParameterName,
+                                             Compiler * /* inCompiler */) {
+  mProperty_mActualParameterTypeName = in_mActualParameterTypeName ;
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterDeclaredVariable::GGS_inputParameterDeclaredVariable (const cPtr_inputParameterDeclaredVariable * inSourcePtr) :
+GGS_abstractInputParameter (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterDeclaredVariable) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputParameterDeclaredVariable::readProperty_mActualParameterTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputParameterDeclaredVariable * p = (cPtr_inputParameterDeclaredVariable *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputParameterDeclaredVariable) ;
+    return p->mProperty_mActualParameterTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputParameterDeclaredVariable::readProperty_mActualParameterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputParameterDeclaredVariable * p = (cPtr_inputParameterDeclaredVariable *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputParameterDeclaredVariable) ;
+    return p->mProperty_mActualParameterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputParameterDeclaredVariable class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterDeclaredVariable::cPtr_inputParameterDeclaredVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterTypeName (),
+mProperty_mActualParameterName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterDeclaredVariable::cPtr_inputParameterDeclaredVariable (const GGS_lstring & in_mActualParameterTypeName,
+                                                                          const GGS_lstring & in_mActualParameterName,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterTypeName (),
+mProperty_mActualParameterName () {
+  mProperty_mActualParameterTypeName = in_mActualParameterTypeName ;
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputParameterDeclaredVariable::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
+}
+
+void cPtr_inputParameterDeclaredVariable::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputParameterDeclaredVariable:") ;
+  mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputParameterDeclaredVariable::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputParameterDeclaredVariable (mProperty_mActualParameterTypeName, mProperty_mActualParameterName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputParameterDeclaredVariable::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties ("mActualParameterTypeName") ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputParameterDeclaredVariable generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ("inputParameterDeclaredVariable",
+                                                                                   & kTypeDescriptor_GALGAS_abstractInputParameter) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputParameterDeclaredVariable::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterDeclaredVariable ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputParameterDeclaredConstant reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputParameterDeclaredConstant::objectCompare (const GGS_inputParameterDeclaredConstant & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterDeclaredConstant::GGS_inputParameterDeclaredConstant (void) :
+GGS_abstractInputParameter () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputParameterDeclaredConstant GGS_inputParameterDeclaredConstant::
+init_21__21_ (const GGS_lstring & in_mActualParameterTypeName,
+              const GGS_lstring & in_mActualParameterName,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_inputParameterDeclaredConstant * object = nullptr ;
+  macroMyNew (object, cPtr_inputParameterDeclaredConstant (inCompiler COMMA_THERE)) ;
+  object->inputParameterDeclaredConstant_init_21__21_ (in_mActualParameterTypeName, in_mActualParameterName, inCompiler) ;
+  const GGS_inputParameterDeclaredConstant result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputParameterDeclaredConstant::
+inputParameterDeclaredConstant_init_21__21_ (const GGS_lstring & in_mActualParameterTypeName,
+                                             const GGS_lstring & in_mActualParameterName,
+                                             Compiler * /* inCompiler */) {
+  mProperty_mActualParameterTypeName = in_mActualParameterTypeName ;
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputParameterDeclaredConstant::GGS_inputParameterDeclaredConstant (const cPtr_inputParameterDeclaredConstant * inSourcePtr) :
+GGS_abstractInputParameter (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputParameterDeclaredConstant) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputParameterDeclaredConstant::readProperty_mActualParameterTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputParameterDeclaredConstant * p = (cPtr_inputParameterDeclaredConstant *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputParameterDeclaredConstant) ;
+    return p->mProperty_mActualParameterTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputParameterDeclaredConstant::readProperty_mActualParameterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputParameterDeclaredConstant * p = (cPtr_inputParameterDeclaredConstant *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputParameterDeclaredConstant) ;
+    return p->mProperty_mActualParameterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputParameterDeclaredConstant class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterDeclaredConstant::cPtr_inputParameterDeclaredConstant (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterTypeName (),
+mProperty_mActualParameterName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputParameterDeclaredConstant::cPtr_inputParameterDeclaredConstant (const GGS_lstring & in_mActualParameterTypeName,
+                                                                          const GGS_lstring & in_mActualParameterName,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) :
+cPtr_abstractInputParameter (inCompiler COMMA_THERE),
+mProperty_mActualParameterTypeName (),
+mProperty_mActualParameterName () {
+  mProperty_mActualParameterTypeName = in_mActualParameterTypeName ;
+  mProperty_mActualParameterName = in_mActualParameterName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputParameterDeclaredConstant::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
+}
+
+void cPtr_inputParameterDeclaredConstant::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputParameterDeclaredConstant:") ;
+  mProperty_mActualParameterTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualParameterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputParameterDeclaredConstant::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputParameterDeclaredConstant (mProperty_mActualParameterTypeName, mProperty_mActualParameterName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputParameterDeclaredConstant::printNonNullClassInstanceProperties (void) const {
+    cPtr_abstractInputParameter::printNonNullClassInstanceProperties () ;
+    mProperty_mActualParameterTypeName.printNonNullClassInstanceProperties ("mActualParameterTypeName") ;
+    mProperty_mActualParameterName.printNonNullClassInstanceProperties ("mActualParameterName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputParameterDeclaredConstant generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ("inputParameterDeclaredConstant",
+                                                                                   & kTypeDescriptor_GALGAS_abstractInputParameter) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputParameterDeclaredConstant::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputParameterDeclaredConstant ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@syntaxInstructionAST analyzeSyntaxInstruction'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSyntaxInstruction (cPtr_syntaxInstructionAST * inObject,
+                                                   const GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                   GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                   const GGS_analysisContext constin_inAnalysisContext,
+                                                   GGS_unifiedTypeMap & io_ioTypeMap,
+                                                   const GGS_bool constin_inHasTranslateFeature,
+                                                   const GGS_terminalMap constin_inTerminalMap,
+                                                   const GGS_string constin_inLexiqueName,
+                                                   const GGS_nonterminalMap constin_inNonterminalMap,
+                                                   const GGS_string constin_inComponentName,
+                                                   const GGS_stringset constin_inIndexNameSet,
+                                                   GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
+                                                   GGS_localVarManager & io_ioVariableMap,
+                                                   GGS_u_33__32_ & io_ioSelectMethodCount,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find proc
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
+    inObject->method_analyzeSyntaxInstruction (constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioTypeMap, constin_inHasTranslateFeature, constin_inTerminalMap, constin_inLexiqueName, constin_inNonterminalMap, constin_inComponentName, constin_inIndexNameSet, io_ioInstructionListForGeneration, io_ioVariableMap, io_ioSelectMethodCount, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@syntaxInstructionAST transformInstructionForGrammarAnalysis'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_transformInstructionForGrammarAnalysis (cPtr_syntaxInstructionAST * inObject,
+                                                                 GGS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                                                 GGS_u_33__32_ & io_ioAddedNonTerminalIndex,
+                                                                 GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & io_ioSyntaxInstructionList,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find proc
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
+    inObject->method_transformInstructionForGrammarAnalysis (io_ioActuallyUsedTerminalSymbolMap, constin_inNonTerminalSymbolMap, io_ioAddedNonTerminalIndex, io_ioSyntaxInstructionList, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+// @externFunctionDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_externFunctionDeclarationAST::objectCompare (const GGS_externFunctionDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST::GGS_externFunctionDeclarationAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST GGS_externFunctionDeclarationAST::
+init_21_isPredefined_21__21__21__21_usefullFunc (const GGS_bool & in_isPredefined,
+                                                 const GGS_lstring & in_mFunctionName,
+                                                 const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                 const GGS_lstring & in_mResultTypeName,
+                                                 const GGS_bool & in_usefullFunc,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  cPtr_externFunctionDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_externFunctionDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->externFunctionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc (in_isPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_usefullFunc, inCompiler) ;
+  const GGS_externFunctionDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_externFunctionDeclarationAST::
+externFunctionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc (const GGS_bool & in_isPredefined,
+                                                                              const GGS_lstring & in_mFunctionName,
+                                                                              const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                                              const GGS_lstring & in_mResultTypeName,
+                                                                              const GGS_bool & in_usefullFunc,
+                                                                              Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externFunctionDeclarationAST::GGS_externFunctionDeclarationAST (const cPtr_externFunctionDeclarationAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_externFunctionDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_externFunctionDeclarationAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterAST_5D_ GGS_externFunctionDeclarationAST::readProperty_mFormalArgumentList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_formalInputParameterAST_5D_ () ;
+  }else{
+    cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
+    return p->mProperty_mFormalArgumentList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_externFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
+    return p->mProperty_mResultTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_externFunctionDeclarationAST::readProperty_usefullFunc (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
+    return p->mProperty_usefullFunc ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @externFunctionDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externFunctionDeclarationAST::cPtr_externFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mFormalArgumentList (),
+mProperty_mResultTypeName (),
+mProperty_usefullFunc () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externFunctionDeclarationAST::cPtr_externFunctionDeclarationAST (const GGS_bool & in_isPredefined,
+                                                                      const GGS_lstring & in_mFunctionName,
+                                                                      const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                                      const GGS_lstring & in_mResultTypeName,
+                                                                      const GGS_bool & in_usefullFunc,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mFormalArgumentList (),
+mProperty_mResultTypeName (),
+mProperty_usefullFunc () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_externFunctionDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
+}
+
+void cPtr_externFunctionDeclarationAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("[@externFunctionDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_usefullFunc.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_externFunctionDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_externFunctionDeclarationAST (mProperty_isPredefined, mProperty_mFunctionName, mProperty_mFormalArgumentList, mProperty_mResultTypeName, mProperty_usefullFunc, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mFormalArgumentList.printNonNullClassInstanceProperties ("mFormalArgumentList") ;
+    mProperty_mResultTypeName.printNonNullClassInstanceProperties ("mResultTypeName") ;
+    mProperty_usefullFunc.printNonNullClassInstanceProperties ("usefullFunc") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @externFunctionDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externFunctionDeclarationAST ("externFunctionDeclarationAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_externFunctionDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externFunctionDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @functionDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_functionDeclarationAST::objectCompare (const GGS_functionDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionDeclarationAST::GGS_functionDeclarationAST (void) :
+GGS_externFunctionDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_functionDeclarationAST GGS_functionDeclarationAST::
+init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (const GGS_bool & in_isPredefined,
+                                                             const GGS_lstring & in_mFunctionName,
+                                                             const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                             const GGS_lstring & in_mResultTypeName,
+                                                             const GGS_bool & in_usefullFunc,
+                                                             const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                             const GGS_location & in_mEndOfFunctionInstructionList,
+                                                             const GGS_bool & in_mIsInternal,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  cPtr_functionDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_functionDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->functionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (in_isPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_usefullFunc, in_mFunctionInstructionList, in_mEndOfFunctionInstructionList, in_mIsInternal, inCompiler) ;
+  const GGS_functionDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_functionDeclarationAST::
+functionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                                    const GGS_lstring & in_mFunctionName,
+                                                                                    const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                                                    const GGS_lstring & in_mResultTypeName,
+                                                                                    const GGS_bool & in_usefullFunc,
+                                                                                    const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                                                    const GGS_location & in_mEndOfFunctionInstructionList,
+                                                                                    const GGS_bool & in_mIsInternal,
+                                                                                    Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionDeclarationAST::GGS_functionDeclarationAST (const cPtr_functionDeclarationAST * inSourcePtr) :
+GGS_externFunctionDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_functionDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_functionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mEndOfFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_functionDeclarationAST::readProperty_mIsInternal (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    return p->mProperty_mIsInternal ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @functionDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_externFunctionDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (const GGS_bool & in_isPredefined,
+                                                          const GGS_lstring & in_mFunctionName,
+                                                          const GGS__5B_formalInputParameterAST_5D_ & in_mFormalArgumentList,
+                                                          const GGS_lstring & in_mResultTypeName,
+                                                          const GGS_bool & in_usefullFunc,
+                                                          const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                          const GGS_location & in_mEndOfFunctionInstructionList,
+                                                          const GGS_bool & in_mIsInternal,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_externFunctionDeclarationAST (in_isPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_usefullFunc, inCompiler COMMA_THERE),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mFormalArgumentList = in_mFormalArgumentList ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_usefullFunc = in_usefullFunc ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_functionDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
+}
+
+void cPtr_functionDeclarationAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("[@functionDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_usefullFunc.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsInternal.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_functionDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_functionDeclarationAST (mProperty_isPredefined, mProperty_mFunctionName, mProperty_mFormalArgumentList, mProperty_mResultTypeName, mProperty_usefullFunc, mProperty_mFunctionInstructionList, mProperty_mEndOfFunctionInstructionList, mProperty_mIsInternal, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_functionDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_externFunctionDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
+    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @functionDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionDeclarationAST ("functionDeclarationAST",
+                                                                           & kTypeDescriptor_GALGAS_externFunctionDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_functionDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_functionDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST::GGS_syntaxRuleLabelAST (void) :
+mProperty_mLabelName (),
+mProperty_mFormalArguments (),
+mProperty_mEndOfArgumentLocation (),
+mProperty_mSyntaxInstructionList (),
+mProperty_mEndOfInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST::GGS_syntaxRuleLabelAST (const GGS_syntaxRuleLabelAST & inSource) :
+mProperty_mLabelName (inSource.mProperty_mLabelName),
+mProperty_mFormalArguments (inSource.mProperty_mFormalArguments),
+mProperty_mEndOfArgumentLocation (inSource.mProperty_mEndOfArgumentLocation),
+mProperty_mSyntaxInstructionList (inSource.mProperty_mSyntaxInstructionList),
+mProperty_mEndOfInstructionList (inSource.mProperty_mEndOfInstructionList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST & GGS_syntaxRuleLabelAST::operator = (const GGS_syntaxRuleLabelAST & inSource) {
+  mProperty_mLabelName = inSource.mProperty_mLabelName ;
+  mProperty_mFormalArguments = inSource.mProperty_mFormalArguments ;
+  mProperty_mEndOfArgumentLocation = inSource.mProperty_mEndOfArgumentLocation ;
+  mProperty_mSyntaxInstructionList = inSource.mProperty_mSyntaxInstructionList ;
+  mProperty_mEndOfInstructionList = inSource.mProperty_mEndOfInstructionList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST GGS_syntaxRuleLabelAST::init_21__21__21__21__21_ (const GGS_lstring & in_mLabelName,
+                                                                         const GGS__5B_formalParameterAST_5D_ & in_mFormalArguments,
+                                                                         const GGS_location & in_mEndOfArgumentLocation,
+                                                                         const GGS__5B_syntaxInstructionAST_5D_ & in_mSyntaxInstructionList,
+                                                                         const GGS_location & in_mEndOfInstructionList,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_syntaxRuleLabelAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLabelName = in_mLabelName ;
+  result.mProperty_mFormalArguments = in_mFormalArguments ;
+  result.mProperty_mEndOfArgumentLocation = in_mEndOfArgumentLocation ;
+  result.mProperty_mSyntaxInstructionList = in_mSyntaxInstructionList ;
+  result.mProperty_mEndOfInstructionList = in_mEndOfInstructionList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelAST::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST::GGS_syntaxRuleLabelAST (const GGS_lstring & inOperand0,
+                                                const GGS__5B_formalParameterAST_5D_ & inOperand1,
+                                                const GGS_location & inOperand2,
+                                                const GGS__5B_syntaxInstructionAST_5D_ & inOperand3,
+                                                const GGS_location & inOperand4) :
+mProperty_mLabelName (inOperand0),
+mProperty_mFormalArguments (inOperand1),
+mProperty_mEndOfArgumentLocation (inOperand2),
+mProperty_mSyntaxInstructionList (inOperand3),
+mProperty_mEndOfInstructionList (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_syntaxRuleLabelAST::isValid (void) const {
+  return mProperty_mLabelName.isValid () && mProperty_mFormalArguments.isValid () && mProperty_mEndOfArgumentLocation.isValid () && mProperty_mSyntaxInstructionList.isValid () && mProperty_mEndOfInstructionList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelAST::drop (void) {
+  mProperty_mLabelName.drop () ;
+  mProperty_mFormalArguments.drop () ;
+  mProperty_mEndOfArgumentLocation.drop () ;
+  mProperty_mSyntaxInstructionList.drop () ;
+  mProperty_mEndOfInstructionList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxRuleLabelAST::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxRuleLabelAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLabelName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArguments.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSyntaxInstructionList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @syntaxRuleLabelAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleLabelAST ("syntaxRuleLabelAST",
+                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_syntaxRuleLabelAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxRuleLabelAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_syntaxRuleLabelAST_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_::GGS__5B_syntaxRuleLabelAST_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_::GGS__5B_syntaxRuleLabelAST_5D_ (const GGS__5B_syntaxRuleLabelAST_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_ & GGS__5B_syntaxRuleLabelAST_5D_::operator = (const GGS__5B_syntaxRuleLabelAST_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_ GGS__5B_syntaxRuleLabelAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_syntaxRuleLabelAST_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::plusPlusAssignOperation (const GGS_syntaxRuleLabelAST & inValue
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS__5B_syntaxRuleLabelAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_ GGS__5B_syntaxRuleLabelAST_5D_::add_operation (const GGS__5B_syntaxRuleLabelAST_5D_ & inOperand,
+                                                                              Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_syntaxRuleLabelAST_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::description (String & ioString,
+                                                  const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@syntaxRuleLabelAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::plusAssignOperation (const GGS__5B_syntaxRuleLabelAST_5D_ inOperand,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_append (const GGS_syntaxRuleLabelAST inValue,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_insert (const GGS_syntaxRuleLabelAST inValue,
+                                                    const GGS_u_33__32_ inInsertionIndex,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_remove (GGS_syntaxRuleLabelAST & outValue,
+                                                    const GGS_u_33__32_ inRemoveIndex,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_removeFirst (GGS_syntaxRuleLabelAST & outValue,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::setter_removeLast (GGS_syntaxRuleLabelAST & outValue,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_ GGS__5B_syntaxRuleLabelAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS__5B_syntaxRuleLabelAST_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_syntaxRuleLabelAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_syntaxRuleLabelAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleLabelAST_5D_ GGS__5B_syntaxRuleLabelAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                               const GGS_u_33__32_ & inLength,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_syntaxRuleLabelAST_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_syntaxRuleLabelAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_syntaxRuleLabelAST_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST GGS__5B_syntaxRuleLabelAST_5D_::getter_first (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_syntaxRuleLabelAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST GGS__5B_syntaxRuleLabelAST_5D_::getter_last (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_syntaxRuleLabelAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST GGS__5B_syntaxRuleLabelAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  GGS_syntaxRuleLabelAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage = "read subscript call with index " ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_syntaxRuleLabelAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                          const GGS_syntaxRuleLabelAST inValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_syntaxRuleLabelAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_syntaxRuleLabelAST_5D_::DownEnumerator__5B_syntaxRuleLabelAST_5D_ (const GGS__5B_syntaxRuleLabelAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST DownEnumerator__5B_syntaxRuleLabelAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST DownEnumerator__5B_syntaxRuleLabelAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_syntaxRuleLabelAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_syntaxRuleLabelAST_5D_::UpEnumerator__5B_syntaxRuleLabelAST_5D_ (const GGS__5B_syntaxRuleLabelAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST UpEnumerator__5B_syntaxRuleLabelAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxRuleLabelAST UpEnumerator__5B_syntaxRuleLabelAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[syntaxRuleLabelAST] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_syntaxRuleLabelAST_5D_ ("[syntaxRuleLabelAST]",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_syntaxRuleLabelAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_syntaxRuleLabelAST_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @galgas_33_SyntaxComponentAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1261,7 +2842,6 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
 GGS_string GGS_grammarGenerationTemplate::class_func_grammarImplementation (const GGS_string & in_GRAMMAR_5F_NAME,
                                                                             const GGS_string & in_GRAMMAR_5F_IDENTIFIER,
                                                                             const GGS_stringset & in_UNICODE_5F_STRINGS_5F_SET,
-                                                                            const GGS__5B_templateDelimitorAST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                             const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                             const GGS_string & in_CPP_5F_IMPLEMENTATION_5F_STRING,
                                                                             Compiler * /* inCompiler */
@@ -1296,106 +2876,54 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarImplementation (cons
       index_284_.increment () ;
     }
   }
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//  Grammar ") ;
-  result.appendString (in_GRAMMAR_5F_NAME.stringValue ()) ;
-  result.appendString (": template Delimiters\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_u_33__32_ index_1038_ (0) ;
-  if (in_TEMPLATE_5F_DELIMITOR_5F_LIST.isValid ()) {
-    UpEnumerator__5B_templateDelimitorAST_5D_ enumerator_1038 (in_TEMPLATE_5F_DELIMITOR_5F_LIST) ;
-    const bool nonEmpty_enumerator_1038 = enumerator_1038.hasCurrentObject () ;
-    if (nonEmpty_enumerator_1038) {
-      result.appendString ("static const TemplateDelimiter ") ;
-      result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
-      result.appendString ("_kTemplateDefinitionArray [") ;
-      result.appendString (in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).stringValue ()) ;
-      result.appendString ("] = {\n") ;
-    }
-    while (enumerator_1038.hasCurrentObject ()) {
-      result.appendString ("  TemplateDelimiter (kUnicodeString_") ;
-      result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
-      result.appendString ("_") ;
-      result.appendString (enumerator_1038.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 18)).stringValue ()) ;
-      result.appendString (", ") ;
-      result.appendString (enumerator_1038.current_entry (HERE).readProperty_mStartString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 18)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 18)).stringValue ()) ;
-      result.appendString (", ") ;
-      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1038.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
-      switch (test_1) {
-      case GalgasBool::boolTrue : {
-        result.appendString ("{}, 0,") ;
-        } break ;
-      case GalgasBool::boolFalse : {
-        result.appendString ("kUnicodeString_") ;
-        result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
-        result.appendString ("_") ;
-        result.appendString (enumerator_1038.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 22)).stringValue ()) ;
-        result.appendString (", ") ;
-        result.appendString (enumerator_1038.current_entry (HERE).readProperty_mEndString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 22)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 22)).stringValue ()) ;
-        result.appendString (",") ;
-        } break ;
-      case GalgasBool::boolNotValid :
-        break ;
-      }
-      result.appendString (" nullptr, ") ;
-      result.appendString (enumerator_1038.current_entry (HERE).readProperty_mPreservesStartDelimiter ().operator_not (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 25)).getter_cString (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 25)).stringValue ()) ;
-      result.appendString (")") ;
-      enumerator_1038.gotoNextObject () ;
-      if (enumerator_1038.hasCurrentObject ()) {
-        result.appendString (",\n") ;
-      }
-      index_1038_.increment () ;
-    }
-    if (nonEmpty_enumerator_1038) {
-      result.appendString ("\n} ;\n") ;
-    }
-  }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//   Grammar ") ;
   result.appendString (in_GRAMMAR_5F_NAME.stringValue ()) ;
   result.appendString (": template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
-  GGS_u_33__32_ index_2004_ (0) ;
+  GGS_u_33__32_ index_1040_ (0) ;
   if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-    UpEnumerator__5B_templateReplacementAST_5D_ enumerator_2004 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
-    const bool nonEmpty_enumerator_2004 = enumerator_2004.hasCurrentObject () ;
-    if (nonEmpty_enumerator_2004) {
+    UpEnumerator__5B_templateReplacementAST_5D_ enumerator_1040 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+    const bool nonEmpty_enumerator_1040 = enumerator_1040.hasCurrentObject () ;
+    if (nonEmpty_enumerator_1040) {
       result.appendString ("static const TemplateDelimiter ") ;
       result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("_kTemplateReplacementArray [") ;
-      result.appendString (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 36)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 36)).stringValue ()) ;
+      result.appendString (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).stringValue ()) ;
       result.appendString ("] = {\n") ;
     }
-    while (enumerator_2004.hasCurrentObject ()) {
+    while (enumerator_1040.hasCurrentObject ()) {
       result.appendString ("  TemplateDelimiter (kUnicodeString_") ;
       result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2004.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 38)).stringValue ()) ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).stringValue ()) ;
       result.appendString (", ") ;
-      result.appendString (enumerator_2004.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 38)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 38)).stringValue ()) ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).stringValue ()) ;
       result.appendString (", kUnicodeString_") ;
       result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_2004.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 39)).stringValue ()) ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).stringValue ()) ;
       result.appendString (", ") ;
-      result.appendString (enumerator_2004.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 39)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 39)).stringValue ()) ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).stringValue ()) ;
       result.appendString (", ") ;
-      const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_2004.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 40)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
-      switch (test_2) {
+      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1040.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 21)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      switch (test_1) {
       case GalgasBool::boolTrue : {
         result.appendString ("nullptr") ;
         } break ;
       case GalgasBool::boolFalse : {
         result.appendString ("scanner_routine_") ;
-        result.appendString (enumerator_2004.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().stringValue ()) ;
+        result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().stringValue ()) ;
         } break ;
       case GalgasBool::boolNotValid :
         break ;
       }
       result.appendString (", true)") ;
-      enumerator_2004.gotoNextObject () ;
-      if (enumerator_2004.hasCurrentObject ()) {
+      enumerator_1040.gotoNextObject () ;
+      if (enumerator_1040.hasCurrentObject ()) {
         result.appendString (",\n") ;
       }
-      index_2004_.increment () ;
+      index_1040_.increment () ;
     }
-    if (nonEmpty_enumerator_2004) {
+    if (nonEmpty_enumerator_1040) {
       result.appendString ("\n} ;\n") ;
     }
   }
@@ -1495,7 +3023,7 @@ mLexicalAttribute_uint_33__32_value () {
 
 Lexique_galgasScanner_34_::Lexique_galgasScanner_34_ (Compiler * inCallerCompiler,
                                                       const String & inSourceFileName,
-                                                      const int32_t inOpenTemplateDelimiter,
+                                                      const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                                                       const int32_t inCloseTemplateDelimiter,
                                                       const TemplateDelimiter inTemplateReplacementArray [],
                                                       const int32_t inTemplateReplacementArrayCount
@@ -1512,7 +3040,7 @@ Lexique (
 Lexique_galgasScanner_34_::Lexique_galgasScanner_34_ (Compiler * inCallerCompiler,
                                                       const String & inSourceString,
                                                       const String & inStringForError,
-                                                      const int32_t inOpenTemplateDelimiter,
+                                                      const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                                                       const int32_t inCloseTemplateDelimiter,
                                                       const TemplateDelimiter inTemplateReplacementArray [],
                                                       const int32_t inTemplateReplacementArrayCount
@@ -1746,295 +3274,295 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
 //--------------------------------------------------------------------------------------------------
 
 //--- Unicode string for '$!=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D_ = {
   utf32 ('!'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$!==$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3D__3D_ = {
   utf32 ('!'),
   utf32 ('='),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$!?$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3F_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__3F_ = {
   utf32 ('!'),
   utf32 ('\?'),
 } ;
 
 //--- Unicode string for '$!^$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__5E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__5E_ = {
   utf32 ('!'),
   utf32 ('^'),
 } ;
 
 //--- Unicode string for '$%$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___25_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___25_ = {
   utf32 ('%'),
 } ;
 
 //--- Unicode string for '$&$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26_ = {
   utf32 ('&'),
 } ;
 
 //--- Unicode string for '$&&$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__26_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__26_ = {
   utf32 ('&'),
   utf32 ('&'),
 } ;
 
 //--- Unicode string for '$&*$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2A_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2A_ = {
   utf32 ('&'),
   utf32 ('*'),
 } ;
 
 //--- Unicode string for '$&+$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2B_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2B_ = {
   utf32 ('&'),
   utf32 ('+'),
 } ;
 
 //--- Unicode string for '$&-$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2D_ = {
   utf32 ('&'),
   utf32 ('-'),
 } ;
 
 //--- Unicode string for '$&/$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2F_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__2F_ = {
   utf32 ('&'),
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$&=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___26__3D_ = {
   utf32 ('&'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$($'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___28_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___28_ = {
   utf32 ('('),
 } ;
 
 //--- Unicode string for '$)$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___29_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___29_ = {
   utf32 (')'),
 } ;
 
 //--- Unicode string for '$*$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A_ = {
   utf32 ('*'),
 } ;
 
 //--- Unicode string for '$*=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2A__3D_ = {
   utf32 ('*'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$+$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B_ = {
   utf32 ('+'),
 } ;
 
 //--- Unicode string for '$++=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__2B__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__2B__3D_ = {
   utf32 ('+'),
   utf32 ('+'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$+=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2B__3D_ = {
   utf32 ('+'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$,$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2C_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2C_ = {
   utf32 (','),
 } ;
 
 //--- Unicode string for '$-$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D_ = {
   utf32 ('-'),
 } ;
 
 //--- Unicode string for '$-=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3D_ = {
   utf32 ('-'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$->$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2D__3E_ = {
   utf32 ('-'),
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$.$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E_ = {
   utf32 ('.'),
 } ;
 
 //--- Unicode string for '$...$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__2E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__2E_ = {
   utf32 ('.'),
   utf32 ('.'),
   utf32 ('.'),
 } ;
 
 //--- Unicode string for '$..<$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__3C_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2E__2E__3C_ = {
   utf32 ('.'),
   utf32 ('.'),
   utf32 ('<'),
 } ;
 
 //--- Unicode string for '$/$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F_ = {
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$/)$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__29_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__29_ = {
   utf32 ('/'),
   utf32 (')'),
 } ;
 
 //--- Unicode string for '$//$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__2F_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__2F_ = {
   utf32 ('/'),
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$/=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___2F__3D_ = {
   utf32 ('/'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$0x$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___30_x = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___30_x = {
   utf32 ('0'),
   utf32 ('x'),
 } ;
 
 //--- Unicode string for '$:$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A_ = {
   utf32 (':'),
 } ;
 
 //--- Unicode string for '$:>$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A__3E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3A__3E_ = {
   utf32 (':'),
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$;$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3B_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3B_ = {
   utf32 (';'),
 } ;
 
 //--- Unicode string for '$=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D_ = {
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$==$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D_ = {
   utf32 ('='),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$===$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3D__3D__3D_ = {
   utf32 ('='),
   utf32 ('='),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$>$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E_ = {
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$>=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3D_ = {
   utf32 ('>'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$>>$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3E__3E_ = {
   utf32 ('>'),
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$?!$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__21_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__21_ = {
   utf32 ('\?'),
   utf32 ('!'),
 } ;
 
 //--- Unicode string for '$?^$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__5E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___3F__5E_ = {
   utf32 ('\?'),
   utf32 ('^'),
 } ;
 
 //--- Unicode string for '$@($'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___40__28_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___40__28_ = {
   utf32 ('@'),
   utf32 ('('),
 } ;
 
 //--- Unicode string for '$[$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5B_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5B_ = {
   utf32 ('['),
 } ;
 
 //--- Unicode string for '$\\$$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__24_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__24_ = {
   utf32 ('\\'),
   utf32 ('$'),
 } ;
 
 //--- Unicode string for '$\\($'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__28_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__28_ = {
   utf32 ('\\'),
   utf32 ('('),
 } ;
 
 //--- Unicode string for '$\\\\$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__5C_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5C__5C_ = {
   utf32 ('\\'),
   utf32 ('\\'),
 } ;
 
 //--- Unicode string for '$]$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5D_ = {
   utf32 (']'),
 } ;
 
 //--- Unicode string for '$^$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E_ = {
   utf32 ('^'),
 } ;
 
 //--- Unicode string for '$^=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___5E__3D_ = {
   utf32 ('^'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$abstract$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__abstract = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__abstract = {
   utf32 ('a'),
   utf32 ('b'),
   utf32 ('s'),
@@ -2046,7 +3574,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__abst
 } ;
 
 //--- Unicode string for '$after$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__after = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__after = {
   utf32 ('a'),
   utf32 ('f'),
   utf32 ('t'),
@@ -2055,13 +3583,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__afte
 } ;
 
 //--- Unicode string for '$as$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__as = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__as = {
   utf32 ('a'),
   utf32 ('s'),
 } ;
 
 //--- Unicode string for '$before$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__before = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__before = {
   utf32 ('b'),
   utf32 ('e'),
   utf32 ('f'),
@@ -2071,7 +3599,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__befo
 } ;
 
 //--- Unicode string for '$between$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__between = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__between = {
   utf32 ('b'),
   utf32 ('e'),
   utf32 ('t'),
@@ -2082,7 +3610,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__betw
 } ;
 
 //--- Unicode string for '$binaryFileExtension$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__binaryFileExtension = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__binaryFileExtension = {
   utf32 ('b'),
   utf32 ('i'),
   utf32 ('n'),
@@ -2105,7 +3633,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__bina
 } ;
 
 //--- Unicode string for '$block$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__block = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__block = {
   utf32 ('b'),
   utf32 ('l'),
   utf32 ('o'),
@@ -2114,7 +3642,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__bloc
 } ;
 
 //--- Unicode string for '$case$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__case = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__case = {
   utf32 ('c'),
   utf32 ('a'),
   utf32 ('s'),
@@ -2122,7 +3650,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__case
 } ;
 
 //--- Unicode string for '$class$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__class = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__class = {
   utf32 ('c'),
   utf32 ('l'),
   utf32 ('a'),
@@ -2131,7 +3659,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clas
 } ;
 
 //--- Unicode string for '$clonable$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clonable = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clonable = {
   utf32 ('c'),
   utf32 ('l'),
   utf32 ('o'),
@@ -2143,7 +3671,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__clon
 } ;
 
 //--- Unicode string for '$comparable$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__comparable = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__comparable = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('m'),
@@ -2157,7 +3685,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__comp
 } ;
 
 //--- Unicode string for '$default$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__default = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__default = {
   utf32 ('d'),
   utf32 ('e'),
   utf32 ('f'),
@@ -2168,13 +3696,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__defa
 } ;
 
 //--- Unicode string for '$do$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__do = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__do = {
   utf32 ('d'),
   utf32 ('o'),
 } ;
 
 //--- Unicode string for '$drop$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__drop = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__drop = {
   utf32 ('d'),
   utf32 ('r'),
   utf32 ('o'),
@@ -2182,7 +3710,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__drop
 } ;
 
 //--- Unicode string for '$else$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__else = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__else = {
   utf32 ('e'),
   utf32 ('l'),
   utf32 ('s'),
@@ -2190,7 +3718,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__else
 } ;
 
 //--- Unicode string for '$elsif$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__elsif = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__elsif = {
   utf32 ('e'),
   utf32 ('l'),
   utf32 ('s'),
@@ -2199,14 +3727,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__elsi
 } ;
 
 //--- Unicode string for '$end$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__end = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__end = {
   utf32 ('e'),
   utf32 ('n'),
   utf32 ('d'),
 } ;
 
 //--- Unicode string for '$enum$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__enum = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__enum = {
   utf32 ('e'),
   utf32 ('n'),
   utf32 ('u'),
@@ -2214,7 +3742,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__enum
 } ;
 
 //--- Unicode string for '$equatable$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__equatable = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__equatable = {
   utf32 ('e'),
   utf32 ('q'),
   utf32 ('u'),
@@ -2227,7 +3755,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__equa
 } ;
 
 //--- Unicode string for '$error$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__error = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__error = {
   utf32 ('e'),
   utf32 ('r'),
   utf32 ('r'),
@@ -2236,7 +3764,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__erro
 } ;
 
 //--- Unicode string for '$errorMessage$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__errorMessage = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__errorMessage = {
   utf32 ('e'),
   utf32 ('r'),
   utf32 ('r'),
@@ -2252,7 +3780,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__erro
 } ;
 
 //--- Unicode string for '$extension$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extension = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extension = {
   utf32 ('e'),
   utf32 ('x'),
   utf32 ('t'),
@@ -2265,7 +3793,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__exte
 } ;
 
 //--- Unicode string for '$extern$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extern = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__extern = {
   utf32 ('e'),
   utf32 ('x'),
   utf32 ('t'),
@@ -2275,7 +3803,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__exte
 } ;
 
 //--- Unicode string for '$false$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__false = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__false = {
   utf32 ('f'),
   utf32 ('a'),
   utf32 ('l'),
@@ -2284,7 +3812,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fals
 } ;
 
 //--- Unicode string for '$fileprivate$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fileprivate = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fileprivate = {
   utf32 ('f'),
   utf32 ('i'),
   utf32 ('l'),
@@ -2299,7 +3827,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__file
 } ;
 
 //--- Unicode string for '$filewrapper$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__filewrapper = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__filewrapper = {
   utf32 ('f'),
   utf32 ('i'),
   utf32 ('l'),
@@ -2314,7 +3842,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__file
 } ;
 
 //--- Unicode string for '$final$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__final = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__final = {
   utf32 ('f'),
   utf32 ('i'),
   utf32 ('n'),
@@ -2323,7 +3851,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fina
 } ;
 
 //--- Unicode string for '$fixit$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fixit = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fixit = {
   utf32 ('f'),
   utf32 ('i'),
   utf32 ('x'),
@@ -2332,14 +3860,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__fixi
 } ;
 
 //--- Unicode string for '$for$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__for = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__for = {
   utf32 ('f'),
   utf32 ('o'),
   utf32 ('r'),
 } ;
 
 //--- Unicode string for '$from$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__from = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__from = {
   utf32 ('f'),
   utf32 ('r'),
   utf32 ('o'),
@@ -2347,7 +3875,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__from
 } ;
 
 //--- Unicode string for '$func$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__func = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__func = {
   utf32 ('f'),
   utf32 ('u'),
   utf32 ('n'),
@@ -2355,7 +3883,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__func
 } ;
 
 //--- Unicode string for '$generatedInSeparateFile$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__generatedInSeparateFile = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__generatedInSeparateFile = {
   utf32 ('g'),
   utf32 ('e'),
   utf32 ('n'),
@@ -2382,7 +3910,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__gene
 } ;
 
 //--- Unicode string for '$grammar$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__grammar = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__grammar = {
   utf32 ('g'),
   utf32 ('r'),
   utf32 ('a'),
@@ -2393,7 +3921,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__gram
 } ;
 
 //--- Unicode string for '$graph$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__graph = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__graph = {
   utf32 ('g'),
   utf32 ('r'),
   utf32 ('a'),
@@ -2402,7 +3930,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__grap
 } ;
 
 //--- Unicode string for '$guard$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__guard = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__guard = {
   utf32 ('g'),
   utf32 ('u'),
   utf32 ('a'),
@@ -2411,26 +3939,26 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__guar
 } ;
 
 //--- Unicode string for '$gui$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__gui = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__gui = {
   utf32 ('g'),
   utf32 ('u'),
   utf32 ('i'),
 } ;
 
 //--- Unicode string for '$if$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__if = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__if = {
   utf32 ('i'),
   utf32 ('f'),
 } ;
 
 //--- Unicode string for '$in$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__in = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__in = {
   utf32 ('i'),
   utf32 ('n'),
 } ;
 
 //--- Unicode string for '$indexing$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__indexing = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__indexing = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('d'),
@@ -2442,7 +3970,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__inde
 } ;
 
 //--- Unicode string for '$init$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('i'),
@@ -2450,7 +3978,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init
 } ;
 
 //--- Unicode string for '$initArgLabel$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__initArgLabel = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__initArgLabel = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('i'),
@@ -2466,7 +3994,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__init
 } ;
 
 //--- Unicode string for '$insertAfter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertAfter = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertAfter = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('s'),
@@ -2481,7 +4009,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__inse
 } ;
 
 //--- Unicode string for '$insertBefore$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertBefore = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertBefore = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('s'),
@@ -2497,7 +4025,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__inse
 } ;
 
 //--- Unicode string for '$insertOrReplaceSetter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertOrReplaceSetter = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertOrReplaceSetter = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('s'),
@@ -2522,7 +4050,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__inse
 } ;
 
 //--- Unicode string for '$insertSetter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertSetter = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__insertSetter = {
   utf32 ('i'),
   utf32 ('n'),
   utf32 ('s'),
@@ -2538,13 +4066,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__inse
 } ;
 
 //--- Unicode string for '$is$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__is = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__is = {
   utf32 ('i'),
   utf32 ('s'),
 } ;
 
 //--- Unicode string for '$label$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__label = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__label = {
   utf32 ('l'),
   utf32 ('a'),
   utf32 ('b'),
@@ -2553,14 +4081,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__labe
 } ;
 
 //--- Unicode string for '$let$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__let = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__let = {
   utf32 ('l'),
   utf32 ('e'),
   utf32 ('t'),
 } ;
 
 //--- Unicode string for '$lexique$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__lexique = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__lexique = {
   utf32 ('l'),
   utf32 ('e'),
   utf32 ('x'),
@@ -2571,7 +4099,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__lexi
 } ;
 
 //--- Unicode string for '$list$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__list = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__list = {
   utf32 ('l'),
   utf32 ('i'),
   utf32 ('s'),
@@ -2579,7 +4107,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__list
 } ;
 
 //--- Unicode string for '$loop$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__loop = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__loop = {
   utf32 ('l'),
   utf32 ('o'),
   utf32 ('o'),
@@ -2587,14 +4115,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__loop
 } ;
 
 //--- Unicode string for '$map$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__map = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__map = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('p'),
 } ;
 
 //--- Unicode string for '$mutating$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mutating = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mutating = {
   utf32 ('m'),
   utf32 ('u'),
   utf32 ('t'),
@@ -2606,14 +4134,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__muta
 } ;
 
 //--- Unicode string for '$nil$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nil = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nil = {
   utf32 ('n'),
   utf32 ('i'),
   utf32 ('l'),
 } ;
 
 //--- Unicode string for '$nonAtomicSelection$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nonAtomicSelection = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nonAtomicSelection = {
   utf32 ('n'),
   utf32 ('o'),
   utf32 ('n'),
@@ -2635,20 +4163,20 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__nonA
 } ;
 
 //--- Unicode string for '$not$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__not = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__not = {
   utf32 ('n'),
   utf32 ('o'),
   utf32 ('t'),
 } ;
 
 //--- Unicode string for '$on$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__on = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__on = {
   utf32 ('o'),
   utf32 ('n'),
 } ;
 
 //--- Unicode string for '$optionset$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__optionset = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__optionset = {
   utf32 ('o'),
   utf32 ('p'),
   utf32 ('t'),
@@ -2661,13 +4189,13 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__opti
 } ;
 
 //--- Unicode string for '$or$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__or = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__or = {
   utf32 ('o'),
   utf32 ('r'),
 } ;
 
 //--- Unicode string for '$override$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__override = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__override = {
   utf32 ('o'),
   utf32 ('v'),
   utf32 ('e'),
@@ -2679,7 +4207,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__over
 } ;
 
 //--- Unicode string for '$package$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__package = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__package = {
   utf32 ('p'),
   utf32 ('a'),
   utf32 ('c'),
@@ -2690,7 +4218,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__pack
 } ;
 
 //--- Unicode string for '$preserved$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__preserved = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__preserved = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('e'),
@@ -2703,7 +4231,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__pres
 } ;
 
 //--- Unicode string for '$private$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__private = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__private = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('i'),
@@ -2714,7 +4242,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__priv
 } ;
 
 //--- Unicode string for '$proc$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__proc = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__proc = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -2722,7 +4250,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__proc
 } ;
 
 //--- Unicode string for '$project$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__project = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__project = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -2733,7 +4261,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__proj
 } ;
 
 //--- Unicode string for '$protected$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__protected = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__protected = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -2746,7 +4274,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__prot
 } ;
 
 //--- Unicode string for '$public$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__public = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__public = {
   utf32 ('p'),
   utf32 ('u'),
   utf32 ('b'),
@@ -2756,7 +4284,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__publ
 } ;
 
 //--- Unicode string for '$remove$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__remove = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__remove = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('m'),
@@ -2766,7 +4294,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__remo
 } ;
 
 //--- Unicode string for '$removeSetter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__removeSetter = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__removeSetter = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('m'),
@@ -2782,7 +4310,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__remo
 } ;
 
 //--- Unicode string for '$repeat$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repeat = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repeat = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('p'),
@@ -2792,7 +4320,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repe
 } ;
 
 //--- Unicode string for '$replaceBy$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceBy = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceBy = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('p'),
@@ -2805,7 +4333,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repl
 } ;
 
 //--- Unicode string for '$replaceSetter$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceSetter = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__replaceSetter = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('p'),
@@ -2822,7 +4350,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__repl
 } ;
 
 //--- Unicode string for '$rewind$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rewind = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rewind = {
   utf32 ('r'),
   utf32 ('e'),
   utf32 ('w'),
@@ -2832,7 +4360,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rewi
 } ;
 
 //--- Unicode string for '$rule$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rule = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rule = {
   utf32 ('r'),
   utf32 ('u'),
   utf32 ('l'),
@@ -2840,7 +4368,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__rule
 } ;
 
 //--- Unicode string for '$searchMethod$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchMethod = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchMethod = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('a'),
@@ -2856,7 +4384,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sear
 } ;
 
 //--- Unicode string for '$searchString$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchString = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchString = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('a'),
@@ -2872,7 +4400,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sear
 } ;
 
 //--- Unicode string for '$searchSubscript$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchSubscript = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__searchSubscript = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('a'),
@@ -2891,7 +4419,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sear
 } ;
 
 //--- Unicode string for '$select$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__select = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__select = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('l'),
@@ -2901,7 +4429,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sele
 } ;
 
 //--- Unicode string for '$self$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__self = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__self = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('l'),
@@ -2909,7 +4437,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__self
 } ;
 
 //--- Unicode string for '$send$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__send = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__send = {
   utf32 ('s'),
   utf32 ('e'),
   utf32 ('n'),
@@ -2917,7 +4445,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__send
 } ;
 
 //--- Unicode string for '$sortedarray$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sortedarray = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sortedarray = {
   utf32 ('s'),
   utf32 ('o'),
   utf32 ('r'),
@@ -2932,7 +4460,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__sort
 } ;
 
 //--- Unicode string for '$spoil$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__spoil = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__spoil = {
   utf32 ('s'),
   utf32 ('p'),
   utf32 ('o'),
@@ -2941,7 +4469,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__spoi
 } ;
 
 //--- Unicode string for '$struct$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__struct = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__struct = {
   utf32 ('s'),
   utf32 ('t'),
   utf32 ('r'),
@@ -2951,7 +4479,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__stru
 } ;
 
 //--- Unicode string for '$style$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__style = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__style = {
   utf32 ('s'),
   utf32 ('t'),
   utf32 ('y'),
@@ -2960,7 +4488,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__styl
 } ;
 
 //--- Unicode string for '$super$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__super = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__super = {
   utf32 ('s'),
   utf32 ('u'),
   utf32 ('p'),
@@ -2969,7 +4497,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__supe
 } ;
 
 //--- Unicode string for '$switch$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__switch = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__switch = {
   utf32 ('s'),
   utf32 ('w'),
   utf32 ('i'),
@@ -2979,7 +4507,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__swit
 } ;
 
 //--- Unicode string for '$syntax$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__syntax = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__syntax = {
   utf32 ('s'),
   utf32 ('y'),
   utf32 ('n'),
@@ -2989,14 +4517,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__synt
 } ;
 
 //--- Unicode string for '$tag$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__tag = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__tag = {
   utf32 ('t'),
   utf32 ('a'),
   utf32 ('g'),
 } ;
 
 //--- Unicode string for '$template$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__template = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__template = {
   utf32 ('t'),
   utf32 ('e'),
   utf32 ('m'),
@@ -3008,7 +4536,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__temp
 } ;
 
 //--- Unicode string for '$templateEndMark$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateEndMark = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateEndMark = {
   utf32 ('t'),
   utf32 ('e'),
   utf32 ('m'),
@@ -3027,7 +4555,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__temp
 } ;
 
 //--- Unicode string for '$templateReplacement$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateReplacement = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__templateReplacement = {
   utf32 ('t'),
   utf32 ('e'),
   utf32 ('m'),
@@ -3050,7 +4578,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__temp
 } ;
 
 //--- Unicode string for '$textFileExtension$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__textFileExtension = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__textFileExtension = {
   utf32 ('t'),
   utf32 ('e'),
   utf32 ('x'),
@@ -3071,7 +4599,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__text
 } ;
 
 //--- Unicode string for '$then$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__then = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__then = {
   utf32 ('t'),
   utf32 ('h'),
   utf32 ('e'),
@@ -3079,7 +4607,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__then
 } ;
 
 //--- Unicode string for '$translatable$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__translatable = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__translatable = {
   utf32 ('t'),
   utf32 ('r'),
   utf32 ('a'),
@@ -3095,7 +4623,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__tran
 } ;
 
 //--- Unicode string for '$true$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__true = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__true = {
   utf32 ('t'),
   utf32 ('r'),
   utf32 ('u'),
@@ -3103,7 +4631,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__true
 } ;
 
 //--- Unicode string for '$unused$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__unused = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__unused = {
   utf32 ('u'),
   utf32 ('n'),
   utf32 ('u'),
@@ -3113,7 +4641,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__unus
 } ;
 
 //--- Unicode string for '$usefull$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__usefull = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__usefull = {
   utf32 ('u'),
   utf32 ('s'),
   utf32 ('e'),
@@ -3124,14 +4652,14 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__usef
 } ;
 
 //--- Unicode string for '$var$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__var = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__var = {
   utf32 ('v'),
   utf32 ('a'),
   utf32 ('r'),
 } ;
 
 //--- Unicode string for '$warning$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__warning = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__warning = {
   utf32 ('w'),
   utf32 ('a'),
   utf32 ('r'),
@@ -3142,7 +4670,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__warn
 } ;
 
 //--- Unicode string for '$while$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__while = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__while = {
   utf32 ('w'),
   utf32 ('h'),
   utf32 ('i'),
@@ -3151,7 +4679,7 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__whil
 } ;
 
 //--- Unicode string for '$with$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__with = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__with = {
   utf32 ('w'),
   utf32 ('i'),
   utf32 ('t'),
@@ -3159,34 +4687,34 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__with
 } ;
 
 //--- Unicode string for '${$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7B_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7B_ = {
   utf32 ('{'),
 } ;
 
 //--- Unicode string for '$|$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C_ = {
   utf32 ('|'),
 } ;
 
 //--- Unicode string for '$|=$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__3D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__3D_ = {
   utf32 ('|'),
   utf32 ('='),
 } ;
 
 //--- Unicode string for '$||$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__7C_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7C__7C_ = {
   utf32 ('|'),
   utf32 ('|'),
 } ;
 
 //--- Unicode string for '$}$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7D_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7D_ = {
   utf32 ('}'),
 } ;
 
 //--- Unicode string for '$~$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_ = {
+const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___7E_ = {
   utf32 ('~'),
 } ;
 
@@ -5188,6 +6716,49 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
 bool Lexique_galgasScanner_34_::parseLexicalToken (void) {
   cTokenFor_galgasScanner_34_ token ;
   token.mTokenCode = -1 ;
+//--- Loop until found token or reached end of text
+  while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
+  //--- Reached open delimiter in text mode ?
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      const bool foundCloseDelimitor = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
+      if (foundCloseDelimitor) {
+        mTemplateTextMode = false ; // Go to code mode
+      }
+    }
+  //--- In text mode perform rreplacement if needed
+    if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      bool found = false ;
+      for (int32_t i=0 ; (i<mTemplateReplacementArrayCount) && !found ; i++) {
+        found = notTestForInputUTF32String (mTemplateReplacementArray [i].mStartString, kEndOfSourceLexicalErrorMessage COMMA_HERE) ;
+        if (found) {
+          token.mTemplateStringBeforeToken.appendString (mTemplateReplacementArray [i].mStartString) ;
+        }
+      }
+      if (!found) {
+        token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
+      }
+    }
+  //--- In code mode, parse token
+    if (!mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
+      internalParseLexicalToken (token) ;
+    //--- Found close delimiter ?
+      if ((mCloseTemplateDelimiter >= 0) && (token.mTokenCode == mCloseTemplateDelimiter)) {
+        token.mTokenCode = -1 ; // No token found
+        mTemplateTextMode = true ; // Go to text mode
+      }
+    }
+  }
+//--- If reached end of text, return token code 0
+  if (mCurrentChar.u32 () == '\0') {
+    token.mTokenCode = kToken_ ; // Reached end of text
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+/* bool Lexique_galgasScanner_34_::parseLexicalToken (void) {
+  cTokenFor_galgasScanner_34_ token ;
+  token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
     internalParseLexicalToken (token) ;
   }
@@ -5196,7 +6767,7 @@ bool Lexique_galgasScanner_34_::parseLexicalToken (void) {
     enterToken (token) ;
   }
   return token.mTokenCode > 0 ;
-}
+} */
 
 //--------------------------------------------------------------------------------------------------
 //                         E N T E R    T O K E N
@@ -9198,12 +10769,12 @@ const GALGAS_TypeDescriptor * GGS_templateGetterCallInExpressionAST::staticTypeD
 
 Lexique_galgasTemplateScanner::Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
                                                               const String & inSourceFileName,
-                                                              const int32_t /* inOpenTemplateDelimiter */,
+                                                              const std::initializer_list <utf32> & /* inOpenTemplateDelimiter */,
                                                               const int32_t /* inCloseTemplateDelimiter */,
                                                               const TemplateDelimiter /* inTemplateReplacementArray*/ [],
                                                               const int32_t /* inTemplateReplacementArrayCount */
                                                               COMMA_LOCATION_ARGS) :
-Lexique_galgasScanner_34_ (inCallerCompiler, inSourceFileName, -1, -1, nullptr, 0 COMMA_THERE),
+Lexique_galgasScanner_34_ (inCallerCompiler, inSourceFileName, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -9212,12 +10783,12 @@ mMatchedTemplateDelimiterIndex (-1) {
 Lexique_galgasTemplateScanner::Lexique_galgasTemplateScanner (Compiler * inCallerCompiler,
                                                               const String & inSourceString,
                                                               const String & inStringForError,
-                                                              const int32_t /* inOpenTemplateDelimiter */,
+                                                              const std::initializer_list <utf32> & /* inOpenTemplateDelimiter */,
                                                               const int32_t /* inCloseTemplateDelimiter */,
                                                               const TemplateDelimiter /* inTemplateReplacementArray*/ [],
                                                               const int32_t /* inTemplateReplacementArrayCount */
                                                               COMMA_LOCATION_ARGS) :
-Lexique_galgasScanner_34_ (inCallerCompiler, inSourceString, inStringForError, -1, -1, nullptr, 0 COMMA_THERE),
+Lexique_galgasScanner_34_ (inCallerCompiler, inSourceString, inStringForError, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -14888,1669 +16459,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateUnaryMinusOperationAS
 
 const GALGAS_TypeDescriptor * GGS_templateUnaryMinusOperationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateUnaryMinusOperationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateEqualTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateEqualTestAST::objectCompare (const GGS_templateEqualTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateEqualTestAST::GGS_templateEqualTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateEqualTestAST GGS_templateEqualTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateEqualTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateEqualTestAST (inCompiler COMMA_THERE)) ;
-  object->templateEqualTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateEqualTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateEqualTestAST::
-templateEqualTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                       const GGS_templateExpressionAST & in_mLeftExpression,
-                                       const GGS_templateExpressionAST & in_mRightExpression,
-                                       Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateEqualTestAST::GGS_templateEqualTestAST (const cPtr_templateEqualTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateEqualTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateEqualTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateEqualTestAST * p = (cPtr_templateEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateEqualTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateEqualTestAST * p = (cPtr_templateEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateEqualTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateEqualTestAST * p = (cPtr_templateEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateEqualTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateEqualTestAST::cPtr_templateEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateEqualTestAST::cPtr_templateEqualTestAST (const GGS_location & in_mOperatorLocation,
-                                                      const GGS_templateExpressionAST & in_mLeftExpression,
-                                                      const GGS_templateExpressionAST & in_mRightExpression,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateEqualTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateEqualTestAST ;
-}
-
-void cPtr_templateEqualTestAST::description (String & ioString,
-                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateEqualTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateEqualTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateEqualTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateEqualTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateEqualTestAST ("templateEqualTestAST",
-                                                                         & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateEqualTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateEqualTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateNonEqualTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateNonEqualTestAST::objectCompare (const GGS_templateNonEqualTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateNonEqualTestAST::GGS_templateNonEqualTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateNonEqualTestAST GGS_templateNonEqualTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateNonEqualTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateNonEqualTestAST (inCompiler COMMA_THERE)) ;
-  object->templateNonEqualTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateNonEqualTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateNonEqualTestAST::
-templateNonEqualTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                          const GGS_templateExpressionAST & in_mLeftExpression,
-                                          const GGS_templateExpressionAST & in_mRightExpression,
-                                          Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateNonEqualTestAST::GGS_templateNonEqualTestAST (const cPtr_templateNonEqualTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateNonEqualTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateNonEqualTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateNonEqualTestAST * p = (cPtr_templateNonEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateNonEqualTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateNonEqualTestAST * p = (cPtr_templateNonEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateNonEqualTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateNonEqualTestAST * p = (cPtr_templateNonEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateNonEqualTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateNonEqualTestAST::cPtr_templateNonEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateNonEqualTestAST::cPtr_templateNonEqualTestAST (const GGS_location & in_mOperatorLocation,
-                                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                                            const GGS_templateExpressionAST & in_mRightExpression,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateNonEqualTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateNonEqualTestAST ;
-}
-
-void cPtr_templateNonEqualTestAST::description (String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateNonEqualTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateNonEqualTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateNonEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateNonEqualTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateNonEqualTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateNonEqualTestAST ("templateNonEqualTestAST",
-                                                                            & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateNonEqualTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateNonEqualTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateStrictInfTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateStrictInfTestAST::objectCompare (const GGS_templateStrictInfTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateStrictInfTestAST::GGS_templateStrictInfTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateStrictInfTestAST GGS_templateStrictInfTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateStrictInfTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateStrictInfTestAST (inCompiler COMMA_THERE)) ;
-  object->templateStrictInfTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateStrictInfTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateStrictInfTestAST::
-templateStrictInfTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                           const GGS_templateExpressionAST & in_mLeftExpression,
-                                           const GGS_templateExpressionAST & in_mRightExpression,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateStrictInfTestAST::GGS_templateStrictInfTestAST (const cPtr_templateStrictInfTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateStrictInfTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateStrictInfTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateStrictInfTestAST * p = (cPtr_templateStrictInfTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateStrictInfTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateStrictInfTestAST * p = (cPtr_templateStrictInfTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateStrictInfTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateStrictInfTestAST * p = (cPtr_templateStrictInfTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateStrictInfTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateStrictInfTestAST::cPtr_templateStrictInfTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateStrictInfTestAST::cPtr_templateStrictInfTestAST (const GGS_location & in_mOperatorLocation,
-                                                              const GGS_templateExpressionAST & in_mLeftExpression,
-                                                              const GGS_templateExpressionAST & in_mRightExpression,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateStrictInfTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateStrictInfTestAST ;
-}
-
-void cPtr_templateStrictInfTestAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateStrictInfTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateStrictInfTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateStrictInfTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateStrictInfTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateStrictInfTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateStrictInfTestAST ("templateStrictInfTestAST",
-                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateStrictInfTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateStrictInfTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInfOrEqualTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInfOrEqualTestAST::objectCompare (const GGS_templateInfOrEqualTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInfOrEqualTestAST::GGS_templateInfOrEqualTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateInfOrEqualTestAST GGS_templateInfOrEqualTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateInfOrEqualTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInfOrEqualTestAST (inCompiler COMMA_THERE)) ;
-  object->templateInfOrEqualTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateInfOrEqualTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInfOrEqualTestAST::
-templateInfOrEqualTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                            const GGS_templateExpressionAST & in_mRightExpression,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInfOrEqualTestAST::GGS_templateInfOrEqualTestAST (const cPtr_templateInfOrEqualTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInfOrEqualTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateInfOrEqualTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateInfOrEqualTestAST * p = (cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateInfOrEqualTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateInfOrEqualTestAST * p = (cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateInfOrEqualTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateInfOrEqualTestAST * p = (cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInfOrEqualTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInfOrEqualTestAST::cPtr_templateInfOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInfOrEqualTestAST::cPtr_templateInfOrEqualTestAST (const GGS_location & in_mOperatorLocation,
-                                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                const GGS_templateExpressionAST & in_mRightExpression,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateInfOrEqualTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInfOrEqualTestAST ;
-}
-
-void cPtr_templateInfOrEqualTestAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInfOrEqualTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateInfOrEqualTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInfOrEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInfOrEqualTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInfOrEqualTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInfOrEqualTestAST ("templateInfOrEqualTestAST",
-                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInfOrEqualTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInfOrEqualTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateStrictSupTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateStrictSupTestAST::objectCompare (const GGS_templateStrictSupTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateStrictSupTestAST::GGS_templateStrictSupTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateStrictSupTestAST GGS_templateStrictSupTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateStrictSupTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateStrictSupTestAST (inCompiler COMMA_THERE)) ;
-  object->templateStrictSupTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateStrictSupTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateStrictSupTestAST::
-templateStrictSupTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                           const GGS_templateExpressionAST & in_mLeftExpression,
-                                           const GGS_templateExpressionAST & in_mRightExpression,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateStrictSupTestAST::GGS_templateStrictSupTestAST (const cPtr_templateStrictSupTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateStrictSupTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateStrictSupTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateStrictSupTestAST * p = (cPtr_templateStrictSupTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateStrictSupTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateStrictSupTestAST * p = (cPtr_templateStrictSupTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateStrictSupTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateStrictSupTestAST * p = (cPtr_templateStrictSupTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateStrictSupTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateStrictSupTestAST::cPtr_templateStrictSupTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateStrictSupTestAST::cPtr_templateStrictSupTestAST (const GGS_location & in_mOperatorLocation,
-                                                              const GGS_templateExpressionAST & in_mLeftExpression,
-                                                              const GGS_templateExpressionAST & in_mRightExpression,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateStrictSupTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateStrictSupTestAST ;
-}
-
-void cPtr_templateStrictSupTestAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateStrictSupTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateStrictSupTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateStrictSupTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateStrictSupTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateStrictSupTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateStrictSupTestAST ("templateStrictSupTestAST",
-                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateStrictSupTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateStrictSupTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateSupOrEqualTestAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateSupOrEqualTestAST::objectCompare (const GGS_templateSupOrEqualTestAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST::GGS_templateSupOrEqualTestAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST GGS_templateSupOrEqualTestAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateSupOrEqualTestAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateSupOrEqualTestAST (inCompiler COMMA_THERE)) ;
-  object->templateSupOrEqualTestAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateSupOrEqualTestAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateSupOrEqualTestAST::
-templateSupOrEqualTestAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                            const GGS_templateExpressionAST & in_mLeftExpression,
-                                            const GGS_templateExpressionAST & in_mRightExpression,
-                                            Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateSupOrEqualTestAST::GGS_templateSupOrEqualTestAST (const cPtr_templateSupOrEqualTestAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateSupOrEqualTestAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateSupOrEqualTestAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateSupOrEqualTestAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateSupOrEqualTestAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateSupOrEqualTestAST * p = (cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateSupOrEqualTestAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (const GGS_location & in_mOperatorLocation,
-                                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                const GGS_templateExpressionAST & in_mRightExpression,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateSupOrEqualTestAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ;
-}
-
-void cPtr_templateSupOrEqualTestAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateSupOrEqualTestAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateSupOrEqualTestAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateSupOrEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateSupOrEqualTestAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateSupOrEqualTestAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ("templateSupOrEqualTestAST",
-                                                                              & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateSupOrEqualTestAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateSupOrEqualTestAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateLeftShiftOperationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateLeftShiftOperationAST::objectCompare (const GGS_templateLeftShiftOperationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST::GGS_templateLeftShiftOperationAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST GGS_templateLeftShiftOperationAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateLeftShiftOperationAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateLeftShiftOperationAST (inCompiler COMMA_THERE)) ;
-  object->templateLeftShiftOperationAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateLeftShiftOperationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateLeftShiftOperationAST::
-templateLeftShiftOperationAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                                const GGS_templateExpressionAST & in_mLeftExpression,
-                                                const GGS_templateExpressionAST & in_mRightExpression,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateLeftShiftOperationAST::GGS_templateLeftShiftOperationAST (const cPtr_templateLeftShiftOperationAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLeftShiftOperationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateLeftShiftOperationAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateLeftShiftOperationAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateLeftShiftOperationAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateLeftShiftOperationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (const GGS_location & in_mOperatorLocation,
-                                                                        const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                        const GGS_templateExpressionAST & in_mRightExpression,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateLeftShiftOperationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
-}
-
-void cPtr_templateLeftShiftOperationAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateLeftShiftOperationAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateLeftShiftOperationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateLeftShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateLeftShiftOperationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateLeftShiftOperationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ("templateLeftShiftOperationAST",
-                                                                                  & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateLeftShiftOperationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateRightShiftOperationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateRightShiftOperationAST::objectCompare (const GGS_templateRightShiftOperationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST::GGS_templateRightShiftOperationAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST GGS_templateRightShiftOperationAST::
-init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                  const GGS_templateExpressionAST & in_mLeftExpression,
-                  const GGS_templateExpressionAST & in_mRightExpression,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateRightShiftOperationAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateRightShiftOperationAST (inCompiler COMMA_THERE)) ;
-  object->templateRightShiftOperationAST_init_21__21__21_ (in_mOperatorLocation, in_mLeftExpression, in_mRightExpression, inCompiler) ;
-  const GGS_templateRightShiftOperationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateRightShiftOperationAST::
-templateRightShiftOperationAST_init_21__21__21_ (const GGS_location & in_mOperatorLocation,
-                                                 const GGS_templateExpressionAST & in_mLeftExpression,
-                                                 const GGS_templateExpressionAST & in_mRightExpression,
-                                                 Compiler * /* inCompiler */) {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateRightShiftOperationAST::GGS_templateRightShiftOperationAST (const cPtr_templateRightShiftOperationAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateRightShiftOperationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateRightShiftOperationAST::readProperty_mOperatorLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mOperatorLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateRightShiftOperationAST::readProperty_mLeftExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mLeftExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateRightShiftOperationAST::readProperty_mRightExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateRightShiftOperationAST * p = (cPtr_templateRightShiftOperationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    return p->mProperty_mRightExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateRightShiftOperationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (const GGS_location & in_mOperatorLocation,
-                                                                          const GGS_templateExpressionAST & in_mLeftExpression,
-                                                                          const GGS_templateExpressionAST & in_mRightExpression,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mOperatorLocation (),
-mProperty_mLeftExpression (),
-mProperty_mRightExpression () {
-  mProperty_mOperatorLocation = in_mOperatorLocation ;
-  mProperty_mLeftExpression = in_mLeftExpression ;
-  mProperty_mRightExpression = in_mRightExpression ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateRightShiftOperationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateRightShiftOperationAST ;
-}
-
-void cPtr_templateRightShiftOperationAST::description (String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateRightShiftOperationAST:") ;
-  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateRightShiftOperationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateRightShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateRightShiftOperationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mOperatorLocation.printNonNullClassInstanceProperties ("mOperatorLocation") ;
-    mProperty_mLeftExpression.printNonNullClassInstanceProperties ("mLeftExpression") ;
-    mProperty_mRightExpression.printNonNullClassInstanceProperties ("mRightExpression") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateRightShiftOperationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateRightShiftOperationAST ("templateRightShiftOperationAST",
-                                                                                   & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateRightShiftOperationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateRightShiftOperationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInstructionStringAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionStringAST::objectCompare (const GGS_templateInstructionStringAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionStringAST::GGS_templateInstructionStringAST (void) :
-GGS_templateInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateInstructionStringAST GGS_templateInstructionStringAST::
-init_21_ (const GGS_string & in_mTemplateString,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_templateInstructionStringAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInstructionStringAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionStringAST_init_21_ (in_mTemplateString, inCompiler) ;
-  const GGS_templateInstructionStringAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInstructionStringAST::
-templateInstructionStringAST_init_21_ (const GGS_string & in_mTemplateString,
-                                       Compiler * /* inCompiler */) {
-  mProperty_mTemplateString = in_mTemplateString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionStringAST::GGS_templateInstructionStringAST (const cPtr_templateInstructionStringAST * inSourcePtr) :
-GGS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionStringAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_templateInstructionStringAST::readProperty_mTemplateString (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_templateInstructionStringAST * p = (cPtr_templateInstructionStringAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionStringAST) ;
-    return p->mProperty_mTemplateString ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionStringAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionStringAST::cPtr_templateInstructionStringAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateString () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionStringAST::cPtr_templateInstructionStringAST (const GGS_string & in_mTemplateString,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTemplateString () {
-  mProperty_mTemplateString = in_mTemplateString ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateInstructionStringAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionStringAST ;
-}
-
-void cPtr_templateInstructionStringAST::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInstructionStringAST:") ;
-  mProperty_mTemplateString.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateInstructionStringAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionStringAST (mProperty_mTemplateString, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionStringAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTemplateString.printNonNullClassInstanceProperties ("mTemplateString") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionStringAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionStringAST ("templateInstructionStringAST",
-                                                                                 & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionStringAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionStringAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateInstructionExpressionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionExpressionAST::objectCompare (const GGS_templateInstructionExpressionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionExpressionAST::GGS_templateInstructionExpressionAST (void) :
-GGS_templateInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateInstructionExpressionAST GGS_templateInstructionExpressionAST::
-init_21__21_ (const GGS_templateExpressionAST & in_mExpression,
-              const GGS_location & in_mLocation,
-              Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  cPtr_templateInstructionExpressionAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateInstructionExpressionAST (inCompiler COMMA_THERE)) ;
-  object->templateInstructionExpressionAST_init_21__21_ (in_mExpression, in_mLocation, inCompiler) ;
-  const GGS_templateInstructionExpressionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateInstructionExpressionAST::
-templateInstructionExpressionAST_init_21__21_ (const GGS_templateExpressionAST & in_mExpression,
-                                               const GGS_location & in_mLocation,
-                                               Compiler * /* inCompiler */) {
-  mProperty_mExpression = in_mExpression ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionExpressionAST::GGS_templateInstructionExpressionAST (const cPtr_templateInstructionExpressionAST * inSourcePtr) :
-GGS_templateInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionExpressionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionAST GGS_templateInstructionExpressionAST::readProperty_mExpression (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionAST () ;
-  }else{
-    cPtr_templateInstructionExpressionAST * p = (cPtr_templateInstructionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionExpressionAST) ;
-    return p->mProperty_mExpression ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_templateInstructionExpressionAST::readProperty_mLocation (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_location () ;
-  }else{
-    cPtr_templateInstructionExpressionAST * p = (cPtr_templateInstructionExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateInstructionExpressionAST) ;
-    return p->mProperty_mLocation ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateInstructionExpressionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionExpressionAST::cPtr_templateInstructionExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mExpression (),
-mProperty_mLocation () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateInstructionExpressionAST::cPtr_templateInstructionExpressionAST (const GGS_templateExpressionAST & in_mExpression,
-                                                                              const GGS_location & in_mLocation,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateInstructionAST (inCompiler COMMA_THERE),
-mProperty_mExpression (),
-mProperty_mLocation () {
-  mProperty_mExpression = in_mExpression ;
-  mProperty_mLocation = in_mLocation ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateInstructionExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionExpressionAST ;
-}
-
-void cPtr_templateInstructionExpressionAST::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateInstructionExpressionAST:") ;
-  mProperty_mExpression.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateInstructionExpressionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateInstructionExpressionAST (mProperty_mExpression, mProperty_mLocation, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateInstructionExpressionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mExpression.printNonNullClassInstanceProperties ("mExpression") ;
-    mProperty_mLocation.printNonNullClassInstanceProperties ("mLocation") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionExpressionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionExpressionAST ("templateInstructionExpressionAST",
-                                                                                     & kTypeDescriptor_GALGAS_templateInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionExpressionAST ;
 }
 

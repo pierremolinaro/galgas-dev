@@ -587,7 +587,8 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
         self.mLexicalListDeclarationListAST,
         lexiqueAnalysisContext,
         self.mTemplateDelimitorListAST,
-        self.mIndexingListAST
+        self.mIndexingListAST,
+        lexiqueAnalysisContext.mUnicodeStringToGenerate
       )
     //--- Cpp
       let cppContents = @lexiqueGenerationTemplates.implementationZone2Galgas3 (
@@ -646,7 +647,8 @@ filewrapper @lexiqueGenerationTemplates : "+generation-templates/lexique_generat
     ?[@lexicalListDeclarationAST] DELIMITOR_LIST_LIST,
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
-    ?[@indexingAST] INDEXING_LIST
+    ?[@indexingAST] INDEXING_LIST,
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
   )
 
   template implementationZone2Galgas3 : "lexique_implementation-galgas3.cpp.galgasTemplate" (

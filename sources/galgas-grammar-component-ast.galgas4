@@ -103,7 +103,6 @@ syntax galgas4GrammarComponentSyntax : galgasScanner4 {
       mLabelList,
       unusedNonterminalList,
       templateDelimiterDescriptor,
-      [], // templateDelimitorList,
       templateReplacementList,
       hasTranslateFeature
     )
@@ -350,7 +349,6 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   private let [@nonTerminalLabelAST] mStartSymbolLabelList
   private let [@lstring] mUnusedNonterminalList
   private let @templateDelimiterDescriptorAST? mTemplateDelimiterDescriptor
-  private let [@templateDelimitor2AST] mTemplateDelimitorList
   private let [@templateReplacementAST] mTemplateReplacementList
   private let @bool mHasTranslateFeature
 
@@ -391,15 +389,8 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   //--- Useful entities graph
     let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (self.mGrammarComponentName)
     !?ioUsefulEntitiesGraph.addNode (grammarNameForUsefulness, grammarNameForUsefulness)
-  //-------------------------------------- Template delimiters
-    var @stringset unicodeStringToGenerate = @()
-    var [@templateDelimitorAST] templateDelimitorList = @()
-    for templateDelimitor in self.mTemplateDelimitorList do
-     unicodeStringToGenerate ++= templateDelimitor.mStartString.string
-     unicodeStringToGenerate ++= templateDelimitor.mEndString.string
-     templateDelimitorList ++= @(templateDelimitor.mStartString, templateDelimitor.mEndString, templateDelimitor.mPreserved)
-    end
   //-------------------------------------- Template replacements
+    var @stringset unicodeStringToGenerate = @()
     for templateReplacement in self.mTemplateReplacementList do
       unicodeStringToGenerate ++= templateReplacement.mMatchString.string
       unicodeStringToGenerate ++= templateReplacement.mReplacementString.string
@@ -537,11 +528,11 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   //------ Template descriptor string
     var templateDescriptorString = ", "
     if let t = self.mTemplateDelimiterDescriptor then
-      templateDescriptorString += "Lexique_" + lexiqueComponentName.string.identifierRepresentation + "::kToken_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
+      templateDescriptorString += "kUnicodeString_" + lexiqueComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
       templateDescriptorString += ", "
       templateDescriptorString += "Lexique_" + lexiqueComponentName.string.identifierRepresentation + "::kToken_" + t.mCloseTemplateDelimiter.string.identifierRepresentation
     else
-      templateDescriptorString += "-1, -1"
+      templateDescriptorString += "std::initializer_list <utf32> (), -1"
     end
 //    if templateDelimitorList.count == 0 then
 //      templateDescriptorString += "nullptr"
@@ -606,7 +597,6 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
       self.mHasTranslateFeature,
       grammarCppFile,
       unicodeStringToGenerate,
-      templateDelimitorList,
       self.mTemplateReplacementList
     )
   }

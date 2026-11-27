@@ -49,7 +49,7 @@ class Lexique : public Compiler {
 //--- Constructors and destructor
   public: Lexique (Compiler * inCallerCompiler,
                    const String & inSourceFileName,
-                   const int32_t inOpenTemplateDelimiter,
+                   const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                    const int32_t inCloseTemplateDelimiter,
                    const TemplateDelimiter inTemplateReplacementArray [],
                    const int32_t inTemplateReplacementArrayCount
@@ -58,7 +58,7 @@ class Lexique : public Compiler {
   public: Lexique (Compiler * inCallerCompiler,
                    const String & inSourceString,
                    const String & inStringForError,
-                   const int32_t inOpenTemplateDelimiter,
+                   const std::initializer_list <utf32> & inOpenTemplateDelimiter,
                    const int32_t inCloseTemplateDelimiter,
                    const TemplateDelimiter inTemplateReplacementArray [],
                    const int32_t inTemplateReplacementArrayCount
@@ -80,8 +80,8 @@ class Lexique : public Compiler {
   protected: IndexingDictionary * mIndexingDictionary ;
 
 //--- Scanner mode for template scanner
-  protected: bool mScanningTemplateString ;
-  protected: const int32_t mOpenTemplateDelimiter ;
+  protected: bool mTemplateTextMode ;
+  protected: const std::initializer_list <utf32> & mOpenTemplateDelimiter ;
   protected: const int32_t mCloseTemplateDelimiter ;
   protected: const TemplateDelimiter * mTemplateReplacementArray ;
   protected: const int32_t mTemplateReplacementArrayCount ;
