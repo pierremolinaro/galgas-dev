@@ -236,7 +236,6 @@ rule '0'->'9' {
 #errorMessage undefinedAttribute : "undefined attribute"
 
 list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" {
-//  "applicationBundleBase" -> $#applicationBundleBase$,
   "binaryFileExtension" -> $#binaryFileExtension$,
   "clonable" -> $#clonable$,
   "comparable" -> $#comparable$,
@@ -251,7 +250,6 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "insertSetter" -> $#insertSetter$,
   "nonAtomicSelection" -> $#nonAtomicSelection$,
   "preserved" -> $#preserved$,
- // "quietOutputByDefault" -> $#quietOutputByDefault$,
   "replaceBy" -> $#replaceBy$,
   "remove" -> $#remove$,
   "removeSetter" -> $#removeSetter$,
@@ -260,7 +258,6 @@ list attributeKeyWordList style attributeStyle #errorMessage "the '%K' keyword" 
   "searchSubscript" -> $#searchSubscript$,
   "searchString" -> $#searchString$,
   "template" -> $#template$,
-  "templateDelimiter" -> $#templateDelimiter$,
   "templateEndMark" -> $#templateEndMark$,
   "templateReplacement" -> $#templateReplacement$,
   "textFileExtension" -> $#textFileExtension$,
@@ -486,7 +483,8 @@ list galgasDelimitorsList style delimitersStyle #errorMessage "the '%K' delimito
   "/",    "!=",  ">=", "&",
   "{",    "}",  "||", "|",
   "^",    ">>",  "~",
-  "===", "!==", "?^", "!^"
+  "===", "!==", "?^", "!^",
+  "\\(", "/)"
 }
 
 rule list galgasDelimitorsList

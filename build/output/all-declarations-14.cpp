@@ -1,194 +1,6 @@
 #include "all-declarations-14.h"
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (void) :
-mProperty_mProductionRulesList (),
-mProperty_mSyntaxComponentName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (const GGS_syntaxComponentForGrammarAnalysis & inSource) :
-mProperty_mProductionRulesList (inSource.mProperty_mProductionRulesList),
-mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentForGrammarAnalysis & GGS_syntaxComponentForGrammarAnalysis::operator = (const GGS_syntaxComponentForGrammarAnalysis & inSource) {
-  mProperty_mProductionRulesList = inSource.mProperty_mProductionRulesList ;
-  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_syntaxComponentForGrammarAnalysis GGS_syntaxComponentForGrammarAnalysis::init_21__21_ (const GGS__5B_productionRuleForGrammarAnalysis_5D_ & in_mProductionRulesList,
-                                                                                           const GGS_lstring & in_mSyntaxComponentName,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxComponentForGrammarAnalysis result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mProductionRulesList = in_mProductionRulesList ;
-  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentForGrammarAnalysis::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (const GGS__5B_productionRuleForGrammarAnalysis_5D_ & inOperand0,
-                                                                              const GGS_lstring & inOperand1) :
-mProperty_mProductionRulesList (inOperand0),
-mProperty_mSyntaxComponentName (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxComponentForGrammarAnalysis::isValid (void) const {
-  return mProperty_mProductionRulesList.isValid () && mProperty_mSyntaxComponentName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentForGrammarAnalysis::drop (void) {
-  mProperty_mProductionRulesList.drop () ;
-  mProperty_mSyntaxComponentName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentForGrammarAnalysis::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxComponentForGrammarAnalysis:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mProductionRulesList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxComponentForGrammarAnalysis generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentForGrammarAnalysis ("syntaxComponentForGrammarAnalysis",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxComponentForGrammarAnalysis::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxComponentForGrammarAnalysis ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (void) :
-mProperty_mNonterminalName (),
-mProperty_mRuleIndex (),
-mProperty_mLabelImplementationList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (const GGS_ruleDeclarationAST & inSource) :
-mProperty_mNonterminalName (inSource.mProperty_mNonterminalName),
-mProperty_mRuleIndex (inSource.mProperty_mRuleIndex),
-mProperty_mLabelImplementationList (inSource.mProperty_mLabelImplementationList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ruleDeclarationAST & GGS_ruleDeclarationAST::operator = (const GGS_ruleDeclarationAST & inSource) {
-  mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
-  mProperty_mRuleIndex = inSource.mProperty_mRuleIndex ;
-  mProperty_mLabelImplementationList = inSource.mProperty_mLabelImplementationList ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_ruleDeclarationAST GGS_ruleDeclarationAST::init_21__21__21_ (const GGS_string & in_mNonterminalName,
-                                                                 const GGS_u_33__32_ & in_mRuleIndex,
-                                                                 const GGS__5B_ruleLabelImplementationAST_5D_ & in_mLabelImplementationList,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ruleDeclarationAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mNonterminalName = in_mNonterminalName ;
-  result.mProperty_mRuleIndex = in_mRuleIndex ;
-  result.mProperty_mLabelImplementationList = in_mLabelImplementationList ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ruleDeclarationAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (const GGS_string & inOperand0,
-                                                const GGS_u_33__32_ & inOperand1,
-                                                const GGS__5B_ruleLabelImplementationAST_5D_ & inOperand2) :
-mProperty_mNonterminalName (inOperand0),
-mProperty_mRuleIndex (inOperand1),
-mProperty_mLabelImplementationList (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_ruleDeclarationAST::isValid (void) const {
-  return mProperty_mNonterminalName.isValid () && mProperty_mRuleIndex.isValid () && mProperty_mLabelImplementationList.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ruleDeclarationAST::drop (void) {
-  mProperty_mNonterminalName.drop () ;
-  mProperty_mRuleIndex.drop () ;
-  mProperty_mLabelImplementationList.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ruleDeclarationAST::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ruleDeclarationAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRuleIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLabelImplementationList.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @ruleDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ruleDeclarationAST ("ruleDeclarationAST",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_ruleDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ruleDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_formalParameterForGeneration::GGS_formalParameterForGeneration (void) :
 mProperty_mFormalSelector (),
 mProperty_mFormalArgumentPassingMode (),
@@ -1130,6 +942,95 @@ GGS_string extensionGetter_correspondingEffectiveParameterString (const GGS_form
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (void) :
+mProperty_mProductionRulesList (),
+mProperty_mSyntaxComponentName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (const GGS_syntaxComponentForGrammarAnalysis & inSource) :
+mProperty_mProductionRulesList (inSource.mProperty_mProductionRulesList),
+mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentForGrammarAnalysis & GGS_syntaxComponentForGrammarAnalysis::operator = (const GGS_syntaxComponentForGrammarAnalysis & inSource) {
+  mProperty_mProductionRulesList = inSource.mProperty_mProductionRulesList ;
+  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_syntaxComponentForGrammarAnalysis GGS_syntaxComponentForGrammarAnalysis::init_21__21_ (const GGS__5B_productionRuleForGrammarAnalysis_5D_ & in_mProductionRulesList,
+                                                                                           const GGS_lstring & in_mSyntaxComponentName,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_syntaxComponentForGrammarAnalysis result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mProductionRulesList = in_mProductionRulesList ;
+  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentForGrammarAnalysis::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_syntaxComponentForGrammarAnalysis::GGS_syntaxComponentForGrammarAnalysis (const GGS__5B_productionRuleForGrammarAnalysis_5D_ & inOperand0,
+                                                                              const GGS_lstring & inOperand1) :
+mProperty_mProductionRulesList (inOperand0),
+mProperty_mSyntaxComponentName (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_syntaxComponentForGrammarAnalysis::isValid (void) const {
+  return mProperty_mProductionRulesList.isValid () && mProperty_mSyntaxComponentName.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentForGrammarAnalysis::drop (void) {
+  mProperty_mProductionRulesList.drop () ;
+  mProperty_mSyntaxComponentName.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_syntaxComponentForGrammarAnalysis::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @syntaxComponentForGrammarAnalysis:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mProductionRulesList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @syntaxComponentForGrammarAnalysis generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentForGrammarAnalysis ("syntaxComponentForGrammarAnalysis",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_syntaxComponentForGrammarAnalysis::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxComponentForGrammarAnalysis ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_row::GGS_row (void) :
 mProperty_columns () {
 }
@@ -1206,6 +1107,67 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_row ("row",
 const GALGAS_TypeDescriptor * GGS_row::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_row ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@productionRuleForGrammarAnalysis displayRule'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_displayRule (const GGS_productionRuleForGrammarAnalysis inObject,
+                                  const GGS_string constinArgument_inSyntaxComponentName,
+                                  GGS_string & ioArgument_ioGeneratedCode,
+                                  Compiler * inCompiler
+                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string var_currentNode_5062 = GGS_string ("P0start") ;
+  GGS__5B_row_5D_ temp_0 = GGS__5B_row_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_5062, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  temp_0.plusPlusAssignOperation (GGS_row::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 115)) ;
+  GGS__5B_row_5D_ var_rowArray_5099 = temp_0 ;
+  GGS_string var_arrows_5165 = GGS_string::makeEmptyString () ;
+  GGS_string var_arrowStyle_5191 = GGS_string ("--") ;
+  GGS_u_33__32_ var_column_5220 = GGS_u_33__32_ (uint32_t (1U)) ;
+  GGS_u_33__32_ var_unusedMaxUsedRowIndex_5242 = GGS_u_33__32_ (uint32_t (0U)) ;
+  const GGS_productionRuleForGrammarAnalysis temp_2 = inObject ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ enumerator_5304 (temp_2.readProperty_mInstructionList ()) ;
+  while (enumerator_5304.hasCurrentObject ()) {
+    callExtensionMethod_tikzNodeForSyntaxInstruction ((cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5304.current (HERE).ptr (), var_rowArray_5099, GGS_u_33__32_ (uint32_t (0U)), var_column_5220, var_currentNode_5062, var_arrowStyle_5191, var_arrows_5165, var_unusedMaxUsedRowIndex_5242, GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 121)) ;
+    enumerator_5304.gotoNextObject () ;
+  }
+  GGS_string var_lastNodeName_5692 ;
+  {
+  extensionSetter_appendRow (var_rowArray_5099, GGS_string ("[lastPoint] ()"), GGS_u_33__32_ (uint32_t (0U)), var_column_5220, var_lastNodeName_5692, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 133)) ;
+  }
+  var_arrows_5165.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_currentNode_5062, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (var_lastNodeName_5692, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 134)) ;
+  const GGS_productionRuleForGrammarAnalysis temp_3 = inObject ;
+  GGS_location var_loc_5812 = temp_3.readProperty_mLeftNonterminalSymbol ().readProperty_location () ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 138)).add_operation (function_escapeForTex (var_loc_5812.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).getter_deletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 139)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 140)).add_operation (function_escapeForTex (var_loc_5812.getter_startLine (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 141)).add_operation (GGS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 142)).add_operation (GGS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 143)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 137)) ;
+  DownEnumerator__5B_row_5D_ enumerator_6223 (var_rowArray_5099) ;
+  while (enumerator_6223.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 146)) ;
+    UpEnumerator__5B__32_string_5D_ enumerator_6289 (enumerator_6223.current (HERE).readProperty_columns ()) ;
+    while (enumerator_6289.hasCurrentObject ()) {
+      GalgasBool test_4 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_4) {
+        test_4 = GGS_bool (ComparisonKind::equal, enumerator_6289.current (HERE).readProperty_mValue_30_ ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+        if (GalgasBool::boolTrue == test_4) {
+          ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 149)) ;
+        }
+      }
+      if (GalgasBool::boolFalse == test_4) {
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\node (").add_operation (enumerator_6289.current (HERE).readProperty_mValue_30_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (enumerator_6289.current (HERE).readProperty_mValue_31_ (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)).add_operation (GGS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 151)) ;
+      }
+      enumerator_6289.gotoNextObject () ;
+    }
+    ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\\\\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 154)) ;
+    enumerator_6223.gotoNextObject () ;
+  }
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("  };\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 156)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(var_arrows_5165, inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 158)) ;
+  ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("\\end{tikzpicture}\n\n"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 159)) ;
+}
+
 
 //--------------------------------------------------------------------------------------------------
 // @lexicalStructuredSendInstructionAST reference class

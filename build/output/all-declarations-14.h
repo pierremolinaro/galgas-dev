@@ -410,6 +410,18 @@ class GGS_string extensionGetter_correspondingEffectiveParameterString (const cl
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@productionRuleForGrammarAnalysis displayRule'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_displayRule (const class GGS_productionRuleForGrammarAnalysis inObject,
+                                  const class GGS_string constin_inSyntaxComponentName,
+                                  class GGS_string & io_ioGeneratedCode,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexicalStructuredSendInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 

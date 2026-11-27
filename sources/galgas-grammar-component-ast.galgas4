@@ -20,6 +20,327 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
+syntax galgas4GrammarComponentSyntax : galgasScanner4 {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
+                          !@lstring outTypeName)
+
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //   G R A M M A R    C O M P O N E N T
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    let @lbool hasIndexing
+    select
+      hasIndexing = @lbool (false, .here)
+    or
+      hasIndexing = @lbool (true, .here)
+      $indexing$
+    end
+    $grammar$
+    $identifier$ (?let @lstring mGrammarName) indexing (grammarComponentDefinition)
+    $"string"$ (?let @lstring mGrammarClass)
+  //--- Feature translate
+    let @bool hasTranslateFeature
+    select
+      hasTranslateFeature = false
+    or
+      $#translatable$
+      hasTranslateFeature = true
+    end
+    let @templateDelimiterDescriptorAST? templateDelimiterDescriptor
+    select
+      templateDelimiterDescriptor = nil
+    or
+      $#template$
+      $\$terminal\$$ (?let openTerminal)
+      $...$
+      $\$terminal\$$ (?let closeTerminal)
+      templateDelimiterDescriptor = @templateDelimiterDescriptorAST (openTerminal, closeTerminal)
+    end
+    ${$
+  //--- Imports
+    var [@lstring] syntaxComponents = []
+//    var [@templateDelimitor2AST] templateDelimitorList = []
+    var [@templateReplacementAST] templateReplacementList = []
+    var unusedNonterminalList = [@lstring] ()
+    repeat
+//    while
+//      <grammar_template_delimitor> (!? templateDelimitorList)
+    while
+      $#unused$
+      $<non_terminal>$ (?let @lstring nonterminalSymbolName)
+      unusedNonterminalList ++= nonterminalSymbolName
+    while
+      <grammar_template_replacement> (!? templateReplacementList)
+    while
+      $syntax$
+      $identifier$ (?let @lstring syntaxComponent)
+      syntaxComponents ++= syntaxComponent
+    end
+  //--- Root symbol
+    $<non_terminal>$ (?let @lstring startSymbol) indexing (ruleReference)
+    var mLabelList = [@nonTerminalLabelAST] ()
+    <grammar_start_symbol_label> (!?ioDeclarations, "".here, !?mLabelList)
+    repeat
+    while
+      $label$
+      $identifier$ (?let @lstring labelName)
+      <grammar_start_symbol_label> (!?ioDeclarations, labelName, !?mLabelList)
+     end
+  //---
+    $}$
+    ioDeclarations.mDeclarationList ++= @galgas3GrammarComponentAST (
+      !isPredefined: false,
+      hasIndexing,
+      mGrammarName,
+      mGrammarClass,
+      syntaxComponents,
+      startSymbol,
+      mLabelList,
+      unusedNonterminalList,
+      templateDelimiterDescriptor,
+      [], // templateDelimitorList,
+      templateReplacementList,
+      hasTranslateFeature
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  rule <grammar_template_delimitor> (?![@templateDelimitor2AST] ioTemplateDelimitorList ) {
+//    $#templateDelimiter$
+//    $"string"$ (?let @lstring startString)
+//    var nonAtomicSelection = false
+//    var templateEndMark = false
+//    var preserved = false
+//    repeat
+//    while
+//      $#nonAtomicSelection$
+//      if nonAtomicSelection then
+//        error .here : "duplicated %nonAtomicSelection attribute"
+//      end
+//      nonAtomicSelection = true
+//    while
+//      $#templateEndMark$
+//      if templateEndMark then
+//        error .here : "duplicated %templateEndMark attribute"
+//      end
+//      templateEndMark = true
+//    while
+//      $#preserved$
+//      if preserved then
+//        error .here : "duplicated %preserved attribute"
+//      end
+//      preserved = true
+//    end
+//    $...$
+//    $"string"$ (?let @lstring endString)
+//    ioTemplateDelimitorList ++= @(
+//      startString,
+//      !nonAtomicSelection: nonAtomicSelection,
+//      templateEndMark,
+//      preserved,
+//      endString)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <grammar_template_replacement> (?![@templateReplacementAST] ioTemplateReplacement ) {
+    $#templateReplacement$
+    $"string"$ (?let @lstring matchString)
+    let @lstring replacementString
+    let @lstring replacementFunction
+    select
+      $...$
+      $"string"$ (?replacementString)
+      $:$
+      $identifier$ (?replacementFunction)
+    or
+      $->$
+      $"string"$ (?replacementString)
+      replacementFunction = @lstring ("", @location.here)
+    end
+    ioTemplateReplacement ++= @(matchString, replacementString, replacementFunction)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <grammar_start_symbol_label> (?!@galgasDeclarationAST ioDeclarations,
+                                     let @lstring inLabelName,
+                                     ?![@nonTerminalLabelAST] ioLabelList) {
+    var @stringset argumentNameSet = @()
+    var [@formalParameterAST] formalParameterList = @()
+    $($
+    select
+    or
+      repeat
+        <label_formal_parameter> (!?ioDeclarations, ?let argumentName, !?formalParameterList)
+        if argumentNameSet.contains (argumentName.string) then
+          error argumentName: "there is already an argument named '" + argumentName + "'"
+        end
+        argumentNameSet ++= argumentName.string
+      while
+        $,$
+      end
+    end
+    $)$
+    ioLabelList ++= @(inLabelName, formalParameterList, .here)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?selector:$ (?let selector)
+    $var$
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList ++= @(
+      selector,
+      .argumentVarIn,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?$
+    let selector = "".here
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList ++= @(
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                 !@lstring outArgumentName,
+                                 ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?selector:$ (?let selector)
+    $let$
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList++= @(
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?$
+    let selector = "".here
+    $let$
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList ++= @(
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?!selector:$ (?let selector)
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList++= @(
+      selector,
+      .argumentInOut,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $?!$
+    let selector = "".here
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList ++= @(
+      selector,
+      .argumentInOut,
+      typeName,
+      outArgumentName,
+      false
+    ) 
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                !@lstring outArgumentName,
+                                ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $!selector:$ (?let selector)
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList++= @(
+      selector,
+      .argumentOut,
+      typeName,
+      outArgumentName,
+      false
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <label_formal_parameter> (?!@galgasDeclarationAST ioDeclarations,
+                                 !@lstring outArgumentName,
+                                 ?![@formalParameterAST] ioStartSymbolLabelFormalParameterList) {
+    $!$
+    let selector = "".here
+    <type_definition> (!?ioDeclarations, ?let @lstring typeName)
+    $identifier$ (?outArgumentName)
+    ioStartSymbolLabelFormalParameterList ++= @(selector, .argumentOut, typeName, outArgumentName, false)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+struct @templateDelimiterDescriptorAST {
+  let @lstring mOpenTemplateDelimiter
+  let @lstring mCloseTemplateDelimiter
+}
+
+//--------------------------------------------------------------------------------------------------
+
 final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   private let @lbool mHasIndexing
   private let @lstring mGrammarComponentName
@@ -28,6 +349,7 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   private let @lstring mStartSymbolName
   private let [@nonTerminalLabelAST] mStartSymbolLabelList
   private let [@lstring] mUnusedNonterminalList
+  private let @templateDelimiterDescriptorAST? mTemplateDelimiterDescriptor
   private let [@templateDelimitor2AST] mTemplateDelimitorList
   private let [@templateReplacementAST] mTemplateReplacementList
   private let @bool mHasTranslateFeature
@@ -167,6 +489,12 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
     for nonTerminal in nonTerminalMapForGrammarAnalysis do
       nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
     end
+  //--------------------------------------------------------- Template delimiter
+    if let t = self.mTemplateDelimiterDescriptor then
+      inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (lexiqueComponentName, ?*, ?let terminalMap, ?4*)
+      terminalMap.searchKey (t.mOpenTemplateDelimiter, ?*)
+      terminalMap.searchKey (t.mCloseTemplateDelimiter, ?*)
+    end
   //--------------------------------------------------------- Print an tex file for grammar rule list
     if @buildOptionValue.emitSyntaxDiagrams then
       emitProductionRulesInTexFile (
@@ -208,13 +536,20 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
     end
   //------ Template descriptor string
     var templateDescriptorString = ", "
-    if templateDelimitorList.count == 0 then
-      templateDescriptorString += "nullptr"
+    if let t = self.mTemplateDelimiterDescriptor then
+      templateDescriptorString += "Lexique_" + lexiqueComponentName.string.identifierRepresentation + "::kToken_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
+      templateDescriptorString += ", "
+      templateDescriptorString += "Lexique_" + lexiqueComponentName.string.identifierRepresentation + "::kToken_" + t.mCloseTemplateDelimiter.string.identifierRepresentation
     else
-      templateDescriptorString += self.mGrammarComponentName.string.identifierRepresentation + "_kTemplateDefinitionArray"
+      templateDescriptorString += "-1, -1"
     end
-    templateDescriptorString += ", "
-    templateDescriptorString += templateDelimitorList.count.string
+//    if templateDelimitorList.count == 0 then
+//      templateDescriptorString += "nullptr"
+//    else
+//      templateDescriptorString += self.mGrammarComponentName.string.identifierRepresentation + "_kTemplateDefinitionArray"
+//    end
+//    templateDescriptorString += ", "
+//    templateDescriptorString += templateDelimitorList.count.string
     templateDescriptorString += ", "
     if self.mTemplateReplacementList.count == 0 then
       templateDescriptorString += "nullptr"

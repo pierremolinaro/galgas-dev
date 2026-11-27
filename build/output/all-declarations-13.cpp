@@ -14616,7 +14616,7 @@ void cGrammar_projectComponentGrammar::nt_project_5F_component_5F_start_5F_symbo
 void cGrammar_projectComponentGrammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, nullptr, 0, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, -1, -1, nullptr, 0 COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
@@ -14633,7 +14633,7 @@ void cGrammar_projectComponentGrammar::performIndexing (Compiler * inCompiler,
 void cGrammar_projectComponentGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, nullptr, 0, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, -1, -1, nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
@@ -14643,7 +14643,7 @@ void cGrammar_projectComponentGrammar::performOnlyLexicalAnalysis (Compiler * in
 void cGrammar_projectComponentGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, nullptr, 0, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, -1, -1, nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                     gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
@@ -14669,7 +14669,7 @@ void cGrammar_projectComponentGrammar::_performSourceFileParsing_ (Compiler * in
     }
     if (FileManager::fileExistsAtPath (filePath)) {
     Lexique_projectComponentScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, filePath, nullptr, 0, nullptr, 0 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, filePath, -1, -1, nullptr, 0 COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                                       gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
@@ -14708,7 +14708,7 @@ void cGrammar_projectComponentGrammar::_performSourceStringParsing_ (Compiler * 
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
     Lexique_projectComponentScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, sourceString, nameString, nullptr, 0, nullptr, 0 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, sourceString, nameString, -1, -1, nullptr, 0 COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                                     gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
@@ -15500,90 +15500,100 @@ const GALGAS_TypeDescriptor * GGS_signatureElementForGrammarAnalysis::staticType
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST::GGS_syntaxRuleAST (void) :
+GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (void) :
 mProperty_mNonterminalName (),
-mProperty_mLabelList () {
+mProperty_mRuleIndex (),
+mProperty_mLabelImplementationList () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST::GGS_syntaxRuleAST (const GGS_syntaxRuleAST & inSource) :
+GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (const GGS_ruleDeclarationAST & inSource) :
 mProperty_mNonterminalName (inSource.mProperty_mNonterminalName),
-mProperty_mLabelList (inSource.mProperty_mLabelList) {
+mProperty_mRuleIndex (inSource.mProperty_mRuleIndex),
+mProperty_mLabelImplementationList (inSource.mProperty_mLabelImplementationList) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST & GGS_syntaxRuleAST::operator = (const GGS_syntaxRuleAST & inSource) {
+GGS_ruleDeclarationAST & GGS_ruleDeclarationAST::operator = (const GGS_ruleDeclarationAST & inSource) {
   mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
-  mProperty_mLabelList = inSource.mProperty_mLabelList ;
+  mProperty_mRuleIndex = inSource.mProperty_mRuleIndex ;
+  mProperty_mLabelImplementationList = inSource.mProperty_mLabelImplementationList ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_syntaxRuleAST GGS_syntaxRuleAST::init_21__21_ (const GGS_lstring & in_mNonterminalName,
-                                                   const GGS__5B_syntaxRuleLabelAST_5D_ & in_mLabelList,
-                                                   Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxRuleAST result ;
+GGS_ruleDeclarationAST GGS_ruleDeclarationAST::init_21__21__21_ (const GGS_string & in_mNonterminalName,
+                                                                 const GGS_u_33__32_ & in_mRuleIndex,
+                                                                 const GGS__5B_ruleLabelImplementationAST_5D_ & in_mLabelImplementationList,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_ruleDeclarationAST result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mNonterminalName = in_mNonterminalName ;
-  result.mProperty_mLabelList = in_mLabelList ;
+  result.mProperty_mRuleIndex = in_mRuleIndex ;
+  result.mProperty_mLabelImplementationList = in_mLabelImplementationList ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleAST::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_ruleDeclarationAST::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST::GGS_syntaxRuleAST (const GGS_lstring & inOperand0,
-                                      const GGS__5B_syntaxRuleLabelAST_5D_ & inOperand1) :
+GGS_ruleDeclarationAST::GGS_ruleDeclarationAST (const GGS_string & inOperand0,
+                                                const GGS_u_33__32_ & inOperand1,
+                                                const GGS__5B_ruleLabelImplementationAST_5D_ & inOperand2) :
 mProperty_mNonterminalName (inOperand0),
-mProperty_mLabelList (inOperand1) {
+mProperty_mRuleIndex (inOperand1),
+mProperty_mLabelImplementationList (inOperand2) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_syntaxRuleAST::isValid (void) const {
-  return mProperty_mNonterminalName.isValid () && mProperty_mLabelList.isValid () ;
+bool GGS_ruleDeclarationAST::isValid (void) const {
+  return mProperty_mNonterminalName.isValid () && mProperty_mRuleIndex.isValid () && mProperty_mLabelImplementationList.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleAST::drop (void) {
+void GGS_ruleDeclarationAST::drop (void) {
   mProperty_mNonterminalName.drop () ;
-  mProperty_mLabelList.drop () ;
+  mProperty_mRuleIndex.drop () ;
+  mProperty_mLabelImplementationList.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_syntaxRuleAST::description (String & ioString,
-                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxRuleAST:") ;
+void GGS_ruleDeclarationAST::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @ruleDeclarationAST:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
     mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_mLabelList.description (ioString, inIndentation+1) ;
+    mProperty_mRuleIndex.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLabelImplementationList.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @syntaxRuleAST generic code implementation
+//     @ruleDeclarationAST generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleAST ("syntaxRuleAST",
-                                                                  nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ruleDeclarationAST ("ruleDeclarationAST",
+                                                                       nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_syntaxRuleAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxRuleAST ;
+const GALGAS_TypeDescriptor * GGS_ruleDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_ruleDeclarationAST ;
 }
 

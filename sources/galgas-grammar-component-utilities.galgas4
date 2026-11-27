@@ -1,0 +1,165 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Generate predefined types
+//
+//  Copyright (C) 2010, ..., 2021 Pierre Molinaro.
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+proc handleNonTerminalDeclarations (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
+                                    let [@nonterminalDeclarationAST] inNonterminalDeclarationList) {
+  for nonTerminal in inNonterminalDeclarationList do
+    if let entry = ioNonTerminalMapForGrammarAnalysis [nonTerminal.mNonterminalName.string] then
+      checkLabelMap (
+        nonTerminal.mNonterminalName.location,
+        nonTerminal.mLabels,
+        ioNonTerminalMapForGrammarAnalysis.locationForKey (nonTerminal.mNonterminalName.string),
+        entry.mNonterminalSymbolParametersMap
+      )
+    else
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey (
+        nonTerminal.mNonterminalName,
+        ioNonTerminalMapForGrammarAnalysis.count,
+        transformLabelMap (nonTerminal.mLabels)
+      )
+    end
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc handleNonTerminalDeclarationsFromRuleList (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
+                                                let [@syntaxRuleAST] inRuleList) {
+  for aRule in inRuleList do
+    var nonTerminalLabelListAST = [@nonTerminalLabelAST] ()
+    for aLabel in aRule.mLabelList do
+      nonTerminalLabelListAST ++= @(
+        aLabel.mLabelName,
+        aLabel.mFormalArguments,
+        aLabel.mEndOfArgumentLocation
+      )
+    end
+    if let entry = ioNonTerminalMapForGrammarAnalysis [aRule.mNonterminalName.string] then
+      checkLabelMap (
+        aRule.mNonterminalName.location,
+        nonTerminalLabelListAST,
+        ioNonTerminalMapForGrammarAnalysis.locationForKey (aRule.mNonterminalName.string),
+        entry.mNonterminalSymbolParametersMap
+      )
+    else
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey (
+        aRule.mNonterminalName,
+        ioNonTerminalMapForGrammarAnalysis.count,
+        transformLabelMap (nonTerminalLabelListAST)
+      )
+    end
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc buildRuleList (let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
+                    let @lstring inSyntaxComponentName,
+                    let [@syntaxRuleAST] inRuleList,
+                    ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
+                    ?![@syntaxComponentForGrammarAnalysis] ioSyntaxComponentListForGrammarAnalysis,
+                    ?!@u32 ioAddedNonTerminalCount) {
+  var productionRulesList = [@productionRuleForGrammarAnalysis] ()
+  for aRule in inRuleList do
+    inNonTerminalMapForGrammarAnalysis.searchKey (aRule.mNonterminalName, ?let nonTerminalIndex, ?*)
+  //--- Retrieve instruction list from first label
+    let [@syntaxInstructionAST] parsedSyntaxInstructionList = aRule.mLabelList.first.mSyntaxInstructionList
+  //--- Transform instruction list
+    var instructionList = [@abstractSyntaxInstructionForGrammarAnalysis] ()
+    transformInstructionListForGrammarAnalysis (
+      parsedSyntaxInstructionList,
+      !?usedTerminalMap: ioActuallyUsedTerminalSymbolMap,
+      !nonTerminalSymbolMap: inNonTerminalMapForGrammarAnalysis,
+      !?addedTerminalIndex: ioAddedNonTerminalCount,
+      !?instructionList
+    )
+  //---
+    productionRulesList ++= @(
+      aRule.mNonterminalName,
+      nonTerminalIndex,
+      instructionList,
+      productionRulesList.count
+    )
+  end
+  ioSyntaxComponentListForGrammarAnalysis ++= @(
+    productionRulesList,
+    inSyntaxComponentName
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc checkLabelMap (let @location inNonTerminalLocation,
+                    let [@nonTerminalLabelAST] inLabels,
+                    let @location inOriginalNonTerminalLocation,
+                    let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis) {
+  var @stringset labelStringSet = @()
+  for aLabel in inLabels do
+    labelStringSet ++= aLabel.mLabelName.string
+    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (aLabel.mLabelName, ?let formalParametersList)
+    if aLabel.mFormalArgumentList.count != formalParametersList.count then
+      error aLabel.mLabelName: aLabel.mFormalArgumentList.count.string
+        + " formal parameter"
+        + if aLabel.mFormalArgumentList.count > 1 then "s" else "" end
+        + " declared here, but declaration at "
+        + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
+        + " names " + formalParametersList.count.string + " parameter"
+        + if formalParametersList.count > 1 then "s" else "" end
+      
+    else
+      for labelFormalArg in aLabel.mFormalArgumentList, formalArgForGrammarAnalysis in formalParametersList do
+        if formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis != labelFormalArg.mFormalArgumentPassingMode then
+          error formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
+            " this formal parameter is declared with '"
+          + formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis
+          + "' passing mode, but declaration at "
+          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
+          + " is declared with '" + labelFormalArg.mFormalArgumentPassingMode + "' passing mode"
+          
+        end
+        if formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis.string != labelFormalArg.mFormalArgumentTypeName.string then
+          error formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
+            " this formal parameter is declared of '@"
+          + formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis
+          + "' type, but declaration at "
+          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
+          + " is declared with '@" + labelFormalArg.mFormalArgumentTypeName + "' type"
+          
+        end
+      end
+    end
+  end
+//---
+  for entry in inNonterminalSymbolLabelMapForGrammarAnalysis do
+    if not labelStringSet.contains (entry.lkey.string) then
+      error inNonTerminalLocation :
+        "this non terminal does not declare the '" + entry.lkey + "' label, but declaration at "
+          + inOriginalNonTerminalLocation.startLocationString
+          + " does"
+      
+    end
+  end
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -1256,14 +1256,14 @@ mLexicalAttribute_uint_33__32_value () {
 
 Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                                                   const String & inSourceFileName,
-                                                                  const TemplateDelimiter inTemplateDefinitionArray [],
-                                                                  const uint32_t inTemplateDefinitionArrayCount,
+                                                                  const int32_t inOpenTemplateDelimiter,
+                                                                  const int32_t inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
-                                                                  const uint32_t inTemplateReplacementArrayCount
+                                                                  const int32_t inTemplateReplacementArrayCount
                                                                   COMMA_LOCATION_ARGS) :
 Lexique (
   inCallerCompiler, inSourceFileName,
-  inTemplateDefinitionArray, inTemplateDefinitionArrayCount,
+  inOpenTemplateDelimiter, inCloseTemplateDelimiter,
   inTemplateReplacementArray, inTemplateReplacementArrayCount
   COMMA_THERE) {
 }
@@ -1273,14 +1273,14 @@ Lexique (
 Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                                                   const String & inSourceString,
                                                                   const String & inStringForError,
-                                                                  const TemplateDelimiter inTemplateDefinitionArray [],
-                                                                  const uint32_t inTemplateDefinitionArrayCount,
+                                                                  const int32_t inOpenTemplateDelimiter,
+                                                                  const int32_t inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
-                                                                  const uint32_t inTemplateReplacementArrayCount
+                                                                  const int32_t inTemplateReplacementArrayCount
                                                                   COMMA_LOCATION_ARGS) :
 Lexique (
   inCallerCompiler, inSourceString, inStringForError,
-  inTemplateDefinitionArray, inTemplateDefinitionArrayCount,
+  inOpenTemplateDelimiter, inCloseTemplateDelimiter,
   inTemplateReplacementArray, inTemplateReplacementArrayCount
   COMMA_THERE) {
 }
@@ -2015,6 +2015,36 @@ String Lexique_projectComponentScanner::getCurrentTokenString (const cToken * in
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
+// static const bool projectComponentScanner_kEndOfScriptInTemplateArray [28] = {
+  // false /* identifier */,
+  // false /* literalInt */,
+  // false /* 'char' */,
+  // false /* comment */,
+  // false /* commentMark */,
+  // false /* "string" */,
+  // false /* #macAppBundleBaseName */,
+  // false /* #codeblocks-linux32 */,
+  // false /* #codeblocks-linux64 */,
+  // false /* #codeblocks-windows */,
+  // false /* #libpmCustomPath */,
+  // false /* #productName */,
+  // false /* #version */,
+  // false /* #macCodeSign */,
+  // false /* #makefile-macosx */,
+  // false /* #makefile-unix */,
+  // false /* #makefile-x86linux32-on-macosx */,
+  // false /* #makefile-x86linux64-on-macosx */,
+  // false /* #makefile-arm64-linux-on-macosx */,
+  // false /* #makefile-win32-on-macosx */,
+  // false /* #macSwiftApp */,
+  // false /* #lexical-style */,
+  // false /* #bool-build-option */,
+  // false /* #string-build-option */,
+  // false /* #u32-build-option */,
+  // false /* . */,
+  // false /* : */,
+  // false /* -> */
+// } ;
 
 //--------------------------------------------------------------------------------------------------
 //               INTERNAL PARSE LEXICAL TOKEN
@@ -2315,8 +2345,6 @@ void Lexique_projectComponentScanner::internalParseLexicalToken (cTokenFor_proje
   }
 }
 
-//--------------------------------------------------------------------------------------------------
-//               P A R S E    L E X I C A L    T O K E N
 //--------------------------------------------------------------------------------------------------
 
 bool Lexique_projectComponentScanner::parseLexicalToken (void) {
@@ -14559,10 +14587,10 @@ const GALGAS_TypeDescriptor * GGS__5B_signatureElementForGrammarAnalysis_5D_::st
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_nonterminalDeclarationAST_5D_' array
+//Class for element of '@_5B_syntaxInstructionAST_5D_' array
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_::GGS__5B_nonterminalDeclarationAST_5D_ (void) :
+GGS__5B_syntaxInstructionAST_5D_::GGS__5B_syntaxInstructionAST_5D_ (void) :
 AC_GALGAS_root (),
 mSharedArray (),
 mIsValid (false) {
@@ -14570,7 +14598,7 @@ mIsValid (false) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_::GGS__5B_nonterminalDeclarationAST_5D_ (const GGS__5B_nonterminalDeclarationAST_5D_ & inSource) :
+GGS__5B_syntaxInstructionAST_5D_::GGS__5B_syntaxInstructionAST_5D_ (const GGS__5B_syntaxInstructionAST_5D_ & inSource) :
 AC_GALGAS_root (),
 mSharedArray (inSource.mSharedArray),
 mIsValid (inSource.mIsValid) {
@@ -14578,7 +14606,7 @@ mIsValid (inSource.mIsValid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ & GGS__5B_nonterminalDeclarationAST_5D_::operator = (const GGS__5B_nonterminalDeclarationAST_5D_ & inSource)  {
+GGS__5B_syntaxInstructionAST_5D_ & GGS__5B_syntaxInstructionAST_5D_::operator = (const GGS__5B_syntaxInstructionAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
   mIsValid = inSource.mIsValid ;
   return *this ;
@@ -14586,30 +14614,30 @@ GGS__5B_nonterminalDeclarationAST_5D_ & GGS__5B_nonterminalDeclarationAST_5D_::o
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_nonterminalDeclarationAST_5D_ result ;
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_syntaxInstructionAST_5D_ result ;
   result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::drop (void) {
+void GGS__5B_syntaxInstructionAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
   mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::removeAll (void) {
+void GGS__5B_syntaxInstructionAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
   mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::plusPlusAssignOperation (const GGS_nonterminalDeclarationAST & inValue
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::plusPlusAssignOperation (const GGS_syntaxInstructionAST & inValue
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
@@ -14617,7 +14645,7 @@ void GGS__5B_nonterminalDeclarationAST_5D_::plusPlusAssignOperation (const GGS_n
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_u_33__32_ GGS__5B_nonterminalDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_u_33__32_ GGS__5B_syntaxInstructionAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_u_33__32_ result ;
   if (isValid ()) {
     result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
@@ -14627,10 +14655,10 @@ GGS_u_33__32_ GGS__5B_nonterminalDeclarationAST_5D_::getter_count (UNUSED_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::add_operation (const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_nonterminalDeclarationAST_5D_ result ;
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::add_operation (const GGS__5B_syntaxInstructionAST_5D_ & inOperand,
+                                                                                  Compiler * /* inCompiler */
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_syntaxInstructionAST_5D_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.mSharedArray.appendDataFromPointer (
@@ -14643,9 +14671,9 @@ GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::add
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::description (String & ioString,
-                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@nonterminalDeclarationAST], ") ;
+void GGS__5B_syntaxInstructionAST_5D_::description (String & ioString,
+                                                    const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@syntaxInstructionAST], ") ;
   ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
@@ -14654,9 +14682,9 @@ void GGS__5B_nonterminalDeclarationAST_5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::plusAssignOperation (const GGS__5B_nonterminalDeclarationAST_5D_ inOperand,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::plusAssignOperation (const GGS__5B_syntaxInstructionAST_5D_ inOperand,
+                                                            Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -14667,9 +14695,9 @@ void GGS__5B_nonterminalDeclarationAST_5D_::plusAssignOperation (const GGS__5B_n
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_append (const GGS_nonterminalDeclarationAST inValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_append (const GGS_syntaxInstructionAST inValue,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
@@ -14677,17 +14705,17 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_append (const GGS_nonterminal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
   removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_insert (const GGS_nonterminalDeclarationAST inValue,
-                                                           const GGS_u_33__32_ inInsertionIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_insert (const GGS_syntaxInstructionAST inValue,
+                                                      const GGS_u_33__32_ inInsertionIndex,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     if (idx > mSharedArray.count ()) {
@@ -14705,10 +14733,10 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_insert (const GGS_nonterminal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_remove (GGS_nonterminalDeclarationAST & outValue,
-                                                           const GGS_u_33__32_ inRemoveIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_remove (GGS_syntaxInstructionAST & outValue,
+                                                      const GGS_u_33__32_ inRemoveIndex,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   outValue.drop () ;
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
@@ -14728,9 +14756,9 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_remove (GGS_nonterminalDeclar
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeFirst (GGS_nonterminalDeclarationAST & outValue,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_removeFirst (GGS_syntaxInstructionAST & outValue,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -14745,9 +14773,9 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeFirst (GGS_nonterminalD
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeLast (GGS_nonterminalDeclarationAST & outValue,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::setter_removeLast (GGS_syntaxInstructionAST & outValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -14762,504 +14790,18 @@ void GGS__5B_nonterminalDeclarationAST_5D_::setter_removeLast (GGS_nonterminalDe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
-                                                                                                   Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const {
-  GGS__5B_nonterminalDeclarationAST_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex < int32_t (count ())) {
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_nonterminalDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }else if (startIndex == int32_t (count ())) {
-      result = GGS__5B_nonterminalDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_nonterminalDeclarationAST_5D_ GGS__5B_nonterminalDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
-                                                                                             const GGS_u_33__32_ & inLength,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_nonterminalDeclarationAST_5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_nonterminalDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B_nonterminalDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::getter_first (Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::getter_last (Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationAST result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage = "read subscript call with index " ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_nonterminalDeclarationAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
-                                                                 const GGS_nonterminalDeclarationAST inValue,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "write subscript call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_nonterminalDeclarationAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B_nonterminalDeclarationAST_5D_::DownEnumerator__5B_nonterminalDeclarationAST_5D_ (const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST DownEnumerator__5B_nonterminalDeclarationAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST DownEnumerator__5B_nonterminalDeclarationAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_nonterminalDeclarationAST_5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B_nonterminalDeclarationAST_5D_::UpEnumerator__5B_nonterminalDeclarationAST_5D_ (const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST UpEnumerator__5B_nonterminalDeclarationAST_5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST UpEnumerator__5B_nonterminalDeclarationAST_5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[nonterminalDeclarationAST] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_nonterminalDeclarationAST_5D_ ("[nonterminalDeclarationAST]",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B_nonterminalDeclarationAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_nonterminalDeclarationAST_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST::GGS_nonterminalDeclarationAST (void) :
-mProperty_mNonterminalName (),
-mProperty_mLabels () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST::GGS_nonterminalDeclarationAST (const GGS_nonterminalDeclarationAST & inSource) :
-mProperty_mNonterminalName (inSource.mProperty_mNonterminalName),
-mProperty_mLabels (inSource.mProperty_mLabels) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST & GGS_nonterminalDeclarationAST::operator = (const GGS_nonterminalDeclarationAST & inSource) {
-  mProperty_mNonterminalName = inSource.mProperty_mNonterminalName ;
-  mProperty_mLabels = inSource.mProperty_mLabels ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST GGS_nonterminalDeclarationAST::init_21__21_ (const GGS_lstring & in_mNonterminalName,
-                                                                           const GGS__5B_nonTerminalLabelAST_5D_ & in_mLabels,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_nonterminalDeclarationAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mNonterminalName = in_mNonterminalName ;
-  result.mProperty_mLabels = in_mLabels ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationAST::GGS_nonterminalDeclarationAST (const GGS_lstring & inOperand0,
-                                                              const GGS__5B_nonTerminalLabelAST_5D_ & inOperand1) :
-mProperty_mNonterminalName (inOperand0),
-mProperty_mLabels (inOperand1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_nonterminalDeclarationAST::isValid (void) const {
-  return mProperty_mNonterminalName.isValid () && mProperty_mLabels.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationAST::drop (void) {
-  mProperty_mNonterminalName.drop () ;
-  mProperty_mLabels.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @nonterminalDeclarationAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mNonterminalName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLabels.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @nonterminalDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalDeclarationAST ("nonterminalDeclarationAST",
-                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_nonterminalDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_nonterminalDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_syntaxRuleAST_5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_::GGS__5B_syntaxRuleAST_5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_::GGS__5B_syntaxRuleAST_5D_ (const GGS__5B_syntaxRuleAST_5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_ & GGS__5B_syntaxRuleAST_5D_::operator = (const GGS__5B_syntaxRuleAST_5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_syntaxRuleAST_5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::plusPlusAssignOperation (const GGS_syntaxRuleAST & inValue
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS__5B_syntaxRuleAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::add_operation (const GGS__5B_syntaxRuleAST_5D_ & inOperand,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_syntaxRuleAST_5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::description (String & ioString,
-                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@syntaxRuleAST], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::plusAssignOperation (const GGS__5B_syntaxRuleAST_5D_ inOperand,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_append (const GGS_syntaxRuleAST inValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_insert (const GGS_syntaxRuleAST inValue,
-                                               const GGS_u_33__32_ inInsertionIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_remove (GGS_syntaxRuleAST & outValue,
-                                               const GGS_u_33__32_ inRemoveIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_removeFirst (GGS_syntaxRuleAST & outValue,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B_syntaxRuleAST_5D_::setter_removeLast (GGS_syntaxRuleAST & outValue,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GGS__5B_syntaxRuleAST_5D_ result ;
+  GGS__5B_syntaxInstructionAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
     if (startIndex < int32_t (count ())) {
       const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_syntaxRuleAST_5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_syntaxInstructionAST_5D_::init (inCompiler COMMA_THERE) ;
       result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }else if (startIndex == int32_t (count ())) {
-      result = GGS__5B_syntaxRuleAST_5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_syntaxInstructionAST_5D_::init (inCompiler COMMA_THERE) ;
     }else{
       String errorMessage ;
       errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
@@ -15275,16 +14817,16 @@ GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_removingFirst (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
-                                                                     const GGS_u_33__32_ & inLength,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_syntaxRuleAST_5D_ result ;
+GGS__5B_syntaxInstructionAST_5D_ GGS__5B_syntaxInstructionAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                   const GGS_u_33__32_ & inLength,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_syntaxInstructionAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
     const int32_t length = int32_t (inLength.uintValue ()) ;
     if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_syntaxRuleAST_5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_syntaxInstructionAST_5D_::init (inCompiler COMMA_THERE) ;
     }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
@@ -15304,7 +14846,7 @@ GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_sublist (const GGS_u
         errorMessage.appendCString (")") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        result = GGS__5B_syntaxRuleAST_5D_::init (inCompiler COMMA_THERE) ;
+        result = GGS__5B_syntaxInstructionAST_5D_::init (inCompiler COMMA_THERE) ;
         result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
       }
     }
@@ -15314,9 +14856,9 @@ GGS__5B_syntaxRuleAST_5D_ GGS__5B_syntaxRuleAST_5D_::getter_sublist (const GGS_u
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::getter_first (Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleAST result ;
+GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::getter_first (Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS_syntaxInstructionAST result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'first' getter call on an empty array'" ;
@@ -15329,9 +14871,9 @@ GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::getter_first (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::getter_last (Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleAST result ;
+GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::getter_last (Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_syntaxInstructionAST result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'last' getter call on an empty array'" ;
@@ -15344,10 +14886,10 @@ GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleAST result ;
+GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS_syntaxInstructionAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
@@ -15366,10 +14908,10 @@ GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::readSubscript__3F_ (const GGS_u_33_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_syntaxRuleAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
-                                                     const GGS_syntaxRuleAST inValue,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GGS__5B_syntaxInstructionAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                            const GGS_syntaxInstructionAST inValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
     const int32_t idx = int32_t (inIndex.uintValue ()) ;
     if (idx >= mSharedArray.count ()) {
@@ -15387,57 +14929,851 @@ void GGS__5B_syntaxRuleAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex
 
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_syntaxRuleAST_5D_
+// Down Enumerator for @_5B_syntaxInstructionAST_5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator__5B_syntaxRuleAST_5D_::DownEnumerator__5B_syntaxRuleAST_5D_ (const GGS__5B_syntaxRuleAST_5D_ & inOperand) :
+DownEnumerator__5B_syntaxInstructionAST_5D_::DownEnumerator__5B_syntaxInstructionAST_5D_ (const GGS__5B_syntaxInstructionAST_5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (inOperand.mSharedArray.count () - 1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST DownEnumerator__5B_syntaxRuleAST_5D_::current (LOCATION_ARGS) const {
+GGS_syntaxInstructionAST DownEnumerator__5B_syntaxInstructionAST_5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST DownEnumerator__5B_syntaxRuleAST_5D_::current_entry (LOCATION_ARGS) const {
+GGS_syntaxInstructionAST DownEnumerator__5B_syntaxInstructionAST_5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_syntaxRuleAST_5D_
+// Up Enumerator for @_5B_syntaxInstructionAST_5D_
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator__5B_syntaxRuleAST_5D_::UpEnumerator__5B_syntaxRuleAST_5D_ (const GGS__5B_syntaxRuleAST_5D_ & inOperand) :
+UpEnumerator__5B_syntaxInstructionAST_5D_::UpEnumerator__5B_syntaxInstructionAST_5D_ (const GGS__5B_syntaxInstructionAST_5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST UpEnumerator__5B_syntaxRuleAST_5D_::current (LOCATION_ARGS) const {
+GGS_syntaxInstructionAST UpEnumerator__5B_syntaxInstructionAST_5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_syntaxRuleAST UpEnumerator__5B_syntaxRuleAST_5D_::current_entry (LOCATION_ARGS) const {
+GGS_syntaxInstructionAST UpEnumerator__5B_syntaxInstructionAST_5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @[syntaxRuleAST] generic code implementation
+//     @[syntaxInstructionAST] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_syntaxRuleAST_5D_ ("[syntaxRuleAST]",
-                                                                          nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_syntaxInstructionAST_5D_ ("[syntaxInstructionAST]",
+                                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS__5B_syntaxRuleAST_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_syntaxRuleAST_5D_ ;
+const GALGAS_TypeDescriptor * GGS__5B_syntaxInstructionAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_syntaxInstructionAST_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_ruleDeclarationAST_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_::GGS__5B_ruleDeclarationAST_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_::GGS__5B_ruleDeclarationAST_5D_ (const GGS__5B_ruleDeclarationAST_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_ & GGS__5B_ruleDeclarationAST_5D_::operator = (const GGS__5B_ruleDeclarationAST_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_ruleDeclarationAST_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::plusPlusAssignOperation (const GGS_ruleDeclarationAST & inValue
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS__5B_ruleDeclarationAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::add_operation (const GGS__5B_ruleDeclarationAST_5D_ & inOperand,
+                                                                              Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_ruleDeclarationAST_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::description (String & ioString,
+                                                  const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@ruleDeclarationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::plusAssignOperation (const GGS__5B_ruleDeclarationAST_5D_ inOperand,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_append (const GGS_ruleDeclarationAST inValue,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_insert (const GGS_ruleDeclarationAST inValue,
+                                                    const GGS_u_33__32_ inInsertionIndex,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_remove (GGS_ruleDeclarationAST & outValue,
+                                                    const GGS_u_33__32_ inRemoveIndex,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_removeFirst (GGS_ruleDeclarationAST & outValue,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::setter_removeLast (GGS_ruleDeclarationAST & outValue,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS__5B_ruleDeclarationAST_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_ruleDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_ruleDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                               const GGS_u_33__32_ & inLength,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_ruleDeclarationAST_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_ruleDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_ruleDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::getter_first (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_ruleDeclarationAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::getter_last (Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_ruleDeclarationAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  GGS_ruleDeclarationAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage = "read subscript call with index " ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_ruleDeclarationAST_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                          const GGS_ruleDeclarationAST inValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_ruleDeclarationAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_ruleDeclarationAST_5D_::DownEnumerator__5B_ruleDeclarationAST_5D_ (const GGS__5B_ruleDeclarationAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST DownEnumerator__5B_ruleDeclarationAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST DownEnumerator__5B_ruleDeclarationAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_ruleDeclarationAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_ruleDeclarationAST_5D_::UpEnumerator__5B_ruleDeclarationAST_5D_ (const GGS__5B_ruleDeclarationAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST UpEnumerator__5B_ruleDeclarationAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_ruleDeclarationAST UpEnumerator__5B_ruleDeclarationAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[ruleDeclarationAST] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_ruleDeclarationAST_5D_ ("[ruleDeclarationAST]",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_ruleDeclarationAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_ruleDeclarationAST_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_formalParameterForGeneration_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_::GGS__5B_formalParameterForGeneration_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_::GGS__5B_formalParameterForGeneration_5D_ (const GGS__5B_formalParameterForGeneration_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_ & GGS__5B_formalParameterForGeneration_5D_::operator = (const GGS__5B_formalParameterForGeneration_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_formalParameterForGeneration_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::plusPlusAssignOperation (const GGS_formalParameterForGeneration & inValue
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS__5B_formalParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::add_operation (const GGS__5B_formalParameterForGeneration_5D_ & inOperand,
+                                                                                                  Compiler * /* inCompiler */
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_formalParameterForGeneration_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::description (String & ioString,
+                                                            const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@formalParameterForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::plusAssignOperation (const GGS__5B_formalParameterForGeneration_5D_ inOperand,
+                                                                    Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_append (const GGS_formalParameterForGeneration inValue,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_insert (const GGS_formalParameterForGeneration inValue,
+                                                              const GGS_u_33__32_ inInsertionIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_remove (GGS_formalParameterForGeneration & outValue,
+                                                              const GGS_u_33__32_ inRemoveIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_removeFirst (GGS_formalParameterForGeneration & outValue,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::setter_removeLast (GGS_formalParameterForGeneration & outValue,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalParameterForGeneration_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_formalParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_formalParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalParameterForGeneration_5D_ GGS__5B_formalParameterForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                   const GGS_u_33__32_ & inLength,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalParameterForGeneration_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_formalParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_formalParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::getter_first (Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const {
+  GGS_formalParameterForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::getter_last (Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_formalParameterForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                               Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const {
+  GGS_formalParameterForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage = "read subscript call with index " ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalParameterForGeneration_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                    const GGS_formalParameterForGeneration inValue,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_formalParameterForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_formalParameterForGeneration_5D_::DownEnumerator__5B_formalParameterForGeneration_5D_ (const GGS__5B_formalParameterForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration DownEnumerator__5B_formalParameterForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration DownEnumerator__5B_formalParameterForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_formalParameterForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_formalParameterForGeneration_5D_::UpEnumerator__5B_formalParameterForGeneration_5D_ (const GGS__5B_formalParameterForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration UpEnumerator__5B_formalParameterForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalParameterForGeneration UpEnumerator__5B_formalParameterForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[formalParameterForGeneration] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalParameterForGeneration_5D_ ("[formalParameterForGeneration]",
+                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_formalParameterForGeneration_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_formalParameterForGeneration_5D_ ;
 }
 

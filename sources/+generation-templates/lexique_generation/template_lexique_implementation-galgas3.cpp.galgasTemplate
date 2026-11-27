@@ -10,12 +10,13 @@
 
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
               %!^%const String & inSourceFileName,
-              %!^%const TemplateDelimiter /* inTemplateDefinitionArray */ [],
-              %!^%const uint32_t /* inTemplateDefinitionArrayCount */,
+              %!^%const int32_t /* inOpenTemplateDelimiter */,
+              %!^%const int32_t /* inCloseTemplateDelimiter */,
               %!^%const TemplateDelimiter /* inTemplateReplacementArray*/ [],
-              %!^%const uint32_t /* inTemplateReplacementArrayCount */
+              %!^%const int32_t /* inTemplateReplacementArrayCount */
               %!^%COMMA_LOCATION_ARGS) :
-Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName, nullptr, 0, nullptr, 0 COMMA_THERE) {
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName, -1, -1, nullptr, 0 COMMA_THERE),
+mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -23,12 +24,13 @@ Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName, nullptr
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
               %!^%const String & inSourceString,
               %!^%const String & inStringForError,
-              %!^%const TemplateDelimiter /* inTemplateDefinitionArray */ [],
-              %!^%const uint32_t /* inTemplateDefinitionArrayCount */,
+              %!^%const int32_t /* inOpenTemplateDelimiter */,
+              %!^%const int32_t /* inCloseTemplateDelimiter */,
               %!^%const TemplateDelimiter /* inTemplateReplacementArray*/ [],
-              %!^%const uint32_t /* inTemplateReplacementArrayCount */
+              %!^%const int32_t /* inTemplateReplacementArrayCount */
               %!^%COMMA_LOCATION_ARGS) :
-Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError, nullptr, 0, nullptr, 0 COMMA_THERE) {
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError, -1, -1, nullptr, 0 COMMA_THERE),
+mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //--------------------------------------------------------------------------------------------------

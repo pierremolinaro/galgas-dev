@@ -49,19 +49,19 @@ class Lexique : public Compiler {
 //--- Constructors and destructor
   public: Lexique (Compiler * inCallerCompiler,
                    const String & inSourceFileName,
-                   const TemplateDelimiter inTemplateDefinitionArray [],
-                   const uint32_t inTemplateDefinitionArrayCount,
+                   const int32_t inOpenTemplateDelimiter,
+                   const int32_t inCloseTemplateDelimiter,
                    const TemplateDelimiter inTemplateReplacementArray [],
-                   const uint32_t inTemplateReplacementArrayCount
+                   const int32_t inTemplateReplacementArrayCount
                    COMMA_LOCATION_ARGS) ;
 
   public: Lexique (Compiler * inCallerCompiler,
                    const String & inSourceString,
                    const String & inStringForError,
-                   const TemplateDelimiter inTemplateDefinitionArray [],
-                   const uint32_t inTemplateDefinitionArrayCount,
+                   const int32_t inOpenTemplateDelimiter,
+                   const int32_t inCloseTemplateDelimiter,
                    const TemplateDelimiter inTemplateReplacementArray [],
-                   const uint32_t inTemplateReplacementArrayCount
+                   const int32_t inTemplateReplacementArrayCount
                    COMMA_LOCATION_ARGS) ;
 
   public: virtual ~Lexique (void) ;
@@ -80,11 +80,11 @@ class Lexique : public Compiler {
   protected: IndexingDictionary * mIndexingDictionary ;
 
 //--- Scanner mode for template scanner
-  protected: int32_t mMatchedTemplateDelimiterIndex ;
-  protected: const TemplateDelimiter * mTemplateDefinitionArray ;
-  protected: const uint32_t mTemplateDefinitionArrayCount ;
+  protected: bool mScanningTemplateString ;
+  protected: const int32_t mOpenTemplateDelimiter ;
+  protected: const int32_t mCloseTemplateDelimiter ;
   protected: const TemplateDelimiter * mTemplateReplacementArray ;
-  protected: const uint32_t mTemplateReplacementArrayCount ;
+  protected: const int32_t mTemplateReplacementArrayCount ;
 
 
 //--- Template String

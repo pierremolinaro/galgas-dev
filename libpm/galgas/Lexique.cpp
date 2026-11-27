@@ -56,16 +56,16 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 
 Lexique::Lexique (Compiler * inCallerCompiler,
                   const String & inSourceFileName,
-                  const TemplateDelimiter inTemplateDefinitionArray [],
-                  const uint32_t inTemplateDefinitionArrayCount,
+                  const int32_t inOpenTemplateDelimiter,
+                  const int32_t inCloseTemplateDelimiter,
                   const TemplateDelimiter inTemplateReplacementArray [],
-                  const uint32_t inTemplateReplacementArrayCount
+                  const int32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
-mMatchedTemplateDelimiterIndex (-1),
-mTemplateDefinitionArray (inTemplateDefinitionArray),
-mTemplateDefinitionArrayCount (inTemplateDefinitionArrayCount),
+mScanningTemplateString (false),
+mOpenTemplateDelimiter (inOpenTemplateDelimiter),
+mCloseTemplateDelimiter (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),
 mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
@@ -110,16 +110,16 @@ mLatexNextCharacterToEnterIndex (0) {
 Lexique::Lexique (Compiler * inCallerCompiler,
                   const String & inSourceString,
                   const String & inStringForError,
-                  const TemplateDelimiter inTemplateDefinitionArray [],
-                  const uint32_t inTemplateDefinitionArrayCount,
+                  const int32_t inOpenTemplateDelimiter,
+                  const int32_t inCloseTemplateDelimiter,
                   const TemplateDelimiter inTemplateReplacementArray [],
-                  const uint32_t inTemplateReplacementArrayCount
+                  const int32_t inTemplateReplacementArrayCount
                   COMMA_LOCATION_ARGS) :
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
-mMatchedTemplateDelimiterIndex (-1),
-mTemplateDefinitionArray (inTemplateDefinitionArray),
-mTemplateDefinitionArrayCount (inTemplateDefinitionArrayCount),
+mScanningTemplateString (false),
+mOpenTemplateDelimiter (inOpenTemplateDelimiter),
+mCloseTemplateDelimiter (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),
 mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
