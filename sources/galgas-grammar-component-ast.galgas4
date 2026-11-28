@@ -535,7 +535,7 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
     if let t = self.mTemplateDelimiterDescriptor then
       templateDescriptorString += "kUnicodeString_" + self.mGrammarComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
       templateDescriptorString += ", "
-      templateDescriptorString += "kUnicodeString_" + self.mGrammarComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
+      templateDescriptorString += "kUnicodeString_" + self.mGrammarComponentName.string.identifierRepresentation + "_" + t.mCloseTemplateDelimiter.string.identifierRepresentation
     else
       templateDescriptorString += "std::initializer_list <utf32> (), std::initializer_list <utf32> ()"
     end

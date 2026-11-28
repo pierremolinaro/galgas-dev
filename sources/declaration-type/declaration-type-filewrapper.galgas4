@@ -482,7 +482,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         )
       end
     //-------------------------------- Analyze filewrapper templates
-      for filewrapperTemplate in self.mFilewrapperTemplateList do
+      for filewrapperTemplate in self.mFilewrapperTemplateList do // §§§
         if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
           error filewrapperTemplate.mFilewrapperTemplatePath
            : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
@@ -492,12 +492,19 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         grammar newTemplateGrammar (!? #from @(), ?let resultingInstructionList)
            in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
       //--- Build template variable map
+        var @localVarManager variableMap = @(inSemanticContext.mGlobalConstantMap)
         var @templateVariableMap templateVariableMap = @()
         var [@formalInputParameterForGeneration] filewrapperTemplateFormalInputParameters = @()
         for formal in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
           let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
           let @string cppVarName = "in_" + formal.mFormalArgumentName.string.identifierRepresentation
           !?templateVariableMap.insertKey (formal.mFormalArgumentName, type, cppVarName)
+          !?variableMap.insertUsedLocalConstant (
+            formal.mFormalArgumentName,
+            type,
+            !cppName: cppVarName,
+            !nameForCheckingVarUsing: cppVarName
+          )
           filewrapperTemplateFormalInputParameters ++= @(formal.mFormalTemplateSelector, type, cppVarName, formal.mFormalArgumentName, true)
         end
       //--- Analyze template
@@ -509,7 +516,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
           !selfAvailability: .none,
           !selfObjectCppPrefixForAccessingProperty: ""
         )
-        var @localVarManager variableMap = @(inSemanticContext.mGlobalConstantMap)
         templateInstructionListAnalysis (
           filewrapperNameForUsefulness,
           !?ioUsefulEntitiesGraph,
@@ -656,10 +662,10 @@ filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_gene
     ?@string TYPE_IDENTIFIER
   )
 
-//  #template filewrapperTypeHeader1_BIS : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
-//    ?@string TYPE_NAME,
-//    ?@string TYPE_IDENTIFIER
-//  )
+  #template filewrapperTypeHeader1_BIS : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER
+  )
 
   template filewrapperTypeSpecificImplementation : "GALGAS-filewrapper.cpp.galgasTemplate" (
     ?@string TYPE_NAME,

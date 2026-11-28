@@ -64,8 +64,8 @@ Lexique::Lexique (Compiler * inCallerCompiler,
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mTemplateTextMode (false),
-mOpenTemplateDelimiter (inOpenTemplateDelimiter),
-mCloseTemplateDelimiter (inCloseTemplateDelimiter),
+mEnterCodeModeString (inOpenTemplateDelimiter),
+mExitCodeModeString (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),
 mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
@@ -118,8 +118,8 @@ Lexique::Lexique (Compiler * inCallerCompiler,
 Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (nullptr),
 mTemplateTextMode (false),
-mOpenTemplateDelimiter (inOpenTemplateDelimiter),
-mCloseTemplateDelimiter (inCloseTemplateDelimiter),
+mEnterCodeModeString (inOpenTemplateDelimiter),
+mExitCodeModeString (inCloseTemplateDelimiter),
 mTemplateReplacementArray (inTemplateReplacementArray),
 mTemplateReplacementArrayCount (inTemplateReplacementArrayCount),
 mFirstToken (nullptr),
@@ -252,7 +252,9 @@ void Lexique::enterTokenFromPointer (cToken * inToken) {
 //--------------------------------------------------------------------------------------------------
 
 void Lexique::resetForSecondPass (void) {
+//  mTemplateTextMode = mExitCodeModeString.size () > 0 ;
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
+  mTemplateTextMode = mExitCodeModeString.size () > 0 ;
   mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
   mPreviousChar = utf32 ('\0') ;
   mCurrentTokenPtr = mFirstToken ;
@@ -307,7 +309,7 @@ void Lexique::performLexicalAnalysis (void) {
   if (executionModeIsLexicalAnalysisOnly ()) {
     gCout.appendCString ("*** PERFORM LEXICAL ANALYSIS ONLY (--mode=lexical-only option) ***\n") ;
   }
-  mTemplateTextMode = mCloseTemplateDelimiter.size () > 0 ;
+  mTemplateTextMode = mExitCodeModeString.size () > 0 ;
   bool loop = true ;
   while (loop) {
     loop = parseLexicalToken () ;

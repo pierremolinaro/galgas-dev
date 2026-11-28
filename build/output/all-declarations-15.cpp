@@ -12861,7 +12861,7 @@ void cGrammar_newTemplateGrammar::nt_template_5F_instruction_5F_list_ (GGS_galga
 void cGrammar_newTemplateGrammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__5C__28_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
@@ -12879,7 +12879,7 @@ void cGrammar_newTemplateGrammar::performIndexing (Compiler * inCompiler,
 void cGrammar_newTemplateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__5C__28_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
@@ -12889,7 +12889,7 @@ void cGrammar_newTemplateGrammar::performOnlyLexicalAnalysis (Compiler * inCompi
 void cGrammar_newTemplateGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__5C__28_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                      gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,
@@ -12917,7 +12917,7 @@ void cGrammar_newTemplateGrammar::_performSourceFileParsing_ (Compiler * inCompi
     }
     if (FileManager::fileExistsAtPath (filePath)) {
       Lexique_galgasScanner_34_ * scanner = nullptr ;
-      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__5C__28_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                                          gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,
@@ -12958,7 +12958,7 @@ void cGrammar_newTemplateGrammar::_performSourceStringParsing_ (Compiler * inCom
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
     Lexique_galgasScanner_34_ * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__5C__28_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                                        gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,

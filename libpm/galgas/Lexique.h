@@ -81,8 +81,8 @@ class Lexique : public Compiler {
 
 //--- Scanner mode for template scanner
   protected: bool mTemplateTextMode ;
-  protected: const std::initializer_list <utf32> & mOpenTemplateDelimiter ;
-  protected: const std::initializer_list <utf32> mCloseTemplateDelimiter ;
+  protected: const std::initializer_list <utf32> mEnterCodeModeString ;
+  protected: const std::initializer_list <utf32> mExitCodeModeString ;
   protected: const TemplateDelimiter * mTemplateReplacementArray ;
   protected: const int32_t mTemplateReplacementArrayCount ;
 

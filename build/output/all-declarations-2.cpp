@@ -2354,7 +2354,7 @@ bool Lexique_projectComponentScanner::parseLexicalToken (void) {
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
   //--- Reached open delimiter in text mode ?
     if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
-      const bool foundEnterCodeModeString = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
+      const bool foundEnterCodeModeString = testForInputUTF32String (mEnterCodeModeString, true) ;
       if (foundEnterCodeModeString) {
         mTemplateTextMode = false ; // Go to code mode
       }
@@ -2375,7 +2375,7 @@ bool Lexique_projectComponentScanner::parseLexicalToken (void) {
     }
   //--- In code mode, parse token
     if (!mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
-      const bool foundExitCodeModeString = (mCloseTemplateDelimiter.size () > 0) && testForInputUTF32String (mCloseTemplateDelimiter, true) ;
+      const bool foundExitCodeModeString = (mExitCodeModeString.size () > 0) && testForInputUTF32String (mExitCodeModeString, true) ;
       if (foundExitCodeModeString) {
         token.mTokenCode = -1 ; // No token found
         mTemplateTextMode = true ; // Go to text mode
