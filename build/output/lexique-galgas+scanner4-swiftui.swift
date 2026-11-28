@@ -96,7 +96,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 171
+    return 172
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -275,8 +275,9 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       2, // 169 : galgasScanner4_1__21__3D__3D_
       2, // 170 : galgasScanner4_1__3F__5E_
       2, // 171 : galgasScanner4_1__21__5E_
-      13, // 172 : galgasScanner4_2_ERROR
-      14  // 173 : galgasScanner4_2_TEMPLATE
+      2, // 172 : galgasScanner4_1__2D__5E_
+      13, // 173 : galgasScanner4_2_ERROR
+      14  // 174 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -457,8 +458,9 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 169 : galgasScanner4_1__21__3D__3D_
       true, // 170 : galgasScanner4_1__3F__5E_
       true, // 171 : galgasScanner4_1__21__5E_
-      false, // 172 : galgasScanner4_2_ERROR
-      false  // 173 : galgasScanner4_2_TEMPLATE
+      true, // 172 : galgasScanner4_1__2D__5E_
+      false, // 173 : galgasScanner4_2_ERROR
+      false  // 174 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -990,6 +992,8 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       tokenCode = galgasScanner4_1__3A__3E_
     }else if scanningOk && self.testForInputString ("/=", advance: true) {
       tokenCode = galgasScanner4_1__2F__3D_
+    }else if scanningOk && self.testForInputString ("-^", advance: true) {
+      tokenCode = galgasScanner4_1__2D__5E_
     }else if scanningOk && self.testForInputString ("->", advance: true) {
       tokenCode = galgasScanner4_1__2D__3E_
     }else if scanningOk && self.testForInputString ("-=", advance: true) {
@@ -1635,8 +1639,9 @@ let galgasScanner4_1__3D__3D__3D_ : UInt16 = 168
 let galgasScanner4_1__21__3D__3D_ : UInt16 = 169
 let galgasScanner4_1__3F__5E_ : UInt16 = 170
 let galgasScanner4_1__21__5E_ : UInt16 = 171
-let galgasScanner4_2_ERROR : UInt16 = 172
-let galgasScanner4_2_TEMPLATE : UInt16 = 173
+let galgasScanner4_1__2D__5E_ : UInt16 = 172
+let galgasScanner4_2_ERROR : UInt16 = 173
+let galgasScanner4_2_TEMPLATE : UInt16 = 174
 
 //--------------------------------------------------------------------------------------------------
 

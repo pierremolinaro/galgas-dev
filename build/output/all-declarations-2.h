@@ -9,92 +9,17 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-//
 //LEXIQUE projectComponentScanner
-//
 //--------------------------------------------------------------------------------------------------
-//                      U N I C O D E    S T R I N G S
-//--------------------------------------------------------------------------------------------------
-
-//--- Unicode string for '$->$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ ;
-
-//--- Unicode string for '$.$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ ;
-
-//--- Unicode string for '$//$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ ;
-
-//--- Unicode string for '$:$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ ;
-
-//--- Unicode string for '$bool-build-option$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option ;
-
-//--- Unicode string for '$codeblocks-linux32$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ ;
-
-//--- Unicode string for '$codeblocks-linux64$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ ;
-
-//--- Unicode string for '$codeblocks-windows$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows ;
-
-//--- Unicode string for '$lexical-style$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style ;
-
-//--- Unicode string for '$libpmCustomPath$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath ;
-
-//--- Unicode string for '$macAppBundleBaseName$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName ;
-
-//--- Unicode string for '$macCodeSign$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign ;
-
-//--- Unicode string for '$macSwiftApp$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp ;
-
-//--- Unicode string for '$makefile-arm64-linux-on-macosx$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx ;
-
-//--- Unicode string for '$makefile-macosx$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx ;
-
-//--- Unicode string for '$makefile-unix$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix ;
-
-//--- Unicode string for '$makefile-win32-on-macosx$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx ;
-
-//--- Unicode string for '$makefile-x86linux32-on-macosx$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx ;
-
-//--- Unicode string for '$makefile-x86linux64-on-macosx$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx ;
-
-//--- Unicode string for '$productName$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName ;
-
-//--- Unicode string for '$string-build-option$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option ;
-
-//--- Unicode string for '$u32-build-option$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option ;
-
-//--- Unicode string for '$version$'
-extern const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version ;
-
-//--------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S
+//  EXTERN ROUTINES
 //--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S
+//  EXTERN FUNCTIONS
 //--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-//                       T O K E N    C L A S S
+//   TOKEN CLASS
 //--------------------------------------------------------------------------------------------------
 
 class cTokenFor_projectComponentScanner : public cToken {
@@ -107,7 +32,7 @@ class cTokenFor_projectComponentScanner : public cToken {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S
+//   SCANNER CLASS
 //--------------------------------------------------------------------------------------------------
 
 class Lexique_projectComponentScanner : public Lexique {

@@ -2894,7 +2894,7 @@ GGS_filewrapper GGS_filewrapperGenerationTemplate::class_func_contents (UNUSED_L
   return GGS_filewrapper (gWrapperDirectory_0_filewrapperGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @filewrapperGenerationTemplate  filewrapperTemplateImplementation
+//Filewrapper template @filewrapperGenerationTemplate  filewrapperTemplateImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTemplateImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -2911,36 +2911,36 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTemplateImpl
   result.appendString (in_TYPE_5F_NAME.stringValue ()) ;
   result.appendString ("  ") ;
   result.appendString (in_TEMPLATE_5F_NAME.stringValue ()) ;
-  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nGGS_string GGS_") ;
+  result.appendString ("  §$§\n//--------------------------------------------------------------------------------------------------\n\nGGS_string GGS_") ;
   result.appendString (in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 5)).stringValue ()) ;
   result.appendString ("::class_func_") ;
   result.appendString (in_TEMPLATE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 5)).stringValue ()) ;
   result.appendString (" (") ;
   columnMarker = result.currentColumn () ;
-  GGS_u_33__32_ index_416_ (0) ;
+  GGS_u_33__32_ index_421_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_416 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
-    while (enumerator_416.hasCurrentObject ()) {
+    UpEnumerator__5B_formalInputParameterForGeneration_5D_ enumerator_421 (in_FORMAL_5F_ARGUMENT_5F_LIST) ;
+    while (enumerator_421.hasCurrentObject ()) {
       result.appendString ("const GGS_") ;
-      result.appendString (extensionGetter_identifierRepresentation (enumerator_416.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 7)).stringValue ()) ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_421.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 7)).stringValue ()) ;
       result.appendString (" & ") ;
-      const GalgasBool test_0 = in_UNUSED_5F_VAR_5F_SET.getter_contains (enumerator_416.current_entry (HERE).readProperty_mFormalArgumentCppName () COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 8)).boolEnum () ;
+      const GalgasBool test_0 = in_UNUSED_5F_VAR_5F_SET.getter_contains (enumerator_421.current_entry (HERE).readProperty_mFormalArgumentCppName () COMMA_SOURCE_FILE ("filewrapper-type-template.cpp.galgasTemplate", 8)).boolEnum () ;
       switch (test_0) {
       case GalgasBool::boolTrue : {
         result.appendString ("/* ") ;
-        result.appendString (enumerator_416.current_entry (HERE).readProperty_mFormalArgumentCppName ().stringValue ()) ;
+        result.appendString (enumerator_421.current_entry (HERE).readProperty_mFormalArgumentCppName ().stringValue ()) ;
         result.appendString (" */") ;
         } break ;
       case GalgasBool::boolFalse : {
-        result.appendString (enumerator_416.current_entry (HERE).readProperty_mFormalArgumentCppName ().stringValue ()) ;
+        result.appendString (enumerator_421.current_entry (HERE).readProperty_mFormalArgumentCppName ().stringValue ()) ;
         } break ;
       case GalgasBool::boolNotValid :
         break ;
       }
       result.appendString (",\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      enumerator_416.gotoNextObject () ;
-      index_416_.increment () ;
+      enumerator_421.gotoNextObject () ;
+      index_421_.increment () ;
     }
   }
   result.appendString ("Compiler * ") ;
@@ -2981,7 +2981,7 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTemplateImpl
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @filewrapperGenerationTemplate  filewrapperDeclaration
+//Filewrapper template @filewrapperGenerationTemplate  filewrapperDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperDeclaration (const GGS__5B_string_5D_ & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
@@ -3054,7 +3054,7 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperDeclaration 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @filewrapperGenerationTemplate  filewrapperImplementation
+//Filewrapper template @filewrapperGenerationTemplate  filewrapperImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperImplementation (const GGS_string & in_FILEWRAPPER_5F_NAME,
@@ -3070,7 +3070,7 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperImplementati
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @filewrapperGenerationTemplate  filewrapperTypeHeader1
+//Filewrapper template @filewrapperGenerationTemplate  filewrapperTypeHeader1  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -3086,7 +3086,7 @@ GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTypeHeader_3
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @filewrapperGenerationTemplate  filewrapperTypeSpecificImplementation
+//Filewrapper template @filewrapperGenerationTemplate  filewrapperTypeSpecificImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_filewrapperGenerationTemplate::class_func_filewrapperTypeSpecificImplementation (const GGS_string & in_TYPE_5F_IDENTIFIER,
@@ -4928,7 +4928,7 @@ GGS_filewrapper GGS_sortedArrayTypeGenerationTemplate::class_func_contents (UNUS
   return GGS_filewrapper (gWrapperDirectory_0_sortedArrayTypeGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @sortedArrayTypeGenerationTemplate  arrayTypeHeader1
+//Filewrapper template @sortedArrayTypeGenerationTemplate  arrayTypeHeader1  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_sortedArrayTypeGenerationTemplate::class_func_arrayTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -4997,7 +4997,7 @@ GGS_string GGS_sortedArrayTypeGenerationTemplate::class_func_arrayTypeHeader_31_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @sortedArrayTypeGenerationTemplate  arrayTypeSpecificImplementation
+//Filewrapper template @sortedArrayTypeGenerationTemplate  arrayTypeSpecificImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_sortedArrayTypeGenerationTemplate::class_func_arrayTypeSpecificImplementation (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -5959,7 +5959,7 @@ GGS_filewrapper GGS_classGenerationTemplate::class_func_contents (UNUSED_LOCATIO
   return GGS_filewrapper (gWrapperDirectory_0_classGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader1
+//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader1  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -6025,7 +6025,7 @@ GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_31_ 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader2part1
+//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader2part1  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_32_part_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -6134,7 +6134,7 @@ GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_32_p
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader2part2
+//Filewrapper template @classGenerationTemplate  referenceClassTypeHeader2part2  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_32_part_32_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -6230,7 +6230,7 @@ GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeHeader_32_p
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @classGenerationTemplate  referenceClassTypeSpecificImplementation
+//Filewrapper template @classGenerationTemplate  referenceClassTypeSpecificImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_classGenerationTemplate::class_func_referenceClassTypeSpecificImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -14139,7 +14139,7 @@ GGS_filewrapper GGS_projectCreationFileWrapper::class_func_contents (UNUSED_LOCA
   return GGS_filewrapper (gWrapperDirectory_0_projectCreationFileWrapper) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_project
+//Filewrapper template @projectCreationFileWrapper  PROJECT_project  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const GGS_string & in_PROJECT_5F_NAME,
@@ -14152,7 +14152,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_cocoa
+//Filewrapper template @projectCreationFileWrapper  PROJECT_cocoa  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GGS_string & in_PROJECT_5F_NAME,
@@ -14167,7 +14167,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GG
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_grammar
+//Filewrapper template @projectCreationFileWrapper  PROJECT_grammar  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const GGS_string & in_PROJECT_5F_NAME,
@@ -14182,7 +14182,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_lexique
+//Filewrapper template @projectCreationFileWrapper  PROJECT_lexique  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const GGS_string & in_PROJECT_5F_NAME,
@@ -14195,7 +14195,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_program
+//Filewrapper template @projectCreationFileWrapper  PROJECT_program  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const GGS_string & in_PROJECT_5F_NAME,
@@ -14214,7 +14214,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_semantics
+//Filewrapper template @projectCreationFileWrapper  PROJECT_semantics  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -14225,7 +14225,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (cons
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_syntax
+//Filewrapper template @projectCreationFileWrapper  PROJECT_syntax  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_syntax (const GGS_string & in_PROJECT_5F_NAME,

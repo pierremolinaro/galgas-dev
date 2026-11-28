@@ -483,7 +483,8 @@ list galgasDelimitorsList style delimitersStyle #errorMessage "the '%K' delimito
   "/",    "!=",  ">=", "&",
   "{",    "}",  "||", "|",
   "^",    ">>",  "~",
-  "===", "!==", "?^", "!^"
+  "===", "!==",
+  "?^", "!^", "-^"
 }
 
 rule list galgasDelimitorsList

@@ -1,0 +1,174 @@
+//--------------------------------------------------------------------------------------------------
+//
+//  Copyright (C) 28 novembre 2026, ..., 2026 Pierre Molinaro.
+//
+//  e-mail : pierre@pcmolinaro.name
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//--------------------------------------------------------------------------------------------------
+//   SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgasTemplateInstructionSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <template_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@templateAbstractInstructionAST outInstruction) {
+    $block$
+    <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+    $:$
+  //--- Instruction list
+    var blockInstructionList = [@templateAbstractInstructionAST] ()
+    repeat
+      enterTemplateString (!?blockInstructionList)
+    while
+      <template_instruction> (!?ioDeclarations, ?let instruction)
+      blockInstructionList ++= instruction
+    end
+  //---
+    $end$
+    outInstruction = @templateBlockInstructionAST (
+      expression,
+      @location.here,
+      blockInstructionList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// AST
+//--------------------------------------------------------------------------------------------------
+
+final class @templateBlockInstructionAST : @templateAbstractInstructionAST {
+
+  private let @semanticExpressionAST mExpression
+  private let @location mLocation
+  private let [@templateAbstractInstructionAST] mBlockInstructionList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc templateInstructionAnalysis (let @lstring inUsefulnessCallerEntityName,
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                             let @analysisContext inAnalysisContext,
+                                             ?!@unifiedTypeMap ioTypeMap,
+                                             ?!@localVarManager ioVariableMap,
+                                             ?![@templateInstructionForGeneration] ioInstructionList) {
+    self.mExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: inAnalysisContext.predefinedTypes.mStringType,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      ?var @semanticExpressionForGeneration expression
+    )
+//    self.mExpression.templateExpressionAnalysis (
+//      inUsefulnessCallerEntityName,
+//      !?ioUsefulEntitiesGraph,
+//      inAnalysisContext,
+//      !?ioTypeMap,
+//      ?var expression
+//    )
+    if expression.mResultType.definition.typeName.string == "bigint" then
+      let conversionExpression = @getterCallExpressionForGeneration (
+        expression.mResultType,
+        expression.mLocation,
+        .definedAsMember,
+        expression,
+        @(),
+        "u32",
+        @(),
+        true
+      )
+      expression = conversionExpression
+    elsif expression.mResultType.definition.typeName.string != "u32" then
+      error self.mLocation:"expression type should be '@u32' (it is '@" + expression.mResultType.definition.typeName.string + "')"
+    end
+//    var blockInstructionList = [@templateInstructionForGeneration] ()
+    analyzeTemplateInstructionListWithoutBranch (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      self.mBlockInstructionList,
+      !?ioVariableMap,
+      ?let blockInstructionList
+    )
+//    templateInstructionListAnalysis_EX (
+//      inUsefulnessCallerEntityName,
+//      !?ioUsefulEntitiesGraph,
+//      inAnalysisContext,
+//      !?ioTypeMap,
+//      self.mBlockInstructionList,
+//      !?blockInstructionList
+//    )
+    ioInstructionList ++= @templateBlockInstructionForGeneration (expression, self.mLocation, blockInstructionList)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+// CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
+
+  private let @semanticExpressionForGeneration mExpression
+  private let @location mLocation
+  private let [@templateInstructionForGeneration] mBlockInstructionList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc templateCodeGeneration (?!@string ioGeneratedCode,
+                                        ?!@stringset ioInclusionSet,
+                                        ?!@u32 ioTemporaryVariableIndex,
+                                        ?!@stringset ioUnusedVariableCppNameSet,
+                                        ?!@bool ioUseColumnMarker) {
+  //--- Expression
+    self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let indendationVarCppName)
+    ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
+    ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
+    ioGeneratedCode += "}\n"
+    templateCodeGenerationForListInstruction (
+      self.mBlockInstructionList,
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioUseColumnMarker
+    )
+    ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
+    ioGeneratedCode += "  result.incIndentation (- int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
+    ioGeneratedCode += "}\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+

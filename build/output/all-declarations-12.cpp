@@ -670,7 +670,7 @@ GGS_filewrapper GGS_templateLexiqueGenerationTemplates::class_func_contents (UNU
   return GGS_filewrapper (gWrapperDirectory_0_templateLexiqueGenerationTemplates) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @templateLexiqueGenerationTemplates  cppHeader
+//Filewrapper template @templateLexiqueGenerationTemplates  cppHeader  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppHeader (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
@@ -729,7 +729,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppHeader (const G
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @templateLexiqueGenerationTemplates  cppImplementation
+//Filewrapper template @templateLexiqueGenerationTemplates  cppImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
@@ -1084,7 +1084,7 @@ GGS_string GGS_templateLexiqueGenerationTemplates::class_func_cppImplementation 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @templateLexiqueGenerationTemplates  swiftuiImplementationZone
+//Filewrapper template @templateLexiqueGenerationTemplates  swiftuiImplementationZone  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_templateLexiqueGenerationTemplates::class_func_swiftuiImplementationZone (const GGS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
@@ -2787,7 +2787,7 @@ GGS_filewrapper GGS_syntaxFileGenerationTemplate::class_func_contents (UNUSED_LO
   return GGS_filewrapper (gWrapperDirectory_0_syntaxFileGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @syntaxFileGenerationTemplate  syntaxFileImplementationGalgas3
+//Filewrapper template @syntaxFileGenerationTemplate  syntaxFileImplementationGalgas3  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxFileImplementationGalgas_33_ (const GGS_stringset & in_INCLUSION_5F_SET,
@@ -2809,7 +2809,7 @@ GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxFileImplementation
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @syntaxFileGenerationTemplate  syntaxAnalyserClassDeclaration
+//Filewrapper template @syntaxFileGenerationTemplate  syntaxAnalyserClassDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_syntaxFileGenerationTemplate::class_func_syntaxAnalyserClassDeclaration (const GGS_string & in_COMPONENT_5F_NAME,

@@ -23,11 +23,11 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-final class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
-  private let @semanticExpressionForGeneration mExpression
-  private let @location mLocation
-  private let [@templateInstructionForGeneration] mBlockInstructionList
-}
+//final class @templateBlockInstructionForGeneration_EX : @templateInstructionForGeneration {
+//  private let @semanticExpressionForGeneration mExpression
+//  private let @location mLocation
+//  private let [@templateInstructionForGeneration] mBlockInstructionList
+//}
 
 //--------------------------------------------------------------------------------------------------
 

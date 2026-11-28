@@ -23,29 +23,29 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateBlockInstructionForGeneration.templateCodeGeneration
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@u32 ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  ?!@bool ioUseColumnMarker ) {
-//--- Expression
-  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let indendationVarCppName)
-  ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
-  ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
-  ioGeneratedCode += "}\n"
-  templateCodeGenerationForListInstruction (
-    self.mBlockInstructionList,
-    !?ioGeneratedCode,
-    !?ioInclusionSet,
-    !?ioTemporaryVariableIndex,
-    !?ioUnusedVariableCppNameSet,
-    !?ioUseColumnMarker
-  )
-  ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
-  ioGeneratedCode += "  result.incIndentation (- int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
-  ioGeneratedCode += "}\n"
-}
+//override proc @templateBlockInstructionForGeneration_EX.templateCodeGeneration
+//  (?!@string ioGeneratedCode,
+//  ?!@stringset ioInclusionSet,
+//  ?!@u32 ioTemporaryVariableIndex,
+//  ?!@stringset ioUnusedVariableCppNameSet,
+//  ?!@bool ioUseColumnMarker ) {
+////--- Expression
+//  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let indendationVarCppName)
+//  ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
+//  ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
+//  ioGeneratedCode += "}\n"
+//  templateCodeGenerationForListInstruction (
+//    self.mBlockInstructionList,
+//    !?ioGeneratedCode,
+//    !?ioInclusionSet,
+//    !?ioTemporaryVariableIndex,
+//    !?ioUnusedVariableCppNameSet,
+//    !?ioUseColumnMarker
+//  )
+//  ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
+//  ioGeneratedCode += "  result.incIndentation (- int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
+//  ioGeneratedCode += "}\n"
+//}
 
 //--------------------------------------------------------------------------------------------------
 

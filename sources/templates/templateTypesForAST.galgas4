@@ -349,7 +349,7 @@ final class @templateInstructionExpressionAST : @templateInstructionAST_EX {
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateBlockInstructionAST : @templateInstructionAST_EX {
+final class @templateBlockInstructionAST_EX : @templateInstructionAST_EX {
   private let @templateExpressionAST mExpression
   private let @location mLocation
   private let [@templateInstructionAST_EX] mBlockInstructionList

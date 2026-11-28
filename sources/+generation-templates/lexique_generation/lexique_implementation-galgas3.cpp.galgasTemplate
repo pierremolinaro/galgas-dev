@@ -84,7 +84,7 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
   for (key) in STRINGS_IN_EXPLICIT_RULES do
    if [key count] > 0 then
    %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
-   %const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
+   %static const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% = % ![key utf32Representation !withZeroTerminator: false]% ;\n%
    end
   end
 %

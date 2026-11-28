@@ -32,7 +32,7 @@ GGS_filewrapper GGS_semanticComponentGenerationTemplate::class_func_contents (UN
   return GGS_filewrapper (gWrapperDirectory_0_semanticComponentGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  initializerImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  initializerImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_initializerImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -50,7 +50,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_initializerImplem
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionGetterDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionGetterDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtensionGetterDeclaration (const GGS_string & in_CLASS_5F_NAME,
@@ -107,7 +107,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionGetterImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionGetterImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtensionGetterImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -180,7 +180,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterDeclaration (const GGS_string & in_CLASS_5F_NAME,
@@ -237,7 +237,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterDe
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -313,7 +313,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterIm
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  overridingExtensionGetterImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  overridingExtensionGetterImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_overridingExtensionGetterImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -331,7 +331,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_overridingExtensi
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionMethodDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionMethodDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtensionMethodDeclaration (const GGS_string & in_CLASS_5F_NAME,
@@ -411,7 +411,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionMethodImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  abstractExtensionMethodImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtensionMethodImplementation (const GGS_unifiedTypeMapEntry & in_RECEIVER_5F_TYPE,
@@ -561,7 +561,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_abstractExtension
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodDeclaration (const GGS_string & in_CLASS_5F_NAME,
@@ -641,7 +641,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodDe
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -794,7 +794,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodIm
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  overridingExtensionMethodImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  overridingExtensionMethodImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_overridingExtensionMethodImplementation (const GGS_string & in_CLASS_5F_NAME,
@@ -811,7 +811,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_overridingExtensi
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterAsFunctionDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterAsFunctionDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterAsFunctionDeclaration (const GGS_string & in_TYPE_5F_NAME,
@@ -868,7 +868,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterAs
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterAsFunctionImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  extensionGetterAsFunctionImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterAsFunctionImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -885,7 +885,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionGetterAs
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodAsFunctionDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodAsFunctionDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodAsFunctionDeclaration (const GGS_string & in_TYPE_5F_NAME,
@@ -965,7 +965,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodAs
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodAsFunctionImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  extensionMethodAsFunctionImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodAsFunctionImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -982,7 +982,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionMethodAs
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  extensionSetterAsFunctionDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  extensionSetterAsFunctionDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionSetterAsFunctionDeclaration (const GGS_string & in_TYPE_5F_NAME,
@@ -1062,7 +1062,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_extensionSetterAs
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  functionDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  functionDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_functionDeclaration (const GGS_string & in_FUNCTION_5F_NAME,
@@ -1115,7 +1115,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_functionDeclarati
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  functionImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  functionImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_functionImplementation (const GGS_string & in_FUNCTION_5F_NAME,
@@ -1131,7 +1131,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_functionImplement
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  routineDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  routineDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_routineDeclaration (const GGS_string & in_ROUTINE_5F_NAME,
@@ -1205,7 +1205,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_routineDeclaratio
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  routineImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  routineImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_routineImplementation (const GGS_string & in_ROUTINE_5F_NAME,
@@ -1221,7 +1221,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_routineImplementa
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  onceFunctionImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  onceFunctionImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_onceFunctionImplementation (const GGS_string & in_FUNCTION_5F_NAME,
@@ -1276,7 +1276,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_onceFunctionImple
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  filewrapperTemplateDeclaration
+//Filewrapper template @semanticComponentGenerationTemplate  filewrapperTemplateDeclaration  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTemplateDeclaration (const GGS_string & in_FILEWRAPPER_5F_NAME,
@@ -1315,7 +1315,7 @@ GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTempla
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticComponentGenerationTemplate  filewrapperTemplateImplementation
+//Filewrapper template @semanticComponentGenerationTemplate  filewrapperTemplateImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticComponentGenerationTemplate::class_func_filewrapperTemplateImplementation (const GGS_string & in_FILEWRAPPER_5F_NAME,
@@ -1645,7 +1645,7 @@ GGS_filewrapper GGS_semanticFileGenerationTemplate::class_func_contents (UNUSED_
   return GGS_filewrapper (gWrapperDirectory_0_semanticFileGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @semanticFileGenerationTemplate  semanticFileHeader
+//Filewrapper template @semanticFileGenerationTemplate  semanticFileHeader  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_semanticFileGenerationTemplate::class_func_semanticFileHeader (const GGS_string & /* in_COMPONENT_5F_NAME */,
@@ -7050,7 +7050,7 @@ GGS_filewrapper GGS_grammarRulesInTexDocumentTemplate::class_func_contents (UNUS
   return GGS_filewrapper (gWrapperDirectory_0_grammarRulesInTexDocumentTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @grammarRulesInTexDocumentTemplate  document
+//Filewrapper template @grammarRulesInTexDocumentTemplate  document  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_grammarRulesInTexDocumentTemplate::class_func_document (const GGS_string & in_DOCUMENT_5F_NAME,

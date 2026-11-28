@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @%!TYPE_NAME%  %!TEMPLATE_NAME%
+//Filewrapper template @%!TYPE_NAME%  %!TEMPLATE_NAME%  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_%![TYPE_NAME identifierRepresentation]%::class_func_%![TEMPLATE_NAME identifierRepresentation]% (%?^

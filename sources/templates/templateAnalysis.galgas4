@@ -1417,7 +1417,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateBlockInstructionAST.templateInstructionAnalysis
+override proc @templateBlockInstructionAST_EX.templateInstructionAnalysis
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,

@@ -510,7 +510,7 @@ rule <template_instruction> (?![@templateInstructionAST_EX] ioResultingInstructi
   end
 //---
   $end$
-  ioResultingInstructionList ++= @templateBlockInstructionAST (
+  ioResultingInstructionList ++= @templateBlockInstructionAST_EX (
     expression,
     @location.here,
     blockInstructionList

@@ -118,29 +118,29 @@ String Lexique_projectComponentScanner::getMessageForTerminal (const int32_t inT
 //--------------------------------------------------------------------------------------------------
 
 //--- Unicode string for '$->$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2D__3E_ = {
   utf32 ('-'),
   utf32 ('>'),
 } ;
 
 //--- Unicode string for '$.$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2E_ = {
   utf32 ('.'),
 } ;
 
 //--- Unicode string for '$//$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__2F__2F_ = {
   utf32 ('/'),
   utf32 ('/'),
 } ;
 
 //--- Unicode string for '$:$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner__3A_ = {
   utf32 (':'),
 } ;
 
 //--- Unicode string for '$bool-build-option$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_2D_build_2D_option = {
   utf32 ('b'),
   utf32 ('o'),
   utf32 ('o'),
@@ -161,7 +161,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_bool_
 } ;
 
 //--- Unicode string for '$codeblocks-linux32$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_33__32_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -183,7 +183,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeb
 } ;
 
 //--- Unicode string for '$codeblocks-linux64$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_linux_36__34_ = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -205,7 +205,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeb
 } ;
 
 //--- Unicode string for '$codeblocks-windows$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeblocks_2D_windows = {
   utf32 ('c'),
   utf32 ('o'),
   utf32 ('d'),
@@ -227,7 +227,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_codeb
 } ;
 
 //--- Unicode string for '$lexical-style$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexical_2D_style = {
   utf32 ('l'),
   utf32 ('e'),
   utf32 ('x'),
@@ -244,7 +244,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_lexic
 } ;
 
 //--- Unicode string for '$libpmCustomPath$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpmCustomPath = {
   utf32 ('l'),
   utf32 ('i'),
   utf32 ('b'),
@@ -263,7 +263,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_libpm
 } ;
 
 //--- Unicode string for '$macAppBundleBaseName$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAppBundleBaseName = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -287,7 +287,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macAp
 } ;
 
 //--- Unicode string for '$macCodeSign$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCodeSign = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -302,7 +302,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macCo
 } ;
 
 //--- Unicode string for '$macSwiftApp$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSwiftApp = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('c'),
@@ -317,7 +317,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_macSw
 } ;
 
 //--- Unicode string for '$makefile-arm64-linux-on-macosx$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -351,7 +351,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$makefile-macosx$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -370,7 +370,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$makefile-unix$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_unix = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -387,7 +387,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$makefile-win32-on-macosx$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_win_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -415,7 +415,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$makefile-x86linux32-on-macosx$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -448,7 +448,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$makefile-x86linux64-on-macosx$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx = {
   utf32 ('m'),
   utf32 ('a'),
   utf32 ('k'),
@@ -481,7 +481,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_makef
 } ;
 
 //--- Unicode string for '$productName$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_productName = {
   utf32 ('p'),
   utf32 ('r'),
   utf32 ('o'),
@@ -496,7 +496,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_produ
 } ;
 
 //--- Unicode string for '$string-build-option$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_string_2D_build_2D_option = {
   utf32 ('s'),
   utf32 ('t'),
   utf32 ('r'),
@@ -519,7 +519,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_strin
 } ;
 
 //--- Unicode string for '$u32-build-option$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33__32__2D_build_2D_option = {
   utf32 ('u'),
   utf32 ('3'),
   utf32 ('2'),
@@ -539,7 +539,7 @@ const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_u_33_
 } ;
 
 //--- Unicode string for '$version$'
-const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
+static const std::initializer_list <utf32> kUnicodeString_projectComponentScanner_version = {
   utf32 ('v'),
   utf32 ('e'),
   utf32 ('r'),
@@ -15611,7 +15611,7 @@ GGS_filewrapper GGS_typeGenerationTemplate::class_func_contents (UNUSED_LOCATION
   return GGS_filewrapper (gWrapperDirectory_0_typeGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForType
+//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForType  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -16754,7 +16754,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForPackage
+//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForPackage  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -16958,7 +16958,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (co
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @typeGenerationTemplate  genericTypeImplementation
+//Filewrapper template @typeGenerationTemplate  genericTypeImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_typeGenerationTemplate::class_func_genericTypeImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -16998,7 +16998,7 @@ GGS_string GGS_typeGenerationTemplate::class_func_genericTypeImplementation (con
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @typeGenerationTemplate  externTypeHeader1
+//Filewrapper template @typeGenerationTemplate  externTypeHeader1  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_typeGenerationTemplate::class_func_externTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,

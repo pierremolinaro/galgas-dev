@@ -1,20 +1,7 @@
 //--------------------------------------------------------------------------------------------------
-//
 //%!"LEXIQUE " + LEXIQUE_IDENTIFIER%
-//
 //--------------------------------------------------------------------------------------------------
-//                      U N I C O D E    S T R I N G S
-//--------------------------------------------------------------------------------------------------
-%
-  for (key) in STRINGS_IN_EXPLICIT_RULES do
-   if [key count] > 0 then
-   %\n//--- Unicode string for '$%![key utf8RepresentationWithoutDelimiters]%$'\n%
-   %extern const std::initializer_list <utf32> kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![key identifierRepresentation]% ;\n%
-   end
-  end
-%
-//--------------------------------------------------------------------------------------------------
-//                    E X T E R N    R O U T I N E S
+//  EXTERN ROUTINES
 //--------------------------------------------------------------------------------------------------
 %
   for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
@@ -34,7 +21,7 @@
   end
 %
 //--------------------------------------------------------------------------------------------------
-//                    E X T E R N    F U N C T I O N S
+//  EXTERN FUNCTIONS
 //--------------------------------------------------------------------------------------------------
 %
   for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
@@ -48,7 +35,7 @@
   end
 %
 //--------------------------------------------------------------------------------------------------
-//                       T O K E N    C L A S S
+//   TOKEN CLASS
 //--------------------------------------------------------------------------------------------------
 
 class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
@@ -61,7 +48,7 @@ class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//                     S C A N N E R    C L A S S
+//   SCANNER CLASS
 //--------------------------------------------------------------------------------------------------
 
 class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {

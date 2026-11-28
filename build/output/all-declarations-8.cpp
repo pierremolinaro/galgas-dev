@@ -15769,7 +15769,7 @@ GGS_filewrapper GGS_grammarGenerationTemplate::class_func_contents (UNUSED_LOCAT
   return GGS_filewrapper (gWrapperDirectory_0_grammarGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @grammarGenerationTemplate  grammarZone3HeaderGalgas3
+//Filewrapper template @grammarGenerationTemplate  grammarZone3HeaderGalgas3  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas_33_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
@@ -16110,7 +16110,7 @@ GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @grammarGenerationTemplate  grammarImplementation
+//Filewrapper template @grammarGenerationTemplate  grammarImplementation  §$§
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_grammarGenerationTemplate::class_func_grammarImplementation (const GGS_string & in_GRAMMAR_5F_NAME,

@@ -198,7 +198,8 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* === */,
   false /* !== */,
   false /* ?^ */,
-  false /* !^ */
+  false /* !^ */,
+  false /* -^ */
 ]
 
 
