@@ -439,7 +439,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
          !?wrapperDirectoryIndex
        )
       end
-    //-------------------------------- Analyze filewrapper templates
+    //-------------------------------- Analyze filewrapper templates (EX)
       var [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration = []
       for filewrapperTemplate in self.mFilewrapperTemplateListEX do
         if filewrapperTemplate.mFilewrapperTemplatePath.string.firstCharacterOrNul == '/' then
@@ -448,7 +448,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         end
         let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
       //--- Parse template
-        grammar templateGrammar (?let [@templateInstructionAST] resultingInstructionList)
+        grammar templateGrammar (?let [@templateInstructionAST_EX] resultingInstructionList)
            in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
       //--- Build template variable map
         var @templateVariableMap templateVariableMap = @()
@@ -466,7 +466,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
           inPredefinedTypes,
           templateVariableMap
         )
-        templateInstructionListAnalysis (
+        templateInstructionListAnalysis_EX (
           filewrapperNameForUsefulness,
           !?ioUsefulEntitiesGraph,
           templateAnalysisContext,
@@ -489,7 +489,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         end
         let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
       //--- Parse template
-        grammar templateGrammar (?let [@templateInstructionAST] resultingInstructionList)
+        grammar newTemplateGrammar (!? #from @(), ?let resultingInstructionList)
            in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
       //--- Build template variable map
         var @templateVariableMap templateVariableMap = @()
@@ -502,16 +502,20 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
         end
       //--- Analyze template
         var templateInstructionListForGeneration = [@templateInstructionForGeneration] ()
-        let templateAnalysisContext = @templateAnalysisContext (
+        let @analysisContext analysisContext = @(
           inSemanticContext,
           inPredefinedTypes,
-          templateVariableMap
+          !selfObjectCppName: "",
+          !selfAvailability: .none,
+          !selfObjectCppPrefixForAccessingProperty: ""
         )
+        var @localVarManager variableMap = @(inSemanticContext.mGlobalConstantMap)
         templateInstructionListAnalysis (
           filewrapperNameForUsefulness,
           !?ioUsefulEntitiesGraph,
-          templateAnalysisContext,
+          analysisContext,
           !?ioTypeMap,
+          !?variableMap,
           resultingInstructionList,
           !?templateInstructionListForGeneration
         )
@@ -651,6 +655,11 @@ filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_gene
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
   )
+
+//  #template filewrapperTypeHeader1_BIS : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
+//    ?@string TYPE_NAME,
+//    ?@string TYPE_IDENTIFIER
+//  )
 
   template filewrapperTypeSpecificImplementation : "GALGAS-filewrapper.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
@@ -897,6 +906,46 @@ private proc recursivlyEnumerateRegularFile (let @wrapperFileMap inFilewrapperFi
       !?ioDirectoryIndexStringList,
       !?ioRegularTextContentIndexStringList,
       !?ioRegularBinaryContentIndexStringList
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc templateInstructionListAnalysis (let @lstring inUsefulnessCallerEntityName,
+                                      ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                      let @analysisContext inAnalysisContext,
+                                      ?!@unifiedTypeMap ioTypeMap,
+                                      ?!@localVarManager ioVariableMap,
+                                      let [@templateAbstractInstructionAST] inInstructionList,
+                                      ?![@templateInstructionForGeneration] ioInstructionList) {
+  for instruction in inInstructionList do
+    instruction.templateInstructionAnalysis (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      !?ioInstructionList
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc templateInstructionListAnalysis_EX (let @lstring inUsefulnessCallerEntityName,
+                                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                         let @templateAnalysisContext inAnalysisContext,
+                                         ?!@unifiedTypeMap ioTypeMap,
+                                         let [@templateInstructionAST_EX] inInstructionList,
+                                         ?![@templateInstructionForGeneration] ioInstructionList) {
+  for instruction in inInstructionList do
+    instruction.templateInstructionAnalysis
+      (inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioInstructionList
     )
   end
 }

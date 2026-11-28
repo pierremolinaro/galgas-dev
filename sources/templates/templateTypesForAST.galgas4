@@ -24,7 +24,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract class @templateInstructionAST {
+abstract class @templateInstructionAST_EX {
 
   abstract proc templateInstructionAnalysis (let @lstring inUsefulnessCallerEntityName,
                                              ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
@@ -336,47 +336,47 @@ final class @templateRightShiftOperationAST : @templateExpressionAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionStringAST : @templateInstructionAST {
+final class @templateInstructionStringAST_EX : @templateInstructionAST_EX {
   private let @string mTemplateString
 }
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionExpressionAST : @templateInstructionAST {
+final class @templateInstructionExpressionAST : @templateInstructionAST_EX {
   private let @templateExpressionAST mExpression
   private let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateBlockInstructionAST : @templateInstructionAST {
+final class @templateBlockInstructionAST : @templateInstructionAST_EX {
   private let @templateExpressionAST mExpression
   private let @location mLocation
-  private let [@templateInstructionAST] mBlockInstructionList
+  private let [@templateInstructionAST_EX] mBlockInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionGetColumnLocationAST : @templateInstructionAST {
+final class @templateInstructionGetColumnLocationAST : @templateInstructionAST_EX {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
+final class @templateInstructionGotoColumnLocationAST : @templateInstructionAST_EX {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 struct @templateInstructionIfBranchAST {
   public let @templateExpressionAST mExpression
-  public let [@templateInstructionAST] mInstructionList
+  public let [@templateInstructionAST_EX] mInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionIfAST : @templateInstructionAST {
+final class @templateInstructionIfAST : @templateInstructionAST_EX {
   private let [@templateInstructionIfBranchAST] mTemplateInstructionIfBranchList
-  private let [@templateInstructionAST] mElseInstructionList
+  private let [@templateInstructionAST_EX] mElseInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------

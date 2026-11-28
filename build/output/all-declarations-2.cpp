@@ -1257,7 +1257,7 @@ mLexicalAttribute_uint_33__32_value () {
 Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                                                   const String & inSourceFileName,
                                                                   const std::initializer_list <utf32> & inOpenTemplateDelimiter,
-                                                                  const int32_t inCloseTemplateDelimiter,
+                                                                  const std::initializer_list <utf32> & inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
                                                                   const int32_t inTemplateReplacementArrayCount
                                                                   COMMA_LOCATION_ARGS) :
@@ -1274,7 +1274,7 @@ Lexique_projectComponentScanner::Lexique_projectComponentScanner (Compiler * inC
                                                                   const String & inSourceString,
                                                                   const String & inStringForError,
                                                                   const std::initializer_list <utf32> & inOpenTemplateDelimiter,
-                                                                  const int32_t inCloseTemplateDelimiter,
+                                                                  const std::initializer_list <utf32> & inCloseTemplateDelimiter,
                                                                   const TemplateDelimiter inTemplateReplacementArray [],
                                                                   const int32_t inTemplateReplacementArrayCount
                                                                   COMMA_LOCATION_ARGS) :
@@ -2354,31 +2354,33 @@ bool Lexique_projectComponentScanner::parseLexicalToken (void) {
   while ((token.mTokenCode < 0) && (mCurrentChar.u32 () != '\0')) {
   //--- Reached open delimiter in text mode ?
     if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
-      const bool foundCloseDelimitor = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
-      if (foundCloseDelimitor) {
+      const bool foundEnterCodeModeString = testForInputUTF32String (mOpenTemplateDelimiter, true) ;
+      if (foundEnterCodeModeString) {
         mTemplateTextMode = false ; // Go to code mode
       }
     }
-  //--- In text mode perform rreplacement if needed
+  //--- In text mode perform replacement if needed
     if (mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
       bool found = false ;
       for (int32_t i=0 ; (i<mTemplateReplacementArrayCount) && !found ; i++) {
-        found = notTestForInputUTF32String (mTemplateReplacementArray [i].mStartString, kEndOfSourceLexicalErrorMessage COMMA_HERE) ;
+        found = testForInputUTF32String (mTemplateReplacementArray [i].mStartString, true) ;
         if (found) {
-          token.mTemplateStringBeforeToken.appendString (mTemplateReplacementArray [i].mStartString) ;
+          token.mTemplateStringBeforeToken.appendString (mTemplateReplacementArray [i].mEndString) ;
         }
       }
       if (!found) {
         token.mTemplateStringBeforeToken.appendChar (mCurrentChar) ;
+        advance () ;
       }
     }
   //--- In code mode, parse token
     if (!mTemplateTextMode && (mCurrentChar.u32 () != '\0')) {
-      internalParseLexicalToken (token) ;
-    //--- Found close delimiter ?
-      if ((mCloseTemplateDelimiter >= 0) && (token.mTokenCode == mCloseTemplateDelimiter)) {
+      const bool foundExitCodeModeString = (mCloseTemplateDelimiter.size () > 0) && testForInputUTF32String (mCloseTemplateDelimiter, true) ;
+      if (foundExitCodeModeString) {
         token.mTokenCode = -1 ; // No token found
         mTemplateTextMode = true ; // Go to text mode
+      }else{
+        internalParseLexicalToken (token) ;
       }
     }
   }

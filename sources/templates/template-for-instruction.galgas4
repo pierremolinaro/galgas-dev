@@ -20,16 +20,16 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionForeachAST : @templateInstructionAST {
+final class @templateInstructionForeachAST : @templateInstructionAST_EX {
   private let @bool mIsAscending
   private let @templateExpressionAST mExpression
   private let [@lstring] mEnumeration
   private let @location mEndOfProperties
-  private let [@templateInstructionAST] mBeforeInstructionList
-  private let [@templateInstructionAST] mDoInstructionList
+  private let [@templateInstructionAST_EX] mBeforeInstructionList
+  private let [@templateInstructionAST_EX] mDoInstructionList
   private let @lstring mIndexIdentifier
-  private let [@templateInstructionAST] mBetweenInstructionList
-  private let [@templateInstructionAST] mAfterInstructionList
+  private let [@templateInstructionAST_EX] mBetweenInstructionList
+  private let [@templateInstructionAST_EX] mAfterInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
+  rule <template_instruction> (?![@templateInstructionAST_EX] ioResultingInstructionList ) {
     $for$
     let @bool ascending
     select
@@ -108,12 +108,12 @@ syntax extension templateSyntax {
     end
     <for_instruction_enumerated_object> (?let enumeration, ?let endOfProperties, ?let expression)
   //--- before block
-    var [@templateInstructionAST] beforeInstructionList = @()
+    var [@templateInstructionAST_EX] beforeInstructionList = @()
     select
     or
       $before$
       repeat
-        enterTemplateString (!?beforeInstructionList)
+        enterTemplateStringEx (!?beforeInstructionList)
       while
         <template_instruction> (!?beforeInstructionList)
       end
@@ -128,30 +128,30 @@ syntax extension templateSyntax {
       $identifier$ (? indexIdentifier)
       $)$
     end
-    var [@templateInstructionAST] doInstructionList = @()
+    var [@templateInstructionAST_EX] doInstructionList = @()
     repeat
-      enterTemplateString (!?doInstructionList)
+      enterTemplateStringEx (!?doInstructionList)
     while
       <template_instruction> (!?doInstructionList)
     end
   //--- between block
-    var [@templateInstructionAST] betweenInstructionList = @()
+    var [@templateInstructionAST_EX] betweenInstructionList = @()
     select
     or
       $between$
       repeat
-        enterTemplateString (!?betweenInstructionList)
+        enterTemplateStringEx (!?betweenInstructionList)
       while
         <template_instruction> (!?betweenInstructionList)
       end
     end
   //--- after block
-    var [@templateInstructionAST] afterInstructionList = @()
+    var [@templateInstructionAST_EX] afterInstructionList = @()
     select
     or
       $after$
       repeat
-        enterTemplateString (!?afterInstructionList)
+        enterTemplateStringEx (!?afterInstructionList)
       while
         <template_instruction> (!?beforeInstructionList)
       end
@@ -201,7 +201,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
   end
 //--- Before instructions
   var beforeInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
@@ -237,7 +237,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     inAnalysisContext.mPredefinedTypes,
     doVariableMap)
   var doInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     doAnalysisContext,
@@ -247,7 +247,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
   )
 //--- Between instructions
   var betweenInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
@@ -257,7 +257,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
   )
 //--- After instructions
   var afterInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,

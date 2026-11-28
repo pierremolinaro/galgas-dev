@@ -10141,51 +10141,6 @@ const GALGAS_TypeDescriptor * GGS_buildOptionTypeForGeneration::staticTypeDescri
 //Filewrapper 'buildOptionGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const DirectoryWrapper gWrapperDirectory_2_buildOptionGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_buildOptionGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_buildOptionGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_buildOptionGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const DirectoryWrapper gWrapperDirectory_1_buildOptionGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_buildOptionGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_buildOptionGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate_0 [1] = {
@@ -10194,8 +10149,7 @@ static const RegularFileWrapper * gWrapperAllFiles_buildOptionGenerationTemplate
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_buildOptionGenerationTemplate,
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -10205,7 +10159,7 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_buildOptionGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_buildOptionGenerationTemplate_0
 ) ;
 
@@ -11008,51 +10962,6 @@ const GALGAS_TypeDescriptor * GGS_buildOptionStringTypeForGeneration::staticType
 //Filewrapper 'buildOptionStringGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const DirectoryWrapper gWrapperDirectory_2_buildOptionStringGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_buildOptionStringGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_buildOptionStringGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_buildOptionStringGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const DirectoryWrapper gWrapperDirectory_1_buildOptionStringGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_buildOptionStringGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_buildOptionStringGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTemplate_0 [1] = {
@@ -11061,8 +10970,7 @@ static const RegularFileWrapper * gWrapperAllFiles_buildOptionStringGenerationTe
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_buildOptionStringGenerationTemplate,
+static const DirectoryWrapper * gWrapperAllDirectories_buildOptionStringGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -11072,7 +10980,7 @@ const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_buildOptionStringGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_buildOptionStringGenerationTemplate_0
 ) ;
 
@@ -11965,51 +11873,6 @@ const GALGAS_TypeDescriptor * GGS__5B_propertyInCollectionAST_5D_::staticTypeDes
 //Filewrapper 'predefinedTypeGenerationTemplate'
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const DirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_predefinedTypeGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_predefinedTypeGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_predefinedTypeGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const DirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_predefinedTypeGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_predefinedTypeGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const RegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_0 [1] = {
@@ -12018,8 +11881,7 @@ static const RegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTempl
 
 //--- All sub-directories of '' directory
 
-static const DirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_predefinedTypeGenerationTemplate,
+static const DirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -12029,7 +11891,7 @@ const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_predefinedTypeGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_predefinedTypeGenerationTemplate_0
 ) ;
 

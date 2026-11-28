@@ -1162,8 +1162,6 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @arrayTypeGenerationTemplate
@@ -1464,8 +1462,6 @@ class cPtr_dictionaryTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_dictionaryGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_dictionaryGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @dictionaryGenerationTemplate
@@ -1860,8 +1856,6 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @structureGenerationTemplate
@@ -3640,8 +3634,6 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @enumGenerationTemplate
@@ -3939,8 +3931,6 @@ class cPtr_optionSetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_structGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @structGenerationTemplate
@@ -4506,8 +4496,6 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @graphGenerationTemplate
@@ -4802,8 +4790,6 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @optionalTypeGenerationTemplate
@@ -6758,6 +6744,61 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Class descriptor
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//§Filewrapper§ 'mapGenerationTemplate'
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const DirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: filewrapper @mapGenerationTemplate
+//--------------------------------------------------------------------------------------------------
+
+class GGS_mapGenerationTemplate final {
+
+//-- Start of package generic part
+
+//--------------------------------- GALGAS class getters
+  public: static class GGS_filewrapper class_func_contents (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_mapTypeHeader_31_ (const class GGS_string & inOperand0,
+                                                                const class GGS_string & inOperand1,
+                                                                const class GGS__5B_typedProperty_5D_ & inOperand2,
+                                                                const class GGS__5B_mapAccessorAST_5D_ & inOperand3,
+                                                                const class GGS__5B_enumerationDescriptor_5D_ & inOperand4,
+                                                                const class GGS_unifiedTypeMapEntry & inOperand5,
+                                                                const class GGS_string & inOperand6,
+                                                                const class GGS_bool & inOperand7,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_mapTypeSpecificImplementation (const class GGS_string & inOperand0,
+                                                                            const class GGS__5B_typedProperty_5D_ & inOperand1,
+                                                                            const class GGS_string & inOperand2,
+                                                                            const class GGS__5B_insertSetterAST_5D_ & inOperand3,
+                                                                            const class GGS_string & inOperand4,
+                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand5,
+                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand6,
+                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand7,
+                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand8,
+                                                                            const class GGS_bool & inOperand9,
+                                                                            const class GGS_bool & inOperand10,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Class Methods
 
 } ;
 

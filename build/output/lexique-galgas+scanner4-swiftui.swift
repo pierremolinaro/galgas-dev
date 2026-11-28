@@ -96,7 +96,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 173
+    return 171
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -275,10 +275,8 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       2, // 169 : galgasScanner4_1__21__3D__3D_
       2, // 170 : galgasScanner4_1__3F__5E_
       2, // 171 : galgasScanner4_1__21__5E_
-      2, // 172 : galgasScanner4_1__5C__28_
-      2, // 173 : galgasScanner4_1__2F__29_
-      13, // 174 : galgasScanner4_2_ERROR
-      14  // 175 : galgasScanner4_2_TEMPLATE
+      13, // 172 : galgasScanner4_2_ERROR
+      14  // 173 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -459,10 +457,8 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 169 : galgasScanner4_1__21__3D__3D_
       true, // 170 : galgasScanner4_1__3F__5E_
       true, // 171 : galgasScanner4_1__21__5E_
-      true, // 172 : galgasScanner4_1__5C__28_
-      true, // 173 : galgasScanner4_1__2F__29_
-      false, // 174 : galgasScanner4_2_ERROR
-      false  // 175 : galgasScanner4_2_TEMPLATE
+      false, // 172 : galgasScanner4_2_ERROR
+      false  // 173 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -980,8 +976,6 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       tokenCode = galgasScanner4_1__7C__3D_
     }else if scanningOk && self.testForInputString ("^=", advance: true) {
       tokenCode = galgasScanner4_1__5E__3D_
-    }else if scanningOk && self.testForInputString ("\\(", advance: true) {
-      tokenCode = galgasScanner4_1__5C__28_
     }else if scanningOk && self.testForInputString ("@(", advance: true) {
       tokenCode = galgasScanner4_1__40__28_
     }else if scanningOk && self.testForInputString ("?^", advance: true) {
@@ -996,8 +990,6 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       tokenCode = galgasScanner4_1__3A__3E_
     }else if scanningOk && self.testForInputString ("/=", advance: true) {
       tokenCode = galgasScanner4_1__2F__3D_
-    }else if scanningOk && self.testForInputString ("/)", advance: true) {
-      tokenCode = galgasScanner4_1__2F__29_
     }else if scanningOk && self.testForInputString ("->", advance: true) {
       tokenCode = galgasScanner4_1__2D__3E_
     }else if scanningOk && self.testForInputString ("-=", advance: true) {
@@ -1643,10 +1635,8 @@ let galgasScanner4_1__3D__3D__3D_ : UInt16 = 168
 let galgasScanner4_1__21__3D__3D_ : UInt16 = 169
 let galgasScanner4_1__3F__5E_ : UInt16 = 170
 let galgasScanner4_1__21__5E_ : UInt16 = 171
-let galgasScanner4_1__5C__28_ : UInt16 = 172
-let galgasScanner4_1__2F__29_ : UInt16 = 173
-let galgasScanner4_2_ERROR : UInt16 = 174
-let galgasScanner4_2_TEMPLATE : UInt16 = 175
+let galgasScanner4_2_ERROR : UInt16 = 172
+let galgasScanner4_2_TEMPLATE : UInt16 = 173
 
 //--------------------------------------------------------------------------------------------------
 

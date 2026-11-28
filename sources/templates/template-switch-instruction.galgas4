@@ -22,13 +22,13 @@
 struct @templateInstructionSwitchBranchAST {
   public let [@lstring] constantList
   public let [@switchExtractedValuesAST] associatedValuesExtraction
-  public let [@templateInstructionAST] instructionList
+  public let [@templateInstructionAST_EX] instructionList
   public let @location endOfBranch
 }
 
 //································································································
 
-final class @templateInstructionSwitchAST : @templateInstructionAST {
+final class @templateInstructionSwitchAST : @templateInstructionAST_EX {
   private let @templateExpressionAST mSwitchExpression
   private let @location switchExpressionEndLocation
   private let [@templateInstructionSwitchBranchAST] templateInstructionSwitchBranchList
@@ -42,7 +42,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
+  rule <template_instruction> (?![@templateInstructionAST_EX] ioResultingInstructionList ) {
     $switch$
   //--- Switch expression
     <expression_template> (?let switchExpression)
@@ -57,9 +57,9 @@ syntax extension templateSyntax {
         ?let [@switchExtractedValuesAST] associatedValuesExtraction
       )
       $:$
-      var [@templateInstructionAST] instructionList = @()
+      var [@templateInstructionAST_EX] instructionList = @()
       repeat
-        enterTemplateString (!?instructionList)
+        enterTemplateStringEx (!?instructionList)
       while
         <template_instruction> (!?instructionList)
       end
@@ -192,7 +192,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
         end
       end
       var [@templateInstructionForGeneration] templateInstructionList = @()
-      templateInstructionListAnalysis (
+      templateInstructionListAnalysis_EX (
         inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         analysisContext,

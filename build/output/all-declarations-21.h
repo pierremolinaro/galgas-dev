@@ -10,6 +10,41 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'performProjectCreation?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_performProjectCreation_3F_ (const class GGS_string constinArgument0,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'projectCreation?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'templateInstructionListAnalysisEx?&?&?&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_templateInstructionListAnalysisEx_3F__26__3F__26__3F__26_ (const class GGS_lstring constinArgument0,
+                                                                        class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                        const class GGS_templateAnalysisContext constinArgument2,
+                                                                        class GGS_unifiedTypeMap & ioArgument3,
+                                                                        const class GGS__5B_templateInstructionAST_5F_EX_5D_ constinArgument4,
+                                                                        class GGS__5B_templateInstructionForGeneration_5D_ & ioArgument5,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeConstructorInvocation?&??&&???!!!!!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -51,61 +86,4 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
                                                                                            class GGS__5B_semanticExpressionForGeneration_5D_ & outArgument11,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'printPredefinedLexicalActions'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_printPredefinedLexicalActions (Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'semanticAnalysisOfSyntaxComponent?&?????&?????!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_semanticAnalysisOfSyntaxComponent_3F__26__3F__3F__3F__3F__3F__26__3F__3F__3F__3F__3F__21_ (const class GGS_lstring constinArgument0,
-                                                                                                        class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                        const class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument2,
-                                                                                                        const class GGS__5B_syntaxRuleAST_5D_ constinArgument3,
-                                                                                                        const class GGS_string constinArgument4,
-                                                                                                        const class GGS_string constinArgument5,
-                                                                                                        const class GGS_semanticContext constinArgument6,
-                                                                                                        class GGS_unifiedTypeMap & ioArgument7,
-                                                                                                        const class GGS_predefinedTypes constinArgument8,
-                                                                                                        const class GGS_terminalMap constinArgument9,
-                                                                                                        const class GGS_stringset constinArgument10,
-                                                                                                        const class GGS_bool constinArgument11,
-                                                                                                        const class GGS_bool constinArgument12,
-                                                                                                        class GGS_syntaxDeclarationForGeneration & outArgument13,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterNonterminalNonTerminalInMapAndCheck??&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const class GGS_lstring constinArgument0,
-                                                                   const class GGS_nonterminalLabelMap constinArgument1,
-                                                                   class GGS_nonterminalMap & ioArgument2,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'buildNonterminalDeclarationsMap??&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_buildNonterminalDeclarationsMap_3F__3F__26__21_ (const class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument0,
-                                                              const class GGS_semanticContext constinArgument1,
-                                                              class GGS_unifiedTypeMap & ioArgument2,
-                                                              class GGS_nonterminalMap & outArgument3,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
 

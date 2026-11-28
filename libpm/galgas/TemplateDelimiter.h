@@ -28,11 +28,11 @@ class TemplateDelimiter final {
 
 //--- Constructor
   public: TemplateDelimiter (const std::initializer_list <utf32> & inStartString,
-                              const int32_t inStartStringLength,
-                              const std::initializer_list <utf32> & inEndString,
-                              const int32_t inEndStringLength,
-                              void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
-                              const bool inDiscardStartString) ;
+                             const int32_t inStartStringLength,
+                             const std::initializer_list <utf32> & inEndString,
+                             const int32_t inEndStringLength,
+                             void (* inReplacementFunction) (Lexique & inLexique, const String & inElementString, String & ioTemplateString),
+                             const bool inDiscardStartString) ;
 
 //--- Copy
   public: TemplateDelimiter (const TemplateDelimiter & inOperand) ;

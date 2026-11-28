@@ -1,473 +1,5 @@
 #include "all-declarations-16.h"
 //--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis::GGS_sortedNonTerminalSymbolForGrammarAnalysis (void) :
-mProperty_mNonTerminalSymbol (),
-mProperty_mNonTerminalIndex (),
-mProperty_mNonterminalSymbolParametersMap () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis::GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) :
-mProperty_mNonTerminalSymbol (inSource.mProperty_mNonTerminalSymbol),
-mProperty_mNonTerminalIndex (inSource.mProperty_mNonTerminalIndex),
-mProperty_mNonterminalSymbolParametersMap (inSource.mProperty_mNonterminalSymbolParametersMap) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis & GGS_sortedNonTerminalSymbolForGrammarAnalysis::operator = (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) {
-  mProperty_mNonTerminalSymbol = inSource.mProperty_mNonTerminalSymbol ;
-  mProperty_mNonTerminalIndex = inSource.mProperty_mNonTerminalIndex ;
-  mProperty_mNonterminalSymbolParametersMap = inSource.mProperty_mNonterminalSymbolParametersMap ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis GGS_sortedNonTerminalSymbolForGrammarAnalysis::init_21__21__21_ (const GGS_lstring & in_mNonTerminalSymbol,
-                                                                                                               const GGS_u_33__32_ & in_mNonTerminalIndex,
-                                                                                                               const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_sortedNonTerminalSymbolForGrammarAnalysis result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mNonTerminalSymbol = in_mNonTerminalSymbol ;
-  result.mProperty_mNonTerminalIndex = in_mNonTerminalIndex ;
-  result.mProperty_mNonterminalSymbolParametersMap = in_mNonterminalSymbolParametersMap ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedNonTerminalSymbolForGrammarAnalysis::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis::GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_lstring & inOperand0,
-                                                                                              const GGS_u_33__32_ & inOperand1,
-                                                                                              const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2) :
-mProperty_mNonTerminalSymbol (inOperand0),
-mProperty_mNonTerminalIndex (inOperand1),
-mProperty_mNonterminalSymbolParametersMap (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_sortedNonTerminalSymbolForGrammarAnalysis::isValid (void) const {
-  return mProperty_mNonTerminalSymbol.isValid () && mProperty_mNonTerminalIndex.isValid () && mProperty_mNonterminalSymbolParametersMap.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedNonTerminalSymbolForGrammarAnalysis::drop (void) {
-  mProperty_mNonTerminalSymbol.drop () ;
-  mProperty_mNonTerminalIndex.drop () ;
-  mProperty_mNonterminalSymbolParametersMap.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_sortedNonTerminalSymbolForGrammarAnalysis::description (String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @sortedNonTerminalSymbolForGrammarAnalysis:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mNonTerminalSymbol.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mNonTerminalIndex.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mNonterminalSymbolParametersMap.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @sortedNonTerminalSymbolForGrammarAnalysis generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedNonTerminalSymbolForGrammarAnalysis ("sortedNonTerminalSymbolForGrammarAnalysis",
-                                                                                              nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_sortedNonTerminalSymbolForGrammarAnalysis::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_sortedNonTerminalSymbolForGrammarAnalysis ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@nonTerminalSymbolSortedArrayForGrammarAnalysis' array
-//--------------------------------------------------------------------------------------------------
-
-static int32_t compareForSorting_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inLeft,
-                                                                                 const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inRight) {
-  ComparisonResult result = ComparisonResult::operandEqual ;
-  if (result == ComparisonResult::operandEqual) {
-    result = inLeft.mProperty_mNonTerminalIndex.objectCompare (inRight.mProperty_mNonTerminalIndex) ;
-  }
-  return int32_t (result) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::operator = (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::plusPlusAssignOperation (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inValue
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedArrayForGrammarAnalysis) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::add_operation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand,
-                                                                                                                      Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-    result.mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedArrayForGrammarAnalysis) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::description (String & ioString,
-                                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@sortedNonTerminalSymbolForGrammarAnalysis], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::plusAssignOperation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis inOperand,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedArrayForGrammarAnalysis) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::setter_append (const GGS_sortedNonTerminalSymbolForGrammarAnalysis inValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-    mSharedArray.quickSortUsingFunction (compareForSorting_nonTerminalSymbolSortedArrayForGrammarAnalysis) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::setter_removeAll (Compiler * /* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::setter_remove (GGS_sortedNonTerminalSymbolForGrammarAnalysis & outValue,
-                                                                        const GGS_u_33__32_ inRemoveIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::setter_removeFirst (GGS_sortedNonTerminalSymbolForGrammarAnalysis & outValue,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::setter_removeLast (GGS_sortedNonTerminalSymbolForGrammarAnalysis & outValue,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::getter_removingFirst (const GGS_u_33__32_ & inIndex,
-                                                                                                                             Compiler * inCompiler
-                                                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::getter_sublist (const GGS_u_33__32_ & inStartIndex,
-                                                                                                                       const GGS_u_33__32_ & inLength,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::getter_first (Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) const {
-  GGS_sortedNonTerminalSymbolForGrammarAnalysis result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::getter_last (Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_sortedNonTerminalSymbolForGrammarAnalysis result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
-                                                                                                                      Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_sortedNonTerminalSymbolForGrammarAnalysis result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subcript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @nonTerminalSymbolSortedArrayForGrammarAnalysis
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @nonTerminalSymbolSortedArrayForGrammarAnalysis
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sortedNonTerminalSymbolForGrammarAnalysis UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @nonTerminalSymbolSortedArrayForGrammarAnalysis generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedArrayForGrammarAnalysis ("nonTerminalSymbolSortedArrayForGrammarAnalysis",
-                                                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //Extension proc '@genericExtensionMethodListMap insertKey'
 //
@@ -17039,7 +16571,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_fileprivate, BOTTOM_UP_SHIFT (475)
 , BOTTOM_UP_END
 // State S799 (index = 26543)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1021)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1021)
 , BOTTOM_UP_END
 // State S800 (index = 26546)
 , Lexique_galgasScanner_34_::kToken__7B_, BOTTOM_UP_SHIFT (1022)
@@ -24298,7 +23830,7 @@ static const int32_t gActionTable_galgas4Grammar [] = {
 , Lexique_galgasScanner_34_::kToken_, BOTTOM_UP_REDUCE (129)
 , BOTTOM_UP_END
 // State S1183 (index = 39909)
-, Lexique_galgasScanner_34_::kToken__24_terminal_24_, BOTTOM_UP_SHIFT (1301)
+, Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1301)
 , BOTTOM_UP_END
 // State S1184 (index = 39912)
 , Lexique_galgasScanner_34_::kToken__22_string_22_, BOTTOM_UP_SHIFT (1302)
@@ -35972,7 +35504,7 @@ void cGrammar_galgas_34_Grammar::nt_start_5F_symbol_ (GGS_galgasDeclarationAST &
 void cGrammar_galgas_34_Grammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
@@ -35990,7 +35522,7 @@ void cGrammar_galgas_34_Grammar::performIndexing (Compiler * inCompiler,
 void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
@@ -36000,7 +35532,7 @@ void cGrammar_galgas_34_Grammar::performOnlyLexicalAnalysis (Compiler * inCompil
 void cGrammar_galgas_34_Grammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
                                      gActionTableIndex_galgas4Grammar, gSuccessorTable_galgas4Grammar,
@@ -36027,7 +35559,7 @@ void cGrammar_galgas_34_Grammar::_performSourceFileParsing_ (Compiler * inCompil
     }
     if (FileManager::fileExistsAtPath (filePath)) {
       Lexique_galgasScanner_34_ * scanner = nullptr ;
-      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
                                                          gActionTableIndex_galgas4Grammar, gSuccessorTable_galgas4Grammar,
@@ -36067,7 +35599,7 @@ void cGrammar_galgas_34_Grammar::_performSourceStringParsing_ (Compiler * inComp
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
     Lexique_galgasScanner_34_ * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_galgas4Grammar, gNonTerminalNames_galgas4Grammar,
                                                        gActionTableIndex_galgas4Grammar, gSuccessorTable_galgas4Grammar,

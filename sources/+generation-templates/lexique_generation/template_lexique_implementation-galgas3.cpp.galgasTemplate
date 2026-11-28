@@ -11,11 +11,11 @@
 Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inCallerCompiler,
               %!^%const String & inSourceFileName,
               %!^%const std::initializer_list <utf32> & /* inOpenTemplateDelimiter */,
-              %!^%const int32_t /* inCloseTemplateDelimiter */,
+              %!^%const std::initializer_list <utf32> & /* inCloseTemplateDelimiter */,
               %!^%const TemplateDelimiter /* inTemplateReplacementArray*/ [],
               %!^%const int32_t /* inTemplateReplacementArrayCount */
               %!^%COMMA_LOCATION_ARGS) :
-Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceFileName, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -25,11 +25,11 @@ Lexique_%!LEXIQUE_IDENTIFIER%::Lexique_%!LEXIQUE_IDENTIFIER% (%?^%Compiler * inC
               %!^%const String & inSourceString,
               %!^%const String & inStringForError,
               %!^%const std::initializer_list <utf32> & /* inOpenTemplateDelimiter */,
-              %!^%const int32_t /* inCloseTemplateDelimiter */,
+              %!^%const std::initializer_list <utf32> & /* inCloseTemplateDelimiter */,
               %!^%const TemplateDelimiter /* inTemplateReplacementArray*/ [],
               %!^%const int32_t /* inTemplateReplacementArrayCount */
               %!^%COMMA_LOCATION_ARGS) :
-Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_THERE),
+Lexique_%!SUPER_LEXIQUE_IDENTIFIER% (inCallerCompiler, inSourceString, inStringForError, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 

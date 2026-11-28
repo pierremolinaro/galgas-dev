@@ -324,7 +324,7 @@ class Lexique_projectComponentScanner : public Lexique {
   public: Lexique_projectComponentScanner (Compiler * inCallerCompiler,
                                            const String & inSourceFileName,
                                            const std::initializer_list <utf32> & inOpenTemplateDelimiter,
-                                           const int32_t inCloseTemplateDelimiter,
+                                           const std::initializer_list <utf32> & inCloseTemplateDelimiter,
                                            const TemplateDelimiter inTemplateReplacementArray [],
                                            const int32_t inTemplateReplacementArrayCount
                                            COMMA_LOCATION_ARGS) ;
@@ -333,7 +333,7 @@ class Lexique_projectComponentScanner : public Lexique {
                                            const String & inSourceString,
                                            const String & inStringForError,
                                            const std::initializer_list <utf32> & inOpenTemplateDelimiter,
-                                           const int32_t inCloseTemplateDelimiter,
+                                           const std::initializer_list <utf32> & inCloseTemplateDelimiter,
                                            const TemplateDelimiter inTemplateReplacementArray [],
                                            const int32_t inTemplateReplacementArrayCount
                                            COMMA_LOCATION_ARGS) ;

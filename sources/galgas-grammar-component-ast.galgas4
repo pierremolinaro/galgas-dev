@@ -56,9 +56,9 @@ syntax galgas4GrammarComponentSyntax : galgasScanner4 {
       templateDelimiterDescriptor = nil
     or
       $#template$
-      $\$terminal\$$ (?let openTerminal)
+      $"string"$ (?let openTerminal)
       $...$
-      $\$terminal\$$ (?let closeTerminal)
+      $"string"$ (?let closeTerminal)
       templateDelimiterDescriptor = @templateDelimiterDescriptorAST (openTerminal, closeTerminal)
     end
     ${$
@@ -396,6 +396,17 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
       unicodeStringToGenerate ++= templateReplacement.mReplacementString.string
      // § TODO Check replacement function
     end
+  //--------------------------------------------------------- Template delimiter
+    if let t = self.mTemplateDelimiterDescriptor then
+      if t.mOpenTemplateDelimiter.string == "" then
+        error t.mOpenTemplateDelimiter : "code mode enter string should not ne empty" 
+      end
+      unicodeStringToGenerate ++= t.mOpenTemplateDelimiter.string
+      if t.mCloseTemplateDelimiter.string == "" then
+        error t.mCloseTemplateDelimiter : "code mode exit string should not ne empty" 
+      end
+      unicodeStringToGenerate ++= t.mCloseTemplateDelimiter.string
+    end
   //--------------------------------------------------------- Parse syntax components
     var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = @()
     var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
@@ -480,12 +491,6 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
     for nonTerminal in nonTerminalMapForGrammarAnalysis do
       nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
     end
-  //--------------------------------------------------------- Template delimiter
-    if let t = self.mTemplateDelimiterDescriptor then
-      inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (lexiqueComponentName, ?*, ?let terminalMap, ?4*)
-      terminalMap.searchKey (t.mOpenTemplateDelimiter, ?*)
-      terminalMap.searchKey (t.mCloseTemplateDelimiter, ?*)
-    end
   //--------------------------------------------------------- Print an tex file for grammar rule list
     if @buildOptionValue.emitSyntaxDiagrams then
       emitProductionRulesInTexFile (
@@ -528,11 +533,11 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   //------ Template descriptor string
     var templateDescriptorString = ", "
     if let t = self.mTemplateDelimiterDescriptor then
-      templateDescriptorString += "kUnicodeString_" + lexiqueComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
+      templateDescriptorString += "kUnicodeString_" + self.mGrammarComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
       templateDescriptorString += ", "
-      templateDescriptorString += "Lexique_" + lexiqueComponentName.string.identifierRepresentation + "::kToken_" + t.mCloseTemplateDelimiter.string.identifierRepresentation
+      templateDescriptorString += "kUnicodeString_" + self.mGrammarComponentName.string.identifierRepresentation + "_" + t.mOpenTemplateDelimiter.string.identifierRepresentation
     else
-      templateDescriptorString += "std::initializer_list <utf32> (), -1"
+      templateDescriptorString += "std::initializer_list <utf32> (), std::initializer_list <utf32> ()"
     end
 //    if templateDelimitorList.count == 0 then
 //      templateDescriptorString += "nullptr"

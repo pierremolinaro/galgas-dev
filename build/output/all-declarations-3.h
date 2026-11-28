@@ -868,8 +868,6 @@ extern const RegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
 //--------------------------------------------------------------------------------------------------
 
 extern const DirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate ;
-extern const DirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: filewrapper @typeGenerationTemplate

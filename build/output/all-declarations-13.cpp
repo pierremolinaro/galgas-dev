@@ -14611,7 +14611,7 @@ void cGrammar_projectComponentGrammar::nt_project_5F_component_5F_start_5F_symbo
 void cGrammar_projectComponentGrammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
@@ -14628,7 +14628,7 @@ void cGrammar_projectComponentGrammar::performIndexing (Compiler * inCompiler,
 void cGrammar_projectComponentGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
@@ -14638,7 +14638,7 @@ void cGrammar_projectComponentGrammar::performOnlyLexicalAnalysis (Compiler * in
 void cGrammar_projectComponentGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_projectComponentScanner * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, inSourceFilePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                     gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
@@ -14664,7 +14664,7 @@ void cGrammar_projectComponentGrammar::_performSourceFileParsing_ (Compiler * in
     }
     if (FileManager::fileExistsAtPath (filePath)) {
     Lexique_projectComponentScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, filePath, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, filePath, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                                       gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
@@ -14703,7 +14703,7 @@ void cGrammar_projectComponentGrammar::_performSourceStringParsing_ (Compiler * 
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
     Lexique_projectComponentScanner * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, sourceString, nameString, std::initializer_list <utf32> (), -1, nullptr, 0 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_projectComponentScanner (inCompiler, sourceString, nameString, std::initializer_list <utf32> (), std::initializer_list <utf32> (), nullptr, 0 COMMA_HERE)) ;
     const bool ok = scanner->performTopDownParsing (gProductions_projectComponentGrammar, gProductionNames_projectComponentGrammar, gProductionIndexes_projectComponentGrammar,
                                                     gFirstProductionIndexes_projectComponentGrammar, gDecision_projectComponentGrammar, gDecisionIndexes_projectComponentGrammar, 113) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {

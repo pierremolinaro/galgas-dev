@@ -1362,12 +1362,12 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-proc templateInstructionListAnalysis
+proc templateInstructionListAnalysisEx
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  let [@templateInstructionAST] inInstructionList,
+  let [@templateInstructionAST_EX] inInstructionList,
   ?![@templateInstructionForGeneration] ioInstructionList
 ) {
   for instruction in inInstructionList do
@@ -1383,7 +1383,7 @@ proc templateInstructionListAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateInstructionStringAST.templateInstructionAnalysis
+override proc @templateInstructionStringAST_EX.templateInstructionAnalysis
   (let @lstring _inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext _inAnalysisContext,
@@ -1447,7 +1447,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     error self.mLocation:"expression type should be '@u32' (it is '@" + expression.mResultType.definition.typeName.string + "')"
   end
   var blockInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
@@ -1505,7 +1505,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
       error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + expression.mResultType.definition.typeName.string + "')"
     end
     var instructionList = [@templateInstructionForGeneration] ()
-    templateInstructionListAnalysis (
+    templateInstructionListAnalysis_EX (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
@@ -1517,7 +1517,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
   end
 //---
   var elseInstructionList = [@templateInstructionForGeneration] ()
-  templateInstructionListAnalysis (
+  templateInstructionListAnalysis_EX (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,

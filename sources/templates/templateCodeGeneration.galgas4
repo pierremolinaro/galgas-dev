@@ -53,19 +53,6 @@ override proc @templateInstructionStringForGeneration.templateCodeGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @templateInstructionExpressionForGeneration.templateCodeGeneration
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@u32 ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  ?!@bool _ioUseColumnMarker ) {
-//--- Expression
-  self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let cppName)
-  ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @templateBlockInstructionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,

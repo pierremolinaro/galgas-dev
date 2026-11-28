@@ -58,6 +58,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--no-file-generation"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-q"
             isEnabled = "NO">
          </CommandLineArgument>

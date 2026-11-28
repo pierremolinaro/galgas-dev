@@ -1378,215 +1378,489 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
 } ;
 
 //--------------------------------------------------------------------------------------------------
-//  GRAMMAR templateGrammar
+// Phase 1: @templateInstructionForeachAST reference class
 //--------------------------------------------------------------------------------------------------
 
-class cGrammar_templateGrammar : public cParser_templateSyntax {
-//------------------------------------- 'expression_template' non terminal
-//--- indexing
-  public: virtual void nt_expression_5F_template_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST_5F_EX {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionForeachAST (void) ;
 
-//----------- '' label
-  public: virtual void nt_expression_5F_template_ (GGS_templateExpressionAST & outArgument0,
-                                                   Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Constructor from pointer
+  public: GGS_templateInstructionForeachAST (const class cPtr_templateInstructionForeachAST * inSourcePtr) ;
 
-//------------------------------------- 'factor_tpl' non terminal
-//--- indexing
-  public: virtual void nt_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Property access
+  public: class GGS_bool readProperty_mIsAscending (void) const ;
 
-//----------- '' label
-  public: virtual void nt_factor_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                          Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS_templateExpressionAST readProperty_mExpression (void) const ;
 
-//------------------------------------- 'for_instruction_element' non terminal
-//--- indexing
-  public: virtual void nt_for_5F_instruction_5F_element_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS__5B_lstring_5D_ readProperty_mEnumeration (void) const ;
 
-//----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_element_ (GGS__5B_lstring_5D_ & ioArgument0,
-                                                          Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS_location readProperty_mEndOfProperties (void) const ;
 
-//------------------------------------- 'for_instruction_enumerated_object' non terminal
-//--- indexing
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS__5B_templateInstructionAST_5F_EX_5D_ readProperty_mBeforeInstructionList (void) const ;
 
-//----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS__5B_lstring_5D_ & outArgument0,
-                                                                       GGS_location & outArgument1,
-                                                                       GGS_templateExpressionAST & outArgument2,
-                                                                       Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS__5B_templateInstructionAST_5F_EX_5D_ readProperty_mDoInstructionList (void) const ;
 
-//------------------------------------- 'output_expression_list_tpl' non terminal
-//--- indexing
-  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS_lstring readProperty_mIndexIdentifier (void) const ;
 
-//----------- '' label
-  public: virtual void nt_output_5F_expression_5F_list_5F_tpl_ (GGS__5B_templateExpressionElementAST_5D_ & outArgument0,
-                                                                Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS__5B_templateInstructionAST_5F_EX_5D_ readProperty_mBetweenInstructionList (void) const ;
 
-//------------------------------------- 'primary_tpl' non terminal
-//--- indexing
-  public: virtual void nt_primary_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+  public: class GGS__5B_templateInstructionAST_5F_EX_5D_ readProperty_mAfterInstructionList (void) const ;
 
-//----------- '' label
-  public: virtual void nt_primary_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                           Lexique_galgasTemplateScanner * inCompiler) ;
+//-- Start of type generic part
 
-//------------------------------------- 'relation_factor_tpl' non terminal
-//--- indexing
-  public: virtual void nt_relation_5F_factor_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Initializers
+  public: static GGS_templateInstructionForeachAST init_21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                             const class GGS_templateExpressionAST & inOperand1,
+                                                                                             const class GGS__5B_lstring_5D_ & inOperand2,
+                                                                                             const class GGS_location & inOperand3,
+                                                                                             const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand4,
+                                                                                             const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand5,
+                                                                                             const class GGS_lstring & inOperand6,
+                                                                                             const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand7,
+                                                                                             const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand8,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionForeachAST & inOperand) const ;
 
-//----------- '' label
-  public: virtual void nt_relation_5F_factor_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                                      Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Setters
 
-//------------------------------------- 'relation_term_tpl' non terminal
-//--- indexing
-  public: virtual void nt_relation_5F_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
 
-//----------- '' label
-  public: virtual void nt_relation_5F_term_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                                    Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Getters
 
-//------------------------------------- 'simple_expression_tpl' non terminal
-//--- indexing
-  public: virtual void nt_simple_5F_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Read subcripts
 
-//----------- '' label
-  public: virtual void nt_simple_5F_expression_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                                        Lexique_galgasTemplateScanner * inCompiler) ;
 
-//------------------------------------- 'switch_case' non terminal
-//--- indexing
-  public: virtual void nt_switch_5F_case_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Write subcripts
 
-//----------- '' label
-  public: virtual void nt_switch_5F_case_ (GGS__5B_lstring_5D_ & outArgument0,
-                                           GGS__5B_switchExtractedValuesAST_5D_ & outArgument1,
-                                           Lexique_galgasTemplateScanner * inCompiler) ;
 
-//------------------------------------- 'template_instruction' non terminal
-//--- indexing
-  public: virtual void nt_template_5F_instruction_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 
-//----------- '' label
-  public: virtual void nt_template_5F_instruction_ (GGS__5B_templateInstructionAST_5D_ & ioArgument0,
-                                                    Lexique_galgasTemplateScanner * inCompiler) ;
-
-//------------------------------------- 'template_parser_start_symbol' non terminal
-//--- indexing
-  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (GGS__5B_templateInstructionAST_5D_ & outArgument0,
-                                                                  Lexique_galgasTemplateScanner * inCompiler) ;
-
-//--- Start symbol
-  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
-                                                  GGS_lstring inFileName,
-                                                  GGS__5B_templateInstructionAST_5D_ & outArgument0
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
-                                                    GGS_string inSourceString,
-                                                    GGS_string inNameString,
-                                                    GGS__5B_templateInstructionAST_5D_ & outArgument0
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Indexing
-  public: static void performIndexing (Compiler * inCompiler,
-                                       const String & inSourceFilePath) ;
-
-//--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
-                                                  const String & inSourceFilePath) ;
-
-//--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
-                                                 const String & inSourceFilePath) ;
-
-//------------------------------------- 'term_tpl' non terminal
-//--- indexing
-  public: virtual void nt_term_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
-
-//----------- '' label
-  public: virtual void nt_term_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                        Lexique_galgasTemplateScanner * inCompiler) ;
-
-  public: virtual int32_t select_templateSyntax_0 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_1 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_2 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_3 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_4 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_5 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_6 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_7 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_8 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_9 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_10 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_11 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_12 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_13 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_14 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_15 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_16 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_17 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_18 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_19 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_20 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_21 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_22 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_23 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_24 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_25 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_26 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_27 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_28 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_29 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_30 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_31 (Lexique_galgasTemplateScanner *) ;
-
-  public: virtual int32_t select_templateSyntax_32 (Lexique_galgasTemplateScanner *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionForeachAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateInstructionForeachAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST_5F_EX {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                       const class GGS_templateExpressionAST & inOperand1,
+                                                                                       const class GGS__5B_lstring_5D_ & inOperand2,
+                                                                                       const class GGS_location & inOperand3,
+                                                                                       const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand4,
+                                                                                       const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand5,
+                                                                                       const class GGS_lstring & inOperand6,
+                                                                                       const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand7,
+                                                                                       const class GGS__5B_templateInstructionAST_5F_EX_5D_ & inOperand8,
+                                                                                       Compiler * inCompiler) ;
+
+
+//--- Extension proc templateInstructionAnalysis
+  public: virtual void method_templateInstructionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS__5B_templateInstructionForGeneration_5D_ & arg_ioInstructionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_bool mProperty_mIsAscending ;
+  public: GGS_templateExpressionAST mProperty_mExpression ;
+  public: GGS__5B_lstring_5D_ mProperty_mEnumeration ;
+  public: GGS_location mProperty_mEndOfProperties ;
+  public: GGS__5B_templateInstructionAST_5F_EX_5D_ mProperty_mBeforeInstructionList ;
+  public: GGS__5B_templateInstructionAST_5F_EX_5D_ mProperty_mDoInstructionList ;
+  public: GGS_lstring mProperty_mIndexIdentifier ;
+  public: GGS__5B_templateInstructionAST_5F_EX_5D_ mProperty_mBetweenInstructionList ;
+  public: GGS__5B_templateInstructionAST_5F_EX_5D_ mProperty_mAfterInstructionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateInstructionForeachAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateInstructionForeachAST (const GGS_bool & in_mIsAscending,
+                                              const GGS_templateExpressionAST & in_mExpression,
+                                              const GGS__5B_lstring_5D_ & in_mEnumeration,
+                                              const GGS_location & in_mEndOfProperties,
+                                              const GGS__5B_templateInstructionAST_5F_EX_5D_ & in_mBeforeInstructionList,
+                                              const GGS__5B_templateInstructionAST_5F_EX_5D_ & in_mDoInstructionList,
+                                              const GGS_lstring & in_mIndexIdentifier,
+                                              const GGS__5B_templateInstructionAST_5F_EX_5D_ & in_mBetweenInstructionList,
+                                              const GGS__5B_templateInstructionAST_5F_EX_5D_ & in_mAfterInstructionList,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Parser class 'templateSyntax' declaration
+//
+//--------------------------------------------------------------------------------------------------
+
+class cParser_templateSyntax {
+//--- Virtual destructor
+  public: virtual ~ cParser_templateSyntax (void) { }
+
+//--- Non terminal declarations
+  protected: virtual void nt_expression_5F_template_ (class GGS_templateExpressionAST & outArgument0,
+                                                      class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_expression_5F_template_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_factor_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                             class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_factor_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_element_ (class GGS__5B_lstring_5D_ & ioArgument0,
+                                                             class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_element_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (class GGS__5B_lstring_5D_ & outArgument0,
+                                                                          class GGS_location & outArgument1,
+                                                                          class GGS_templateExpressionAST & outArgument2,
+                                                                          class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_output_5F_expression_5F_list_5F_tpl_ (class GGS__5B_templateExpressionElementAST_5D_ & outArgument0,
+                                                                   class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_output_5F_expression_5F_list_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_primary_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                              class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_primary_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_relation_5F_factor_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                                         class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_relation_5F_factor_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_relation_5F_term_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                                       class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_relation_5F_term_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_simple_5F_expression_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                                           class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_simple_5F_expression_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_switch_5F_case_ (class GGS__5B_lstring_5D_ & outArgument0,
+                                              class GGS__5B_switchExtractedValuesAST_5D_ & outArgument1,
+                                              class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_switch_5F_case_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_instruction_ (class GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                       class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_instruction_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (class GGS__5B_templateInstructionAST_5F_EX_5D_ & outArgument0,
+                                                                     class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_term_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
+                                           class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+  protected: virtual void nt_term_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_templateSyntax_expression_5F_template_i0_ (GGS_templateExpressionAST & outArgument0,
+                                                                  Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_expression_5F_template_i0_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_relation_5F_term_5F_tpl_i1_ (GGS_templateExpressionAST & outArgument0,
+                                                                   Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_relation_5F_term_5F_tpl_i1_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_relation_5F_factor_5F_tpl_i2_ (GGS_templateExpressionAST & outArgument0,
+                                                                     Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_relation_5F_factor_5F_tpl_i2_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_simple_5F_expression_5F_tpl_i3_ (GGS_templateExpressionAST & outArgument0,
+                                                                       Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_simple_5F_expression_5F_tpl_i3_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_term_5F_tpl_i4_ (GGS_templateExpressionAST & outArgument0,
+                                                       Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_term_5F_tpl_i4_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i5_ (GGS_templateExpressionAST & outArgument0,
+                                                         Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i5_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i6_ (GGS_templateExpressionAST & outArgument0,
+                                                         Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i6_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i7_ (GGS_templateExpressionAST & outArgument0,
+                                                         Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i7_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i8_ (GGS_templateExpressionAST & outArgument0,
+                                                         Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_factor_5F_tpl_i8_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i9_ (GGS_templateExpressionAST & outArgument0,
+                                                          Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i9_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i10_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i10_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i11_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i11_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i12_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i12_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i13_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i13_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i14_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i14_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i15_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i15_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i16_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i16_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i17_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i17_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i18_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i18_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i19_ (GGS_templateExpressionAST & outArgument0,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_primary_5F_tpl_i19_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_ (GGS__5B_templateExpressionElementAST_5D_ & outArgument0,
+                                                                                Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_output_5F_expression_5F_list_5F_tpl_i20_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i21_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i21_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i22_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i22_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i23_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i23_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i24_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i24_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i25_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i25_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & outArgument0,
+                                                                                  Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_ (GGS__5B_lstring_5D_ & ioArgument0,
+                                                                          Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_ (GGS__5B_lstring_5D_ & ioArgument0,
+                                                                          Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_ (GGS__5B_lstring_5D_ & ioArgument0,
+                                                                          Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_ (GGS__5B_lstring_5D_ & outArgument0,
+                                                                                       GGS_location & outArgument1,
+                                                                                       GGS_templateExpressionAST & outArgument2,
+                                                                                       Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i31_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i31_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i32_ (GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                                                    Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_template_5F_instruction_i32_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_switch_5F_case_i33_ (GGS__5B_lstring_5D_ & outArgument0,
+                                                           GGS__5B_switchExtractedValuesAST_5D_ & outArgument1,
+                                                           Lexique_galgasTemplateScanner * inLexique) ;
+
+  protected: void rule_templateSyntax_switch_5F_case_i33_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_templateSyntax_0 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_1 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_2 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_3 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_4 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_5 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_6 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_7 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_8 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_9 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_10 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_11 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_12 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_13 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_14 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_15 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_16 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_17 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_18 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_19 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_20 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_21 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_22 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_23 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_24 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_25 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_26 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_27 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_28 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_29 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_30 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_31 (Lexique_galgasTemplateScanner *) = 0 ;
+
+  protected: virtual int32_t select_templateSyntax_32 (Lexique_galgasTemplateScanner *) = 0 ;
+
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterTemplateStringEx&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterTemplateStringEx_26_ (class GGS__5B_templateInstructionAST_5F_EX_5D_ & ioArgument0,
+                                        Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
+
 //--------------------------------------------------------------------------------------------------
 //  GRAMMAR newTemplateGrammar
 //--------------------------------------------------------------------------------------------------
 
 class cGrammar_newTemplateGrammar : public cParser_galgas_34_ExpressionSyntax,
-                                    public cParser_galgas_34_TypeDefinitionSyntax {
+                                    public cParser_galgas_34_TypeDefinitionSyntax,
+                                    public cParser_galgasTemplateInstructionSyntax {
 //------------------------------------- 'actual_parameter_list_with_parenthesis' non terminal
 //--- indexing
   public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
@@ -1604,32 +1878,6 @@ class cGrammar_newTemplateGrammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_expression_ (GGS_galgasDeclarationAST & ioArgument0,
                                        GGS_semanticExpressionAST & outArgument1,
                                        Lexique_galgasScanner_34_ * inCompiler) ;
-
-//--- Start symbol
-  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
-                                                  GGS_lstring inFileName,
-                                                  GGS_galgasDeclarationAST & ioArgument0,
-                                                  GGS_semanticExpressionAST & outArgument1
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
-                                                    GGS_string inSourceString,
-                                                    GGS_string inNameString,
-                                                    GGS_galgasDeclarationAST & ioArgument0,
-                                                    GGS_semanticExpressionAST & outArgument1
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Indexing
-  public: static void performIndexing (Compiler * inCompiler,
-                                       const String & inSourceFilePath) ;
-
-//--- Only lexical analysis
-  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
-                                                  const String & inSourceFilePath) ;
-
-//--- Only syntax analysis
-  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
-                                                 const String & inSourceFilePath) ;
 
 //------------------------------------- 'expression_and' non terminal
 //--- indexing
@@ -1752,6 +2000,50 @@ class cGrammar_newTemplateGrammar : public cParser_galgas_34_ExpressionSyntax,
                                                                             GGS_semanticExpressionAST & outArgument2,
                                                                             Lexique_galgasScanner_34_ * inCompiler) ;
 
+//------------------------------------- 'template_instruction' non terminal
+//--- indexing
+  public: virtual void nt_template_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_template_5F_instruction_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                    GGS_templateAbstractInstructionAST & outArgument1,
+                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//------------------------------------- 'template_instruction_list' non terminal
+//--- indexing
+  public: virtual void nt_template_5F_instruction_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_template_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                            GGS__5B_templateAbstractInstructionAST_5D_ & outArgument1,
+                                                            Lexique_galgasScanner_34_ * inCompiler) ;
+
+//--- Start symbol
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
+                                                  GGS_lstring inFileName,
+                                                  GGS_galgasDeclarationAST & ioArgument0,
+                                                  GGS__5B_templateAbstractInstructionAST_5D_ & outArgument1
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
+                                                    GGS_string inSourceString,
+                                                    GGS_string inNameString,
+                                                    GGS_galgasDeclarationAST & ioArgument0,
+                                                    GGS__5B_templateAbstractInstructionAST_5D_ & outArgument1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Indexing
+  public: static void performIndexing (Compiler * inCompiler,
+                                       const String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
+                                                  const String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
+                                                 const String & inSourceFilePath) ;
+
 //------------------------------------- 'term' non terminal
 //--- indexing
   public: virtual void nt_term_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
@@ -1827,6 +2119,265 @@ class cGrammar_newTemplateGrammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_3 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_TypeDefinitionSyntax_4 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgasTemplateInstructionSyntax_0 (Lexique_galgasScanner_34_ *) ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedNonTerminalSymbolForGrammarAnalysis struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mNonTerminalSymbol ;
+  public: inline GGS_lstring readProperty_mNonTerminalSymbol (void) const {
+    return mProperty_mNonTerminalSymbol ;
+  }
+
+  public: GGS_u_33__32_ mProperty_mNonTerminalIndex ;
+  public: inline GGS_u_33__32_ readProperty_mNonTerminalIndex (void) const {
+    return mProperty_mNonTerminalIndex ;
+  }
+
+  public: GGS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
+  public: inline GGS_nonterminalSymbolLabelMapForGrammarAnalysis readProperty_mNonterminalSymbolParametersMap (void) const {
+    return mProperty_mNonterminalSymbolParametersMap ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMNonTerminalSymbol (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalSymbol = inValue ;
+  }
+
+  public: inline void setter_setMNonTerminalIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalIndex = inValue ;
+  }
+
+  public: inline void setter_setMNonterminalSymbolParametersMap (const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonterminalSymbolParametersMap = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
+                                                         const GGS_u_33__32_ & in_mNonTerminalIndex,
+                                                         const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis & operator = (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedNonTerminalSymbolForGrammarAnalysis init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                 const class GGS_u_33__32_ & inOperand1,
+                                                                                 const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedNonTerminalSymbolForGrammarAnalysis ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: nonTerminalSymbolSortedArrayForGrammarAnalysis array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis init (Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis add_operation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_sortedNonTerminalSymbolForGrammarAnalysis constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                              class GGS_u_33__32_ constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_first (Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_last (Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                                   const class GGS_u_33__32_ & constinOperand1,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+  friend class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
