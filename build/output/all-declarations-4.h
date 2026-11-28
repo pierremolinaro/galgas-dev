@@ -1957,7 +1957,7 @@ extern const DirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
 extern const DirectoryWrapper gWrapperDirectory_8_typeDumpGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @typeDumpGenerationTemplate
+// Phase 1: filewrapper @ + typeDumpGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeDumpGenerationTemplate final {
@@ -4390,7 +4390,7 @@ extern const DirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrap
 extern const DirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @xcodeProjectGenerationFilewrapper
+// Phase 1: filewrapper @ + xcodeProjectGenerationFilewrapper
 //--------------------------------------------------------------------------------------------------
 
 class GGS_xcodeProjectGenerationFilewrapper final {

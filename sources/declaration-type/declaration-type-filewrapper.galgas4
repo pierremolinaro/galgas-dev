@@ -657,12 +657,12 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_generation" {
 
-  template filewrapperTypeHeader1 : "GALGAS-filewrapper.h1.galgasTemplate" (
-    ?@string TYPE_NAME,
-    ?@string TYPE_IDENTIFIER
-  )
+//  template filewrapperTypeHeader1 : "GALGAS-filewrapper.h1.galgasTemplate" (
+//    ?@string TYPE_NAME,
+//    ?@string TYPE_IDENTIFIER
+//  )
 
-  #template filewrapperTypeHeader1_BIS : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
+  #template filewrapperTypeHeader1 : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
   )

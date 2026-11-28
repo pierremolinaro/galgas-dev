@@ -1362,24 +1362,24 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-proc templateInstructionListAnalysisEx
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  let [@templateInstructionAST_EX] inInstructionList,
-  ?![@templateInstructionForGeneration] ioInstructionList
-) {
-  for instruction in inInstructionList do
-    instruction.templateInstructionAnalysis
-      (inUsefulnessCallerEntityName,
-      !?ioUsefulEntitiesGraph,
-      inAnalysisContext,
-      !?ioTypeMap,
-      !?ioInstructionList
-    )
-  end
-}
+//proc templateInstructionListAnalysisEx
+//  (let @lstring inUsefulnessCallerEntityName,
+//  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+//  let @templateAnalysisContext inAnalysisContext,
+//  ?!@unifiedTypeMap ioTypeMap,
+//  let [@templateInstructionAST_EX] inInstructionList,
+//  ?![@templateInstructionForGeneration] ioInstructionList
+//) {
+//  for instruction in inInstructionList do
+//    instruction.templateInstructionAnalysis
+//      (inUsefulnessCallerEntityName,
+//      !?ioUsefulEntitiesGraph,
+//      inAnalysisContext,
+//      !?ioTypeMap,
+//      !?ioInstructionList
+//    )
+//  end
+//}
 
 //--------------------------------------------------------------------------------------------------
 

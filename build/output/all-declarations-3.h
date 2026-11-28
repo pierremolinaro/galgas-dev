@@ -870,7 +870,7 @@ extern const RegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
 extern const DirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @typeGenerationTemplate
+// Phase 1: filewrapper @ + typeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_typeGenerationTemplate final {
@@ -938,7 +938,7 @@ class GGS_typeGenerationTemplate final {
 extern const DirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @semanticComponentGenerationTemplate
+// Phase 1: filewrapper @ + semanticComponentGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticComponentGenerationTemplate final {
@@ -1328,7 +1328,7 @@ class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGenerat
 extern const DirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @semanticFileGenerationTemplate
+// Phase 1: filewrapper @ + semanticFileGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_semanticFileGenerationTemplate final {
@@ -4823,7 +4823,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 extern const DirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @grammarRulesInTexDocumentTemplate
+// Phase 1: filewrapper @ + grammarRulesInTexDocumentTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarRulesInTexDocumentTemplate final {

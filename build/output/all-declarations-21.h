@@ -30,21 +30,6 @@ void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'templateInstructionListAnalysisEx?&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_templateInstructionListAnalysisEx_3F__26__3F__26__3F__26_ (const class GGS_lstring constinArgument0,
-                                                                        class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                        const class GGS_templateAnalysisContext constinArgument2,
-                                                                        class GGS_unifiedTypeMap & ioArgument3,
-                                                                        const class GGS__5B_templateInstructionAST_5F_EX_5D_ constinArgument4,
-                                                                        class GGS__5B_templateInstructionForGeneration_5D_ & ioArgument5,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'analyzeConstructorInvocation?&??&&???!!!!!'
 //
 //--------------------------------------------------------------------------------------------------

@@ -23,14 +23,14 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-indexing grammar newTemplateGrammar "SLR" #template "\\(" ... "/)" {
+indexing grammar newTemplateGrammar "SLR" #template "#(" ... ")#" {
   syntax galgas4ExpressionSyntax
   syntax galgas4TypeDefinitionSyntax
   syntax galgasTemplateInstructionSyntax
 
-  #templateReplacement "\\n" -> "\n"
+//  #templateReplacement "\\n" -> "\n"
 
-  #templateReplacement "\\\\" -> "\\"
+  #templateReplacement "##" -> "#"
 
   #unused <actual_parameter_list_with_parenthesis>
 

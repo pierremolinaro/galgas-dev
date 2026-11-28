@@ -5843,47 +5843,35 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i33_indexing (Le
 //  Grammar newTemplateGrammar: Unicode strings
 //--------------------------------------------------------------------------------------------------
 
-//--- Unicode string for '$\n$'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__A_ = {
-  utf32 (10),
+//--- Unicode string for '$#$'
+static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__23_ = {
+  utf32 ('#'),
 } ;
 
-//--- Unicode string for '$/)$'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__2F__29_ = {
-  utf32 ('/'),
-  utf32 (')'),
+//--- Unicode string for '$##$'
+static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__23__23_ = {
+  utf32 ('#'),
+  utf32 ('#'),
 } ;
 
-//--- Unicode string for '$\\$'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__5C_ = {
-  utf32 ('\\'),
-} ;
-
-//--- Unicode string for '$\\($'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__5C__28_ = {
-  utf32 ('\\'),
+//--- Unicode string for '$#($'
+static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__23__28_ = {
+  utf32 ('#'),
   utf32 ('('),
 } ;
 
-//--- Unicode string for '$\\\\$'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__5C__5C_ = {
-  utf32 ('\\'),
-  utf32 ('\\'),
-} ;
-
-//--- Unicode string for '$\\n$'
-static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__5C_n = {
-  utf32 ('\\'),
-  utf32 ('n'),
+//--- Unicode string for '$)#$'
+static const std::initializer_list <utf32> kUnicodeString_newTemplateGrammar__29__23_ = {
+  utf32 (')'),
+  utf32 ('#'),
 } ;
 
 //--------------------------------------------------------------------------------------------------
 //   Grammar newTemplateGrammar: template Replacements
 //--------------------------------------------------------------------------------------------------
 
-static const TemplateDelimiter newTemplateGrammar_kTemplateReplacementArray [2] = {
-  TemplateDelimiter (kUnicodeString_newTemplateGrammar__5C_n, 2, kUnicodeString_newTemplateGrammar__A_, 1, nullptr, true),
-  TemplateDelimiter (kUnicodeString_newTemplateGrammar__5C__5C_, 2, kUnicodeString_newTemplateGrammar__5C_, 1, nullptr, true)
+static const TemplateDelimiter newTemplateGrammar_kTemplateReplacementArray [1] = {
+  TemplateDelimiter (kUnicodeString_newTemplateGrammar__23__23_, 2, kUnicodeString_newTemplateGrammar__23_, 1, nullptr, true)
 } ;
 //--------------------------------------------------------------------------------------------------
 //
@@ -12861,7 +12849,7 @@ void cGrammar_newTemplateGrammar::nt_template_5F_instruction_5F_list_ (GGS_galga
 void cGrammar_newTemplateGrammar::performIndexing (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__23__28_, kUnicodeString_newTemplateGrammar__29__23_, newTemplateGrammar_kTemplateReplacementArray, 1 COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
@@ -12879,7 +12867,7 @@ void cGrammar_newTemplateGrammar::performIndexing (Compiler * inCompiler,
 void cGrammar_newTemplateGrammar::performOnlyLexicalAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__23__28_, kUnicodeString_newTemplateGrammar__29__23_, newTemplateGrammar_kTemplateReplacementArray, 1 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
@@ -12889,7 +12877,7 @@ void cGrammar_newTemplateGrammar::performOnlyLexicalAnalysis (Compiler * inCompi
 void cGrammar_newTemplateGrammar::performOnlySyntaxAnalysis (Compiler * inCompiler,
              const String & inSourceFilePath) {
   Lexique_galgasScanner_34_ * scanner = nullptr ;
-  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+  macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, inSourceFilePath, kUnicodeString_newTemplateGrammar__23__28_, kUnicodeString_newTemplateGrammar__29__23_, newTemplateGrammar_kTemplateReplacementArray, 1 COMMA_HERE)) ;
   if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                      gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,
@@ -12917,7 +12905,7 @@ void cGrammar_newTemplateGrammar::_performSourceFileParsing_ (Compiler * inCompi
     }
     if (FileManager::fileExistsAtPath (filePath)) {
       Lexique_galgasScanner_34_ * scanner = nullptr ;
-      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+      macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, filePath, kUnicodeString_newTemplateGrammar__23__28_, kUnicodeString_newTemplateGrammar__29__23_, newTemplateGrammar_kTemplateReplacementArray, 1 COMMA_HERE)) ;
       if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                                          gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,
@@ -12958,7 +12946,7 @@ void cGrammar_newTemplateGrammar::_performSourceStringParsing_ (Compiler * inCom
     const String sourceString = inSourceString.stringValue () ;
     const String nameString = inNameString.stringValue () ;
     Lexique_galgasScanner_34_ * scanner = nullptr ;
-    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, kUnicodeString_newTemplateGrammar__5C__28_, kUnicodeString_newTemplateGrammar__2F__29_, newTemplateGrammar_kTemplateReplacementArray, 2 COMMA_HERE)) ;
+    macroMyNew (scanner, Lexique_galgasScanner_34_ (inCompiler, sourceString, nameString, kUnicodeString_newTemplateGrammar__23__28_, kUnicodeString_newTemplateGrammar__29__23_, newTemplateGrammar_kTemplateReplacementArray, 1 COMMA_HERE)) ;
     if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_newTemplateGrammar, gNonTerminalNames_newTemplateGrammar,
                                                        gActionTableIndex_newTemplateGrammar, gSuccessorTable_newTemplateGrammar,

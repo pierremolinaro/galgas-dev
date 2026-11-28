@@ -1164,7 +1164,7 @@ class cPtr_arrayTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @arrayTypeGenerationTemplate
+// Phase 1: filewrapper @ + arrayTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_arrayTypeGenerationTemplate final {
@@ -1464,7 +1464,7 @@ class cPtr_dictionaryTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_dictionaryGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @dictionaryGenerationTemplate
+// Phase 1: filewrapper @ + dictionaryGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_dictionaryGenerationTemplate final {
@@ -1858,7 +1858,7 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @structureGenerationTemplate
+// Phase 1: filewrapper @ + structureGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_structureGenerationTemplate final {
@@ -3636,7 +3636,7 @@ class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @enumGenerationTemplate
+// Phase 1: filewrapper @ + enumGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_enumGenerationTemplate final {
@@ -3933,7 +3933,7 @@ class cPtr_optionSetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @structGenerationTemplate
+// Phase 1: filewrapper @ + structGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_structGenerationTemplate final {
@@ -4498,7 +4498,7 @@ class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration
 extern const DirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @graphGenerationTemplate
+// Phase 1: filewrapper @ + graphGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_graphGenerationTemplate final {
@@ -4792,7 +4792,7 @@ class cPtr_optionalTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @optionalTypeGenerationTemplate
+// Phase 1: filewrapper @ + optionalTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_optionalTypeGenerationTemplate final {
@@ -6763,7 +6763,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @mapGenerationTemplate
+// Phase 1: filewrapper @ + mapGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_mapGenerationTemplate final {
