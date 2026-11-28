@@ -37,41 +37,6 @@ final class @castInExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                         !@semanticExpressionAST outExpression ) {
-//    <expression_or_ggs3> (!?ioDeclarations, ?outExpression)
-//    select
-//    or
-//      let endOfReceiverExpression = @location.here
-//      $is$
-//      $@type$ (?let typeName)
-//      outExpression = @testDynamicClassInExpressionAST (
-//        !outExpression,
-//        endOfReceiverExpression,
-//        typeName
-//      )
-//    or
-//      let endOfReceiverExpression = @location.here
-//      $as$
-//      $@type$ (?let typeName)
-//      outExpression = @castInExpressionAST (
-//        !outExpression,
-//        endOfReceiverExpression,
-//        typeName
-//      )
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,6 +65,114 @@ syntax extension galgas4ExpressionSyntax {
       )
     end
   }
+
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
+//                                     ![@CommaSeparatedExpressionElement] outExpressionList) {
+//    outExpressionList = @()
+//    repeat
+//      select
+//        let @lstring varName
+//        let @bool isConstant
+//        select
+//          $var$
+//          $identifier$ (?varName)
+//          isConstant = false
+//        or
+//          $let$
+//          isConstant = true
+//          select
+//            $identifier$ (?varName)
+//           or
+//             $*$
+//             varName = "".here
+//          end
+//        end
+//        $=$
+//        <expression_or> (!?ioDeclarations, ?let expression)
+//        let endOfReceiverExpression = @location.here
+//        select
+//          outExpressionList ++= @(.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: "".here
+//          ))
+//        or
+//          $as$
+//          <type_definition> (!?ioDeclarations, ?let typeName)
+//          outExpressionList ++= @(.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: typeName
+//          ))
+//        end
+//      or
+//        <expression> (!?ioDeclarations, ?let expression)
+//        outExpressionList ++= @(.regularExp (!exp: expression, !endOfExp: .here))
+//      end
+//    while
+//      $,$
+//    end
+//  }
+
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
+//                                     ![@CommaSeparatedExpressionElement] outExpressionList) {
+//    outExpressionList = @()
+//    repeat
+//      select
+//        let @lstring varName
+//        let @bool isConstant
+//        select
+//          $var$
+//          $identifier$ (?varName)
+//          isConstant = false
+//        or
+//          $let$
+//          isConstant = true
+//          select
+//            $identifier$ (?varName)
+//           or
+//             $*$
+//             varName = "".here
+//          end
+//        end
+//        $=$
+//        <expression_or> (!?ioDeclarations, ?let expression)
+//        let endOfReceiverExpression = @location.here
+//        select
+//          outExpressionList ++= @(.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: "".here
+//          ))
+//        or
+//          $as$
+//          <type_definition> (!?ioDeclarations, ?let typeName)
+//          outExpressionList ++= @(.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: typeName
+//          ))
+//        end
+//      or
+//        <expression> (!?ioDeclarations, ?let expression)
+//        outExpressionList ++= @(.regularExp (!exp: expression, !endOfExp: .here))
+//      end
+//    while
+//      $,$
+//    end
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

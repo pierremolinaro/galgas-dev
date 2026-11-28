@@ -23,12 +23,6 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-final class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
-  private let @string mTemplateString
-}
-
-//--------------------------------------------------------------------------------------------------
-
 final class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   private let @semanticExpressionForGeneration mExpression
   private let @location mLocation

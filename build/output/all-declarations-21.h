@@ -30,6 +30,23 @@ void routine_projectCreation_3F_ (const class GGS_string constinArgument0,
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'analyzeTemplateInstructionListWithoutBranch?&?&?localConstantList?&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_analyzeTemplateInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F__26__21_ (const class GGS_lstring constinArgument0,
+                                                                                                           class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                                           const class GGS_analysisContext constinArgument2,
+                                                                                                           class GGS_unifiedTypeMap & ioArgument3,
+                                                                                                           const class GGS__5B_localConstant_5D_ constinArgument4,
+                                                                                                           const class GGS__5B_templateAbstractInstructionAST_5D_ constinArgument5,
+                                                                                                           class GGS_localVarManager & ioArgument6,
+                                                                                                           class GGS__5B_templateInstructionForGeneration_5D_ & outArgument7,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeConstructorInvocation?&??&&???!!!!!'
 //
 //--------------------------------------------------------------------------------------------------

@@ -1,2032 +1,5 @@
 #include "all-declarations-8.h"
 //--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (void) :
-mProperty_mSyntaxComponentName (),
-mProperty_mImportedLexiqueFilePath (),
-mProperty_mNonterminalDeclarationList (),
-mProperty_mRuleList (),
-mProperty_mHasTranslateFeature () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_syntaxComponentAST & inSource) :
-mProperty_mSyntaxComponentName (inSource.mProperty_mSyntaxComponentName),
-mProperty_mImportedLexiqueFilePath (inSource.mProperty_mImportedLexiqueFilePath),
-mProperty_mNonterminalDeclarationList (inSource.mProperty_mNonterminalDeclarationList),
-mProperty_mRuleList (inSource.mProperty_mRuleList),
-mProperty_mHasTranslateFeature (inSource.mProperty_mHasTranslateFeature) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST & GGS_syntaxComponentAST::operator = (const GGS_syntaxComponentAST & inSource) {
-  mProperty_mSyntaxComponentName = inSource.mProperty_mSyntaxComponentName ;
-  mProperty_mImportedLexiqueFilePath = inSource.mProperty_mImportedLexiqueFilePath ;
-  mProperty_mNonterminalDeclarationList = inSource.mProperty_mNonterminalDeclarationList ;
-  mProperty_mRuleList = inSource.mProperty_mRuleList ;
-  mProperty_mHasTranslateFeature = inSource.mProperty_mHasTranslateFeature ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_syntaxComponentAST GGS_syntaxComponentAST::init_21__21__21__21__21_ (const GGS_lstring & in_mSyntaxComponentName,
-                                                                         const GGS_lstring & in_mImportedLexiqueFilePath,
-                                                                         const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
-                                                                         const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
-                                                                         const GGS_bool & in_mHasTranslateFeature,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_syntaxComponentAST result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
-  result.mProperty_mImportedLexiqueFilePath = in_mImportedLexiqueFilePath ;
-  result.mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
-  result.mProperty_mRuleList = in_mRuleList ;
-  result.mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentAST::GGS_syntaxComponentAST (const GGS_lstring & inOperand0,
-                                                const GGS_lstring & inOperand1,
-                                                const GGS__5B_nonterminalDeclarationAST_5D_ & inOperand2,
-                                                const GGS__5B_syntaxRuleAST_5D_ & inOperand3,
-                                                const GGS_bool & inOperand4) :
-mProperty_mSyntaxComponentName (inOperand0),
-mProperty_mImportedLexiqueFilePath (inOperand1),
-mProperty_mNonterminalDeclarationList (inOperand2),
-mProperty_mRuleList (inOperand3),
-mProperty_mHasTranslateFeature (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxComponentAST::isValid (void) const {
-  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::drop (void) {
-  mProperty_mSyntaxComponentName.drop () ;
-  mProperty_mImportedLexiqueFilePath.drop () ;
-  mProperty_mNonterminalDeclarationList.drop () ;
-  mProperty_mRuleList.drop () ;
-  mProperty_mHasTranslateFeature.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentAST::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @syntaxComponentAST:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mRuleList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxComponentAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentAST ("syntaxComponentAST",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxComponentAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument__5F_inPosfix */,
-                                                                          GGS__5B_semanticInstructionForGeneration_5D_ & /* ioArgument__5F_ioInstructionListForGeneration */,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_appendSyntaxSignature (cPtr_semanticInstructionForGeneration * inObject,
-                                                const GGS_string constin__5F_inPosfix,
-                                                GGS__5B_semanticInstructionForGeneration_5D_ & io__5F_ioInstructionListForGeneration,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  if (nullptr != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
-    inObject->method_appendSyntaxSignature (constin__5F_inPosfix, io__5F_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@semanticInstructionForGeneration compareInstructionSyntaxSignature'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration /* constinArgument__5F_inTestedInstruction */,
-                                                                                          Compiler */* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ; // Returned variable
-  result = GGS_bool (true) ;
-//---
-  return result ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                const GGS_semanticInstructionForGeneration in__5F_inTestedInstruction,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_bool result ;
-  if (nullptr != inObject) {
-    result = inObject->getter_compareInstructionSyntaxSignature (in__5F_inTestedInstruction, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Filewrapper 'projectCreationFileWrapper'
-//--------------------------------------------------------------------------------------------------
-
-//--- All files of 'helpers' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const DirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper (
-  "helpers",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_2,
-  0,
-  gWrapperAllDirectories_projectCreationFileWrapper_2
-) ;
-
-//--- All files of 'build' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_1 [2] = {
-  & gWrapperDirectory_2_projectCreationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const DirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper (
-  "build",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_1,
-  1,
-  gWrapperAllDirectories_projectCreationFileWrapper_1
-) ;
-
-//--- All files of '' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_projectCreationFileWrapper_0 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of '' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_projectCreationFileWrapper_0 [2] = {
-  & gWrapperDirectory_1_projectCreationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory ''
-
-const DirectoryWrapper gWrapperDirectory_0_projectCreationFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_projectCreationFileWrapper_0,
-  1,
-  gWrapperAllDirectories_projectCreationFileWrapper_0
-) ;
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper GGS_projectCreationFileWrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
-  return GGS_filewrapper (gWrapperDirectory_0_projectCreationFileWrapper) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_project
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#productName : ") ;
-  result.appendString (in_PROJECT_5F_NAME.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("+PROJECT.galgas4project.galgasTemplate", 1)).stringValue ()) ;
-  result.appendString ("\n#version : 0.0.1\n\n#makefile-unix\n#makefile-macosx\n#makefile-x86linux32-on-macosx\n#makefile-x86linux64-on-macosx\n#makefile-arm64-linux-on-macosx\n#makefile-win32-on-macosx\n\n#codeblocks-windows\n#codeblocks-linux32\n#codeblocks-linux64\n\n#macSwiftApp\n#macAppBundleBaseName : \"fr.unknown\"\n\n#lexical-style keywordsStyle : \"Keywords\"\n#lexical-style integerStyle : \"Integer Constants\"\n#lexical-style stringStyle : \"String Constants\"\n#lexical-style delimitersStyle : \"Delimiters\"\n#lexical-style commentStyle : \"Comments\"\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_cocoa
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GGS_string & in_PROJECT_5F_NAME,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("gui cocoa {\n\n  with lexique ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n    fileExtension: \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\"\n    title: \"Source\"\n    blockComment : \"#\"\n  }\n\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_grammar
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("grammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar \"LL1\" {\n  syntax ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_syntax\n  <start_symbol> ()\n}\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_lexique
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("lexique ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Identifiers and keywords\n//-----------------------------------------------------------------------------------------------------------------------\n\n@string tokenString\n\n$identifier$ ! tokenString #errorMessage \"an identifier\"\n\n//--- This is the keyword list\nlist keyWordList style keywordsStyle #errorMessage \"the '%K' keyword\" {\n  \"begin\",\n  \"end\"\n}\n\nrule 'a'->'z' |  'A'->'Z' {\n  repeat\n    enterCharacterIntoString (!\?tokenString !*)\n  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :\n  end\n  send #searchString tokenString in keyWordList default $identifier$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal decimal integers\n//-----------------------------------------------------------------------------------------------------------------------\n\n@u32 uint32value\n$integer$ !uint32value style integerStyle #errorMessage \"a 32-bit unsigned decimal number\"\n\n#errorMessage decimalNumberTooLarge : \"decimal number too large\"\n#errorMessage internalError : \"internal error\"\n\nrule '0'->'9' {\n  enterCharacterIntoString (!\?tokenString !*)\n  repeat\n  while '0'->'9' :\n    enterCharacterIntoString (!\?tokenString !*)\n  while '_' :\n  end\n  convertDecimalStringIntoUInt (!tokenString !\?uint32value error decimalNumberTooLarge, internalError)\n  send $integer$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Literal character strings\n//-----------------------------------------------------------------------------------------------------------------------\n\n$\"string\"$ ! tokenString style stringStyle #nonAtomicSelection #errorMessage \"a character string constant \\\"...\\\"\"\n\n\n#errorMessage incorrectStringEnd : \"string does not end with '\\\"'\"\n\nrule '\"' {\n  repeat\n   while ' ' | '!' | '#'-> '\\uFFFD' :\n    enterCharacterIntoString (!\?tokenString !*)\n  end\n  select\n  case '\"' :\n    send $\"string\"$\n  default\n    error incorrectStringEnd\n  end\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Delimiters\n//-----------------------------------------------------------------------------------------------------------------------\n\nlist delimitorsList style delimitersStyle #errorMessage \"the '%K' delimitor\" {\n  \":\",    \",\",    \";\",   \"!\",  \"{\",  \"}\", \"->\", \"@\", \"*\", \"-\"\n}\n\nrule list delimitorsList\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Comments\n//-----------------------------------------------------------------------------------------------------------------------\n\n$comment$ style commentStyle #nonAtomicSelection #errorMessage \"a comment\"\nrule \"//\" {\n  repeat\n  while '\\u0001' -> '\\u0009' | '\\u000B' | '\\u000C' | '\\u000E' -> '\\uFFFD' :\n  end\n  drop $comment$\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n//   Separators\n//-----------------------------------------------------------------------------------------------------------------------\n\nrule '\\u0001' -> ' ' {\n}\n\n//-----------------------------------------------------------------------------------------------------------------------\n\n}\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_program
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const GGS_string & in_PROJECT_5F_NAME,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--- Prologue routine\nbefore {\n}\n\n//--- 'when' clauses\ncase . \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\"\nmessage \"a source text file with the .") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString (" extension\"\ngrammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar\n\?sourceFilePath:@lstring inSourceFile {\n  grammar ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_grammar () in inSourceFile\n}\n\n//--- Epilogue routine\nafter {\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_semantics
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("\n// ADD YOUR CODE\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper  PROJECT_syntax
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_syntax (const GGS_string & in_PROJECT_5F_NAME,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("syntax ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_syntax : ") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("_lexique {\n\nrule <start_symbol> () {\n  // ADD YOUR SYNTAX INSTRUCTIONS\n}\n\n// ADD OTHER RULES\n\n}\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@location sourceFile'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_sourceFile (const GGS_location & inObject,
-                                       Compiler * inCompiler
-                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_location temp_1 = inObject ;
-    test_0 = temp_1.getter_isNowhere (SOURCE_FILE ("semanticContext.galgas4", 26)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      result = GGS_string ("SOURCE_FILE (\"\", 0)") ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    const GGS_location temp_2 = inObject ;
-    const GGS_location temp_3 = inObject ;
-    result = GGS_string ("SOURCE_FILE (").add_operation (temp_2.getter_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)).getter_lastPathComponent (SOURCE_FILE ("semanticContext.galgas4", 29)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("semanticContext.galgas4", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)).add_operation (temp_3.getter_startLine (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)).getter_string (SOURCE_FILE ("semanticContext.galgas4", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)).add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 29)) ;
-  }
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@location commaSourceFile'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_commaSourceFile (const GGS_location & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result ; // Returned variable
-  const GGS_location temp_0 = inObject ;
-  result = GGS_string (" COMMA_").add_operation (extensionGetter_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 36)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 36)) ;
-//---
-  return result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@[semanticInstructionAST] enterInstructionListInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_enterInstructionListInSemanticContext (const GGS__5B_semanticInstructionAST_5D_ inObject,
-                                                            GGS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                            Compiler * inCompiler
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS__5B_semanticInstructionAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_semanticInstructionAST_5D_ enumerator_2416 (temp_0) ;
-  while (enumerator_2416.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((cPtr_semanticInstructionAST *) enumerator_2416.current (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 53)) ;
-    enumerator_2416.gotoNextObject () ;
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @grammarLabelMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap::GGS_grammarLabelMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap::~ GGS_grammarLabelMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap::GGS_grammarLabelMap (const GGS_grammarLabelMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap & GGS_grammarLabelMap::operator = (const GGS_grammarLabelMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap GGS_grammarLabelMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_grammarLabelMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarLabelMap::getter_contains (const GGS_string & inKey
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarLabelMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                    const GGS_u_33__32_ & inLevel
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_grammarLabelMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_grammarLabelMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_grammarLabelMap::getter_locationForKey (const GGS_string & inKey,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_grammarLabelMap::getter_keyList (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid ()) {
-    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_grammarLabelMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_grammarLabelMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::performInsert (const GGS_grammarLabelMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_grammarLabelMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>
-GGS_grammarLabelMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_grammarLabelMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>>
-GGS_grammarLabelMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_grammarLabelMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap_2E_element_3F_ GGS_grammarLabelMap::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_grammarLabelMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_grammarLabelMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_grammarLabelMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mLabelSignature = info->mProperty_mLabelSignature ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap GGS_grammarLabelMap::class_func_mapWithMapToOverride (const GGS_grammarLabelMap & inMapToOverride
-                                                                          COMMA_LOCATION_ARGS) {
-  GGS_grammarLabelMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_grammarLabelMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap GGS_grammarLabelMap::getter_overriddenMap (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_grammarLabelMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::setter_insertKey (GGS_lstring inLKey,
-                                            GGS__5B_formalParameterSignatureElement_5D_ inArgument0,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  const GGS_grammarLabelMap_2E_element element (inLKey, inArgument0) ;
-  const char * kInsertErrorMessage = "the '%K' grammar label has been already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::method_searchKey (GGS_lstring inLKey,
-                                            GGS__5B_formalParameterSignatureElement_5D_ & outArgument0,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' grammar label is not declared" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mLabelSignature ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterSignatureElement_5D_ GGS_grammarLabelMap::getter_mLabelSignatureForKey (const GGS_string & inKey,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS__5B_formalParameterSignatureElement_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mLabelSignature ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::setter_setMLabelSignatureForKey (GGS__5B_formalParameterSignatureElement_5D_ inValue,
-                                                           GGS_string inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_grammarLabelMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mLabelSignature = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_grammarLabelMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mLabelSignature:") ;
-    inArray (i COMMA_HERE)->mProperty_mLabelSignature.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarLabelMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @grammarLabelMap") ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarLabelMap_2E_element>> array = sortedInfoArray () ;
-    GGS_grammarLabelMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_grammarLabelMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_grammarLabelMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @grammarLabelMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_grammarLabelMap::DownEnumerator_grammarLabelMap (const GGS_grammarLabelMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap_2E_element DownEnumerator_grammarLabelMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_grammarLabelMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterSignatureElement_5D_ DownEnumerator_grammarLabelMap::current_mLabelSignature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelSignature ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @grammarLabelMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_grammarLabelMap::UpEnumerator_grammarLabelMap (const GGS_grammarLabelMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap_2E_element UpEnumerator_grammarLabelMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_grammarLabelMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_formalParameterSignatureElement_5D_ UpEnumerator_grammarLabelMap::current_mLabelSignature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelSignature ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @grammarLabelMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarLabelMap ("grammarLabelMap",
-                                                                    nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_grammarLabelMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarLabelMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @grammarMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap::GGS_grammarMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap::~ GGS_grammarMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap::GGS_grammarMap (const GGS_grammarMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap & GGS_grammarMap::operator = (const GGS_grammarMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap GGS_grammarMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_grammarMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarMap::getter_contains (const GGS_string & inKey
-                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                               const GGS_u_33__32_ & inLevel
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_grammarMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_grammarMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_grammarMap::getter_locationForKey (const GGS_string & inKey,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_grammarMap::getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid ()) {
-    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_grammarMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_grammarMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::performInsert (const GGS_grammarMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_grammarMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>
-GGS_grammarMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_grammarMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>>
-GGS_grammarMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_grammarMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap_2E_element_3F_ GGS_grammarMap::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_grammarMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_grammarMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_grammarMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mLabelMap = info->mProperty_mLabelMap ;
-      element.mProperty_mHasIndexing = info->mProperty_mHasIndexing ;
-      element.mProperty_mHasTranslateFeature = info->mProperty_mHasTranslateFeature ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap GGS_grammarMap::class_func_mapWithMapToOverride (const GGS_grammarMap & inMapToOverride
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_grammarMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_grammarMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap GGS_grammarMap::getter_overriddenMap (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  GGS_grammarMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::setter_insertGrammar (GGS_lstring inLKey,
-                                           GGS_grammarLabelMap inArgument0,
-                                           GGS_bool inArgument1,
-                                           GGS_bool inArgument2,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  const GGS_grammarMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "the '%K' grammar has been already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::method_searchKey (GGS_lstring inLKey,
-                                       GGS_grammarLabelMap & outArgument0,
-                                       GGS_bool & outArgument1,
-                                       GGS_bool & outArgument2,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' grammar is not declared" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mLabelMap ;
-    outArgument1 = info->mProperty_mHasIndexing ;
-    outArgument2 = info->mProperty_mHasTranslateFeature ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap GGS_grammarMap::getter_mLabelMapForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_grammarLabelMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mLabelMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarMap::getter_mHasIndexingForKey (const GGS_string & inKey,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mHasIndexing ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_grammarMap::getter_mHasTranslateFeatureForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mHasTranslateFeature ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::setter_setMLabelMapForKey (GGS_grammarLabelMap inValue,
-                                                GGS_string inKey,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_grammarMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mLabelMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::setter_setMHasIndexingForKey (GGS_bool inValue,
-                                                   GGS_string inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_grammarMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mHasIndexing = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::setter_setMHasTranslateFeatureForKey (GGS_bool inValue,
-                                                           GGS_string inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_grammarMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mHasTranslateFeature = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_grammarMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mLabelMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mLabelMap.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mHasIndexing:") ;
-    inArray (i COMMA_HERE)->mProperty_mHasIndexing.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mHasTranslateFeature:") ;
-    inArray (i COMMA_HERE)->mProperty_mHasTranslateFeature.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_grammarMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @grammarMap") ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_grammarMap_2E_element>> array = sortedInfoArray () ;
-    GGS_grammarMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_grammarMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_grammarMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @grammarMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_grammarMap::DownEnumerator_grammarMap (const GGS_grammarMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap_2E_element DownEnumerator_grammarMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_grammarMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap DownEnumerator_grammarMap::current_mLabelMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_grammarMap::current_mHasIndexing (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasIndexing ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_grammarMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasTranslateFeature ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @grammarMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_grammarMap::UpEnumerator_grammarMap (const GGS_grammarMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarMap_2E_element UpEnumerator_grammarMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_grammarMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_grammarLabelMap UpEnumerator_grammarMap::current_mLabelMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_grammarMap::current_mHasIndexing (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasIndexing ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_grammarMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasTranslateFeature ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @grammarMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarMap ("grammarMap",
-                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_grammarMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Map type @functionMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap::GGS_functionMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap::~ GGS_functionMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap::GGS_functionMap (const GGS_functionMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap & GGS_functionMap::operator = (const GGS_functionMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap GGS_functionMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_functionMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_functionMap::getter_contains (const GGS_string & inKey
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_functionMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                const GGS_u_33__32_ & inLevel
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_functionMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_u_33__32_ GGS_functionMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_u_33__32_ result ;
-  if (isValid ()) {
-    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_functionMap::getter_locationForKey (const GGS_string & inKey,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_functionMap::getter_keyList (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid ()) {
-    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_functionMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_functionMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::performInsert (const GGS_functionMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_functionMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>
-GGS_functionMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_functionMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>>
-GGS_functionMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_functionMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap_2E_element_3F_ GGS_functionMap::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_functionMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_functionMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_functionMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mFunctionSignature = info->mProperty_mFunctionSignature ;
-      element.mProperty_mResultType = info->mProperty_mResultType ;
-      element.mProperty_mIsInternal = info->mProperty_mIsInternal ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap GGS_functionMap::class_func_mapWithMapToOverride (const GGS_functionMap & inMapToOverride
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_functionMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_functionMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap GGS_functionMap::getter_overriddenMap (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_functionMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::setter_insertKey (GGS_lstring inLKey,
-                                        GGS__5B_functionSignatureElement_5D_ inArgument0,
-                                        GGS_unifiedTypeMapEntry inArgument1,
-                                        GGS_bool inArgument2,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  const GGS_functionMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2) ;
-  const char * kInsertErrorMessage = "the '%K' function has been already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::method_searchKey (GGS_lstring inLKey,
-                                        GGS__5B_functionSignatureElement_5D_ & outArgument0,
-                                        GGS_unifiedTypeMapEntry & outArgument1,
-                                        GGS_bool & outArgument2,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' function is not declared" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mFunctionSignature ;
-    outArgument1 = info->mProperty_mResultType ;
-    outArgument2 = info->mProperty_mIsInternal ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_functionSignatureElement_5D_ GGS_functionMap::getter_mFunctionSignatureForKey (const GGS_string & inKey,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B_functionSignatureElement_5D_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mFunctionSignature ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_functionMap::getter_mResultTypeForKey (const GGS_string & inKey,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  GGS_unifiedTypeMapEntry result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mResultType ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_functionMap::getter_mIsInternalForKey (const GGS_string & inKey,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mIsInternal ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::setter_setMFunctionSignatureForKey (GGS__5B_functionSignatureElement_5D_ inValue,
-                                                          GGS_string inKey,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_functionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mFunctionSignature = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::setter_setMResultTypeForKey (GGS_unifiedTypeMapEntry inValue,
-                                                   GGS_string inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_functionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mResultType = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::setter_setMIsInternalForKey (GGS_bool inValue,
-                                                   GGS_string inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_functionMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mIsInternal = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_functionMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mFunctionSignature:") ;
-    inArray (i COMMA_HERE)->mProperty_mFunctionSignature.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mResultType:") ;
-    inArray (i COMMA_HERE)->mProperty_mResultType.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mIsInternal:") ;
-    inArray (i COMMA_HERE)->mProperty_mIsInternal.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_functionMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @functionMap") ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element>> array = sortedInfoArray () ;
-    GGS_functionMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_functionMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_functionMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @functionMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_functionMap::DownEnumerator_functionMap (const GGS_functionMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap_2E_element DownEnumerator_functionMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_functionSignatureElement_5D_ DownEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mFunctionSignature ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry DownEnumerator_functionMap::current_mResultType (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mResultType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_functionMap::current_mIsInternal (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsInternal ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @functionMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_functionMap::UpEnumerator_functionMap (const GGS_functionMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_functionMap_2E_element UpEnumerator_functionMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_functionSignatureElement_5D_ UpEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mFunctionSignature ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry UpEnumerator_functionMap::current_mResultType (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mResultType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_functionMap::current_mIsInternal (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mIsInternal ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @functionMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionMap ("functionMap",
-                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_functionMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Map type @lexiqueComponentMapForSemanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
@@ -16881,3 +14854,1354 @@ const GALGAS_TypeDescriptor * GGS__5B_syntaxRuleLabelAST_5D_::staticTypeDescript
   return & kTypeDescriptor_GALGAS__5B_syntaxRuleLabelAST_5D_ ;
 }
 
+//--------------------------------------------------------------------------------------------------
+// @galgas_33_SyntaxComponentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_galgas_33_SyntaxComponentAST::objectCompare (const GGS_galgas_33_SyntaxComponentAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentAST::GGS_galgas_33_SyntaxComponentAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentAST GGS_galgas_33_SyntaxComponentAST::
+init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                          const GGS_lstring & in_mSyntaxComponentName,
+                                          const GGS_lstring & in_mLexiqueName,
+                                          const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                          const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
+                                          const GGS_bool & in_mHasTranslateFeature,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  cPtr_galgas_33_SyntaxComponentAST * object = nullptr ;
+  macroMyNew (object, cPtr_galgas_33_SyntaxComponentAST (inCompiler COMMA_THERE)) ;
+  object->galgas_33_SyntaxComponentAST_init_21_isPredefined_21__21__21__21__21_ (in_isPredefined, in_mSyntaxComponentName, in_mLexiqueName, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature, inCompiler) ;
+  const GGS_galgas_33_SyntaxComponentAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_galgas_33_SyntaxComponentAST::
+galgas_33_SyntaxComponentAST_init_21_isPredefined_21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                       const GGS_lstring & in_mSyntaxComponentName,
+                                                                       const GGS_lstring & in_mLexiqueName,
+                                                                       const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                                                       const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
+                                                                       const GGS_bool & in_mHasTranslateFeature,
+                                                                       Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  mProperty_mLexiqueName = in_mLexiqueName ;
+  mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
+  mProperty_mRuleList = in_mRuleList ;
+  mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgas_33_SyntaxComponentAST::GGS_galgas_33_SyntaxComponentAST (const cPtr_galgas_33_SyntaxComponentAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_galgas_33_SyntaxComponentAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_galgas_33_SyntaxComponentAST::readProperty_mSyntaxComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_galgas_33_SyntaxComponentAST * p = (cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_SyntaxComponentAST) ;
+    return p->mProperty_mSyntaxComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_galgas_33_SyntaxComponentAST::readProperty_mLexiqueName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_galgas_33_SyntaxComponentAST * p = (cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_SyntaxComponentAST) ;
+    return p->mProperty_mLexiqueName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_nonterminalDeclarationAST_5D_ GGS_galgas_33_SyntaxComponentAST::readProperty_mNonterminalDeclarationList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_nonterminalDeclarationAST_5D_ () ;
+  }else{
+    cPtr_galgas_33_SyntaxComponentAST * p = (cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_SyntaxComponentAST) ;
+    return p->mProperty_mNonterminalDeclarationList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_syntaxRuleAST_5D_ GGS_galgas_33_SyntaxComponentAST::readProperty_mRuleList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_syntaxRuleAST_5D_ () ;
+  }else{
+    cPtr_galgas_33_SyntaxComponentAST * p = (cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_SyntaxComponentAST) ;
+    return p->mProperty_mRuleList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_galgas_33_SyntaxComponentAST::readProperty_mHasTranslateFeature (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_galgas_33_SyntaxComponentAST * p = (cPtr_galgas_33_SyntaxComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_galgas_33_SyntaxComponentAST) ;
+    return p->mProperty_mHasTranslateFeature ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @galgas3SyntaxComponentAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_galgas_33_SyntaxComponentAST::cPtr_galgas_33_SyntaxComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mSyntaxComponentName (),
+mProperty_mLexiqueName (),
+mProperty_mNonterminalDeclarationList (),
+mProperty_mRuleList (),
+mProperty_mHasTranslateFeature () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_galgas_33_SyntaxComponentAST::cPtr_galgas_33_SyntaxComponentAST (const GGS_bool & in_isPredefined,
+                                                                      const GGS_lstring & in_mSyntaxComponentName,
+                                                                      const GGS_lstring & in_mLexiqueName,
+                                                                      const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                                                      const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
+                                                                      const GGS_bool & in_mHasTranslateFeature,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mSyntaxComponentName (),
+mProperty_mLexiqueName (),
+mProperty_mNonterminalDeclarationList (),
+mProperty_mRuleList (),
+mProperty_mHasTranslateFeature () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mSyntaxComponentName = in_mSyntaxComponentName ;
+  mProperty_mLexiqueName = in_mLexiqueName ;
+  mProperty_mNonterminalDeclarationList = in_mNonterminalDeclarationList ;
+  mProperty_mRuleList = in_mRuleList ;
+  mProperty_mHasTranslateFeature = in_mHasTranslateFeature ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_galgas_33_SyntaxComponentAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ;
+}
+
+void cPtr_galgas_33_SyntaxComponentAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("[@galgas3SyntaxComponentAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mRuleList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_galgas_33_SyntaxComponentAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_galgas_33_SyntaxComponentAST (mProperty_isPredefined, mProperty_mSyntaxComponentName, mProperty_mLexiqueName, mProperty_mNonterminalDeclarationList, mProperty_mRuleList, mProperty_mHasTranslateFeature, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_galgas_33_SyntaxComponentAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mSyntaxComponentName.printNonNullClassInstanceProperties ("mSyntaxComponentName") ;
+    mProperty_mLexiqueName.printNonNullClassInstanceProperties ("mLexiqueName") ;
+    mProperty_mNonterminalDeclarationList.printNonNullClassInstanceProperties ("mNonterminalDeclarationList") ;
+    mProperty_mRuleList.printNonNullClassInstanceProperties ("mRuleList") ;
+    mProperty_mHasTranslateFeature.printNonNullClassInstanceProperties ("mHasTranslateFeature") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @galgas3SyntaxComponentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ("galgas3SyntaxComponentAST",
+                                                                                 & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_galgas_33_SyntaxComponentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgasDeclarationAST::GGS_galgasDeclarationAST (void) :
+mProperty_mDeclarationList (),
+mProperty_implicitTypeDeclarationSet (),
+mProperty_mSyntaxComponentList (),
+mProperty_mSyntaxExtensions (),
+mProperty_mGUIComponentList (),
+mProperty_mPrologueDeclarationList (),
+mProperty_mSourceRuleList (),
+mProperty_mEpilogueDeclarationList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgasDeclarationAST::GGS_galgasDeclarationAST (const GGS_galgasDeclarationAST & inSource) :
+mProperty_mDeclarationList (inSource.mProperty_mDeclarationList),
+mProperty_implicitTypeDeclarationSet (inSource.mProperty_implicitTypeDeclarationSet),
+mProperty_mSyntaxComponentList (inSource.mProperty_mSyntaxComponentList),
+mProperty_mSyntaxExtensions (inSource.mProperty_mSyntaxExtensions),
+mProperty_mGUIComponentList (inSource.mProperty_mGUIComponentList),
+mProperty_mPrologueDeclarationList (inSource.mProperty_mPrologueDeclarationList),
+mProperty_mSourceRuleList (inSource.mProperty_mSourceRuleList),
+mProperty_mEpilogueDeclarationList (inSource.mProperty_mEpilogueDeclarationList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgasDeclarationAST & GGS_galgasDeclarationAST::operator = (const GGS_galgasDeclarationAST & inSource) {
+  mProperty_mDeclarationList = inSource.mProperty_mDeclarationList ;
+  mProperty_implicitTypeDeclarationSet = inSource.mProperty_implicitTypeDeclarationSet ;
+  mProperty_mSyntaxComponentList = inSource.mProperty_mSyntaxComponentList ;
+  mProperty_mSyntaxExtensions = inSource.mProperty_mSyntaxExtensions ;
+  mProperty_mGUIComponentList = inSource.mProperty_mGUIComponentList ;
+  mProperty_mPrologueDeclarationList = inSource.mProperty_mPrologueDeclarationList ;
+  mProperty_mSourceRuleList = inSource.mProperty_mSourceRuleList ;
+  mProperty_mEpilogueDeclarationList = inSource.mProperty_mEpilogueDeclarationList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_galgasDeclarationAST GGS_galgasDeclarationAST::init (Compiler * inCompiler
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_galgasDeclarationAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgasDeclarationAST::setInitializedProperties (Compiler * inCompiler) {
+  mProperty_mDeclarationList = GGS__5B_semanticDeclarationAST_5D_::init (inCompiler COMMA_HERE) ;
+  mProperty_implicitTypeDeclarationSet = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  mProperty_mSyntaxComponentList = GGS__5B_syntaxComponentAST_5D_::init (inCompiler COMMA_HERE) ;
+  mProperty_mSyntaxExtensions = GGS_syntaxExtensions::init (inCompiler COMMA_HERE) ;
+  mProperty_mGUIComponentList = GGS__5B_galgasGUIComponentAST_5D_::init (inCompiler COMMA_HERE) ;
+  mProperty_mPrologueDeclarationList = GGS__5B_prologueEpilogueAST_5D_::init (inCompiler COMMA_HERE) ;
+  mProperty_mSourceRuleList = GGS__5B_programRuleAST_5D_::init (inCompiler COMMA_HERE) ;
+  mProperty_mEpilogueDeclarationList = GGS__5B_prologueEpilogueAST_5D_::init (inCompiler COMMA_HERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_galgasDeclarationAST::GGS_galgasDeclarationAST (const GGS__5B_semanticDeclarationAST_5D_ & inOperand0,
+                                                    const GGS_stringset & inOperand1,
+                                                    const GGS__5B_syntaxComponentAST_5D_ & inOperand2,
+                                                    const GGS_syntaxExtensions & inOperand3,
+                                                    const GGS__5B_galgasGUIComponentAST_5D_ & inOperand4,
+                                                    const GGS__5B_prologueEpilogueAST_5D_ & inOperand5,
+                                                    const GGS__5B_programRuleAST_5D_ & inOperand6,
+                                                    const GGS__5B_prologueEpilogueAST_5D_ & inOperand7) :
+mProperty_mDeclarationList (inOperand0),
+mProperty_implicitTypeDeclarationSet (inOperand1),
+mProperty_mSyntaxComponentList (inOperand2),
+mProperty_mSyntaxExtensions (inOperand3),
+mProperty_mGUIComponentList (inOperand4),
+mProperty_mPrologueDeclarationList (inOperand5),
+mProperty_mSourceRuleList (inOperand6),
+mProperty_mEpilogueDeclarationList (inOperand7) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_galgasDeclarationAST::isValid (void) const {
+  return mProperty_mDeclarationList.isValid () && mProperty_implicitTypeDeclarationSet.isValid () && mProperty_mSyntaxComponentList.isValid () && mProperty_mSyntaxExtensions.isValid () && mProperty_mGUIComponentList.isValid () && mProperty_mPrologueDeclarationList.isValid () && mProperty_mSourceRuleList.isValid () && mProperty_mEpilogueDeclarationList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgasDeclarationAST::drop (void) {
+  mProperty_mDeclarationList.drop () ;
+  mProperty_implicitTypeDeclarationSet.drop () ;
+  mProperty_mSyntaxComponentList.drop () ;
+  mProperty_mSyntaxExtensions.drop () ;
+  mProperty_mGUIComponentList.drop () ;
+  mProperty_mPrologueDeclarationList.drop () ;
+  mProperty_mSourceRuleList.drop () ;
+  mProperty_mEpilogueDeclarationList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_galgasDeclarationAST::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @galgasDeclarationAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mDeclarationList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_implicitTypeDeclarationSet.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSyntaxComponentList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSyntaxExtensions.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mGUIComponentList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mPrologueDeclarationList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSourceRuleList.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEpilogueDeclarationList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @galgasDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgasDeclarationAST ("galgasDeclarationAST",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_galgasDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgasDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @nonTerminalSymbolMapForGrammarAnalysis
+//--------------------------------------------------------------------------------------------------
+
+#include "GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis::GGS_nonTerminalSymbolMapForGrammarAnalysis (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis::~ GGS_nonTerminalSymbolMapForGrammarAnalysis (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis::GGS_nonTerminalSymbolMapForGrammarAnalysis (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis & GGS_nonTerminalSymbolMapForGrammarAnalysis::operator = (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAnalysis::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_nonTerminalSymbolMapForGrammarAnalysis result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_contains (const GGS_string & inKey
+                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                                           const GGS_u_33__32_ & inLevel
+                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_locationForKey (const GGS_string & inKey,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid ()) {
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonTerminalSymbolMapForGrammarAnalysis::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::performInsert (const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>
+GGS_nonTerminalSymbolMapForGrammarAnalysis::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_nonTerminalSymbolMapForGrammarAnalysis::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>>
+GGS_nonTerminalSymbolMapForGrammarAnalysis::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ GGS_nonTerminalSymbolMapForGrammarAnalysis::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mNonTerminalIndex = info->mProperty_mNonTerminalIndex ;
+      element.mProperty_mNonterminalSymbolParametersMap = info->mProperty_mNonterminalSymbolParametersMap ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAnalysis::class_func_mapWithMapToOverride (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inMapToOverride
+                                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_nonTerminalSymbolMapForGrammarAnalysis result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_overriddenMap (Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
+  GGS_nonTerminalSymbolMapForGrammarAnalysis result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_insertKey (GGS_lstring inLKey,
+                                                                   GGS_u_33__32_ inArgument0,
+                                                                   GGS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element element (inLKey, inArgument0, inArgument1) ;
+  const char * kInsertErrorMessage = "the '<%K>' non terminal symbol has already been declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::method_searchKey (GGS_lstring inLKey,
+                                                                   GGS_u_33__32_ & outArgument0,
+                                                                   GGS_nonterminalSymbolLabelMapForGrammarAnalysis & outArgument1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '<%K>' non terminal symbol is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mNonTerminalIndex ;
+    outArgument1 = info->mProperty_mNonterminalSymbolParametersMap ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_mNonTerminalIndexForKey (const GGS_string & inKey,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mNonTerminalIndex ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis GGS_nonTerminalSymbolMapForGrammarAnalysis::getter_mNonterminalSymbolParametersMapForKey (const GGS_string & inKey,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_nonterminalSymbolLabelMapForGrammarAnalysis result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mNonterminalSymbolParametersMap ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalIndexForKey (GGS_u_33__32_ inValue,
+                                                                                    GGS_string inKey,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mNonTerminalIndex = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonterminalSymbolParametersMapForKey (GGS_nonterminalSymbolLabelMapForGrammarAnalysis inValue,
+                                                                                                  GGS_string inKey,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mNonterminalSymbolParametersMap = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_nonTerminalSymbolMapForGrammarAnalysis_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mNonTerminalIndex:") ;
+    inArray (i COMMA_HERE)->mProperty_mNonTerminalIndex.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mNonterminalSymbolParametersMap:") ;
+    inArray (i COMMA_HERE)->mProperty_mNonterminalSymbolParametersMap.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonTerminalSymbolMapForGrammarAnalysis::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @nonTerminalSymbolMapForGrammarAnalysis") ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> array = sortedInfoArray () ;
+    GGS_nonTerminalSymbolMapForGrammarAnalysis_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_nonTerminalSymbolMapForGrammarAnalysis_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @nonTerminalSymbolMapForGrammarAnalysis
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonTerminalIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis DownEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonterminalSymbolParametersMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @nonTerminalSymbolMapForGrammarAnalysis
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis (const GGS_nonTerminalSymbolMapForGrammarAnalysis & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonTerminalIndex ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonterminalSymbolParametersMap ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @nonTerminalSymbolMapForGrammarAnalysis generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis ("nonTerminalSymbolMapForGrammarAnalysis",
+                                                                                           nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonTerminalSymbolMapForGrammarAnalysis::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Filewrapper 'grammarGenerationTemplate'
+//--------------------------------------------------------------------------------------------------
+
+//--- All files of '' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_grammarGenerationTemplate_0 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of '' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_grammarGenerationTemplate_0 [1] = {
+  nullptr
+} ;
+
+//--- Directory ''
+
+const DirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate (
+  "",
+  0,
+  gWrapperAllFiles_grammarGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_grammarGenerationTemplate_0
+) ;
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_grammarGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_grammarGenerationTemplate) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @grammarGenerationTemplate  grammarZone3HeaderGalgas3
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_grammarGenerationTemplate::class_func_grammarZone_33_HeaderGalgas_33_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                      const GGS_nonTerminalSymbolMapForGrammarAnalysis & in_NON_5F_TERMINAL_5F_MAP,
+                                                                                      const GGS__5B_nonTerminalToAdd_5D_ & in_ADDED_5F_NON_5F_TERMINAL_5F_LIST,
+                                                                                      const GGS_string & in_START_5F_SYMBOL_5F_NAME,
+                                                                                      const GGS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
+                                                                                      const GGS_string & in_GRAMMAR_5F_NAME,
+                                                                                      const GGS__5B_lstring_5D_ & in_SYNTAX_5F_COMPONENTS,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  GRAMMAR ") ;
+  result.appendString (in_GRAMMAR_5F_NAME.stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nclass cGrammar_") ;
+  result.appendString (in_GRAMMAR_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 5)).stringValue ()) ;
+  result.appendString (" : ") ;
+  columnMarker = result.currentColumn () ;
+  GGS_u_33__32_ index_331_ (0) ;
+  if (in_SYNTAX_5F_COMPONENTS.isValid ()) {
+    UpEnumerator__5B_lstring_5D_ enumerator_331 (in_SYNTAX_5F_COMPONENTS) ;
+    while (enumerator_331.hasCurrentObject ()) {
+      result.appendString ("public cParser_") ;
+      result.appendString (enumerator_331.current_entry (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 7)).stringValue ()) ;
+      enumerator_331.gotoNextObject () ;
+      if (enumerator_331.hasCurrentObject ()) {
+        result.appendString (",\n") ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+      }
+      index_331_.increment () ;
+    }
+  }
+  result.appendString (" {\n") ;
+  GGS_u_33__32_ index_503_ (0) ;
+  if (in_NON_5F_TERMINAL_5F_MAP.isValid ()) {
+    UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_503 (in_NON_5F_TERMINAL_5F_MAP) ;
+    while (enumerator_503.hasCurrentObject ()) {
+      result.appendString ("//------------------------------------- '") ;
+      result.appendString (enumerator_503.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+      result.appendString ("' non terminal\n//--- indexing\n  public: virtual void nt_") ;
+      result.appendString (enumerator_503.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 16)).stringValue ()) ;
+      result.appendString ("_indexing (Lexique_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" * inCompiler) ;\n\n") ;
+      GGS_u_33__32_ index_831_ (0) ;
+      if (enumerator_503.current_mNonterminalSymbolParametersMap (HERE).isValid ()) {
+        UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_831 (enumerator_503.current_mNonterminalSymbolParametersMap (HERE)) ;
+        while (enumerator_831.hasCurrentObject ()) {
+          result.appendString ("//----------- '") ;
+          result.appendString (enumerator_831.current_lkey (HERE).readProperty_string ().stringValue ()) ;
+          result.appendString ("' label\n  public: virtual void nt_") ;
+          result.appendString (enumerator_503.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 20)).stringValue ()) ;
+          result.appendString ("_") ;
+          result.appendString (enumerator_831.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 20)).stringValue ()) ;
+          result.appendString (" (") ;
+          columnMarker = result.currentColumn () ;
+          GGS_u_33__32_ index_1080_IDX (0) ;
+          if (enumerator_831.current_mFormalParametersList (HERE).isValid ()) {
+            UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_1080 (enumerator_831.current_mFormalParametersList (HERE)) ;
+            while (enumerator_1080.hasCurrentObject ()) {
+              const GalgasBool test_0 = GGS_bool (ComparisonKind::equal, enumerator_1080.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 22)))).boolEnum () ;
+              switch (test_0) {
+              case GalgasBool::boolTrue : {
+                result.appendString ("const GGS_") ;
+                result.appendString (enumerator_1080.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 23)).stringValue ()) ;
+                result.appendString (" inArgument") ;
+                result.appendString (index_1080_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 23)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolFalse : {
+                const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1080.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 24)))).boolEnum () ;
+                switch (test_1) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("GGS_") ;
+                  result.appendString (enumerator_1080.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 25)).stringValue ()) ;
+                  result.appendString (" & ioArgument") ;
+                  result.appendString (index_1080_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 25)).stringValue ()) ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1080.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 26)))).boolEnum () ;
+                  switch (test_2) {
+                  case GalgasBool::boolTrue : {
+                    result.appendString ("GGS_") ;
+                    result.appendString (enumerator_1080.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 27)).stringValue ()) ;
+                    result.appendString (" & outArgument") ;
+                    result.appendString (index_1080_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 27)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolFalse : {
+                    result.appendString ("GGS_") ;
+                    result.appendString (enumerator_1080.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 29)).stringValue ()) ;
+                    result.appendString (" inArgument") ;
+                    result.appendString (index_1080_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 29)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolNotValid :
+                    break ;
+                  }
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              enumerator_1080.gotoNextObject () ;
+              index_1080_IDX.increment () ;
+            }
+          }
+          const GalgasBool test_3 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
+          switch (test_3) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("String & ") ;
+            result.appendString (function_gSyntaxDirectedTranslationResultVarName (inCompiler COMMA_HERE).stringValue ()) ;
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          result.appendString ("Lexique_") ;
+          result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+          result.appendString (" * inCompiler) ;\n\n") ;
+          const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, in_START_5F_SYMBOL_5F_NAME.objectCompare (enumerator_503.current_lkey (HERE).readProperty_string ())).boolEnum () ;
+          switch (test_4) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("//--- Start symbol\n  public: static void _performSourceFileParsing_") ;
+            result.appendString (enumerator_831.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 40)).stringValue ()) ;
+            result.appendString (" (") ;
+            columnMarker = result.currentColumn () ;
+            result.appendString ("Compiler * inCompiler,\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            const GalgasBool test_5 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
+            switch (test_5) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("String & ") ;
+              result.appendString (function_gSyntaxDirectedTranslationResultVarName (inCompiler COMMA_HERE).stringValue ()) ;
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            result.appendString ("GGS_lstring inFileName") ;
+            GGS_u_33__32_ index_2551_IDX (0) ;
+            if (enumerator_831.current_mFormalParametersList (HERE).isValid ()) {
+              UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_2551 (enumerator_831.current_mFormalParametersList (HERE)) ;
+              while (enumerator_2551.hasCurrentObject ()) {
+                result.appendString (",\n") ;
+                result.appendSpacesUntilColumn (columnMarker) ;
+                const GalgasBool test_6 = GGS_bool (ComparisonKind::equal, enumerator_2551.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 48)))).boolEnum () ;
+                switch (test_6) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("const GGS_") ;
+                  result.appendString (enumerator_2551.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 49)).stringValue ()) ;
+                  result.appendString (" inArgument") ;
+                  result.appendString (index_2551_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 49)).stringValue ()) ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_2551.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 50)))).boolEnum () ;
+                  switch (test_7) {
+                  case GalgasBool::boolTrue : {
+                    result.appendString ("GGS_") ;
+                    result.appendString (enumerator_2551.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 51)).stringValue ()) ;
+                    result.appendString (" & ioArgument") ;
+                    result.appendString (index_2551_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 51)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolFalse : {
+                    const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, enumerator_2551.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 52)))).boolEnum () ;
+                    switch (test_8) {
+                    case GalgasBool::boolTrue : {
+                      result.appendString ("GGS_") ;
+                      result.appendString (enumerator_2551.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 53)).stringValue ()) ;
+                      result.appendString (" & outArgument") ;
+                      result.appendString (index_2551_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 53)).stringValue ()) ;
+                      } break ;
+                    case GalgasBool::boolFalse : {
+                      result.appendString ("GGS_") ;
+                      result.appendString (enumerator_2551.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 55)).stringValue ()) ;
+                      result.appendString (" inArgument") ;
+                      result.appendString (index_2551_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 55)).stringValue ()) ;
+                      } break ;
+                    case GalgasBool::boolNotValid :
+                      break ;
+                    }
+                    } break ;
+                  case GalgasBool::boolNotValid :
+                    break ;
+                  }
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                enumerator_2551.gotoNextObject () ;
+                index_2551_IDX.increment () ;
+              }
+            }
+            result.appendString ("\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            result.appendString ("COMMA_LOCATION_ARGS) ;\n\n  public: static void _performSourceStringParsing_") ;
+            result.appendString (enumerator_831.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 59)).stringValue ()) ;
+            result.appendString (" (") ;
+            columnMarker = result.currentColumn () ;
+            result.appendString ("Compiler * inCompiler,\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            const GalgasBool test_9 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
+            switch (test_9) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("String & ") ;
+              result.appendString (function_gSyntaxDirectedTranslationResultVarName (inCompiler COMMA_HERE).stringValue ()) ;
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            result.appendString ("GGS_string inSourceString,\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            result.appendString ("GGS_string inNameString") ;
+            GGS_u_33__32_ index_3866_IDX (0) ;
+            if (enumerator_831.current_mFormalParametersList (HERE).isValid ()) {
+              UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_3866 (enumerator_831.current_mFormalParametersList (HERE)) ;
+              while (enumerator_3866.hasCurrentObject ()) {
+                result.appendString (",\n") ;
+                result.appendSpacesUntilColumn (columnMarker) ;
+                const GalgasBool test_10 = GGS_bool (ComparisonKind::equal, enumerator_3866.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 68)))).boolEnum () ;
+                switch (test_10) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("const GGS_") ;
+                  result.appendString (enumerator_3866.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 69)).stringValue ()) ;
+                  result.appendString (" inArgument") ;
+                  result.appendString (index_3866_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 69)).stringValue ()) ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, enumerator_3866.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 70)))).boolEnum () ;
+                  switch (test_11) {
+                  case GalgasBool::boolTrue : {
+                    result.appendString ("GGS_") ;
+                    result.appendString (enumerator_3866.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 71)).stringValue ()) ;
+                    result.appendString (" & ioArgument") ;
+                    result.appendString (index_3866_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 71)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolFalse : {
+                    const GalgasBool test_12 = GGS_bool (ComparisonKind::equal, enumerator_3866.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 72)))).boolEnum () ;
+                    switch (test_12) {
+                    case GalgasBool::boolTrue : {
+                      result.appendString ("GGS_") ;
+                      result.appendString (enumerator_3866.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 73)).stringValue ()) ;
+                      result.appendString (" & outArgument") ;
+                      result.appendString (index_3866_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 73)).stringValue ()) ;
+                      } break ;
+                    case GalgasBool::boolFalse : {
+                      result.appendString ("GGS_") ;
+                      result.appendString (enumerator_3866.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 75)).stringValue ()) ;
+                      result.appendString (" inArgument") ;
+                      result.appendString (index_3866_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 75)).stringValue ()) ;
+                      } break ;
+                    case GalgasBool::boolNotValid :
+                      break ;
+                    }
+                    } break ;
+                  case GalgasBool::boolNotValid :
+                    break ;
+                  }
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                enumerator_3866.gotoNextObject () ;
+                index_3866_IDX.increment () ;
+              }
+            }
+            result.appendString ("\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          enumerator_831.gotoNextObject () ;
+          index_831_.increment () ;
+        }
+      }
+      const GalgasBool test_13 = GGS_bool (ComparisonKind::equal, in_START_5F_SYMBOL_5F_NAME.objectCompare (enumerator_503.current_lkey (HERE).readProperty_string ())).boolEnum () ;
+      switch (test_13) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("//--- Indexing\n  public: static void performIndexing (") ;
+        columnMarker = result.currentColumn () ;
+        result.appendString ("Compiler * inCompiler,\n") ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result.appendString ("const String & inSourceFilePath) ;\n\n//--- Only lexical analysis\n  public: static void performOnlyLexicalAnalysis (") ;
+        columnMarker = result.currentColumn () ;
+        result.appendString ("Compiler * inCompiler,\n") ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result.appendString ("const String & inSourceFilePath) ;\n\n//--- Only syntax analysis\n  public: static void performOnlySyntaxAnalysis (") ;
+        columnMarker = result.currentColumn () ;
+        result.appendString ("Compiler * inCompiler,\n") ;
+        result.appendSpacesUntilColumn (columnMarker) ;
+        result.appendString ("const String & inSourceFilePath) ;\n\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_503.gotoNextObject () ;
+      index_503_.increment () ;
+    }
+  }
+  GGS_u_33__32_ index_5417_ (0) ;
+  if (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST.isValid ()) {
+    UpEnumerator__5B_nonTerminalToAdd_5D_ enumerator_5417 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST) ;
+    while (enumerator_5417.hasCurrentObject ()) {
+      result.appendString ("  public: virtual int32_t select_") ;
+      result.appendString (enumerator_5417.current_entry (HERE).readProperty_mSyntaxComponentName ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 96)).stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_5417.current_entry (HERE).readProperty_mNonTerminalToAddCount ().getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 96)).stringValue ()) ;
+      result.appendString (" (Lexique_") ;
+      result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" *) ;\n") ;
+      enumerator_5417.gotoNextObject () ;
+      if (enumerator_5417.hasCurrentObject ()) {
+        result.appendString ("\n") ;
+      }
+      index_5417_.increment () ;
+    }
+  }
+  result.appendString ("} ;\n\n//--------------------------------------------------------------------------------------------------\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @grammarGenerationTemplate  grammarImplementation
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_grammarGenerationTemplate::class_func_grammarImplementation (const GGS_string & in_GRAMMAR_5F_NAME,
+                                                                            const GGS_string & in_GRAMMAR_5F_IDENTIFIER,
+                                                                            const GGS_stringset & in_UNICODE_5F_STRINGS_5F_SET,
+                                                                            const GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                            const GGS_string & in_CPP_5F_IMPLEMENTATION_5F_STRING,
+                                                                            Compiler * /* inCompiler */
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//  Grammar ") ;
+  result.appendString (in_GRAMMAR_5F_NAME.stringValue ()) ;
+  result.appendString (": Unicode strings\n//--------------------------------------------------------------------------------------------------\n") ;
+  GGS_u_33__32_ index_284_ (0) ;
+  if (in_UNICODE_5F_STRINGS_5F_SET.isValid ()) {
+    UpEnumerator_stringset enumerator_284 (in_UNICODE_5F_STRINGS_5F_SET) ;
+    while (enumerator_284.hasCurrentObject ()) {
+      const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_284.current_key (HERE).getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 6)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      switch (test_0) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("\n//--- Unicode string for '$") ;
+        result.appendString (enumerator_284.current_key (HERE).getter_utf_38_RepresentationWithoutDelimiters (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 7)).stringValue ()) ;
+        result.appendString ("$'\nstatic const std::initializer_list <utf32> kUnicodeString_") ;
+        result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
+        result.appendString ("_") ;
+        result.appendString (enumerator_284.current_key (HERE).getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 8)).stringValue ()) ;
+        result.appendString (" = ") ;
+        result.appendString (enumerator_284.current_key (HERE).getter_utf_33__32_Representation (GGS_bool (false) COMMA_SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 8)).stringValue ()) ;
+        result.appendString (" ;\n") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_284.gotoNextObject () ;
+      index_284_.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//   Grammar ") ;
+  result.appendString (in_GRAMMAR_5F_NAME.stringValue ()) ;
+  result.appendString (": template Replacements\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  GGS_u_33__32_ index_1040_ (0) ;
+  if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
+    UpEnumerator__5B_templateReplacementAST_5D_ enumerator_1040 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST) ;
+    const bool nonEmpty_enumerator_1040 = enumerator_1040.hasCurrentObject () ;
+    if (nonEmpty_enumerator_1040) {
+      result.appendString ("static const TemplateDelimiter ") ;
+      result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_kTemplateReplacementArray [") ;
+      result.appendString (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 17)).stringValue ()) ;
+      result.appendString ("] = {\n") ;
+    }
+    while (enumerator_1040.hasCurrentObject ()) {
+      result.appendString ("  TemplateDelimiter (kUnicodeString_") ;
+      result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).stringValue ()) ;
+      result.appendString (", ") ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mMatchString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 19)).stringValue ()) ;
+      result.appendString (", kUnicodeString_") ;
+      result.appendString (in_GRAMMAR_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString ("_") ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).stringValue ()) ;
+      result.appendString (", ") ;
+      result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementString ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).getter_string (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 20)).stringValue ()) ;
+      result.appendString (", ") ;
+      const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1040.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().getter_count (SOURCE_FILE ("grammar-implementation.cpp.galgasTemplate", 21)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      switch (test_1) {
+      case GalgasBool::boolTrue : {
+        result.appendString ("nullptr") ;
+        } break ;
+      case GalgasBool::boolFalse : {
+        result.appendString ("scanner_routine_") ;
+        result.appendString (enumerator_1040.current_entry (HERE).readProperty_mReplacementFunction ().readProperty_string ().stringValue ()) ;
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      result.appendString (", true)") ;
+      enumerator_1040.gotoNextObject () ;
+      if (enumerator_1040.hasCurrentObject ()) {
+        result.appendString (",\n") ;
+      }
+      index_1040_.increment () ;
+    }
+    if (nonEmpty_enumerator_1040) {
+      result.appendString ("\n} ;\n") ;
+    }
+  }
+  result.appendString (in_CPP_5F_IMPLEMENTATION_5F_STRING.stringValue ()) ;
+  result.appendString ("\n") ;
+  return GGS_string (result) ;
+}

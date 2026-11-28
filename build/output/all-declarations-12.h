@@ -2462,21 +2462,6 @@ class GGS_extensionGetterMapForGlobalCheckings_2E_element_3F_ : public AC_GALGAS
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@templateInstructionForGeneration templateCodeGeneration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_templateCodeGeneration (class cPtr_templateInstructionForGeneration * inObject,
-                                                 class GGS_string & io_ioGeneratedCode,
-                                                 class GGS_stringset & io_ioInclusionSet,
-                                                 class GGS_u_33__32_ & io__5F_ioTemporaryVariableIndex,
-                                                 class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
-                                                 class GGS_bool & io__5F_ioUseColumnMarker,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @castInExpressionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 

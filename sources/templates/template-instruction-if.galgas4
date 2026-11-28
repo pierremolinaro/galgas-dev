@@ -1,0 +1,303 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//! SYNTAX
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgasTemplateInstructionSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
+                                    ![@CommaSeparatedExpressionElement] outExpressionList)
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <template_instruction> (?!@galgasDeclarationAST ioDeclarations,
+                               !@templateAbstractInstructionAST outInstruction) {
+    $if$
+    <template_if_instruction_core> (!?ioDeclarations, ?outInstruction)
+    $end$
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <template_if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
+                                       !@templateAbstractInstructionAST outInstruction ) {
+    <comma_separated_expression> (!?ioDeclarations, ?let testExpression)
+    $then$
+    <template_instruction_list> (!?ioDeclarations, ?let then_instructionList)
+    let endOf_then_branchLocation = @location.here
+    let [@templateAbstractInstructionAST] else_instructionList
+    select
+      else_instructionList = @()
+    or
+      $else$
+      <template_instruction_list> (!?ioDeclarations, ?else_instructionList)
+    or
+      $elsif$
+      <template_if_instruction_core> (!?ioDeclarations, ?let instruction)
+      else_instructionList = [instruction]
+    end
+    outInstruction = @templateIfInstructionAST (
+//      instructionLocation,
+      testExpression,
+      then_instructionList,
+      endOf_then_branchLocation,
+      else_instructionList,
+      .here
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//! AST
+//--------------------------------------------------------------------------------------------------
+
+final class @templateIfInstructionAST : @templateAbstractInstructionAST {
+  public let [@CommaSeparatedExpressionElement] mExpressions
+  public let [@templateAbstractInstructionAST] m_then_instructionList
+  public let @location mEndOf_then_branch
+  public let [@templateAbstractInstructionAST] m_else_instructionList
+  public let @location mEndOf_if_instruction
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
+//    self.mExpressions.enterExpressionListInSemanticContext (!?ioTypeMap)
+//    self.m_then_instructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+//    self.m_else_instructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+//  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //! SEMANTICS
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // l'expression a peut être de la forme let varA = exp as @T ; idem pour b
+  //
+  // L'instruction : IF a, b THEN X ELSE Y END est analysée par :
+  //
+  //  analyser (a), création varA
+  //  openOverrideForSelect
+  //    openBranch
+  //      insertion varA dans table des symboles
+  //      analyser (b), création varB
+  //      openOverrideForSelect
+  //        openBranch
+  //          insertion varB dans table des symboles
+  //          X
+  //        closeBranch
+  //      closeOverride
+  //    closeBranch
+  //    openBranch
+  //      Y
+  //    closeBranch
+  //  closeOverride
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+//  override proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
+//                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+//                            let @analysisContext inAnalysisContext,
+//                            ?!@unifiedTypeMap ioTypeMap,
+//                            ?![@templateInstructionForGeneration] ioInstructionListForGeneration,
+//                            ?!@localVarManager ioVariableMap ) {
+  override proc templateInstructionAnalysis (let @lstring inUsefulnessCallerEntityName,
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                             let @analysisContext inAnalysisContext,
+                                             ?!@unifiedTypeMap ioTypeMap,
+                                             ?!@localVarManager ioVariableMap,
+                                             ?![@templateInstructionForGeneration] ioInstructionListForGeneration) {
+  //--- Test expression
+   self.mExpressions.analyzeSemanticExpressionList (
+     inUsefulnessCallerEntityName,
+     !?ioUsefulEntitiesGraph,
+     inAnalysisContext,
+     !?ioTypeMap,
+     !?ioVariableMap,
+     ?let [@ifTestForGeneration] testListForGeneration
+   )
+  //--- Then branch
+    analyzeTemplateInstructionListWithoutBranch (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      self.m_then_instructionList,
+      !?ioVariableMap,
+      ?let then_instructionList
+    )
+    var expressions = self.mExpressions
+    !?expressions.removeLast (?*)
+    for * in expressions do
+      !?ioVariableMap.closeBranch (self.mEndOf_then_branch)
+      !?ioVariableMap.closeOverride (self.mEndOf_then_branch)
+    end
+    !?ioVariableMap.closeBranch (self.mEndOf_then_branch)
+  //--- else branch
+    analyzeTemplateInstructionListWithoutBranch (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      self.m_else_instructionList,
+//      self.mEndOf_if_instruction,
+      !?ioVariableMap,
+      ?let else_instructionList
+    )
+    !?ioVariableMap.closeOverride (self.mEndOf_if_instruction)
+  //--- Generate instruction
+    ioInstructionListForGeneration ++= @templateIfInstructionForGeneration (
+      self.mEndOf_then_branch,
+      testListForGeneration,
+      then_instructionList,
+      else_instructionList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc analyzeTemplateInstructionListWithoutBranch (let @lstring inUsefulnessCallerEntityName,
+                                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                                  let @analysisContext inAnalysisContext,
+                                                  ?!@unifiedTypeMap ioTypeMap,
+                                                  ?localConstantList: let [@localConstant] inLocalConstantList,
+                                                  let [@templateAbstractInstructionAST] inSemanticInstructionListAST,
+                                                  ?!@localVarManager ioVariableMap,
+                                                 ![@templateInstructionForGeneration] outInstructionListForGeneration) {
+  outInstructionListForGeneration = @()
+//--- Declare local constants
+  for localConstant in inLocalConstantList do
+    if localConstant.mNoWarningIfUnused then
+      !?ioVariableMap.insertUsedLocalConstant (localConstant.mName, localConstant.mType, !cppName: localConstant.mCppName, !nameForCheckingVarUsing: localConstant.mCppName)
+    else
+      !?ioVariableMap.insertInitializedLocalConstant (localConstant.mName, localConstant.mType, localConstant.mCppName, localConstant.mCppName)
+    end
+  end
+//--- Instruction list
+  for instruction in inSemanticInstructionListAST do
+    instruction.templateInstructionAnalysis (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      !?outInstructionListForGeneration
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+//! GENERATION
+//--------------------------------------------------------------------------------------------------
+// L'instruction : IF a, b THEN X ELSE Y END est traduite en :
+//
+//  GalgasBool testResult = GalgasBool::boolTrue ;
+//  if (testResult == GalgasBool::boolTrue) {
+//    testResult = evaluation (a)
+//    if (testResult == GalgasBool::boolTrue) {
+//      testResult = evaluation (b)
+//      if (testResult == GalgasBool::boolTrue) {
+//        X
+//      }
+//    }
+//  }
+//  if (testResult == GalgasBool::boolFalse) {
+//    Y
+//  }
+//
+//································································································
+
+final class @templateIfInstructionForGeneration : @templateInstructionForGeneration {
+  private let @location mInstructionLocation
+  private let [@ifTestForGeneration] mExpressions
+  private let [@templateInstructionForGeneration] m_then_instructionList
+  private let [@templateInstructionForGeneration] m_else_instructionList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc templateCodeGeneration (?!@string ioGeneratedCode,
+                                        ?!@stringset ioInclusionSet,
+                                        ?!@u32 ioTemporaryVariableIndex,
+                                        ?!@stringset ioUnusedVariableCppNameSet,
+                                        ?!@bool ioUseColumnMarker) {
+  //--- Generate test expression
+    self.mExpressions.generateInstruction (
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioGeneratedCode,
+      ?let @string testVar
+    )
+  //--- Then branch
+    ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
+    self.m_then_instructionList.generateTemplateCode (
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioUseColumnMarker,
+      !?ioGeneratedCode
+    )
+//    generateInstructionList (
+//      !?ioInclusionSet,
+//      self.m_then_instructionList,
+//      !?ioTemporaryVariableIndex,
+//      !?ioUnusedVariableCppNameSet,
+//      inGenerateSyntaxDirectedTranslationString,
+//      !?ioGeneratedCode
+//    )
+    ioGeneratedCode += "}\n"
+    for * in self.mExpressions do
+      !?ioGeneratedCode.decIndentation (2)
+      ioGeneratedCode += "}\n"
+    end
+  //--- else branch
+    if self.m_else_instructionList.count > 0 then
+      ioGeneratedCode += "if (GalgasBool::boolFalse == " + testVar + ") {\n"
+      self.m_else_instructionList.generateTemplateCode (
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !?ioUseColumnMarker,
+        !?ioGeneratedCode
+      )
+//      generateInstructionList (
+//        !?ioInclusionSet,
+//        self.m_else_instructionList,
+//        !?ioTemporaryVariableIndex,
+//        !?ioUnusedVariableCppNameSet,
+//        inGenerateSyntaxDirectedTranslationString,
+//        !?ioGeneratedCode
+//      )
+      ioGeneratedCode += "}\n"
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

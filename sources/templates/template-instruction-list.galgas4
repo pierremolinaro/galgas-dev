@@ -65,3 +65,48 @@ abstract class @templateAbstractInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+proc templateCodeGenerationForListInstruction (let [@templateInstructionForGeneration] inInstructionList,
+                                              ?!@string ioGeneratedCode,
+                                              ?!@stringset ioInclusionSet,
+                                              ?!@u32 ioTemporaryVariableIndex,
+                                              ?!@stringset ioUnusedVariableCppNameSet,
+                                              ?!@bool ioUseColumnMarker ) {
+  for instruction in inInstructionList do
+    instruction.templateCodeGeneration (
+      !?ioGeneratedCode,
+      !?ioInclusionSet,
+      !?ioTemporaryVariableIndex,
+      !?ioUnusedVariableCppNameSet,
+      !?ioUseColumnMarker
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+
+extension [@templateInstructionForGeneration] {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  proc generateTemplateCode (?!@stringset ioInclusionSet,
+                             ?!@u32 ioTemporaryVariableIndex,
+                             ?!@stringset ioUnusedVariableCppNameSet,
+                             ?!@bool ioUseColumnMarker,
+                             ?!@string ioGeneratedCode) {
+    for instruction in self do
+      instruction.templateCodeGeneration (
+        !?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !?ioUseColumnMarker
+      )
+    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

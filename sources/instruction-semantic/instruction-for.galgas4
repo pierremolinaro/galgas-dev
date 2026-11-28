@@ -16,95 +16,10 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//! AST
-//--------------------------------------------------------------------------------------------------
-
-struct @forInstructionEnumeratedObjectElementAST {
-  public let @lstring mOptionalTypeName // Empty string if joker
-  public let @bool mDeclaredAsUnused // true if joker
-  public let @lstring mOptionalConstantName  // Empty string if joker
-}
-
-//································································································*
-
-abstract class @abstractEnumeratedCollectionAST {
-
-  abstract proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
-
-  abstract proc analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
-                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                    let @analysisContext inAnalysisContext,
-                                    ?!@unifiedTypeMap ioTypeMap,
-                                    ?!@localVarManager ioVariableMap,
-                                    ?![@localConstant] ioLocalConstantListForDoBranch,
-                                    !@string outEnumeratorCppName,
-                                    !@semanticExpressionForGeneration outEnumerationExpression)
-
-}
-
-//································································································*
-
-final class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
-  private let @lstring mEnumerationOptionalTypeName // Empty string if implicit
-  private let @lstring mEnumerationVariable  // Empty string if joker
-  private let @semanticExpressionAST mEnumeratedExpression
-  private let @location mEndOfEnumerationExpression
-}
-
-//································································································*
-
-final class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
-  private let [@forInstructionEnumeratedObjectElementAST] mElementList
-  private let @semanticExpressionAST mEnumeratedExpression
-  private let @location mEndOfEnumerationExpression
-}
-
-//································································································*
-
-struct @forInstructionEnumeratedObjectAST {
-  let @bool mAscending
-  let @abstractEnumeratedCollectionAST mEnumeratedCollection
-}
-
-//································································································*
-
-final class @forInstructionAST : @semanticInstructionAST {
-  private let [@forInstructionEnumeratedObjectAST] mEnumeratedObjectList
-  private let @lstring mIndexVariableName
-  private let @semanticExpressionAST mWhileExpression
-  private let @location mEndOf_while_expression
-  private let [@semanticInstructionAST] mBeforeInstructionList
-  private let @location mEndOf_before_branch
-  private let [@semanticInstructionAST] mBetweenInstructionList
-  private let @location mEndOf_between_branch
-  private let [@semanticInstructionAST] mDoInstructionList
-  private let @location mEndOf_do_branch
-  private let [@semanticInstructionAST] mAfterInstructionList
-  private let @location mEndOf_after_branch
-  private let @location mEndOf_foreach_instruction
-}
-
-//--------------------------------------------------------------------------------------------------
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <for_instruction_element> (?!@galgasDeclarationAST _ioDeclarations,
-                                  ?![@forInstructionEnumeratedObjectElementAST] ioElementList) {
-    $literalInt$ (?let count)
-    $*$
-    var n = count.bigint.u32
-    if n == 0 then
-      error count: "this value should be > 0"
-    end
-    loop (n) while n > 0 do
-      ioElementList ++= @("".nowhere, true, "".nowhere)
-      n -= 1
-    end
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -181,7 +96,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList = [@forInstructionEnumeratedObjectAST] ()
+    var enumeratedObjectList = [@forInstructionEnumeratedObjectAST] ()
     repeat
       let @bool ascending
       select
@@ -191,24 +106,24 @@ syntax extension galgas4InstructionsSyntax {
         ascending = false
       end
       <for_instruction_enumerated_object> (!?ioDeclarations, ?let @abstractEnumeratedCollectionAST enumeratedObject)
-      mEnumeratedObjectList ++= @(ascending, enumeratedObject)
+      enumeratedObjectList ++= @(ascending, enumeratedObject)
     while
       $,$
     end
-    let @semanticExpressionAST mWhileExpression
+    let @semanticExpressionAST whileExpression
     select
-      mWhileExpression = @trueExpressionAST (@location.here)
+      whileExpression = @trueExpressionAST (@location.here)
     or
       $while$
-      <expression> (!?ioDeclarations, ? mWhileExpression)
+      <expression> (!?ioDeclarations, ? whileExpression)
     end
     let endof_while_expression = @location.here
-    let [@semanticInstructionAST] mBeforeInstructionList
+    let [@semanticInstructionAST] beforeInstructionList
     select
-      mBeforeInstructionList = [@semanticInstructionAST] ()
+      beforeInstructionList = []
     or
       $before$
-      <semantic_instruction_list> (!?ioDeclarations, ? mBeforeInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? beforeInstructionList)
     end
     let endof_before_branch = @location.here
     $do$
@@ -217,42 +132,42 @@ syntax extension galgas4InstructionsSyntax {
       indexVariableName = @lstring ("", @location.here)
     or
       $($
-      $identifier$ (? indexVariableName)
+      $identifier$ (?indexVariableName)
       $)$
     end
-    <semantic_instruction_list> (!?ioDeclarations, ?let mDoInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let doInstructionList)
     let endof_do_branch = @location.here
-    let [@semanticInstructionAST] mBetweenInstructionList
+    let [@semanticInstructionAST] betweenInstructionList
     select
-      mBetweenInstructionList = [@semanticInstructionAST] ()
+      betweenInstructionList = []
     or
       $between$
-      <semantic_instruction_list> (!?ioDeclarations, ? mBetweenInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? betweenInstructionList)
     end
     let endof_between_branch = @location.here
-    let [@semanticInstructionAST] mAfterInstructionList
+    let [@semanticInstructionAST] afterInstructionList
     select
-      mAfterInstructionList = [@semanticInstructionAST] ()
+      afterInstructionList = []
     or
       $after$
-      <semantic_instruction_list> (!?ioDeclarations, ? mAfterInstructionList)
+      <semantic_instruction_list> (!?ioDeclarations, ? afterInstructionList)
     end
     let endof_after_branch = @location.here
     $end$
     let endof_foreach_instruction = @location.here
     outInstruction = @forInstructionAST (
       instructionLocation,
-      mEnumeratedObjectList,
+      enumeratedObjectList,
       indexVariableName,
-      mWhileExpression,
+      whileExpression,
       endof_while_expression,
-      mBeforeInstructionList,
+      beforeInstructionList,
       endof_before_branch,
-      mBetweenInstructionList,
+      betweenInstructionList,
       endof_between_branch,
-      mDoInstructionList,
+      doInstructionList,
       endof_do_branch,
-      mAfterInstructionList,
+      afterInstructionList,
       endof_after_branch,
       endof_foreach_instruction
     )
@@ -263,288 +178,366 @@ syntax extension galgas4InstructionsSyntax {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! CONTEXT
+//! AST
 //--------------------------------------------------------------------------------------------------
 
-override proc @forInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  self.mWhileExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-  self.mBeforeInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
-  self.mBetweenInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
-  self.mDoInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
-  self.mAfterInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
-  for entry in self.mEnumeratedObjectList do
-    entry.mEnumeratedCollection.enterInSemanticContext (!?ioTypeMap)
-  end
+struct @forInstructionEnumeratedObjectElementAST {
+  public let @lstring mOptionalTypeName // Empty string if joker
+  public let @bool mDeclaredAsUnused // true if joker
+  public let @lstring mOptionalConstantName  // Empty string if joker
 }
-
-//································································································*
-
-override proc @enumeratedCollectionCstListInExpAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-}
-
-//································································································*
-
-override proc @enumeratedCollectionVarInExpAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-}
-
 
 //--------------------------------------------------------------------------------------------------
-//! SEMANTICS
+
+abstract class @abstractEnumeratedCollectionAST {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  abstract proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  abstract proc analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    let @analysisContext inAnalysisContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?!@localVarManager ioVariableMap,
+                                    ?![@localConstant] ioLocalConstantListForDoBranch,
+                                    !@string outEnumeratorCppName,
+                                    !@semanticExpressionForGeneration outEnumerationExpression)
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
 //--------------------------------------------------------------------------------------------------
 
-override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
-                                let @lstring inUsefulnessCallerEntityName,
-                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager ioVariableMap,
-  ?![@localConstant] ioLocalConstantListForDoBranch,
-  !@string outEnumeratorCppName,
-  !@semanticExpressionForGeneration outEnumerationExpression) {
-  self.mEnumeratedExpression.analyzeSemanticExpression (
-    !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    !inferenceType: @unifiedTypeMapEntry.null,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !?ioVariableMap,
-    ?outEnumerationExpression
-  )
-//--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
-  let enumerationDescriptorList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
-  if enumerationDescriptorList.count == 0 then
-    error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
-  else
-//--- Arguments
-    if self.mElementList.count == 0 then
-      let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
-      for property in currentTypedAttributeList do
-       !?ioVariableMap.insertUsedLocalConstant (
-         @lstring (property.mEnumerationName, self.mEndOfEnumerationExpression),
-         property.mEnumeratedType,
-         !cppName: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
-         !nameForCheckingVarUsing: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
-       )
+final class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
+  private let @lstring mEnumerationOptionalTypeName // Empty string if implicit
+  private let @lstring mEnumerationVariable  // Empty string if joker
+  private let @semanticExpressionAST mEnumeratedExpression
+  private let @location mEndOfEnumerationExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+    self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    let @analysisContext inAnalysisContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?!@localVarManager ioVariableMap,
+                                    ?![@localConstant] ioLocalConstantListForDoBranch,
+                                    !@string outEnumeratorCppName,
+                                    !@semanticExpressionForGeneration outEnumerationExpression) {
+    self.mEnumeratedExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      ?outEnumerationExpression
+    )
+  //--- Check object can be enumerated
+    outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
+    let enumeratedElementType = outEnumerationExpression.mResultType.definition.typeForEnumeratedElement
+    if enumeratedElementType.isNull then
+      error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
+    elsif self.mEnumerationVariable.string != "" then
+      ioLocalConstantListForDoBranch ++= @(enumeratedElementType, self.mEnumerationVariable, false, outEnumeratorCppName + ".current (HERE)")
+    end
+  //--- Check enumeration type
+    if self.mEnumerationOptionalTypeName.string != "" then
+      let explicitType = ioTypeMap.typeMapEntryForLKey (self.mEnumerationOptionalTypeName)
+      if enumeratedElementType.definition.typeName.string != explicitType.definition.typeName.string then
+        error self.mEnumerationOptionalTypeName: "the '@" + enumeratedElementType.definition.typeName.string + "' type is expected here"
       end
-    elsif self.mElementList.count != enumerationDescriptorList.count then
-      error self.mEndOfEnumerationExpression
-      :"the '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' type requires "
-      + enumerationDescriptorList.count.string + " argument"
-      + if (enumerationDescriptorList.count > 1) then "s" else "" end
-      + " for enumeration: this list provides "
-      + self.mElementList.count.string
-      
+    end
+  //---
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
+  private let [@forInstructionEnumeratedObjectElementAST] mElementList
+  private let @semanticExpressionAST mEnumeratedExpression
+  private let @location mEndOfEnumerationExpression
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+    self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    let @analysisContext inAnalysisContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?!@localVarManager ioVariableMap,
+                                    ?![@localConstant] ioLocalConstantListForDoBranch,
+                                    !@string outEnumeratorCppName,
+                                    !@semanticExpressionForGeneration outEnumerationExpression) {
+    self.mEnumeratedExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      ?outEnumerationExpression
+    )
+  //--- Check object can be enumerated
+    outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
+    let enumerationDescriptorList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
+    if enumerationDescriptorList.count == 0 then
+      error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
     else
-      if enumerationDescriptorList.count > self.mElementList.count then
-        let missingArgumentCount = enumerationDescriptorList.count - self.mElementList.count
+  //--- Arguments
+      if self.mElementList.count == 0 then
+        let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
+        for property in currentTypedAttributeList do
+         !?ioVariableMap.insertUsedLocalConstant (
+           @lstring (property.mEnumerationName, self.mEndOfEnumerationExpression),
+           property.mEnumeratedType,
+           !cppName: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
+           !nameForCheckingVarUsing: outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
+         )
+        end
+      elsif self.mElementList.count != enumerationDescriptorList.count then
         error self.mEndOfEnumerationExpression
-        : "enumerated object has " + missingArgumentCount + "more properties"
-        fixit #replaceBy if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
+        :"the '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' type requires "
+        + enumerationDescriptorList.count.string + " argument"
+        + if (enumerationDescriptorList.count > 1) then "s" else "" end
+        + " for enumeration: this list provides "
+        + self.mElementList.count.string
         
-      end
-      for element in self.mElementList, descriptor in enumerationDescriptorList do
-        if element.mOptionalConstantName.string != "" then // Empty string if joker
-          if element.mOptionalTypeName.string != "" then
-            let foundType = ioTypeMap.typeMapEntryForLKey (element.mOptionalTypeName)
-            if foundType != descriptor.mEnumeratedType then
-              error element.mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + descriptor.mEnumeratedType.definition.typeName.string + "' type required here"
+      else
+        if enumerationDescriptorList.count > self.mElementList.count then
+          let missingArgumentCount = enumerationDescriptorList.count - self.mElementList.count
+          error self.mEndOfEnumerationExpression
+          : "enumerated object has " + missingArgumentCount + "more properties"
+          fixit #replaceBy if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
+          
+        end
+        for element in self.mElementList, descriptor in enumerationDescriptorList do
+          if element.mOptionalConstantName.string != "" then // Empty string if joker
+            if element.mOptionalTypeName.string != "" then
+              let foundType = ioTypeMap.typeMapEntryForLKey (element.mOptionalTypeName)
+              if foundType != descriptor.mEnumeratedType then
+                error element.mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + descriptor.mEnumeratedType.definition.typeName.string + "' type required here"
+              end
             end
+            ioLocalConstantListForDoBranch ++= @(
+              descriptor.mEnumeratedType,
+              element.mOptionalConstantName,
+              element.mDeclaredAsUnused, // No warning if unused
+              outEnumeratorCppName + ".current_" + descriptor.mEnumerationName.identifierRepresentation + " (HERE)")
           end
-          ioLocalConstantListForDoBranch ++= @(
-            descriptor.mEnumeratedType,
-            element.mOptionalConstantName,
-            element.mDeclaredAsUnused, // No warning if unused
-            outEnumeratorCppName + ".current_" + descriptor.mEnumerationName.identifierRepresentation + " (HERE)")
         end
       end
     end
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
 
-override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager ioVariableMap,
-  ?![@localConstant] ioLocalConstantListForDoBranch,
-  !@string outEnumeratorCppName,
-  !@semanticExpressionForGeneration outEnumerationExpression) {
-  self.mEnumeratedExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    !inferenceType: @unifiedTypeMapEntry.null,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !?ioVariableMap,
-    ?outEnumerationExpression
-  )
-//--- Check object can be enumerated
-  outEnumeratorCppName = "enumerator_" + self.mEndOfEnumerationExpression.startLocationIndex
-  let enumeratedElementType = outEnumerationExpression.mResultType.definition.typeForEnumeratedElement
-  if enumeratedElementType.isNull then
-    error self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated"
-  elsif self.mEnumerationVariable.string != "" then
-    ioLocalConstantListForDoBranch ++= @(enumeratedElementType, self.mEnumerationVariable, false, outEnumeratorCppName + ".current (HERE)")
-  end
-//--- Check enumeration type
-  if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = ioTypeMap.typeMapEntryForLKey (self.mEnumerationOptionalTypeName)
-    if enumeratedElementType.definition.typeName.string != explicitType.definition.typeName.string then
-      error self.mEnumerationOptionalTypeName: "the '@" + enumeratedElementType.definition.typeName.string + "' type is expected here"
+struct @forInstructionEnumeratedObjectAST {
+  let @bool mAscending
+  let @abstractEnumeratedCollectionAST mEnumeratedCollection
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @forInstructionAST : @semanticInstructionAST {
+  private let [@forInstructionEnumeratedObjectAST] mEnumeratedObjectList
+  private let @lstring mIndexVariableName
+  private let @semanticExpressionAST mWhileExpression
+  private let @location mEndOf_while_expression
+  private let [@semanticInstructionAST] mBeforeInstructionList
+  private let @location mEndOf_before_branch
+  private let [@semanticInstructionAST] mBetweenInstructionList
+  private let @location mEndOf_between_branch
+  private let [@semanticInstructionAST] mDoInstructionList
+  private let @location mEndOf_do_branch
+  private let [@semanticInstructionAST] mAfterInstructionList
+  private let @location mEndOf_after_branch
+  private let @location mEndOf_foreach_instruction
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+    self.mWhileExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+    self.mBeforeInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+    self.mBetweenInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+    self.mDoInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+    self.mAfterInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
+    for entry in self.mEnumeratedObjectList do
+      entry.mEnumeratedCollection.enterInSemanticContext (!?ioTypeMap)
     end
-  end
-//---
-}
+  }
 
-//································································································*
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override proc @forInstructionAST.analyzeSemanticInstruction (
-                        let @lstring inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        let @analysisContext inAnalysisContext,
-                        ?!@unifiedTypeMap ioTypeMap,
-                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
-                        ?!@localVarManager ioVariableMap) {
-//--- Begin override for foreach defined constants
-  !?ioVariableMap.openOverrideForSelectBlock ()
-  !?ioVariableMap.openBranch ()
-//--- 'before' branch
-  !?ioVariableMap.openOverrideForRepeatBlock ()
-  analyzeSemanticInstructionList (
-    inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !localConstantList: @(),
-    self.mBeforeInstructionList,
-    self.mEndOf_before_branch,
-    !?ioVariableMap,
-    ?let before_instructionList
-  )
-  !?ioVariableMap.closeOverride (self.mEndOf_before_branch)
-//--- 'between' branch
-  !?ioVariableMap.openOverrideForRepeatBlock ()
-  analyzeSemanticInstructionList (
-    inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !localConstantList: @(),
-    self.mBetweenInstructionList,
-    self.mEndOf_between_branch,
-    !?ioVariableMap,
-    ?let between_instructionList
-  )
-  !?ioVariableMap.closeOverride (self.mEndOf_between_branch)
-//--- 'after' branch
-  !?ioVariableMap.openOverrideForRepeatBlock ()
-  analyzeSemanticInstructionList (
-    inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !localConstantList: @(),
-    self.mAfterInstructionList,
-    self.mEndOf_after_branch,
-    !?ioVariableMap,
-    ?let [@semanticInstructionForGeneration] after_instructionList
-  )
-  !?ioVariableMap.closeOverride (self.mEndOf_after_branch)
-//--- Analyze enumerated objects
-  var [@localConstant] localConstantListForDoBranch = @()
-  var [@forInstructionEnumeratedObjectForGeneration] enumerationList = @()
-  for object in self.mEnumeratedObjectList do
-    object.mEnumeratedCollection.analyzeEnumeration (
+  override proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
+                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                            let @analysisContext inAnalysisContext,
+                                            ?!@unifiedTypeMap ioTypeMap,
+                                            ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
+                                            ?!@localVarManager ioVariableMap) {
+  //--- Begin override for foreach defined constants
+    !?ioVariableMap.openOverrideForSelectBlock ()
+    !?ioVariableMap.openBranch ()
+  //--- 'before' branch
+    !?ioVariableMap.openOverrideForRepeatBlock ()
+    analyzeSemanticInstructionList (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
+      !localConstantList: @(),
+      self.mBeforeInstructionList,
+      self.mEndOf_before_branch,
       !?ioVariableMap,
-      !?localConstantListForDoBranch,
-      ?let @string enumeratorCppName,
-      ?let @semanticExpressionForGeneration enumerationExpression
+      ?let before_instructionList
+    )
+    !?ioVariableMap.closeOverride (self.mEndOf_before_branch)
+  //--- 'between' branch
+    !?ioVariableMap.openOverrideForRepeatBlock ()
+    analyzeSemanticInstructionList (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      self.mBetweenInstructionList,
+      self.mEndOf_between_branch,
+      !?ioVariableMap,
+      ?let between_instructionList
+    )
+    !?ioVariableMap.closeOverride (self.mEndOf_between_branch)
+  //--- 'after' branch
+    !?ioVariableMap.openOverrideForRepeatBlock ()
+    analyzeSemanticInstructionList (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: @(),
+      self.mAfterInstructionList,
+      self.mEndOf_after_branch,
+      !?ioVariableMap,
+      ?let [@semanticInstructionForGeneration] after_instructionList
+    )
+    !?ioVariableMap.closeOverride (self.mEndOf_after_branch)
+  //--- Analyze enumerated objects
+    var [@localConstant] localConstantListForDoBranch = @()
+    var [@forInstructionEnumeratedObjectForGeneration] enumerationList = @()
+    for object in self.mEnumeratedObjectList do
+      object.mEnumeratedCollection.analyzeEnumeration (
+        inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        inAnalysisContext,
+        !?ioTypeMap,
+        !?ioVariableMap,
+        !?localConstantListForDoBranch,
+        ?let @string enumeratorCppName,
+        ?let @semanticExpressionForGeneration enumerationExpression
+      )
+    //---
+      enumerationList ++= @(
+        if object.mAscending then "Up" else "Down" end,
+        enumerationExpression,
+        enumeratorCppName)
+    end
+  //--- While expression
+    !?ioVariableMap.openOverrideForRepeatBlock ()
+    !?ioVariableMap.openBranch ()
+  //--- Declare local constants
+    for localConstant in localConstantListForDoBranch do
+     !?ioVariableMap.insertUsedLocalConstant
+       (localConstant.mName,
+       localConstant.mType,
+       !cppName: localConstant.mCppName,
+       !nameForCheckingVarUsing: localConstant.mCppName
+     )
+    end
+  //---
+    self.mWhileExpression.analyzeSemanticExpression
+      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      !inferenceType: @unifiedTypeMapEntry.null,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !?ioVariableMap,
+      ?let @semanticExpressionForGeneration uncheckedWhileExpression
+    )
+    checkExpressionIsBoolean (
+      inAnalysisContext,
+      self.mEndOf_while_expression,
+      uncheckedWhileExpression,
+      ?let @semanticExpressionForGeneration whileExpression
     )
   //---
-    enumerationList ++= @(
-      if object.mAscending then "Up" else "Down" end,
-      enumerationExpression,
-      enumeratorCppName)
-  end
-//--- While expression
-  !?ioVariableMap.openOverrideForRepeatBlock ()
-  !?ioVariableMap.openBranch ()
-//--- Declare local constants
-  for localConstant in localConstantListForDoBranch do
-   !?ioVariableMap.insertUsedLocalConstant
-     (localConstant.mName,
-     localConstant.mType,
-     !cppName: localConstant.mCppName,
-     !nameForCheckingVarUsing: localConstant.mCppName
-   )
-  end
-//---
-  self.mWhileExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    !inferenceType: @unifiedTypeMapEntry.null,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !?ioVariableMap,
-    ?let @semanticExpressionForGeneration uncheckedWhileExpression
-  )
-  checkExpressionIsBoolean (
-    inAnalysisContext,
-    self.mEndOf_while_expression,
-    uncheckedWhileExpression,
-    ?let @semanticExpressionForGeneration whileExpression
-  )
-//---
-  !?ioVariableMap.closeBranch (self.mEndOf_while_expression)
-  !?ioVariableMap.closeOverride (self.mEndOf_while_expression)
-//--- Handle index
-  !?ioVariableMap.openOverrideForRepeatBlock ()
-  var @string indexCppName = ""
-  if self.mIndexVariableName.string != "" then
-    indexCppName = "index_" + self.mInstructionLocation.startLocationIndex
-    localConstantListForDoBranch ++= @(
-      inAnalysisContext.predefinedTypes.mUIntType,
-      self.mIndexVariableName,
-      false, // Warns if unused
-      indexCppName)
-  end
-//--- 'do' branch
-  analyzeSemanticInstructionList (
-    inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    inAnalysisContext,
-    !?ioTypeMap,
-    !localConstantList: localConstantListForDoBranch, // indexDeclaration
-    self.mDoInstructionList,
-    self.mEndOf_do_branch,
-    !?ioVariableMap,
-    ?let do_instructionList
-  )
-//--- End override
-  !?ioVariableMap.closeOverride (self.mEndOf_foreach_instruction)
-//--- End override for foreach defined constants
-  !?ioVariableMap.closeBranch (self.mEndOf_foreach_instruction)
-  !?ioVariableMap.closeOverride (self.mEndOf_foreach_instruction)
-//--- Generate instruction
-  ioInstructionListForGeneration ++= @forInstructionForGeneration (
-    self.mInstructionLocation,
-    enumerationList,
-    indexCppName,
-    whileExpression,
-    before_instructionList,
-    between_instructionList,
-    do_instructionList,
-    after_instructionList
-  )
+    !?ioVariableMap.closeBranch (self.mEndOf_while_expression)
+    !?ioVariableMap.closeOverride (self.mEndOf_while_expression)
+  //--- Handle index
+    !?ioVariableMap.openOverrideForRepeatBlock ()
+    var @string indexCppName = ""
+    if self.mIndexVariableName.string != "" then
+      indexCppName = "index_" + self.mInstructionLocation.startLocationIndex
+      localConstantListForDoBranch ++= @(
+        inAnalysisContext.predefinedTypes.mUIntType,
+        self.mIndexVariableName,
+        false, // Warns if unused
+        indexCppName
+      )
+    end
+  //--- 'do' branch
+    analyzeSemanticInstructionList (
+      inUsefulnessCallerEntityName,
+      !?ioUsefulEntitiesGraph,
+      inAnalysisContext,
+      !?ioTypeMap,
+      !localConstantList: localConstantListForDoBranch, // indexDeclaration
+      self.mDoInstructionList,
+      self.mEndOf_do_branch,
+      !?ioVariableMap,
+      ?let do_instructionList
+    )
+  //--- End override
+    !?ioVariableMap.closeOverride (self.mEndOf_foreach_instruction)
+  //--- End override for foreach defined constants
+    !?ioVariableMap.closeBranch (self.mEndOf_foreach_instruction)
+    !?ioVariableMap.closeOverride (self.mEndOf_foreach_instruction)
+  //--- Generate instruction
+    ioInstructionListForGeneration ++= @forInstructionForGeneration (
+      self.mInstructionLocation,
+      enumerationList,
+      indexCppName,
+      whileExpression,
+      before_instructionList,
+      between_instructionList,
+      do_instructionList,
+      after_instructionList
+    )
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -557,7 +550,9 @@ struct @forInstructionEnumeratedObjectForGeneration {
   public let @string mEnumeratorCppName
 }
 
-//································································································*
+//--------------------------------------------------------------------------------------------------
+//! CODE GENERATION
+//--------------------------------------------------------------------------------------------------
 
 final class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
@@ -568,104 +563,45 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let [@semanticInstructionForGeneration] mBetweenInstructionList
   private let [@semanticInstructionForGeneration] mDoInstructionList
   private let [@semanticInstructionForGeneration] mAfterInstructionList
-}
 
-//--------------------------------------------------------------------------------------------------
-//! CODE GENERATION
-//--------------------------------------------------------------------------------------------------
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@u32 ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  let @bool inGenerateSyntaxDirectedTranslationString,
-  ?!@string ioGeneratedCode) {
-  var [@string] enumerationVarCppNameList = @()
-  for entry in self.mEnumeratedObjectList do
-    entry.mEnumeratedExpression.generateExpression
-      (!?ioGeneratedCode,
-      !?ioInclusionSet,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      ?let enumerationVar
-    )
-    enumerationVarCppNameList ++= enumerationVar
-  end
-  for enumerated in self.mEnumeratedObjectList, entry in enumerationVarCppNameList do
-    ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + enumerated.mEnumeratedExpression.mResultType.identifierRepresentation
-    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + entry + ") ;\n"
-  end
-//--- Analyse 'while' expression
-  let whileExpressionIsAllwaysTrue = self.mWhileExpression.isTrueExpression
-//--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
-  if ((self.mBeforeInstructionList.count + self.mAfterInstructionList.count) > 0) | not whileExpressionIsAllwaysTrue then
-  //--- Index
-    if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
-    end
-    let boolVarCppName = "bool_" + ioTemporaryVariableIndex.string
-    ioTemporaryVariableIndex += 1
-    if whileExpressionIsAllwaysTrue then
-      ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
-    else
-      self.mWhileExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let whileVar)
-      ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
-    end
-    ioGeneratedCode += "if ("
+  override proc generateInstruction (?!@stringset ioInclusionSet,
+                                     ?!@u32 ioTemporaryVariableIndex,
+                                     ?!@stringset ioUnusedVariableCppNameSet,
+                                     let @bool inGenerateSyntaxDirectedTranslationString,
+                                     ?!@string ioGeneratedCode) {
+    var [@string] enumerationVarCppNameList = @()
     for entry in self.mEnumeratedObjectList do
-      ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
-    end
-    ioGeneratedCode += boolVarCppName + ") {\n"
-    generateInstructionList (
-      !?ioInclusionSet,
-      self.mBeforeInstructionList,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      inGenerateSyntaxDirectedTranslationString,
-      !?ioGeneratedCode
-    )
-    !?ioGeneratedCode.incIndentation (2)
-    ioGeneratedCode += "while ("
-    for entry in self.mEnumeratedObjectList do
-      ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
-    end
-    ioGeneratedCode += boolVarCppName + ") {\n"
-  //--- Generate 'do' instruction
-    generateInstructionList (
-      !?ioInclusionSet,
-      self.mDoInstructionList,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      inGenerateSyntaxDirectedTranslationString,
-      !?ioGeneratedCode
-    )
-  //--- Goto next object
-    for entry in self.mEnumeratedObjectList do
-      ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
-    end
-    if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment () ;\n"
-    end
-  //--- Compute 'while' expression
-    if not whileExpressionIsAllwaysTrue then
-      ioGeneratedCode += "  if ("
-      for entry in self.mEnumeratedObjectList
-      do  ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
-      between ioGeneratedCode += " && "
-      end
-      ioGeneratedCode += ") {\n"
-      self.mWhileExpression.generateExpression
-        (!?ioGeneratedCode,
+      entry.mEnumeratedExpression.generateExpression (
+        !?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
-        ?let whileVar
+        ?let enumerationVar
       )
-      ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
-      ioGeneratedCode += "  }\n"
+      enumerationVarCppNameList ++= enumerationVar
     end
-  //--- Generate 'between' instruction
-    if self.mBetweenInstructionList.count > 0 then
-      !?ioGeneratedCode.incIndentation (2)
+    for enumerated in self.mEnumeratedObjectList, entry in enumerationVarCppNameList do
+      ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + enumerated.mEnumeratedExpression.mResultType.identifierRepresentation
+      ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + entry + ") ;\n"
+    end
+  //--- Analyse 'while' expression
+    let whileExpressionIsAllwaysTrue = self.mWhileExpression.isTrueExpression
+  //--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
+    if ((self.mBeforeInstructionList.count + self.mAfterInstructionList.count) > 0) | not whileExpressionIsAllwaysTrue then
+    //--- Index
+      if self.mIndexVariableCppName != "" then
+        ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      end
+      let boolVarCppName = "bool_" + ioTemporaryVariableIndex.string
+      ioTemporaryVariableIndex += 1
+      if whileExpressionIsAllwaysTrue then
+        ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
+      else
+        self.mWhileExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let whileVar)
+        ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
+      end
       ioGeneratedCode += "if ("
       for entry in self.mEnumeratedObjectList do
         ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
@@ -673,79 +609,139 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       ioGeneratedCode += boolVarCppName + ") {\n"
       generateInstructionList (
         !?ioInclusionSet,
-        self.mBetweenInstructionList,
+        self.mBeforeInstructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        inGenerateSyntaxDirectedTranslationString,
+        !?ioGeneratedCode
+      )
+      !?ioGeneratedCode.incIndentation (2)
+      ioGeneratedCode += "while ("
+      for entry in self.mEnumeratedObjectList do
+        ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
+      end
+      ioGeneratedCode += boolVarCppName + ") {\n"
+    //--- Generate 'do' instruction
+      generateInstructionList (
+        !?ioInclusionSet,
+        self.mDoInstructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        inGenerateSyntaxDirectedTranslationString,
+        !?ioGeneratedCode
+      )
+    //--- Goto next object
+      for entry in self.mEnumeratedObjectList do
+        ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
+      end
+      if self.mIndexVariableCppName != "" then
+        ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment () ;\n"
+      end
+    //--- Compute 'while' expression
+      if not whileExpressionIsAllwaysTrue then
+        ioGeneratedCode += "  if ("
+        for entry in self.mEnumeratedObjectList
+        do  ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
+        between ioGeneratedCode += " && "
+        end
+        ioGeneratedCode += ") {\n"
+        self.mWhileExpression.generateExpression (
+          !?ioGeneratedCode,
+          !?ioInclusionSet,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
+          ?let whileVar
+        )
+        ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
+        ioGeneratedCode += "  }\n"
+      end
+    //--- Generate 'between' instruction
+      if self.mBetweenInstructionList.count > 0 then
+        !?ioGeneratedCode.incIndentation (2)
+        ioGeneratedCode += "if ("
+        for entry in self.mEnumeratedObjectList do
+          ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
+        end
+        ioGeneratedCode += boolVarCppName + ") {\n"
+        generateInstructionList (
+          !?ioInclusionSet,
+          self.mBetweenInstructionList,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
+          inGenerateSyntaxDirectedTranslationString,
+          !?ioGeneratedCode
+        )
+        ioGeneratedCode += "}\n"
+        !?ioGeneratedCode.decIndentation (2)
+      end
+    //--- End of foreach instruction
+      ioGeneratedCode += "}\n"
+    //--- Generate 'after' instruction
+      !?ioGeneratedCode.decIndentation (2)
+      generateInstructionList (
+        !?ioInclusionSet,
+        self.mAfterInstructionList,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
         inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"
-      !?ioGeneratedCode.decIndentation (2)
-    end
-  //--- End of foreach instruction
-    ioGeneratedCode += "}\n"
-  //--- Generate 'after' instruction
-    !?ioGeneratedCode.decIndentation (2)
-    generateInstructionList (
-      !?ioInclusionSet,
-      self.mAfterInstructionList,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      inGenerateSyntaxDirectedTranslationString,
-      !?ioGeneratedCode
-    )
-    ioGeneratedCode += "}\n"
-  else //---- foreach instruction without 'before', 'after', while expression
-    if self.mIndexVariableCppName != "" then
-      ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
-    end
-    ioGeneratedCode += "while ("
-    for entry in self.mEnumeratedObjectList
-      do ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
-      between ioGeneratedCode += " && "
-    end
-    ioGeneratedCode += ") {\n"
-  //--- Generate 'do' instruction
-    generateInstructionList (
-      !?ioInclusionSet,
-      self.mDoInstructionList,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      inGenerateSyntaxDirectedTranslationString,
-      !?ioGeneratedCode
-    )
-  //--- Advance
-    for entry in self.mEnumeratedObjectList do
-      ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
-    end
-  //--- Generate 'between' instruction
-    if self.mBetweenInstructionList.count > 0 then
-      !?ioGeneratedCode.incIndentation (2)
-      ioGeneratedCode += "if ("
+    else //---- foreach instruction without 'before', 'after', while expression
+      if self.mIndexVariableCppName != "" then
+        ioGeneratedCode += "GGS_u_33__32_ " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
+      end
+      ioGeneratedCode += "while ("
       for entry in self.mEnumeratedObjectList
         do ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
         between ioGeneratedCode += " && "
       end
       ioGeneratedCode += ") {\n"
+    //--- Generate 'do' instruction
       generateInstructionList (
         !?ioInclusionSet,
-        self.mBetweenInstructionList,
+        self.mDoInstructionList,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
         inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
+    //--- Advance
+      for entry in self.mEnumeratedObjectList do
+        ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
+      end
+    //--- Generate 'between' instruction
+      if self.mBetweenInstructionList.count > 0 then
+        !?ioGeneratedCode.incIndentation (2)
+        ioGeneratedCode += "if ("
+        for entry in self.mEnumeratedObjectList
+          do ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
+          between ioGeneratedCode += " && "
+        end
+        ioGeneratedCode += ") {\n"
+        generateInstructionList (
+          !?ioInclusionSet,
+          self.mBetweenInstructionList,
+          !?ioTemporaryVariableIndex,
+          !?ioUnusedVariableCppNameSet,
+          inGenerateSyntaxDirectedTranslationString,
+          !?ioGeneratedCode
+        )
+        ioGeneratedCode += "}\n"
+        !?ioGeneratedCode.decIndentation (2)
+      end
+    //--- Advance index ?
+      if self.mIndexVariableCppName != "" then
+        !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
+        ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_u_33__32_ (1), " + gCompilerCppName
+        + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
+      end
       ioGeneratedCode += "}\n"
-      !?ioGeneratedCode.decIndentation (2)
     end
-  //--- Advance index ?
-    if self.mIndexVariableCppName != "" then
-      !?ioUnusedVariableCppNameSet.removeKey (gCompilerCppName)
-      ioGeneratedCode += "  " + self.mIndexVariableCppName + ".plusAssignOperation (GGS_u_33__32_ (1), " + gCompilerCppName
-      + " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-    end
-    ioGeneratedCode += "}\n"
-  end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 }
 
 //--------------------------------------------------------------------------------------------------

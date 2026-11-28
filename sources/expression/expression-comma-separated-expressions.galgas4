@@ -19,7 +19,7 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas4InstructionsSyntax {
+syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

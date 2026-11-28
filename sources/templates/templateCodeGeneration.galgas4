@@ -23,36 +23,6 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-proc templateCodeGenerationForListInstruction (let [@templateInstructionForGeneration] inInstructionList,
-                                              ?!@string ioGeneratedCode,
-                                              ?!@stringset ioInclusionSet,
-                                              ?!@u32 ioTemporaryVariableIndex,
-                                              ?!@stringset ioUnusedVariableCppNameSet,
-                                              ?!@bool ioUseColumnMarker ) {
-  for instruction in inInstructionList do
-    instruction.templateCodeGeneration (
-      !?ioGeneratedCode,
-      !?ioInclusionSet,
-      !?ioTemporaryVariableIndex,
-      !?ioUnusedVariableCppNameSet,
-      !?ioUseColumnMarker
-    )
-  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-override proc @templateInstructionStringForGeneration.templateCodeGeneration
-  (?!@string ioGeneratedCode,
-  ?!@stringset _ioInclusionSet,
-  ?!@u32 _ioTemporaryVariableIndex,
-  ?!@stringset _ioUnusedVariableCppNameSet,
-  ?!@bool _ioUseColumnMarker ) {
-  ioGeneratedCode += "result.appendString (" + self.mTemplateString.utf8RepresentationEscapingQuestionMark + ") ;\n"
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @templateBlockInstructionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,

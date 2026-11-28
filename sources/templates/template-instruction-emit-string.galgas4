@@ -51,3 +51,22 @@ final class @templateInstructionStringAST : @templateAbstractInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
+
+final class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
+  private let @string mTemplateString
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc templateCodeGeneration (?!@string ioGeneratedCode,
+                                        ?!@stringset _ioInclusionSet,
+                                        ?!@u32 _ioTemporaryVariableIndex,
+                                        ?!@stringset _ioUnusedVariableCppNameSet,
+                                        ?!@bool _ioUseColumnMarker) {
+    ioGeneratedCode += "result.appendString (" + self.mTemplateString.utf8RepresentationEscapingQuestionMark + ") ;\n"
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------

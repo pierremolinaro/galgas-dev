@@ -1,1239 +1,5 @@
 #include "all-declarations-2.h"
 //--------------------------------------------------------------------------------------------------
-//Filewrapper 'targetGalgas3GenerationFileWrapper'
-//--------------------------------------------------------------------------------------------------
-
-//--- All files of 'makefile-arm64-linux-on-macosx' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_6 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-arm64-linux-on-macosx' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_6 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-arm64-linux-on-macosx'
-
-const DirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper (
-  "makefile-arm64-linux-on-macosx",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_6,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_6
-) ;
-
-//--- All files of 'makefile-macosx' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-macosx' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-macosx'
-
-const DirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper (
-  "makefile-macosx",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_1,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_1
-) ;
-
-//--- All files of 'makefile-unix' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_5 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-unix' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_5 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-unix'
-
-const DirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper (
-  "makefile-unix",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_5,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_5
-) ;
-
-//--- All files of 'makefile-win32-on-macosx' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-win32-on-macosx' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-win32-on-macosx'
-
-const DirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper (
-  "makefile-win32-on-macosx",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_2,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_2
-) ;
-
-//--- All files of 'makefile-x86linux32-on-macosx' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_8 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-x86linux32-on-macosx' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_8 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-x86linux32-on-macosx'
-
-const DirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper (
-  "makefile-x86linux32-on-macosx",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_8,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_8
-) ;
-
-//--- All files of 'makefile-x86linux64-on-macosx' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_7 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'makefile-x86linux64-on-macosx' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_7 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'makefile-x86linux64-on-macosx'
-
-const DirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper (
-  "makefile-x86linux64-on-macosx",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_7,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_7
-) ;
-
-//--- File 'project-xcode-swiftui/adding-icons-to-your-application.rtf'
-
-const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper = 
-  "{\\rtf1\\ansi\\ansicpg1252\\cocoartf1138\\cocoasubrtf510\n"
-  "{\\fonttbl\\f0\\fnil\\fcharset0 GillSans;\\f1\\fnil\\fcharset128 HiraKakuProN-W3;}\n"
-  "{\\colortbl;\\red255\\green255\\blue255;}\n"
-  "\\paperw11900\\paperh16840\\margl1440\\margr1440\\vieww14100\\viewh8520\\viewkind0\n"
-  "\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\n"
-  "\n"
-  "\\f0\\fs28 \\cf0 By default, your Cocoa application has no associated icon.\\\n"
-  "\\\n"
-  "For adding an icon for your application and your documents :\\\n"
-  "\\\n"
-  "\n"
-  "\\f1\\b \\'87\\'40\n"
-  "\\f0  Create an 'userResources' folder in the 'project_xcode' folder.\n"
-  "\\b0 \\\n"
-  "\\\n"
-  "\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\n"
-  "\n"
-  "\\f1\\b \\cf0 \\'87\\'41\n"
-  "\\f0  For application icon : \n"
-  "\\b0 add an icon file named 'application_icns.icns'.\\\n"
-  "\\\n"
-  "\n"
-  "\\f1\\b \\'87\\'42\n"
-  "\\f0  For every document type : \n"
-  "\\b0 add an icon file whose name is based upon the source file extension : \n"
-  "\\i 'extension\n"
-  "\\i0 _icns.icns'.\\\n"
-  "\\\n"
-  "\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\n"
-  "\n"
-  "\\b \\cf0 So :\\\n"
-  "\n"
-  "\\b0 \\\n"
-  "\\pard\\tx566\\tx1133\\tx1700\\tx2267\\tx2834\\tx3401\\tx3968\\tx4535\\tx5102\\tx5669\\tx6236\\tx6803\\pardirnatural\n"
-  "\\cf0 At the next galgas compilation, theses icons will be added automatically to the Xcode project.\\\n"
-  "}" ;
-
-const RegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper (
-  "adding-icons-to-your-application.rtf",
-  "rtf",
-  true, // Text file
- 1274, // Text length
-  gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper
-) ;
-
-//--- File 'Base.lproj/Credits.rtf'
-
-const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper = 
-  "{\\rtf1\\mac\\ansicpg10000\\cocoartf824\\cocoasubrtf380\n"
-  "{\\fonttbl\\f0\\fswiss\\fcharset77 Helvetica-Bold;}\n"
-  "{\\colortbl;\\red255\\green255\\blue255;}\n"
-  "\\vieww9000\\viewh8400\\viewkind0\n"
-  "\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\ql\\qnatural\n"
-  "\n"
-  "\\f0\\b\\fs24 \\cf0 GALGAS Cocoa Project\\\n"
-  "}\n"
-   ;
-
-const RegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper (
-  "Credits.rtf",
-  "rtf",
-  true, // Text file
- 310, // Text length
-  gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper
-) ;
-
-//--- All files of 'Base.lproj' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_4 [2] = {
-  & gWrapperFile_1_targetGalgas_33_GenerationFileWrapper,
-  nullptr
-} ;
-
-//--- All sub-directories of 'Base.lproj' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_4 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'Base.lproj'
-
-const DirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper (
-  "Base.lproj",
-  1,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_4,
-  0,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_4
-) ;
-
-//--- All files of 'project-xcode-swiftui' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_3 [2] = {
-  & gWrapperFile_0_targetGalgas_33_GenerationFileWrapper,
-  nullptr
-} ;
-
-//--- All sub-directories of 'project-xcode-swiftui' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_3 [2] = {
-  & gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory 'project-xcode-swiftui'
-
-const DirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper (
-  "project-xcode-swiftui",
-  1,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_3,
-  1,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_3
-) ;
-
-//--- All files of '' directory
-
-static const RegularFileWrapper * gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_0 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of '' directory
-
-static const DirectoryWrapper * gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_0 [8] = {
-  & gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper,
-  & gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper,
-  nullptr
-} ;
-
-//--- Directory ''
-
-const DirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_targetGalgas_33_GenerationFileWrapper_0,
-  7,
-  gWrapperAllDirectories_targetGalgas_33_GenerationFileWrapper_0
-) ;
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper GGS_targetGalgas_33_GenerationFileWrapper::class_func_contents (UNUSED_LOCATION_ARGS) {
-  return GGS_filewrapper (gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_macosx (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                  Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_macosx (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                  const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                  Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom macosx_gcc_tools import buildForMacOS\n#----------------------------------------------------------------- Build\nbuildForMacOS (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_macosx (Compiler * /* inCompiler */
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_macosx (Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_macosx (Compiler * /* inCompiler */
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_macosx
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_macosx (Compiler * /* inCompiler */
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_unix (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_unix (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom unix_gcc_tools import buildForUnix\n#----------------------------------------------------------------- Build\nbuildForUnix (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_unix (Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_unix (Compiler * /* inCompiler */
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_unix (Compiler * /* inCompiler */
-                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_unix (Compiler * /* inCompiler */
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  install_unix
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_install_5F_unix (Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"install-release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                                               Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                                               const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                                               Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom x86linux_on_macosx_gcc_tools_32 import buildForLinux32OnMacOSX\n#----------------------------------------------------------------- Build\nbuildForLinux32OnMacOSX (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_x86linux32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n\n#-----------------------------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#-----------------------------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#-----------------------------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#-----------------------------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                                               Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                                               const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                                               Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom x86linux_on_macosx_gcc_tools_64 import buildForLinux64OnMacOSX\n#----------------------------------------------------------------- Build\nbuildForLinux64OnMacOSX (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_x86linux64_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_win32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_win_33__32__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_win32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_win_33__32__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                                    const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                                    Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom mingw32_on_macosx_gcc_tools import buildForWin32OnMacOSX\n#----------------------------------------------------------------- Build\nbuildForWin32OnMacOSX (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_win32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_win32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_win32_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_arm_36__34__5F_linux_5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                                             Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"clean\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                                             const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                                             Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, json\n\n#---------------------------------------------------------------------------------------------------\n\n#----------------------------------------------------------------- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\nos.chdir (scriptDir)\n#----------------------------------------------------------------- Get goal as first argument\ngoal = \"all\" # Default goal\nif len (sys.argv) > 1 :\n  goal = sys.argv [1]\n#----------------------------------------------------------------- Get max parallel jobs as second argument\nmaxParallelJobs = 0 # 0 means use host processor count\nif len (sys.argv) > 2 :\n  maxParallelJobs = int (sys.argv [2])\n#----------------------------------------------------------------- Get json description dictionary\njsonFilePath = os.path.normpath (scriptDir + \"/../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output/file-list.json\")\nwith open (jsonFilePath) as f:\n  dictionary = json.loads (f.read ())\nLIBPM_DIRECTORY_PATH = dictionary [\"LIBPM_DIRECTORY_PATH\"]\n#----------------------------------------------------------------- Import builder\nsys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\nfrom arm64linux_on_macosx_gcc_tools import buildForArm64LinuxOnMacOSX\n#----------------------------------------------------------------- Build\nbuildForArm64LinuxOnMacOSX (dictionary, jsonFilePath, \"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\", \"") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("\", goal, maxParallelJobs, maxParallelJobs == 1)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"all\", \"1\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"debug\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"release\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_arm64_linux_on_mac
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
-                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#! /usr/bin/python3\n# -*- coding: UTF-8 -*-\n#---------------------------------------------------------------------------------------------------\n\nimport sys, os, subprocess, atexit\n\n#---------------------------------------------------------------------------------------------------\n\ndef cleanup():\n  if childProcess.poll () == None :\n    childProcess.kill ()\n\n#---------------------------------------------------------------------------------------------------\n\n#--- Register a function for killing subprocess\natexit.register (cleanup)\n#--- Get script absolute path\nscriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))\n#---\nchildProcess = subprocess.Popen ([\"python3\", \"build.py\", \"lto\"], cwd=scriptDir)\n#--- Wait for subprocess termination\nif childProcess.poll () == None :\n  childProcess.wait ()\nif childProcess.returncode != 0 :\n  sys.exit (childProcess.returncode)\n\n#---------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  codeblocks_project
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_codeblocks_5F_project (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                        const GGS__5B_string_5D_ & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
-                                                                                        const GGS_string & in_LIBPM_5F_PATH,
-                                                                                        const GGS__5B_string_5D_ & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
-                                                                                        const GGS_string & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY,
-                                                                                        const GGS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
-                                                                                        const GGS_string & in_PLATFORM,
-                                                                                        const GGS_string & in_BUILD_5F_DIR_5F_NAME,
-                                                                                        Compiler * /* inCompiler */
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("<\?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" \?>\n<CodeBlocks_project_file>\n <FileVersion major=\"1\" minor=\"6\" />\n <Project>\n  <Option title=\"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("\" />\n  <Option pch_mode=\"0\" />\n  <Option compiler=\"gcc\" />\n  <Build>\n   <Target title=\"Release\">\n    <Option platforms=\"") ;
-  result.appendString (in_PLATFORM.stringValue ()) ;
-  result.appendString (";\" />\n    <Option output=\"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  const GalgasBool test_0 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  switch (test_0) {
-  case GalgasBool::boolTrue : {
-    result.appendString (GGS_string (".exe").stringValue ()) ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("\" prefix_auto=\"0\" extension_auto=\"0\" />\n    <Option object_output=\"objects\" />\n    <Option type=\"1\" />\n    <Option compiler=\"gcc\" />\n    <Option projectResourceIncludeDirsRelation=\"1\" />\n    <Compiler>\n     <Add option=\"-fomit-frame-pointer\" />\n     <Add option=\"-O2\" />\n     <Add option=\"-Wnon-virtual-dtor\" />\n     <Add option=\"-Winit-self\" />\n     <Add option=\"-Wredundant-decls\" />\n     <Add option=\"-Wundef\" />\n     <Add option=\"-Wmissing-include-dirs\" />\n     <Add option=\"-Weffc++\" />\n     <Add option=\"-std=c++17\" />\n     <Add option=\"-Wshadow\" />\n     <Add option=\"-Wall\" />\n     <Add option=\"-W\" />\n     <Add option=\"-DDO_NOT_GENERATE_CHECKINGS\" />\n     ") ;
-  const GalgasBool test_1 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  switch (test_1) {
-  case GalgasBool::boolTrue : {
-    result.appendString (GGS_string ("<Add option=\"-D_WIN32_WINNT=0x501\" />\n").stringValue ()) ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("    </Compiler>\n   </Target>\n   <Target title=\"Debug\">\n    <Option platforms=\"") ;
-  result.appendString (in_PLATFORM.stringValue ()) ;
-  result.appendString (";\" />\n    <Option output=\"") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("-debug") ;
-  const GalgasBool test_2 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  switch (test_2) {
-  case GalgasBool::boolTrue : {
-    result.appendString (GGS_string (".exe").stringValue ()) ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("\" prefix_auto=\"0\" extension_auto=\"0\" />\n    <Option object_output=\"objects_debug\" />\n    <Option deps_output=\".deps_debug\" />\n    <Option type=\"1\" />\n    <Option compiler=\"gcc\" />\n    <Option projectResourceIncludeDirsRelation=\"1\" />\n    <Compiler>\n     <Add option=\"-g\" />\n     <Add option=\"-Wnon-virtual-dtor\" />\n     <Add option=\"-Winit-self\" />\n     <Add option=\"-Wredundant-decls\" />\n     <Add option=\"-Wundef\" />\n     <Add option=\"-Winline\" />\n     <Add option=\"-Wmissing-include-dirs\" />\n     <Add option=\"-Weffc++\" />\n     <Add option=\"-std=c++17\" />\n     <Add option=\"-Wshadow\" />\n     <Add option=\"-Wall\" />\n     <Add option=\"-W\" />\n     ") ;
-  const GalgasBool test_3 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  switch (test_3) {
-  case GalgasBool::boolTrue : {
-    result.appendString (GGS_string ("<Add option=\"-D_WIN32_WINNT=0x501\" />\n").stringValue ()) ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("    </Compiler>\n   </Target>\n  </Build>\n  <VirtualTargets>\n   <Add alias=\"All\" targets=\"Release;Debug;\" />\n  </VirtualTargets>\n  <Compiler>\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/generic-arraies\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/streams\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/time\" />\n   <Add directory=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities\" />\n   <Add directory=\"../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/user-headers\" />\n   <Add directory=\"../") ;
-  result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-  result.appendString ("/output\" />\n   <Add directory=\"") ;
-  result.appendString (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY.stringValue ()) ;
-  result.appendString ("\" />\n  </Compiler>\n  <Linker>\n") ;
-  const GalgasBool test_4 = in_GENERATE_5F_FOR_5F_WINDOWS.boolEnum () ;
-  switch (test_4) {
-  case GalgasBool::boolTrue : {
-    result.appendString (GGS_string ("   <Add option=\"-static\" />\n   <Add library=\"Comdlg32\" />\n").stringValue ()) ;
-    } break ;
-  case GalgasBool::boolFalse : {
-    } break ;
-  case GalgasBool::boolNotValid :
-    break ;
-  }
-  result.appendString ("</Linker>\n") ;
-  GGS_u_33__32_ index_3005_ (0) ;
-  if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_3005 (in_TOOL_5F_CPP_5F_FILE_5F_LIST) ;
-    while (enumerator_3005.hasCurrentObject ()) {
-      result.appendString ("  <Unit filename=\"../") ;
-      result.appendString (in_BUILD_5F_DIR_5F_NAME.stringValue ()) ;
-      result.appendString ("/output/") ;
-      result.appendString (enumerator_3005.current_entry (HERE).stringValue ()) ;
-      result.appendString ("\" />\n") ;
-      enumerator_3005.gotoNextObject () ;
-      index_3005_.increment () ;
-    }
-  }
-  GGS_u_33__32_ index_3125_ (0) ;
-  if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_3125 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST) ;
-    while (enumerator_3125.hasCurrentObject ()) {
-      result.appendString ("  <Unit filename=\"../") ;
-      result.appendString (enumerator_3125.current_entry (HERE).stringValue ()) ;
-      result.appendString ("\" />\n") ;
-      enumerator_3125.gotoNextObject () ;
-      index_3125_.increment () ;
-    }
-  }
-  result.appendString ("   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/AbstractCommandLineOption.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/BoolCommandLineOption.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/UIntCommandLineOption.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/StringCommandLineOption.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/analyzeCommandLineOptions.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface/F_mainForLIBPM.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-add.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-bit.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-chunk-operations.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-constructors.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-conversions.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-divide.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-logic-operations.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-multiply.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-print.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-shifts.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-subtract.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned-utilities.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigSigned.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-add.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-bit.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-chunk-operations.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-constructors.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-conversions.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-divide-naive.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-divide.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-logic-operations.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-multiply.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-print.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-shifts.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-subtract.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/BigUnsigned-utilities.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/ChunkSharedArray.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers/UInt128.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd/BinaryDecisionDiagram.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd/BinaryDecisionDiagramRelationSingleType.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd/BinaryDecisionDiagramRelationConfiguration.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd/BinaryDecisionDiagramRelation.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files/FileManager.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files/AbstractFileHandle.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files/TextFileWrite.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files/HTMLFileWrite.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/files/BinaryFileWrite.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/streams/AbstractOutputStream.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/streams/ColoredConsole.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/streams/ConsoleOut.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings/utf32.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings/String-class-getters.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings/String-class.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings/HTMLString.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings/print.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/time/Timer.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/time/DateTime.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/PrologueEpilogue.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/SharedObject.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/U8Data.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/F_DisplayException.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/macroAssert.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/F_GetPrime.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/MF_MemoryControl.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/cpp-allocation.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/basic-allocation.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/UInt32Set.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/DirectedGraph.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/md5.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/SHA256.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities/galgas-random.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/execution-mode.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/filewrapper-utilities.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/Compiler.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/Lexique.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/Lexique-parsing.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/LocationInSource.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/SourceTextInString.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GALGAS_TypeDescriptor.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/galgas-input-output.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/C_galgas_class_inspector.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/IssueWithFixIt.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/Enumerator_range.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/IndexingDictionary.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/IssueDescriptor.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/LexiqueIntrospection.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/AC_GALGAS_root.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/AC_GALGAS_reference_class.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/AC_GALGAS_enumAssociatedValues.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/AbstractPtrClass.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/AbstractStrongPtrClass.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/PtrObject.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/scanner_actions.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_application.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_bigint.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_binaryset.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_bool.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_char.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_data.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_f64.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_filewrapper.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_location.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_s32.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_s64.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_string.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_string-getters.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_stringset.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_timer.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_u8.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_u16.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_u32.cpp\" />\n   <Unit filename=\"") ;
-  result.appendString (in_LIBPM_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas/GGS_u64.cpp\" />\n  <Extensions>\n   <code_completion />\n   <envvars />\n   <debugger />\n   <lib_finder disable_auto=\"1\" />\n  </Extensions>\n </Project>\n</CodeBlocks_project_file>\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_info_plist
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_info_5F_plist (const GGS_string & in_PROJECT_5F_NAME,
-                                                                                            const GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                                            const GGS_string & in_VERSION_5F_STRING,
-                                                                                            const GGS_stringset & in_HANDLED_5F_EXTENSION_5F_SET,
-                                                                                            const GGS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET,
-                                                                                            const GGS_string & /* in_DOCUMENT_5F_CLASS */,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n <key>CFBundleDevelopmentRegion</key>\n <string>English</string>\n <key>CFBundleExecutable</key>\n <string>${EXECUTABLE_NAME}</string>\n <key>CFBundleIconFile</key>\n <string>application_icns</string>\n <key>CFBundleIdentifier</key>\n <string>") ;
-  result.appendString (in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue ()) ;
-  result.appendString (".") ;
-  result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-  result.appendString ("</string>\n <key>CFBundleInfoDictionaryVersion</key>\n <string>6.0</string>\n <key>CFBundleName</key>\n <string>${PRODUCT_NAME}</string>\n <key>CFBundlePackageType</key>\n <string>APPL</string>\n <key>LSMinimumSystemVersion</key>\n <string>") ;
-  result.appendString (in_MACOSX_5F_DEPLOYMENT_5F_TARGET.stringValue ()) ;
-  result.appendString ("</string>\n <key>CFBundleShortVersionString</key>\n <string>") ;
-  result.appendString (in_VERSION_5F_STRING.stringValue ()) ;
-  result.appendString ("</string>\n <key>NSMainNibFile</key>\n <string>MainMenu</string>\n <key>NSPrincipalClass</key>\n <string>NSApplication</string>\n <key>CFBundleDocumentTypes</key>\n <array>\n") ;
-  GGS_u_33__32_ index_986_ (0) ;
-  if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    UpEnumerator_stringset enumerator_986 (in_HANDLED_5F_EXTENSION_5F_SET) ;
-    while (enumerator_986.hasCurrentObject ()) {
-      result.appendString ("  <dict>\n			<key>CFBundleTypeIconFile</key>\n			<string>") ;
-      result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
-      result.appendString ("_icns</string>\n      <key>CFBundleTypeIconSystemGenerated</key>\n      <integer>0</integer>\n      <key>CFBundleTypeName</key>\n      <string>") ;
-      result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
-      result.appendString (" Source</string>\n      <key>CFBundleTypeRole</key>\n      <string>Editor</string>\n      <key>LSHandlerRank</key>\n      <string>Default</string>\n      <key>LSItemContentTypes</key>\n      <array>\n        <string>$(PRODUCT_BUNDLE_IDENTIFIER).") ;
-      result.appendString (enumerator_986.current_key (HERE).stringValue ()) ;
-      result.appendString ("</string>\n      </array>\n  </dict>\n") ;
-      enumerator_986.gotoNextObject () ;
-      index_986_.increment () ;
-    }
-  }
-  result.appendString ("\n </array>\n <key>UTExportedTypeDeclarations</key>\n <array>\n") ;
-  GGS_u_33__32_ index_1575_ (0) ;
-  if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    UpEnumerator_stringset enumerator_1575 (in_HANDLED_5F_EXTENSION_5F_SET) ;
-    while (enumerator_1575.hasCurrentObject ()) {
-      result.appendString ("  <dict>\n    <key>UTTypeConformsTo</key>\n    <array>\n      <string>public.text</string>\n    </array>\n    <key>UTTypeDescription</key>\n    <string>") ;
-      result.appendString (enumerator_1575.current_key (HERE).stringValue ()) ;
-      result.appendString ("</string>\n    <key>UTTypeIcons</key>\n    <dict>\n      <key>UTTypeIconBadgeName</key>\n      <string>") ;
-      result.appendString (enumerator_1575.current_key (HERE).stringValue ()) ;
-      result.appendString ("_icns</string>\n    </dict>\n    <key>UTTypeIdentifier</key>\n    <string>$(PRODUCT_BUNDLE_IDENTIFIER).") ;
-      result.appendString (enumerator_1575.current_key (HERE).stringValue ()) ;
-      result.appendString ("</string>\n    <key>UTTypeTagSpecification</key>\n    <dict>\n      <key>public.filename-extension</key>\n      <array>\n        <string>") ;
-      result.appendString (enumerator_1575.current_key (HERE).stringValue ()) ;
-      result.appendString ("</string>\n      </array>\n    </dict>\n  </dict>\n") ;
-      enumerator_1575.gotoNextObject () ;
-      index_1575_.increment () ;
-    }
-  }
-  result.appendString ("\n </array>\n</dict>\n</plist>\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_build_xcode
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_build_5F_xcode (Compiler * /* inCompiler */
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("#!/bin/sh\ncd `dirname $0` && xcodebuild -alltargets -configuration Default\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_info_plist_strings
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_info_5F_plist_5F_strings (const GGS_string & /* in_PROJECT_5F_NAME */,
-                                                                                                       Compiler * /* inCompiler */
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("/* Localized versions of Info.plist keys */\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  json_file_list
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_json_5F_file_5F_list (const GGS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
-                                                                                       const GGS__5B_string_5D_ & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
-                                                                                       const GGS__5B_string_5D_ & in_MAKEFILE_5F_FILE_5F_LIST,
-                                                                                       const GGS__5B_string_5D_ & in_TOOL_5F_LINK_5F_LIST,
-                                                                                       const GGS_string & in_LIBPM_5F_DIRECTORY_5F_PATH,
-                                                                                       const GGS_string & in_RELATIVE_5F_BUILD_5F_DIR,
-                                                                                       Compiler * /* inCompiler */
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("{ \"LIBPM_DIRECTORY_PATH\" : \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("\",\n  \"SOURCES_DIR\" : [\n     \"../") ;
-  result.appendString (in_RELATIVE_5F_BUILD_5F_DIR.stringValue ()) ;
-  result.appendString ("/output\",\n     \"../") ;
-  result.appendString (in_RELATIVE_5F_BUILD_5F_DIR.stringValue ()) ;
-  result.appendString ("/user-headers\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/bdd\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/big-integers\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/command_line_interface\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/files\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/galgas\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/generic-arraies\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/streams\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/strings\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/time\",\n     \"") ;
-  result.appendString (in_LIBPM_5F_DIRECTORY_5F_PATH.stringValue ()) ;
-  result.appendString ("/utilities\"") ;
-  GGS_u_33__32_ index_623_ (0) ;
-  if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
-    UpEnumerator_stringset enumerator_623 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET) ;
-    while (enumerator_623.hasCurrentObject ()) {
-      result.appendString (",\n         \"") ;
-      result.appendString (enumerator_623.current_key (HERE).stringValue ()) ;
-      result.appendString ("\"") ;
-      enumerator_623.gotoNextObject () ;
-      index_623_.increment () ;
-    }
-  }
-  result.appendString ("\n  ],\n  \"SOURCES\" : [\n") ;
-  GGS_u_33__32_ index_719_ (0) ;
-  if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_719 (in_MAKEFILE_5F_FILE_5F_LIST) ;
-    while (enumerator_719.hasCurrentObject ()) {
-      result.appendString ("    \"") ;
-      result.appendString (enumerator_719.current_entry (HERE).stringValue ()) ;
-      result.appendString ("\",\n") ;
-      enumerator_719.gotoNextObject () ;
-      index_719_.increment () ;
-    }
-  }
-  GGS_u_33__32_ index_797_ (0) ;
-  if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_797 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST) ;
-    while (enumerator_797.hasCurrentObject ()) {
-      result.appendString ("    \"") ;
-      result.appendString (enumerator_797.current_entry (HERE).stringValue ()) ;
-      result.appendString ("\",\n") ;
-      enumerator_797.gotoNextObject () ;
-      index_797_.increment () ;
-    }
-  }
-  result.appendString ("    \"AbstractCommandLineOption.cpp\",\n    \"BoolCommandLineOption.cpp\",\n    \"UIntCommandLineOption.cpp\",\n    \"StringCommandLineOption.cpp\",\n    \"analyzeCommandLineOptions.cpp\",\n    \"F_mainForLIBPM.cpp\",\n    \"BinaryDecisionDiagram.cpp\",\n    \"BinaryDecisionDiagramRelationSingleType.cpp\",\n    \"BinaryDecisionDiagramRelationConfiguration.cpp\",\n    \"BinaryDecisionDiagramRelation.cpp\",\n    \"FileManager.cpp\",\n    \"AbstractFileHandle.cpp\",\n    \"TextFileWrite.cpp\",\n    \"HTMLFileWrite.cpp\",\n    \"BinaryFileWrite.cpp\",\n    \"AbstractOutputStream.cpp\",\n    \"ColoredConsole.cpp\",\n    \"ConsoleOut.cpp\",\n    \"utf32.cpp\",\n    \"String-class-getters.cpp\",\n    \"String-class.cpp\",\n    \"HTMLString.cpp\",\n    \"GALGAS_print.cpp\",\n    \"Timer.cpp\",\n    \"DateTime.cpp\",\n    \"PrologueEpilogue.cpp\",\n    \"SharedObject.cpp\",\n    \"BigSigned-add.cpp\",\n    \"BigSigned-bit.cpp\",\n    \"BigSigned-chunk-operations.cpp\",\n    \"BigSigned-constructors.cpp\",\n    \"BigSigned-conversions.cpp\",\n    \"BigSigned-divide.cpp\",\n    \"BigSigned-logic-operations.cpp\",\n    \"BigSigned-multiply.cpp\",\n    \"BigSigned-print.cpp\",\n    \"BigSigned-shifts.cpp\",\n    \"BigSigned-subtract.cpp\",\n    \"BigSigned-utilities.cpp\",\n    \"BigSigned.cpp\",\n    \"BigUnsigned-add.cpp\",\n    \"BigUnsigned-bit.cpp\",\n    \"BigUnsigned-chunk-operations.cpp\",\n    \"BigUnsigned-constructors.cpp\",\n    \"BigUnsigned-conversions.cpp\",\n    \"BigUnsigned-divide-naive.cpp\",\n    \"BigUnsigned-divide.cpp\",\n    \"BigUnsigned-logic-operations.cpp\",\n    \"BigUnsigned-multiply.cpp\",\n    \"BigUnsigned-print.cpp\",\n    \"BigUnsigned-shifts.cpp\",\n    \"BigUnsigned-subtract.cpp\",\n    \"BigUnsigned-utilities.cpp\",\n    \"ChunkSharedArray.cpp\",\n    \"UInt128.cpp\",\n    \"U8Data.cpp\",\n    \"F_DisplayException.cpp\",\n    \"macroAssert.cpp\",\n    \"F_GetPrime.cpp\",\n    \"MF_MemoryControl.cpp\",\n    \"cpp-allocation.cpp\",\n    \"basic-allocation.cpp\",\n    \"UInt32Set.cpp\",\n    \"DirectedGraph.cpp\",\n    \"md5.cpp\",\n    \"SHA256.cpp\",\n    \"galgas-random.cpp\",\n    \"execution-mode.cpp\",\n    \"filewrapper-utilities.cpp\",\n    \"Compiler.cpp\",\n    \"Lexique.cpp\",\n    \"Lexique-parsing.cpp\",\n    \"LocationInSource.cpp\",\n    \"SourceTextInString.cpp\",\n    \"GALGAS_TypeDescriptor.cpp\",\n    \"galgas-input-output.cpp\",\n    \"C_galgas_class_inspector.cpp\",\n    \"IssueWithFixIt.cpp\",\n    \"Enumerator_range.cpp\",\n    \"IndexingDictionary.cpp\",\n    \"IssueDescriptor.cpp\",\n    \"LexiqueIntrospection.cpp\",\n    \"AC_GALGAS_root.cpp\",\n    \"AC_GALGAS_reference_class.cpp\",\n    \"AC_GALGAS_enumAssociatedValues.cpp\",\n    \"AbstractPtrClass.cpp\",\n    \"AbstractStrongPtrClass.cpp\",\n    \"scanner_actions.cpp\",\n    \"GGS_application.cpp\",\n    \"GGS_bigint.cpp\",\n    \"GGS_binaryset.cpp\",\n    \"GGS_bool.cpp\",\n    \"GGS_char.cpp\",\n    \"GGS_data.cpp\",\n    \"GGS_f64.cpp\",\n    \"GGS_filewrapper.cpp\",\n    \"GGS_location.cpp\",\n    \"GGS_s32.cpp\",\n    \"GGS_s64.cpp\",\n    \"GGS_string.cpp\",\n    \"GGS_string-getters.cpp\",\n    \"GGS_stringset.cpp\",\n    \"GGS_timer.cpp\",\n    \"GGS_u8.cpp\",\n    \"GGS_u16.cpp\",\n    \"GGS_u32.cpp\",\n    \"GGS_u64.cpp\"\n  ],\n  \"USER_LINK_OPTIONS\" : [") ;
-  GGS_u_33__32_ index_3870_ (0) ;
-  if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    UpEnumerator__5B_string_5D_ enumerator_3870 (in_TOOL_5F_LINK_5F_LIST) ;
-    while (enumerator_3870.hasCurrentObject ()) {
-      result.appendString ("\n    \"") ;
-      result.appendString (enumerator_3870.current_entry (HERE).stringValue ()) ;
-      result.appendString ("\"") ;
-      enumerator_3870.gotoNextObject () ;
-      if (enumerator_3870.hasCurrentObject ()) {
-        result.appendString (",") ;
-      }
-      index_3870_.increment () ;
-    }
-  }
-  result.appendString ("\n  ]\n}\n\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper  project_header
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_project_5F_header (const GGS_string & in_VERSION_5F_STRING,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("//--------------------------------------------------------------------------------------------------\n//\n//     Project common header file                                                                \n//\n//--------------------------------------------------------------------------------------------------\n\n#pragma once\n\n//--------------------------------------------------------------------------------------------------\n\n#define PROJECT_VERSION_STRING \"") ;
-  result.appendString (in_VERSION_5F_STRING.stringValue ()) ;
-  result.appendString ("\"\n\n//--------------------------------------------------------------------------------------------------\n") ;
-  return GGS_string (result) ;
-}
-//--------------------------------------------------------------------------------------------------
 //
 //     L E X I Q U E
 //
@@ -15822,3 +14588,2436 @@ const GALGAS_TypeDescriptor * GGS__5B_formalParameterForGeneration_5D_::staticTy
   return & kTypeDescriptor_GALGAS__5B_formalParameterForGeneration_5D_ ;
 }
 
+//--------------------------------------------------------------------------------------------------
+//  Map type @nonterminalMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap::GGS_nonterminalMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap::~ GGS_nonterminalMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap::GGS_nonterminalMap (const GGS_nonterminalMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap & GGS_nonterminalMap::operator = (const GGS_nonterminalMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap GGS_nonterminalMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_nonterminalMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_nonterminalMap::getter_contains (const GGS_string & inKey
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_nonterminalMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                   const GGS_u_33__32_ & inLevel
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS_nonterminalMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS_nonterminalMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_nonterminalMap::getter_locationForKey (const GGS_string & inKey,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_nonterminalMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid ()) {
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_nonterminalMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::performInsert (const GGS_nonterminalMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_nonterminalMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element>
+GGS_nonterminalMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_nonterminalMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element>>
+GGS_nonterminalMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_nonterminalMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element_3F_ GGS_nonterminalMap::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_nonterminalMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_nonterminalMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_nonterminalMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mLabelMap = info->mProperty_mLabelMap ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap GGS_nonterminalMap::class_func_mapWithMapToOverride (const GGS_nonterminalMap & inMapToOverride
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_nonterminalMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_nonterminalMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap GGS_nonterminalMap::getter_overriddenMap (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS_nonterminalMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::setter_insertKey (GGS_lstring inLKey,
+                                           GGS_nonterminalLabelMap inArgument0,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
+  const GGS_nonterminalMap_2E_element element (inLKey, inArgument0) ;
+  const char * kInsertErrorMessage = "the '%K' nonterminal has been already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::method_searchKey (GGS_lstring inLKey,
+                                           GGS_nonterminalLabelMap & outArgument0,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' nonterminal is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+  }else{
+    outArgument0 = info->mProperty_mLabelMap ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap GGS_nonterminalMap::getter_mLabelMapForKey (const GGS_string & inKey,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
+  GGS_nonterminalLabelMap result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mLabelMap ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::setter_setMLabelMapForKey (GGS_nonterminalLabelMap inValue,
+                                                    GGS_string inKey,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_nonterminalMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mLabelMap = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_nonterminalMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mLabelMap:") ;
+    inArray (i COMMA_HERE)->mProperty_mLabelMap.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @nonterminalMap") ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_nonterminalMap_2E_element>> array = sortedInfoArray () ;
+    GGS_nonterminalMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_nonterminalMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_nonterminalMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @nonterminalMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_nonterminalMap::DownEnumerator_nonterminalMap (const GGS_nonterminalMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element DownEnumerator_nonterminalMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_nonterminalMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap DownEnumerator_nonterminalMap::current_mLabelMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @nonterminalMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_nonterminalMap::UpEnumerator_nonterminalMap (const GGS_nonterminalMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element UpEnumerator_nonterminalMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_nonterminalMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap UpEnumerator_nonterminalMap::current_mLabelMap (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLabelMap ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalMap ("nonterminalMap",
+                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_formalInputParameterForGeneration_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_::GGS__5B_formalInputParameterForGeneration_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray (),
+mIsValid (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_::GGS__5B_formalInputParameterForGeneration_5D_ (const GGS__5B_formalInputParameterForGeneration_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_ & GGS__5B_formalInputParameterForGeneration_5D_::operator = (const GGS__5B_formalInputParameterForGeneration_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_formalInputParameterForGeneration_5D_ result ;
+  result.mIsValid = true ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = false ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mIsValid = true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::plusPlusAssignOperation (const GGS_formalInputParameterForGeneration & inValue
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_u_33__32_ GGS__5B_formalInputParameterForGeneration_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_u_33__32_ result ;
+  if (isValid ()) {
+    result = GGS_u_33__32_ (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::add_operation (const GGS__5B_formalInputParameterForGeneration_5D_ & inOperand,
+                                                                                                            Compiler * /* inCompiler */
+                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_formalInputParameterForGeneration_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::description (String & ioString,
+                                                                 const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@formalInputParameterForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::plusAssignOperation (const GGS__5B_formalInputParameterForGeneration_5D_ inOperand,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_append (const GGS_formalInputParameterForGeneration inValue,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_insert (const GGS_formalInputParameterForGeneration inValue,
+                                                                   const GGS_u_33__32_ inInsertionIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx > mSharedArray.count ()) {
+      String errorMessage = "'insert' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_remove (GGS_formalInputParameterForGeneration & outValue,
+                                                                   const GGS_u_33__32_ inRemoveIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  outValue.drop () ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "'remove' setter call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      outValue = mSharedArray (idx COMMA_THERE) ;
+      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_removeFirst (GGS_formalInputParameterForGeneration & outValue,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::setter_removeLast (GGS_formalInputParameterForGeneration & outValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_removingFirst (const GGS_u_33__32_ & inIndex,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalInputParameterForGeneration_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex < int32_t (count ())) {
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_formalInputParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }else if (startIndex == int32_t (count ())) {
+      result = GGS__5B_formalInputParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_formalInputParameterForGeneration_5D_ GGS__5B_formalInputParameterForGeneration_5D_::getter_sublist (const GGS_u_33__32_ & inStartIndex,
+                                                                                                             const GGS_u_33__32_ & inLength,
+                                                                                                             Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalInputParameterForGeneration_5D_ result ;
+  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
+    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_formalInputParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'sublist' getter call with start index ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = startIndex + length - 1 ;
+      if (lastIndex >= int32_t (count ())) {
+        String errorMessage ;
+        errorMessage.appendCString ("'sublist' getter call with last index ") ;
+        errorMessage.appendSigned (lastIndex) ;
+        errorMessage.appendCString (" too large (array size is") ;
+        errorMessage.appendSigned (mSharedArray.count ()) ;
+        errorMessage.appendCString (")") ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        result = GGS__5B_formalInputParameterForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_5D_::getter_first (Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS_formalInputParameterForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_5D_::getter_last (Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_formalInputParameterForGeneration result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_5D_::readSubscript__3F_ (const GGS_u_33__32_ & inIndex,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const {
+  GGS_formalInputParameterForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage = "read subscript call with index " ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_formalInputParameterForGeneration_5D_::writeSubscript__3F_ (const GGS_u_33__32_ inIndex,
+                                                                         const GGS_formalInputParameterForGeneration inValue,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t idx = int32_t (inIndex.uintValue ()) ;
+    if (idx >= mSharedArray.count ()) {
+      String errorMessage = "write subscript call with index " ;
+      errorMessage.appendSigned (idx) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      mSharedArray (idx COMMA_THERE) = inValue ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_formalInputParameterForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_formalInputParameterForGeneration_5D_::DownEnumerator__5B_formalInputParameterForGeneration_5D_ (const GGS__5B_formalInputParameterForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration DownEnumerator__5B_formalInputParameterForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration DownEnumerator__5B_formalInputParameterForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_formalInputParameterForGeneration_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_formalInputParameterForGeneration_5D_::UpEnumerator__5B_formalInputParameterForGeneration_5D_ (const GGS__5B_formalInputParameterForGeneration_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration UpEnumerator__5B_formalInputParameterForGeneration_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration UpEnumerator__5B_formalInputParameterForGeneration_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[formalInputParameterForGeneration] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_formalInputParameterForGeneration_5D_ ("[formalInputParameterForGeneration]",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_formalInputParameterForGeneration_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_formalInputParameterForGeneration_5D_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration::GGS_formalInputParameterForGeneration (void) :
+mProperty_mFormalSelector (),
+mProperty_mFormalArgumentType (),
+mProperty_mFormalArgumentCppName (),
+mProperty_mFormalArgumentName (),
+mProperty_mIsConstant () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration::GGS_formalInputParameterForGeneration (const GGS_formalInputParameterForGeneration & inSource) :
+mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
+mProperty_mFormalArgumentType (inSource.mProperty_mFormalArgumentType),
+mProperty_mFormalArgumentCppName (inSource.mProperty_mFormalArgumentCppName),
+mProperty_mFormalArgumentName (inSource.mProperty_mFormalArgumentName),
+mProperty_mIsConstant (inSource.mProperty_mIsConstant) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration & GGS_formalInputParameterForGeneration::operator = (const GGS_formalInputParameterForGeneration & inSource) {
+  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
+  mProperty_mFormalArgumentType = inSource.mProperty_mFormalArgumentType ;
+  mProperty_mFormalArgumentCppName = inSource.mProperty_mFormalArgumentCppName ;
+  mProperty_mFormalArgumentName = inSource.mProperty_mFormalArgumentName ;
+  mProperty_mIsConstant = inSource.mProperty_mIsConstant ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration GGS_formalInputParameterForGeneration::init_21__21__21__21__21_ (const GGS_lstring & in_mFormalSelector,
+                                                                                                       const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                                       const GGS_string & in_mFormalArgumentCppName,
+                                                                                                       const GGS_lstring & in_mFormalArgumentName,
+                                                                                                       const GGS_bool & in_mIsConstant,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalInputParameterForGeneration result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mFormalSelector = in_mFormalSelector ;
+  result.mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  result.mProperty_mFormalArgumentCppName = in_mFormalArgumentCppName ;
+  result.mProperty_mFormalArgumentName = in_mFormalArgumentName ;
+  result.mProperty_mIsConstant = in_mIsConstant ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterForGeneration::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalInputParameterForGeneration::GGS_formalInputParameterForGeneration (const GGS_lstring & inOperand0,
+                                                                              const GGS_unifiedTypeMapEntry & inOperand1,
+                                                                              const GGS_string & inOperand2,
+                                                                              const GGS_lstring & inOperand3,
+                                                                              const GGS_bool & inOperand4) :
+mProperty_mFormalSelector (inOperand0),
+mProperty_mFormalArgumentType (inOperand1),
+mProperty_mFormalArgumentCppName (inOperand2),
+mProperty_mFormalArgumentName (inOperand3),
+mProperty_mIsConstant (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_formalInputParameterForGeneration::isValid (void) const {
+  return mProperty_mFormalSelector.isValid () && mProperty_mFormalArgumentType.isValid () && mProperty_mFormalArgumentCppName.isValid () && mProperty_mFormalArgumentName.isValid () && mProperty_mIsConstant.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterForGeneration::drop (void) {
+  mProperty_mFormalSelector.drop () ;
+  mProperty_mFormalArgumentType.drop () ;
+  mProperty_mFormalArgumentCppName.drop () ;
+  mProperty_mFormalArgumentName.drop () ;
+  mProperty_mIsConstant.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalInputParameterForGeneration::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @formalInputParameterForGeneration:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentCppName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mFormalArgumentName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mIsConstant.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @formalInputParameterForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalInputParameterForGeneration ("formalInputParameterForGeneration",
+                                                                                      nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalInputParameterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalInputParameterForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Filewrapper 'typeGenerationTemplate'
+//--------------------------------------------------------------------------------------------------
+
+//--- File '/galgas-predefined-entities.txt'
+
+const char * gWrapperFileContent_0_typeGenerationTemplate = 
+  "\n"
+  "extern proc #usefull println (let @string inString)\n"
+  "\n"
+  "extern proc #usefull print (let @string inString)\n"
+   ;
+
+const RegularFileWrapper gWrapperFile_0_typeGenerationTemplate (
+  "galgas-predefined-entities.txt",
+  "txt",
+  true, // Text file
+ 104, // Text length
+  gWrapperFileContent_0_typeGenerationTemplate
+) ;
+
+//--- All files of '' directory
+
+static const RegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_0 [2] = {
+  & gWrapperFile_0_typeGenerationTemplate,
+  nullptr
+} ;
+
+//--- All sub-directories of '' directory
+
+static const DirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_0 [1] = {
+  nullptr
+} ;
+
+//--- Directory ''
+
+const DirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate (
+  "",
+  1,
+  gWrapperAllFiles_typeGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_typeGenerationTemplate_0
+) ;
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapper GGS_typeGenerationTemplate::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_typeGenerationTemplate) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForType
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForType (const GGS_string & /* in_TYPE_5F_NAME */,
+                                                                           const GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                           const GGS_bool & /* in_IS_5F_CONCRETE */,
+                                                                           const GGS_initializerMap & in_INITIALIZER_5F_MAP,
+                                                                           const GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
+                                                                           const GGS_getterMap & in_GETTER_5F_MAP,
+                                                                           const GGS_setterMap & in_MODIFIER_5F_MAP,
+                                                                           const GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
+                                                                           const GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
+                                                                           const GGS_readSubscriptMap & in_READ_5F_SUBCRIPT_5F_MAP,
+                                                                           const GGS_writeSubscriptMap & in_WRITE_5F_SUBCRIPT_5F_MAP,
+                                                                           const GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                           const GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
+                                                                           const GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
+                                                                           const GGS_bool & in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//-- Start of type generic part\n\n//--------------------------------- Initializers\n") ;
+  GGS_u_33__32_ index_133_ (0) ;
+  if (in_INITIALIZER_5F_MAP.isValid ()) {
+    UpEnumerator_initializerMap enumerator_133 (in_INITIALIZER_5F_MAP) ;
+    while (enumerator_133.hasCurrentObject ()) {
+      result.appendString ("  public: static GGS_") ;
+      result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+      result.appendString (" ") ;
+      result.appendString (enumerator_133.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 5)).stringValue ()) ;
+      result.appendString (" (") ;
+      columnMarker = result.currentColumn () ;
+      GGS_u_33__32_ index_260_IDX (0) ;
+      if (enumerator_133.current_mArgumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_260 (enumerator_133.current_mArgumentTypeList (HERE)) ;
+        while (enumerator_260.hasCurrentObject ()) {
+          const GalgasBool test_0 = enumerator_260.current_entry (HERE).readProperty_isConstant ().boolEnum () ;
+          switch (test_0) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("const class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_260.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 9)).stringValue ()) ;
+            result.appendString (" & inOperand") ;
+            result.appendString (index_260_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 9)).stringValue ()) ;
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            result.appendString ("class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_260.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 11)).stringValue ()) ;
+            result.appendString (" inOperand") ;
+            result.appendString (index_260_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 11)).stringValue ()) ;
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          enumerator_260.gotoNextObject () ;
+          index_260_IDX.increment () ;
+        }
+      }
+      result.appendString ("Compiler * inCompiler\n    ") ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result.appendString ("COMMA_LOCATION_ARGS) ;\n") ;
+      enumerator_133.gotoNextObject () ;
+      index_133_.increment () ;
+    }
+  }
+  const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 18)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+  switch (test_1) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- GALGAS class functions\n") ;
+    GGS_u_33__32_ index_806_ (0) ;
+    if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
+      UpEnumerator_classFunctionMap enumerator_806 (in_CLASS_5F_FUNC_5F_MAP) ;
+      while (enumerator_806.hasCurrentObject ()) {
+        result.appendString ("  public: static class GGS_") ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_806.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
+        result.appendString (" class_func_") ;
+        result.appendString (enumerator_806.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 21)).stringValue ()) ;
+        result.appendString (" (") ;
+        columnMarker = result.currentColumn () ;
+        GGS_u_33__32_ index_991_IDX (0) ;
+        if (enumerator_806.current_argumentTypeList (HERE).isValid ()) {
+          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_991 (enumerator_806.current_argumentTypeList (HERE)) ;
+          while (enumerator_991.hasCurrentObject ()) {
+            result.appendString ("const class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_991.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 23)).stringValue ()) ;
+            result.appendString (" & inOperand") ;
+            result.appendString (index_991_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 23)).stringValue ()) ;
+            enumerator_991.gotoNextObject () ;
+            if (enumerator_991.hasCurrentObject ()) {
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+            }
+            index_991_IDX.increment () ;
+          }
+        }
+        const GalgasBool test_2 = enumerator_806.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 26)).boolEnum () ;
+        switch (test_2) {
+        case GalgasBool::boolTrue : {
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          const GalgasBool test_3 = enumerator_806.current_hasCompilerArgument (HERE).boolEnum () ;
+          switch (test_3) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("Compiler * inCompiler\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, enumerator_806.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 32)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+            switch (test_4) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendString ("LOCATION_ARGS) ;\n\n") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        enumerator_806.gotoNextObject () ;
+        index_806_.increment () ;
+      }
+    }
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_5 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 40)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 40)).boolEnum () ;
+  switch (test_5) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- Handle copy\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inSource) ;\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & operator = (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inSource) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_6 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixShiftOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 46)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 46)).boolEnum () ;
+  switch (test_6) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- << and >> shift operators\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" left_shift_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const class GGS_u_33__32_ inShiftOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" left_shift_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const class GGS_bigint inShiftOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" right_shift_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const class GGS_u_33__32_ inShiftOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" right_shift_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const class GGS_bigint inShiftOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_7 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 62)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 62)).boolEnum () ;
+  switch (test_7) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- &= operator\n  public: void andAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                   Compiler * inCompiler\n                                   COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_8 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)).boolEnum () ;
+  switch (test_8) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- |= operator\n  public: void orAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                  Compiler * inCompiler\n                                  COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_9 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 76)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 76)).boolEnum () ;
+  switch (test_9) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- ^= operator\n  public: void xorAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                   Compiler * inCompiler\n                                   COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_10 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 83)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 83)).boolEnum () ;
+  switch (test_10) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- += operator\n  public: void plusAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                    Compiler * inCompiler\n                                    COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_11 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 90)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 90)).boolEnum () ;
+  switch (test_11) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- -= operator\n  public: void minusAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                     Compiler * inCompiler\n                                     COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_12 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 97)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 97)).boolEnum () ;
+  switch (test_12) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- *= operator\n  public: void mulAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                   Compiler * inCompiler\n                                   COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_13 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 104)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 104)).boolEnum () ;
+  switch (test_13) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- /= operator\n  public: void divAssignOperation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" inOperand,\n                                   Compiler * inCompiler\n                                   COMMA_LOCATION_ARGS) ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_14 = in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE.boolEnum () ;
+  switch (test_14) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- ++= operator\n  public: void plusPlusAssignOperation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (extensionGetter_identifierRepresentation (in_ENUMERATED_5F_OBJECT_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 113)).stringValue ()) ;
+    result.appendString (" & inOperand\n  ") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_15 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAndOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)).boolEnum () ;
+  switch (test_15) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- & operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_and (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_16 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixOrOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 124)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 124)).boolEnum () ;
+  switch (test_16) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- | operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_or (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_17 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixXorOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)).boolEnum () ;
+  switch (test_17) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- ^ operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_xor (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_18 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixNotOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 136)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 136)).boolEnum () ;
+  switch (test_18) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- not operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_not (LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_19 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixTildeOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 141)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 141)).boolEnum () ;
+  switch (test_19) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- ~ operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_tilde (LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_20 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 146)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 146)).boolEnum () ;
+  switch (test_20) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- + operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" add_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_21 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixAddOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 153)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 153)).boolEnum () ;
+  switch (test_21) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- &+ operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" wrapping_add_operation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_22 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 158)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 158)).boolEnum () ;
+  switch (test_22) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- &- operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" wrapping_subtract_operation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_23 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixSubOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 163)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 163)).boolEnum () ;
+  switch (test_23) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- - operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" subtract_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_24 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)).boolEnum () ;
+  switch (test_24) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- * operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" multiply_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_25 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixMulOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)).boolEnum () ;
+  switch (test_25) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- &* operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" wrapping_multiply_operation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_26 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)).boolEnum () ;
+  switch (test_26) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- / operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" divide_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_27 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixDivOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 189)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 189)).boolEnum () ;
+  switch (test_27) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- &/ operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" wrapping_divide_operation (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_28 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_infixModOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 194)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 194)).boolEnum () ;
+  switch (test_28) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- mod operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" modulo_operation (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand,\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_29 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperator (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 201)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 201)).boolEnum () ;
+  switch (test_29) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- prefix - operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_unary_minus (") ;
+    columnMarker = result.currentColumn () ;
+    result.appendString ("Compiler * inCompiler\n") ;
+    result.appendSpacesUntilColumn (columnMarker) ;
+    result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_30 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)).boolEnum () ;
+  switch (test_30) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- prefix &- operator\n  public: GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" operator_unary_minus_no_ovf (void) const ;\n\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_31 = in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 212)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 212)).boolEnum () ;
+  switch (test_31) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- Implementation of func 'description'\n  public: void description (String & ioString,\n                            const int32_t inIndentation) const override ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  const GalgasBool test_32 = extensionGetter_generateCppObjectComparison (in_SUPPORTED_5F_OPERATORS, inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 218)).operator_and (in_SUPPORTED_5F_OPERATORS.getter_contains (GGS_typeFeatures::class_func_doNotGenererateObjectCompare (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 218)).boolEnum () ;
+  switch (test_32) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- Comparison\n  public: ComparisonResult objectCompare (const GGS_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" & inOperand) const ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n//--------------------------------- Setters\n") ;
+  GGS_u_33__32_ index_10457_ (0) ;
+  if (in_MODIFIER_5F_MAP.isValid ()) {
+    UpEnumerator_setterMap enumerator_10457 (in_MODIFIER_5F_MAP) ;
+    while (enumerator_10457.hasCurrentObject ()) {
+      const GalgasBool test_33 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 229)))).boolEnum () ;
+      switch (test_33) {
+      case GalgasBool::boolTrue : {
+        const GalgasBool test_34 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_10457.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 230)).boolEnum () ;
+        switch (test_34) {
+        case GalgasBool::boolTrue : {
+          result.appendString ("  public: void setter_") ;
+          result.appendString (enumerator_10457.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 231)).stringValue ()) ;
+          result.appendString (" (") ;
+          columnMarker = result.currentColumn () ;
+          GGS_u_33__32_ index_10815_IDX (0) ;
+          if (enumerator_10457.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_10815 (enumerator_10457.current_mParameterList (HERE)) ;
+            while (enumerator_10815.hasCurrentObject ()) {
+              const GalgasBool test_35 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 233)))).boolEnum () ;
+              switch (test_35) {
+              case GalgasBool::boolTrue : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
+                result.appendString (" constinArgument") ;
+                result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 234)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolFalse : {
+                const GalgasBool test_36 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 235)))).boolEnum () ;
+                switch (test_36) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("class GGS_") ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
+                  result.appendString (" & ioArgument") ;
+                  result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)).stringValue ()) ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  const GalgasBool test_37 = GGS_bool (ComparisonKind::equal, enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))).boolEnum () ;
+                  switch (test_37) {
+                  case GalgasBool::boolTrue : {
+                    result.appendString ("class GGS_") ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
+                    result.appendString (" & outArgument") ;
+                    result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolFalse : {
+                    result.appendString ("class GGS_") ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_10815.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
+                    result.appendString (" inArgument") ;
+                    result.appendString (index_10815_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolNotValid :
+                    break ;
+                  }
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              enumerator_10815.gotoNextObject () ;
+              if (enumerator_10815.hasCurrentObject ()) {
+                result.appendString (",\n") ;
+                result.appendSpacesUntilColumn (columnMarker) ;
+              }
+              index_10815_IDX.increment () ;
+            }
+          }
+          const GalgasBool test_38 = GGS_bool (ComparisonKind::equal, enumerator_10457.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+          switch (test_38) {
+          case GalgasBool::boolTrue : {
+            const GalgasBool test_39 = enumerator_10457.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_39) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("Compiler * inCompiler\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_40 = enumerator_10457.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_40) {
+            case GalgasBool::boolTrue : {
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("Compiler * inCompiler\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendString ("\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          result.appendString (") ;\n\n") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_10457.gotoNextObject () ;
+      index_10457_.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------- Instance Methods\n") ;
+  GGS_u_33__32_ index_12265_ (0) ;
+  if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
+    UpEnumerator_instanceMethodMap enumerator_12265 (in_INSTANCE_5F_METHOD_5F_MAP) ;
+    while (enumerator_12265.hasCurrentObject ()) {
+      const GalgasBool test_41 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mKind (HERE).objectCompare (GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 267)))).boolEnum () ;
+      switch (test_41) {
+      case GalgasBool::boolTrue : {
+        const GalgasBool test_42 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mErrorMessage (HERE).objectCompare (GGS_string::makeEmptyString ())).operator_and (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_12265.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 268)).boolEnum () ;
+        switch (test_42) {
+        case GalgasBool::boolTrue : {
+          result.appendString ("  public: void method_") ;
+          result.appendString (enumerator_12265.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 269)).stringValue ()) ;
+          result.appendString (" (") ;
+          columnMarker = result.currentColumn () ;
+          GGS_u_33__32_ index_12623_IDX (0) ;
+          if (enumerator_12265.current_mParameterList (HERE).isValid ()) {
+            UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_12623 (enumerator_12265.current_mParameterList (HERE)) ;
+            while (enumerator_12623.hasCurrentObject ()) {
+              const GalgasBool test_43 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 271)))).boolEnum () ;
+              switch (test_43) {
+              case GalgasBool::boolTrue : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
+                result.appendString (" constinArgument") ;
+                result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 272)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolFalse : {
+                const GalgasBool test_44 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)))).boolEnum () ;
+                switch (test_44) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("class GGS_") ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
+                  result.appendString (" & ioArgument") ;
+                  result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 274)).stringValue ()) ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  const GalgasBool test_45 = GGS_bool (ComparisonKind::equal, enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 275)))).boolEnum () ;
+                  switch (test_45) {
+                  case GalgasBool::boolTrue : {
+                    result.appendString ("class GGS_") ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
+                    result.appendString (" & outArgument") ;
+                    result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolFalse : {
+                    result.appendString ("class GGS_") ;
+                    result.appendString (extensionGetter_identifierRepresentation (enumerator_12623.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
+                    result.appendString (" inArgument") ;
+                    result.appendString (index_12623_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue ()) ;
+                    } break ;
+                  case GalgasBool::boolNotValid :
+                    break ;
+                  }
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              enumerator_12623.gotoNextObject () ;
+              if (enumerator_12623.hasCurrentObject ()) {
+                result.appendString (",\n") ;
+                result.appendSpacesUntilColumn (columnMarker) ;
+              }
+              index_12623_IDX.increment () ;
+            }
+          }
+          const GalgasBool test_46 = GGS_bool (ComparisonKind::equal, enumerator_12265.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+          switch (test_46) {
+          case GalgasBool::boolTrue : {
+            const GalgasBool test_47 = enumerator_12265.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_47) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("Compiler * inCompiler\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_48 = enumerator_12265.current_mHasCompilerArgument (HERE).boolEnum () ;
+            switch (test_48) {
+            case GalgasBool::boolTrue : {
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("Compiler * inCompiler\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendString ("\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          result.appendString (") const ;\n\n") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_12265.gotoNextObject () ;
+      index_12265_.increment () ;
+    }
+  }
+  result.appendString ("//--------------------------------- Class Methods\n") ;
+  GGS_u_33__32_ index_14020_ (0) ;
+  if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
+    UpEnumerator_classMethodMap enumerator_14020 (in_CLASS_5F_METHOD_5F_MAP) ;
+    while (enumerator_14020.hasCurrentObject ()) {
+      result.appendString ("  public: static void class_method_") ;
+      result.appendString (enumerator_14020.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 304)).stringValue ()) ;
+      result.appendString (" (") ;
+      columnMarker = result.currentColumn () ;
+      GGS_u_33__32_ index_14148_IDX (0) ;
+      if (enumerator_14020.current_mParameterList (HERE).isValid ()) {
+        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_14148 (enumerator_14020.current_mParameterList (HERE)) ;
+        while (enumerator_14148.hasCurrentObject ()) {
+          const GalgasBool test_49 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 306)))).boolEnum () ;
+          switch (test_49) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
+            result.appendString (" constinArgument") ;
+            result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)).stringValue ()) ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_50 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))).boolEnum () ;
+            switch (test_50) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("class GGS_") ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
+              result.appendString (" & ioArgument") ;
+              result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue ()) ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              const GalgasBool test_51 = GGS_bool (ComparisonKind::equal, enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 310)))).boolEnum () ;
+              switch (test_51) {
+              case GalgasBool::boolTrue : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
+                result.appendString (" & outArgument") ;
+                result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolFalse : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_14148.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
+                result.appendString (" inArgument") ;
+                result.appendString (index_14148_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 313)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          enumerator_14148.gotoNextObject () ;
+          if (enumerator_14148.hasCurrentObject ()) {
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+          }
+          index_14148_IDX.increment () ;
+        }
+      }
+      const GalgasBool test_52 = GGS_bool (ComparisonKind::equal, enumerator_14020.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 317)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      switch (test_52) {
+      case GalgasBool::boolTrue : {
+        const GalgasBool test_53 = enumerator_14020.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_53) {
+        case GalgasBool::boolTrue : {
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolFalse : {
+        const GalgasBool test_54 = enumerator_14020.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_54) {
+        case GalgasBool::boolTrue : {
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          result.appendString ("\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      result.appendString (") ;\n\n") ;
+      enumerator_14020.gotoNextObject () ;
+      index_14020_.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------- Getters\n") ;
+  GGS_u_33__32_ index_15455_ (0) ;
+  if (in_GETTER_5F_MAP.isValid ()) {
+    UpEnumerator_getterMap enumerator_15455 (in_GETTER_5F_MAP) ;
+    while (enumerator_15455.hasCurrentObject ()) {
+      const GalgasBool test_55 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mGetterNameThatObsoletesInvokationName (HERE).objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      switch (test_55) {
+      case GalgasBool::boolTrue : {
+        switch (enumerator_15455.current_mKind (HERE).enumValue ()) {
+        case GGS_methodKind::Enumeration::invalid :
+          break ;
+        case GGS_methodKind::Enumeration::enum_definedAsExtension :
+          {
+          }
+          break ;
+        case GGS_methodKind::Enumeration::enum_definedAsMember :
+          {
+            const GalgasBool test_56 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isVirtualAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).operator_or (GGS_bool (ComparisonKind::equal, enumerator_15455.current_mQualifier (HERE).objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 342)).boolEnum () ;
+            switch (test_56) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("  public: class GGS_") ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_15455.current_mReturnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
+              result.appendString (" getter_") ;
+              result.appendString (enumerator_15455.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).stringValue ()) ;
+              result.appendString (" (") ;
+              columnMarker = result.currentColumn () ;
+              GGS_u_33__32_ index_15909_IDX (0) ;
+              if (enumerator_15455.current_mArgumentTypeList (HERE).isValid ()) {
+                UpEnumerator__5B_functionSignatureElement_5D_ enumerator_15909 (enumerator_15455.current_mArgumentTypeList (HERE)) ;
+                while (enumerator_15909.hasCurrentObject ()) {
+                  result.appendString ("const class GGS_") ;
+                  result.appendString (extensionGetter_identifierRepresentation (enumerator_15909.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
+                  result.appendString (" & constinOperand") ;
+                  result.appendString (index_15909_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 345)).stringValue ()) ;
+                  enumerator_15909.gotoNextObject () ;
+                  if (enumerator_15909.hasCurrentObject ()) {
+                    result.appendString (",\n") ;
+                    result.appendSpacesUntilColumn (columnMarker) ;
+                  }
+                  index_15909_IDX.increment () ;
+                }
+              }
+              const GalgasBool test_57 = GGS_bool (ComparisonKind::equal, enumerator_15455.current_mArgumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 348)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+              switch (test_57) {
+              case GalgasBool::boolTrue : {
+                const GalgasBool test_58 = enumerator_15455.current_mHasCompilerArgument (HERE).boolEnum () ;
+                switch (test_58) {
+                case GalgasBool::boolTrue : {
+                  result.appendString ("Compiler * inCompiler\n") ;
+                  result.appendSpacesUntilColumn (columnMarker) ;
+                  result.appendString ("COMMA_LOCATION_ARGS") ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  result.appendString ("LOCATION_ARGS") ;
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                } break ;
+              case GalgasBool::boolFalse : {
+                const GalgasBool test_59 = enumerator_15455.current_mHasCompilerArgument (HERE).boolEnum () ;
+                switch (test_59) {
+                case GalgasBool::boolTrue : {
+                  result.appendString (",\n") ;
+                  result.appendSpacesUntilColumn (columnMarker) ;
+                  result.appendString ("Compiler * inCompiler\n") ;
+                  result.appendSpacesUntilColumn (columnMarker) ;
+                  result.appendString ("COMMA_LOCATION_ARGS") ;
+                  } break ;
+                case GalgasBool::boolFalse : {
+                  result.appendString ("\n") ;
+                  result.appendSpacesUntilColumn (columnMarker) ;
+                  result.appendString ("COMMA_LOCATION_ARGS") ;
+                  } break ;
+                case GalgasBool::boolNotValid :
+                  break ;
+                }
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              result.appendString (") const ;\n\n") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+          }
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolFalse : {
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      enumerator_15455.gotoNextObject () ;
+      index_15455_.increment () ;
+    }
+  }
+  result.appendString ("\n//--------------------------------- Read subcripts\n") ;
+  GGS_u_33__32_ index_16632_ (0) ;
+  if (in_READ_5F_SUBCRIPT_5F_MAP.isValid ()) {
+    UpEnumerator_readSubscriptMap enumerator_16632 (in_READ_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_16632.hasCurrentObject ()) {
+      result.appendString ("  public: class GGS_") ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_16632.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).stringValue ()) ;
+      result.appendString (" readSubscript_") ;
+      result.appendString (enumerator_16632.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).stringValue ()) ;
+      result.appendString (" (") ;
+      columnMarker = result.currentColumn () ;
+      GGS_u_33__32_ index_16789_IDX (0) ;
+      if (enumerator_16632.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_16789 (enumerator_16632.current_argumentTypeList (HERE)) ;
+        while (enumerator_16789.hasCurrentObject ()) {
+          result.appendString ("const class GGS_") ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_16789.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
+          result.appendString (" & in") ;
+          result.appendString (index_16789_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 374)).stringValue ()) ;
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          enumerator_16789.gotoNextObject () ;
+          index_16789_IDX.increment () ;
+        }
+      }
+      result.appendString ("Compiler * inCompiler\n") ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result.appendString ("COMMA_LOCATION_ARGS) const ;\n\n") ;
+      enumerator_16632.gotoNextObject () ;
+      index_16632_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--------------------------------- Write subcripts\n") ;
+  GGS_u_33__32_ index_17088_ (0) ;
+  if (in_WRITE_5F_SUBCRIPT_5F_MAP.isValid ()) {
+    UpEnumerator_writeSubscriptMap enumerator_17088 (in_WRITE_5F_SUBCRIPT_5F_MAP) ;
+    while (enumerator_17088.hasCurrentObject ()) {
+      result.appendString ("  public: void writeSubscript_") ;
+      result.appendString (enumerator_17088.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 384)).stringValue ()) ;
+      result.appendString (" (") ;
+      columnMarker = result.currentColumn () ;
+      GGS_u_33__32_ index_17200_IDX (0) ;
+      if (enumerator_17088.current_argumentTypeList (HERE).isValid ()) {
+        UpEnumerator__5B_functionSignatureElement_5D_ enumerator_17200 (enumerator_17088.current_argumentTypeList (HERE)) ;
+        while (enumerator_17200.hasCurrentObject ()) {
+          result.appendString ("const class GGS_") ;
+          result.appendString (extensionGetter_identifierRepresentation (enumerator_17200.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
+          result.appendString (" in") ;
+          result.appendString (index_17200_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 386)).stringValue ()) ;
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          enumerator_17200.gotoNextObject () ;
+          index_17200_IDX.increment () ;
+        }
+      }
+      result.appendString ("const class GGS_") ;
+      result.appendString (extensionGetter_identifierRepresentation (enumerator_17088.current_valueType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 388)).stringValue ()) ;
+      result.appendString (" inValue,\n") ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result.appendString ("Compiler * inCompiler\n") ;
+      result.appendSpacesUntilColumn (columnMarker) ;
+      result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+      enumerator_17088.gotoNextObject () ;
+      index_17088_.increment () ;
+    }
+  }
+  result.appendString ("\n\n//--------------------------------- Introspection\n  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;\n") ;
+  const GalgasBool test_60 = GGS_bool (ComparisonKind::greaterThan, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_count (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 397)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+  switch (test_60) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- Friend\n  friend class UpEnumerator_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" ;\n  friend class DownEnumerator_") ;
+    result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+    result.appendString (" ;\n") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("\n} ;\n\n//--------------------------------------------------------------------------------------------------\n\nextern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" ;\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @typeGenerationTemplate  unifiedClassBodyForPackage
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_typeGenerationTemplate::class_func_unifiedClassBodyForPackage (const GGS_string & /* in_TYPE_5F_NAME */,
+                                                                              const GGS_string & /* in_TYPE_5F_IDENTIFIER */,
+                                                                              const GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
+                                                                              const GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//-- Start of package generic part\n\n") ;
+  const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, in_CLASS_5F_FUNC_5F_MAP.getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 4)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("//--------------------------------- GALGAS class getters\n") ;
+    GGS_u_33__32_ index_220_ (0) ;
+    if (in_CLASS_5F_FUNC_5F_MAP.isValid ()) {
+      UpEnumerator_classFunctionMap enumerator_220 (in_CLASS_5F_FUNC_5F_MAP) ;
+      while (enumerator_220.hasCurrentObject ()) {
+        result.appendString ("  public: static class GGS_") ;
+        result.appendString (extensionGetter_identifierRepresentation (enumerator_220.current_returnedType (HERE), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
+        result.appendString (" class_func_") ;
+        result.appendString (enumerator_220.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 7)).stringValue ()) ;
+        result.appendString (" (") ;
+        columnMarker = result.currentColumn () ;
+        GGS_u_33__32_ index_405_IDX (0) ;
+        if (enumerator_220.current_argumentTypeList (HERE).isValid ()) {
+          UpEnumerator__5B_functionSignatureElement_5D_ enumerator_405 (enumerator_220.current_argumentTypeList (HERE)) ;
+          while (enumerator_405.hasCurrentObject ()) {
+            result.appendString ("const class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_405.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
+            result.appendString (" & inOperand") ;
+            result.appendString (index_405_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 9)).stringValue ()) ;
+            enumerator_405.gotoNextObject () ;
+            if (enumerator_405.hasCurrentObject ()) {
+              result.appendString (",\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+            }
+            index_405_IDX.increment () ;
+          }
+        }
+        const GalgasBool test_1 = enumerator_220.current_hasCompilerArgument (HERE).operator_and (GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))) COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 12)).boolEnum () ;
+        switch (test_1) {
+        case GalgasBool::boolTrue : {
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          const GalgasBool test_2 = enumerator_220.current_hasCompilerArgument (HERE).boolEnum () ;
+          switch (test_2) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("Compiler * inCompiler\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+            result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_3 = GGS_bool (ComparisonKind::greaterThan, enumerator_220.current_argumentTypeList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 18)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+            switch (test_3) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("\n") ;
+              result.appendSpacesUntilColumn (columnMarker) ;
+              result.appendString ("COMMA_LOCATION_ARGS) ;\n\n") ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              result.appendString ("LOCATION_ARGS) ;\n\n") ;
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        enumerator_220.gotoNextObject () ;
+        index_220_.increment () ;
+      }
+    }
+    } break ;
+  case GalgasBool::boolFalse : {
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString ("//--------------------------------- Class Methods\n") ;
+  GGS_u_33__32_ index_1059_ (0) ;
+  if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
+    UpEnumerator_classMethodMap enumerator_1059 (in_CLASS_5F_METHOD_5F_MAP) ;
+    while (enumerator_1059.hasCurrentObject ()) {
+      result.appendString ("  public: static void class_method_") ;
+      result.appendString (enumerator_1059.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 29)).stringValue ()) ;
+      result.appendString (" (") ;
+      columnMarker = result.currentColumn () ;
+      GGS_u_33__32_ index_1187_IDX (0) ;
+      if (enumerator_1059.current_mParameterList (HERE).isValid ()) {
+        UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_1187 (enumerator_1059.current_mParameterList (HERE)) ;
+        while (enumerator_1187.hasCurrentObject ()) {
+          const GalgasBool test_4 = GGS_bool (ComparisonKind::equal, enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 31)))).boolEnum () ;
+          switch (test_4) {
+          case GalgasBool::boolTrue : {
+            result.appendString ("class GGS_") ;
+            result.appendString (extensionGetter_identifierRepresentation (enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 32)).stringValue ()) ;
+            result.appendString (" constinArgument") ;
+            result.appendString (index_1187_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 32)).stringValue ()) ;
+            } break ;
+          case GalgasBool::boolFalse : {
+            const GalgasBool test_5 = GGS_bool (ComparisonKind::equal, enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 33)))).boolEnum () ;
+            switch (test_5) {
+            case GalgasBool::boolTrue : {
+              result.appendString ("class GGS_") ;
+              result.appendString (extensionGetter_identifierRepresentation (enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 34)).stringValue ()) ;
+              result.appendString (" & ioArgument") ;
+              result.appendString (index_1187_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 34)).stringValue ()) ;
+              } break ;
+            case GalgasBool::boolFalse : {
+              const GalgasBool test_6 = GGS_bool (ComparisonKind::equal, enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentPassingMode ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 35)))).boolEnum () ;
+              switch (test_6) {
+              case GalgasBool::boolTrue : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 36)).stringValue ()) ;
+                result.appendString (" & outArgument") ;
+                result.appendString (index_1187_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 36)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolFalse : {
+                result.appendString ("class GGS_") ;
+                result.appendString (extensionGetter_identifierRepresentation (enumerator_1187.current_entry (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 38)).stringValue ()) ;
+                result.appendString (" inArgument") ;
+                result.appendString (index_1187_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 38)).stringValue ()) ;
+                } break ;
+              case GalgasBool::boolNotValid :
+                break ;
+              }
+              } break ;
+            case GalgasBool::boolNotValid :
+              break ;
+            }
+            } break ;
+          case GalgasBool::boolNotValid :
+            break ;
+          }
+          enumerator_1187.gotoNextObject () ;
+          if (enumerator_1187.hasCurrentObject ()) {
+            result.appendString (",\n") ;
+            result.appendSpacesUntilColumn (columnMarker) ;
+          }
+          index_1187_IDX.increment () ;
+        }
+      }
+      const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_1059.current_mParameterList (HERE).getter_count (SOURCE_FILE ("unified-class-body-for-package.h.galgasTemplate", 42)).objectCompare (GGS_u_33__32_ (uint32_t (0U)))).boolEnum () ;
+      switch (test_7) {
+      case GalgasBool::boolTrue : {
+        const GalgasBool test_8 = enumerator_1059.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_8) {
+        case GalgasBool::boolTrue : {
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolFalse : {
+        const GalgasBool test_9 = enumerator_1059.current_mHasCompilerArgument (HERE).boolEnum () ;
+        switch (test_9) {
+        case GalgasBool::boolTrue : {
+          result.appendString (",\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("Compiler * inCompiler\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolFalse : {
+          result.appendString ("\n") ;
+          result.appendSpacesUntilColumn (columnMarker) ;
+          result.appendString ("COMMA_LOCATION_ARGS") ;
+          } break ;
+        case GalgasBool::boolNotValid :
+          break ;
+        }
+        } break ;
+      case GalgasBool::boolNotValid :
+        break ;
+      }
+      result.appendString (") ;\n\n") ;
+      enumerator_1059.gotoNextObject () ;
+      index_1059_.increment () ;
+    }
+  }
+  result.appendString ("\n} ;\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @typeGenerationTemplate  genericTypeImplementation
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_typeGenerationTemplate::class_func_genericTypeImplementation (const GGS_string & in_TYPE_5F_NAME,
+                                                                             const GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const GGS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  uint32_t columnMarker = 0 ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//     ") ;
+  result.appendString (GGS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 2)).add_operation (GGS_string (" generic code implementation"), inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nconst GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (") ;
+  columnMarker = result.currentColumn () ;
+  result.appendString ("\"") ;
+  result.appendString (in_TYPE_5F_NAME.stringValue ()) ;
+  result.appendString ("\",\n                       ") ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  const GalgasBool test_0 = in_SUPER_5F_TYPE_5F_INDEX.getter_isNull (SOURCE_FILE ("generic-type.cpp.galgasTemplate", 6)).boolEnum () ;
+  switch (test_0) {
+  case GalgasBool::boolTrue : {
+    result.appendString ("nullptr") ;
+    } break ;
+  case GalgasBool::boolFalse : {
+    result.appendString ("& kTypeDescriptor_GALGAS_") ;
+    result.appendString (extensionGetter_identifierRepresentation (in_SUPER_5F_TYPE_5F_INDEX, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 6)).stringValue ()) ;
+    } break ;
+  case GalgasBool::boolNotValid :
+    break ;
+  }
+  result.appendString (") ;\n\n//--------------------------------------------------------------------------------------------------\n\nconst GALGAS_TypeDescriptor * GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString ("::staticTypeDescriptor (void) const {\n  return & kTypeDescriptor_GALGAS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" ;\n}\n\n") ;
+  return GGS_string (result) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Filewrapper template @typeGenerationTemplate  externTypeHeader1
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_typeGenerationTemplate::class_func_externTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
+                                                                        const GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                        const GGS_string & in_PRE_5F_DECLARATION,
+                                                                        const GGS_string & in_CODE,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  String result ;
+  result.appendString ("//--------------------------------------------------------------------------------------------------\n//") ;
+  result.appendString (GGS_string (" Phase 1: @").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS-extern_type.h1.galgasTemplate", 2)).add_operation (GGS_string (" extern type"), inCompiler COMMA_SOURCE_FILE ("GALGAS-extern_type.h1.galgasTemplate", 2)).stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n//  Predeclarations (from GALGAS extern type declaration\n//--------------------------------------------------------------------------------------------------\n\n") ;
+  result.appendString (in_PRE_5F_DECLARATION.stringValue ()) ;
+  result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nclass GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" : public AC_GALGAS_root {\n//--------------------------------- Default constructor\n  public: GGS_") ;
+  result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
+  result.appendString (" (void) ;\n\n//---\n  public: virtual bool isValid (void) const override ;\n  public: virtual void drop (void) override ;\n\n//--- For log instruction\n  public: virtual void description (String & ioString,\n                                    const int32_t inIndentation) const override ;\n\n//--- Code (from GALGAS extern type declaration)\n") ;
+  result.appendString (in_CODE.stringValue ()) ;
+  result.appendString ("\n\n") ;
+  return GGS_string (result) ;
+}

@@ -23,11 +23,6 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <expression_or> (?!@galgasDeclarationAST ioDeclarations,
-                       !@semanticExpressionAST outExpression)
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
                              !@semanticInstructionAST outInstruction ) {
     let instructionLocation = @location.here
@@ -121,8 +116,8 @@ final class @ifInstructionAST : @semanticInstructionAST {
                             ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap ) {
   //--- Test expression
-   self.mExpressions.analyzeSemanticExpressionList
-     (inUsefulnessCallerEntityName,
+   self.mExpressions.analyzeSemanticExpressionList (
+     inUsefulnessCallerEntityName,
      !?ioUsefulEntitiesGraph,
      inAnalysisContext,
      !?ioTypeMap,
@@ -208,8 +203,8 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
                                       let @bool inGenerateSyntaxDirectedTranslationString,
                                       ?!@string ioGeneratedCode ) {
   //--- Generate test expression
-    self.mExpressions.generateInstruction
-      (!?ioInclusionSet,
+    self.mExpressions.generateInstruction (
+      !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !?ioGeneratedCode,

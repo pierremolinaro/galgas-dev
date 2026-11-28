@@ -9,6 +9,263 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedNonTerminalSymbolForGrammarAnalysis struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedNonTerminalSymbolForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mNonTerminalSymbol ;
+  public: inline GGS_lstring readProperty_mNonTerminalSymbol (void) const {
+    return mProperty_mNonTerminalSymbol ;
+  }
+
+  public: GGS_u_33__32_ mProperty_mNonTerminalIndex ;
+  public: inline GGS_u_33__32_ readProperty_mNonTerminalIndex (void) const {
+    return mProperty_mNonTerminalIndex ;
+  }
+
+  public: GGS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
+  public: inline GGS_nonterminalSymbolLabelMapForGrammarAnalysis readProperty_mNonterminalSymbolParametersMap (void) const {
+    return mProperty_mNonterminalSymbolParametersMap ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMNonTerminalSymbol (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalSymbol = inValue ;
+  }
+
+  public: inline void setter_setMNonTerminalIndex (const GGS_u_33__32_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalIndex = inValue ;
+  }
+
+  public: inline void setter_setMNonterminalSymbolParametersMap (const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonterminalSymbolParametersMap = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_lstring & in_mNonTerminalSymbol,
+                                                         const GGS_u_33__32_ & in_mNonTerminalIndex,
+                                                         const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_sortedNonTerminalSymbolForGrammarAnalysis & operator = (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedNonTerminalSymbolForGrammarAnalysis init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                 const class GGS_u_33__32_ & inOperand1,
+                                                                                 const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedNonTerminalSymbolForGrammarAnalysis ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: nonTerminalSymbolSortedArrayForGrammarAnalysis array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis final {
+//--- Constructor
+  public: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+  private: UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current (LOCATION_ARGS) const ;
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_sortedNonTerminalSymbolForGrammarAnalysis> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & operator = (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--------------------------------- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis init (Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_sortedNonTerminalSymbolForGrammarAnalysis & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis add_operation (const GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis & inOperand,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_sortedNonTerminalSymbolForGrammarAnalysis constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                              class GGS_u_33__32_ constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_sortedNonTerminalSymbolForGrammarAnalysis & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_u_33__32_ getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_first (Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis getter_last (Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_removingFirst (const class GGS_u_33__32_ & constinOperand0,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalSymbolSortedArrayForGrammarAnalysis getter_sublist (const class GGS_u_33__32_ & constinOperand0,
+                                                                                   const class GGS_u_33__32_ & constinOperand1,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_sortedNonTerminalSymbolForGrammarAnalysis readSubscript__3F_ (const class GGS_u_33__32_ & in0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+  friend class DownEnumerator_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSortedArrayForGrammarAnalysis ;
+
+//--------------------------------------------------------------------------------------------------
 //
 //Extension mutating proc '@genericExtensionMethodListMap insertKey'
 //
@@ -1282,6 +1539,16 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_34_ExpressionSyntax_23 (Lexique_galgasScanner_34_ *) ;
 
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_24 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_25 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_26 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_27 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_ExpressionSyntax_28 (Lexique_galgasScanner_34_ *) ;
+
   public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_0 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_ParameterArgumentSyntax_1 (Lexique_galgasScanner_34_ *) ;
@@ -1435,16 +1702,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_InstructionsSyntax_56 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_57 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_58 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_59 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_60 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_61 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_62 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (Lexique_galgasScanner_34_ *) ;
 
