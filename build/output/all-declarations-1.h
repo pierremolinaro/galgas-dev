@@ -7121,7 +7121,7 @@ class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
 extern const DirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + lexiqueGenerationTemplates
+// Phase 1: filewrapper @lexiqueGenerationTemplates
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexiqueGenerationTemplates final {
@@ -11055,7 +11055,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedLexicalStyleArra
 extern const DirectoryWrapper gWrapperDirectory_0_lexicalTemplates ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + lexicalTemplates
+// Phase 1: filewrapper @lexicalTemplates
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lexicalTemplates final {

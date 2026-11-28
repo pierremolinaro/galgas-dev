@@ -287,7 +287,7 @@ GGS_filewrapper GGS_targetGalgas_33_GenerationFileWrapper::class_func_contents (
   return GGS_filewrapper (gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_macosx (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -298,7 +298,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_macosx
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_macosx (const GGS_string & in_PROJECT_5F_NAME,
@@ -316,7 +316,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_macosx
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_macosx (Compiler * /* inCompiler */
@@ -326,7 +326,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_macosx (Compiler * /* inCompiler */
@@ -336,7 +336,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_release_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_macosx (Compiler * /* inCompiler */
@@ -346,7 +346,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_releas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_macosx
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_macosx
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_macosx (Compiler * /* inCompiler */
@@ -356,7 +356,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_unix (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -367,7 +367,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_unix (
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_unix (const GGS_string & in_PROJECT_5F_NAME,
@@ -385,7 +385,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_unix (
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_unix (Compiler * /* inCompiler */
@@ -395,7 +395,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_unix (Compiler * /* inCompiler */
@@ -405,7 +405,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_release_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_unix (Compiler * /* inCompiler */
@@ -415,7 +415,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_releas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_unix (Compiler * /* inCompiler */
@@ -425,7 +425,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper install_unix
+//Filewrapper template @targetGalgas3GenerationFileWrapper  install_unix
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_install_5F_unix (Compiler * /* inCompiler */
@@ -435,7 +435,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_install_5F_unix
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -446,7 +446,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
@@ -464,7 +464,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -474,7 +474,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -484,7 +484,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -494,7 +494,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_releas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_x86linux32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_x86linux32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -504,7 +504,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -515,7 +515,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_x_38__
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
@@ -533,7 +533,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_x_38__
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -543,7 +543,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -553,7 +553,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -563,7 +563,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_releas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_x86linux64_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_x86linux64_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -573,7 +573,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_win32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_win32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_win_33__32__5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -584,7 +584,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_win_33
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_win32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_win32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_win_33__32__5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
@@ -602,7 +602,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_win_33
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_win32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -612,7 +612,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_win32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_win32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -622,7 +622,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_win32_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_win32_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_win_33__32__5F_on_5F_mac (Compiler * /* inCompiler */
@@ -632,7 +632,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper clean_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  clean_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_arm_36__34__5F_linux_5F_on_5F_mac (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -643,7 +643,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_clean_5F_arm_36
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (const GGS_string & in_PROJECT_5F_NAME,
@@ -661,7 +661,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_arm_36
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_verbose_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_verbose_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbose_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
@@ -671,7 +671,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_verbos
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_debug_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_debug_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
@@ -681,7 +681,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_debug_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_release_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_release_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_release_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
@@ -691,7 +691,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_releas
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper build_lto_arm64_linux_on_mac
+//Filewrapper template @targetGalgas3GenerationFileWrapper  build_lto_arm64_linux_on_mac
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F_arm_36__34__5F_linux_5F_on_5F_mac (Compiler * /* inCompiler */
@@ -701,7 +701,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_build_5F_lto_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper codeblocks_project
+//Filewrapper template @targetGalgas3GenerationFileWrapper  codeblocks_project
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_codeblocks_5F_project (const GGS_string & in_PROJECT_5F_NAME,
@@ -1050,7 +1050,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_codeblocks_5F_p
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper makefile_info_plist
+//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_info_plist
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_info_5F_plist (const GGS_string & in_PROJECT_5F_NAME,
@@ -1108,7 +1108,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_inf
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper makefile_build_xcode
+//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_build_xcode
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_build_5F_xcode (Compiler * /* inCompiler */
@@ -1118,7 +1118,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_bui
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper makefile_info_plist_strings
+//Filewrapper template @targetGalgas3GenerationFileWrapper  makefile_info_plist_strings
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_info_5F_plist_5F_strings (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -1129,7 +1129,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_makefile_5F_inf
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper json_file_list
+//Filewrapper template @targetGalgas3GenerationFileWrapper  json_file_list
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_json_5F_file_5F_list (const GGS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
@@ -1221,7 +1221,7 @@ GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_json_5F_file_5F
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @targetGalgas3GenerationFileWrapper project_header
+//Filewrapper template @targetGalgas3GenerationFileWrapper  project_header
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_targetGalgas_33_GenerationFileWrapper::class_func_project_5F_header (const GGS_string & in_VERSION_5F_STRING,

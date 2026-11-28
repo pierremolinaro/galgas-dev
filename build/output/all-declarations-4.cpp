@@ -4510,7 +4510,7 @@ GGS_filewrapper GGS_typeDumpGenerationTemplate::class_func_contents (UNUSED_LOCA
   return GGS_filewrapper (gWrapperDirectory_0_typeDumpGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @typeDumpGenerationTemplate typeDump
+//Filewrapper template @typeDumpGenerationTemplate  typeDump
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_typeDumpGenerationTemplate::class_func_typeDump (const GGS_string & in_PROJECT_5F_NAME,
@@ -12179,7 +12179,7 @@ GGS_filewrapper GGS_xcodeProjectGenerationFilewrapper::class_func_contents (UNUS
   return GGS_filewrapper (gWrapperDirectory_0_xcodeProjectGenerationFilewrapper) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @xcodeProjectGenerationFilewrapper xcodeproj
+//Filewrapper template @xcodeProjectGenerationFilewrapper  xcodeproj
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_xcodeProjectGenerationFilewrapper::class_func_xcodeproj (const GGS_string & in_PROJECT_5F_REF,

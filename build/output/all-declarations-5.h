@@ -2554,7 +2554,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_galgasGUIComponent
 extern const DirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + guiGenerationTemplates
+// Phase 1: filewrapper @guiGenerationTemplates
 //--------------------------------------------------------------------------------------------------
 
 class GGS_guiGenerationTemplates final {
@@ -7032,7 +7032,7 @@ class cPtr_buildOptionTypeForGeneration : public cPtr_semanticTypeForGeneration 
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + buildOptionGenerationTemplate
+// Phase 1: filewrapper @buildOptionGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_buildOptionGenerationTemplate final {
@@ -7431,7 +7431,7 @@ class cPtr_buildOptionStringTypeForGeneration : public cPtr_semanticTypeForGener
 extern const DirectoryWrapper gWrapperDirectory_0_buildOptionStringGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + buildOptionStringGenerationTemplate
+// Phase 1: filewrapper @buildOptionStringGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_buildOptionStringGenerationTemplate final {
@@ -8183,7 +8183,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAS
 extern const DirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + predefinedTypeGenerationTemplate
+// Phase 1: filewrapper @predefinedTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_predefinedTypeGenerationTemplate final {
@@ -10018,7 +10018,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleAST ;
 extern const DirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + programFileGenerationTemplate
+// Phase 1: filewrapper @programFileGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_programFileGenerationTemplate final {

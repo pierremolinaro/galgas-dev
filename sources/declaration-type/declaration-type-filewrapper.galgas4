@@ -615,7 +615,6 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
     )
   //--- Type
     outImplementation += @filewrapperGenerationTemplate.filewrapperTypeSpecificImplementation (
-      self.mSelfTypeEntry.definition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation
     )
   //--- template generation
@@ -657,18 +656,12 @@ final class @filewrapperTypeForGeneration : @semanticTypeForGeneration {
 
 filewrapper @filewrapperGenerationTemplate : "../+generation-templates/type_generation" {
 
-//  template filewrapperTypeHeader1 : "GALGAS-filewrapper.h1.galgasTemplate" (
-//    ?@string TYPE_NAME,
-//    ?@string TYPE_IDENTIFIER
-//  )
-
-  #template filewrapperTypeHeader1 : "GALGAS-filewrapper-bis.h1.galgasTemplate" (
+  #template filewrapperTypeHeader1 : "GALGAS-filewrapper.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
   )
 
-  template filewrapperTypeSpecificImplementation : "GALGAS-filewrapper.cpp.galgasTemplate" (
-    ?@string TYPE_NAME,
+  #template filewrapperTypeSpecificImplementation : "GALGAS-filewrapper.cpp.galgasTemplate" (
     ?@string TYPE_IDENTIFIER
   )
 

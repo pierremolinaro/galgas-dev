@@ -250,7 +250,7 @@ GGS_filewrapper GGS_projectCreationFileWrapper::class_func_contents (UNUSED_LOCA
   return GGS_filewrapper (gWrapperDirectory_0_projectCreationFileWrapper) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_project
+//Filewrapper template @projectCreationFileWrapper  PROJECT_project
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const GGS_string & in_PROJECT_5F_NAME,
@@ -263,7 +263,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_project (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_cocoa
+//Filewrapper template @projectCreationFileWrapper  PROJECT_cocoa
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GGS_string & in_PROJECT_5F_NAME,
@@ -278,7 +278,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_cocoa (const GG
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_grammar
+//Filewrapper template @projectCreationFileWrapper  PROJECT_grammar
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const GGS_string & in_PROJECT_5F_NAME,
@@ -293,7 +293,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_grammar (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_lexique
+//Filewrapper template @projectCreationFileWrapper  PROJECT_lexique
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const GGS_string & in_PROJECT_5F_NAME,
@@ -306,7 +306,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_lexique (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_program
+//Filewrapper template @projectCreationFileWrapper  PROJECT_program
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const GGS_string & in_PROJECT_5F_NAME,
@@ -325,7 +325,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_program (const 
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_semantics
+//Filewrapper template @projectCreationFileWrapper  PROJECT_semantics
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (const GGS_string & /* in_PROJECT_5F_NAME */,
@@ -336,7 +336,7 @@ GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_semantics (cons
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @projectCreationFileWrapper PROJECT_syntax
+//Filewrapper template @projectCreationFileWrapper  PROJECT_syntax
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_projectCreationFileWrapper::class_func_PROJECT_5F_syntax (const GGS_string & in_PROJECT_5F_NAME,

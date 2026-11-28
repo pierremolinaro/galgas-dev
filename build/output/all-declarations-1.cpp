@@ -11202,7 +11202,7 @@ GGS_filewrapper GGS_lexiqueGenerationTemplates::class_func_contents (UNUSED_LOCA
   return GGS_filewrapper (gWrapperDirectory_0_lexiqueGenerationTemplates) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @lexiqueGenerationTemplates headerZone2
+//Filewrapper template @lexiqueGenerationTemplates  headerZone2
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
@@ -11459,7 +11459,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_headerZone_32_ (const GGS_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @lexiqueGenerationTemplates implementationZone2Galgas3
+//Filewrapper template @lexiqueGenerationTemplates  implementationZone2Galgas3
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galgas_33_ (const GGS_string & in_LEXIQUE_5F_IDENTIFIER,
@@ -12074,7 +12074,7 @@ GGS_string GGS_lexiqueGenerationTemplates::class_func_implementationZone_32_Galg
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @lexiqueGenerationTemplates swiftUIImplementationZone2
+//Filewrapper template @lexiqueGenerationTemplates  swiftUIImplementationZone2
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_lexiqueGenerationTemplates::class_func_swiftUIImplementationZone_32_ (const GGS_string & /* in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME */,
@@ -15336,7 +15336,7 @@ GGS_filewrapper GGS_lexicalTemplates::class_func_contents (UNUSED_LOCATION_ARGS)
   return GGS_filewrapper (gWrapperDirectory_0_lexicalTemplates) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @lexicalTemplates swiftUILexicalStyles
+//Filewrapper template @lexicalTemplates  swiftUILexicalStyles
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_lexicalTemplates::class_func_swiftUILexicalStyles (const GGS_sortedLexicalStyleArray & in_LEXICAL_5F_STYLE_5F_SORTED_5F_ARRAY,

@@ -209,7 +209,7 @@ class cPtr_templateLexiqueComponentAST : public cPtr_semanticDeclarationAST {
 extern const DirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + templateLexiqueGenerationTemplates
+// Phase 1: filewrapper @templateLexiqueGenerationTemplates
 //--------------------------------------------------------------------------------------------------
 
 class GGS_templateLexiqueGenerationTemplates final {
@@ -884,7 +884,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ruleLabelImplementatio
 extern const DirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + syntaxFileGenerationTemplate
+// Phase 1: filewrapper @syntaxFileGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_syntaxFileGenerationTemplate final {

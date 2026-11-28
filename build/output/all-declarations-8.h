@@ -49,7 +49,7 @@ extern const DirectoryWrapper gWrapperDirectory_1_projectCreationFileWrapper ;
 extern const DirectoryWrapper gWrapperDirectory_2_projectCreationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + projectCreationFileWrapper
+// Phase 1: filewrapper @projectCreationFileWrapper
 //--------------------------------------------------------------------------------------------------
 
 class GGS_projectCreationFileWrapper final {

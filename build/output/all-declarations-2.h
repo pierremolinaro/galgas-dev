@@ -36,7 +36,7 @@ extern const DirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFile
 extern const DirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + targetGalgas3GenerationFileWrapper
+// Phase 1: filewrapper @targetGalgas3GenerationFileWrapper
 //--------------------------------------------------------------------------------------------------
 
 class GGS_targetGalgas_33_GenerationFileWrapper final {

@@ -518,7 +518,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMapFo
 extern const DirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + grammarGenerationTemplate
+// Phase 1: filewrapper @grammarGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_grammarGenerationTemplate final {

@@ -2076,7 +2076,7 @@ GGS_filewrapper GGS_arrayTypeGenerationTemplate::class_func_contents (UNUSED_LOC
   return GGS_filewrapper (gWrapperDirectory_0_arrayTypeGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @arrayTypeGenerationTemplate arrayTypeHeader1
+//Filewrapper template @arrayTypeGenerationTemplate  arrayTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_arrayTypeGenerationTemplate::class_func_arrayTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -2145,7 +2145,7 @@ GGS_string GGS_arrayTypeGenerationTemplate::class_func_arrayTypeHeader_31_ (cons
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @arrayTypeGenerationTemplate arrayTypeSpecificImplementation
+//Filewrapper template @arrayTypeGenerationTemplate  arrayTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_arrayTypeGenerationTemplate::class_func_arrayTypeSpecificImplementation (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -2842,7 +2842,7 @@ GGS_filewrapper GGS_dictionaryGenerationTemplate::class_func_contents (UNUSED_LO
   return GGS_filewrapper (gWrapperDirectory_0_dictionaryGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @dictionaryGenerationTemplate dictTypeHeader1
+//Filewrapper template @dictionaryGenerationTemplate  dictTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_dictionaryGenerationTemplate::class_func_dictTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -2958,7 +2958,7 @@ GGS_string GGS_dictionaryGenerationTemplate::class_func_dictTypeHeader_31_ (cons
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @dictionaryGenerationTemplate dictTypeSpecificImplementation
+//Filewrapper template @dictionaryGenerationTemplate  dictTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_dictionaryGenerationTemplate::class_func_dictTypeSpecificImplementation (const GGS_string & in_TYPE_5F_IDENTIFIER,
@@ -3731,7 +3731,7 @@ GGS_filewrapper GGS_structureGenerationTemplate::class_func_contents (UNUSED_LOC
   return GGS_filewrapper (gWrapperDirectory_0_structureGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @structureGenerationTemplate structTypeHeader1
+//Filewrapper template @structureGenerationTemplate  structTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_structureGenerationTemplate::class_func_structTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -3815,7 +3815,7 @@ GGS_string GGS_structureGenerationTemplate::class_func_structTypeHeader_31_ (con
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @structureGenerationTemplate structTypeSpecificImplementation
+//Filewrapper template @structureGenerationTemplate  structTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_structureGenerationTemplate::class_func_structTypeSpecificImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -6853,7 +6853,7 @@ GGS_filewrapper GGS_enumGenerationTemplate::class_func_contents (UNUSED_LOCATION
   return GGS_filewrapper (gWrapperDirectory_0_enumGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @enumGenerationTemplate enumTypeHeader1
+//Filewrapper template @enumGenerationTemplate  enumTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_enumGenerationTemplate::class_func_enumTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -6946,7 +6946,7 @@ GGS_string GGS_enumGenerationTemplate::class_func_enumTypeHeader_31_ (const GGS_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @enumGenerationTemplate enumTypeSpecificImplementation
+//Filewrapper template @enumGenerationTemplate  enumTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_enumGenerationTemplate::class_func_enumTypeSpecificImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -7696,7 +7696,7 @@ GGS_filewrapper GGS_structGenerationTemplate::class_func_contents (UNUSED_LOCATI
   return GGS_filewrapper (gWrapperDirectory_0_structGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @structGenerationTemplate optionSetTypeHeader1
+//Filewrapper template @structGenerationTemplate  optionSetTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_structGenerationTemplate::class_func_optionSetTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -7717,7 +7717,7 @@ GGS_string GGS_structGenerationTemplate::class_func_optionSetTypeHeader_31_ (con
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @structGenerationTemplate optionSetTypeSpecificImplementation
+//Filewrapper template @structGenerationTemplate  optionSetTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_structGenerationTemplate::class_func_optionSetTypeSpecificImplementation (const GGS_string & in_TYPE_5F_NAME,
@@ -8872,7 +8872,7 @@ GGS_filewrapper GGS_graphGenerationTemplate::class_func_contents (UNUSED_LOCATIO
   return GGS_filewrapper (gWrapperDirectory_0_graphGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @graphGenerationTemplate graphTypeHeader1
+//Filewrapper template @graphGenerationTemplate  graphTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_graphGenerationTemplate::class_func_graphTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -8954,7 +8954,7 @@ GGS_string GGS_graphGenerationTemplate::class_func_graphTypeHeader_31_ (const GG
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @graphGenerationTemplate graphTypeSpecificImplementation
+//Filewrapper template @graphGenerationTemplate  graphTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_graphGenerationTemplate::class_func_graphTypeSpecificImplementation (const GGS_unifiedTypeMapEntry & /* in_TYPE */,
@@ -10011,7 +10011,7 @@ GGS_filewrapper GGS_optionalTypeGenerationTemplate::class_func_contents (UNUSED_
   return GGS_filewrapper (gWrapperDirectory_0_optionalTypeGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @optionalTypeGenerationTemplate optionalTypeHeader1
+//Filewrapper template @optionalTypeGenerationTemplate  optionalTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_optionalTypeGenerationTemplate::class_func_optionalTypeHeader_31_ (const GGS_string & in_TYPE_5F_NAME,
@@ -10056,7 +10056,7 @@ GGS_string GGS_optionalTypeGenerationTemplate::class_func_optionalTypeHeader_31_
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @optionalTypeGenerationTemplate optionalTypeSpecificImplementation
+//Filewrapper template @optionalTypeGenerationTemplate  optionalTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_optionalTypeGenerationTemplate::class_func_optionalTypeSpecificImplementation (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -13458,7 +13458,7 @@ GGS_filewrapper GGS_mapGenerationTemplate::class_func_contents (UNUSED_LOCATION_
   return GGS_filewrapper (gWrapperDirectory_0_mapGenerationTemplate) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @mapGenerationTemplate mapTypeHeader1
+//Filewrapper template @mapGenerationTemplate  mapTypeHeader1
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_mapGenerationTemplate::class_func_mapTypeHeader_31_ (const GGS_string & /* in_TYPE_5F_NAME */,
@@ -13601,7 +13601,7 @@ GGS_string GGS_mapGenerationTemplate::class_func_mapTypeHeader_31_ (const GGS_st
   return GGS_string (result) ;
 }
 //--------------------------------------------------------------------------------------------------
-//Filewrapper template @mapGenerationTemplate mapTypeSpecificImplementation
+//Filewrapper template @mapGenerationTemplate  mapTypeSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_mapGenerationTemplate::class_func_mapTypeSpecificImplementation (const GGS_string & in_TYPE_5F_IDENTIFIER,

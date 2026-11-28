@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------------------------------
 
-GGS_filewrapper GGS_%!TYPE_IDENTIFIER%::class_func_contents (UNUSED_LOCATION_ARGS) {
-  return GGS_filewrapper (gWrapperDirectory_0_%!TYPE_IDENTIFIER%) ;
+GGS_filewrapper GGS_#(!TYPE_IDENTIFIER)#::class_func_contents (UNUSED_LOCATION_ARGS) {
+  return GGS_filewrapper (gWrapperDirectory_0_#(!TYPE_IDENTIFIER)#) ;
 }

@@ -2936,7 +2936,7 @@ class cPtr_filewrapperTypeForGeneration : public cPtr_semanticTypeForGeneration 
 extern const DirectoryWrapper gWrapperDirectory_0_filewrapperGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + filewrapperGenerationTemplate
+// Phase 1: filewrapper @filewrapperGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_filewrapperGenerationTemplate final {
@@ -2974,7 +2974,6 @@ class GGS_filewrapperGenerationTemplate final {
                                                                         COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_filewrapperTypeSpecificImplementation (const class GGS_string & inOperand0,
-                                                                                    const class GGS_string & inOperand1,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -4027,7 +4026,7 @@ class cPtr_sortedArrayTypeForGeneration : public cPtr_semanticTypeForGeneration 
 extern const DirectoryWrapper gWrapperDirectory_0_sortedArrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + sortedArrayTypeGenerationTemplate
+// Phase 1: filewrapper @sortedArrayTypeGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_sortedArrayTypeGenerationTemplate final {
@@ -4396,7 +4395,7 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 extern const DirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + classGenerationTemplate
+// Phase 1: filewrapper @classGenerationTemplate
 //--------------------------------------------------------------------------------------------------
 
 class GGS_classGenerationTemplate final {

@@ -1071,7 +1071,7 @@ extern const DirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
 extern const DirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: filewrapper @ + libpmFileWrapper
+// Phase 1: filewrapper @libpmFileWrapper
 //--------------------------------------------------------------------------------------------------
 
 class GGS_libpmFileWrapper final {
